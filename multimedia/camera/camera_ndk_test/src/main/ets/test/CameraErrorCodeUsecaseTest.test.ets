@@ -212,8 +212,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CREATE_CAMERA_INPUT_0100
-     * @tc.name      : createCameraInput api
-     * @tc.desc      : createCameraInput api
+     * @tc.name      : CreateCameraInput api
+     * @tc.desc      : CreateCameraInput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -230,8 +230,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_COMMITCONFIG_0200
-     * @tc.name      : commitConfig api
-     * @tc.desc      : commitConfig api
+     * @tc.name      : CommitConfig api
+     * @tc.desc      : CommitConfig api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -249,8 +249,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_ADD_OUTPUT_0300
-     * @tc.name      : addOutput api
-     * @tc.desc      : addOutput api
+     * @tc.name      : AddOutput api
+     * @tc.desc      : AddOutput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -269,8 +269,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_REMOVE_OUTPUT_0300
-     * @tc.name      : removeOutput api
-     * @tc.desc      : removeOutput api
+     * @tc.name      : RemoveOutput api
+     * @tc.desc      : RemoveOutput api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -289,8 +289,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_START_0100
-     * @tc.name      : capturesession start api
-     * @tc.desc      : capturesession start api
+     * @tc.name      : Capturesession start api
+     * @tc.desc      : Capturesession start api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -313,8 +313,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_HASFLASH_0100
-     * @tc.name      : capturesession sessionHasFlash api
-     * @tc.desc      : capturesession sessionHasFlash api
+     * @tc.name      : Capturesession sessionHasFlash api
+     * @tc.desc      : Capturesession sessionHasFlash api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -338,8 +338,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFLASHMODESUPPORTED_0100
-     * @tc.name      : capturesession sessionIsFlashModeSupported api
-     * @tc.desc      : capturesession sessionIsFlashModeSupported api
+     * @tc.name      : Capturesession sessionIsFlashModeSupported api
+     * @tc.desc      : Capturesession sessionIsFlashModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -363,8 +363,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFLASHMODE_0100
-     * @tc.name      : capturesession sessionGetFlashMode api
-     * @tc.desc      : capturesession sessionGetFlashMode api
+     * @tc.name      : Capturesession sessionGetFlashMode api
+     * @tc.desc      : Capturesession sessionGetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -387,8 +387,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0100
-     * @tc.name      : capturesession sessionSetFlashMode api
-     * @tc.desc      : capturesession sessionSetFlashMode api
+     * @tc.name      : Capturesession sessionSetFlashMode api
+     * @tc.desc      : Capturesession sessionSetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -410,8 +410,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFLASHMODE_0101
-     * @tc.name      : capturesession sessionSetFlashMode api
-     * @tc.desc      : capturesession sessionSetFlashMode api
+     * @tc.name      : Capturesession sessionSetFlashMode api
+     * @tc.desc      : Capturesession sessionSetFlashMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -433,8 +433,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISEXPOSUREMODESUPPORTED_0100
-     * @tc.name      : capturesession isExposureModeSupported api
-     * @tc.desc      : capturesession isExposureModeSupported api
+     * @tc.name      : Capturesession isExposureModeSupported api
+     * @tc.desc      : Capturesession isExposureModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -455,8 +455,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREMODE_0100
-     * @tc.name      : capturesession getExposureMode api
-     * @tc.desc      : capturesession getExposureMode api
+     * @tc.name      : Capturesession getExposureMode api
+     * @tc.desc      : Capturesession getExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -477,8 +477,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0100
-     * @tc.name      : capturesession setExposureMode api
-     * @tc.desc      : capturesession setExposureMode api
+     * @tc.name      : Capturesession setExposureMode api
+     * @tc.desc      : Capturesession setExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -499,8 +499,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREMODE_0101
-     * @tc.name      : capturesession setExposureMode api
-     * @tc.desc      : capturesession setExposureMode api
+     * @tc.name      : Capturesession setExposureMode api
+     * @tc.desc      : Capturesession setExposureMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -524,8 +524,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETMETERINGPOINT_0100
-     * @tc.name      : capturesession getMeteringPoint api
-     * @tc.desc      : capturesession getMeteringPoint api
+     * @tc.name      : Capturesession getMeteringPoint api
+     * @tc.desc      : Capturesession getMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -546,8 +546,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0100
-     * @tc.name      : capturesession setMeteringPoint api
-     * @tc.desc      : capturesession setMeteringPoint api
+     * @tc.name      : Capturesession setMeteringPoint api
+     * @tc.desc      : Capturesession setMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -570,8 +570,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETMETERINGPOINT_0101
-     * @tc.name      : capturesession setMeteringPoint api
-     * @tc.desc      : capturesession setMeteringPoint api
+     * @tc.name      : Capturesession setMeteringPoint api
+     * @tc.desc      : Capturesession setMeteringPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -595,8 +595,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREBIASRANGE_0100
-     * @tc.name      : capturesession getExposureBiasRange api
-     * @tc.desc      : capturesession getExposureBiasRange api
+     * @tc.name      : Capturesession getExposureBiasRange api
+     * @tc.desc      : Capturesession getExposureBiasRange api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -617,8 +617,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0100
-     * @tc.name      : capturesession setExposureBias api
-     * @tc.desc      : capturesession setExposureBias api
+     * @tc.name      : Capturesession setExposureBias api
+     * @tc.desc      : Capturesession setExposureBias api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -642,8 +642,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETEXPOSUREBIAS_0101
-     * @tc.name      : capturesession setExposureBias api
-     * @tc.desc      : capturesession setExposureBias api
+     * @tc.name      : Capturesession setExposureBias api
+     * @tc.desc      : Capturesession setExposureBias api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -665,8 +665,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETEXPOSUREVALUE_0100
-     * @tc.name      : capturesession getExposureValue api
-     * @tc.desc      : capturesession getExposureValue api
+     * @tc.name      : Capturesession getExposureValue api
+     * @tc.desc      : Capturesession getExposureValue api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -687,8 +687,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISFOCUSMODESUPPORTED_0100
-     * @tc.name      : capturesession sessionIsFocusModeSupported api
-     * @tc.desc      : capturesession sessionIsFocusModeSupported api
+     * @tc.name      : Capturesession sessionIsFocusModeSupported api
+     * @tc.desc      : Capturesession sessionIsFocusModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -709,8 +709,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSMODE_0100
-     * @tc.name      : capturesession sessionGetFocusMode api
-     * @tc.desc      : capturesession sessionGetFocusMode api
+     * @tc.name      : Capturesession sessionGetFocusMode api
+     * @tc.desc      : Capturesession sessionGetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -731,8 +731,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0100
-     * @tc.name      : capturesession sessionSetFocusMode api
-     * @tc.desc      : capturesession sessionSetFocusMode api
+     * @tc.name      : Capturesession sessionSetFocusMode api
+     * @tc.desc      : Capturesession sessionSetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -753,8 +753,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSMODE_0101
-     * @tc.name      : capturesession sessionSetFocusMode api
-     * @tc.desc      : capturesession sessionSetFocusMode api
+     * @tc.name      : Capturesession sessionSetFocusMode api
+     * @tc.desc      : Capturesession sessionSetFocusMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -776,8 +776,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0100
-     * @tc.name      : capturesession sessionSetFocusPoint api
-     * @tc.desc      : capturesession sessionSetFocusPoint api
+     * @tc.name      : Capturesession sessionSetFocusPoint api
+     * @tc.desc      : Capturesession sessionSetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -800,8 +800,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETFOCUSPOINT_0101
-     * @tc.name      : capturesession sessionSetFocusPoint api
-     * @tc.desc      : capturesession sessionSetFocusPoint api
+     * @tc.name      : Capturesession sessionSetFocusPoint api
+     * @tc.desc      : Capturesession sessionSetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -825,8 +825,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100
-     * @tc.name      : capturesession sessionGetFocusPoint api
-     * @tc.desc      : capturesession sessionGetFocusPoint api
+     * @tc.name      : Capturesession sessionGetFocusPoint api
+     * @tc.desc      : Capturesession sessionGetFocusPoint api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -849,13 +849,11 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100
-     * @tc.name      : capturesession sessionGetZoomRatioRange api
-     * @tc.desc      : capturesession sessionGetZoomRatioRange api
+     * @tc.name      : Capturesession sessionGetZoomRatioRange api
+     * @tc.desc      : Capturesession sessionGetZoomRatioRange api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
-     *
-     *
      */
     it('SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100', 0, async () => {
       console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIORANG_0100--------------");
@@ -878,8 +876,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_GETZOOMRATIO_0100
-     * @tc.name      : capturesession sessionGetZoomRatio api
-     * @tc.desc      : capturesession sessionGetZoomRatio api
+     * @tc.name      : Capturesession sessionGetZoomRatio api
+     * @tc.desc      : Capturesession sessionGetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -901,8 +899,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0100
-     * @tc.name      : capturesession sessionSetZoomRatio api
-     * @tc.desc      : capturesession sessionSetZoomRatio api
+     * @tc.name      : Capturesession sessionSetZoomRatio api
+     * @tc.desc      : Capturesession sessionSetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -925,8 +923,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETZOOMRATIO_0101
-     * @tc.name      : capturesession sessionSetZoomRatio api
-     * @tc.desc      : capturesession sessionSetZoomRatio api
+     * @tc.name      : Capturesession sessionSetZoomRatio api
+     * @tc.desc      : Capturesession sessionSetZoomRatio api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -948,8 +946,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_ISVSMS_0100
-     * @tc.name      : capturesession sessionIsVideoStabilizationModeSupported api
-     * @tc.desc      : capturesession sessionIsVideoStabilizationModeSupported api
+     * @tc.name      : Capturesession sessionIsVideoStabilizationModeSupported api
+     * @tc.desc      : Capturesession sessionIsVideoStabilizationModeSupported api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -971,8 +969,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_AVSTMODE_0100
-     * @tc.name      : capturesession sessionGetVideoStabilizationMode api
-     * @tc.desc      : capturesession sessionGetVideoStabilizationMode api
+     * @tc.name      : Capturesession sessionGetVideoStabilizationMode api
+     * @tc.desc      : Capturesession sessionGetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -995,8 +993,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0100
-     * @tc.name      : capturesession sessionSetVideoStabilizationMode api
-     * @tc.desc      : capturesession sessionSetVideoStabilizationMode api
+     * @tc.name      : Capturesession sessionSetVideoStabilizationMode api
+     * @tc.desc      : Capturesession sessionSetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1018,8 +1016,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_CAPTURESESSION_SETVSTMODE_0101
-     * @tc.name      : capturesession sessionSetVideoStabilizationMode api
-     * @tc.desc      : capturesession sessionSetVideoStabilizationMode api
+     * @tc.name      : Capturesession sessionSetVideoStabilizationMode api
+     * @tc.desc      : Capturesession sessionSetVideoStabilizationMode api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1065,8 +1063,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_VIDEO_START_0100
-     * @tc.name      : videooutput  start api
-     * @tc.desc      : videooutput  start api
+     * @tc.name      : Videooutput  start api
+     * @tc.desc      : Videooutput  start api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1082,8 +1080,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0100
-     * @tc.name      : photoOutput capture api
-     * @tc.desc      : photoOutput capture api
+     * @tc.name      : PhotoOutput capture api
+     * @tc.desc      : PhotoOutput capture api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -1106,8 +1104,8 @@ export default function CameraErrorCodeUsecaseTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ERROR_CODE_USECASE_BEGINCONFIG_0100
-     * @tc.name      : capturesession beginConfig api
-     * @tc.desc      : capturesession beginConfig api
+     * @tc.name      : Capturesession beginConfig api
+     * @tc.desc      : Capturesession beginConfig api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0

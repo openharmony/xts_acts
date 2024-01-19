@@ -748,8 +748,8 @@ export default function cameraSessionFocusTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_ON_FOCUSSTATECHANGE_017
-     * @tc.name      : camera session focusstatechange api
-     * @tc.desc      : camera session focusstatechange api
+     * @tc.name      : Camera session focusstatechange api
+     * @tc.desc      : Camera session focusstatechange api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1

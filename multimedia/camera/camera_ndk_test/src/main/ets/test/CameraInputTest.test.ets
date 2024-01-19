@@ -147,8 +147,8 @@ export default function CameraInputTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100
-     * @tc.name      : camera status callback on CameraInput async api for error
-     * @tc.desc      : camera status callback on CameraInput async api for error
+     * @tc.name      : Camera status callback on CameraInput async api for error
+     * @tc.desc      : Camera status callback on CameraInput async api for error
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -166,8 +166,8 @@ export default function CameraInputTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100
-     * @tc.name      : open/close Camera with cameraInput callback api
-     * @tc.desc      : open/close Camera with cameraInput callback api
+     * @tc.name      : Open/Close Camera with cameraInput callback api
+     * @tc.desc      : Open/Close Camera with cameraInput callback api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -184,8 +184,8 @@ export default function CameraInputTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100
-     * @tc.name      : open/close Camera with cameraInput promise api
-     * @tc.desc      : open/close Camera with cameraInput promise api
+     * @tc.name      : Open/Close Camera with cameraInput promise api
+     * @tc.desc      : Open/Close Camera with cameraInput promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -202,8 +202,8 @@ export default function CameraInputTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_UNREGISTER_CALLBACK_PROMISE_0100
-     * @tc.name      : unregister Camera with cameraInput promise api
-     * @tc.desc      : unregister Camera with cameraInput promise api
+     * @tc.name      : Unregister Camera with cameraInput promise api
+     * @tc.desc      : Unregister Camera with cameraInput promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -220,8 +220,8 @@ export default function CameraInputTest() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100
-     * @tc.name      : create CameraInput with position and type
-     * @tc.desc      : create CameraInput with position and type
+     * @tc.name      : Create CameraInput with position and type
+     * @tc.desc      : Create CameraInput with position and type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0

@@ -353,8 +353,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_BEGIN_CONFIG_CALLBACK_0100
-     * @tc.name      : captureSession beginConfig
-     * @tc.desc      : captureSession beginConfig
+     * @tc.name      : CaptureSession beginConfig
+     * @tc.desc      : CaptureSession beginConfig
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -369,8 +369,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_INPUT_CALLBACK_0100
-     * @tc.name      : captureSession addInput
-     * @tc.desc      : captureSession addInput
+     * @tc.name      : CaptureSession addInput
+     * @tc.desc      : CaptureSession addInput
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -385,8 +385,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PREVIEW_OUTPUT_CALLBACK_0100
-     * @tc.name      : captureSession add previewOutput
-     * @tc.desc      : captureSession add previewOutput
+     * @tc.name      : CaptureSession add previewOutput
+     * @tc.desc      : CaptureSession add previewOutput
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -402,8 +402,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_PHOTO_OUTPUT_CALLBACK_0100
-     * @tc.name      : captureSession add photoOutput
-     * @tc.desc      : captureSession add photoOutput
+     * @tc.name      : CaptureSession add photoOutput
+     * @tc.desc      : CaptureSession add photoOutput
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -419,8 +419,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_ADD_VIDEO_OUTPUT_CALLBACK_0100
-     * @tc.name      : captureSession remove photoOutput
-     * @tc.desc      : captureSession remove photoOutput
+     * @tc.name      : CaptureSession remove photoOutput
+     * @tc.desc      : CaptureSession remove photoOutput
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -436,8 +436,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAPTURE_SESSION_COMMIT_CONFIG_CALLBACK_0100
-     * @tc.name      : captureSession commitConfig
-     * @tc.desc      : captureSession commitConfig
+     * @tc.name      : CaptureSession commitConfig
+     * @tc.desc      : CaptureSession commitConfig
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -484,8 +484,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_START_PROMISE_0100
-     * @tc.name      : videoOutput start promise api
-     * @tc.desc      : videoOutput start promise api
+     * @tc.name      : VideoOutput start promise api
+     * @tc.desc      : VideoOutput start promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -500,8 +500,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_STOP_PROMISE_0100
-     * @tc.name      : videoOutput stop promise api
-     * @tc.desc      : videoOutput stop promise api
+     * @tc.name      : VideoOutput stop promise api
+     * @tc.desc      : VideoOutput stop promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -516,8 +516,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_VIDEO_OUTPUT_UNREGISTER_CALLBACK_PROMISE_0100
-     * @tc.name      : unregister callback stop promise api
-     * @tc.desc      : unregister callback promise api
+     * @tc.name      : Unregister callback stop promise api
+     * @tc.desc      : Unregister callback promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -532,8 +532,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START_0100
-     * @tc.name      : preview output callback on frameStart api
-     * @tc.desc      : preview output callback on frameStart api
+     * @tc.name      : Preview output callback on frameStart api
+     * @tc.desc      : Preview output callback on frameStart api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -550,8 +550,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END_0100
-     * @tc.name      : preview output callback on frameEnd api
-     * @tc.desc      : preview output callback on frameEnd api
+     * @tc.name      : Preview output callback on frameEnd api
+     * @tc.desc      : Preview output callback on frameEnd api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -568,8 +568,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_CALLBACK_ON_ERROR_0100
-     * @tc.name      : preview output callback on frameEnd api
-     * @tc.desc      : preview output callback on frameEnd api
+     * @tc.name      : Preview output callback on frameEnd api
+     * @tc.desc      : Preview output callback on frameEnd api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -586,8 +586,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PREVIEW_OUTPUT_UNREGISTER_CALLBACK_0100
-     * @tc.name      : preview output callback api
-     * @tc.desc      : preview output callback api
+     * @tc.name      : Preview output callback api
+     * @tc.desc      : Preview output callback api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -605,8 +605,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100
-     * @tc.name      : photoOutput capture with promise mode
-     * @tc.desc      : photoOutput capture with promise mode
+     * @tc.name      : PhotoOutput capture with promise mode
+     * @tc.desc      : PhotoOutput capture with promise mode
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -624,8 +624,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
-     * @tc.name      : photo output callback on captureStart
-     * @tc.desc      : photo output callback on captureStart
+     * @tc.name      : Photo output callback on captureStart
+     * @tc.desc      : Photo output callback on captureStart
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -650,8 +650,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100
-     * @tc.name      : photo output callback on frameShutter
-     * @tc.desc      : photo output callback on frameShutter
+     * @tc.name      : Photo output callback on frameShutter
+     * @tc.desc      : Photo output callback on frameShutter
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -676,8 +676,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100
-     * @tc.name      : photo output callback on captureEnd
-     * @tc.desc      : photo output callback on captureEnd
+     * @tc.name      : Photo output callback on captureEnd
+     * @tc.desc      : Photo output callback on captureEnd
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -702,8 +702,8 @@ export default function cameraJSUnitOutput() {
     });
     /**
      * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_PHOTO_OUTPUT_CALLBACK_ON_ERROR_0100
-     * @tc.name      : photo output callback on error
-     * @tc.desc      : photo output callback on error
+     * @tc.name      : Photo output callback on error
+     * @tc.desc      : Photo output callback on error
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
