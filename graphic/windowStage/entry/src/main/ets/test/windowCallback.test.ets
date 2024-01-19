@@ -2179,7 +2179,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_on_Function_Callback', 0, async function(done){
+    it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
       let  msgStr = 'testWindowTitleButtonRectChange_on';
       console.log(msgStr + "begin on")
       try {
@@ -2189,8 +2189,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           expect(true).assertTrue();
           done();
         });
-        expect(true).assertTrue();
-        done();
       } catch (err) {
         console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
         if (err.code == 801) {
@@ -2212,7 +2210,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('testWindowTitleButtonRectChange_Function_off_Callback', 0, async function(done){
+     it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
       let msgStr = 'testWindowTitleButtonRectChange_off';
       console.log(msgStr + 'begin off');
       try {
