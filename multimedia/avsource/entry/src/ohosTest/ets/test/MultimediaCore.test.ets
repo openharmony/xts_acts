@@ -89,16 +89,15 @@ export default function audioDecoderTest() {
       done();
     });
 
-
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_0600
-     * @tc.name       : testMultimediaCoreAVFormatCopy001
+     * @tc.name       : testCoreMultimediaCoreAVFormatCopy001
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyOne();
       expect(result).assertEqual(0);
       done();
@@ -106,13 +105,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_0700
-     * @tc.name       : testMultimediaCoreAVFormatCopy002
+     * @tc.name       : testCoreMultimediaCoreAVFormatCopy002
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy002', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyTwo();
       expect(result).assertEqual(0);
       done();
@@ -120,13 +119,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_0800
-     * @tc.name       : testMultimediaCoreAVFormatCopy003
+     * @tc.name       : testCoreMultimediaCoreAVFormatCopy003
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCopy003', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCopy003', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCopyThree();
       expect(result).assertEqual(0);
       done();
@@ -134,13 +133,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_0900
-     * @tc.name       : testMultimediaCoreAVFormatDestroy001
+     * @tc.name       : testCoreMultimediaCoreAVFormatDestroy001
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDestroy001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDestroy001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDestroy();
       expect(result).assertEqual(0);
       done();
@@ -148,13 +147,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1000
-     * @tc.name       : testMultimediaCoreAVFormatDumpInfo001
+     * @tc.name       : testCoreMultimediaCoreAVFormatDumpInfo001
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDumpInfo001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoOne();
       expect(result).assertEqual(0);
       done();
@@ -162,13 +161,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1100
-     * @tc.name       : testMultimediaCoreAVFormatDumpInfo002
+     * @tc.name       : testCoreMultimediaCoreAVFormatDumpInfo002
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatDumpInfo002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatDumpInfo002', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatDumpInfoTwo();
       expect(result).assertEqual(0);
       done();
@@ -594,13 +593,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_4200
-     * @tc.name       : testMultimediaCoreAVFormatSetBuffer001
+     * @tc.name       : testCoreMultimediaCoreAVFormatSetBuffer001
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferOne();
       expect(result).assertEqual(0);
       done();
@@ -608,13 +607,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_4300
-     * @tc.name       : testMultimediaCoreAVFormatSetBuffer002
+     * @tc.name       : testCoreMultimediaCoreAVFormatSetBuffer002
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer002', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferTwo();
       expect(result).assertEqual(0);
       done();
@@ -622,13 +621,13 @@ export default function audioDecoderTest() {
 
     /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_4400
-     * @tc.name       : testMultimediaCoreAVFormatSetBuffer003
+     * @tc.name       : testCoreMultimediaCoreAVFormatSetBuffer003
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer003', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer003', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferThree();
       expect(result).assertEqual(0);
       done();
@@ -986,35 +985,35 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0100
-     * @tc.name       : testMultimediaCoreAVFormatCreateAudioFormat001
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0100
+     * @tc.name       : testCoreMultimediaCoreAVFormatCreateAudioFormat001
      * @tc.desc       : test OH_AVFormat_CreateAudioFormat
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateAudioFormat001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateAudioFormat001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatAVC();
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0200
-     * @tc.name       : testMultimediaCoreAVFormatCreateAudioFormat002
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0200
+     * @tc.name       : testCoreMultimediaCoreAVFormatCreateAudioFormat002
      * @tc.desc       : test OH_AVFormat_CreateAudioFormat
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateAudioFormat002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateAudioFormat002', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateAudioFormatVORBIS();
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0300
      * @tc.name       : testMultimediaCoreAVFormatCreateAudioFormat003
      * @tc.desc       : test OH_AVFormat_CreateAudioFormat
      * @tc.size       : MediumTest
@@ -1028,35 +1027,35 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0400
-     * @tc.name       : testMultimediaCoreAVFormatCreateVideoFormat001
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0400
+     * @tc.name       : testCoreMultimediaCoreAVFormatCreateVideoFormat001
      * @tc.desc       : test OH_AVFormat_CreateVideoFormat
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateVideoFormat001', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateVideoFormat001', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatHEVC();
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0500
-     * @tc.name       : testMultimediaCoreAVFormatCreateVideoFormat002
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0500
+     * @tc.name       : testCoreMultimediaCoreAVFormatCreateVideoFormat002
      * @tc.desc       : test OH_AVFormat_CreateVideoFormat
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatCreateVideoFormat002', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatCreateVideoFormat002', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatCreateVideoFormatMPEG4();
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0600
      * @tc.name       : testMultimediaCoreAVFormatDestroy001
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1070,7 +1069,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0700
      * @tc.name       : testMultimediaCoreAVFormatDestroy002
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1084,7 +1083,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0800
      * @tc.name       : testMultimediaCoreAVFormatDestroy003
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1098,7 +1097,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_0900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_0900
      * @tc.name       : testMultimediaCoreAVFormatDestroy004
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1112,7 +1111,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1000
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1000
      * @tc.name       : testMultimediaCoreAVFormatDestroy005
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1126,7 +1125,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1100
      * @tc.name       : testMultimediaCoreAVFormatDestroy006
      * @tc.desc       : test OH_AVFormat_Destroy
      * @tc.size       : MediumTest
@@ -1140,7 +1139,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1200
      * @tc.name       : testMultimediaCoreAVFormatCopy001
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1154,7 +1153,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1300
      * @tc.name       : testMultimediaCoreAVFormatCopy002
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1168,7 +1167,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1400
      * @tc.name       : testMultimediaCoreAVFormatCopy003
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1182,7 +1181,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1500
      * @tc.name       : testMultimediaCoreAVFormatCopy004
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1196,7 +1195,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1600
      * @tc.name       : testMultimediaCoreAVFormatCopy005
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1210,7 +1209,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1700
      * @tc.name       : testMultimediaCoreAVFormatCopy006
      * @tc.desc       : test OH_AVFormat_Copy
      * @tc.size       : MediumTest
@@ -1224,7 +1223,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1800
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo001
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1238,7 +1237,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_1900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_1900
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo002
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1252,7 +1251,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2000
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2000
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo003
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1266,7 +1265,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2100
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo004
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1280,7 +1279,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2200
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo005
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1294,7 +1293,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2300
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo006
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1308,7 +1307,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2400
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo007
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1322,7 +1321,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2500
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo008
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1336,7 +1335,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2600
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo009
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1350,7 +1349,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2700
      * @tc.name       : testMultimediaCoreAVFormatDumpInfo010
      * @tc.desc       : test OH_AVFormat_DumpInfo
      * @tc.size       : MediumTest
@@ -1364,7 +1363,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2800
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer001
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1378,7 +1377,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2900
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer002
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1392,7 +1391,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_2900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_2900
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer003
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1406,21 +1405,21 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3000
-     * @tc.name       : testMultimediaCoreAVFormatSetBuffer004
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3000
+     * @tc.name       : testCoreMultimediaCoreAVFormatSetBuffer004
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMultimediaCoreAVFormatSetBuffer004', 0, async (done: Function) => {
+    it('testCoreMultimediaCoreAVFormatSetBuffer004', 0, async (done: Function) => {
       let result: number = MultimediaCore.multimediaCoreAVFormatSetBufferAll(4);
       expect(result).assertEqual(0);
       done();
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3100
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer005
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1434,7 +1433,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3200
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer006
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1448,7 +1447,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3300
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer007
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1462,7 +1461,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3400
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer008
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1476,7 +1475,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3500
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer009
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1490,7 +1489,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3600
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer010
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1504,7 +1503,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3700
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer011
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1518,7 +1517,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3800
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer012
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1532,7 +1531,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_3900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_3900
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer013
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1546,7 +1545,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4000
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4000
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer014
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1560,7 +1559,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4100
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer015
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1574,7 +1573,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4200
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer016
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1588,7 +1587,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4300
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer017
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1602,7 +1601,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4400
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer018
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1616,7 +1615,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4500
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer019
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1630,7 +1629,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4600
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer020
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1644,7 +1643,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4700
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer021
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1658,7 +1657,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4800
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer022
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1672,7 +1671,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_4900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_4900
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer023
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1686,7 +1685,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5000
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5000
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer024
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1700,7 +1699,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5100
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer025
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1714,7 +1713,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5200
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer026
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1728,7 +1727,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5300
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer027
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1742,7 +1741,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5400
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer028
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1756,7 +1755,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5500
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer029
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1770,7 +1769,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5600
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer030
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1784,7 +1783,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5700
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer031
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1798,7 +1797,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5800
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5800
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer032
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1812,7 +1811,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_5900
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_5900
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer033
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1826,7 +1825,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6000
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6000
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer034
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1840,7 +1839,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6100
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6100
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer035
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1854,7 +1853,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6200
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6200
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer036
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1868,7 +1867,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6300
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6300
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer037
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1882,7 +1881,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6400
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6400
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer038
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1896,7 +1895,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6500
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6500
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer039
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1910,7 +1909,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6600
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6600
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer040
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
@@ -1924,7 +1923,7 @@ export default function audioDecoderTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMultimediaCore_AV_CODEC_CORE_1_6700
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6700
      * @tc.name       : testMultimediaCoreAVFormatSetBuffer041
      * @tc.desc       : test OH_AVFormat_SetBuffer
      * @tc.size       : MediumTest
