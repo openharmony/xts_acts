@@ -161,7 +161,7 @@ export default function AVPlayerNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testOhAvPlayerSetFDSource003', 0, async (done: Function) => {
+    it('testOhAvPlayerSetFDSource004', 0, async (done: Function) => {
       let result: number = avplayer.AvPlayerSetFDSourceAbnormalThree();
       expect(result).assertEqual(0);
       done();
@@ -224,7 +224,7 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PLAY_0200
      * @tc.name       : testOhAvPlayerPlay002
      * @tc.desc       : test OH_AVPlayer_Play
      * @tc.size       : MediumTest
@@ -668,7 +668,7 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYBACKSPEED_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETPLAYBACKSPEED_0200
      * @tc.name       : testOhAvPlayerSetPlaybackSpeed002
      * @tc.desc       : test OH_AVPlayer_SetPlaybackSpeed
      * @tc.size       : MediumTest
@@ -766,7 +766,7 @@ export default function AVPlayerNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0100
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETVIDEOSURFACE_0300
      * @tc.name       : testOhAvPlayerSetVideoSurface003
      * @tc.desc       : test OH_AVPlayer_SetVideoSurface
      * @tc.size       : MediumTest
