@@ -2210,7 +2210,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
+    it('testWindowTitleButtonRectChange_Function_Callback', 0, async function(done){
       let msgStr = 'testWindowTitleButtonRectChange_off';
       console.log(msgStr + 'begin off');
       try {
@@ -2229,7 +2229,44 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             done();
         }  
       }
-   });   
+   });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2630
+     * @tc.name      : testEnumWindow_windowType
+     * @tc.desc      : window type enumeration
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testEnumWindow_windowType', 0, async function(){
+      console.info('testEnumWindow_windowType test the enum value of windowType begin');
+      console.info('testEnumWindow_windowType' + JSON.stringify(ohosWindow.WindowType));
+      try {
+        expect(0).assertEqual(ohosWindow.WindowType.TYPE_APP);
+        expect(1).assertEqual(ohosWindow.WindowType.TYPE_SYSTEM_ALERT);
+        expect(2).assertEqual(ohosWindow.WindowType.TYPE_INPUT_METHOD);
+        expect(3).assertEqual(ohosWindow.WindowType.TYPE_STATUS_BAR);
+        expect(4).assertEqual(ohosWindow.WindowType.TYPE_PANEL);
+        expect(5).assertEqual(ohosWindow.WindowType.TYPE_KEYGUARD);
+        expect(6).assertEqual(ohosWindow.WindowType.TYPE_VOLUME_OVERLAY);
+        expect(7).assertEqual(ohosWindow.WindowType.TYPE_NAVIGATION_BAR);
+        expect(8).assertEqual(ohosWindow.WindowType.TYPE_FLOAT);
+        expect(9).assertEqual(ohosWindow.WindowType.TYPE_WALLPAPER);
+        expect(10).assertEqual(ohosWindow.WindowType.TYPE_DESKTOP);
+        expect(11).assertEqual(ohosWindow.WindowType.TYPE_LAUNCHER_RECENT);
+        expect(12).assertEqual(ohosWindow.WindowType.TYPE_LAUNCHER_DOCK);
+        expect(13).assertEqual(ohosWindow.WindowType.TYPE_VOICE_INTERACTION);
+        expect(14).assertEqual(ohosWindow.WindowType.TYPE_POINTER);
+        expect(15).assertEqual(ohosWindow.WindowType.TYPE_FLOAT_CAMERA);
+        expect(16).assertEqual(ohosWindow.WindowType.TYPE_DIALOG);
+        expect(17).assertEqual(ohosWindow.WindowType.TYPE_SCREENSHOT);
+      } catch (error) {
+        console.info('test Enum value of windowType error ' + JSON.stringify(error));
+        expect().assertFail();
+      }
+   });
 
   })
 }
