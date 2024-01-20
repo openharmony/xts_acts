@@ -13,17 +13,14 @@
  * limitations under the License.
  */
 
-
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import UIAbility from '@ohos.app.ability.UIAbility';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import commonEvent from '@ohos.commonEvent';
 
 const TAG: string = 'ActsAbilityDelegatorTest';
-const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest'
-
+const TEST_SUITE_NAME: string = 'ActsAbilityDelegatorStageTest';
+const CODE_ERROR = 401;
 
 export default function AbilityDelegatorStageTest() {
 
@@ -44,7 +41,6 @@ export default function AbilityDelegatorStageTest() {
     return info == null || info == undefined || info.length == 0 || info == ''
   }
 
-
   describe('ActsAbilityTest', function () {
 
     /**
@@ -55,11 +51,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500', 3, done => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23500'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityTwo',
@@ -96,8 +90,8 @@ export default function AbilityDelegatorStageTest() {
               bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
               abilityName: 'AssistantAbilityTwo',
             }).then(() => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility------}`)
-          })
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility------}`)
+            })
 
         })
 
@@ -106,14 +100,12 @@ export default function AbilityDelegatorStageTest() {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
           })
         }
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600
@@ -123,10 +115,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.level     : Level 3
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600', 3, async done => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_23600'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor: AbilityDelegatorRegistry.AbilityMonitor = {
           abilityName: 'AssistantAbilityTwo',
@@ -144,7 +135,6 @@ export default function AbilityDelegatorStageTest() {
                 console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} ====> doAbilityBackground data: -----in Foregroundcallback`)
               })
             })
-
           },
           onAbilityBackground: (ability) => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>onAbilityBackgroundCallback====`)
@@ -163,21 +153,19 @@ export default function AbilityDelegatorStageTest() {
               bundleName: AbilityDelegatorRegistry.getArguments().bundleName,
               abilityName: 'AssistantAbilityTwo',
             }).then(() => {
-            console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility finish====`)
-          })
+              console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>startAbility finish====`)
+            })
         })
         function removeAbilityMonitor() {
           abilityDelegator.removeAbilityMonitor(monitor).then(() => {
             console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME}====>removeAbilityMonitor====`)
           })
         }
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
-
     })
 
     /**
@@ -191,7 +179,7 @@ export default function AbilityDelegatorStageTest() {
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800', 3, async function (done) {
 
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_14800';
-      try{
+      try {
         let count = 0
         function onWindowStageDestroy() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} onWindowStageDestroy ..`);
@@ -217,12 +205,11 @@ export default function AbilityDelegatorStageTest() {
         await sleep(1000)
         expect(count).assertEqual(1)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -235,7 +222,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16300';
-      try{
+      try {
         var cmd = 'aa help'
         let timeout = -1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
@@ -248,13 +235,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch (err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400
@@ -266,7 +252,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16400';
-      try{
+      try {
         var cmd = 'aa help'
         let timeout = -1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
@@ -283,13 +269,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500
@@ -299,7 +284,6 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16500';
       try {
@@ -315,13 +299,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600
@@ -331,10 +314,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16600';
-      try{
+      try {
         var cmd = 'aa help'
         let timeout = 0;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
@@ -349,13 +331,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700
@@ -365,10 +346,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16700';
-      try{
+      try {
         var cmd = 'ppwd -L'
         let timeout = 1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
@@ -381,14 +361,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800
@@ -398,10 +376,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16800';
-      try{
+      try {
         var cmd = 'ppwd -L'
         let timeout = 1;
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
@@ -416,14 +393,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900
@@ -433,7 +408,6 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_16900';
       try {
@@ -447,7 +421,7 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
@@ -462,10 +436,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17000';
-      try{
+      try {
         let cmd = 'aa help'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -479,13 +452,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100
@@ -495,10 +467,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17100';
-      try{
+      try {
         var cmd = 'xx - help'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -508,13 +479,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200
@@ -524,10 +494,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200', 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17200';
-      try{
+      try {
         let cmd = 'xx - help'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -539,14 +508,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300
@@ -557,10 +524,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17300'
-      try{
+      try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName
         let timeout = 1
@@ -573,12 +539,11 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -590,10 +555,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17400'
-      try{
+      try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         let cmd = 'aa start -d 0 -a AssistantAbilityOne' + ' -b ' + abilityDelegatorArguments.bundleName
         let timeout = 1
@@ -608,14 +572,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500
@@ -628,7 +590,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17500'
-      try{
+      try {
         let cmd = 'xx start'
         let timeout = 1
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
@@ -640,14 +602,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600
@@ -660,7 +620,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17600'
-      try{
+      try {
         let cmd = 'null'
         let timeout = 1
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
@@ -671,13 +631,12 @@ export default function AbilityDelegatorStageTest() {
           hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : end`);
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700
@@ -690,7 +649,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700', 3, function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_17700'
-      try{
+      try {
         let cmd = 'null'
         let timeout = 1
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
@@ -703,12 +662,11 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
 
@@ -742,7 +700,6 @@ export default function AbilityDelegatorStageTest() {
       }
     })
 
-
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700
      * @tc.name      : The -b, -s, -w and other parameters of the test command are valid, and the invalid -z parameter is added
@@ -751,12 +708,11 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700'
-      try{
+      try {
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-        '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700 -s timeout 15000 -z test'
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18700 -s timeout 15000 -z test'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
@@ -768,12 +724,11 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -784,12 +739,11 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800'
-      try{
+      try {
         let cmd = 'aa test -b invalid -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-        '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800 -s timeout 15000'
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_18800 -s timeout 15000'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
@@ -805,12 +759,11 @@ export default function AbilityDelegatorStageTest() {
           expect(!isEmpty(err)).assertTrue()
           done()
         })
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
 
@@ -826,7 +779,7 @@ export default function AbilityDelegatorStageTest() {
 
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19300'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let msg = null
         try {
@@ -840,12 +793,11 @@ export default function AbilityDelegatorStageTest() {
           expect(err.message).assertContain('Incorrect parameters.')
           done()
         }
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -859,7 +811,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19400'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let result = -1
         let msg = '!@#$%^&*()_+QWE{}|?><Fafq3146'
@@ -872,24 +824,23 @@ export default function AbilityDelegatorStageTest() {
         })
         expect(result).assertEqual(0)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     const length_1000 = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-    '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
+      '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+      '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500
@@ -902,7 +853,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19500'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let result = -1
         let msg = length_1000
@@ -915,12 +866,11 @@ export default function AbilityDelegatorStageTest() {
         })
         expect(result).assertEqual(0)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
 
@@ -933,10 +883,9 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600', 3, async (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19600'
-      try{
+      try {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let result = -1
         let msg = length_1000 + '-----------///bbb'
@@ -950,12 +899,11 @@ export default function AbilityDelegatorStageTest() {
         })
         expect(result).assertEqual(0)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
 
@@ -970,7 +918,7 @@ export default function AbilityDelegatorStageTest() {
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700', 1, (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_19700'
-      try{
+      try {
         let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         let bundleName = 'com.ohos.abilitydelegatorstagetest'
         let testRunnerClassName = 'OpenHarmonyTestRunner'
@@ -980,13 +928,11 @@ export default function AbilityDelegatorStageTest() {
         expect(abilityDelegatorArguments.testRunnerClassName).assertEqual(testRunnerClassName)
         expect(abilityDelegatorArguments.parameters["-m"]).assertEqual(entryTest)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
-
     })
 
     /**
@@ -1000,9 +946,9 @@ export default function AbilityDelegatorStageTest() {
 
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100', 3, (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100'
-      try{
+      try {
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-        '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100 -s timeout invalid'
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100 -s timeout invalid'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let result = -1
@@ -1021,12 +967,11 @@ export default function AbilityDelegatorStageTest() {
         }
         expect(result).assertEqual(-1)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -1037,13 +982,12 @@ export default function AbilityDelegatorStageTest() {
      * @tc.size      : MediumTest
      * @tc.type      : Function
      */
-
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200', 3, (done) => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200'
-      try{
+      try {
         const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200'
         let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-        '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200 -s timeout 15000 -w invalid'
+          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200 -s timeout 15000 -w invalid'
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`)
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let result = -1
@@ -1058,12 +1002,11 @@ export default function AbilityDelegatorStageTest() {
         })
         expect(result).assertEqual(-1)
         done()
-      }catch(err){
+      } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
         expect().assertFail()
         done()
       }
-
     })
 
     /**
@@ -1086,18 +1029,12 @@ export default function AbilityDelegatorStageTest() {
           expect().assertFail()
           done()
         })
-        await sleep(2000)
-        expect(flag).assertTrue()
-        done()
-
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
+        expect(err.code).assertEqual(CODE_ERROR);
+        done();
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400
@@ -1109,29 +1046,20 @@ export default function AbilityDelegatorStageTest() {
      * @tc.type      : Function
      */
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400', 3, async done => {
-
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20400'
       try {
-        let flag = true
         let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
         abilityDelegator.finishTest(undefined, 1, (err, data) => {
           console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = false
           expect().assertFail()
           done()
         })
-        await sleep(2000)
-        expect(flag).assertTrue()
-        done()
-
       } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`)
+        expect(err.code).assertEqual(CODE_ERROR);
+        done();
       }
-
     })
-
 
     /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500
@@ -1145,444 +1073,18 @@ export default function AbilityDelegatorStageTest() {
     it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500', 3, done => {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500'
       try {
-        let flag = false
         let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
         let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
         abilityDelegator.finishTest(msg, Number.MAX_VALUE + 1, (err, data) => {
           console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600
-     * @tc.name      : The parameters of the test command are valid, and the finishTest API is called in AsyncCallback mode,
-     * and the msg parameter (including Chinese and special characters) and code parameter (Number.MIN_VALUE-1) are invalid.
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (Number.MIN_VALUE-1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600', 3,  done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20600'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        abilityDelegator.finishTest(msg, Number.MIN_VALUE - 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in AsyncCallback mode,
-     * the msg parameter is valid (including Chinese and special characters) and the code parameter is invalid (non-number)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is invalid ('ABCD')
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20700'
-      try {
-        let flag = true
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        // @ts-ignore
-        abilityDelegator.finishTest('测试日志!@#$%^&*()_+QWE{}|?><Fafq3146', 'ABCD', (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = false
-          expect().assertFail()
+          expect(true).assertTrue()
           done()
         })
-        await sleep(500)
-        expect(flag).assertTrue()
-        done()
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
+        expect(err.code).assertEqual(CODE_ERROR);
+        done();
       }
-
     })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest API in AsyncCallback mode,
-     * the msg parameter is valid (including Chinese and special characters) and the code parameter is valid (1)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800', 3,  done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20800'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        abilityDelegator.finishTest(msg, 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in AsyncCallback mode,
-     * the msg parameter is valid (including Chinese and special characters) and the code parameter is valid (Number.MAX_VALUE)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (Number.MAX_VALUE)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900', 3,  done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20900'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        abilityDelegator.finishTest(msg, Number.MAX_VALUE, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000
-     * @tc.name      : The parameters of the test command are valid, and the finishTest API is called in AsyncCallback mode,
-     * and the msg parameter (including Chinese and special characters) and code parameter (Number.MIN_VALUE) are valid.
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (Number.MIN_VALUE)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000', 3,  done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21000'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        abilityDelegator.finishTest(msg, Number.MIN_VALUE, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100
-     * @tc.name      : The parameters of the test command are valid, and the finishTest API is called in Promise mode,
-     * and the msg parameter is invalid (null) and the code parameter is valid (1).
-     * @tc.desc      : for testing finishTest by promise msg msg parameter is invalid(null) and the code is valid(1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21100'
-      try {
-        let flag = true
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.finishTest(null, 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = false
-          expect().assertFail()
-          done()
-        })
-        await sleep(1000)
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200
-     * @tc.name      : The parameters of the test command are valid, call the finishTest API in Promise mode,
-     *                 and the msg parameter is invalid (Undefined) and the code parameter is valid (1)
-     * @tc.desc      : for testing finishTest by promise msg msg parameter is invalid(undefined) and the code is valid(1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21200'
-      try {
-        let flag = true
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        await abilityDelegator.finishTest(undefined, 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = false
-          expect().assertFail()
-          done()
-        })
-        await sleep(1000)
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in Promise mode,
-     *                 the msg parameter is valid (including Chinese and special characters) and the code parameter is invalid (Number.MAX_VALUE+1)
-     * @tc.desc      : for testing finishTest by promise msg msg parameter is invalid('测试日志!@#$%^&*()_+QWE{}|?><Fafq3146') and the code is invalid(Number.MAX_VALUE+1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21300'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.finishTest(msg, Number.MIN_VALUE + 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400
-     * @tc.name      : The parameters of the test command are valid, call the finishTest API in Promise mode,
-     *                 and the msg parameter is valid (including Chinese and special characters) and the code parameter is invalid (Number.MIN_VALUE-1)
-     * @tc.desc      : for testing finishTest by promise msg msg parameter is invalid('测试日志!@#$%^&*()_+QWE{}|?><Fafq3146') and the code is invalid(Number.MIN_VALUE-1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21400'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.finishTest(msg, Number.MIN_VALUE - 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in Promise mode,
-     *                 msg parameter is valid (including Chinese and special characters) and code parameter is invalid (non-number)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called by promise
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is invalid ('ABCD')
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21500'
-      try {
-        let flag = true
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        // @ts-ignore
-        await abilityDelegator.finishTest('测试日志!@#$%^&*()_+QWE{}|?><Fafq3146', 'ABCD').then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          expect().assertFail()
-          done()
-        })
-        await sleep(1000)
-        expect(flag).assertTrue()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in Promise mode,
-     *                 msg parameter (including Chinese and special characters) and code parameter are valid (1)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in promise
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (1)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21600'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.finishTest(msg, 1).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700
-     * @tc.name      : Each parameter of the test command is valid, call the finishTest interface in Promise mode,
-     *                 msg parameter is valid (including Chinese and special characters) and code parameter is valid (Number.MAX_VALUE)
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in promise
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (Number.MAX_VALUE)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700', 3, async done => {
-
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21700'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800
-     * @tc.name      : The parameters of the test command are valid, call the finishTest API in Promise mode,
-     *                 and the msg parameter (including Chinese and special characters) and code parameter (Number.MIN_VALUE) are valid.
-     * @tc.desc      : The parameters of the test command are valid, and the finishTest interface is called in promise
-     *                  mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *                  is valid (Number.MIN_VALUE)
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800', 3, async done => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_21800'
-      try {
-        let flag = false
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-        await abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(() => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `)
-          flag = true
-        })
-        expect(flag).assertTrue()
-        done()
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`)
-        expect().assertFail()
-        done()
-      }
-
-    })
-
   })
 }
