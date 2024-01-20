@@ -137,27 +137,27 @@ export default class Utils {
     let rect = Utils.getComponentRect(key);
     let centerX = Utils.getRectHorizontalCenterX(rect)
     let centerY = Utils.getRectVerticalCenterY(rect)
-    let fingerUpCenterY = centerY - 50;
-    let fingerDownCenterY = centerY + 50;
+    let fingerUpCenterY = centerY - 100;
+    let fingerDownCenterY = centerY + 100;
     let driver: Driver = Driver.create();
     let pointers: PointerMatrix = PointerMatrix.create(2, 3);
     pointers.setPoint(0, 0, {
-      x: centerX, y: fingerUpCenterY - (isOut ? 20 : 60)
+      x: centerX, y: fingerUpCenterY - (isOut ? 40 : 120)
     });
     pointers.setPoint(0, 1, {
-      x: centerX, y: fingerUpCenterY - 40
+      x: centerX, y: fingerUpCenterY - 80
     });
     pointers.setPoint(0, 2, {
-      x: centerX, y: fingerUpCenterY - (isOut ? 60 : 20)
+      x: centerX, y: fingerUpCenterY - (isOut ? 120 : 40)
     });
     pointers.setPoint(1, 0, {
-      x: centerX, y: fingerDownCenterY + (isOut ? 20 : 60)
+      x: centerX, y: fingerDownCenterY + (isOut ? 40 : 120)
     });
     pointers.setPoint(1, 1, {
-      x: centerX, y: fingerDownCenterY + 40
+      x: centerX, y: fingerDownCenterY + 80
     });
     pointers.setPoint(1, 2, {
-      x: centerX, y: fingerDownCenterY + (isOut ? 60 : 20)
+      x: centerX, y: fingerDownCenterY + (isOut ? 120 : 40)
     });
     await driver.injectMultiPointerAction(pointers);
   }

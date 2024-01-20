@@ -38,7 +38,7 @@ export default function webOnInterceptKeyEvent() {
       }
       done()
     });
-    
+
     beforeEach(async (done: Function) => {
       console.info("web beforeEach start");
       done();
@@ -62,8 +62,7 @@ export default function webOnInterceptKeyEvent() {
     it('testOnInterceptKeyEvent002', 0, async (done: Function) => {
       Utils.emitEvent("emitOnInterceptKeyEvent002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnInterceptKeyEvent002", 2017, 70422, done);
-      Utils.registerEvent("testOnInterceptKeyEvent002", '"a"', 70423, done);
+      Utils.registerEvent("testOnInterceptKeyEvent002", 2047, 70422, done);
       sendEventByKey('WebOnInterceptKeyEventTestButton', 10, '');
     })
 
@@ -78,8 +77,7 @@ export default function webOnInterceptKeyEvent() {
     it('testOnInterceptKeyEvent003', 0, async (done: Function) => {
       Utils.emitEvent("emitOnInterceptKeyEvent003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testOnInterceptKeyEvent003", 2017, 70425, done);
-      Utils.registerEvent("testOnInterceptKeyEvent003", '', 70426, done);
+      Utils.registerEvent("testOnInterceptKeyEvent003", 2047, 70425, done);
       sendEventByKey('WebOnInterceptKeyEventTestButton', 10, '');
     })
   })
