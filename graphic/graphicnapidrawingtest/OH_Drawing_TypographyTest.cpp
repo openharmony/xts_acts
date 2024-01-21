@@ -842,9 +842,9 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest028, TestSize.Level
         OH_Drawing_CreateFontCollection());
     EXPECT_TRUE(handler != nullptr);
     OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
-    OH_Drawing_PositionAndAffinity* positionAndAffinity = OH_Drawing_TypographyGetGlyphPositionAtCoordinate(typography, 1, 0);
-    OH_Drawing_GetPositionFromPositionAndAffinity(positionAndAffinity);
-    OH_Drawing_GetAffinityFromPositionAndAffinity(positionAndAffinity);
+    OH_Drawing_PositionAndAffinity* affinity = OH_Drawing_TypographyGetGlyphPositionAtCoordinate(typography, 1, 0);
+    OH_Drawing_GetPositionFromPositionAndAffinity(affinity);
+    OH_Drawing_GetAffinityFromPositionAndAffinity(affinity);
     OH_Drawing_DestroyTypography(typography);
     OH_Drawing_DestroyTypographyHandler(handler);
 }
