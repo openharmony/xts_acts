@@ -805,4 +805,85 @@ HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest026, TestSize.Level
 #endif
 }
 
+/*
+ * @tc.name: OH_Drawing_TypographyTest027
+ * @tc.desc: test for get rect
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest027, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    EXPECT_TRUE(handler != nullptr);
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_RectHeightStyle heightStyle = RECT_HEIGHT_STYLE_TIGHT;
+    OH_Drawing_RectWidthStyle widthStyle = RECT_WIDTH_STYLE_TIGHT;
+    OH_Drawing_TextBox* TextBox = OH_Drawing_TypographyGetRectsForRange(typography, 1, 2, heightStyle, widthStyle);
+    OH_Drawing_GetLeftFromTextBox(TextBox, 1);
+    OH_Drawing_GetRightFromTextBox(TextBox, 1);
+    OH_Drawing_GetTopFromTextBox(TextBox, 1);
+    OH_Drawing_GetBottomFromTextBox(TextBox, 1);
+    OH_Drawing_GetTextDirectionFromTextBox(TextBox, 2);
+    OH_Drawing_GetSizeOfTextBox(TextBox);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+}
+
+/*
+ * @tc.name: OH_Drawing_TypographyTest028
+ * @tc.desc: test for get position
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest028, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    EXPECT_TRUE(handler != nullptr);
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_PositionAndAffinity* positionAndAffinity = OH_Drawing_TypographyGetGlyphPositionAtCoordinate(typography, 1, 0);
+    OH_Drawing_GetPositionFromPositionAndAffinity(positionAndAffinity);
+    OH_Drawing_GetAffinityFromPositionAndAffinity(positionAndAffinity);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+}
+
+/*
+ * @tc.name: OH_Drawing_TypographyTest029
+ * @tc.desc: test for get range
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest029, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    EXPECT_TRUE(handler != nullptr);
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_Range* range = OH_Drawing_TypographyGetWordBoundary(typography, 1);
+    OH_Drawing_GetStartFromRange(range);
+    OH_Drawing_GetEndFromRange(range);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+}
+
+/*
+ * @tc.name: OH_Drawing_TypographyTest030
+ * @tc.desc: test for get lineWidht and lineHeight
+ * @tc.type: FUNC
+ */
+HWTEST_F(OH_Drawing_TypographyTest, OH_Drawing_TypographyTest030, TestSize.Level1)
+{
+    OH_Drawing_TypographyStyle* typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typoStyle,
+        OH_Drawing_CreateFontCollection());
+    EXPECT_TRUE(handler != nullptr);
+    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+    OH_Drawing_TypographyGetLineHeight(typography, 1);
+    OH_Drawing_TypographyGetLineWidth(typography, 2);
+    OH_Drawing_DestroyTypography(typography);
+    OH_Drawing_DestroyTypographyHandler(handler);
+}
+
 }
