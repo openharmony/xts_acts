@@ -44,7 +44,7 @@ export default function relationalStoreTest(context){
         console.log(TAG + "*************Unit Test Begin*************");
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S1
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1300
          * @tc.desc rdb store getRdbStore with securityLevel S1
          * @tc.require: I5PIL6
@@ -74,7 +74,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S2
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0200
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1400
          * @tc.desc rdb store getRdbStore with securityLevel S2
          * @tc.require: I5PIL6
@@ -104,7 +104,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S3
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0300
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1500
          * @tc.desc rdb store getRdbStore with securityLevel S3
          * @tc.require: I5PIL6
@@ -134,7 +134,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S4
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_PROMISE_0400
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1600
          * @tc.desc rdb store getRdbStore with securityLevel S4
          * @tc.require: I5PIL6
@@ -164,7 +164,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S1
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_0900
          * @tc.desc rdb store getRdbStore with securityLevel S1
          * @tc.require: I5PIL6
@@ -194,7 +194,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S2
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0200
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1000
          * @tc.desc rdb store getRdbStore with securityLevel S2
          * @tc.require: I5PIL6
@@ -223,7 +223,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S3
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0300
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1100
          * @tc.desc rdb store getRdbStore with securityLevel S3
          * @tc.require: I5PIL6
@@ -252,7 +252,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store getRdbStore with securityLevel S4
+         * @tc.name SUB_DDM_RELATIONALETS_GETRDBSTORE_CALLBACK_0400
          * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreJsApiTest_1200
          * @tc.desc rdb store getRdbStore with securityLevel S4
          * @tc.require: I5PIL6
@@ -281,7 +281,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store deleteRdbStore
+         * @tc.name SUB_DDM_RELATIONALETS_DELETERDBSTORE_PROMISE_0100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsApiTest_0700
          * @tc.desc rdb store deleteRdbStore
          * @tc.require: I5PIL6
@@ -309,7 +309,7 @@ export default function relationalStoreTest(context){
         })
 
         /**
-         * @tc.name rdb store deleteRdbStore
+         * @tc.name SUB_DDM_RELATIONALETS_DELETERDBSTORE_CALLBACK_0100
          * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsApiTest_0100
          * @tc.desc rdb store deleteRdbStore
          * @tc.require: I5PIL6
