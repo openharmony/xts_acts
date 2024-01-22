@@ -887,6 +887,8 @@ export default function AudioEffectTest() {
       }
 
       let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -950,6 +952,8 @@ export default function AudioEffectTest() {
       }
 
       let audioRenderer = await audio.createAudioRenderer(audioRendererOptions); 
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1019,6 +1023,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1088,6 +1094,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1159,6 +1167,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1229,6 +1239,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1298,6 +1310,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1368,6 +1382,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1438,6 +1454,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1507,6 +1525,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1576,6 +1596,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1646,6 +1668,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1716,6 +1740,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1785,6 +1811,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -1855,6 +1883,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1925,6 +1955,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -1994,6 +2026,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2063,6 +2097,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2133,6 +2169,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2203,6 +2241,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2272,6 +2312,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2342,6 +2384,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2412,6 +2456,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2481,6 +2527,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2550,6 +2598,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2620,6 +2670,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2690,6 +2742,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2759,6 +2813,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -2830,6 +2886,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2900,6 +2958,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -2969,6 +3029,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3038,6 +3100,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3108,6 +3172,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -3179,6 +3245,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -3249,6 +3317,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -3319,6 +3389,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3389,6 +3461,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3457,6 +3531,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3526,6 +3602,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode().then((audioEffectMode) => {
         if (audioEffectMode == 1) {
           expect(true).assertTrue();
@@ -3596,6 +3674,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -3666,6 +3746,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);
@@ -3735,6 +3817,8 @@ export default function AudioEffectTest() {
       }).catch((err) => {
         console.error(TAG + ` AudioRenderer Created : ERROR : ${err}`);
       });
+      await audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT);
+      console.log(TAG + "setAudioEffectMode EFFECT_DEFAULT SUCCESS");
       await audioRenderer.getAudioEffectMode((err, effectmode) => {
         if (effectmode == 1) {
           console.info(`${TAG} getAudioEffectMode EFFECT_DEFAULT SUCCESS: ${effectmode}`);

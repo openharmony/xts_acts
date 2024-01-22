@@ -491,14 +491,15 @@ export default function AudioRendererInterruptUnitTest() {
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render2.on("audioInterrupt", async (eventAction) => {
         console.log("8-2.eventAction=" + JSON.stringify(eventAction))
-        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
+        
           if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
             expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
           } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
             expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
           } else {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1100 fail")
+            expect(false).assertTrue();
           }
-        }
       })
       await start(render2, done)
       await sleep(500)
