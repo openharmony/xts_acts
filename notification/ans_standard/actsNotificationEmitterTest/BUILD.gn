@@ -21,7 +21,8 @@ ohos_js_hap_suite("ActsNotificationEmitterTest") {
     ":badgetest_resources",
   ]
   ets2abc = true
-  certificate_profile = "signature/auto_ohos_default_MyApplication_com.example.badge.p7b"
+  certificate_profile =
+      "signature/auto_ohos_default_MyApplication_com.example.badge.p7b"
   hap_name = "ActsNotificationEmitterTest"
   subsystem_name = "notification"
   part_name = "distributed_notification_service"
