@@ -85,7 +85,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_0100
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_8400
      * @tc.desc resultSet getBlob normal test
 	 * @tc.size MediumTest
 	 * @tc.type Function
