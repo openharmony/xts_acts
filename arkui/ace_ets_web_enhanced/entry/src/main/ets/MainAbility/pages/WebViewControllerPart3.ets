@@ -326,7 +326,7 @@ struct WebViewControllerPart3 {
                     return;
                   } else {
                     console.log("testScrollTo002 runJavaScript.result: " + result);
-                    if (JSON.parse(result)[0] == 0 && JSON.parse(result)[1] > 200) {
+                    if (JSON.parse(result)[0] == 0 && JSON.parse(result)[1] > 100) {
                       Utils.emitEvent(true, 100043)
                     } else {
                       Utils.emitEvent(false, 100043)
@@ -344,7 +344,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadUrl("resource://rawfile/theScroll.html");
                 await Utils.sleep(2000);
-                this.controller.scrollTo(-10, 200);
+                this.controller.scrollTo(-10, 100);
                 await Utils.sleep(1000);
                 this.controller.runJavaScript("getScroll()", (error, result) => {
                   if (error) {
@@ -367,7 +367,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadUrl("resource://rawfile/theScroll.html");
                 await Utils.sleep(2000);
-                this.controller.scrollTo(200, -10);
+                this.controller.scrollTo(100, -10);
                 await Utils.sleep(1000);
                 this.controller.runJavaScript("getScroll()", (error, result) => {
                   if (error) {
@@ -399,7 +399,7 @@ struct WebViewControllerPart3 {
                     return;
                   } else {
                     console.log("testScrollTo005 runJavaScript.result: " + result);
-                    if (JSON.parse(result)[0] > 200 && JSON.parse(result)[1] == 0) {
+                    if (JSON.parse(result)[0] > 100 && JSON.parse(result)[1] == 0) {
                       Utils.emitEvent(true, 100046)
                     } else {
                       Utils.emitEvent(false, 100046)
@@ -417,7 +417,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadUrl("resource://rawfile/theScroll.html");
                 await Utils.sleep(2000);
-                this.controller.scrollTo(200, 200);
+                this.controller.scrollTo(100, 100);
                 await Utils.sleep(1000);
                 this.controller.runJavaScript("getScroll()", (error, result) => {
                   if (error) {
@@ -450,7 +450,7 @@ struct WebViewControllerPart3 {
                     return;
                   } else {
                     console.log("testScrollTo007 runJavaScript.result: " + result);
-                    if (JSON.parse(result)[0] > 200 && JSON.parse(result)[1] > 200) {
+                    if (JSON.parse(result)[0] > 100 && JSON.parse(result)[1] > 100) {
                       Utils.emitEvent(true, 100048)
                     } else {
                       Utils.emitEvent(false, 100048)

@@ -328,7 +328,7 @@ export default function webViewControllerPart3Test() {
     it('testScrollTo003', 0, async (done: Function) => {
       Utils.emitEvent("testScrollTo003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testScrollTo003", "[0,200]", 100044, done);
+      Utils.registerEvent("testScrollTo003", "[0,100]", 100044, done);
       sendEventByKey('WebViewControllerTestButton', 10, '');
     })
 
@@ -343,7 +343,7 @@ export default function webViewControllerPart3Test() {
     it('testScrollTo004', 0, async (done: Function) => {
       Utils.emitEvent("testScrollTo004", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testScrollTo004", "[200,0]", 100045, done);
+      Utils.registerEvent("testScrollTo004", "[100,0]", 100045, done);
       sendEventByKey('WebViewControllerTestButton', 10, '');
     })
 
@@ -373,7 +373,7 @@ export default function webViewControllerPart3Test() {
     it('testScrollTo006', 0, async (done: Function) => {
       Utils.emitEvent("testScrollTo006", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testScrollTo006", "[200,200]", 100047, done);
+      Utils.registerEvent("testScrollTo006", "[100,100]", 100047, done);
       sendEventByKey('WebViewControllerTestButton', 10, '');
     })
 
