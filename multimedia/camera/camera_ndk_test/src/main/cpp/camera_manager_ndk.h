@@ -38,8 +38,7 @@
 #include <vector>
 
 typedef enum CameraCallbackCode {
-    CameraManagerStatus = 0,
-    CameraInputStatus = 1,
+    CameraInput_Status = 1,
     Preview_OnFrameStart = 2,
     Preview_OnFrameEnd = 3,
     Preview_OnError = 4,
@@ -50,33 +49,18 @@ typedef enum CameraCallbackCode {
     Video_OnFrameStart = 9,
     Video_OnFrameEnd = 10,
     Video_OnError = 11,
-    MetadataObjectAvailable = 12,
-    MetadataOutputError = 13,
-    SessionOnFocusStateChange = 14,
-    SessionOnError = 15,
+    Metadata_Object_Available = 12,
+    Metadata_Output_Error = 13,
+    Session_OnFocusState_Change = 14,
+    Session_OnError = 15,
+    CameraManager_Status = 16,
     NoReceived = 10086,
 } CameraCallbackCode;
 
 class NDKCamera {
 public:
-    ~NDKCamera();
+    ~NDKCamera(void);
     NDKCamera(char *str);
-    static NDKCamera* GetInstance(char *str) {
-        if (ndkCamera_ == nullptr) {
-            std::lock_guard<std::mutex> lock(mtx_);
-            if (ndkCamera_ == nullptr) {
-                ndkCamera_ = new NDKCamera(str);
-            }
-        }
-        return ndkCamera_;
-    }
-
-    static void Destroy() {
-        if (ndkCamera_ != nullptr) {
-            delete ndkCamera_;
-            ndkCamera_ = nullptr;
-        }
-    }
 
     bool IsMirror_;
     bool HasFlash_;
@@ -103,6 +87,7 @@ public:
     static CameraCallbackCode cameraCallbackCode_;
 
     Camera_ErrorCode CreateCameraInput(void);
+    Camera_ErrorCode CreateCameraInputWithPositionAndType(Camera_Position position, Camera_Type type);
     Camera_ErrorCode CreateSession(void);
     Camera_ErrorCode CameraInputOpen(void);
     Camera_ErrorCode CameraInputClose(void);
@@ -120,65 +105,65 @@ public:
     Camera_ErrorCode HasFlashFn(uint32_t mode);
     Camera_ErrorCode setZoomRatioFn(uint32_t zoomRatio);
 
-    Camera_ErrorCode SessionBegin();
-    Camera_ErrorCode SessionCommitConfig();
-    Camera_ErrorCode SessionStart();
-    Camera_ErrorCode SessionStop();
-    Camera_ErrorCode startVideo(char* videoId);
-    Camera_ErrorCode AddVideoOutput();
-    Camera_ErrorCode VideoOutputStart();
+    Camera_ErrorCode SessionBegin(void);
+    Camera_ErrorCode SessionCommitConfig(void);
+    Camera_ErrorCode SessionStart(void);
+    Camera_ErrorCode SessionStop(void);
+    Camera_ErrorCode StartVideo(char* videoId);
+    Camera_ErrorCode AddVideoOutput(void);
+    Camera_ErrorCode VideoOutputStart(void);
 
-    Camera_ErrorCode PreviewOutputStart();
-    Camera_ErrorCode PhotoOutputCapture();
+    Camera_ErrorCode PreviewOutputStart(void);
+    Camera_ErrorCode PhotoOutputCapture(void);
     Camera_ErrorCode TakePictureWithPhotoSettings(Camera_PhotoCaptureSetting photoSetting);
-    Camera_ErrorCode IsMirrorSupported();
-    Camera_ErrorCode VideoOutputStop();
-    Camera_ErrorCode VideoOutputRelease();
-    Camera_ErrorCode MetadataOutputStart();
-    Camera_ErrorCode MetadataOutputStop();
-    Camera_ErrorCode MetadataOutputRelease();
+    Camera_ErrorCode IsMirrorSupported(void);
+    Camera_ErrorCode VideoOutputStop(void);
+    Camera_ErrorCode VideoOutputRelease(void);
+    Camera_ErrorCode MetadataOutputStart(void);
+    Camera_ErrorCode MetadataOutputStop(void);
+    Camera_ErrorCode MetadataOutputRelease(void);
 
-    Camera_ErrorCode SessionAddInput();
-    Camera_ErrorCode SessionRemoveInput();
-    Camera_ErrorCode SessionAddPreviewOutput();
-    Camera_ErrorCode SessionAddPhotoOutput();
-    Camera_ErrorCode SessionAddVideoOutput();
-    Camera_ErrorCode SessionAddMetadataOutput();
-    Camera_ErrorCode SessionRemovePreviewOutput();
-    Camera_ErrorCode SessionRemovePhotoOutput();
-    Camera_ErrorCode SessionRemoveVideoOutput();
-    Camera_ErrorCode SessionRemoveMetadataOutput();
-    Camera_ErrorCode SessionRelease();
+    Camera_ErrorCode SessionAddInput(void);
+    Camera_ErrorCode SessionRemoveInput(void);
+    Camera_ErrorCode SessionAddPreviewOutput(void);
+    Camera_ErrorCode SessionAddPhotoOutput(void);
+    Camera_ErrorCode SessionAddVideoOutput(void);
+    Camera_ErrorCode SessionAddMetadataOutput(void);
+    Camera_ErrorCode SessionRemovePreviewOutput(void);
+    Camera_ErrorCode SessionRemovePhotoOutput(void);
+    Camera_ErrorCode SessionRemoveVideoOutput(void);
+    Camera_ErrorCode SessionRemoveMetadataOutput(void);
+    Camera_ErrorCode SessionRelease(void);
 
-    Camera_ErrorCode SessionHasFlash();
+    Camera_ErrorCode SessionHasFlash(void);
     Camera_ErrorCode SessionIsFlashModeSupported(uint32_t mode);
-    Camera_ErrorCode SessionGetFlashMode();
+    Camera_ErrorCode SessionGetFlashMode(void);
     Camera_ErrorCode SessionSetFlashMode(uint32_t mode);
 
     Camera_ErrorCode SessionIsExposureModeSupported(uint32_t mode);
-    Camera_ErrorCode SessionGetExposureMode();
+    Camera_ErrorCode SessionGetExposureMode(void);
     Camera_ErrorCode SessionSetExposureMode(uint32_t mode);
-    Camera_ErrorCode SessionGetMeteringPoint();
+    Camera_ErrorCode SessionGetMeteringPoint(void);
     Camera_ErrorCode SessionSetMeteringPoint(double point_x, double point_y);
-    Camera_ErrorCode SessionGetExposureBiasRange();
+    Camera_ErrorCode SessionGetExposureBiasRange(void);
     Camera_ErrorCode SessionSetExposureBias(float exposureBias);
-    Camera_ErrorCode SessionGetExposureBias();
+    Camera_ErrorCode SessionGetExposureBias(void);
 
     Camera_ErrorCode SessionIsFocusModeSupported(uint32_t mode);
-    Camera_ErrorCode SessionGetFocusMode();
+    Camera_ErrorCode SessionGetFocusMode(void);
     Camera_ErrorCode SessionSetFocusMode(uint32_t mode);
     Camera_ErrorCode SessionSetFocusPoint(double point_x, double point_y);
-    Camera_ErrorCode SessionGetFocusPoint();
+    Camera_ErrorCode SessionGetFocusPoint(void);
 
-    Camera_ErrorCode SessionGetZoomRatioRange();
-    Camera_ErrorCode SessionGetZoomRatio();
+    Camera_ErrorCode SessionGetZoomRatioRange(void);
+    Camera_ErrorCode SessionGetZoomRatio(void);
     Camera_ErrorCode SessionSetZoomRatio(float zoom);
 
     Camera_ErrorCode SessionIsVideoStabilizationModeSupported(uint32_t mode);
-    Camera_ErrorCode SessionGetVideoStabilizationMode();
+    Camera_ErrorCode SessionGetVideoStabilizationMode(void);
     Camera_ErrorCode SessionSetVideoStabilizationMode(uint32_t mode);
 
-    // callback
+    // RegisterCallback
     Camera_ErrorCode CameraManagerRegisterCallback(void);
     Camera_ErrorCode CameraInputRegisterCallback(void);
     Camera_ErrorCode PreviewOutputRegisterCallback(void);
@@ -186,6 +171,15 @@ public:
     Camera_ErrorCode VideoOutputRegisterCallback(void);
     Camera_ErrorCode MetadataOutputRegisterCallback(void);
     Camera_ErrorCode CaptureSessionRegisterCallback(void);
+
+    // UnRegisterCallback
+    Camera_ErrorCode CameraManagerUnRegisterCallback(void);
+    Camera_ErrorCode CameraInputUnRegisterCallback(void);
+    Camera_ErrorCode PreviewOutputUnRegisterCallback(void);
+    Camera_ErrorCode PhotoOutputUnRegisterCallback(void);
+    Camera_ErrorCode VideoOutputUnRegisterCallback(void);
+    Camera_ErrorCode MetadataOutputUnRegisterCallback(void);
+    Camera_ErrorCode CaptureSessionUnRegisterCallback(void);
 
     // Get callback
     CameraManager_Callbacks* GetCameraManagerListener(void);
@@ -212,8 +206,6 @@ private:
     Camera_MetadataOutput* metadataOutput_;
     Camera_Input* cameraInput_;
     bool* isCameraMuted_;
-    // Camera_Position position_;
-    // Camera_Type type_;
     char* previewSurfaceId_;
     Camera_ErrorCode ret_;
     float step_;

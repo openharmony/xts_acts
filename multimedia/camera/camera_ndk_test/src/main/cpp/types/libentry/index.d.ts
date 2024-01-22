@@ -57,6 +57,8 @@ export const getSupportedCameras: () => cameraInfo;
 
 export const createCameraInput: () => number;
 
+export const createCameraInputWithPositionAndType: (position: number, type: number) => number;
+
 export const getSupportedOutputCapability: () => cameraOutputCapability;
 
 export const createPreviewOutput: () => number;

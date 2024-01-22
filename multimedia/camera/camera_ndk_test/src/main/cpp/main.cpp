@@ -96,6 +96,59 @@ static napi_value CreateCameraInput(napi_env env, napi_callback_info info)
     return result;
 }
 
+static Camera_Position GetPosition(int position)
+{
+    switch (position) {
+        case 1:
+            return Camera_Position::CAMERA_POSITION_BACK;
+        case 2: // 2:Camera_Position::CAMERA_POSITION_FRONT
+            return Camera_Position::CAMERA_POSITION_FRONT;
+        default:
+            return Camera_Position::CAMERA_POSITION_UNSPECIFIED;
+    }
+}
+
+static Camera_Type GetType(int type)
+{
+    switch (type) {
+        case 1:
+            return Camera_Type::CAMERA_TYPE_WIDE_ANGLE;
+        case 2: // 2:Camera_Type::CAMERA_TYPE_ULTRA_WIDE
+            return Camera_Type::CAMERA_TYPE_ULTRA_WIDE;
+        case 3: // 3:Camera_Type::CAMERA_TYPE_TELEPHOTO
+            return Camera_Type::CAMERA_TYPE_TELEPHOTO;
+        case 4: // 4:Camera_Type::CAMERA_TYPE_TRUE_DEPTH
+            return Camera_Type::CAMERA_TYPE_TRUE_DEPTH;
+        default:
+            return Camera_Type::CAMERA_TYPE_DEFAULT;
+    }
+}
+
+static napi_value CreateCameraInputWithPositionAndType(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_value result;
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+    int x;
+    napi_get_value_int32(env, args[0], &x);
+
+    napi_valuetype valuetype1;
+    napi_typeof(env, args[0], &valuetype1);
+    int y;
+    napi_get_value_int32(env, args[1], &y);
+
+    Camera_Position position = GetPosition(x);
+    Camera_Type type = GetType(y);
+    Camera_ErrorCode ret = ndkCamera_->CreateCameraInputWithPositionAndType(position, type);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 static napi_value GetSupportedOutputCapability(napi_env env, napi_callback_info info)
 {
     ndkCamera_->GetSupportedOutputCapability();
@@ -857,6 +910,8 @@ static napi_value Init(napi_env env, napi_value exports)
 
         { "getSupportedCameras", nullptr, GetSupportedCameras, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "createCameraInput", nullptr, CreateCameraInput, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "createCameraInputWithPositionAndType", nullptr, CreateCameraInputWithPositionAndType, nullptr, nullptr,
+            nullptr, napi_default, nullptr },
         { "getSupportedOutputCapability", nullptr, GetSupportedOutputCapability, nullptr, nullptr, nullptr,
             napi_default, nullptr },
         { "createPreviewOutput", nullptr, CreatePreviewOutput, nullptr, nullptr, nullptr, napi_default, nullptr },
