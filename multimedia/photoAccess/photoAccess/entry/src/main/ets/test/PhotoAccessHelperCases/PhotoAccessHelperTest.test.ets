@@ -539,7 +539,7 @@ export default function PhotoAccessHelperTest() {
                     console.log("i: " + i)
                     if (err == undefined) {
                         console.info('getThumbnail successful ' + pixelMap);
-                        if(i<4){
+                        if(i>0 && i<4){
                             console.info('getThumbnail error');
                             expect(false).assertTrue();
                         }
@@ -548,7 +548,7 @@ export default function PhotoAccessHelperTest() {
                         }
                     } else {
                         console.info('getThumbnail fail', err);
-                        if(i>3){
+                        if(i>3 || i<1){
                             console.error('getThumbnail error');
                             expect(false).assertTrue();
                         }
@@ -564,7 +564,7 @@ export default function PhotoAccessHelperTest() {
             for(let i = 0;i < sizes.length; i++){
                 photoAsset.getThumbnail(sizes[i]).then((pixelMap) => {
                     console.info('getThumbnail successful ' + pixelMap);
-                    if(i<4){
+                    if(i>0 && i<4){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
                     }
@@ -573,7 +573,7 @@ export default function PhotoAccessHelperTest() {
                     }
                 }).catch((err: BusinessError) => {
                     console.error('getThumbnail fail' + err);
-                    if(i>3){
+                    if(i>3 || i<1){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
                     }
