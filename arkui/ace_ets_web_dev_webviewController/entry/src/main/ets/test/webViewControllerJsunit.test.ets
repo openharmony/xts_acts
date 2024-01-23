@@ -227,7 +227,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_0600
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_0600
      *tc.name testPageDownAgain
      *tc.desc Go PageDown Again
      */
@@ -278,7 +278,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_1100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_1100
      *tc.name testGetOriginalUrlTwo
      *tc.desc test for getOriginalUrl again
      */
@@ -289,7 +289,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_1100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_1101
      *tc.name testSetNetworkAvailable
      *tc.desc test for setNetworkAvailable
      */

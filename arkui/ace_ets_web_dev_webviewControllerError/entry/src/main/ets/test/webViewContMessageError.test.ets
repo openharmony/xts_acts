@@ -44,7 +44,7 @@ export default function webViewContMessageError() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTMESSAGEERROR_0100
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
@@ -55,7 +55,7 @@ export default function webViewContMessageError() {
       sendEventByKey('webViewContMessageError',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0200
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTMESSAGEERROR_0200
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
