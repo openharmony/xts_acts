@@ -50,8 +50,8 @@ export default function preferencesFlushTest(){
             await dataPreferences.deletePreferences(context, NAME);
         })
         /**
-         * @tc.name put get flush removePreferencesFromCache get promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0100
+         * @tc.name testPreferences_put_flush_remove_get_0100
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0100
          * @tc.desc put get flush removePreferencesFromCache get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
@@ -98,8 +98,8 @@ export default function preferencesFlushTest(){
             })
         })
         /**
-         * @tc.name put get flush removePreferencesFromCache get promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0200
+         * @tc.name testPreferences_put_flush_remove_get_0200
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0200
          * @tc.desc put get flush removePreferencesFromCache get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
@@ -145,8 +145,8 @@ export default function preferencesFlushTest(){
             })
         })
         /**
-         * @tc.name put get flush removePreferencesFromCache get promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0300
+         * @tc.name testPreferences_put_flush_remove_get_0300
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0300
          * @tc.desc put get flush removePreferencesFromCache get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
@@ -192,8 +192,8 @@ export default function preferencesFlushTest(){
             })
         })
         /**
-         * @tc.name put get flush removePreferencesFromCache get promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0400
+         * @tc.name testPreferences_put_flush_remove_get_0400
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0400
          * @tc.desc put get flush removePreferencesFromCache get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
@@ -239,8 +239,8 @@ export default function preferencesFlushTest(){
             })
         })
         /**
-         * @tc.name put get flush removePreferencesFromCacheget get promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0500
+         * @tc.name testPreferences_put_flush_remove_get_0500
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0500
          * @tc.desc put get flush removePreferencesFromCacheget get promise interface test
          * @tc.size MediumTest
          * @tc.type Function
@@ -287,8 +287,8 @@ export default function preferencesFlushTest(){
         })
 
         /**
-         * @tc.name put getAll flush removePreferencesFromCache getAll promise interface test
-         * @tc.number testPreferences_put_flush_remove_get_0600
+         * @tc.name testPreferences_put_flush_remove_get_0600
+         * @tc.number SUB_DistributedData_Preference_SDK_PutGetFlushRemoveJsApiTest_0600
          * @tc.desc put getAll flush removePreferencesFromCache getAll promise interface test
          * @tc.size MediumTest
          * @tc.type Function
