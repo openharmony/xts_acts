@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import notificationManager from '@ohos.notificationManager';
 import hilog from '@ohos.hilog';
 import notificationemitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 const TAG = 'NotificationActs';
 const TEST_SUITE_NAME = 'testNotificationEmitterNotification';
@@ -2593,6 +2594,602 @@ describe('testNotificationEmitterNotification', () =>  {
     })
     
 
+    /*
+     * @tc.number : Sub_Notification_Ans_Slot_Prompt_0100
+     * @tc.name   : testDeserializeEmitterCallbackNoPar
+     * @tc.desc   : test on interface success
+     * @tc.size   : Large-scaleTest
+     * @tc.type   : Interface
+     * @tc.level  : Level 3
+     */
+    it('testDeserializeEmitterCallbackNoPar', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterCallbackNoPar';
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",() => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success,data is %{public}s');
+          expect(true).assertTrue();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+          done();
+        })
+        emitter.emit('eventid');
+      }catch (e){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0200
+    * @tc.name   : testDeserializeEmitterCallback
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterCallback', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterCallback';
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      const re = new RegExp("\\w+");
+      const buffer : ArrayBuffer = new ArrayBuffer(8);
+      const view : Int32Array = new Int32Array(buffer);
+      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
+      const view1 : DataView = new DataView(buffer1,0);
+      const birthday : Date = new Date("December 17,1995 03:24:00");
+      let a = view1.setInt16(1,42);
+      let b = view1.getInt16(1);
+      const aa = new Set([1,2,3]);
+      const errtypes = new Error('Whoops!');
+      const bmaps = new Map([
+        [1,'one'],[2,'two'],[3,'three']
+      ]);
+      let testObject : emitter.EventData = {
+        data : {
+          'test' : 1
+        }
+      };
+      let eventData : emitter.EventData = {
+        data : {
+          "number" : 1,
+          "string" : "str",
+          "boolean" : false,
+          "reg" : re,
+          "set" : aa,
+          "date" : birthday,
+          "view" : view,
+          "map" : bmaps,
+          "error" : errtypes,
+          "la" : b,
+          "obk" : testObject
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",(eventData : emitter.EventData) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on success,data is %{public}s',JSON.stringify(eventData));
+          expect(true).assertTrue();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+          done();
+        })
+        emitter.emit('eventid',eventData);
+      }catch (e){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      }
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0300
+    * @tc.name   : testDeserializeEmitterTwoOnCallbackNoPar
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterTwoCallbackNoPar', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoCallbackNoPar';
+      let count : number = 0;
+      let oncallback1 = () => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
+        count++;
+      };
+      let oncallback2 = () => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
+        count++;
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventid",oncallback2);
+        emitter.emit("eventid");
+      }catch (e){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        done();
+      },1000);
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0400
+    * @tc.name   : testDeserializeEmitterTwoOnCallback
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterTwoOnCallback', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnCallback';
+      let count : number = 0;
+      let oncallback1 = (data : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      const re = new RegExp("\\w+");
+      const buffer : ArrayBuffer = new ArrayBuffer(8);
+      const view : Int32Array = new Int32Array(buffer);
+      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
+      const view1 : DataView = new DataView(buffer1,0);
+      const birthday : Date = new Date("December 17,1995 03:24:00");
+      let a = view1.setInt16(1,42);
+      let b = view1.getInt16(1);
+      const aa = new Set([1,2,3]);
+      const errtypes = new Error('Whoops!');
+      const bmaps = new Map([
+        [1,'one'],[2,'two'],[3,'three']
+      ]);
+      let testObject : emitter.EventData = {
+        data : {
+          'test' : 1
+        }
+      };
+      let eventData : emitter.EventData = {
+        data : {
+          "number" : 1,
+          "string" : "str",
+          "boolean" : false,
+          "reg" : re,
+          "set" : aa,
+          "date" : birthday,
+          "view" : view,
+          "map" : bmaps,
+          "error" : errtypes,
+          "la" : b,
+          "obk" : testObject
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventid",oncallback2);
+        emitter.emit("eventid",eventData);
+      }catch (e){
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        done();
+      },1000);
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0500
+    * @tc.name   : testDeserializeEmitterTwoOnTwoEmitNoEventData
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterTwoOnTwoEmitNoEventData', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNoEventData';
+      let count : number = 0;
+      let oncallback1 = () => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = () => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid");
+        emitter.emit("eventids");
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        done();
+      },1000);
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0600
+    * @tc.name   : testDeserializeEmitterTwoOnTwoEmitStrignAndArray
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterTwoOnTwoEmitStrignAndArray', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitStrignAndArray';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let data1 : emitter.EventData = {
+        data : {
+          'string' : 'string'
+        }
+      };
+      let data2 : emitter.EventData = {
+        data : {
+          'Array' : [1,2,7,8]
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0700
+    * @tc.name   : testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean
+    * @tc.desc   : test on interface success
+    * @tc.size   : Large-scaleTest
+    * @tc.type   : Interface
+    * @tc.level  : Level 3
+    */
+    it('testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s');
+        expect(true).assertTrue();
+        count++;
+      };
+      let data1 : emitter.EventData = {
+        data : {
+          'number' : 1
+        }
+      };
+      let data2 : emitter.EventData = {
+        data : {
+          'Boolean' : true
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+   * @tc.number : Sub_Notification_Ans_Slot_Prompt_0800
+   * @tc.name   : testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer
+   * @tc.desc   : test on interface success
+   * @tc.size   : Large-scaleTest
+   * @tc.type   : Interface
+   * @tc.level  : Level 3
+   */
+    it('testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+        expect(true).assertTrue();
+        count++;
+      };
+      let data1 : emitter.EventData = {
+        data : {
+          'Array' : [1,2,3]
+        }
+      };
+      const buffer1 : ArrayBuffer = new ArrayBuffer(16);
+      let data2 : emitter.EventData = {
+        data : {
+          'Arraybuffer1' : buffer1
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+   * @tc.number : Sub_Notification_Ans_Slot_Prompt_0900
+   * @tc.name   : testDeserializeEmitterTwoOnTwoEmitDateAndDateView
+   * @tc.desc   : test on interface success
+   * @tc.size   : Large-scaleTest
+   * @tc.type   : Interface
+   * @tc.level  : Level 3
+   */
+    it('testDeserializeEmitterTwoOnTwoEmitDateAndDateView', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitDateAndDateView';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+        expect(true).assertTrue();
+        count++;
+      };
+      let birthday : Date = new Date('Decenmber 17,1995 03:24:00');
+      let data1 : emitter.EventData = {
+        data : {
+          'Date' : birthday
+        }
+      };
+      const buffer : ArrayBuffer = new ArrayBuffer(16);
+      const view = new DataView(buffer,0);
+      let data2 : emitter.EventData = {
+        data : {
+          'Arraybuffer' : view
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+  * @tc.number : Sub_Notification_Ans_Slot_Prompt_1000
+  * @tc.name   : testDeserializeEmitterTwoOnTwoEmitMapAndSet
+  * @tc.desc   : test on interface success
+  * @tc.size   : Large-scaleTest
+  * @tc.type   : Interface
+  * @tc.level  : Level 3
+  */
+    it('testDeserializeEmitterTwoOnTwoEmitMapAndSet', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitMapAndSet';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+        expect(true).assertTrue();
+        count++;
+      };
+      const Sets = new Set([1,2,3]);
+      let data1 : emitter.EventData = {
+        data : {
+          'Sets' : Sets
+        }
+      };
+      const Maps = new Map([
+        [1,'one'],[2,'two'],[3,'three']
+      ]);
+      let data2 : emitter.EventData = {
+        data : {
+          'Map' : Maps
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+ * @tc.number : Sub_Notification_Ans_Slot_Prompt_1100
+ * @tc.name   : testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray
+ * @tc.desc   : test on interface success
+ * @tc.size   : Large-scaleTest
+ * @tc.type   : Interface
+ * @tc.level  : Level 3
+ */
+    it('testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+        expect(true).assertTrue();
+        count++;
+      };
+      const errtypes = new Error('Whoops!');
+      let data1 : emitter.EventData = {
+        data : {
+          'errtypes' : errtypes
+        }
+      };
+      const buffer = new ArrayBuffer(8);
+      const view = new Int32Array(buffer);
+      let data2 : emitter.EventData = {
+        data : {
+          'TypeArray' : view
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
+
+    /*
+ * @tc.number : Sub_Notification_Ans_Slot_Prompt_1200
+ * @tc.name   : testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes
+ * @tc.desc   : test on interface success
+ * @tc.size   : Large-scaleTest
+ * @tc.type   : Interface
+ * @tc.level  : Level 3
+ */
+    it('testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes', 0, (done: Function) => {
+      const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes';
+      let count : number = 0;
+      let oncallback1 = (data1 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on1 success,data1 is %{public}s',JSON.stringify(data1));
+        expect(true).assertTrue();
+        count++;
+      };
+      let oncallback2 = (data2 : emitter.EventData) => {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' on2 success,data2 is %{public}s',JSON.stringify(data2));
+        expect(true).assertTrue();
+        count++;
+      };
+      const re = new RegExp('\\w+');
+      let data1 : emitter.EventData = {
+        data : {
+          'RegExp' : re
+        }
+      };
+      const Primitivetypes = 1;
+      let data2 : emitter.EventData = {
+        data : {
+          'Primitivetypes' : Primitivetypes
+        }
+      };
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
+      try {
+        emitter.on("eventid",oncallback1);
+        emitter.on("eventids",oncallback2);
+        emitter.emit("eventid",data1);
+        emitter.emit("eventids",data2);
+      }catch (e){
+        hilog.info(0x000,`${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s',JSON.stringify(e));
+        expect(false).assertTrue();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      };
+      setTimeout(() => {
+        expect(count).assertEqual(2);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+        done();
+      },1000);
+    })
    
 })
 }
