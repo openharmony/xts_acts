@@ -13,30 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function rowJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('rowTest', function () {
-    beforeEach(async function (done) {
+  describe('rowTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Row',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Row state success " + JSON.stringify(pages));
         if (!("Row" == pages.name)) {
@@ -48,24 +48,23 @@ export default function rowJsunit() {
         console.error("push Row page error " + JSON.stringify(result));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Row after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0490
-     * @tc.name      rowTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0490
+     * @tc.name rowTest001
+     * @tc.desc aceEtsTest
      */
-    it('rowTest001', 0, async function (done) {
+    it('rowTest001', 0, async () => {
       console.info('++++++++++++++++ Row TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('row');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Row')
@@ -74,7 +73,6 @@ export default function rowJsunit() {
       console.log('Row‘s alignItems is ' + JSON.stringify(obj.$attrs.alignItems))
       expect(obj.$attrs.alignItems).assertEqual('VerticalAlign.Top')
       console.info('++++++++++++++++ Row TestCase 1 End ++++++++++++++++');
-      done();
     });
   })
 }

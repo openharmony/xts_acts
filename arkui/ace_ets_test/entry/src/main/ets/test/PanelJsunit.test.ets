@@ -13,25 +13,25 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function panelJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('panelTest', function () {
+  describe('panelTest', () => {
 
-    beforeEach(async function (done) {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Panel',
       }
@@ -48,23 +48,22 @@ export default function panelJsunit() {
         console.error("push Panel page error " + JSON.stringify(result));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Panel after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0440
-     * @tc.name      panelTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0440
+     * @tc.name panelTest001
+     * @tc.desc aceEtsTest
      */
-    it('panelTest001', 0, async function (done) {
+    it('panelTest001', 0, async () => {
       console.info('++++++++++++++++ Panel TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
@@ -81,19 +80,18 @@ export default function panelJsunit() {
       expect(obj.$attrs.halfHeight).assertEqual('250.00vp')
       expect(obj.$attrs.miniHeight).assertEqual('100.00vp')
       console.info('++++++++++++++++ Panel TestCase 1 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0450
-     * @tc.name      panelTest002
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0450
+     * @tc.name panelTest002
+     * @tc.desc aceEtsTest
      */
-    it('panelTest002', 0, async function (done) {
+    it('panelTest002', 0, async () => {
       console.info('++++++++++++++++ Panel TestCase 2 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel2');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
@@ -104,19 +102,18 @@ export default function panelJsunit() {
       expect(obj.$attrs.mode).assertEqual('PanelMode.Mini')
       expect(obj.$attrs.show).assertEqual('true')
       console.info('++++++++++++++++ Panel TestCase 2 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0460
-     * @tc.name      panelTest003
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0460
+     * @tc.name panelTest003
+     * @tc.desc aceEtsTest
      */
-    it('panelTest003', 0, async function (done) {
+    it('panelTest003', 0, async () => {
       console.info('++++++++++++++++ Panel TestCase 3 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('panel3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
@@ -127,7 +124,6 @@ export default function panelJsunit() {
       expect(obj.$attrs.mode).assertEqual('PanelMode.Full')
       expect(obj.$attrs.show).assertEqual('false')
       console.info('++++++++++++++++ Panel TestCase 3 End ++++++++++++++++');
-      done();
     });
   })
 }

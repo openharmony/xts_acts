@@ -13,30 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function listJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('listTest', function () {
-    beforeEach(async function (done) {
+  describe('listTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/List',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get List state success " + JSON.stringify(pages));
         if (!("List" == pages.name)) {
@@ -48,24 +48,23 @@ export default function listJsunit() {
         console.error("push List page error " + JSON.stringify(result));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("List after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0410
-     * @tc.name      listTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0410
+     * @tc.name listTest001
+     * @tc.desc aceEtsTest
      */
-    it('listTest001', 0, async function (done) {
+    it('listTest001', 0, async () => {
       console.info('++++++++++++++++ List TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('list');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('List')
@@ -79,7 +78,6 @@ export default function listJsunit() {
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None')
       expect(obj.$attrs.editMode).assertEqual(false)
       console.info('++++++++++++++++ List TestCase 1 End ++++++++++++++++');
-      done();
     });
   })
 }

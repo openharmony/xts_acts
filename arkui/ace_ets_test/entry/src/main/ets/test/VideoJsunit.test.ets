@@ -13,31 +13,31 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function videoJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('VideoAppInfoTest', function () {
+  describe('VideoAppInfoTest', () => {
 
-    beforeEach(async function (done) {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Video',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Video state success " + JSON.stringify(pages));
         if (!("Video" == pages.name)) {
@@ -49,24 +49,23 @@ export default function videoJsunit() {
         console.error("push Video page error " + JSON.stringify(result));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info("Video after each called");
       await sleep(1)
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0630
-     * @tc.name      videoAppInfoTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0630
+     * @tc.name videoAppInfoTest001
+     * @tc.desc aceEtsTest
      */
-    it('videoAppInfoTest001', 0, async function (done) {
+    it('videoAppInfoTest001', 0, async () => {
       console.info('videoAppInfoTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('video');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd video component obj is: " + JSON.stringify(obj));
       console.log("cd video type" + JSON.stringify(obj.$type));
       console.log("cd video autoPlay" + JSON.stringify(obj.$attrs.autoPlay));
@@ -75,7 +74,6 @@ export default function videoJsunit() {
       console.log("cd video loop" + JSON.stringify(obj.$attrs.loop));
       console.log("cd video objectFit" + JSON.stringify(obj.$attrs.objectFit));
       console.info('videoAppInfoTest001 END');
-      done();
     });
   })
 }

@@ -13,48 +13,49 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
+//返回首页
+async function backToIndex() {
+  let backToIndexPromise = new Promise((resolve: (value: string) => void) => {
+    console.info('afterEach backToIndexPromise ...');
+    setTimeout(() => {
+      router.back({
+        uri: 'MainAbility/pages/index'
+      });
+      resolve("ok")
+    }, 500);
+  });
+
+  let clearPromise = new Promise((resolve: (value: string) => void) => {
+    console.info('afterEach clearPromise ...');
+    setTimeout(() => {
+      router.clear();
+      resolve("ok")
+    }, 500);
+  });
+  await backToIndexPromise.then(() => {
+    return clearPromise;
+  });
+}
 
 export default function swiperJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-  //返回首页
-  async function backToIndex() {
-    let backToIndexPromise = new Promise((resolve, reject) => {
-      console.info('afterEach backToIndexPromise ...');
-      setTimeout(() => {
-        router.back({
-          uri: 'MainAbility/pages/index'
-        });
-        resolve();
-      }, 500);
-    });
 
-    let clearPromise = new Promise((resolve, reject) => {
-      console.info('afterEach clearPromise ...');
-      setTimeout(() => {
-        router.clear();
-        resolve();
-      }, 500);
-    });
-    await backToIndexPromise.then(() => {
-      return clearPromise;
-    });
-  }
+  describe('swiperTest', () => {
 
-  describe('swiperTest', function () {
-
-    beforeEach(async function (done) {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Swiper',
       }
@@ -71,24 +72,23 @@ export default function swiperJsunit() {
         console.error("push Swiper page error " + JSON.stringify(result));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Swiper after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0500
-     * @tc.name      swiperTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0500
+     * @tc.name swiperTest001
+     * @tc.desc aceEtsTest
      */
-    it('swiperTest001', 0, async function (done) {
+    it('swiperTest001', 0, async () => {
       console.info('++++++++++++++++ Swiper TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('swiper');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Swiper')
@@ -109,7 +109,6 @@ export default function swiperJsunit() {
       expect(obj.$attrs.vertical).assertEqual('false')
       expect(obj.$attrs.duration).assertEqual("1000")
       console.info('++++++++++++++++ Swiper TestCase 1 End +++++++++++++++++');
-      done();
     });
   })
 }
