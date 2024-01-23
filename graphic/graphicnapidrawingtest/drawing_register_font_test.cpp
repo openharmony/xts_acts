@@ -48,4 +48,23 @@ HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest001, TestSi
     }
     OH_Drawing_DestroyFontCollection(fontCollection);
 }
+
+/*
+ * @tc.name: NativeDrawingRegisterFontTest002
+ * @tc.desc: test for register font
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeDrawingRegisterFontTest, NativeDrawingRegisterFontTest002, TestSize.Level1)
+{
+    OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
+    uint32_t errorCode = OH_Drawing_RegisterFontBuffer(fontCollection, g_fontFamily, nullptr, 128);
+    std::ifstream fileStream(g_fontPath);
+    if (fileStream.is_open()) {
+        EXPECT_EQ(errorCode, 0);
+        fileStream.close();
+    } else {
+        EXPECT_EQ(errorCode, 6);
+    }
+    OH_Drawing_DestroyFontCollection(fontCollection);
+}
 }
