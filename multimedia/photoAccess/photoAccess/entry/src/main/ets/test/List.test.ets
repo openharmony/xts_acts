@@ -61,6 +61,8 @@ import getAssetChangeRequestTest from './MediaAssetChangeRequest/getAsset'
 import setTitleChangeRequestTest from './MediaAssetChangeRequest/setTitle'
 import addResourceChangeRequestTest from './MediaAssetChangeRequest/addResource'
 import getWriteCacheHandlerTest from './MediaAssetChangeRequest/getWriteCacheHandler'
+import requestImageTest from './MediaAssetManager/requestImage'
+import requestImageDataTest from './MediaAssetManager/requestImageData'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -111,4 +113,6 @@ export default function testsuite () {
   setTitleChangeRequestTest()
   addResourceChangeRequestTest()
   getWriteCacheHandlerTest()
+  requestImageTest()
+  requestImageDataTest()
 }
