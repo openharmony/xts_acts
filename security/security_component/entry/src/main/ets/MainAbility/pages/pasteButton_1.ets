@@ -244,10 +244,10 @@ struct pasteButton_1 {
                 eventId: 2,
                 priority: events_emitter.EventPriority.LOW
               }
-              console.debug("====>page_pasteButton onclick result:" + JSON.stringify(result))
+              console.debug("====>page_pasteButton_1 onclick result:" + JSON.stringify(result))
               events_emitter.emit(clickEvent, clickData)
             } catch (err) {
-              console.debug("====>page_pasteButton emit action state err: " + JSON.stringify(err.message))
+              console.debug("====>page_pasteButton_1 emit action state err: " + JSON.stringify(err.message))
             }
           })
           .iconSize(this.iconSize)

@@ -248,10 +248,10 @@ struct locationButton_2 {
                 eventId: 2,
                 priority: events_emitter.EventPriority.LOW
               }
-              console.debug("====>page_LocationButton onclick result:" + JSON.stringify(result))
+              console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
               events_emitter.emit(clickEvent, clickData)
             } catch (err) {
-              console.debug("====>page_LocationButton emit action state err: " + JSON.stringify(err.message))
+              console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
             }
           })
           .iconSize(this.iconSize)
