@@ -4758,4 +4758,19 @@ describe('BufferTest', function () {
     let byteLen = buffer.byteLength(buf1);
     expect(byteLen).assertEqual(8);
   });
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28000
+    * @tc.name: testToString0038
+    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testToString0038", 0, function () {
+    let str = "abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+    let strbuf = buffer.from(str, "latin1");
+    let toStr = strbuf.toString("latin1");
+    expect(toStr).assertEqual("abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ");
+   });
 })}
