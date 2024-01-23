@@ -81,7 +81,9 @@ struct WebViewMenuShowResult {
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'copyPaste'
-              await driver.mouseClick({ x: webRect.left + 40, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              await Utils.sleep(2000);
               break;
             }
             case "emitCut001": {
@@ -98,7 +100,9 @@ struct WebViewMenuShowResult {
               await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'cutPaste'
-              await driver.mouseClick({ x: webRect.left + 40, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              await Utils.sleep(2000);
               break;
             }
 
