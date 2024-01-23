@@ -2055,8 +2055,8 @@ export default function pasteComponentTest() {
             "fontStyle": FontStyle.Normal,
             "fontWeight": FontWeight.Medium,
             "fontFamily": 'HarmonyOS Sans',
-            "fontColor": Color.Transparent,
-            "iconColor":0xffffffff,
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
             "bgColor": Color.Transparent,
             "borderSty": BorderStyle.Dashed,
             "borderWid": 0,
@@ -2087,13 +2087,13 @@ export default function pasteComponentTest() {
         let clickCallback = (clickData) => {
           console.info("====>[Test_Security_Button_Paste_2200] get clickEvent result is: " + JSON.stringify(clickEvent));
           console.info("====>[Test_Security_Button_Paste_2200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
-          if (clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED) {
-            console.info("====>[Test_Security_Button_Paste_2200] ERR CASE 成功");
-            expect(clickData.data.clickResult == PasteButtonOnClickResult.TEMPORARY_AUTHORIZATION_FAILED).assertTrue();
+          if (clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_Paste_2200] 设置权限成功");
+            expect(clickData.data.clickResult == PasteButtonOnClickResult.SUCCESS).assertTrue();
             console.info("====>[Test_Security_Button_Paste_2200] END====");
             done();
           } else {
-            console.info("====>[Test_Security_Button_Paste_2200] ERR CASE 失败");
+            console.info("====>[Test_Security_Button_Paste_2200] 设置权限失败");
             expect().assertFail()
             console.info("====>[Test_Security_Button_Paste_2200] END====");
             done();
