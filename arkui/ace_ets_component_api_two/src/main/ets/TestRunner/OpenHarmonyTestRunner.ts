@@ -16,8 +16,8 @@ import hilog from '@ohos.hilog';
 import TestRunner from '@ohos.application.testRunner'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+let abilityDelegator = undefined
+let abilityDelegatorArguments = undefined
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
