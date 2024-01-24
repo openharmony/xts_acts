@@ -45,7 +45,7 @@ export default function listJsunit() {
           console.info("push List page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push List page error " + JSON.stringify(result));
+        console.error("push List page error " + JSON.stringify(err));
       }
       await sleep(2)
     });
