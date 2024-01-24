@@ -22,6 +22,7 @@ import {
   it,
 } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import {Driver, ON, Component} from "@ohos.UiTest";
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
@@ -33,6 +34,16 @@ export default function StartAbilityTest() {
     }
 
     beforeEach(async  function(done) {
+      await sleep(500);
+      done();
+    })
+    
+    afterAll(async  function(done){
+      let driver = Driver.create();
+      let componentCounter = await driver.findComponent(ON.text("知道了"));
+      if(componentCounter){
+        componentCounter.click();
+      }
       await sleep(500);
       done();
     })
