@@ -7912,22 +7912,20 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfig.url = fdPath;
+            avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
-                // setAvRecorderCallback
-                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
-                // AVRecorderTestBase.preparePromise
-                PREPARE_PROMISE_EVENT,
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
                 // getAVRecorderConfigPromise
                 GETAVRECORDERCONFIG_PROMISE_EVENT,
-                // initCamera
-                INITCAMERA_EVENT,
-                // AVRecorderTestBase.releasePromise
-                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH264Aac, recorderTime, mySteps, done);
 
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 end')
         })
