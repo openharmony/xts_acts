@@ -7915,13 +7915,13 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
                 // init avRecorder
-                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT, PREPARE_PROMISE_EVENT,
                 // init camera
-                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                GETINPUTSURFACE_PROMISE_EVENT, INITCAMERA_EVENT,
                 // getAVRecorderConfigPromise
                 GETAVRECORDERCONFIG_PROMISE_EVENT,
                 // release avRecorder and camera
-                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
                 // end
                 END_EVENT
             );
