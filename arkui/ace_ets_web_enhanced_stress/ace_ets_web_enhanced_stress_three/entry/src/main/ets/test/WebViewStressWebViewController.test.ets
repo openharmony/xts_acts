@@ -176,7 +176,7 @@ export default function webViewStressWebViewController() {
     })
 
     /*
-    * @tc.number     : SUB_WEB_STRESS_WEBVIEWCONTROLLER_HASIMAGE_0100
+    * @tc.number     : SUB_WEB_STRESS_WEBVIEWCONTROLLERSTRESS_HASIMAGE_0100
     * @tc.name       : testWebViewControllerHasImage001
     * @tc.desc       : test hasImage
     * @tc.size       : MediumTest

@@ -45,7 +45,7 @@ export default function webJsunit() {
       done();
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_001                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_001                                                                                                                                                                     
      *tc.name LoadUrl                                                                                                                                                                                                                
      *tc.desic load contents from url
      */
@@ -55,7 +55,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                  
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_002                                                                                                                                                                  
      *tc.name LoadData                                                                                                                                                                                                                
      *tc.desic load contents from data
      */
@@ -65,7 +65,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_003                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_003                                                                                                                                                                 
      *tc.name Backward                                                                                                                                                                                                                
      *tc.desic back to the old page
      */
@@ -75,7 +75,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_004                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_004                                                                                                                                                                 
      *tc.name Forward                                                                                                                                                                                                               
      *tc.desic go to the new page
      */
@@ -85,7 +85,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_005                                                                                                                                                                   
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_005                                                                                                                                                                   
      *tc.name AccessBackward                                                                                                                                                                                                                
      *tc.desic return whether there is a old page
      */
@@ -95,7 +95,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_006                                                                                                                                                                
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_006                                                                                                                                                                
      *tc.name AccessForward                                                                                                                                                                                                                
      *tc.desic return whether there is a new page
      */
@@ -105,7 +105,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_007                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_007                                                                                                                                                                 
      *tc.name onInactive                                                                                                                                                                                                               
      *tc.desic make web component inactive
      */
@@ -115,7 +115,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_008                                                                                                                                                              
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_008                                                                                                                                                              
      *tc.name make web component active                                                                                                                                                                                                               
      *tc.desic return whether the third party cookie is allowed
      */
@@ -125,7 +125,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_009                                                                                                                                                              
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_009                                                                                                                                                              
      *tc.name Refresh                                                                                                                                                                                                               
      *tc.desic refresh current page
      */
@@ -135,7 +135,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_010                                                                                                                                                             
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_010                                                                                                                                                             
      *tc.name AccessStep                                                                                                                                                                                                               
      *tc.desic return whether steps can be operated
      */
@@ -145,7 +145,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_011                                                                                                                                                             
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_011                                                                                                                                                             
      *tc.name ClearHistory                                                                                                                                                                                                               
      *tc.desic clear the browsing history
      */
@@ -155,7 +155,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_012                                                                                                                                                             
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_012                                                                                                                                                             
      *tc.name GetHitTestValue                                                                                                                                                                                                               
      *tc.desic get the type of th clicked component
      */
@@ -165,7 +165,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_013                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_013                                                                                                                                                           
      *tc.name RegisterJavaScriptProxy                                                                                                                                                                                                               
      *tc.desic register proxy with a specific name
      */
@@ -175,7 +175,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_014                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_014                                                                                                                                                           
      *tc.name DeleteJavaScriptRegister                                                                                                                                                                                                               
      *tc.desic delet specific proxy
      */
@@ -185,7 +185,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_015                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_015                                                                                                                                                           
      *tc.name Zoom                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -195,7 +195,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_016                                                                                                                                                          
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_016                                                                                                                                                          
      *tc.name SearchAllAsync                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -205,7 +205,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_017                                                                                                                                                          
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_017                                                                                                                                                          
      *tc.name ClearMatches                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -215,7 +215,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_018                                                                                                                                                         
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_018                                                                                                                                                         
      *tc.name SearchNext                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -225,7 +225,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_019                                                                                                                                                         
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_019                                                                                                                                                         
      *tc.name ClearSslCache                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -235,7 +235,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
      /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_020                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_020                                                                                                                                                      
      *tc.name ClearClientAuthenticationCache                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -245,7 +245,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_021                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_021                                                                                                                                                      
      *tc.name Stop                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -255,7 +255,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_022                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_022                                                                                                                                                      
      *tc.name RequestFocus                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -265,7 +265,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_023                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_023                                                                                                                                                      
      *tc.name ZoomIn                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -275,7 +275,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_024                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_024                                                                                                                                                      
      *tc.name ZoomOut                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -285,7 +285,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_025                                                                                                                                                    
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_025                                                                                                                                                    
      *tc.name GetWebId                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -295,7 +295,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_026                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_026                                                                                                                                                      
      *tc.name GetUserAgent                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -305,7 +305,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_027                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_027                                                                                                                                                      
      *tc.name GetPageHeigth                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -315,7 +315,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_028                                                                                                                                                      
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_028                                                                                                                                                      
      *tc.name BackOrForward                                                                                                                                                                                                               
      *tc.desic zoom the current page
      */
@@ -325,7 +325,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_029                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_029                                                                                                                                                                     
      *tc.name StoreWebArchive                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -335,7 +335,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_030                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_030                                                                                                                                                                     
      *tc.name GetUrl                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -345,7 +345,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_031                                                                                                                                                                    
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_031                                                                                                                                                                    
      *tc.name Once                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -355,7 +355,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_032                                                                                                                                                                   
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_032                                                                                                                                                                   
      *tc.name GetItemAtIndex                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -365,7 +365,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_033                                                                                                                                                                  
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_033                                                                                                                                                                  
      *tc.name ContextMenuMediaType                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -375,7 +375,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_034                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_034                                                                                                                                                                 
      *tc.name ContextMenuInputFieldType                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -387,7 +387,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_035                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_035                                                                                                                                                                 
      *tc.name ContextMenuEditStateFlags                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -401,7 +401,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_036                                                                                                                                                               
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_036                                                                                                                                                               
      *tc.name GetStoredGeolocation                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -411,7 +411,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_037                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_037                                                                                                                                                           
      *tc.name SetHttpDnsSuccess                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -421,7 +421,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_038                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_038                                                                                                                                                           
      *tc.name GetAccessibleGeolocation                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -431,7 +431,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_039                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_039                                                                                                                                                           
      *tc.name JsMessExtGetString                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -441,7 +441,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_040                                                                                                                                                           
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_040                                                                                                                                                           
      *tc.name JsMessExtGetNum                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -451,7 +451,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_041                                                                                                                                                          
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_041                                                                                                                                                          
      *tc.name JsMessExtGetBoo                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -461,7 +461,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_042                                                                                                                                                          
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_042                                                                                                                                                          
      *tc.name JsMessExtGetArrayBuffer                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -471,7 +471,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_043                                                                                                                                                         
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_043                                                                                                                                                         
      *tc.name JsMessExtGetArray                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -481,7 +481,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_044                                                                                                                                                         
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_044                                                                                                                                                         
      *tc.name WebMessExtSetString                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -492,7 +492,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_045                                                                                                                                                        
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_045                                                                                                                                                        
      *tc.name WebMessExtGetString                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -502,7 +502,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_046                                                                                                                                                        
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_046                                                                                                                                                        
      *tc.name WebMessExtSetNumber                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -513,7 +513,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_047                                                                                                                                                  
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_047                                                                                                                                                  
      *tc.name WebMessExtGetNumber                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -523,7 +523,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_048                                                                                                                                                  
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_048                                                                                                                                                  
      *tc.name WebMessExtSetBoolean                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -534,7 +534,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_049                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_049                                                                                                                                                 
      *tc.name WebMessExtGetBoolean                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -544,7 +544,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_050                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_050                                                                                                                                                 
      *tc.name WebMessExtSetArray                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -555,7 +555,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_051                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_051                                                                                                                                                 
      *tc.name WebMessExtGetArray                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -565,7 +565,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_052                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_052                                                                                                                                                 
      *tc.name WebMessExtSetArrayBuffer                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -576,7 +576,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_053                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_053                                                                                                                                                 
      *tc.name WebMessExtGetArrayBuffer                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -586,7 +586,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_054                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_054                                                                                                                                                 
      *tc.name WebMessExtSetError                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -597,7 +597,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_055                                                                                                                                                
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_055                                                                                                                                                
      *tc.name WebMessExtGetError                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -607,7 +607,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_056                                                                                                                                                
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_056                                                                                                                                                
      *tc.name GetAccessibleGeolocationPromise                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -617,7 +617,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_057                                                                                                                                                
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_057                                                                                                                                                
      *tc.name SetHttpDnsSuccessAuto                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -627,7 +627,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_058                                                                                                                                             
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_058                                                                                                                                             
      *tc.name SetHttpDnsSuccessOff                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -637,7 +637,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_059                                                                                                                                             
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_059                                                                                                                                             
      *tc.name GetCertificateCallback                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -647,7 +647,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_060                                                                                                                                                              
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_060                                                                                                                                                              
      *tc.name GetStoredGeolocationPromise                                                                                                                                                                                                                
      *tc.desic Save current page
      */
@@ -657,7 +657,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /* 
-      *tc.number SUB_ACE_BASIC_ETS_API_061                                                                                                                                                              
+      *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_THREE_API_061                                                                                                                                                              
       *tc.name getCustomUserAgent                                                                                                                                                                                                                
       *tc.desic Save current page
       */

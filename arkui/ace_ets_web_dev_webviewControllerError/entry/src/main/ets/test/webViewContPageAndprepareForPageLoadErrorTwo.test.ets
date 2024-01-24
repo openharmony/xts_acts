@@ -65,7 +65,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0100
+     *tc.number SUB_ACE_BASIC_ETS__WEBVIEWCONTPAGEANDPREPAREFORPAGELOADERRORTWO_0100
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
@@ -75,7 +75,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorTwo',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0200
+     *tc.number SUB_ACE_BASIC_ETS__WEBVIEWCONTPAGEANDPREPAREFORPAGELOADERROEONE_0200
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
@@ -85,7 +85,7 @@ export default function webViewContPageAndprepareForPageLoadErrorTwo() {
       sendEventByKey('webViewContPageAndprepareForPageLoadErrorTwo',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0200
+     *tc.number SUB_ACE_BASIC_ETS__WEBVIEWCONTPAGEANDPREPAREFORPAGELOADERROEONE_0300
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */

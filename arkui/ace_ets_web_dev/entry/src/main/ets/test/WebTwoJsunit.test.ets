@@ -65,7 +65,7 @@ export default function webTwoJsunit() {
       done();
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_001                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV02_API_001                                                                                                                                                                     
      *tc.name overviewModeAccessTrue                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
@@ -75,7 +75,7 @@ export default function webTwoJsunit() {
       sendEventByKey('webcomponenttwo',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV02_API_002                                                                                                                                                          
      *tc.name overviewModeAccessFalse                                                                                                                                                                                                                 
      *tc.desic Sets not allow the Web access overview mode
      */

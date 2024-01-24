@@ -45,7 +45,7 @@ export default function webJsunit() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_001
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_001
      *tc.name userAgent
      *tc.desic Sets the Web's user agent
      */
@@ -56,7 +56,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_002
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_002
      *tc.name javaScriptProxy                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
     it('javaScriptProxy',0,async function(done){
@@ -65,7 +65,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_003
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_003
      *tc.name onUrlLoadIntercept                                                                                                                                                                                                                  *tc.desic Triggered when the URL loading is intercepted
      */
     it('onUrlLoadIntercept',0,async function(done){
@@ -74,7 +74,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_004
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_004
      *tc.name onRenderExited
      *tc.desic Triggered when the render process exits
      */
@@ -85,7 +85,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_005
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_005
      *tc.name onResourceLoad
      *tc.desic Triggered when the url loading
      */
@@ -95,7 +95,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_006
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_006
      *tc.name loadUrl
      *tc.desic Loads the given URL
      */
@@ -105,7 +105,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_007
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_007
      *tc.name runJavaScript
      *tc.desic Loads a piece of code and execute JS code in the context of the currently displayed page
      */
@@ -115,7 +115,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_008
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_008
      *tc.name onProgressChange                                                                                                                                                                                                                    *tc.desic Triggered when the page loading progress changes
      */
     it('onProgressChange',0,async function(done){
@@ -124,7 +124,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_009
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_009
      *tc.name onRefreshAccessedHistory                                                                                                                                                                                                            *tc.desic Triggered when the Web page refreshes accessed history
      */
     it('onRefreshAccessedHistory',0,async function(done){
@@ -133,7 +133,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_010
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_010
      *tc.name getHitTest
      *tc.desic Gets the type of HitTest
      */
@@ -143,7 +143,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_011
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_011
      *tc.name getWebId
      *tc.desic Gets the id for the current Web
      */
@@ -153,7 +153,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_014
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_014
      *tc.name requestFocus
      *tc.desic Gets the request focus
      */
@@ -163,7 +163,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_015
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_015
      *tc.name accessBackward
      *tc.desic Checks whether the web page can go back
      */
@@ -173,7 +173,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_016
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_016
      *tc.name accessForward
      *tc.desic Checks whether the web page can go forward
      */
@@ -183,7 +183,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_017
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_017
      *tc.name accessStep
      *tc.desic Checks whether the web page can go back or forward the given number of steps
      */
@@ -193,7 +193,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_018
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_018
      *tc.name backward
      *tc.desic Goes back in the history of the web page
      */
@@ -203,7 +203,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_019
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_019
      *tc.name forward
      *tc.desic Goes forward in the history of the web page
      */
@@ -213,7 +213,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_021
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_021
      *tc.name geolocationAccessFalse
      *tc.desic Sets false not allow access to geographical locations
      */
@@ -223,7 +223,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_022
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_022
      *tc.name initialScale
      *tc.desic Sets the initial scale for the Web
      */
@@ -233,7 +233,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_023
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_023
      *tc.name onScaleChange
      *tc.desic Triggered when the scale of WebView changed
      */
@@ -243,7 +243,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_024
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_024
      *tc.name onGeolocationShow
      *tc.desic Triggered when requesting to show the geolocation permission
      */
@@ -253,7 +253,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_025
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_025
      *tc.name domStorageAccessFalse
      *tc.desic Sets not to enable the DOM Storage API permission
      */
@@ -263,7 +263,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_026
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_026
      *tc.name domStorageAccessTrue
      *tc.desic Sets  enable the DOM Storage API permission
      */
@@ -273,7 +273,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_027
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_027
      *tc.name imageAccessFalse
      *tc.desic Sets Web can not automatically load image resources
      */
@@ -283,7 +283,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_028
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_028
      *tc.name imageAccessTrue
      *tc.desic Sets Web can  automatically load image resources
      */
@@ -293,7 +293,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_029
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_029
      *tc.name onlineImageAccessFalse
      *tc.desic Sets not to allow image resources to be loaded from the network
      */
@@ -303,7 +303,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_030
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_030
      *tc.name onlineImageAccessTrue
      *tc.desic Sets  allow image resources to be loaded from the network
      */
@@ -313,7 +313,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_031
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_031
      *tc.name databaseAccessTrue
      *tc.desic Sets allow the Web access the database
      */
@@ -323,7 +323,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_032
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_032
      *tc.name onPrompt
      *tc.desic Triggered when the web page wants to display a JavaScript prompt() dialog
      */
@@ -333,7 +333,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_033
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_033
      *tc.name cacheModeOnly
      *tc.desic load cache and not online
      */
@@ -343,7 +343,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_034
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_034
      *tc.name cacheModeDefault
      *tc.desic load cache when they are available and not expired, otherwise load online
      */
@@ -353,7 +353,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_035
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_035
      *tc.name mixedModeNone
      *tc.desic Sets Don't allow unsecure sources from a secure origin
      */
@@ -363,7 +363,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_036
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_036
      *tc.name mixedModeAll
      *tc.desic Sets Allows  all HTTP and HTTPS content can be loaded
      */
@@ -373,7 +373,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_037
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_037
      *tc.name fileAccessTrue
      *tc.desic Sets  enable local file system access in Web
      */
@@ -383,7 +383,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_038
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_038
      *tc.name onPageBegin
      *tc.desic Triggered when the page loading progress changes
      */
@@ -393,7 +393,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_039
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_039
      *tc.name onPageEnd
      *tc.desic Triggered at the begin of web page loading
      */
@@ -403,7 +403,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_040
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_040
      *tc.name onConsole
      *tc.desic Triggered when the web page receives a JavaScript console message
      */
@@ -413,7 +413,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_041
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_041
      *tc.name onAlert
      *tc.desic Triggered when the Web wants to display a JavaScript alert() dialog
      */
@@ -423,7 +423,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_042
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_042
      *tc.name onConfirm
      *tc.desic Triggered when the web page wants to display a JavaScript confirm() dialog
      */
@@ -433,7 +433,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_043
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_043
      *tc.name onErrorReceive
      *tc.desic Triggered when the web page receives a web resource loading error
      */
@@ -443,7 +443,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_044
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_044
      *tc.name onHttpErrorReceive
      *tc.desic Triggered when the web page receives a web resource loading HTTP error
      */
@@ -453,7 +453,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_045
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_045
      *tc.name onTitleReceive
      *tc.desic Triggered when the title of the main application document changes
      */
@@ -463,7 +463,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_046
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_046
      *tc.name onDownloadStart
      *tc.desic Triggered when starting to download
      */
@@ -473,7 +473,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_049
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_049
      *tc.name zoom
      *tc.desic Let the Web zoom by
      */
@@ -483,7 +483,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_054
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_054
      *tc.name clearHistory
      *tc.desic Clears the history in the Web
      */
@@ -493,7 +493,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_055
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_055
      *tc.name stop
      *tc.desic  Stops the current load
      */
@@ -503,7 +503,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_056
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_056
      *tc.name onInactive
      *tc.desic Let the Web inactive.
      */
@@ -513,7 +513,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_057
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_057
      *tc.name onActive
      *tc.desic Let the Web active
      */
@@ -523,7 +523,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_058
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_058
      *tc.name registerJavaScriptProxy
      *tc.desic Registers the JavaScript object and method list
      */
@@ -533,7 +533,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_059
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_059
      *tc.name deleteJavaScriptRegister
      *tc.desic Deletes a registered JavaScript object with given name
      */
@@ -543,7 +543,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_060
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_060
      *tc.name javaScriptAccess
      *tc.desic Sets whether the Web allows JavaScript scripts to execute
      */
@@ -553,7 +553,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_062
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_API_062
      *tc.name webVisibility
      *tc.desic Web Visibility test
      */

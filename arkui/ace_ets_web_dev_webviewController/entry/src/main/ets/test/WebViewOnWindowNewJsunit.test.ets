@@ -154,7 +154,7 @@ export default function webViewOnWindowNewJsunit() {
       sendEventByKey('onWindowNew', 10, '');
     })
     /*
-    *tc.number SUB_ACE_BASIC_ETS_API_GETORIGINS_0100
+    *tc.number SUB_ACE_BASIC_ETS_API_GETORIGINSPROMISE_0100
     *tc.name testGetOriginsPromiseLoadLocalHtml01
     *tc.desc test api GetOrigins promise mode by load loacal html
     */
