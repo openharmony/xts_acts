@@ -52,7 +52,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
 
     /*
      *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_001
-     *@tc.name RegisterJavaScriptProxy testcase 001
+     *@tc.name testregisterJavaScriptProxyTestcase001
      *@tc.desc Injects the JavaScript object into window and invoke the function in window
      *@tc.size MediumTest
      *@tc.type Function
@@ -67,7 +67,7 @@ export default function webRegisterJavaScriptProxyJsunit() {
 
     /*
      *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_002
-     *@tc.name RunJavaScript testcase 002
+     *@tc.name testrunJavaScriptTestcase 002
      *@tc.desc Injects the JavaScript object into window and invoke the function in window
      *@tc.size MediumTest
      *@tc.type Function
