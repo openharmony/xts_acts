@@ -101,15 +101,15 @@ export default function getListItemGroupRect3() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(x)).assertEqual(Math.round(0));
 
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(y)).assertEqual(Math.round(50));
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(Math.round(width)).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
+      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(Math.round(height)).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
+      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
 
       done();
     });
@@ -168,15 +168,15 @@ export default function getListItemGroupRect3() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(x)).assertEqual(Math.round(0));
 
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(y)).assertEqual(Math.round(50));
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(Math.round(width)).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
+      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(Math.round(height)).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
+      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
 
       done();
     });
