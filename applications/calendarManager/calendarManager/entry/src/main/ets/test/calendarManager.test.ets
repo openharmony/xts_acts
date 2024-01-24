@@ -143,7 +143,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -167,7 +167,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -191,7 +191,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -215,7 +215,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -262,7 +262,7 @@ export default function CalendarManagerTest() {
           })
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is LOCAl" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -287,7 +287,7 @@ export default function CalendarManagerTest() {
           })
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is EMAIL" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -311,7 +311,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is BIRTHDAY" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -335,7 +335,7 @@ export default function CalendarManagerTest() {
           EXPECTFalse();
         } else {
           console.info(CaseName + "Succeeded in get specified calendar type is CALDAV" + JSON.stringify(data));
-          EXPECTTrue(data.id != '');
+          EXPECTTrue(data.id != null);
           return;
         }
       });
@@ -501,7 +501,7 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
       const date = new Date();
-      let Schedule: calendarManager.Event  = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000
@@ -515,7 +515,7 @@ export default function CalendarManagerTest() {
             EXPECTFalse();
           } else {
             console.info(CaseName + "Succeeded in addEvent" + JSON.stringify(data));
-            EXPECTTrue(data != '');
+            EXPECTTrue(data != null);
             return;
           }
         });
@@ -548,7 +548,7 @@ export default function CalendarManagerTest() {
         displayName: '本地帐户'
       }
       const date = new Date();
-      let Schedule: calendarManager.Event  = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000
@@ -614,7 +614,7 @@ export default function CalendarManagerTest() {
             EXPECTFalse();
           } else {
             console.info(CaseName + "Succeeded in addEvents" + JSON.stringify(data));
-            EXPECTTrue(data != '');
+            EXPECTTrue(data != null);
             return;
           }
         });
@@ -734,7 +734,7 @@ export default function CalendarManagerTest() {
             EXPECTFalse();
           } else {
             console.info(CaseName + "Succeeded in updateEvent" + JSON.stringify(data));
-            EXPECTTrue(data != '');
+            EXPECTTrue(data != null);
             return;
           }
         });
@@ -961,7 +961,7 @@ export default function CalendarManagerTest() {
                 EXPECTFalse();
               } else {
                 console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
-                EXPECTTrue(Events[0] != '');
+                EXPECTTrue(Events[0] != null);
                 return;
               }
             });
@@ -997,7 +997,7 @@ export default function CalendarManagerTest() {
             EXPECTFalse();
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
-            EXPECTTrue(Events[0] != '');
+            EXPECTTrue(Events[0] != null);
             return;
           }
         });
@@ -1030,7 +1030,7 @@ export default function CalendarManagerTest() {
             EXPECTFalse();
           } else {
             console.info(CaseName + "Succeeded in getEvents" + JSON.stringify(Events));
-            EXPECTTrue(Events[0] != '');
+            EXPECTTrue(Events[0] != null);
             return;
           }
         });
@@ -1060,7 +1060,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          EXPECTTrue(data[0] != '');
+          EXPECTTrue(data[0] != null);
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1092,7 +1092,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          EXPECTTrue(data[0] != '');
+          EXPECTTrue(data[0] != null);
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1124,7 +1124,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          EXPECTTrue(data[0] != '');
+          EXPECTTrue(data[0] != null);
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1149,7 +1149,7 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      let Schedule: calendarManager.Event  = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.IMPORTANT,
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
@@ -1191,7 +1191,7 @@ export default function CalendarManagerTest() {
         type: calendarManager.CalendarType.LOCAL,
         displayName: '本地帐户'
       }
-      let Schedule: calendarManager.Event  = {
+      let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.IMPORTANT,
         startTime: new Date().getTime(),
         endTime: new Date().getTime() + 60 * 60 * 3000
