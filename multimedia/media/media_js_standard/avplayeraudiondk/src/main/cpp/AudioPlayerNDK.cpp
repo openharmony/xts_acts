@@ -25,7 +25,7 @@
 #include "hilog/log.h"
 #include <cstdio>
 
-static int32_t g_playTime = 3;
+static int32_t g_playTime = 1;
 
 #define LOG(cond, fmt, ...)                                                                                            \
     if (!(cond)) {                                                                                                     \
@@ -217,20 +217,11 @@ static napi_value PlayerStateSetSpeed(napi_env env, napi_callback_info info) {
     OH_AVPlayer_Play(player);
     sleep(g_playTime);
     OH_AVErrCode result1 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_0_75_X);
-    sleep(g_playTime);
-    OH_AVErrCode result2 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_00_X);
-    sleep(g_playTime);
-    OH_AVErrCode result3 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_25_X);
-    sleep(g_playTime);
-    OH_AVErrCode result4 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_75_X);
-    sleep(g_playTime);
-    OH_AVErrCode result5 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_2_00_X);
-    sleep(g_playTime);
+    OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_00_X);
     OH_AVPlayer_Release(player);
     napi_value res;
     OH_AVErrCode result;
-    if (result1 == AV_ERR_OK && result2 == AV_ERR_OK && result3 == AV_ERR_OK && result4 == AV_ERR_OK &&
-        result5 == AV_ERR_OK) {
+    if (result1 == AV_ERR_OK) {
         result = AV_ERR_OK;
     } else {
         result = AV_ERR_INVALID_VAL;
@@ -325,6 +316,69 @@ static napi_value PlayerStateLoop(napi_env env, napi_callback_info info) {
     return res;
 }
 
+// OH_PLAYER_PlayerStateSetSpeed_1_25_X_015
+static napi_value PlayerStateSetSpeed_1_25_X(napi_env env, napi_callback_info info) {
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    const char *path = "data/test/01.mp3";
+    OH_AVPlayer_SetURLSource(player, path);
+    OH_AVPlayer_Prepare(player);
+    OH_AVPlayer_Play(player);
+    sleep(g_playTime);
+    OH_AVErrCode result1 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_25_X);
+    OH_AVPlayer_Release(player);
+    napi_value res;
+    OH_AVErrCode result;
+    if (result1 == AV_ERR_OK) {
+        result = AV_ERR_OK;
+    } else {
+        result = AV_ERR_INVALID_VAL;
+    }
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_PLAYER_PlayerStateSetSpeed_1_75_X_016
+static napi_value PlayerStateSetSpeed_1_75_X(napi_env env, napi_callback_info info) {
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    const char *path = "data/test/01.mp3";
+    OH_AVPlayer_SetURLSource(player, path);
+    OH_AVPlayer_Prepare(player);
+    OH_AVPlayer_Play(player);
+    sleep(g_playTime);
+    OH_AVErrCode result1 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_1_75_X);
+    OH_AVPlayer_Release(player);
+    napi_value res;
+    OH_AVErrCode result;
+    if (result1 == AV_ERR_OK) {
+        result = AV_ERR_OK;
+    } else {
+        result = AV_ERR_INVALID_VAL;
+    }
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+// OH_PLAYER_PlayerStateSetSpeed_2_00_X_017
+static napi_value PlayerStateSetSpeed_2_00_X(napi_env env, napi_callback_info info) {
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    const char *path = "data/test/01.mp3";
+    OH_AVPlayer_SetURLSource(player, path);
+    OH_AVPlayer_Prepare(player);
+    OH_AVPlayer_Play(player);
+    sleep(g_playTime);
+    OH_AVErrCode result1 = OH_AVPlayer_SetPlaybackSpeed(player, AV_SPEED_FORWARD_2_00_X);
+    OH_AVPlayer_Release(player);
+    napi_value res;
+    OH_AVErrCode result;
+    if (result1 == AV_ERR_OK) {
+        result = AV_ERR_OK;
+    } else {
+        result = AV_ERR_INVALID_VAL;
+    }
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -343,6 +397,9 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"PlayerStateIsPlaying", nullptr, PlayerStateIsPlaying, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"PlayerStateGetDuration", nullptr, PlayerStateGetDuration, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"PlayerStateLoop", nullptr, PlayerStateLoop, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"PlayerStateSetSpeed_1_25_X", nullptr, PlayerStateSetSpeed_1_25_X, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"PlayerStateSetSpeed_1_75_X", nullptr, PlayerStateSetSpeed_1_75_X, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"PlayerStateSetSpeed_2_00_X", nullptr, PlayerStateSetSpeed_2_00_X, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
