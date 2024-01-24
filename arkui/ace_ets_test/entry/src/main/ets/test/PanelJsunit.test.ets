@@ -67,18 +67,18 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s dragBar is ' + JSON.stringify(obj.$attrs.dragBar))
-      console.log('Panel‘s fullHeight is ' + JSON.stringify(obj.$attrs.fullHeight))
-      console.log('Panel‘s halfHeight is ' + JSON.stringify(obj.$attrs.halfHeight))
-      console.log('Panel‘s miniHeight is ' + JSON.stringify(obj.$attrs.miniHeight))
-      expect(obj.$attrs.type).assertEqual('PanelType.Foldable')
-      expect(obj.$attrs.mode).assertEqual('PanelMode.Half')
-      expect(obj.$attrs.dragBar).assertEqual('true')
-      expect(obj.$attrs.fullHeight).assertEqual('500.00vp')
-      expect(obj.$attrs.halfHeight).assertEqual('250.00vp')
-      expect(obj.$attrs.miniHeight).assertEqual('100.00vp')
+      console.log('Panel‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(JSON.parse(strJson).$attrs.mode))
+      console.log('Panel‘s dragBar is ' + JSON.stringify(JSON.parse(strJson).$attrs.dragBar))
+      console.log('Panel‘s fullHeight is ' + JSON.stringify(JSON.parse(strJson).$attrs.fullHeight))
+      console.log('Panel‘s halfHeight is ' + JSON.stringify(JSON.parse(strJson).$attrs.halfHeight))
+      console.log('Panel‘s miniHeight is ' + JSON.stringify(JSON.parse(strJson).$attrs.miniHeight))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('PanelType.Foldable')
+      expect(JSON.parse(strJson).$attrs.mode).assertEqual('PanelMode.Half')
+      expect(JSON.parse(strJson).$attrs.dragBar).assertEqual('true')
+      expect(JSON.parse(strJson).$attrs.fullHeight).assertEqual('500.00vp')
+      expect(JSON.parse(strJson).$attrs.halfHeight).assertEqual('250.00vp')
+      expect(JSON.parse(strJson).$attrs.miniHeight).assertEqual('100.00vp')
       console.info('++++++++++++++++ Panel TestCase 1 End ++++++++++++++++');
     });
 
@@ -95,12 +95,12 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s show is ' + JSON.stringify(obj.$attrs.show))
-      expect(obj.$attrs.type).assertEqual('PanelType.Minibar')
-      expect(obj.$attrs.mode).assertEqual('PanelMode.Mini')
-      expect(obj.$attrs.show).assertEqual('true')
+      console.log('Panel‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(JSON.parse(strJson).$attrs.mode))
+      console.log('Panel‘s show is ' + JSON.stringify(JSON.parse(strJson).$attrs.show))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('PanelType.Minibar')
+      expect(JSON.parse(strJson).$attrs.mode).assertEqual('PanelMode.Mini')
+      expect(JSON.parse(strJson).$attrs.show).assertEqual('true')
       console.info('++++++++++++++++ Panel TestCase 2 End ++++++++++++++++');
     });
 
@@ -117,12 +117,12 @@ export default function panelJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s type is ' + JSON.stringify(obj.$attrs.type))
-      console.log('Panel‘s mode is ' + JSON.stringify(obj.$attrs.mode))
-      console.log('Panel‘s show is ' + JSON.stringify(obj.$attrs.show))
-      expect(obj.$attrs.type).assertEqual('PanelType.Temporary')
-      expect(obj.$attrs.mode).assertEqual('PanelMode.Full')
-      expect(obj.$attrs.show).assertEqual('false')
+      console.log('Panel‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('Panel‘s mode is ' + JSON.stringify(JSON.parse(strJson).$attrs.mode))
+      console.log('Panel‘s show is ' + JSON.stringify(JSON.parse(strJson).$attrs.show))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('PanelType.Temporary')
+      expect(JSON.parse(strJson).$attrs.mode).assertEqual('PanelMode.Full')
+      expect(JSON.parse(strJson).$attrs.show).assertEqual('false')
       console.info('++++++++++++++++ Panel TestCase 3 End ++++++++++++++++');
     });
   })

@@ -69,8 +69,8 @@ export default function linkJsunit() {
       console.log(JSON.stringify(obj.$type))
       console.info("yr link0 type: " + JSON.stringify(obj.$type));
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link0 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
+      expect(JSON.parse(strJson).$attrs.stateEffect).assertEqual('false');
+      console.log("yr link0 stateEffect-'false'" + JSON.stringify(JSON.parse(strJson).$attrs.stateEffect))
       console.info('linkTest001 END');
     });
 
@@ -84,8 +84,8 @@ export default function linkJsunit() {
       let strJson = getInspectorByKey('Button1');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link1 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
+      expect(JSON.parse(strJson).$attrs.stateEffect).assertEqual('false');
+      console.log("yr link1 stateEffect-'false'" + JSON.stringify(JSON.parse(strJson).$attrs.stateEffect))
       console.info('linkTest002 END');
     });
   })

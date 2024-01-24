@@ -68,10 +68,10 @@ export default function rowJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Row')
-      console.log('Row‘s useAlign is ' + JSON.stringify(obj.$attrs.useAlign))
-      console.log('Row‘s space is ' + JSON.stringify(obj.$attrs.space))
-      console.log('Row‘s alignItems is ' + JSON.stringify(obj.$attrs.alignItems))
-      expect(obj.$attrs.alignItems).assertEqual('VerticalAlign.Top')
+      console.log('Row‘s useAlign is ' + JSON.stringify(JSON.parse(strJson).$attrs.useAlign))
+      console.log('Row‘s space is ' + JSON.stringify(JSON.parse(strJson).$attrs.space))
+      console.log('Row‘s alignItems is ' + JSON.stringify(JSON.parse(strJson).$attrs.alignItems))
+      expect(JSON.parse(strJson).$attrs.alignItems).assertEqual('VerticalAlign.Top')
       console.info('++++++++++++++++ Row TestCase 1 End ++++++++++++++++');
     });
   })

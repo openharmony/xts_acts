@@ -31,8 +31,8 @@ export default function alphabetIndexerJsunit() {
 
   describe('alphabetIndexerTest', () => {
     beforeEach(async () => {
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/AlphabetIndexer',
+      let options = {
+        uri: 'MainAbility/pages/GridItem',
       }
       try {
         router.clear();

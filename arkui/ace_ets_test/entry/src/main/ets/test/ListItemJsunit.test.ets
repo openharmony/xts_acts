@@ -86,11 +86,11 @@ export default function listItemJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem2‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem2‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem2‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem2‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Normal')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Normal')
       console.info('++++++++++++++++ ListItem TestCase 2 End ++++++++++++++++');
     });
 
@@ -106,11 +106,11 @@ export default function listItemJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem3‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem3‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem3‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem3‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Opacity')
       console.info('++++++++++++++++ ListItem TestCase 3 End ++++++++++++++++');
     });
 
@@ -126,11 +126,11 @@ export default function listItemJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem4‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem4‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem4‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem4‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Opacity')
       console.info('++++++++++++++++ ListItem TestCase 4 End ++++++++++++++++');
     });
   })

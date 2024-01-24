@@ -67,16 +67,16 @@ export default function tabJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
-      console.log('obj.$attrs.scrollable' + typeof (obj.$attrs.scrollable))
-      console.log('obj.$attrs.vertical' + typeof (obj.$attrs.vertical))
+      console.log('obj.$attrs.scrollable' + typeof (JSON.parse(strJson).$attrs.scrollable))
+      console.log('obj.$attrs.vertical' + typeof (JSON.parse(strJson).$attrs.vertical))
       expect(obj.$type).assertEqual('Tabs')
-      expect(obj.$attrs.barPosition).assertEqual('BarPosition.Start')
-      expect(obj.$attrs.index).assertEqual('1')
-      expect(obj.$attrs.vertical).assertEqual('true')
-      expect(obj.$attrs.scrollable).assertTrue()
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed')
-      expect(obj.$attrs.barWidth).assertEqual(70.000000.toFixed(6))
-      expect(obj.$attrs.barHeight).assertEqual(150.000000.toFixed(6))
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual('BarPosition.Start')
+      expect(JSON.parse(strJson).$attrs.index).assertEqual('1')
+      expect(JSON.parse(strJson).$attrs.vertical).assertEqual('true')
+      expect(JSON.parse(strJson).$attrs.scrollable).assertTrue()
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed')
+      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual(70.000000.toFixed(6))
+      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual(150.000000.toFixed(6))
       console.info('++++++++++++++++ Tab TestCase 1 End ++++++++++++++++');
     });
 
@@ -92,11 +92,11 @@ export default function tabJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Tabs')
-      expect(obj.$attrs.barPosition).assertEqual('BarPosition.End')
-      expect(obj.$attrs.barMode)
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual('BarPosition.End')
+      expect(JSON.parse(strJson).$attrs.barMode)
         .assertEqual('BarMode.Scrollable,{"margin":"0.00vp","nonScrollableLayoutStyle":"LayoutStyle.ALWAYS_CENTER"}')
-      expect(obj.$attrs.vertical).assertEqual('false')
-      expect(obj.$attrs.scrollable).assertFalse()
+      expect(JSON.parse(strJson).$attrs.vertical).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.scrollable).assertFalse()
       console.info('++++++++++++++++ Tab TestCase 3 End ++++++++++++++++');
     });
   })

@@ -67,14 +67,14 @@ export default function gridJsunit() {
       console.info("属性值集合: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Grid')
-      console.log(JSON.stringify(obj.$attrs.columnsTemplate))
-      console.log(JSON.stringify(obj.$attrs.rowsTemplate))
-      console.log(JSON.stringify(obj.$attrs.rowsTemplate))
-      console.log(JSON.stringify(obj.$attrs.columnsGap))
-      console.log(JSON.stringify(obj.$attrs.rowsGap))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.columnsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.columnsGap))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsGap))
       await sleep(1)
-      expect(obj.$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
-      expect(obj.$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+      expect(JSON.parse(strJson).$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+      expect(JSON.parse(strJson).$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
       console.info('gridTest001 END');
     });
   }

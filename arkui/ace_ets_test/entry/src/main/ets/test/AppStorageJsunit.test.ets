@@ -69,8 +69,8 @@ export default function appStorageJsunit() {
       console.log(JSON.stringify(obj.$type))
       console.info("yr AppStorage0 type: " + JSON.stringify(obj.$type));
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('20');
-      console.log("yr AppStorage0 label-'47'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('20');
+      console.log("yr AppStorage0 label-'47'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorage0 END');
     });
 
@@ -84,8 +84,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_2');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('20');
-      console.log("yr AppStorage1 label-'47'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('20');
+      console.log("yr AppStorage1 label-'47'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest002 END');
     });
 
@@ -99,8 +99,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_3');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('50');
-      console.log("yr AppStorage2 label-'50'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('50');
+      console.log("yr AppStorage2 label-'50'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest003 END');
     });
 
@@ -114,8 +114,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_4');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('47');
-      console.log("yr AppStorage3 label-'47'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('47');
+      console.log("yr AppStorage3 label-'47'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest004 END');
     });
 
@@ -129,8 +129,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_5');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('true');
-      console.log("yr AppStorage4 label-' '" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('true');
+      console.log("yr AppStorage4 label-' '" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest005 END');
     });
 
@@ -144,8 +144,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_6');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('PropB');
-      console.log("yr AppStorage5 label-'PropA'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('PropB');
+      console.log("yr AppStorage5 label-'PropA'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest006 END');
     });
 
@@ -160,8 +160,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_7');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('20');
-      console.log("yr AppStorage6 label-'47'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('20');
+      console.log("yr AppStorage6 label-'47'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest007 END');
     });
 
@@ -175,8 +175,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_8');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('true');
-      console.log("yr AppStorage7 label-'20'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('true');
+      console.log("yr AppStorage7 label-'20'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest008 END');
     });
 
@@ -190,8 +190,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_9');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('1');
-      console.log("yr AppStorage8 label-'1'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('1');
+      console.log("yr AppStorage8 label-'1'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest009 END');
     });
 
@@ -205,8 +205,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_10');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.label).assertEqual('false');
-      console.log("yr AppStorage9 label-' '" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('false');
+      console.log("yr AppStorage9 label-' '" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest010 END');
     });
 
@@ -220,8 +220,8 @@ export default function appStorageJsunit() {
       let strJson = getInspectorByKey('Button0_12');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('true');
-      console.log("yr AppStorage11 label-'50'" + JSON.stringify(obj.$attrs.label))
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('true');
+      console.log("yr AppStorage11 label-'50'" + JSON.stringify(JSON.parse(strJson).$attrs.label))
       console.info('AppStorageTest011 END');
     });
   })

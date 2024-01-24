@@ -68,15 +68,15 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s target is ' + JSON.stringify(obj.$attrs.target))
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      console.log('Navigator‘s active is ' + JSON.stringify(obj.$attrs.active))
-      console.log('Navigator‘s params is ' + JSON.stringify(obj.$attrs.params))
-      expect(obj.$attrs.target).assertEqual('pages/index')
-      expect(obj.$attrs.type).assertEqual('NavigationType.Back')
-      expect(obj.$attrs.active).assertEqual('false')
-      expect(obj.$attrs.params).assertEqual(JSON.stringify({
-        "data": 24
+      console.log('Navigator‘s target is ' + JSON.stringify(JSON.parse(strJson).$attrs.target))
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('Navigator‘s active is ' + JSON.stringify(JSON.parse(strJson).$attrs.active))
+      console.log('Navigator‘s params is ' + JSON.stringify(JSON.parse(strJson).$attrs.params))
+      expect(JSON.parse(strJson).$attrs.target).assertEqual('pages/index')
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Back')
+      expect(JSON.parse(strJson).$attrs.active).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.params).assertEqual(JSON.stringify({
+        data: 24
       }))
       console.info('++++++++++++++++ Navigator TestCase 1 End ++++++++++++++++');
     });
@@ -94,8 +94,8 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      expect(obj.$attrs.type).assertEqual('NavigationType.Push')
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Push')
       console.info('++++++++++++++++ Navigator TestCase 2 End ++++++++++++++++');
     });
 
@@ -112,8 +112,8 @@ export default function navigatorJsunit() {
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      expect(obj.$attrs.type).assertEqual('NavigationType.Replace')
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Replace')
       console.info('++++++++++++++++ Navigator TestCase 3 End ++++++++++++++++');
     });
   })

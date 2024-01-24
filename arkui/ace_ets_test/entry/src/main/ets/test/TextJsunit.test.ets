@@ -67,44 +67,44 @@ export default function textJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Text')
-      expect(obj.$attrs.width).assertEqual('100.000000vp')
-      expect(obj.$attrs.padding).assertEqual('5.000000vp')
-      expect(obj.$attrs.opacity).assertEqual(1)
-      expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(JSON.stringify(obj.$attrs.markAnchor)).assertEqual(JSON.stringify({
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('100.000000vp')
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual('5.000000vp')
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1)
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Center")
+      expect(JSON.stringify(JSON.parse(strJson).$attrs.markAnchor)).assertEqual(JSON.stringify({
         x: "50.000000vp", y: "50.000000vp"
       }))
-      expect(JSON.stringify(obj.$attrs.offset)).assertEqual(JSON.stringify({
+      expect(JSON.stringify(JSON.parse(strJson).$attrs.offset)).assertEqual(JSON.stringify({
         x: "50.000000vp", y: "50.000000vp"
       }))
-      expect(obj.$attrs.flexGrow).assertEqual(5)
-      expect(obj.$attrs.flexShrink).assertEqual(2)
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto")
-      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Dashed")
-      expect(obj.$attrs.borderRadius).assertEqual("10.000000vp")
-      expect(obj.$attrs.borderWidth).assertEqual("4.000000px")
-      expect(obj.$attrs.borderColor).assertEqual("#FF0000FF")
-      expect(obj.$attrs.backgroundColor).assertEqual("#FFFFC0CB")
-      expect(obj.$attrs.enabled).assertEqual(false)
-      expect(obj.$attrs.zIndex).assertEqual(1)
-      expect(obj.$attrs.fontColor).assertEqual("#FF000000")
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Visible")
-      expect(obj.$attrs.fontSize).assertEqual("15")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
-      expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
-      expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.End")
-      expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Ellipsis")
-      expect(obj.$attrs.lineHeight).assertEqual("15")
-      expect(obj.$attrs.baselineOffset).assertEqual("0")
-      expect(obj.$attrs.maxLines).assertEqual("2")
-      expect(obj.$attrs.textCase).assertEqual("TextCase.Normal")
-      expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
+      expect(JSON.parse(strJson).$attrs.flexGrow).assertEqual(5)
+      expect(JSON.parse(strJson).$attrs.flexShrink).assertEqual(2)
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Auto")
+      expect(JSON.parse(strJson).$attrs.borderStyle).assertEqual("BorderStyle.Dashed")
+      expect(JSON.parse(strJson).$attrs.borderRadius).assertEqual("10.000000vp")
+      expect(JSON.parse(strJson).$attrs.borderWidth).assertEqual("4.000000px")
+      expect(JSON.parse(strJson).$attrs.borderColor).assertEqual("#FF0000FF")
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("#FFFFC0CB")
+      expect(JSON.parse(strJson).$attrs.enabled).assertEqual(false)
+      expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(1)
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FF000000")
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual("Visibility.Visible")
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("15")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Bold")
+      expect(JSON.parse(strJson).$attrs.fontStyle).assertEqual("FontStyle.Italic")
+      expect(JSON.parse(strJson).$attrs.fontFamily).assertEqual("sans-serif")
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.End")
+      expect(JSON.parse(strJson).$attrs.textOverflow).assertEqual("TextOverflow.Ellipsis")
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual("15")
+      expect(JSON.parse(strJson).$attrs.baselineOffset).assertEqual("0")
+      expect(JSON.parse(strJson).$attrs.maxLines).assertEqual("2")
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual("TextCase.Normal")
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.Underline", color: "#FFFF0000"
       }))
-      expect(obj.$attrs.direction).assertEqual("Direction.Auto")
-      expect(obj.$attrs.aspectRatio).assertEqual(1)
-      expect(obj.$attrs.fontColor).assertEqual("#FF000000")
+      expect(JSON.parse(strJson).$attrs.direction).assertEqual("Direction.Auto")
+      expect(JSON.parse(strJson).$attrs.aspectRatio).assertEqual(1)
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FF000000")
       console.info('cd textInspectorByKey END');
     });
 
@@ -118,19 +118,19 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text1');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text1 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.direction).assertEqual("Direction.Ltr")
-      expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Start")
-      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Dotted")
-      expect(obj.$attrs.enabled).assertEqual(true)
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Normal")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start")
-      expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip")
-      expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
+      expect(JSON.parse(strJson).$attrs.direction).assertEqual("Direction.Ltr")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Start")
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Start")
+      expect(JSON.parse(strJson).$attrs.borderStyle).assertEqual("BorderStyle.Dotted")
+      expect(JSON.parse(strJson).$attrs.enabled).assertEqual(true)
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual("Visibility.Hidden")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Normal")
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Start")
+      expect(JSON.parse(strJson).$attrs.textOverflow).assertEqual("TextOverflow.Clip")
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.LineThrough", color: "#FFFF0000"
       }))
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFFFFFFF")
       console.info('cd text1InspectorByKey END');
     });
 
@@ -145,18 +145,18 @@ export default function textJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text2 component obj is: " + JSON.stringify(obj));
 
-      expect(obj.$attrs.direction).assertEqual("Direction.Rtl")
-      expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Center")
-      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid")
-      expect(obj.$attrs.visibility).assertEqual("Visibility.None")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bolder")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
-      expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase")
-      expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
+      expect(JSON.parse(strJson).$attrs.direction).assertEqual("Direction.Rtl")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopEnd")
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Center")
+      expect(JSON.parse(strJson).$attrs.borderStyle).assertEqual("BorderStyle.Solid")
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual("Visibility.None")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Bolder")
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center")
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual("TextCase.UpperCase")
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.None", color: "#FFFF0000"
       }))
-      expect(obj.$attrs.fontColor).assertEqual("#FF0000FF")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FF0000FF")
       console.info('cd text2InspectorByKey END');
     });
 
@@ -170,13 +170,13 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text3');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text3 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.End")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Lighter")
-      expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Top")
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.End")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Lighter")
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.Overline", color: "#FFFF0000"
       }))
-      expect(obj.$attrs.fontColor).assertEqual("#FF808080")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FF808080")
       console.info('cd text3InspectorByKey END');
     });
 
@@ -191,10 +191,10 @@ export default function textJsunit() {
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text4 component obj is: " + JSON.stringify(obj));
 
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Baseline")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Medium")
-      expect(obj.$attrs.fontColor).assertEqual("#FFA52A2A")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopStart")
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Baseline")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Medium")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFA52A2A")
       console.info('cd text4InspectorByKey END');
     });
 
@@ -208,10 +208,10 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text5');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text5 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Stretch")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Regular")
-      expect(obj.$attrs.fontColor).assertEqual("#FF808080")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.End")
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Stretch")
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Regular")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FF808080")
       console.info('cd text5InspectorByKey END');
     });
 
@@ -225,8 +225,8 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text6');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text6 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFA500")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.BottomEnd")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFFFA500")
       console.info('cd text6InspectorByKey END')
     });
 
@@ -240,8 +240,8 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text7');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text7 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFFF00")
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Bottom")
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFFFFF00")
       console.info('cd text7InspectorByKey END');
     });
 
@@ -255,8 +255,8 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text8');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("cd text8 component obj is: " + JSON.stringify(obj));
-      console.log("cd text8 align" + JSON.stringify(obj.$attrs.align));
-      expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
+      console.log("cd text8 align" + JSON.stringify(JSON.parse(strJson).$attrs.align));
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.BottomStart")
       console.info('cd text8InspectorByKey END');
     });
   })

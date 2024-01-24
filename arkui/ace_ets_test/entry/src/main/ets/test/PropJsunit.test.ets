@@ -68,8 +68,8 @@ export default function propJsunit() {
       expect(obj.$type).assertEqual('Text');
       console.log(JSON.stringify(obj.$type))
       console.log("cd attrs.conten type1" + typeof ("10"))
-      console.log("yr prop0 content-'10'" + obj.$attrs.content)
-      expect(obj.$attrs.content).assertEqual("10");
+      console.log("yr prop0 content-'10'" + JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("10");
       console.info('propTest001 END');
     });
 
@@ -83,10 +83,10 @@ export default function propJsunit() {
       let strJson = getInspectorByKey('Text002');
       let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("cd attrs.conten type" + typeof (obj.$attrs.content))
+      console.log("cd attrs.conten type" + typeof (JSON.parse(strJson).$attrs.content))
       console.log("cd attrs.conten type1 " + typeof ("10"))
-      expect(obj.$attrs.content).assertEqual("10");
-      console.log("cd prop0 content-'10'" + JSON.stringify(obj.$attrs.content))
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("10");
+      console.log("cd prop0 content-'10'" + JSON.stringify(JSON.parse(strJson).$attrs.content))
       console.info('propTest002 END');
     });
   })
