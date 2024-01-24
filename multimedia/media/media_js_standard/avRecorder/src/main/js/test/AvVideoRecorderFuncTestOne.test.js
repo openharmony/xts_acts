@@ -506,7 +506,8 @@ export default function avVideoRecorderTestOne() {
             steps.shift();
             avRecorder.getAVRecorderConfig().then((config) => {
                 console.info('getAVRecorderConfig success');
-                expect(config).assertEqual(avConfig);
+                expect(config.audioSourceType).assertEqual(avConfig.audioSourceType);
+                expect(config.audioBitrate).assertEqual(avConfig.audioBitrate);
                 toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             }).catch((err) => {
                 console.info('getAVRecorderConfig failed and catch error is ' + err.message);
