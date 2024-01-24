@@ -105,9 +105,9 @@ export default function getListItemRect5() {
 
       console.log('assert size')
       console.log('listItem_0.right - listItem_0.left' + (listItem_0.right - listItem_0.left))
-      expect(Math.round(width)).assertEqual(Math.round(listItem_0.right - listItem_0.left));
+      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItem_0.right - listItem_0.left));
       console.log('listItem_0.bottom - listItem_0.top' + (listItem_0.bottom - listItem_0.top))
-      expect(Math.round(height)).assertEqual(Math.round(listItem_0.bottom - listItem_0.top));
+      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItem_0.bottom - listItem_0.top));
 
       done();
     });
@@ -172,9 +172,9 @@ export default function getListItemRect5() {
 
       console.log('assert size')
       console.log('listItem_0.right - listItem_0.left' + (listItem_0.right - listItem_0.left))
-      expect(Math.round(width)).assertEqual(Math.round(listItem_0.right - listItem_0.left));
+      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItem_0.right - listItem_0.left));
       console.log('listItem_0.bottom - listItem_0.top' + (listItem_0.bottom - listItem_0.top))
-      expect(Math.round(height)).assertEqual(Math.round(listItem_0.bottom - listItem_0.top));
+      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItem_0.bottom - listItem_0.top));
 
       done();
     });

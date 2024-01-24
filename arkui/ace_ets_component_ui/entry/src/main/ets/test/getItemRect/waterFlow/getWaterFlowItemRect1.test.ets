@@ -101,8 +101,8 @@ export default function getWaterFlowItemRect1() {
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(170)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(width)).assertEqual(Math.round(170));
+      expect(Math.round(height)).assertEqual(Math.round(100));
 
       done();
     });
@@ -159,8 +159,8 @@ export default function getWaterFlowItemRect1() {
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(width)).assertEqual(Math.round(0));
+      expect(Math.round(height)).assertEqual(Math.round(0));
 
       done();
     });
@@ -251,8 +251,8 @@ export default function getWaterFlowItemRect1() {
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(width)).assertEqual(Math.round(0));
+      expect(Math.round(height)).assertEqual(Math.round(0));
 
       done();
     });
@@ -310,8 +310,8 @@ export default function getWaterFlowItemRect1() {
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(width)).assertEqual(Math.round(0));
+      expect(Math.round(height)).assertEqual(Math.round(0));
 
       done();
     });
