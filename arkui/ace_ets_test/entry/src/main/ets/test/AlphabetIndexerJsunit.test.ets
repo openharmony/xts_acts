@@ -44,7 +44,7 @@ export default function alphabetIndexerJsunit() {
           console.info("push AlphabetIndexer page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push AlphabetIndexer page error " + JSON.stringify(result));
+        console.error("push AlphabetIndexer page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

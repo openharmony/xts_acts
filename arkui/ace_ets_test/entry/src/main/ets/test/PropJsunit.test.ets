@@ -45,7 +45,7 @@ export default function propJsunit() {
           console.info("push Prop page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Prop page error " + JSON.stringify(result));
+        console.error("push Prop page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

@@ -31,7 +31,7 @@ export default function appStorageJsunit() {
 
   describe('appStorageTest', () => {
     beforeEach(async () => {
-      let options: router.RouterOptions = {
+      let options = {
         uri: 'MainAbility/pages/AppStorage',
       }
       try {
