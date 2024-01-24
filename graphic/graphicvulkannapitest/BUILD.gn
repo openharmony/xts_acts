@@ -11,8 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
 import("//foundation/graphic/graphic_2d/graphic_config.gni")
+import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "hit/ActsGraphicVulkanTest"
 
@@ -32,14 +32,14 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
     "-g3",
     "-Dprivate=public",
     "-Dprotected=public",
-   ]
+  ]
 
   deps = [
+    "$comPath/frameworks/surface:surface",
     "$comPath/rosen/modules/2d_graphics:2d_graphics",
     "$comPath/rosen/modules/render_service_base:librender_service_base",
     "$comPath/rosen/modules/render_service_client:librender_service_client",
     "$comPath/utils:libgraphic_utils",
-    "$comPath/frameworks/surface:surface",
     "//third_party/googletest:gtest_main",
     "//third_party/vulkan-headers:vulkan_headers",
     "//third_party/zlib:libz",
@@ -52,7 +52,6 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
     "$comPath/rosen/modules/render_service_client",
   ]
 
-   
   external_deps = [
     "c_utils:utils",
     "hilog:libhilog",
