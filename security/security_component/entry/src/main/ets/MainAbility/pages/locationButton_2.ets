@@ -227,7 +227,52 @@ struct locationButton_2 {
             minHeight: this.minHeight,
             maxHeight: this.maxHeight
           })
-      }
-    }
+        Button() {
+          Text('--------------------')
+            .fontSize(25)
+            .fontWeight(FontWeight.Bold)
+        }.type(ButtonType.Capsule)
+        .margin({
+          top: 200,
+          bottom:60
+        }).backgroundColor('#00000000')
+        LocationButton({ icon: LocationIconStyle.FULL_FILLED, text: LocationDescription.CURRENT_LOCATION, buttonType: this.bgType })
+          .onClick((event: ClickEvent, result: LocationButtonOnClickResult) => {
+            try {
+              var clickData = {
+                data: {
+                  "clickResult": result
+                }
+              }
+              var clickEvent = {
+                eventId: 2,
+                priority: events_emitter.EventPriority.LOW
+              }
+              console.debug("====>page_locationButton_2 onclick result:" + JSON.stringify(result))
+              events_emitter.emit(clickEvent, clickData)
+            } catch (err) {
+              console.debug("====>page_locationButton_2 emit action state err: " + JSON.stringify(err.message))
+            }
+          })
+          .iconSize(this.iconSize)
+          .layoutDirection(this.direct)
+          .markAnchor({ x: this.anchorX, y: this.anchorY })
+          .offset({ x: this.offsetX, y: this.offsetY })
+          .fontSize(this.fontSize)
+          .fontStyle(this.fontStyle)
+          .fontWeight(this.fontWeight)
+          .fontFamily(this.fontFamily)
+          .fontColor(this.fontColor)
+          .iconColor(this.iconColor)
+          .backgroundColor(this.bgColor)
+          .borderStyle(this.borderSty)
+          .borderWidth(this.borderWid)
+          .borderColor(this.borderCol)
+          .borderRadius(this.borderRad)
+          .padding({ left: this.left, right: this.right, top: this.top, bottom: this.bottom })
+          .textIconSpace(this.middle)
+          .key("keyLocation1")
+      }.width(this.columnWidth).height(this.columnHeight).clip(this.clipSet)
+    }.height('100%')
   }
 }
