@@ -22,6 +22,7 @@ group("graphic") {
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
+      "graphicvulkannapitest:ActsGraphicVulkanTest",
       "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
