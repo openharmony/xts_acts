@@ -45,7 +45,7 @@ export default function panelJsunit() {
           console.info("push Panel page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Panel page error " + JSON.stringify(result));
+        console.error("push Panel page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

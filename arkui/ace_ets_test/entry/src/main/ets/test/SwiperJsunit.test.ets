@@ -69,7 +69,7 @@ export default function swiperJsunit() {
           console.info("push Swiper page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Swiper page error " + JSON.stringify(result));
+        console.error("push Swiper page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

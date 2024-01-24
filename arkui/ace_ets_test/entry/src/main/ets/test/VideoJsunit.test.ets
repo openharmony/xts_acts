@@ -46,7 +46,7 @@ export default function videoJsunit() {
           console.info("push Video page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Video page error " + JSON.stringify(result));
+        console.error("push Video page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

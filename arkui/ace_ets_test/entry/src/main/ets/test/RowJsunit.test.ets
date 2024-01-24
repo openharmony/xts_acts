@@ -45,7 +45,7 @@ export default function rowJsunit() {
           console.info("push Row page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Row page error " + JSON.stringify(result));
+        console.error("push Row page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

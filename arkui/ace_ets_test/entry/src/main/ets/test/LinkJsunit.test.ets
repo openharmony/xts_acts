@@ -45,7 +45,7 @@ export default function linkJsunit() {
           console.info("push Link page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Link page error " + JSON.stringify(result));
+        console.error("push Link page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

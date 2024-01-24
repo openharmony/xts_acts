@@ -44,7 +44,7 @@ export default function gridJsunit() {
           console.info("push Grid page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Grid page error " + JSON.stringify(result));
+        console.error("push Grid page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

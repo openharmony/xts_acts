@@ -45,7 +45,7 @@ export default function listItemJsunit() {
           console.info("push ListItem page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ListItem page error " + JSON.stringify(result));
+        console.error("push ListItem page error " + JSON.stringify(err));
       }
       await sleep(2)
     });
@@ -67,10 +67,10 @@ export default function listItemJsunit() {
       console.log(JSON.stringify(strJson))
       let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem1‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem1‘s editable is ' + JSON.stringify(obj.$attrs.editable))
-      expect(obj.$attrs.sticky).assertEqual('Sticky.None')
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem1‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem1‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.None')
       console.info('++++++++++++++++ ListItem TestCase 1 End ++++++++++++++++');
     });
 

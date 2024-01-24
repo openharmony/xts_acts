@@ -46,7 +46,7 @@ export default function tabJsunit() {
           console.info("push Tab page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Tab page error " + JSON.stringify(result));
+        console.error("push Tab page error " + JSON.stringify(err));
       }
       await sleep(2)
     });

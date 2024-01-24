@@ -45,7 +45,7 @@ export default function navigatorJsunit() {
           console.info("push Navigator page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Navigator page error " + JSON.stringify(result));
+        console.error("push Navigator page error " + JSON.stringify(err));
       }
       await sleep(2)
     });
