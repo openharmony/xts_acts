@@ -19,11 +19,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import cardEmulation from '@ohos.nfc.cardEmulation';
 import controller from '@ohos.nfc.controller';
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 let isoDepTaginfo = {
