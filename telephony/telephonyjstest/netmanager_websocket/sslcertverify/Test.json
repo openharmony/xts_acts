@@ -26,13 +26,13 @@
 		{
             "type": "PushKit",
             "push":[
-                "./resource/netmanager/ca.der -> /data/app/el2/100/base/com.acts.sslverify/files/"
+                "./resource/netmanager/GlobalSign.der -> /data/app/el2/100/base/com.acts.sslverify/files/"
             ]
         },
         {
             "type": "ShellKit",
             "run-command":[
-                "chmod 777 -R /data/app/el2/100/base/com.acts.sslverify/files/ca.der"
+                "chmod 777 -R /data/app/el2/100/base/com.acts.sslverify/files/GlobalSign.der"
             ]
         }
     ]
