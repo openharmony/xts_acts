@@ -19,11 +19,6 @@ import fs from '@ohos.file.fs';
 import { BusinessError } from '@ohos.base';
 import  buffer from '@ohos.buffer';
 
-interface contentType{
-  cert: contentType1,
-  caCert: contentType2
-}
-
 interface contentType1{
   data: string,
   type: number
@@ -68,7 +63,7 @@ let cc = "-----BEGIN CERTIFICATE-----\n" +
 
 let cert1: contentType1 = {
   data: cc,
-  type: 0
+  type: networkSecurity.CertType.CERT_TYPE_PEM
 }
 
 let cert:contentType1 = {
@@ -93,7 +88,7 @@ let cert:contentType1 = {
   "Mx86OyXShkDOOyyGeMlhLxS67ttVb9+E7gUJTb0o2HLO02JQZR7rkpeDMdmztcpH\n" +
   "WD9f\n" +
   "-----END CERTIFICATE-----\n",
-  type:0
+  type:networkSecurity.CertType.CERT_TYPE_PEM
 }
 
 let caCert: contentType2 = {
@@ -125,7 +120,7 @@ export default function NetworkManagerMulticastSSLTest() {
 
     beforeAll(async ()=>{
       let pathDir = "/data/storage/el2/base/files/";
-      let filePath = pathDir + "ca.der";
+      let filePath = pathDir + "GlobalSign.der";
       console.info('readxx' + filePath);
       try {
         let file = await fs.open(filePath, fs.OpenMode.READ_WRITE);
@@ -246,7 +241,7 @@ export default function NetworkManagerMulticastSSLTest() {
         done();
       }).catch((error: BusinessError) => {
         console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);
-        expect(error.code === 2305001).assertTrue();
+        expect(error.code == 2305001).assertTrue();
         done();
       })
     })
@@ -261,14 +256,16 @@ export default function NetworkManagerMulticastSSLTest() {
      */
     it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500", 0, async (done:Function)=>{
       let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500";
-      console.info('xxxxxxx', caCert);
+      console.info('xxxxxxx', `${JSON.stringify(networkSecurity.CertType.CERT_TYPE_DER)}`);
       try {
-        let result = networkSecurity.certVerificationSync(cert1, caCert);
+        let result = networkSecurity.certVerificationSync(caCert);
         console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
-        expect(result == 0).assertTrue();
+        ExpectTrue(result == 0);
         done();
       } catch (error) {
         console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);
+        expectFalse();
+        done();
       }
     })
   })
