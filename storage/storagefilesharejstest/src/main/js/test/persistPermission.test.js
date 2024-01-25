@@ -113,33 +113,38 @@ export default function FileSahre_PersistPermission_test() {
       */
       it('FileShare_persistPermission_003', 3, async function (done) {
           try {
-          let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_003.txt";
-          let uriObject = new fileuri.FileUri(fileStr);
-          let uri = uriObject.toString();
-          let fd = await fs.open(uri,fs.OpenMode.CREATE);
-          await fs.close(fd);
-          let policyInfo = {
-              uri: uri, 
+          let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_003.txt";
+          let uriObject1 = new fileuri.FileUri(fileStr1);
+          let uri1 = uriObject1.toString();
+          let policyInfo1 = {
+              uri: uri1, 
               operationMode: -1,
-            };
-            let policies = [policyInfo];
-            fileShare.persistPermission(policies).then(() => {
-              console.info("FileShare_persistPermission_003 successfully");
-              expect(false).assertTrue();
+          };
+          let fileStr2 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_00301.txt";
+          let uriObject2 = new fileuri.FileUri(fileStr2);
+          let uri2 = uriObject2.toString();
+          let fd2 = await fs.open(uri2,fs.OpenMode.CREATE);
+          await fs.close(fd2);
+          let policyInfo2 = {
+              uri: uri2, 
+              operationMode: fileShare.OpenMode.READ_MODE,
+          };
+          let policies = [policyInfo1, policyInfo2];
+          fileShare.persistPermission(policies).then(() => {
+            console.info("FileShare_persistPermission_003 successfully");
+            expect(false).assertTrue();
+            done();
+          }).catch((err) => {
+            console.info("FileShare_persistPermission_003 failed with error message: " + err.message + ", error code: " + err.code);
+            expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
+            if (err.code == 13900001 && err.data) {
+              let errorCode = err.data[0].code + policyInfo1.operationMode;
+              console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
+              console.log("FileShare.PolicyErrorResult message : " + JSON.stringify(err.data[0].message));
+              expect(errorCode.code == 2).assertTrue();
               done();
-            }).catch((err) => {
-              console.info("FileShare_persistPermission_003 failed with error message: " + err.message + ", error code: " + err.code);
-              expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
-              if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                  console.log("FileShare.PolicyErrorResult PolicyErrorCode.INVALID_MODE : " + JSON.stringify(err.data[i].code));
-                  console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[i].uri));
-                  console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[i].message));
-                  expect(err.data[i].code == 2).assertTrue();
-                  done();
-                }
-              }
-            });
+            }
+          });
           } catch (e) {
             console.info('FileShare_persistPermission_003 has failed for ' + e.message + ", err code: " + e.code);
             if(e.code == 801){
@@ -161,31 +166,38 @@ export default function FileSahre_PersistPermission_test() {
       */
       it('FileShare_persistPermission_004', 3, async function (done) {
           try {
-          let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_004.txt";
-          let uriObject = new fileuri.FileUri(fileStr);
-          let uri = uriObject.toString();
-          let policyInfo = {
-              uri: uri, 
-              operationMode: fileShare.OperationMode.READ_MODE,
-            };
-            let policies = [policyInfo];
-            fileShare.persistPermission(policies).then(() => {
-              console.info("FileShare_persistPermission_004 successfully");
-              expect(false).assertTrue();
+          let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_004.txt";
+          let uriObject1 = new fileuri.FileUri(fileStr1);
+          let uri1 = uriObject1.toString();
+          let policyInfo1 = {
+            uri: uri1, 
+            operationMode: fileShare.OperationMode.READ_MODE,
+          };
+          let fileStr2 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_00401.txt";
+          let uriObject2 = new fileuri.FileUri(fileStr2);
+          let uri2 = uriObject2.toString();
+          let fd = await fs.open(uri2, fs.OpenMode.CREATE);
+          await fs.close(fd);
+          let policyInfo2 = {
+            uri: uri2, 
+            operationMode: fileShare.OperationMode.READ_MODE,
+          };
+          let policies = [policyInfo1, policyInfo2];
+          fileShare.persistPermission(policies).then(() => {
+            console.info("FileShare_persistPermission_004 successfully");
+            expect(false).assertTrue();
+            done();
+          }).catch((err) => {
+            console.info("FileShare_persistPermission_004 failed with error message: " + err.message + ", error code: " + err.code);
+            expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
+            if (err.code == 13900001 && err.data) {
+              console.log("FileShare.PolicyErrorResult PolicyErrorCode.INVALID_PATH : " + JSON.stringify(err.data[0].code));
+              console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
+              console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[0].message));
+              expect(err.data[0].code == 3 && err.data[0].message == "Invalid path!").assertTrue();
               done();
-            }).catch((err) => {
-              console.info("FileShare_persistPermission_004 failed with error message: " + err.message + ", error code: " + err.code);
-              expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
-              if (err.code == 13900001 && err.data) {
-                for (let i = 0; i < err.data.length; i++) {
-                  console.log("FileShare.PolicyErrorResult PolicyErrorCode.INVALID_PATH : " + JSON.stringify(err.data[i].code));
-                  console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[i].uri));
-                  console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[i].message));
-                  expect(err.data[i].code == 3).assertTrue();
-                  done();
-                }
-              }
-            });
+            }
+          });
           } catch (e) {
             console.info('FileShare_persistPermission_004 has failed for ' + e.message + ", err code: " + e.code);
             if(e.code == 801){
@@ -207,17 +219,23 @@ export default function FileSahre_PersistPermission_test() {
       */
       it('FileShare_persistPermission_005', 3, async function (done) {
         try {
-          let fileStr = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_005.txt";
-          let uriObject = new fileuri.FileUri(fileStr);
-          let uri = uriObject.toString();
-          let fd = await fs.open(uri,fs.OpenMode.CREATE);
+          let fileStr1 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_005.txt";
+          let uriObject1 = new fileuri.FileUri(fileStr1);
+          let uri1 = uriObject1.toString();
+          let policyInfo1 = {
+              uri: uri1, 
+              operationMode: -2,
+          };
+          let fileStr2 = "/data/storage/el2/base/haps/entry/files/FileShare_persistPermission_00501.txt";
+          let uriObject2 = new fileuri.FileUri(fileStr2);
+          let uri2 = uriObject2.toString();
+          let fd = await fs.open(uri2,fs.OpenMode.CREATE);
           await fs.close(fd);
-          let policyInfo = {
-              uri: uri, 
+          let policyInfo2 = {
+              uri: uri2, 
               operationMode: fileShare.OperationMode.READ_MODE,
           };
-          let policies = [policyInfo];
-          fileShare.persistPermission(policies);
+          let policies = [policyInfo1, policyInfo2];
           fileShare.persistPermission(policies).then(() => {
             console.info("FileShare_persistPermission_005 successfully");
             expect(false).assertTrue();
@@ -226,13 +244,12 @@ export default function FileSahre_PersistPermission_test() {
             console.info("FileShare_persistPermission_005 failed with error message: " + err.message + ", error code: " + err.code);
             expect(err.code == 13900001 && err.message == 'Operation not permitted').assertTrue();
             if (err.code == 13900001 && err.data) {
-              for (let i = 0; i < err.data.length; i++) {
-                console.log("FileShare.PolicyErrorResult PolicyErrorCode.PERSISTENCE_FORBIDDEN : " + JSON.stringify(err.data[i].code));
-                console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[i].uri));
-                console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[i].message));
-                expect(err.data[i].code == 1).assertTrue();
-                done();
-              }
+              let errorCode = err.data[0].code + policyInfo1.operationMode;
+              console.log("FileShare.PolicyErrorResult PolicyErrorCode.PERSISTENCE_FORBIDDEN : " + errorCode);
+              console.log("FileShare.PolicyErrorResult uri : " + JSON.stringify(err.data[0].uri));
+              console.log("FileShare.PolicyErrorResult reason : " + JSON.stringify(err.data[0].message));
+              expect(err.data[i].code == 1).assertTrue();
+              done(); 
             }
           });
         } catch (e) {
