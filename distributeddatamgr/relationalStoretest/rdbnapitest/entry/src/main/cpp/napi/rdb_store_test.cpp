@@ -108,9 +108,9 @@ static napi_value RdbstoreTearDownTestCase(napi_env env, napi_callback_info info
     return returnCode;
 }
 
-static void ProgressCallback(void *context,Rdb_ProgressDetails *progressDetails) {   
+static void ProgressCallback(void *context, Rdb_ProgressDetails *progressDetails) {
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails != nullptr, "progressDetails is fail.");   
-    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version fail"); 
+    NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->version == DISTRIBUTED_PROGRESS_DETAIL_VERSION, "version fail."); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->schedule == Rdb_Progress::RDB_SYNC_FINISH, "schedule is fail."); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->code == Rdb_ProgressCode::RDB_CLOUD_DISABLED, "code is fail."); 
     NAPI_ASSERT_RETURN_VOID(g_env, progressDetails->tableLength == 0, "tableLength is fail."); 
@@ -1787,7 +1787,8 @@ static napi_value SUB_DDM_RDB_3400(napi_env env, napi_callback_info info) {
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
-    auto errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_TIME_FIRST, table, TABLE_COUNT, &observer);
+    auto errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_TIME_FIRST,
+        table, TABLE_COUNT, &observer);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync TIME_FIRST is fail.");
     errCode = 0;
 
@@ -1810,7 +1811,8 @@ static napi_value SUB_DDM_RDB_3500(napi_env env, napi_callback_info info) {
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
-    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_CLOUD_FIRST, table, TABLE_COUNT, &observer);
+    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_CLOUD_FIRST,
+        table, TABLE_COUNT, &observer);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync is fail.");
     errCode = 0;
 
@@ -1833,7 +1835,8 @@ static napi_value SUB_DDM_RDB_3600(napi_env env, napi_callback_info info) {
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
-    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_NATIVE_FIRST, table, TABLE_COUNT, &observer);
+    int errCode = OH_Rdb_CloudSync(storeTestRdbStore_, Rdb_SyncMode::RDB_SYNC_MODE_NATIVE_FIRST,
+        table, TABLE_COUNT, &observer);
     NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_OK , "OH_Rdb_CloudSync is fail.");
     errCode = 0;
 
