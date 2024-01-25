@@ -268,14 +268,8 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
         expect().assertFail();
       } catch (exception) {
         await win.destroyWindow();
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(1300002);
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
+        console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
       }
     })
     /**
@@ -311,7 +305,7 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
+          console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
       }
@@ -323,8 +317,8 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
+          console.log(msgStr + JSON.stringify(exception))
+          expect(exception.code).assertEqual(1300002);
         }
       }
       try {
@@ -333,14 +327,8 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
         expect().assertFail();
       } catch (exception) {
         await win.destroyWindow();
-        if (!currentDeviceIsRk) {
-          console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(1300002);
-        } else {
-          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
-          expect(exception.code).assertEqual(801);
-        }
+        console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(1300002);
       }
     })
     /**
@@ -375,7 +363,7 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(err))
+          console.log(msgStr + JSON.stringify(err))
           expect(err.code).assertEqual(801);
         }
       });
@@ -412,7 +400,7 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(err))
+          console.log(msgStr + JSON.stringify(err))
           expect(err.code).assertEqual(801);
         }
       });
