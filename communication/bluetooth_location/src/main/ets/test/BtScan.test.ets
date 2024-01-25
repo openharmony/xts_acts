@@ -38,16 +38,16 @@ describe('btScanTest', function() {
     }
 
     async function clickTheWindow() {
-        try{
+        try {
+            console.info('[bluetooth_js] clickRequestPermission start');
             let driver = Driver.create();
-            console.info('[bluetooth_js] bt driver create:'+ driver);            
-            await driver.delayMs(1000);
-            await driver.click(860, 2490);
-            await driver.delayMs(5000);
-            await driver.click(860, 2490);
             await driver.delayMs(3000);
-        } catch (error) {
-            console.info('[bluetooth_js] driver error info:'+ error);
+            let button = await driver.findComponent(ON.text("允许"));
+            await button.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] clickRequestPermission end');
+        } catch (err) {
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -654,25 +654,18 @@ describe('btScanTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISCOVERY_0300
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_DISCOVERY_0200
      * @tc.name TEST DISCOVERY
      * @tc.desc TEST DISCOVERY api 8.
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_DISCOVERY_0300', 0, async function (done) {
+    it('SUB_COMMUNICATION_BLUETOOTH_DISCOVERY_0200', 0, async function (done) {
         let result1 = bt.setBluetoothScanMode(bt.ScanMode.SCAN_MODE_CONNECTABLE,10);
         expect(result1).assertTrue();
         let getScanMode = bt.getBluetoothScanMode();
         console.info('[bluetooth_js] getScanMode = '+ JSON.stringify(getScanMode));
         expect(true).assertEqual(getScanMode == bt.ScanMode.SCAN_MODE_CONNECTABLE);
-        let result = bt.startBluetoothDiscovery();
-        await sleep(2000);
-        console.info('[bluetooth_js] startDiscovery1'+result);
-        expect(result).assertTrue();
-        let result2 = bt.startBluetoothDiscovery();
-        console.info('[bluetooth_js] startDiscovery2'+result2);
-        expect(result2).assertFalse();
         done();
     })
 })

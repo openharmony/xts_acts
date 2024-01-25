@@ -52,13 +52,16 @@ export default class TestAbility extends UIAbility {
     });
     let atManager = abilityAccessCtrl.createAtManager();
     try {
-        atManager.requestPermissionsFromUser(this.context, ['ohos.permission.ACCESS_BLUETOOTH']).then((data) => {
-            console.info('data:' + JSON.stringify(data));
-            console.info('data permissions:' + data.permissions);
-            console.info('data authResults:' + data.authResults);
-        }).catch((err) => {
-            console.info('data:' + JSON.stringify(err));
-        })
+      console.info('-------------------------------------requestPermissionsFromUser get access permission start!!!!--------------------------------------');
+      atManager.requestPermissionsFromUser(this.context, ['ohos.permission.ACCESS_BLUETOOTH']).then((data) => {
+          console.info('data:' + JSON.stringify(data));
+          console.info('data permissions:' + data.permissions);
+          console.info('data authResults:' + data.authResults);
+          console.info('-------------------------------------requestPermissionsFromUser get location permission end!!!!--------------------------------------');
+      }).catch((err) => {
+          console.info('data:' + JSON.stringify(err));
+          console.info('-------------------------------------requestPermissionsFromUser get location permission err!!!!--------------------------------------');
+      })
     } catch(err) {
         console.log(`catch err->${JSON.stringify(err)}`);
     }

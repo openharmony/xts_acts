@@ -47,26 +47,12 @@ describe('btBaseProfileTest', function() {
         }
     }
 
-    async function clickTheWindow() {
-        try{
-            let driver = Driver.create();
-            console.info('[bluetooth_js] bt driver create:'+ driver);            
-            await driver.delayMs(1000);
-            await driver.click(860, 2490);
-            await driver.delayMs(5000);
-            await driver.click(860, 2490);
-            await driver.delayMs(3000);
-        } catch (error) {
-            console.info('[bluetooth_js] driver error info:'+ error);
-        }
-    }
-
     async function tryToEnableBt() {
         let sta = btAccess.getState();
         switch (sta) {
             case 0:
                 btAccess.enableBluetooth();
-                await clickTheWindow();
+                await clickRequestPermission();
                 await sleep(10000);
                 let sta1 = btAccess.getState();
                 console.info('[bluetooth_js] bt turn off:' + JSON.stringify(sta1));
@@ -80,7 +66,7 @@ describe('btBaseProfileTest', function() {
                 break;
             case 3:
                 btAccess.enableBluetooth();
-                await clickTheWindow();
+                await clickRequestPermission();
                 await sleep(10000);
                 let sta2 = btAccess.getState();
                 console.info('[bluetooth_js] bt turning off:' + JSON.stringify(sta2));
