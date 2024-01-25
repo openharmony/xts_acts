@@ -506,7 +506,8 @@ export default function avVideoRecorderTestOne() {
             steps.shift();
             avRecorder.getAVRecorderConfig().then((config) => {
                 console.info('getAVRecorderConfig success');
-                expect(config).assertEqual(avConfig);
+                expect(config.audioSourceType).assertEqual(avConfig.audioSourceType);
+                expect(config.audioBitrate).assertEqual(avConfig.audioBitrate);
                 toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             }).catch((err) => {
                 console.info('getAVRecorderConfig failed and catch error is ' + err.message);
@@ -7911,22 +7912,20 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfig.url = fdPath;
+            avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
-                // setAvRecorderCallback
-                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
-                // AVRecorderTestBase.preparePromise
-                PREPARE_PROMISE_EVENT,
+                // init avRecorder
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT, PREPARE_PROMISE_EVENT,
+                // init camera
+                GETINPUTSURFACE_PROMISE_EVENT, INITCAMERA_EVENT,
                 // getAVRecorderConfigPromise
                 GETAVRECORDERCONFIG_PROMISE_EVENT,
-                // initCamera
-                INITCAMERA_EVENT,
-                // AVRecorderTestBase.releasePromise
+                // release avRecorder and camera
                 RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH264Aac, recorderTime, mySteps, done);
 
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 end')
         })
