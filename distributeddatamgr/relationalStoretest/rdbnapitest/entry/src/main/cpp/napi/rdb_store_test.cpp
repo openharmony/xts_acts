@@ -1807,7 +1807,7 @@ static napi_value SUB_DDM_RDB_3500(napi_env env, napi_callback_info info) {
     constexpr int TABLE_COUNT = 1;
     const char *table[TABLE_COUNT];
     table[0] = "store_test";
-    db_ProgressObserver observer;
+    Rdb_ProgressObserver observer;
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
@@ -1831,7 +1831,7 @@ static napi_value SUB_DDM_RDB_3600(napi_env env, napi_callback_info info) {
     constexpr int TABLE_COUNT = 1;
     const char *table[TABLE_COUNT];
     table[0] = "store_test";
-    db_ProgressObserver observer;
+    Rdb_ProgressObserver observer;
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
@@ -1874,7 +1874,7 @@ static napi_value SUB_DDM_RDB_3800(napi_env env, napi_callback_info info) {
     constexpr int TABLE_COUNT = 1;
     const char *table[TABLE_COUNT];
     table[0] = "store_test";
-    db_ProgressObserver observer;
+    Rdb_ProgressObserver observer;
     void *context = nullptr;
     observer.context = &context;
     observer.callback = ProgressCallback;
