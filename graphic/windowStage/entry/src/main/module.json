@@ -37,7 +37,11 @@
             },
             {
                 "name": "ohos.permission.CAPTURE_SCREEN",
-                "reason": "need use ohos.permission.SYSTEM_FLOAT_WINDOW"
+                "reason": "need use ohos.permission.CAPTURE_SCREEN"
+            },
+            {
+              "name": "ohos.permission.PRIVACY_WINDOW",
+              "reason": "need use ohos.permission.PRIVACY_WINDOW"
             }
         ]
     }
