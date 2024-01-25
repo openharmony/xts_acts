@@ -135,16 +135,14 @@ static napi_value UnregisterJavaScriptProxy(napi_env env, napi_callback_info inf
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    //    获取第一个参数 webName
+    // 获取第一个参数 webName
     size_t webNameSize = 0;
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &webNameSize);
     char *webNameValue = new (std::nothrow) char[webNameSize + 1];
     size_t webNameLength = 0;
     napi_get_value_string_utf8(env, args[0], webNameValue, webNameSize + 1, &webNameLength);
-    //    const char *methodName[3] = {"method1", "method2", "method3"};
     NativeArkWeb_OnJavaScriptProxyCallback callback[3] = {ProxyMethod1, ProxyMethod2, ProxyMethod3};
-    //    如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
-    //    int32_t size = 3;
+    // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
     OH_NativeArkWeb_UnregisterJavaScriptProxy(webNameValue, "ndkProxy");
     return nullptr;
 }
