@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function ellipseNeJsunit() {
-  describe('ellipseNeTest', function () {
-    beforeAll(async function (done) {
+  describe('ellipseNeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/ellipse',
@@ -37,10 +37,9 @@ export default function ellipseNeJsunit() {
       } catch (err) {
         console.error("push ellipse page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ellipseNe after each called");
     });
@@ -50,16 +49,16 @@ export default function ellipseNeJsunit() {
      * @tc.name         testellipseNe0001
      * @tc.desic         aceellipseNeEtsTest0001
      */
-    it('testellipseNe0001', 0, async function (done) {
+    it('testellipseNe0001', 0, async () => {
       console.info('ellipseNe testellipseNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Ellipse');
-      expect(obj.$attrs.width).assertEqual("300.00px");
-      console.info("[testellipseNe0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("300.00px");
+      console.info("[testellipseNe0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function ellipseNeJsunit() {
      * @tc.name         testellipseNe0002
      * @tc.desic         aceellipseNeEtsTest0002
      */
-    it('testellipseNe0002', 0, async function (done) {
+    it('testellipseNe0002', 0, async () => {
       console.info('ellipseNe testellipseNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Ellipse');
-      expect(obj.$attrs.height).assertEqual("300.00px");
-      console.info("[testellipseNe0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("300.00px");
+      console.info("[testellipseNe0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
   })
 }

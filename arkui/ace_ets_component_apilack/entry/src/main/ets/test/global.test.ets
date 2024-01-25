@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function globalJsunit() {
-  describe('globalJsunit', function () {
-    beforeEach(async function (done) {
+  describe('globalJsunit', () => {
+    beforeEach(async () => {
       console.info("global beforeEach start");
       let options = {
         uri: 'MainAbility/pages/global',
@@ -39,10 +38,9 @@ export default function globalJsunit() {
       } catch (err) {
         console.error("push global page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
     });
 
@@ -51,13 +49,13 @@ export default function globalJsunit() {
      * @tc.name         testglobal_getInspectorTree0001
      * @tc.desic         aceGlobal_getInspectorTree0001
      */
-    it('testglobal_getInspectorTree0001', 0, async function (done) {
+    it('testglobal_getInspectorTree0001', 0, async () => {
       console.info('testglobal_getInspectorTree0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorTree();
       console.info("[testglobal_getInspectorTree0001] strJson:" + strJson);
       expect(strJson !== null).assertTrue();
-      done();
+
     });
 
     /*
@@ -65,14 +63,24 @@ export default function globalJsunit() {
      * @tc.name         testglobal_sendKeyEvent0002
      * @tc.desic         aceGlobal_sendKeyEvent0002
      */
-    it('testglobal_sendKeyEvent0002', 0, async function (done) {
+    it('testglobal_sendKeyEvent0002', 0, async () => {
       console.info('testglobal_sendKeyEvent0002 START');
       await Utils.sleep(2000);
-      let KeyEvent = {type:1,keyCode:2027,keyText:"Unknown",keySource:4,deviceId:7,metaKey:0,timestamp:5284417765376,stopPropagation: () => {}};
+      let KeyEvent: KeyEvent = {
+        type: 1,
+        keyCode: 2027,
+        keyText: "Unknown",
+        keySource: 4,
+        deviceId: 7,
+        metaKey: 0,
+        timestamp: 5284417765376,
+        stopPropagation: () => {
+        }
+      };
       let result = sendKeyEvent(KeyEvent);
       console.info("[testglobal_sendKeyEvent0002] result:" + result);
       expect(JSON.stringify(result)).assertEqual("true");
-      done();
+
     });
 
     /*
@@ -80,39 +88,40 @@ export default function globalJsunit() {
      * @tc.name         testglobal_sendMouseEvent0003
      * @tc.desic         aceGlobal_sendMouseEvent0003
      */
-    it('testglobal_sendMouseEvent0003', 0, async function (done) {
+    it('testglobal_sendMouseEvent0003', 0, async () => {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);
 
       let mouseEvent: MouseEvent = {
-            button: 0,
-            action: 3,
-            x: 34, 
-            y: 34, 
-            screenX: 202.66666666666666, 
-            screenY: 102.66666666666667, 
-            timestamp: 8261302454000,
-            target: {
-              area: {
-                width: 142.66666666666666,
-                height:58.666666666666664,
-                position: {
-                  x: 158.66666666666666,
-                  y: 58.666666666666664,
-                },
-                globalPosition: {
-                  x: 168.66666666666666,
-                  y: 68.66666666666666,
-                }
-              }
+        button: 0,
+        action: 3,
+        x: 34,
+        y: 34,
+        screenX: 202.66666666666666,
+        screenY: 102.66666666666667,
+        timestamp: 8261302454000,
+        target: {
+          area: {
+            width: 142.66666666666666,
+            height: 58.666666666666664,
+            position: {
+              x: 158.66666666666666,
+              y: 58.666666666666664,
             },
-            source: 1,
-            stopPropagation: () => {},
+            globalPosition: {
+              x: 168.66666666666666,
+              y: 68.66666666666666,
+            }
+          }
+        },
+        source: 1,
+        stopPropagation: () => {
+        },
       }
       let result = sendMouseEvent(mouseEvent);
       console.info("[testglobal_sendMouseEvent0003] result:" + result);
       expect(JSON.stringify(result)).assertEqual("true");
-      done();
+
     });
   })
 }

@@ -14,13 +14,13 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function promptShowDialogJsunit() {
-  describe('promptShowDialogTest', function () {
-    beforeAll(async function (done) {
+  describe('promptShowDialogTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/prompt',
@@ -38,10 +38,9 @@ export default function promptShowDialogJsunit() {
       } catch (err) {
         console.error("push prompt page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("promptShowDialog after each called");
     });
@@ -51,18 +50,18 @@ export default function promptShowDialogJsunit() {
      * @tc.name         testpromptShowDialog001
      * @tc.desic         acepromptShowDialogEtsTest001
      */
-    it('testpromptShowDialog001', 0, async function (done) {
+    it('testpromptShowDialog001', 0, async () => {
       console.info('promptShowDialog testpromptShowDialog001 START');
       await Utils.sleep(1000);
       try {
-        var innerEventOne = {
+        let innerEventOne: events_emitter.InnerEvent = {
           eventId: 60220,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback1 = (eventData) => {
+        let callback1 = (eventData) => {
           console.info("testpromptShowDialog001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(true);
-          done();
+
         }
         console.info("onSelect_001 click result is: " + JSON.stringify(sendEventByKey('showDialogText', 10, "")));
         events_emitter.on(innerEventOne, callback1);
@@ -77,18 +76,18 @@ export default function promptShowDialogJsunit() {
      * @tc.name         testshowActionMenu0001
      * @tc.desic         aceshowActionMenuEtsTest0001
      */
-    it('testshowActionMenu0001', 0, async function (done) {
+    it('testshowActionMenu0001', 0, async () => {
       console.info('promptShowDialog testshowActionMenu0001 START');
       await Utils.sleep(1000);
       try {
-        var innerEventTwo = {
+        let innerEventTwo: events_emitter.InnerEvent = {
           eventId: 60221,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback2 = (backData1) => {
+        let callback2 = (backData1) => {
           console.info("onRequestPopupData_0011 get event state result is: " + JSON.stringify(backData1));
           expect(backData1.data.STATUS).assertEqual(true);
-          done();
+
         }
         console.info("onSelect_002 click result is: " + JSON.stringify(sendEventByKey('showActionMenuText', 10, "")));
         events_emitter.on(innerEventTwo, callback2);

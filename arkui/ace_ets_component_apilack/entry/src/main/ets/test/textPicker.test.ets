@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
-  describe('textPickerDefaultPickerItemHeightTest', function () {
-    beforeAll(async function (done) {
+  describe('textPickerDefaultPickerItemHeightTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/textPicker',
@@ -37,10 +37,9 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       } catch (err) {
         console.error("push textPicker page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textPickerDefaultPickerItemHeight after each called");
     });
@@ -50,16 +49,16 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0001
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0001
      */
-    it('testtextPickerDefaultPickerItemHeight0001', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0001', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.width).assertEqual("-");
-      console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("-");
+      console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0002
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0002
      */
-    it('testtextPickerDefaultPickerItemHeight0002', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0002', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.height).assertEqual("-");
-      console.info("[testtextPickerDefaultPickerItemHeight0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("-");
+      console.info("[testtextPickerDefaultPickerItemHeight0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,18 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0003
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0003
      */
-    it('testtextPickerDefaultPickerItemHeight0003', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0003', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.fontSize).assertEqual(undefined);
-      console.info("[testtextPickerDefaultPickerItemHeight0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual(undefined);
+      console.info("[testtextPickerDefaultPickerItemHeight0003] fontSize value :" + JSON.parse(strJson)
+        .$attrs
+        .fontSize);
+
     });
 
     /*
@@ -101,16 +102,16 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0004
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0004
      */
-    it('testtextPickerDefaultPickerItemHeight0004', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0004', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testtextPickerDefaultPickerItemHeight0004] opacity value :" + obj.$attrs.opacity);
-      done();
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
+      console.info("[testtextPickerDefaultPickerItemHeight0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
+
     });
 
     /*
@@ -118,16 +119,16 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0005
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0005
      */
-    it('testtextPickerDefaultPickerItemHeight0005', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0005', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.align).assertEqual("Alignment.Center");
-      console.info("[testtextPickerDefaultPickerItemHeight0005] align value :" + obj.$attrs.align);
-      done();
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Center");
+      console.info("[testtextPickerDefaultPickerItemHeight0005] align value :" + JSON.parse(strJson).$attrs.align);
+
     });
 
     /*
@@ -135,16 +136,18 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0006
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0006
      */
-    it('testtextPickerDefaultPickerItemHeight0006', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0006', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.fontColor).assertEqual(undefined);
-      console.info("[testtextPickerDefaultPickerItemHeight0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual(undefined);
+      console.info("[testtextPickerDefaultPickerItemHeight0006] fontColor value :" + JSON.parse(strJson)
+        .$attrs
+        .fontColor);
+
     });
 
     /*
@@ -152,16 +155,18 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0007
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0007
      */
-    it('testtextPickerDefaultPickerItemHeight0007', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0007', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.lineHeight).assertEqual(undefined);
-      console.info("[testtextPickerDefaultPickerItemHeight0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual(undefined);
+      console.info("[testtextPickerDefaultPickerItemHeight0007] lineHeight value :" + JSON.parse(strJson)
+        .$attrs
+        .lineHeight);
+
     });
 
     /*
@@ -169,16 +174,16 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0009
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0009
      */
-    it('testtextPickerDefaultPickerItemHeight0009', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0009', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.padding).assertEqual("0.00vp");
-      console.info("[testtextPickerDefaultPickerItemHeight0009] padding value :" + obj.$attrs.padding);
-      done();
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual("0.00vp");
+      console.info("[testtextPickerDefaultPickerItemHeight0009] padding value :" + JSON.parse(strJson).$attrs.padding);
+
     });
 
     /*
@@ -186,16 +191,18 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0010
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0010
      */
-    it('testtextPickerDefaultPickerItemHeight0010', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0010', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.textAlign).assertEqual(undefined);
-      console.info("[testtextPickerDefaultPickerItemHeight0010] textAlign value :" + obj.$attrs.textAlign);
-      done();
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual(undefined);
+      console.info("[testtextPickerDefaultPickerItemHeight0010] textAlign value :" + JSON.parse(strJson)
+        .$attrs
+        .textAlign);
+
     });
 
     /*
@@ -203,16 +210,18 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
      * @tc.name         testtextPickerDefaultPickerItemHeight0011
      * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0011
      */
-    it('testtextPickerDefaultPickerItemHeight0011', 0, async function (done) {
+    it('testtextPickerDefaultPickerItemHeight0011', 0, async () => {
       console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0011] component defaultPickerItemHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.defaultPickerItemHeight).assertEqual("80.00px");
-      console.info("[testtextPickerDefaultPickerItemHeight0011] defaultPickerItemHeight value :" + obj.$attrs.defaultPickerItemHeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.defaultPickerItemHeight).assertEqual("80.00px");
+      console.info("[testtextPickerDefaultPickerItemHeight0011] defaultPickerItemHeight value :" + JSON.parse(strJson)
+        .$attrs
+        .defaultPickerItemHeight);
+
     });
   })
 }

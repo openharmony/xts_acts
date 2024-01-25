@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function searchOnCutJsunit() {
-  describe('searchOnCutTest', function () {
-    beforeAll(async function (done) {
+  describe('searchOnCutTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/search',
@@ -37,10 +37,9 @@ export default function searchOnCutJsunit() {
       } catch (err) {
         console.error("push search page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("searchOnCut after each called");
     });
@@ -50,16 +49,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0001
      * @tc.desic         acesearchOnCutEtsTest0001
      */
-    it('testsearchOnCut0001', 0, async function (done) {
+    it('testsearchOnCut0001', 0, async () => {
       console.info('searchOnCut testsearchOnCut0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("320.00vp");
-      console.info("[testsearchOnCut0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("320.00vp");
+      console.info("[testsearchOnCut0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0002
      * @tc.desic         acesearchOnCutEtsTest0002
      */
-    it('testsearchOnCut0002', 0, async function (done) {
+    it('testsearchOnCut0002', 0, async () => {
       console.info('searchOnCut testsearchOnCut0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testsearchOnCut0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("70.00vp");
+      console.info("[testsearchOnCut0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0003
      * @tc.desic         acesearchOnCutEtsTest0003
      */
-    it('testsearchOnCut0003', 0, async function (done) {
+    it('testsearchOnCut0003', 0, async () => {
       console.info('searchOnCut testsearchOnCut0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("20.00fp");
-      console.info("[testsearchOnCut0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("20.00fp");
+      console.info("[testsearchOnCut0003] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
+
     });
 
     /*
@@ -101,16 +100,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0004
      * @tc.desic         acesearchOnCutEtsTest0004
      */
-    it('testsearchOnCut0004', 0, async function (done) {
+    it('testsearchOnCut0004', 0, async () => {
       console.info('searchOnCut testsearchOnCut0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testsearchOnCut0004] opacity value :" + obj.$attrs.opacity);
-      done();
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
+      console.info("[testsearchOnCut0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
+
     });
 
     /*
@@ -118,16 +117,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0005
      * @tc.desic         acesearchOnCutEtsTest0005
      */
-    it('testsearchOnCut0005', 0, async function (done) {
+    it('testsearchOnCut0005', 0, async () => {
       console.info('searchOnCut testsearchOnCut0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testsearchOnCut0005] align value :" + obj.$attrs.align);
-      done();
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopStart");
+      console.info("[testsearchOnCut0005] align value :" + JSON.parse(strJson).$attrs.align);
+
     });
 
     /*
@@ -135,16 +134,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0006
      * @tc.desic         acesearchOnCutEtsTest0006
      */
-    it('testsearchOnCut0006', 0, async function (done) {
+    it('testsearchOnCut0006', 0, async () => {
       console.info('searchOnCut testsearchOnCut0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testsearchOnCut0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFCCCCCC");
+      console.info("[testsearchOnCut0006] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
+
     });
 
     /*
@@ -152,16 +151,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0007
      * @tc.desic         acesearchOnCutEtsTest0007
      */
-    it('testsearchOnCut0007', 0, async function (done) {
+    it('testsearchOnCut0007', 0, async () => {
       console.info('searchOnCut testsearchOnCut0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.lineHeight).assertEqual("25.00fp");
-      console.info("[testsearchOnCut0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual("25.00fp");
+      console.info("[testsearchOnCut0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
+
     });
 
     /*
@@ -169,16 +168,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0009
      * @tc.desic         acesearchOnCutEtsTest0009
      */
-    it('testsearchOnCut0009', 0, async function (done) {
+    it('testsearchOnCut0009', 0, async () => {
       console.info('searchOnCut testsearchOnCut009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testsearchOnCut0009] padding value :" + obj.$attrs.padding);
-      done();
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual("10.00vp");
+      console.info("[testsearchOnCut0009] padding value :" + JSON.parse(strJson).$attrs.padding);
+
     });
 
     /*
@@ -186,16 +185,16 @@ export default function searchOnCutJsunit() {
      * @tc.name         testsearchOnCut0010
      * @tc.desic         acesearchOnCutEtsTest0010
      */
-    it('testsearchOnCut0010', 0, async function (done) {
+    it('testsearchOnCut0010', 0, async () => {
       console.info('searchOnCut testsearchOnCut0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onCutText');
       console.info("[testsearchOnCut0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
-      console.info("[testsearchOnCut0010] textAlign value :" + obj.$attrs.textAlign);
-      done();
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center");
+      console.info("[testsearchOnCut0010] textAlign value :" + JSON.parse(strJson).$attrs.textAlign);
+
     });
   })
 }
