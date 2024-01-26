@@ -2595,7 +2595,7 @@ describe('testNotificationEmitterNotification', () =>  {
     
 
     /*
-     * @tc.number : Sub_Notification_Ans_Slot_Prompt_0100
+     * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_8700
      * @tc.name   : testDeserializeEmitterCallbackNoPar
      * @tc.desc   : test on interface success
      * @tc.size   : Large-scaleTest
@@ -2622,7 +2622,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0200
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_8800
     * @tc.name   : testDeserializeEmitterCallback
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2683,7 +2683,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0300
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_8900
     * @tc.name   : testDeserializeEmitterTwoOnCallbackNoPar
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2719,7 +2719,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0400
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9000
     * @tc.name   : testDeserializeEmitterTwoOnCallback
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2790,7 +2790,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0500
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9100
     * @tc.name   : testDeserializeEmitterTwoOnTwoEmitNoEventData
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2829,7 +2829,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0600
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9200
     * @tc.name   : testDeserializeEmitterTwoOnTwoEmitStrignAndArray
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2879,7 +2879,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-    * @tc.number : Sub_Notification_Ans_Slot_Prompt_0700
+    * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9300
     * @tc.name   : testDeserializeEmitterTwoOnTwoEmitNumberAndBoolean
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
@@ -2929,7 +2929,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-   * @tc.number : Sub_Notification_Ans_Slot_Prompt_0800
+   * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9400
    * @tc.name   : testDeserializeEmitterTwoOnTwoEmitArrayAndBuffer
    * @tc.desc   : test on interface success
    * @tc.size   : Large-scaleTest
@@ -2980,7 +2980,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-   * @tc.number : Sub_Notification_Ans_Slot_Prompt_0900
+   * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9500
    * @tc.name   : testDeserializeEmitterTwoOnTwoEmitDateAndDateView
    * @tc.desc   : test on interface success
    * @tc.size   : Large-scaleTest
@@ -3033,7 +3033,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
-  * @tc.number : Sub_Notification_Ans_Slot_Prompt_1000
+  * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9600
   * @tc.name   : testDeserializeEmitterTwoOnTwoEmitMapAndSet
   * @tc.desc   : test on interface success
   * @tc.size   : Large-scaleTest
@@ -3087,7 +3087,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
- * @tc.number : Sub_Notification_Ans_Slot_Prompt_1100
+ * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9700
  * @tc.name   : testDeserializeEmitterTwoOnTwoEmitErrorTypesAndTypedArray
  * @tc.desc   : test on interface success
  * @tc.size   : Large-scaleTest
@@ -3140,7 +3140,7 @@ describe('testNotificationEmitterNotification', () =>  {
     })
 
     /*
- * @tc.number : Sub_Notification_Ans_Slot_Prompt_1200
+ * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_9800
  * @tc.name   : testDeserializeEmitterTwoOnTwoEmitRegExpAndPrimitivetypes
  * @tc.desc   : test on interface success
  * @tc.size   : Large-scaleTest
