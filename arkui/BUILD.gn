@@ -48,7 +48,6 @@ group("arkui") {
     "ace_ets_web_dev_webviewController:ActsAceWebDevWebViewControllerTest",
     "ace_ets_web_dev_webviewControllerError:ActsAceWebDevWebViewContErrorTest",
     "ace_ets_web_enhanced:ActsAceWebEnhancedTest",
-    "ace_ets_web_enhanced_stress:webStressTest",
     "ace_ets_web_error_code:ActsAceWebErrorCodeTest",
     "ace_ets_web_napis:ActsNativeWebTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
