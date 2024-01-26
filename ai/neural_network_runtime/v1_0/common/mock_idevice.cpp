@@ -16,11 +16,11 @@
 
 #include "const.h"
 #include "mock_idevice.h"
-#include "frameworks/native/hdi_device_v1_0.h"
+#include "hdi_device_v1_0.h"
 #include "common/log.h"
 #include "common/utils.h"
-#include "frameworks/native/nnbackend.h"
-#include "frameworks/native/backend_registrar.h"
+#include "nnbackend.h"
+#include "backend_registrar.h"
 
 namespace OHOS {
 namespace NeuralNetworkRuntime {

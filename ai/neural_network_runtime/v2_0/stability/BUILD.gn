@@ -17,6 +17,8 @@ config("nnrt_config") {
   include_dirs = [
     "../common",
     "../../../../../../../foundation/ai/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
     "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
