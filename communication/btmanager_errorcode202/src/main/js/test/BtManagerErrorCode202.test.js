@@ -112,7 +112,7 @@ describe('btManagerErrorCode202Test', function() {
           done();
      })
 
-     /**
+    /**
      * @tc.number SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0100
      * @tc.name test hid host disconnect
      * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
@@ -129,6 +129,25 @@ describe('btManagerErrorCode202Test', function() {
           }
           done();
      })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0200
+     * @tc.name test hid host connect
+     * @tc.desc Test api 202 - Non-system applications are not allowed to use system APIs.
+     * @tc.type Function
+     * @tc.level Level 0
+     */
+     it('SUB_COMMUNICATION_BTMANAGER_HOSTCONN_ERROR202_0200', 0, async function (done) {
+        try {
+             let hidHostProfile = bluetooth.getProfileInstance(bluetooth.ProfileId.PROFILE_HID_HOST);
+             hidHostProfile.connect('22:33:44:55:66:77');
+        } catch (err) {
+             console.info('errCode: ' + err.code + ',errMessage: ' + err.message);
+             expect(err.code).assertEqual('202');
+        }
+        done();
+   })
+
 })
 
 }
