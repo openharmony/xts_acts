@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 import account_appAccount from '@ohos.account.appAccount';
+import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 
 var TAG = "[AccountTest]"
-var authenticator = null
+var authenticator
 var accountLabels = {
     "zhangsan": ["male", "30-40", "level4"],
     "lisi": ["female"]
@@ -44,7 +45,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         appAccountMgr.createAccount(newAccountName, (err) => {
             let authResult = {
                 name: newAccountName,
-                owner: "com.example.accountauthenticator"
+                owner: "com.acts.accountauthenticator"
             }
             callback.onResult(0, authResult);
         });
@@ -70,7 +71,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
             let authResult = {
                 account: {
                     name: newAccountName,
-                    owner: "com.example.accountauthenticator"
+                    owner: "com.acts.accountauthenticator"
                 }
             }
             callback.onResult(0, authResult);
@@ -82,7 +83,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         let authResult = {
             account: {
                 name: name,
-                owner: "com.example.accountauthenticator"
+                owner: "com.acts.accountauthenticator"
             },
             tokenInfo: {
                 authType: "getSocialData",
@@ -108,7 +109,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         }
         if (options.credentialType == undefined || options.credential == undefined) {
             callback.onRequestRedirected({
-                bundleName: "com.example.accountauthenticator",
+                bundleName: "com.acts.accountauthenticator",
                 abilityName: "VerifyAbility",
                 parameters: {
                     credentialType: options.credentialType, credential: options.credential
@@ -172,25 +173,33 @@ class MyAuthenticator extends account_appAccount.Authenticator {
     }
 }
 
-export default {
-    onStart(want) {
-        console.info('ServiceAbility onStart');
-    },
-    async onStop() {
-        console.info('ServiceAbility onStop');
-    },
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+    onCreate(want) {
+        console.info('accountauthenticator ServiceAbility onCreate');
+    }
+    
     onConnect(want) {
-        console.info('ServiceAbility onConnect');
+        console.info('accountauthenticator ServiceAbility onConnect');
         authenticator = new MyAuthenticator();
         return authenticator.getRemoteObject();
-    },
-    onReconnect(want) {
-        console.info('ServiceAbility onReconnect');
-    },
-    onDisconnect() {
-        console.info('ServiceAbility onDisconnect');
-    },
-    onCommand(want, restart, startId) {
-        console.info('ServiceAbility onCommand');
     }
-};
+    
+    onReconnect(want) {
+        console.info('accountauthenticator ServiceAbility onReconnect');
+    }
+
+    onDisconnect(want) {
+        console.info("accountauthenticator ServiceAbility onDisconnect")
+
+    }
+
+    onRequest(want, startId){
+        console.info("accountauthenticator ServiceAbility onRequest")
+
+    }
+
+    onDestroy() {
+        console.info("accountauthenticator ServiceAbility onCronDestroyeate")
+
+    }
+}
