@@ -14,6 +14,7 @@
  */
 
 export const add: (a: number, b: number) => number;
-export const nativeWebInit: (webName: string) => void;
-export const runJavaScript: (webName: string, jsCode: string) => void;
+export const nativeWebInit: (webName: string) => string;
+export const runJavaScript: (webName: string, jsCode: string) => string;
 export const registerJavaScriptProxy: (webName: string) => string;
+export const unregisterJavaScriptProxy: (webName: string) => string;
