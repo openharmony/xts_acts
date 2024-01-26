@@ -20,75 +20,55 @@ import vpnExtension from '@ohos.net.vpnExtension';
 import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
 import vpn from '@ohos.net.vpn';
 import common from '@ohos.app.ability.common';
+import socket from "@ohos.net.socket";
+import { GlobalContext } from "../GlobalContext";
 
 let socketFd = 38;
-let tag = 'Geegee'
-let context: vpnExtension.VpnExtensionContext = getContext(this) as common.VpnExtensionContext;
-let context1: vpn.AbilityContext = getContext(this) as common.UIAbilityContext;
-let address: vpn.LinkAddress = {
-  address: {
-    address: "10.0.0.5",
-    family: 1
-  },
-  prefixLength: 24
-}
-
-let adress1: vpnExtension.LinkAddress = {
-  address: {
-    address: "10.0.0.10",
-    family: 1
-  },
-  prefixLength: 24
-}
-
-let routeInfo: vpn.RouteInfo = {
-  interface: '',
-  destination: {
-    address: {
-      address: "10.0.0.10",
-      family: 1
-    },
-    prefixLength: 24
-  },
-  gateway: {
-    address: '192.168.0.1',
-    family: 1,
-    port: 8080
-  },
-  hasGateway: true,
-  isDefaultRoute: true
-}
-
-let routeInfo1: vpnExtension.RouteInfo = {
-  interface: '',
-  destination: {
-    address: {
-      address: "10.0.0.10",
-      family: 1
-    },
-    prefixLength: 24
-  },
-  gateway: {
-    address: '192.168.0.1',
-    family: 1,
-    port: 8080
-  },
-  hasGateway: true,
-  isDefaultRoute: true
-}
-
+let tag = 'Geegee';
+let context:common.VpnExtensionContext = GlobalContext.getContext().getObject("AppContext");
 let config: vpnExtension.VpnConfig = {
-  addresses: [],
+  addresses: [{
+    address: {
+      address: '10.0.0.5',
+      family: 1
+    },
+    prefixLength: 24
+  }],
   routes: [],
-  dnsAddresses: [],
+  dnsAddresses: ["114.114.114.114"],
   searchDomains: [],
-  mtu: 0,
+  mtu: 1400,
   isIPv4Accepted: true,
   isIPv6Accepted: false,
   isInternal: true,
   isBlocking: false,
   trustedApplications: [],
-  blockedApplications: []
+  blockedApplications: ["com.example.vpn_xts"]
+}
+
+export class vpnExtAbility extends VpnExtensionAbility {
+  onCreate(want: Want): void {
+    let vpnInstance = vpnExtension.createVpnConnection(context);
+    vpnInstance.protect(socketFd).then(() => {
+      console.log(tag + `protect success`);
+    }).catch((err: BusinessError) => {
+      console.log(tag + `protect fail ${JSON.stringify(err)}`);
+    });
+    vpnInstance.create(config).then(() => {
+      console.log(tag + 'create success');
+    }).catch((err: BusinessError) => {
+      console.log(tag + `create fail ${JSON.stringify(err)}`);
+    })
+  }
+
+  onDestroy(): void {
+    let vpnInstance = vpnExtension.createVpnConnection(context);
+    vpnInstance.destroy().then(() => {
+      console.log(tag + 'destroy success');
+    }).catch((err: BusinessError) => {
+      console.log(tag + `destroy fail ${JSON.stringify(err)}`);
+    })
+  }
 }
 
 export default function NetworkManagerVpnTest() {
@@ -125,7 +105,7 @@ export default function NetworkManagerVpnTest() {
       }
     })
 
-	 /**
+    /**
      * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
      * @tc.name: wTest startVpnExtensionAbility() interface
      * @tc.desc: Function test
@@ -148,7 +128,91 @@ export default function NetworkManagerVpnTest() {
       }
     })
 
-	 /**
+    /**
+     * @tc.number: SUB_NetworkManager_create_0100
+     * @tc.name: Test createVpnConnection() interface
+     * @tc.desc: Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_create_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_create_0100';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        vpnInstance.create(config).then(() => {
+          console.log(`${caseName} create success`);
+          expect().assertTrue();
+          done();
+        }).catch((err:BusinessError) => {
+          console.log(`${caseName} create fail ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_protect_0100
+     * @tc.name: wTest createVpnConnection() interface
+     * @tc.desc: Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_protect_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_protect_0100';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        vpnInstance.protect(socketFd).then(() => {
+          console.log(`${caseName} protect success`);
+          expect().assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${caseName} protect fail ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_destroy_0100
+     * @tc.name: wTest createVpnConnection() interface
+     * @tc.desc: Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_destroy_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_destroy_0100';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        vpnInstance.destroy().then(() => {
+          console.log(`${caseName} destroy success`);
+          expect().assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${caseName} destroy fail ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
      * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
      * @tc.name: wTest stopVpnExtensionAbility() interface
      * @tc.desc: Function test
@@ -171,7 +235,7 @@ export default function NetworkManagerVpnTest() {
       }
     })
 
-	 /**
+    /**
      * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
      * @tc.name: wTest stopVpnExtensionAbility() interface
      * @tc.desc: Function test
@@ -192,33 +256,5 @@ export default function NetworkManagerVpnTest() {
         done();
       }
     })
-
   });
-}
-
-
-
-export class vpnExtAbility extends VpnExtensionAbility {
-  onCreate(want: Want): void {
-    let vpnInstance = vpnExtension.createVpnConnection(this.context);
-    vpnInstance.protect(socketFd).then(() => {
-      console.log(tag + `protect success`);
-    }).catch((err: BusinessError) => {
-      console.log(tag + `protect fail ${JSON.stringify(err)}`);
-    });
-    vpnInstance.create(config).then(() => {
-      console.log(tag + 'create success');
-    }).catch((err: BusinessError) => {
-      console.log(tag + `create fail ${JSON.stringify(err)}`);
-    })
-  }
-
-  onDestroy(): void {
-    let vpnInstance = vpnExtension.createVpnConnection(this.context);
-    vpnInstance.destroy().then(() => {
-      console.log(tag + 'destroy success');
-    }).catch((err: BusinessError) => {
-      console.log(tag + `destroy fail ${JSON.stringify(err)}`);
-    })
-  }
 }
