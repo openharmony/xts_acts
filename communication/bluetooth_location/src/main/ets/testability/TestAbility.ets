@@ -51,17 +51,16 @@ export default class TestAbility extends UIAbility {
         JSON.stringify(data) ?? '');
     });
     let atManager = abilityAccessCtrl.createAtManager();
-    try {
-        atManager.requestPermissionsFromUser(this.context, ['ohos.permission.LOCATION','ohos.permission.APPROXIMATELY_LOCATION']).then((data) => {
-            console.info('data:' + JSON.stringify(data));
-            console.info('data permissions:' + data.permissions);
-            console.info('data authResults:' + data.authResults);
-        }).catch((err) => {
-            console.info('data:' + JSON.stringify(err));
-        })
-    } catch(err) {
-        console.log(`catch err->${JSON.stringify(err)}`);
-    }
+      console.info('-------------------------------------requestPermissionsFromUser get location permission start!!!!--------------------------------------');
+      atManager.requestPermissionsFromUser(this.context, ['ohos.permission.LOCATION','ohos.permission.APPROXIMATELY_LOCATION']).then((data) => {
+          console.info('requestPermissionsFromUser data:' + JSON.stringify(data));
+          console.info('requestPermissionsFromUser data permissions:' + data.permissions);
+          console.info('requestPermissionsFromUser data authResults:' + data.authResults);
+          console.info('-------------------------------------requestPermissionsFromUser get location permission end!!!!--------------------------------------');
+      }).catch((err) => {
+        console.info('-------------------------------------requestPermissionsFromUser get location permission error!!!!--------------------------------------');
+        console.info('requestPermissionsFromUser err:' + JSON.stringify(err));
+      })
   }
 
   onWindowStageDestroy() {
