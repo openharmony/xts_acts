@@ -106,15 +106,15 @@ export default function AVSession() {
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_READ_SESSION_ID_0100
-         * @tc.name      : read property sessionId 
+         * @tc.name      : read property sessionId of AVSession & Controler  
          * @tc.desc      : Testing read property sessionId
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_READ_SESSION_ID_0100', 0, async function (done) {
-            if (session.sessionId.length === 64) {
-                console.info('TestLog: Read sessionId successfully');
+            if (session.sessionId.length === 64 && controller.sessionId.length === 64) {
+                console.info('TestLog: Read AVSession & Controler sessionId successfully');
                 expect(true).assertTrue();
             } else {
                 console.info('TestLog: Read sessionId failed');
@@ -850,6 +850,40 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100
+         * @tc.name      : setAVMetadata - promise - set displayTags
+         * @tc.desc      : Testing call setAVMetadata(promise) set displayTags
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SET_METADATA_PROMISE_2100', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID
+            };
+            await session.setAVMetadata(metadata).then(() => {
+                console.info('TestLog: Set displayTags successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set displayTags error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await controller.getAVMetadata().then((data) => {
+                if (data) {
+                    expect(data.assetId).assertEqual(metadata.assetId);
+                    expect(data.displayTags).assertEqual(metadata.displayTags);
+                } else {
+                    console.info('TestLog: getAVMetadata failed.');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: getAVMetadata error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100
          * @tc.name      : setAVPlaybackState - promise - set state & activeItemId
          * @tc.desc      : Testing call setAVPlaybackState(promise) set state & activeItemId
@@ -1437,6 +1471,182 @@ export default function AVSession() {
                 }
             }).catch((err) => {
                 console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800
+         * @tc.name      : setAVPlaybackState - promise - set loopMode(LOOP_MODE_CUSTOM)
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set loopMode(LOOP_MODE_CUSTOM)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1800', 0, async function (done) {
+            let PlaybackState5 = {
+                loopMode: avSession.LoopMode.LOOP_MODE_CUSTOM,
+            };
+
+            await session.setAVPlaybackState(PlaybackState5).then(() => {
+                console.info('TestLog: Set loopMode successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set loopMode error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.loopMode === 4) {
+                    console.info('TestLog: Get loopMode successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get loopMode failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get loopMode error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900
+         * @tc.name      : setAVPlaybackState - promise - set maxVolume
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set maxVolume
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1900', 0, async function (done) {
+            let PlaybackState = {
+                maxVolume: 6
+            };
+
+            await session.setAVPlaybackState(PlaybackState).then(() => {
+                console.info('TestLog: Set maxVolume successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set maxVolume error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.maxVolume === PlaybackState.maxVolume) {
+                    console.info('TestLog: Get maxVolume successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get maxVolume failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get maxVolume error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2000
+         * @tc.name      : setAVPlaybackState - promise - set muted
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set muted
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2000', 0, async function (done) {
+            let PlaybackState = {
+                muted: false
+            };
+
+            await session.setAVPlaybackState(PlaybackState).then(() => {
+                console.info('TestLog: Set muted successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set muted error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.muted === PlaybackState.muted) {
+                    console.info('TestLog: Get muted successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get muted failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get muted error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2100
+         * @tc.name      : setAVPlaybackState - promise - set videoWidth & videoHeight
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set videoWidth & videoHeight
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2100', 0, async function (done) {
+            let PlaybackState = {
+                videoWidth: 1920,
+                videoHeight: 1080
+            };
+
+            await session.setAVPlaybackState(PlaybackState).then(() => {
+                console.info('TestLog: Set videoWidth & videoHeight successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set videoWidth & videoHeight error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.videoWidth === PlaybackState.videoWidth && data.videoHeight === PlaybackState.videoHeight) {
+                    console.info('TestLog: Get videoWidth & videoHeight successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get videoWidth & videoHeight failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get videoWidth & videoHeight error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2200
+         * @tc.name      : setAVPlaybackState - promise - set duration
+         * @tc.desc      : Testing call setAVPlaybackState(promise) set duration
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_2200', 0, async function (done) {
+            let PlaybackState = {
+                duration: 100
+            };
+
+            await session.setAVPlaybackState(PlaybackState).then(() => {
+                console.info('TestLog: Set duration successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Set duration error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.duration === PlaybackState.duration) {
+                    console.info('TestLog: Get duration successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get duration failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get duration error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
             done();
@@ -2159,7 +2369,6 @@ export default function AVSession() {
                 done();
             }
         })
-
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
@@ -2932,6 +3141,93 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200
+         * @tc.name      : Unbind the specified callback on toggleFavorite events
+         * @tc.desc      : Testing off toggleFavorite specified callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200', 0, async function (done) {
+            function callback1(data) {
+                if (data === 'true') {
+                    console.info('TestLog: ToggleFavorite command registration1 success');
+                    expect(false).assertTrue;
+                }
+            }
+
+            function callback2(data) {
+                if (data === 'false') {
+                    console.info('TestLog: ToggleFavorite command registration2 success');
+                    expect(true).assertTrue;
+                }
+            }
+
+            session.on('toggleFavorite', callback1);
+
+            session.on('toggleFavorite', callback2);
+
+            session.off('toggleFavorite', callback1);
+
+            await controller.sendControlCommand({ command: 'toggleFavorite', parameter: 'false' }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0100
+         * @tc.name      : unbind all callbacks on handleKeyEvent events
+         * @tc.desc      : Testing off handleKeyEvent all callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFHANDLEKEYEVENT_0100', 0, async function (done) {
+            let flag = true;
+            function callback1(data) {
+                if (data.action === 1) {
+                    console.info('TestLog: HandleKeyEvent command registration1 success');
+                    flag = false;
+                }
+            }
+
+            function callback2(data) {
+                if (data.action === 2) {
+                    console.info('TestLog: HandleKeyEvent command registration2 success');
+                    flag = false;
+                }
+            }
+
+            session.on('handleKeyEvent', callback1);
+
+            session.on('handleKeyEvent', callback2);
+
+            session.off('handleKeyEvent');
+
+            await controller.sendAVKeyEvent(event).then(() => {
+                console.info('TestLog: Controller send AVKeyEvent successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send AVKeyEvent error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+
+            if (flag) {
+                console.info('TestLog: HandleKeyEvent command callback unRegistration successful');
+                expect(true).assertTrue();
+            } else {
+                console.info('TestLog: HandleKeyEvent command callback unRegistration failed');
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+                /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFTOGGLEFAVORITE_0200
          * @tc.name      : Unbind the specified callback on toggleFavorite events
          * @tc.desc      : Testing off toggleFavorite specified callback
