@@ -18,8 +18,11 @@ import tag from '@ohos.nfc.tag';
 import controller from '@ohos.nfc.controller';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-function sleep(delay) {
-    return new Promise(resovle => setTimeout(resovle, delay))
+function sleep(delay) { // delay x ms
+    let start = (new Date()).getTime();
+    while ((new Date()).getTime() - start < delay) {
+        continue;
+    }
 }
 
 let NfcState={
