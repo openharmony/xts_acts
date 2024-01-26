@@ -74,6 +74,7 @@ export default function globalJsunit() {
         deviceId: 7,
         metaKey: 0,
         timestamp: 5284417765376,
+        intentionCode: -1,
         stopPropagation: () => {
         }
       };
@@ -91,10 +92,14 @@ export default function globalJsunit() {
     it('testglobal_sendMouseEvent0003', 0, async () => {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);
-
+      let rect:Record<string, number> = Utils.getComponentRect('onMouse');
       let mouseEvent: MouseEvent = {
         button: 0,
         action: 3,
+        displayX: rect.left + (rect.right - rect.left) / 2, // 组件中心点x坐标,
+        displayY: rect.top + (rect.bottom - rect.top) / 2, // 组件中心点y坐标,
+        windowY: rect.top + (rect.bottom - rect.top) / 2, // 组件中心点y坐标,
+        windowX: rect.left + (rect.right - rect.left) / 2, // 组件中心点x坐标
         x: 34,
         y: 34,
         screenX: 202.66666666666666,
@@ -115,6 +120,10 @@ export default function globalJsunit() {
           }
         },
         source: 1,
+        pressure: 1,
+        tiltX: 1,
+        tiltY: 1,
+        sourceTool: SourceTool.Unknown,
         stopPropagation: () => {
         },
       }

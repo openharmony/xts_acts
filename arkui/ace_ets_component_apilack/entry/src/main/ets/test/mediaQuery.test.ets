@@ -35,7 +35,7 @@ export default function mediaQueryOffJsunit() {
         let result = router.push(options)
         console.info("push mediaQuery page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("push mediaQuery page error " + JSON.stringify(result));
+        console.error("push mediaQuery page error " + JSON.stringify(err));
       }
       await Utils.sleep(4000)
     });

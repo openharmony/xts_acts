@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import RectValue from './Rect';
 
 export default class Utils {
@@ -71,12 +72,19 @@ export default class Utils {
     }
     xStep = (upX - downX) / swipeSteps;
     yStep = (upY - downY) / swipeSteps;
-    console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
+    console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep);
+    let rect = Utils.getComponentRect('onTouch');
     let downPonit: TouchObject = {
       id: 1,
       x: downX,
       y: downY,
       type: TouchType.Down,
+      screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
+      screenY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+      windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+      windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+      displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+      displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
     }
     console.info('down touch started: ' + JSON.stringify(downPonit))
     sendTouchEvent(downPonit);
@@ -90,6 +98,12 @@ export default class Utils {
         x: downX + (xStep * i),
         y: downY + (yStep * i),
         type: TouchType.Move,
+        screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
+        screenY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+        windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+        windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+        displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+        displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
@@ -107,6 +121,12 @@ export default class Utils {
       x: upX,
       y: upY,
       type: TouchType.Up,
+      screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
+      screenY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+      windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+      windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+      displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+      displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
     }
     console.info('up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)
