@@ -79,7 +79,9 @@ static napi_value NativeWebInit(napi_env env, napi_callback_info info)
     // 注册destroy回调函数
     OH_NativeArkWeb_SetDestroyCallback(webNameValue, DestroyCallback);
     OH_NativeArkWeb_GetDestroyCallback(webNameValue);
-    return nullptr;
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, "RunSuccess", NAPI_AUTO_LENGTH, &output));
+    return output;
 }
 
 // 发送JS脚本到H5侧执行
@@ -107,7 +109,7 @@ static napi_value RunJavaScript(napi_env env, napi_callback_info info)
     // 调用ndk接口
     OH_NativeArkWeb_RunJavaScript(webNameValue, jsCode, RunJavaScriptCallback);
     napi_value output;
-    NAPI_CALL(env, napi_create_string_utf8(env, "RegisterSuccess", NAPI_AUTO_LENGTH, &output));
+    NAPI_CALL(env, napi_create_string_utf8(env, "RunSuccess", NAPI_AUTO_LENGTH, &output));
     return output;
 }
 
@@ -127,7 +129,9 @@ static napi_value RegisterJavaScriptProxy(napi_env env, napi_callback_info info)
     // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
     int32_t size = 3;
     OH_NativeArkWeb_RegisterJavaScriptProxy(webNameValue, "ndkProxy", methodName, callback, size, false);
-    return nullptr;
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, "RunSuccess", NAPI_AUTO_LENGTH, &output));
+    return output;
 }
 
 static napi_value UnregisterJavaScriptProxy(napi_env env, napi_callback_info info)
@@ -144,7 +148,9 @@ static napi_value UnregisterJavaScriptProxy(napi_env env, napi_callback_info inf
     NativeArkWeb_OnJavaScriptProxyCallback callback[3] = {ProxyMethod1, ProxyMethod2, ProxyMethod3};
     // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
     OH_NativeArkWeb_UnregisterJavaScriptProxy(webNameValue, "ndkProxy");
-    return nullptr;
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, "RunSuccess", NAPI_AUTO_LENGTH, &output));
+    return output;
 }
 
 EXTERN_C_START
@@ -154,6 +160,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"nativeWebInit", nullptr, NativeWebInit, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"runJavaScript", nullptr, RunJavaScript, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"registerJavaScriptProxy", nullptr, RegisterJavaScriptProxy, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"unregisterJavaScriptProxy", nullptr, UnregisterJavaScriptProxy, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

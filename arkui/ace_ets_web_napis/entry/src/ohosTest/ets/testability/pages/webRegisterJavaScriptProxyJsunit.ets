@@ -62,6 +62,7 @@ struct Index {
   @State testObjtest: testObj = new testObj();
   @State webTestObj: webObj = new webObj();
   @State outputStr: string = ''
+  @State resultRes: string = ''
   @State playing: boolean = false
   @State str: string = "emitRegisterJavaScriptProxy"
   @State arrid: number = 0
@@ -181,18 +182,45 @@ struct Index {
             case "emitRegisterJavaScriptProxy": {
               // 运行接口  验证接口是否注册成功
               await Utils.sleep(5000)
-              this.controller.runJavaScript("testNdkProxyObj()")
-                .then((result) => {
-                  Utils.emitEvent("RegisterSuccess",23)
-                })
+              this.resultRes = testNapi.registerJavaScriptProxy(this.webTag)
+              Utils.emitEvent(this.resultRes,23)
               break;
             }
             case "emitRunJavaScript":{
               // 运行接口  验证接口是否运行成功
-              this.controller.runJavaScript("testNdkProxyObj()")
-                .then((result) => {
-                  Utils.emitEvent("RegisterSuccess",24)
-                })
+              this.resultRes = testNapi.runJavaScript(this.webTag,"testNdkProxyObj()")
+              Utils.emitEvent(this.resultRes,24)
+              break;
+            }
+            case "emitUnregisterJavaScriptProxy":{
+              // 运行接口  验证接口是否运行成功
+              await Utils.sleep(5000)
+              this.resultRes = testNapi.unregisterJavaScriptProxy(this.webTag)
+              Utils.emitEvent(this.resultRes,25)
+              break;
+            }
+            case "emitSetJavaScriptProxyValidCallback":{
+              // 运行接口  验证接口是否运行成功
+              this.resultRes = testNapi.nativeWebInit(this.webTag)
+              Utils.emitEvent(this.resultRes,26)
+              break;
+            }
+            case "emitGetJavaScriptProxyValidCallback":{
+              // 运行接口  验证接口是否运行成功
+              this.resultRes = testNapi.nativeWebInit(this.webTag)
+              Utils.emitEvent(this.resultRes,27)
+              break;
+            }
+            case "emitSetDestroyCallback":{
+              // 运行接口  验证接口是否运行成功
+              this.resultRes = testNapi.nativeWebInit(this.webTag)
+              Utils.emitEvent(this.resultRes,28)
+              break;
+            }
+            case "emitGetDestroyCallback":{
+              // 运行接口  验证接口是否运行成功
+              this.resultRes = testNapi.nativeWebInit(this.webTag)
+              Utils.emitEvent(this.resultRes,29)
               break;
             }
             default:

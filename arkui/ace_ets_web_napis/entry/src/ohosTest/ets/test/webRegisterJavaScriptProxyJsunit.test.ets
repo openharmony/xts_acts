@@ -21,8 +21,8 @@ import emitter from '@ohos.events.emitter';
 let emitKey = "emitRegisterJavaScriptProxy";
 // let emitKey = "emitRunJavaScript";
 export default function webRegisterJavaScriptProxyJsunit() {
-  describe('NdkRegisterJavaScriptProxyTest', () => {
 
+  describe('NdkRegisterJavaScriptProxyTest', () => {
     beforeEach(async (done:Function) => {
       await Utils.sleep(2000);
       console.info("httpAuthHandler beforeEach start");
@@ -52,30 +52,100 @@ export default function webRegisterJavaScriptProxyJsunit() {
 
     /*
      *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_001
-     *@tc.name testregisterJavaScriptProxyTestcase001
+     *@tc.name testRegisterJavaScriptProxyTestcase001
      *@tc.desc Injects the JavaScript object into window and invoke the function in window
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level Level 2
      */
     it('RegisterJavaScriptProxy', 0 , async (done:Function)=>{
-      console.info('[RegisterJavaScriptProxy] START');
       emitKey="emitRunJavaScript";
-      Utils.registerEvent("RegisterJavaScriptProxy","RegisterSuccess",23,done);
+      Utils.registerEvent("RegisterJavaScriptProxy","RunSuccess",23,done);
       sendEventByKey('webcomponent',10,'');
     })
 
     /*
      *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_002
-     *@tc.name testrunJavaScriptTestcase 002
+     *@tc.name testRunJavaScriptTestcase001
      *@tc.desc Injects the JavaScript object into window and invoke the function in window
      *@tc.size MediumTest
      *@tc.type Function
      *@tc.level Level 2
      */
     it('RunJavaScript',0,async (done:Function)=>{
-      emitKey="emitRunJavaScript";
-      Utils.registerEvent("RunJavaScript","RegisterSuccess",24,done);
+      emitKey="emitUnregisterJavaScriptProxy";
+      Utils.registerEvent("RunJavaScript","RunSuccess",24,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_003
+     *@tc.name testUnregisterJavaScriptProxyTestcase001
+     *@tc.desc Injects the JavaScript object into window and invoke the function in window
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 2
+     */
+    it('UnregisterJavaScriptProxy',0,async (done:Function)=>{
+      emitKey="emitSetJavaScriptProxyValidCallback";
+      Utils.registerEvent("UnregisterJavaScriptProxy","RunSuccess",25,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_004
+     *@tc.name testSetJavaScriptProxyValidCallbackTestcase001
+     *@tc.desc Injects the JavaScript object into window and invoke the function in window
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 2
+     */
+    it('SetJavaScriptProxyValidCallback',0,async (done:Function)=>{
+      emitKey="emitGetJavaScriptProxyValidCallback";
+      Utils.registerEvent("SetJavaScriptProxyValidCallback","RunSuccess",26,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+
+    /*
+     *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_005
+     *@tc.name testGetJavaScriptProxyValidCallbackTestcase001
+     *@tc.desc Injects the JavaScript object into window and invoke the function in window
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 2
+     */
+    it('GetJavaScriptProxyValidCallback',0,async (done:Function)=>{
+      emitKey="emitSetDestroyCallback";
+      Utils.registerEvent("GetJavaScriptProxyValidCallback","RunSuccess",27,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_006
+     *@tc.name testSetDestroyCallbackTestcase001
+     *@tc.desc Injects the JavaScript object into window and invoke the function in window
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 2
+     */
+    it('SetDestroyCallback',0,async (done:Function)=>{
+      emitKey="emitGetDestroyCallback";
+      Utils.registerEvent("SetDestroyCallback","RunSuccess",28,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_BASIC_ETS_NAPI_007
+     *@tc.name testGetDestroyCallbackTestcase001
+     *@tc.desc Injects the JavaScript object into window and invoke the function in window
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level Level 2
+     */
+    it('GetDestroyCallback',0,async (done:Function)=>{
+      emitKey="emitGetDestroyCallback";
+      Utils.registerEvent("GetDestroyCallback","RunSuccess",29,done);
       sendEventByKey('webcomponent',10,'');
     })
   })
