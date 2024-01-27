@@ -37,7 +37,7 @@ async function startAbilityProcess(abilityContext, options, parameters) {
         break;
     }
     parameters.nextStep = ++idx;
-    abilityContext.startAbility({
+    await abilityContext.startAbility({
       bundleName: bundleName,
       abilityName: abilityName,
       parameters: parameters,
@@ -54,7 +54,7 @@ export default function abilityTest(abilityContext) {
   describe('ActsGetDisplayIdStartAbilityTest', function () {
 
     afterEach(async (done) => {
-      setTimeout(() => { done(); }, 2000)
+      setTimeout(() => { done(); }, 3000)
     })
 
 
@@ -106,7 +106,7 @@ export default function abilityTest(abilityContext) {
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.log('Start ACTS_StartAbility_2100 timer id : ' + id);
 
-      startAbilityProcess(abilityContext, {
+      await startAbilityProcess(abilityContext, {
         windowMode: 0,
         displayId: 15
       }, {
@@ -165,7 +165,7 @@ export default function abilityTest(abilityContext) {
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.log('Start ACTS_StartAbility_2300 timer id : ' + id);
 
-      startAbilityProcess(abilityContext, {
+      await startAbilityProcess(abilityContext, {
         windowMode: 0,
         displayId: "abc"
       }, {
@@ -224,7 +224,7 @@ export default function abilityTest(abilityContext) {
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.log('Start ACTS_StartAbility_2500 timer id : ' + id);
 
-      startAbilityProcess(abilityContext, {
+      await startAbilityProcess(abilityContext, {
         windowMode: 0,
         displayId: undefined
       }, {
@@ -283,7 +283,7 @@ export default function abilityTest(abilityContext) {
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.log('Start ACTS_StartAbility_2700 timer id : ' + id);
 
-      startAbilityProcess(abilityContext, {}, {
+      await startAbilityProcess(abilityContext, {}, {
         startId: 0,
         stepNum: 1,
         nextStep: 0,
