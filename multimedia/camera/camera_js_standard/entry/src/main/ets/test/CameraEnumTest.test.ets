@@ -81,10 +81,26 @@ export default function cameraEnumTest() {
             expect(camera.CameraPosition.CAMERA_POSITION_UNSPECIFIED == 0).assertTrue();
             expect(camera.CameraPosition.CAMERA_POSITION_BACK == 1).assertTrue();
             expect(camera.CameraPosition.CAMERA_POSITION_FRONT == 2).assertTrue();
+            expect(camera.CameraPosition.CAMERA_POSITION_FOLD_INNER == 3).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100 ends here");
             done();
         })
 
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100
+         * @tc.name      : Camera ScenMode Eunm
+         * @tc.desc      : Camera ScenMode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100--------------");
+            expect(camera.SceneMode.NORMAL_PHOTO == 1).assertTrue();
+            expect(camera.SceneMode.NORMAL_VIDEO == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100 ends here");
+            done();
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100
