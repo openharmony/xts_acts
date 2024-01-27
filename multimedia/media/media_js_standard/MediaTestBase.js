@@ -14,18 +14,12 @@
  */
 
 import resourceManager from '@ohos.resourceManager';
-import {
-    expect
-} from 'deccjsunit/index'
+import {expect} from 'deccjsunit/index'
 import router from '@system.router'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import {
-    UiDriver,
-    BY,
-    PointerMatrix
-} from '@ohos.UiTest';
+import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 const CODECMIMEVALUE = ['video/avc', 'audio/mp4a-latm', 'audio/mpeg']
 const context = featureAbility.getContext();
@@ -45,11 +39,11 @@ export async function driveFn(num) {
     console.info(`UiDriver start`)
     for (let i = 0; i < num; i++) {
         let button = await driver.findComponent(BY.text('允许'))
-        if (button == null) {
+        if(button == null){
             let cmd = "hidumper -s WindowManagerService -a'-a'"
             await delegator.executeShellCommand(cmd);
             continue;
-        }
+        } 
         console.info(`button is ${JSON.stringify(button)}`)
         await msleepAsync(2000)
         await button.click()
@@ -60,8 +54,8 @@ export async function driveFn(num) {
 export async function getAvRecorderFd(pathName, fileType) {
     console.info('case come in getAvRecorderFd')
     let fdObject = {
-        fileAsset: null,
-        fdNumber: null
+        fileAsset : null,
+        fdNumber : null
     }
     let displayName = pathName;
     console.info('[mediaLibrary] displayName is ' + displayName);
@@ -82,8 +76,8 @@ export async function getAvRecorderFd(pathName, fileType) {
     if (dataUri != undefined) {
         let args = dataUri.id.toString();
         let fetchOp = {
-            selections: fileKeyObj.ID + "=?",
-            selectionArgs: [args],
+            selections : fileKeyObj.ID + "=?",
+            selectionArgs : [args],
         }
         let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
         fdObject.fileAsset = await fetchFileResult.getAllObject();
@@ -98,11 +92,7 @@ export async function getFileDescriptor(fileName) {
     let fileDescriptor = undefined;
     await resourceManager.getResourceManager().then(async (mgr) => {
         await mgr.getRawFileDescriptor(fileName).then(value => {
-            fileDescriptor = {
-                fd: value.fd,
-                offset: value.offset,
-                length: value.length
-            };
+            fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
             console.log('case getRawFileDescriptor success fileName: ' + fileName);
         }).catch(error => {
             console.log('case getRawFileDescriptor err: ' + error);
@@ -114,11 +104,7 @@ export async function getStageFileDescriptor(fileName) {
     let fileDescriptor = undefined;
     let mgr = globalThis.abilityContext.resourceManager
     await mgr.getRawFileDescriptor(fileName).then(value => {
-        fileDescriptor = {
-            fd: value.fd,
-            offset: value.offset,
-            length: value.length
-        };
+        fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
         console.log('case getRawFileDescriptor success fileName: ' + fileName);
     }).catch(error => {
         console.log('case getRawFileDescriptor err: ' + error);
@@ -127,7 +113,7 @@ export async function getStageFileDescriptor(fileName) {
 }
 export async function closeFileDescriptor(fileName) {
     await resourceManager.getResourceManager().then(async (mgr) => {
-        await mgr.closeRawFileDescriptor(fileName).then(() => {
+        await mgr.closeRawFileDescriptor(fileName).then(()=> {
             console.log('case closeRawFileDescriptor ' + fileName);
         }).catch(error => {
             console.log('case closeRawFileDescriptor err: ' + error);
@@ -164,7 +150,7 @@ export async function closeFdNumber(fdNumber) {
 
 // wait synchronously 
 export function msleep(time) {
-    for (let t = Date.now(); Date.now() - t <= time;);
+    for(let t = Date.now();Date.now() - t <= time;);
 }
 
 // wait asynchronously
@@ -199,31 +185,31 @@ export function catchCallback(error) {
 export function checkDescription(actualDescription, descriptionKey, descriptionValue) {
     for (let i = 0; i < descriptionKey.length; i++) {
         let property = actualDescription[descriptionKey[i]];
-        console.info('case key is  ' + descriptionKey[i]);
-        console.info('case actual value is  ' + property);
-        console.info('case hope value is  ' + descriptionValue[i]);
+        console.info('case key is  '+ descriptionKey[i]);
+        console.info('case actual value is  '+ property);
+        console.info('case hope value is  '+ descriptionValue[i]);
         if (descriptionKey[i] == 'codec_mime') {
-            console.info('CODECMIMEVALUE[descriptionValue[i]] value is  ' + CODECMIMEVALUE[descriptionValue[i]]);
-            if (property == "video/x-h264") {
-                console.info('property attribute is:' + property);
-            } else if (descriptionKey[i] == 'bitrate') {
-                expect(Math.abs(property - descriptionValue[i])).assertLess(500);
-            } else {
+            console.info('CODECMIMEVALUE[descriptionValue[i]] value is  '+ CODECMIMEVALUE[descriptionValue[i]]);
+            if(property == "video/x-h264"){
+                console.info('property attribute is:'+ property);
+            }else{
                 expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
             }
+        } else if (descriptionKey[i] == 'bitrate') {
+            expect(Math.abs(property - descriptionValue[i])).assertLess(500);
         } else {
             expect(property).assertEqual(descriptionValue[i]);
         }
-
+        
     }
 }
 
 export function checkOldDescription(actualDescription, descriptionKey, descriptionValue) {
     for (let i = 0; i < descriptionKey.length; i++) {
         let property = actualDescription[descriptionKey[i]];
-        console.info('case key is  ' + descriptionKey[i]);
-        console.info('case actual value is  ' + property);
-        console.info('case hope value is  ' + descriptionValue[i]);
+        console.info('case key is  '+ descriptionKey[i]);
+        console.info('case actual value is  '+ property);
+        console.info('case hope value is  '+ descriptionValue[i]);
         if (descriptionKey[i] == 'bitrate'){
             expect(Math.abs(property - descriptionValue[i])).assertLess(500);
             return;
@@ -232,14 +218,14 @@ export function checkOldDescription(actualDescription, descriptionKey, descripti
     }
 }
 
-export function printDescription(obj) {
-    let description = "";
-    for (let i in obj) {
+export function printDescription(obj) { 
+    let description = ""; 
+    for(let i in obj) { 
         let property = obj[i];
-        console.info('case key is  ' + i);
-        console.info('case value is  ' + property);
-        description += i + " = " + property + "\n";
-    }
+        console.info('case key is  '+ i);
+        console.info('case value is  '+ property);
+        description += i + " = " + property + "\n"; 
+    } 
 }
 
 export async function toNewPage(pagePath1, pagePath2, page) {
@@ -265,8 +251,8 @@ export async function clearRouter() {
 
 export async function getFd(pathName) {
     let fdObject = {
-        fileAsset: null,
-        fdNumber: null
+        fileAsset : null,
+        fdNumber : null
     }
     let displayName = pathName;
     const mediaTest = mediaLibrary.getMediaLibrary();
@@ -277,8 +263,8 @@ export async function getFd(pathName) {
     if (dataUri != undefined) {
         let args = dataUri.id.toString();
         let fetchOp = {
-            selections: fileKeyObj.ID + "=?",
-            selectionArgs: [args],
+            selections : fileKeyObj.ID + "=?",
+            selectionArgs : [args],
         }
         let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
         fdObject.fileAsset = await fetchFileResult.getAllObject();
@@ -290,8 +276,8 @@ export async function getFd(pathName) {
 
 export async function getAudioFd(pathName) {
     let fdObject = {
-        fileAsset: null,
-        fdNumber: null
+        fileAsset : null,
+        fdNumber : null
     }
     let displayName = pathName;
     const mediaTest = mediaLibrary.getMediaLibrary();
@@ -302,8 +288,8 @@ export async function getAudioFd(pathName) {
     if (dataUri != undefined) {
         let args = dataUri.id.toString();
         let fetchOp = {
-            selections: fileKeyObj.ID + "=?",
-            selectionArgs: [args],
+            selections : fileKeyObj.ID + "=?",
+            selectionArgs : [args],
         }
         let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
         fdObject.fileAsset = await fetchFileResult.getAllObject();
