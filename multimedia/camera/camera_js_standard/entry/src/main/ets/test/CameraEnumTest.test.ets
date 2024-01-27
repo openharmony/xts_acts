@@ -138,6 +138,8 @@ export default function cameraEnumTest() {
             expect(camera.CameraFormat.CAMERA_FORMAT_RGBA_8888 == 3).assertTrue();
             expect(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP == 1003).assertTrue();
             expect(camera.CameraFormat.CAMERA_FORMAT_JPEG == 2000).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_YCBCR_P010 == 2001).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_YCRCB_P010 == 2002).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100 ends here");
             done();
         })
