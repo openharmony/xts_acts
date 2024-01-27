@@ -181,7 +181,6 @@ struct Index {
           switch (this.str) {
             case "emitRegisterJavaScriptProxy": {
               // 运行接口  验证接口是否注册成功
-              await Utils.sleep(5000)
               this.resultRes = testNapi.registerJavaScriptProxy(this.webTag)
               Utils.emitEvent(this.resultRes,23)
               break;
@@ -194,7 +193,6 @@ struct Index {
             }
             case "emitUnregisterJavaScriptProxy":{
               // 运行接口  验证接口是否运行成功
-              await Utils.sleep(5000)
               this.resultRes = testNapi.unregisterJavaScriptProxy(this.webTag)
               Utils.emitEvent(this.resultRes,25)
               break;
