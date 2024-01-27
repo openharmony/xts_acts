@@ -30,13 +30,13 @@ static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
 {
     std::vector<Hid_DeviceProp> deviceProp = {HID_PROP_DIRECT};
     Hid_Device hidDevice = {
-       .deviceName = "VSoC keyboard", 
-       .vendorId = 0x6006, 
-       .productId = 0x6006, 
-       .version = 1, 
-       .bustype = 3,
-       .properties = deviceProp.data(),
-       .propLength = (uint16_t)deviceProp.size()
+        .deviceName = "VSoC keyboard",
+        .vendorId = 0x6006,
+        .productId = 0x6006,
+        .version = 1,
+        .bustype = 3,
+        .properties = deviceProp.data(),
+        .propLength = (uint16_t)deviceProp.size()
     };
 
     std::vector<Hid_EventType> eventType = {HID_EV_ABS, HID_EV_KEY, HID_EV_SYN, HID_EV_MSC};
@@ -47,11 +47,11 @@ static napi_value HidCreateDevice(napi_env env, napi_callback_info info)
     Hid_MscEventArray mscEventArray = {.hidMscEvent = mscEvent.data(), .length = (uint16_t)mscEvent.size()};
     std::vector<Hid_AbsAxes> absAxes = {HID_ABS_X, HID_ABS_Y, HID_ABS_PRESSURE};
     Hid_AbsAxesArray absAxesArray = {.hidAbsAxes = absAxes.data(), .length = (uint16_t)absAxes.size()};
-    Hid_EventProperties hidEventProp = { 
-       .hidEventTypes = eventTypeArray, 
-       .hidKeys = keyCodeArray, 
-       .hidAbs = absAxesArray,
-       .hidMiscellaneous=mscEventArray
+    Hid_EventProperties hidEventProp = {
+        .hidEventTypes = eventTypeArray,
+        .hidKeys = keyCodeArray,
+        .hidAbs = absAxesArray,
+        .hidMiscellaneous=mscEventArray
     };
 
     int32_t returnValue = OH_Hid_CreateDevice(&hidDevice, &hidEventProp);
