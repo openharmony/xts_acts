@@ -104,11 +104,11 @@ export default function SecurityCryptoFwKeyGenerateDHTestUnit() {
       let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_DH_Func_0300";
       console.log(testNumber + ": started.");
       try {
-        let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(1024, 256);
+        let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(512, 128);
         let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(spec);
         console.log(testNumber + ": genKeyPair succeed");
         let res: boolean = compareSpecFunc.DHKeyPair(keyPair.priKey, keyPair.pubKey)
-          && keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 256;
+          && keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 128;
         expect(res).assertTrue();
         console.log(testNumber + ": compareSpec succeed");
       } catch (err) {
@@ -131,11 +131,11 @@ export default function SecurityCryptoFwKeyGenerateDHTestUnit() {
       let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_DH_Func_0400";
       console.log(testNumber + ": started.");
       try {
-        let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(1024, 256);
+        let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(512, 128);
         let keyPair: cryptoFramework.KeyPair = await asyKeyGenCallbackFunc.genKeyPair(spec);
         console.log(testNumber + ": genKeyPair succeed");
         let res: boolean = compareSpecFunc.DHKeyPair(keyPair.priKey, keyPair.pubKey)
-          && keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 256;
+          && keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.DH_L_NUM) == 128;
         expect(res).assertTrue();
         console.log(testNumber + ": compareSpec succeed");
       } catch (err) {
