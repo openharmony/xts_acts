@@ -249,14 +249,11 @@ HWTEST_F(VulkanLoaderSystemTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1
         OH_NativeBuffer *aHardBuffer = {};
         VkDeviceMemory handwareBufferMemory = {};
         VkMemoryGetNativeBufferInfoOHOS getAndroidHardwareBufferInfoOHOS;
-
         getAndroidHardwareBufferInfoOHOS.sType = VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS;
         getAndroidHardwareBufferInfoOHOS.pNext = nullptr;
         getAndroidHardwareBufferInfoOHOS.memory = handwareBufferMemory;
-
         fpGetMemoryNativeBufferOHOS = reinterpret_cast<PFN_vkGetMemoryNativeBufferOHOS>(
             vkGetDeviceProcAddr(device_, "vkGetMemoryNativeBufferOHOS"));
-        fpGetMemoryNativeBufferOHOS(device, &getAndroidHardwareBufferInfoOHOS, &aHardBuffer);
         fpGetMemoryNativeBufferOHOS(device, &getAndroidHardwareBufferInfoOHOS, &aHardBuffer);
     }
 }
