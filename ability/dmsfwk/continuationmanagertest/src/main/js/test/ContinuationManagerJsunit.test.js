@@ -39,16 +39,15 @@ export default function continuationManagerTest() {
             }
         }
 
-
         async function driveFn() {
             try {
                 let driver = await UiDriver.create();
                 console.info(`come in driveFn`);
                 console.info(`driver is ${JSON.stringify(driver)}`);
-                sleep(2000);
+                await sleep(1000);
                 let button = await driver.findComponent(BY.text('允许'));
                 console.info(`button is ${JSON.stringify(button)}`);
-                sleep(5000);
+                await sleep(1000);
                 await button.click();
             } catch (err) {
                 console.info('err code is ' + err);
@@ -56,15 +55,12 @@ export default function continuationManagerTest() {
             }
         }
 
-
-
         beforeAll(async function (done) {
             console.info('beforeAll');
             await requestPermission();
-            sleep(5000);
+            await sleep(1000);
             await driveFn();
-            sleep(5000);
-
+            await sleep(1000);
             done();
         })
 
@@ -1112,6 +1108,72 @@ export default function continuationManagerTest() {
         })
 
         /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_ON_0500
+         * @tc.name [JS-API8]ContinuationManager.on().
+         * @tc.desc Test Js Api ContinuationManager.on() testcase 005
+         */
+        it('testOn006', 0, async function (done){
+            console.info("----------------------testOn006 start----------------------");
+            try {
+                continuationManager.on("deviceSelected",token, (data) =>{
+                    console.info('testOn006  continuationManager.on success');
+                    expect(data == undefined).assertTrue();
+                    done()
+                })
+            } catch (error) {
+                console.log("testOn006 catch error is" + error);
+                expect().assertFail();
+                done()
+            }
+            console.info("----------------------testOn006 end----------------------");
+            done()
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_ON_0500
+         * @tc.name [JS-API8]ContinuationManager.on().
+         * @tc.desc Test Js Api ContinuationManager.on() testcase 005
+         */
+        it('testOn007', 0, async function (done){
+            console.info("----------------------testOn007 start----------------------");
+            try {
+                continuationManager.on("deviceUnselected",token, (data) =>{
+                    console.info('testOn006  continuationManager.on success');
+                    expect(data == undefined).assertTrue();
+                    done()
+                })
+            } catch (error) {
+                console.log("testOn007 catch error is" + error);
+                expect().assertFail();
+                done()
+            }
+            console.info("----------------------testOn007 end----------------------");
+            done()
+        })
+
+       /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_ON_0500
+         * @tc.name [JS-API8]ContinuationManager.on().
+         * @tc.desc Test Js Api ContinuationManager.on() testcase 005
+         */
+       it('testOn008', 0, async function (done){
+        console.info("----------------------testOn008 start----------------------");
+            try {
+                continuationManager.on("deviceUnselected",(err) =>{
+                    console.info('testOn008 onDeviceSelected failed: ' + err.code);
+                    expect().assertTrue();
+                    done()
+                })
+            } catch (error) {
+                console.info("testOn002 catch error is" + error);
+                expect(error.toString().includes("must be 3")).assertTrue();
+                done();
+            }
+        console.info("----------------------testOn008 end----------------------");
+        done()
+        })
+
+        /**
          * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_OFF_0100
          * @tc.name [JS-API8]ContinuationManager.off().
          * @tc.desc Test Js Api ContinuationManager.off() testcase 001
@@ -1187,6 +1249,48 @@ export default function continuationManagerTest() {
                 done();
             }
             console.info("----------------------testOff004 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_OFF_0500
+         * @tc.name [JS-API9]ContinuationManager.off().
+         * @tc.desc Test Js Api ContinuationManager.off() testcase 005
+         */
+        it('testOff005', 0, async function(done){
+            console.info("----------------------testOff005 start----------------------");
+            try {
+                continuationManager.off("deviceSelected", token);
+                console.log('testOff005 off failed');
+                expect().assertFail()
+                done()
+            } catch (error) {
+                console.log("testOff005 catch error is" + JSON.stringify(error));
+                expect(error.code == 16600002).assertTrue()
+                done();
+            }
+            console.info("----------------------testOff005 end----------------------");
+            done()
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_OFF_0500
+         * @tc.name [JS-API9]ContinuationManager.off().
+         * @tc.desc Test Js Api ContinuationManager.off() testcase 005
+         */
+        it('testOff006', 0 , async function(done){
+            console.info("----------------------testOff006 start----------------------");
+                try {
+                    continuationManager.off("deviceUnselected", token);
+                    console.log('testOff006 off failed');
+                    expect().assertFail()
+                    done()
+                } catch (error) {
+                    console.log("testOff006 catch error is" + error);
+                    expect(error.toString().includes("callback is not registered")).assertTrue();
+                    done();
+                }
+            console.info("----------------------testOff006 end----------------------");
+            done()
         })
 
         /**
@@ -1840,6 +1944,190 @@ export default function continuationManagerTest() {
                 done();
             }
             console.info("----------------------testUpdateConnectStatus006 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0700
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 007
+         */
+        it('testUpdateConnectStatus007', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus007 start----------------------");
+            let token = -1;
+            try {
+                continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
+                    continuationManager.DeviceConnectState.DISCONNECTING).then((data) => {
+                        console.log('testUpdateConnectStatus007 data is' + data);
+                        expect().assertFail();
+                        done();
+                    }).catch((err) => {
+                        console.log('testUpdateConnectStatus007 err code is' + err.code);
+                        expect(err.code == 29360208).assertTrue();
+                        done();
+                    });
+            } catch (error) {
+                console.info("testUpdateConnectStatus007 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus007 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0800
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 008
+         */
+        it('testUpdateConnectStatus008', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus008 start----------------------");
+            try {
+                continuationManager.updateConnectStatus(token, TEST_DEVICE_ID,
+                    continuationManager.DeviceConnectState.CONNECTED).then((data) => {
+                        console.log('testUpdateConnectStatus008 data is' + data);
+                        expect().assertFail();
+                        done();
+                    }).catch((err) => {
+                        console.log('testUpdateConnectStatus008 err code is' + err.code);
+                        expect(err.code == 29360210).assertTrue();
+                        done();
+                    });
+            } catch (error) {
+                console.info("testUpdateConnectStatus008 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus008 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0900
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 009
+         */
+        it('testUpdateConnectStatus009', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus009 start----------------------");
+            try {
+                continuationManager.updateConnectStatus(token, continuationManager.DeviceConnectState.CONNECTED)
+                .then((data) => {
+                    console.log('testUpdateConnectStatus009 data is' + data);
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.log('testUpdateConnectStatus009 err code is' + err.code);
+                    expect(err.code == -1).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("testUpdateConnectStatus009 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus009 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_1000
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 010
+         */
+        it('testUpdateConnectStatus010', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus010 start----------------------");
+            try {
+                continuationManager.updateConnectStatus(token, TEST_DEVICE_ID)
+                .then((data) => {
+                    console.log('testUpdateConnectStatus010 data is' + data);
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.log('testUpdateConnectStatus010 err code is' + err.code);
+                    expect(err.code == -1).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("testUpdateConnectStatus010 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus010 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_1100
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 011
+         */
+        it('testUpdateConnectStatus011', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus011 start----------------------");
+            try {
+                continuationManager.updateConnectStatus(token, TEST_DEVICE_ID, continuationManager.DeviceConnectState.aaaa)
+                .then((data) => {
+                    console.log('testUpdateConnectStatus011 data is' + data);
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.log('testUpdateConnectStatus011 err code is' + err.code);
+                    expect(err.code == -1).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("testUpdateConnectStatus011 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus011 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_1200
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 012
+         */
+        it('testUpdateConnectStatus012', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus012 start----------------------");
+            let token = -1;
+            try {
+                continuationManager.updateConnectStatus(token, TEST_DEVICE_ID, continuationManager.DeviceConnectState.CONNECTED)
+                .then((data) => {
+                    console.log('testUpdateConnectStatus012 data is' + data);
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.log('testUpdateConnectStatus012 err code is' + err.code);
+                    expect(err.code == 29360208).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("testUpdateConnectStatus012 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus012 end----------------------");
+        })
+
+        /**
+         * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_1300
+         * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
+         * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 013
+         */
+        it('testUpdateConnectStatus013', 0, async function (done) {
+            console.info("----------------------testUpdateConnectStatus013 start----------------------");
+            try {
+                continuationManager.updateConnectStatus(TEST_DEVICE_ID, continuationManager.DeviceConnectState.CONNECTED)
+                .then((data) => {
+                    console.log('testUpdateConnectStatus013 data is' + data);
+                    expect().assertFail();
+                    done();
+                }).catch((err) => {
+                    console.log('testUpdateConnectStatus013 err code is' + err.code);
+                    expect(err.code == -1).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info("testUpdateConnectStatus013 catch error is" + error);
+                expect(null).assertFail();
+                done();
+            }
+            console.info("----------------------testUpdateConnectStatus013 end----------------------");
         })
 
         /**
