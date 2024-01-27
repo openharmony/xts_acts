@@ -157,7 +157,6 @@ describe('PlayerLocalTestAudioAPI', function () {
         audioPlayer.on('play', () => {
             mySteps.shift();
             console.info(`case play called`);
-            // mediaTestBase.msleep(PLAY_TIME);
             console.info(`case play currentTime is ${audioPlayer.currentTime}`);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             if (mySteps[0] == FINISH_STATE) {
@@ -208,7 +207,6 @@ describe('PlayerLocalTestAudioAPI', function () {
                 mySteps.shift();
                 mySteps.shift();
                 if (audioPlayer.state == 'playing') {
-                    // mediaTestBase.msleep(PLAY_TIME);
                 }
                 nextStep(mySteps,done);
             }
