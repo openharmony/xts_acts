@@ -233,7 +233,6 @@ HWTEST_F(VulkanLoaderSystemTest, getNativeBufferPropertiesOHOS_Test, TestSize.Le
         fpGetNativeBufferPropertiesOHOS = reinterpret_cast<PFN_vkGetNativeBufferPropertiesOHOS>(
             vkGetDeviceProcAddr(device_, "vkGetNativeBufferPropertiesOHOS"));
         fpGetNativeBufferPropertiesOHOS(device, aHardBuffer, &androidHardwareBufferPropertiesOHOS);
-
     }
 }
 
@@ -258,7 +257,7 @@ HWTEST_F(VulkanLoaderSystemTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1
         fpGetMemoryNativeBufferOHOS = reinterpret_cast<PFN_vkGetMemoryNativeBufferOHOS>(
             vkGetDeviceProcAddr(device_, "vkGetMemoryNativeBufferOHOS"));
         fpGetMemoryNativeBufferOHOS(device, &getAndroidHardwareBufferInfoOHOS, &aHardBuffer);
-
+        fpGetMemoryNativeBufferOHOS(device, &getAndroidHardwareBufferInfoOHOS, &aHardBuffer);
     }
 }
 }
