@@ -49,7 +49,7 @@ export default function SXSymbolGlyphSINGLE01Jsunit() {
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj is: ' + obj);
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs is: ' + obj.$attrs);
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 component obj.$attrs.textBackgroundStyle is: ' + obj.$attrs.renderingStrategy);
-      expect(obj.$attrs.renderingStrategy).assertEqual('0');
+      expect(obj.$attrs.renderingStrategy).assertEqual('RenderingStrategy.SINGLE');
       console.info('SXSymbolGlyphSINGLE01Jsunit_0100 END')
       done();
     });
