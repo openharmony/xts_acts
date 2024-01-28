@@ -62,6 +62,16 @@ import ObjectLinkMap from './ObjectLinkMap.test.ets';
 import ObjectLinkSet from './ObjectLinkSet.test.ets';
 
 export default function testsuite() {
+  StateMap();
+  StateSet();
+  PropMap();
+  PropSet();
+  ProvideMap();
+  ProvideSet();
+  LinkMap();
+  LinkSet();
+  ObjectLinkMap();
+  ObjectLinkSet();
   animatorOnframeJsunit()
   routerStandardJsunit()
   appVersionCodeJsunit()
@@ -93,14 +103,4 @@ export default function testsuite() {
   ImageApi()
   NavigationApi()
   TextStyle()
-  StateMap();
-  StateSet();
-  PropMap();
-  PropSet();
-  ProvideMap();
-  ProvideSet();
-  LinkMap();
-  LinkSet();
-  ObjectLinkMap();
-  ObjectLinkSet();
 }
