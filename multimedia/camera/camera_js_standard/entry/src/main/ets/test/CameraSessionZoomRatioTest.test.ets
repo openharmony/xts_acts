@@ -839,7 +839,7 @@ export default function cameraSessionZoomRatioTest() {
                         await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 setZoomRatio: " + (mZoomRatioMinArray[i] + 0.1));
 
-                        mCameraSession.setSmoothZoom(mZoomRatioMaxArray[i] - 0.1, 0);
+                        mCameraSession.setSmoothZoom(mZoomRatioMaxArray[i] - 0.1, camera.SmoothZoomMode.NORMAL);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 targetZoomRatio: " + (mZoomRatioMaxArray[i] - 0.1));
                         await sleep(2000);
                         let zoomRatio = mCameraSession.getZoomRatio();
