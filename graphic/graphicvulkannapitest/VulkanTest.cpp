@@ -66,6 +66,8 @@ public:
     static inline PFN_vkGetSwapchainImagesKHR fpGetSwapchainImagesKHR;
     static inline PFN_vkAcquireNextImageKHR fpAcquireNextImageKHR;
     static inline PFN_vkQueuePresentKHR fpQueuePresentKHR;
+    static inline PFN_vkGetNativeBufferPropertiesOHOS fpGetNativeBufferPropertiesOHOS;
+    static inline PFN_vkGetMemoryNativeBufferOHOS fpGetMemoryNativeBufferOHOS;
 
     static inline void *libVulkan_ = nullptr;
     static inline VkInstance instance_ = nullptr;
@@ -208,6 +210,51 @@ HWTEST_F(VulkanLoaderSystemTest, createSurface_Test, TestSize.Level1)
         VkResult err = vkCreateSurfaceOHOS(instance_, &surfaceCreateInfo, NULL, &surface_);
         EXPECT_EQ(err, VK_SUCCESS);
         EXPECT_NE(surface_, VK_NULL_HANDLE);
+    }
+}
+
+/**
+ * @tc.name: get nativeBufferProperties_Test
+ * @tc.desc: get nativeBufferProperties_Test
+ * @tc.type: FUNC
+ * @tc.require: issueI6SKRO
+ */
+HWTEST_F(VulkanLoaderSystemTest, getNativeBufferPropertiesOHOS_Test, TestSize.Level1)
+{
+    if (isSupportedVulkan_) {
+        VkDevice device = {};
+        OH_NativeBuffer *aHardBuffer = {};
+        VkNativeBufferPropertiesOHOS androidHardwareBufferPropertiesOHOS = {};
+        VkNativeBufferFormatPropertiesOHOS nativeBufferFormatPropertiesOHOS = {};
+        nativeBufferFormatPropertiesOHOS.sType = VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS;
+        nativeBufferFormatPropertiesOHOS.pNext = nullptr;
+        androidHardwareBufferPropertiesOHOS.sType = VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS;
+        androidHardwareBufferPropertiesOHOS.pNext = &nativeBufferFormatPropertiesOHOS;
+        fpGetNativeBufferPropertiesOHOS = reinterpret_cast<PFN_vkGetNativeBufferPropertiesOHOS>(
+            vkGetDeviceProcAddr(device_, "vkGetNativeBufferPropertiesOHOS"));
+        fpGetNativeBufferPropertiesOHOS(device, aHardBuffer, &androidHardwareBufferPropertiesOHOS);
+    }
+}
+
+/**
+ * @tc.name: get memoryNativeBufferOHOS_Test
+ * @tc.desc: get memoryNativeBufferOHOS_Test
+ * @tc.type: FUNC
+ * @tc.require: issueI6SKRO
+ */
+HWTEST_F(VulkanLoaderSystemTest, getMemoryNativeBufferOHOS_Test, TestSize.Level1)
+{
+    if (isSupportedVulkan_) {
+        VkDevice device = {};
+        OH_NativeBuffer *aHardBuffer = {};
+        VkDeviceMemory handwareBufferMemory = {};
+        VkMemoryGetNativeBufferInfoOHOS getAndroidHardwareBufferInfoOHOS;
+        getAndroidHardwareBufferInfoOHOS.sType = VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS;
+        getAndroidHardwareBufferInfoOHOS.pNext = nullptr;
+        getAndroidHardwareBufferInfoOHOS.memory = handwareBufferMemory;
+        fpGetMemoryNativeBufferOHOS = reinterpret_cast<PFN_vkGetMemoryNativeBufferOHOS>(
+            vkGetDeviceProcAddr(device_, "vkGetMemoryNativeBufferOHOS"));
+        fpGetMemoryNativeBufferOHOS(device, &getAndroidHardwareBufferInfoOHOS, &aHardBuffer);
     }
 }
 }
