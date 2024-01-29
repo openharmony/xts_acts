@@ -37,20 +37,6 @@ describe('btAccessTest', function() {
         }
     }
 
-    async function clickTheWindow() {
-        try{
-            let driver = Driver.create();
-            console.info('[bluetooth_js] bt driver create:'+ driver);            
-            await driver.delayMs(1000);
-            await driver.click(860, 2490);
-            await driver.delayMs(5000);
-            await driver.click(860, 2490);
-            await driver.delayMs(3000);
-        } catch (error) {
-            console.info('[bluetooth_js] driver error info:'+ error);
-        }
-    }
-
     async function clickRequestPermission() {
         try {
             console.info('[bluetooth_js] clickRequestPermission start');
@@ -93,7 +79,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_OFF) {
             bluetooth.disableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
             let closeSt = bluetooth.getState();
             console.info('[bluetooth_js] bluetooth disable state ='+ JSON.stringify(closeSt));
@@ -103,7 +89,7 @@ describe('btAccessTest', function() {
         } 
         try {
             bluetooth.enableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
@@ -127,7 +113,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_ON) {
             bluetooth.enableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
             let openSt = bluetooth.getState();
             console.info('[bluetooth_js] bluetooth enable state ='+ JSON.stringify(openSt));
@@ -137,7 +123,7 @@ describe('btAccessTest', function() {
         } 
         try {
             bluetooth.disableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
         } catch (error) {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
@@ -184,7 +170,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] get bluetooth state' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_ON) {
             let enable = bluetooth.enableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
             console.info('[bluetooth_js] bluetooth enable' + JSON.stringify(enable));
             expect(enable).assertTrue();
@@ -219,7 +205,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] get bluetooth state001' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_OFF) {
             let disable = bluetooth.disableBluetooth();
-            await clickTheWindow();
+            await clickRequestPermission();
             await sleep(10000);
             console.info('[bluetooth_js] bluetooth disable001' + JSON.stringify(disable));
             expect(disable).assertTrue();
