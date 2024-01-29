@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,11 +26,12 @@ struct WebComponent {
   controller: WebController = new WebController();
   controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
   webResourceResponse: WebResourceResponse = new WebResourceResponse();
+
   build() {
     Column() {
       Text('Hello world!')
         .fontSize(20)
-      Progress({value: this.progress, total: 100})
+      Progress({ value: this.progress, total: 100 })
         .color('#0000ff')
         .visibility(this.hideProgress ? Visibility.None : Visibility.Visible)
       // 初始化Web组件，并绑定controller
@@ -42,8 +42,7 @@ struct WebComponent {
         .height(500)
         .padding(20)
         .blur(2)
-        .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36")
-       // .fileFromUrlAccess(true)
+        .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36")// .fileFromUrlAccess(true)
         .initialScale(2)
         .onPrompt((event) => {
           console.info('onPrompt url: ', event.url);
@@ -57,7 +56,7 @@ struct WebComponent {
           console.info('onShowFileSelector getTitle: ', event.fileSelector.getTitle());
           console.info('onShowFileSelector getMode: ', event.fileSelector.getMode());
           console.info('onShowFileSelector isCapture: ', event.fileSelector.isCapture());
-          event.result.handleFileList(["D:\DevEcoStudioProjects","D:\DevEcoStudioProjects"])
+          event.result.handleFileList(["D:\DevEcoStudioProjects", "D:\DevEcoStudioProjects"])
           return true;
         })
         .onRenderExited((event) => {
@@ -98,38 +97,37 @@ struct WebComponent {
             console.log('The request header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
           }
           return this.webResourceResponse;
+        })//        .onContextMenuShow((event) => {
+          //          console.info("x coord = " + event.param.x());
+          //          console.info("y coord = " + event.param.y());
+          //          console.info("link url = " + event.param.getLinkUrl());
+          //          console.info("unfilterendLinkUrl = " + event.param.getUnfilteredLinkUrl());
+          //          console.info("sourceUrl = " + event.param.getSourceUrl());
+          //          console.info("existsImageContents = " + event.param.existsImageContents());
+          //          console.info("closeContextMenu = " + event.result.closeContextMenu());
+          //          console.info("copyImage = " + event.result.copyImage());
+          //        })
+          //        .onPermissionRequest((event) => {
+          //          AlertDialog.show({
+          //            title: 'title',
+          //            message: 'text',
+          //            confirm: {
+          //              value: 'onConfirm',
+          //              action: () => {
+          //                event.request.grant(event.request.getAccessibleResource());
+          //                console.info('onPermissionRequest getAccessibleResource: ', event.request.getAccessibleResource());
+          //                console.info('onPermissionRequest getOrigin: ', event.request.getOrigin());
+          //              }
+          //            },
+          //            cancel: () => {
+          //              event.request.deny();
+          //            }
+          //          })
+          //        })
+        .onScaleChange((event) => {
+          console.info('onScaleChange oldScale: ', event.oldScale);
+          console.info('onScaleChange newScale: ', event.newScale);
         })
-//        .onContextMenuShow((event) => {
-//          console.info("x coord = " + event.param.x());
-//          console.info("y coord = " + event.param.y());
-//          console.info("link url = " + event.param.getLinkUrl());
-//          console.info("unfilterendLinkUrl = " + event.param.getUnfilteredLinkUrl());
-//          console.info("sourceUrl = " + event.param.getSourceUrl());
-//          console.info("existsImageContents = " + event.param.existsImageContents());
-//          console.info("closeContextMenu = " + event.result.closeContextMenu());
-//          console.info("copyImage = " + event.result.copyImage());
-//        })
-//        .onPermissionRequest((event) => {
-//          AlertDialog.show({
-//            title: 'title',
-//            message: 'text',
-//            confirm: {
-//              value: 'onConfirm',
-//              action: () => {
-//                event.request.grant(event.request.getAccessibleResource());
-//                console.info('onPermissionRequest getAccessibleResource: ', event.request.getAccessibleResource());
-//                console.info('onPermissionRequest getOrigin: ', event.request.getOrigin());
-//              }
-//            },
-//            cancel: () => {
-//              event.request.deny();
-//            }
-//          })
-//        })
-      .onScaleChange((event) => {
-        console.info('onScaleChange oldScale: ', event.oldScale);
-        console.info('onScaleChange newScale: ', event.newScale);
-      })
         .onHttpErrorReceive((event) => {
           try {
             console.log('url:' + event.request.getRequestUrl());
