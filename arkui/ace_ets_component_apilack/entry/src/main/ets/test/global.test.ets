@@ -17,6 +17,7 @@ import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
+import RectValue from './Rect';
 
 export default function globalJsunit() {
   describe('globalJsunit', () => {
@@ -92,18 +93,18 @@ export default function globalJsunit() {
     it('testglobal_sendMouseEvent0003', 0, async () => {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);
-      // let rect = Utils.getComponentRect('onMouse');
-      let mouseEvent = {
+      let rect: RectValue = Utils.getComponentRect('Click2');
+      let mouseEvent: MouseEvent = {
         button: 0,
         action: 3,
         // displayX: rect.left + (rect.right - rect.left) / 2, // 组件中心点x坐标,
         // displayY: rect.top + (rect.bottom - rect.top) / 2, // 组件中心点y坐标,
         // windowY: rect.top + (rect.bottom - rect.top) / 2, // 组件中心点y坐标,
         // windowX: rect.left + (rect.right - rect.left) / 2, // 组件中心点x坐标
-        // windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-        // windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
-        // displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-        // displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+        windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+        windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+        displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+        displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
         x: 34,
         y: 34,
         screenX: 202.66666666666666,
@@ -124,10 +125,10 @@ export default function globalJsunit() {
           }
         },
         source: 1,
-        // pressure: 1,
-        // tiltX: 1,
-        // tiltY: 1,
-        // sourceTool: SourceTool.Unknown,
+        pressure: 1,
+        tiltX: 1,
+        tiltY: 1,
+        sourceTool: SourceTool.Unknown,
         stopPropagation: () => {
         },
       }
