@@ -16,12 +16,12 @@
 
 #include "nncore_const.h"
 #include "mock_idevice.h"
-#include "frameworks/native/hdi_device_v2_0.h"
-#include "frameworks/native/hdi_returncode_utils.h"
+#include "hdi_device_v2_0.h"
+#include "hdi_returncode_utils.h"
 #include "common/log.h"
 #include "common/utils.h"
-#include "frameworks/native/nnbackend.h"
-#include "frameworks/native/backend_registrar.h"
+#include "nnbackend.h"
+#include "backend_registrar.h"
 
 namespace OHOS {
 namespace NeuralNetworkRuntime {
