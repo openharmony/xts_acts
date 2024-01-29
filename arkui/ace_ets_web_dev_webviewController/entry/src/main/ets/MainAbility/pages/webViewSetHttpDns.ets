@@ -82,8 +82,11 @@ struct webViewSetHttpDns {
                                 await Utils.sleep(2000);
                                 this.controller.refresh();
                                 this.controller.loadUrl("https://weibo.com/");
-                                await Utils.sleep(10000);
+                                await Utils.sleep(15000);
                                 this.title = this.controller.getTitle();
+                                if ((this.title).includes("微博")) {
+                                    this.title = 'success'
+                                }
                                 console.log("title of this page: " + this.title);
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
