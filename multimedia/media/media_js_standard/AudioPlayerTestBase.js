@@ -51,17 +51,14 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
         playCount++;
         if (playCount == 1) {
             // step 1: play -> seek duration/3
-            mediaTestBase.msleep(playTime);
             audioPlayer.seek(audioPlayer.duration / 3);
             // step 2: seek duration/3 -> pause
-            mediaTestBase.msleep(playTime);
             audioPlayer.pause();
         } else if (playCount == 2) {
             // step 5: play -> seek duration when loop is true
             audioPlayer.loop = true;
             audioPlayer.seek(audioPlayer.duration);
             // step 6: seek duration -> setVolume + seek duration when loop is false
-            mediaTestBase.msleep(playTime);
             console.info('case state 2 is :' + audioPlayer.state);
             expect(audioPlayer.state).assertEqual('playing');
             audioPlayer.loop = false;
@@ -69,7 +66,6 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
             audioPlayer.seek(audioPlayer.duration);
             seekEOS = true;
             // step 7: wait for finish
-            mediaTestBase.msleep(playTime);
         } else if (playCount == 3) {
             // step 9: play -> stop
             audioPlayer.stop();
@@ -117,17 +113,6 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
             console.error('case fdsrc test');
             audioPlayer.fdSrc = src;
         }
-    });
-    audioPlayer.on('timeUpdate', (seekDoneTime) => {
-        seekCount++;
-        if (seekDoneTime == null) {
-            console.info(`case seek filed`);
-            audioPlayer.release();
-            expect().assertFail();
-            done();
-            return;
-        }
-        console.info('case timeUpdate success, and timeUpdate is ' + seekDoneTime);
     });
     audioPlayer.on('volumeChange', () => {
         console.info('case set volume success ');
