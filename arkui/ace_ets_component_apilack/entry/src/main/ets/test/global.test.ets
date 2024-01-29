@@ -93,7 +93,7 @@ export default function globalJsunit() {
       console.info('testglobal_sendMouseEvent0003 START');
       await Utils.sleep(2000);
       // let rect = Utils.getComponentRect('onMouse');
-      let mouseEvent: MouseEvent = {
+      let mouseEvent = {
         button: 0,
         action: 3,
         // displayX: rect.left + (rect.right - rect.left) / 2, // 组件中心点x坐标,
