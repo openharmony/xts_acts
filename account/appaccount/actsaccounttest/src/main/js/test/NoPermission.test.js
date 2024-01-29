@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,8 +22,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0100
-        * @tc.name      : setAppAccountSyncEnable callback
+        * @tc.name      : test setAppAccountSyncEnable callback
         * @tc.desc      : Set the added account to allow synchronization without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0100', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0100 start====");
@@ -47,8 +50,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0200
-        * @tc.name      : setAppAccountSyncEnable promise
+        * @tc.name      : test setAppAccountSyncEnable promise
         * @tc.desc      : Set the added account to allow synchronization without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0200', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0200 start====");
@@ -72,8 +78,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0300
-        * @tc.name      : Check sync flag callback form
+        * @tc.name      : test Check sync flag callback form
         * @tc.desc      : Check the added account synchronization without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0300', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0300 start====");
@@ -97,8 +106,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0400
-        * @tc.name      : Check sync flag promise form
+        * @tc.name      : test Check sync flag promise form
         * @tc.desc      : Check the added account synchronization without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0400', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0400 start====");
@@ -121,8 +133,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0500
-        * @tc.name      : getAllAccessibleAccounts callback
+        * @tc.name      : test getAllAccessibleAccounts callback
         * @tc.desc      : This application gets authorization after adding a single account without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0500', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0500 start====");
@@ -146,8 +161,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0600
-        * @tc.name      : getAllAccessibleAccounts promise
+        * @tc.name      : test getAllAccessibleAccounts promise
         * @tc.desc      : This application gets authorization after adding a single account without permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0600', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0600 start====");
@@ -170,8 +188,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0700
-        * @tc.name      : getAllAccounts callback
+        * @tc.name      : test getAllAccounts callback
         * @tc.desc      : This application gets its own application information after adding an account  permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0700', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0700 start====");
@@ -197,8 +218,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_0800
-        * @tc.name      : getAllAccounts promise
+        * @tc.name      : test getAllAccounts promise
         * @tc.desc      : This application gets its own application information after adding an account  permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0800', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0800 start====");
@@ -225,8 +249,11 @@ export default function ActsAccountNoPermission() {
         
         /*
         * @tc.number    : ActsAccountNoPermission_0900
-        * @tc.name      : getAllAccounts callback
+        * @tc.name      : test getAllAccounts callback
         * @tc.desc      : This application gets its own application information after adding an account  permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_0900', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_0900 start====");
@@ -236,7 +263,7 @@ export default function ActsAccountNoPermission() {
             appAccountManager.addAccount("ActsAccountNoPermission_0900", (err)=>{
                 console.info("====>add account 0900 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                appAccountManager.getAllAccounts("com.example.accountauthenticator", (err, data)=>{                    
+                appAccountManager.getAllAccounts("com.acts.accountauthenticator", (err, data)=>{                    
                     console.info("====>getAllAccounts 0900 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                     appAccountManager.deleteAccount("ActsAccountNoPermission_0900", (err)=>{
@@ -251,8 +278,11 @@ export default function ActsAccountNoPermission() {
 
         /*
         * @tc.number    : ActsAccountNoPermission_1000
-        * @tc.name      : getAllAccounts promise
+        * @tc.name      : test getAllAccounts promise
         * @tc.desc      : This application gets its own application information after adding an account  permission
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountNoPermission_1000', 0, async function (done) {
             console.info("====>ActsAccountNoPermission_1000 start====");
@@ -268,7 +298,7 @@ export default function ActsAccountNoPermission() {
             }            
             console.info("====>getAllAccounts 1000 start====");
             try{
-                var data = await appAccountManager.getAllAccounts("com.example.accountauthenticator");
+                var data = await appAccountManager.getAllAccounts("com.acts.accountauthenticator");
                 console.info("====>getAll_promise_nopermission data:" + JSON.stringify(data))
                 expect().assertFalse();
                 done();
