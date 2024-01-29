@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import testNapi from 'libconnectionNdkTest.so';
+import testNapi from 'libconnectionndktest.so';
 
 @Entry
 @Component
