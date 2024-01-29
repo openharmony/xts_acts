@@ -30,7 +30,7 @@ export default function useShadowBatching() {
         router.clear();
         let pages = router.getState();
         console.info("get useShadowBatching state pages: " + JSON.stringify(pages));
-        if (!("translation" == pages.name)) {
+        if (!("useShadowBatching" == pages.name)) {
           console.info("get useShadowBatching state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
