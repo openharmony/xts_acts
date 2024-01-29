@@ -12,46 +12,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import hilog from '@ohos.hilog';
-import UIAbility from '@ohos.app.ability.UIAbility';
-import Want from '@ohos.app.ability.Want';
-import window from '@ohos.window';
+import Ability from '@ohos.app.ability.UIAbility';
 
-export default class MainAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+export default class MainAbility extends Ability {
+  onCreate(want, launchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.log('[Demo] MainAbility onCreate');
+    globalThis.abilityWant = want;
+    globalThis.abilityLaunchParam = launchParam;
   }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log('[Demo] MainAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
+  onWindowStageCreate(windowStage) {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    console.log('[Demo] MainAbility onWindowStageCreate windowStage=' + windowStage);
+    globalThis.windowStage = windowStage;
+    globalThis.abilityContext = this.context;
+    windowStage.setUIContent(this.context, 'MainAbility/page/index/Index', null);
   }
 
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  onWindowStageDestroy() {
+    //Main window is destroyed, release UI related resources
+    console.log('[Demo] MainAbility onWindowStageDestroy');
   }
 
-  onForeground(): void {
+  onForeground() {
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    console.log('[Demo] MainAbility onForeground');
   }
 
-  onBackground(): void {
+  onBackground() {
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    console.log('[Demo] MainAbility onBackground');
   }
 };

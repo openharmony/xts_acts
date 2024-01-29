@@ -12,37 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import testNapi from 'libentry.so'
-import hilog from '@ohos.hilog'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../../../test/List.test';
 
 @Entry
 @Component
 struct Index {
-
-  build() {
-    Row() {
-      Column() {
-        Button("NetConnection test start")
-          .width('50%')
-          .height(40)
-          .margin({ top: 10 })
-          .onClick((event) => {
-            this.NetConnectionTest()
-          })
-      }.width('100%')
-    }.height('100%')
+  aboutToAppear() {
+    console.info('start run testcase!!!!')
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
-  NetConnectionTest () {
-    /** Output on the printer. */
-    if (testNapi.testNetManager().valueOf() == 0) {
-      console.log("Success [" + testNapi.testNetManager() + "]")
-    } else if (testNapi.testNetManager().valueOf() == 201) {
-      console.log("Missing permissions [" + testNapi.testNetManager() + "]")
-    } else if (testNapi.testNetManager().valueOf() == 401) {
-      console.log("Parameter error [" + testNapi.testNetManager() + "]")
-    } else {
-      console.log("Other errors [" + testNapi.testNetManager() + "]")
+  build() {
+    Flex({
+      direction: FlexDirection.Column,
+      alignItems: ItemAlign.Center,
+      justifyContent: FlexAlign.Center
+    }) {
+      Text('Test start')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
     }
+    .width('100%')
+    .height('100%')
   }
 }
