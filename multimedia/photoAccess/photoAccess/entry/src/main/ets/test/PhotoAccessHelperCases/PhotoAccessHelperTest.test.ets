@@ -15,7 +15,8 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes,getPhotoAssetAttrs } from './common.ets'
+import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes,getPhotoAssetAttrs,
+    fetchOptions_allocate_file} from './common.ets'
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -27,11 +28,6 @@ export default function PhotoAccessHelperTest() {
         let fetchOptions: photoAccessHelper.FetchOptions = {
             fetchColumns: [],
             predicates: predicates
-        };
-        let predicates_getThumbnail = new dataSharePredicates.DataSharePredicates();
-        let fetchOptions_allocate_file = {
-            fetchColumns: [],
-            predicates: predicates_getThumbnail
         };
         let options: photoAccessHelper.CreateOptions = {
             title: 'testPhoto'
@@ -876,7 +872,6 @@ export default function PhotoAccessHelperTest() {
 
         beforeAll(async function() {
             console.info('beforeAll case');
-            predicates_getThumbnail.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, "addCb01.jpg")
             await getPermission();
         })
 

@@ -14,6 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { expect } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import buffer from '@ohos.buffer';
@@ -63,6 +64,7 @@ let sizes = [
   { width: 720, height: 720 },
   { width: 1000, height: 1000 }
 ]
+const fetchOptions_allocate_file = initFetchOptions()
 
 export function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, photoAsset, onCallback1){
   if(uriSet){
@@ -122,9 +124,20 @@ export function getPhotoAssetAttrs(photoAsset){
   console.info('photoAsset.displayName : ' + photoAssetName);
 }
 
+export function initFetchOptions(){
+  let predicates_getThumbnail: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions_allocate_file: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates_getThumbnail
+  };
+  predicates_getThumbnail.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, "addCb01.jpg")
+  return fetchOptions_allocate_file
+}
+
 export {
   columns,
   photoExtensions,
   videoExtensions,
-  sizes
+  sizes,
+  fetchOptions_allocate_file
 };
