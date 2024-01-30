@@ -2286,18 +2286,22 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info) {
 static napi_value SUB_DDM_RDB_5000(napi_env env, napi_callback_info info) {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub1 failed.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub2 failed.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, nullptr);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub3 failed.");
-    errCode = OH_Rdb_Unsubscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(nullptr, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub4 failed.");
     napi_value returnCode;
+    
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
-
 }
 
 /**
@@ -2309,20 +2313,17 @@ static napi_value SUB_DDM_RDB_5000(napi_env env, napi_callback_info info) {
 static napi_value SUB_DDM_RDB_5100(napi_env env, napi_callback_info info) {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
-        errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub1 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, nullptr);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(nullptr, &observer);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
-
-    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub5 failed.");
     
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
