@@ -73,7 +73,7 @@ export function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, phot
       phAccessHelper.unRegisterChange(photoAsset.uri);
     }
   }else{
-    phAccessHelper.registerChange(DEFAULT_PHOTO_URI, forChildUris, onCallback1);
+    phAccessHelper.registerChange(DEFAULT_PHOTO_URI, true, onCallback1);
     if(callBackSet){
       phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
     }else {
@@ -108,6 +108,18 @@ export function checkReadAndWrite(fd){
   }).catch((err: BusinessError) => {
     console.info("write data to file failed with error message: " + err.message + ", error code: " + err.code);
   })
+}
+
+export function getPhotoAssetAttrs(photoAsset){
+  let photoAssetUri: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.URI.toString());
+  expect(photoAssetUri).not().assertUndefined()
+  console.info('photoAsset.uri : ' + photoAssetUri);
+  let photoAssetType: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.PHOTO_TYPE.toString());
+  expect(photoAssetType).not().assertUndefined()
+  console.info('photoAsset.photoType : ' + photoAssetType);
+  let photoAssetName: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.DISPLAY_NAME.toString());
+  expect(photoAssetName).not().assertUndefined()
+  console.info('photoAsset.displayName : ' + photoAssetName);
 }
 
 export {
