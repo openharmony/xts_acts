@@ -2381,12 +2381,12 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_4300", nullptr, SUB_DDM_RDB_4300, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4400", nullptr, SUB_DDM_RDB_4400, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4600", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4700", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4800", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4900", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_5000", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_5100", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_4600", nullptr, SUB_DDM_RDB_4600, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4700", nullptr, SUB_DDM_RDB_4700, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4800", nullptr, SUB_DDM_RDB_4800, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4900", nullptr, SUB_DDM_RDB_4900, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5000", nullptr, SUB_DDM_RDB_5000, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5100", nullptr, SUB_DDM_RDB_5100, nullptr, nullptr, nullptr, napi_default, nullptr}
 
     };
         
