@@ -21,7 +21,7 @@ struct textArea_center {
   @State height1:number = 450
   @State fontSize1:number = 16
   @State fontWeight1:number = 400
-
+  controller: TextAreaController = new TextAreaController()
   scroll: Scroller = new Scroller()
   messageManager:MessageManager = new MessageManager()
 
@@ -37,17 +37,18 @@ struct textArea_center {
       Column(){
         Scroll(this.scroll){
           Column(){
-            Text('0')
-              .width('90%')
+            Button('点击关闭键盘').width('90%')
               .height(150)
-              .backgroundColor(0xFFFFFF)
               .borderRadius(15)
               .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .key('textArea_center_text_0')
               .margin(0)
+              .id('textArea_center_btn')
+              .onClick(() =>{
+                this.controller.stopEditing()
+              })
 
             TextArea({
+              controller: this.controller,
               text:'TextArea位于容器顶部;\n\n一个民族的复兴需要强大的物质力量，也需要强大的精神力量。党的十八大以来，以习近平同志为核心的党中央总揽全局，把宣传思想文化工作摆在重要位置，指引宣传思想文化事业在举旗定向、正本清源中取得历史性成就、发生历史性变革，在守正创新、开拓进取中展现新气象、迈向新征程'
               +'2023年6月，习近平总书记分别考察中国国家版本馆中央总馆和中国历史研究院、主持召开文化传承发展座谈会，深刻总结党的十八大以来在文化建设中提出的一系列新思想新观点新论断。这是新时代党领导文化建设实践经验的理论总结，为做好宣传思想文化工作指明了前进方向、提供了根本遵循。'
               +'十年前，党的十八大后首次全国宣传思想工作会议召开，习近平总书记发表重要讲话，指出意识形态工作是党的一项极端重要的工作，是为国家立心、为民族立魂的工作，并作出“两个巩固”的重要论述。'
