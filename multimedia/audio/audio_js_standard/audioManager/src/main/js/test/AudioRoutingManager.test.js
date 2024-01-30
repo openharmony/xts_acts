@@ -132,8 +132,8 @@ export default function audioRoutingManager() {
       try {
         await audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((AudioDeviceDescriptors) => {
           console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
-          expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.deviceRole.INPUT_DEVICE);
-          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.deviceType.INVALID);
+          expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.INVALID);
           expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
           done();
         }).catch((err) => {
@@ -280,8 +280,8 @@ export default function audioRoutingManager() {
             done();
           } else {
             console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
-            expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.deviceRole.INPUT_DEVICE);
-            expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.deviceType.INVALID);
+            expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+            expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.INVALID);
             expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
             done();
           }
