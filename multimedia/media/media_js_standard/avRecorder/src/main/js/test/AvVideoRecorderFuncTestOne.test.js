@@ -114,6 +114,25 @@ export default function avVideoRecorderTestOne() {
                 latitude: 30, longitude: 130
             }
         }
+
+        let avProfileH265 = {
+            fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+            videoBitrate: 280000,
+            videoCodec: media.CodecMimeType.VIDEO_HEVC,
+            videoFrameWidth: 640,
+            videoFrameHeight: 480,
+            videoFrameRate: 30
+        }
+        let avConfigH265 = {
+            videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfileH265,
+            url: 'fd://35',
+            rotation: 0,
+            location: {
+                latitude: 30, longitude: 130
+            }
+        }
+
         let avProfileH264Aac = {
             audioBitrate: 48000,
             audioChannels: 2,
@@ -130,6 +149,30 @@ export default function avVideoRecorderTestOne() {
             audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
             videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
             profile: avProfileH264Aac,
+            url: 'fd://35',
+            rotation: 0,
+            location: {
+                latitude: 30, longitude: 130
+            }
+        }
+
+        let avProfileH265Aac = {
+            audioBitrate: 48000,
+            audioChannels: 2,
+            audioCodec: media.CodecMimeType.AUDIO_AAC,
+            audioSampleRate: 48000,
+            fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+            videoBitrate: 280000,
+            videoCodec: media.CodecMimeType.VIDEO_HEVC,
+            videoFrameWidth: 640,
+            videoFrameHeight: 480,
+            videoFrameRate: 30,
+            isHdr: false
+        }
+        let avConfigH265Aac = {
+            audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+            videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfileH265Aac,
             url: 'fd://35',
             rotation: 0,
             location: {
@@ -210,7 +253,7 @@ export default function avVideoRecorderTestOne() {
             let availableVideoProfileList = [];
             getVideoProfile(cameraOutputCapability.videoProfiles, defaultDisplay.width, defaultDisplay.height, availableVideoProfileList, 0);
             myProfile = availableVideoProfileList[0];
-            let configs = [avConfig, avConfigMpeg, avConfigMpegAac, avConfigH264, avConfigH264Aac]
+            let configs = [avConfig, avConfigMpeg, avConfigMpegAac, avConfigH264, avConfigH264Aac, avConfigH265, avConfigH265Aac]
             for (let i = 0; i < configs.length; i++) {
                 checkDevice(configs[i])
             }
@@ -7928,6 +7971,128 @@ export default function avVideoRecorderTestOne() {
             eventEmitter.emit(mySteps[0], avRecorder, avConfigH264Aac, recorderTime, mySteps, done);
 
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100
+        * @tc.name      : 01.AVRecorder Record H265+AAC
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath;
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT, PREPARE_PROMISE_EVENT,
+                // init camera
+                GETINPUTSURFACE_PROMISE_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_PROMISE_EVENT,
+                // pause recorder
+                PAUSERECORDER_PROMISE_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_PROMISE_EVENT,
+                // stop recorder
+                STOPRECORDER_PROMISE_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100
+        * @tc.name      : 01.AVRecorder Record H265+AAC
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath;
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200
+        * @tc.name      : 02.AVRecorder Record isHdr
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath
+            avConfigH265Aac.isHdr = true
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200 end')
         })
     })
 }
