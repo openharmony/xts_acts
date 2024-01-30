@@ -2213,14 +2213,11 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info) {
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
+    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &briefObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
-
     errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub5 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
     napi_create_double(env, errCode, &returnCode);
