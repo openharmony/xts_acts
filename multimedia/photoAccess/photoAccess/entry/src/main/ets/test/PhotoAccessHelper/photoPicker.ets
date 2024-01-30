@@ -33,6 +33,8 @@ export default function photoPickerTest() {
         let photoPicker = new photoAccessHelper.PhotoViewPicker();
         photoPicker.select().then((result) => {
           console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
+          console.info(`${testNum}::expectIsSelectOriginal: ${isSelectOriginal}, actual: ${result.isOriginalPhoto}`);
           done();
         }).catch((err) => {
           console.info(`${testNum}::select err: ${JSON.stringify(err)}`);
@@ -57,6 +59,8 @@ export default function photoPickerTest() {
             return;
           }
           console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
+          console.info(`${testNum}::expectIsSelectOriginal: ${isSelectOriginal}, actual: ${result.isOriginalPhoto}`);
           done();
         });
         expect(true).assertTrue();
@@ -73,6 +77,7 @@ export default function photoPickerTest() {
         let photoPicker = new photoAccessHelper.PhotoViewPicker();
         photoPicker.select(option).then((result) => {
           console.info(`${testNum}::selectWithOption result: ${JSON.stringify(result)}`);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
           done();
         }).catch((err) => {
           console.info(`${testNum}::selectWithOption err: ${JSON.stringify(err)}`);
@@ -97,6 +102,7 @@ export default function photoPickerTest() {
             return;
           }
           console.info(`${testNum}::selectWithOption result: ${JSON.stringify(result)}`);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
           done();
         });
         expect(true).assertTrue();
