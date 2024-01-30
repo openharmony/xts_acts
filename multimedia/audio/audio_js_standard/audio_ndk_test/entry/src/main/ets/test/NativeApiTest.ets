@@ -406,6 +406,51 @@ export default function audioNDK() {
         })
 
         /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100
+           * @tc.name      : SetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_SetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100 audioRendererSetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100
+           * @tc.name      : GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100 audioRendererGetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100
+           * @tc.name      : SetSpeed&GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100 audioRendererSetGetSpeed: ${a}`);
+            expect(a).assertEqual(1.5)
+            done()
+        })
+        
+        /* *
            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100
            * @tc.name      : SetRendererOutputDeviceChangeCallback with OH_AudioStreamBuilder_GenerateRenderer  
            * @tc.desc      : test OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback
