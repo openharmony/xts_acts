@@ -41,6 +41,11 @@ export default function StateMap() {
       }
       done();
     });
+
+    afterEach(async function () {
+      await Utils.sleep(1000);
+      console.info("StateMap after each called");
+    });
     /* *
     * @tc.number: SUB_ACE_STATUSMANAGER_STATEMAP_0010
     * @tc.name  : StateMap_0100
