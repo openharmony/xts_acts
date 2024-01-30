@@ -2286,8 +2286,7 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for OH_Rdb_UnsubscribeAutoSyncProgress test.
  * @tc.type: FUNC
  */
-static napi_values SUB_DDM_RDB_5000(RdbNativeStoreTest, RDB_Native_store_test_5000, TestSize.Level1)
-{
+static napi_value SUB_DDM_RDB_5000(napi_env env, napi_callback_info info) {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
     errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
@@ -2310,8 +2309,7 @@ static napi_values SUB_DDM_RDB_5000(RdbNativeStoreTest, RDB_Native_store_test_50
  * @tc.type: FUNC
  */
 
-static napi_values SUB_DDM_RDB_5100(RdbNativeStoreTest, RDB_Native_store_test_5100, TestSize.Level1)
-{
+static napi_value SUB_DDM_RDB_5100(napi_env env, napi_callback_info info) {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
         errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
