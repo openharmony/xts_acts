@@ -135,6 +135,7 @@ import RenderNodeDrawJsSuit from './RenderNodeDrawJsSuit.test';
 import accessVNTest from './commonApi/accessVNTest.test.ets';
 import TimePickerTest from './TimePicker/TimePicker.test.ets';
 import menuBlurStyleJsunit from './menuBlurStyleJsunit.test';
+import APITabsBarBackgroundBlurStyleJsunit from './AttributeModifier/APITabsBarBackgroundBlurStyleJsunit.test';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -257,4 +258,5 @@ export default function testsuite() {
   accessVNTest()
   blendModeTest()
   menuBlurStyleJsunit()
+  APITabsBarBackgroundBlurStyleJsunit()
 }
