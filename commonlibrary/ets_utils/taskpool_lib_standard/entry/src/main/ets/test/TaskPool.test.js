@@ -1586,7 +1586,7 @@ describe('ActsAbilityTest', function () {
         let tid = 0;
         let taskIds = [];
         let priority = 0;
-        let taskId = 0;
+        let taskId = BigInt(0);
         let state = 0;
         let duration = 0;
 
@@ -1605,7 +1605,7 @@ describe('ActsAbilityTest', function () {
         expect(tid != 0).assertTrue();
         expect(taskIds.length != -1).assertTrue();
         expect(priority != -1).assertTrue();
-        expect(taskId != 0).assertTrue();
+        expect(taskId != BigInt(0)).assertTrue();
         expect(state != 0).assertTrue();
         done();
     })
@@ -1662,7 +1662,7 @@ describe('ActsAbilityTest', function () {
         let tid = 0;
         let taskIds = [];
         let priority = 0;
-        let taskId = 0;
+        let taskId = BigInt(0);
         let state = 0;
         let duration = 0;
 
@@ -1681,7 +1681,7 @@ describe('ActsAbilityTest', function () {
         expect(tid != 0).assertTrue();
         expect(taskIds.length != 0).assertTrue();
         expect(priority != -1).assertTrue();
-        expect(taskId != 0).assertTrue();
+        expect(taskId != BigInt(0)).assertTrue();
         expect(state != 0).assertTrue();
         done();
     })
