@@ -8070,7 +8070,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH265Aac.url = fdPath
-            avConfigH265Aac.isHdr = true
+            avConfigH265Aac.isHdr = false
 
             let mySteps = new Array(
                 // init avRecorder
