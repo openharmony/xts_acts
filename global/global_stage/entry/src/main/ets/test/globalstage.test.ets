@@ -567,7 +567,7 @@ export default function globalStageTest() {
          */
         it('getMediaContentSync_stagetest_0100', 0, async function (done) {
         try{
-            let value = globalThis.yq.resourceManager.getMediaContentSync(0x01000012);
+            let value = globalThis.yq.resourceManager.getMediaContentSync($r('app.media.icon').id);
             console.log('getMediaContentSync_stagetest_0100 1' + value);
             expect(value !== null).assertTrue();
         }
@@ -612,7 +612,7 @@ export default function globalStageTest() {
          */
         it('getMediaContentBase64Sync_stagetest_0100', 0, async function (done) {
         try{
-            let value = globalThis.yq.resourceManager.getMediaContentBase64Sync(0x01000012);
+            let value = globalThis.yq.resourceManager.getMediaContentBase64Sync($r('app.media.icon').id);
             console.log('getMediaContentBase64Sync_stagetest_0100 1' + value);
             expect(value !== null).assertTrue();
         }
@@ -657,7 +657,7 @@ export default function globalStageTest() {
          */
         it('getPluralStringValueSync_stagetest_0100', 0, async function (done) {
         try{
-            let value = globalThis.yq.resourceManager.getPluralStringValueSync(0x01000011);
+            let value = globalThis.yq.resourceManager.getPluralStringValueSync($r('app.plural.plural_name').id, 0);
             console.log('getPluralStringValueSync_stagetest_0100 1' + value);
             expect(value !== null).assertTrue();
         }
@@ -702,7 +702,7 @@ export default function globalStageTest() {
          */
         it('getStringArrayValueSync_stagetest_0100', 0, async function (done) {
         try{
-            let value = globalThis.yq.resourceManager.getStringArrayValueSync(0x0100000A);
+            let value = globalThis.yq.resourceManager.getStringArrayValueSync($r('app.strarray.sizeList').id);
             console.log('getStringArrayValueSync_stagetest_0100 1' + value);
             expect(value !== null).assertTrue();
         }
