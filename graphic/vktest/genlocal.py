@@ -125,6 +125,7 @@ if __name__ == '__main__':
     notfindlist = []
     while i < len(mustpasslist):
         isfind = False
+        j = 0
         while j < len(testcaselist):
             if mustpasslist[i] in testcaselist[j]:
                 isfind = True
