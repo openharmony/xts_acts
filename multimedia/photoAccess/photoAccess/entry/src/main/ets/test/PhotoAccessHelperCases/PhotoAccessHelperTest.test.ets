@@ -28,6 +28,11 @@ export default function PhotoAccessHelperTest() {
             fetchColumns: [],
             predicates: predicates
         };
+        let predicates_getThumbnail = new dataSharePredicates.DataSharePredicates();
+        let fetchOptions_allocate_file = {
+            fetchColumns: [],
+            predicates: predicates_getThumbnail
+        };
         let options: photoAccessHelper.CreateOptions = {
             title: 'testPhoto'
         }
@@ -524,7 +529,7 @@ export default function PhotoAccessHelperTest() {
 
         async function getThumbnailCallback(phAccessHelper,fetchOptions,done){
             let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
             console.info('photoAsset displayName = ', photoAsset.displayName);
             photoAsset.getThumbnail((err, pixelMap) => {
                 if (err == undefined) {
@@ -541,7 +546,7 @@ export default function PhotoAccessHelperTest() {
 
         async function getThumbnailCallbackWithSize(phAccessHelper,fetchOptions,done){
             let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
             console.info('photoAsset displayName = ', photoAsset.displayName);
             for(let i = 0;i < sizes.length; i++){
                 photoAsset.getThumbnail(sizes[i], (err, pixelMap) => {
@@ -570,7 +575,7 @@ export default function PhotoAccessHelperTest() {
 
         async function getThumbnailPromiseWithSize(phAccessHelper,fetchOptions,done){
             let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
             console.info('photoAsset displayName = ', photoAsset.displayName);
             for(let i = 0;i < sizes.length; i++){
                 photoAsset.getThumbnail(sizes[i]).then((pixelMap) => {
@@ -871,6 +876,7 @@ export default function PhotoAccessHelperTest() {
 
         beforeAll(async function() {
             console.info('beforeAll case');
+            predicates_getThumbnail.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, "addCb01.jpg")
             await getPermission();
         })
 
@@ -1509,9 +1515,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', 1, function (done) {
             let photoHelper = getPhotoHelper(context)
-            fetchOptions.fetchColumns = [photoAccessHelper.PhotoKeys.URI,photoAccessHelper.PhotoKeys.DISPLAY_NAME,
-                photoAccessHelper.PhotoKeys.PHOTO_TYPE]
-            getThumbnailCallback(photoHelper, fetchOptions, done)
+            getThumbnailCallback(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
@@ -1524,9 +1528,7 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500', 4, function (done) {
             let photoHelper = getPhotoHelper(context)
-            fetchOptions.fetchColumns = [photoAccessHelper.PhotoKeys.URI,photoAccessHelper.PhotoKeys.DISPLAY_NAME,
-                photoAccessHelper.PhotoKeys.PHOTO_TYPE]
-            getThumbnailCallbackWithSize(photoHelper, fetchOptions, done)
+            getThumbnailCallbackWithSize(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
@@ -1539,9 +1541,8 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600', 4, function (done) {
             let photoHelper = getPhotoHelper(context)
-            fetchOptions.fetchColumns = [photoAccessHelper.PhotoKeys.URI,photoAccessHelper.PhotoKeys.DISPLAY_NAME,
-                photoAccessHelper.PhotoKeys.PHOTO_TYPE]
-            getThumbnailPromiseWithSize(photoHelper, fetchOptions, done)
+            fetchOptions.fetchColumns = columns
+            getThumbnailPromiseWithSize(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
