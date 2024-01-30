@@ -2286,7 +2286,7 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for OH_Rdb_UnsubscribeAutoSyncProgress test.
  * @tc.type: FUNC
  */
-HWTEST_F(RdbNativeStoreTest, RDB_Native_store_test_020, TestSize.Level1)
+static napi_values SUB_DDM_RDB_5000(RdbNativeStoreTest, RDB_Native_store_test_5000, TestSize.Level1)
 {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
@@ -2310,7 +2310,7 @@ HWTEST_F(RdbNativeStoreTest, RDB_Native_store_test_020, TestSize.Level1)
  * @tc.type: FUNC
  */
 
-static napi_values SUB_DDM_RDB_0190(RdbNativeStoreTest, RDB_Native_store_test_019, TestSize.Level1)
+static napi_values SUB_DDM_RDB_5100(RdbNativeStoreTest, RDB_Native_store_test_5100, TestSize.Level1)
 {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
@@ -2384,7 +2384,13 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_4200", nullptr, SUB_DDM_RDB_4200, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4300", nullptr, SUB_DDM_RDB_4300, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4400", nullptr, SUB_DDM_RDB_4400, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4600", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4700", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4800", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4900", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5000", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5100", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr}
 
     };
         
