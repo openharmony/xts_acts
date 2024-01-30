@@ -52,7 +52,28 @@ NDKCamera::~NDKCamera() {
     }
 
     if (cameraManager_) {
-      cameraManager_ = nullptr;
+        LOG("Release OH_CameraManager_DeleteSupportedCameras. enter");
+        ret = OH_CameraManager_DeleteSupportedCameras(cameraManager_, cameras_, size_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete Cameras failed.");
+        } else {
+            LOG("Release OH_CameraManager_DeleteSupportedCameras. ok");
+        }
+
+        ret = OH_CameraManager_DeleteSupportedCameraOutputCapability(cameraManager_, cameraOutputCapability_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete CameraOutputCapability failed.");
+        } else {
+            LOG("Release OH_CameraManager_DeleteSupportedCameraOutputCapability. ok");
+        }
+
+        ret = OH_Camera_DeleteCameraManager(cameraManager_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete CameraManager failed.");
+        } else {
+            LOG("Release OH_Camera_DeleteCameraManager. ok");
+        }
+        cameraManager_ = nullptr;
     }
 
     PreviewOutputStop();
