@@ -2211,7 +2211,6 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
     
     napi_value returnCode;
-    napi_value returnCode;
     if (errCode == RDB_E_INVALID_ARGS) {
         errCode = RDB_OK;
     }
@@ -2240,7 +2239,6 @@ static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
 
     napi_value returnCode;
-    napi_value returnCode;
     if (errCode == RDB_E_INVALID_ARGS) {
         errCode = RDB_OK;
     }
@@ -2267,7 +2265,6 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info)
     errCode = OH_Rdb_Unsubscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
     
-    napi_value returnCode;
     napi_value returnCode;
     if (errCode == RDB_E_INVALID_ARGS) {
         errCode = RDB_OK;
