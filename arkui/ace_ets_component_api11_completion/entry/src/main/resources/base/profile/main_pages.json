@@ -123,6 +123,7 @@
         "MainAbility/pages/RenderNodeDraw",
         "MainAbility/pages/commonApi/accessVN",
         "MainAbility/pages/menuBlurStyle",
-		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle"
+		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle",
+		"MainAbility/pages/renderNode/pixelRound"
     ]
 }
