@@ -2183,6 +2183,9 @@ static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2208,6 +2211,10 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
     
     napi_value returnCode;
+    napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2226,7 +2233,6 @@ static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info)
     errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub1 failed.");
 
-
     errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub2 failed.");
 
@@ -2234,6 +2240,10 @@ static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
 
     napi_value returnCode;
+    napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2258,6 +2268,10 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
     
     napi_value returnCode;
+    napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2285,7 +2299,9 @@ static napi_value SUB_DDM_RDB_5000(napi_env env, napi_callback_info info)
 
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub4 failed.");
     napi_value returnCode;
-    
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2313,6 +2329,9 @@ static napi_value SUB_DDM_RDB_5100(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
