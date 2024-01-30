@@ -118,11 +118,6 @@ static void ProgressCallback(void *context, Rdb_ProgressDetails *progressDetails
     NAPI_ASSERT_RETURN_VOID(g_env, tableDetails != nullptr, "tableDetails is fail.");
 }
 
-static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
-{
-    ProgressCallback(nullptr, progressDetails);
-}
-
 static Rdb_ProgressCallback callback = ProgressCallback;
 static Rdb_ProgressObserver observer = { nullptr, callback };
 
