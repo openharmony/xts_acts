@@ -434,6 +434,21 @@ export default function audioNDK() {
             expect(a).assertEqual(0)
             done()
         })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100
+           * @tc.name      : SetSpeed&GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100 audioRendererSetGetSpeed: ${a}`);
+            expect(a).assertEqual(1.5)
+            done()
+        })
         
         /* *
            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100
