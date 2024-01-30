@@ -103,11 +103,11 @@ export default function abilityTest() {
       let caseName = "Test_getNetCapabilities_0300";
       let codeNumber = testNapi.getNetCapabilities(success_number);
       if (codeNumber != 2101013) {
-        console.log(`${caseName} failed, err: ${JSON.stringify(codeNumber)}`)
-        expectFalse();
+        console.log(`${caseName} The network is connected: ${JSON.stringify(codeNumber)}`)
+        expect(codeNumber).assertEqual(0)
         done();
       } else {
-        console.log(`${caseName} success, data: ${JSON.stringify(codeNumber)}`)
+        console.log(`${caseName} 2101013 No network judgment successful, data: ${JSON.stringify(codeNumber)}`)
         expect(codeNumber).assertEqual(2101013)
         done();
       }
