@@ -22,8 +22,7 @@
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
         "default",
-        "tablet",
-        "2in1"
+        "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

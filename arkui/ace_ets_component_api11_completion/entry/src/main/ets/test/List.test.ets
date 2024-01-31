@@ -137,6 +137,10 @@ import TimePickerTest from './TimePicker/TimePicker.test.ets';
 import menuBlurStyleJsunit from './menuBlurStyleJsunit.test';
 import APITabsBarBackgroundBlurStyleJsunit from './AttributeModifier/APITabsBarBackgroundBlurStyleJsunit.test';
 import pixelRoundTest from './renderNode/pixelRoundTest.test.ets'
+import NavPathStackApi1 from './AttrApi/NavPathStackApi1.test.ets';
+import NavPathStackApi2 from './AttrApi/NavPathStackApi2.test.ets';
+import NavPathStackApi3 from './AttrApi/NavPathStackApi3.test.ets';
+import ObserverApi from './AttrApi/ObserverApi.test.ets';
 
 export default function testsuite() {
   getClipToFrameJsunit()
@@ -261,4 +265,8 @@ export default function testsuite() {
   menuBlurStyleJsunit()
   APITabsBarBackgroundBlurStyleJsunit()
   pixelRoundTest()
+  NavPathStackApi1()
+  NavPathStackApi2()
+  NavPathStackApi3()
+  ObserverApi()
 }
