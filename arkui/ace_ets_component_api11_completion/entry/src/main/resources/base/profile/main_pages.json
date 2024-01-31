@@ -124,11 +124,11 @@
         "MainAbility/pages/commonApi/accessVN",
         "MainAbility/pages/menuBlurStyle",
 		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle",
-        "MainAbility/pages/NavPathStackApi1",
-        "MainAbility/pages/NavPathStackApi2",
-        "MainAbility/pages/NavPathStackApi3",
-        "MainAbility/pages/ObserverApi",
-        "MainAbility/pages/ObserverApi2"
+        "MainAbility/pages/AttrApi/NavPathStackApi1",
+        "MainAbility/pages/AttrApi/NavPathStackApi2",
+        "MainAbility/pages/AttrApi/NavPathStackApi3",
+        "MainAbility/pages/AttrApi/ObserverApi",
+        "MainAbility/pages/AttrApi/ObserverApi2"
 
 
     ]
