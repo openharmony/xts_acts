@@ -122,6 +122,7 @@
         "MainAbility/pages/RenderNodeInvalidate",
         "MainAbility/pages/RenderNodeDraw",
         "MainAbility/pages/commonApi/accessVN",
-        "MainAbility/pages/menuBlurStyle"
+        "MainAbility/pages/menuBlurStyle",
+"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle"
     ]
 }
