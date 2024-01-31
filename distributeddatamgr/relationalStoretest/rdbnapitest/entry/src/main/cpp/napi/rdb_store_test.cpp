@@ -2180,7 +2180,7 @@ static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
-    NAPI_ASSERT(env, errCode == RDB_OK, "sub3 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
 
     errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
@@ -2211,7 +2211,7 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info)
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
-    NAPI_ASSERT(env, errCode == RDB_OK, "sub3 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
 
     errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
