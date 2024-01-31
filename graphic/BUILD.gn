@@ -18,6 +18,7 @@ group("graphic") {
     deps = [
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
+      "graphicDrawing:ActsGraphicDrawingTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
@@ -30,7 +31,6 @@ group("graphic") {
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
-      "graphicDrawing:ActsGraphicDrawingTest",
     ]
     if (!(product_name == "ohcore")) {
       deps += [
