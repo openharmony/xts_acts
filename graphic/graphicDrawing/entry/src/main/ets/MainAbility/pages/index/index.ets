@@ -35,15 +35,6 @@ class MyRenderNode extends RenderNode {
   pixelMap: image.PixelMap | null = null;
 
   async draw(context: DrawContext) {
-    //    if(this.pixelMap == null){
-    //      console.log('draw pixelMap is null---')
-    //    }else{
-    //
-    //      const canvas_ = new drawing.Canvas(this.pixelMap)
-    //
-
-    //      GlobalContext.getContext().setObject('canvas_', canvas_)
-    //    }
     console.log('enter draw canvas is: ' + JSON.stringify(context))
     GlobalContext.getContext().setObject('canvasObj', context)
   }
@@ -87,16 +78,6 @@ class MyNodeController extends NodeController {
 @Component
 struct Index {
   async aboutToAppear() {
-//    console.log('MyNodeController aboutToAppear begin')
-//    let task = new taskpool.Task(CreatePixelMapAsync);
-//    console.log('MyNodeController aboutToAppear task is ' + JSON.stringify(task))
-//    await taskpool.execute(task).then((pixel: Object) => {
-//      newNode.pixelMap = pixel as image.PixelMap
-//      console.info("newNode.pixelMap is: " + JSON.stringify(pixel))
-//    }).catch(err => {
-//      console.info("newNode.pixelMap error is: " + JSON.stringify(err))
-//    })
-//    console.log('MyNodeController aboutToAppear end')
     console.info("start run testcase!!!!")
     var abilityDelegator: any
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
