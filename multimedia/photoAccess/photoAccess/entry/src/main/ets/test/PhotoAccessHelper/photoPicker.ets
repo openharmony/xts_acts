@@ -14,7 +14,7 @@
  */
 
 import { describe, afterEach, it, expect } from "deccjsunit/index";
-import { sleep, startAbility, stopAbility, fetchOption } from "../../../../../../../common"
+import { sleep, startAbility, stopAbility, photoKeys, fetchOption } from "../../../../../../../common"
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 
 export default function photoPickerTest() {
