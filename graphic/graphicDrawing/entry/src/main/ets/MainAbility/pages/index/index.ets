@@ -17,7 +17,6 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../../../test/List.test'
 import { NodeController, FrameNode, RenderNode, DrawContext } from "@ohos.arkui.node"
-import { GlobalContext } from '../../GlobalContext.ts'
 import image from '@ohos.multimedia.image';
 import taskpool from '@ohos.taskpool';
 import buffer from '@ohos.buffer';
@@ -36,7 +35,6 @@ class MyRenderNode extends RenderNode {
 
   async draw(context: DrawContext) {
     console.log('enter draw canvas is: ' + JSON.stringify(context))
-    GlobalContext.getContext().setObject('canvasObj', context)
   }
 }
 

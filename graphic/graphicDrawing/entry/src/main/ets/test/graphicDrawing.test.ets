@@ -17,7 +17,6 @@ import { RenderNode, DrawContext } from "@ohos.arkui.node"
 import drawing from "@ohos.graphics.drawing"
 import common2D from "@ohos.graphics.common2D"
 import image from "@ohos.multimedia.image"
-import { GlobalContext } from '../MainAbility/GlobalContext'
 import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
 import buffer from '@ohos.buffer';
