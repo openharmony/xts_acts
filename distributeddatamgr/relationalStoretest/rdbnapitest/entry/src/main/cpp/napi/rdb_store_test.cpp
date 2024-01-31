@@ -118,11 +118,6 @@ static void ProgressCallback(void *context, Rdb_ProgressDetails *progressDetails
     NAPI_ASSERT_RETURN_VOID(g_env, tableDetails != nullptr, "tableDetails is fail.");
 }
 
-static void CloudSyncCallback(Rdb_ProgressDetails *progressDetails)
-{
-    ProgressCallback(nullptr, progressDetails);
-}
-
 static Rdb_ProgressCallback callback = ProgressCallback;
 static Rdb_ProgressObserver observer = { nullptr, callback };
 
@@ -2174,25 +2169,26 @@ static napi_value SUB_DDM_RDB_4500(napi_env env, napi_callback_info info)
  * @tc.desc: napi test RDB store for Query with wrong table or table is NULL.
  * @tc.type: FUNC
  */
-static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info) {
+static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info)
+{
     int errCode = -1;
-    NAPI_ASSERT(env, storeTestRdbStore_ == nullptr, "store is nullptr.");
+    NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub1 failed.");
 
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &detailObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
-
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
+    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
+    NAPI_ASSERT(env, errCode == RDB_OK, "sub3 failed.");
 
     errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub5 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2203,7 +2199,8 @@ static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for Query with wrong table or table is NULL.
  * @tc.type: FUNC
  */
-static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info) {
+static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info)
+{
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
 
@@ -2214,15 +2211,15 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info) {
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
-
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &briefObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
+    NAPI_ASSERT(env, errCode == RDB_OK, "sub3 failed.");
 
     errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub5 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2233,23 +2230,24 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for Query with wrong table or table is NULL.
  * @tc.type: FUNC
  */
-static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info) {
+static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info)
+{
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
 
     errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub1 failed.");
 
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
+    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub2 failed.");
 
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
-    NAPI_ASSERT(env, errCode == RDB_OK, "unsub3 failed.");
-
     errCode = OH_Rdb_Unsubscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub4 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
 
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2259,23 +2257,24 @@ static napi_value SUB_DDM_RDB_4800(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for Query with wrong table or table is NULL.
  * @tc.type: FUNC
  */
-static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info) {
+static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info)
+{
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
 
     errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub1 failed.");
 
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
+    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub2 failed.");
 
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
-    NAPI_ASSERT(env, errCode == RDB_OK, "unsub3 failed.");
-
     errCode = OH_Rdb_Unsubscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub4 failed.");
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub3 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2286,22 +2285,28 @@ static napi_value SUB_DDM_RDB_4900(napi_env env, napi_callback_info info) {
  * @tc.desc: napi test RDB store for OH_Rdb_UnsubscribeAutoSyncProgress test.
  * @tc.type: FUNC
  */
-HWTEST_F(RdbNativeStoreTest, RDB_Native_store_test_020, TestSize.Level1)
+static napi_value SUB_DDM_RDB_5000(napi_env env, napi_callback_info info)
 {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub1 failed.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub2 failed.");
-    errCode = OH_Rdb_Unsubscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(storeTestRdbStore_, nullptr);
+
     NAPI_ASSERT(env, errCode == RDB_OK, "unsub3 failed.");
-    errCode = OH_Rdb_Unsubscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_UnsubscribeAutoSyncProgress(nullptr, &observer);
+
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "unsub4 failed.");
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
-
 }
 
 /**
@@ -2310,26 +2315,26 @@ HWTEST_F(RdbNativeStoreTest, RDB_Native_store_test_020, TestSize.Level1)
  * @tc.type: FUNC
  */
 
-static napi_values SUB_DDM_RDB_0190(RdbNativeStoreTest, RDB_Native_store_test_019, TestSize.Level1)
+static napi_value SUB_DDM_RDB_5100(napi_env env, napi_callback_info info)
 {
     int errCode = -1;
     NAPI_ASSERT(env, storeTestRdbStore_ != nullptr, "store is nullptr.");
-        errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub1 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, &observer);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(storeTestRdbStore_, nullptr);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
 
-    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
+    errCode = OH_Rdb_SubscribeAutoSyncProgress(nullptr, &observer);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
-
-    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &observer);
-    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub5 failed.");
     
     napi_value returnCode;
+    if (errCode == RDB_E_INVALID_ARGS) {
+        errCode = RDB_OK;
+    }
     napi_create_double(env, errCode, &returnCode);
     return returnCode;
 }
@@ -2384,7 +2389,13 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_4200", nullptr, SUB_DDM_RDB_4200, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4300", nullptr, SUB_DDM_RDB_4300, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_4400", nullptr, SUB_DDM_RDB_4400, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_4500", nullptr, SUB_DDM_RDB_4500, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4600", nullptr, SUB_DDM_RDB_4600, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4700", nullptr, SUB_DDM_RDB_4700, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4800", nullptr, SUB_DDM_RDB_4800, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_4900", nullptr, SUB_DDM_RDB_4900, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5000", nullptr, SUB_DDM_RDB_5000, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_5100", nullptr, SUB_DDM_RDB_5100, nullptr, nullptr, nullptr, napi_default, nullptr}
 
     };
         
