@@ -20,8 +20,7 @@
     "mainAbility": "com.ohos.acecollaboration.MainAbility",
     "deviceType": [
         "default",
-        "tablet",
-        "2in1"
+        "tablet"
     ],
     "reqPermissions": [
       {
