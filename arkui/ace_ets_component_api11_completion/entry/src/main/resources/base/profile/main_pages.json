@@ -123,6 +123,13 @@
         "MainAbility/pages/RenderNodeDraw",
         "MainAbility/pages/commonApi/accessVN",
         "MainAbility/pages/menuBlurStyle",
-		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle"
+		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle",
+        "MainAbility/pages/NavPathStackApi1",
+        "MainAbility/pages/NavPathStackApi2",
+        "MainAbility/pages/NavPathStackApi3",
+        "MainAbility/pages/ObserverApi",
+        "MainAbility/pages/ObserverApi2"
+
+
     ]
 }
