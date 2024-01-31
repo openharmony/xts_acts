@@ -54,7 +54,7 @@ export default function NavDestinationInfoStateJsunit() {
       let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('NavDestinationInfoStateJsunit_0100 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('0');
+      expect(obj.$attrs.content).assertEqual('ON_SHOWN');
       console.info('NavDestinationInfoStateJsunit_0100 END')
       done();
     });
@@ -67,12 +67,11 @@ export default function NavDestinationInfoStateJsunit() {
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavDestinationInfoStateButton'));
       await btn1.click();
-
+      await CommonFunc.sleep(3500);
       let strcontent = getInspectorByKey('NavDestinationInfoStateText02');
       let obj = JSON.parse(strcontent);
-      await CommonFunc.sleep(1000);
       console.info('NavDestinationInfoStateJsunit_0200 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('1');
+      expect(obj.$attrs.content).assertEqual('ON_HIDDEN');
       console.info('NavDestinationInfoStateJsunit_0200 END')
       done();
     });
