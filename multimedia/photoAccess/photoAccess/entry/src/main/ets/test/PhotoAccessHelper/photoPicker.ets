@@ -247,7 +247,8 @@ export default function photoPickerTest() {
         let testNum = "photopicker_select_promise_007";
         try{
             let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
-            let fetchResult = await helper.getAssets(fetchOption);
+            let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+            let fetchResult = await helper.getAssets(fetchOps);
             let asset = await fetchResult.getFirstObject();
             let option = new photoAccessHelper.PhotoSelectOptions();
             option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -258,7 +259,7 @@ export default function photoPickerTest() {
             await helper.release();
         }catch(error){
             console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
-            except(false).assertTrue();
+            expect(false).assertTrue();
             done();
         }
     });
