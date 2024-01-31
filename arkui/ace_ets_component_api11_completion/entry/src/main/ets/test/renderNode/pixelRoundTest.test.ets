@@ -57,48 +57,8 @@ export default function pixelRoundTest() {
       let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('pixelRoundTest_001 component obj is: ' + obj);
-      expect(obj.$attrs.pixelRound.start).assertEqual('PixelRoundCalcPolicy.NO_FORCE_ROUND');
+      expect(obj.$attrs.pixelRound).assertEqual('{"start":"PixelRoundCalcPolicy.NO_FORCE_ROUND","top":"PixelRoundCalcPolicy.FORCE_CEIL","end":"PixelRoundCalcPolicy.NO_FORCE_ROUND","bottom":"PixelRoundCalcPolicy.FORCE_FLOOR"}');
       console.info('pixelRoundTest_001 END')
-      done();
-    });
-
-    /* *
-      * @tc.number: SUB_ACE_pixelRoundTest_002
-      * @tc.name  : pixelRoundTest_002
-      * @tc.desc  : pixelRoundTest_002
-      * @tc.level : Level 2
-      * @tc.type : xts
-      * @tc.size : 1
-      */
-    it('pixelRoundTest_002', 0, async function (done) {
-      await CommonFunc.sleep(1000);
-      console.info('pixelRoundTest_002 START');
-      let strcontent = getInspectorByKey('pixelRound_1');
-      let obj = JSON.parse(strcontent);
-      await CommonFunc.sleep(1000);
-      console.info('pixelRoundTest_002 component obj is: ' + obj);
-      expect(obj.$attrs.pixelRound.top).assertEqual('PixelRoundCalcPolicy.FORCE_CEIL');
-      console.info('pixelRoundTest_002 END')
-      done();
-    });
-
-    /* *
-      * @tc.number: SUB_ACE_pixelRoundTest_003
-      * @tc.name  : pixelRoundTest_003
-      * @tc.desc  : pixelRoundTest_003
-      * @tc.level : Level 2
-      * @tc.type : xts
-      * @tc.size : 1
-      */
-    it('pixelRoundTest_003', 0, async function (done) {
-      await CommonFunc.sleep(1000);
-      console.info('pixelRoundTest_003 START');
-      let strcontent = getInspectorByKey('pixelRound_1');
-      let obj = JSON.parse(strcontent);
-      await CommonFunc.sleep(1000);
-      console.info('pixelRoundTest_003 component obj is: ' + obj);
-      expect(obj.$attrs.pixelRound.bottom).assertEqual('PixelRoundCalcPolicy.FORCE_FLOOR');
-      console.info('pixelRoundTest_003 END')
       done();
     });
   })
