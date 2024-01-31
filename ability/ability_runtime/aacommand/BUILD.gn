@@ -28,6 +28,7 @@ group("aacommand") {
       "AttachDebugExtensionTest:AttachDebugExtensionTest",
       "AttachDebugUIExtensionTest:AttachDebugUIExtensionTest",
       "ServiceExtensionDemo:ServiceExtensionDemo",
+      "AACommandImplicitStartTest:AACommandImplicitStartTest",
     ]
   }
 }
