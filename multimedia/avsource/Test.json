@@ -2,24 +2,25 @@
     "description": "Configuration for ActsAVCodecTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "bundle-name": "com.multimedia.napitest",
-        "module-name": "com.multimedia.napitest",
+        "test-timeout": "600000",
         "shell-timeout": "600000",
-        "testcase-timeout": 60000
+        "bundle-name": "com.multimedia.napitest",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsAVCodecTest.hap",
-            "ActsAVCodecMainTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": false
-    }, {
-        "type": "ShellKit",
-        "run-command": [
-            "power-shell wakeup",
-            "power-shell setmode 602"
-        ]
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAVCodecTest.hap",
+                "ActsAVCodecMainTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }
