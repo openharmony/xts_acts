@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("camera_picker_ets_hap") {
   hap_profile = "./src/main/module.json"
- deps = [
+  deps = [
     ":camera_ets_resources",
     ":camera_ets_test_assets",
   ]
