@@ -16,10 +16,10 @@
 @Entry
 @Component
 struct TextExample7 {
-  @State phoneNumber: string = '(86) (755) ********';
-  @State url: string = 'www.********.com';
-  @State email: string = '***@example.com';
-  @State address: string = 'XX省XX市XX区XXXX';
+  @State phoneNumber: string = '15234545343';
+  @State url: string = 'www.bilibilibili.com';
+  @State email: string = '3145897867@example.com';
+  @State address: string = '河南省周口市区鹿邑县';
   @State enableDataDetector: boolean = true;
   @State types: TextDataDetectorType[] = [];
   @State text1: string = '111'
