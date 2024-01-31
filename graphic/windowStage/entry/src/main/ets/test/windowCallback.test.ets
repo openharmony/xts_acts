@@ -82,9 +82,9 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
     beforeAll(() => {
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-      let wndTypeArray:Array<number> = [ohosWindow.WindowType.TYPE_FLOAT,ohosWindow.WindowType.TYPE_APP,ohosWindow.WindowType.TYPE_SYSTEM_ALERT,ohosWindow.WindowType.TYPE_DIALOG]
+      let wndTypeArray: Array<number> = [ohosWindow.WindowType.TYPE_FLOAT, ohosWindow.WindowType.TYPE_APP, ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ohosWindow.WindowType.TYPE_DIALOG]
 
-      for (let i of Object.entries(wndTypeArray)){
+      for (let i of Object.entries(wndTypeArray)) {
         windowTypeArr.push(wndTypeArray[i[1]])
       }
       console.log(': Record<string,number> beforeall');
@@ -1511,7 +1511,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
 
       let getWinProperties: Function = (win: ohosWindow.Window) => {
         return new Promise<ohosWindow.WindowProperties>((resolve, reject) => {
-          win.getProperties((err:BusinessError, data:ohosWindow.WindowProperties) => {
+          win.getProperties((err: BusinessError, data: ohosWindow.WindowProperties) => {
             if (err.code != 0) {
               reject(null)
             } else {
@@ -1583,7 +1583,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify("ohosWindow"));
 
-      let createSubWindowFun: Function = ()=> {
+      let createSubWindowFun: Function = () => {
         return new Promise<ohosWindow.Window>((resolve, reject) => {
           windowStage.createSubWindow('setPrivacyModeTest3', (err, data) => {
             if (err && err.code) {
@@ -1620,7 +1620,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         })
       }
 
-      let tempWnd:ohosWindow.Window = await createSubWindowFun().catch((err: BusinessError) => {
+      let tempWnd: ohosWindow.Window = await createSubWindowFun().catch((err: BusinessError) => {
         console.info(msgStr + `ohosWindow.create failed  error: ${JSON.stringify(err)}`)
         expect().assertFail();
         done();
@@ -1723,7 +1723,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
 
-      let setForbidSplitMoveFun: Function = (win:ohosWindow.Window, boolean:boolean) => {
+      let setForbidSplitMoveFun: Function = (win: ohosWindow.Window, boolean: boolean) => {
         return new Promise<boolean>((resolve, reject) => {
           win.setForbidSplitMove(boolean, (err, data) => {
             if (err.code) {
@@ -1839,7 +1839,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify("ohosWindow"));
       let wndId: string = 'animationForShownTest2';
       let baseType: number = ohosWindow.WindowType.TYPE_FLOAT;
-      let tempWnd:ohosWindow.Window;
+      let tempWnd: ohosWindow.Window;
       ohosWindow.create(context, wndId, baseType, async (err, data) => {
         if (err && err.code) {
           unexpectedError(TRUE_FLAG, err, caseName, 'ohosWindow.create ' + baseType, done);
@@ -2129,10 +2129,10 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-     it('testGetTitleButtonRect', 0, async (done:Function)=>{
-      let msgStr:string = 'testGetTitleButtonRect';
+    it('testGetTitleButtonRect', 0, async (done: Function) => {
+      let msgStr: string = 'testGetTitleButtonRect';
       console.log(msgStr + 'begin');
-      let windowClass:ohosWindow.Window = await ohosWindow.getLastWindow(context);
+      let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
       try {
         let TitleButtonRect = windowClass.getTitleButtonRect();
         console.log(msgStr + 'Succeeded in obtaining the area of title buttons. Data: ' + JSON.stringify(TitleButtonRect));
@@ -2144,12 +2144,12 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       } catch (error) {
         console.log(msgStr + 'Failed to get the area of title buttons. Cause: ' + JSON.stringify(error));
         if (error.code == 1300002) {
-            expect(true).assertTrue()
-            done()
+          expect(true).assertTrue()
+          done()
         } else {
-            expect().assertFail();
-            done();
-        }          
+          expect().assertFail();
+          done();
+        }
       }
     });
 
@@ -2162,11 +2162,11 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done:Function)=>{
-      let  msgStr:string = 'testWindowTitleButtonRectChange_on';
+    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done: Function) => {
+      let msgStr: string = 'testWindowTitleButtonRectChange_on';
       console.log(msgStr + "begin on")
       try {
-        let windowClass:ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
         windowClass.on('windowTitleButtonRectChange', (titleButtonRect) => {
           console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
           expect(true).assertTrue();
@@ -2175,14 +2175,14 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       } catch (err) {
         console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
         if (err.code == 801) {
-            expect(true).assertTrue()
-            done()
+          expect(true).assertTrue()
+          done()
         } else {
-            expect().assertFail();
-            done();
+          expect().assertFail();
+          done();
         }
       }
-   });
+    });
 
 
     /**
@@ -2193,11 +2193,11 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done:Function)=>{
-      let msgStr:string = 'testWindowTitleButtonRectChange_off';
+    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done: Function) => {
+      let msgStr: string = 'testWindowTitleButtonRectChange_off';
       console.log(msgStr + 'begin off');
       try {
-        let windowClass:ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
         windowClass.off('windowTitleButtonRectChange');
         console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes');
         expect(true).assertTrue();
@@ -2205,14 +2205,14 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       } catch (error) {
         console.log(msgStr + 'Failed to disable the listener for window title buttons area changes. Cause: ' + JSON.stringify(error));
         if (error.code == 1300002) {
-            expect(true).assertTrue()
-            done()
+          expect(true).assertTrue()
+          done()
         } else {
-            expect().assertFail();
-            done();
-        }  
+          expect().assertFail();
+          done();
+        }
       }
-   });
+    });
 
 
     /**
@@ -2223,7 +2223,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testEnumWindow_windowType', 0, async ()=>{
+    it('testEnumWindow_windowType', 0, async () => {
       console.info('testEnumWindow_windowType test the enum value of windowType begin');
       console.info('testEnumWindow_windowType' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       try {
@@ -2249,7 +2249,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         console.info('test Enum value of windowType error ' + JSON.stringify(error));
         expect().assertFail();
       }
-   });
+    });
 
   })
 }

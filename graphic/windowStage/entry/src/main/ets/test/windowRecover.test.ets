@@ -17,18 +17,18 @@ import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 
-export default function windowRecoverTest(context:common.UIAbilityContext, windowStage:ohosWindow.WindowStage, abilityStorage:LocalStorage) {
+export default function windowRecoverTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
   console.log('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
-  describe('windowRecover_test',  ()=> {
+  describe('windowRecover_test', () => {
     console.log('describe window_api_test start!!!')
-    let systemWindowValueArr:Array<string> = [];
-    let systemWindowTypeArr:Array<string> = [];
-    let systemWindowTypeDicArr:Array<string> = [];
-    let systemWindowTypeDic:Record<string,number> = {
+    let systemWindowValueArr: Array<string> = [];
+    let systemWindowTypeArr: Array<string> = [];
+    let systemWindowTypeDicArr: Array<string> = [];
+    let systemWindowTypeDic: Record<string, number> = {
       'TYPE_FLOAT': 8,
     }
-    beforeAll( ()=> {
+    beforeAll(() => {
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -44,8 +44,8 @@ export default function windowRecoverTest(context:common.UIAbilityContext, windo
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testRecover', 0, async  (done:Function)=> {
-      let msgStr:string = 'testRecover';
+    it('testRecover', 0, async (done: Function) => {
+      let msgStr: string = 'testRecover';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
         console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);

@@ -445,7 +445,7 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       });
       expect(!!win).assertTrue();
       // @ts-ignore
-      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false,true).then(async () => {
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false, true).then(async () => {
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
         await (win as ohosWindow.Window).destroyWindow();
         expect().assertFail();

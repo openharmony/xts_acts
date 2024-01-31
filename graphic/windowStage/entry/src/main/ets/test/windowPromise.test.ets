@@ -1391,7 +1391,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
       if (mainWnd != undefined) {
-        let mainWindow:ohosWindow.Window = mainWnd as ohosWindow.Window
+        let mainWindow: ohosWindow.Window = mainWnd as ohosWindow.Window
         try {
           let ratio: number = 1.0;
           await mainWindow.setAspectRatio(ratio).then(() => {
@@ -1426,7 +1426,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let caseName: string = 'testSetAspectRatio_Invalid_Params_Promise';
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let mainWnd: ohosWindow.Window|undefined = undefined;
+      let mainWnd: ohosWindow.Window | undefined = undefined;
       await windowStage.getMainWindow().then((data: ohosWindow.Window) => {
         mainWnd = data;
         expect(!!mainWnd).assertTrue();
@@ -1435,7 +1435,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         console.error(msgStr + 'Failed to obtain the main window. Cause: ' + JSON.stringify(err));
       });
       if (mainWnd != undefined) {
-        let mainWindow:ohosWindow.Window = mainWnd as ohosWindow.Window
+        let mainWindow: ohosWindow.Window = mainWnd as ohosWindow.Window
         try {
           let ratio: number = 0;
           await mainWindow.setAspectRatio(ratio).then(() => {
@@ -1622,7 +1622,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       });
       expect(!Boolean(load3)).assertTrue();
       try {
-        let tempWnd:ohosWindow.Window|void = await windowStage.getMainWindow().catch((err: BusinessError) => {
+        let tempWnd: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
         });
         console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
@@ -1656,11 +1656,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         //   title: 'title',
         //   decorEnabled: true
         // };
-        let promise = windowStage .createSubWindow('mySubWindow');
+        let promise = windowStage.createSubWindow('mySubWindow');
         console.log(msgStr + ' www data ' + promise)
 
-        promise.then((data:ohosWindow.Window) => {
-          let windowClass:ohosWindow.Window = data;
+        promise.then((data: ohosWindow.Window) => {
+          let windowClass: ohosWindow.Window = data;
           console.log(msgStr + ' Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
           expect(true).assertTrue()
           done()

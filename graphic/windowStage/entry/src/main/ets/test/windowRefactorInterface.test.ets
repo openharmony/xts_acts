@@ -1309,10 +1309,10 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         })
       }
 
-      let isResultTrue:void;
+      let isResultTrue: void;
       isResultTrue = await setWindowTouchableFun()
       expect(isResultTrue).assertTrue();
-      let data:ohosWindow.WindowProperties = wnd.getWindowProperties();
+      let data: ohosWindow.WindowProperties = wnd.getWindowProperties();
       expect(!data.touchable).assertTrue();
       wnd.setWindowTouchable(true, (err, data) => {
         if (err.code) {
@@ -1345,7 +1345,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testSetWindowKeepScreenOn_Base_True_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
-      let wnd:ohosWindow.Window = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       //      let data = wnd.getWindowProperties();
       //      expect(!data.isKeepScreenOn).assertTrue();
@@ -1371,7 +1371,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testSetWindowKeepScreenOn_Base_False_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowKeepScreenOn_Base_False_Promise begin');
-      let wnd:ohosWindow.Window = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowKeepScreenOn(false).then(() => {
         console.info('windowTest setKeepScreenOnTest1 setKeepScreenOn(false) success ');
@@ -1455,7 +1455,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testSetWindowPrivacyMode_True_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
-      let wnd:ohosWindow.Window = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       //      let data = wnd.getWindowProperties();
       //      expect(!data.isPrivacyMode).assertTrue();
@@ -1481,7 +1481,7 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
      */
     it('testSetWindowPrivacyMode_True_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowPrivacyMode_True_Callback begin');
-      let wnd:ohosWindow.Window = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
         wnd.setWindowPrivacyMode(true, (err: BusinessError) => {

@@ -461,7 +461,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async (done:Function)=> {
+    it('testWindow_off_WindowSizeChange_SecondCall_Callback', 0, async (done: Function) => {
       let caseName = 'testWindow_off_WindowSizeChange_SecondCall_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -469,35 +469,36 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let secondListenFlag = false
       let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'window_off_windowSizeChange_Test_002';
-      let windowConfig:ohosWindow.Configuration = {
+      let windowConfig: ohosWindow.Configuration = {
         name: windowId, windowType: baseWndType, ctx: context
       };
 
-      let tempWnd:ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err:BusinessError) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG,done);
-      });
+      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
+        .catch((err: BusinessError) => {
+          unexpectedError(err, caseName, 'ohosWindow.createWindow', TRUE_FLAG, done);
+        });
       expect(!!tempWnd).assertTrue();
 
-      let firstCall:Callback<ohosWindow.Size> = ()=> {
+      let firstCall: Callback<ohosWindow.Size> = () => {
         console.log(msgStr + "first listener trigger")
         firstListenFlag = true
       }
 
-      let secondCall:Callback<ohosWindow.Size> = ()=> {
+      let secondCall: Callback<ohosWindow.Size> = () => {
         console.log(msgStr + "second listener trigger")
         secondListenFlag = true
       }
 
       (tempWnd as ohosWindow.Window).on('windowSizeChange', firstCall);
       (tempWnd as ohosWindow.Window).on('windowSizeChange', secondCall);
-      await (tempWnd as ohosWindow.Window).show().catch((err:BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG,done);
+      await (tempWnd as ohosWindow.Window).show().catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.show', TRUE_FLAG, done);
       });
       console.log(msgStr + 'tempWnd.show success');
-      await (tempWnd as ohosWindow.Window).setWindowMode(102).catch((err:BusinessError) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', TRUE_FLAG,done);
+      await (tempWnd as ohosWindow.Window).setWindowMode(102).catch((err: BusinessError) => {
+        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', TRUE_FLAG, done);
       });
-      await (tempWnd as ohosWindow.Window).resize(200, 600).catch(async (err:BusinessError) => {
+      await (tempWnd as ohosWindow.Window).resize(200, 600).catch(async (err: BusinessError) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -507,7 +508,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       (tempWnd as ohosWindow.Window).off('windowSizeChange', firstCall);
       firstListenFlag = false
       secondListenFlag = false
-      await (tempWnd as ohosWindow.Window).resize(500, 500).catch(async (err:BusinessError) => {
+      await (tempWnd as ohosWindow.Window).resize(500, 500).catch(async (err: BusinessError) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
         await (tempWnd as ohosWindow.Window).destroyWindow();
@@ -1225,7 +1226,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
       display.on("add", firstCall);
       display.on("add", secondCall);
-      let screenClass: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
         name: 'add01',
         width: 1080,
         height: 2340,
@@ -1246,8 +1247,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       display.off('add')
       firstListenFlag = false
       secondListenFlag = false
-      await screen.destroyVirtualScreen( (screenClass as screen.Screen).id)
-      let screenClass_two: screen.Screen|void = await screen.createVirtualScreen({
+      await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
+      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
         name: 'add001',
         width: 900,
         height: 2000,
@@ -1296,7 +1297,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
       display.on("add", firstCall);
       display.on("add", secondCall);
-      let screenClass: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
         name: 'add02',
         width: 1080,
         height: 2340,
@@ -1318,7 +1319,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       firstListenFlag = false
       secondListenFlag = false
       await screen.destroyVirtualScreen((screenClass as screen.Screen).id)
-      let screenClass_two: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
         name: 'add002',
         width: 900,
         height: 2000,
@@ -1375,7 +1376,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
       display.on('remove', firstCall);
       display.on('remove', secondCall);
-      let screenClass: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
         name: 'remove01',
         width: 1080,
         height: 2340,
@@ -1397,7 +1398,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       display.off('remove')
       firstListenFlag = false
       secondListenFlag = false
-      let screenClass_two: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
         name: 'remove001',
         width: 900,
         height: 2000,
@@ -1447,7 +1448,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
       display.on('remove', firstCall);
       display.on('remove', secondCall);
-      let screenClass: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass: screen.Screen | void = await screen.createVirtualScreen({
         name: 'remove02',
         width: 1080,
         height: 2340,
@@ -1469,7 +1470,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       display.off('remove', firstCall)
       firstListenFlag = false
       secondListenFlag = false
-      let screenClass_two: screen.Screen|void = await screen.createVirtualScreen({
+      let screenClass_two: screen.Screen | void = await screen.createVirtualScreen({
         name: 'remove002',
         width: 900,
         height: 2000,
