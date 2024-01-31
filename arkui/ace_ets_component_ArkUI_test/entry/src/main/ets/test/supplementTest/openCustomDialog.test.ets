@@ -30,7 +30,7 @@ export default function openCustomDialog() {
         router.clear();
         let pages = router.getState();
         console.info("get openCustomDialog state pages: " + JSON.stringify(pages));
-        if (!("translation" == pages.name)) {
+        if (!("openCustomDialog" == pages.name)) {
           console.info("get openCustomDialog state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
