@@ -456,8 +456,8 @@ void NativeXcomponent::OnKeyEvent(OH_NativeXComponent* component, void* window)
         OH_ArkUI_GetNativeAPI(&path);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "NativeXcomponent",
             "KeyEvent Info: action=%{public}d, code=%{public}d, sourceType=%{public}d, deviceId=%{public}ld,"
-            "timeStamp=%{public}ld", "points=%{public}ld", "frameRateRange=%{public}ld","componentId1=%{public}ld",
-            "componentId2=%{public}ld", "api=%{public}ld", action, code, sourceType, deviceId, timeStamp, points,
+            "timeStamp=%{public}ld, points=%{public}ld, frameRateRange=%{public}ld, componentId1=%{public}ld,"
+            "componentId2=%{public}ld, api=%{public}ld", action, code, sourceType, deviceId, timeStamp, points,
             frameRateRange, componentId1, componentId2, api);
     } else {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "NativeXcomponent", "GetKeyEvent error");
