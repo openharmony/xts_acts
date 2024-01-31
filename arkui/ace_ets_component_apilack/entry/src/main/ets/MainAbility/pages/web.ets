@@ -151,27 +151,27 @@ struct WebComponent {
             console.log('web getCookie:' + web_webview.WebCookieManager.getCookie("www.baidu.com"));
             console.log('web existCookie:' + web_webview.WebCookieManager.existCookie());
             console.log('web deleteEntireCookie:' + web_webview.WebCookieManager.deleteEntireCookie());
-            console.log('web deleteExpiredCookie:' + this.controller.getCookieManager().deleteExpiredCookie());
+            // console.log('web deleteExpiredCookie:' + this.controller.getCookieManager().deleteExpiredCookie());
             console.log('web deleteSessionCookie:' + web_webview.WebCookieManager.deleteSessionCookie());
             console.log('web isCookieAllowed:' + web_webview.WebCookieManager.isCookieAllowed());
-            console.log('web isFileURICookieAllowed:' + this.controller.getCookieManager().isFileURICookieAllowed());
+            // console.log('web isFileURICookieAllowed:' + this.controller.getCookieManager().isFileURICookieAllowed());
             console.log('web isThirdPartyCookieAllowed:' + web_webview.WebCookieManager
               .isThirdPartyCookieAllowed());
             console.log('web putAcceptCookieEnabled:' + web_webview.WebCookieManager
               .putAcceptCookieEnabled(true));
-            console.log('web putAcceptFileURICookieEnabled:' + this.controller.getCookieManager()
-              .putAcceptFileURICookieEnabled(true));
+            // console.log('web putAcceptFileURICookieEnabled:' + this.controller.getCookieManager()
+            //   .putAcceptFileURICookieEnabled(true));
             console.log('web putAcceptThirdPartyCookieEnabled:' + web_webview.WebCookieManager
               .putAcceptThirdPartyCookieEnabled(true));
-            console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
+            // console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
             console.log('web zoomIn:' + this.controllerTwo.zoomIn());
             console.log('web zoomOut:' + this.controllerTwo.zoomOut());
             console.log('web zoom:' + this.controller.zoom(2));
             console.log('web getWebId:' + this.controllerTwo.getWebId());
-            console.log('web getDefaultUserAgent:' + this.controller.getDefaultUserAgent());
-            console.log('web getTitle:' + this.controller.getTitle());
-            console.log('web getPageHeight:' + this.controller.getPageHeight());
-            console.log('web backOrForward:' + this.controller.backOrForward(2));
+            // console.log('web getDefaultUserAgent:' + this.controller.getDefaultUserAgent());
+            // console.log('web getTitle:' + this.controller.getTitle());
+            // console.log('web getPageHeight:' + this.controller.getPageHeight());
+            // console.log('web backOrForward:' + this.controller.backOrForward(2));
           } catch (error) {
             console.info('the error is ' + JSON.stringify(error));
           }
