@@ -84,7 +84,7 @@ struct PageRouteExample {
         priority: events_emitter.EventPriority.LOW
       }
       console.info("page start to emit action state")
-      events_emitter.emit(event, eventData)
+      events_emitter.emit(eventt, eventData)
     } catch (err) {
       console.info("page emit action state err: " + JSON.stringify(err.message))
     }

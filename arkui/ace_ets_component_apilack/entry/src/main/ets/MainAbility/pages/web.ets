@@ -145,23 +145,23 @@ struct WebComponent {
             console.log('setResponseEncoding:' + event.response.setResponseEncoding("UTF-8"));
             console.log('setResponseMimeType:' + event.response.setResponseMimeType("application/json"));
             console.log('setResponseHeader:' + event.response.setResponseHeader([]));
-            console.log('web getExtra:' + this.controllerTwo.getHitTestValue().getExtra());
-            console.log('web getType:' + this.controllerTwo.getHitTestValue().getType());
+            console.log('web getExtra:' + this.controllerTwo.getHitTestValue().extra);
+            console.log('web getType:' + this.controllerTwo.getHitTestValue().type);
             console.log('web getCookieManager:' + this.controller.getCookieManager());
-            console.log('web getCookie:' + this.controller.getCookieManager().getCookie("www.baidu.com"));
-            console.log('web existCookie:' + this.controller.getCookieManager().existCookie());
-            console.log('web deleteEntireCookie:' + this.controller.getCookieManager().deleteEntireCookie());
+            console.log('web getCookie:' + web_webview.WebCookieManager.getCookie("www.baidu.com"));
+            console.log('web existCookie:' + web_webview.WebCookieManager.existCookie());
+            console.log('web deleteEntireCookie:' + web_webview.WebCookieManager.deleteEntireCookie());
             console.log('web deleteExpiredCookie:' + this.controller.getCookieManager().deleteExpiredCookie());
-            console.log('web deleteSessionCookie:' + this.controller.getCookieManager().deleteSessionCookie());
-            console.log('web isCookieAllowed:' + this.controller.getCookieManager().isCookieAllowed());
+            console.log('web deleteSessionCookie:' + web_webview.WebCookieManager.deleteSessionCookie());
+            console.log('web isCookieAllowed:' + web_webview.WebCookieManager.isCookieAllowed());
             console.log('web isFileURICookieAllowed:' + this.controller.getCookieManager().isFileURICookieAllowed());
-            console.log('web isThirdPartyCookieAllowed:' + this.controller.getCookieManager()
+            console.log('web isThirdPartyCookieAllowed:' + web_webview.WebCookieManager
               .isThirdPartyCookieAllowed());
-            console.log('web putAcceptCookieEnabled:' + this.controller.getCookieManager()
+            console.log('web putAcceptCookieEnabled:' + web_webview.WebCookieManager
               .putAcceptCookieEnabled(true));
             console.log('web putAcceptFileURICookieEnabled:' + this.controller.getCookieManager()
               .putAcceptFileURICookieEnabled(true));
-            console.log('web putAcceptThirdPartyCookieEnabled:' + this.controller.getCookieManager()
+            console.log('web putAcceptThirdPartyCookieEnabled:' + web_webview.WebCookieManager
               .putAcceptThirdPartyCookieEnabled(true));
             console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
             console.log('web zoomIn:' + this.controllerTwo.zoomIn());
