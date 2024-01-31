@@ -35,7 +35,7 @@ export default function userauthTest() {
         */
         it('Security_IAM_Func_0102', 0, async function (done) {
             console.info('testFace GetAvailabeStatusTest0102 start');
-            if (productSeriesInfo != "NOH") {
+            if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM") {
                 let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
                 let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3, userAuthNorth.AuthTrustLevel.ATL4]
                 for (let idx0 = 0; idx0 < authType.length; idx0++) {

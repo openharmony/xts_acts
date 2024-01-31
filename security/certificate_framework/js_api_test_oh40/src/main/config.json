@@ -18,7 +18,7 @@
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "srcPath": "",
-    "deviceType": ["default", "tablet", "tv", "wearable", "phone"],
+    "deviceType": ["default", "tablet", "tv", "wearable", "phone", "2in1"],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
