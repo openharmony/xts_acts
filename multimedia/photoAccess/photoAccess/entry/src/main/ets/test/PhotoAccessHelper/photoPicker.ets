@@ -238,7 +238,7 @@ export default function photoPickerTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0700
      * @tc.name      : photopicker_select_promise_007
-     * @tc.desc      : select with option preselectdUris
+     * @tc.desc      : select with option preselectedUris
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
