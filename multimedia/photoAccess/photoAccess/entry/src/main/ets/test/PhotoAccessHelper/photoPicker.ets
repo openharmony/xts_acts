@@ -244,15 +244,23 @@ export default function photoPickerTest() {
      * @tc.level     : Level 0
     */
     it("photopicker_select_promise_007", 0, async function (done) {
-      let testNum = "photopicker_select_promise_007";
-      let fetchResult = await photoAccessHelper.getAssets(fetchOption);
-      let asset = await fetchResult.getFirstObject();
-      let option = new photoAccessHelper.PhotoSelectOptions();
-      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-      option.maxSelectNumber = 1;
-      option.preselectedUris = [asset.uri];
-      let expectSelectNum = 1;
-      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+        let testNum = "photopicker_select_promise_007";
+        try{
+            let helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+            let fetchResult = await helper.getAssets(fetchOption);
+            let asset = await fetchResult.getFirstObject();
+            let option = new photoAccessHelper.PhotoSelectOptions();
+            option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+            option.maxSelectNumber = 1;
+            option.preselectedUris = [asset.uri];
+            let expectSelectNum = 1;
+            await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+            await helper.release();
+        }catch(error){
+            console.info(`${testNum}::selectWithOption error: ${JSON.stringify(error)}`);
+            except(false).assertTrue();
+            done();
+        }
     });
 
     //callback
