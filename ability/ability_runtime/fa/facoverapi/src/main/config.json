@@ -18,8 +18,7 @@
         "name": ".entry",
         "deviceType": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,
