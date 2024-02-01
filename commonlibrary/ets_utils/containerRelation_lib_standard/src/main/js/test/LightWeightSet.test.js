@@ -755,5 +755,28 @@ describe("LightWeightSetTest", function () {
       expect(err.message).assertEqual(`The type of "set" must be LightWeightSet. Received value is: 1,2,3`);
     }
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIGHTWEIGHTSET_01000
+   * @tc.name: testEntries046
+   * @tc.desc: Iterate over all elements of the LightWeightSet instance. For example: LightWeightSet.entries().
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testEntries046", 0, function () {
+    let lightWeightSet = new LightWeightSet();
+    lightWeightSet.add(1);
+    lightWeightSet.add(2);
+    lightWeightSet.add(3);
+    lightWeightSet.add(4);
+    lightWeightSet.add(5);
+    let iter = lightWeightSet.entries();
+    let temp = iter.next();
+    while(!temp.done) {
+      expect(temp.value[0]).assertEqual(temp.value[1]);
+      temp = iter.next();
+    }
+  });
 });
 }
