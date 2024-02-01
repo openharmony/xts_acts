@@ -48,7 +48,7 @@ export default function APIScrollflingSpeedLimitJsunit() {
       await CommonFunc.sleep(1000);
       console.info('APIScrollflingSpeedLimitJsunit_0100 component obj is: ' + obj);
       console.info('APIScrollflingSpeedLimitJsunit_0100 component obj.$attrs.flingSpeedLimit is: ' + obj.$attrs.flingSpeedLimit);
-      expect(obj.$attrs.flingSpeedLimit).assertEqual(10);
+      expect(obj.$attrs.flingSpeedLimit).assertEqual(`${vp2px(10).toFixed(2)}px`);
       console.info('APIScrollflingSpeedLimitJsunit_0100 END')
       done();
     });

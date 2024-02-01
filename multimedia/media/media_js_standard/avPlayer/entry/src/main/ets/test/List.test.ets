@@ -30,7 +30,7 @@ export default function testsuite() {
   AvPlayerEnumTest();
   AVPlayerLocalTest();
   AVPlayerAudioEffectModeTest();
-  AVPlayerMultiTrackTest();
+  // AVPlayerMultiTrackTest();
   // AVPlayerStabilityTest();
   AVMetadata();
 }

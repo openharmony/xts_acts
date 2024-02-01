@@ -20,7 +20,8 @@
     "mainAbility": "com.open.harmony.packagemag.MainAbility",
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "reqPermissions": [
       {

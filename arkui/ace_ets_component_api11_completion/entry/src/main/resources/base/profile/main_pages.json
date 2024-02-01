@@ -122,6 +122,18 @@
         "MainAbility/pages/RenderNodeInvalidate",
         "MainAbility/pages/RenderNodeDraw",
         "MainAbility/pages/commonApi/accessVN",
-        "MainAbility/pages/menuBlurStyle"
+        "MainAbility/pages/menuBlurStyle",
+		"MainAbility/pages/AttributeModifier/APITabsBarBackgroundBlurStyle",
+		"MainAbility/pages/renderNode/pixelRound",
+        "MainAbility/pages/AttrApi/NavPathStackApi1",
+        "MainAbility/pages/AttrApi/NavPathStackApi2",
+        "MainAbility/pages/AttrApi/NavPathStackApi3",
+        "MainAbility/pages/AttrApi/ObserverApi",
+        "MainAbility/pages/relativeApi11/Navigation1",
+        "MainAbility/pages/relativeApi11/Navigation2",
+        "MainAbility/pages/relativeApi11/Navigation3",
+        "MainAbility/pages/relativeApi11/Navigation4",
+        "MainAbility/pages/relativeApi11/RelativeContainer",
+        "MainAbility/pages/AttrApi/ObserverApi2"
     ]
 }

@@ -78,7 +78,7 @@ if __name__ == '__main__':
     
     with open(mustpasspath) as mustpassbuf:
         for mustpassline in mustpassbuf:
-            mustpasslist.append(mustpassline)
+            mustpasslist.append(mustpassline.strip().strip("\r").strip("\n"))
     print("mustfile line:", len(mustpasslist))
     #读取最近的tasklog文件
     print("tasklogpath :", tasklogpath)
@@ -125,6 +125,7 @@ if __name__ == '__main__':
     notfindlist = []
     while i < len(mustpasslist):
         isfind = False
+        j = 0
         while j < len(testcaselist):
             if mustpasslist[i] in testcaselist[j]:
                 isfind = True

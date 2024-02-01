@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -233,6 +233,24 @@ export default function photoPickerTest() {
       option.isEditSupported = true;
       let expectSelectNum = 1;
       await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0700
+     * @tc.name      : photopicker_select_promise_007
+     * @tc.desc      : select with option preselectedUris
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+    */
+    it("photopicker_select_promise_007", 0, async function (done) {
+        let testNum = "photopicker_select_promise_007";
+        let option = new photoAccessHelper.PhotoSelectOptions();
+        option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+        option.maxSelectNumber = 1;
+        option.preselectedUris = undefined;
+        let expectSelectNum = 1;
+        await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
 
     //callback

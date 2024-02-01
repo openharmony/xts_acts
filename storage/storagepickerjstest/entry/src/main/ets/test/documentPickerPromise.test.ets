@@ -153,7 +153,7 @@ export default function documentPickerPromise(abilityContext: Context) {
     it("documentpicker_select_promise_008", 1, async (done: Function) => {
       let testNum = "documentpicker_select_promise_008";
       let option = new picker.DocumentSelectOptions();
-      //option.selectMode = picker.DocumentSelectMode.FILE;
+      option.selectMode = picker.DocumentSelectMode.FILE;
       await selectWithOption(testNum, done, option);
     });
 
@@ -168,7 +168,7 @@ export default function documentPickerPromise(abilityContext: Context) {
     it("documentpicker_select_promise_009", 1, async (done: Function) => {
       let testNum = "documentpicker_select_promise_009";
       let option = new picker.DocumentSelectOptions();
-      //option.selectMode = picker.DocumentSelectMode.FOLDER;
+      option.selectMode = picker.DocumentSelectMode.FOLDER;
       await selectWithOption(testNum, done, option);
     });
 
@@ -183,7 +183,7 @@ export default function documentPickerPromise(abilityContext: Context) {
     it("documentpicker_select_promise_010", 1, async (done: Function) => {
       let testNum = "documentpicker_select_promise_010";
       let option = new picker.DocumentSelectOptions();
-      // option.selectMode = picker.DocumentSelectMode.MIXED;
+      option.selectMode = picker.DocumentSelectMode.MIXED;
       await selectWithOption(testNum, done, option);
     });
 

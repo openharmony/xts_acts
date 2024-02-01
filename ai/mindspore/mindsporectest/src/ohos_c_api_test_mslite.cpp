@@ -396,7 +396,6 @@ void PrintTrainLossName(OH_AI_TrainCfgHandle trainCfg) {
     for (size_t i = 0; i < num; i++) {
         free(lossName[i]);
     }
-    free(lossName);
 }
 
 // 正常场景：更新权重

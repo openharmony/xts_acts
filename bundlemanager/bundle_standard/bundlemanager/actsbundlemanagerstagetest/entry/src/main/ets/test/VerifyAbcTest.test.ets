@@ -14,7 +14,11 @@
  */
 
 import bundle from '@ohos.bundle.bundleManager';
+import fs from '@ohos.file.fs';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+
+const BUNDLE_PATH = "/data/storage/el1/bundle/abcs";
+const ABC_PATH = "/data/storage/el2/base/haps/entry/files/testAbc.abc";
 
 export default function VerifyAbcTest() {
   describe('VerifyAbcTest', function () {
@@ -24,7 +28,7 @@ export default function VerifyAbcTest() {
      * @tc.desc: Test verifyAbc with default flag(by promise).
      */
     it('verifyAbc_0100', 0, async function (done) {
-      let paths : Array<string> = ['/data/storage/el2/base/haps/entry/files/testAbc.abc']
+      let paths : Array<string> = [ABC_PATH]
       console.info("verifyAbc_0100 start");
       await bundle.verifyAbc(paths, false).then(data => {
         if (data == null || data === undefined) {
@@ -33,6 +37,26 @@ export default function VerifyAbcTest() {
           console.info("verifyAbc_0100" + JSON.stringify(data));
         }
         expect(data).assertEqual(undefined);
+        fs.access(BUNDLE_PATH + ABC_PATH).then((res : boolean) => {
+          expect(res).assertEqual(true);
+          bundle.deleteAbc(ABC_PATH).then(res => {
+            fs.access(BUNDLE_PATH + ABC_PATH).then((res : boolean) => {
+              expect(res).assertEqual(false);
+            }).catch((err) => {
+              console.info("verifyAbc_0100 deleteAbc access failed" + JSON.stringify(err));
+              expect(err).assertFail();
+              done();
+            });
+          }).catch((err) => {
+            console.info("verifyAbc_0100 deleteAbc failed" + JSON.stringify(err));
+            expect(err).assertFail();
+            done();
+          });
+        }).catch((err) => {
+          console.info("verifyAbc_0100 fs access" + JSON.stringify(err));
+          expect(err).assertFail();
+          done();
+        });
         done();
       }).catch(err => {
         console.info("verifyAbc_0100 fail" + JSON.stringify(err));

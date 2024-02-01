@@ -30,7 +30,7 @@ export default function outline() {
         router.clear();
         let pages = router.getState();
         console.info("get outline state pages: " + JSON.stringify(pages));
-        if (!("transform" == pages.name)) {
+        if (!("outline" == pages.name)) {
           console.info("get outline state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

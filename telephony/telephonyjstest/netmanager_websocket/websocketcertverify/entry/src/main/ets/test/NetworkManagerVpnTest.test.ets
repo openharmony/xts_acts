@@ -26,6 +26,59 @@ import { GlobalContext } from "../GlobalContext";
 let socketFd = 38;
 let tag = 'Geegee';
 let context:common.VpnExtensionContext = GlobalContext.getContext().getObject("AppContext");
+let context1: vpn.AbilityContext = getContext(this) as common.UIAbilityContext;
+let address: vpn.LinkAddress = {
+  address: {
+    address: "10.0.0.5",
+    family: 1
+  },
+  prefixLength: 24
+}
+
+let adress1: vpnExtension.LinkAddress = {
+  address: {
+    address: "10.0.0.10",
+    family: 1
+  },
+  prefixLength: 24
+}
+
+let routeInfo: vpn.RouteInfo = {
+  interface: '',
+  destination: {
+    address: {
+      address: "10.0.0.10",
+      family: 1
+    },
+    prefixLength: 24
+  },
+  gateway: {
+    address: '192.168.0.1',
+    family: 1,
+    port: 8080
+  },
+  hasGateway: true,
+  isDefaultRoute: true
+}
+
+let routeInfo1: vpnExtension.RouteInfo = {
+  interface: '',
+  destination: {
+    address: {
+      address: "10.0.0.10",
+      family: 1
+    },
+    prefixLength: 24
+  },
+  gateway: {
+    address: '192.168.0.1',
+    family: 1,
+    port: 8080
+  },
+  hasGateway: true,
+  isDefaultRoute: true
+}
+
 let config: vpnExtension.VpnConfig = {
   addresses: [{
     address: {
