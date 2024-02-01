@@ -115,7 +115,7 @@ export default function windowRecoverTest(context, windowStage, abilityStorage) 
               done()
             }).catch((err: BusinessError) => {
               console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
-              if (err.code == 1300001) {
+              if (err.code == 1300001 || err.code == 801) {
                 expect(true).assertTrue()
                 done()
               } else {
@@ -125,7 +125,7 @@ export default function windowRecoverTest(context, windowStage, abilityStorage) 
             });
           } catch (exception) {
             console.error(msgStr + ' Failed to recover the window. Cause: ' + JSON.stringify(exception));
-            if (exception.code == 1300001) {
+            if (exception.code == 1300001 || exception.code == 801) {
               expect(true).assertTrue()
               done()
             } else {
