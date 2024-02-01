@@ -55,7 +55,7 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  ACTS_AACommand_AAImplicitStart_0100
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility
+    * @tc.name    ACTS_AACommand_AAImplicitStart_0100 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
@@ -75,7 +75,7 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  ACTS_AACommand_AAImplicitStart_0200
-    * @tc.name    aa start -U "https:://uri.aacommandimplicitstarttest.home" -t uri-type
+    * @tc.name    ACTS_AACommand_AAImplicitStart_0200 aa start -U "https:://uri.aacommandimplicitstarttest.home" -t uri-type
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
@@ -95,7 +95,7 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  ACTS_AACommand_AAImplicitStart_0300
-    * @tc.name    aa start -A "action.aacommandimplicitstarttest.home"
+    * @tc.name    ACTS_AACommand_AAImplicitStart_0300 aa start -A "action.aacommandimplicitstarttest.home"
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
@@ -115,7 +115,7 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  ACTS_AACommand_AAImplicitStart_0400
-    * @tc.name    aa start -e "entity.aacommandimplicitstarttest.home"
+    * @tc.name    ACTS_AACommand_AAImplicitStart_0400 aa start -e "entity.aacommandimplicitstarttest.home"
     * @tc.desc    Function test
     * @tc.size    MediumTest
     * @tc.type    Function
@@ -135,11 +135,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_0600
-     * @tc.name    aa start -U
+     * @tc.name    ACTS_AACommand_AAImplicitStart_0600 aa start -U
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_0600',1, async function (done) {
       let res = undefined;
@@ -159,7 +159,7 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_0700
-     * @tc.name    aa start -A
+     * @tc.name    ACTS_AACommand_AAImplicitStart_0700 aa start -A
      * @tc.desc    Function test
      * @tc.size    MediumTest
     * @tc.type    Function
@@ -184,11 +184,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_0800
-     * @tc.name    aa start -e
+     * @tc.name    ACTS_AACommand_AAImplicitStart_0800 aa start -e
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_0800',1, async function (done) {
       let res = undefined;
@@ -209,11 +209,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_0900
-     * @tc.name    aa start -t
+     * @tc.name    ACTS_AACommand_AAImplicitStart_0900 aa start -t
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_0900',1, async function (done) {
       let res = undefined;
@@ -233,11 +233,12 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1000
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger 13 --pb kbool1 true --pb kbool2 f --ps kstring1 value1 --ps string2 value2 --psn knullstring1 --psn knullstring2
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1000 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility 
+     * --pi kinteger 13 --pb kbool1 true --pb kbool2 f --ps kstring1 value1 --ps string2 value2 --psn knullstring1 --psn knullstring2
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1000',1, async function (done) {
       let res = undefined;
@@ -253,11 +254,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1100
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1100 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1100',1, async function (done) {
       let res = undefined;
@@ -277,11 +278,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1200
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1200 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1200',1, async function (done) {
       let res = undefined;
@@ -302,11 +303,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1300
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger invalidnum
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1300 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger invalidnum
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1300',1, async function (done) {
       let res = undefined;
@@ -326,11 +327,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1400
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1400 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1400',1, async function (done) {
       let res = undefined;
@@ -350,11 +351,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1500
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1500 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1500',1, async function (done) {
       let res = undefined;
@@ -375,11 +376,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1600
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kbool invalidbool
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1600 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kbool invalidbool
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1600',1, async function (done) {
       let res = undefined;
@@ -400,11 +401,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1700
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1700aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1700',1, async function (done) {
       let res = undefined;
@@ -425,11 +426,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1800
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1800 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1800',1, async function (done) {
       let res = undefined;
@@ -450,11 +451,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_1900
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring value1 value2
+     * @tc.name    ACTS_AACommand_AAImplicitStart_1900 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --ps kstring value1 value2
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_1900',1, async function (done) {
       let res = undefined;
@@ -475,11 +476,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_2000
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --psn knullstring value
+     * @tc.name    ACTS_AACommand_AAImplicitStart_2000 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --psn knullstring value
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_2000',1, async function (done) {
       let res = undefined;
@@ -500,11 +501,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_2100
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger 100 200
+     * @tc.name    ACTS_AACommand_AAImplicitStart_2100 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pi kinteger 100 200
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_2100',1, async function (done) {
       let res = undefined;
@@ -524,11 +525,11 @@ export default function aaImplicitStartTest() {
 
     /*
      * @tc.number  ACTS_AACommand_AAImplicitStart_2200
-     * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool true false
+     * @tc.name    ACTS_AACommand_AAImplicitStart_2200 aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool true false
      * @tc.desc    Function test
      * @tc.size    MediumTest
-    * @tc.type    Function
-    * @tc.level   Level 1
+     * @tc.type    Function
+     * @tc.level   Level 1
      */
     it('ACTS_AACommand_AAImplicitStart_2200',1, async function (done) {
       let res = undefined;
