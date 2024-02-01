@@ -59,6 +59,8 @@
         "MainAbility/pages/Gesture/SwipeGesture3",
         "MainAbility/pages/Gesture/TapGesture1",
         "MainAbility/pages/Gesture/TapGesture2",
-        "MainAbility/pages/Gesture/TapGesture3"
+        "MainAbility/pages/Gesture/TapGesture3",
+        "MainAbility/pages/selectAttribute/menuBackgroundBlurStyle",
+        "MainAbility/pages/selectAttribute/menuBackgroundColor"
     ]
 }
