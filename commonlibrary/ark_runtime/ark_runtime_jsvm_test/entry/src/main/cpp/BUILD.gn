@@ -34,16 +34,25 @@ ohos_shared_library("jsvmtest") {
   if (!(product_name == "m40")) {
     libs = [ rebase_path(libcxx_ndk_shared_file) ]
   }
-  include_dirs = [ "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp","//interface/sdk_c/ark_runtime/jsvm","//base/hiviewdfx/hilog/interfaces/native/kits/include" ]
+  include_dirs = [
+    "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp",
+    "//interface/sdk_c/ark_runtime/jsvm",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
+  ]
   configs = [ ":config" ]
 
   # add for third-party depend checking failed
   testonly = true
 
-  deps = [ "//third_party/bounds_checking_function:libsec_static",
-   "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk" ]
-  deps += ["//foundation/arkui/napi:napi_packages"]
-  external_deps = [ "napi:ace_napi", "hilog:hilog_ndk" ]
+  deps = [
+    "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
+    "//third_party/bounds_checking_function:libsec_static",
+  ]
+  deps += [ "//foundation/arkui/napi:napi_packages" ]
+  external_deps = [
+    "hilog:hilog_ndk",
+    "napi:ace_napi",
+  ]
 
   output_extension = "so"
 }
