@@ -16,16 +16,17 @@
 @Entry
 @Component
 struct TextExample7 {
-  @State phoneNumber: string = '(86) (755) ********';
-  @State url: string = 'www.********.com';
-  @State email: string = '***@example.com';
-  @State address: string = 'XX省XX市XX区XXXX';
+  @State phoneNumber: string = '15234545343';
+  @State url: string = 'www.bilibilibili.com';
+  @State email: string = '3145897867@example.com';
+  @State address: string = '河南省周口市区鹿邑县';
   @State enableDataDetector: boolean = true;
   @State types: TextDataDetectorType[] = [];
+  @State text1: string = '111'
 
   build() {
-    Row() {
       Column() {
+        Text(this.text1).fontSize(20).id('dataDetectorConfigText')
         Text(
           '电话号码：' + this.phoneNumber + '\n' +
           '链接：' + this.url + '\n' +
@@ -37,14 +38,19 @@ struct TextExample7 {
           .enableDataDetector(this.enableDataDetector)
           .dataDetectorConfig({types : this.types, onDetectResultUpdate: (result: string)=>{
             console.info('识别结果' + result )
+            let code = JSON.parse(JSON.stringify(result)).code
+            if(code === '0' || code === 0)  {
+              this.text1 = '222'
+            }else if (code === '801' || code === 801) {
+              this.text1 = '222'
+            }
           }})
           .textAlign(TextAlign.Center)
           .borderWidth(1)
           .padding(10)
           .width('100%')
           .id('text_attr_test')
-      }
-      .width('100%')
+
 
       Button('电话号码').onClick(() => {
         this.types = [TextDataDetectorType.PHONE_NUMBER]
@@ -62,7 +68,7 @@ struct TextExample7 {
         this.types = [TextDataDetectorType.ADDRESS]
       }).id('button.ADDRESS')
 
-    }
-    .height('100%')
+      }
+      .width('100%')
   }
 }
