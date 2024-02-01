@@ -341,8 +341,8 @@ export default function cameraEnumTest() {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
             done();
         })
-		
-		/**
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100
          * @tc.name      : test torchMode enum
          * @tc.desc      : assert all torchMode
@@ -357,7 +357,7 @@ export default function cameraEnumTest() {
             console.info(`${TAG} TorchMode.ON: ${camera.TorchMode.ON}`);
             expect(camera.TorchMode.AUTO == 2).assertTrue();
             console.info(`${TAG} TorchMode.AUTO: ${camera.TorchMode.AUTO}`);
-			done();
+            done();
         })
 
     })
