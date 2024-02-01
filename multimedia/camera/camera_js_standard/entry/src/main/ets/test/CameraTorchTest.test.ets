@@ -94,6 +94,7 @@ export default function cameraTorchTest() {
                             expect(torchMode === camera.TorchMode.ON).assertTrue()
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_ON_0100 err` + JSON.stringify(error));
@@ -130,6 +131,7 @@ export default function cameraTorchTest() {
                             expect(torchMode === camera.TorchMode.OFF).assertTrue()
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_OFF_0100 err` + JSON.stringify(error));
@@ -167,6 +169,7 @@ export default function cameraTorchTest() {
                             expect(torchMode === camera.TorchMode.AUTO).assertTrue()
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_SETTORCHMODE_AUTO_0100 err` + JSON.stringify(error));
@@ -224,6 +227,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0100 err` + JSON.stringify(error));
@@ -281,6 +285,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0200 err` + JSON.stringify(error));
@@ -338,6 +343,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0300 err` + JSON.stringify(error));
@@ -395,6 +401,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0400 err` + JSON.stringify(error));
@@ -452,6 +459,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0500 err` + JSON.stringify(error));
@@ -509,6 +517,7 @@ export default function cameraTorchTest() {
                             });
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_ON_TORCH_STATUS_CHANGE_0600 err` + JSON.stringify(error));
@@ -560,6 +569,7 @@ export default function cameraTorchTest() {
                             }
                         }
                     }
+					done();
                 }
                 catch (error) {
                     console.info(`${TAG} SUB_MULTIMEDIA_CAMERA_OFF_TORCH_STATUS_CHANGE_0100 err` + JSON.stringify(error));

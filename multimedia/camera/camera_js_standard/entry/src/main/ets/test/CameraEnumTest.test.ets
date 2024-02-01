@@ -354,10 +354,10 @@ export default function cameraEnumTest() {
             expect(camera.TorchMode.OFF == 0).assertTrue();
             console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.OFF}`);
             expect(camera.TorchMode.ON == 1).assertTrue();
-            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.ON}`);
+            console.info(`${TAG} TorchMode.ON: ${camera.TorchMode.ON}`);
             expect(camera.TorchMode.AUTO == 2).assertTrue();
-            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.AUTO}`);
-
+            console.info(`${TAG} TorchMode.AUTO: ${camera.TorchMode.AUTO}`);
+			done();
         })
 
     })
