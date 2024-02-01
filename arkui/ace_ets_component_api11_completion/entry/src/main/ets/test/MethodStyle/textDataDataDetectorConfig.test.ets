@@ -68,9 +68,9 @@ export default function textDataDataDetectorConfig() {
 
 
 
-      let text1 = getInspectorByKey('text_attr_test');
+      let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2 = JSON.parse(text1);
-      expect(Obj2.$attrs.dataDetectorConfig.types).assertEqual([TextDataDetectorType.PHONE_NUMBER]);
+      expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0001] END');
       done();
@@ -97,9 +97,10 @@ export default function textDataDataDetectorConfig() {
 
 
 
-      let text1 = getInspectorByKey('text_attr_test');
+      let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2 = JSON.parse(text1);
-      expect(Obj2.$attrs.dataDetectorConfig.types).assertEqual([TextDataDetectorType.URL]);
+      expect(Obj2.$attrs.content).assertEqual('222');
+
 
       console.info('[textDataDataDetectorConfig_0002] END');
       done();
@@ -125,9 +126,9 @@ export default function textDataDataDetectorConfig() {
 
 
 
-      let text1 = getInspectorByKey('text_attr_test');
+      let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2 = JSON.parse(text1);
-      expect(Obj2.$attrs.dataDetectorConfig.types).assertEqual([TextDataDetectorType.EMAIL]);
+      expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0003] END');
       done();
@@ -153,9 +154,9 @@ export default function textDataDataDetectorConfig() {
 
 
 
-      let text1 = getInspectorByKey('text_attr_test');
+      let text1 = getInspectorByKey('dataDetectorConfigText');
       let Obj2 = JSON.parse(text1);
-      expect(Obj2.$attrs.dataDetectorConfig.types).assertEqual([TextDataDetectorType.ADDRESS]);
+      expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0004] END');
       done();

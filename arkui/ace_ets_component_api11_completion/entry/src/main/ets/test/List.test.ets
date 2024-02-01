@@ -136,12 +136,23 @@ import accessVNTest from './commonApi/accessVNTest.test.ets';
 import TimePickerTest from './TimePicker/TimePicker.test.ets';
 import menuBlurStyleJsunit from './menuBlurStyleJsunit.test';
 import APITabsBarBackgroundBlurStyleJsunit from './AttributeModifier/APITabsBarBackgroundBlurStyleJsunit.test';
+import pixelRoundTest from './renderNode/pixelRoundTest.test.ets'
 import NavPathStackApi1 from './AttrApi/NavPathStackApi1.test.ets';
 import NavPathStackApi2 from './AttrApi/NavPathStackApi2.test.ets';
 import NavPathStackApi3 from './AttrApi/NavPathStackApi3.test.ets';
 import ObserverApi from './AttrApi/ObserverApi.test.ets';
+import Navigation1 from './relativeApi11/Navigation1.test'
+import Navigation2 from './relativeApi11/Navigation2.test'
+import Navigation3 from './relativeApi11/Navigation3.test'
+import Navigation4 from './relativeApi11/Navigation4.test'
+import RelativeContainer from './relativeApi11/RelativeContainer.test'
 
 export default function testsuite() {
+  Navigation1()
+  Navigation2()
+  Navigation3()
+  Navigation4()
+  RelativeContainer()
   getClipToFrameJsunit()
   getOpacityJsunit()
   getSizeJsunit()
@@ -263,6 +274,7 @@ export default function testsuite() {
   blendModeTest()
   menuBlurStyleJsunit()
   APITabsBarBackgroundBlurStyleJsunit()
+  pixelRoundTest()
   NavPathStackApi1()
   NavPathStackApi2()
   NavPathStackApi3()
