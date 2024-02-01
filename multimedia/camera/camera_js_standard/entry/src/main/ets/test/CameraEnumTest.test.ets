@@ -351,12 +351,12 @@ export default function cameraEnumTest() {
          * @tc.level     : Level 2
          */
         it('SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100', 0, async function (done) {
-            expect(cameraObj.TorchMode.OFF == 0).assertTrue();
-            console.info(`${TAG} TorchMode.OFF: ${cameraObj.TorchMode.OFF}`);
-            expect(cameraObj.TorchMode.ON == 1).assertTrue();
-            console.info(`${TAG} TorchMode.OFF: ${cameraObj.TorchMode.ON}`);
-            expect(cameraObj.TorchMode.AUTO == 2).assertTrue();
-            console.info(`${TAG} TorchMode.OFF: ${cameraObj.TorchMode.AUTO}`);
+            expect(camera.TorchMode.OFF == 0).assertTrue();
+            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.OFF}`);
+            expect(camera.TorchMode.ON == 1).assertTrue();
+            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.ON}`);
+            expect(camera.TorchMode.AUTO == 2).assertTrue();
+            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.AUTO}`);
 
         })
 
