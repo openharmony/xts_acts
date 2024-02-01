@@ -2952,7 +2952,7 @@ describe('threadWorkerTest', function () {
           await promiseCase();
         }
         let err =
-             "The method called on globalCallObject does not exist or is not callable or is async/generator function";
+             "The method to be called is not callable or is an async method or a generator.";
         expect(res).assertEqual(err);
         done();
     })
