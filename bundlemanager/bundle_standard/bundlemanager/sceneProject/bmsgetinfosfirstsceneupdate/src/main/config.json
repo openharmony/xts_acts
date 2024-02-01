@@ -22,7 +22,8 @@
     "colorMode": "dark",
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,
