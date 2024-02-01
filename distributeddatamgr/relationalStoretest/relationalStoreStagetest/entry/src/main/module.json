@@ -10,8 +10,7 @@
     "deviceTypes": [
         "default",
         "tablet",
-        "phone",
-        "2in1"
+        "phone"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
