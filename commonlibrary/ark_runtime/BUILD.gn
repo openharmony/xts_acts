@@ -13,7 +13,5 @@
 import("//build/ohos_var.gni")
 group("ark_runtime") {
   testonly = true
-  deps = [
-    "ark_runtime_jsvm_test:ActsArkRuntimeJsvmTest",
-  ]
+  deps = [ "ark_runtime_jsvm_test:ActsArkRuntimeJsvmTest" ]
 }
