@@ -70,6 +70,8 @@ import SwipeGesture3 from './GestureTest/SwipeGesture3.test.ets'
 import TapGesture1 from './GestureTest/TapGesture1.test.ets'
 import TapGesture2 from './GestureTest/TapGesture2.test.ets'
 import TapGesture3 from './GestureTest/TapGesture3.test.ets'
+import menuBackgroundBlurStyle from './selectAttributeTest/menuBackgroundBlurStyle.test.ets'
+import menuBackgroundColor from './selectAttributeTest/menuBackgroundColor.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -129,4 +131,6 @@ export default function testsuite() {
   TapGesture1();
   TapGesture2();
   TapGesture3();
+  menuBackgroundBlurStyle();
+  menuBackgroundColor();
 }
