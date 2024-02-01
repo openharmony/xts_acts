@@ -214,8 +214,8 @@ export default function cameraTorchTest() {
                             if (isTorchModeSupported) {
                                 mCameraManager.setTorchMode(camera.TorchMode.ON);
                                 console.info(`${TAG} setTorchMode ON success`);
-                            } 
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            }
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
@@ -272,7 +272,7 @@ export default function cameraTorchTest() {
                                 mCameraManager.setTorchMode(camera.TorchMode.AUTO);
                                 console.info(`${TAG} setTorchMode ON success`);
                             }
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
@@ -329,7 +329,7 @@ export default function cameraTorchTest() {
                                 mCameraManager.setTorchMode(camera.TorchMode.OFF);
                                 console.info(`${TAG} setTorchMode ON success`);
                             }
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
@@ -386,7 +386,7 @@ export default function cameraTorchTest() {
                                 mCameraManager.setTorchMode(camera.TorchMode.AUTO);
                                 console.info(`${TAG} setTorchMode ON success`);
                             }
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
@@ -443,7 +443,7 @@ export default function cameraTorchTest() {
                                 mCameraManager.setTorchMode(camera.TorchMode.OFF);
                                 console.info(`${TAG} setTorchMode ON success`);
                             }
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
@@ -500,7 +500,7 @@ export default function cameraTorchTest() {
                                 mCameraManager.setTorchMode(camera.TorchMode.ON);
                                 console.info(`${TAG} setTorchMode ON success`);
                             }
-							mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
+                            mCameraManager.off('torchStatusChange', (err, TorchStatusInfo) => {
                                 if (err) {
                                     console.info(TAG + "enter  tourchStatusChange fail" + err);
                                     expect().assertFail();
