@@ -1543,6 +1543,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].metadata[0].name).assertEqual("MetaData1");
       expect(data.hapModulesInfo[0].metadata[0].value).assertEqual("MetaDataValue");
       expect(data.hapModulesInfo[0].metadata[0].resource).assertEqual("$profile:shortcuts_config");
+      expect(data.hapModulesInfo[0].routerMap.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
@@ -1582,6 +1583,27 @@ export default function getBundleInfoForSelf() {
       expect(data.signatureInfo.appId).assertEqual(APPID);
       expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
       expect(data.signatureInfo.appIdentifier).assertEqual("");
+      done();
+    })
+
+    /*
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_7200
+     * @tc.name: getBundleInfoForSelfSyncRouterMap
+     * @tc.desc: Test getBundleInfoForSelfSync with metadata flag.
+     */
+    it('getBundleInfoForSelfSyncRouterMap', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ROUTER_MAP);
+      console.info("getBundleInfoForSelfSyncRouterMap" + JSON.stringify(data.hapModulesInfo[0].routerMap));
+      checkCommonBundleInfo(data);
+      checkCommonHapModuleInfo(data);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      expect(data.hapModulesInfo[0].routerMap.length).assertEqual(2);
+      checkRouterMapInfo(data.hapModulesInfo[0].routerMap);
       done();
     })
 
@@ -1679,6 +1701,25 @@ export default function getBundleInfoForSelf() {
       expect(data.windowSize.maxWindowHeight).assertEqual(0);
       expect(data.windowSize.minWindowHeight).assertEqual(0);
       console.info("checkCommonAbilityInfo end");
+    }
+
+    function checkRouterMapInfo(data) {
+      expect(data.length).assertEqual(2);
+      expect(data[0].name).assertEqual("DynamicPage1");
+      expect(data[0].pageModule).assertEqual("entry");
+      expect(data[0].pageSourceFile).assertEqual("entry/src/index");
+      expect(data[0].buildFunction).assertEqual("myFunction");
+      expect(data[0].data.length).assertEqual(0);
+      expect(data[1].name).assertEqual("DynamicPage2");
+      expect(data[1].pageModule).assertEqual("entry");
+      expect(data[1].pageSourceFile).assertEqual("entry/src/index");
+      expect(data[1].buildFunction).assertEqual("myBuilder");
+      expect(data[1].data.length).assertEqual(2);
+      expect(data[1].data[0].key).assertEqual("key1");
+      expect(data[1].data[0].value).assertEqual("data1");
+      expect(data[1].data[1].key).assertEqual("key2");
+      expect(data[1].data[1].value).assertEqual("data2");
+      console.info("checkRouterMapInfo end");
     }
   })
 }
