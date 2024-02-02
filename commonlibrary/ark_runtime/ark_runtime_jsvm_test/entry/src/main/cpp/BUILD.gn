@@ -32,17 +32,16 @@ config("public_config") {
 ohos_shared_library("jsvmtest") {
   sources = [ "./napi/napi_test.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
-  include_dirs = [ "//test/xts/acts/commonlibrary/ark_runtime/ark_runtime_jsvm_test/entry/src/main/cpp" ]
   configs = [ ":config" ]
 
   # add for third-party depend checking failed
   testonly = true
 
   deps = [ "//third_party/bounds_checking_function:libsec_static" ]
-  deps += [ "//foundation/arkui/napi:napi_packages" ]
   external_deps = [
     "hilog:hilog_ndk",
     "napi:ace_napi",
+    "napi:napi_packages",
   ]
   subsystem_name = "arkui"
   part_name = "napi"
