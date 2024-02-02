@@ -37,11 +37,13 @@ ohos_shared_library("jsvmtest") {
   # add for third-party depend checking failed
   testonly = true
 
-  deps = [ "//third_party/bounds_checking_function:libsec_static" ]
+  deps = [
+    "//foundation/arkui/napi:napi_packages",
+    "//third_party/bounds_checking_function:libsec_static",
+  ]
   external_deps = [
     "hilog:hilog_ndk",
     "napi:ace_napi",
-    "napi:napi_packages",
   ]
   subsystem_name = "arkui"
   part_name = "napi"
