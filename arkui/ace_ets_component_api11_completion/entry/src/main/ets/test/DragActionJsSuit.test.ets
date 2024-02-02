@@ -29,7 +29,7 @@ export default function DragActionJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get DragActionJsunit state pages: " + JSON.stringify(pages));
-        if (!("overlay" == pages.name)) {
+        if (!("DragAction" == pages.name)) {
           console.info("get DragActionJsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
@@ -39,11 +39,6 @@ export default function DragActionJsunit() {
         console.error("push DragActionJsunit page error:" + err);
       }
       done()
-    });
-
-    afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      console.info("overlay after each called");
     });
 
     /**
@@ -57,12 +52,8 @@ export default function DragActionJsunit() {
 
     it('DragActionJsunit_0100', 0, async function (done) {
       console.info('[DragActionJsunit_0100] START');
-      let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button_Bottom = await driver.findComponent(ON.id('drag-value'));
-      await button_Bottom.click();
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('text-value');
+      let strJson = getInspectorByKey('text_value');
       let obj = JSON.parse(strJson);
       console.info("[DragActionJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='DragAction').assertTrue();
