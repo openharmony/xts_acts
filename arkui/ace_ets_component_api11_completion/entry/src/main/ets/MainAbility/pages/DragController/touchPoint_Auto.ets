@@ -42,6 +42,7 @@ struct DragControllerPage {
       .height(100)
       .backgroundColor(Color.Red)
       Button('多对象dragAction customBuilder拖拽')
+         .draggable(true)
         .id('Mul_id')
         .onTouch((event?:TouchEvent) => {
         if(event){

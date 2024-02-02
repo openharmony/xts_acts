@@ -63,6 +63,7 @@ struct DragControllerPage {
         .onDrop(() => {
         })
       Button('拖起')
+        .draggable(true)
         .id('TouchParent_id')
         .onTouch((event?:TouchEvent) => {
         if(event){
