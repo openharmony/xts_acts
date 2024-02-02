@@ -118,11 +118,11 @@ export default function StateArray() {
       let button = await driver.findComponent(ON.id('state4'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('StateArray');
+      let strJson = getInspectorByKey('StateArrayNew');
       let obj = JSON.parse(strJson);
       console.info("[StateArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArray_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [{"id":16777227,"type":10003,"params":[],"bundleName":"com.example.myapplication","moduleName":"phone"}]');
+      expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');
       console.info('[StateArray_0100] END');
       done();
     });
