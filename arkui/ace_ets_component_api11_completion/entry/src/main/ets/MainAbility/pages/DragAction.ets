@@ -37,14 +37,15 @@ struct DragControllerPage {
     Column() {
 
       Column() {
-        Text(this.text2).key('text-value')
+        Text(this.text2).key('text_value')
       }
       .width(100)
       .height(100)
       .backgroundColor(Color.Red)
 
       Button('多对象dragAction customBuilder拖拽')
-      .key('drag-value')
+      .key('drag_value')
+      .draggable(true)
       .onTouch((event?:TouchEvent) => {
         if(event){
           if (event.type == TouchType.Down) {
@@ -65,6 +66,7 @@ struct DragControllerPage {
                 console.log("listener dragAction is null");
                 return
               }
+			  this.text2 = 'success'
               this.dragAction.on('statusChange', (dragAndDropInfo)=>{
                 if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
                   console.log("drag has start");
@@ -78,7 +80,6 @@ struct DragControllerPage {
                 }
               })
               this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
-                this.text2 = 'true'
                 console.log("start drag Error:" + err.message);
               })
             } catch(err) {
