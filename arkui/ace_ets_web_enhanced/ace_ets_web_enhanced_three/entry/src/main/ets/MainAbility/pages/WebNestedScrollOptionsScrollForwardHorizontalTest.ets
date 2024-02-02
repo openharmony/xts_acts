@@ -57,22 +57,24 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
         .key('NestedScrollOptionsScrollForwardHorizontalTestButton')
         .onClick(async () => {
           console.info("key==>" + this.str)
+          let webRect = Utils.getComponentRect('ForwardRowSize');
+          let X = Utils.getRectHorizontalCenterX(webRect)
+          let Y = Utils.getRectVerticalCenterY(webRect)
           switch (this.str) {
 
             case "testNestedScrollOptionsScrollForwardHorizontal001": {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_ONLY
                 this.scrollBackwardEnums = NestedScrollMode.SELF_ONLY
+                this.scroller.scrollEdge(Edge.Start)
                 this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                await Utils.sleep(1000)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 5001)
               } catch (error) {
@@ -85,18 +87,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.SELF_ONLY
-                this.controller.scrollTo(0, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                this.controller.scrollBy(40, 0)
-                await Utils.sleep(1000)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(5000, 0)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 5002)
               } catch (error) {
@@ -109,18 +108,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARENT_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.SELF_ONLY
-                this.scroller.scrollEdge(Edge.Start)
-                this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.End)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
-                this.scroller.scrollBy(40, 0)
+                this.scroller.scrollBy(-40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 5003)
               } catch (error) {
@@ -133,16 +129,13 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARALLEL
                 this.scrollBackwardEnums = NestedScrollMode.SELF_ONLY
-                this.controller.scrollTo(5000, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 5004)
               } catch (error) {
@@ -155,16 +148,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_ONLY
                 this.scrollBackwardEnums = NestedScrollMode.SELF_FIRST
+                this.scroller.scrollEdge(Edge.Start)
                 this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                await Utils.sleep(1000)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 5005)
               } catch (error) {
@@ -177,18 +169,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.SELF_FIRST
-                this.controller.scrollTo(0, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                this.controller.scrollBy(40, 0)
-                await Utils.sleep(1000)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(5000, 0)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 5006)
               } catch (error) {
@@ -201,18 +190,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARENT_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.SELF_FIRST
-                this.scroller.scrollEdge(Edge.Start)
-                this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.End)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
-                this.scroller.scrollBy(40, 0)
+                this.scroller.scrollBy(-40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 5007)
               } catch (error) {
@@ -225,16 +211,13 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARALLEL
                 this.scrollBackwardEnums = NestedScrollMode.SELF_FIRST
-                this.controller.scrollTo(5000, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 5008)
               } catch (error) {
@@ -247,16 +230,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_ONLY
                 this.scrollBackwardEnums = NestedScrollMode.PARENT_FIRST
+                this.scroller.scrollEdge(Edge.Start)
                 this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                await Utils.sleep(1000)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 5009)
               } catch (error) {
@@ -269,18 +251,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.PARENT_FIRST
-                this.controller.scrollTo(0, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                this.controller.scrollBy(40, 0)
-                await Utils.sleep(1000)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(5000, 0)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 5010)
               } catch (error) {
@@ -293,18 +272,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARENT_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.PARENT_FIRST
-                this.scroller.scrollEdge(Edge.Start)
-                this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.End)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
-                this.scroller.scrollBy(40, 0)
+                this.scroller.scrollBy(-40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 5011)
               } catch (error) {
@@ -317,16 +293,13 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARALLEL
                 this.scrollBackwardEnums = NestedScrollMode.PARENT_FIRST
-                this.controller.scrollTo(5000, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 5012)
               } catch (error) {
@@ -340,16 +313,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_ONLY
                 this.scrollBackwardEnums = NestedScrollMode.PARALLEL
+                this.scroller.scrollEdge(Edge.Start)
                 this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                await Utils.sleep(1000)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 5013)
               } catch (error) {
@@ -362,18 +334,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.SELF_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.PARALLEL
-                this.controller.scrollTo(0, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
-                this.controller.scrollBy(40, 0)
-                await Utils.sleep(1000)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(5000, 0)
+                await Utils.sleep(2000)
+                this.controller.scrollBy(-40, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 5014)
               } catch (error) {
@@ -386,18 +355,15 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARENT_FIRST
                 this.scrollBackwardEnums = NestedScrollMode.PARALLEL
-                this.scroller.scrollEdge(Edge.Start)
-                this.controller.scrollTo(5000, 0)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.End)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
-                this.scroller.scrollBy(40, 0)
+                this.scroller.scrollBy(-40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 5015)
               } catch (error) {
@@ -410,16 +376,13 @@ struct WebNestedScrollOptionsScrollForwardHorizontalTest {
               try {
                 this.scrollForwardEnums = NestedScrollMode.PARALLEL
                 this.scrollBackwardEnums = NestedScrollMode.PARALLEL
-                this.controller.scrollTo(5000, 0)
-                this.scroller.scrollEdge(Edge.End)
-                await Utils.sleep(1000)
-                let webRect = Utils.getComponentRect('ForwardRowSize');
-                let X = Utils.getRectHorizontalCenterX(webRect)
-                let Y = Utils.getRectVerticalCenterY(webRect)
+                this.scroller.scrollEdge(Edge.Start)
+                this.controller.scrollTo(0, 0)
+                await Utils.sleep(2000)
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                await driver.swipe(X + 100, Y, X - 100, Y);
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 5016)
               } catch (error) {

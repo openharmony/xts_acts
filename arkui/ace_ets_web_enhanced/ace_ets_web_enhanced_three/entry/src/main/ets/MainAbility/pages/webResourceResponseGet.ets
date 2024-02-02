@@ -100,7 +100,7 @@ struct webResourceResponseGet {
               try {
                 this.getRequestHeaderValue = 0
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 if (this.getRequestHeaderValue > 0) {
                   Utils.emitEvent(true, 35010);
                   return
@@ -116,7 +116,7 @@ struct webResourceResponseGet {
               try {
                 this.getRequestUrlValue = ' '
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getRequestUrlValue, 35011);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -128,7 +128,7 @@ struct webResourceResponseGet {
               try {
                 this.isRequestGestureValue = true
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.isRequestGestureValue, 35012);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -142,7 +142,7 @@ struct webResourceResponseGet {
                 await Utils.sleep(2000);
                 this.isMainFrameValue = false
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.isMainFrameValue, 35013);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -154,7 +154,7 @@ struct webResourceResponseGet {
               try {
                 this.isRedirectValue = false
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.isRedirectValue, 35014);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -166,7 +166,7 @@ struct webResourceResponseGet {
               try {
                 this.isRedirectValue = false
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getRequestMethodValue, 35015);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -178,7 +178,7 @@ struct webResourceResponseGet {
               try {
                 this.getResponseDataValue = ''
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getResponseDataValue, 35016);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -190,7 +190,7 @@ struct webResourceResponseGet {
               try {
                 this.getResponseEncodingValue = ''
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getResponseEncodingValue, 35017);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -202,7 +202,7 @@ struct webResourceResponseGet {
               try {
                 this.getResponseMimeTypeValue = ''
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getResponseMimeTypeValue, 35018);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -214,7 +214,7 @@ struct webResourceResponseGet {
               try {
                 this.getReasonMessageValue = ''
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getReasonMessageValue, 35019);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -226,7 +226,7 @@ struct webResourceResponseGet {
               try {
                 this.getResponseHeaderValue = 0
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 if (this.getResponseHeaderValue > 0) {
                   Utils.emitEvent(true, 35020);
                   return;
@@ -242,7 +242,7 @@ struct webResourceResponseGet {
               try {
                 this.getResponseCodeValue = 0
                 this.controller.loadUrl({ url: 'https://gitee.com/openharmony/123' });
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 Utils.emitEvent(this.getResponseCodeValue, 35021);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
