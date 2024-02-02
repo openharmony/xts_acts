@@ -98,14 +98,14 @@ export default function drmEnumTest() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_ERROR_CODE_ENUM_0100
-        * @tc.name      : testDrmErrorCode
-        * @tc.desc      : test all DrmErrorCode
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_PREDEFINED_CONFIG_NAME_ENUM_0100
+        * @tc.name      : testPreDefinedConfigName
+        * @tc.desc      : test all PreDefinedConfigName
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_ERROR_CODE_ENUM_0100', 0, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_PREDEFINED_CONFIG_NAME_ENUM_0100', 0, function (done) {
             expect(drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR == 'vendor').assertTrue();
             console.log(`drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR: ${drm.PreDefinedConfigName.CONFIG_DEVICE_VENDOR}`);
             expect(drm.PreDefinedConfigName.CONFIG_DEVICE_VERSION == 'version').assertTrue();
@@ -158,14 +158,14 @@ export default function drmEnumTest() {
         })
 
         /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_OFFLINE_MEDIA_KEY_STATUS_ENUM_0100
-        * @tc.name      : testOfflineMediaKeyStatus
-        * @tc.desc      : test all OfflineMediaKeyStatus
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_CONTENT_PROTECTION_LEVEL_ENUM_0100
+        * @tc.name      : testContentProtectionLevel
+        * @tc.desc      : test all ContentProtectionLevel
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_OFFLINE_MEDIA_KEY_STATUS_ENUM_0100', 0, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_CONTENT_PROTECTION_LEVEL_ENUM_0100', 0, function (done) {
             expect(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN == 0).assertTrue();
             console.log(`drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN: ${drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN}`);
             expect(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO == 1).assertTrue();
