@@ -239,7 +239,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
         expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
-        expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+        expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(3);
         expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
         expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].installationFree).assertFalse();
@@ -277,7 +277,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
         expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
-        expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+        expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(3);
         expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
         expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].installationFree).assertFalse();
@@ -320,7 +320,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(3);
         console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
         console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
         expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]).assertEqual("default");
@@ -422,7 +422,7 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
+          expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(3);
           console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
           console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
           expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]).assertEqual("default");
@@ -1205,7 +1205,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
-      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(3);
       expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
@@ -1239,7 +1239,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
-      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(3);
       expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
@@ -1279,7 +1279,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
-      expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(3);
       console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
       console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
       expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]).assertEqual("default");
@@ -1638,7 +1638,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].description).assertEqual("$string:testModule_entry_dsc");
       expect(data.hapModulesInfo[0].descriptionId).assertLarger(0);
       expect(data.hapModulesInfo[0].mainElementName).assertEqual(ABILITY_NAME);
-      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(3);
       console.info("checkComm" + JSON.stringify(data.hapModulesInfo[0].deviceTypes[0]));
       console.info("checkComm" + JSON.stringify(data.hapModulesInfo[0].deviceTypes[1]));
       expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
@@ -1660,7 +1660,7 @@ export default function getBundleInfoForSelf() {
       expect(data.process).assertEqual("");
       expect(data.exported).assertTrue();
       expect(data.permissions.length).assertEqual(0);
-      expect(data.deviceTypes.length).assertEqual(2);
+      expect(data.deviceTypes.length).assertEqual(3);
       console.info("checkComm" + JSON.stringify(data.deviceTypes[0]));
       console.info("checkComm" + JSON.stringify(data.deviceTypes[1]));
       expect(data.deviceTypes[0]).assertEqual("default");
