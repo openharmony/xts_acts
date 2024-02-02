@@ -37,11 +37,11 @@ struct TextExample7 {
           .copyOption(CopyOptions.InApp)
           .enableDataDetector(this.enableDataDetector)
           .dataDetectorConfig({types : this.types, onDetectResultUpdate: (result: string)=>{
-            console.info('识别结果' + result )
-            let code = JSON.parse(JSON.stringify(result)).code
-            if(code === '0' || code === 0)  {
+            console.info('识别结果' + JSON.parse(JSON.stringify(result)) )
+            let code: number | string = JSON.parse(result).code
+            if (code === '0' || code === 0)  {
               this.text1 = '222'
-            }else if (code === '801' || code === 801) {
+            } else if (code === '801' || code === 801) {
               this.text1 = '222'
             }
           }})
