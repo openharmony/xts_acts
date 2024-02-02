@@ -14,7 +14,6 @@
  */
 #include "napi/native_api.h"
 #include "jsvm.h"
-#include "hilog/log.h"
 #include "jsvm_common.h"
 #include "common/native_common.h"
 #include "securec.h"
@@ -100,13 +99,6 @@ static JSVM_Value assertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
 
     bool isStrictEquals = false;
     OH_JSVM_StrictEquals(env, args[0], args[1], &isStrictEquals);
-
-    if (isStrictEquals) {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
-    } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
-    }
-
     return nullptr;
 }
 
@@ -117,13 +109,6 @@ static JSVM_Value assertTrue(JSVM_Env env, JSVM_CallbackInfo info) {
 
     bool value = false;
     JSVM_CALL(env, OH_JSVM_GetValueBool(env, args[0], &value));
-
-    if (value) {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
-    } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
-    }
-
     return nullptr;
 }
 
@@ -134,13 +119,6 @@ static JSVM_Value assertFalse(JSVM_Env env, JSVM_CallbackInfo info) {
 
     bool value = false;
     JSVM_CALL(env, OH_JSVM_GetValueBool(env, args[0], &value));
-
-    if (!value) {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: PASS");
-    } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API TEST RESULT: FAILED");
-    }
-
     return nullptr;
 }
 
@@ -152,8 +130,6 @@ static JSVM_Value consoleinfo(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_CALL(env, OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
 
     JSVM_CALL(env, OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &log_length));
-    log[255] = 0;
-    OH_LOG_INFO(LOG_APP, "JSVM API TEST: %{public}s", log);
     return nullptr;
 }
 
@@ -1413,7 +1389,6 @@ static napi_value Add(napi_env env1, napi_callback_info info) {
         OH_JSVM_CompileScript(env, sourcecodevalue, nullptr, 0, true, nullptr, &script);
         JSVM_Value result;
         OH_JSVM_RunScript(env, script, &result);
-        OH_LOG_Print(LogType::LOG_APP, LogLevel::LOG_INFO, 0, "testTag", "123456%{public}s", "174");
         int32_t value2;
         JSVM_CALL(env, OH_JSVM_GetValueInt32(env, result, &value2));
         OH_JSVM_CloseHandleScope(env, handlescope);

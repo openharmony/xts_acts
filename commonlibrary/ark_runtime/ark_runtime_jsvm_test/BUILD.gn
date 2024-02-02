@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsArkRuntimeJsvmTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsArkRuntimeJsvmTest"
+  subsystem_name = "arkui"
+  part_name = "napi"
   shared_libraries = [ "./entry/src/main/cpp:jsvmtest" ]
 }
 
