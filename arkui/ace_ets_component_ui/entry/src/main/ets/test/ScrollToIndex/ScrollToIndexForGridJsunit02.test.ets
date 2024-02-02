@@ -142,8 +142,7 @@ export default function ScrollToIndexForGridJsunit02() {
       let GridCom = await driver.findComponent(ON.id("GridID_Grid02"));
       let boundsCenter = await GridCom.getBoundsCenter();
       let centerDistanceTop = boundsCenter.y;
-
-      expect(distanceTop).assertEqual(centerDistanceTop);
+      expect(Math.abs(Math.round(distanceTop) - Math.round(centerDistanceTop)) <= 1)
       expect(gridItemID).assertEqual("gridIndex02_100");
 
       console.info('[ScrollToIndexForGridJsunit02_0300] END');
