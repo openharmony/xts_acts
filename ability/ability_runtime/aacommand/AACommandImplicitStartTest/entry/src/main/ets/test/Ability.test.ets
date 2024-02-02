@@ -547,4 +547,164 @@ export default function aaImplicitStartTest() {
       done();
     })
   })
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2300
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2300',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool TRUE')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2300 err is: ' + JSON.stringify(err));
+        })
+
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2400
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool T
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2400',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool T')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2400 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2500
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2500',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2500 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2600
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool FALSE
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2600',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool FALSE')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2600 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2700
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2700',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2700 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2800
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2800',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2800 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_2900
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_2900',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_2900 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_3000
+    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_3000',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAStart_3000 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('start ability successfully.');
+      done();
+    })  
 }
