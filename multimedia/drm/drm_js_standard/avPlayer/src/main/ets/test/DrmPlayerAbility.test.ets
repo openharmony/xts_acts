@@ -75,13 +75,22 @@ export default function abilityTest() {
     })
     beforeEach(function () {
       console.log("beforeEach beforeEach beforeEach");
+      // Presets an action, which is performed before each unit test case starts.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: preset action function.
     })
     afterEach(function () {
       console.log("afterEach afterEach afterEach");
+      // Presets a clear action, which is performed after each unit test case ends.
+      // The number of execution times is the same as the number of test cases defined by **it**.
+      // This API supports only one parameter: clear action function.
     })
     afterAll(function () {
       console.log("afterAll afterAll afterAll");
+      // Presets a clear action, which is performed after all test cases of the test suite end.
+      // This API supports only one parameter: clear action function.
     })
+    console.info("--------------------assertContain-------Stage-----------------------");
 
     function stringToUint8Array(str) {
       const length = str.length;
@@ -1003,6 +1012,26 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
         session.destroy();
         drmsys.destroy();
+      } else {
+        var drmsys = drm.createMediaKeySystem(uuid);
+        var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session.processMediaKeyResponse(licenseRequestByte);
+        var offlineLicenseIds = drmsys.getOfflineMediaKeyIds();
+        let arry = new Uint8Array(offlineLicenseIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        session.destroy();
+        drmsys.destroy();
       }
       done();
     })
@@ -1036,7 +1065,30 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
         session.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys = drm.createMediaKeySystem(uuid);
+        var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session.processMediaKeyResponse(licenseRequestByte);
+        var offlineLicenseIds = drmsys.getOfflineMediaKeyIds();
+        let arry = new Uint8Array(offlineLicenseIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        drmsys.clearOfflineMediaKeys(arry);
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertUndefined();
+        session.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -1106,7 +1158,31 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
         session.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        //TODO:黄区getOfflineMediaKeyStatus返回状态异常
+        var drmsys = drm.createMediaKeySystem(uuid);
+        var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session.processMediaKeyResponse(licenseRequestByte);
+        var offlineLicenseIds = drmsys.getOfflineMediaKeyIds();
+        let arry = new Uint8Array(offlineLicenseIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        drmsys.clearOfflineMediaKeys(new Uint8Array([1, 2, 3, 4, 5]));
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        session.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -1142,7 +1218,30 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
         session.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys = drm.createMediaKeySystem(uuid);
+        var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session.processMediaKeyResponse(licenseRequestByte);
+        var offlineLicenseIds = drmsys.getOfflineMediaKeyIds();
+        let arry = new Uint8Array(offlineLicenseIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        drmsys.clearOfflineMediaKeys(null);
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        session.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -1182,7 +1281,33 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
         session.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys = drm.createMediaKeySystem(uuid);
+        var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session.processMediaKeyResponse(licenseRequestByte);
+        var offlineLicenseIds = drmsys.getOfflineMediaKeyIds();
+        let arry = new Uint8Array(offlineLicenseIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        drmsys.clearOfflineMediaKeys(arry);
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertUndefined();
+        drmsys.clearOfflineMediaKeys(arry);
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+        expect(OfflineKeyState).assertUndefined();
+        session.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -1456,7 +1581,37 @@ export default function abilityTest() {
         expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
         session2.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var session1 =  drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session1.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session1.processMediaKeyResponse(licenseRequestByte);
+
+        var keyIds = drmsys.getOfflineMediaKeyIds();
+        var keyArray = new Uint8Array(keyIds[0]);
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(keyArray);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+
+        session1.destroy();
+        expect(drmsys.getOfflineMediaKeyStatus(keyArray)).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+
+        var session2 =  drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        session2.restoreOfflineMediaKeys(keyArray);
+
+        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(keyArray);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        session2.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -1490,7 +1645,32 @@ export default function abilityTest() {
         session1.destroy();
         session2.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var session1 =  drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = session1.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        session1.processMediaKeyResponse(licenseRequestByte);
+
+        var keyIds = drmsys.getOfflineMediaKeyIds();
+        var keyArray = new Uint8Array(keyIds[0]);
+        var session2 =  drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        session2.restoreOfflineMediaKeys(keyArray);
+
+        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(keyArray);
+        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+        session1.destroy();
+        session2.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -2595,7 +2775,34 @@ export default function abilityTest() {
         keySession.off('expirationUpdate');
         keySession.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var sign = 1;
+        keySession.on('expirationUpdate',(eventInfo) => {
+          console.info('bbbbb receive expirationUpdate ' + eventInfo.info);
+          console.info('bbbbb receive expirationUpdate ' + eventInfo.extraInfo);
+          sign = 2;
+        });
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = keySession.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        keySession.processMediaKeyResponse(licenseRequestByte);
+        var keyIds = drmsys.getOfflineMediaKeyIds();
+        var keyArray = new Uint8Array(keyIds[0]);
+        keySession.restoreOfflineMediaKeys(keyArray);
+        expect(sign).assertEqual(2);
+        keySession.off('expirationUpdate');
+        keySession.destroy();
+        drmsys.destroy();
+      }
       done();
     })
 
@@ -2632,7 +2839,34 @@ export default function abilityTest() {
         expect(sign).assertEqual(1);
         keySession.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var sign = 1;
+        keySession.on('expirationUpdate',(eventInfo) => {
+          console.info('bbbbb receive expirationUpdate ' + eventInfo.info);
+          console.info('bbbbb receive expirationUpdate ' + eventInfo.extraInfo);
+          sign = 2;
+        });
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        keySession.off('expirationUpdate');
+        var licenseRequestData = keySession.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        keySession.processMediaKeyResponse(licenseRequestByte);
+        var keyIds = drmsys.getOfflineMediaKeyIds();
+        var keyArray = new Uint8Array(keyIds[0]);
+        keySession.restoreOfflineMediaKeys(keyArray);
+        expect(sign).assertEqual(1);
+        keySession.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
@@ -2660,7 +2894,31 @@ export default function abilityTest() {
         keySession.off('keysChange');
         keySession.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var sign = 1;
+        keySession.on('keysChange',(keyInfo) => {
+          console.info('bbbbb receive keysChange ' + keyInfo.keyId);
+          console.info('bbbbb receive keysChange ' + keyInfo.value);
+          sign = 2;
+        });
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = keySession.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        keySession.processMediaKeyResponse(licenseRequestByte);
+        expect(sign).assertEqual(2);
+        keySession.off('keysChange');
+        keySession.destroy();
+        drmsys.destroy();
+      }
       done();
     })
 
@@ -2689,7 +2947,31 @@ export default function abilityTest() {
         expect(sign).assertEqual(1);
         keySession.destroy();
         drmsys.destroy();
-      } 
+      } else {
+        var drmsys =  drm.createMediaKeySystem(uuid);
+        var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+        var sign = 1;
+        keySession.on('keysChange',(keyInfo) => {
+          console.info('bbbbb receive keysChange ' + keyInfo.keyId);
+          console.info('bbbbb receive keysChange ' + keyInfo.value);
+          sign = 2;
+        });
+        keySession.off('keysChange');
+        var base64 = new util.Base64();
+        let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
+        let optionalData = [{
+          name: "optionalDataName",
+          value: "optionalDataValue"
+        }];
+        var licenseRequestData = keySession.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
+        var licenseRequestStr = byteToString(licenseRequestData.data);
+        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
+        var licenseRequestByte = stringToUint8Array(licenseResponseStr);
+        keySession.processMediaKeyResponse(licenseRequestByte);
+        expect(sign).assertEqual(1);
+        keySession.destroy();
+        drmsys.destroy();
+      }
       done();
     })
     /* *
