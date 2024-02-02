@@ -61,7 +61,7 @@ export default function symbolGlyphApi2() {
 
       let symbolGlyphApi2 = getInspectorByKey('symbolGlyphApi2');
       let Obj1 = JSON.parse(symbolGlyphApi2);
-      expect(Obj1.$attrs.renderingStrategy).assertEqual('RenderingStrategy.MULTIPLE_COLOR');
+      expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_COLOR');
       console.info('[testRichEditor_0100] END');
       done();
     });

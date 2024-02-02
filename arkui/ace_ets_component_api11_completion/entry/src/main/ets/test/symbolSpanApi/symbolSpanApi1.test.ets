@@ -61,7 +61,7 @@ export default function symbolSpanApi1() {
 
       let symbolSpanApi1 = getInspectorByKey('symbolSpanApi1');
       let Obj1 = JSON.parse(symbolSpanApi1);
-      expect(Obj1.$attrs.effectStrategy).assertEqual('EffectStrategy.NONE');
+      expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.NONE');
 
       console.info('[testRichEditor_0100] END');
       done();

@@ -61,7 +61,7 @@ export default function symbolGlyphApi4() {
 
       let symbolGlyphApi4 = getInspectorByKey('symbolGlyphApi4');
       let Obj1 = JSON.parse(symbolGlyphApi4);
-      expect(Obj1.$attrs.effectStrategy).assertEqual('EffectStrategy.SCALE');
+      expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.SCALE');
       console.info('[testRichEditor_0100] END');
       done();
     });
