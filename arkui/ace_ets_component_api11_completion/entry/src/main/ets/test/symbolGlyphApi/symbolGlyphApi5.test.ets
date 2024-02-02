@@ -61,7 +61,7 @@ export default function symbolGlyphApi5() {
 
       let symbolGlyphApi5 = getInspectorByKey('symbolGlyphApi5');
       let Obj1 = JSON.parse(symbolGlyphApi5);
-      expect(Obj1.$attrs.effectStrategy).assertEqual('EffectStrategy.HIERARCHICAL');
+      expect(Obj1.$attrs.effectStrategy).assertEqual('SymbolEffectStrategy.HIERARCHICAL');
       console.info('[testRichEditor_0100] END');
       done();
     });
