@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import abilityTest from './DrmPlayerAbility.test';
+import drmEnumTest from './DrmPlayerEnum.test';
 
 export default function testsuite() {
+  drmEnumTest()
   abilityTest()
 }
