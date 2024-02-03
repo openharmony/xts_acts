@@ -61,7 +61,7 @@ export default function drmEnumTest() {
         * @tc.type      : Function
         * @tc.level     : Level0
         */
-        it('SUB_MULTIMEDIA_MEDIA_DRM_CERTIFICATE_STATUS_ENUM_0100', 0, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_DRM_MEDIA_KEY_REQUEST_TYPE_ENUM_0100', 0, function (done) {
             expect(drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN == 0).assertTrue();
             console.log(`drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN: ${drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_UNKNOWN}`);
             expect(drm.MediaKeyRequestType.MEDIA_KEY_REQUEST_TYPE_INITIAL == 1).assertTrue();
