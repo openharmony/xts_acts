@@ -15,7 +15,7 @@
 #include "napi/native_api.h"
 #include "jsvm.h"
 #include "jsvm_common.h"
-#include "common/native_common.h"
+#include "native_common.h"
 #include "securec.h"
 #include <stdint.h>
 #include <stdio.h>
