@@ -245,11 +245,6 @@ describe('testNotificationEmitterNotification', () =>  {
       let eventId18 = 'eventId18'
       let onCallback18 = (): void => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-        let num = notificationemitter.getListenerCount(eventId18)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
       }
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
@@ -263,6 +258,13 @@ describe('testNotificationEmitterNotification', () =>  {
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId18)
+        setTimeout(() => {
+          let num = notificationemitter.getListenerCount(eventId18)
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
+          expect(num).assertEqual(0);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+          done();
+        }, 200)
       } catch (err) {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'emit failed,data is %{public}s', JSON.stringify(err));
         expect(false).assertTrue();
@@ -283,11 +285,6 @@ describe('testNotificationEmitterNotification', () =>  {
       let eventId19 = 'eventId19'
       let onCallback19 = (): void => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-        let num = notificationemitter.getListenerCount(eventId19)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
       }
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
@@ -302,6 +299,13 @@ describe('testNotificationEmitterNotification', () =>  {
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId19)
+        setTimeout(() => {
+          let num = notificationemitter.getListenerCount(eventId19)
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
+          expect(num).assertEqual(0);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+          done();
+        }, 200)
       } catch (err) {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'emit failed,data is %{public}s', JSON.stringify(err));
         expect(false).assertTrue();
@@ -354,11 +358,6 @@ describe('testNotificationEmitterNotification', () =>  {
       let eventId21 = ' '
       let onCallback21 = (): void => {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' once success');
-        let num = notificationemitter.getListenerCount(eventId21)
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
-        expect(num).assertEqual(0);
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
-        done();
       }
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case start');
@@ -372,6 +371,13 @@ describe('testNotificationEmitterNotification', () =>  {
       try {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit success');
         notificationemitter.emit(eventId21)
+        setTimeout(() => {
+          let num = notificationemitter.getListenerCount(eventId21)
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' getListenerCount success,data is %{public}s', JSON.stringify(num));
+          expect(num).assertEqual(0);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
+          done();
+        }, 200)
       } catch (err) {
         hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' emit failed,data is %{public}s', JSON.stringify(err));
         expect(false).assertTrue();
@@ -2592,7 +2598,7 @@ describe('testNotificationEmitterNotification', () =>  {
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + ' test case end');
       done();
     })
-    
+
 
     /*
      * @tc.number : Sub_Notification_Emitter_Subscribe_Capabilities_8700
