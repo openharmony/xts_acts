@@ -44,6 +44,23 @@ describe("ListTest", function () {
   });
     
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01000
+   * @tc.name: testGet003
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(1).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testGet003", 0, function () {
+    let list = new List();
+    list.add(0);
+    list.add(1);
+    let s = Math.trunc(1.33);
+    let res = list.get(s);
+    expect(res).assertEqual(1);
+  });
+    
+  /**
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(8).
    */
