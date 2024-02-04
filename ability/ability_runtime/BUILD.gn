@@ -31,6 +31,7 @@ group("ability_runtime") {
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
+      "actsjsdataabilitytest:ActsJsDataAbilityTest",
       "actsmultiplecall:actsmultiplecall",
       "actsnfcselecttypes:actsnfcselecttypes",
       "actsparsingparameterstest:actsparsingparameterstest",
