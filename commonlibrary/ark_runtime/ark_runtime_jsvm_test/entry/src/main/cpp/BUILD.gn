@@ -41,7 +41,7 @@ ohos_shared_library("jsvmtest") {
   external_deps = [
     "hilog:hilog_ndk",
     "napi:ace_napi",
-    "napi:libjsvm"
+    "napi:libjsvm",
   ]
   subsystem_name = "arkui"
   part_name = "napi"
