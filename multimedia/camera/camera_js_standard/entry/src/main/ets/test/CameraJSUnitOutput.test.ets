@@ -1275,6 +1275,8 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
+
+
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_FRAME_SHUTTER_0100
       * @tc.name      : photo output callback on frameShutter
