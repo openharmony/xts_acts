@@ -210,7 +210,7 @@ export default function imagePixelMapFramework() {
                 }, times)
             );
         }
-
+        
         async function checkStridePixelmap(done, logger, stridePixelMap) {
             logger.log("StridePixelMap " + stridePixelMap);
             if (stridePixelMap != undefined) {
