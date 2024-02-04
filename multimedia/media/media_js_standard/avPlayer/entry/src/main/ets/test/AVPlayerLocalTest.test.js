@@ -574,13 +574,13 @@ export default function AVPlayerLocalTest() {
         })
 
         /* *
-* @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200
-* @tc.name      : test setDecryptionConfig with invalid parameter
-* @tc.desc      : create AVPlayer to setDecryptionConfig with invalid parameter
-* @tc.size      : MediumTest
-* @tc.type      : Function test
-* @tc.level     : Level1
-*/
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200
+        * @tc.name      : test setDecryptionConfig with invalid parameter
+        * @tc.desc      : create AVPlayer to setDecryptionConfig with invalid parameter
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200', 1, function (done) {
             var sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
             console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
