@@ -138,7 +138,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("Text of unspecified encoding, with no markup.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_txt");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200 end");
     });
     /**
@@ -162,7 +162,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("HTML text.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_html");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0300 end");
     });
     /**
@@ -210,7 +210,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("XML text.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_xml");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0500 end");
     });
     /**
@@ -761,7 +761,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.media");
       expect(typeObj.description).assertEqual("Base type for images.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2800 end");
     });
     /**
@@ -785,7 +785,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("JPEG image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2900 end");
     });
     /**
@@ -809,7 +809,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("PNG image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3000 end");
     });
     /**
@@ -833,7 +833,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("Base type for digital camera raw image formats.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3100 end");
     });
     /**
@@ -857,7 +857,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("TIFF image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3200 end");
     });
     /**
@@ -881,7 +881,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("Windows bitmap image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3300 end");
     });
     /**
@@ -905,7 +905,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("Windows icon image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3400 end");
     });
     /**
@@ -929,7 +929,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("Adobe Photoshop document.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3500 end");
     });
     /**
@@ -953,7 +953,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("Adobe Illustrator document.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3600 end");
     });
     /**
@@ -977,7 +977,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.composite-object");
       expect(typeObj.description).assertEqual("Microsoft Word data.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_doc");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3700 end");
     });
     /**
@@ -1001,7 +1001,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.composite-object");
       expect(typeObj.description).assertEqual("Microsoft Excel data.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_xls");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3800 end");
     });
     /**
@@ -1049,7 +1049,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.composite-object");
       expect(typeObj.description).assertEqual("PDF data.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_pdf");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4000 end");
     });
     /**
@@ -1121,7 +1121,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.media");
       expect(typeObj.description).assertEqual("Base type for video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4300 end");
     });
     /**
@@ -1145,7 +1145,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("AVI video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4400 end");
     });
     /**
@@ -1169,7 +1169,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("MPEG-1 or MPEG-2 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4500 end");
     });
     /**
@@ -1193,7 +1193,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("MPEG-4 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4600 end");
     });
     /**
@@ -1217,7 +1217,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("3GPP video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4700 end");
     });
     /**
@@ -1241,7 +1241,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("3GPP2 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4800 end");
     });
     /**
@@ -1265,7 +1265,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("Windows WM video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4900 end");
     });
     /**
@@ -1289,7 +1289,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("Windows WMV video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5000 end");
     });
     /**
@@ -1313,7 +1313,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
       expect(typeObj.description).assertEqual("Windows WMP video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5100 end");
     });
     /**
@@ -1337,7 +1337,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.media");
       expect(typeObj.description).assertEqual("Base type for audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5200 end");
     });
     /**
@@ -1361,7 +1361,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("AAC audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5300 end");
     });
     /**
@@ -1385,7 +1385,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("AIFF audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5400 end");
     });
     /**
@@ -1409,7 +1409,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("ALAC audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5500 end");
     });
     /**
@@ -1433,7 +1433,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("FLAC audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_flac");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5600 end");
     });
     /**
@@ -1457,7 +1457,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("MPEG-3 audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_mp3");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5700 end");
     });
     /**
@@ -1481,7 +1481,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("OGG audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5800 end");
     });
     /**
@@ -1505,7 +1505,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("PCM audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_5900 end");
     });
     /**
@@ -1529,7 +1529,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("Windows WMA audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wma");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6000 end");
     });
     /**
@@ -1553,7 +1553,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("Waveform audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wav");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6100 end");
     });
     /**
@@ -1577,7 +1577,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("Windows WMX audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6200 end");
     });
     /**
@@ -1601,7 +1601,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("Windows WVX audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6300 end");
     });
     /**
@@ -1625,7 +1625,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
       expect(typeObj.description).assertEqual("Windows WAX audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6400 end");
     });
     /**
@@ -1673,7 +1673,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.entity");
       expect(typeObj.description).assertEqual("Base type for directory.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_folder");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6600 end");
     });
     /**
@@ -1697,7 +1697,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.directory");
       expect(typeObj.description).assertEqual("Base type for folder.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_folder");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6700 end");
     });
     /**
@@ -1745,7 +1745,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
       expect(typeObj.description).assertEqual("Base type for an archive of files and directories.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6900 end");
     });
     /**
@@ -1769,7 +1769,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("BZip2 archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7000 end");
     });
     /**
@@ -1793,7 +1793,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Base type for items mountable as a volume.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7100 end");
     });
     /**
@@ -1817,7 +1817,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Tar archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7200 end");
     });
     /**
@@ -1841,7 +1841,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Zip archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_zip");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7300 end");
     });
     /**
@@ -1865,7 +1865,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Java archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7400 end");
     });
     /**
@@ -1889,7 +1889,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("GNU archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7500 end");
     });
     /**
@@ -1913,7 +1913,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Gzip archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7600 end");
     });
     /**
@@ -1937,7 +1937,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Gzip tar archive.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7700 end");
     });
     /**
@@ -1961,7 +1961,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
       expect(typeObj.description).assertEqual("Base type for scheduled events.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_calendar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7800 end");
     });
     /**
@@ -2177,7 +2177,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("OpenHarmony system defined pixel map.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8700 end");
     });
     /**
