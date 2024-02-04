@@ -60,7 +60,8 @@
             "tablet",
             "default",
             "tv",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "reqPermissions": [
             {
