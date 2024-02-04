@@ -134,6 +134,27 @@ export default function aaImplicitStartTest() {
     })
 
     /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_0500
+    * @tc.name    aa start -h
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAStart_0500',1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -h').then(data => {
+        res = data.stdResult;
+      }).catch(err => {
+        hilog.info(0x0000, 'debuggabletest', '%{public}s',
+          'SUB_Ability_AbilityTools_AACommand_AAStart_0500 err is: ' + JSON.stringify(err));
+      })
+      expect(res).assertContain('[-d <device-id>] [-a <ability-name> -b <bundle-name>] [-m <module-name>]' +
+        ' [-p <perf-cmd>] [-D] [-S] [-N]   [--ps <key> <string-value>]   [--pi <key> <integer-value>]' +
+        '   [--pb <key> <boolean-value>]   [--psn <key>]   [-A <action-name>]   [-U <URI>]   [-e <entity>]' +
+        '   [-t <mime-type>]   start ability with an element name');
+      done();
+    })
+
+    /*
      * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0600
      * @tc.name    check aa implicit start by URI with missing parameter
      * @tc.desc    running "aa start -U" ends up with error
