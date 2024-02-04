@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,10 +21,6 @@ import commonEventManager from '@ohos.commonEventManager';
 
 let driver = Driver.create();
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let want = {
-  abilityName: 'EntryAbility',
-  bundleName: 'com.ohos.passwordbox'
-};
 let SubscribeList = {
   events: [
     'AutoFillExtensionTest0100',
@@ -36,6 +32,14 @@ let SubscribeList = {
 
 function sleep(ms): Promise<any> {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function startRelyAbility() : Promise<void> {
+  await abilityDelegator.executeShellCommand('aa start -b com.ohos.passwordbox -a EntryAbility').then(data => {
+    hilog.info(0x0000, 'ActsAutoFillExtensionTest', '%{public}s', 'beforeEach aa start data is: ' + data.stdResult);
+  }).catch(err => {
+    hilog.info(0x0000, 'ActsAutoFillExtensionTest', '%{public}s', 'beforeEach err is: ' + JSON.stringify(err));
+  });
 }
 
 export default function abilityTest() {
@@ -76,7 +80,8 @@ export default function abilityTest() {
         subscriber = data;
         commonEventManager.subscribe(subscriber, subscribeCallBack);
         await sleep(2000);
-        await globalThis.abilityContext.startAbility(want);
+        await startRelyAbility();
+        await sleep(1000);
         let pwdTextInput = await driver.waitForComponent(ON.id('password_input'), 2500);
         await sleep(500);
         expect(pwdTextInput != null).assertTrue();
@@ -123,7 +128,7 @@ export default function abilityTest() {
         subscriber = data;
         commonEventManager.subscribe(subscriber, subscribeCallBack);
         await sleep(1000);
-        await globalThis.abilityContext.startAbility(want);
+        await startRelyAbility();
         await sleep(1000);
         let pwdTextInput = await driver.waitForComponent(ON.id('password_input'), 2000);
         await sleep(100);
@@ -183,7 +188,7 @@ export default function abilityTest() {
         subscriber = data;
         commonEventManager.subscribe(subscriber, subscribeCallBack);
         await sleep(2000);
-        await globalThis.abilityContext.startAbility(want);
+        await startRelyAbility();
         await sleep(1000);
         let pwdTextInput = await driver.waitForComponent(ON.id('password_input'), 2000);
         await sleep(100);
@@ -228,7 +233,7 @@ export default function abilityTest() {
         subscriber = data;
         commonEventManager.subscribe(subscriber, SubscribeCallback);
         await sleep(2000);
-        globalThis.abilityContext.startAbility(want);
+        await startRelyAbility();
         await sleep(1000);
         let pwd_input = await driver.waitForComponent(ON.id('password_input'), 2000);
         await sleep(100);
