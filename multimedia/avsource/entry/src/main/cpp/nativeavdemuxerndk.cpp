@@ -16,14 +16,12 @@
 #include "napi/native_api.h"
 #include "node_api.h"
 #include <fcntl.h>
-#include <linux/usb/charger.h>
 #include <multimedia/player_framework/native_avcodec_audiodecoder.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
 #include <multimedia/player_framework/native_avdemuxer.h>
 #include <multimedia/player_framework/native_averrors.h>
 #include <multimedia/player_framework/native_avmuxer.h>
 #include <multimedia/player_framework/native_avsource.h>
-#include <sys/stat.h>
 #include <unistd.h>
 
 #define MUNUSONE (-1)
@@ -37,27 +35,18 @@
 #define FAIL (-1)
 #define DENSITY 240
 #define ONEHUNVAL 100
-#define PARAM_0666 0777
+#define PARAM_0666 0666
 #define PARAM_0 0
-#define PATH "/data/storage/el2/base/files/demo1.mp4"
-
-static int64_t GetFileSize(const char *fileName)
-{
-    int64_t fileSize = ZEROVAL;
-    if (fileName != nullptr) {
-        struct stat fileStatus;
-        fileSize = static_cast<size_t>(fileStatus.st_size);
-    }
-    return fileSize;
-}
+#define PATH "/data/storage/el2/base/files/demo.mp4"
+#define FILESIZE 1046987
 
 static OH_AVSource *GetSource()
 {
-    int fd = open(PATH, O_RDWR, PARAM_0666);
-    int64_t fileSize = GetFileSize(PATH);
+    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    int fd = open(fileName, O_RDWR, PARAM_0666);
     OH_AVSource *source;
     int64_t offset = ZEROVAL;
-    source = OH_AVSource_CreateWithFD(fd, offset, fileSize);
+    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
     close(fd);
     return source;
 }
@@ -65,7 +54,8 @@ static OH_AVSource *GetSource()
 static napi_value OHAVDemuxerCreateWithSource(napi_env env, napi_callback_info info)
 {
     OH_AVDemuxer *demuxer = nullptr;
-    demuxer = OH_AVDemuxer_CreateWithSource(GetSource());
+    OH_AVSource *source = GetSource();
+    demuxer = OH_AVDemuxer_CreateWithSource(source);
     int returnValue = FAIL;
     if (demuxer != nullptr) {
         returnValue = SUCCESS;
@@ -122,13 +112,22 @@ static napi_value OHAVDemuxerSeekToTime(napi_env env, napi_callback_info info)
     OH_AVDemuxer *demuxer = nullptr;
     uint32_t audioTrackIndex = ZEROVAL;
     uint32_t videoTrackIndex = ZEROVAL;
-    demuxer = OH_AVDemuxer_CreateWithSource(GetSource());
+    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    int fd = open(fileName, O_RDWR, PARAM_0666);
+    OH_AVSource *source;
+    int64_t offset = ZEROVAL;
+    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
+    close(fd);
+    demuxer = OH_AVDemuxer_CreateWithSource(source);
     OH_AVDemuxer_SelectTrackByID(demuxer, audioTrackIndex);
     OH_AVDemuxer_SelectTrackByID(demuxer, videoTrackIndex);
     int returnValue = FAIL;
-    backInfo = OH_AVDemuxer_SeekToTime(demuxer, ZEROVAL, OH_AVSeekMode::SEEK_MODE_CLOSEST_SYNC);
+    backInfo = OH_AVDemuxer_SeekToTime(demuxer, ZEROVAL, OH_AVSeekMode::SEEK_MODE_NEXT_SYNC);
     if (backInfo == AV_ERR_OK) {
         returnValue = SUCCESS;
+    }
+    if (demuxer == nullptr) {
+        returnValue = ONEHUNVAL;
     }
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
@@ -143,7 +142,13 @@ static napi_value OHAVDemuxerSelectTrackByID(napi_env env, napi_callback_info in
     OH_AVDemuxer *demuxer = nullptr;
     uint32_t audioTrackIndex = ZEROVAL;
     uint32_t videoTrackIndex = ZEROVAL;
-    demuxer = OH_AVDemuxer_CreateWithSource(GetSource());
+    char fileName[] = {"/data/storage/el2/base/files/demo.mp4"};
+    int fd = open(fileName, O_RDWR, PARAM_0666);
+    OH_AVSource *source;
+    int64_t offset = ZEROVAL;
+    source = OH_AVSource_CreateWithFD(fd, offset, FILESIZE);
+    close(fd);
+    demuxer = OH_AVDemuxer_CreateWithSource(source);
     int returnValue = FAIL;
     backInfo = OH_AVDemuxer_SelectTrackByID(demuxer, audioTrackIndex);
     backInfoo = OH_AVDemuxer_SelectTrackByID(demuxer, videoTrackIndex);
@@ -152,6 +157,9 @@ static napi_value OHAVDemuxerSelectTrackByID(napi_env env, napi_callback_info in
     }
     if (backInfoo == AV_ERR_OK) {
         returnValue = SUCCESS;
+    }
+    if (demuxer == nullptr) {
+        returnValue = ONEHUNVAL;
     }
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
