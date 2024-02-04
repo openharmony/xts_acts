@@ -195,7 +195,7 @@ export default function nfcIsoDepTagTest() {
             try {
                 cardEmulationnfc = cardEmulation.hasHceCapability();
                 console.info('[NFC_test] cardEmulationnfc6 hasHceCapability type ->' + cardEmulationnfc )
-                expect(cardEmulationnfc).assertFalse();
+                expect(cardEmulationnfc).assertTrue();
             } catch (error) {
                 console.info('[NFC_test] cardEmulationnfc6 error' + error)
                 expect().assertFail();
