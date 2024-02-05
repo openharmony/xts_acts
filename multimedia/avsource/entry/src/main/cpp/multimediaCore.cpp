@@ -21,6 +21,7 @@
 #include <multimedia/player_framework/native_averrors.h>
 #include <multimedia/player_framework/native_avformat.h>
 #include <multimedia/player_framework/native_avmemory.h>
+#include <multimedia/player_framework/native_avbuffer.h>
 
 #define SUCCESS 0
 #define FAIL (-1)
@@ -1351,6 +1352,103 @@ static napi_value MultimediaCoreAVFormatSetBufferAll(napi_env env, napi_callback
     return result;
 }
 
+static napi_value MultimediaCoreAVBufferCreate(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    NAPI_ASSERT(env, avMemBuffer != nullptr, "OH_AVBuffer_Create failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferDestroy(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_AVErrCode ReturnValue = OH_AVBuffer_Destroy(avMemBuffer);
+    NAPI_ASSERT(env, ReturnValue == AV_ERR_OK, "OH_AVBuffer_Destroy failed");
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferGetBufferAttr(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_AVCodecBufferAttr attr;
+    OH_AVErrCode ReturnValue = OH_AVBuffer_GetBufferAttr(avMemBuffer, &attr);
+    NAPI_ASSERT(env, ReturnValue == AV_ERR_OK, "OH_AVBuffer_GetBufferAttr failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferSetBufferAttr(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_AVErrCode ReturnValue = OH_AVBuffer_SetBufferAttr(avMemBuffer, nullptr);
+    NAPI_ASSERT(env, ReturnValue != AV_ERR_OK, "OH_AVBuffer_SetBufferAttr failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferGetParameter(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_AVFormat *format = OH_AVBuffer_GetParameter(avMemBuffer);
+    NAPI_ASSERT(env, format != nullptr, "OH_AVBuffer_GetParameter failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferSetParameter(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_AVErrCode ReturnValue = OH_AVBuffer_SetParameter(avMemBuffer, nullptr);
+    NAPI_ASSERT(env, ReturnValue != AV_ERR_OK, "OH_AVBuffer_SetParameter failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferGetAddr(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    uint8_t *data = OH_AVBuffer_GetAddr(avMemBuffer);
+    NAPI_ASSERT(env, data != nullptr, "OH_AVBuffer_GetAddr failed");
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferGetCapacity(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    int32_t data = OH_AVBuffer_GetCapacity(avMemBuffer);
+    NAPI_ASSERT(env, data == INFO_SIZE, "OH_AVBuffer_GetCapacity failed");
+    napi_value result = nullptr;
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
+static napi_value MultimediaCoreAVBufferGetNativeBuffer(napi_env env, napi_callback_info)
+{
+    OH_AVBuffer *avMemBuffer = OH_AVBuffer_Create(INFO_SIZE);
+    OH_NativeBuffer *surfaceBuffer = OH_AVBuffer_GetNativeBuffer(avMemBuffer);
+    napi_value result = nullptr;
+    OH_AVBuffer_Destroy(avMemBuffer);
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -1552,6 +1650,24 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"multimediaCoreAVFormatDumpInfoLYRICS", nullptr, MultimediaCoreAVFormatDumpInfoLYRICS, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"multimediaCoreAVFormatSetBufferAll", nullptr, MultimediaCoreAVFormatSetBufferAll, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferCreate", nullptr, MultimediaCoreAVBufferCreate, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferDestroy", nullptr, MultimediaCoreAVBufferDestroy, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferGetBufferAttr", nullptr, MultimediaCoreAVBufferGetBufferAttr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferSetBufferAttr", nullptr, MultimediaCoreAVBufferSetBufferAttr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferGetParameter", nullptr, MultimediaCoreAVBufferGetParameter, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferSetParameter", nullptr, MultimediaCoreAVBufferSetParameter, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferGetAddr", nullptr, MultimediaCoreAVBufferGetAddr, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferGetCapacity", nullptr, MultimediaCoreAVBufferGetCapacity, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"multimediaCoreAVBufferGetNativeBuffer", nullptr, MultimediaCoreAVBufferGetNativeBuffer, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
 

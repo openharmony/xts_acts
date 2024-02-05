@@ -203,6 +203,16 @@ static void OnNeedOutputData(OH_AVCodec *codec, uint32_t index, OH_AVMemory *mem
     (void)userData;
 }
 
+static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
+static void OnNeedOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
 static napi_value OHVideoEncoderSetCallback(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
@@ -246,6 +256,57 @@ static napi_value OHVideoEncoderSetCallbackAbnormal(napi_env env, napi_callback_
     videoEnc = OH_VideoEncoder_CreateByMime(nullptr);
     OH_AVCodecAsyncCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputData, &OnNeedOutputData };
     checkParam = OH_VideoEncoder_SetCallback(videoEnc, callback, nullptr);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderRegisterCallback(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    OH_AVCodecCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNeedOutputBuffer };
+    checkParam = OH_VideoEncoder_RegisterCallback(videoEnc, callback, nullptr);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderRegisterCallbackHEVC(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+    OH_AVCodecCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNeedOutputBuffer };
+    checkParam = OH_VideoEncoder_RegisterCallback(videoEnc, callback, nullptr);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderRegisterCallbackAbnormal(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    videoEnc = OH_VideoEncoder_CreateByMime(nullptr);
+    OH_AVCodecCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNeedOutputBuffer };
+    checkParam = OH_VideoEncoder_RegisterCallback(videoEnc, callback, nullptr);
     if (checkParam != AV_ERR_OK) {
         backParam = SUCCESS;
     }
@@ -1403,6 +1464,108 @@ static napi_value OHVideoEncoderIsValidAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
+static napi_value OHVideoEncoderPushInputBuffer(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    checkParam = OH_VideoEncoder_PushInputBuffer(videoEnc, index);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderPushInputBufferHEVC(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+    checkParam = OH_VideoEncoder_PushInputBuffer(videoEnc, index);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderPushInputBufferAbnormal(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(nullptr);
+    checkParam = OH_VideoEncoder_PushInputBuffer(videoEnc, index);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderFreeOutputBuffer(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    checkParam = OH_VideoEncoder_FreeOutputBuffer(videoEnc, 0);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderFreeOutputBufferHEVC(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+    checkParam = OH_VideoEncoder_FreeOutputBuffer(videoEnc, 0);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoEncoderFreeOutputBufferAbnormal(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoEnc = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoEnc = OH_VideoEncoder_CreateByMime(nullptr);
+    checkParam = OH_VideoEncoder_FreeOutputBuffer(videoEnc, 0);
+    if (checkParam != AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoEncoder_Destroy(videoEnc);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1502,6 +1665,24 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHVideoEncoderIsValidHEVC", nullptr, OHVideoEncoderIsValidHEVC, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"oHVideoEncoderIsValidAbnormal", nullptr, OHVideoEncoderIsValidAbnormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderRegisterCallback", nullptr, OHVideoEncoderRegisterCallback, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderRegisterCallbackHEVC", nullptr, OHVideoEncoderRegisterCallbackHEVC, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderRegisterCallbackAbnormal", nullptr, OHVideoEncoderRegisterCallbackAbnormal, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"oHVideoEncoderPushInputBuffer", nullptr, OHVideoEncoderPushInputBuffer, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderPushInputBufferHEVC", nullptr, OHVideoEncoderPushInputBufferHEVC, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderPushInputBufferAbnormal", nullptr, OHVideoEncoderPushInputBufferAbnormal, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderFreeOutputBuffer", nullptr, OHVideoEncoderFreeOutputBuffer, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderFreeOutputBufferHEVC", nullptr, OHVideoEncoderFreeOutputBufferHEVC, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"oHVideoEncoderFreeOutputBufferAbnormal", nullptr, OHVideoEncoderFreeOutputBufferAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

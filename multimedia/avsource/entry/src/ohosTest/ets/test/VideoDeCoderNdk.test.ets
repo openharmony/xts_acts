@@ -76,6 +76,20 @@ export default function videoDeCoderNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEODECODER_OH_VIDEODECODER_REGISTERCALLBACK_0100
+     * @tc.name       : testOHVideoDecoderRegisterCallback001
+     * @tc.desc       : test OH_VideoDecoder_RegisterCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoDecoderRegisterCallback001', 0, async (done: Function) => {
+      let result: number = videodecoderndk.oHVideoDecoderRegisterCallback();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEODECODER_OH_VIDEODECODER_CONFIGURE_0100
      * @tc.name       : testOHVideoDecoderConfigure001
      * @tc.desc       : test OH_VideoDecoder_Configure
@@ -2441,5 +2455,47 @@ export default function videoDeCoderNdkTest() {
       done();
     });
 
+     /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEODECODER_OH_VIDEODECODER_PUSHINPUTBUFFER_0100
+     * @tc.name       : testOHVideoDecoderPushInputBuffer001
+     * @tc.desc       : test OH_VideoDecoder_PushInputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+     it('testOHVideoDecoderPushInputBuffer001', 0, async (done: Function) => {
+      let result: number = videodecoderndk.oHVideoDecoderPushInputBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEODECODER_OH_VIDEODECODER_FREEOUTPUTBUFFER_0100
+     * @tc.name       : testOHVideoDecoderFreeOutputBuffer001
+     * @tc.desc       : test OH_VideoDecoder_FreeOutputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoDecoderFreeOutputBuffer001', 0, async (done: Function) => {
+      let result: number = videodecoderndk.oHVideoDecoderFreeOutputBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEODECODER_OH_VIDEODECODER_RENDEROUTPUTBUFFER_0100
+     * @tc.name       : testOHVideoDecoderRenderOutputBuffer001
+     * @tc.desc       : test OH_VideoDecoder_RenderOutputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoDecoderRenderOutputBuffer001', 0, async (done: Function) => {
+      let result: number = videodecoderndk.oHVideoDecoderRenderOutputBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+  })
   })
 }
