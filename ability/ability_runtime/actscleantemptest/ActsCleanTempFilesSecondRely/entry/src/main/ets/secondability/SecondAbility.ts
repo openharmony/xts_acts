@@ -21,6 +21,7 @@ import fs, { type Filter } from '@ohos.file.fs';
 
 const BUFSIZE = 1024;
 let DELAY_TIME = 100;
+let CLEAN_TEMP_DELAY_TIME = 1000;
 let OFFSETNUMBER = 0;
 
 let message;
@@ -69,26 +70,28 @@ function onForegroundInner(actionStr, tempDir, context): void {
       console.log('Acts_CleanTempFiles_0203 publish err: ' + JSON.stringify(err));
     });
   } else if (actionStr === 'Acts_CleanTempFiles_0204') {
-    AppStorage.setOrCreate('message', actionStr);
-    let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let buf = new ArrayBuffer(BUFSIZE);
-    let readLen = fs.readSync(file.fd, buf, {
-      offset: OFFSETNUMBER
-    });
-    fs.closeSync(file);
-    let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
-    commonEventData.parameters.message = readBuf;
-    console.log('Acts_CleanTempFiles_0204 Message: ' + JSON.stringify(readLen));
-    commonEvent.publish('Acts_CleanTempFiles_0204', commonEventData, (err) => {
-      console.log('Acts_CleanTempFiles_0204 publish err: ' + JSON.stringify(err));
-      setTimeout(() => {
-        context.terminateSelf().then(() => {
-          console.log('Acts_CleanTempFiles_0101 rely terminateSelf end');
-        }).catch((err) => {
-          console.log('Acts_CleanTempFiles_0101 rely terminateSelf err: ' + JSON.stringify(err));
-        });
-      }, DELAY_TIME);
-    });
+    setTimeout(() => {
+      AppStorage.setOrCreate('message', actionStr);
+      let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      let buf = new ArrayBuffer(BUFSIZE);
+      let readLen = fs.readSync(file.fd, buf, {
+        offset: OFFSETNUMBER
+      });
+      fs.closeSync(file);
+      let readBuf = String.fromCharCode.apply(null, new Uint8Array(buf.slice(OFFSETNUMBER, readLen)));
+      commonEventData.parameters.message = readBuf;
+      console.log('Acts_CleanTempFiles_0204 Message: ' + JSON.stringify(readLen));
+      commonEvent.publish('Acts_CleanTempFiles_0204', commonEventData, (err) => {
+        console.log('Acts_CleanTempFiles_0204 publish err: ' + JSON.stringify(err));
+        setTimeout(() => {
+          context.terminateSelf().then(() => {
+            console.log('Acts_CleanTempFiles_0101 rely terminateSelf end');
+          }).catch((err) => {
+            console.log('Acts_CleanTempFiles_0101 rely terminateSelf err: ' + JSON.stringify(err));
+          });
+        }, DELAY_TIME);
+      });
+    }, CLEAN_TEMP_DELAY_TIME)
   }
 }
 
@@ -144,26 +147,28 @@ export default class SecondAbility extends UIAbility {
       });
     } else if (actionStr === 'Acts_CleanTempFiles_0104') {
       AppStorage.setOrCreate('message', actionStr);
-      let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      let buf = new ArrayBuffer(BUFSIZE);
-      let readLen = fs.readSync(file.fd, buf, {
-        offset: OFFSETNUMBER
-      });
-      fs.closeSync(file);
-      commonEventData.parameters.result = readLen;
-      let dir = tempDir.split('temp');
-      commonEventData.parameters.files = getListFile(dir[0]);
-      console.log('Acts_CleanTempFiles_0104 Message: ' + JSON.stringify(readLen));
-      commonEvent.publish('Acts_CleanTempFiles_0104', commonEventData, (err) => {
-        console.log('Acts_CleanTempFiles_0104 publish err: ' + JSON.stringify(err));
-        setTimeout(() => {
-          this.context.terminateSelf().then(() => {
-            console.log('Acts_CleanTempFiles_0104 rely terminateSelf end');
-          }).catch((err) => {
-            console.log('Acts_CleanTempFiles_0104 rely terminateSelf err: ' + JSON.stringify(err));
-          });
-        }, DELAY_TIME);
-      });
+      setTimeout(() => {
+        let file = fs.openSync(tempDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        let buf = new ArrayBuffer(BUFSIZE);
+        let readLen = fs.readSync(file.fd, buf, {
+          offset: OFFSETNUMBER
+        });
+        fs.closeSync(file);
+        commonEventData.parameters.result = readLen;
+        let dir = tempDir.split('temp');
+        commonEventData.parameters.files = getListFile(dir[0]);
+        console.log('Acts_CleanTempFiles_0104 Message: ' + JSON.stringify(readLen));
+        commonEvent.publish('Acts_CleanTempFiles_0104', commonEventData, (err) => {
+          console.log('Acts_CleanTempFiles_0104 publish err: ' + JSON.stringify(err));
+          setTimeout(() => {
+            this.context.terminateSelf().then(() => {
+              console.log('Acts_CleanTempFiles_0104 rely terminateSelf end');
+            }).catch((err) => {
+              console.log('Acts_CleanTempFiles_0104 rely terminateSelf err: ' + JSON.stringify(err));
+            });
+          }, DELAY_TIME);
+        });
+      }, CLEAN_TEMP_DELAY_TIME)
     }
     onForegroundInner(actionStr, tempDir, this.context);
     console.log('onForeground end');
