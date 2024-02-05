@@ -17,6 +17,7 @@ export const oHAVMuxerSetRotation: () => number;
 export const oHAVMuxerStart: () => number;
 export const oHAVMuxerStop: () => number;
 export const oHAVMuxerWriteSample: () => number;
+export const OHAVMuxerWriteSampleBuffer: () => number;
 export const oHAVMuxerAddTrack: () => number;
 export const oHAVMuxerDestroy: () => number;
 

@@ -16,12 +16,15 @@
 #include "napi/native_api.h"
 #include "node_api.h"
 #include <fcntl.h>
+#include <linux/usb/charger.h>
 #include <multimedia/player_framework/native_avcodec_audiodecoder.h>
 #include <multimedia/player_framework/native_avcodec_base.h>
 #include <multimedia/player_framework/native_avdemuxer.h>
 #include <multimedia/player_framework/native_averrors.h>
 #include <multimedia/player_framework/native_avmuxer.h>
 #include <multimedia/player_framework/native_avsource.h>
+#include <multimedia/player_framework/native_avformat.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #define MUNUSONE (-1)
@@ -39,6 +42,16 @@
 #define PARAM_0 0
 #define PATH "/data/storage/el2/base/files/demo.mp4"
 #define FILESIZE 1046987
+
+static int64_t GetFileSize(const char *fileName)
+{
+    int64_t fileSize = ZEROVAL;
+    if (fileName != nullptr) {
+        struct stat fileStatus;
+        fileSize = static_cast<size_t>(fileStatus.st_size);
+    }
+    return fileSize;
+}
 
 static OH_AVSource *GetSource()
 {
@@ -198,6 +211,32 @@ static napi_value OHAVDemuxerReadSample(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OHAVDemuxerReadSampleBuffer(napi_env env, napi_callback_info info)
+{
+    OH_AVSource *oH_AVSource = GetSource();
+    OH_AVDemuxer *demuxer;
+    demuxer = OH_AVDemuxer_CreateWithSource(oH_AVSource);
+    int returnValue = FAIL;
+    OH_AVBuffer *buffer = OH_AVBuffer_Create(TWOTWOVAL);
+    uint32_t audioTrackIndex = ZEROVAL;
+    OH_AVDemuxer_SelectTrackByID(demuxer, audioTrackIndex);
+    OH_AVDemuxer_SeekToTime(demuxer, ZEROVAL, OH_AVSeekMode::SEEK_MODE_CLOSEST_SYNC);
+    if (OH_AVDemuxer_ReadSampleBuffer(demuxer, audioTrackIndex, buffer) == AV_ERR_OK) {
+        returnValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    OH_AVBuffer_Destroy(buffer);
+    if (oH_AVSource == nullptr) {
+        returnValue = PARAM_1;
+    }
+    if (demuxer == nullptr) {
+        returnValue = TWOTWOVAL;
+    }
+    napi_create_int32(env, returnValue, &result);
+    OH_AVDemuxer_Destroy(demuxer);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -210,6 +249,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHAVDemuxerReadSample", nullptr, OHAVDemuxerReadSample, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVDemuxerSeekToTime", nullptr, OHAVDemuxerSeekToTime, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVDemuxerSelectTrackByID", nullptr, OHAVDemuxerSelectTrackByID, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHAVDemuxerReadSampleBuffer", nullptr, OHAVDemuxerReadSampleBuffer, nullptr, nullptr, nullptr, napi_default,
          nullptr},
 
     };

@@ -1936,5 +1936,130 @@ export default function audioDecoderTest() {
       done();
     });
 
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6800
+    * @tc.name       : testMultimediaCoreAVBufferCreate001
+    * @tc.desc       : test OH_AVBuffer_Create
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferCreate001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferCreate();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_6900
+    * @tc.name       : testMultimediaCoreAVBufferDestroy001
+    * @tc.desc       : test OH_AVBuffer_Destroy
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferDestroy001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferDestroy();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7000
+    * @tc.name       : testMultimediaCoreAVBufferGetBufferAttr001
+    * @tc.desc       : test OH_AVBuffer_GetBufferAttr
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferGetBufferAttr001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferGetBufferAttr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7100
+    * @tc.name       : testMultimediaCoreAVBufferSetBufferAttr001
+    * @tc.desc       : test OH_AVBuffer_SetBufferAttr
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferSetBufferAttr001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferSetBufferAttr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+  /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7200
+    * @tc.name       : testMultimediaCoreAVBufferGetParameter001
+    * @tc.desc       : test OH_AVBuffer_GetParameter
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferGetParameter001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferGetParameter();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7300
+    * @tc.name       : testMultimediaCoreAVBufferSetParameter001
+    * @tc.desc       : test OH_AVBuffer_SetParameter
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferSetParameter001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferSetParameter();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7400
+    * @tc.name       : testMultimediaCoreAVBufferGetAddr001
+    * @tc.desc       : test OH_AVBuffer_GetAddr
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferGetAddr001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferGetAddr();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7500
+    * @tc.name       : testMultimediaCoreAVBufferGetCapacity001
+    * @tc.desc       : test OH_AVBuffer_GetCapacity
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferGetCapacity001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferGetCapacity();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_CORE_1_7600
+    * @tc.name       : testMultimediaCoreAVBufferGetNativeBuffer001
+    * @tc.desc       : test OH_AVBuffer_Destroy
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testMultimediaCoreAVBufferGetNativeBuffer001', 0, async (done: Function) => {
+      let result: number = MultimediaCore.multimediaCoreAVBufferGetNativeBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }

@@ -196,6 +196,44 @@ static napi_value OHAVMuxerWriteSample(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value OHAVMuxerWriteSampleBuffer(napi_env env, napi_callback_info info) {
+    OH_AVMuxer *muxer = nullptr;
+    int audioTrackId = MUNUSONE;
+    int32_t rotation = ZEROVAL;
+    OH_AVCodecBufferAttr attrInfo;
+    attrInfo.pts = ONEONEVAL;
+    attrInfo.size = ONEONEVAL;
+    attrInfo.offset = ZEROVAL;
+    attrInfo.flags |= AVCODEC_BUFFER_FLAGS_SYNC_FRAME;
+    int trackId = audioTrackId;
+    OH_AVBuffer *sample = OH_AVBuffer_Create(TWOTWOVAL);
+    OH_AVBuffer_SetBufferAttr(sample, &attrInfo);
+    OH_AVOutputFormat format = AV_OUTPUT_FORMAT_DEFAULT;
+    int fileDescribe = open("/data/storage/el2/base/files/demo.mp4", O_CREAT | O_RDWR | O_TRUNC, PARAM_0666);
+    muxer = OH_AVMuxer_Create(fileDescribe, format);
+    OH_AVFormat *trackFormat = OH_AVFormat_Create();
+    OH_AVMuxer_SetRotation(muxer, rotation);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC);
+    OH_AVFormat_SetIntValue(trackFormat, OH_MD_KEY_AUD_SAMPLE_RATE, BIGVAL);
+    OH_AVFormat_SetIntValue(trackFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, TWOVAL);
+    OH_AVMuxer_AddTrack(muxer, &trackId, trackFormat);
+    OH_AVMuxer_Start(muxer);
+    int backInfo = OH_AVMuxer_WriteSampleBuffer(muxer, trackId, sample);
+    int returnValue = FAIL;
+    OH_AVMuxer_Stop(muxer);
+    if (backInfo == AV_ERR_OK) {
+        returnValue = SUCCESS;
+    }
+    close(fileDescribe);
+    napi_value result = nullptr;
+    OH_AVBuffer_Destroy(sample);
+    OH_AVMuxer_Destroy(muxer);
+    OH_AVFormat_Destroy(trackFormat);
+    muxer = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
+
 static napi_value OHAVMuxerAddTrack(napi_env env, napi_callback_info info)
 {
     OH_AVMuxer *muxer = nullptr;
@@ -456,6 +494,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHAVMuxerStart", nullptr, OHAVMuxerStart, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerStop", nullptr, OHAVMuxerStop, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerWriteSample", nullptr, OHAVMuxerWriteSample, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"OHAVMuxerWriteSampleBuffer", nullptr, OHAVMuxerWriteSampleBuffer, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerAddTrack", nullptr, OHAVMuxerAddTrack, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAVMuxerDestroy", nullptr, OHAVMuxerDestroy, nullptr, nullptr, nullptr, napi_default, nullptr},
 
