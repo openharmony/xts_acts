@@ -344,5 +344,23 @@ export default function cameraEnumTest() {
             done();
         })
 
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100
+         * @tc.name      : test torchMode enum
+         * @tc.desc      : assert all torchMode
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100', 0, async function (done) {
+            expect(camera.TorchMode.OFF == 0).assertTrue();
+            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.OFF}`);
+            expect(camera.TorchMode.ON == 1).assertTrue();
+            console.info(`${TAG} TorchMode.ON: ${camera.TorchMode.ON}`);
+            expect(camera.TorchMode.AUTO == 2).assertTrue();
+            console.info(`${TAG} TorchMode.AUTO: ${camera.TorchMode.AUTO}`);
+            done();
+        })
+
     })
 }

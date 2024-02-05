@@ -15,7 +15,7 @@
 
 {
   "module": {
-    "name": "com.multimedia.napitest",
+    "name": "entry_test",
     "type": "feature",
     "description": "$string:module_test_desc",
     "mainElement": "TestAbility",

@@ -27,14 +27,14 @@ function getContext(): Context {
 }
 
 export default function nativeavdemuxerNdkTest() {
-  describe('MuslNativeAvdemuxerNdkTest', () => {
+  describe('NativeAvdemuxerNdkTest', () => {
 
     beforeAll(async () => {
       let context = getContext()
       let dir = context.filesDir + "/";
       try {
-        let ml_face_model_file = dir + "demo1.mp4";
-        context.resourceManager.getRawFileContent("demo1.mp4", (error, model_buffer) => {
+        let ml_face_model_file = dir + "demo.mp4";
+        context.resourceManager.getRawFileContent("demo.mp4", (error, model_buffer) => {
           if (error) {
             console.log(
               `[rawfile_copy_to_sandbox] demo.mp4 is
@@ -57,7 +57,7 @@ export default function nativeavdemuxerNdkTest() {
     beforeEach(async () => {
       let dir = getContext().filesDir + "/";
 
-      let ml_face_model = dir + "demo1.mp4";
+      let ml_face_model = dir + "demo.mp4";
       await fs.stat(ml_face_model).then(async (res) => {
         if (res) {
           console.info("MindSporeDemo demo.mp4 file exists");
