@@ -567,12 +567,13 @@ export default function aaImplicitStartTest() {
       expect(res).assertContain('usage: aa start <options>');
       done();
     })
-  })
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2300
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True
-    * @tc.desc    Function test
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True" is successful
+    * @tc.name    check --pb value case sense
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2300',1, async function (done) {
@@ -592,8 +593,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2400
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool T
-    * @tc.desc    Function test
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool T" is successful
+    * @tc.name    check --pb value case sense
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2400',1, async function (done) {
@@ -612,8 +615,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2500
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True
-    * @tc.desc    Function test
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool True" is successful
+    * @tc.name    check --pb value case sense
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2500',1, async function (done) {
@@ -632,8 +637,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2600
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool FALSE
-    * @tc.desc    Function test
+    * @tc.name    check --pb value case sense
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool FALSE" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2600',1, async function (done) {
@@ -652,8 +659,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2700
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False
-    * @tc.desc    Function test
+    * @tc.name    check --pb value case sense
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool False" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function    
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2700',1, async function (done) {
@@ -672,8 +681,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2800
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false
-    * @tc.desc    Function test
+    * @tc.name    check --pb value case sense
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool false" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function    
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2800',1, async function (done) {
@@ -692,8 +703,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2900
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F
-    * @tc.desc    Function test
+    * @tc.name    check --pb value case sense
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool F" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function    
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_2900',1, async function (done) {
@@ -712,8 +725,10 @@ export default function aaImplicitStartTest() {
 
     /*
     * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3000
-    * @tc.name    aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f
-    * @tc.desc    Function test
+    * @tc.name    check --pb value case sense
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a EntryAbility --pb kbool f" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function    
     * @tc.level   3
     */
     it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3000',1, async function (done) {
@@ -727,5 +742,6 @@ export default function aaImplicitStartTest() {
         });
       expect(res).assertContain('start ability successfully.');
       done();
-    })  
+    })
+  })
 }
