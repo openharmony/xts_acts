@@ -554,7 +554,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0100', 1, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0100', 1, async function (done) {
             var sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
             console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
             if (sysSupport === true) {
@@ -581,7 +581,7 @@ export default function AVPlayerLocalTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200', 1, function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200', 1, async function (done) {
             var sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
             console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
             if (sysSupport === true) {
