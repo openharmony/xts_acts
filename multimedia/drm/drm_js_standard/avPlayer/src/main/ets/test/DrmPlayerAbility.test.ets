@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+// @ts-ignore
 import drm from '@ohos.multimedia.drm';
 import util from '@ohos.util';
 import media from '@ohos.multimedia.media';
@@ -482,7 +483,7 @@ export default function abilityTest() {
         */
         it('SUB_MULTIMEDIA_DRM_AVPLAYER_0100', 0, function (done) {
             var drmsys = drm.createMediaKeySystem(uuid);
-            var provisionRequestData = drmsys.generateKeySystemRequest();
+            var provisionRequestData: drm.ProvisionRequest = drmsys.generateKeySystemRequest();
             console.log("provisionRequestData.data is:", provisionRequestData.data);
             console.log("provisionRequestData.defaultUrl is:", provisionRequestData.defaultURL);
             var arry = new Uint8Array([1, 2, 3, 4, 5]);
@@ -529,7 +530,7 @@ export default function abilityTest() {
                     name: "optionalDataName",
                     value: "optionalDataValue"
                 }];
-                var DrmRequest = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData);
+                var DrmRequest: drm.MediaKeyRequest = session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData);
                 console.log("DrmRequest mediaKeyRequestType is", DrmRequest.mediaKeyRequestType);
                 console.log("DrmRequest defaultURL is", DrmRequest.defaultURL);
                 var responseArray = new Uint8Array([0x30, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42, 0x30, 0x4D, 0x32, 0x77, 0x33, 0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63, 0x48, 0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67, 0x3D, 0x3D]);
@@ -2258,10 +2259,10 @@ export default function abilityTest() {
 
                 var responseArray = new Uint8Array([0x30, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42, 0x30, 0x4D, 0x32, 0x77, 0x33, 0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63, 0x48, 0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67, 0x3D, 0x3D]);
                 keySession.processMediaKeyResponse(responseArray);
-                var optionalData = {
+                var optionalData = [{
                     name: "optionalDataName",
                     value: "optionalDataValue",
-                };
+                }];
                 keySession.generateMediaKeyRequest("video/mp4", responseArray, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData);
 
                 keySession.clearMediaKeys();
