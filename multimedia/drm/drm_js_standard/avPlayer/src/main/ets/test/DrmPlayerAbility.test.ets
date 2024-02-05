@@ -2459,7 +2459,7 @@ export default function abilityTest() {
         * @tc.type      : Function test
         * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', 1, function (done) {
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', 1, async function (done) {
             if (sysSupport === true) {
                 var drmsys = drm.createMediaKeySystem(uuid);
                 let avPlayer = await media.createAVPlayer();
