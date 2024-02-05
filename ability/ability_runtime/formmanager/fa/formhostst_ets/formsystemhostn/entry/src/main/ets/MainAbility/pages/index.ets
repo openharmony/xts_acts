@@ -20,8 +20,8 @@ import formHost from '@ohos.application.formHost';
 @Entry
 @Component
 struct Index {
-  @State bundle: string = "com.form.formsystemtestservicea.hmservice";
-  @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
+  @State bundle: string = "com.acts.form.formsystemtestservicea.hmservice";
+  @State ability: string = "com.acts.form.formsystemtestservicea.hmservice.MainAbility";
   @State moduleName: string = "entry";
   @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
@@ -78,8 +78,8 @@ struct Index {
         parameters: {
           "formId": "0",
           "name": "Form_Js001",
-          "bundle": "com.form.formsystemtestservicea.hmservice",
-          "ability": "com.form.formsystemtestservicea.hmservice.MainAbility",
+          "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+          "ability": "com.acts.form.formsystemtestservicea.hmservice.MainAbility",
           "moduleName": "entry",
           "temporary": false,
           "sendCastForm": true,
