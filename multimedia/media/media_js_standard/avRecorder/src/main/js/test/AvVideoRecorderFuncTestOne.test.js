@@ -977,12 +977,12 @@ export default function avVideoRecorderTestOne() {
                             break;
                         case avVideoRecorderTestBase.AV_RECORDER_STATE.STARTED:
                             console.info('getCurrentAudioCapturerInfo in started state');
-                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PREPARED);
+                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.STARTED);
                             toNextStep(avRecorder, avConfig, recorderTime, steps, done);
                             break;
                         case avVideoRecorderTestBase.AV_RECORDER_STATE.PAUSED:
                             console.info('getCurrentAudioCapturerInfo in paused state');
-                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PREPARED);
+                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PAUSED);
                             toNextStep(avRecorder, avConfig, recorderTime, steps, done);
                             break;
                         case avVideoRecorderTestBase.AV_RECORDER_STATE.STOPPED:
@@ -8403,7 +8403,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
@@ -8442,7 +8442,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
@@ -8481,7 +8481,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
@@ -8520,7 +8520,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
@@ -8559,7 +8559,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
@@ -8598,7 +8598,7 @@ export default function avVideoRecorderTestOne() {
             let fileName = avVideoRecorderTestBase.resourceName()
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
-            avConfigH264.url = fdPath
+            avConfigOnlyAac.url = fdPath
 
             let mySteps = new Array(
                 // init avRecorder
