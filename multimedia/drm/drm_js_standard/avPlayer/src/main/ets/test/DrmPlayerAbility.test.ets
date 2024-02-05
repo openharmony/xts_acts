@@ -13,9 +13,7 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-// @ts-ignore
 import drm from '@ohos.multimedia.drm';
 import util from '@ohos.util';
 import media from '@ohos.multimedia.media';
