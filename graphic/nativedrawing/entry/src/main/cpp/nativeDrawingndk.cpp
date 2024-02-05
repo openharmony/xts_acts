@@ -52,6 +52,7 @@
 
 #define ONEHUNVAL 100
 #define EIGTENVAL 80
+#define MINIMUMVALUE (-340282346638528859811704183484516925440.000000)
 
 static napi_value OHDrawingBitmapCreate(napi_env env, napi_callback_info info)
 {
@@ -1739,7 +1740,7 @@ static napi_value OHDrawingTypographyHandlerAddTextAanormal(napi_env env, napi_c
     napi_value result = nullptr;
 
     double len = OH_Drawing_TypographyGetLongestLine(typography);
-    if (len == ZEROVAL) {
+    if (len == MINIMUMVALUE) {
         napi_create_int32(env, SUCCESS, &result);
     } else {
         napi_create_int32(env, FAIL, &result);
