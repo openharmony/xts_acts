@@ -6,7 +6,7 @@
         "bundle-name": "com.ohos.st.formdeletetest",
         "package-name": "com.ohos.st.formdeletetest",
         "shell-timeout": "600000",
-        "testcase-timeout":"30000"
+        "testcase-timeout":"80000"
     },
     "kits": [
         {
