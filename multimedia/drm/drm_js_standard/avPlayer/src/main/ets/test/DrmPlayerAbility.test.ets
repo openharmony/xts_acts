@@ -2358,9 +2358,13 @@ export default function abilityTest() {
                 var drmsys = drm.createMediaKeySystem(uuid);
                 var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
                 var sign = 1;
-                keySession.on('keysChange', (keyInfo) => {
-                    console.info('bbbbb receive keysChange ' + keyInfo.keyId);
-                    console.info('bbbbb receive keysChange ' + keyInfo.value);
+                keySession.on('keysChange', (keyInfo, newKeyAvailable) => {
+					console.info('bbbbb receive keysChange newKeyAvailable:' + newKeyAvailable);
+					for (let index = 0; index < keyInfo.length; index++){
+						console.info('bbbbb receive keysChange index:' + index);
+						console.info('bbbbb receive keysChange keyId:' + keyInfo[index].keyId);
+						console.info('bbbbb receive keysChange value:' + keyInfo[index].value);
+					}
                     sign = 2;
                 });
 
@@ -2387,9 +2391,13 @@ export default function abilityTest() {
                 var drmsys = drm.createMediaKeySystem(uuid);
                 var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
                 var sign = 1;
-                keySession.on('keysChange', (keyInfo) => {
-                    console.info('bbbbb receive keysChange ' + keyInfo.keyId);
-                    console.info('bbbbb receive keysChange ' + keyInfo.value);
+                keySession.on('keysChange', (keyInfo, newKeyAvailable) => {
+					console.info('bbbbb receive keysChange newKeyAvailable' + newKeyAvailable);
+					for (let index = 0; index < keyInfo.length; index++){
+						console.info('bbbbb receive keysChange index: ' + index);
+						console.info('bbbbb receive keysChange keyId: ' + keyInfo[index].keyId);
+						console.info('bbbbb receive keysChange value: ' + keyInfo[index].value);
+					}
                     sign = 2;
                 });
                 keySession.off('keysChange');
@@ -2465,7 +2473,7 @@ export default function abilityTest() {
                 let avPlayer = await media.createAVPlayer();
                 let keyInfo = avPlayer.getMediaKeySystemInfos()
                 for (let item = 0; item < keyInfo.length; item++) {
-                    console.info(`getMediaKeySystemInfos item:${item}, item.uuid:${item.uuid}, item.pssh:${item.pssh}`)
+                    console.info(`getMediaKeySystemInfos item:${item}, keyInfo[${item}].uuid:${keyInfo[item].uuid}, keyInfo[${item}].pssh:${keyInfo[item].pssh}`)
                 }
                 drmsys.destroy();
             }
