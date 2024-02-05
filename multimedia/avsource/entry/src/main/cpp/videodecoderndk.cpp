@@ -126,6 +126,16 @@ static void OnNeedOutputData(OH_AVCodec *codec, uint32_t index, OH_AVMemory *mem
     (void)userData;
 }
 
+static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
+static void OnNeedOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
 static napi_value OHVideoDecoderSetCallback(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
