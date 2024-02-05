@@ -64,6 +64,26 @@
             ]
           }
         ]
+      },
+      {
+        "name": "UnexportedAbility",
+        "srcEntry": "./ets/unexportedability/UnexportedAbility.ts",
+        "description": "$string:UnexportedAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:UnexportedAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": false,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.unexportedability"
+            ],
+            "actions": [
+              "action.system.unexportedability"
+            ]
+          }
+        ]
       }
     ],
     "requestPermissions": []

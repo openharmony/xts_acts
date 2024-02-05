@@ -19,6 +19,14 @@
     {
       "name": "TestAbility_label",
       "value": "test label"
+    },
+    {
+      "name": "UnexportedAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "UnexportedAbility_label",
+      "value": "label"
     }
   ]
 }

@@ -745,5 +745,28 @@ export default function aaImplicitStartTest() {
       expect(res).assertContain('start ability successfully.');
       done();
     })
+
+
+    /*
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100
+    * @tc.name    check aa start unexported ability
+    * @tc.desc    running "aa start -b com.example.aacommandimplicitstarttest -a UnexportedAbility" is unsuccessful
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   3
+    */
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100', 1, async function (done) {
+      let res = undefined;
+      await abilityDelegator.executeShellCommand('aa start -b com.example.aacommandimplicitstarttest -a UnexportedAbility')
+        .then(data => {
+          res = data.stdResult;
+        }).catch(err => {
+          hilog.info(0x0000, 'debuggabletest', '%{public}s',
+            'SUB_Ability_AbilityTools_AACommand_AAImplicitStart_3100 err is: ' + JSON.stringify(err));
+        });
+      expect(res).assertContain('error: failed to start ability.');
+      expect(res).assertContain('error: ability visible false deny request.');
+      done();
+    })
   })
 }
