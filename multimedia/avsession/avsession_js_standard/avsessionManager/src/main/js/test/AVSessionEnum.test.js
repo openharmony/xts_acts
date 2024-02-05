@@ -14,6 +14,7 @@
  */
 
 import avSession from '@ohos.multimedia.avsession';
+import { AVCastPickerState } from '@ohos.multimedia.avCastPickerParam';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
 export default function AVSessionEnum() {
@@ -142,6 +143,23 @@ export default function AVSessionEnum() {
 
             console.info(`AVSessionErrorCode ERR_CODE_REMOTE_CONNECTION_NOT_EXIST is ${avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST}`);
             expect(avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST).assertEqual(6600109);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTATE_ENUM_0100
+         * @tc.name      : compare all value in AVCastPickerState to number value
+         * @tc.desc      : Testing enum of AVCastPickerState
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTATE_ENUM_0100', 0, async function (done) {
+            console.info(`AVCastPickerState STATE_APPEARING is ${AVCastPickerState.STATE_APPEARING}`);
+            expect(AVCastPickerState.STATE_APPEARING).assertEqual(0);
+
+            console.info(`AVCastPickerState STATE_DISAPPEARING is ${AVCastPickerState.STATE_DISAPPEARING}`);
+            expect(AVCastPickerState.STATE_DISAPPEARING).assertEqual(1);
             done();
         })
     })
