@@ -17,7 +17,8 @@
     "mainAbility": ".MainAbility1",
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "abilities": [
       {
