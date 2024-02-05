@@ -134,18 +134,20 @@ export default function aaImplicitStartTest() {
     })
 
     /*
-    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAStart_0500
-    * @tc.name    aa start -h
-    * @tc.desc    Function test
-    * @tc.level   3
+    * @tc.number  SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500
+    * @tc.name    check aa start -h
+    * @tc.desc    running "aa start -h" is successful
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level 1
     */
-    it('SUB_Ability_AbilityTools_AACommand_AAStart_0500',1, async function (done) {
+    it('SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500',1, async function (done) {
       let res = undefined;
       await abilityDelegator.executeShellCommand('aa start -h').then(data => {
         res = data.stdResult;
       }).catch(err => {
         hilog.info(0x0000, 'debuggabletest', '%{public}s',
-          'SUB_Ability_AbilityTools_AACommand_AAStart_0500 err is: ' + JSON.stringify(err));
+          'SUB_Ability_AbilityTools_AACommand_AAImplicitStart_0500 err is: ' + JSON.stringify(err));
       })
       expect(res).assertContain('[-d <device-id>] [-a <ability-name> -b <bundle-name>] [-m <module-name>]' +
         ' [-p <perf-cmd>] [-D] [-S] [-N]   [--ps <key> <string-value>]   [--pi <key> <integer-value>]' +
