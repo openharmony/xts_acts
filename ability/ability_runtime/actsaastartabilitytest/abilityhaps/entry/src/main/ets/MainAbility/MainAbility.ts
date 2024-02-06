@@ -19,10 +19,6 @@ import window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
 const flag = '10000'
-const EVENT = 'kill_foreground_ability_10000'
-const subscriberInfo_AbilityContext = {
-  events: [EVENT]
-}
 let subscriber
 let lifeCircle: Array<string> = new Array()
 const onForegroundEvent_main = '10000-onForegroundEvent_entry'
@@ -43,17 +39,6 @@ export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', flag + '-Ability onCreate');
     lifeCircle[0] = 'onCreate->'
-
-    commonEvent.createSubscriber(subscriberInfo_AbilityContext).then(data => {
-      subscriber = data;
-      commonEvent.subscribe(subscriber, async (err, data) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', flag + '-terminateSelf before');
-        if (data.parameters.isKill == true) {
-          this.context.terminateSelf()
-          hilog.info(0x0000, 'testTag', '%{public}s', flag + '-terminateSelf success');
-        }
-      })
-    })
   }
 
 

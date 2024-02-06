@@ -16,24 +16,24 @@ import commonEvent from '@ohos.commonEvent'
 import hilog from '@ohos.hilog'
 import { it, expect, describe } from '@ohos/hypium'
 
-const bundleName = 'com.example.myapplication'
-const mainActivity = 'MainAbility'
-const mainModuleName = 'entry'
-const featureModuleName = 'feature'
-const launcher = {
+const TAG = 'ActsAaStartAbilityTest';
+const TEST_SUITE_NAME: string = 'WantSupportModuleNameTest';
+let bundleName = 'com.example.myapplication';
+let mainActivity = 'MainAbility';
+let mainModuleName = 'entry';
+let featureModuleName = 'feature';
+let launcher = {
   bundleName: 'com.ohos.launcher',
   mainActivity: 'MainAbility'
 }
-const startAbilityMainCmd = `aa start -b ${bundleName} -a ${mainActivity} -m ${mainModuleName}`
-const startAbilityFeatureCmd = `aa start -b ${bundleName} -a ${mainActivity} -m ${featureModuleName}`
-const startAbilityNoModuleNameCmd = `aa start -b ${bundleName} -a ${mainActivity}`
-const EVENT = 'kill_foreground_ability_10000'
+let startAbilityMainCmd = `aa start -b ${bundleName} -a ${mainActivity} -m ${mainModuleName}`;
+let startAbilityFeatureCmd = `aa start -b ${bundleName} -a ${mainActivity} -m ${featureModuleName}`;
+let startAbilityNoModuleNameCmd = `aa start -b ${bundleName} -a ${mainActivity}`;
+let onForegroundEvent_main = '10000-onForegroundEvent_entry';
+let onForegroundEvent_feature = '10000-onForegroundEvent_feature';
+let installFeatureHapCmd = 'bm install -p data/ActsAbilityFeature.hap';
+let forcestop = 'aa force-stop com.example.myapplication';
 
-const onForegroundEvent_main = '10000-onForegroundEvent_entry'
-const onForegroundEvent_feature = '10000-onForegroundEvent_feature'
-const installFeatureHapCmd = 'bm install -p data/ActsAbilityFeature.hap'
-const TAG = 'wantSupportModuleName'
-const TEST_SUITE_NAME: string = 'wantSupportModuleNameTest'
 
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time))
@@ -62,7 +62,7 @@ let subscriber
 let standard: Array<string> = ['onCreate->', 'onWindowStageCreate->', 'onForeground']
 
 export default function wantSupportModuleNameTest() {
-  describe('wantSupportModuleNameTest', function () {
+  describe('WantSupportModuleNameTest', function () {
 
     async function createSubscriberAndSubscribe(subscribeInfo, done, isFinish: boolean = false) {
       try {
@@ -120,17 +120,6 @@ export default function wantSupportModuleNameTest() {
       })
     }
 
-    function killMainAbility() {
-      let commonEventPublishData = {
-        parameters: {
-          'isKill': true
-        }
-      }
-      commonEvent.publish(EVENT, commonEventPublishData, () => {
-        hilog.info(0x0000, TAG, 'publish : data : %{public}s', 'success');
-      })
-    }
-
     /*
      * @tc.number: SUB_Ability_AbilityBase_WantParam_WantSupportModuleName_0100
      * @tc.name:  After adding the moduleName field, test whether the original ability can be pulled up properly by using want without the module name field
@@ -174,9 +163,15 @@ export default function wantSupportModuleNameTest() {
         events: [onForegroundEvent_main]
       }
       try {
-        killMainAbility();
         await createSubscriberAndSubscribe(commonEventSubscribeInfo, done, true);
-        await sleep(1000).then(async data => {
+        await executeShellCmd(forcestop).then(result => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} forcestop result : ${JSON.stringify(result)}`);
+        }).catch(err => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} forcestop err : ${err}`);
+          expect().assertFail()
+          done()
+        })
+        await sleep(2000).then(async data => {
           await executeShellCmd(startAbilityMainCmd).then(result => {
             hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbilityMain result : ${JSON.stringify(result)}`);
           }).catch(err => {
@@ -219,14 +214,14 @@ export default function wantSupportModuleNameTest() {
           expect().assertFail()
         })
 
-        await sleep(1000).then(() => {
+        await sleep(2000).then(() => {
           let backToLauncherCommand = `aa start -b ${launcher.bundleName} -a ${launcher.mainActivity}`
           executeShellCmd(backToLauncherCommand)
         })
 
         await createSubscriberAndSubscribe(commonEventSubscribeInfo1, done, true);
 
-        await sleep(1000).then(async () => {
+        await sleep(2000).then(async () => {
           await installFeatureHap(installFeatureHapCmd).then(async data => {
             await executeShellCmd(startAbilityFeatureCmd).then(result => {
               hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} startAbilityFeature ablilityresult : ${JSON.stringify(result)}`);
@@ -272,10 +267,10 @@ export default function wantSupportModuleNameTest() {
           done()
         })
 
-        await sleep(2000).then(() => {
-          killMainAbility()
+        await executeShellCmd(forcestop).then(result => {
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} forcestop result : ${JSON.stringify(result)}`);
         }).catch(err => {
-          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ablility err : ${err}`);
+          hilog.info(0x0000, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} forcestop err : ${err}`);
           expect().assertFail()
           done()
         })
