@@ -185,6 +185,27 @@
                 "launchType": "specified",
                 "orientation": "locked",
                 "skills": []
+            },
+            {
+                "name": "BROWSER",
+                "icon": "$media:icon",
+                "visible": true,
+                "skills": [
+                  {
+                    "actions": [
+                      "ohos.want.action.viewData"
+                    ],
+                    "entities": [
+                      "entity.system.browsable"
+                    ],
+                    "uris": [
+                      {
+                        "scheme": "http"
+                      }      
+                    ]
+                  }
+                ],
+                "srcEntrance": ""
             }
         ],
         "extensionAbilities": [
@@ -394,6 +415,10 @@
             "value": "MetaDataValue",
             "resource": "$profile:shortcuts_config"
           }
+        ],
+        "querySchemes": [
+            "http",
+            "welink"
         ]
     }
 }
