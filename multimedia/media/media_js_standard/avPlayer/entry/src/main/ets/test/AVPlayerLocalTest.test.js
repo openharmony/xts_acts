@@ -555,15 +555,16 @@ export default function AVPlayerLocalTest() {
         * @tc.level     : Level1
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0100', 1, async function (done) {
-            var sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
+            let sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
             console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
-            if (sysSupport === true) {
+            let uuid;
+	    if (sysSupport === true) {
                 uuid = "com.clearplay.drm";
             } else {
                 uuid = "com.wiseplay.drm";
             }
             if (sysSupport === true) {
-                var drmsys = drm.createMediaKeySystem(uuid);
+                let drmsys = drm.createMediaKeySystem(uuid);
                 let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
                 let avPlayer = await media.createAVPlayer();
                 avPlayer.setDecryptionConfig(session, false);
@@ -582,15 +583,16 @@ export default function AVPlayerLocalTest() {
         * @tc.level     : Level1
         */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200', 1, async function (done) {
-            var sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
+            let sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
             console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
-            if (sysSupport === true) {
+            let uuid;
+	    if (sysSupport === true) {
                 uuid = "com.clearplay.drm";
             } else {
                 uuid = "com.wiseplay.drm";
             }
             if (sysSupport === true) {
-                var drmsys = drm.createMediaKeySystem(uuid);
+                let drmsys = drm.createMediaKeySystem(uuid);
                 let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
                 let avPlayer = await media.createAVPlayer();
                 try {
