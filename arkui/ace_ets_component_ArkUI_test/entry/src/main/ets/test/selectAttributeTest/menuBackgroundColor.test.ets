@@ -60,7 +60,7 @@ export default function menuBackgroundColor() {
       let obj = JSON.parse(strJson);
       console.info("[menuBackgroundColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[menuBackgroundColor_0100] title: " + JSON.stringify(obj.$attrs.menuBackgroundColor));
-      expect(obj.$attrs.menuBackgroundColor).assertEqual('Color.Gray');
+      expect(obj.$attrs.menuBackgroundColor).assertEqual('#FF808080');
       console.info('[menuBackgroundColor_0100] END');
       done();
     });
