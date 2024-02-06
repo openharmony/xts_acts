@@ -90,6 +90,20 @@ export default function nativeavmuxerNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVMUXER_OH_AVMUXER_WRITESAMPLEBUFFER_0100
+     * @tc.name       : testOHAVMuxerWriteSampleBuffer001
+     * @tc.desc       : test OH_AVMuxer_WriteSampleBuffer
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHAVMuxerWriteSampleBuffer001', 0, async (done: Function) => {
+      let result: number = nativeavmuxer.OHAVMuxerWriteSampleBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+    
+    /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVMUXER_OH_AVMUXER_ADDTRACK_0100
      * @tc.name       : testOHAVMuxerAddTrack001
      * @tc.desc       : test OH_AVMuxer_AddTrack

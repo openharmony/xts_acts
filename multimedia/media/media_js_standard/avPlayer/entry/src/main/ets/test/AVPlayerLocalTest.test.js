@@ -16,6 +16,7 @@
 import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
+import drm from '@ohos.multimedia.drm';
 import { testAVPlayerFun, AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -38,7 +39,7 @@ export default function AVPlayerLocalTest() {
         let fdPath = '';
         let fdNumber = 0;
 
-        beforeAll(async function() {
+        beforeAll(async function () {
             console.info('beforeAll case');
             await mediaTestBase.getStageFileDescriptor(VIDEO_SOURCE).then((res) => {
                 fileDescriptor = res;
@@ -51,11 +52,11 @@ export default function AVPlayerLocalTest() {
             });
         })
 
-        beforeEach(async function() {
+        beforeEach(async function () {
             console.info('beforeEach case');
         })
 
-        afterEach(async function() {
+        afterEach(async function () {
             if (avPlayer != null) {
                 avPlayer.release().then(() => {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -63,7 +64,7 @@ export default function AVPlayerLocalTest() {
             console.info('afterEach case');
         })
 
-        afterAll(async function() {
+        afterAll(async function () {
             console.info('afterAll case');
             await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE);
             await mediaTestBase.closeFileDescriptor(AUDIO_SOURCE);
@@ -126,11 +127,11 @@ export default function AVPlayerLocalTest() {
                         avPlayer = null;
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
         }
-        
+
         async function testCheckTrackDescription(src, avPlayer, descriptionKey, descriptionValue, done) {
             console.info(`case media source: ${src}`)
             media.createAVPlayer((err, video) => {
@@ -148,7 +149,7 @@ export default function AVPlayerLocalTest() {
                 }
             });
         }
-        
+
         async function setAVPlayerScaleCb(avPlayer, done) {
             let surfaceID = globalThis.value;
             let count = 0;
@@ -215,11 +216,11 @@ export default function AVPlayerLocalTest() {
                         avPlayer = null;
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
         }
-        
+
         async function testVideoScaleType(src, avPlayer, done) {
             console.info(`case media source: ${src}`)
             media.createAVPlayer((err, video) => {
@@ -237,7 +238,7 @@ export default function AVPlayerLocalTest() {
                 }
             });
         }
-        
+
         async function testAudioInterruptMode(audioSource, videoSource, done) {
             let testAVPlayer01 = await media.createAVPlayer();
             let testAVPlayer02 = await media.createAVPlayer();
@@ -260,10 +261,10 @@ export default function AVPlayerLocalTest() {
                         break;
                     case AV_PLAYER_STATE.PREPARED:
                         testAVPlayer01.audioInterruptMode = audio.InterruptMode.INDEPENDENT_MODE;
-                        testAVPlayer01.play();             
+                        testAVPlayer01.play();
                         break;
                     case AV_PLAYER_STATE.PLAYING:
-                        testAVPlayer02.fdSrc = videoSource;   
+                        testAVPlayer02.fdSrc = videoSource;
                         break;
                     case AV_PLAYER_STATE.RELEASED:
                         break;
@@ -273,10 +274,10 @@ export default function AVPlayerLocalTest() {
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
-        
+
             testAVPlayer01.on('audioInterrupt', async (info) => {
                 console.info('case audioInterrupt1 is called, info is :' + JSON.stringify(info));
                 await testAVPlayer02.release();
@@ -285,7 +286,7 @@ export default function AVPlayerLocalTest() {
                     done();
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
             });
-        
+
             testAVPlayer02.on('stateChange', async (state, reason) => {
                 switch (state) {
                     case AV_PLAYER_STATE.INITIALIZED:
@@ -304,9 +305,9 @@ export default function AVPlayerLocalTest() {
                         });
                         break;
                     case AV_PLAYER_STATE.PREPARED:
-                        testAVPlayer02.play();             
+                        testAVPlayer02.play();
                         break;
-                    case AV_PLAYER_STATE.PLAYING:         
+                    case AV_PLAYER_STATE.PLAYING:
                         break;
                     case AV_PLAYER_STATE.RELEASED:
                         break;
@@ -316,7 +317,7 @@ export default function AVPlayerLocalTest() {
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
             testAVPlayer01.fdSrc = audioSource;
@@ -408,7 +409,7 @@ export default function AVPlayerLocalTest() {
                         avPlayer = null;
                         break;
                     default:
-                        break; 
+                        break;
                 }
             })
         }
@@ -429,7 +430,7 @@ export default function AVPlayerLocalTest() {
                 }
             });
         }
-        
+
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FDSRC_0100
             * @tc.name      : 001.test fdsrc
@@ -453,9 +454,9 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0100', 0, async function (done) {
             let videoTrackKey = new Array('bitrate', 'codec_mime', 'frame_rate', 'height',
-                                        'track_index', 'track_type', 'width');
+                'track_index', 'track_type', 'width');
             let audioTrackKey = new Array('bitrate', 'channel_count', 'codec_mime', 'sample_rate',
-                                        'track_index', 'track_type');
+                'track_index', 'track_type');
             let videoTrackValue = new Array(1366541, 0, 6000, 480, 0, 1, 720);
             let audioTrackValue = new Array(129207, 2, 1, 44100, 1, 0);
             let descriptionKey = new Array(videoTrackKey, audioTrackKey);
@@ -473,7 +474,7 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0200', 0, async function (done) {
             let audioTrackKey = new Array('channel_count', 'codec_mime', 'sample_rate', 'track_index',
-            'track_type');
+                'track_type');
             let audioTrackValue = new Array(1, 2, 48000, 0, 0);
             let descriptionKey = new Array(audioTrackKey);
             let descriptionValue = new Array(audioTrackValue);
@@ -490,7 +491,7 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0300', 0, async function (done) {
             let videoTrackKey = new Array('bitrate', 'codec_mime', 'frame_rate', 'height',
-                                        'track_index', 'track_type', 'width');
+                'track_index', 'track_type', 'width');
             let videoTrackValue = new Array(1506121, 0, 6000, 480, 0, 1, 720);
             let descriptionKey = new Array(videoTrackKey);
             let descriptionValue = new Array(videoTrackValue);
@@ -543,6 +544,73 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_OFF_CALLBACK_0100', 0, async function (done) {
             testOffCallback(fileDescriptor, avPlayer, done);
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0100
+        * @tc.name      : test setDecryptionConfig
+        * @tc.desc      : create AVPlayer to setDecryptionConfig
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0100', 1, async function (done) {
+            let sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
+            console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
+            let uuid;
+	    if (sysSupport === true) {
+                uuid = "com.clearplay.drm";
+            } else {
+                uuid = "com.wiseplay.drm";
+            }
+            if (sysSupport === true) {
+                let drmsys = drm.createMediaKeySystem(uuid);
+                let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+                let avPlayer = await media.createAVPlayer();
+                avPlayer.setDecryptionConfig(session, false);
+                session.destroy()
+                drmsys.destroy();
+            }
+            done();
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200
+        * @tc.name      : test setDecryptionConfig with invalid parameter
+        * @tc.desc      : create AVPlayer to setDecryptionConfig with invalid parameter
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_0200', 1, async function (done) {
+            let sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
+            console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
+            let uuid;
+	    if (sysSupport === true) {
+                uuid = "com.clearplay.drm";
+            } else {
+                uuid = "com.wiseplay.drm";
+            }
+            if (sysSupport === true) {
+                let drmsys = drm.createMediaKeySystem(uuid);
+                let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
+                let avPlayer = await media.createAVPlayer();
+                try {
+                    avPlayer.setDecryptionConfig(session, 'false');
+                    expect().assertFail();
+                } catch (err) {
+                    if (err.code == 401) {
+                        expect(true).assertTrue();
+                        console.info(`setDecryptionConfig err.code: ${err.code}, err.message:${err.message}`);
+                    } else {
+                        console.info(`setDecryptionConfig err.code: ${err.code}, err.message:${err.message}`);
+                        expect().assertFail();
+                    }
+                }
+                session.destroy()
+                drmsys.destroy();
+            }
+            done();
         })
     })
 }

@@ -112,3 +112,14 @@ export const multimediaCoreAVFormatDumpInfoLYRICS: () => number;
 export const multimediaCoreAVFormatSetBufferAll: (a:number) => number;
 
 
+export const multimediaCoreAVBufferCreate: () => number;
+export const multimediaCoreAVBufferDestroy: () => number;
+export const multimediaCoreAVBufferGetBufferAttr: () => number;
+export const multimediaCoreAVBufferSetBufferAttr: () => number;
+export const multimediaCoreAVBufferGetParameter: () => number;
+export const multimediaCoreAVBufferSetParameter: () => number;
+export const multimediaCoreAVBufferGetAddr: () => number;
+export const multimediaCoreAVBufferGetCapacity: () => number;
+export const multimediaCoreAVBufferGetNativeBuffer: () => number;
+
+
