@@ -16,8 +16,8 @@
   "app": {
     "signingConfigs": [
     ],
-	"compileSdkVersion": 11,
-	"compatibleSdkVersion": 11,
+    "compileSdkVersion": 11,
+    "compatibleSdkVersion": 11,
     "products": [
       {
         "name": "default",
