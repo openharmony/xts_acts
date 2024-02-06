@@ -13,31 +13,32 @@
  * limitations under the License.
  */
 {
-  "app": {
-    "signingConfigs": [
-    ],
-    "compileSdkVersion": 11,
-    "compatibleSdkVersion": 11,
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-      }
-    ]
-  },
-  "modules": [
-    {
-      "name": "entry",
-      "srcPath": "./entry",
-      "targets": [
+    "app": {
+      "signingConfigs": [
+      ],
+      "compileSdkVersion": 11,
+      "compatibleSdkVersion": 11,
+      "products": [
         {
           "name": "default",
-          "applyToProducts": [
-            "default"
-          ]
+          "signingConfig": "default",
         }
       ]
-    }
-  ]
-}
-
+    },
+    "modules": [
+      {
+        "name": "entry",
+        "srcPath": "./entry",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+  

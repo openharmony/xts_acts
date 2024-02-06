@@ -22,6 +22,8 @@ import nativeavmuxerNdkTest from './NativeAvmuxerNdk.test';
 import audioDeCoderNdkTest from './AudioDeCoderNdk.test';
 import audioEnCoderNdkTest from './AudioEnCoderNdk.test';
 import mediaAvSourceNdkTest from './MediaAvSourceNdk.test';
+import audioDecoderAvBufferTest from './AudioDecAvBufferNdk.test';
+import audioEncoderAvBufferTest from './AudioEncAvBufferNdk.test';
 
 export default function testsuite() {
   videoEnCoderNdkTest();
@@ -34,4 +36,6 @@ export default function testsuite() {
   audioEnCoderNdkTest();
   audioDeCoderNdkTest();
   mediaAvSourceNdkTest();
+  audioDecoderAvBufferTest();
+  audioEncoderAvBufferTest();
 }

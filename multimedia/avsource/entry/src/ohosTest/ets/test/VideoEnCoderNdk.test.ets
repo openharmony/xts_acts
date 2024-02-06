@@ -188,6 +188,48 @@ export default function videoEnCoderNdkTest() {
     });
 
     /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_REGISTERCALLBACK_0100
+     * @tc.name       : testOHVideoEncoderRegisterCallback001
+     * @tc.desc       : test OH_VideoEncoder_RegisterCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderRegisterCallback001', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderRegisterCallback();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_REGISTERCALLBACK_0200
+     * @tc.name       : testOHVideoEncoderRegisterCallback002
+     * @tc.desc       : test OH_VideoEncoder_RegisterCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderRegisterCallback002', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderRegisterCallbackHEVC();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_REGISTERCALLBACK_0300
+     * @tc.name       : testOHVideoEncoderRegisterCallback003
+     * @tc.desc       : test OH_VideoEncoder_RegisterCallback
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderRegisterCallback003', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderRegisterCallbackAbnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
      * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_CONFIGURE_0100
      * @tc.name       : testOHVideoEncoderConfigure001
      * @tc.desc       : test OH_VideoEncoder_Configure
@@ -4775,6 +4817,90 @@ export default function videoEnCoderNdkTest() {
      */
     it('testOHVideoEncoderIsValid003', 0, async (done: Function) => {
       let result: number = videoencoderndk.oHVideoEncoderIsValidAbnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_PUSHINPUTBUFFER_0100
+     * @tc.name       : testOHVideoEncoderPushInputBuffer001
+     * @tc.desc       : test OH_VideoEncoder_PushInputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderPushInputBuffer001', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderPushInputBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+       /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_PUSHINPUTBUFFER_0200
+     * @tc.name       : testOHVideoEncoderPushInputBuffer002
+     * @tc.desc       : test OH_VideoEncoder_PushInputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderPushInputBuffer002', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderPushInputBufferHEVC();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+       /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_PUSHINPUTBUFFER_0300
+     * @tc.name       : testOHVideoEncoderPushInputBuffer003
+     * @tc.desc       : test OH_VideoEncoder_PushInputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderPushInputBuffer003', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderPushInputBufferAbnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_FREEOUTPUTBUFFER_0100
+     * @tc.name       : testOHVideoEncoderFreeOutputBuffer001
+     * @tc.desc       : test OH_VideoEncoder_FreeOutputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderFreeOutputBuffer001', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderFreeOutputBuffer();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_FREEOUTPUTBUFFER_0200
+     * @tc.name       : testOHVideoEncoderFreeOutputBuffer002
+     * @tc.desc       : test OH_VideoEncoder_FreeOutputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderFreeOutputBuffer002', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderFreeOutputBufferHEVC();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEDIA_AV_CODEC_NATIVE_AVCODEC_VIDEOENCODER_OH_VIDEOENCODER_FREEOUTPUTBUFFER_0300
+     * @tc.name       : testOHVideoEncoderFreeOutputBuffer003
+     * @tc.desc       : test OH_VideoEncoder_FreeOutputBuffer
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHVideoEncoderFreeOutputBuffer003', 0, async (done: Function) => {
+      let result: number = videoencoderndk.oHVideoEncoderFreeOutputBufferAbnormal();
       expect(result).assertEqual(0);
       done();
     });
