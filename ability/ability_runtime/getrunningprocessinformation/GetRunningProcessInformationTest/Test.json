@@ -39,8 +39,7 @@
             "run-command": [
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",
-                "hilog -b D",
-                "setenforce 0"
+                "hilog -b D"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled true",
