@@ -34,12 +34,9 @@
 using namespace testing;
 using namespace testing::ext;
 
-namespace OHOS
-{
-    namespace Rosen
-    {
-        class OH_GLES_ExtensionTest : public testing::Test
-        {
+namespace OHOS {
+    namespace Rosen {
+        class OH_GLES_ExtensionTest : public testing::Test {
         };
 
         namespace {
@@ -54,7 +51,7 @@ namespace OHOS
                 EGLDisplay display;
                 EGLConfig config;
                 EGLContext context;
-                EGLSurface surface;
+                EGLSurface surfaceCache;
                 EGLint majorVersion;
                 EGLint minorVersion;
                 EGLint numConfigs;
@@ -68,8 +65,8 @@ namespace OHOS
                     EGL_RED_SIZE, 8, EGL_NONE};
                 eglChooseConfig(display, attribs, &config, 1, &numConfigs);
                 context = eglCreateContext(display, config, EGL_NO_CONTEXT, NULL);
-                surface = eglCreatePbufferSurface(display, config, NULL);
-                eglMakeCurrent(display, surface, surface, context);
+                surfaceCache = eglCreatePbufferSurface(display, config, NULL);
+                eglMakeCurrent(display, surfaceCache, surfaceCache, context);
                 char *strTest = new char[1024];
                 strTest = (char *)glGetString(GL_VERSION);
                 string strTest2(strTest);
@@ -114,7 +111,7 @@ namespace OHOS
                 EGLDisplay display;
                 EGLConfig config;
                 EGLContext context;
-                EGLSurface surface;
+                EGLSurface surfaceCache;
                 EGLint majorVersion;
                 EGLint minorVersion;
                 EGLint numConfigs;
@@ -128,8 +125,8 @@ namespace OHOS
                     EGL_RED_SIZE, 8, EGL_NONE};
                 eglChooseConfig(display, attribs, &config, 1, &numConfigs);
                 context = eglCreateContext(display, config, EGL_NO_CONTEXT, NULL);
-                surface = eglCreatePbufferSurface(display, config, NULL);
-                eglMakeCurrent(display, surface, surface, context);
+                surfaceCache = eglCreatePbufferSurface(display, config, NULL);
+                eglMakeCurrent(display, surfaceCache, surfaceCache, context);
                 char *strTest = new char[1024];
                 strTest = (char *)glGetString(GL_VERSION);
                 string strTest2(strTest);
@@ -174,7 +171,7 @@ namespace OHOS
                 EGLDisplay display;
                 EGLConfig config;
                 EGLContext context;
-                EGLSurface surface;
+                EGLSurface surfaceCache;
                 EGLint majorVersion;
                 EGLint minorVersion;
                 EGLint numConfigs;
@@ -188,8 +185,8 @@ namespace OHOS
                     EGL_RED_SIZE, 8, EGL_NONE};
                 eglChooseConfig(display, attribs, &config, 1, &numConfigs);
                 context = eglCreateContext(display, config, EGL_NO_CONTEXT, NULL);
-                surface = eglCreatePbufferSurface(display, config, NULL);
-                eglMakeCurrent(display, surface, surface, context);
+                surfaceCache = eglCreatePbufferSurface(display, config, NULL);
+                eglMakeCurrent(display, surfaceCache, surfaceCache, context);
                 char *strTest = new char[1024];
                 strTest = (char *)glGetString(GL_VERSION);
                 string strTest2(strTest);
@@ -234,7 +231,7 @@ namespace OHOS
                 EGLDisplay display;
                 EGLConfig config;
                 EGLContext context;
-                EGLSurface surface;
+                EGLSurface surfaceCache;
                 EGLint majorVersion;
                 EGLint minorVersion;
                 EGLint numConfigs;
@@ -248,8 +245,8 @@ namespace OHOS
                     EGL_RED_SIZE, 8, EGL_NONE};
                 eglChooseConfig(display, attribs, &config, 1, &numConfigs);
                 context = eglCreateContext(display, config, EGL_NO_CONTEXT, NULL);
-                surface = eglCreatePbufferSurface(display, config, NULL);
-                eglMakeCurrent(display, surface, surface, context);
+                surfaceCache = eglCreatePbufferSurface(display, config, NULL);
+                eglMakeCurrent(display, surfaceCache, surfaceCache, context);
                 char *strTest = new char[1024];
                 strTest = (char *)glGetString(GL_VERSION);
                 string strTest2(strTest);
@@ -294,7 +291,7 @@ namespace OHOS
                 EGLDisplay display;
                 EGLConfig config;
                 EGLContext context;
-                EGLSurface surface;
+                EGLSurface surfaceCache;
                 EGLint majorVersion;
                 EGLint minorVersion;
                 EGLint numConfigs;
@@ -308,8 +305,8 @@ namespace OHOS
                     EGL_RED_SIZE, 8, EGL_NONE};
                 eglChooseConfig(display, attribs, &config, 1, &numConfigs);
                 context = eglCreateContext(display, config, EGL_NO_CONTEXT, NULL);
-                surface = eglCreatePbufferSurface(display, config, NULL);
-                eglMakeCurrent(display, surface, surface, context);
+                surfaceCache = eglCreatePbufferSurface(display, config, NULL);
+                eglMakeCurrent(display, surfaceCache, surfaceCache, context);
                 char *strTest = new char[1024];
                 strTest = (char *)glGetString(GL_VERSION);
                 string strTest2(strTest);
