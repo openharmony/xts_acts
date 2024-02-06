@@ -21,6 +21,7 @@ group("graphic") {
       "graphicDrawing:ActsGraphicDrawingTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicGLES3:ActsGraphicGles3Test",
+      "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
