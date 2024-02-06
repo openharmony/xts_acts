@@ -42,8 +42,7 @@ namespace OHOS
         {
         };
 
-        namespace
-        {
+        namespace {
             /*
              * @tc.name: OH_GLES_Extension001
              * @tc.desc: test for OH_GLES_Extension
