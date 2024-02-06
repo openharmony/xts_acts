@@ -134,18 +134,18 @@ export default function ConsumeArray1() {
     * @tc.desc  : To test that the Consume decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateArray_0900', 0, async function (done) {
+    it('ConsumeArray_0900', 0, async function (done) {
       console.info('StateArray_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button = await driver.findComponent(ON.id('state9'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('ConsumeArray1');
+      let strJson = getInspectorByKey('ConsumeArray1New');
       let obj = JSON.parse(strJson);
       console.info("[StateArray_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateArray_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is [{"id":16777227,"type":10003,"params":[],"bundleName":"com.example.myapplication","moduleName":"phone"}]');
+      expect(obj.$attrs.content).assertEqual('count type of "[object Array]" number is 200');
       console.info('[StateArray_0100] END');
       done();
     });
