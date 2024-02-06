@@ -13,11 +13,28 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeAll, describe, it, expect } from "@ohos/hypium"
 import usbDdk from 'libusbddkndk.so'
+import deviceManager from "@ohos.driver.deviceManager";
+
 
 export default function usbDdkTest() {
+  let dev: number = 0
+
   describe('UsbDdkTest', () => {
+
+    beforeAll(async () => {
+      try {
+        let devices: Array<deviceManager.Device> = deviceManager.queryDevices(deviceManager.BusType.USB);
+        for (let item of devices) {
+          let device: deviceManager.USBDevice = item as deviceManager.USBDevice;
+          dev = device.deviceId;
+          console.info(`Device id is ${device.deviceId}`)
+        }
+      } catch (error) {
+        console.error(`Failed to query device. Code is ${error.code}, message is ${error.message}`);
+      }
+    })
 
     /**
      * @tc.number     : SUB_Driver_Ext_USBDDK_3500
@@ -58,7 +75,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetDeviceDescriptor001', 0, async (done: Function) => {
-      let data = usbDdk.usbGetDeviceDescriptorOne();
+      let data = usbDdk.usbGetDeviceDescriptorOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -73,7 +90,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetDeviceDescriptor002', 0, async (done: Function) => {
-      let data = usbDdk.usbGetDeviceDescriptorTwo();
+      let data = usbDdk.usbGetDeviceDescriptorTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -88,7 +105,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetConfigDescriptor001', 0, async (done: Function) => {
-      let data = usbDdk.usbGetConfigDescriptorOne();
+      let data = usbDdk.usbGetConfigDescriptorOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -118,7 +135,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetConfigDescriptor003', 0, async (done: Function) => {
-      let data = usbDdk.usbGetConfigDescriptorThree();
+      let data = usbDdk.usbGetConfigDescriptorThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -133,7 +150,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbFreeConfigDescriptor001', 0, async (done: Function) => {
-      let data = usbDdk.usbFreeConfigDescriptor();
+      let data = usbDdk.usbFreeConfigDescriptor(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(1);
       done()
@@ -148,7 +165,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbClaimInterface001', 0, async (done: Function) => {
-      let data = usbDdk.usbClaimInterfaceOne();
+      let data = usbDdk.usbClaimInterfaceOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -178,7 +195,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbClaimInterface003', 0, async (done: Function) => {
-      let data = usbDdk.usbClaimInterfaceThree();
+      let data = usbDdk.usbClaimInterfaceThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -193,7 +210,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbReleaseInterface001', 0, async (done: Function) => {
-      let data = usbDdk.usbReleaseInterface();
+      let data = usbDdk.usbReleaseInterface(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -208,7 +225,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSelectInterfaceSetting001', 0, async (done: Function) => {
-      let data = usbDdk.usbSelectInterfaceSettingOne();
+      let data = usbDdk.usbSelectInterfaceSettingOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -223,7 +240,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSelectInterfaceSetting002', 0, async (done: Function) => {
-      let data = usbDdk.usbSelectInterfaceSettingTwo();
+      let data = usbDdk.usbSelectInterfaceSettingTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-4);
       done()
@@ -238,7 +255,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetCurrentInterfaceSetting001', 0, async (done: Function) => {
-      let data = usbDdk.usbGetCurrentInterfaceSettingOne();
+      let data = usbDdk.usbGetCurrentInterfaceSettingOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -253,7 +270,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbGetCurrentInterfaceSetting002', 0, async (done: Function) => {
-      let data = usbDdk.usbGetCurrentInterfaceSettingTwo();
+      let data = usbDdk.usbGetCurrentInterfaceSettingTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-4);
       done()
@@ -268,7 +285,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbGetCurrentInterfaceSetting003', 0, async (done: Function) => {
-      let data = usbDdk.usbGetCurrentInterfaceSettingThree();
+      let data = usbDdk.usbGetCurrentInterfaceSettingThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -283,7 +300,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlReadRequest001', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlReadRequestOne();
+      let data = usbDdk.usbSendControlReadRequestOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -298,7 +315,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest002', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlReadRequestTwo();
+      let data = usbDdk.usbSendControlReadRequestTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-4);
       done()
@@ -313,7 +330,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest003', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlReadRequestThree();
+      let data = usbDdk.usbSendControlReadRequestThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -328,7 +345,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest004', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlReadRequestFour();
+      let data = usbDdk.usbSendControlReadRequestFour(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -343,7 +360,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlReadRequest005', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlReadRequestFive();
+      let data = usbDdk.usbSendControlReadRequestFive(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -358,7 +375,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlWriteRequest001', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlWriteRequestOne();
+      let data = usbDdk.usbSendControlWriteRequestOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -373,7 +390,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlWriteRequest002', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlWriteRequestTwo();
+      let data = usbDdk.usbSendControlWriteRequestTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-4);
       done()
@@ -388,7 +405,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 2
      */
     it('testUsbSendControlWriteRequest003', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlWriteRequestThree();
+      let data = usbDdk.usbSendControlWriteRequestThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -403,7 +420,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendControlWriteRequest004', 0, async (done: Function) => {
-      let data = usbDdk.usbSendControlWriteRequestFour();
+      let data = usbDdk.usbSendControlWriteRequestFour(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -418,7 +435,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest001', 0, async (done: Function) => {
-      let data = usbDdk.usbSendPipeRequestOne();
+      let data = usbDdk.usbSendPipeRequestOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -433,7 +450,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest002', 0, async (done: Function) => {
-      let data = usbDdk.usbSendPipeRequestTwo();
+      let data = usbDdk.usbSendPipeRequestTwo(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-4);
       done()
@@ -448,7 +465,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest003', 0, async (done: Function) => {
-      let data = usbDdk.usbSendPipeRequestThree();
+      let data = usbDdk.usbSendPipeRequestThree(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -463,7 +480,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbSendPipeRequest004', 0, async (done: Function) => {
-      let data = usbDdk.usbSendPipeRequestFour();
+      let data = usbDdk.usbSendPipeRequestFour(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -478,7 +495,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbCreateDeviceMemMap001', 0, async (done: Function) => {
-      let data = usbDdk.usbCreateDeviceMemMapOne();
+      let data = usbDdk.usbCreateDeviceMemMapOne(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(0);
       done()
@@ -493,7 +510,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbCreateDeviceMemMap002', 0, async (done: Function) => {
-      let data = usbDdk.usbCreateDeviceMemMapTow();
+      let data = usbDdk.usbCreateDeviceMemMapTow(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(-2);
       done()
@@ -508,7 +525,7 @@ export default function usbDdkTest() {
      * @tc.level      : Level 0
      */
     it('testUsbDestroyDeviceMemMap001', 0, async (done: Function) => {
-      let data = usbDdk.usbDestroyDeviceMemMap();
+      let data = usbDdk.usbDestroyDeviceMemMap(dev);
       console.info("Test USB data Result = " + data);
       expect(data).assertEqual(1);
       done()

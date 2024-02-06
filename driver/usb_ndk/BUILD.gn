@@ -14,16 +14,16 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsDriversExternaldevicemanagerNdkTest") {
+ohos_js_hap_suite("ActsDriversExternalusbNdkTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":acts_drivers_externaldevicemanager_js_assets",
-    ":acts_drivers_externaldevicemanager_resources",
+    ":acts_drivers_externalusb_js_assets",
+    ":acts_drivers_externalusb_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsDriversExternaldevicemanagerNdkTest"
+  hap_name = "ActsDriversExternalusbNdkTest"
   subsystem_name = "hdf"
   part_name = "external_device_manager"
   shared_libraries = [
@@ -38,17 +38,17 @@ ohos_prebuilt_shared_library("libcppsharedso") {
   part_name = "external_device_manager"
 }
 
-ohos_app_scope("acts_drivers_externaldevicemanager_app_profile") {
+ohos_app_scope("acts_drivers_externalusb_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("acts_drivers_externaldevicemanager_js_assets") {
+ohos_js_assets("acts_drivers_externalusb_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("acts_drivers_externaldevicemanager_resources") {
+ohos_resources("acts_drivers_externalusb_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":acts_drivers_externaldevicemanager_app_profile" ]
+  deps = [ ":acts_drivers_externalusb_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
