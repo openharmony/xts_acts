@@ -126,6 +126,16 @@ static void OnNeedOutputData(OH_AVCodec *codec, uint32_t index, OH_AVMemory *mem
     (void)userData;
 }
 
+static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
+static void OnNeedOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
+{
+    (void)userData;
+}
+
 static napi_value OHVideoDecoderSetCallback(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
@@ -135,6 +145,23 @@ static napi_value OHVideoDecoderSetCallback(napi_env env, napi_callback_info inf
     videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     OH_AVCodecAsyncCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputData, &OnNeedOutputData };
     checkParam = OH_VideoDecoder_SetCallback(videoDec, callback, nullptr);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoDecoder_Destroy(videoDec);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoDecoderRegisterCallback(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoDec = nullptr;
+    OH_AVErrCode checkParam;
+    videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    OH_AVCodecCallback callback = { &OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNeedOutputBuffer };
+    checkParam = OH_VideoDecoder_RegisterCallback(videoDec, callback, nullptr);
     if (checkParam == AV_ERR_OK) {
         backParam = SUCCESS;
     }
@@ -537,6 +564,40 @@ static napi_value OHVideoDecoderPushInputData(napi_env env, napi_callback_info i
     return result;
 }
 
+static napi_value OHVideoDecoderPushInputBuffer(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoDec = nullptr;
+    uint32_t index = PARAM_1;
+    OH_AVErrCode checkParam;
+    videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    checkParam = OH_VideoDecoder_PushInputBuffer(videoDec, index);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoDecoder_Destroy(videoDec);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoDecoderFreeOutputBuffer(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoDec = nullptr;
+    uint32_t index = PARAM_1;
+    OH_AVErrCode checkParam;
+    videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    checkParam = OH_VideoDecoder_FreeOutputBuffer(videoDec, index);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+    }
+    OH_VideoDecoder_Destroy(videoDec);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 static napi_value OHVideoDecoderRenderOutputData(napi_env env, napi_callback_info info)
 {
     int backParam = FAIL;
@@ -546,6 +607,24 @@ static napi_value OHVideoDecoderRenderOutputData(napi_env env, napi_callback_inf
     uint32_t index = PARAM_1;
     videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     checkParam = OH_VideoDecoder_RenderOutputData(videoDec, index);
+    if (checkParam == AV_ERR_OK) {
+        backParam = SUCCESS;
+        OH_VideoDecoder_Stop(videoDec);
+    }
+    OH_VideoDecoder_Destroy(videoDec);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OHVideoDecoderRenderOutputBuffer(napi_env env, napi_callback_info info)
+{
+    int backParam = FAIL;
+    napi_value result = nullptr;
+    OH_AVCodec *videoDec = nullptr;
+    OH_AVErrCode checkParam;
+    uint32_t index = PARAM_1;
+    videoDec = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    checkParam = OH_VideoDecoder_RenderOutputBuffer(videoDec, index);
     if (checkParam == AV_ERR_OK) {
         backParam = SUCCESS;
         OH_VideoDecoder_Stop(videoDec);
@@ -599,6 +678,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"oHVideoDecoderIsValid", nullptr, OHVideoDecoderIsValid, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHVideoDecoderSetCallback", nullptr, OHVideoDecoderSetCallback, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"oHVideoDecoderRegisterCallback", nullptr, OHVideoDecoderRegisterCallback, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHVideoDecoderPushInputBuffer", nullptr, OHVideoDecoderPushInputBuffer, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHVideoDecoderFreeOutputBuffer", nullptr, OHVideoDecoderFreeOutputBuffer, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"oHVideoDecoderRenderOutputBuffer", nullptr, OHVideoDecoderRenderOutputBuffer, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
