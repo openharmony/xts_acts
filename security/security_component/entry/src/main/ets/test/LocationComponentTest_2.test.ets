@@ -54,7 +54,7 @@ export default function locationComponentTest_2() {
      * @tc.level Level 3
      * @tc.require
      */
-      it('Test_Security_Button_LocationScenarios_0100', 3, async function (done) {
+    it('Test_Security_Button_LocationScenarios_0100', 3, async function (done) {
       console.info('====>[Test_Security_Button_LocationScenarios_0100] START====');
       await Utils.sleep(1000);
       try {
@@ -1804,6 +1804,1117 @@ export default function locationComponentTest_2() {
         await Utils.sleep(1000);
       } catch (err) {
         console.info("====>[Test_Security_Button_LocationScenarios_1700] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_1800
+     * @tc.name Test_Security_Button_LocationScenarios_1800
+     * @tc.desc Test SecurityComponent fontStyle attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_1800', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_1800] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": undefined,
+            "fontWeight": FontWeight.Medium,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_1800] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1800] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_1800] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.fontStyle).assertEqual(FontStyle.Normal);
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_1800] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_1800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_1800] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_1800] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_1800] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_1800] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1800] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_1800] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1800] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_1900
+     * @tc.name Test_Security_Button_LocationScenarios_1900
+     * @tc.desc Test SecurityComponent fontWeight attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_1900', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_1900] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": undefined,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_1900] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1900] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_1900] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Medium");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_1900] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_1900] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_1900] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_1900] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_1900] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_1900] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1900] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_1900] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_1900] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2000
+     * @tc.name Test_Security_Button_LocationScenarios_2000
+     * @tc.desc Test SecurityComponent fontFamily attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2000', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2000] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": undefined,
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2000] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2000] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2000] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.fontFamily).assertEqual("HarmonyOS Sans");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2000] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2000] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2000] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2000] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2000] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2000] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2000] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2000] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2000] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2100
+     * @tc.name Test_Security_Button_LocationScenarios_2100
+     * @tc.desc Test SecurityComponent fontColor attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2100', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2100] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": undefined,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2100] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2100] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2100] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2100] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2100] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2100] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2100] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2100] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2100] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2100] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2100] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2100] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2200
+     * @tc.name Test_Security_Button_LocationScenarios_2200
+     * @tc.desc Test SecurityComponent fontColor attribute is RGB value transmitted and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2200', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2200] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 'rgb(255, 255, 1)',
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2200] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2200] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.fontColor).assertEqual("#FFFFFF01");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2200] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2200] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2200] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2200] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2200] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2200] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2200] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2200] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2200] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2300
+     * @tc.name Test_Security_Button_LocationScenarios_2300
+     * @tc.desc Test SecurityComponent iconColor attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2300', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2300] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": undefined,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2300] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2300] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.iconColor).assertEqual("#FFFFFFFF");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2300] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2300] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2300] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2300] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2300] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2300] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2300] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2300] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2300] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2400
+     * @tc.name Test_Security_Button_LocationScenarios_2400
+     * @tc.desc Test SecurityComponent iconColor attribute is RGB value transmitted and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2400', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2400] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 'rgb(255, 255, 1)',
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2400] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2400] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.iconColor).assertEqual('#FFFFFF01');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2400] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2400] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2400] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2400] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2400] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2400] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2400] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2400] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2400] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2500
+     * @tc.name Test_Security_Button_LocationScenarios_2500
+     * @tc.desc Test SecurityComponent backgroundColor attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2500', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2500] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": undefined,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2500] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2500] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.backgroundColor).assertEqual("#FF007DFF");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2500] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2500] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2500] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2500] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2500] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2500] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2500] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2500] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2500] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2600
+     * @tc.name Test_Security_Button_LocationScenarios_2600
+     * @tc.desc Test SecurityComponent backgroundColor attribute is RGB value transmitted and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2600', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2600] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 'rgb(0, 235, 255)',
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 0xffffffff,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2600] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2600] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2600] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF00EBFF');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2600] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2600] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2600] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2600] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2600] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2600] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2600] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2600] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2600] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2700
+     * @tc.name Test_Security_Button_LocationScenarios_2700
+     * @tc.desc Test SecurityComponent borderColor attribute is undefined and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2700', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2700] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": undefined,
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2700] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2700] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2700] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.borderColor).assertEqual("#FFFFFFFF");
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2700] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2700] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2700] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2700] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2700] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2700] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2700] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2700] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2700] clickSecComponent err : " + JSON.stringify(err));
+      }
+    });
+
+    /**
+     * @tc.number SUB_SEC_AccCtl_Specialltem_XTS_Controls_LocationScenarios_2800
+     * @tc.name Test_Security_Button_LocationScenarios_2800
+     * @tc.desc Test SecurityComponent borderColor attribute is RGB value transmitted and Authorization is successful
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('Test_Security_Button_LocationScenarios_2800', 3, async function (done) {
+      console.info('====>[Test_Security_Button_LocationScenarios_2800] START====');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "icon": 0,
+            "textType": 0,
+            "bgType": ButtonType.Normal,
+            "iconSize": 16,
+            "direct": 0,
+            "positionX": 0,
+            "positionY": 0,
+            "anchorX": 0,
+            "anchorY": 0,
+            "offsetX": 0,
+            "offsetY": 0,
+            "fontSize": 16,
+            "fontStyle": FontStyle.Normal,
+            "fontWeight": FontWeight.Normal,
+            "fontFamily": 'HarmonyOS Sans',
+            "fontColor": 0xffffffff,
+            "iconColor": 0xffffffff,
+            "bgColor": 0xff007dff,
+            "borderSty": BorderStyle.Dashed,
+            "borderWid": 0,
+            "borderCol": 'rgb(0, 235, 155)',
+            "borderRad": 0,
+            "left": 24,
+            "right": 24,
+            "top": 8,
+            "bottom": 8,
+            "middle": 4,
+            "width": 10,
+            "height": 15,
+            "minWidth": 20,
+            "maxWidth": 25,
+            "minHeight": 30,
+            "maxHeight": 35
+          }
+        }
+        var innerEvent = {
+          eventId: 1,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("====>[Test_Security_Button_LocationScenarios_2800] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2800] change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let strJsonNew = getInspectorByKey('keyLocation12');
+      let obj = JSON.parse(strJsonNew);
+      console.info("====>[Test_Security_Button_LocationScenarios_2800] get obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.borderColor).assertEqual('#FF00EB9B');
+      await Utils.sleep(1000);
+      try {
+        let clickCallback = (clickData) => {
+          console.info("====>[Test_Security_Button_LocationScenarios_2800] get clickEvent result is: " + JSON.stringify(clickEvent));
+          console.info("====>[Test_Security_Button_LocationScenarios_2800] get clickData.data.clickResult is: " + JSON.stringify(clickData.data.clickResult));
+          if (clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS) {
+            console.info("====>[Test_Security_Button_LocationScenarios_2800] 设置权限成功");
+            expect(clickData.data.clickResult == LocationButtonOnClickResult.SUCCESS).assertTrue();
+            console.info("====>[Test_Security_Button_LocationScenarios_2800] END====");
+            done();
+          } else {
+            console.info("====>[Test_Security_Button_LocationScenarios_2800] 设置权限失败");
+            expect().assertFail()
+            console.info("====>[Test_Security_Button_LocationScenarios_2800] END====");
+            done();
+          }
+        }
+        var clickEvent = {
+          eventId: 2,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.once(clickEvent, clickCallback);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2800] once clickEvent err : " + JSON.stringify(err));
+      }
+      try {
+        let driver = Driver.create();
+        let button = await driver.findComponent(ON.type('LocationButton'));
+        await Utils.sleep(500);
+        console.info("====>[Test_Security_Button_LocationScenarios_2800] button is:" + JSON.stringify(button));
+        await button.click();
+        await Utils.sleep(1000);
+      } catch (err) {
+        console.info("====>[Test_Security_Button_LocationScenarios_2800] clickSecComponent err : " + JSON.stringify(err));
       }
     });
   })
