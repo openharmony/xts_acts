@@ -1232,16 +1232,6 @@ describe('ActsAbilityTest', function () {
         })
 
         task2.removeDependency(task3);
-        taskpool.execute(task1).then((d)=>{
-            console.info("task1 success");
-        })
-        taskpool.execute(task2).then((d)=>{
-            console.info("task2 success");
-        })
-        taskpool.execute(task3).then((d)=>{
-            console.info("task3 success");
-        })
-
         try {
             task2.removeDependency(task3);
         } catch (e) {
@@ -2900,6 +2890,40 @@ describe('ActsAbilityTest', function () {
         }, 500);
 
         expect(result).assertEqual(0);
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0109
+     * @tc.name      : TaskPoolTestClass108
+     * @tc.desc      : executedTask with dependency cannot executeDelayed again
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass109', 0, async function (done) {
+        function Sum(value1, value2, delay) {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < delay) {
+              continue;
+            }
+            return value1 + value2;
+        }
+        let task1 = new taskpool.Task(Sum, 10, 20, 100)
+        let task2 = new taskpool.Task(Sum, 30, 40, 200)
+        task1.addDependency(task2);
+        taskpool.execute(task1).then((d)=>{
+            console.info("task1 success");
+        })
+        taskpool.execute(task2).then((d)=>{
+            console.info("task2 success");
+        })
+        try {
+            taskpool.execute(task1)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: taskpool:: executedTask with dependency cannot execute again");
+        }
         done();
     })
 })
