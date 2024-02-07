@@ -17,18 +17,10 @@
     }, {
         "type": "ShellKit",
         "run-command": [
-            "param set persist.ace.testmode.enabled 1",
-            "param set persist.sys.suspend_manager_enabled 0",
-            "reboot",
             "power-shell wakeup",
             "uinput -T -m 300 2700 280 200",
             "power-shell setmode 602"
-        ], 
-        "teardown-command": [
-            "param set persist.sys.suspend_manager_enabled 1",
-            "reboot"
         ]
-        
-        
+
     }]
 }
