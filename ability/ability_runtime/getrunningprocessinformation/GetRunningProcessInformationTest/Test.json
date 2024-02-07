@@ -38,8 +38,7 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D"
+                "hilog -Q domainoff"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled true",
