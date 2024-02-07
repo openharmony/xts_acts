@@ -1,0 +1,765 @@
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#include <vector>
+#include <string>
+#include <iostream>
+#include "nncore_utils.h"
+
+using namespace testing::ext;
+using namespace OHOS::NeuralNetworkRuntime::Test;
+using namespace OHOS::HDI::Nnrt::V2_1;
+class AbsTest : public testing::Test {};
+
+struct AbsModel1 {
+    const std::vector<int32_t> tensor_shape = {7};
+    float inputValue[7] = {-3, -2.5, -1, 0, 1, 2, 3};
+    float outputValue[7] = {0};
+    float expectValue[7] = {3, 2.5, 1, 0, 1, 2, 3};
+
+    OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 7*sizeof(float)};
+    OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 7*sizeof(float)};
+    OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_ABS,
+                               .operands = {input, output},
+                               .paramIndices = {},
+                               .inputIndices = {0},
+                               .outputIndices = {1}};
+};
+
+
+struct AbsModel2 {
+    const std::vector<int32_t> tensor_shape = {};
+    float* inputValue = {};
+    float* outputValue = {};
+    float* expectValue = {};
+
+    OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 0*sizeof(float)};
+    OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, outputValue, 0*sizeof(float)};
+    OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_ABS,
+                               .operands = {input, output},
+                               .paramIndices = {},
+                               .inputIndices = {0},
+                               .outputIndices = {1}};
+};
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Run_01
+ * @tc.desc: 定长模型推理测试
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_01, Function | MediumTest | Level1)
+{
+    std::vector<NN_Tensor*> inputTensors;
+    std::vector<NN_Tensor*> outputTensors;
+    size_t inputCount = 0;
+    size_t outputCount = 0;
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
+    ASSERT_NE(nullptr, compilation);
+
+    OHNNCompileParam compileParam{
+        .performanceMode = OH_NN_PERFORMANCE_HIGH,
+        .priority = OH_NN_PRIORITY_HIGH,
+    };
+    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+
+    OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
+    ASSERT_NE(nullptr, executor);
+    
+    Free(model, compilation, executor);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Run_02
+ * @tc.desc: 定长模型推理测试
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_02, Function | MediumTest | Level1)
+{
+    std::vector<NN_Tensor*> inputTensors;
+    std::vector<NN_Tensor*> outputTensors;
+    size_t inputCount = 0;
+    size_t outputCount = 0;
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel2 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
+    ASSERT_NE(nullptr, compilation);
+
+    OHNNCompileParam compileParam{
+        .performanceMode = OH_NN_PERFORMANCE_HIGH,
+        .priority = OH_NN_PRIORITY_HIGH,
+    };
+    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+
+    OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
+    ASSERT_NE(nullptr, executor);
+    
+    Free(model, compilation, executor);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_Finish_01
+ * @tc.desc: 模型构图，未添加操作数
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_Finish_01, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    OHNNGraphArgs graphArgs;
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_Finish_02
+ * @tc.desc: 模型构图，未设置输入输出
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_Finish_02, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.specifyIO = false;
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_Finish_03
+ * @tc.desc: 模型构图，设置输入输出，构图成功
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_Finish_03, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SetOperandValue_01
+ * @tc.desc: 设置操作数值，操作数不存在
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SetOperandValue_01, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    
+    int ret = 0;
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
+        const OHNNOperandTest &operandTem = graphArgs.operands[i];
+        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                                     (uint32_t) operandTem.shape.size(),
+                                                     operandTem.dataType, operandTem.format);
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
+                      graphArgs.paramIndices.end()) {
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+        }
+    }
+
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SetOperandValue_02
+ * @tc.desc: 设置操作数值，buufer为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SetOperandValue_02, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+
+    int ret = 0;
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
+        const OHNNOperandTest &operandTem = graphArgs.operands[i];
+        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                                     (uint32_t) operandTem.shape.size(),
+                                                     operandTem.dataType, operandTem.format);
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
+                      graphArgs.paramIndices.end()) {
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
+        }
+    }
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SetOperandValue_03
+ * @tc.desc: 设置操作数值，length为0
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SetOperandValue_03, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    
+    int ret = 0;
+    for (size_t i = 0; i < graphArgs.operands.size(); i++) {
+        const OHNNOperandTest &operandTem = graphArgs.operands[i];
+        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                                     (uint32_t) operandTem.shape.size(),
+                                                     operandTem.dataType, operandTem.format);
+        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
+                      graphArgs.paramIndices.end()) {
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
+        }
+    }
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_01
+ * @tc.desc: 设置输入输出，model为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(nullptr, &inputIndices, &outputIndices));
+
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02
+ * @tc.desc: 设置输入输出，inputIndices为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
+
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03
+ * @tc.desc: 设置输入输出，inputindices中data为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    inputIndices.data = nullptr;
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04
+ * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    graphArgs.inputIndices = {100000};
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05
+ * @tc.desc: 设置输入输出，inputindices中size为0
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    inputIndices.size = 0;
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06
+ * @tc.desc: 设置输入输出，outputindices为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, nullptr);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07
+ * @tc.desc: 设置输入输出，outputindices中data为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    outputIndices.data = nullptr;
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08
+ * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    graphArgs.outputIndices = {100000};
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_09
+ * @tc.desc: 设置输入输出，outputindices中size为0
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_09, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    outputIndices.size = 0;
+    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_01
+ * @tc.desc: 添加算子，model为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_01, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_02
+ * @tc.desc: 添加算子，paramindices为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_02, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               nullptr, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_03
+ * @tc.desc: 添加算子，paramindices中data为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_03, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    paramIndices.data = nullptr;
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                            &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_04
+ * @tc.desc: 添加算子，paramindices中data对应序号不存在
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_04, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    graphArgs.paramIndices = {100000};
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_05
+ * @tc.desc: 添加算子，paramindices中size为0
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_05, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    paramIndices.size = 0;
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                            &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_06
+ * @tc.desc: 添加算子，inputindices为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_06, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               &paramIndices, nullptr, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_07
+ * @tc.desc: 添加算子，inputindices中data为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_07, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    inputIndices.data = nullptr;
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_08
+ * @tc.desc: 添加算子，inputindices中data对应序号不存在
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_08, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    graphArgs.inputIndices = {100000};
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_09
+ * @tc.desc: 添加算子，inputindices中size为0
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_09, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+    inputIndices.size = 0;
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, &outputIndices));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_10
+ * @tc.desc: 添加算子，outputindices为nullptr
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_10, Function | MediumTest | Level3)
+{
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel1 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.addOperation = false;
+    graphArgs.specifyIO = false;
+    graphArgs.build = false;
+    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
+    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
+    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
+                                                               &paramIndices, &inputIndices, nullptr));
+    
+    Free(model, nullptr, nullptr);
+}
