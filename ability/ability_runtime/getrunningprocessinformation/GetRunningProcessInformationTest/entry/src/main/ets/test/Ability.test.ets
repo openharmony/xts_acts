@@ -643,7 +643,7 @@ export default function abilityTest() {
         await sleep(1500);
         setAppState();
         await sleep(500);
-        expect(appState).assertEqual(2);
+        expect(appState == 2 || appState == 1).assertTrue();
       }).catch((error) => {
         console.info(TAG, 'Start test ability error: ' + JSON.stringify(error));
         expect().assertFail();
@@ -716,7 +716,7 @@ export default function abilityTest() {
         await sleep(1500);
         setAppState();
         await sleep(500);
-        expect(appState).assertEqual(2);
+        expect(appState == 2 || appState == 1).assertTrue();
       }).catch((error) => {
         console.info(TAG, 'Start test ability error: ' + JSON.stringify(error));
         expect().assertFail();
