@@ -22,28 +22,8 @@ namespace OHOS {
 namespace NeuralNetworkRuntime {
 namespace Test {
 
-const uint32_t ADD_DATA_LENGTH = 4 * sizeof(float);
-const uint32_t AVG_INPUT_LENGTH = 9 * sizeof(float);
-const std::vector<int32_t> TENSOR_SHAPE = {2, 2, 2, 2};
-const std::vector<int32_t> PARAM_INDEX = {2};
-const std::vector<int32_t> INPUT_INDEX = {0, 1};
-const std::vector<int32_t> OUTPUT_INDEX = {3};
-const int32_t ELEMENT_COUNT = 4;
-
-const std::string CACHE_DIR = "./cache";
-const std::string CACHE_PATH = CACHE_DIR + "/0.nncache";
-const std::string CACHE_INFO_PATH = CACHE_DIR + "/cache_info.nncache";
 const uint32_t NO_DEVICE_COUNT = 0;
-const int STRESS_COUNT = 10000;
-const int PRINT_FREQ = 500;
 
-const size_t MODEL_SIZE = 100;
-const size_t ZERO = 0;
-const uint32_t CACHEVERSION = 1;
-const std::string SUPPORTMODELPATH = "modelPath";
-const unsigned short TEST_BUFFER[14] = {
-    0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7, 0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad
-};
 } // namespace Test
 } // namespace NeuralNetworkRuntime
 } // namespace OHOS

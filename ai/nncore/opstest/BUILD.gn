@@ -16,8 +16,7 @@ module_output_path = "acts/nnrt"
 
 config("ops_config") {
   include_dirs = [
-    ".",
-    "../common_v2_1",
+    "include",
     "../../../../../../foundation/ai/neural_network_runtime",
     "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
     "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
@@ -30,8 +29,8 @@ config("ops_config") {
 ohos_moduletest_suite("ActsOpsTest") {
   module_out_path = module_output_path
   sources = [
-    "../common_v2_1/mock_idevice.cpp",
-    "../common_v2_1/nncore_utils.cpp",
+    "include/mock_idevice.cpp",
+    "include/nncore_utils.cpp",
     "src/abs_test.cpp",
   ]
 
