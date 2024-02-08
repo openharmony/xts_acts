@@ -21,13 +21,11 @@
 
 #include "interfaces/kits/c/neural_network_runtime/neural_network_runtime.h"
 #include "common/log.h"
-#include "mock_idevice.h"
 #include "nncore_const.h"
 
 namespace OHOS {
 namespace NeuralNetworkRuntime {
 namespace Test {
-namespace V2_1 = OHOS::HDI::Nnrt::V2_1;
 struct OHNNOperandTest {
     OH_NN_DataType dataType;
     OH_NN_TensorType type;
@@ -74,19 +72,8 @@ int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 void Free(OH_NNModel *model = nullptr, OH_NNCompilation *compilation = nullptr, OH_NNExecutor *executor = nullptr);
 int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &compileParam);
-OH_NN_ReturnCode SetDevice(OH_NNCompilation *compilation);
 OH_NN_UInt32Array GetUInt32Array(std::vector<uint32_t> indices);
-bool CheckOutput(const float* output, const float* expect);
 OH_NN_ReturnCode GetDeviceID(size_t *deviceId);
-
-//文件相关
-enum class PathType { FILE, DIR, UNKNOWN, NOT_FOUND };
-PathType CheckPath(const std::string &path);
-bool DeleteFile(const std::string &path);
-void CopyFile(const std::string &srcPath, const std::string &dstPath);
-std::string ConcatPath(const std::string &str1, const std::string &str2);
-void DeleteFolder(const std::string &path);
-bool CreateFolder(const std::string &path);
 
 } // namespace Test
 } // namespace NeuralNetworkRuntime

@@ -20,7 +20,6 @@
 
 using namespace testing::ext;
 using namespace OHOS::NeuralNetworkRuntime::Test;
-using namespace OHOS::HDI::Nnrt::V2_1;
 class AbsTest : public testing::Test {};
 
 struct AbsModel1 {
@@ -55,11 +54,11 @@ struct AbsModel2 {
 };
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Run_01
- * @tc.desc: 定长模型推理测试
+ * @tc.number : SUB_AI_NNRt_Func_North_Build_01
+ * @tc.desc: AbsModel1模型build测试
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_01, Function | MediumTest | Level1)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Build_01, Function | MediumTest | Level1)
 {
     std::vector<NN_Tensor*> inputTensors;
     std::vector<NN_Tensor*> outputTensors;
@@ -88,11 +87,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_01, Function | MediumTest | Level1)
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Run_02
- * @tc.desc: 定长模型推理测试
+ * @tc.number : SUB_AI_NNRt_Func_North_Build_02
+ * @tc.desc: AbsModel2模型build测试
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_02, Function | MediumTest | Level1)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Build_02, Function | MediumTest | Level1)
 {
     std::vector<NN_Tensor*> inputTensors;
     std::vector<NN_Tensor*> outputTensors;
@@ -118,6 +117,80 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Run_02, Function | MediumTest | Level1)
     ASSERT_NE(nullptr, executor);
     
     Free(model, compilation, executor);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Build_03
+ * @tc.desc: AbsModel1模型输入Tensor+1进行build测试
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Build_03, Function | MediumTest | Level1)
+{
+    std::vector<NN_Tensor*> inputTensors;
+    std::vector<NN_Tensor*> outputTensors;
+    size_t inputCount = 0;
+    size_t outputCount = 0;
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel2 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.operands = {absModel.input, absModel.input, absModel.output};
+    graphArgs.inputIndices = {0, 1};
+    graphArgs.outputIndices = {2};
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Build_04
+ * @tc.desc: AbsModel1模型输出Tensor+1进行build测试
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Build_04, Function | MediumTest | Level1)
+{
+    std::vector<NN_Tensor*> inputTensors;
+    std::vector<NN_Tensor*> outputTensors;
+    size_t inputCount = 0;
+    size_t outputCount = 0;
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel2 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    graphArgs.operands = {absModel.input, absModel.input, absModel.output};
+    graphArgs.inputIndices = {0, 1};
+    graphArgs.outputIndices = {2};
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
+}
+
+/**
+ * @tc.number : SUB_AI_NNRt_Func_North_Build_05
+ * @tc.desc: AbsModel1模型传入非法参数进行build测试
+ * @tc.type: FUNC
+ */
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Build_05, Function | MediumTest | Level1)
+{
+    std::vector<NN_Tensor*> inputTensors;
+    std::vector<NN_Tensor*> outputTensors;
+    size_t inputCount = 0;
+    size_t outputCount = 0;
+    OH_NNModel *model = OH_NNModel_Construct();
+    ASSERT_NE(nullptr, model);
+
+    AbsModel2 absModel;
+    OHNNGraphArgs graphArgs = absModel.graphArgs;
+    
+    int8_t activationValue = OH_NN_FUSED_NONE;
+    OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
+    graphArgs.operands = {absModel.input, absModel.output, activation};
+    graphArgs.paramIndices = {2};
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    
+    Free(model, nullptr, nullptr);
 }
 
 /**
@@ -263,36 +336,10 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SetOperandValue_03, Function | Me
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_01
- * @tc.desc: 设置输入输出，model为nullptr
- * @tc.type: FUNC
- */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
-{
-    OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
-
-    AbsModel1 absModel;
-    OHNNGraphArgs graphArgs = absModel.graphArgs;
-    graphArgs.addOperation = false;
-    graphArgs.specifyIO = false;
-    graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
-
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
-    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
-    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(nullptr, &inputIndices, &outputIndices));
-
-    Free(model, nullptr, nullptr);
-}
-
-/**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02
  * @tc.desc: 设置输入输出，inputIndices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -314,11 +361,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02
  * @tc.desc: 设置输入输出，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -341,11 +388,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03
  * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -368,11 +415,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04
  * @tc.desc: 设置输入输出，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -395,11 +442,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05
  * @tc.desc: 设置输入输出，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -421,11 +468,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06
  * @tc.desc: 设置输入输出，outputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -448,11 +495,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07
  * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -475,11 +522,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08, Funct
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_09
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08
  * @tc.desc: 设置输入输出，outputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_09, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -503,36 +550,10 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_SpecifyInputsAndOutputs_09, Funct
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_01
- * @tc.desc: 添加算子，model为nullptr
- * @tc.type: FUNC
- */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_01, Function | MediumTest | Level3)
-{
-    OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
-
-    AbsModel1 absModel;
-    OHNNGraphArgs graphArgs = absModel.graphArgs;
-    graphArgs.addOperation = false;
-    graphArgs.specifyIO = false;
-    graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
-
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
-    auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
-    auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
-                                                               &paramIndices, &inputIndices, &outputIndices));
-    
-    Free(model, nullptr, nullptr);
-}
-
-/**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_02
  * @tc.desc: 添加算子，paramindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_02, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_01, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -553,11 +574,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_02, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_03
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_02
  * @tc.desc: 添加算子，paramindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_03, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_02, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -580,11 +601,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_03, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_04
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_03
  * @tc.desc: 添加算子，paramindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_04, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_03, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -607,11 +628,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_04, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_05
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_04
  * @tc.desc: 添加算子，paramindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_05, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_04, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -634,11 +655,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_05, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_06
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_05
  * @tc.desc: 添加算子，inputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_06, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_05, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -659,11 +680,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_06, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_07
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_06
  * @tc.desc: 添加算子，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_07, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_06, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -686,11 +707,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_07, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_08
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_07
  * @tc.desc: 添加算子，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_08, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_07, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -713,11 +734,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_08, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_09
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_08
  * @tc.desc: 添加算子，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_09, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_08, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -740,11 +761,11 @@ HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_09, Function | Mediu
 }
 
 /**
- * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_10
+ * @tc.number : SUB_AI_NNRt_Func_North_Model_AddOperation_09
  * @tc.desc: 添加算子，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_10, Function | MediumTest | Level3)
+HWTEST_F(AbsTest, SUB_AI_NNRt_Func_North_Model_AddOperation_09, Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
