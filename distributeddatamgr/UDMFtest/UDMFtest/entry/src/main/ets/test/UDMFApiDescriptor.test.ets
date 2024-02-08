@@ -3503,7 +3503,7 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9860 start');
       try {
-        let result = UTD.getUniformDataTypeByMIMEType("video/x-ms-wma", UTD.UniformDataType.WINDOWS_MEDIA_WMA);
+        let result = UTD.getUniformDataTypeByMIMEType("audio/x-ms-wma", UTD.UniformDataType.WINDOWS_MEDIA_WMA);
         console.log("result=====>" + result);
         expect(result == UTD.UniformDataType.WINDOWS_MEDIA_WMA).assertEqual(true);
       }
