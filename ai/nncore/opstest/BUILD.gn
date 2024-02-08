@@ -29,8 +29,8 @@ config("ops_config") {
 ohos_moduletest_suite("ActsOpsTest") {
   module_out_path = module_output_path
   sources = [
-    "include/mock_idevice.cpp",
-    "include/nncore_utils.cpp",
+    "src/mock_idevice.cpp",
+    "src/nncore_utils.cpp",
     "src/abs_test.cpp",
   ]
 
