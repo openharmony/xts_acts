@@ -20,8 +20,8 @@ import commonEvent from '@ohos.commonEvent';
 @Entry
 @Component
 struct Index {
-  @State bundle: string = "com.form.formsystemtestservicea.hmservice";
-  @State ability: string = "com.form.formsystemtestservicea.hmservice.FormAbility";
+  @State bundle: string = "com.acts.form.formsystemtestservicea.hmservice";
+  @State ability: string = "com.acts.form.formsystemtestservicea.hmservice.FormAbility";
   @State moduleName: string = "entry";
   @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
@@ -78,8 +78,8 @@ struct Index {
         parameters: {
           "formId": "0",
           "name": "Form_Js001",
-          "bundle": "com.form.formsystemtestservicea.hmservice",
-          "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+          "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+          "ability": "com.acts.form.formsystemtestservicea.hmservice.FormAbility",
           "moduleName": "entry",
           "temporary": false,
           "sendCastForm": true,

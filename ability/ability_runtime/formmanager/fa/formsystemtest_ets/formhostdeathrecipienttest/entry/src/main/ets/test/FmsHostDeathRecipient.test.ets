@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the `License`);
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -184,8 +184,8 @@ const startAbility = async (
     parameters = Object.assign({
         formId: `0`,
         name: `Form_Js001`,
-        bundle: `com.form.formsystemtestservicef.hmservice`,
-        ability: `com.form.formsystemtestservicef.hmservice.FormAbility`,
+        bundle: `com.acts.form.formsystemtestservicef.hmservice`,
+        ability: `FormAbility`,
         moduleName: `entry`,
         temporary: false,
         isCreate: false,
@@ -196,8 +196,8 @@ const startAbility = async (
         parameters.tempParam = {
             formId: `0`,
             name: `Form_Js001`,
-            bundle: `com.form.formsystemtestservicef.hmservice`,
-            ability: `com.form.formsystemtestservicef.hmservice.FormAbility`,
+            bundle: `com.acts.form.formsystemtestservicef.hmservice`,
+            ability: `FormAbility`,
             moduleName: `entry`
         };
     }
