@@ -2289,7 +2289,7 @@ export default function abilityTest() {
     */
     it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', 1, async function (done) {
       if (sysSupport === true) {
-        letdrmsys = drm.createMediaKeySystem(uuid);
+        let drmsys = drm.createMediaKeySystem(uuid);
         let avPlayer = await media.createAVPlayer();
         let keyInfo = avPlayer.getMediaKeySystemInfos()
         for (let item = 0; item < keyInfo.length; item++) {
