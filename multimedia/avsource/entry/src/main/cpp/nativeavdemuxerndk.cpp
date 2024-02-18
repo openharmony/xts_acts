@@ -29,7 +29,7 @@
 
 #define MUNUSONE (-1)
 #define ZEROVAL 0
-#define BIGVAL 44100
+#define BIGVAL (2160*3840)
 #define TWOVAL 2
 #define ONEONEVAL 11
 #define PARAM_1 1
