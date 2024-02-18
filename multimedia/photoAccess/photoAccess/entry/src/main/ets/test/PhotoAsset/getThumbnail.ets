@@ -95,6 +95,25 @@ export default function getThumbnailTest () {
       }
     }
 
+    async function getThumbnailCallbackNormal (done, testNum, fetchOps, size) {
+      try {
+        let asset = await getFileAsset(testNum, fetchOps);
+        asset.getThumbnail(size, async (err, pixelMap) => {
+          if (err) {
+            console.info(`${testNum} err: ${err}`);
+            expect(false).assertTrue();
+          } else {
+            expect(true).assertTrue();
+          }
+          done();
+        })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     async function getThumbnailPromise1 (done, testNum, fetchOps) {
       try {
         let asset = await getFileAsset(testNum, fetchOps);
@@ -139,6 +158,19 @@ export default function getThumbnailTest () {
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(true).assertTrue();
+        done();
+      }
+    }
+
+    async function getThumbnailPromiseNormal (done, testNum, fetchOps, size) {
+      try {
+        let asset = await getFileAsset(testNum, fetchOps);
+        await asset.getThumbnail(size);
+        expect(true).assertTrue()
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
         done();
       }
     }
@@ -313,7 +345,7 @@ export default function getThumbnailTest () {
       const testNum = 'getThumbnail_callback_010';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       const size = { width: -1, height: -1 };
-      await getThumbnailCallbackAbnormal(done, testNum, fetchOps, size);
+      await getThumbnailCallbackNormal(done, testNum, fetchOps, size);
     });
 
     /**
@@ -500,7 +532,7 @@ export default function getThumbnailTest () {
       const testNum = 'getThumbnail_callback_022';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const size = { width: -1, height: -1 };
-      await getThumbnailCallbackAbnormal(done, testNum, fetchOps, size);
+      await getThumbnailCallbackNormal(done, testNum, fetchOps, size);
     });
 
     /**
@@ -689,7 +721,7 @@ export default function getThumbnailTest () {
       const testNum = 'getThumbnail_promise_010';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       const size = { width: -1, height: -1 };
-      await getThumbnailPromiseAbnormal(done, testNum, fetchOps, size);
+      await getThumbnailPromiseNormal(done, testNum, fetchOps, size);
     });
 
     /**
@@ -877,7 +909,7 @@ export default function getThumbnailTest () {
       const testNum = 'getThumbnail_promise_022';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const size = { width: -1, height: -1 };
-      await getThumbnailPromiseAbnormal(done, testNum, fetchOps, size);
+      await getThumbnailPromiseNormal(done, testNum, fetchOps, size);
     });
 
     /**

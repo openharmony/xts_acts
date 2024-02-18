@@ -17,7 +17,7 @@ import { FILE_CONTENT, nextFileName, prepareFile, describe, it, expect } from ".
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOClose() {
-  describe("fileIO_fs_close", function () {
+  describe("fileIO_fs_close", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_CLOSE_ASYNC_0000
      * @tc.name   : fileIO_test_close_async_000
@@ -27,12 +27,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_000");
+    it("fileIO_test_close_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         await fileIO.close(file.fd);
         fileIO.unlinkSync(fpath);
         done();
@@ -51,12 +51,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_async_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_001");
+    it("fileIO_test_close_async_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         await fileIO.close(file);
         fileIO.unlinkSync(fpath);
         done();
@@ -75,12 +75,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_close_async_002", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_002");
+    it("fileIO_test_close_async_002", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         await fileIO.close(file);
         await fileIO.close(file);
         expect(false).assertTrue();
@@ -101,10 +101,10 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_close_async_003", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_003");
+    it("fileIO_test_close_async_003", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
       try {
         await fileIO.close(-1);
@@ -125,12 +125,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_async_004", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_004");
+    it("fileIO_test_close_async_004", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.close(file.fd, (err) => {
           if (err) {
             console.log("fileIO_test_close_async_004 error package: " + JSON.stringify(err));
@@ -154,12 +154,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_async_005", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_005");
+    it("fileIO_test_close_async_005", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_close_async_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.close(file, (err) => {
           if (err) {
             console.log("fileIO_test_close_async_005 error package: " + JSON.stringify(err));
@@ -183,12 +183,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_close_sync_000");
+    it("fileIO_test_close_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_close_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.closeSync(file.fd);
         fileIO.unlinkSync(fpath);
       } catch (e) {
@@ -206,12 +206,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_sync_001", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_close_sync_001");
+    it("fileIO_test_close_sync_001", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_close_sync_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
       } catch (e) {
@@ -229,13 +229,13 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_close_sync_002", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_close_sync_002");
+    it("fileIO_test_close_sync_002", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_close_sync_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-        let fd = file.fd;
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let fd: number = file.fd;
         fileIO.closeSync(file);
         fileIO.closeSync(fd);
         expect(false).assertTrue();
@@ -255,12 +255,12 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_close_sync_003", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_close_sync_003");
+    it("fileIO_test_close_sync_003", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_close_sync_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.closeSync(file);
         fileIO.closeSync(file);
         expect(false).assertTrue();
@@ -280,7 +280,7 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_close_sync_004", 3, function () {
+    it("fileIO_test_close_sync_004", 3, () => {
       try {
         fileIO.closeSync(-1);
         expect(false).assertTrue();

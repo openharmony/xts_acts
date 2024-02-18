@@ -38,9 +38,9 @@ export default class AdsUIExtensionAbility extends UIExtensionAbility {
     let AdDisplayOptions = want?.parameters["displayOptions"];
     if (AdDisplayOptions["refreshTime"]) {
       Logger.i(TAG, `AdsUIExtensionAbility refreshTime: ${AdDisplayOptions["refreshTime"]}`);
-      session.loadContent("adsmanager/pages/AutoRefreshPage", storage);
+      session.loadContent("pages/AutoRefreshPage", storage);
     } else {
-      session.loadContent("adsmanager/pages/UIExtensionAbilityPage", storage);
+      session.loadContent("pages/UIExtensionAbilityPage", storage);
     }
 
   }

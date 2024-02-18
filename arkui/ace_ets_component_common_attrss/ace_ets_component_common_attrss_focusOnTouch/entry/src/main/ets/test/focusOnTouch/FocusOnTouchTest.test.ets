@@ -113,8 +113,12 @@ export default function FocusOnTouchTest() {
         //Confirm reference component text
         let referenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
-        expect(referenceComponent.$attrs.label).assertEqual('');
-
+        if ('Web' ==  data.pageConfig.targetView) {
+          expect(referenceComponent.$attrs.label).assertContain('onFocus');
+        }
+        else {
+          expect(referenceComponent.$attrs.label).assertEqual('');
+        }
         //Confirm target component properties
         let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] focusOnTouch is ' + viewObj.$attrs.focusOnTouch);

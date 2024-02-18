@@ -7,7 +7,8 @@
         "mainElement": "ohos.acts.atomic.service.test.MainAbility",
         "deviceTypes": [
             "default",
-            "tablet"
+            "tablet",
+            "2in1"
         ],
         "dependencies":[
             {
@@ -185,6 +186,27 @@
                 "launchType": "specified",
                 "orientation": "locked",
                 "skills": []
+            },
+            {
+                "name": "BROWSER",
+                "icon": "$media:icon",
+                "visible": true,
+                "skills": [
+                  {
+                    "actions": [
+                      "ohos.want.action.viewData"
+                    ],
+                    "entities": [
+                      "entity.system.browsable"
+                    ],
+                    "uris": [
+                      {
+                        "scheme": "http"
+                      }      
+                    ]
+                  }
+                ],
+                "srcEntrance": ""
             }
         ],
         "extensionAbilities": [
@@ -394,6 +416,10 @@
             "value": "MetaDataValue",
             "resource": "$profile:shortcuts_config"
           }
+        ],
+        "querySchemes": [
+            "http",
+            "welink"
         ]
     }
 }

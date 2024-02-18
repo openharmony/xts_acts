@@ -1595,6 +1595,152 @@ describe('TextEncoderTest', function () {
         let result2 = that.encodeInto(null)
         expect(result2).assertEqual(undefined)
     })
+
+    /**
+     * @tc.name: testTextDecoderCreate_Options_001
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+     it('testTextDecoderCreate_Options_001', 0, function () {
+        let textDecoderOptions = util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : true
+        }
+        var  that = util.TextDecoder.create('utf-8', textDecoderOptions)
+        var retStr = that.encoding
+        expect(retStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate_Options_002
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate_Options_002', 0, function () {
+        let textDecoderOptions = util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : false
+        }
+        var that = util.TextDecoder.create('utf-16be', textDecoderOptions)
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-16be')
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate_Options_003
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate_Options_003', 0, function () {
+        let textDecoderOptions = util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : false
+        }
+        var that = util.TextDecoder.create(undefined, textDecoderOptions)
+        var encodingStr = that.encoding
+        expect(encodingStr).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate_Options_004
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate_Options_004', 0, function () {
+        let textDecoderOptions = util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : true
+        }
+        var that = util.TextDecoder.create(undefined, textDecoderOptions);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: decodeWithStream_Options_001
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream_Options_001', 0, function () {
+        let textDecoderOptions = util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : false
+        }
+        let decodeWithStreamOptions = util.DecodeWithStreamOptions = {
+          stream: false
+        }
+        var that = util.TextDecoder.create('utf-16le', textDecoderOptions);
+        var arr = new Uint8Array(8)
+        arr[0] = 0xFF;
+        arr[1] = 0xFE;
+        arr[2] = 0x61;
+        arr[3] = 0x00;
+        arr[4] = 0x62;
+        arr[5] = 0x00;
+        arr[6] = 0x63;
+        arr[7] = 0x00;
+        var retStr = that.decodeWithStream(arr, decodeWithStreamOptions);
+        var BOM = '\uFEFF';
+        var rel = 'abc';
+        var re = BOM + rel;
+        expect(retStr).assertEqual(re)
+    })
+
+    /**
+     * @tc.name: decodeWithStream_Options_002
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream_Options_002', 0, function () {
+        let textDecoderOptions =  util.TextDecoderOptions = {
+          fatal: false,
+          ignoreBOM : true
+        }
+        let decodeWithStreamOptions = util.DecodeWithStreamOptions = {
+          stream: true
+        }
+        var that = util.TextDecoder.create('utf-8', textDecoderOptions);
+        var arr = new Uint8Array(6)
+        arr[0] = 0xEF;
+        arr[1] = 0xBB;
+        arr[2] = 0xBF;
+        arr[3] = 0x61;
+        arr[4] = 0x62;
+        arr[5] = 0x63;
+        var retStr = that.decodeWithStream(arr, decodeWithStreamOptions)
+        var BOM = '\uFEFF'
+        var rel = 'abc'
+        var re = BOM + rel;
+        expect(retStr).assertEqual(re)
+    })
+
+    /**
+     * @tc.name: testencodeIntoUint8Array_Info_001
+     * @tc.desc: encode string, write the result to dest array.
+     */
+    it('testencodeIntoUint8Array_Info_001', 0, function () {
+        let encodeIntoUint8ArrayInfo = util.EncodeIntoUint8ArrayInfo = {
+          read: 0,
+          written: 0
+        }
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(6)
+        var dest = new Uint8Array(buffer)
+        encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('abc\u2603d', dest)
+        expect(encodeIntoUint8ArrayInfo.read).assertEqual(4)
+        expect(encodeIntoUint8ArrayInfo.written).assertEqual(6)
+    })
+
+    /**
+     * @tc.name: testencodeIntoUint8Array_Info_002
+     * @tc.desc: encode string, write the result to dest array.
+     */
+    it('testencodeIntoUint8Array_Info_002', 0, function () {
+        let encodeIntoUint8ArrayInfo = util.EncodeIntoUint8ArrayInfo = {
+          read: 0,
+          written: 0
+        }
+        var that = new util.TextEncoder()
+        var buffer = new ArrayBuffer(4)
+        var dest = new Uint8Array(buffer)
+        encodeIntoUint8ArrayInfo = that.encodeIntoUint8Array('', dest)
+        expect(encodeIntoUint8ArrayInfo.read).assertEqual(0)
+        expect(encodeIntoUint8ArrayInfo.written).assertEqual(0)
+    })
 })
 
 describe('ScopeTest', function () {
@@ -3411,7 +3557,7 @@ describe('LruBufferFunTest', function () {
     it('testLruBufferPut001', 0, function () {
         var that = new util.LruBuffer()
         var temp = that.put('1111','bcjdshc')
-        expect(temp).assertEqual(undefined)
+        expect(temp).assertEqual('bcjdshc')
     })
 
     /**
@@ -3422,7 +3568,7 @@ describe('LruBufferFunTest', function () {
         var that = new util.LruBuffer()
         var temp1 = that.put('1111','bcjdshc')
         var temp2 = that.put('1111',13)
-        expect(temp2).assertEqual('bcjdshc')
+        expect(temp2).assertEqual(13)
     })
 
     /**
@@ -3436,10 +3582,10 @@ describe('LruBufferFunTest', function () {
         var temp2 = that.put(2,5)
         var temp3 = that.put(2,'adasfdad')
         var temp4 = that.put('abc',10)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(5)
-        expect(temp4).assertEqual(undefined)
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual('adasfdad')
+        expect(temp4).assertEqual(10)
     })
 
     /**
@@ -3454,11 +3600,11 @@ describe('LruBufferFunTest', function () {
         that.updateCapacity(2)
         var temp3 = that.put(2,'adasfdad')
         var temp4 = that.put('1111',10)
-        expect(temp).assertEqual(undefined)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(5)
-        expect(temp4).assertEqual(undefined)
+        expect(temp).assertEqual('bcjdshc')
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual('adasfdad')
+        expect(temp4).assertEqual(10)
     })
 
     /**
@@ -3473,12 +3619,12 @@ describe('LruBufferFunTest', function () {
         var temp3 = that.put(1,10)
         var temp4 = that.put(2,22)
         var temp5 = that.put(2,30)
-        expect(temp).assertEqual(undefined)
-        expect(temp1).assertEqual(undefined)
-        expect(temp2).assertEqual(undefined)
-        expect(temp3).assertEqual(12)
-        expect(temp4).assertEqual(5)
-        expect(temp5).assertEqual(22)
+        expect(temp).assertEqual('bcjdshc')
+        expect(temp1).assertEqual(12)
+        expect(temp2).assertEqual(5)
+        expect(temp3).assertEqual(10)
+        expect(temp4).assertEqual(22)
+        expect(temp5).assertEqual(30)
     })
 
     /**

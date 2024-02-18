@@ -66,7 +66,7 @@ struct ScrollToIndexForGrid03 {
       .scrollBar(BarState.Off)
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height('35%')
+      .height(260)
       .id("GridID_Grid03")
 
       Column(){

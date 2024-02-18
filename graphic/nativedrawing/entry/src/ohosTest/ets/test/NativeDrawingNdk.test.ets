@@ -1087,20 +1087,6 @@ export default function nativeDrawingNdkTest() {
 
     /**
      * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0400
-     * @tc.name       : testOHDrawingCreateTextStyle003
-     * @tc.desc       : test OH_Drawing_CreateTextStyle
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHDrawingCreateTextStyle003', 0, async (done: Function) => {
-      let result: number = nativeDrawing.oHDrawingCreateTextStyleCnormal();
-      expect(result).assertEqual(0);
-      done();
-    });
-    
-    /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0500
      * @tc.name       : testOHDrawingCreateTextStyle004
      * @tc.desc       : test OH_Drawing_CreateTextStyle
      * @tc.size       : MediumTest
@@ -1108,13 +1094,13 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHDrawingCreateTextStyle004', 0, async (done: Function) => {
-      let result: number = nativeDrawing.oHDrawingCreateTextStyleDnormal();
+      let result: number = nativeDrawing.oHDrawingCreateTextStyleCnormal();
       expect(result).assertEqual(0);
       done();
     });
     
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0600
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0500
      * @tc.name       : testOHDrawingCreateTextStyle005
      * @tc.desc       : test OH_Drawing_CreateTextStyle
      * @tc.size       : MediumTest
@@ -1122,13 +1108,13 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHDrawingCreateTextStyle005', 0, async (done: Function) => {
-      let result: number = nativeDrawing.oHDrawingCreateTextStyleEnormal();
+      let result: number = nativeDrawing.oHDrawingCreateTextStyleDnormal();
       expect(result).assertEqual(0);
       done();
     });
     
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0700
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0600
      * @tc.name       : testOHDrawingCreateTextStyle006
      * @tc.desc       : test OH_Drawing_CreateTextStyle
      * @tc.size       : MediumTest
@@ -1136,13 +1122,13 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHDrawingCreateTextStyle006', 0, async (done: Function) => {
-      let result: number = nativeDrawing.oHDrawingCreateTextStyleFnormal();
+      let result: number = nativeDrawing.oHDrawingCreateTextStyleEnormal();
       expect(result).assertEqual(0);
       done();
     });
     
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0800
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0700
      * @tc.name       : testOHDrawingCreateTextStyle007
      * @tc.desc       : test OH_Drawing_CreateTextStyle
      * @tc.size       : MediumTest
@@ -1150,13 +1136,13 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHDrawingCreateTextStyle007', 0, async (done: Function) => {
-      let result: number = nativeDrawing.oHDrawingCreateTextStyleGnormal();
+      let result: number = nativeDrawing.oHDrawingCreateTextStyleFnormal();
       expect(result).assertEqual(0);
       done();
     });
     
     /**
-     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0900
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0800
      * @tc.name       : testOHDrawingCreateTextStyle008
      * @tc.desc       : test OH_Drawing_CreateTextStyle
      * @tc.size       : MediumTest
@@ -1164,6 +1150,20 @@ export default function nativeDrawingNdkTest() {
      * @tc.level      : Level 1
      */
     it('testOHDrawingCreateTextStyle008', 0, async (done: Function) => {
+      let result: number = nativeDrawing.oHDrawingCreateTextStyleGnormal();
+      expect(result).assertEqual(0);
+      done();
+    });
+    
+    /**
+     * @tc.number     : SUB_GRAPHIC_GRAPHIC_2D_DRAWING_TEXTTYPOGRAPHY_OH_DRAWING_CREATETEXTSTYLE_0900
+     * @tc.name       : testOHDrawingCreateTextStyle009
+     * @tc.desc       : test OH_Drawing_CreateTextStyle
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHDrawingCreateTextStyle009', 0, async (done: Function) => {
       let result: number = nativeDrawing.oHDrawingCreateTextStyleHnormal();
       expect(result).assertEqual(0);
       done();

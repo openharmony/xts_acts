@@ -4726,4 +4726,51 @@ describe('BufferTest', function () {
     expect(strUrl).assertEqual("_GGO");
     expect(str).assertEqual("/GGO");
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27800
+   * @tc.name: testByteLength0036
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testByteLength0036", 0, function () {
+    let buf1 = buffer.from("abc");
+    let byteLen = buffer.byteLength(buf1);
+    expect(byteLen).assertEqual(3);
+  });
+    
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_27900
+   * @tc.name: testByteLength0037
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testByteLength0037", 0, function () {
+    let buf1 = buffer.alloc(8);
+    let byteLen = buffer.byteLength(buf1);
+    expect(byteLen).assertEqual(8);
+  });
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28000
+    * @tc.name: testToString0038
+    * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testToString0038", 0, function () {
+    let str = "abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
+    let strbuf = buffer.from(str, "latin1");
+    let toStr = strbuf.toString("latin1");
+    expect(toStr).assertEqual("abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ");
+   });
 })}

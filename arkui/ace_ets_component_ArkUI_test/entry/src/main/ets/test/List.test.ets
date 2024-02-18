@@ -48,6 +48,30 @@ import ResourceString from './ResourceTest/ResourceString.test.ets'
 import rotationTest from './RenderNodeTest/rotation.test.ets'
 import transformTest from './RenderNodeTest/transform.test.ets'
 import translationTest from './RenderNodeTest/translation.test.ets'
+import openCustomDialog from './supplementTest/openCustomDialog.test.ets'
+import outline from './supplementTest/outline.test.ets'
+import useShadowBatching from './supplementTest/useShadowBatching.test.ets'
+import drawCanvas from './drawCanvas.test.ets'
+import LongPressGesture1 from './GestureTest/LongPressGesture1.test.ets'
+import LongPressGesture2 from './GestureTest/LongPressGesture2.test.ets'
+import LongPressGesture3 from './GestureTest/LongPressGesture3.test.ets'
+import OnClick1 from './GestureTest/OnClick1.test.ets'
+import OnClick2 from './GestureTest/OnClick2.test.ets'
+import OnClick3 from './GestureTest/OnClick3.test.ets'
+import OnTouch1 from './GestureTest/OnTouch1.test.ets'
+import OnTouch2 from './GestureTest/OnTouch2.test.ets'
+import OnTouch3 from './GestureTest/OnTouch3.test.ets'
+import PanGesture1 from './GestureTest/PanGesture1.test.ets'
+import PanGesture2 from './GestureTest/PanGesture2.test.ets'
+import PanGesture3 from './GestureTest/PanGesture3.test.ets'
+import SwipeGesture1 from './GestureTest/SwipeGesture1.test.ets'
+import SwipeGesture2 from './GestureTest/SwipeGesture2.test.ets'
+import SwipeGesture3 from './GestureTest/SwipeGesture3.test.ets'
+import TapGesture1 from './GestureTest/TapGesture1.test.ets'
+import TapGesture2 from './GestureTest/TapGesture2.test.ets'
+import TapGesture3 from './GestureTest/TapGesture3.test.ets'
+import menuBackgroundBlurStyle from './selectAttributeTest/menuBackgroundBlurStyle.test.ets'
+import menuBackgroundColor from './selectAttributeTest/menuBackgroundColor.test.ets'
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -85,4 +109,28 @@ export default function testsuite() {
   rotationTest()
   transformTest()
   translationTest()
+  openCustomDialog();
+  outline();
+  useShadowBatching();
+  drawCanvas();
+  LongPressGesture1();
+  LongPressGesture2();
+  LongPressGesture3();
+  OnClick1();
+  OnClick2();
+  OnClick3();
+  OnTouch1();
+  OnTouch2();
+  OnTouch3();
+  PanGesture1();
+  PanGesture2();
+  PanGesture3();
+  SwipeGesture1();
+  SwipeGesture2();
+  SwipeGesture3();
+  TapGesture1();
+  TapGesture2();
+  TapGesture3();
+  menuBackgroundBlurStyle();
+  menuBackgroundColor();
 }

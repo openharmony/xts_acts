@@ -38,20 +38,6 @@ export default function bluetoothAdvertisingTest() {
       }
     }
 
-    async function clickTheWindow() {
-      try{
-        let driver = Driver.create();
-        console.info('[bluetooth_js] bt driver create:'+ driver);
-        await driver.delayMs(1000);
-        await driver.click(860, 2490);
-        await driver.delayMs(5000);
-        await driver.click(860, 2490);
-        await driver.delayMs(3000);
-      } catch (error) {
-        console.info('[bluetooth_js] driver error info:'+ error);
-      }
-    }
-
     async function clickRequestPermission() {
       try {
         console.info('[bluetooth_js] clickRequestPermission start');
@@ -71,7 +57,7 @@ export default function bluetoothAdvertisingTest() {
       switch(sta){
         case 0:
           btAccess.enableBluetooth();
-          await clickTheWindow();
+          await clickRequestPermission();
           await sleep(10000);
           let sta1 = btAccess.getState();
           console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
@@ -85,7 +71,7 @@ export default function bluetoothAdvertisingTest() {
           break;
         case 3:
           btAccess.enableBluetooth();
-          await clickTheWindow();
+          await clickRequestPermission();
           await sleep(10000);
           let sta2 = btAccess.getState();
           console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
@@ -208,6 +194,7 @@ export default function bluetoothAdvertisingTest() {
         expect().assertFail();
       }
       await bluetooth.off('advertisingStateChange', onReceiveEvent);
+      await sleep(2000);
       done();
     })
 
@@ -255,6 +242,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("02errCode:" + err.code + ",02errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -287,6 +275,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("03errCode:" + err.code + ",03errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -319,6 +308,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("04errCode:" + err.code + ",04errMessage:" + err.message);
         expect(err.code).assertEqual('401');
       }
+      await sleep(2000);
       done();
     })
 
@@ -351,6 +341,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("05errCode:" + err.code + ",05errMessage:" + err.message);
         expect(err.code).assertEqual('401');
       }
+      await sleep(2000);
       done();
     })
 
@@ -383,6 +374,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("07errCode:" + err.code + ",07errMessage:" + err.message);
         expect(err.code).assertEqual('401');
       }
+      await sleep(2000);
       done();
     })
 
@@ -414,6 +406,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("09errCode:" + err.code + ",09errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -476,6 +469,7 @@ export default function bluetoothAdvertisingTest() {
         console.info(":10errCode" + err.code + ",10errMessage10:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -539,6 +533,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("11errCode:" + err.code + ",11errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -579,6 +574,7 @@ export default function bluetoothAdvertisingTest() {
       await bluetooth.stopAdvertising(advHandle).then((data) => {
         console.info('[bluetooth_js] stopAdvertising promise result:' + JSON.stringify(data));
       });
+      await sleep(2000);
       done();
     })
 
@@ -625,6 +621,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("13errCode:" + err.code + ",13errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -685,6 +682,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("14errCode:" + err.code + ",14errMessage:" + err.message);
         expect().assertFail();
       }
+      await sleep(2000);
       done();
     })
 
@@ -697,7 +695,7 @@ export default function bluetoothAdvertisingTest() {
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500', 0, async (done) => {
       btAccess.disableBluetooth();
-      await clickTheWindow();
+      await clickRequestPermission();
       await sleep(10000);
       let closeSt = btAccess.getState();
       console.info('[bluetooth_js] bluetooth disable state =' + JSON.stringify(closeSt));
@@ -728,6 +726,7 @@ export default function bluetoothAdvertisingTest() {
         console.info("15errCode:" + err.code + ",15errMessage:" + err.message);
         expect(err.code).assertEqual(2900003);
       }
+      await sleep(2000);
       done();
     })
 
@@ -758,6 +757,7 @@ export default function bluetoothAdvertisingTest() {
       catch (err) {
         console.info("16errCode:" + err.code + ",16errMessage:" + err.message);
       }
+      await sleep(2000);
       done();
     })
 

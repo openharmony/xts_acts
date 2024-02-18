@@ -103,9 +103,9 @@ export default function getScrollItemRect3() {
 
       console.log('assert size')
 
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(width)).assertEqual(Math.round(300));
 
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(600)));
+      expect(Math.round(height)).assertEqual(Math.round(600));
 
       done();
     });
@@ -164,8 +164,8 @@ export default function getScrollItemRect3() {
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(600)));
+      expect(Math.round(width)).assertEqual(Math.round(300));
+      expect(Math.round(height)).assertEqual(Math.round(600));
 
       done();
     });

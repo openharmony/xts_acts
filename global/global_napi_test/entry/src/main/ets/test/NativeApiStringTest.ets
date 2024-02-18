@@ -80,5 +80,47 @@ export default function abilityTest() {
             })
             done();
         })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_NDK_0400
+        * @tc.name    test ResourceManager NDK interface
+        * @tc.desc    test ResourceManager NDK interface
+        */
+        it('getResourceManager_ndktest_0400', 0, async function (done) {
+            console.log("getResourceManager_ndktest_0400 1");
+            resManager.getResourceManager().then(mgr => {
+                console.log("getResourceManager_ndktest_0400 2");
+                expect(mgr !== null).assertTrue();
+                console.log("getResourceManager_ndktest_0400 22");
+                let value = ndk.GetRawFileDescriptor64(mgr, "test/aa.xml");
+                console.log("getResourceManager_ndktest_0400 3");
+                console.log("getResourceManager_ndktest_0400" + value);
+                expect(value !== null).assertTrue();
+            })
+            done();
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_RESMGR_NDK_0500
+        * @tc.name    test ResourceManager NDK interface
+        * @tc.desc    test ResourceManager NDK interface
+        */
+        it('getResourceManager_ndktest_0500', 0, async function (done) {
+            console.log("getResourceManager_ndktest_0500 1");
+            resManager.getResourceManager().then(mgr => {
+                console.log("getResourceManager_ndktest_0500 2");
+                expect(mgr !== null).assertTrue();
+                console.log("getResourceManager_ndktest_0500 22");
+                let value = ndk.GetRawFileDescriptor64(mgr, "test/aa.xml");
+                console.log("getResourceManager_ndktest_0500 3");
+                console.log("getResourceManager_ndktest_0500" + value.fd);
+                console.log("getResourceManager_ndktest_0500" + value.offset);
+                console.log("getResourceManager_ndktest_0500" + value.length);
+                expect(value !== null).assertTrue();
+            })
+            done();
+        })
+
+
     })
 }

@@ -376,6 +376,31 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient, TestSiz
 }
 
 /*
+ * @tc.name: NativeDrawingCanvasTest_RadialGradient
+ * @tc.desc: test for Radial gradient shader effect
+ * @tc.type: FUNC
+ * @tc.require: AR000GTO5R
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, TestSize.Level1)
+{
+    OH_Drawing_Point* centerPt = OH_Drawing_PointCreate(350, 450);
+    uint32_t colors[] = {0xffff00ff, 0xff00ff00};
+    float pos[] = {0., 1.0};
+    OH_Drawing_ShaderEffect* radialGradient = OH_Drawing_ShaderEffectCreateRadialGradient(nullptr, 20,
+        nullptr, nullptr, -2, OH_Drawing_TileMode::MIRROR);
+    EXPECT_EQ(radialGradient, nullptr);
+    radialGradient = OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, 30, colors,
+        pos, 2, OH_Drawing_TileMode::MIRROR);
+    EXPECT_NE(radialGradient, nullptr);
+    OH_Drawing_BrushSetShaderEffect(brush_, radialGradient);
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 400, 500, 500);
+    OH_Drawing_CanvasDrawRect(canvas_, rect);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_ShaderEffectDestroy(radialGradient);
+    OH_Drawing_PointDestroy(centerPt);
+}
+
+/*
  * @tc.name: NativeDrawingCanvasTest_MaskFilter
  * @tc.desc: test for maskfilter
  * @tc.type: FUNC
@@ -549,6 +574,74 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob, TestSize
     OH_Drawing_TextBlobBuilderDestroy(nullptr);
     OH_Drawing_FontDestroy(nullptr);
     OH_Drawing_TypefaceDestroy(nullptr);
+}
+
+/*
+ * @tc.name: NativeDrawingTest001
+ * @tc.desc: test for fontSetLinearText
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, TestSize.Level1)
+{
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_FontSetTextSize(font, 20);
+    OH_Drawing_FontSetTextSkewX(font, 0.25);
+    OH_Drawing_FontSetLinearText(font, true);
+    OH_Drawing_FontDestroy(font);
+}
+
+/*
+ * @tc.name: NativeDrawingTest002
+ * @tc.desc: test for penSetFilter
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, TestSize.Level1)
+{
+    OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    EXPECT_EQ(canvas == nullptr, false);
+    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateBlendMode(0xff0000ff,
+        OH_Drawing_BlendMode::BLEND_MODE_SRC);
+    OH_Drawing_Filter* filter = OH_Drawing_FilterCreate();
+    OH_Drawing_FilterSetColorFilter(filter, colorFilter);
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_PenSetColor(pen, 0xff00ff00);
+    OH_Drawing_PenSetFilter(pen, filter);
+    OH_Drawing_CanvasAttachPen(canvas, pen);
+    OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 400, 200, 500);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+    OH_Drawing_FilterDestroy(filter);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.name: NativeDrawingTest003
+ * @tc.desc: test for penSetFilter
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetshaderEffect, TestSize.Level1)
+{
+    OH_Drawing_Canvas* canvas = OH_Drawing_CanvasCreate();
+    EXPECT_EQ(canvas == nullptr, false);
+    OH_Drawing_Point* startPt = OH_Drawing_PointCreate(100, 400);
+    OH_Drawing_Point* endPt = OH_Drawing_PointCreate(200, 500);
+    uint32_t color[] = {0xffff0000, 0xff00ff00};
+    float pos[] = {0., 1.0};
+    OH_Drawing_ShaderEffect* linearGradient = OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt,
+        color, pos, 2, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
+    OH_Drawing_PenSetShaderEffect(pen, linearGradient);
+    OH_Drawing_CanvasAttachPen(canvas, pen);
+    OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 400, 200, 500);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_ShaderEffectDestroy(linearGradient);
+    OH_Drawing_PointDestroy(startPt);
+    OH_Drawing_PointDestroy(endPt);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 } // namespace Drawing
 } // namespace Rosen

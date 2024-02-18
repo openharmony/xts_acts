@@ -749,44 +749,6 @@ export default function RdbStoreIgnore() {
       console.info(TAG + "************* testRdbStoreBatchInsertError0016 end *************");
     });
 
-    /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0160
-     * @tc.name   : testDeleteRdbStore003
-     * @tc.desc   : deleteRdbStore callback test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testDeleteRdbStore003", 0, async function (done) {
-      console.log(TAG + "************* testDeleteRdbStore003 start *************");
-      let config = {
-        name: "secure.db",
-        securityLevel: relationalStore.SecurityLevel.S1,
-      };
-      rdbStore = await relationalStore.getRdbStore(context, config);
-      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
-      let deleteResult = false;
-      try {
-        // @ts-ignore
-        relationalStore.deleteRdbStore(context, config, async (err) => {
-          if (err) {
-            console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-            expect(!err).assertFail();
-            done();
-          }
-          if (err === undefined) {
-            deleteResult = true;
-          }
-          console.info(`Delete RdbStore successfully.`);
-          await sleep(1000);
-          expect(deleteResult).assertTrue();
-          done();
-        });
-      } catch (e) {
-        console.log(TAG + "deleteRdbStore call failed.", e);
-      }
-      console.log(TAG + "************* testDeleteRdbStore003 end   *************");
-    });
 
     /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0930

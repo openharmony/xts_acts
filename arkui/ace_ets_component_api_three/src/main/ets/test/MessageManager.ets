@@ -17,14 +17,14 @@ export interface Callback {
 }
 
 export class MessageManager {
-    callback:Callback
-    callbacks:Map<string,Callback> = new Map()
+  callback:Callback
+  callbacks:Map<string,Callback> = new Map()
 
-    constructor() {
+  constructor() {
 
-    }
+  }
 
-   registerCallback(callback:Callback , type?:string) {
+  registerCallback(callback:Callback , type?:string) {
     if (type == undefined) {
       console.error('registerCallback callback set')
       this.callback = callback
@@ -33,7 +33,7 @@ export class MessageManager {
     this.callbacks.set(type,callback)
   }
 
-   notify(message:any, type?:string) {
+  notify(message:any, type?:string) {
     if (type == undefined) {
       this.callback(message)
       return
@@ -47,7 +47,7 @@ export class MessageManager {
     tmpCallback(message)
   }
 
-   clear() {
+  clear() {
     this.callbacks.clear()
     this.callback = null
   }

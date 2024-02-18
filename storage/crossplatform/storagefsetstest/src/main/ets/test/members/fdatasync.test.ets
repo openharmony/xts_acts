@@ -17,7 +17,7 @@ import { FILE_CONTENT, nextFileName, prepareFile, describe, it, expect } from ".
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOFdatasync() {
-  describe("fileIO_fs_fdatasync", async function () {
+  describe("fileIO_fs_fdatasync", async () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_FDATASYNC_ASYNC_0000
      * @tc.name   : fileIO_test_fdatasync_async_000
@@ -27,12 +27,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fdatasync_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_fdatasync_async_000");
+    it("fileIO_test_fdatasync_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         await fileIO.fdatasync(file.fd);
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -52,7 +52,7 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_async_001", 3, async function (done) {
+    it("fileIO_test_fdatasync_async_001", 3, async (done: Function) => {
       try {
         await fileIO.fdatasync(-1);
         expect(false).assertTrue();
@@ -72,12 +72,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fdatasync_async_002", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_fdatasync_async_002");
+    it("fileIO_test_fdatasync_async_002", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_async_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.fdatasync(file.fd, (err) => {
           if (err) {
             console.log("fileIO_test_fdatasync_async_002 error package: " + JSON.stringify(err));
@@ -102,7 +102,7 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_async_003", 3, async function (done) {
+    it("fileIO_test_fdatasync_async_003", 3, async (done: Function) => {
       try {
         fileIO.fdatasync(-1, (err) => {
           if (err) {
@@ -126,12 +126,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_async_004", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_fdatasync_async_004");
+    it("fileIO_test_fdatasync_async_004", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_async_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         // @ts-ignore
         await fileIO.fdatasync(file);
         expect(false).assertTrue();
@@ -151,12 +151,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_async_005", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_fdatasync_async_005");
+    it("fileIO_test_fdatasync_async_005", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_async_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         // @ts-ignore
         fileIO.fdatasync(file, (err) => {
           expect(err != null).assertTrue;
@@ -179,12 +179,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fdatasync_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_fdatasync_sync_000");
+    it("fileIO_test_fdatasync_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.fdatasyncSync(file.fd);
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -203,7 +203,7 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_sync_001", 3, async function () {
+    it("fileIO_test_fdatasync_sync_001", 3, async () => {
       try {
         fileIO.fdatasyncSync(-1);
         expect(false).assertTrue();
@@ -222,12 +222,12 @@ export default function fileIOFdatasync() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_fdatasync_sync_002", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_fdatasync_sync_002");
+    it("fileIO_test_fdatasync_sync_002", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_fdatasync_sync_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         // @ts-ignore
         fileIO.fdatasyncSync(file);
         expect(false).assertTrue();

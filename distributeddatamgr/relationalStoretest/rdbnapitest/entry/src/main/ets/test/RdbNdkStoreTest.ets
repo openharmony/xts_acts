@@ -553,6 +553,86 @@ export default function RdbNdkStoreTest() {
   }) 
 
 
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4600
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_4600',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4600' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_4600();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4700
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_4700',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4700' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_4700();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4800
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_4800',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4800' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_4800();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_4900
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_4900',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_4900' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_4900();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_5000
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_5000',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_5000' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_5000();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
+/**
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_CrudNdkAPITest_5100
+     * @tc.desc: Normal testCase of NDK store for Update with wrong table or table is NULL.
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_5100',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_5100' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_5100();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })
+
+
     
   })
 }

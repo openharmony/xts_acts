@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { afterEach, describe, expect, it } from '@ohos/hypium'
 import huksndk from 'libhuksndk.so'
+import Utils from './Utils'
 
 export default function huksNdkTest() {
   describe('SecurityHuksTest', () => {
+
+    afterEach(async () => {
+      await Utils.sleep(1000)
+    })
+
     /**
      * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_GETSDKVERSION_0100
      * @tc.name       : testOHHuksGetSdkVersion001
@@ -75,20 +81,6 @@ export default function huksNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_EXPORTPUBLICKEYITEM_0100
-     * @tc.name       : testOHHuksExportPublicKeyItem001
-     * @tc.desc       : test OH_Huks_ExportPublicKeyItem
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHHuksExportPublicKeyItem001', 0, async (done: Function) => {
-      let result: number = huksndk.oHHuksExportPublicKeyItem();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_EXPORTPUBLICKEYITEM_0200
      * @tc.name       : testOHHuksExportPublicKeyItem002
      * @tc.desc       : test OH_Huks_ExportPublicKeyItem
@@ -98,20 +90,6 @@ export default function huksNdkTest() {
      */
     it('testOHHuksExportPublicKeyItem002', 0, async (done: Function) => {
       let result: number = huksndk.oHHuksExportPublicKeyItemErr();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_IMPORTKEYITEM_0100
-     * @tc.name       : testOHHuksImportKeyItem001
-     * @tc.desc       : test OH_Huks_ImportKeyItem
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHHuksImportKeyItem001', 0, async (done: Function) => {
-      let result: number = huksndk.oHHuksImportKeyItem();
       expect(result).assertEqual(0);
       done();
     });
@@ -158,7 +136,6 @@ export default function huksNdkTest() {
       done();
     });
 
-    
     /**
      * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_ISKEYITEMEXIST_0100
      * @tc.name       : testOHHuksIsKeyItemExist001
@@ -214,7 +191,7 @@ export default function huksNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
-    
+
     /**
      * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_ATTESTKEYITEM_0100
      * @tc.name       : testOHHuksAttestKeyItem001
@@ -622,20 +599,6 @@ export default function huksNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_IMPORTWRAPPEDKEYITEM_0100
-     * @tc.name       : testOHHuksImportWrappedKeyItem001
-     * @tc.desc       : test OH_Huks_ImportWrappedKeyItem
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testOHHuksImportWrappedKeyItem001', 0, async (done: Function) => {
-      let result: number = huksndk.oHHuksImportWrappedKeyItem();
-      expect(result).assertEqual(0);
-      done();
-    });
-
-        /**
      * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_IMPORTWRAPPEDKEYITEM_0200
      * @tc.name       : testOHHuksImportWrappedKeyItem002
      * @tc.desc       : test OH_Huks_ImportWrappedKeyItem
@@ -649,5 +612,48 @@ export default function huksNdkTest() {
       done();
     });
 
+    /**
+     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_IMPORTWRAPPEDKEYITEM_0100
+     * @tc.name       : testOHHuksImportWrappedKeyItem001
+     * @tc.desc       : test OH_Huks_ImportWrappedKeyItem
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHHuksImportWrappedKeyItem001', 0, async (done: Function) => {
+      let result: number = huksndk.oHHuksImportWrappedKeyItem();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_IMPORTKEYITEM_0100
+     * @tc.name       : testOHHuksImportKeyItem001
+     * @tc.desc       : test OH_Huks_ImportKeyItem
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHHuksImportKeyItem001', 0, async (done: Function) => {
+      huksndk.oHHuksImportKeyItem().then((result: number) => {
+        expect(result).assertEqual(0);
+        done();
+      });
+    });
+
+    /**
+     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_EXPORTPUBLICKEYITEM_0100
+     * @tc.name       : testOHHuksExportPublicKeyItem001
+     * @tc.desc       : test OH_Huks_ExportPublicKeyItem
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHHuksExportPublicKeyItem001', 0, async (done: Function) => {
+      huksndk.oHHuksExportPublicKeyItem().then((result: number) => {
+        expect(result).assertEqual(0);
+        done();
+      });
+    });
   })
 }

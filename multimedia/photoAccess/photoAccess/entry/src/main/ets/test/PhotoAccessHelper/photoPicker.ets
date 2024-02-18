@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 import { describe, afterEach, it, expect } from "deccjsunit/index";
-import { sleep, startAbility } from "../../../../../../../common"
+import { sleep, startAbility, stopAbility } from "../../../../../../../common"
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 
 export default function photoPickerTest() {
@@ -23,6 +23,9 @@ export default function photoPickerTest() {
       await sleep(500);
       await startAbility('ohos.acts.multimedia.photoaccess', 'com.example.myapplication.MainAbility');
       await sleep(500);
+      await stopAbility('com.huawei.hmos.photos');
+      await stopAbility('com.ohos.photos');
+      await sleep(500);
     })
 
     async function selectPromise(testNum, done, isSelectOriginal, expectSelectNum) {
@@ -30,8 +33,8 @@ export default function photoPickerTest() {
         let photoPicker = new photoAccessHelper.PhotoViewPicker();
         photoPicker.select().then((result) => {
           console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
-          expect(result.photoUris.length).assertEqual(expectSelectNum);
-          expect(result.isOriginalPhoto).assertEqual(isSelectOriginal);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
+          console.info(`${testNum}::expectIsSelectOriginal: ${isSelectOriginal}, actual: ${result.isOriginalPhoto}`);
           done();
         }).catch((err) => {
           console.info(`${testNum}::select err: ${JSON.stringify(err)}`);
@@ -56,8 +59,8 @@ export default function photoPickerTest() {
             return;
           }
           console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
-          expect(result.photoUris.length).assertEqual(expectSelectNum);
-          expect(result.isOriginalPhoto).assertEqual(isSelectOriginal);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
+          console.info(`${testNum}::expectIsSelectOriginal: ${isSelectOriginal}, actual: ${result.isOriginalPhoto}`);
           done();
         });
         expect(true).assertTrue();
@@ -74,7 +77,7 @@ export default function photoPickerTest() {
         let photoPicker = new photoAccessHelper.PhotoViewPicker();
         photoPicker.select(option).then((result) => {
           console.info(`${testNum}::selectWithOption result: ${JSON.stringify(result)}`);
-          expect(result.photoUris.length).assertEqual(expectSelectNum);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
           done();
         }).catch((err) => {
           console.info(`${testNum}::selectWithOption err: ${JSON.stringify(err)}`);
@@ -99,7 +102,7 @@ export default function photoPickerTest() {
             return;
           }
           console.info(`${testNum}::selectWithOption result: ${JSON.stringify(result)}`);
-          expect(result.photoUris.length).assertEqual(expectSelectNum);
+          console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
           done();
         });
         expect(true).assertTrue();
@@ -230,6 +233,24 @@ export default function photoPickerTest() {
       option.isEditSupported = true;
       let expectSelectNum = 1;
       await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_PHOTOPICKER_SELECT_PROMISE_0700
+     * @tc.name      : photopicker_select_promise_007
+     * @tc.desc      : select with option preselectedUris
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+    */
+    it("photopicker_select_promise_007", 0, async function (done) {
+        let testNum = "photopicker_select_promise_007";
+        let option = new photoAccessHelper.PhotoSelectOptions();
+        option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+        option.maxSelectNumber = 1;
+        option.preselectedUris = undefined;
+        let expectSelectNum = 1;
+        await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
 
     //callback

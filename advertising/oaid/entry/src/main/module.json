@@ -8,7 +8,8 @@
     "deviceTypes": [
       "phone",
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "requestPermissions": [
       { "name" : "ohos.permission.APP_TRACKING_CONSENT" }

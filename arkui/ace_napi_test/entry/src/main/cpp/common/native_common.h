@@ -98,4 +98,9 @@
         (name), nullptr, nullptr, (getter), (setter), nullptr, napi_default, nullptr \
     }
 
+#define DECLARE_NAPI_DEFAULT_PROPERTY(name, val)                                          \
+    {                                                                                     \
+        (name), nullptr, nullptr, nullptr, nullptr, val, napi_default_jsproperty, nullptr \
+    }
+
 #endif /* FOUNDATION_ACE_NAPI_INTERFACES_KITS_NAPI_NATIVE_COMMON_H */

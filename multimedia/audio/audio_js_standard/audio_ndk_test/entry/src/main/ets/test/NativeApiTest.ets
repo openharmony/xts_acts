@@ -363,6 +363,151 @@ export default function audioNDK() {
             done()
         })
         /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100
+           * @tc.name      : GetTimestamp after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetTimestamp
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetTimestamp();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100 audioCaptureGetTimestamp: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100
+           * @tc.name      : get FramesRead after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetFramesRead
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetFramesRead();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100 audioCaptureGetFramesRead: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100
+           * @tc.name      : get FrameSizeInCallback after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetFrameSizeInCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetFrameSizeInCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100 audioCaptureGetFrameSizeInCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100
+           * @tc.name      : SetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_SetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100 audioRendererSetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100
+           * @tc.name      : GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100 audioRendererGetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100
+           * @tc.name      : SetSpeed&GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100 audioRendererSetGetSpeed: ${a}`);
+            expect(a).assertEqual(1.5)
+            done()
+        })
+        
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100
+           * @tc.name      : SetRendererOutputDeviceChangeCallback with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100', 0, async function (done) {
+            let a = myaudioNdk.audioSetRendererOutputDeviceChangeCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100 audioCaptureGetCapturerInfo: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100
+           * @tc.name      : GetFramesWritten with OH_AudioRenderer_GetFramesWritten  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetFramesWritten();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100 audioRenderGetFramesWritten: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100
+           * @tc.name      : GetTimestamp with OH_AudioRenderer_GetTimestamp  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetTimestamp();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100 audioRenderGetTimestamp: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100
+           * @tc.name      : GetFrameSizeInCallback with OH_AudioRenderer_GetFrameSizeInCallback  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetFrameSizeInCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100 audioRenderGetFrameSizeInCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_0100
            * @tc.name      : generate audioRenderer with OH_AudioStreamBuilder_GenerateRenderer  
            * @tc.desc      : test OH_AudioStreamBuilder_GenerateRenderer

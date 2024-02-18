@@ -55,13 +55,9 @@ export default function checkAlbumAttrTest () {
     }
 
     async function checkImageVideoCount (album, testNum, iCount, vCount) {
-      //@ts-ignore
       console.info(`${testNum} image count: ${album.imageCount}, expect: ${iCount}`);
-      //@ts-ignore
       expect(album.imageCount).assertEqual(iCount);
-      //@ts-ignore
       console.info(`${testNum} video count: ${album.videoCount}, expect: ${vCount}`);
-      //@ts-ignore
       expect(album.videoCount).assertEqual(vCount);
       expect(album.count).assertEqual(iCount + vCount);
     }
@@ -128,9 +124,7 @@ export default function checkAlbumAttrTest () {
       try {
         let fetchResult = await helper.getAlbums(albumType.SYSTEM, albumSubtype.FAVORITE);
         let favAlbum = await fetchResult.getFirstObject();
-        //@ts-ignore
         let initImageCount = favAlbum.imageCount;
-        //@ts-ignore
         let initVideoCount = favAlbum.videoCount;
         let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'albumImageVideoCount01.jpg');
         const imageAsset1 = await getFileAsset(testNum, fetchOps);

@@ -60,6 +60,7 @@ struct stageAnimator {
         .fontSize(30)
         .fontColor(Color.Black)
         .onClick(() => {
+          this.create();
           this.flag = false
           this.backAnimator.play()
         })

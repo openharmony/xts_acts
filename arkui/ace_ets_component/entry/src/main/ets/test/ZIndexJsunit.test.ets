@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,58 +13,57 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
+
 export default function zIndexJsunit() {
-  describe('zIndexTest', function () {
-    beforeEach(async function (done) {
+  describe('zIndexTest', () => {
+    beforeEach(async () => {
       console.info("zIndex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/zIndex',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/zIndex',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get zIndex state pages: " + JSON.stringify(pages));
         if (!("zIndex" == pages.name)) {
           console.info("get zIndex state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push zIndex page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push zIndex page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("zIndex after each called");
     });
 
-    it('testZIndex01', 0, async function (done) {
+    it('testZIndex01', 0, async () => {
       console.info('[testZIndex01] START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('zIndex');
-      let obj = JSON.parse(strJson);
-      console.info("[testZIndex01] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.zIndex).assertEqual(1);
+      let strJson: string = getInspectorByKey('zIndex');
+      console.info("[testZIndex01] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(1);
       console.info('[testZIndex01] END');
-      done();
+
     });
 
-    it('testZIndex02', 0, async function (done) {
+    it('testZIndex02', 0, async () => {
       console.info('[testZIndex02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "zIndex": 4
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 236,
           priority: events_emitter.EventPriority.LOW
         }
@@ -74,23 +73,22 @@ export default function zIndexJsunit() {
         console.log("[testZIndex02] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('zIndex');
-      let obj = JSON.parse(strJson);
-      console.info("[testZIndex02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.zIndex).assertEqual(4);
+      let strJson: string = getInspectorByKey('zIndex');
+      console.info("[testZIndex02] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(4);
       console.info('testZIndex02 END');
-      done();
+
     });
 
-    it('testZIndex03', 0, async function (done) {
+    it('testZIndex03', 0, async () => {
       console.info('[testZIndex03] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "zIndex": -5
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 236,
           priority: events_emitter.EventPriority.LOW
         }
@@ -100,23 +98,22 @@ export default function zIndexJsunit() {
         console.log("[testZIndex03] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('zIndex');
-      let obj = JSON.parse(strJson);
-      console.info("[testZIndex03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.zIndex).assertEqual(-5);
+      let strJson: string = getInspectorByKey('zIndex');
+      console.info("[testZIndex03] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(-5);
       console.info('testZIndex03 END');
-      done();
+
     });
 
-    it('testZIndex04', 0, async function (done) {
+    it('testZIndex04', 0, async () => {
       console.info('[testZIndex04] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "zIndex": 889900444
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1113,
           priority: events_emitter.EventPriority.LOW
         }
@@ -126,12 +123,10 @@ export default function zIndexJsunit() {
         console.log("[testZIndex04] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('zIndex');
-      let obj = JSON.parse(strJson);
-      console.info("[testZIndex04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.zIndex).assertEqual(889900444);
+      let strJson: string = getInspectorByKey('zIndex');
+      console.info("[testZIndex04] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(889900444);
       console.info('testZIndex04 END');
-      done();
     });
   })
 }

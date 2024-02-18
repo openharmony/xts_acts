@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,60 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function ellipseJsunit() {
-  describe('ellipseTest', function () {
-    beforeEach(async function (done) {
+  describe('ellipseTest', () => {
+    beforeEach(async () => {
       console.info("ellipse beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/ellipse',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ellipse',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get ellipse state pages:" + JSON.stringify(pages));
         if (!("ellipse" == pages.name)) {
           console.info("get ellipse state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push ellipse page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push ellipse page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ellipse after each called");
     });
 
-    it('testEllipse01', 0, async function (done) {
+    it('testEllipse01', 0, async (done: Function) => {
       console.info('[testEllipse01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('200.00px');
-      expect(obj.$attrs.width).assertEqual('200.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse02] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('200.00px');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('200.00px');
       console.info('testEllipse02 END');
-      done();
+      done()
     });
 
-    it('testEllipse02', 0, async function (done) {
+    it('testEllipse02', 0, async (done: Function) => {
       console.info('[testEllipse02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "width": '100px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 92,
           priority: events_emitter.EventPriority.LOW
         }
@@ -76,23 +74,22 @@ export default function ellipseJsunit() {
         console.log("[testEllipse02] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('100.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse02] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('100.00px');
       console.info('testEllipse02 END');
-      done();
+      done()
     });
 
-    it('testEllipse03', 0, async function (done) {
+    it('testEllipse03', 0, async (done: Function) => {
       console.info('[testEllipse03] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "height": '500px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 92,
           priority: events_emitter.EventPriority.LOW
         }
@@ -102,23 +99,22 @@ export default function ellipseJsunit() {
         console.log("[testEllipse03] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('500.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse03] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('500.00px');
       console.info('testEllipse03 END');
-      done();
+      done()
     });
 
-    it('testEllipse04', 0, async function (done) {
+    it('testEllipse04', 0, async (done: Function) => {
       console.info('[testEllipse04] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "width": '1111111111111.00px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 907,
           priority: events_emitter.EventPriority.LOW
         }
@@ -128,23 +124,22 @@ export default function ellipseJsunit() {
         console.log("[testEllipse04] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('1111111111111.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse04] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('1111111111111.00px');
       console.info('testEllipse04 END');
-      done();
+      done()
     });
 
-    it('testEllipse05', 0, async function (done) {
+    it('testEllipse05', 0, async (done: Function) => {
       console.info('[testEllipse05] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "height": '12111111111111.00px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 907,
           priority: events_emitter.EventPriority.LOW
         }
@@ -154,23 +149,22 @@ export default function ellipseJsunit() {
         console.log("[testEllipse05] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse05] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('12111111111111.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse05] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('12111111111111.00px');
       console.info('testEllipse05 END');
-      done();
+      done()
     });
 
-    it('testEllipse06', 0, async function (done) {
+    it('testEllipse06', 0, async (done: Function) => {
       console.info('[testEllipse06] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "height": '-40.00px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 908,
           priority: events_emitter.EventPriority.LOW
         }
@@ -180,23 +174,22 @@ export default function ellipseJsunit() {
         console.log("[testEllipse06] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse06] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('0.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse06] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('0.00px');
       console.info('testEllipse06 END');
-      done();
+      done()
     });
 
-    it('testEllipse07', 0, async function (done) {
+    it('testEllipse07', 0, async (done: Function) => {
       console.info('[testEllipse07] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "width": '-10.00px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 908,
           priority: events_emitter.EventPriority.LOW
         }
@@ -206,12 +199,11 @@ export default function ellipseJsunit() {
         console.log("[testEllipse07] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('ellipse');
-      let obj = JSON.parse(strJson);
-      console.info("[testEllipse07] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('0.00px');
+      let strJson: string = getInspectorByKey('ellipse');
+      console.info("[testEllipse07] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('0.00px');
       console.info('testEllipse07 END');
-      done();
+      done()
     });
   })
 }

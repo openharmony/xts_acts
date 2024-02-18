@@ -56,7 +56,7 @@ export default function backgroundEffectJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[backgroundEffectJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[backgroundEffectJsunit_0100] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.saturation).assertEqual(10);
+      expect(obj.$attrs.backgroundEffect.options.saturation).assertEqual(10);
       console.info('[backgroundEffectJsunit_0100] END');
       done();
     });
@@ -75,7 +75,7 @@ export default function backgroundEffectJsunit() {
       let strJson = getInspectorByKey('backgroundEffect_id1');
       let obj = JSON.parse(strJson);
       console.info("[backgroundEffectJsunit_0200] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.adaptiveColor).assertEqual("AdaptiveColor.DEFAULT");
+      expect(obj.$attrs.backgroundEffect.options.adaptiveColor).assertEqual("AdaptiveColor.Default");
       console.info('[backgroundEffectJsunit_0200] END');
       done();
     });
@@ -94,7 +94,7 @@ export default function backgroundEffectJsunit() {
       let strJson = getInspectorByKey('backgroundEffect_id1');
       let obj = JSON.parse(strJson);
       console.info("[backgroundEffectJsunit_0300] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.blurOptions).assertEqual("[1,1]");
+      expect(obj.$attrs.backgroundEffect.options.blurOption).assertEqual("[1.000000,1.000000]");
       console.info('[backgroundEffectJsunit_0300] END');
       done();
     });
@@ -113,7 +113,7 @@ export default function backgroundEffectJsunit() {
       let strJson = getInspectorByKey('backgroundEffect_id1');
       let obj = JSON.parse(strJson);
       console.info("[backgroundEffectJsunit_0400] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.radius).assertEqual(10);
+      expect(obj.$attrs.backgroundEffect.options.radius).assertEqual(10);
       console.info('[backgroundEffectJsunit_0400] END');
       done();
     });
@@ -132,7 +132,7 @@ export default function backgroundEffectJsunit() {
       let strJson = getInspectorByKey('backgroundEffect_id2');
       let obj = JSON.parse(strJson);
       console.info("[backgroundEffectJsunit_0500] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.adaptiveColor).assertEqual("AdaptiveColor.AVERAGE");
+      expect(obj.$attrs.backgroundEffect.options.adaptiveColor).assertEqual("AdaptiveColor.Average");
       console.info('[backgroundEffectJsunit_0500] END');
       done();
     });

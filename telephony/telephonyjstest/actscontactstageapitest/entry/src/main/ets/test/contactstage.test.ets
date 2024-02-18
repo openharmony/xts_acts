@@ -34,19 +34,8 @@ export default function ContactInterfaceStageTest() {
     beforeAll( async function () {
       console.info("beforeAll case");
       try {
-        let permissions = ["ohos.permission.WRITE_CONTACTS", "ohos.permission.READ_CONTACTS"];
-        let atManager = abilityAccessCtrl.createAtManager();
-        atManager.requestPermissionsFromUser(globalThis.context, permissions, (err, result) => {
-          if (err) {
-            console.info('getPermission failed: ' + JSON.stringify(err));
-          } else {
-            console.info('getPermission suc: ' + JSON.stringify(result));
-          }
-        });
-
         let driver = await uitest.Driver.create();
         sleep(500);
-
         for (let i = 0; i < 5; i++) {
           await sleep(500);
           console.info("driver is " + JSON.stringify(driver));
@@ -176,8 +165,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_key_test_0100
-     * @tc.name Query key information
+     * @tc.name contact:queryKey
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_key_test_0100", 0, async function (done) {
       var rawContactId = await contact.addContact(globalThis.context, contactData);
@@ -199,8 +191,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_key_test_0200
-     * @tc.name Query key information
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_key_test_0200", 0, async function (done) {
       var rawContactId = await contact.addContact(globalThis.context, contactData);
@@ -220,8 +215,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_insert_test_0100
-     * @tc.name contactsApi_insert error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_insert_test_0100", 0, async function (done) {
       var contactDataError = {};
@@ -239,8 +237,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_contact_test_0300
-     * @tc.name contactsApi_query_contact error
+     * @tc.name contact::queryContact
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_contact_test_0300", 0, async function (done) {
       var queryId = "-1";
@@ -264,8 +265,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_email_test_0400
-     * @tc.name contactsApi_query_email error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_email_test_0400", 0, async function (done) {
       var email = "email2222";
@@ -283,8 +287,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_phoneNumber_test_0500
-     * @tc.name contactsApi_query_phoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_phoneNumber_test_0500", 0, async function (done) {
       var phoneNumber = "19999999";
@@ -303,8 +310,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_query_key_test_0600
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_query_key_test_0600", 0, async function (done) {
       var idTest = -1;
@@ -322,8 +332,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_addContact_test_0100
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::deleteContact
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_addContact_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -360,8 +373,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_addContact_test_0200
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::deleteContact
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_addContact_test_0200", 0, async function (done) {
       let promise = contact.addContact(globalThis.context, contactData);
@@ -398,8 +414,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContact_test_0100
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0100", 0, async function (done) {
       var holder = {
@@ -443,8 +462,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContact_test_0200
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -481,8 +503,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContact_test_0300
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -520,8 +545,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContact_test_0400
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -558,8 +586,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContact_test_0500
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContact_test_0500", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -596,8 +627,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContacts_test_0100
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryContacts
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -626,8 +660,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContacts_test_0200
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryContacts
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -656,8 +693,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContacts_test_0300
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryContacts
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -686,8 +726,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContacts_test_0400
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryContacts
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -716,8 +759,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContacts_test_0500
-     * @tc.name contactsApi_query_key error
+     * @tc.name contact::queryContacts
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContacts_test_0500", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -746,8 +792,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100
-     * @tc.name contactsApi_query_ContactsByPhoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -776,8 +825,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200
-     * @tc.name contactsApi_query_ContactsByPhoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -806,8 +858,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300
-     * @tc.name contactsApi_query_ContactsByPhoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -836,8 +891,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400
-     * @tc.name contactsApi_query_ContactsByPhoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -866,8 +924,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500
-     * @tc.name contactsApi_query_ContactsByPhoneNumber error
+     * @tc.name contact::queryContactsByPhoneNumber
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByPhoneNumber_test_0500", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -896,8 +957,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100
-     * @tc.name contactsApi_query_queryContactsByEmail error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -926,8 +990,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200
-     * @tc.name contactsApi_query_queryContactsByEmail error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -956,8 +1023,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300
-     * @tc.name contactsApi_query_queryContactsByEmail error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -986,8 +1056,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400
-     * @tc.name contactsApi_query_queryContactsByEmail error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1016,8 +1089,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500
-     * @tc.name contactsApi_query_queryContactsByEmail error
+     * @tc.name contact::queryContactsByEmail
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryContactsByEmail_test_0500", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1046,8 +1122,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryGroups_test_0100
-     * @tc.name contactsApi_query_queryGroups error
+     * @tc.name contact::queryGroups
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1076,8 +1155,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryGroups_test_0200
-     * @tc.name contactsApi_query_queryGroups error
+     * @tc.name contact::queryGroups
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1106,8 +1188,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryGroups_test_0300
-     * @tc.name contactsApi_query_queryGroups error
+     * @tc.name contact::queryGroups
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryGroups_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1136,8 +1221,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryHolders_test_0100
-     * @tc.name contactsApi_query_queryHolders error
+     * @tc.name contact::queryHolders
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryHolders_test_0100", 0, async function (done) {
       contact.queryHolders(globalThis.context, (err, data) => {
@@ -1156,8 +1244,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryHolders_test_0200
-     * @tc.name contactsApi_query_queryHolders error
+     * @tc.name contact::queryHolders
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryHolders_test_0200", 0, async function (done) {
       let promise = contact.queryHolders(globalThis.context as Context);
@@ -1176,8 +1267,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryKey_test_0100
-     * @tc.name contactsApi_query_queryKey error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 4
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1206,8 +1300,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryKey_test_0200
-     * @tc.name contactsApi_query_queryKey error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1236,8 +1333,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryKey_test_0300
-     * @tc.name contactsApi_query_queryKey error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryKey_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1266,8 +1366,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0100
-     * @tc.name contactsApi_query_queryMyCard error
+     * @tc.name contact::queryMyCard
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryMyCard_test_0100", 0, async function (done) {
       contact.queryMyCard(globalThis.context, (err, data) => {
@@ -1285,8 +1388,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0200
-     * @tc.name contactsApi_query_queryMyCard error
+     * @tc.name contact::queryMyCard
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryMyCard_test_0200", 0, async function (done) {
       contact.queryMyCard(globalThis.context, attr, (err, data) => {
@@ -1304,8 +1410,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_queryMyCard_test_0300
-     * @tc.name contactsApi_query_queryMyCard error
+     * @tc.name contact::queryMyCard
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_queryMyCard_test_0300", 0, async function (done) {
       let promise = contact.queryMyCard(globalThis.context, attr);
@@ -1323,8 +1432,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0100
-     * @tc.name contactsApi_query_updateContact error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1389,8 +1501,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0200
-     * @tc.name contactsApi_query_updateContact error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1455,8 +1570,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0300
-     * @tc.name contactsApi_query_updateContact error
+     * @tc.name contact::queryKey
      * @tc.desc Function test
+     * @tc.level 2
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1521,8 +1639,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0400
-     * @tc.name contactsApi_query_updateContact error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_updateContact_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1550,8 +1671,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_isLocalContact_test_0200
-     * @tc.name contactsApi_query_isLocalContact error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_isLocalContact_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1579,8 +1703,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0100
-     * @tc.name contactsApi_query_isMyCard error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_isMyCard_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1608,8 +1735,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_isMyCard_test_0200
-     * @tc.name contactsApi_query_isMyCard error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_isMyCard_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1637,8 +1767,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0100
-     * @tc.name contactsApi_selectContacts error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0100", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1664,8 +1797,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0200
-     * @tc.name contactsApi_query_isMyCard error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0200", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1690,8 +1826,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0300
-     * @tc.name contactsApi_selectContacts error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0300", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
@@ -1717,8 +1856,11 @@ export default function ContactInterfaceStageTest() {
 
     /**
      * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0400
-     * @tc.name contactsApi_query_isMyCard error
+     * @tc.name contact::addContact
      * @tc.desc Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_ContactsApi_selectContacts_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {

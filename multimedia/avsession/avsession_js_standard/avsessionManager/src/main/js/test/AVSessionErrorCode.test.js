@@ -924,7 +924,7 @@ export default function AVSessionErrorCode() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0100', 0, async function (done) {
-            await onCallbackInvalidSession('setSpeed');
+            await onCallbackInvalidSession('setLoopMode');
             done();
         })
 
@@ -937,7 +937,7 @@ export default function AVSessionErrorCode() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_ONSETLOOPMODE_ERRORCODE_0200', 0, async function (done) {
-            onCallbackInvalidParam('setSpeed');
+            onCallbackInvalidParam('setLoopMode');
             done();
         })
 

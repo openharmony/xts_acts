@@ -92,6 +92,9 @@ export default function isDefaultApplicationTest() {
 
             expect(typeof (defaultAppMgr.ApplicationType.PPT)).assertEqual("string");
             expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT Viewer");
+
+            expect(typeof (defaultAppMgr.ApplicationType.EMAIL)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.EMAIL).assertEqual("Email");
             done()
         });
 

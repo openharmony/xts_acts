@@ -344,7 +344,7 @@ export default function SecurityCryptoFwAgreementDHTestUnit() {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_DH_Func_1300";
       console.log(testNumber + ": started.");
       let param: string = "DH";
-      let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(1024, 256);
+      let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(512, 128);
       try {
         let res: boolean = await agreementAsyPromiseFunc.normalProcess(param, spec);
         expect(res).assertTrue();

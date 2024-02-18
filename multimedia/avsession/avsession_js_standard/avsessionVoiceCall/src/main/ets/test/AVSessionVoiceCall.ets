@@ -45,7 +45,7 @@ export default function abilityTest() {
 
     function callMetadataChangeCallback1(callMetadata) {
       console.info(`${TAG}: callMetadataChangeCallback1 received callMetadata: ${JSON.stringify(callMetadata)}`);
-      if (callMetadata.name != '123456789') {
+      if (callMetadata.name != '123456789' || callMetadata.phoneNumber != '65432111' || callMetadata.avatar != null) {
         console.error(`${TAG}: callMetadataChangeCallback1 received callMetadata unmatch`);
         expect().assertFail();
       }
@@ -54,7 +54,7 @@ export default function abilityTest() {
 
     function callMetadataChangeCallback2(callMetadata) {
       console.info(`${TAG}: callMetadataChangeCallback2 received callMetadata: ${JSON.stringify(callMetadata)}`);
-      if (callMetadata.name != '123456789' || callMetadata.phoneNumber != '65432111') {
+      if (callMetadata.name != '123456789' || callMetadata.phoneNumber != '65432111' || callMetadata.avatar != null) {
         console.error(`${TAG}: callMetadataChangeCallback2 received callMetadata unmatch`);
         expect().assertFail();
       }
@@ -72,7 +72,7 @@ export default function abilityTest() {
 
     function callStateChangeCallback2(callState) {
       console.info(`${TAG}: callStateChangeCallback2 received callState: ${JSON.stringify(callState)}`);
-      if (callState.muted) {
+      if (callState.state != avSession.CallState.CALL_STATE_WAITING || callState.muted) {
         console.error(`${TAG}: callStateChangeCallback2 received callState unmatch`);
         expect().assertFail();
       }
@@ -109,8 +109,12 @@ export default function abilityTest() {
       receivedCallback2 = true;
     }
 
-    beforeAll(async function () {
+    beforeAll(function () {
       console.info(`${TAG}: beforeAll in`);
+    })
+
+    beforeEach(async function () {
+      console.info(`${TAG}: beforeEach in`);
       console.info(`${TAG}: createAVSession begin`);
       await avSession.createAVSession(context, tag, 'voice_call').then((data) => {
         session = data;
@@ -129,30 +133,35 @@ export default function abilityTest() {
       } catch (err) {
         console.info(`${TAG}: getController error: code: ${err.code}, message: ${err.message}`);
       }
-      console.info(`${TAG}: beforeAll out`);
+      await sleep(800);
+      console.info(`${TAG}: beforeEach out`);
     })
 
-    beforeEach(function () {
-      console.info(`${TAG}: beforeEach in`);
-    })
-
-    afterEach(function () {
+    afterEach(async function () {
       console.info(`${TAG}: afterEach in`);
+      if (session != null) {
+        await session.destroy().then(() => {
+          console.info(`${TAG}: Session destroy success`);
+        }).catch((err) => {
+          console.info(`${TAG}: Session destroy error: code: ${err.code}, message: ${err.message}`);
+        });
+      } else {
+        console.info(`${TAG}: Session is already destroy`);
+      }
+      if (controller != null) {
+        await controller.destroy().then(() => {
+          console.info(`${TAG}: Controller destroy success`);
+        }).catch((err) => {
+          console.info(`${TAG}: Controller destroy error: code: ${err.code}, message: ${err.message}`);
+        });
+      } else {
+        console.info(`${TAG}: Controller is already destroy`);
+      }
+      console.info(`${TAG}: afterEach out`);
     })
 
-    afterAll(async function () {
+    afterAll(function () {
       console.info(`${TAG}: afterAll in`);
-      await session.destroy().then(() => {
-        console.info(`${TAG}: Session destroy success`);
-      }).catch((err) => {
-        console.info(`${TAG}: Session destroy error: code: ${err.code}, message: ${err.message}`);
-      });
-      await controller.destroy().then(() => {
-        console.info(`${TAG}: Controller destroy success`);
-      }).catch((err) => {
-        console.info(`${TAG}: Controller destroy error: code: ${err.code}, message: ${err.message}`);
-      });
-      console.info(`${TAG}: afterAll out`);
     })
 
     /* *
@@ -329,7 +338,6 @@ export default function abilityTest() {
         phoneNumber: '65432111'
       };
       await session.destroy();
-      await sleep(500);
       await session.setCallMetadata(callMetadata5).then(() => {
         console.info(`${TAG}: setCallMetadata without avsession test fail, set successful!`);
         expect(false).assertTrue();
@@ -342,9 +350,121 @@ export default function abilityTest() {
           expect(false).assertTrue();
         }
       });
-      await sleep(200);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
+      session = null;
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0700
+     * @tc.name      : SETCALLMETADATA_0700
+     * @tc.desc      : Testing set name - promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0700', 2, async function (done) {
+      let callMetadata6 = {
+        name: '12345678'
+      };
+      await session.setCallMetadata(callMetadata6).then(() => {
+        console.info(`${TAG}: setCallMetadata set name successfully`);
+      }).catch((err) => {
+        console.info(`${TAG}: setCallMetadata set name error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+
+      await controller.getCallMetadata().then((data) => {
+        if (data.name === '12345678') {
+          console.info(`${TAG}: getCallMetadata get name Successfully`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: getCallMetadata get name failed`);
+          console.info(`${TAG}: name is: ${data.name}`);
+          expect(false).assertTrue();
+        }
+      }).catch((err) => {
+        console.info(`${TAG}: getCallMetadata get name error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0800
+     * @tc.name      : SETCALLMETADATA_0800
+     * @tc.desc      : Testing set phoneNumber - promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0800', 2, async function (done) {
+      let callMetadata7 = {
+        phoneNumber: '65432111'
+      };
+      await session.setCallMetadata(callMetadata7).then(() => {
+        console.info(`${TAG}: setCallMetadata set phoneNumber successfully`);
+      }).catch((err) => {
+        console.info(`${TAG}: setCallMetadata set phoneNumber error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+
+      await controller.getCallMetadata().then((data) => {
+        if (data.phoneNumber === '65432111') {
+          console.info(`${TAG}: getCallMetadata get phoneNumber Successfully`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: getCallMetadata get phoneNumber failed`);
+          console.info(`${TAG}: phoneNumber is: ${data.phoneNumber}`);
+          expect(false).assertTrue();
+        }
+      }).catch((err) => {
+        console.info(`${TAG}: getCallMetadata get phoneNumber error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0900
+     * @tc.name      : SETCALLMETADATA_0900
+     * @tc.desc      : Testing set avatar - promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_0900', 2, async function (done) {
+      let pixelMap = await getPixelMap();
+      let readBuffer0 = new ArrayBuffer(96);
+      await pixelMap.readPixelsToBuffer(readBuffer0);
+      let bufferArr0 = new Uint8Array(readBuffer0);
+      let callMetadata8 = {
+        avatar: pixelMap
+      };
+      await session.setCallMetadata(callMetadata8).then(() => {
+        console.info(`${TAG}: setCallMetadata set avatar successfully`);
+      }).catch((err) => {
+        console.info(`${TAG}: setCallMetadata set avatar error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      let pixMap;
+      await controller.getCallMetadata().then((data) => {
+        pixMap = data.avatar;
+      }).catch((err) => {
+        console.info(`${TAG}: getCallMetadata set avatar error: code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue();
+      });
+      let pixelSize = pixMap.getPixelBytesNumber();
+      console.info(`${TAG}: pixelSize is: ${pixelSize}`);
+      let readBuffer = new ArrayBuffer(pixelSize);
+      await pixMap.readPixelsToBuffer(readBuffer);
+      let bufferArr2 = new Uint8Array(readBuffer);
+      for (let i = 0; i < bufferArr2.length; i++) {
+        if (bufferArr0[i] !== bufferArr2[i]) {
+          expect(false).assertTrue();
+        } else {
+          expect(true).assertTrue();
+        }
+      }
       done();
     })
 
@@ -367,7 +487,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
       await session.destroy();
-      await sleep(500);
       await controller.getCallMetadata().then(() => {
         console.info(`${TAG}: getCallMetadata without avsession test fail, get successful!`);
         expect(false).assertTrue();
@@ -385,9 +504,7 @@ export default function abilityTest() {
           expect(false).assertTrue();
         }
       });
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
+      session = null;
       done();
     })
 
@@ -411,7 +528,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
       await controller.destroy();
-      await sleep(500);
       await controller.getCallMetadata().then(() => {
         console.info(`${TAG}: getCallMetadata without controller test fail, get successful!`);
         expect(false).assertTrue();
@@ -429,8 +545,7 @@ export default function abilityTest() {
           expect(false).assertTrue();
         }
       });
-      await sleep(800);
-      controller = await session.getController();
+      controller = null;
       done();
     })
 
@@ -457,41 +572,41 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setCallMetadataCallback set successfully`);
+            let pixMap;
+            controller.getCallMetadata((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+              } else {
+                if (data.name === '12345678' && data.phoneNumber === '65432111') {
+                  console.info(`${TAG}: getCallMetadataCallback get name and phoneNumber Successfully`);
+                } else {
+                  console.info(`${TAG}: getCallMetadataCallback failed, name is: ${data.name}, phoneNumber is ${data.phoneNumber}`);
+                  expect(false).assertTrue();
+                  done();
+                }
+                pixMap = data.avatar;
+                let pixelSize = pixMap.getPixelBytesNumber();
+                console.info(`${TAG}: pixelSize is: ${pixelSize}`);
+                let readBuffer = new ArrayBuffer(pixelSize);
+                pixMap.readPixelsToBuffer(readBuffer);
+                let bufferArr2 = new Uint8Array(readBuffer);
+                for (let i = 0; i < bufferArr2.length; i++) {
+                  if (bufferArr0[i] !== bufferArr2[i]) {
+                    expect(false).assertTrue();
+                  } else {
+                    expect(true).assertTrue();
+                  }
+                }
+                done();
+              }
+            })
           }
         });
-        await sleep(500);
-        let pixMap;
-        controller.getCallMetadata((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else {
-            if (data.name === '12345678' && data.phoneNumber === '65432111') {
-              console.info(`${TAG}: getCallMetadataCallback get name and phoneNumber Successfully`);
-            } else {
-              console.info(`${TAG}: getCallMetadataCallback failed, name is: ${data.name}, phoneNumber is ${data.phoneNumber}`);
-              expect(false).assertTrue();
-              done();
-            }
-            pixMap = data.avatar;
-          }
-        })
-        await sleep(500);
-        let pixelSize = pixMap.getPixelBytesNumber();
-        console.info(`${TAG}: pixelSize is: ${pixelSize}`);
-        let readBuffer = new ArrayBuffer(pixelSize);
-        await pixMap.readPixelsToBuffer(readBuffer);
-        let bufferArr2 = new Uint8Array(readBuffer);
-        for (let i = 0; i < bufferArr2.length; i++) {
-          if (bufferArr0[i] !== bufferArr2[i]) {
-            expect(false).assertTrue();
-          } else {
-            expect(true).assertTrue();
-          }
-        }
-        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -614,7 +729,7 @@ export default function abilityTest() {
      */
     it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0500', 2, async function (done) {
       let callMetadata4 = {};
-      await session.setCallMetadata(callMetadata4, (err, data) =>  {
+      session.setCallMetadata(callMetadata4, (err, data) =>  {
         if (err) {
           if (err.code == 401) {
             console.info(`${TAG}: setCallMetadataCallback with error callMetadata test success, error: code: ${err.code}, message: ${err.message}`);
@@ -627,8 +742,8 @@ export default function abilityTest() {
           console.info(`${TAG}: setCallMetadataCallback with error callMetadata test fail, set successful!`);
           expect(false).assertTrue();
         }
+        done();
       });
-      done();
     })
 
     /* *
@@ -646,7 +761,6 @@ export default function abilityTest() {
       };
       try {
         await session.destroy();
-        await sleep(500);
         session.setCallMetadata(callMetadata5, (err, data) => {
           if (err) {
             if (err.code == 6600102) {
@@ -660,15 +774,155 @@ export default function abilityTest() {
             console.info(`${TAG}: setCallMetadataCallback without avsession test fail, set successful!`);
             expect(false).assertTrue();
           }
+          session = null;
+          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0070
+     * @tc.name      : SETCALLMETADATA_CALLBACK_0070
+     * @tc.desc      : Testing set name - callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0070', 2, async function (done) {
+      let callMetadata6 = {
+        name: '12345678'
+      };
+      try {
+        session.setCallMetadata(callMetadata6, (err, data) => {
+          if (err) {
+            console.info(`${TAG}: setCallMetadataCallback set name error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TAG}: setCallMetadataCallback set name successfully`);
+            controller.getCallMetadata().then((data) => {
+              if (data.name === '12345678') {
+                console.info(`${TAG}: getCallMetadata get name Successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getCallMetadata get name failed`);
+                console.info(`${TAG}: name is: ${data.name}`);
+                expect(false).assertTrue();
+              }
+              done();
+            }).catch((err) => {
+              console.info(`${TAG}: getCallMetadata get name error: code: ${err.code}, message: ${err.message}`);
+              expect(false).assertTrue();
+              done();
+            });
+          }
+        })
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0080
+     * @tc.name      : SETCALLMETADATA_CALLBACK_0080
+     * @tc.desc      : Testing set phoneNumber - callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0080', 2, async function (done) {
+      let callMetadata7 = {
+        phoneNumber: '65432111'
+      };
+      try {
+        session.setCallMetadata(callMetadata7, (err, data) => {
+          if (err) {
+            console.info(`${TAG}: setCallMetadataCallback set phoneNumber error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TAG}: setCallMetadataCallback set phoneNumber successfully`);
+            controller.getCallMetadata().then((data) => {
+              if (data.phoneNumber === '65432111') {
+                console.info(`${TAG}: getCallMetadata get phoneNumber Successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getCallMetadata get phoneNumber failed`);
+                console.info(`${TAG}: name is: ${data.name}`);
+                expect(false).assertTrue();
+              }
+              done();
+            }).catch((err) => {
+              console.info(`${TAG}: getCallMetadata get phoneNumber error: code: ${err.code}, message: ${err.message}`);
+              expect(false).assertTrue();
+              done();
+            });
+          }
+        })
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0090
+     * @tc.name      : SETCALLMETADATA_CALLBACK_0090
+     * @tc.desc      : Testing set avatar - callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_CALLBACK_0090', 2, async function (done) {
+      try {
+        let pixelMap = await getPixelMap();
+        let readBuffer0 = new ArrayBuffer(96);
+        await pixelMap.readPixelsToBuffer(readBuffer0);
+        let bufferArr0 = new Uint8Array(readBuffer0);
+        let callMetadata8 = {
+          avatar: pixelMap
+        };
+        session.setCallMetadata(callMetadata8, (err, data) => {
+          if (err) {
+            console.info(`${TAG}: setCallMetadataCallback set avatar error: code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TAG}: setCallMetadataCallback set avatar successfully`);
+            let pixMap;
+            controller.getCallMetadata((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+              } else {
+                pixMap = data.avatar;
+                let pixelSize = pixMap.getPixelBytesNumber();
+                console.info(`${TAG}: pixelSize is: ${pixelSize}`);
+                let readBuffer = new ArrayBuffer(pixelSize);
+                pixMap.readPixelsToBuffer(readBuffer);
+                let bufferArr2 = new Uint8Array(readBuffer);
+                for (let i = 0; i < bufferArr2.length; i++) {
+                  if (bufferArr0[i] !== bufferArr2[i]) {
+                    expect(false).assertTrue();
+                  } else {
+                    expect(true).assertTrue();
+                  }
+                }
+                done();
+              }
+            })
+          }
+        });
+      } catch (error) {
+        console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
     })
 
     /* *
@@ -680,22 +934,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0100', 2, async function (done) {
-      let callMetadata0 = {
-        name: '1234568',
-        phoneNumber: '65432111'
-      };
       try {
-        session.setCallMetadata(callMetadata0, (err, data) => {
-          if (err) {
-            console.info(`${TAG}: setCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else {
-            console.info(`${TAG}: setCallMetadataCallback successfully`);
-          }
-        })
-        await sleep(500);
         await session.destroy();
-        await sleep(500);
         controller.getCallMetadata((err, data) => {
           if (err) {
             if (err.code == 6600102) {
@@ -709,15 +949,14 @@ export default function abilityTest() {
             console.info(`${TAG}: getCallMetadataCallback without avsession test fail, get successful!`);
             expect(false).assertTrue();
           }
+          session = null;
+          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -729,22 +968,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_GETCALLMETADATA_CALLBACK_0200', 2, async function (done) {
-      let callMetadata1 = {
-        name: '12345678',
-        phoneNumber: '65432111'
-      };
       try {
-        session.setCallMetadata(callMetadata1, (err, data) => {
-          if (err) {
-            console.info(`${TAG}: setCallMetadataCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else {
-            console.info(`${TAG}: setCallMetadataCallback successfully`);
-          }
-        })
-        await sleep(500);
         await controller.destroy();
-        await sleep(500);
         controller.getCallMetadata((err, data) => {
           if (err) {
             if (err.code == 6600103) {
@@ -758,14 +983,14 @@ export default function abilityTest() {
             console.info(`${TAG}: getCallMetadataCallback without avsession test fail, get successful!`);
             expect(false).assertTrue();
           }
+          controller = null;
+          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -788,7 +1013,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 2 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -824,7 +1048,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 0 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -860,7 +1083,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 1 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -896,7 +1118,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 3 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -932,7 +1153,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 4 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -968,7 +1188,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 5 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -1004,7 +1223,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 6 && data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -1040,7 +1258,6 @@ export default function abilityTest() {
         expect(false).assertTrue();
       });
 
-      await sleep(500);
       await controller.getAVCallState().then((data) => {
         if (data.state === 0 && !data.muted) {
           console.info(`${TAG}: getAVCallState successfully`);
@@ -1182,7 +1399,6 @@ export default function abilityTest() {
         muted: true,
       };
       await session.destroy();
-      await sleep(500);
       await session.setAVCallState(avCallState12).then(() => {
         console.info(`${TAG}: setAVCallState without avsession test fail, set successful!`);
         expect(false).assertTrue();
@@ -1195,9 +1411,7 @@ export default function abilityTest() {
           expect(false).assertTrue();
         }
       });
-      await sleep(200);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
+      session = null;
       done();
     })
 
@@ -1269,16 +1483,14 @@ export default function abilityTest() {
         muted: true,
       };
       try {
-        session.setAVCallState(avCallState0).then(() => {
+        await session.setAVCallState(avCallState0).then(() => {
           console.info(`${TAG}: setAVCallState successfully`);
         }).catch((err) => {
           console.info(`${TAG}: setAVCallState error: code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
         });
-        await sleep(500);
         await session.destroy();
-        await sleep(500);
-        controller.getAVCallState().then(() => {
+        await controller.getAVCallState().then(() => {
           console.info(`${TAG}: getAVCallState without session test fail, get successful!`);
           expect(false).assertTrue();
         }).catch((err) => {
@@ -1290,14 +1502,13 @@ export default function abilityTest() {
             expect(false).assertTrue();
           }
         });
+        session = null;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -1314,16 +1525,14 @@ export default function abilityTest() {
         muted: true,
       };
       try {
-        session.setAVCallState(avCallState1).then(() => {
+        await session.setAVCallState(avCallState1).then(() => {
           console.info(`${TAG}: setAVCallState successfully`);
         }).catch((err) => {
           console.info(`${TAG}: setAVCallState error: code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
         });
-        await sleep(500);
         await controller.destroy();
-        await sleep(500);
-        controller.getAVCallState().then(() => {
+        await controller.getAVCallState().then(() => {
           console.info(`${TAG}: getAVCallState without controller test fail, get successful!`);
           expect(false).assertTrue();
         }).catch((err) => {
@@ -1335,13 +1544,13 @@ export default function abilityTest() {
             expect(false).assertTrue();
           }
         });
+        controller = null;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
 
@@ -1363,24 +1572,24 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 2 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
         });
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 2 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
-        })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -1406,23 +1615,23 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 0 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
-        })
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 0 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
@@ -1449,23 +1658,23 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 1 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
-        })
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 1 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
@@ -1492,23 +1701,23 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 3 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
-        })
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 3 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
@@ -1535,24 +1744,24 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 4 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
         });
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 4 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
-        })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -1578,24 +1787,24 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 5 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
         });
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 5 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
-        })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -1621,24 +1830,24 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 6 && data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
         });
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 6 && data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
-        })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -1664,24 +1873,24 @@ export default function abilityTest() {
           if (err) {
             console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
+            done();
           } else {
             console.info(`${TAG}: setAVCallStateCallback successfully`);
+            controller.getAVCallState((err, data) => {
+              if (err) {
+                console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+              } else if (data.state === 0 && !data.muted) {
+                console.info(`${TAG}: getAVCallStateCallback successfully`);
+                expect(true).assertTrue();
+              } else {
+                console.info(`${TAG}: getAVCallStateCallback failed`);
+                expect(false).assertTrue();
+              }
+              done();
+            })
           }
         });
-        await sleep(500);
-        controller.getAVCallState((err, data) => {
-          if (err) {
-            console.info(`${TAG}: getAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else if (data.state === 0 && !data.muted) {
-            console.info(`${TAG}: getAVCallStateCallback successfully`);
-            expect(true).assertTrue();
-          } else {
-            console.info(`${TAG}: getAVCallStateCallback failed`);
-            expect(false).assertTrue();
-          }
-          done();
-        })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
@@ -1811,7 +2020,7 @@ export default function abilityTest() {
         muted: '123',
       };
       try {
-        await session.setAVCallState(avCallState11, (err, data) => {
+        session.setAVCallState(avCallState11, (err, data) => {
           if (err) {
             if (err.code == 401) {
               console.info(`${TAG}: setAVCallStateCallback with error muted test success, error: code: ${err.code}, message: ${err.message}`);
@@ -1848,7 +2057,6 @@ export default function abilityTest() {
       };
       try {
         await session.destroy();
-        await sleep(500);
         session.setAVCallState(avCallState12, (err, data) => {
           if (err) {
             if (err.code == 6600102) {
@@ -1862,15 +2070,14 @@ export default function abilityTest() {
             console.info(`${TAG}: setAVCallStateCallback without avsession test fail, set successful!`);
             expect(false).assertTrue();
           }
+          session = null;
+          done();
         });
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -1952,22 +2159,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0100', 2, async function (done) {
-      let avCallState0 = {
-        state: avSession.CallState.CALL_STATE_IDLE,
-        muted: true,
-      };
       try {
-        session.setAVCallState(avCallState0, (err, data) => {
-          if (err) {
-            console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else {
-            console.info(`${TAG}: setAVCallStateCallback successfully`);
-          }
-        })
-        await sleep(500);
         await session.destroy();
-        await sleep(500);
         controller.getAVCallState((err, data) => {
           if (err) {
             if (err.code == 6600102) {
@@ -1981,15 +2174,14 @@ export default function abilityTest() {
             console.info(`${TAG}: getAVCallStateCallback without avsession test fail, get successful!`);
             expect(false).assertTrue();
           }
+          session = null;
+          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -2001,22 +2193,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_GETAVCALLSTATE_CALLBACK_0200', 2, async function (done) {
-      let avCallState1 = {
-        state: avSession.CallState.CALL_STATE_IDLE,
-        muted: true,
-      };
       try {
-        session.setAVCallState(avCallState1, (err, data) => {
-          if (err) {
-            console.info(`${TAG}: setAVCallStateCallback error: code: ${err.code}, message: ${err.message}`);
-            expect(false).assertTrue();
-          } else {
-            console.info(`${TAG}: setAVCallStateCallback successfully`);
-          }
-        })
-        await sleep(500);
         await controller.destroy();
-        await sleep(500);
         controller.getAVCallState((err, data) => {
           if (err) {
             if (err.code == 6600103) {
@@ -2030,14 +2208,14 @@ export default function abilityTest() {
             console.info(`${TAG}: getAVCallStateCallback without controller test fail, get successful!`);
             expect(false).assertTrue();
           }
+          controller = null;
+          done();
         })
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -2057,21 +2235,20 @@ export default function abilityTest() {
         let metadata = ['name', 'phoneNumber'];
         controller.on('callMetadataChange', metadata, (callMetadata) => {
           console.info(`on callMetadataChange callMetadata : ${JSON.stringify(callMetadata)}`);
-          if (callMetadata.name != '12345678' || callMetadata.phoneNumber != '65432111') {
+          if (callMetadata.name != '12345678' || callMetadata.phoneNumber != '65432111' || callMetadata.avatar != null) {
             console.error(`${TAG}: on callMetadataChange received callMetadata unmatch`);
             expect(false).assertTrue();
           } else {
             expect(true).assertTrue();
           }
+          done();
         });
         await session.setCallMetadata(callMetadata);
-        await sleep(200);
-        await controller.off('callMetadataChange');
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2090,21 +2267,20 @@ export default function abilityTest() {
       try {
         controller.on('callMetadataChange', 'all', (callMetadata) => {
           console.info(`on callMetadataChange callMetadata : ${JSON.stringify(callMetadata)}`);
-          if (callMetadata.name != '12345678' || callMetadata.phoneNumber != '654321111') {
+          if (callMetadata.name != '12345678' || callMetadata.phoneNumber != '654321111' || callMetadata.avatar != null) {
             console.error(`${TAG}: on callMetadataChange received callMetadata unmatch`);
             expect(false).assertTrue();
           } else {
             expect(true).assertTrue();
           }
+          done();
         });
         await session.setCallMetadata(callMetadata);
-        await sleep(200);
-        await controller.off('callMetadataChange');
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2126,7 +2302,6 @@ export default function abilityTest() {
           console.info(`on callMetadataChange callMetadata : ${JSON.stringify(callMetadata)}`);
           flag = true;
         });
-        await sleep(500);
         await controller.off('callMetadataChange');
         await session.setCallMetadata(callMetadata);
         await sleep(500);
@@ -2137,11 +2312,12 @@ export default function abilityTest() {
           console.info(`${TAG}: callMetadataChange off`);
           expect(true).assertTrue();
         }
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2158,13 +2334,13 @@ export default function abilityTest() {
         phoneNumber: '65432111'
       };
       try {
-        let metadata1 = ['name'];
-        let metadata2 = ['name', 'phoneNumber'];
-        controller.on('callMetadataChange', metadata1, callMetadataChangeCallback1);
-        controller.on('callMetadataChange', metadata2, callMetadataChangeCallback2);
+        let metadata = ['name', 'phoneNumber'];
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback1);
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback2);
         await session.setCallMetadata(callMetadata).catch((err) => {
           console.info(`${TAG}: setCallMetadata failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
+          done();
         });
         await sleep(500);
         if (receivedCallback1 && receivedCallback2) {
@@ -2177,11 +2353,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await controller.off('callMetadataChange');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2198,15 +2375,14 @@ export default function abilityTest() {
         phoneNumber: '65432111'
       };
       try {
-        let metadata1 = ['name'];
-        let metadata2 = ['name', 'phoneNumber'];
-        controller.on('callMetadataChange', metadata1, callMetadataChangeCallback1);
-        controller.on('callMetadataChange', metadata2, callMetadataChangeCallback2);
-        await sleep(500);
+        let metadata = ['name', 'phoneNumber'];
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback1);
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback2);
         await controller.off('callMetadataChange', callMetadataChangeCallback1);
         await session.setCallMetadata(callMetadata).catch((err) => {
           console.info(`${TAG}: setCallMetadata failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
+          done();
         });
         await sleep(500);
         if (!receivedCallback1 && receivedCallback2) {
@@ -2219,11 +2395,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await controller.off('callMetadataChange');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2240,11 +2417,9 @@ export default function abilityTest() {
         phoneNumber: '65432111'
       };
       try {
-        let metadata1 = ['name'];
-        let metadata2 = ['name', 'phoneNumber'];
-        controller.on('callMetadataChange', metadata1, callMetadataChangeCallback1);
-        controller.on('callMetadataChange', metadata2, callMetadataChangeCallback2);
-        await sleep(500);
+        let metadata = ['name', 'phoneNumber'];
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback1);
+        controller.on('callMetadataChange', metadata, callMetadataChangeCallback2);
         await controller.off('callMetadataChange');
         await session.setCallMetadata(callMetadata).catch((err) => {
           console.info(`${TAG}: setCallMetadata failed, error: [${err.code}, ${err.message}]`);
@@ -2261,11 +2436,12 @@ export default function abilityTest() {
         }
         receivedCallback1 = false;
         receivedCallback2 = false;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2281,26 +2457,25 @@ export default function abilityTest() {
         name: '123456789',
         phoneNumber: '65432111'
       };
-      let flag = false;
       try {
         let metadata = ['avatar'];
         controller.on('callMetadataChange', metadata, (callMetadata) => {
-          console.error(`${TAG}: on callMetadataChange called!`);
-          flag = true;
+          console.info(`${TAG}: on callMetadataChange called!`);
+          if (callMetadata.avatar != null || callMetadata.name != null || callMetadata.phoneNumber != null) {
+            console.info(`${TAG}: callMetadata is not empty, test failed! callMetadata: ${JSON.stringify(callMetadata)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TAG}: callMetadata is empty, test success`);
+            expect(true).assertTrue();
+          }
+          done();
         });
         await session.setCallMetadata(callMetadata);
-        if (flag) {
-          console.error(`${TAG}: avatar does not change but on callMetadataChange called, test failed!`);
-          expect(false).assertTrue();
-        } else {
-          expect(true).assertTrue();
-        }
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await controller.off('callMetadataChange');
-      done();
     })
 
     /* *
@@ -2314,11 +2489,11 @@ export default function abilityTest() {
     it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_0800', 2, async function (done) {
       try {
         await controller.destroy();
-        await sleep(500);
         let metadata = ['name', 'phoneNumber'];
         controller.on('callMetadataChange', metadata, (callMetadata) => {
           console.error(`${TAG}: on callMetadataChange called, test failed!`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 6600103) {
@@ -2328,10 +2503,9 @@ export default function abilityTest() {
           console.info(`${TAG}: on callMetadataChange errorCode != 6600103, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        controller = null;
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -2348,6 +2522,34 @@ export default function abilityTest() {
         controller.on('callMetadataChange', metadata, (callMetadata) => {
           console.error(`${TAG}: on callMetadataChange called, test failed!`);
           expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        if (error.code == 6600101) {
+          console.info(`${TAG}: on callMetadataChange with error metadata test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: on callMetadataChange errorCode != 6600101, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_1000
+     * @tc.name      : ON_CALLMETADATACHANGE_1000
+     * @tc.desc      : Testing on('callMetadataChange')
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLMETADATACHANGE_1000', 2, async function (done) {
+      try {
+        controller.on(-1, 'all', (callMetadata) => {
+          console.error(`${TAG}: on callMetadataChange called, test failed!`);
+          expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 401) {
@@ -2357,8 +2559,8 @@ export default function abilityTest() {
           console.info(`${TAG}: on callMetadataChange errorCode != 401, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        done();
       }
-      done();
     })
 
     /* *
@@ -2370,11 +2572,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLMETADATACHANGE_0100', 2, async function (done) {
-      let metadata = ['name', 'phoneNumber'];
-      controller.on('callMetadataChange', metadata, callMetadataChangeCallback2);
+      await controller.destroy();
       try {
-        await controller.destroy();
-        await sleep(500);
         await controller.off('callMetadataChange');
       } catch (error) {
         if (error.code == 6600103) {
@@ -2384,10 +2583,9 @@ export default function abilityTest() {
           console.info(`${TAG}: off callMetadataChange errorCode != 6600103, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        controller = null;
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -2407,20 +2605,20 @@ export default function abilityTest() {
         let state = ['state'];
         controller.on('callStateChange', state, (callState) => {
           console.info(`on callStateChange callState : ${JSON.stringify(callState)}`);
-          if (callState.state != avSession.CallState.CALL_STATE_DIALING) {
+          if (callState.state != avSession.CallState.CALL_STATE_DIALING || callState.muted != null) {
             console.error(`${TAG}: on callStateChange received callState unmatch`);
             expect(false).assertTrue();
           } else {
             expect(true).assertTrue();
           }
+          done();
         });
         await session.setAVCallState(AVCallState);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await controller.off('callStateChange');
-      done();
     })
 
     /* *
@@ -2445,14 +2643,14 @@ export default function abilityTest() {
           } else {
             expect(true).assertTrue();
           }
+          done();
         });
         await session.setAVCallState(AVCallState);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await controller.off('callStateChange');
-      done();
     })
 
     /* *
@@ -2474,7 +2672,6 @@ export default function abilityTest() {
           console.info(`on callStateChange stateChange : ${JSON.stringify(stateChange)}`);
           flag = true;
         });
-        await sleep(500);
         await controller.off('callStateChange');
         await session.setAVCallState(AVCallState);
         await sleep(500);
@@ -2485,11 +2682,12 @@ export default function abilityTest() {
           console.info(`${TAG}: callStateChange off`);
           expect(true).assertTrue();
         }
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2506,12 +2704,12 @@ export default function abilityTest() {
         muted: false
       };
       try {
-        let state = ['muted'];
-        controller.on('callStateChange', state, callStateChangeCallback2);
+        controller.on('callStateChange', 'all', callStateChangeCallback2);
         controller.on('callStateChange', 'all', callStateChangeCallback1);
         await session.setAVCallState(AVCallState).catch((err) => {
           console.info(`${TAG}: setAVCallState failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
+          done();
         });
         await sleep(500);
         if (receivedCallback1 && receivedCallback2) {
@@ -2524,11 +2722,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await controller.off('callStateChange');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2545,10 +2744,8 @@ export default function abilityTest() {
         muted: false
       };
       try {
-        let state = ['muted'];
-        controller.on('callStateChange', state, callStateChangeCallback2);
+        controller.on('callStateChange', 'all', callStateChangeCallback2);
         controller.on('callStateChange', 'all', callStateChangeCallback1);
-        await sleep(500);
         await controller.off('callStateChange', callStateChangeCallback2);
         await session.setAVCallState(AVCallState).catch((err) => {
           console.info(`${TAG}: setAVCallState failed, error: [${err.code}, ${err.message}]`);
@@ -2566,11 +2763,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await controller.off('callStateChange');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2587,10 +2785,8 @@ export default function abilityTest() {
         muted: false
       };
       try {
-        let state = ['muted'];
-        controller.on('callStateChange', state, callStateChangeCallback2);
+        controller.on('callStateChange', 'all', callStateChangeCallback2);
         controller.on('callStateChange', 'all', callStateChangeCallback1);
-        await sleep(500);
         await controller.off('callStateChange');
         await session.setAVCallState(AVCallState).catch((err) => {
           console.info(`${TAG}: setAVCallState failed, error: [${err.code}, ${err.message}]`);
@@ -2607,11 +2803,12 @@ export default function abilityTest() {
         }
         receivedCallback1 = false;
         receivedCallback2 = false;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2623,36 +2820,29 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0700', 2, async function (done) {
-      let AVCallState1 = {
+      let AVCallState = {
         state: avSession.CallState.CALL_STATE_DIALING,
         muted: false
       };
-      let AVCallState2 = {
-        state: avSession.CallState.CALL_STATE_DIALING,
-        muted: true
-      };
-      let flag = false;
       try {
-        await session.setAVCallState(AVCallState1);
         let state = ['state'];
         controller.on('callStateChange', state, (callState) => {
           console.info(`on callStateChange called, callState : ${JSON.stringify(callState)}`);
-          flag = true;
+          if (callState.state != avSession.CallState.CALL_STATE_DIALING || callState.muted != null) {
+            console.info(`${TAG}: on callStateChange test failed!`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TAG}: on callStateChange test success, muted is empty`);
+            expect(true).assertTrue();
+          }
+          done();
         });
-        await session.setAVCallState(AVCallState2);
-        if (flag) {
-          console.info(`${TAG}: on callStateChange test failed!`);
-          expect(false).assertTrue();
-        } else {
-          console.info(`${TAG}: on callStateChange does not called, test success`);
-          expect(true).assertTrue();
-        }
-        await controller.off('callStateChange');
+        await session.setAVCallState(AVCallState);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2666,11 +2856,11 @@ export default function abilityTest() {
     it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_0800', 2, async function (done) {
       try {
         await controller.destroy();
-        await sleep(500);
         let state = ['muted'];
         controller.on('callStateChange', state, (stateChange) => {
           console.info(`${TAG}: on callStateChange called, stateChange: ${JSON.stringify(stateChange)}`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 6600103) {
@@ -2680,10 +2870,9 @@ export default function abilityTest() {
           console.info(`${TAG}: on callStateChange errorCode != 6600103, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        controller = null;
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -2700,6 +2889,34 @@ export default function abilityTest() {
         controller.on('callStateChange', state, (stateChange) => {
           console.info(`${TAG}: on callStateChange with error param test failed! stateChange: ${JSON.stringify(stateChange)}`);
           expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        if (error.code == 6600101) {
+          console.info(`${TAG}: on callStateChange with error param test success, error: code: ${error.code}, message: ${error.message}`);
+          expect(true).assertTrue();
+        } else {
+          console.info(`${TAG}: on callStateChange errorCode != 6600101, error: code: ${error.code}, message: ${error.message}`);
+          expect(false).assertTrue();
+        }
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_1000
+     * @tc.name      : ON_CALLSTATECHANGE_1000
+     * @tc.desc      : Testing on('callStateChange')
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AVSESSION_ON_CALLSTATECHANGE_1000', 2, async function (done) {
+      try {
+        controller.on(-1, 'all', (stateChange) => {
+          console.info(`${TAG}: on callStateChange with error param test failed! stateChange: ${JSON.stringify(stateChange)}`);
+          expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 401) {
@@ -2709,8 +2926,8 @@ export default function abilityTest() {
           console.info(`${TAG}: on callStateChange errorCode != 401, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        done();
       }
-      done();
     })
 
     /* *
@@ -2722,13 +2939,7 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_CALLSTATECHANGE_0100', 2, async function (done) {
-      let state = ['muted'];
-      controller.on('callStateChange', state, (stateChange) => {
-        console.info(`${TAG}: on callStateChange called, stateChange: ${JSON.stringify(stateChange)}`);
-        expect(false).assertTrue();
-      });
       await controller.destroy();
-      await sleep(500);
       try {
         await controller.off('callStateChange');
       } catch (error) {
@@ -2739,10 +2950,9 @@ export default function abilityTest() {
           console.info(`${TAG}: off callStateChange errorCode != 6600103, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        controller = null;
+        done();
       }
-      await sleep(800);
-      controller = await session.getController();
-      done();
     })
 
     /* *
@@ -2761,14 +2971,14 @@ export default function abilityTest() {
         session.on('answer', () => {
           console.info(`${TAG}: on answer called`);
           expect(true).assertTrue();
+          done();
         });
         await controller.sendControlCommand(command);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await session.off('answer');
-      done();
     })
 
     /* *
@@ -2789,8 +2999,7 @@ export default function abilityTest() {
           console.info(`${TAG}: on answer called`);
           flag = true;
         });
-        await sleep(500);
-        session.off('answer');
+        await session.off('answer');
         await controller.sendControlCommand(command);
         await sleep(500);
         if (flag) {
@@ -2800,11 +3009,12 @@ export default function abilityTest() {
           console.info(`${TAG}: answer off`);
           expect(true).assertTrue();
         }
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2825,6 +3035,7 @@ export default function abilityTest() {
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
+          done();
         });
         await sleep(500);
         if (receivedCallback1 && receivedCallback2) {
@@ -2837,11 +3048,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('answer');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2859,11 +3071,11 @@ export default function abilityTest() {
       try {
         session.on('answer', answerCallback1);
         session.on('answer', answerCallback2);
-        await sleep(500);
         await session.off('answer', answerCallback1);
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
           expect(false).assertTrue();
+          done();
         });
         await sleep(500);
         if (!receivedCallback1 && receivedCallback2) {
@@ -2876,11 +3088,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('answer');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2898,7 +3111,6 @@ export default function abilityTest() {
       try {
         session.on('answer', answerCallback1);
         session.on('answer', answerCallback2);
-        await sleep(500);
         await session.off('answer');
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
@@ -2915,11 +3127,12 @@ export default function abilityTest() {
         }
         receivedCallback1 = false;
         receivedCallback2 = false;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -2933,10 +3146,10 @@ export default function abilityTest() {
     it('SUB_MULTIMEDIA_AVSESSION_ON_ANSWER_0600', 2, async function (done) {
       try {
         await session.destroy();
-        await sleep(500);
         session.on('answer', () => {
           console.info(`${TAG}: on answer called`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 6600102) {
@@ -2946,11 +3159,9 @@ export default function abilityTest() {
           console.info(`${TAG}: on answer errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -2966,6 +3177,7 @@ export default function abilityTest() {
         session.on('123456', () => {
           console.info(`${TAG}: on answer called`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 401) {
@@ -2975,8 +3187,8 @@ export default function abilityTest() {
           console.info(`${TAG}: on answer errorCode != 401, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        done();
       }
-      done();
     })
 
     /* *
@@ -2988,13 +3200,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_ANSWER_0100', 2, async function (done) {
-      session.on('answer', () => {
-        console.info(`${TAG}: on answer called`);
-        expect(false).assertTrue();
-      });
+      await session.destroy();
       try {
-        await session.destroy();
-        await sleep(500);
         await session.off('answer');
       } catch (error) {
         if (error.code == 6600102) {
@@ -3004,11 +3211,9 @@ export default function abilityTest() {
           console.info(`${TAG}: off answer errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -3027,14 +3232,14 @@ export default function abilityTest() {
         session.on('hangUp', () => {
           console.info(`${TAG}: on hangUp called`);
           expect(true).assertTrue();
+          done();
         });
         await controller.sendControlCommand(command);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await session.off('hangUp');
-      done();
     })
 
     /* *
@@ -3055,8 +3260,7 @@ export default function abilityTest() {
           console.info(`${TAG}: on hangUp called`);
           flag = true;
         });
-        await sleep(500);
-        session.off('hangUp');
+        await session.off('hangUp');
         await controller.sendControlCommand(command);
         await sleep(500);
         if (flag) {
@@ -3066,11 +3270,12 @@ export default function abilityTest() {
           console.info(`${TAG}: hangUp off`);
           expect(true).assertTrue();
         }
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3104,11 +3309,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('hangUp');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3126,7 +3332,6 @@ export default function abilityTest() {
       try {
         session.on('hangUp', hangUpCallback1);
         session.on('hangUp', hangUpCallback2);
-        await sleep(500);
         await session.off('hangUp', hangUpCallback2);
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
@@ -3144,11 +3349,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('hangUp');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3166,7 +3372,6 @@ export default function abilityTest() {
       try {
         session.on('hangUp', hangUpCallback1);
         session.on('hangUp', hangUpCallback2);
-        await sleep(500);
         await session.off('hangUp');
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
@@ -3183,11 +3388,12 @@ export default function abilityTest() {
         }
         receivedCallback1 = false;
         receivedCallback2 = false;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3201,10 +3407,10 @@ export default function abilityTest() {
     it('SUB_MULTIMEDIA_AVSESSION_ON_HANGUP_0600', 2, async function (done) {
       try {
         await session.destroy();
-        await sleep(500);
         session.on('hangUp', () => {
           console.info(`${TAG}: on hangUp called`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 6600102) {
@@ -3214,11 +3420,9 @@ export default function abilityTest() {
           console.info(`${TAG}: on hangUp errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -3230,27 +3434,20 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_HANGUP_0100', 2, async function (done) {
-      session.on('hangUp', () => {
-        console.info(`${TAG}: on hangUp called`);
-        expect(false).assertTrue();
-      });
+      await session.destroy();
       try {
-        await session.destroy();
-        await sleep(500);
         await session.off('hangUp');
       } catch (error) {
         if (error.code == 6600102) {
-          console.info(`${TAG}: off hangUp without avseesion test success, error: code: ${error.code}, message: ${error.message}`);
+          console.info(`${TAG}: off hangUp without avsession test success, error: code: ${error.code}, message: ${error.message}`);
           expect(true).assertTrue();
         } else {
           console.info(`${TAG}: off hangUp errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -3269,14 +3466,14 @@ export default function abilityTest() {
         session.on('toggleCallMute', () => {
           console.info(`${TAG}: on toggleCallMute called`);
           expect(true).assertTrue();
+          done();
         });
         await controller.sendControlCommand(command);
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      await session.off('toggleCallMute');
-      done();
     })
 
     /* *
@@ -3297,7 +3494,6 @@ export default function abilityTest() {
           console.info(`${TAG}: on toggleCallMute called`);
           flag = true;
         });
-        await sleep(500);
         session.off('toggleCallMute');
         await controller.sendControlCommand(command);
         await sleep(500);
@@ -3308,11 +3504,12 @@ export default function abilityTest() {
           console.info(`${TAG}: toggleCallMute off`);
           expect(true).assertTrue();
         }
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3346,11 +3543,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('toggleCallMute');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3368,7 +3566,6 @@ export default function abilityTest() {
       try {
         session.on('toggleCallMute', toggleCallMuteCallback1);
         session.on('toggleCallMute', toggleCallMuteCallback2);
-        await sleep(500);
         await session.off('toggleCallMute', toggleCallMuteCallback2);
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
@@ -3386,11 +3583,12 @@ export default function abilityTest() {
         receivedCallback1 = false;
         receivedCallback2 = false;
         await session.off('toggleCallMute');
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3408,7 +3606,6 @@ export default function abilityTest() {
       try {
         session.on('toggleCallMute', toggleCallMuteCallback1);
         session.on('toggleCallMute', toggleCallMuteCallback2);
-        await sleep(500);
         await session.off('toggleCallMute');
         await controller.sendControlCommand(command).catch((err) => {
           console.info(`${TAG}: sendControlCommand failed, error: [${err.code}, ${err.message}]`);
@@ -3425,11 +3622,12 @@ export default function abilityTest() {
         }
         receivedCallback1 = false;
         receivedCallback2 = false;
+        done();
       } catch (error) {
         console.info(`${TAG}: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
+        done();
       }
-      done();
     })
 
     /* *
@@ -3443,10 +3641,10 @@ export default function abilityTest() {
     it('SUB_MULTIMEDIA_AVSESSION_ON_TOGGLECALLMUTE_0600', 2, async function (done) {
       try {
         await session.destroy();
-        await sleep(500);
         session.on('toggleCallMute', () => {
           console.info(`${TAG}: on toggleCallMute called`);
           expect(false).assertTrue();
+          done();
         });
       } catch (error) {
         if (error.code == 6600102) {
@@ -3456,11 +3654,9 @@ export default function abilityTest() {
           console.info(`${TAG}: on toggleCallMute errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
 
     /* *
@@ -3472,13 +3668,8 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
     it('SUB_MULTIMEDIA_AVSESSION_OFF_TOGGLECALLMUTE_0100', 2, async function (done) {
-      session.on('toggleCallMute', () => {
-        console.info(`${TAG}: on toggleCallMute called`);
-        expect(false).assertTrue();
-      });
+      await session.destroy();
       try {
-        await session.destroy();
-        await sleep(500);
         await session.off('toggleCallMute');
       } catch (error) {
         if (error.code == 6600102) {
@@ -3488,11 +3679,9 @@ export default function abilityTest() {
           console.info(`${TAG}: off toggleCallMute errorCode != 6600102, error: code: ${error.code}, message: ${error.message}`);
           expect(false).assertTrue();
         }
+        session = null;
+        done();
       }
-      await sleep(800);
-      session = await avSession.createAVSession(context, tag, 'voice_call');
-      await session.activate();
-      done();
     })
   })
 }

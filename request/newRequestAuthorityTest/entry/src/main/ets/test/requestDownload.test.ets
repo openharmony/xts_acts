@@ -485,7 +485,7 @@ export default function requestDownloadJSUnit() {
             await task.resume();
             expect(true).assertEqual(true);
             await request.agent.remove(task.tid);
-            console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume success: " + task);3
+            console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume success: " + task);
             done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume err: " + JSON.stringify(err));
