@@ -87,7 +87,7 @@ namespace OHOS {
                 }
 
                 map<string, string> myMap;
-                myMap["glBufferPageCommitMentMemNV"] = "GL_NV_memory_object_sparse";
+                myMap["glBufferPageCommitmentMemNV"] = "GL_NV_memory_object_sparse";
                 myMap["glCreateSemaphoresNV"] = "GL_NV_timeline_semaphore";
                 myMap["glExtrapolateTex2DQCOM"] = "GL_QCOM_frame_extrapolation";
 
@@ -207,7 +207,7 @@ namespace OHOS {
                 }
 
                 map<string, string> myMap;
-                myMap["glNamedBufferPageCommitMentMemNV"] = "GL_NV_memory_object_sparse";
+                myMap["glNamedBufferPageCommitmentMemNV"] = "GL_NV_memory_object_sparse";
                 myMap["glSemaphoreParameterivNV"] = "GL_NV_timeline_semaphore";
                 myMap["glShadingRateQCOM"] = "GL_QCOM_shading_rate";
 
