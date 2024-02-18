@@ -236,6 +236,14 @@ export async function startAbility(bundleName: string, abilityName: string) : Pr
   });
 }
 
+export async function stopAbility(bundleName: string) : Promise<void> {
+  await delegator.executeShellCommand(`aa force-stop ${bundleName}`).then(result => {
+    console.info(`[picker] stop abilityFinished: ${result}`);
+  }).catch(err => {
+    console.error(`[picker] stop abilityFailed: ${err}`);
+  });
+}
+
 export {
   photoType,
   photoKeys,

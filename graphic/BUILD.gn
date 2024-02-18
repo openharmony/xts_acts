@@ -18,16 +18,21 @@ group("graphic") {
     deps = [
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
+      "graphicDrawing:ActsGraphicDrawingTest",
       "graphicEGL:ActsGraphicEglTest",
       "graphicGLES3:ActsGraphicGles3Test",
+      "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
+      "graphicvulkannapitest:ActsGraphicVulkanTest",
       "nativebuffer:ActsNativeBufferTest",
       "nativedrawing:ActsNativeDrawingTest",
       "nativeimage:ActsNativeImageTest",
       "nativevsync:ActsNativeVsyncTest",
       "webGL:webGL_hap_test",
+      "windowPermission:ActsWindowPermissionTest",
       "windowStage:ActsWindowStageTest",
+      "windowstandard:window_hap_test",
     ]
     if (!(product_name == "ohcore")) {
       deps += [

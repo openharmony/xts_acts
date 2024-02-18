@@ -52,14 +52,14 @@ export default function PropHight() {
       console.info('PropHight_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('state1'));
+      let button = await driver.findComponent(ON.id('PropHeight1'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('state1');
+      let strJson = getInspectorByKey('PropHeight1');
       let obj = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height).assertEqual('40.00vp');
+      expect(obj.$attrs.height).assertEqual('100.00vp');
       console.info('[PropHight_0100] END');
       done();
     });
@@ -73,10 +73,10 @@ export default function PropHight() {
       console.info('PropHight_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('state2'));
+      let button = await driver.findComponent(ON.id('PropHeight2'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('state2');
+      let strJson = getInspectorByKey('PropHeight2');
       let obj = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));
@@ -94,10 +94,10 @@ export default function PropHight() {
       console.info('PropHight_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('state3'));
+      let button = await driver.findComponent(ON.id('PropHeight3'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('state3');
+      let strJson = getInspectorByKey('PropHeight3');
       let obj = JSON.parse(strJson);
       console.info("[PropHight_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropHight_0100] title: " + JSON.stringify(obj.$attrs.height));

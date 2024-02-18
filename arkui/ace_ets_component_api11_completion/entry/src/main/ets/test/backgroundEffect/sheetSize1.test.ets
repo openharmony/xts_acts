@@ -50,12 +50,14 @@ export default function sheetSize1Jsunit() {
      */
     it('sheetSize1Jsunit_0100', 0, async function (done) {
       // Get the sheetSize of the bindSheet
+      await CommonFunc.sleep(1000);
       console.info('[sheetSize1Jsunit_0100] START');
-      let strJson = getInspectorByKey('bindSheet_SheetSize1');
+      let strJson = getInspectorByKey('detents');
       let obj = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.bindSheet.detents).assertEqual("[SheetSize.MEDIUM,SheetSize.LARGE,SheetSize.FIT_CONTENT]");
+      expect(obj.$attrs.content).assertEqual("MEDIUM,LARGE,FIT_CONTENT");
       console.info('[sheetSize1Jsunit_0100] END');
       done();
     });

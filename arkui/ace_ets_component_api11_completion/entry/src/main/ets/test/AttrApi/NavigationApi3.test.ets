@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,7 +20,7 @@ import { Driver, ON } from '@ohos.UiTest';
 export default function NavigationApi3() {
   describe('NavigationApi3', function () {
     beforeEach(async function (done) {
-      console.info("flex beforeEach start");
+      console.info("NavigationApi3 beforeEach start");
       let options = {
         uri: 'MainAbility/pages/AttrApi/NavigationApi3',
       }

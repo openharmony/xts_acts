@@ -48,6 +48,7 @@ import SensorJsTest_sensor_56 from './SensorOnOffTest.test_newPedometer.test.js'
 import SensorJsTest_sensor_18 from './SensorOnOffTest.test_oldPedometer.test.js'
 import SensorJsTest_sensor_61 from './SensorOnOffTest.test_newColor.test.js'
 import SensorJsTest_sensor_62 from './SensorOnOffTest.test_newSar.test.js'
+import SensorJsTest_sensor_63 from './SensorOnOffTest.test_SensorFrequencyTest.test.js'
 
 export default function testsuite() {
 		SystemParameterTest()
@@ -86,4 +87,5 @@ export default function testsuite() {
 		SensorJsTest_sensor_18()
 		SensorJsTest_sensor_61()
 		SensorJsTest_sensor_62()
+		SensorJsTest_sensor_63()
 }                    

@@ -23,9 +23,7 @@
 #define LOG(fmt, ...)           \
         (void)printf(fmt, ##__VA_ARGS__);           \
 
-NDKCamera* NDKCamera::ndkCamera_ = nullptr;
 CameraCallbackCode NDKCamera::cameraCallbackCode_ = NoReceived;
-std::mutex NDKCamera::mtx_;
 
 NDKCamera::NDKCamera(char* str)
     : cameras_(nullptr), cameraOutputCapability_(nullptr),
@@ -40,7 +38,7 @@ NDKCamera::NDKCamera(char* str)
     if (cameraManager_ == nullptr || ret != CAMERA_OK) {
         LOG("ndkXTS Get CameraManager failed.");
     }
-
+    CameraManagerRegisterCallback();
     valid_ = true;
 }
 
@@ -54,12 +52,34 @@ NDKCamera::~NDKCamera() {
     }
 
     if (cameraManager_) {
-      cameraManager_ = nullptr;
+        LOG("Release OH_CameraManager_DeleteSupportedCameras. enter");
+        ret = OH_CameraManager_DeleteSupportedCameras(cameraManager_, cameras_, size_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete Cameras failed.");
+        } else {
+            LOG("Release OH_CameraManager_DeleteSupportedCameras. ok");
+        }
+
+        ret = OH_CameraManager_DeleteSupportedCameraOutputCapability(cameraManager_, cameraOutputCapability_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete CameraOutputCapability failed.");
+        } else {
+            LOG("Release OH_CameraManager_DeleteSupportedCameraOutputCapability. ok");
+        }
+
+        ret = OH_Camera_DeleteCameraManager(cameraManager_);
+        if (ret != CAMERA_OK) {
+            LOG("Delete CameraManager failed.");
+        } else {
+            LOG("Release OH_Camera_DeleteCameraManager. ok");
+        }
+        cameraManager_ = nullptr;
     }
 
     PreviewOutputStop();
     PreviewOutputRelease();
     PhotoOutputRelease();
+    CameraManagerUnRegisterCallback();
 }
 
 Camera_ErrorCode NDKCamera::CreateSession(void)
@@ -71,6 +91,7 @@ Camera_ErrorCode NDKCamera::CreateSession(void)
     if (captureSession_ == nullptr || ret != CAMERA_OK) {
         LOG("ndkXTS Create captureSession failed.");
     }
+    CaptureSessionRegisterCallback();
     return ret;
 }
 
@@ -83,7 +104,7 @@ Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
     if (captureSession_ == nullptr || ret != CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_HasFlash failed.");
     }
-    if (hasFlash){
+    if (hasFlash) {
         LOG("ndkXTS hasFlash success-----");
     } else {
         LOG("ndkXTS hasFlash fail-----");
@@ -95,7 +116,7 @@ Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
     if (ret != CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_IsFlashModeSupported failed.");
     }
-    if (isSupported){
+    if (isSupported) {
         LOG("ndkXTS isFlashModeSupported success-----");
     } else {
         LOG("ndkXTS isFlashModeSupported fail-----");
@@ -143,14 +164,15 @@ Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
     // 获取当前设备的变焦值
     ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
     if (ret == CAMERA_OK) {
-        LOG("ndkXTS OH_CaptureSession_GetZoomRatio success. zoom：%f ", zoom);
+        LOG("ndkXTS OH_CaptureSession_GetZoomRatio success. zoom:%f ", zoom);
     } else {
         LOG("ndkXTS OH_CaptureSession_GetZoomRatio failed. %d ", ret);
     }
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionBegin(){
+Camera_ErrorCode NDKCamera::SessionBegin(void)
+{
     Camera_ErrorCode ret =  OH_CaptureSession_BeginConfig(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_BeginConfig success.");
@@ -160,7 +182,8 @@ Camera_ErrorCode NDKCamera::SessionBegin(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionCommitConfig(){
+Camera_ErrorCode NDKCamera::SessionCommitConfig(void)
+{
     Camera_ErrorCode ret =  OH_CaptureSession_CommitConfig(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_CommitConfig success.");
@@ -170,7 +193,8 @@ Camera_ErrorCode NDKCamera::SessionCommitConfig(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionStart(){
+Camera_ErrorCode NDKCamera::SessionStart(void)
+{
     Camera_ErrorCode ret =  OH_CaptureSession_Start(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_Start success.");
@@ -180,7 +204,8 @@ Camera_ErrorCode NDKCamera::SessionStart(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionStop(){
+Camera_ErrorCode NDKCamera::SessionStop(void)
+{
     Camera_ErrorCode ret =  OH_CaptureSession_Stop(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_CaptureSession_Stop success.");
@@ -190,7 +215,8 @@ Camera_ErrorCode NDKCamera::SessionStop(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::CreateCameraInput(void) {
+Camera_ErrorCode NDKCamera::CreateCameraInput(void)
+{
     LOG("ndkXTS CreateCameraInput start.");
     if (cameraManager_ == nullptr) {
         LOG("ndkXTS cameraManager_ is NULL.");
@@ -202,11 +228,13 @@ Camera_ErrorCode NDKCamera::CreateCameraInput(void) {
         LOG("ndkXTS CreateCameraInput failed = %d. cameraInput_ = %p", ret_, cameraInput_);
         return CAMERA_INVALID_ARGUMENT;
     }
+    CameraInputRegisterCallback();
     LOG("ndkXTS CreateCameraInput end.");
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::CameraInputOpen(void) {
+Camera_ErrorCode NDKCamera::CameraInputOpen(void)
+{
     ret_ = OH_CameraInput_Open(cameraInput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS CameraInput_Open failed.");
@@ -215,7 +243,8 @@ Camera_ErrorCode NDKCamera::CameraInputOpen(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::CameraInputClose(void) {
+Camera_ErrorCode NDKCamera::CameraInputClose(void)
+{
     ret_ = OH_CameraInput_Close(cameraInput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS CameraInput_Close failed.");
@@ -224,16 +253,23 @@ Camera_ErrorCode NDKCamera::CameraInputClose(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::CameraInputRelease(void) {
+Camera_ErrorCode NDKCamera::CameraInputRelease(void)
+{
+    ret_ = CameraInputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS CameraInputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_CameraInput_Release(cameraInput_);
     if (ret_ != CAMERA_OK) {
-      LOG("ndkXTS CameraInput_Release failed.");
+        LOG("ndkXTS CameraInput_Release failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::GetSupportedCameras(void) {
+Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
+{
 
     ret_ = OH_CameraManager_GetSupportedCameras(cameraManager_, &cameras_, &size_);
     if (cameras_ == nullptr || ret_ != CAMERA_OK) {
@@ -242,7 +278,8 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void) {
+Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void)
+{
     if (cameraManager_ == nullptr) {
         LOG("ndkXTS cameraManager_ is null.");
     } else if (cameras_ == nullptr) {
@@ -256,7 +293,8 @@ Camera_ErrorCode NDKCamera::GetSupportedOutputCapability(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::CreatePreviewOutput(void) {
+Camera_ErrorCode NDKCamera::CreatePreviewOutput(void)
+{
     profile_ = cameraOutputCapability_->previewProfiles[0];
     if (profile_ == nullptr) {
         LOG("ndkXTS Get previewProfiles failed.");
@@ -267,6 +305,7 @@ Camera_ErrorCode NDKCamera::CreatePreviewOutput(void) {
         LOG("ndkXTS CreatePreviewOutput failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
+    PreviewOutputRegisterCallback();
     return ret_;
 }
 
@@ -291,7 +330,8 @@ Camera_ErrorCode NDKCamera::CreatePhotoOutput(char* photoSurfaceId)
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::CreateVideoOutput(char* videoId) {
+Camera_ErrorCode NDKCamera::CreateVideoOutput(char* videoId)
+{
     LOG("ndkXTS CreateVideoOutput start.");
     videoProfile_ = cameraOutputCapability_->videoProfiles[0];
     LOG("ndkXTS CreateVideoOutput videoProfiles start.");
@@ -308,7 +348,8 @@ Camera_ErrorCode NDKCamera::CreateVideoOutput(char* videoId) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::AddVideoOutput(){
+Camera_ErrorCode NDKCamera::AddVideoOutput(void)
+{
     LOG("ndkXTS AddVideoOutput start.");
     Camera_ErrorCode ret = OH_CaptureSession_AddVideoOutput(captureSession_, videoOutput_);
     if (ret == CAMERA_OK) {
@@ -318,7 +359,9 @@ Camera_ErrorCode NDKCamera::AddVideoOutput(){
     }
     return ret;
 }
-Camera_ErrorCode NDKCamera::CreateMetadataOutput(void) {
+
+Camera_ErrorCode NDKCamera::CreateMetadataOutput(void)
+{
     metaDataObjectType_ = cameraOutputCapability_->supportedMetadataObjectTypes[0];
     
     LOG("NDKCamera::CreateMetadataOutput supportedMetadataObjectTypes end.");
@@ -334,7 +377,8 @@ Camera_ErrorCode NDKCamera::CreateMetadataOutput(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::IsCameraMuted(void) {
+Camera_ErrorCode NDKCamera::IsCameraMuted(void)
+{
     ret_ = OH_CameraManager_IsCameraMuted(cameraManager_, isCameraMuted_);
     if (isCameraMuted_ == nullptr || ret_ != CAMERA_OK) {
         LOG("ndkXTS IsCameraMuted failed.");
@@ -343,7 +387,8 @@ Camera_ErrorCode NDKCamera::IsCameraMuted(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::PreviewOutputStop(void) {
+Camera_ErrorCode NDKCamera::PreviewOutputStop(void)
+{
     ret_ = OH_PreviewOutput_Stop(previewOutput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS PreviewOutputStop failed.");
@@ -352,7 +397,13 @@ Camera_ErrorCode NDKCamera::PreviewOutputStop(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::PreviewOutputRelease(void) {
+Camera_ErrorCode NDKCamera::PreviewOutputRelease(void)
+{
+    ret_ = PreviewOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS PreviewOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_PreviewOutput_Release(previewOutput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS PreviewOutputRelease failed.");
@@ -361,7 +412,13 @@ Camera_ErrorCode NDKCamera::PreviewOutputRelease(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::PhotoOutputRelease(void) {
+Camera_ErrorCode NDKCamera::PhotoOutputRelease(void)
+{
+    ret_ = PhotoOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS PhotoOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     ret_ = OH_PhotoOutput_Release(photoOutput_);
     if (ret_ != CAMERA_OK) {
         LOG("ndkXTS PhotoOutputRelease failed.");
@@ -370,11 +427,10 @@ Camera_ErrorCode NDKCamera::PhotoOutputRelease(void) {
     return ret_;
 }
 
-Camera_ErrorCode NDKCamera::startVideo(char* videoId){
+Camera_ErrorCode NDKCamera::StartVideo(char* videoId)
+{
     LOG("ndkXTS startVideo begin.");
-
     Camera_ErrorCode ret = SessionStop();
-
     if (ret == CAMERA_OK) {
         LOG("ndkXTS SessionStop success.");
     } else {
@@ -393,7 +449,8 @@ Camera_ErrorCode NDKCamera::startVideo(char* videoId){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::VideoOutputStart(){
+Camera_ErrorCode NDKCamera::VideoOutputStart(void)
+{
     LOG("ndkXTS VideoOutputStart begin.");
     Camera_ErrorCode ret = OH_VideoOutput_Start(videoOutput_);
     if (ret == CAMERA_OK) {
@@ -401,10 +458,12 @@ Camera_ErrorCode NDKCamera::VideoOutputStart(){
     } else {
         LOG("ndkXTS OH_VideoOutput_Start failed. %d ", ret);
     }
+    VideoOutputRegisterCallback();
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::PreviewOutputStart(){
+Camera_ErrorCode NDKCamera::PreviewOutputStart(void)
+{
     LOG("ndkXTS PreviewOutputStart begin.");
     Camera_ErrorCode ret = OH_PreviewOutput_Start(previewOutput_);
     if (ret == CAMERA_OK) {
@@ -415,7 +474,8 @@ Camera_ErrorCode NDKCamera::PreviewOutputStart(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::PhotoOutputCapture(){
+Camera_ErrorCode NDKCamera::PhotoOutputCapture(void)
+{
     LOG("ndkXTS Capture begin.");
     Camera_ErrorCode ret = OH_PhotoOutput_Capture(photoOutput_);
     if (ret == CAMERA_OK) {
@@ -439,7 +499,8 @@ Camera_ErrorCode NDKCamera::TakePictureWithPhotoSettings(Camera_PhotoCaptureSett
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::IsMirrorSupported(){
+Camera_ErrorCode NDKCamera::IsMirrorSupported(void)
+{
     LOG("ndkXTS IsMirrorSupported begin.");
     Camera_ErrorCode ret = OH_PhotoOutput_IsMirrorSupported(photoOutput_, &IsMirror_);
     if (ret == CAMERA_OK) {
@@ -450,7 +511,8 @@ Camera_ErrorCode NDKCamera::IsMirrorSupported(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::VideoOutputStop(){
+Camera_ErrorCode NDKCamera::VideoOutputStop(void)
+{
     LOG("ndkXTS VideoOutputStop begin.");
     Camera_ErrorCode ret = OH_VideoOutput_Stop(videoOutput_);
     if (ret == CAMERA_OK) {
@@ -461,8 +523,14 @@ Camera_ErrorCode NDKCamera::VideoOutputStop(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::VideoOutputRelease(){
+Camera_ErrorCode NDKCamera::VideoOutputRelease(void)
+{
     LOG("ndkXTS VideoOutputRelease begin.");
+    ret_ = VideoOutputUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS VideoOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     Camera_ErrorCode ret = OH_VideoOutput_Release(videoOutput_);
     if (ret == CAMERA_OK) {
         LOG("ndkXTS OH_VideoOutput_Release success.");
@@ -472,7 +540,8 @@ Camera_ErrorCode NDKCamera::VideoOutputRelease(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::MetadataOutputStart(){
+Camera_ErrorCode NDKCamera::MetadataOutputStart(void)
+{
     LOG("ndkXTS MetadataOutputStart begin.");
     Camera_ErrorCode ret = OH_MetadataOutput_Start(metadataOutput_);
     if (ret == CAMERA_OK) {
@@ -480,10 +549,16 @@ Camera_ErrorCode NDKCamera::MetadataOutputStart(){
     } else {
         LOG("ndkXTS OH_MetadataOutput_Start failed. %d ", ret);
     }
+    ret = MetadataOutputRegisterCallback();
+    if (ret != CAMERA_OK) {
+        LOG("ndkXTS MetadataOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::MetadataOutputStop(){
+Camera_ErrorCode NDKCamera::MetadataOutputStop(void)
+{
     LOG("ndkXTS MetadataOutputStop begin.");
     Camera_ErrorCode ret = OH_MetadataOutput_Stop(metadataOutput_);
     if (ret == CAMERA_OK) {
@@ -491,10 +566,16 @@ Camera_ErrorCode NDKCamera::MetadataOutputStop(){
     } else {
         LOG("ndkXTS OH_MetadataOutput_Stop failed. %d ", ret);
     }
+    ret = MetadataOutputUnRegisterCallback();
+    if (ret != CAMERA_OK) {
+        LOG("ndkXTS MetadataOutputUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::MetadataOutputRelease(){
+Camera_ErrorCode NDKCamera::MetadataOutputRelease(void)
+{
     LOG("ndkXTS MetadataOutputRelease begin.");
     Camera_ErrorCode ret = OH_MetadataOutput_Release(metadataOutput_);
     if (ret == CAMERA_OK) {
@@ -505,7 +586,8 @@ Camera_ErrorCode NDKCamera::MetadataOutputRelease(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionAddInput(){
+Camera_ErrorCode NDKCamera::SessionAddInput(void)
+{
     LOG("ndkXTS CaptureSessionAddInput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession_, cameraInput_);
     if (ret == CAMERA_OK) {
@@ -516,7 +598,8 @@ Camera_ErrorCode NDKCamera::SessionAddInput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRemoveInput(){
+Camera_ErrorCode NDKCamera::SessionRemoveInput(void)
+{
     LOG("ndkXTS CaptureSessionRemoveInput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_RemoveInput(captureSession_, cameraInput_);
     if (ret == CAMERA_OK) {
@@ -527,7 +610,8 @@ Camera_ErrorCode NDKCamera::SessionRemoveInput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionAddPreviewOutput(){
+Camera_ErrorCode NDKCamera::SessionAddPreviewOutput(void)
+{
     LOG("ndkXTS CaptureSessionAddPreviewOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_AddPreviewOutput(captureSession_, previewOutput_);
     if (ret == CAMERA_OK) {
@@ -538,7 +622,8 @@ Camera_ErrorCode NDKCamera::SessionAddPreviewOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionAddPhotoOutput(){
+Camera_ErrorCode NDKCamera::SessionAddPhotoOutput(void)
+{
     LOG("ndkXTS CaptureSessionAddPhotoOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_AddPhotoOutput(captureSession_, photoOutput_);
     if (ret == CAMERA_OK) {
@@ -549,7 +634,8 @@ Camera_ErrorCode NDKCamera::SessionAddPhotoOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionAddVideoOutput(){
+Camera_ErrorCode NDKCamera::SessionAddVideoOutput(void)
+{
     LOG("ndkXTS CaptureSessionAddVideoOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_AddVideoOutput(captureSession_, videoOutput_);
     if (ret == CAMERA_OK) {
@@ -560,7 +646,8 @@ Camera_ErrorCode NDKCamera::SessionAddVideoOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionAddMetadataOutput(){
+Camera_ErrorCode NDKCamera::SessionAddMetadataOutput(void)
+{
     LOG("ndkXTS CaptureSessionAddMetadataOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_AddMetadataOutput(captureSession_, metadataOutput_);
     if (ret == CAMERA_OK) {
@@ -571,7 +658,8 @@ Camera_ErrorCode NDKCamera::SessionAddMetadataOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRemovePreviewOutput(){
+Camera_ErrorCode NDKCamera::SessionRemovePreviewOutput(void)
+{
     LOG("RemovePreviewOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_RemovePreviewOutput(captureSession_, previewOutput_);
     if (ret == CAMERA_OK) {
@@ -582,7 +670,8 @@ Camera_ErrorCode NDKCamera::SessionRemovePreviewOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRemovePhotoOutput(){
+Camera_ErrorCode NDKCamera::SessionRemovePhotoOutput(void)
+{
     LOG("RemovePhotoOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_RemovePhotoOutput(captureSession_, photoOutput_);
     if (ret == CAMERA_OK) {
@@ -593,7 +682,8 @@ Camera_ErrorCode NDKCamera::SessionRemovePhotoOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRemoveVideoOutput(){
+Camera_ErrorCode NDKCamera::SessionRemoveVideoOutput(void)
+{
     LOG("RemoveVideoOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_RemoveVideoOutput(captureSession_, videoOutput_);
     if (ret == CAMERA_OK) {
@@ -604,7 +694,8 @@ Camera_ErrorCode NDKCamera::SessionRemoveVideoOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRemoveMetadataOutput(){
+Camera_ErrorCode NDKCamera::SessionRemoveMetadataOutput(void)
+{
     LOG("RemoveMetadataOutput begin.");
     Camera_ErrorCode ret = OH_CaptureSession_RemoveMetadataOutput(captureSession_, metadataOutput_);
     if (ret == CAMERA_OK) {
@@ -615,8 +706,14 @@ Camera_ErrorCode NDKCamera::SessionRemoveMetadataOutput(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionRelease(){
+Camera_ErrorCode NDKCamera::SessionRelease(void)
+{
     LOG("SessionRelease begin.");
+    ret_ = CaptureSessionUnRegisterCallback();
+    if (ret_ != CAMERA_OK) {
+        LOG("ndkXTS CaptureSessionUnRegisterCallback failed.");
+        return CAMERA_INVALID_ARGUMENT;
+    }
     Camera_ErrorCode ret = OH_CaptureSession_Release(captureSession_);
     if (ret == CAMERA_OK) {
         LOG("OH_CaptureSession_Release success.");
@@ -626,7 +723,8 @@ Camera_ErrorCode NDKCamera::SessionRelease(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionHasFlash(){
+Camera_ErrorCode NDKCamera::SessionHasFlash(void)
+{
     LOG("HasFlash begin.");
     Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession_, &HasFlash_);
     if (ret == CAMERA_OK) {
@@ -637,7 +735,8 @@ Camera_ErrorCode NDKCamera::SessionHasFlash(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionIsFlashModeSupported(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionIsFlashModeSupported(uint32_t mode)
+{
     LOG("HasFlash begin.");
     Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &IsFlashMode_);
@@ -649,7 +748,8 @@ Camera_ErrorCode NDKCamera::SessionIsFlashModeSupported(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetFlashMode(){
+Camera_ErrorCode NDKCamera::SessionGetFlashMode(void)
+{
     LOG("GetFlashMode begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode_);
     if (ret == CAMERA_OK) {
@@ -660,7 +760,8 @@ Camera_ErrorCode NDKCamera::SessionGetFlashMode(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetFlashMode(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionSetFlashMode(uint32_t mode)
+{
     LOG("SetFlashMode begin.");
     Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
@@ -672,7 +773,8 @@ Camera_ErrorCode NDKCamera::SessionSetFlashMode(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionIsExposureModeSupported(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionIsExposureModeSupported(uint32_t mode)
+{
     LOG("SetFlashMode begin.");
     Camera_ExposureMode exposureMode = static_cast<Camera_ExposureMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_IsExposureModeSupported(captureSession_, exposureMode, &IsExposureMode_);
@@ -684,7 +786,8 @@ Camera_ErrorCode NDKCamera::SessionIsExposureModeSupported(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetExposureMode(){
+Camera_ErrorCode NDKCamera::SessionGetExposureMode(void)
+{
     LOG("GetExposureMode begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetExposureMode(captureSession_, &exposureMode_);
     if (ret == CAMERA_OK) {
@@ -695,7 +798,8 @@ Camera_ErrorCode NDKCamera::SessionGetExposureMode(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetExposureMode(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionSetExposureMode(uint32_t mode)
+{
     LOG("SetExposureMode begin.");
     Camera_ExposureMode exposureMode = static_cast<Camera_ExposureMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_SetExposureMode(captureSession_, exposureMode);
@@ -707,7 +811,8 @@ Camera_ErrorCode NDKCamera::SessionSetExposureMode(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetMeteringPoint(){
+Camera_ErrorCode NDKCamera::SessionGetMeteringPoint(void)
+{
     LOG("OH_CaptureSession_GetMeteringPoint begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetMeteringPoint(captureSession_, &point_);
     if (ret == CAMERA_OK) {
@@ -718,7 +823,8 @@ Camera_ErrorCode NDKCamera::SessionGetMeteringPoint(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetMeteringPoint(double point_x, double point_y){
+Camera_ErrorCode NDKCamera::SessionSetMeteringPoint(double point_x, double point_y)
+{
     LOG("SetMeteringPoint begin.");
     Camera_Point point;
     point.x = point_x;
@@ -733,7 +839,8 @@ Camera_ErrorCode NDKCamera::SessionSetMeteringPoint(double point_x, double point
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetExposureBiasRange(){
+Camera_ErrorCode NDKCamera::SessionGetExposureBiasRange(void)
+{
     LOG("GetExposureBiasRange begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetExposureBiasRange(captureSession_, &minExposureBias_, &maxExposureBias_, &step_);
     if (ret == CAMERA_OK) {
@@ -744,7 +851,8 @@ Camera_ErrorCode NDKCamera::SessionGetExposureBiasRange(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetExposureBias(float exposureBias){
+Camera_ErrorCode NDKCamera::SessionSetExposureBias(float exposureBias)
+{
     LOG("SetExposureBias begin.");
     Camera_ErrorCode ret = OH_CaptureSession_SetExposureBias(captureSession_, exposureBias);
     if (ret == CAMERA_OK) {
@@ -755,7 +863,8 @@ Camera_ErrorCode NDKCamera::SessionSetExposureBias(float exposureBias){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetExposureBias(){
+Camera_ErrorCode NDKCamera::SessionGetExposureBias(void)
+{
     LOG("GetExposureBias begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetExposureBias(captureSession_, &exposureBias_);
     if (ret == CAMERA_OK) {
@@ -766,7 +875,8 @@ Camera_ErrorCode NDKCamera::SessionGetExposureBias(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionIsFocusModeSupported(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionIsFocusModeSupported(uint32_t mode)
+{
     LOG("isFocusModeSupported begin.");
     Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusSupported_);
@@ -778,7 +888,8 @@ Camera_ErrorCode NDKCamera::SessionIsFocusModeSupported(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetFocusMode(){
+Camera_ErrorCode NDKCamera::SessionGetFocusMode(void)
+{
     LOG("GetFocusMode begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetFocusMode(captureSession_, &focusMode_);
     if (ret == CAMERA_OK) {
@@ -789,7 +900,8 @@ Camera_ErrorCode NDKCamera::SessionGetFocusMode(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetFocusMode(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionSetFocusMode(uint32_t mode)
+{
     LOG("SetFocusMode begin.");
     Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_SetFocusMode(captureSession_, focusMode);
@@ -801,7 +913,8 @@ Camera_ErrorCode NDKCamera::SessionSetFocusMode(uint32_t mode){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetFocusPoint(double point_x, double point_y){
+Camera_ErrorCode NDKCamera::SessionSetFocusPoint(double point_x, double point_y)
+{
     LOG("SetFocusPoint begin.");
     Camera_Point point;
     point.x = point_x;
@@ -815,7 +928,8 @@ Camera_ErrorCode NDKCamera::SessionSetFocusPoint(double point_x, double point_y)
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetFocusPoint(){
+Camera_ErrorCode NDKCamera::SessionGetFocusPoint(void)
+{
     LOG("GetFocusMode begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetFocusPoint(captureSession_, &focusPoint_);
     if (ret == CAMERA_OK) {
@@ -826,7 +940,8 @@ Camera_ErrorCode NDKCamera::SessionGetFocusPoint(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetZoomRatioRange(){
+Camera_ErrorCode NDKCamera::SessionGetZoomRatioRange(void)
+{
     LOG("GetZoomRatioRange begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession_, &minZoom_, &maxZoom_);
     if (ret == CAMERA_OK) {
@@ -837,7 +952,8 @@ Camera_ErrorCode NDKCamera::SessionGetZoomRatioRange(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetZoomRatio(){
+Camera_ErrorCode NDKCamera::SessionGetZoomRatio(void)
+{
     LOG("GetZoomRatio begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom_);
     if (ret == CAMERA_OK) {
@@ -848,7 +964,8 @@ Camera_ErrorCode NDKCamera::SessionGetZoomRatio(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetZoomRatio(float zoom){
+Camera_ErrorCode NDKCamera::SessionSetZoomRatio(float zoom)
+{
     LOG("SetZoomRatio begin.");
     Camera_ErrorCode ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
     if (ret == CAMERA_OK) {
@@ -859,7 +976,8 @@ Camera_ErrorCode NDKCamera::SessionSetZoomRatio(float zoom){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionIsVideoStabilizationModeSupported(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionIsVideoStabilizationModeSupported(uint32_t mode)
+{
     LOG("isVideoStabilizationModeSupported begin.");
     Camera_VideoStabilizationMode videoMode = static_cast<Camera_VideoStabilizationMode>(mode);
     LOG("OH_CaptureSession_IsVideoStabilizationModeSupported begin.");
@@ -872,7 +990,8 @@ Camera_ErrorCode NDKCamera::SessionIsVideoStabilizationModeSupported(uint32_t mo
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionGetVideoStabilizationMode(){
+Camera_ErrorCode NDKCamera::SessionGetVideoStabilizationMode(void)
+{
     LOG("GetVideoStabilizationMode begin.");
     Camera_ErrorCode ret = OH_CaptureSession_GetVideoStabilizationMode(captureSession_, &videoMode_);
     if (ret == CAMERA_OK) {
@@ -883,7 +1002,8 @@ Camera_ErrorCode NDKCamera::SessionGetVideoStabilizationMode(){
     return ret;
 }
 
-Camera_ErrorCode NDKCamera::SessionSetVideoStabilizationMode(uint32_t mode){
+Camera_ErrorCode NDKCamera::SessionSetVideoStabilizationMode(uint32_t mode)
+{
     LOG("SetVideoStabilizationMode begin.");
     Camera_VideoStabilizationMode videoMode = static_cast<Camera_VideoStabilizationMode>(mode);
     Camera_ErrorCode ret = OH_CaptureSession_SetVideoStabilizationMode(captureSession_, videoMode);
@@ -898,7 +1018,7 @@ Camera_ErrorCode NDKCamera::SessionSetVideoStabilizationMode(uint32_t mode){
 // CameraManager Callback
 void CameraManagerStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
 {
-    NDKCamera::cameraCallbackCode_ = CameraManagerStatus;
+    NDKCamera::cameraCallbackCode_ = CameraManager_Status;
     LOG("CameraManagerStatusCallback");
 }
 
@@ -919,10 +1039,19 @@ Camera_ErrorCode NDKCamera::CameraManagerRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::CameraManagerUnRegisterCallback(void)
+{
+    ret_ = OH_CameraManager_UnregisterCallback(cameraManager_, GetCameraManagerListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CameraManager_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // CameraInput Callback
 void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
 {
-    NDKCamera::cameraCallbackCode_ = CameraInputStatus;
+    NDKCamera::cameraCallbackCode_ = CameraInput_Status;
     LOG("OnCameraInput errorCode = %d", errorCode);
 }
 
@@ -939,6 +1068,15 @@ Camera_ErrorCode NDKCamera::CameraInputRegisterCallback(void)
     ret_ = OH_CameraInput_RegisterCallback(cameraInput_, GetCameraInputListener());
     if (ret_ != CAMERA_OK) {
         LOG("OH_CameraInput_RegisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CameraInputUnRegisterCallback(void)
+{
+    ret_ = OH_CameraInput_UnregisterCallback(cameraInput_, GetCameraInputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CameraInput_UnregisterCallback failed.");
     }
     return ret_;
 }
@@ -977,6 +1115,15 @@ Camera_ErrorCode NDKCamera::PreviewOutputRegisterCallback(void)
     ret_ = OH_PreviewOutput_RegisterCallback(previewOutput_, GetPreviewOutputListener());
     if (ret_ != CAMERA_OK) {
         LOG("OH_PreviewOutput_RegisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::PreviewOutputUnRegisterCallback(void)
+{
+    ret_ = OH_PreviewOutput_UnregisterCallback(previewOutput_, GetPreviewOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PreviewOutput_UnregisterCallback failed.");
     }
     return ret_;
 }
@@ -1026,6 +1173,15 @@ Camera_ErrorCode NDKCamera::PhotoOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterCallback(void)
+{
+    ret_ = OH_PhotoOutput_UnregisterCallback(photoOutput_, GetPhotoOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_PhotoOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // VideoOutput Callback
 void VideoOutputOnFrameStart(Camera_VideoOutput* videoOutput)
 {
@@ -1064,17 +1220,26 @@ Camera_ErrorCode NDKCamera::VideoOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::VideoOutputUnRegisterCallback(void)
+{
+    ret_ = OH_VideoOutput_UnregisterCallback(videoOutput_, GetVideoOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_VideoOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // Metadata Callback
 void OnMetadataObjectAvailable(Camera_MetadataOutput* metadataOutput,
     Camera_MetadataObject* metadataObject, uint32_t size)
 {
-    NDKCamera::cameraCallbackCode_ = MetadataObjectAvailable;
+    NDKCamera::cameraCallbackCode_ = Metadata_Object_Available;
     LOG("size = %d", size);
 }
 
 void OnMetadataOutputError(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode)
 {
-    NDKCamera::cameraCallbackCode_ = MetadataOutputError;
+    NDKCamera::cameraCallbackCode_ = Metadata_Output_Error;
     LOG("OnMetadataOutput errorCode = %d", errorCode);
 }
 
@@ -1096,16 +1261,25 @@ Camera_ErrorCode NDKCamera::MetadataOutputRegisterCallback(void)
     return ret_;
 }
 
+Camera_ErrorCode NDKCamera::MetadataOutputUnRegisterCallback(void)
+{
+    ret_ = OH_MetadataOutput_UnregisterCallback(metadataOutput_, GetMetadataOutputListener());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_MetadataOutput_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
 // Session Callback
 void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
 {
-     NDKCamera::cameraCallbackCode_ = SessionOnFocusStateChange;
+    NDKCamera::cameraCallbackCode_ = Session_OnFocusState_Change;
     LOG("CaptureSessionOnFocusStateChange");
 }
 
 void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
 {
-    NDKCamera::cameraCallbackCode_ = SessionOnError;
+    NDKCamera::cameraCallbackCode_ = Session_OnError;
     LOG("CaptureSession errorCode = %d", errorCode);
 }
 
@@ -1124,5 +1298,29 @@ Camera_ErrorCode NDKCamera::CaptureSessionRegisterCallback(void)
     if (ret_ != CAMERA_OK) {
         LOG("OH_CaptureSession_RegisterCallback failed.");
     }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CaptureSessionUnRegisterCallback(void)
+{
+    ret_ = OH_CaptureSession_UnregisterCallback(captureSession_, GetCaptureSessionRegister());
+    if (ret_ != CAMERA_OK) {
+        LOG("OH_CaptureSession_UnregisterCallback failed.");
+    }
+    return ret_;
+}
+
+Camera_ErrorCode NDKCamera::CreateCameraInputWithPositionAndType(Camera_Position position, Camera_Type type)
+{
+    LOG("ndkXTS CreateCameraInputWithPositionAndType start.");
+    if (cameraManager_ == nullptr) {
+        LOG("ndkXTS cameraManager_ is NULL.");
+    }
+    ret_ = OH_CameraManager_CreateCameraInput_WithPositionAndType(cameraManager_, position, type, &cameraInput_);
+    if (cameraInput_ == nullptr || ret_ != CAMERA_OK) {
+        LOG("ndkXTS CreateCameraInputWithPositionAndType failed = %d. cameraInput_ = %p", ret_, cameraInput_);
+        return CAMERA_INVALID_ARGUMENT;
+    }
+    LOG("ndkXTS CreateCameraInputWithPositionAndType end.");
     return ret_;
 }

@@ -23,6 +23,7 @@ export default class MainAbility4 extends Ability {
 
     onDestroy() {
         console.log("[Demo] MainAbility onDestroy")
+        globalThis.abilityContext = undefined;
     }
 
     onWindowStageCreate(windowStage) {

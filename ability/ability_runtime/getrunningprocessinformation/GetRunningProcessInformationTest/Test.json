@@ -15,6 +15,9 @@
                 "param set persist.sys.suspend_manager_enabled false",
                 "reboot",
                 "power-shell wakeup",
+                "wait 5",
+                "uinput -T -m 300 2700 280 200",
+                "wait 5",
                 "uinput -T -m 300 2700 280 200",
                 "power-shell setmode 602"
             ]
@@ -35,9 +38,7 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D",
-                "setenforce 0"
+                "hilog -Q domainoff"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled true",

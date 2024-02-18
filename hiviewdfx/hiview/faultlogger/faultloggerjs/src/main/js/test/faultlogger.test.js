@@ -44,6 +44,39 @@ describe("FaultlogJsTest", function () {
         clearTimeout(timeoutID);
     }
 
+    function BeginSubscriptionOnEvent(domainName, eventName, onEventCallback) {
+        let watchRules = [{
+            domain: domainName,
+            name: eventName,
+            ruleType: hiSysEvent.RuleType.WHOLE_WORD,
+        }]
+        let watcher = {
+            rules: watchRules,
+            onEvent: (info) => {
+                onEventCallback(info)
+            },
+            onServiceDied: () => {
+                // do something here.
+            }
+        }
+        try {
+            hiSysEvent.addWatcher(watcher)
+        } catch (err) {
+            console.error(`>>> error code: ${err.code}, error msg: ${err.message}`);
+            expect(false).assertTrue();
+        }
+        return watcher
+    }
+
+    function EndSubscriptionOnEvent(watcher) {
+        try {
+            hiSysEvent.removeWatcher(watcher)
+        } catch (err) {
+            console.error(`>>> error code: ${err.code}, error msg: ${err.message}`);
+            expect(false).assertTrue();
+        }
+    }
+
     /**
      * test
      *
@@ -94,10 +127,17 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0400 2 + " + now);
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("RELIABILITY", "CPP_CRASH", (info) => {
+                subscribedEventCnt++
+            })
             console.info("start triggerCppCrash");
             const res = faultloggerTestNapi.triggerCppCrash();
             console.info("DFX_DFR_Faultlogger_Interface_0400 res:" + res);
-            await msleep(3000);
+            while (subscribedEventCnt < 1) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_0400 4" + "----------");
             let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH);
             console.info("DFX_DFR_Faultlogger_Interface_0400 query ret length:" + ret.length);
@@ -140,6 +180,11 @@ describe("FaultlogJsTest", function () {
      it('DFX_DFR_Faultlogger_Interface_0500', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0500----------------------------------");
         try {
+            const loopTimes = 10;
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("ACE", "JS_ERROR", (info) => {
+                subscribedEventCnt++
+            })
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0500 2 + " + now);
             hiSysEvent.write({
@@ -158,8 +203,10 @@ describe("FaultlogJsTest", function () {
                 (value) => {
                     console.log(`HiSysEvent json-callback-success value=${value}`);
                 })
-            await msleep(1000);
-
+            while (subscribedEventCnt < 1) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_0500 4" + "----------");
             let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH);
             console.info("DFX_DFR_Faultlogger_Interface_0500 ret == " + ret.length);
@@ -199,13 +246,20 @@ describe("FaultlogJsTest", function () {
             console.info("DFX_DFR_Faultlogger_Interface_0300 2 + " + now);
             let module = "ohos.faultloggerjs.test";
             const loopTimes = 10;
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("RELIABILITY", "APP_FREEZE", (info) => {
+                subscribedEventCnt++
+            })
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------DFX_DFR_Faultlogger_Interface_0300 3 + " + i + "----------");
                 faultlogger.addFaultLog(i - 400,
                     faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
                 await msleep(300);
             }
-            await msleep(1000);
+            while (subscribedEventCnt < loopTimes) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
 
             console.info("--------DFX_DFR_Faultlogger_Interface_0300 4" + "----------");
             let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.APP_FREEZE);
@@ -246,12 +300,17 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0100 start + " + now);
-
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("RELIABILITY", "CPP_CRASH", (info) => {
+                subscribedEventCnt++
+            })
             console.info("start triggerCppCrash");
             const res = faultloggerTestNapi.triggerCppCrash();
             console.info("DFX_DFR_Faultlogger_Interface_0100 res:" + res);
-            await msleep(3000);
-
+            while (subscribedEventCnt < 1) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_0100 4----------");
             function queryFaultLogCallback(error, ret) {
                 if (error) {
@@ -359,6 +418,10 @@ describe("FaultlogJsTest", function () {
      it('DFX_DFR_Faultlogger_Interface_0900', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0900----------------------------------");
         try {
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("ACE", "JS_ERROR", (info) => {
+                subscribedEventCnt++
+            })
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0900 2 + " + now);
             hiSysEvent.write({
@@ -377,8 +440,10 @@ describe("FaultlogJsTest", function () {
                 (value) => {
                     console.log(`HiSysEvent json-callback-success value=${value}`);
                 })
-            await msleep(1000);
-
+            while (subscribedEventCnt < 1) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_0900 4" + "----------");
             let ret = await faultlogger.query(faultlogger.FaultType.JS_CRASH);
             console.info("DFX_DFR_Faultlogger_Interface_0900 ret == " + ret.length);
@@ -417,14 +482,20 @@ describe("FaultlogJsTest", function () {
             console.info("DFX_DFR_Faultlogger_Interface_1000 2 + " + now);
             let module = "ohos.faultloggerjs.test";
             const loopTimes = 10;
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("RELIABILITY", "APP_FREEZE", (info) => {
+                subscribedEventCnt++
+            })
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------DFX_DFR_Faultlogger_Interface_1000 3 + " + i + "----------");
                 faultlogger.addFaultLog(i - 200,
                     faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary09 " + i);
                 await msleep(300);
             }
-            await msleep(1000);
-
+            while (subscribedEventCnt < loopTimes) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_1000 4" + "----------");
             let ret = await faultlogger.query(faultlogger.FaultType.APP_FREEZE);
             console.info("DFX_DFR_Faultlogger_Interface_1000 ret == " + ret.length);
@@ -438,6 +509,10 @@ describe("FaultlogJsTest", function () {
                     expect(false).assertTrue();
                 }
             }
+            console.info("--------DFX_DFR_Faultlogger_Interface_1000 5" + "----------");
+            ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.NO_SPECIFIC);
+            console.info("DFX_DFR_Faultlogger_Interface_1000 ret == " + ret.length);
+            expect(ret.length).assertEqual(loopTimes);
             done();
             return;
         } catch (err) {
@@ -464,10 +539,17 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_1100 start + " + now);
+            let subscribedEventCnt = 0;
+            let watcher = BeginSubscriptionOnEvent("RELIABILITY", "CPP_CRASH", (info) => {
+                subscribedEventCnt++
+            })
             console.info("start triggerCppCrash");
             const res = faultloggerTestNapi.triggerCppCrash();
             console.info("DFX_DFR_Faultlogger_Interface_1100 res:" + res);
-            await msleep(3000);
+            while (subscribedEventCnt < 1 ) {
+                await msleep(100);
+            }
+            EndSubscriptionOnEvent(watcher)
             console.info("--------DFX_DFR_Faultlogger_Interface_1100 4----------");
             function queryFaultLogCallback(error, ret) {
                 if (error) {

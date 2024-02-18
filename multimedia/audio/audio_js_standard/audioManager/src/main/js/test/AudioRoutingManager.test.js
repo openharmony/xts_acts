@@ -132,8 +132,8 @@ export default function audioRoutingManager() {
       try {
         await audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((AudioDeviceDescriptors) => {
           console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
-          expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(1);
-          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(15);
+          expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.INVALID);
           expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
           done();
         }).catch((err) => {
@@ -280,8 +280,8 @@ export default function audioRoutingManager() {
             done();
           } else {
             console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
-            expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(1);
-            expect(AudioDeviceDescriptors[0].deviceType).assertEqual(15);
+            expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
+            expect(AudioDeviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.INVALID);
             expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
             done();
           }
@@ -360,7 +360,65 @@ export default function audioRoutingManager() {
       }
     })
 
+/**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000
+     *@tc.name      : Get prefer input device - error code - invalid parameter
+     *@tc.desc      : Get prefer input device - error code - invalid parameter
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000", 0, async function (done) {
+      let capturerInfo = {
+        source: 9,
+        capturerFlags: 0
+      }
 
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        await audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((AudioDeviceDescriptors) => {
+          console.log(`get invalid device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+          expect(false).assertTrue();
+          done();
+        }).catch((err) => {
+          console.error(`get invalid device descriptor fail: ${err.code},${err.message}`);
+          expect(Number(err.code)).assertEqual(6800101);
+          done();
+        });
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000 return success:${e}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100
+     *@tc.name      : Get prefer input device - error code - null parameter
+     *@tc.desc      : Get prefer input device - error code - null parameter
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100", 0, async function (done) {
+
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        await audioRoutingManager.getPreferredInputDeviceForCapturerInfo().then((AudioDeviceDescriptors) => {
+          console.log(`get invalid device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+          expect(false).assertTrue();
+          done();
+        }).catch((err) => {
+          console.error(`get invalid device descriptor fail: ${err.code},${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100 return 401 success:${e.code},${e.message}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
 
     /**
        *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0100

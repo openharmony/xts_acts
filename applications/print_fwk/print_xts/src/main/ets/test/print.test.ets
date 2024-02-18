@@ -14,76 +14,78 @@
  */
 
 import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import print from '@ohos.print'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+// import print from '@ohos.print'
+import print from '@ohos.print';
 import { BusinessError } from '@ohos.base';
 
 const DOMAIN: number = 0x0023
 const TAG: string = 'printTestXTS';
 
+function registerPrintTask(printTask: print.PrintTask) {
+  printTask.on('block', () => {
+    hilog.info(DOMAIN, TAG, 'print state is block')
+  })
+  printTask.on('succeed', () => {
+    hilog.info(DOMAIN, TAG, 'print state is succeed')
+  })
+  printTask.on('fail', () => {
+    hilog.info(DOMAIN, TAG, 'print state is fail')
+  })
+  printTask.on('cancel', () => {
+    hilog.info(DOMAIN, TAG, 'print state is cancel')
+  })
+}
+
+function UnregisterPrintTask(printTask: print.PrintTask) {
+  printTask.off('block', () => {
+    hilog.info(DOMAIN, TAG, 'unregister print state is blocked')
+  })
+  printTask.off('succeed', () => {
+    hilog.info(DOMAIN, TAG, 'unregister print state is succeed')
+  })
+  printTask.off('fail', () => {
+    hilog.info(DOMAIN, TAG, 'unregister print state is fail')
+  })
+  printTask.off('cancel', () => {
+    hilog.info(DOMAIN, TAG, 'unregister print state is cancel')
+  })
+}
+
 export default function printTest() {
-  describe('printTest', function () {
+  describe('printTest', () => {
 
-    function registerPrintTask(printTask: print.PrintTask) {
-      printTask.on('block', () => {
-        hilog.info(DOMAIN, TAG, 'print state is block')
-      })
-      printTask.on('succeed', () => {
-        hilog.info(DOMAIN, TAG, 'print state is succeed')
-      })
-      printTask.on('fail', () => {
-        hilog.info(DOMAIN, TAG, 'print state is fail')
-      })
-      printTask.on('cancel', () => {
-        hilog.info(DOMAIN, TAG, 'print state is cancel')
-      })
-    }
-
-    function UnregisterPrintTask(printTask: print.PrintTask) {
-      printTask.off('block', () => {
-        hilog.info(DOMAIN, TAG, 'unregister print state is blocked')
-      })
-      printTask.off('succeed', () => {
-        hilog.info(DOMAIN, TAG, 'unregister print state is succeed')
-      })
-      printTask.off('fail', () => {
-        hilog.info(DOMAIN, TAG, 'unregister print state is fail')
-      })
-      printTask.off('cancel', () => {
-        hilog.info(DOMAIN, TAG, 'unregister print state is cancel')
-      })
-    }
 
     /**
-     * @tc.number     print_function_0100
-     * @tc.name       Test print
-     * @tc.desc       check the print function
-     * @tc.size       MEDIUM
-     * @tc.type       Function
-     * @tc.level      Level 2
-    */
-    it('print_function_0100', 0, function () {
+     * @tc.number print_function_0100
+     * @tc.name Test print
+     * @tc.desc check the print function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0100', 0, () => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       // Permissions required: ohos.permission.PRINT
-      print.print(file).then((printTask) => {
+      print.print(file).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);
         UnregisterPrintTask(printTask);
-      }).catch((error) => {
+      }).catch((error: BusinessError) => {
         expect(false).assertTrue();
       })
     })
 
     /**
-     * @tc.number     print_function_0200
-     * @tc.name       Test print
-     * @tc.desc       check the print function
-     * @tc.size       MEDIUM
-     * @tc.type       Function
-     * @tc.level      Level 2
-    */
-    it('print_function_0200', 0, function () {
+     * @tc.number print_function_0200
+     * @tc.name Test print
+     * @tc.desc check the print function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0200', 0, () => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       try {
         // Permissions required: ohos.permission.PRINT
@@ -103,19 +105,19 @@ export default function printTest() {
     })
 
     /**
-     * @tc.number     print_function_0300
-     * @tc.name       Test print
-     * @tc.desc       check the print function
-     * @tc.size       MEDIUM
-     * @tc.type       Function
-     * @tc.level      Level 2
-    */
-    it('print_function_0300', 0, function () {
+     * @tc.number print_function_0300
+     * @tc.name Test print
+     * @tc.desc check the print function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0300', 0, () => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       try {
         // Permissions required: ohos.permission.PRINT
-        print.print(file, context, (err: BusinessError, printTask: print.PrintTask) => {
+        print.print(file, (err: BusinessError, printTask: print.PrintTask) => {
           if (err) {
             expect(false).assertTrue();
           } else {
@@ -131,18 +133,18 @@ export default function printTest() {
     })
 
     /**
-     * @tc.number     print_function_0400
-     * @tc.name       Test print
-     * @tc.desc       check the print function
-     * @tc.size       MEDIUM
-     * @tc.type       Function
-     * @tc.level      Level 2
-    */
-    it('print_function_0400', 0, function () {
+     * @tc.number print_function_0400
+     * @tc.name Test print
+     * @tc.desc check the print function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0400', 0, () => {
       let file = ['file://data/print/a.png', 'file://data/print/b.png'];
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
-      print.print(file, context).then((printTask) => {
+      print.print(file, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);
@@ -152,13 +154,14 @@ export default function printTest() {
       })
     })
 
-    class MyPrintDocumentAdapter implements print.PrintDocumentAdapter{
+    class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
       onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
-        writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
+                         writeResultCallback: (jobId: string, writeResult: print.PrintFileCreationState) => void) {
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATION_FAILED);
         writeResultCallback(jobId, print.PrintFileCreationState.PRINT_FILE_CREATED_UNRENDERED);
       };
+
       onJobStateChanged(jobId: string, state: print.PrintDocumentAdapterState) {
         if (state == print.PrintDocumentAdapterState.PREVIEW_DESTROY) {
           console.log('PREVIEW_DESTROY');
@@ -174,7 +177,7 @@ export default function printTest() {
       };
     }
 
-    class MyPrintAttributes implements print.PrintAttributes{
+    class MyPrintAttributes implements print.PrintAttributes {
       copyNumber?: number;
       pageRange?: print.PrinterRange;
       pageSize?: print.PrintPageSize | print.PrintPageType;
@@ -183,13 +186,13 @@ export default function printTest() {
       duplexMode?: print.PrintDuplexMode;
     }
 
-    class MyPrinterRange implements print.PrinterRange{
+    class MyPrinterRange implements print.PrinterRange {
       startPage?: number;
       endPage?: number;
       pages?: Array<number>;
     }
 
-    class MyPrintPageSize implements print.PrintPageSize{
+    class MyPrintPageSize implements print.PrintPageSize {
       id: string;
       name: string;
       width: number;
@@ -197,22 +200,22 @@ export default function printTest() {
     }
 
     /**
-     * @tc.number     print_function_0500
-     * @tc.name       Test print
-     * @tc.desc       check the print function
-     * @tc.size       MEDIUM
-     * @tc.type       Function
-     * @tc.level      Level 2
-    */
-    it('print_function_0500', 0, function () {
-      let jobName : string = 'jobName';
+     * @tc.number print_function_0500
+     * @tc.name Test print
+     * @tc.desc check the print function
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('print_function_0500', 0, () => {
+      let jobName: string = 'jobName';
       let printAdapter = new MyPrintDocumentAdapter();
       let printAttributes = new MyPrintAttributes();
       printAttributes.copyNumber = 2;
       printAttributes.pageRange = new MyPrinterRange();
       printAttributes.pageRange.startPage = 0;
       printAttributes.pageRange.endPage = 5;
-      printAttributes.pageRange.pages = [1,3];
+      printAttributes.pageRange.pages = [1, 3];
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A3;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A4;
       printAttributes.pageSize = print.PrintPageType.PAGE_ISO_A5;
@@ -240,7 +243,7 @@ export default function printTest() {
       printAttributes.duplexMode = print.PrintDuplexMode.DUPLEX_MODE_SHORT_EDGE;
       let context = getContext();
       // Permissions required: ohos.permission.PRINT
-      print.print(jobName, printAdapter, printAttributes, context).then((printTask) => {
+      print.print(jobName, printAdapter, printAttributes, context).then((printTask: print.PrintTask) => {
         expect(typeof (printTask)).assertEqual('object');
         expect(!!printTask).assertTrue();
         registerPrintTask(printTask);

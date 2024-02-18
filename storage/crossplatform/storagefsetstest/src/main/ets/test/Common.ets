@@ -15,12 +15,35 @@
 
 import fileIO from "@ohos.file.fs";
 import util from "@ohos.util";
-
-export const FILE_CONTENT = "hello world";
-
 import { describe, it, expect } from "@ohos/hypium";
+import common from '@ohos.app.ability.common';
 
-export function prepareFile(fpath, content) {
+export const FILE_CONTENT: string = "hello world";
+
+export default class GlobalContext {
+  private constructor() {
+  }
+
+  private static instance: GlobalContext;
+  private _abilityContext: common.UIAbilityContext = undefined;
+
+  public static getContext(): GlobalContext {
+    if (!GlobalContext.instance) {
+      GlobalContext.instance = new GlobalContext();
+    }
+    return GlobalContext.instance;
+  }
+
+  getAbility(): common.UIAbilityContext {
+    return this._abilityContext;
+  }
+
+  setAbility(ability: common.UIAbilityContext): void {
+    this._abilityContext = ability;
+  }
+}
+
+export function prepareFile(fpath: string, content: string | ArrayBuffer) {
   try {
     let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
     fileIO.truncateSync(file.fd);
@@ -34,44 +57,44 @@ export function prepareFile(fpath, content) {
   }
 }
 
-export async function nextFileName(testName) {
-  let context = globalThis.abilityContext;
-  let data = context.cacheDir;
+export async function nextFileName(testName: string) {
+  let context: common.UIAbilityContext = GlobalContext.getContext().getAbility();
+  let data: string = context.cacheDir;
   let BASE_PATH = data + "/";
   return BASE_PATH + testName + "_" + randomString(testName.length);
 }
 
-export async function fileName(testName) {
-  let context = globalThis.abilityContext;
-  let data = context.filesDir;
+export async function fileName(testName: string) {
+  let context: common.UIAbilityContext = GlobalContext.getContext().getAbility();
+  let data: string = context.filesDir;
   let BASE_PATH = data + "/";
   return BASE_PATH + testName + "_" + randomString(testName.length);
 }
 
-export function randomString(num) {
-  let len = num;
-  var $chars = "aaaabbbbcccc";
-  var maxPos = $chars.length;
-  var pwd = "";
-  for (var i = 0; i < len; i++) {
+export function randomString(num: number) {
+  let len: number = num;
+  let $chars: string = "aaaabbbbcccc";
+  let maxPos: number = $chars.length;
+  let pwd: string = "";
+  for (let i: number = 0; i < len; i++) {
     pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
   }
   return pwd;
 }
 
-function isIntNum(val) {
+function isIntNum(val: number) {
   return typeof val === "number" && val % 1 === 0;
 }
 
-function isBigInt(val) {
+function isBigInt(val: bigint) {
   return typeof val === "bigint";
 }
 
-function isString(str) {
+function isString(str: string) {
   return typeof str == "string" && str.constructor == String;
 }
 
-function isBoolean(val) {
+function isBoolean(val: boolean) {
   return typeof val == "boolean";
 }
 

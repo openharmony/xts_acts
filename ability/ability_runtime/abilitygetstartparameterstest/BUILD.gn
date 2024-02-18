@@ -17,10 +17,10 @@ group("abilitygetstartparameterstest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "getstartparameterhelper:getstartparameterhelper",
-      "getstartparameterhelper2:getstartparameterhelper2",
-      "getstartparameterhelper3:getstartparameterhelper3",
-      "startabilitygetstartparametertest:startabilitygetstartparametertest",
+      "getstartparameterhelper:GetStartParameterHelper",
+      "getstartparameterhelper2:GetStartParameterHelper2",
+      "getstartparameterhelper3:GetStartParameterHelper3",
+      "startabilitygetstartparametertest:ActsStartAbilityGetStartParameterTest",
     ]
   }
 }

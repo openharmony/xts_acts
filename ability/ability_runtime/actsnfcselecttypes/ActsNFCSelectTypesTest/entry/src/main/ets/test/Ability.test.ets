@@ -40,11 +40,11 @@ function sleep(time) {
 
 export default function abilityTest() {
   describe('ActsAppTest', function () {
-    afterEach(async (done) => {
+    beforeEach(async (done) => {
       setTimeout(function () {
-        console.info('====>afterEach called');
+        console.info('====>beforeEach called');
         done();
-      }, 1000);
+      }, 3000);
     })
 
     /*

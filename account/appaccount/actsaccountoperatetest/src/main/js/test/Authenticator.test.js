@@ -19,7 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
 const name = 'zhangsan'
-const owner = 'com.example.accountauthenticator'
+const owner = 'com.acts.accountauthenticator'
 const self_owner = 'com.example.actsaccountoperatetest'
 const createAccountOptions = {customData:{age:'12'}}
 export default function ActsAccountAppAccess() {
@@ -31,8 +31,8 @@ export default function ActsAccountAppAccess() {
                     want:
                     {
                         deviceId: "",
-                        bundleName: "com.example.accountauthenticator",
-                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        bundleName: "com.acts.accountauthenticator",
+                        abilityName: "com.acts.accountauthenticator.MainAbility",
                         action: "action1",
                         parameters:
                         {},
@@ -56,10 +56,14 @@ export default function ActsAccountAppAccess() {
             }
             done();
         })
+
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0100
-        * @tc.name      : Check Account Labels callback form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels callback form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0100', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0100 start====");
@@ -86,8 +90,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0200
-        * @tc.name      : Check Account Labels callback form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels callback form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0200', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0200 start====");
@@ -113,8 +120,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0300
-        * @tc.name      : Check Account Labels callback form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels callback form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0300', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0300 start====");
@@ -142,8 +152,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0400
-        * @tc.name      : Check Account Labels promise form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels promise form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0400', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0400 start====");
@@ -175,8 +188,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0500
-        * @tc.name      : Check Account Labels promise form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels promise form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0500', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0500 start====");
@@ -210,8 +226,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0600
-        * @tc.name      : Check Account Labels promise form
-        * @tc.desc      : 
+        * @tc.name      : test Check Account Labels promise form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAccountLabels_0600', 0, async function (done) {
             console.info("====>ActsAccountCheckAccountLabels_0600 start====");
@@ -243,8 +262,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAppAccess_0100
-        * @tc.name      : Check App Access callback form
-        * @tc.desc      : 
+        * @tc.name      : test Check App Access callback form
+        * @tc.desc      : checkAppAccess
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAppAccess_0100', 0, async function (done) {
             console.info("====>ActsAccountCheckAppAccess_0100 start====");
@@ -292,8 +314,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCheckAppAccess_0200
-        * @tc.name      : Check App Access promise form
-        * @tc.desc      : 
+        * @tc.name      : test Check App Access promise form
+        * @tc.desc      : setAppAccess
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCheckAppAccess_0200', 0, async function (done) {
             console.info("====>ActsAccountCheckAppAccess_0200 start====");
@@ -358,8 +383,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountDeleteCredential_0100
-        * @tc.name      : Delete Account Credential callback form
-        * @tc.desc      : 
+        * @tc.name      : test Delete Account Credential callback form
+        * @tc.desc      : getCredential
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountDeleteCredential_0100', 0, async function (done) {
             console.info("====>ActsAccountDeleteCredential_0100 start====");
@@ -397,8 +425,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountDeleteCredential_0200
-        * @tc.name      : Delete Account Credential promise form
-        * @tc.desc      : 
+        * @tc.name      : test Delete Account Credential promise form
+        * @tc.desc      : setCredential
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountDeleteCredential_0200', 0, async function (done) {
             console.info("====>ActsAccountDeleteCredential_0200 start====");
@@ -444,8 +475,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountVerifyCredential_0100
-        * @tc.name      : Verify Credential callback form, options
-        * @tc.desc      : 
+        * @tc.name      : test Verify Credential callback form, options
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountVerifyCredential_0100', 0, async function (done) {
             console.info("====>ActsAccountVerifyCredential_0100 start====");
@@ -480,8 +514,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountVerifyCredential_0200
-        * @tc.name      : Verify Credential callback form
-        * @tc.desc      : 
+        * @tc.name      : test Verify Credential callback form
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountVerifyCredential_0200', 0, async function (done) {
             console.info("====>ActsAccountVerifyCredential_0200 start====");
@@ -516,8 +553,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSetAuthenticatorProperties_0100
-        * @tc.name      : Verify Credential callback form, options
-        * @tc.desc      : 
+        * @tc.name      : test Verify Credential callback form, options
+        * @tc.desc      : ActsAccountCheckAccountLabels
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSetAuthenticatorProperties_0100', 0, async function (done) {
             console.info("====>ActsAccountSetAuthenticatorProperties_0100 start====");
@@ -552,8 +592,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSetAuthenticatorProperties_0200
-        * @tc.name      : Verify Credential callback form
-        * @tc.desc      : 
+        * @tc.name      : test Verify Credential callback form
+        * @tc.desc      : setAuthenticatorProperties
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSetAuthenticatorProperties_0200', 0, async function (done) {
             console.info("====>ActsAccountSetAuthenticatorProperties_0200 start====");
@@ -587,8 +630,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.name      : test SelectAccountsByOptions Promise Form
         * @tc.desc      : SelectAccountsByOptions Promise
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {  
             console.info("====>ActsAccountSelectAccountByOptions_0100 start====");
@@ -622,8 +668,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0200
-        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.name      : test SelectAccountsByOptions Promise Form
         * @tc.desc      : SelectAccountsByOptions Promise
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0200 start====");
@@ -658,8 +707,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0300
-        * @tc.name      : SelectAccountsByOptions Promise Form
+        * @tc.name      : test SelectAccountsByOptions Promise Form
         * @tc.desc      : SelectAccountsByOptions Promise
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0300', 0, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0300 start====");
@@ -693,8 +745,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0400
-        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.name      : test SelectAccountsByOptions Callback Form
         * @tc.desc      : SelectAccountsByOptions Callback
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0400', 0, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0400 start====");
@@ -724,8 +779,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0500
-        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.name      : test SelectAccountsByOptions Callback Form
         * @tc.desc      : SelectAccountsByOptions Callback
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0500', 0, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0500 start====");
@@ -756,8 +814,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0600
-        * @tc.name      : SelectAccountsByOptions Callback Form
+        * @tc.name      : test SelectAccountsByOptions Callback Form
         * @tc.desc      : SelectAccountsByOptions Callback
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountSelectAccountByOptions_0600', 0, async function (done) {
             console.info("====>ActsAccountSelectAccountByOptions_0600 start====");
@@ -787,21 +848,24 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCreateAccountImplicitly_0100
-        * @tc.name      : createAccountImplicitly callback form, options
-        * @tc.desc      : 
+        * @tc.name      : test createAccountImplicitly callback form, options
+        * @tc.desc      : createAccountImplicitly
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCreateAccountImplicitly_0100', 0, async function (done) {
             console.info("====>ActsAccountCreateAccountImplicitly_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {authType: "PIN", requiredLabels:['male', '30-40'], parameters: ['sex', 'age']}
             console.info("====>start finish====");
-            appAccountManager.createAccountImplicitly("com.example.accountauthenticator", options, {
+            appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", options, {
                 onResult: async (resultCode, resultData)=>{
                     console.info("====>ActsAccountCreateAccountImplicitly_0100 resultcode:" + JSON.stringify(resultCode));
                     expect(resultCode).assertEqual(0)
                     console.info("====>ActsAccountCreateAccountImplicitly_0100 resultData:" + JSON.stringify(resultData));
                     expect(resultData.account.name).assertEqual("createNewAccountName") 
-                    expect(resultData.account.owner).assertEqual("com.example.accountauthenticator")
+                    expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
                     done();
                     },
                 onRequestRedirected:null,
@@ -813,20 +877,23 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountCreateAccountImplicitly_0200
-        * @tc.name      : createAccountImplicitly callback form, options
-        * @tc.desc      : 
+        * @tc.name      : test createAccountImplicitly callback form, options
+        * @tc.desc      : createAccountImplicitly
+        * @tc.level     : Level3
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
         */
         it('ActsAccountCreateAccountImplicitly_0200', 0, async function (done) {
             console.info("====>ActsAccountCreateAccountImplicitly_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.info("====>start finish====");
-            appAccountManager.createAccountImplicitly("com.example.accountauthenticator", {
+            appAccountManager.createAccountImplicitly("com.acts.accountauthenticator", {
                 onResult: async (resultCode, resultData)=>{
                     console.info("====>ActsAccountCreateAccountImplicitly_0200 resultcode:" + JSON.stringify(resultCode));
                     expect(resultCode).assertEqual(0)
                     console.info("====>ActsAccountCreateAccountImplicitly_0200 resultData:" + JSON.stringify(resultData));
                     expect(resultData.account.name).assertEqual("createNewAccountName") 
-                    expect(resultData.account.owner).assertEqual("com.example.accountauthenticator")
+                    expect(resultData.account.owner).assertEqual("com.acts.accountauthenticator")
                     done();
                     },
                 onRequestRedirected:null,

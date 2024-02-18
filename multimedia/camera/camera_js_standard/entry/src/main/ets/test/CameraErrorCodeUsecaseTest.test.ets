@@ -2095,6 +2095,14 @@ export default function CameraErrorCodeUsecaseTest() {
             mCameraSession.addInput(mCameraInput);
             createOutput(0);
             mCameraSession.addOutput(mPreviewOutput);
+            if (!isEmpty(cameraOutputCap.videoProfiles)) {
+                for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+                    videoOutput = mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], videoSurfaceId);
+                    if (!isEmpty(videoOutput)) {
+                        break;
+                    }
+                }
+            }
             if (!isEmpty(videoOutput)) {
                 mCameraSession.addOutput(videoOutput);
                 await videoOutput.start().then((result) => {

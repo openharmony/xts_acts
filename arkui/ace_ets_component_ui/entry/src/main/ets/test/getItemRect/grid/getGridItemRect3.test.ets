@@ -100,13 +100,13 @@ export default function getGridItemRect3() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(x)).assertEqual(Math.round(0));
 
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(60)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(width)).assertEqual(Math.round(60));
+      expect(Math.round(height)).assertEqual(Math.round(200));
 
       done();
     });
@@ -164,13 +164,13 @@ export default function getGridItemRect3() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(x)).assertEqual(Math.round(0));
 
       expect(Math.round(y)).assertEqual(Math.round(0));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(60)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(width)).assertEqual(Math.round(60));
+      expect(Math.round(height)).assertEqual(Math.round(200));
 
       done();
     });

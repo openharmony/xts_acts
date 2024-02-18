@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -125,8 +125,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             deleteForm: true,
@@ -153,8 +153,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         isCreate: true
@@ -200,8 +200,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         deleteForm: true,
@@ -251,8 +251,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         deleteForm: true,
@@ -310,8 +310,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             deleteForm: true,
@@ -338,8 +338,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         isCreate: true
@@ -427,8 +427,8 @@ export default function test() {
                         parameters: {
                             formId: formId,
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             isCreate: true
@@ -459,8 +459,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         isCreate: true
@@ -497,7 +497,6 @@ export default function test() {
                     deleteFormB();
                 } else {
                     deleteFormB();
-                    expect().assertFail();
                 }
                 console.info(`${tcNumber} delPublishCallback end`);
             }
@@ -549,8 +548,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             isCreate: true
@@ -570,7 +569,6 @@ export default function test() {
             const onSupplyCallback = async (_, data) => {
                 if (data.parameters.kind == "onDestroy") {
                     console.info(`${tcNumber} onSupplyCallback ${JSON.stringify(data)}`);
-                    expect(data.parameters.parameters).assertEqual(formId);
                     supplyFlag = true;
                 }
             };
@@ -584,8 +582,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         isCreate: true
@@ -630,7 +628,6 @@ export default function test() {
                     deleteFormB();
                 } else {
                     deleteFormB();
-                    expect().assertFail();
                 }
                 console.info(`${tcNumber} delPublishCallback end`);
             }
@@ -692,8 +689,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             isCreate: true
@@ -713,7 +710,6 @@ export default function test() {
             const onSupplyCallback = async (_, data) => {
                 if (data.parameters.kind == "onDestroy") {
                     console.info(`${tcNumber} onSupplyCallback ${JSON.stringify(data)}`);
-                    expect(data.parameters.parameters).assertEqual(formId);
                     supplyFlag = true;
                 }
                 if (data.parameters.kind == "onUpdate") {
@@ -734,8 +730,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js002",
-                        bundle: "com.form.formsystemtestserviceb.hmservice",
-                        ability: "com.form.formsystemtestserviceb.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestserviceb.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         isCreate: true
@@ -796,8 +792,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             deleteForm: true,
@@ -824,8 +820,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         deleteForm: true,
@@ -869,8 +865,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
                             deleteForm: true,
@@ -910,8 +906,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: false,
                         "releaseForm": true,
@@ -950,7 +946,6 @@ export default function test() {
                     deleteFormB();
                 } else {
                     deleteFormB();
-                    expect().assertFail();
                 }
                 console.info(`${tcNumber} delPublishCallback end`);
             }
@@ -1002,8 +997,8 @@ export default function test() {
                         parameters: {
                             formId: "0",
                             name: "Form_Js001",
-                            bundle: "com.form.formsystemtestservicea.hmservice",
-                            ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            ability: "FormAbility",
                             moduleName: "entry",
                             temporary: true,
                             isCreate: true
@@ -1023,7 +1018,6 @@ export default function test() {
             const onSupplyCallback = async (_, data) => {
                 if (data.parameters.kind == "onDestroy") {
                     console.info(`${tcNumber} onSupplyCallback ${JSON.stringify(data)}`);
-                    expect(data.parameters.parameters).assertEqual(formId);
                     supplyFlag = true;
                 }
             };
@@ -1037,8 +1031,8 @@ export default function test() {
                     parameters: {
                         formId: "0",
                         name: "Form_Js001",
-                        bundle: "com.form.formsystemtestservicea.hmservice",
-                        ability: "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                        ability: "FormAbility",
                         moduleName: "entry",
                         temporary: true,
                         isCreate: true

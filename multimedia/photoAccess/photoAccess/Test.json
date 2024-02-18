@@ -136,6 +136,12 @@
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro05.mp4",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro06.mp4",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro07.mp4",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addRemoveAssetsChangeReq01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addRemoveAssetsChangeReq02.jpg",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/request_image.jpg",
+
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",

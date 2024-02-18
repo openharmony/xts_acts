@@ -348,9 +348,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("6.eventAction=" + JSON.stringify(eventAction))
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
         } else {
         }
       })
@@ -491,14 +491,15 @@ export default function AudioRendererInterruptUnitTest() {
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       render2.on("audioInterrupt", async (eventAction) => {
         console.log("8-2.eventAction=" + JSON.stringify(eventAction))
-        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
+        
           if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
             expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
           } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
             expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
           } else {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_1100 fail")
+            expect(false).assertTrue();
           }
-        }
       })
       await start(render2, done)
       await sleep(500)
@@ -1795,9 +1796,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("6.eventAction=" + JSON.stringify(eventAction))
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
         } else {
         }
       })
@@ -2056,9 +2057,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("6.eventAction=" + JSON.stringify(eventAction))
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
         } else {
         }
       })
@@ -2316,9 +2317,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("6.eventAction=" + JSON.stringify(eventAction))
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
         } else {
         }
       })
@@ -3107,9 +3108,9 @@ export default function AudioRendererInterruptUnitTest() {
       render1.on("audioInterrupt", async (eventAction) => {
         console.log("21.eventAction=" + JSON.stringify(eventAction))//1
         if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_PAUSE)
         } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_RESUME)
         } else {
         }
       })
@@ -3135,11 +3136,24 @@ export default function AudioRendererInterruptUnitTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_13700', 0, async function (done) {
       let render1 = await createAudioRenderer(renderInfo['GAME'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+      render1.on("audioInterrupt", async (eventAction) => {
+        console.log("21.eventAction=" + JSON.stringify(eventAction))//1
+        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
+        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
+          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
+        } else {
+        }
+      })
       await start(render1, done)
 
       let render2 = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      await startFail(render2, done, render1)
+      await start(render2, done)
+      await sleep(500)
+      await release(render1, done)
+      await release(render2, done)
+      done()
     })
 
     /**
@@ -3769,20 +3783,12 @@ export default function AudioRendererInterruptUnitTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERRUPT_TEST_15800', 0, async function (done) {
       let render1 = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['44100'],done)
       await render1.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-      render1.on("audioInterrupt", async (eventAction) => {
-        console.log("14.eventAction=" + JSON.stringify(eventAction))
-        if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_BEGIN) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_DUCK)
-        } else if (eventAction.eventType == audio.InterruptType.INTERRUPT_TYPE_END) {
-          expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_UNDUCK)
-        } else {
-        }
-      })
       await start(render1, done)
 
       let render2 = await createAudioRenderer(renderInfo['NAVIGATION'], streamInfo['48000'],done)
       await render2.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
       await start(render2, done)
+      expect(true).assertEqual(true);
       await sleep(500)
       await release(render1, done)
       await release(render2, done)

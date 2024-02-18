@@ -32,6 +32,7 @@ import relationalStoreAssetResultSetTest from './RelationalStoreAssetResultSetJs
 import relationalStoreCustomDirTest from './RelationalStoreCustomDir.test.js'
 import relationalStoreCloudCursor from './RelationalStoreCloudCursor.test.js'
 
+
 export default function testsuite() {
     relationalStoreCloudSyncTest()
     relationalStoreDeleteTest()

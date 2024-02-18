@@ -16,6 +16,66 @@
 #include "napi/native_api.h"
 #include "hilog/log.h"
 
+#include <cstdio>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string>
+
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xD003200
+#define LOG_TAG "testTag"
+
+using namespace std;
+
+napi_value g_sum = 0;
+double g_test = 0;
+std::string g_msg = "";
+
+void callback(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)
+{
+    g_msg = msg;
+    g_test = 6;  //test number : 6
+}
+
+static napi_value Add(napi_env env, napi_callback_info info)
+{
+    OH_LOG_SetCallback(callback);
+    printf("hahahahha");
+    OH_LOG_INFO(LOG_APP, "123456");
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+
+    napi_valuetype valuetype1;
+    napi_typeof(env, args[1], &valuetype1);
+
+    double value0;
+    napi_get_value_double(env, args[0], &value0);
+
+    double value1;
+    napi_get_value_double(env, args[1], &value1);
+
+    g_test = value0 + value1; // 5
+
+    OH_LOG_INFO(LOG_APP, "666666");
+    napi_create_double(env, g_test, &g_sum);
+
+    return g_sum;
+}
+
+static napi_value GetMsg(napi_env env, napi_callback_info info)
+{
+    napi_value message;
+    napi_create_string_utf8(env, g_msg.c_str(), strlen(g_msg.c_str()), &message);
+    return message;
+}
+
 static napi_value OhIsLoggableTest(napi_env env, napi_callback_info info)
 {
     napi_value res = nullptr;
@@ -44,7 +104,11 @@ static napi_value Init(napi_env env, napi_value exports)
         { "ohIsLoggableTest", nullptr, OhIsLoggableTest,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ohPrintTest", nullptr, OhPrintTest,
-            nullptr, nullptr, nullptr, napi_default, nullptr }
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "add", nullptr, Add,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "getMsg", nullptr, GetMsg,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

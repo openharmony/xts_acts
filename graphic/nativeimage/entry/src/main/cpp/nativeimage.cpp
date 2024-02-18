@@ -156,13 +156,41 @@ static napi_value OHNativeImageAcquireNativeWindowAbnormal(napi_env env, napi_ca
 static napi_value OHNativeImageAttachContext(napi_env env, napi_callback_info info)
 {
     int backInfo = FAIL;
-    OH_NativeImage *image = getNativeImage();
-    if (image != nullptr) {
-        GLuint textureId2;
-        glGenTextures(ONEVAL, &textureId2);
-        backInfo = OH_NativeImage_AttachContext(image, textureId2);
-        OH_NativeImage_Destroy(&image);
+    InitEGLEnv();
+    GLuint textureId;
+    glGenTextures(PARAM_1, &textureId);
+    OH_NativeImage *image = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
+    OHNativeWindow *nativeWindow = OH_NativeImage_AcquireNativeWindow(image);
+    int code = SET_BUFFER_GEOMETRY;
+    int32_t width = PARAM_800;
+    int32_t height = PARAM_600;
+    OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, width, height);
+    OHNativeWindowBuffer *buffer = nullptr;
+    int fenceFd;
+    OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &buffer, &fenceFd);
+    BufferHandle *handle = OH_NativeWindow_GetBufferHandleFromNative(buffer);
+    void *mappedAddr = mmap(handle->virAddr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, PARAM_0);
+    static uint32_t value = 0x00;
+    value++;
+    uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+    for (uint32_t x = PARAM_0; x < width; x++) {
+        for (uint32_t y = PARAM_0; y < height; y++) {
+            *pixel++ = value;
+        }
     }
+    munmap(mappedAddr, handle->size);
+
+    Region region{nullptr, PARAM_0};
+    OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, buffer, fenceFd, region);
+    OH_NativeImage_UpdateSurfaceImage(image);
+    OH_NativeImage_GetTimestamp(image);
+    float matrix[16];
+    OH_NativeImage_GetTransformMatrix(image, matrix);
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+    OH_NativeImage_DetachContext(image);
+    GLuint textureId2;
+    glGenTextures(PARAM_1, &textureId2);
+    backInfo = OH_NativeImage_AttachContext(image, textureId2);
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
     return result;

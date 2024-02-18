@@ -17,7 +17,7 @@ import { nextFileName, describe, it, expect } from "../Common";
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOMkdtemp() {
-  describe("fileIO_fs_mkdtemp", function () {
+  describe("fileIO_fs_mkdtemp", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_MKDTEMP_ASYNC_0000
      * @tc.name   : fileIO_test_mkdtemp_async_000
@@ -27,12 +27,11 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_mkdtemp_async_000", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_000");
+    it("fileIO_test_mkdtemp_async_000", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_000");
       try {
         dpath = dpath + "XXXXXX";
-        let res = await fileIO.mkdtemp(dpath);
-        // @ts-nocheck
+        let res: string = await fileIO.mkdtemp(dpath);
         expect(fileIO.accessSync(res)).assertTrue();
         fileIO.rmdirSync(res);
         done();
@@ -51,8 +50,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_async_001", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_001");
+    it("fileIO_test_mkdtemp_async_001", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_001");
 
       try {
         await fileIO.mkdtemp(dpath);
@@ -73,8 +72,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_mkdtemp_async_002", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_002");
+    it("fileIO_test_mkdtemp_async_002", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_002");
 
       try {
         dpath = dpath + "XXXXXX";
@@ -83,7 +82,6 @@ export default function fileIOMkdtemp() {
             console.log("fileIO_test_mkdtemp_async_002 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          // @ts-nocheck
           expect(fileIO.accessSync(res)).assertTrue();
           fileIO.rmdirSync(res);
           done();
@@ -103,8 +101,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_async_003", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_003");
+    it("fileIO_test_mkdtemp_async_003", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_003");
 
       try {
         fileIO.mkdtemp(dpath, (err) => {
@@ -129,8 +127,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_async_004", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_004");
+    it("fileIO_test_mkdtemp_async_004", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_004");
 
       try {
         dpath = dpath + "abcde*";
@@ -153,8 +151,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_async_005", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_async_005");
+    it("fileIO_test_mkdtemp_async_005", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_async_005");
 
       try {
         dpath = dpath + "abcde*";
@@ -180,13 +178,12 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_mkdtemp_sync_000", 2, async function () {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_sync_000");
+    it("fileIO_test_mkdtemp_sync_000", 2, async () => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_sync_000");
 
       try {
         dpath = dpath + "XXXXXX";
-        let res = fileIO.mkdtempSync(dpath);
-        // @ts-nocheck
+        let res: string = fileIO.mkdtempSync(dpath);
         expect(fileIO.accessSync(res)).assertTrue();
         fileIO.rmdirSync(res);
       } catch (e) {
@@ -204,8 +201,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_sync_001", 3, async function () {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_sync_001");
+    it("fileIO_test_mkdtemp_sync_001", 3, async () => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_sync_001");
 
       try {
         fileIO.mkdtempSync(dpath);
@@ -225,8 +222,8 @@ export default function fileIOMkdtemp() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_mkdtemp_sync_002", 3, async function () {
-      let dpath = await nextFileName("fileIO_test_mkdtemp_sync_002");
+    it("fileIO_test_mkdtemp_sync_002", 3, async () => {
+      let dpath: string = await nextFileName("fileIO_test_mkdtemp_sync_002");
 
       try {
         dpath = dpath + "abcde*";

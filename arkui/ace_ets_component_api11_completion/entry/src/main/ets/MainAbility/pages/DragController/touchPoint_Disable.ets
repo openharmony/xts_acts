@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -41,6 +41,7 @@ struct DragControllerPage {
       .height(100)
       .backgroundColor(Color.Red)
       Button('多对象dragAction customBuilder拖拽')
+        .draggable(true)
         .id('custom_id')
         .onTouch((event?:TouchEvent) => {
         if(event){

@@ -16,9 +16,6 @@ import screenLock from '@ohos.screenLock';
 import { describe, expect, it, beforeEach} from "hypium/index";
 
 export default function screenLockJSUnit() {
-    const INTERACTIVE_STATE_END_SLEEP = 0;
-    const INTERACTIVE_STATE_USERID = 2;
-    const INTERACTIVE_STATE_BEGIN_SLEEP = 3;
 
     describe('ScreenLockServiceTest', () => {
         console.info("====>-----------------------ScreenlockTest is starting-----------------------");

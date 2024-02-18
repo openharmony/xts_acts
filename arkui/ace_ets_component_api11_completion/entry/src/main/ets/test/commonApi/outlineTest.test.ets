@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -54,10 +54,12 @@ export default function outlineTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
       let obj = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[outlineTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[outlineTest_0100] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
       console.info("[outlineTest_0100] text: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.outline.style.left).assertEqual("OutlineStyle.SOLID");
+      let obj1 = JSON.parse(obj.$attrs.outline).style.left;
+      expect(obj1).assertEqual("OutlineStyle.SOLID");
       console.info('[outlineTest_0100] END');
       done();
     });
@@ -75,9 +77,11 @@ export default function outlineTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
       let obj = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[outlineTest_0200] component obj is: " + JSON.stringify(obj));
       console.info("[outlineTest_0200] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.outline.style.right).assertEqual("OutlineStyle.DASHED");
+      let obj1 = JSON.parse(obj.$attrs.outline).style.right;
+      expect(obj1).assertEqual("OutlineStyle.DASHED");
       console.info('[outlineTest_0200] END');
       done();
     });
@@ -95,9 +99,11 @@ export default function outlineTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('outline_text');
       let obj = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[outlineTest_0300] component obj is: " + JSON.stringify(obj));
       console.info("[outlineTest_0300] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.outline.style.top).assertEqual("OutlineStyle.DOTTED");
+      let obj1 = JSON.parse(obj.$attrs.outline).style.top;
+      expect(obj1).assertEqual("OutlineStyle.DOTTED");
       console.info('[outlineTest_0300] END');
       done();
     });

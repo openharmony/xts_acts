@@ -3520,21 +3520,32 @@ static napi_value GLPatchParameteri(napi_env env, napi_callback_info info)
 static napi_value GLPauseTransformFeedback(napi_env env, napi_callback_info info)
 {
     initGLES();
-    GLuint array, buffer, feedbackBuffer;
+    GLuint array;
+    GLuint buffer; 
+    GLuint feedbackBuffer;
+    GLuint tbBuffer;
+    glGenBuffers(CREAT_NUM_ONE, &tbBuffer);
+    glGenBuffers(CREAT_NUM_ONE, &feedbackBuffer);
     GLuint program = initProgram(vertexShaderSource, fragmentShaderSource);
     glUseProgram(program);
+    GLuint transformFeedback;
+    glGenTransformFeedbacks(CREAT_NUM_ONE, &transformFeedback);
+    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, transformFeedback);
     glGenVertexArrays(CREAT_NUM_ONE, &array);
     glGenBuffers(CREAT_NUM_ONE, &buffer);
     glBindVertexArray(array);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
 
-    glGenBuffers(CREAT_NUM_ONE, &feedbackBuffer);
     glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, INT_INIT_VAL, feedbackBuffer);
     glEnable(GL_RASTERIZER_DISCARD);
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, INT_INIT_VAL, tbBuffer);
+    glTransformFeedbackVaryings(program, VARYING_NUM, (const char*[]){"gl_Position", "vColor"}, GL_SEPARATE_ATTRIBS);
+    glLinkProgram(program);
+    
     glBeginTransformFeedback(GL_POINTS);
     glPauseTransformFeedback();
     GLenum glError = glGetError();
-
+    
     deleteProgram();
     glDeleteProgram(program);
     glDeleteBuffers(CREAT_NUM_ONE, &buffer);
@@ -4156,19 +4167,38 @@ static napi_value GLRenderbufferStorageMultisample(napi_env env, napi_callback_i
 static napi_value GLResumeTransformFeedback(napi_env env, napi_callback_info info)
 {
     initGLES();
-    GLuint programObject = initProgram();
-    glUseProgram(programObject);
+    GLuint array;
+    GLuint buffer; 
+    GLuint feedbackBuffer;
+    GLuint tbBuffer;
+    glGenBuffers(CREAT_NUM_ONE, &tbBuffer);
+    glGenBuffers(CREAT_NUM_ONE, &feedbackBuffer);
+    GLuint program = initProgram(vertexShaderSource, fragmentShaderSource);
+    glUseProgram(program);
     GLuint transformFeedback;
     glGenTransformFeedbacks(CREAT_NUM_ONE, &transformFeedback);
     glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, transformFeedback);
+    glGenVertexArrays(CREAT_NUM_ONE, &array);
+    glGenBuffers(CREAT_NUM_ONE, &buffer);
+    glBindVertexArray(array);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, INT_INIT_VAL, feedbackBuffer);
+    glEnable(GL_RASTERIZER_DISCARD);
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, INT_INIT_VAL, tbBuffer);
+    glTransformFeedbackVaryings(program, VARYING_NUM, (const char*[]){"gl_Position", "vColor"}, GL_SEPARATE_ATTRIBS);
+    glLinkProgram(program);
+    
     glBeginTransformFeedback(GL_POINTS);
     glPauseTransformFeedback();
     glResumeTransformFeedback();
     GLenum glError = glGetError();
-    glEndTransformFeedback();
-    glDeleteTransformFeedbacks(CREAT_NUM_ONE, &transformFeedback);
+    
     deleteProgram();
-    glDeleteProgram(programObject);
+    glDeleteProgram(program);
+    glDeleteBuffers(CREAT_NUM_ONE, &buffer);
+    glDeleteBuffers(CREAT_NUM_ONE, &feedbackBuffer);
+    glDeleteVertexArrays(CREAT_NUM_ONE, &array);
     destroyGLES();
     return getError(env, glError);
 }
@@ -6785,8 +6815,9 @@ static napi_value GlGetAttribLocationAbnormal(napi_env env, napi_callback_info i
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
     initGLES(&eglWindow);
-    glGetAttribLocation(GL_ZERO, nullptr);
-    NAPI_ASSERT(env, glGetError() != GL_NO_ERROR, "glGetAttribLocation error");
+
+    GLint ret = glGetAttribLocation(GL_ZERO, nullptr);
+    NAPI_ASSERT(env, ret == FAILED, "glGetAttribLocation error");
     destroyGLES(&eglWindow);
     napi_value result = nullptr;
     napi_create_int32(env, FAILED, &result);

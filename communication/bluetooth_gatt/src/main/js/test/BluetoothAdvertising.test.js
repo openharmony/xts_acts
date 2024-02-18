@@ -39,16 +39,16 @@ describe('bluetoothAdvertisingTest', function() {
     }
 
     async function clickTheWindow() {
-        try{
+        try {
+            console.info('[bluetooth_js] clickRequestPermission start');
             let driver = Driver.create();
-            console.info('[bluetooth_js] bt driver create:'+ driver);            
-            await driver.delayMs(1000);
-            await driver.click(860, 2490);
-            await driver.delayMs(5000);
-            await driver.click(860, 2490);
             await driver.delayMs(3000);
-        } catch (error) {
-            console.info('[bluetooth_js] driver error info:'+ error);
+            let button = await driver.findComponent(ON.text("允许"));
+            await button.click();
+            await driver.delayMs(3000);
+            console.info('[bluetooth_js] clickRequestPermission end');
+        } catch (err) {
+            console.info('[bluetooth_js] clickRequestPermission failed');
         }
     }
 
@@ -163,6 +163,7 @@ describe('bluetoothAdvertisingTest', function() {
             console.info("06errCode:" + err.code + ",06errMessage:" + err.message);
             expect(err.code).assertEqual('401');
         }
+        await sleep(2000);
         done();
     })
 
@@ -195,6 +196,7 @@ describe('bluetoothAdvertisingTest', function() {
             console.info("08errCode:" + err.code + ",08errMessage:" + err.message);
             expect(err.code).assertEqual('401');
         }
+        await sleep(2000);
         done();
     })
 })

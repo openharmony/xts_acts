@@ -28,6 +28,12 @@ export const AV_RECORDER_STATE = {
     ERROR : 'error',
 }
 
+export const AV_RECORDER_AUDIO_STATE = {
+    PREPARED: 1,
+    STARTED: 2,
+    PAUSED: 3,
+}
+
 export function resourceName(){
     let timestamp = Date.now();
     let filename = `avRecorder_${timestamp}.mp4`;

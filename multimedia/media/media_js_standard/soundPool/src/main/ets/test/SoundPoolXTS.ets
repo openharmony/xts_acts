@@ -491,7 +491,7 @@ export default function soundPoolTest() {
           console.info(`${TAG}: load(fd, offset, length) fail! catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
         })
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId).then((streamId_) => {
           if (streamId_ > 0) {
             console.info(`${TAG}: play success, streamId: ${streamId_}`);
@@ -542,7 +542,7 @@ export default function soundPoolTest() {
           console.info(TAG + `load(fd, offset, length) fail! catch error, error: [${error.code}, ${error.message}]`);
           expectFalse();
         })
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId).then((streamId_) => {
           if (streamId_ > 0) {
             console.info(`${TAG}: play success, streamId: ${streamId_}`);
@@ -848,7 +848,7 @@ export default function soundPoolTest() {
             }
           }
         })
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId).then((streamId_) => {
           if (streamId_ > 0) {
             console.info(`${TAG}: play success, streamId: ${streamId_}`);
@@ -905,7 +905,7 @@ export default function soundPoolTest() {
             }
           }
         })
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId).then((streamId_) => {
           if (streamId_ > 0) {
             console.info(`${TAG}: play success, streamId: ${streamId_}`);
@@ -1060,7 +1060,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.unload(soundId).then(() => {
           console.info(`${TAG}: unload success, unload soundId: ${soundId}`);
           soundId = -1;
@@ -1090,7 +1090,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.unload(-1).then(() => {
           console.info(`${TAG}: Test unload with invalid soundId fail, unload Success! unload soundId: -1`);
           expectFalse();
@@ -1124,7 +1124,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.unload(soundId + 1).then(() => {
           console.info(`${TAG}: Test unload with unloaded soundId fail, unload Success! unload soundId: ${(soundId + 1)}`);
           expectFalse();
@@ -1160,7 +1160,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.unload(soundId, (err) => {
           if (err) {
             console.info(`${TAG}: unloadCallback error: ${JSON.stringify(err)}`);
@@ -1196,7 +1196,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.unload(-1, (err) => {
           if (err) {
             if (err.code == 5400103) {
@@ -1236,7 +1236,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.unload(soundId + 1, (err) => {
           if (err) {
             if (err.code == 5400102) {
@@ -1274,7 +1274,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         await soundPool.play(soundId).then((streamId) => {
           if (streamId > 0) {
@@ -1314,7 +1314,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(-1).then((streamId) => {
           console.info(`${TAG}: Test play with invalid soundId fail, play success! streamId: ${streamId}`);
           expectFalse();
@@ -1348,7 +1348,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId + 1).then((streamId) => {
           console.info(`${TAG}: Test play with unloaded soundId fail, play success! streamId: ${streamId}`);
           expectFalse();
@@ -1382,7 +1382,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         await soundPool.play(soundId, PlayParameters).then((streamId) => {
           if (streamId > 0) {
@@ -1422,7 +1422,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(-1, PlayParameters).then((streamId) => {
           console.info(`${TAG}: Test play with invalid soundId fail, play success! streamId: ${streamId}`);
           expectFalse();
@@ -1456,7 +1456,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.play(soundId + 1, PlayParameters).then((streamId) => {
           console.info(`${TAG}: Test play(soundID, params) with unloaded soundId fail, play success! streamId: ${streamId}`);
           expectFalse();
@@ -1490,7 +1490,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           loop: 2,
@@ -1533,7 +1533,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           rate: audio.AudioRendererRate.RENDER_RATE_HALF,
@@ -1576,7 +1576,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           leftVolume: 0.5,
@@ -1619,7 +1619,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           rightVolume: 0.5,
@@ -1662,7 +1662,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           priority: 3,
@@ -1705,7 +1705,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           parallelPlayFlag: true,
@@ -1750,7 +1750,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         soundPool.play(soundId, (err, streamId) => {
           if (err) {
@@ -1797,7 +1797,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.play(-1, (err, streamId) => {
           if (err) {
             if (err.code == 401) {
@@ -1837,7 +1837,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.play(soundId + 1, (err, streamId) => {
           if (err) {
             if (err.code == 5400102) {
@@ -1877,7 +1877,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         soundPool.play(soundId, PlayParameters, (err, streamId) => {
           if (err) {
@@ -1924,7 +1924,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.play(-1, PlayParameters, (err, streamId) => {
           if (err) {
             if (err.code == 401) {
@@ -1964,7 +1964,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         soundPool.play(soundId + 1, PlayParameters, (err, streamId) => {
           if (err) {
             if (err.code == 5400102) {
@@ -2004,7 +2004,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           loop: 0,
@@ -2054,7 +2054,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           rate: audio.AudioRendererRate.RENDER_RATE_DOUBLE,
@@ -2104,7 +2104,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           leftVolume: 0.6,
@@ -2154,7 +2154,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           rightVolume: 0.6,
@@ -2204,7 +2204,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           priority: 2,
@@ -2254,7 +2254,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         let streamId_ = -1;
         let parameters = {
           parallelPlayFlag: true
@@ -2303,7 +2303,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(5000);
         await soundPool.stop(streamId).then(() => {
@@ -2335,7 +2335,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.stop(-1).then(() => {
@@ -2372,7 +2372,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.stop(streamId + 1).then(() => {
@@ -2411,7 +2411,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(5000);
         soundPool.stop(streamId, (err) => {
@@ -2449,7 +2449,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         soundPool.stop(-1, (err) => {
@@ -2492,7 +2492,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         soundPool.stop(streamId + 1, (err) => {
@@ -2534,7 +2534,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setLoop(streamId, loopForever).then(() => {
@@ -2569,7 +2569,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setLoop(-1, loop).then(() => {
@@ -2609,7 +2609,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setLoop(streamId + 1, loop).then(() => {
@@ -2651,7 +2651,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setLoop(streamId, loopForever, (err) => {
@@ -2692,7 +2692,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setLoop(-1, loop, (err) => {
@@ -2738,7 +2738,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setLoop(streamId + 1, loop, (err) => {
@@ -2782,7 +2782,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setPriority(streamId, lowest).then(() => {
@@ -2816,7 +2816,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setPriority(streamId, -1).then(() => {
@@ -2856,7 +2856,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setPriority(-1, lowest).then(() => {
@@ -2896,7 +2896,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         await soundPool.setPriority(streamId + 1, lowest).then(() => {
@@ -2938,7 +2938,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setPriority(streamId, lowest, (err) => {
@@ -2978,7 +2978,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setPriority(streamId, -1, (err) => {
@@ -3024,7 +3024,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setPriority(-1, lowest, (err) => {
@@ -3070,7 +3070,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(200);
         soundPool.setPriority(streamId + 1, lowest, (err) => {
@@ -3114,7 +3114,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
@@ -3152,7 +3152,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(streamId, -1).then(() => {
@@ -3190,7 +3190,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(streamId, 1.5).then(() => {
@@ -3228,7 +3228,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(streamId, 3).then(() => {
@@ -3266,7 +3266,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(() => {
@@ -3309,7 +3309,7 @@ export default function soundPoolTest() {
             expectFalse();
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           await soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_HALF).then(() => {
@@ -3354,7 +3354,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(streamId, audio.AudioRendererRate.RENDER_RATE_HALF, (err) => {
@@ -3400,7 +3400,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(streamId, -1, (err) => {
@@ -3446,7 +3446,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(streamId, 1.5, (err) => {
@@ -3492,7 +3492,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(streamId, 3, (err) => {
@@ -3538,7 +3538,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(-1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
@@ -3589,7 +3589,7 @@ export default function soundPoolTest() {
             return;
           })
           soundId = await soundPool.load(fd1, 0, length1);
-          await sleep(200);
+          await sleep(2000);
           streamId = await soundPool.play(soundId);
           await sleep(200);
           soundPool.setRate(streamId + 1, audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
@@ -3639,7 +3639,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         await soundPool.setVolume(streamId, left, right).then(() => {
@@ -3674,7 +3674,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         await soundPool.setVolume(streamId, -0.1, right).then(() => {
@@ -3709,7 +3709,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         await soundPool.setVolume(streamId, 1.5, right).then(() => {
@@ -3744,7 +3744,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         await soundPool.setVolume(streamId, left, -0.1).then(() => {
@@ -3779,7 +3779,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         await soundPool.setVolume(streamId, left, 1.5).then(() => {
@@ -3815,7 +3815,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.setVolume(-1, left, right).then(() => {
@@ -3856,7 +3856,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.setVolume(streamId + 1, left, right).then(() => {
@@ -3899,7 +3899,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(1000);
         soundPool.setVolume(streamId, left, right, (err) => {
@@ -3940,7 +3940,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         soundPool.setVolume(streamId, -0.1, right, (err) => {
@@ -3981,7 +3981,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         soundPool.setVolume(streamId, 1.5, right, (err) => {
@@ -4022,7 +4022,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         soundPool.setVolume(streamId, left, -0.1, (err) => {
@@ -4063,7 +4063,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId, PlayParameters);
         await sleep(1000);
         soundPool.setVolume(streamId, left, 1.5, (err) => {
@@ -4105,7 +4105,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         soundPool.setVolume(-1, left, right, (err) => {
@@ -4152,7 +4152,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         soundPool.setVolume(streamId + 1, left, right, (err) => {
@@ -4231,7 +4231,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.stop(streamId);
@@ -4315,7 +4315,7 @@ export default function soundPoolTest() {
           flag = true;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(500);
+        await sleep(2000);
         streamId = await soundPool.play(soundId);
         await sleep(500);
         await soundPool.stop(streamId);
@@ -4389,7 +4389,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.unload(soundId);
         await sleep(1000);
         soundPool.play(soundId, (error, streamId) => {
@@ -4431,7 +4431,7 @@ export default function soundPoolTest() {
           expectFalse();
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         await soundPool.stop(streamId_).then(() => {
           console.info(`${TAG}: Test stop without play fail, stop success!`);
           expectFalse();
@@ -4468,7 +4468,7 @@ export default function soundPoolTest() {
           return;
         })
         soundId = await soundPool.load(fd1, 0, length1);
-        await sleep(200);
+        await sleep(2000);
         streamId_ = await soundPool.play(soundId);
         await sleep(2000);
         await soundPool.stop(streamId_);
@@ -4556,11 +4556,13 @@ export default function soundPoolTest() {
         soundId_[2] = await soundPool.load(uri3);
         soundId_[3] = await soundPool.load(fd3, length3 / 3, length3);
         await sleep(1000);
-        streamId_[0] = await soundPool.play(soundId_[0]);
-        streamId_[1] = await soundPool.play(soundId_[1]);
-        streamId_[2] = await soundPool.play(soundId_[2]);
-        streamId_[3] = await soundPool.play(soundId_[3]);
+        for (let i = 0; i < 4; i++) {
+          streamId_[i] = await soundPool.play(soundId_[i]);
+        }
         await sleep(8000);
+        for (let i = 0; i < 4; i++) {
+          await soundPool.stop(streamId_[i]);
+        }
         for (let i = 0; i < 4; i++) {
           await soundPool.unload(soundId_[i]);
         }

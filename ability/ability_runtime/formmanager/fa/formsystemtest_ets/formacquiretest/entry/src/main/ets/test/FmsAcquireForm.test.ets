@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -96,8 +96,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -137,8 +137,8 @@ export default function test() {
                     parameters: {
                         "formId": "-1",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -179,7 +179,7 @@ export default function test() {
                         "formId": "-1",
                         "name": "Form_Js001",
                         "bundle": "com.form.formsystemtestservicea.hmservice123",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -219,8 +219,8 @@ export default function test() {
                     parameters: {
                         "formId": "-1",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry123",
                         "temporary": false,
                         "isCreate": true
@@ -260,8 +260,8 @@ export default function test() {
                     parameters: {
                         "formId": "-1",
                         "name": "Form_Js001987",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -301,7 +301,7 @@ export default function test() {
                     parameters: {
                         "formId": "-1",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
                         "ability": "com.form.formsystemtestservicea.hmservice.FormAbility123",
                         "moduleName": "entry",
                         "temporary": false,
@@ -342,8 +342,8 @@ export default function test() {
                     parameters: {
                         "formId": "-1",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "dimension": 4,
                         "temporary": false,
@@ -396,9 +396,9 @@ export default function test() {
                     let retData = JSON.parse(data.parameters.parameters);
 
                     let bundleName = retData.bundleName;
-                    expect(bundleName).assertEqual("com.form.formsystemtestservicea.hmservice");
+                    expect(bundleName).assertEqual("com.acts.form.formsystemtestservicea.hmservice");
                     let abilityName = retData.abilityName;
-                    expect(abilityName).assertEqual("com.form.formsystemtestservicea.hmservice.FormAbility");
+                    expect(abilityName).assertEqual("com.acts.form.formsystemtestservicea.hmservice.FormAbility");
                     let moduleName = retData.parameters['ohos.extra.param.key.module_name'];
                     expect(moduleName).assertEqual("entry");
                     let formName = retData.parameters['ohos.extra.param.key.form_name'];
@@ -431,8 +431,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -574,8 +574,8 @@ export default function test() {
                         parameters: {
                             "formId": "1",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -602,8 +602,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -661,8 +661,8 @@ export default function test() {
                         parameters: {
                             "formId": formId1,
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -707,8 +707,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -766,8 +766,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -817,8 +817,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -870,8 +870,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": true,
                             "isCreate": true
@@ -924,8 +924,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": true,
                             "isCreate": true
@@ -986,8 +986,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -1038,8 +1038,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "isCreate": true
@@ -1088,8 +1088,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": true,
                             "isCreate": true
@@ -1141,8 +1141,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": true,
                             "isCreate": true
@@ -1196,9 +1196,9 @@ export default function test() {
                     let retData = JSON.parse(data.parameters.parameters);
 
                     let bundleName = retData.bundleName;
-                    expect(bundleName).assertEqual("com.form.formsystemtestservicea.hmservice");
+                    expect(bundleName).assertEqual("com.acts.form.formsystemtestservicea.hmservice");
                     let abilityName = retData.abilityName;
-                    expect(abilityName).assertEqual("com.form.formsystemtestservicea.hmservice.FormAbility");
+                    expect(abilityName).assertEqual("com.acts.form.formsystemtestservicea.hmservice.FormAbility");
                     let moduleName = retData.parameters['ohos.extra.param.key.module_name'];
                     expect(moduleName).assertEqual("entry");
                     let formName = retData.parameters['ohos.extra.param.key.form_name'];
@@ -1232,8 +1232,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "isCreate": true
@@ -1288,8 +1288,8 @@ export default function test() {
                         parameters: {
                             "formId": data.data,
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": true,
                             "isCreate": true
@@ -1314,8 +1314,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": false,
                         "isCreate": true
@@ -1361,8 +1361,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "temporaryId": "-1",
@@ -1409,8 +1409,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "temporaryId": "0",
@@ -1461,8 +1461,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "temporaryId": data.data,
@@ -1489,8 +1489,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "isCreate": true
@@ -1535,8 +1535,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "temporaryId": "123456789",
@@ -1600,8 +1600,8 @@ export default function test() {
                         parameters: {
                             "formId": "0",
                             "name": "Form_Js001",
-                            "bundle": "com.form.formsystemtestservicea.hmservice",
-                            "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                            "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                            "ability": "FormAbility",
                             "moduleName": "entry",
                             "temporary": false,
                             "temporaryId": data.data,
@@ -1630,8 +1630,8 @@ export default function test() {
                     parameters: {
                         "formId": "0",
                         "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
+                        "bundle": "com.acts.form.formsystemtestservicea.hmservice",
+                        "ability": "FormAbility",
                         "moduleName": "entry",
                         "temporary": true,
                         "isCreate": true

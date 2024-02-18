@@ -87,8 +87,95 @@ export default function audioRendererTest() {
       });
     }
 
+
+    async function play(AudioRendererOptions, pathName, done) {
+      console.info(`${TagFrmwkRender}: Promise : Audio Play Function`);
+      let audioRen;
+      let speed = 0;
+      await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+        audioRen = data;
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data state: ${Object.keys(data)}`);
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data value: ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : Path : ${pathName}`);
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      await audioRen.start().then(async () => {
+        console.info(`${TagFrmwkRender}: renderInstant started :SUCCESS`);
+        speed = audioRen.getSpeed();
+        console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+        expect(speed).assertEqual(1);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: renderInstant start :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      let bufferSize;
+      await audioRen.getBufferSize().then((data) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :SUCCESS ${data}`);
+        bufferSize = data;
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+      let ss = fileio.fdopenStreamSync(fdRead, 'r');
+      console.info(`${TagFrmwkRender}:ss: File Path: ${ss}`);
+      let discardHeader = new ArrayBuffer(44);
+      ss.readSync(discardHeader);
+      let totalSize = fileio.fstatSync(fdRead).size;
+      console.info(`${TagFrmwkRender}:totalSize: File totalSize size: ${totalSize}`);
+      totalSize = totalSize - 44;
+      console.info(`${TagFrmwkRender}: File size : Removing header: ${totalSize}`);
+      let rlen = 0;
+
+      audioRen.setSpeed(0.25);
+      speed = audioRen.getSpeed();
+      console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+      expect(speed).assertEqual(0.25);
+      while (rlen < totalSize / 4) {
+        let buf = new ArrayBuffer(bufferSize);
+        rlen += ss.readSync(buf);
+        console.info(`${TagFrmwkRender}:BufferAudioFramework: bytes read from file: ${rlen}`);
+        await audioRen.write(buf);
+      }
+
+
+      console.info(`${TagFrmwkRender}: Renderer after read`);
+
+      await audioRen.drain().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer drained : SUCCESS`);
+      }).catch((err) => {
+        console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      await sleep(100);
+      audioRen.setSpeed(4);
+      speed = audioRen.getSpeed();
+      console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+      expect(speed).assertEqual(4);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      done();
+    }
     async function playbackPromise_AudioSceneSync(AudioRendererOptions, pathName, AudioScene) {
-      let resultFlag =false;
+      let resultFlag = false;
       console.info(`${TagFrmwkRender}: Promise : Audio Playback Function`);
 
       let audioRen;
@@ -200,7 +287,7 @@ export default function audioRendererTest() {
         await audioRen.write(buf);
         if (rlen > (totalSize / 2)) {
           try {
-            let value =  AUDIOMANAGER.getAudioSceneSync();
+            let value = AUDIOMANAGER.getAudioSceneSync();
             console.info(`${TagFrmwkRender}:AudioFrameworkAudioScene: getAudioScene : Value : ${value}`);
           } catch (error) {
             console.info(`${TagFrmwkRender}:AudioFrameworkAudioScene: getAudioScene : ERROR : ${error.message}`);
@@ -953,6 +1040,7 @@ export default function audioRendererTest() {
       let resultFlag = false;
       let audioRen;
       let isPass = false;
+      let rlen = 0;
       await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
         audioRen = data;
         console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS`);
@@ -975,12 +1063,13 @@ export default function audioRendererTest() {
       audioRen.on('markReach', 55, (position) => {
         console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
         audioRen.off('markReach');
-        audioRen.on('markReach', 100, (position) => {
-          console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
-          resultFlag = true;
-        });
+        expect(true).assertTrue();
       });
-
+      audioRen.on('markReach', 100, (position) => {
+        console.log(`${TagFrmwk}: markReach Event is called :  ${position}`);
+        resultFlag = true;
+        audioRen.off('markReach');
+      });
       console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
 
       await audioRen.start().then(() => {
@@ -1009,7 +1098,7 @@ export default function audioRendererTest() {
       console.info(`${TagFrmwkRender}:case 3 : AudioFrameworkRenderLog: File totalSize size: ${totalSize}`);
       totalSize = totalSize - 44;
       console.info(`${TagFrmwkRender}: File size : Removing header: ${totalSize}`);
-      let rlen = 0;
+      // let rlen = 0;
       while (rlen < totalSize / 4) {
         let buf = new ArrayBuffer(bufferSize);
         rlen += ss.readSync(buf);
@@ -1259,7 +1348,7 @@ export default function audioRendererTest() {
         resultFlag = true;
         expect(true).assertTrue();
         audioRen.off('periodReach');
-        
+
       });
       audioRen.on('periodReach', 100, (position) => {
         console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
@@ -1773,153 +1862,709 @@ export default function audioRendererTest() {
 
     }
 
-     /**
-       *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100
-       *@tc.name      : Get All AudioChannel
-       *@tc.desc      : Get All AudioChannel
-       *@tc.size      : MEDIUM
-       *@tc.type      : Function
-       *@tc.level     : Level 2
-       */
-       it("SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100", 2, async function (done) {
-        console.log(`get CHANNEL_1 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_1));
-        expect(audio.AudioChannel.CHANNEL_2 ).assertEqual(0x1 << 1);
-        console.log(`get CHANNEL_2 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_2));
-        expect(audio.AudioChannel.CHANNEL_3 ).assertEqual(3);
-        console.log(`get CHANNEL_3 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_3));
-        expect(audio.AudioChannel.CHANNEL_4 ).assertEqual(4);
-        console.log(`get CHANNEL_4 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_4));
-        expect(audio.AudioChannel.CHANNEL_5 ).assertEqual(5);
-        console.log(`get CHANNEL_5 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_5));
-        expect(audio.AudioChannel.CHANNEL_6 ).assertEqual(6);
-        console.log(`get CHANNEL_6 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_6));
-        expect(audio.AudioChannel.CHANNEL_7 ).assertEqual(7);
-        console.log(`get CHANNEL_7 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_7));
-        expect(audio.AudioChannel.CHANNEL_8 ).assertEqual(8);
-        console.log(`get CHANNEL_8 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_8));
-        expect(audio.AudioChannel.CHANNEL_9 ).assertEqual(9);
-        console.log(`get CHANNEL_9 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_9));
-        expect(audio.AudioChannel.CHANNEL_10 ).assertEqual(10);
-        console.log(`get CHANNEL_10 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_10));
-        expect(audio.AudioChannel.CHANNEL_12 ).assertEqual(12);
-        console.log(`get CHANNEL_12 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_12));
-        expect(audio.AudioChannel.CHANNEL_14 ).assertEqual(14);
-        console.log(`get CHANNEL_14 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_14));
-        expect(audio.AudioChannel.CHANNEL_16 ).assertEqual(16);
-        console.log(`get CHANNEL_16 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_16));
-        done();
-      })
+    /**
+      *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGEWITHINFO_0100
+      *@tc.name      : on_outputDeviceChangeWithInfo
+      *@tc.desc      : on_outputDeviceChangeWithInfo
+      *@tc.size      : MEDIUM
+      *@tc.type      : Function
+      *@tc.level     : Level 2
+      */
+    it("SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGEWITHINFO_0100", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
 
-      /**
-       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100
-       *@tc.name      : All AudioChannelLayout 
-       *@tc.desc      : All AudioChannelLayout 
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRender = await audio.createAudioRenderer(audioRendererOptions);
+      audioRender.on('outputDeviceChangeWithInfo', (AudioStreamDeviceChangeInfo) => {
+        console.info(`devices: ${JSON.stringify(AudioStreamDeviceChangeInfo.devices)}`);
+        console.info(`changeReason: ${JSON.stringify(AudioStreamDeviceChangeInfo.changeReason)}`);
+      });
+      await audioRender.release();
+      expect(true).assertTrue();
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOSTREAMDEVICECHANGEREASON_0100
+     *@tc.name      : AudioStreamDeviceChangeReason
+     *@tc.desc      : AudioStreamDeviceChangeReason
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOSTREAMDEVICECHANGEREASON_0100", 2, async function (done) {
+      console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN)}`);
+      expect(audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN).assertEqual(0);
+      console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE)}`);
+      expect(audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE).assertEqual(1);
+      console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE)}`);
+      expect(audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE).assertEqual(2);
+      console.info(`AudioStreamDeviceChangeReason: ${JSON.stringify(audio.AudioStreamDeviceChangeReason.REASON_OVERRODE)}`);
+      expect(audio.AudioStreamDeviceChangeReason.REASON_OVERRODE).assertEqual(3);
+      done();
+    })
+
+    /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0100
+       *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_48000
+       *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_48000
        *@tc.size      : MEDIUM
        *@tc.type      : Function
        *@tc.level     : Level 2
-       49
        */
-       it("SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100", 2, async function (done) {
-        console.log(`get CH_LAYOUT_UNKNOWN success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN).assertEqual(0x0);
-        console.log(`get CH_LAYOUT_MONO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_MONO));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_MONO).assertEqual(0x4);
-        console.log(`get CH_LAYOUT_STEREO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO).assertEqual(0x3);
-        console.log(`get CH_LAYOUT_STEREO_DOWNMIX success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX).assertEqual(0x60000000);
-        console.log(`get CH_LAYOUT_2POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1).assertEqual(0xB);
-        console.log(`get CH_LAYOUT_3POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0).assertEqual(0x103);
-        console.log(`get CH_LAYOUT_SURROUND success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_SURROUND));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_SURROUND).assertEqual(0x7);
-        console.log(`get CH_LAYOUT_3POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1).assertEqual(0xF);
-        console.log(`get CH_LAYOUT_4POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT0));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT0).assertEqual(0x107);
-        console.log(`get CH_LAYOUT_QUAD success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD).assertEqual(0x33);
-        console.log(`get CH_LAYOUT_QUAD_SIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE).assertEqual(0x603);
-        console.log(`get CH_LAYOUT_2POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2).assertEqual(0x3000000003);
-        console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D).assertEqual(0x100000000001);
-        console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D).assertEqual(0x100000001001);
-        console.log(`get CH_LAYOUT_AMB_ORDER1_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA).assertEqual(0x100000000101);
-        console.log(`get CH_LAYOUT_4POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT1).assertEqual(0x10F);
-        console.log(`get CH_LAYOUT_5POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0).assertEqual(0x607);
-        console.log(`get CH_LAYOUT_5POINT0_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK).assertEqual(0x37);
-        console.log(`get CH_LAYOUT_2POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2).assertEqual(0x300000000B);
-        console.log(`get CH_LAYOUT_3POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2).assertEqual(0x3000000007);
-        console.log(`get CH_LAYOUT_5POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1).assertEqual(0x60F);
-        console.log(`get CH_LAYOUT_5POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK).assertEqual(0x3F);
-        console.log(`get CH_LAYOUT_6POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0).assertEqual(0x707);
-        console.log(`get CH_LAYOUT_HEXAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL).assertEqual(0x137);
-        console.log(`get CH_LAYOUT_3POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2).assertEqual(0x500F);
-        console.log(`get CH_LAYOUT_6POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT).assertEqual(0x6C3);
-        console.log(`get CH_LAYOUT_6POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1).assertEqual(0x70F);
-        console.log(`get CH_LAYOUT_6POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK).assertEqual(0x13F);
-        console.log(`get CH_LAYOUT_6POINT1_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT).assertEqual(0x6CB);
-        console.log(`get CH_LAYOUT_7POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0).assertEqual(0x637);
-        console.log(`get CH_LAYOUT_7POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT).assertEqual(0x6C7);
-        console.log(`get CH_LAYOUT_7POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1).assertEqual(0x63F);
-        console.log(`get CH_LAYOUT_OCTAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL).assertEqual(0x737);
-        console.log(`get CH_LAYOUT_5POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2).assertEqual(0x300000060F);
-        console.log(`get CH_LAYOUT_7POINT1_WIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE).assertEqual(0x6CF);
-        console.log(`get CH_LAYOUT_7POINT1_WIDE_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK).assertEqual(0xFF);
-        console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D).assertEqual(0x100000000002);
-        console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D).assertEqual(0x100000001002);
-        console.log(`get CH_LAYOUT_AMB_ORDER2_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA).assertEqual(0x100000000102);
-        console.log(`get CH_LAYOUT_5POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4).assertEqual(0x2D60F);
-        console.log(`get CH_LAYOUT_7POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2).assertEqual(0x300000063F);
-        console.log(`get CH_LAYOUT_7POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4).assertEqual(0x2D63F);
-        console.log(`get CH_LAYOUT_10POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_10POINT2));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_10POINT2).assertEqual(0x180005737);
-        console.log(`get CH_LAYOUT_9POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4).assertEqual(0x18002D63F);
-        console.log(`get CH_LAYOUT_9POINT1POINT6 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6).assertEqual(0x318002D63F);
-        console.log(`get CH_LAYOUT_HEXADECAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL).assertEqual(0x18003F737);
-        console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D).assertEqual(0x100000000003);
-        console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D).assertEqual(0x100000001003);
-        console.log(`get CH_LAYOUT_AMB_ORDER3_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA));
-        expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA).assertEqual(0x100000000103);
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0100", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-2C-48000-4SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0200
+    *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_8000
+    *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_8000
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0200", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_ALARM,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-8000-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0300
+     *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_16000
+     *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_16000
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0300", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-16000-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0400
+    *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_24000
+    *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_24000
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0400", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-2C-24000-3SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0500
+     *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0500", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-44100-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0600
+       *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_48000
+       *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_48000
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 2
+       */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0600", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-2C-48000-4SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0700
+    *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_8000
+    *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_8000
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0700", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_ACCESSIBILITY,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-8000-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0800
+     *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_16000
+     *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_16000
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0800", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-16000-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0900
+    *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_24000
+    *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_24000
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_0900", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_GAME,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-2C-24000-3SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1000
+     *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1000", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_AUDIOBOOK,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-44100-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1100
+     *@tc.name      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.desc      : setSpeed_getSpeed_AudioSamplingRate_44100
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1100", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let readPath = 'StarWars10s-1C-44100-2SW.wav'
+      await getFdRead(readPath, done);
+      await play(audioRendererOptions, filePath, done);
+      await sleep(100);
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1200
+     *@tc.name      : setSpeed_no_start
+     *@tc.desc      : setSpeed_no_start
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1200", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      audioRenderer.setSpeed(3);
+      let speed = audioRenderer.getSpeed();
+      console.log(`get Speed success: ` + JSON.stringify(speed));
+      expect(speed).assertEqual(3);
+      await sleep(100);
+      await audioRenderer.release();
+      done();
+    })
+    /**
+           *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1300
+           *@tc.name      : setSpeed_invalid_number_parameter
+           *@tc.desc      : setSpeed_invalid_number_parameter
+           *@tc.size      : MEDIUM
+           *@tc.type      : Function
+           *@tc.level     : Level 2
+           */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1300", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      try {
+        audioRenderer.setSpeed(0.1);
+      } catch (error) {
+        console.log(`get Speed error: ` + JSON.stringify(error.code));
+        expect(Number(error.code)).assertEqual(6800101)
         done();
-      })
+      }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1400
+     *@tc.name      : setSpeed_invalid_string_parameter
+     *@tc.desc      : setSpeed_invalid_string_parameter
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1400", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      try {
+        // @ts-ignore
+        audioRenderer.setSpeed("0.1");
+      } catch (error) {
+        console.log(`get Speed error: ` + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(401)
+        done();
+      }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1500
+     *@tc.name      : setSpeed_invalid_null_parameter
+     *@tc.desc      : setSpeed_invalid_null_parameter
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_SET/GET_SPEED_1500", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      try {
+        // @ts-ignore
+        audioRenderer.setSpeed();
+      } catch (error) {
+        console.log(`get Speed error: ` + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(401)
+        done();
+      }
+    })
+    /**
+      *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100
+      *@tc.name      : Get All AudioChannel
+      *@tc.desc      : Get All AudioChannel
+      *@tc.size      : MEDIUM
+      *@tc.type      : Function
+      *@tc.level     : Level 2
+      */
+    it("SUB_MULTIMEDIA_AUDIO_AUDIOCHANNEL_0100", 2, async function (done) {
+      console.log(`get CHANNEL_1 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_1));
+      expect(audio.AudioChannel.CHANNEL_2).assertEqual(0x1 << 1);
+      console.log(`get CHANNEL_2 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_2));
+      expect(audio.AudioChannel.CHANNEL_3).assertEqual(3);
+      console.log(`get CHANNEL_3 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_3));
+      expect(audio.AudioChannel.CHANNEL_4).assertEqual(4);
+      console.log(`get CHANNEL_4 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_4));
+      expect(audio.AudioChannel.CHANNEL_5).assertEqual(5);
+      console.log(`get CHANNEL_5 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_5));
+      expect(audio.AudioChannel.CHANNEL_6).assertEqual(6);
+      console.log(`get CHANNEL_6 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_6));
+      expect(audio.AudioChannel.CHANNEL_7).assertEqual(7);
+      console.log(`get CHANNEL_7 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_7));
+      expect(audio.AudioChannel.CHANNEL_8).assertEqual(8);
+      console.log(`get CHANNEL_8 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_8));
+      expect(audio.AudioChannel.CHANNEL_9).assertEqual(9);
+      console.log(`get CHANNEL_9 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_9));
+      expect(audio.AudioChannel.CHANNEL_10).assertEqual(10);
+      console.log(`get CHANNEL_10 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_10));
+      expect(audio.AudioChannel.CHANNEL_12).assertEqual(12);
+      console.log(`get CHANNEL_12 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_12));
+      expect(audio.AudioChannel.CHANNEL_14).assertEqual(14);
+      console.log(`get CHANNEL_14 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_14));
+      expect(audio.AudioChannel.CHANNEL_16).assertEqual(16);
+      console.log(`get CHANNEL_16 success: ` + JSON.stringify(audio.AudioChannel.CHANNEL_16));
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100
+     *@tc.name      : All AudioChannelLayout 
+     *@tc.desc      : All AudioChannelLayout 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     49
+     */
+    it("SUB_MULTIMEDIA_AUDIO_CHANNEL_LAYOUT_0100", 2, async function (done) {
+      console.log(`get CH_LAYOUT_UNKNOWN success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_UNKNOWN).assertEqual(0x0);
+      console.log(`get CH_LAYOUT_MONO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_MONO));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_MONO).assertEqual(0x4);
+      console.log(`get CH_LAYOUT_STEREO success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO).assertEqual(0x3);
+      console.log(`get CH_LAYOUT_STEREO_DOWNMIX success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_STEREO_DOWNMIX).assertEqual(0x60000000);
+      console.log(`get CH_LAYOUT_2POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1).assertEqual(0xB);
+      console.log(`get CH_LAYOUT_3POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0).assertEqual(0x103);
+      console.log(`get CH_LAYOUT_SURROUND success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_SURROUND));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_SURROUND).assertEqual(0x7);
+      console.log(`get CH_LAYOUT_3POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1).assertEqual(0xF);
+      console.log(`get CH_LAYOUT_4POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT0));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT0).assertEqual(0x107);
+      console.log(`get CH_LAYOUT_QUAD success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD).assertEqual(0x33);
+      console.log(`get CH_LAYOUT_QUAD_SIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_QUAD_SIDE).assertEqual(0x603);
+      console.log(`get CH_LAYOUT_2POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT0POINT2).assertEqual(0x3000000003);
+      console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_N3D).assertEqual(0x100000000001);
+      console.log(`get CH_LAYOUT_AMB_ORDER1_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_ACN_SN3D).assertEqual(0x100000001001);
+      console.log(`get CH_LAYOUT_AMB_ORDER1_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER1_FUMA).assertEqual(0x100000000101);
+      console.log(`get CH_LAYOUT_4POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_4POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_4POINT1).assertEqual(0x10F);
+      console.log(`get CH_LAYOUT_5POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0).assertEqual(0x607);
+      console.log(`get CH_LAYOUT_5POINT0_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT0_BACK).assertEqual(0x37);
+      console.log(`get CH_LAYOUT_2POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_2POINT1POINT2).assertEqual(0x300000000B);
+      console.log(`get CH_LAYOUT_3POINT0POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT0POINT2).assertEqual(0x3000000007);
+      console.log(`get CH_LAYOUT_5POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1).assertEqual(0x60F);
+      console.log(`get CH_LAYOUT_5POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1_BACK).assertEqual(0x3F);
+      console.log(`get CH_LAYOUT_6POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0).assertEqual(0x707);
+      console.log(`get CH_LAYOUT_HEXAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_HEXAGONAL).assertEqual(0x137);
+      console.log(`get CH_LAYOUT_3POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_3POINT1POINT2).assertEqual(0x500F);
+      console.log(`get CH_LAYOUT_6POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT0_FRONT).assertEqual(0x6C3);
+      console.log(`get CH_LAYOUT_6POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1).assertEqual(0x70F);
+      console.log(`get CH_LAYOUT_6POINT1_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_BACK).assertEqual(0x13F);
+      console.log(`get CH_LAYOUT_6POINT1_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_6POINT1_FRONT).assertEqual(0x6CB);
+      console.log(`get CH_LAYOUT_7POINT0 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0).assertEqual(0x637);
+      console.log(`get CH_LAYOUT_7POINT0_FRONT success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT0_FRONT).assertEqual(0x6C7);
+      console.log(`get CH_LAYOUT_7POINT1 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1).assertEqual(0x63F);
+      console.log(`get CH_LAYOUT_OCTAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_OCTAGONAL).assertEqual(0x737);
+      console.log(`get CH_LAYOUT_5POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT2).assertEqual(0x300000060F);
+      console.log(`get CH_LAYOUT_7POINT1_WIDE success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE).assertEqual(0x6CF);
+      console.log(`get CH_LAYOUT_7POINT1_WIDE_BACK success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1_WIDE_BACK).assertEqual(0xFF);
+      console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_N3D).assertEqual(0x100000000002);
+      console.log(`get CH_LAYOUT_AMB_ORDER2_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_ACN_SN3D).assertEqual(0x100000001002);
+      console.log(`get CH_LAYOUT_AMB_ORDER2_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER2_FUMA).assertEqual(0x100000000102);
+      console.log(`get CH_LAYOUT_5POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_5POINT1POINT4).assertEqual(0x2D60F);
+      console.log(`get CH_LAYOUT_7POINT1POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT2).assertEqual(0x300000063F);
+      console.log(`get CH_LAYOUT_7POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_7POINT1POINT4).assertEqual(0x2D63F);
+      console.log(`get CH_LAYOUT_10POINT2 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_10POINT2));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_10POINT2).assertEqual(0x180005737);
+      console.log(`get CH_LAYOUT_9POINT1POINT4 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT4).assertEqual(0x18002D63F);
+      console.log(`get CH_LAYOUT_9POINT1POINT6 success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_9POINT1POINT6).assertEqual(0x318002D63F);
+      console.log(`get CH_LAYOUT_HEXADECAGONAL success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_HEXADECAGONAL).assertEqual(0x18003F737);
+      console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_N3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_N3D).assertEqual(0x100000000003);
+      console.log(`get CH_LAYOUT_AMB_ORDER3_ACN_SN3D success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_ACN_SN3D).assertEqual(0x100000001003);
+      console.log(`get CH_LAYOUT_AMB_ORDER3_FUMA success: ` + JSON.stringify(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA));
+      expect(audio.AudioChannelLayout.CH_LAYOUT_AMB_ORDER3_FUMA).assertEqual(0x100000000103);
+      done();
+    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETSTREAMINFO_0100
@@ -2073,7 +2718,7 @@ export default function audioRendererTest() {
       }
       let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
       try {
-        let data =  audioRenderer.getAudioStreamIdSync();
+        let data = audioRenderer.getAudioStreamIdSync();
         console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_GET_AUDIO_STREAM_ID_SYNC_0200 OUT OF BORDER PROMISE: SUCCESS ${data}`);
         expect(true).assertTrue();
         audioRenderer.release().then(() => {
@@ -3272,7 +3917,7 @@ export default function audioRendererTest() {
         rendererInfo: audioRendererInfo
       }
       let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-       audioRenderer.getAudioStreamId(async (err, data) => {
+      audioRenderer.getAudioStreamId(async (err, data) => {
         if (err) {
           console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
           expect(false).assertTrue();
@@ -3325,7 +3970,7 @@ export default function audioRendererTest() {
       }).catch((err) => {
         console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
       });
-       audioRenderer.getAudioStreamId(async (err, data) => {
+      audioRenderer.getAudioStreamId(async (err, data) => {
         if (err) {
           console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK : ${err.message}`);
           if (err.code == 6800103) {

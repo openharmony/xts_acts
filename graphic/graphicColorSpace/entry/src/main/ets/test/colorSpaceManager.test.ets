@@ -66,11 +66,11 @@ export default function colorSpaceManagerTest(context, windowStage, abilityStora
         expect(23).assertEqual(colorSpaceManager.ColorSpace.LINEAR_P3);
         expect(24).assertEqual(colorSpaceManager.ColorSpace.LINEAR_SRGB);
         expect(25).assertEqual(colorSpaceManager.ColorSpace.LINEAR_BT2020);
-        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.LINEAR_BT709)
-        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_SRGB)
-        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB)
-        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_HLG)
-        console.log('test enum value of ColorSpace' + colorSpaceManager.ColorSpace.DISPLAY_P3_PQ)
+        expect(24).assertEqual(colorSpaceManager.ColorSpace.LINEAR_BT709);
+        expect(4).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_SRGB);
+        expect(3).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_P3_SRGB);
+        expect(11).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_P3_HLG);
+        expect(12).assertEqual(colorSpaceManager.ColorSpace.DISPLAY_P3_PQ);
         done();
       } catch (err) {
         console.info('test enum value of ColorSpace Manager error ' + JSON.stringify(err));

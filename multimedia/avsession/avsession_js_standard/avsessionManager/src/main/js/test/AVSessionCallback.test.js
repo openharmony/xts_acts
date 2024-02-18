@@ -700,6 +700,150 @@ export default function AVSessionCallback() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700
+         * @tc.name      : setAVMetadata - callback - set avQueueName、avQueueId、avQueueImage(pixelmap)
+         * @tc.desc      : Testing call setAVMetadata(callback) set avQueueName、avQueueId、avQueueImage(pixelmap)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1700', 0, async function (done) {
+            console.info('TestLog: Creat pixelmap');
+            let pixelMap = await getPixelMap();
+            let readBuffer0 = new ArrayBuffer(96);
+            await pixelMap.readPixelsToBuffer(readBuffer0);
+            let bufferArr0 = new Uint8Array(readBuffer0);
+            let metadata18 = {
+                assetId: '121278',
+                avQueueName: '121278',
+                avQueueId: '121278',
+                avQueueImage: pixelMap
+            };
+            session.setAVMetadata(metadata18, (err) => {
+                if (err) {
+                    console.info(`TestLog: set avQueueName、avQueueId、avQueueImage(pixelmap) error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }
+            })
+            await sleep(500);
+            
+            controller.getAVMetadata(async (err, value) => {
+                let pixMap;
+                if (err) {
+                    console.info(`TestLog: getAVMetadata error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (value && value.assetId === '121278' && value.avQueueName === '121278' && value.avQueueId === '121278') {
+                    console.info('TestLog: getAVMetadata Successfully');
+                    pixMap = value.avQueueImage;
+                } else {
+                    console.info(`TestLog: getAVMetadata failed:${value}`);
+                    expect(false).assertTrue();
+                }
+                if (pixMap) {
+                    let pixelSize = pixMap.getPixelBytesNumber();
+                    console.info(`TestLog: pixelSize is: ${pixelSize}`);
+                    let readBuffer = new ArrayBuffer(pixelSize);
+                    await pixMap.readPixelsToBuffer(readBuffer);
+                    let bufferArr2 = new Uint8Array(readBuffer);
+                    for (let i = 0; i < bufferArr2.length; i++) {
+                        if (bufferArr0[i] !== bufferArr2[i]) {
+                            expect(false).assertTrue();
+                        } else {
+                            expect(true).assertTrue();
+                        }
+                    }
+                }
+                done();
+            })
+            await sleep(500);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800
+         * @tc.name      : setAVMetadata - callback - set avQueueName、avQueueId、avQueueImage(string)
+         * @tc.desc      : Testing call setAVMetadata(callback) set avQueueName、avQueueId、avQueueImage(string)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1800', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                avQueueName: '121278',
+                avQueueId: '121278',
+                avQueueImage: 'https://img2.baidu.com/it/u=3583435814,2833583486&fm=253&fmt=auto&app=138&f=JPEG?w=526&h=500'
+            };
+
+            session.setAVMetadata(metadata, (err) => {
+                if (err) {
+                    console.info(`TestLog: Set avQueueName、avQueueId、avQueueImage(string) error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }
+            })
+            await sleep(500);
+            controller.getAVMetadata((err, data) => {
+                if (err) {
+                    console.info(`TestLog: Get avQueueName、avQueueId、avQueueImage(string) error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else if (data) {
+                    expect(data.assetId).assertEqual(metadata.assetId);
+                    expect(data.avQueueName).assertEqual(metadata.avQueueName);
+                    expect(data.avQueueId).assertEqual(metadata.avQueueId);
+                    expect(data.avQueueImage).assertEqual(metadata.avQueueImage);
+                    console.info('TestLog: Get avQueueName、avQueueId、avQueueImage(string) Successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info(`TestLog: Get avQueueName、avQueueId、avQueueImage(string) failed:${data}`);
+                    expect(false).assertTrue();
+                }
+                done();
+            })
+            await sleep(500);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1900
+         * @tc.name      : setAVMetadata - callback - set displayTags
+         * @tc.desc      : Testing call setAVMetadata(callback) set displayTags
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETMETADATA_CALLBACK_1900', 0, async function (done) {
+            let metadata = {
+                assetId: '121278',
+                displayTags: avSession.DisplayTag.TAG_AUDIO_VIVID
+            };
+            try {
+                session.setAVMetadata(metadata, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set displayTags error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        controller.getAVMetadata((err, data) => {
+                            if (err) {
+                                console.info(`TestLog: Get displayTags error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            } else if (data) {
+                                console.info('TestLog: Get displayTags Successfully');
+                                expect(data.assetId).assertEqual(metadata.assetId);
+                                expect(data.displayTags).assertEqual(metadata.displayTags);
+                            } else {
+                                console.info(`TestLog: Get displayTags failed:${data}`);
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: set & get displayTags error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_0100
          * @tc.name      : setAVPlaybackState - callback - set state & activeItemId
          * @tc.desc      : Testing call setAVPlaybackState(callback) set state & activeItemId
@@ -1038,6 +1182,286 @@ export default function AVSessionCallback() {
                 done();
             })
             await sleep(1000);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1000
+         * @tc.name      : setAVPlaybackState - callback - set state(PLAYBACK_STATE_IDLE)
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set state(PLAYBACK_STATE_IDLE)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1000', 0, async function (done) {
+            let PlaybackState10 = {
+                state:avSession.PlaybackState.PLAYBACK_STATE_IDLE,
+            };
+            session.setAVPlaybackState(PlaybackState10, (err) => {
+                if (err) {
+                    console.info(`TestLog: Set State error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    console.info('TestLog: Set State successfully');
+                }
+            })
+            await sleep(500);
+            controller.getAVPlaybackState((err, value) => {
+                if (err) {
+                    console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }else if (value.state === 10) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+                done();
+            })
+            await sleep(500);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1100
+         * @tc.name      : setAVPlaybackState - callback - set state(PLAYBACK_STATE_BUFFERING)
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set state(PLAYBACK_STATE_BUFFERING)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1100', 0, async function (done) {
+            let PlaybackState11 = {
+                state:avSession.PlaybackState.PLAYBACK_STATE_BUFFERING,
+            };
+            session.setAVPlaybackState(PlaybackState11, (err) => {
+                if (err) {
+                    console.info(`TestLog: Set State error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    console.info('TestLog: Set State successfully');
+                }
+            })
+            await sleep(500);
+            controller.getAVPlaybackState((err, value) => {
+                if (err) {
+                    console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                }else if (value.state === 11) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+                done();
+            })
+            await sleep(500);
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1200
+         * @tc.name      : setAVPlaybackState - callback - set loopMode(LOOP_MODE_CUSTOM)
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set loopMode(LOOP_MODE_CUSTOM)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1200', 0, async function (done) {
+            let PlaybackState = {
+                loopMode: avSession.LoopMode.LOOP_MODE_CUSTOM
+            };
+            try {
+                session.setAVPlaybackState(PlaybackState, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set loopMode error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set loopMode successfully');
+                        controller.getAVPlaybackState((err, value) => {
+                            if (err) {
+                                console.info(`TestLog: Get loopMode error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            }else if (value.loopMode === 4) {
+                                console.info('TestLog: Get loopMode successfully');
+                                expect(true).assertTrue();
+                            } else {
+                                console.info('TestLog: Get loopMode failed');
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set loopMode error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1300
+         * @tc.name      : setAVPlaybackState - callback - set maxVolume
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set maxVolume
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1300', 0, async function (done) {
+            let PlaybackState = {
+                maxVolume: 6
+            };
+            try {
+                session.setAVPlaybackState(PlaybackState, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set maxVolume error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set maxVolume successfully');
+                        controller.getAVPlaybackState((err, value) => {
+                            if (err) {
+                                console.info(`TestLog: Get maxVolume error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            }else if (value.maxVolume === PlaybackState.maxVolume) {
+                                console.info('TestLog: Get maxVolume successfully');
+                                expect(true).assertTrue();
+                            } else {
+                                console.info('TestLog: Get maxVolume failed');
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set maxVolume error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1400
+         * @tc.name      : setAVPlaybackState - callback - set muted
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set muted
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1400', 0, async function (done) {
+            let PlaybackState = {
+                muted: false
+            };
+            try {
+                session.setAVPlaybackState(PlaybackState, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set muted error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set muted successfully');
+                        controller.getAVPlaybackState((err, value) => {
+                            if (err) {
+                                console.info(`TestLog: Get muted error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            }else if (value.muted === PlaybackState.muted) {
+                                console.info('TestLog: Get muted successfully');
+                                expect(true).assertTrue();
+                            } else {
+                                console.info('TestLog: Get muted failed');
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set muted error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1500
+         * @tc.name      : setAVPlaybackState - callback - set videoWidth & videoHeight
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set videoWidth & videoHeight
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1500', 0, async function (done) {
+            let PlaybackState = {
+                videoWidth: 1920,
+                videoHeight: 1080
+            };
+            try {
+                session.setAVPlaybackState(PlaybackState, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set videoWidth & videoHeight error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set videoWidth & videoHeight successfully');
+                        controller.getAVPlaybackState((err, value) => {
+                            if (err) {
+                                console.info(`TestLog: Get videoWidth & videoHeight error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            }else if (value.videoWidth === PlaybackState.videoWidth && value.videoHeight === PlaybackState.videoHeight) {
+                                console.info('TestLog: Get videoWidth & videoHeight successfully');
+                                expect(true).assertTrue();
+                            } else {
+                                console.info('TestLog: Get videoWidth & videoHeight failed');
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set videoWidth & videoHeight error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1600
+         * @tc.name      : setAVPlaybackState - callback - set duration
+         * @tc.desc      : Testing call setAVPlaybackState(callback) set duration
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_CALLBACK_1600', 0, async function (done) {
+            let PlaybackState = {
+                duration: 100
+            };
+            try {
+                session.setAVPlaybackState(PlaybackState, (err) => {
+                    if (err) {
+                        console.info(`TestLog: Set duration error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set duration successfully');
+                        controller.getAVPlaybackState((err, value) => {
+                            if (err) {
+                                console.info(`TestLog: Get duration error: code: ${err.code}, message: ${err.message}`);
+                                expect(false).assertTrue();
+                            }else if (value.duration === PlaybackState.duration) {
+                                console.info('TestLog: Get duration successfully');
+                                expect(true).assertTrue();
+                            } else {
+                                console.info('TestLog: Get duration failed');
+                                expect(false).assertTrue();
+                            }
+                            done();
+                        })
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set duration error: code: ${err.code}, message: ${err.message}`);
+                expect().assertFail();
+                done();
+            }
         })
 
         /* *

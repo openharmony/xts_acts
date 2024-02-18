@@ -59,7 +59,7 @@ export default function ChipAction() {
       await CommonFunc.sleep(200);
       console.info('ChipAction_001 right：' + right + 'top:' + top);
       let driver = Driver.create();
-      await driver.mouseClick({ x: right , y: top }, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({ x: Math.round(right) , y: Math.round(top) }, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       console.info('ChipAction_001 click success');
 

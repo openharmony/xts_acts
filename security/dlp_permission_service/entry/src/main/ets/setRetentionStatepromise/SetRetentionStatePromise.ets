@@ -18,7 +18,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
 import dlpPermission from '@ohos.dlpPermission';
-import {terminateSelfWithResult} from '../common/utils';
+import { terminateSelfWithResult } from '../common/utils';
 
 const TAG = "DLP_XTS_SetRetentionStatePromise";
 
@@ -35,12 +35,12 @@ export default class SetRetentionStatePromise extends UIAbility {
     // Main window is created, set main page for this ability
     var success = <boolean> globalThis.want.parameters['ohos.dlp.params.success'];
     var number = <number> globalThis.want.parameters['ohos.dlp.params.number'];
-    var uriArray=[];
-    if(success){
+    let uriArray: string[] = [];
+    if (success) {
       uriArray = ['uri'];
     }
-    if(number == 2){
-      uriArray = ['uri','uri2'];
+    if (number == 2) {
+      uriArray = ['uri', 'uri2'];
     }
     try {
       await dlpPermission.setRetentionState(uriArray);

@@ -242,5 +242,50 @@ export default function APlayerNDKTest() {
       expect(a).assertEqual(0)
       done()
     })
+
+    /* *
+          * @tc.number    : SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1500
+          * @tc.name      : OH_PLAYER_PlayerStateLoop_014
+          * @tc.desc      : Test OH_AVPlayer_Loop
+          * @tc.size      : MediumTest
+          * @tc.type      : Function test
+          * @tc.level     : Level0
+        */
+    it('SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1500', 0, async function (done) {
+      let a = aplayerTest.PlayerStateSetSpeed_1_25_X();
+      console.info(Tag + "SUB_MULTIMEDIA_PLAYER_AUDIONDK_LOOP_1400-------------PlayerStateLoop:" + a);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+      /* *
+        * @tc.number    : SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1600
+        * @tc.name      : OH_PLAYER_PlayerStateLoop_014
+        * @tc.desc      : Test OH_AVPlayer_Loop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+      */
+  it('SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1600', 0, async function (done) {
+    let a = aplayerTest.PlayerStateSetSpeed_1_75_X();
+    console.info(Tag + "SUB_MULTIMEDIA_PLAYER_AUDIONDK_LOOP_1400-------------PlayerStateLoop:" + a);
+    expect(a).assertEqual(0)
+    done()
+  })
+
+    /* *
+        * @tc.number    : SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1700
+        * @tc.name      : OH_PLAYER_PlayerStateLoop_014
+        * @tc.desc      : Test OH_AVPlayer_Loop
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+      */
+    it('SUB_MULTIMEDIA_PLAYER_AUDIONDK_SETSPEED_1700', 0, async function (done) {
+      let a = aplayerTest.PlayerStateSetSpeed_2_00_X();
+      console.info(Tag + "SUB_MULTIMEDIA_PLAYER_AUDIONDK_LOOP_1400-------------PlayerStateLoop:" + a);
+      expect(a).assertEqual(0)
+      done()
+    })
   })
 }

@@ -71,7 +71,9 @@ let httpRequestOptions:http.HttpRequestOptions = {
     {
       name: "Part1",
       contentType: 'string',
-      data:'textyyyy'
+      data:'textyyyy',
+      filePath:'./test.txt'
+
     }
   ]}
 
@@ -95,8 +97,8 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0100";
@@ -106,7 +108,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
         done();
       }).catch((err: BusinessError) => {
         console.log(`${caseName} request success, data: ${JSON.stringify(err)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       })
     })
@@ -115,8 +117,8 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0200";
@@ -126,7 +128,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
           done();
         }).catch((err:BusinessError) => {
           console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-          expect().assertFail();
+          expectFalse();
           done();
       })
     })
@@ -135,8 +137,8 @@ export default function NetworkManagerMulticastHTTP2Test() {
      * @tc.name: HTTP::request
      * @tc.desc: Test request property.
      * @tc.level 1
-     * @tc.type: FUNC
-     * @tc.size: SMALL
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300", 0, async (done: Function) => {
       let caseName = "SUB_Telephony_netstack_Http_Multipart_Xts_Promise_0300";
@@ -146,7 +148,7 @@ export default function NetworkManagerMulticastHTTP2Test() {
         done();
       }).catch((err:BusinessError) => {
         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       })
     })

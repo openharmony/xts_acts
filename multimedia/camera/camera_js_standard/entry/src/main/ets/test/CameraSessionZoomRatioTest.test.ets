@@ -587,6 +587,7 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio(mZoomRatioRangeArray[i][0]);
+                        await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0100 PASSED with ZoomRatio is: " + mZoomRatioRangeArray[i][0]);  
 
@@ -634,6 +635,7 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] + 1));
+                        await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0200 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0200 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] + 1));
 
@@ -682,6 +684,7 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] + 0.1));
+                        await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0300 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0300 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] + 0.1));
 
@@ -730,6 +733,7 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 1));
+                        await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0400 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0400 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 1));
 
@@ -778,6 +782,7 @@ export default function cameraSessionZoomRatioTest() {
                         await startCameraSession(i);
         
                         mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 0.1));
+                        await sleep(1000);
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0500 finish");
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0500 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 0.1));
 
@@ -799,7 +804,62 @@ export default function cameraSessionZoomRatioTest() {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0500 ends here");
                 done();
             }
-        })    
+        })
+
+        /**
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200
+        * @tc.name      : Check capture session set smooth zoom with promise
+        * @tc.desc      : Check capture session set smooth zoom with promise
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+        */
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200--------------");
+
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 FAILED with NoCamera");
+                expect().assertFail();
+                done();
+            } else {
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 start for camera[" + i + "]");
+
+                    if (!isEmpty(mZoomRatioRangeArray[i])) {
+                        await startCameraSession(i);
+                        mCameraSession.on('smoothZoomInfoAvailable', async (err, duration) => {
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 on smoothZoomInfoAvailable success");
+                            } else {
+                                console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 FAILED on smoothZoomInfoAvailable: " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        mCameraSession.setZoomRatio(mZoomRatioMinArray[i] + 0.1);
+                        await sleep(1000);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 setZoomRatio: " + (mZoomRatioMinArray[i] + 0.1));
+
+                        mCameraSession.setSmoothZoom(mZoomRatioMaxArray[i] - 0.1, cameraObj.SmoothZoomMode.NORMAL);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 targetZoomRatio: " + (mZoomRatioMaxArray[i] - 0.1));
+                        await sleep(2000);
+                        let zoomRatio = mCameraSession.getZoomRatio();
+                        if ((zoomRatio - (mZoomRatioMaxArray[i] - 0.1)) < 0.01) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 PASSED with ZoomRatio is: " + zoomRatio);
+                        } else {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 FAILED with ZoomRatio is: " + zoomRatio);
+                            expect().assertFail();
+                        }
+
+                        await stopCameraSession();
+                    }
+    
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 end for camera[" + i + "]");
+                }
+
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_SMOOTH_ZOOM_PROMISE_0200 ends here");
+                done();
+            }
+        })
 
     })
 }

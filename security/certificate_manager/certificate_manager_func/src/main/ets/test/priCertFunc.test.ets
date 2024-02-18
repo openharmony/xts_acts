@@ -140,7 +140,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       let keystorePwd: string = '123456';
       let certAlias: string = 'appCertAliasDemoRsa';
       let keyUri: string | undefined;
-      await certManager.installPrivateCertificate(keystore, keystorePwd, certAlias).then(cmResult => {
+      await certManager.installPrivateCertificate(keystore, keystorePwd, certAlias).then((cmResult: certManager.CMResult) => {
         expect(cmResult != null).assertTrue();
         console.warn("[Promise] cmResult.uri: " + cmResult.uri);
         console.warn("[Promise] cmResult.certList: " + cmResult.certList);
@@ -178,8 +178,8 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       let cmResult: certManager.CMResult | undefined;
       let cmUri: string | undefined;
       try {
-        cmResult = await new Promise((resolve, reject) => {
-          certManager.installPrivateCertificate(keystore, keystorePwd, certAlias, (err, cmResult) => {
+        cmResult = await new Promise<certManager.CMResult>((resolve, reject) => {
+          certManager.installPrivateCertificate(keystore, keystorePwd, certAlias, (err: Error, cmResult: certManager.CMResult) => {
             if (err) {
               reject(err);
             } else {
@@ -197,7 +197,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       }
       try {
         await new Promise<void>((resolve, reject) => {
-          certManager.uninstallPrivateCertificate(cmUri, (err,) => {
+          certManager.uninstallPrivateCertificate(cmUri, (err: Error,) => {
             if (err) {
               reject(err);
             } else {
@@ -221,7 +221,7 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      * @tc.type Function
      */
     it('Security_CertManager_PriCertJsApi_Func_0400', 0, async (done: Function) => {
-      await certManager.getPrivateCertificate(gAppKeyUri1).then(CMResult => {
+      await certManager.getPrivateCertificate(gAppKeyUri1).then((CMResult: certManager.CMResult) => {
         expect(CMResult.credential != null && CMResult.credential != undefined).assertTrue();
         if (CMResult != undefined && CMResult.credential != undefined) {
           console.warn("[Promise] type: " + CMResult.credential.type);
@@ -250,8 +250,8 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
       let cmResult2: certManager.CMResult;
       console.error(`gAppKeyUri2 is: ${gAppKeyUri2}`);
       try {
-        cmResult2 = await new Promise((resolve, reject) => {
-          certManager.getPrivateCertificate(gAppKeyUri2, (err, CMResult) => {
+        cmResult2 = await new Promise<certManager.CMResult>((resolve, reject) => {
+          certManager.getPrivateCertificate(gAppKeyUri2, (err: Error, CMResult: certManager.CMResult) => {
             if (err) {
               reject(err);
             } else {
@@ -469,8 +469,8 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
      */
     it('Security_CertManager_PriCertJsApi_Func_1400', 0, async (done: Function) => {
       try {
-        let cmResult: certManager.CMResult = await new Promise((resolve, reject) => {
-          certManager.getAllAppPrivateCertificates((err, cmResult) => {
+        let cmResult: certManager.CMResult = await new Promise<certManager.CMResult>((resolve, reject) => {
+          certManager.getAllAppPrivateCertificates((err: BusinessError, cmResult: certManager.CMResult) => {
             if (err) {
               console.error("[Callback]getAllAppPrivateCertificates err: " + err.code);
               reject(err);
@@ -742,4 +742,5 @@ export default function certManagerPriCertJsAPIFunctionTestUnit() {
     })
   })
 }
+
 

@@ -178,10 +178,10 @@ struct progressSecTest {
             Progress({ value: 60, total: 100, type: ProgressType.Capsule })
                 .key('progress_capsule_default_default')
                 .backgroundColor($r('sys.color.ohos_id_color_background'))
-                .color($r('sys.color.ohos_id_color_emphasize'))
+                .color($r('sys.color.ohos_id_color_emphasize_contrary'))
                 .style({
                     borderWidth: $r('sys.float.ohos_id_float_progress_border_width'),
-                    borderColor: $r('sys.color.ohos_id_color_emphasize'),
+                    borderColor: $r('sys.color.ohos_id_color_emphasize_contrary'),
                     font: {
                         size: $r('sys.float.ohos_id_text_size_button3'),
                     },
@@ -283,7 +283,7 @@ struct progressSecTest {
 
             Progress({ value: 60, total: 100, type: ProgressType.Ring })
                 .key('progress_ring_default_default')
-                .backgroundColor($r('sys.color.ohos_id_color_button_normal'))
+                .backgroundColor($r('sys.color.ohos_id_color_component_normal'))
 
             Progress({ value: 60, total: 100, type: ProgressType.Ring })
                 .key('progress_ring_default_default_color_begin')

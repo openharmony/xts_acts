@@ -12,25 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
+
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
+import { BusinessError } from '@ohos.base';
+
+function sleep(time: number) {
+  let date = new Date()
+  let start = date.getSeconds()
+  let end = start
+  while ((end - start) < time) {
+    let endDate = new Date()
+    end = endDate.getSeconds()
+  }
+}
 
 export default function ShortcutKeyTest() {
 
   const SUITE = 'ShortcutKey'
-  function sleep(time) {
-    let date = new Date()
-    let start = date.getSeconds()
-    let end = start
-    while ( (end - start) < time ) {
-      let endDate = new Date()
-      end = endDate.getSeconds()
-    }
-  }
+
 
   const functionKey: FunctionKey[] = [
     FunctionKey.ESC,
@@ -49,47 +52,45 @@ export default function ShortcutKeyTest() {
   ]
   const arr_keyCode = [
     input.KeyCode.KEYCODE_ESCAPE
-    ,input.KeyCode.KEYCODE_F1
-    ,input.KeyCode.KEYCODE_F2
-    ,input.KeyCode.KEYCODE_F3
-    ,input.KeyCode.KEYCODE_F4
-    ,input.KeyCode.KEYCODE_F5
-    ,input.KeyCode.KEYCODE_F6
-    ,input.KeyCode.KEYCODE_F7
-    ,input.KeyCode.KEYCODE_F8
-    ,input.KeyCode.KEYCODE_F9
-    ,input.KeyCode.KEYCODE_F10
-    ,input.KeyCode.KEYCODE_F11
-    ,input.KeyCode.KEYCODE_F12
+    , input.KeyCode.KEYCODE_F1
+    , input.KeyCode.KEYCODE_F2
+    , input.KeyCode.KEYCODE_F3
+    , input.KeyCode.KEYCODE_F4
+    , input.KeyCode.KEYCODE_F5
+    , input.KeyCode.KEYCODE_F6
+    , input.KeyCode.KEYCODE_F7
+    , input.KeyCode.KEYCODE_F8
+    , input.KeyCode.KEYCODE_F9
+    , input.KeyCode.KEYCODE_F10
+    , input.KeyCode.KEYCODE_F11
+    , input.KeyCode.KEYCODE_F12
   ]
 
   const baseEvent = 62000
   const baseEvent2 = 73000
 
-  describe('ShortcutKeyTest', function () {
+  describe('ShortcutKeyTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/ShortcutKey",
       }
       try {
         let pages = router.getState();
         if (pages == null || !("ShortcutKey" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));
       }
-      done()
     });
 
-    afterEach(async function (done) {
+    afterEach(async () => {
       sleep(2)
-      done()
     });
 
     /*
@@ -97,16 +98,15 @@ export default function ShortcutKeyTest() {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0100', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0100', 0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.msg).assertEqual('Ctrl_B');
         console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: baseEvent,
         priority: events_emitter.EventPriority.LOW
       }
@@ -122,16 +122,15 @@ export default function ShortcutKeyTest() {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0200', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0200', 0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.msg).assertEqual('Shift_1');
         console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 72002,
         priority: events_emitter.EventPriority.LOW
       }
@@ -147,16 +146,15 @@ export default function ShortcutKeyTest() {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0300', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0300', 0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0300'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.msg).assertEqual('Alt_Q');
         console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
-        done()
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 72003,
         priority: events_emitter.EventPriority.LOW
       }
@@ -172,24 +170,23 @@ export default function ShortcutKeyTest() {
      *tc.name   Custom keyboard shortcuts
      *tc.desc   Custom keyboard shortcuts
      */
-    it('ArkUI_Shortcut_Key_0400', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0400', 0, async () => {
       let CASE = 'ArkUI_Shortcut_Key_0400'
       console.info(`${SUITE} ${CASE} START`);
 
       let start = 0
       let end = functionKey.length
       let driver = Driver.create()
-      for (let i = start; i < end; i++ ) {
+      for (let i = start; i < end; i++) {
         let item = functionKey[i]
 
-        let callback = (event) => {
+        let callback = (event: events_emitter.EventData) => {
           expect(event.data.msg).assertEqual('Ctrl_' + FunctionKey[item]);
           console.info(`${SUITE} ${CASE} event.data.msg:` + i + ',' + event.data.msg);
-          if ( i == end - 1 ) {
-            done()
+          if (i == end - 1) {
           }
         }
-        let event = {
+        let event: events_emitter.InnerEvent = {
           eventId: baseEvent2 + i,
           priority: events_emitter.EventPriority.LOW
         }

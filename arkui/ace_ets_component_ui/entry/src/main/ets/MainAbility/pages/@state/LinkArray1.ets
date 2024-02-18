@@ -69,6 +69,9 @@ struct Index_CL {
       Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + JSON.stringify(this.Array1))
         .fontSize(20).margin(30).key('LinkArray1')
 
+      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(30).key('LinkArray1New')
+
       Child_CL({Array1: this.Array1})
     }
   }

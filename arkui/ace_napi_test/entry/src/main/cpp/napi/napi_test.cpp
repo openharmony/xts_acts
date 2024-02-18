@@ -15,6 +15,7 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include "napi/native_node_api.h"
 #include "securec.h"
 #include <stdint.h>
 #include <string>
@@ -3260,6 +3261,303 @@ static napi_value GetModuleFileName(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value AsyncWorkWithQos(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    AddonData* addonData = reinterpret_cast<AddonData*>(malloc(sizeof(AddonData)));
+    if (addonData == nullptr) {
+        return nullptr;
+    }
+
+    NAPI_CALL(env, napi_get_value_double(env, args[0], &addonData->args));
+    NAPI_CALL(env, napi_create_reference(env, args[1], 1, &addonData->callback));
+
+    napi_value resourceName = nullptr;
+    NAPI_CALL(env, napi_create_string_utf8(env, "AsyncWorkWithQosTest", NAPI_AUTO_LENGTH, &resourceName));
+    NAPI_CALL(env, napi_create_async_work(env, nullptr, resourceName, AddExecuteCB, AddCallbackCompleteCB,
+        (void *)addonData, &addonData->asyncWork));
+
+    NAPI_CALL(env, napi_queue_async_work_with_qos(env, addonData->asyncWork, napi_qos_default));
+
+    napi_value _value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+}
+
+static void* TestDetachCallback(napi_env env, void* nativeObject, void* hint)
+{
+    printf("this is detach callback");
+    return nativeObject;
+}
+
+static napi_value TestAttachCallback(napi_env env, void* nativeObject, void* hint)
+{
+    printf("this is attach callback");
+    napi_value object = nullptr;
+    napi_value number = nullptr;
+    uint32_t data = 0;
+    if (hint != nullptr) {
+        object = reinterpret_cast<napi_value>(nativeObject);
+        data = 2000; // 2000 : Is number.
+        napi_create_uint32(env, data, &number);
+    } else {
+        napi_create_object(env, &object);
+        data = 1000; // 1000 : Is number.
+        napi_create_uint32(env, data, &number);
+    }
+    napi_set_named_property(env, object, "number", number);
+    return object;
+}
+
+static napi_value CoerceToNativeBindingObject(napi_env env, napi_callback_info info)
+{
+    napi_value object = nullptr;
+    napi_create_object(env, &object);
+    napi_value hint = nullptr;
+    napi_create_object(env, &hint);
+    napi_status status = napi_coerce_to_native_binding_object(env, object,
+        TestDetachCallback, TestAttachCallback, reinterpret_cast<void*>(object), reinterpret_cast<void*>(hint));
+    NAPI_ASSERT(env, status == napi_ok, "napi_coerce_to_native_binding_object fail");
+
+    napi_value undefined = nullptr;
+    napi_get_undefined(env, &undefined);
+    napi_value data = nullptr;
+    napi_serialize(env, object, undefined, undefined, false, true, &data);
+    NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
+    napi_value result = nullptr;
+    napi_deserialize(env, data, &result);
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, result, &valuetype));
+    NAPI_ASSERT(env, valuetype == napi_object, "Wrong type of argment. Expects a  object.");
+    napi_delete_serialization_data(env, data);
+    napi_value number = nullptr;
+    napi_get_named_property(env, result, "number", &number);
+    napi_valuetype valuetype1;
+    NAPI_CALL(env, napi_typeof(env, number, &valuetype1));
+    NAPI_ASSERT(env, valuetype1 == napi_number, "Wrong type of argment. Expects a number.");
+
+    return number;
+}
+
+static napi_value CreateWithPropertiesTestGetter(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    napi_get_boolean(env, false, &res);
+    return res;
+}
+
+static napi_value CreateWithPropertiesTestSetter(napi_env env, napi_callback_info info)
+{
+    napi_value res;
+    napi_get_boolean(env, true, &res);
+    return res;
+}
+
+static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info info)
+{
+    napi_value excep;
+    NAPI_CALL(env, napi_get_and_clear_last_exception(env, &excep));
+    napi_value val_false;
+    napi_value val_true;
+    NAPI_CALL(env, napi_get_boolean(env, false, &val_false));
+    NAPI_CALL(env, napi_get_boolean(env, true, &val_true));
+    napi_property_descriptor desc1[] = {
+        DECLARE_NAPI_DEFAULT_PROPERTY("x", val_true),
+    };
+    napi_value obj1;
+    NAPI_CALL(env, napi_create_object_with_properties(env, &obj1, 1, desc1));
+    napi_valuetype valuetype1;
+    NAPI_CALL(env, napi_typeof(env, obj1, &valuetype1));
+    napi_value obj2;
+    napi_property_descriptor desc2[] = {
+        DECLARE_NAPI_DEFAULT_PROPERTY("a", val_false),
+        DECLARE_NAPI_GETTER_SETTER("b", CreateWithPropertiesTestGetter, CreateWithPropertiesTestSetter),
+        DECLARE_NAPI_DEFAULT_PROPERTY("c", obj1),
+    };
+    NAPI_CALL(env, napi_create_object_with_properties(env, &obj2, 3, desc2));  // 3 : The property count.
+    napi_valuetype valuetype2;
+    NAPI_CALL(env, napi_typeof(env, obj2, &valuetype2));
+    NAPI_ASSERT(env, valuetype1 == napi_object, "Wrong type of argment. Expects a  object.");
+    NAPI_ASSERT(env, valuetype2 == napi_object, "Wrong type of argment. Expects a  object.");
+    auto checkPropertyEqualsTo = [env] (napi_value obj, const char *keyStr, napi_value expect) -> bool {
+        napi_value result;
+        napi_get_named_property(env, obj, keyStr, &result);
+        bool equal = false;
+        napi_strict_equals(env, result, expect, &equal);
+        return equal;
+    };
+
+    bool equalRes = false;
+    // get obj1.x == true
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_true);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // set obj1.x = false
+    NAPI_CALL(env, napi_set_named_property(env, obj1, "x", val_false));
+    // get obj1.x == false
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.a == false
+    equalRes = checkPropertyEqualsTo(obj2, "a", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.b == false
+    equalRes = checkPropertyEqualsTo(obj2, "b", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // set obj2.b = true (useless)
+    NAPI_CALL(env, napi_set_named_property(env, obj2, "b", val_true));
+    // get obj2.b == false
+    equalRes = checkPropertyEqualsTo(obj2, "b", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.c == obj1
+    equalRes = checkPropertyEqualsTo(obj2, "c", obj1);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.c.x == false
+    napi_value val_res;
+    NAPI_CALL(env, napi_get_named_property(env, obj2, "c", &val_res));
+    equalRes = checkPropertyEqualsTo(val_res, "x", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+
+    napi_value _value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+}
+
+static napi_value CreateObjectWithNamedProperties(napi_env env, napi_callback_info info)
+{
+    napi_value excep;
+    NAPI_CALL(env, napi_get_and_clear_last_exception(env, &excep));
+    napi_value val_false;
+    napi_value val_true;
+    NAPI_CALL(env, napi_get_boolean(env, false, &val_false));
+    NAPI_CALL(env, napi_get_boolean(env, true, &val_true));
+    const char *keys1[] = {
+        "x",
+    };
+    const napi_value values1[] = {
+        val_true,
+    };
+    napi_value obj1;
+    NAPI_CALL(env, napi_create_object_with_named_properties(env, &obj1, 1, keys1, values1));
+    napi_value obj2;
+    const char *keys2[] = {
+        "a",
+        "b",
+    };
+    const napi_value values2[] = {
+        val_false,
+        obj1,
+    };
+
+    NAPI_CALL(env, napi_create_object_with_named_properties(env, &obj2, 2, keys2, values2)); // 2 : The property count.
+    napi_valuetype valuetype1;
+    napi_valuetype valuetype2;
+    NAPI_CALL(env, napi_typeof(env, obj1, &valuetype1));
+    NAPI_CALL(env, napi_typeof(env, obj2, &valuetype2));
+    NAPI_ASSERT(env, valuetype1 == napi_object, "Wrong type of argment. Expects a  object.");
+    NAPI_ASSERT(env, valuetype2 == napi_object, "Wrong type of argment. Expects a  object.");
+
+    auto checkPropertyEqualsTo = [env] (napi_value obj, const char *keyStr, napi_value expect) -> bool {
+        napi_value result;
+        napi_get_named_property(env, obj, keyStr, &result);
+        bool equal = false;
+        napi_strict_equals(env, result, expect, &equal);
+        return equal;
+    };
+
+    bool equalRes = false;
+    // get obj1.x == true
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_true);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // set obj1.x = false
+    NAPI_CALL(env, napi_set_named_property(env, obj1, "x", val_false));
+    // get obj1.x == false
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.a == false
+    equalRes = checkPropertyEqualsTo(obj2, "a", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.b == obj1
+    equalRes = checkPropertyEqualsTo(obj2, "b", obj1);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.b.x == false
+    napi_value val_res;
+    NAPI_CALL(env, napi_get_named_property(env, obj2, "b", &val_res));
+    equalRes = checkPropertyEqualsTo(val_res, "x", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+
+    napi_value _value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+}
+
+static napi_value MakeCallback(napi_env env, napi_callback_info info)
+{
+    size_t argc = 10; // 10 : max arguments.
+    size_t n;
+    napi_value args[10]; // 10 : max arguments.
+    // NOLINTNEXTLINE (readability/null_usage)
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+    napi_value async_context_wrap = args[0];
+    napi_value recv = args[1];
+    napi_value func = args[2]; // 2 : create async resouce arguments count.
+    napi_value argv[7]; // 7 : remain arguments.
+    for (n = 3; n < argc; n += 1) { // 3 : reserved arguments.
+        argv[n - 3] = args[n]; // 3 : reserved arguments.
+    }
+    napi_valuetype func_type;
+    NAPI_CALL(env, napi_typeof(env, func, &func_type));
+    napi_async_context context;
+    NAPI_CALL(env, napi_unwrap(env, async_context_wrap, (void **)&context));
+    napi_value result;
+    if (func_type == napi_function) {
+        NAPI_CALL(env,
+                  napi_make_callback(env, context, recv, func, argc - 3, argv, &result)); // 3 : reserved arguments.
+    } else {
+        NAPI_ASSERT(env, false, "Unexpected argument type");
+    }
+    return result;
+}
+
+static napi_value MakeCallbackOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = 10; // 10 : max arguments.
+    size_t n;
+    napi_value args[10]; // 10 : max arguments.
+    // NOLINTNEXTLINE (readability/null_usage)
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+    napi_value resource = args[0];
+    napi_value recv = args[1];
+    napi_value func = args[2];
+    napi_value argv[7]; // 7 : remain arguments.
+    for (n = 3; n < argc; n += 1) { // 3 : reserved arguments.
+        argv[n - 3] = args[n]; // 3 : reserved arguments.
+    }
+
+    napi_valuetype func_type;
+    NAPI_CALL(env, napi_typeof(env, func, &func_type));
+
+    napi_value resource_name;
+    NAPI_CALL(env, napi_create_string_utf8(env, "test", NAPI_AUTO_LENGTH, &resource_name));
+
+    napi_async_context context;
+    NAPI_CALL(env, napi_async_init(env, resource, resource_name, &context));
+
+    napi_value result;
+    if (func_type == napi_function) {
+        NAPI_CALL(env,
+                  napi_make_callback(env, context, recv, func, argc - 3, argv, &result)); // 3 : reserved arguments.
+    } else {
+        NAPI_ASSERT(env, false, "Unexpected argument type");
+    }
+
+    NAPI_CALL(env, napi_async_destroy(env, context));
+    return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -3398,6 +3696,12 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("napiAsyncCleanUpHook", NapiAsyncCleanUpHook),
         DECLARE_NAPI_FUNCTION("napiEnvCleanUpHook", NapiEnvCleanUpHook),
         DECLARE_NAPI_FUNCTION("getModuleFileName", GetModuleFileName),
+        DECLARE_NAPI_FUNCTION("asyncWorkWithQos", AsyncWorkWithQos),
+        DECLARE_NAPI_FUNCTION("coerceToNativeBindingObject", CoerceToNativeBindingObject),
+        DECLARE_NAPI_FUNCTION("createObjectWithProperties", CreateObjectWithProperties),
+        DECLARE_NAPI_FUNCTION("createObjectWithNamedProperties", CreateObjectWithNamedProperties),
+        DECLARE_NAPI_FUNCTION("makeCallback", MakeCallback),
+        DECLARE_NAPI_FUNCTION("makeCallbackOne", MakeCallbackOne),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

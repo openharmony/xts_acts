@@ -223,7 +223,9 @@ export default function AVMetadata() {
       // 获取元信息
       await avMetadataExtractor.fetchMetadata().then((metadata) => {
         console.info(TAG, `fetchMetadata callback success, dateTime: ${metadata.dateTime}`)
+        console.info(TAG, `fetchMetadata callback success, dateTimeFormat: ${metadata.dateTimeFormat}`)
         expect(metadata.dateTime).assertEqual("2015-11-23")
+        expect(metadata.dateTimeFormat).assertEqual("2015-11-23 00:00:00")
         avMetadataExtractor.release();
       }).catch((error) => {
         console.error(`fetchMetadata catchCallback, error message:${error.message}`);
@@ -1290,7 +1292,53 @@ export default function AVMetadata() {
       });
       done();
     })
+
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100
+    * @tc.name      : 001.testAVMeta album
+    * @tc.desc      : Local Video playback control test
+    * @tc.size      : MediumTest
+    * @tc.type      : Function Test
+    * @tc.level     : Level0
+        */
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_AVMETADATA_ALBUM_CB_FUNCTION_0100', 0, async function (done) {
+      console.info(TAG + "0100 is success")
+      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor()
+
+      avMetadataExtractor.fdSrc = AVFileDescriptor
+      avMetadataExtractor.fetchMetadata((err, metadata) => {
+        if (err) {
+          console.error(TAG, `fetchMetadata callback failed, err = ${JSON.stringify(err)}`)
+          return
+        }
+        console.info(TAG, `fetchMetadata callback success video album :${metadata.album}}`)
+        expect(metadata.album).assertEqual("media")
+        avMetadataExtractor.release()
+        done()
+      })
+    })
+
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200
+    * @tc.name      : 001.testAVMeta PixelMap
+    * @tc.desc      : Local Video playback control test
+    * @tc.size      : MediumTest
+    * @tc.type      : Function Test
+    * @tc.level     : Level0
+       */
+    it('SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200', 0, async function (done) {
+      console.info(TAG + "SUB_MULTIMEDIA_AUDIO_PLAYER_VIDEOHEIGHT_PIXELMAP_CB_FUNCTION_0200  is success")
+      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor()
+      avMetadataExtractor.fdSrc = AVFileDescriptor
+      avMetadataExtractor.fetchAlbumCover((err, PixelMap) => {
+        if (err) {
+          console.error(TAG, `fetchMetadata callback failed, err = ${JSON.stringify(err)}`)
+          return
+        }
+        console.info(TAG, `fetchMetadata callback success video PixelMap :${PixelMap}}`)
+        avMetadataExtractor.release()
+        done()
+      })
+    })
   })
 }
-
-
