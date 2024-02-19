@@ -92,10 +92,59 @@ export default function abilityTest() {
             let drmMediaKeySystem = drm.createMediaKeySystem(uuid);
             let avPlayer = await media.createAVPlayer();
             let keyinfos = avPlayer.getMediaKeySystemInfos();
+			if (keyinfos && keyinfos.length > 0){
+				for (let item = 0; item < keyinfos.length; item++) {
+				  console.info(`getMediaKeySystemInfos item:${item}, keyinfos[${item}].uuid:${keyinfos[item].uuid}, keyinfos[${item}].pssh:${keyinfos[item].pssh}`)
+				}
+			}
             expect(keyinfos).assertUndefined();
             drmMediaKeySystem.destroy();
             done();
         })
+		
+		/* *
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_ERROR_0100
+        * @tc.name      : test setDecryptionConfig with invalid parameter
+        * @tc.desc      : create AVPlayer to setDecryptionConfig with invalid parameter
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_SET_DECRYPTION_CONFIG_ERROR_0100', 1, async function (done) {
+		  let sysSupport = drm.isMediaKeySystemSupported("com.clearplay.drm");
+		  console.log(`DRM clearplay is sysSupport: ${sysSupport}`);
+		  let uuid;
+		  if (sysSupport === true) {
+			uuid = "com.clearplay.drm";
+		  } else {
+			uuid = "com.wiseplay.drm";
+		  }
+		  if (sysSupport === true) {
+			try {
+			  let drmsys = drm.createMediaKeySystem(uuid);
+			  let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+			  let avPlayer = await media.createAVPlayer();
+			  try {
+				avPlayer.setDecryptionConfig(session, 'false');
+				expect().assertFail();
+			  } catch (err) {
+				if (err.code == 401) {
+				  expect(true).assertTrue();
+				  console.info(`setDecryptionConfig err.code: ${err.code}, err.message:${err.message}`);
+				} else {
+				  console.info(`setDecryptionConfig err.code: ${err.code}, err.message:${err.message}`);
+				  expect().assertFail();
+				}
+			  }
+			  session.destroy();
+			  drmsys.destroy();
+			} catch (err) {
+			  console.info(`setDecryptionConfig before err.code: ${err.code}, err.message:${err.message}`);
+			  expect().assertFail();
+			}
+		  }
+		  done();
+		})
 
         /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_DRM_FRAMEWORK_API_0100
@@ -2278,28 +2327,5 @@ export default function abilityTest() {
             }
             done();
         })
-		
-		/* *
-		* @tc.number    : SUB_MULTIMEDIA_DRM_AVPLAYER_0200
-		* @tc.name      : test mediaKeySystemInfos
-		* @tc.desc      : create AVPlayer to getMediaKeySystemInfos
-		* @tc.size      : MediumTest
-		* @tc.type      : Function test
-		* @tc.level     : Level1
-		*/
-		it('SUB_MULTIMEDIA_DRM_AVPLAYER_0200', 1, async function (done) {
-		  if (sysSupport === true) {
-			let drmsys = drm.createMediaKeySystem(uuid);
-			let avPlayer = await media.createAVPlayer();
-			let keyInfo = avPlayer.getMediaKeySystemInfos()
-			if (keyInfo && keyInfo.length > 0){
-				for (let item = 0; item < keyInfo.length; item++) {
-				  console.info(`getMediaKeySystemInfos item:${item}, keyInfo[${item}].uuid:${keyInfo[item].uuid}, keyInfo[${item}].pssh:${keyInfo[item].pssh}`)
-				}
-			}
-			drmsys.destroy();
-		  }
-		  done();
-		})
     })
 }
