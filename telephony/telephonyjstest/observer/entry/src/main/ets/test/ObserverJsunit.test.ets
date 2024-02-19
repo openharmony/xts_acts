@@ -16,6 +16,9 @@ import { describe, expect, it } from '@ohos/hypium';
 import cellular from '@ohos.telephony.data';
 import observer from '@ohos.telephony.observer';
 
+let callState: observer.CallState = 0;
+let ratType: observer.RatType = 0;
+
 export default function ObserverJsunit() {
   describe('ObserverJsunit', function () {
     console.log("************* Observer Test start *************");
