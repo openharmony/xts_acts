@@ -2292,8 +2292,10 @@ export default function abilityTest() {
 			let drmsys = drm.createMediaKeySystem(uuid);
 			let avPlayer = await media.createAVPlayer();
 			let keyInfo = avPlayer.getMediaKeySystemInfos()
-			for (let item = 0; item < keyInfo.length; item++) {
-			  console.info(`getMediaKeySystemInfos item:${item}, keyInfo[${item}].uuid:${keyInfo[item].uuid}, keyInfo[${item}].pssh:${keyInfo[item].pssh}`)
+			if (keyInfo && keyInfo.length > 0){
+				for (let item = 0; item < keyInfo.length; item++) {
+				  console.info(`getMediaKeySystemInfos item:${item}, keyInfo[${item}].uuid:${keyInfo[item].uuid}, keyInfo[${item}].pssh:${keyInfo[item].pssh}`)
+				}
 			}
 			drmsys.destroy();
 		  }
