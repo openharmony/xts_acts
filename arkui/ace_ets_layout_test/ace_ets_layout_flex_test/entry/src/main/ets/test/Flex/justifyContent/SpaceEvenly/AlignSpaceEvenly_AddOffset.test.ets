@@ -60,7 +60,7 @@ export default function AlignSpaceEvenly_AddOffset() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOffset_01');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');

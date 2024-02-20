@@ -56,7 +56,7 @@ export default function AlignCenter_AddMargin() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddMargin_01');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');

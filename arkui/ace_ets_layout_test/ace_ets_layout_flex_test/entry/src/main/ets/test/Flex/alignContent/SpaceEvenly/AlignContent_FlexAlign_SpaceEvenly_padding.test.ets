@@ -65,7 +65,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_padding() {
       await CommonFunc.sleep(3000)
 
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyPadding_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let AlignContentFlexSpaceEvenly_flex001: RectValue =
       CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyPadding_flex001');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyPadding_flex001_1');
@@ -128,7 +128,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyPadding_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let AlignContentFlexSpaceEvenlyPadding_flex002: RectValue =
       CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyPadding_flex001');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyPadding_flex001_1');

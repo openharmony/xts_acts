@@ -93,7 +93,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(Math.abs((firstText.right) - (secondText.left)) <= 1).assertTrue();
@@ -140,7 +140,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -202,7 +202,7 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

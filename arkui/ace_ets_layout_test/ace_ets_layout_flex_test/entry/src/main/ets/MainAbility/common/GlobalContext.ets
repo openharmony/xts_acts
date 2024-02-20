@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-export class GlobalContext {
+export default class GlobalContext {
   private constructor() {}
   private static instance: GlobalContext;
   private _objects = new Map<string, Object>();

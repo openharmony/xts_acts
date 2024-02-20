@@ -61,7 +61,7 @@ export default function flexBase_AutoJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
@@ -102,7 +102,7 @@ export default function flexBase_AutoJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');

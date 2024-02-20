@@ -53,7 +53,7 @@ export default function flexMargin_EndJsunit() {
     it('testItemAlignEndParentSetMargin', 0, async () => {
       console.info('new testItemAlignEndParentSetMargin START');
       let strJson1 = getInspectorByKey('flexMargin');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
       let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
       let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');

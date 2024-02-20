@@ -59,7 +59,7 @@ export default function AlignContent_FlexAlign_Start_Margin() {
     it('testAlignContentStartFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexStartMargin_flex');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let Start_Margin_Column: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_Column');
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_flex');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_flex_1');

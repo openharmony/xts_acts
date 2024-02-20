@@ -69,7 +69,7 @@ export default function flex_NoWrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -114,7 +114,7 @@ export default function flex_NoWrap_PaddingTest() {
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -159,7 +159,7 @@ export default function flex_NoWrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -214,7 +214,7 @@ export default function flex_NoWrap_PaddingTest() {
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');

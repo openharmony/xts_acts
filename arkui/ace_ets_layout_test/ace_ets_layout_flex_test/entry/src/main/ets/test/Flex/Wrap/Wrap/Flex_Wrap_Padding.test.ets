@@ -68,7 +68,7 @@ export default function flex_Wrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -109,7 +109,7 @@ export default function flex_Wrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
@@ -150,7 +150,7 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Wrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -199,7 +199,7 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Wrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

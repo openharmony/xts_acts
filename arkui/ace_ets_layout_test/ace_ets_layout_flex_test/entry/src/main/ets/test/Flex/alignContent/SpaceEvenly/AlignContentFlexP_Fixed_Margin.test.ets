@@ -63,7 +63,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexP_fixed_Margin_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_Margin_flex001');
@@ -131,7 +131,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexP_fixed_Margin_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let AlignContentFlexSpaceEvenly_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_Margin_flex001');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_Margin_flex001_1');
       let AlignContentFlexSpaceEvenly_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_Margin_flex001_2');

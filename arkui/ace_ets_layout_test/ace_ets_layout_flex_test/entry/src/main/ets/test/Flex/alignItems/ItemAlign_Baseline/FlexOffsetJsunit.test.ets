@@ -52,7 +52,7 @@ export default function flexOffset_BaselineJsunit() {
     it('testFlexItemAlignBaselineSetOffset', 0, async () => {
       console.info('new testFlexItemAlignBaselineSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
       let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
       let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');

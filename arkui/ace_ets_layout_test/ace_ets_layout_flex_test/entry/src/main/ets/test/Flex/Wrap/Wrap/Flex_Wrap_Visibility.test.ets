@@ -71,12 +71,12 @@ export default function flex_Wrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
         let firstTextStrJson = getInspectorByKey('Wrap_Text_Visibility1');
-        let firstTextObj: ESObject = JSON.parse(firstTextStrJson);
+        let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
         expect(Math.abs((secondText.top) - (flexContainer.top)) <= 1).assertTrue();
@@ -123,7 +123,7 @@ export default function flex_Wrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -175,7 +175,7 @@ export default function flex_Wrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Visibility_Container01');
-        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

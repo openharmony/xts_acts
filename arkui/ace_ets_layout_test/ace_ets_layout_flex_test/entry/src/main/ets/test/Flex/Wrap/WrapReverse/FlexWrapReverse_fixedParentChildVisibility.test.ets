@@ -67,12 +67,12 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest19');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let strJson2 = getInspectorByKey('WrapReverseTest55');
-      let obj2: ESObject = JSON.parse(strJson2);
+      let obj2 = JSON.parse(strJson2);
       expect(obj2.$attrs.visibility).assertEqual('Visibility.None');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest55');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest56');
@@ -111,12 +111,12 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest19');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let strJson2 = getInspectorByKey('WrapReverseTest55');
-      let obj2: ESObject = JSON.parse(strJson2);
+      let obj2 = JSON.parse(strJson2);
       expect(obj2.$attrs.visibility).assertEqual('Visibility.None');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest55');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest56');
@@ -154,12 +154,12 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest19');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let strJson2 = getInspectorByKey('WrapReverseTest55');
-      let obj2: ESObject = JSON.parse(strJson2);
+      let obj2 = JSON.parse(strJson2);
       expect(obj2.$attrs.visibility).assertEqual('Visibility.Hidden');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest55');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest56');

@@ -61,7 +61,7 @@ export default function flexExceed_CenterJsunit() {
       })
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
       let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
       let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');

@@ -68,7 +68,7 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -114,7 +114,7 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');

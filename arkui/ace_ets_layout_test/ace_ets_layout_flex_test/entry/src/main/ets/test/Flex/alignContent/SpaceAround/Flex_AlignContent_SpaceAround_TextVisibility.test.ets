@@ -69,13 +69,13 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextVisibility_Container01');
-        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
         expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceAround_TextVisibility01');
-        let firstTextObj: ESObject = JSON.parse(firstTextStrJson);
+        let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
 
@@ -126,13 +126,13 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextVisibility_Container01');
-        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+        let flexContainerObj = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
         expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceAround_TextVisibility01');
-        let firstTextObj: ESObject = JSON.parse(firstTextStrJson);
+        let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
         expect(Math.abs(secondText.bottom - secondText.top) - vp2px(100) <= 1).assertTrue();

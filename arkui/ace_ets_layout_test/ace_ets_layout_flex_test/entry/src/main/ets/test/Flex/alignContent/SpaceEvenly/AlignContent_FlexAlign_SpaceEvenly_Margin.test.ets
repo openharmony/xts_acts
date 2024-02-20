@@ -60,7 +60,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
     it('testAlignContentSpaceEvenlyFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyMargin_flex');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let SpaceEvenly_Margin_Column: RectValue = CommonFunc.getComponentRect('SpaceEvenly_Margin_Column');
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex_1');

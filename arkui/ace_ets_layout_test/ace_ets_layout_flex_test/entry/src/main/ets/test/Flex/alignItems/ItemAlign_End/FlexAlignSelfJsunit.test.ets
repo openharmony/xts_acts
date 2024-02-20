@@ -54,9 +54,9 @@ export default function flexAlignSelf_EndJsunit() {
     it('testFlexItemAlignEndSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignEndSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2: ESObject = JSON.parse(strJson2);
+      let obj2 = JSON.parse(strJson2);
       let textAlignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
       let textAlignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
       let textAlignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');

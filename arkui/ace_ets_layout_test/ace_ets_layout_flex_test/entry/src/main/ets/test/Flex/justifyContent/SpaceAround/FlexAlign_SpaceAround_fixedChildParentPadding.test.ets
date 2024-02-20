@@ -61,7 +61,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround3');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -103,7 +103,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround3');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');

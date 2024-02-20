@@ -63,7 +63,7 @@ export default function flex_Wrap_TextSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_TextSize3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_TextSize_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -106,7 +106,7 @@ export default function flex_Wrap_TextSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_TextSize3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_TextSize_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

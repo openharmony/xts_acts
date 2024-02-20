@@ -67,7 +67,7 @@ export default function flex_NoWrap_DisplayPriorityTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_DisplayPriority03');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_DisplayPriority_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_DisplayPriority_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 

@@ -58,7 +58,7 @@ export default function flexPadding_CenterJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
       let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');

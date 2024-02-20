@@ -64,7 +64,7 @@ export default function AlignContent_FlexAlign_Center_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterPadding_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001_1');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001_2');
@@ -119,7 +119,7 @@ export default function AlignContent_FlexAlign_Center_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterPadding_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       let AlignContentFlexCenterPadding_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001_1');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterPadding_flex001_2');

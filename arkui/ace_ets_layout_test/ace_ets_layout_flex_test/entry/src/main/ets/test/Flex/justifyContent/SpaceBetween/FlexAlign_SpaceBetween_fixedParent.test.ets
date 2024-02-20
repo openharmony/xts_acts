@@ -63,13 +63,13 @@ export default function flexAlign_SpaceBetween_fixedParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceBetween9');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
       let strJson2 = getInspectorByKey('AlignSpaceBetween25');
-      let obj2: ESObject = JSON.parse(strJson2);
+      let obj2 = JSON.parse(strJson2);
       expect(obj2.$attrs.visibility).assertEqual('Visibility.Visible');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween25');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween26');

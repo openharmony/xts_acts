@@ -99,7 +99,7 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
@@ -159,7 +159,7 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
@@ -223,7 +223,7 @@ export default function flex_NoWrap_FlexMarPad_TextMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexMarPad_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 

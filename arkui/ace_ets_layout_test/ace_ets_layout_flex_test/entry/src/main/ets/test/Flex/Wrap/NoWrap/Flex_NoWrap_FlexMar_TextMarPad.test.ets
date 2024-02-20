@@ -94,7 +94,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexMar_TextMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_FlexMar_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexMar_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
@@ -144,7 +144,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_FlexMar_TextMarPad_Container01');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexMar_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexMar_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
@@ -207,7 +207,7 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexMar_TextMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_FlexMar_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexMar_TextMarPad_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(Math.abs((flexContainer.left - columnContainer.left) - vp2px(10)) <= 1).assertTrue()

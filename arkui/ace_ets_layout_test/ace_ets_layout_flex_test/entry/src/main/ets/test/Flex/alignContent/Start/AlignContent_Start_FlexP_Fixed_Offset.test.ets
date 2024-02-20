@@ -59,7 +59,7 @@ export default function AlignContent_Start_FlexP_Fixed_Offset() {
     it('testAlignContentStartFlexFixedOffset', 0, async () => {
       console.info('testAlignContentStartFlexFixedOffset START');
       let strJson = getInspectorByKey('AlignContent_Start_FlexP_Fixed_Offset_flex001');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_Start_FlexP_Fixed_Offset_flex001');

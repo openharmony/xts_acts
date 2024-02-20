@@ -39,7 +39,7 @@ export default class CommonFunc {
 
   static getComponentRect(key: string) {
     let strJson = getInspectorByKey(key);
-    let obj: ESObject = JSON.parse(strJson);
+    let obj = JSON.parse(strJson);
     let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
     CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
     CommonFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];

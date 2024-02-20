@@ -63,7 +63,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextSize_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
@@ -106,7 +106,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextSize_Container01');
-      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
+      let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
 
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');

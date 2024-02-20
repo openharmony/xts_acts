@@ -53,7 +53,7 @@ export default function flexHeightModify_AutoJsunit() {
     it('testFlexItemAlignAutoTextHeiCheck', 0, async () => {
       console.info('new testFlexItemAlignAutoTextHeiCheck START');
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
@@ -90,7 +90,7 @@ export default function flexHeightModify_AutoJsunit() {
       })
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');

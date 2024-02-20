@@ -58,7 +58,7 @@ export default function flexTextMargin_StretchJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
@@ -98,7 +98,7 @@ export default function flexTextMargin_StretchJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1: ESObject = JSON.parse(strJson1);
+      let obj1 = JSON.parse(strJson1);
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');

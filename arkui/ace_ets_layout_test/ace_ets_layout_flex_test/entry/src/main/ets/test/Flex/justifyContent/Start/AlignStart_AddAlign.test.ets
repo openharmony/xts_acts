@@ -58,7 +58,7 @@ export default function AlignStart_AddAlign() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddAlign_01');
-      let obj: ESObject = JSON.parse(strJson);
+      let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');

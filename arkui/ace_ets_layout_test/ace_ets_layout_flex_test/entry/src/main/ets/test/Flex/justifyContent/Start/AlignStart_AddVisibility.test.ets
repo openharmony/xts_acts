@@ -57,9 +57,9 @@ export default function AlignStart_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj: ESObject = JSON.parse(strJson);
+        let obj = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2: ESObject = JSON.parse(strJson2);
+        let obj2 = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -97,9 +97,9 @@ export default function AlignStart_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj: ESObject = JSON.parse(strJson);
+        let obj = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2: ESObject = JSON.parse(strJson2);
+        let obj2 = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -142,9 +142,9 @@ export default function AlignStart_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj: ESObject = JSON.parse(strJson);
+        let obj = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2: ESObject = JSON.parse(strJson2);
+        let obj2 = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
