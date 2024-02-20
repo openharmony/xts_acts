@@ -55,9 +55,9 @@ export default function flex_AlignContent_SpaceAround_TextOffsetTest() {
       let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextOffset01');
       let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextOffset02');
       let distanceBefore = secondText.top - firstText.bottom;
-      let secondTextTop: RectValue = secondText.top;
-      let firstTextTop: RectValue = firstText.top;
-      let firstTextLeft: RectValue = firstText.left;
+      let secondTextTop: number = secondText.top;
+      let firstTextTop: number = firstText.top;
+      let firstTextLeft: number = firstText.left;
       GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'offset', value: {
           x: 10, y: 10
