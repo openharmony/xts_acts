@@ -28,10 +28,10 @@ export default class GlobalContext {
   }
 
   getObject<T>(value: string): Value<T> {
-    return GlobalContext._objects.get(value) as Value<T>;
+    return globalThis._objects as Value<T>;
   }
 
   setObject<T>(key: string, objectClass: T): void {
-    GlobalContext._objects.set(key, objectClass);
+    globalThis._objects = objectClass;
   }
 }
