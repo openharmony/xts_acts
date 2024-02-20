@@ -92,6 +92,11 @@ export default function abilityTest() {
             let drmMediaKeySystem = drm.createMediaKeySystem(uuid);
             let avPlayer = await media.createAVPlayer();
             let keyinfos = avPlayer.getMediaKeySystemInfos();
+			if (keyinfos && keyinfos.length > 0){
+				for (let item = 0; item < keyinfos.length; item++) {
+				  console.info(`getMediaKeySystemInfos item:${item}, keyinfos[${item}].uuid:${keyinfos[item].uuid}, keyinfos[${item}].pssh:${keyinfos[item].pssh}`)
+				}
+			}
             expect(keyinfos).assertUndefined();
             drmMediaKeySystem.destroy();
             done();
