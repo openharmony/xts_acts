@@ -53,7 +53,7 @@ export default function AlignStart_AddOffset() {
      */
     it('testFlexAlignStartTextOffset', 0, async () => {
       console.info('[testFlexAlignStartTextOffset] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'OneOffset', value: {
           x: 10, y: 15
         }

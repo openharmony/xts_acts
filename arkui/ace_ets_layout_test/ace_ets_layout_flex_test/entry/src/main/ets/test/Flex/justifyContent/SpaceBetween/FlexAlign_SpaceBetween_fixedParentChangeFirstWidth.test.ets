@@ -55,7 +55,7 @@ export default function flexAlign_SpaceBetween_fixedParentChangeFirstWidth() {
      */
     it('testAlignSpaceBetweenRowNoWrapChangeFirstWidth', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapChangeFirstWidth START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 175
       })
       await CommonFunc.sleep(3000);

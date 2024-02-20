@@ -53,7 +53,7 @@ export default function AlignSpaceEvenly_AddAlign() {
      */
     it('testFlexAlignSpaceEvenlyAlignBottomEnd', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyAlignBottomEnd] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAlign', value: Alignment.BottomEnd
       })
       await CommonFunc.sleep(3000);

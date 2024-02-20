@@ -54,7 +54,7 @@ export default function AlignCenter_NoSpace() {
      */
     it('testFlexAlignCenterFlexWidthOverflow', 0, async () => {
       console.info('[testFlexAlignCenterFlexWidthOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 400
       });
       await CommonFunc.sleep(3000);
@@ -94,7 +94,7 @@ export default function AlignCenter_NoSpace() {
      */
     it('testFlexAlignCenterFlexWidthMeet', 0, async () => {
       console.info('[testFlexAlignCenterFlexWidthMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 500
       });
       await CommonFunc.sleep(3000);

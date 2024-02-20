@@ -54,7 +54,7 @@ export default function AlignCenter_AddOneMargin() {
      */
     it('testFlexAlignCenterTextMarginMeet', 0, async () => {
       console.info('[testFlexAlignCenterTextMarginMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 20
       });
       await CommonFunc.sleep(3000);
@@ -101,7 +101,7 @@ export default function AlignCenter_AddOneMargin() {
      */
     it('testFlexAlignCenterTextMarginOverflow', 0, async () => {
       console.info('[testFlexAlignCenterTextMarginOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 30
       });
       await CommonFunc.sleep(3000);

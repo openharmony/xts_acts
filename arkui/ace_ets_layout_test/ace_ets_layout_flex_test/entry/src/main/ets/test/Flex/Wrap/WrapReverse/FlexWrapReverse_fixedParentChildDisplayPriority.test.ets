@@ -55,10 +55,10 @@ export default function flexWrapReverse_fixedParentChildDisplayPriority() {
      */
     it('testWrapReverseParentfixedDisplayPriority', 0, async () => {
       console.info('new testWrapReverseParentfixedDisplayPriority START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       })
       await CommonFunc.sleep(3000);

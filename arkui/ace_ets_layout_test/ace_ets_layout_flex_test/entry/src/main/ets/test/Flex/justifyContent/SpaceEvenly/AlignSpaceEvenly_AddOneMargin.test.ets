@@ -54,7 +54,7 @@ export default function AlignSpaceEvenly_AddOneMargin() {
      */
     it('testFlexAlignSpaceEvenlyTextMarginMeet', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextMarginMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 20
       });
       await CommonFunc.sleep(3000);
@@ -102,7 +102,7 @@ export default function AlignSpaceEvenly_AddOneMargin() {
      */
     it('testFlexAlignSpaceEvenlyTextMarginOverflow', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextMarginOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 30
       });
       await CommonFunc.sleep(3000);

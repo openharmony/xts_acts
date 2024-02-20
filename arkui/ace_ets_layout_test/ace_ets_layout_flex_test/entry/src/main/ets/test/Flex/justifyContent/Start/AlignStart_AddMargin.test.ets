@@ -54,7 +54,7 @@ export default function AlignStart_AddMargin() {
      */
     it('testFlexAlignStartFlexMargin', 0, async () => {
       console.info('[testFlexAlignStartFlexMargin] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadMargin', value: 20
       });
       await CommonFunc.sleep(3000);

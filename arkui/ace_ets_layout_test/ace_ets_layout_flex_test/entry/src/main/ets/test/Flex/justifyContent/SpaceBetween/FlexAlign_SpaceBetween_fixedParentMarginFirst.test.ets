@@ -56,7 +56,7 @@ export default function flexAlign_SpaceBetween_fixedParentMarginFirst() {
      */
     it('testAlignSpaceBetweenRowNoWrapMarginFirstInRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarginFirstInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
       })
       await CommonFunc.sleep(3000);
@@ -106,7 +106,7 @@ export default function flexAlign_SpaceBetween_fixedParentMarginFirst() {
      */
     it('testAlignSpaceBetweenRowNoWrapMarginFirstOutRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarginFirstOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 50
       })
       await CommonFunc.sleep(3000);

@@ -55,7 +55,7 @@ export default function flexAlign_SpaceBetween_fixedParentVisibility() {
      */
     it('testAlignSpaceBetweenRowNoWrapVisibilityNone', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapVisibilityNone START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
       })
       await CommonFunc.sleep(3000);
@@ -100,7 +100,7 @@ export default function flexAlign_SpaceBetween_fixedParentVisibility() {
      */
     it('testAlignSpaceBetweenRowNoWrapVisibilityHidden', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapVisibilityHidden START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
       })
       await CommonFunc.sleep(3000);

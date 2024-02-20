@@ -54,7 +54,7 @@ export default function AlignSpaceEvenly_AddPadding() {
      */
     it('testAlignSpaceEvenlyFlexPadMeet', 0, async () => {
       console.info('[testAlignSpaceEvenlyFlexPadMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 30
       });
       await CommonFunc.sleep(3000);
@@ -100,7 +100,7 @@ export default function AlignSpaceEvenly_AddPadding() {
      */
     it('testAlignSpaceEvenlyFlexPadOverflow', 0, async () => {
       console.info('[testAlignSpaceEvenlyFlexPadOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 20
       })
       await CommonFunc.sleep(3000);

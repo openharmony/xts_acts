@@ -59,7 +59,7 @@ export default function AlignContent_FlexAlign_End_padding() {
 
     it('testAlignContentEndFlexPaddingNoSatisfy', 0, async () => {
       console.info('testAlignContentEndFlexPaddingNoSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
       })
       await CommonFunc.sleep(3000)
@@ -112,7 +112,7 @@ export default function AlignContent_FlexAlign_End_padding() {
 
     it('testAlignContentEndFlexPaddingSatisfy', 0, async () => {
       console.info('testAlignContentEndFlexPaddingSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15
       })
       await CommonFunc.sleep(3000)

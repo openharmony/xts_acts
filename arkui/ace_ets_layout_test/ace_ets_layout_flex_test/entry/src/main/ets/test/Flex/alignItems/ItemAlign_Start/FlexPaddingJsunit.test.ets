@@ -53,7 +53,7 @@ export default function flexPadding_StartJsunit() {
      */
     it('testFlexItemAlignStartParentSetPadding', 0, async () => {
       console.info('new testFlexItemAlignStartParentSetPadding START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
       await CommonFunc.sleep(2000);
@@ -95,7 +95,7 @@ export default function flexPadding_StartJsunit() {
      */
     it('testFlexItemAlignStartParentSetPaddingExceed', 0, async () => {
       console.info('new testFlexItemAlignStartParentSetPaddingExceed START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30
       });
       await CommonFunc.sleep(2000);

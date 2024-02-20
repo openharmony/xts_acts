@@ -59,7 +59,7 @@ export default function AlignContent_FlexAlign_Start_Margin_padding() {
 
     it('testAlignContentStartFlexMarginAndPaddingNOSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexMarginAndPaddingNOSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 40
       })
       await CommonFunc.sleep(3000)
@@ -113,7 +113,7 @@ export default function AlignContent_FlexAlign_Start_Margin_padding() {
 
     it('testAlignContentStartFlexMarginAndPaddingSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexMarginAndPaddingSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 15
       })
       await CommonFunc.sleep(3000)

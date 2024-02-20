@@ -53,10 +53,10 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
      */
     it('testFlexAlignContentSpaceAroundFlexSizeMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexSizeMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 400
       })
       await CommonFunc.sleep(3000);
@@ -98,10 +98,10 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
      */
     it('testFlexAlignContentSpaceAroundFlexSizeOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250
       })
       await CommonFunc.sleep(3000);

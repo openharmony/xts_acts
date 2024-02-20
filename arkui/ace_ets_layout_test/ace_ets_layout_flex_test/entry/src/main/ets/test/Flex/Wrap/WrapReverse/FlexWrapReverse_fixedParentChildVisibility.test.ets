@@ -56,13 +56,13 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      */
     it('testWrapReverseParentfixedVisibilityNoneAndOtherOutRange', 0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityNoneAndOtherOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 150
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test2Width', value: 300
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
       })
       await CommonFunc.sleep(3000);
@@ -100,13 +100,13 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      */
     it('testWrapReverseParentfixedVisibilityNoneAndOtherInRange', 0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityNoneAndOtherInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test2Width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
       })
       await CommonFunc.sleep(3000);
@@ -143,13 +143,13 @@ export default function flexWrapReverse_fixedParentChildVisibility() {
      */
     it('testWrapReverseParentfixedVisibilityHiddenAndOtherInRange', 0, async () => {
       console.info('new testWrapReverseParentfixedVisibilityHiddenAndOtherInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test1Width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'test2Width', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
       })
       await CommonFunc.sleep(3000);

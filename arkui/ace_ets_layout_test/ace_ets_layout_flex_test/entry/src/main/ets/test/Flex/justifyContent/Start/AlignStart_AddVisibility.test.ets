@@ -52,7 +52,7 @@ export default function AlignStart_AddVisibility() {
     it('testFlexAlignStartTextVisibilityNone', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityNone] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.None
         });
         await CommonFunc.sleep(3000);
@@ -92,7 +92,7 @@ export default function AlignStart_AddVisibility() {
     it('testFlexAlignStartTextVisibilityHidden', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityHidden] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.Hidden
         });
         await CommonFunc.sleep(3000);
@@ -137,7 +137,7 @@ export default function AlignStart_AddVisibility() {
     it('testFlexAlignStartTextVisibilityVisible', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityVisible] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.Visible
         });
         await CommonFunc.sleep(3000);

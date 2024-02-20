@@ -54,7 +54,7 @@ export default function AlignCenter_AddVisibility() {
     it('testFlexAlignCenterVisibilityNone', 0, async () => {
       console.info('[testFlexAlignCenterVisibilityNone] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.None
         });
         await CommonFunc.sleep(3000);
@@ -99,7 +99,7 @@ export default function AlignCenter_AddVisibility() {
     it('testFlexAlignCenterVisibilityHidden', 0, async () => {
       console.info('[testFlexAlignCenterVisibilityHidden] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.Hidden
         });
         await CommonFunc.sleep(3000);
@@ -151,7 +151,7 @@ export default function AlignCenter_AddVisibility() {
     it('testFlexAlignCenterVisibilityVisible', 0, async () => {
       console.info('[testFlexAlignCenterVisibilityVisible] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'OneVisibility', value: Visibility.Visible
         });
         await CommonFunc.sleep(3000);

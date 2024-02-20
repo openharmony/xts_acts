@@ -55,10 +55,10 @@ export default function flexAlign_SpaceAround_fixedChildParentItemAlignEnd() {
      */
     it('testAlignSpaceAroundRowNoWrapAlignmentBottomEnd', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapAlignmentBottomEnd START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       })
       await CommonFunc.sleep(3000);

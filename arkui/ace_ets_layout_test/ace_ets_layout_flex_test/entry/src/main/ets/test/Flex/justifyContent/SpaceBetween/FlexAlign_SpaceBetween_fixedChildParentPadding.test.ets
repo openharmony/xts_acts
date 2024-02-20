@@ -56,7 +56,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentPadding() {
      */
     it('testAlignSpaceBetweenRowNoWrapPaddingOutRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapPaddingOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);
@@ -104,7 +104,7 @@ export default function flexAlign_SpaceBetween_fixedChildParentPadding() {
      */
     it('testAlignSpaceBetweenRowNoWrapPaddingInRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapPaddingInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 5
       })
       await CommonFunc.sleep(3000);

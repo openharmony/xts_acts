@@ -12,6 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+import { Value } from './Value';
 
 export default class GlobalContext {
   private constructor() {}
@@ -25,8 +26,8 @@ export default class GlobalContext {
     return GlobalContext.instance;
   }
 
-  getObject(value: string): Object | undefined {
-    return this._objects.get(value);
+  getObject<T>(value: string): Value<T> {
+    return this._objects.get(value) as Value<T>;
   }
 
   setObject(key: string, objectClass: Object): void {

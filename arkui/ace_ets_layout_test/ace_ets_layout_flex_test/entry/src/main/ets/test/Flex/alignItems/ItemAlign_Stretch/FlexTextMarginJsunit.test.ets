@@ -53,7 +53,7 @@ export default function flexTextMargin_StretchJsunit() {
      */
     it('testFlexItemAlignStretchSubSetMargin', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetMargin START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
@@ -93,7 +93,7 @@ export default function flexTextMargin_StretchJsunit() {
      */
     it('testFlexItemAlignStretchSubSetMarginExceed', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetMarginExceed START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);

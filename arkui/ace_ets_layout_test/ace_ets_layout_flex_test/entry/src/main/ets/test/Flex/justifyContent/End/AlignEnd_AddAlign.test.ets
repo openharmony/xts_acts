@@ -53,7 +53,7 @@ export default function AlignEnd_AddAlign() {
      */
     it('testFlexAlignEndAlignBottomEnd', 0, async () => {
       console.info('[testFlexAlignEndAlignBottomEnd] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAlign', value: Alignment.BottomEnd
       })
       await CommonFunc.sleep(3000);

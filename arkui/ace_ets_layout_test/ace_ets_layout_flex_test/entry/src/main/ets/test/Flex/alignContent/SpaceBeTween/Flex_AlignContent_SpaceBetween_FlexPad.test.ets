@@ -53,7 +53,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
      */
     it('testAlignContentSpaceAroundFlexPadOverflow', 0, async () => {
       console.info('[testAlignContentSpaceAroundFlexPadOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);
@@ -94,7 +94,7 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
      */
     it('testAlignContentSpaceAroundFlexPadMeet', 0, async () => {
       console.info('[testAlignContentSpaceAroundFlexPadMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       })
       await CommonFunc.sleep(3000);

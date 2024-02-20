@@ -54,7 +54,7 @@ export default function AlignStart_AddOneMargin() {
      */
     it('testFlexAlignStartTextMarginMeet', 0, async () => {
       console.info('[testFlexAlignStartTextMarginMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 20
       });
       await CommonFunc.sleep(3000);
@@ -99,7 +99,7 @@ export default function AlignStart_AddOneMargin() {
      */
     it('testFlexAlignStartTextMarginOverflow', 0, async () => {
       console.info('[testFlexAlignStartTextMarginOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneMargin', value: 30
       });
       await CommonFunc.sleep(3000);

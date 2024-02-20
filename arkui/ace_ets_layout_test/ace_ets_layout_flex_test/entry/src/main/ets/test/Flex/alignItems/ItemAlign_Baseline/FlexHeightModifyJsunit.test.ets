@@ -90,7 +90,7 @@ export default function flexHeightModify_BaselineJsunit() {
      */
     it('testFlexItemAlignBaselineHeightModify', 0, async () => {
       console.info('new testFlexItemAlignBaselineHeightModify START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(2000);

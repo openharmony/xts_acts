@@ -56,10 +56,10 @@ export default function flexWrapReverse_notFixedParent() {
      */
     it('testWrapReverseChildfixedChangeParentInRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 150
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       })
       await CommonFunc.sleep(3000);
@@ -98,10 +98,10 @@ export default function flexWrapReverse_notFixedParent() {
      */
     it('testWrapReverseChildfixedChangeParentChildWidthOutRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildWidthOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
       })
       await CommonFunc.sleep(3000);
@@ -141,10 +141,10 @@ export default function flexWrapReverse_notFixedParent() {
      */
     it('testWrapReverseChildfixedChangeParentChildAllOutRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildAllOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 100
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
       })
       await CommonFunc.sleep(3000);

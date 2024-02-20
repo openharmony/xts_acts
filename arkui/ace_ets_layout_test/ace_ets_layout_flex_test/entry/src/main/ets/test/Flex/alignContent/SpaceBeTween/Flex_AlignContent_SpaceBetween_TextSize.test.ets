@@ -53,7 +53,7 @@ export default function flex_AlignContent_SpaceBetween_TextSizeTest() {
      */
     it('testFlexAlignContentSpaceAroundTextSizeMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextSizeMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 70
       })
       await CommonFunc.sleep(3000);
@@ -95,7 +95,7 @@ export default function flex_AlignContent_SpaceBetween_TextSizeTest() {
      */
     it('testFlexAlignContentSpaceAroundTextSizeOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextSizeOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       })
       await CommonFunc.sleep(3000);

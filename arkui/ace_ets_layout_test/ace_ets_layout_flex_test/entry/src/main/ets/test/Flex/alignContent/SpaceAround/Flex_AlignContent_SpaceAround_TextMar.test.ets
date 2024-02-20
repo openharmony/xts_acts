@@ -53,7 +53,7 @@ export default function flex_AlignContent_SpaceAround_TextMarTest() {
      */
     it('testFlexAlignContentSpaceAroundTextMarginOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextMarginOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 65
       })
       await CommonFunc.sleep(3000);
@@ -92,7 +92,7 @@ export default function flex_AlignContent_SpaceAround_TextMarTest() {
      */
     it('testFlexAlignContentSpaceAroundTextMarginMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextMarginMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       })
       await CommonFunc.sleep(3000);

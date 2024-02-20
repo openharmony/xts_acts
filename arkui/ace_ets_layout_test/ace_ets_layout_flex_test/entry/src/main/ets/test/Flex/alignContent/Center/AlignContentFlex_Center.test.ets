@@ -60,7 +60,7 @@ export default function AlignContentFlex_Center() {
 
     it('testAlignContentCenterFlexHeightSatisfy', 0, async () => {
       console.info('testAlignContentCenterFlexHeightSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 360
       })
       await CommonFunc.sleep(3000)
@@ -115,7 +115,7 @@ export default function AlignContentFlex_Center() {
 
     it('testAlignContentCenterFlexHeightNoSatisfy', 0, async () => {
       console.info('testAlignContentCenterFlexHeightNoSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250
       })
       await CommonFunc.sleep(3000)

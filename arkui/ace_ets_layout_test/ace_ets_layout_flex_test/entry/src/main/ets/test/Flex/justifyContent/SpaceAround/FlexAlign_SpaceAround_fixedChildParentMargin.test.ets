@@ -55,7 +55,7 @@ export default function flexAlign_SpaceAround_fixedChildParentMargin() {
      */
     it('testAlignSpaceAroundRowNoWrapMargin', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapMargin START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
       })
       await CommonFunc.sleep(3000);

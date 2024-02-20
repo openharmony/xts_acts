@@ -53,10 +53,10 @@ export default function flexBase_StartJsunit() {
      */
     it('testFlexItemAlignStart', 0, async () => {
       console.info('new testFlexItemAlignStart START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       });
       await CommonFunc.sleep(3000);
@@ -92,10 +92,10 @@ export default function flexBase_StartJsunit() {
      */
     it('testFlexItemAlignStartExceed', 0, async () => {
       console.info('new testFlexItemAlignStartExceed START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 420
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140
       });
       await CommonFunc.sleep(3000);

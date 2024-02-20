@@ -58,7 +58,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
 
     it('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexFixedMarginSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       })
       await CommonFunc.sleep(3000)
@@ -126,7 +126,7 @@ export default function AlignContentFlexP_Fixed_Margin() {
 
     it('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedMarginNOSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 100
       })
       await CommonFunc.sleep(3000)

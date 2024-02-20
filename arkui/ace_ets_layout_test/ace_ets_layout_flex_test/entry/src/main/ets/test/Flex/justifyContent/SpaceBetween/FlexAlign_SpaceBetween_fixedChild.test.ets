@@ -56,10 +56,10 @@ export default function flexAlign_SpaceBetween_fixedChild() {
      */
     it('testAlignSpaceBetweenRowNoWrapParentWidthAndHeightOutRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapParentWidthAndHeightOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
       })
       await CommonFunc.sleep(3000);
@@ -106,10 +106,10 @@ export default function flexAlign_SpaceBetween_fixedChild() {
      */
     it('testAlignSpaceBetweenRowNoWrapParentWidthAndHeightInRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapParentWidthAndHeightInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       })
       await CommonFunc.sleep(3000);

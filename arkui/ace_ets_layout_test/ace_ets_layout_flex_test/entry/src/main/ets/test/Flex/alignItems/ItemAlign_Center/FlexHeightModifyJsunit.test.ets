@@ -87,7 +87,7 @@ export default function flexHeightModify_CenterJsunit() {
      */
     it('testFlexItemAlignCenterHeightModify', 0, async () => {
       console.info('new testFlexItemAlignCenterHeightModify START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(2000);

@@ -53,7 +53,7 @@ export default function flexTextMargin_EndJsunit() {
      */
     it('testFlexItemAlignEndSubSetMargin', 0, async () => {
       console.info('new testFlexItemAlignEndSubSetMargin START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
@@ -91,7 +91,7 @@ export default function flexTextMargin_EndJsunit() {
      */
     it('testFlexItemAlignEndSubSetMarginExceed', 0, async () => {
       console.info('new testFlexItemAlignEndSubSetMarginExceed START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);

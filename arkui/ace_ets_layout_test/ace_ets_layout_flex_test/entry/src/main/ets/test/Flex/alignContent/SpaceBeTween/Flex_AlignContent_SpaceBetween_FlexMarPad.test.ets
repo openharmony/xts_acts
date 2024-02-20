@@ -53,10 +53,10 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
      */
     it('testFlexAlignContentSpaceAroundFlexMarPadMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
       });
 
@@ -100,10 +100,10 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
      */
     it('testFlexAlignContentSpaceAroundFlexMarPadOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       })
       await CommonFunc.sleep(3000);

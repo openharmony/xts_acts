@@ -53,7 +53,7 @@ export default function flexTextMargin_AutoJsunit() {
      */
     it('testFlexItemAlignAutoTextMarginMeet', 0, async () => {
       console.info('new testFlexItemAlignAutoTextMarginMeet START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
@@ -90,7 +90,7 @@ export default function flexTextMargin_AutoJsunit() {
      */
     it('testFlexItemAlignAutoTextMarginOverflow', 0, async () => {
       console.info('new testFlexItemAlignAutoTextMarginOverflow START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);

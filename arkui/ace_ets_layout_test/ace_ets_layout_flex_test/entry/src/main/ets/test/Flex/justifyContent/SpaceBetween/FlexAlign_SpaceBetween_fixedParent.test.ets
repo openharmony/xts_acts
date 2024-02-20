@@ -55,10 +55,10 @@ export default function flexAlign_SpaceBetween_fixedParent() {
      */
     it('testAlignSpaceBetweenRowNoWrapOffset', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapOffset START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'x', value: 15
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'y', value: 30
       })
       await CommonFunc.sleep(3000);

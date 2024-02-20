@@ -56,7 +56,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
      */
     it('testAlignSpaceAroundRowNoWrapPaddingOutRange', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapPaddingOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);
@@ -98,7 +98,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
      */
     it('testAlignSpaceAroundRowNoWrapPaddingInRange', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapPaddingInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 5
       })
       await CommonFunc.sleep(3000);

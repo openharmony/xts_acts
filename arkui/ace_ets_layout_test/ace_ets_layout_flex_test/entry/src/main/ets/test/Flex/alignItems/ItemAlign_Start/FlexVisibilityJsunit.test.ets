@@ -55,7 +55,7 @@ export default function flexVisibility_StartJsunit() {
     it('testFlexItemAlignStartSubSetVisibilityNone', 0, async () => {
       console.info('new testFlexItemAlignStartSubSetVisibilityNone START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.None
         });
         await CommonFunc.sleep(2000);
@@ -100,7 +100,7 @@ export default function flexVisibility_StartJsunit() {
     it('testFlexItemAlignStartSubSetVisibilityHidden', 0, async () => {
       console.info('new testFlexItemAlignStartSubSetVisibilityHidden START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.Hidden
         });
         await CommonFunc.sleep(2000);

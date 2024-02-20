@@ -54,7 +54,7 @@ export default function flex_NoWrap_TextSizeTest() {
      */
     it('testWrapNoWrapTextSizeMeet', 0, async () => {
       console.info('[testWrapNoWrapTextSizeMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 150
       })
       await CommonFunc.sleep(3000);
@@ -96,7 +96,7 @@ export default function flex_NoWrap_TextSizeTest() {
      */
     it('testWrapNoWrapTextSizeOverflow', 0, async () => {
       console.info('[testWrapNoWrapTextSizeOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200
       })
       await CommonFunc.sleep(3000);

@@ -55,7 +55,7 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirstWidth() {
      */
     it('testAlignSpaceAroundRowNoWrapChangeFirst', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirst START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 175
       })
       await CommonFunc.sleep(3000);

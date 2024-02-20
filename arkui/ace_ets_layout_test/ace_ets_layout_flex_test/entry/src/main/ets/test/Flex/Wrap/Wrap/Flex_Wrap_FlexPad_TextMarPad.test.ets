@@ -43,25 +43,25 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
 
     });
     afterEach(async () => {
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextMargin', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextMargin', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextPadding', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextPadding', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 0
       });
       await CommonFunc.sleep(1000);
@@ -75,16 +75,16 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      */
     it('testWrapWrapFlexPadTextPad', 0, async () => {
       console.info('[testWrapWrapFlexPadTextPad] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextPadding', value: 20
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextPadding', value: 30
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 30
       });
       await CommonFunc.sleep(3000);
@@ -128,10 +128,10 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      */
     it('testWrapWrapFlexPadTextMargin', 0, async () => {
       console.info('[testWrapWrapFlexPadTextMargin] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 20
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 20
       });
       await CommonFunc.sleep(3000);
@@ -175,25 +175,25 @@ export default function flex_Wrap_FlexPad_TextMarPadTest() {
      */
     it('testWrapWrapFlexPadTextMarPad', 0, async () => {
       console.info('[testWrapWrapFlexPadTextMarPad] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextMargin', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextMargin', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextMargin', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPadding', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextPadding', value: 20
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextPadding', value: 30
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 30
       });
       await CommonFunc.sleep(3000);

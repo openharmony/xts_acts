@@ -59,7 +59,7 @@ export default function AlignContentFlexJsunit() {
 
     it('testAlignContentSpaceEvenlyFlexHeightSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexHeightSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 360
       })
       await CommonFunc.sleep(3000)
@@ -124,7 +124,7 @@ export default function AlignContentFlexJsunit() {
 
     it('testAlignContentSpaceEvenlyFlexHeightNoSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexHeightNoSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 250
       })
       await CommonFunc.sleep(3000)

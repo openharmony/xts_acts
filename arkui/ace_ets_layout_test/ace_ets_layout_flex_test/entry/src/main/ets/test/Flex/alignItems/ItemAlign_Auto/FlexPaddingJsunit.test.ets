@@ -53,7 +53,7 @@ export default function flexPadding_AutoJsunit() {
      */
     it('testFlexItemAlignAutoFlexPadMeet', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadMeet START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       })
       await CommonFunc.sleep(2000);
@@ -91,7 +91,7 @@ export default function flexPadding_AutoJsunit() {
      */
     it('testFlexItemAlignAutoFlexPadOverflow', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadOverflow START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30
       });
       await CommonFunc.sleep(2000);

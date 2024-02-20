@@ -53,7 +53,7 @@ export default function flexPadding_CenterJsunit() {
      */
     it('testFlexItemAlignCenterParentSetPadding', 0, async () => {
       console.info('new testFlexItemAlignCenterParentSetPadding START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
       await CommonFunc.sleep(2000);

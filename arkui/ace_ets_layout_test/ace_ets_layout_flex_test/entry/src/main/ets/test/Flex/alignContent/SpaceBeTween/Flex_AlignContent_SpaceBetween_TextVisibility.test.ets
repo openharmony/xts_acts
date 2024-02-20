@@ -43,7 +43,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
     });
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Visible
       });
       console.info("Flex_AlignContent_SpaceBetween_TextVisibilityTest after each called");
@@ -60,7 +60,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
         let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
         let distanceBefore = secondText.top - firstText.bottom;
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.Hidden
         });
         await CommonFunc.sleep(3000);
@@ -109,7 +109,7 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility01');
         let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility02');
         let distanceBefore = secondText.top - firstText.bottom;
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.None
         })
         await CommonFunc.sleep(3000);

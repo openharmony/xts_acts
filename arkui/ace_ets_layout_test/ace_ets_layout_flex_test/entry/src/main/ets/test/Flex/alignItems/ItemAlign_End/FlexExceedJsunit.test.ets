@@ -53,10 +53,10 @@ export default function flexExceed_EndJsunit() {
      */
     it('testFlexItemAlignEndSetMarPad', 0, async () => {
       console.info('new testFlexItemAlignEndSetMarPad START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);

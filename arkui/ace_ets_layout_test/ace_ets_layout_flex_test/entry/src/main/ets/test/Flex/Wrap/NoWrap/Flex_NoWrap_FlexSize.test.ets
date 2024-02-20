@@ -53,10 +53,10 @@ export default function flex_NoWrap_FlexSizeTest() {
      */
     it('testWrapNoWrapFlexSizeMeet', 0, async () => {
       console.info('[testWrapNoWrapFlexSizeMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       });
       await CommonFunc.sleep(3000);
@@ -101,10 +101,10 @@ export default function flex_NoWrap_FlexSizeTest() {
      */
     it('testWrapNoWrapFlexSizeMainAxisOverflow', 0, async () => {
       console.info('[testWrapNoWrapFlexSizeMainAxisOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 100
       })
       await CommonFunc.sleep(3000);
@@ -149,10 +149,10 @@ export default function flex_NoWrap_FlexSizeTest() {
      */
     it('testWrapNoWrapFlexSizeAllAxisOverflow', 0, async () => {
       console.info('[testWrapNoWrapFlexSizeAllAxisOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 100
       });
       await CommonFunc.sleep(3000);

@@ -54,7 +54,7 @@ export default function AlignStart_NoSpace() {
      */
     it('testFlexAlignStartFlexWidthOverflow', 0, async () => {
       console.info('[testFlexAlignStartFlexWidthOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 400
       });
       await CommonFunc.sleep(3000);
@@ -98,7 +98,7 @@ export default function AlignStart_NoSpace() {
     it('testFlexAlignStartFlexWidthMeet', 0, async () => {
       console.info('[testFlexAlignStartFlexWidthMeet] START');
       let strJson = getInspectorByKey('Start_NoSpace_01');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadWidth', value: 500
       })
       await CommonFunc.sleep(3000);

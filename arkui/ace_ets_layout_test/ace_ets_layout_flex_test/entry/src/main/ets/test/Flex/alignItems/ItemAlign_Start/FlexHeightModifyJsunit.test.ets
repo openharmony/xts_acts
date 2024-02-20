@@ -86,7 +86,7 @@ export default function flexHeightModify_StartJsunit() {
      */
     it('testFlexItemAlignStartHeightModify', 0, async () => {
       console.info('new testFlexItemAlignStartHeightModify START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(2000);

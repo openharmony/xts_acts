@@ -59,7 +59,7 @@ export default function AlignContent_Start_FlexP_fixed() {
 
     it('testAlignContentStartFlexFixedSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexFixedSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       })
       await CommonFunc.sleep(3000)
@@ -113,7 +113,7 @@ export default function AlignContent_Start_FlexP_fixed() {
 
     it('testAlignContentStartFlexFixedNoSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexFixedNoSatisfy START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 300
       })
       await CommonFunc.sleep(3000)

@@ -55,13 +55,13 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
      */
     it('testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight122', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight122 START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testFirstlayoutWeight', value: 1
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testSecondlayoutWeight', value: 2
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testThirdlayoutWeight', value: 2
       })
       await CommonFunc.sleep(3000);
@@ -100,13 +100,13 @@ export default function flexAlign_SpaceAround_fixedParentChangeFirst() {
      */
     it('testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight120', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapChangeFirstLayoutWeight120 START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testFirstlayoutWeight', value: 1
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testSecondlayoutWeight', value: 2
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testThirdlayoutWeight', value: 0
       })
       await CommonFunc.sleep(3000);

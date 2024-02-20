@@ -53,10 +53,10 @@ export default function flexExceed_StretchJsunit() {
      */
     it('testFlexItemAlignStretchSetMarPad', 0, async () => {
       console.info('new testFlexItemAlignStretchSetMarPad START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       });
       await CommonFunc.sleep(2000);
@@ -95,10 +95,10 @@ export default function flexExceed_StretchJsunit() {
      */
     it('testFlexItemAlignStretchSetMarPadExceed', 0, async () => {
       console.info('new testFlexItemAlignStretchSetMarPadExceed START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 30
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       });
       await CommonFunc.sleep(2000);

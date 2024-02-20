@@ -54,10 +54,10 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1100', 0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1100] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       })
       await CommonFunc.sleep(3000);
@@ -101,10 +101,10 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1200', 0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1200] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 400
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 260
       })
       await CommonFunc.sleep(3000);
@@ -149,10 +149,10 @@ export default function flex_Wrap_FlexSizeTest() {
      */
     it('SUB_ACE_FLEXWRAP_WRAP_1300', 0, async () => {
       console.info('[SUB_ACE_FLEXWRAP_WRAP_1300] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 350
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 150
       })
       await CommonFunc.sleep(3000);

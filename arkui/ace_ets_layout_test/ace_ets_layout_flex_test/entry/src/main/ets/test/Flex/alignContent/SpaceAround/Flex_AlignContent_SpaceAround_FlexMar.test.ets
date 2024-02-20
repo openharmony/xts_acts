@@ -53,7 +53,7 @@ export default function flex_AlignContent_SpaceAround_FlexMarTest() {
      */
     it('testFlexAlignContentSpaceAroundFlexMargin', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMargin] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 10
       })
       await CommonFunc.sleep(3000);

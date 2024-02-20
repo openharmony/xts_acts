@@ -53,10 +53,10 @@ export default function flexBase_AutoJsunit() {
      */
     it('testFlexItemAlignAutoFlexWidHeiMeet', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiMeet START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 200
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 500
       });
       await CommonFunc.sleep(2000);
@@ -93,10 +93,10 @@ export default function flexBase_AutoJsunit() {
      */
     it('testFlexItemAlignAutoFlexWidHeiOverflow', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiOverflow START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 140
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 420
       });
       await CommonFunc.sleep(2000);

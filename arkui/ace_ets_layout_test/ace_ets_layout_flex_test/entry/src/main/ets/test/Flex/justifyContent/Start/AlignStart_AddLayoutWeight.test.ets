@@ -55,13 +55,13 @@ export default function AlignStart_AddLayoutWeight() {
      */
     it('testFlexAlignStartTextLayoutWeight01', 0, async () => {
       console.info('[testFlexAlignStartTextLayoutWeight01] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight2', value: 2
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight3', value: 2
       });
       await CommonFunc.sleep(3000);
@@ -97,13 +97,13 @@ export default function AlignStart_AddLayoutWeight() {
      */
     it('testFlexAlignStartTextLayoutWeight02', 0, async () => {
       console.info('[testFlexAlignStartTextLayoutWeight02] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight1', value: 1
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight2', value: 2
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneLayoutWeight3', value: 0
       });
       await CommonFunc.sleep(3000);

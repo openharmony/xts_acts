@@ -53,7 +53,7 @@ export default function flexHeightModify_StretchJsunit() {
      */
     it('testFlexItemAlignStretchDefaultSize', 0, async () => {
       console.info('new testFlexItemAlignStretchDefaultSize START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(1000);
@@ -94,7 +94,7 @@ export default function flexHeightModify_StretchJsunit() {
      */
     it('testFlexItemAlignStretchHeightModify', 0, async () => {
       console.info('new testFlexItemAlignStretchHeightModify START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
       await CommonFunc.sleep(1000);

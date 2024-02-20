@@ -56,10 +56,10 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
      */
     it('testAlignSpaceBetweenRowNoWrapMarPadOutRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarPadOutRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);
@@ -106,10 +106,10 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
      */
     it('testAlignSpaceBetweenRowNoWrapMarPadInRange', 0, async () => {
       console.info('new testAlignSpaceBetweenRowNoWrapMarPadInRange START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 20
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 5
       })
       await CommonFunc.sleep(3000);

@@ -53,7 +53,7 @@ export default function AlignEnd_AddAllSpace() {
      */
     it('testFlexAlignEndFlexSpaceOverflow', 0, async () => {
       console.info('[testFlexAlignEndFlexSpaceOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 30
       })
       await CommonFunc.sleep(3000);
@@ -103,7 +103,7 @@ export default function AlignEnd_AddAllSpace() {
      */
     it('testFlexAlignEndFlexSpaceMeet', 0, async () => {
       console.info('[testFlexAlignEndFlexSpaceMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadAllSpace', value: 20
       })
       await CommonFunc.sleep(3000);

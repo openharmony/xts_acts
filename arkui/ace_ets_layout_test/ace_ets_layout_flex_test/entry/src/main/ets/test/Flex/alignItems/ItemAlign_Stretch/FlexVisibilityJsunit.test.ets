@@ -55,7 +55,7 @@ export default function flexVisibility_StretchJsunit() {
     it('testFlexItemAlignStretchSubSetVisibilityNone', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetVisibilityNone START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.None
         });
         await CommonFunc.sleep(2000);
@@ -98,7 +98,7 @@ export default function flexVisibility_StretchJsunit() {
     it('testFlexItemAlignStretchSubSetVisibilityHidden', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetVisibilityHidden START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.Hidden
         });
         await CommonFunc.sleep(2000);

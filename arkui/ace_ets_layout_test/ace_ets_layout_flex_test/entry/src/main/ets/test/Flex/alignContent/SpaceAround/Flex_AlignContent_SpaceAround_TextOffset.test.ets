@@ -58,7 +58,7 @@ export default function flex_AlignContent_SpaceAround_TextOffsetTest() {
       let secondTextTop: RectValue = secondText.top;
       let firstTextTop: RectValue = firstText.top;
       let firstTextLeft: RectValue = firstText.left;
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'offset', value: {
           x: 10, y: 10
         }

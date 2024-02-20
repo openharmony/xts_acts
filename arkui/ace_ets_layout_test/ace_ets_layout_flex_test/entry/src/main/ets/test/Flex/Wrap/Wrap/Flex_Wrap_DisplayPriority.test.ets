@@ -53,13 +53,13 @@ export default function flex_Wrap_DisplayPriorityTest() {
      */
     it('testWrapWrapTextDisplayPriority', 0, async () => {
       console.info('[testWrapWrapTextDisplayPriority] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextPriority', value: 3
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextPriority', value: 2
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextPriority', value: 1
       });
       await CommonFunc.sleep(3000);

@@ -54,16 +54,16 @@ export default function flex_Wrap_VisibilityTest() {
     it('testWrapWrapTextVisibilityNoneOverflow', 0, async () => {
       console.info('[testWrapWrapTextVisibilityNoneOverflow] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'firstTextWidth', value: 250
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'secondTextWidth', value: 350
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'thirdTextWidth', value: 350
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.None
         })
         await CommonFunc.sleep(3000);
@@ -105,16 +105,16 @@ export default function flex_Wrap_VisibilityTest() {
     it('testWrapWrapTextVisibilityNoneMeet', 0, async () => {
       console.info('[testWrapWrapTextVisibilityNoneMeet] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'firstTextWidth', value: 250
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'secondTextWidth', value: 150
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'thirdTextWidth', value: 150
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.None
         })
         await CommonFunc.sleep(3000);
@@ -156,16 +156,16 @@ export default function flex_Wrap_VisibilityTest() {
     it('testWrapWrapTextVisibilityHidden', 0, async () => {
       console.info('[testWrapWrapTextVisibilityHidden] START');
       try {
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'firstTextWidth', value: 150
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'secondTextWidth', value: 150
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'thirdTextWidth', value: 150
         });
-        GlobalContext.getContext().getObject('value').message.notify({
+        GlobalContext.getContext().getObject<number>('value').message.notify({
           name: 'visibility', value: Visibility.Hidden
         })
         await CommonFunc.sleep(3000);

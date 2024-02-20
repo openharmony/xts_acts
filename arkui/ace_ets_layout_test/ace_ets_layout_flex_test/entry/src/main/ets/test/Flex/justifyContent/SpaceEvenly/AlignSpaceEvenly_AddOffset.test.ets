@@ -53,7 +53,7 @@ export default function AlignSpaceEvenly_AddOffset() {
      */
     it('testFlexAlignSpaceEvenlyTextOffset', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextOffset] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'OneOffset', value: {
           x: 10, y: 15
         }

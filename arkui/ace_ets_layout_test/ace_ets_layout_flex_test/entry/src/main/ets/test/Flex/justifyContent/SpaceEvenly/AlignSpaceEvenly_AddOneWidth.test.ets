@@ -53,7 +53,7 @@ export default function AlignSpaceEvenly_AddOneWidth() {
      */
     it('testFlexAlignSpaceEvenlyTextWidth', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextWidth] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneWidth', value: 160
       });
       await CommonFunc.sleep(3000);

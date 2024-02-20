@@ -53,13 +53,13 @@ export default function flex_Wrap_LayoutWeightTest() {
      */
     it('testWrapWrapTextLayoutWeight', 0, async () => {
       console.info('[testWrapWrapTextLayoutWeight] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'firstTextLayoutWeight', value: 2
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'secondTextLayoutWeight', value: 1
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'thirdTextLayoutWeight', value: 1
       })
       await CommonFunc.sleep(3000);

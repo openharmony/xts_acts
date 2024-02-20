@@ -55,13 +55,13 @@ export default function flexAlign_SpaceAround_fixedParent() {
      */
     it('testAlignSpaceAroundRowNoWrapOffset', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapOffset START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'x', value: 15
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'y', value: 30
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Visible
       })
       await CommonFunc.sleep(3000);

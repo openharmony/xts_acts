@@ -42,10 +42,10 @@ export default function flex_Wrap_PaddingTest() {
 
     });
     afterEach(async () => {
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexMargin', value: 0
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 0
       });
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexPaddingMeet', 0, async () => {
       console.info('[testWrapWrapFlexPaddingMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 10
       })
       await CommonFunc.sleep(3000);
@@ -100,7 +100,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexPaddingOverflow', 0, async () => {
       console.info('[testWrapWrapFlexPaddingOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 30
       })
       await CommonFunc.sleep(3000);
@@ -140,7 +140,7 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexMargin', 0, async () => {
       console.info('[testWrapWrapFlexMargin] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexMargin', value: 10
       })
       await CommonFunc.sleep(3000);
@@ -186,10 +186,10 @@ export default function flex_Wrap_PaddingTest() {
      */
     it('testWrapWrapFlexMarPad', 0, async () => {
       console.info('[testWrapWrapFlexMarPad] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexMargin', value: 10
       });
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'flexPadding', value: 30
       });
       await CommonFunc.sleep(3000);

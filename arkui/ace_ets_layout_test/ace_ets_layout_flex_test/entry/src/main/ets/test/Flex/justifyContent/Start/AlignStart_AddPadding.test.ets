@@ -54,7 +54,7 @@ export default function AlignStart_AddPadding() {
      */
     it('testFlexAlignStartFlexPadOverflow', 0, async () => {
       console.info('[testFlexAlignStartFlexPadOverflow] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 30
       });
       await CommonFunc.sleep(3000);
@@ -100,7 +100,7 @@ export default function AlignStart_AddPadding() {
      */
     it('testFlexAlignStartFlexPadMeet', 0, async () => {
       console.info('[testFlexAlignStartFlexPadMeet] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'DadPadding', value: 20
       });
       await CommonFunc.sleep(3000);

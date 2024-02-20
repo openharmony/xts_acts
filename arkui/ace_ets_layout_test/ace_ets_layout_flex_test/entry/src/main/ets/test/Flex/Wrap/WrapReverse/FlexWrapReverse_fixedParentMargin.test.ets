@@ -56,10 +56,10 @@ export default function flexWrapReverse_fixedParentMargin() {
      */
     it('testWrapReverseParentfixedMarginChildPadding', 0, async () => {
       console.info('new testWrapReverseParentfixedMarginChildPadding START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 0
       })
       await CommonFunc.sleep(3000);
@@ -100,10 +100,10 @@ export default function flexWrapReverse_fixedParentMargin() {
      */
     it('testWrapReverseParentfixedMarginChildMargin', 0, async () => {
       console.info('new testWrapReverseParentfixedMarginChildMargin START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 0
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 50
       })
       await CommonFunc.sleep(3000);
@@ -145,10 +145,10 @@ export default function flexWrapReverse_fixedParentMargin() {
      */
     it('testWrapReverseParentfixedMarginChildMarginAndPadding', 0, async () => {
       console.info('new testWrapReverseParentfixedMarginChildMarginAndPadding START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 10
       })
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 30
       })
       await CommonFunc.sleep(3000);

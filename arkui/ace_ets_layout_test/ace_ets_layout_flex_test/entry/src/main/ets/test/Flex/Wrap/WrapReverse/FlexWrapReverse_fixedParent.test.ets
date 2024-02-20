@@ -56,7 +56,7 @@ export default function flexWrapReverse_fixedParent() {
      */
     it('testWrapReverseParentfixedChangeChildWidthLessThanParent', 0, async () => {
       console.info('new testWrapReverseParentfixedChangeChildWidthLessThanParent START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 150
       })
       await CommonFunc.sleep(3000);
@@ -98,7 +98,7 @@ export default function flexWrapReverse_fixedParent() {
      */
     it('testWrapReverseParentfixedChangeChildWidthLargerThanParent', 0, async () => {
       console.info('new testWrapReverseParentfixedChangeChildWidthLargerThanParent START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200
       })
       await CommonFunc.sleep(3000);

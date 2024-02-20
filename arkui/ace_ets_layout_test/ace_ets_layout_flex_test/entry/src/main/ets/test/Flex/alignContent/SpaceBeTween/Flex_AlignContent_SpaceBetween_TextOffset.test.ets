@@ -56,7 +56,7 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
       let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset02');
       let distanceBefore = secondText.top - firstText.bottom;
       let secondTextTop = secondText.top - firstText.top;
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'offset', value: {
           x: 10, y: 10
         }

@@ -58,7 +58,7 @@ export default function AlignContent_Start_FlexP_Fixed_Visibility() {
 
     it('testAlignContentStartFlexfixedVisibilityHidden', 0, async () => {
       console.info('testAlignContentStartFlexfixedVisibilityHidden START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
       })
       await CommonFunc.sleep(3000)
@@ -123,7 +123,7 @@ export default function AlignContent_Start_FlexP_Fixed_Visibility() {
 
     it('testAlignContentStartFlexfixedVisibilityNone', 0, async () => {
       console.info('testAlignContentStartFlexfixedVisibilityNone START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
       })
       await CommonFunc.sleep(3000)

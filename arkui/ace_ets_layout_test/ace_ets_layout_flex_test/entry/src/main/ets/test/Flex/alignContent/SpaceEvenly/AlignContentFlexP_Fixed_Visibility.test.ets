@@ -58,7 +58,7 @@ export default function AlignContentFlexP_Fixed_Visibility() {
 
     it('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedVisibilityHidden START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.Hidden
       })
       await CommonFunc.sleep(3000)
@@ -119,7 +119,7 @@ export default function AlignContentFlexP_Fixed_Visibility() {
 
     it('testAlignContentSpaceEvenlyFlexfixedVisibilityNone', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexfixedVisibilityNone START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'visibility', value: Visibility.None
       })
       await CommonFunc.sleep(3000)

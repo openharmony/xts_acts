@@ -53,7 +53,7 @@ export default function AlignEnd_AddOneWidth() {
      */
     it('testFlexAlignEndTextWidth', 0, async () => {
       console.info('[testFlexAlignEndTextWidth] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'OneWidth', value: 160
       })
       await CommonFunc.sleep(3000);

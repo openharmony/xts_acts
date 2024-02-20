@@ -53,7 +53,7 @@ export default function flex_Wrap_PositionTest() {
      */
     it('testWrapWrapTextPosition', 0, async () => {
       console.info('[testWrapWrapTextPosition] START');
-      GlobalContext.getContext().getObject('value').message.notify({
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
         name: 'position', value: {
           x: 20, y: 40
         }
