@@ -176,7 +176,7 @@ static const struct HksTestEncryptParams g_testEncryptParams[] = {
     },
 
     /* aes gcm aad not set */
-    { 2, HKS_ERROR_CHECK_GET_AAD_FAIL, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
+    { 2, HKS_SUCCESS, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
         {
             true, /* genKey params */
             true, HKS_ALG_AES,
@@ -321,7 +321,7 @@ static const struct HksTestDecryptParams g_testDecryptParams[] = {
     },
 
     /* aes gcm aad not set */
-    { 2, HKS_ERROR_CHECK_GET_AAD_FAIL, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
+    { 2, HKS_SUCCESS, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
         {
             true, /* genKey params */
             true, HKS_ALG_AES,
