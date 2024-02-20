@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -23,8 +23,8 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
   describe('AlignContent_FlexAlign_End_Margin_padding', () => {
     beforeEach(async () => {
       console.info("AlignContent_FlexAlign_End_Margin_padding beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_Margin_padding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_Margin_padding',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
         console.info("get AlignContent_FlexAlign_End_Margin_padding state success " + JSON.stringify(pages));
         if (!("AlignContent_FlexAlign_End_Margin_padding" == pages.name)) {
           console.info("get AlignContent_FlexAlign_End_Margin_padding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_FlexAlign_End_Margin_padding page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -63,7 +63,7 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndMargin&padding_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let End_Margin_Column_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_Column_1');
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_flex001_1');
@@ -119,7 +119,7 @@ export default function AlignContent_FlexAlign_End_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndMargin&padding_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let End_Margin_Column_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_Column_1');
       let AlignContentFlexEnd_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin&padding_flex001_1');

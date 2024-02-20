@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../../../test/List.test'

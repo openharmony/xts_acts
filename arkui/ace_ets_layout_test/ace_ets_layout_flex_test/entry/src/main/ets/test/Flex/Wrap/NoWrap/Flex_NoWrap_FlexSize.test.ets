@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_NoWrap_FlexSizeTest() {
   describe('flex_NoWrap_FlexSizeTest', () => {
     beforeEach(async () => {
       console.info("flex_NoWrap_FlexSizeTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_FlexSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_FlexSize',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_NoWrap_FlexSizeTest() {
         console.info("get flex_NoWrap_FlexSize state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_FlexSize" == pages.name)) {
           console.info("get flex_NoWrap_FlexSize state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push flex_NoWrap_FlexSize page result:" + JSON.stringify(result));
         }
@@ -65,7 +65,7 @@ export default function flex_NoWrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexSize_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -113,7 +113,7 @@ export default function flex_NoWrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexSize_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -161,7 +161,7 @@ export default function flex_NoWrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexSize_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');

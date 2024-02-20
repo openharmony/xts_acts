@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
   describe('Flex_AlignContent_SpaceAround_TextSizeTest', () => {
     beforeEach(async () => {
       console.info("Flex_AlignContent_SpaceAround_TextSizeTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextSize',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
         console.info("get Flex_AlignContent_SpaceAround_TextSize state pages:" + JSON.stringify(pages));
         if (!("Flex_AlignContent_SpaceAround_TextSize" == pages.name)) {
           console.info("get Flex_AlignContent_SpaceAround_TextSize state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_AlignContent_SpaceAround_TextSize page result:" + JSON.stringify(result));
         }
@@ -63,7 +63,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextSize_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
@@ -106,7 +106,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextSize04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextSize_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
 
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');

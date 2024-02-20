@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,8 +23,8 @@ export default function flexWrapReverse_notFixedParentMargin() {
   describe('FlexWrapReverse_notFixedParentMargin', () => {
     beforeEach(async () => {
       console.info("FlexWrapReverse_notFixedParentMargin beforeEach called");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/WrapReverse/FlexWrapReverse_notFixedParentMargin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/WrapReverse/FlexWrapReverse_notFixedParentMargin',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function flexWrapReverse_notFixedParentMargin() {
         console.info("get FlexWrapReverse_notFixedParentMargin state pages:" + JSON.stringify(pages));
         if (!("FlexWrapReverse_notFixedParentMargin" == pages.name)) {
           console.info("get FlexWrapReverse_notFixedParentMargin state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push FlexWrapReverse_notFixedParentMargin page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -70,7 +70,7 @@ export default function flexWrapReverse_notFixedParentMargin() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest6');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -121,7 +121,7 @@ export default function flexWrapReverse_notFixedParentMargin() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest6');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');

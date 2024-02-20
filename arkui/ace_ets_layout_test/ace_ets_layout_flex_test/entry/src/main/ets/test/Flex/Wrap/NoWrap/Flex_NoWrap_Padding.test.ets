@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -23,8 +23,8 @@ export default function flex_NoWrap_PaddingTest() {
   describe('Flex_NoWrap_PaddingTest', () => {
     beforeEach(async () => {
       console.info("Flex_NoWrap_PaddingTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_Padding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_Padding',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flex_NoWrap_PaddingTest() {
         console.info("get Flex_NoWrap_Padding state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_Padding" == pages.name)) {
           console.info("get Flex_NoWrap_Padding state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_NoWrap_Padding page result:" + JSON.stringify(result));
         }
@@ -69,7 +69,7 @@ export default function flex_NoWrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -114,7 +114,7 @@ export default function flex_NoWrap_PaddingTest() {
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -159,7 +159,7 @@ export default function flex_NoWrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -214,7 +214,7 @@ export default function flex_NoWrap_PaddingTest() {
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');

@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
   describe('Flex_AlignContent_SpaceAround_TextVisibilityTest', () => {
     beforeEach(async () => {
       console.info("Flex_AlignContent_SpaceAround_TextVisibilityTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/SpaceAround/Flex_AlignContent_SpaceAround_TextVisibility',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         console.info("get Flex_AlignContent_SpaceAround_TextVisibility state pages:" + JSON.stringify(pages));
         if (!("Flex_AlignContent_SpaceAround_TextVisibility" == pages.name)) {
           console.info("get Flex_AlignContent_SpaceAround_TextVisibility state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_AlignContent_SpaceAround_TextVisibility page result:" + JSON.stringify(result));
         }
@@ -69,13 +69,13 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextVisibility_Container01');
-        let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
         expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceAround_TextVisibility01');
-        let firstTextObj: Record<string, Object> = JSON.parse(firstTextStrJson);
+        let firstTextObj: ESObject = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
 
@@ -126,13 +126,13 @@ export default function flex_AlignContent_SpaceAround_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceAround_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_TextVisibility_Container01');
-        let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+        let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
         expect(flexContainerObj.$type).assertEqual('Flex');
         expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
         expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceAround_TextVisibility01');
-        let firstTextObj: Record<string, Object> = JSON.parse(firstTextStrJson);
+        let firstTextObj: ESObject = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
         expect(Math.abs(secondText.bottom - secondText.top) - vp2px(100) <= 1).assertTrue();

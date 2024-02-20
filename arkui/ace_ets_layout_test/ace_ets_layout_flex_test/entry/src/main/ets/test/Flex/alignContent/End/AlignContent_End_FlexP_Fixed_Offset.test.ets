@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
 export default function AlignContent_End_FlexP_Fixed_Offset() {
@@ -22,8 +22,8 @@ export default function AlignContent_End_FlexP_Fixed_Offset() {
   describe('AlignContent_End_FlexP_Fixed_Offset', () => {
     beforeEach(async () => {
       console.info("AlignContent_End_FlexP_Fixed_Offset beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/End/AlignContent_End_FlexP_Fixed_Offset',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/End/AlignContent_End_FlexP_Fixed_Offset',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function AlignContent_End_FlexP_Fixed_Offset() {
         console.info("get AlignContent_End_FlexP_Fixed_Offset state success " + JSON.stringify(pages));
         if (!("AlignContent_End_FlexP_Fixed_Offset" == pages.name)) {
           console.info("get AlignContent_End_FlexP_Fixed_Offset state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_End_FlexP_Fixed_Offset page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -59,7 +59,7 @@ export default function AlignContent_End_FlexP_Fixed_Offset() {
     it('testAlignContentEndFlexPfixedOffset', 0, async () => {
       console.info('testAlignContentEndFlexPfixedOffset START');
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Offset_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Offset_flex001');

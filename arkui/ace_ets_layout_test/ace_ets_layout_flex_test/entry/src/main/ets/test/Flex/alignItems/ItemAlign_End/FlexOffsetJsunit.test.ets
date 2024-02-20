@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function flexOffset_EndJsunit() {
   describe('flexItemAlignEndTest1', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexOffset',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexOffset',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flexOffset_EndJsunit() {
         console.info("get FlexOffset state success " + JSON.stringify(pages));
         if (!("FlexOffset" == pages.name)) {
           console.info("get FlexOffset state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexOffset page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -53,7 +53,7 @@ export default function flexOffset_EndJsunit() {
     it('testFlexItemAlignEndSetOffset', 0, async () => {
       console.info('new testFlexItemAlignEndSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
       let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
       let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');

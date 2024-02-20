@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 
 export default function AlignContent_FlexAlign_End_Margin() {
@@ -22,8 +22,8 @@ export default function AlignContent_FlexAlign_End_Margin() {
   describe('AlignContent_FlexAlign_End_Margin', () => {
     beforeEach(async () => {
       console.info("AlignContent_FlexAlign_End_Margin beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_Margin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_Margin',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function AlignContent_FlexAlign_End_Margin() {
         console.info("get AlignContent_FlexAlign_End_Margin state success " + JSON.stringify(pages));
         if (!("AlignContent_FlexAlign_End_Margin" == pages.name)) {
           console.info("get AlignContent_FlexAlign_End_Margin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_FlexAlign_End_Margin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -58,7 +58,7 @@ export default function AlignContent_FlexAlign_End_Margin() {
     it('testAlignContentEndFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentEndFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexEndMargin_flex');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let End_Margin_Column: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin_Column');
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin_flex');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndMargin_flex_1');

@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function flexBase_AutoJsunit() {
   describe('flexItemAlignAutoTest3', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexBase',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexBase',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flexBase_AutoJsunit() {
         console.info("get FlexBase state success " + JSON.stringify(pages));
         if (!("FlexBase" == pages.name)) {
           console.info("get FlexBase state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -61,7 +61,7 @@ export default function flexBase_AutoJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
@@ -102,7 +102,7 @@ export default function flexBase_AutoJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');

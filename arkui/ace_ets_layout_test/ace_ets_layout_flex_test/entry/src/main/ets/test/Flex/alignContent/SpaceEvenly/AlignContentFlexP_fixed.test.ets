@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -24,8 +24,8 @@ export default function AlignContentFlexP_fixed() {
   describe('AlignContentFlexP_fixed', () => {
     beforeEach(async () => {
       console.info("AlignContentFlexP_fixed beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/SpaceEvenly/AlignContentFlexP_fixed',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/SpaceEvenly/AlignContentFlexP_fixed',
       }
       try {
         router.clear();
@@ -34,7 +34,7 @@ export default function AlignContentFlexP_fixed() {
         console.info("get AlignContentFlexP_fixed state success " + JSON.stringify(pages));
         if (!("AlignContentFlexP_fixed" == pages.name)) {
           console.info("get AlignContentFlexP_fixed state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContentFlexP_fixed page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -64,7 +64,7 @@ export default function AlignContentFlexP_fixed() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyP_fixed_flex');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyP_fixed_flex');
@@ -129,7 +129,7 @@ export default function AlignContentFlexP_fixed() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyP_fixed_flex');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let AlignContentFlexSpaceEvenly_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyP_fixed_flex');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_1');
       let AlignContentFlexSpaceEvenly_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexP_fixed_2');

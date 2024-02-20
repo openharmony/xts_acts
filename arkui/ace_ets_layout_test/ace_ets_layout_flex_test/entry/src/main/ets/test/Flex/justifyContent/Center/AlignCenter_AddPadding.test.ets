@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function AlignCenter_AddPadding() {
   describe('AlignCenter_AddPadding', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/justifyContent/Center/AlignCenter_AddPadding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/Center/AlignCenter_AddPadding',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function AlignCenter_AddPadding() {
         console.info("get AlignCenter_AddPadding state success " + JSON.stringify(pages));
         if (!("AlignCenter_AddPadding" == pages.name)) {
           console.info("get AlignCenter_AddPadding state pages.name " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push AlignCenter_AddPadding page success " + JSON.stringify(result));
         }
@@ -59,7 +59,7 @@ export default function AlignCenter_AddPadding() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddPadding_01');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
@@ -105,7 +105,7 @@ export default function AlignCenter_AddPadding() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddPadding_01');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');

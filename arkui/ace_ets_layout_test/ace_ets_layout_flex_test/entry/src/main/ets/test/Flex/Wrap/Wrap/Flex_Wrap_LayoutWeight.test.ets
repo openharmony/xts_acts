@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_Wrap_LayoutWeightTest() {
   describe('Flex_Wrap_LayoutWeightTest', () => {
     beforeEach(async () => {
       console.info("Flex_Wrap_LayoutWeightTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/Wrap/Flex_Wrap_LayoutWeight',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/Wrap/Flex_Wrap_LayoutWeight',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_Wrap_LayoutWeightTest() {
         console.info("get Flex_Wrap_LayoutWeight state pages:" + JSON.stringify(pages));
         if (!("Flex_Wrap_LayoutWeight" == pages.name)) {
           console.info("get Flex_Wrap_LayoutWeight state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(1000);
           console.info("push Flex_Wrap_LayoutWeight page result:" + JSON.stringify(result));
         }
@@ -68,7 +68,7 @@ export default function flex_Wrap_LayoutWeightTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_LayoutWeight03');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_layoutWeight_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_layoutWeight_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

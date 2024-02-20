@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct AlignContent_Center_FlexP_Fixed_Offset {
-  alignContent: number
+  alignContent: number = 0;
 
   build() {
     Column() {

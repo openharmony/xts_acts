@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct AlignContent_FlexAlign_Start_Margin {
-  alignContent: number;
+  alignContent: number = 0;
 
   build() {
     Column() {

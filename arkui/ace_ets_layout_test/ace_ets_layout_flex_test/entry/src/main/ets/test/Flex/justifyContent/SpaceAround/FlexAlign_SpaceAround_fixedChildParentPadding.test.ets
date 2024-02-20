@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,8 +23,8 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
   describe('FlexAlign_SpaceAround_fixedChildParentPadding', () => {
     beforeEach(async () => {
       console.info("FlexAlign_SpaceAround_fixedChildParentPadding beforeEach called");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/justifyContent/SpaceAround/FlexAlign_SpaceAround_fixedChildParentPadding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/SpaceAround/FlexAlign_SpaceAround_fixedChildParentPadding',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
         console.info("get FlexAlign_SpaceAround_fixedChildParentPadding state pages:" + JSON.stringify(pages));
         if (!("FlexAlign_SpaceAround_fixedChildParentPadding" == pages.name)) {
           console.info("get FlexAlign_SpaceAround_fixedChildParentPadding pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push FlexAlign_SpaceAround_fixedChildParentPadding page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -61,7 +61,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround3');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -103,7 +103,7 @@ export default function flexAlign_SpaceAround_fixedChildParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround3');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');

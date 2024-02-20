@@ -15,15 +15,15 @@
 
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function flexPadding_CenterJsunit() {
   describe('flexItemAlignCenterTest', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexPadding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexPadding',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flexPadding_CenterJsunit() {
         console.info("get FlexPadding state success " + JSON.stringify(pages));
         if (!("FlexPadding" == pages.name)) {
           console.info("get FlexPadding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexPadding page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -58,7 +58,7 @@ export default function flexPadding_CenterJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
       let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');

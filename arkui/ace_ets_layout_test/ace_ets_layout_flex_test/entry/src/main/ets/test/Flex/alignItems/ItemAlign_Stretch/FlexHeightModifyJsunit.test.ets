@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -22,8 +22,8 @@ import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 export default function flexHeightModify_StretchJsunit() {
   describe('flexItemAlignStretchTest', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexHeightModify',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexHeightModify',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flexHeightModify_StretchJsunit() {
         console.info("get FlexHeightModify state success " + JSON.stringify(pages));
         if (!("FlexHeightModify" == pages.name)) {
           console.info("get FlexHeightModify state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -58,7 +58,7 @@ export default function flexHeightModify_StretchJsunit() {
       });
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
@@ -99,7 +99,7 @@ export default function flexHeightModify_StretchJsunit() {
       });
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');

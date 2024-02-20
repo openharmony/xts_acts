@@ -15,7 +15,7 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common'
 
 export default function AlignContent_FlexAlign_Center_Margin() {
@@ -23,8 +23,8 @@ export default function AlignContent_FlexAlign_Center_Margin() {
   describe('AlignContent_FlexAlign_Center_Margin', () => {
     beforeEach(async () => {
       console.info("AlignContent_FlexAlign_Center_Margin beforeEach start")
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/Center/AlignContent_FlexAlign_Center_Margin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/Center/AlignContent_FlexAlign_Center_Margin',
       }
       try {
         router.clear();
@@ -34,7 +34,7 @@ export default function AlignContent_FlexAlign_Center_Margin() {
         console.info("get AlignContent_FlexAlign_Center_Margin state success " + JSON.stringify(pages));
         if (!("AlignContent_FlexAlign_Center_Margin" == pages.name)) {
           console.info("get AlignContent_FlexAlign_Center_Margin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_FlexAlign_Center_Margin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -61,7 +61,7 @@ export default function AlignContent_FlexAlign_Center_Margin() {
     it('testAlignContentCenterFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentCenterFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexCenterMargin_flex');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let Center_Margin_Column: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin_Column');
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin_flex');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin_flex_1');

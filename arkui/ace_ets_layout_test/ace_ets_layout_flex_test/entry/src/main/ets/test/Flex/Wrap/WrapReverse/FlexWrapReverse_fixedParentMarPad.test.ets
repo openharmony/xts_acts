@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -23,8 +23,8 @@ export default function flexWrapReverse_fixedParentMarPad() {
   describe('FlexWrapReverse_fixedParentMarPad', () => {
     beforeEach(async () => {
       console.info("FlexWrapReverse_fixedParentMarPad beforeEach called");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/WrapReverse/FlexWrapReverse_fixedParentMarPad',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/WrapReverse/FlexWrapReverse_fixedParentMarPad',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
         console.info("get FlexWrapReverse_fixedParentMarPad state pages:" + JSON.stringify(pages));
         if (!("FlexWrapReverse_fixedParentMarPad" == pages.name)) {
           console.info("get FlexWrapReverse_fixedParentMarPad state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push FlexWrapReverse_fixedParentMarPad page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -64,7 +64,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest16');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -111,7 +111,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest16');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -156,7 +156,7 @@ export default function flexWrapReverse_fixedParentMarPad() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest16');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');

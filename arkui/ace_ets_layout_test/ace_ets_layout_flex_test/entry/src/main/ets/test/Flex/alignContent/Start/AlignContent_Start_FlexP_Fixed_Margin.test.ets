@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -24,8 +24,8 @@ export default function AlignContent_Start_FlexP_Fixed_Margin() {
   describe('AlignContent_Start_FlexP_Fixed_Margin', () => {
     beforeEach(async () => {
       console.info("AlignContent_Start_FlexP_Fixed_Margin beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/Start/AlignContent_Start_FlexP_Fixed_Margin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/Start/AlignContent_Start_FlexP_Fixed_Margin',
       }
       try {
         router.clear();
@@ -34,7 +34,7 @@ export default function AlignContent_Start_FlexP_Fixed_Margin() {
         console.info("get AlignContent_Start_FlexP_Fixed_Margin state success " + JSON.stringify(pages));
         if (!("AlignContent_Start_FlexP_Fixed_Margin" == pages.name)) {
           console.info("get AlignContent_Start_FlexP_Fixed_Margin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_Start_FlexP_Fixed_Margin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -63,7 +63,7 @@ export default function AlignContent_Start_FlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContent_Start_FlexP_Fixed_Margin_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_Start_FlexP_Fixed_Margin_flex001');
@@ -123,7 +123,7 @@ export default function AlignContent_Start_FlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContent_Start_FlexP_Fixed_Margin_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let AlignContentFlexStart_flex002: RectValue = CommonFunc.getComponentRect('AlignContent_Start_FlexP_Fixed_Margin_flex001');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContent_Start_FlexP_Fixed_Margin_1');
       let AlignContentFlexStart_2: RectValue = CommonFunc.getComponentRect('AlignContent_Start_FlexP_Fixed_Margin_2');

@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -23,8 +23,8 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
   describe('Flex_NoWrap_FlexPad_TextMarPadTest', () => {
     beforeEach(async () => {
       console.info("Flex_NoWrap_FlexPad_TextMarPadTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_FlexPad_TextMarPad',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_FlexPad_TextMarPad',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
         console.info("get Flex_NoWrap_FlexPad_TextMarPad state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_FlexPad_TextMarPad" == pages.name)) {
           console.info("get Flex_NoWrap_FlexPad_TextMarPad pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_NoWrap_FlexPad_TextMarPad page result:" + JSON.stringify(result));
         }
@@ -93,7 +93,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(Math.abs(firstText.top - flexContainer.top - vp2px(30)) <= 1).assertTrue(); //padding =30
 
@@ -133,7 +133,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(Math.abs((Math.round(firstText.top - flexContainer.top)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
@@ -194,7 +194,7 @@ export default function flex_NoWrap_FlexPad_TextMarPadTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_TextMarPad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexNoWrap_FlexPad_TextMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexNoWrap_FlexPad_TextMarPad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(Math.abs(firstText.top - flexContainer.top - vp2px(40)) <= 1).assertTrue();

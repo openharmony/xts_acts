@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_Wrap_PaddingTest() {
   describe('Flex_Wrap_PaddingTest', () => {
     beforeEach(async () => {
       console.info("Flex_Wrap_PaddingTest beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/Wrap/Flex_Wrap_Padding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/Wrap/Flex_Wrap_Padding',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_Wrap_PaddingTest() {
         console.info("get Flex_Wrap_Padding state pages:" + JSON.stringify(pages));
         if (!("Flex_Wrap_Padding" == pages.name)) {
           console.info("get Flex_Wrap_Padding state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_Wrap_Padding page result:" + JSON.stringify(result));
         }
@@ -68,7 +68,7 @@ export default function flex_Wrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -109,7 +109,7 @@ export default function flex_Wrap_PaddingTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flex_pad3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(30)));
@@ -150,7 +150,7 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Wrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
@@ -199,7 +199,7 @@ export default function flex_Wrap_PaddingTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Pad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Wrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Pad_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 

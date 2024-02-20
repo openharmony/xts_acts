@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -22,8 +22,8 @@ export default function flex_NoWrap_DisplayPriorityTest() {
   describe('Flex_NoWrap_DisplayPriorityTest', () => {
     beforeEach(async () => {
       console.info("Flex_NoWrap_DisplayPriority beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_DisplayPriority',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_DisplayPriority',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function flex_NoWrap_DisplayPriorityTest() {
         console.info("get Flex_NoWrap_DisplayPriority state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_DisplayPriority" == pages.name)) {
           console.info("get Flex_NoWrap_DisplayPriority state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_NoWrap_DisplayPriority page result:" + JSON.stringify(result));
         }
@@ -67,7 +67,7 @@ export default function flex_NoWrap_DisplayPriorityTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_DisplayPriority03');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_DisplayPriority_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_DisplayPriority_Container01');
-      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: ESObject = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 

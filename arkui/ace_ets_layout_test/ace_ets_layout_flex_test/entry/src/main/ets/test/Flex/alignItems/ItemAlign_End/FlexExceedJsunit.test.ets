@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -22,8 +22,8 @@ import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 export default function flexExceed_EndJsunit() {
   describe('flexItemAlignEndTest2', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexExceed',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexExceed',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flexExceed_EndJsunit() {
         console.info("get FlexExceed state success " + JSON.stringify(pages));
         if (!("FlexExceed" == pages.name)) {
           console.info("get FlexExceed state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexExceed page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -61,7 +61,7 @@ export default function flexExceed_EndJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
       let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
       let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');

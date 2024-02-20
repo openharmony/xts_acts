@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -24,8 +24,8 @@ export default function AlignContent_Center_FlexP_fixed() {
   describe('AlignContent_Center_FlexP_fixed', () => {
     beforeEach(async () => {
       console.info("AlignContent_Center_FlexP_fixed beforeEach start")
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/Center/AlignContent_Center_FlexP_fixed',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/Center/AlignContent_Center_FlexP_fixed',
       }
       try {
         router.clear();
@@ -35,7 +35,7 @@ export default function AlignContent_Center_FlexP_fixed() {
         console.info("get AlignContent_Center_FlexP_fixed state success " + JSON.stringify(pages));
         if (!("AlignContent_Center_FlexP_fixed" == pages.name)) {
           console.info("get AlignContent_Center_FlexP_fixed state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push AlignContent_Center_FlexP_fixed page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -64,7 +64,7 @@ export default function AlignContent_Center_FlexP_fixed() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterP_fixed_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterP_fixed_flex001');
@@ -118,7 +118,7 @@ export default function AlignContent_Center_FlexP_fixed() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterP_fixed_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let AlignContentFlexCenter_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterP_fixed_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterP_fixed_1');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterP_fixed_2');

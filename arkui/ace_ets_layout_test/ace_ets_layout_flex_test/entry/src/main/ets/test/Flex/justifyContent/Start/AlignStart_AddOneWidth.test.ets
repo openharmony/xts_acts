@@ -14,15 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function AlignStart_AddOneWidth() {
   describe('AlignStart_AddOneWidth', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddOneWidth',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddOneWidth',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function AlignStart_AddOneWidth() {
         console.info("get AlignStart_AddOneWidth state success " + JSON.stringify(pages));
         if (!("AlignStart_AddOneWidth" == pages.name)) {
           console.info("get AlignStart_AddOneWidth state pages.name " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push AlignStart_AddOneWidth page success " + JSON.stringify(result));
         }
@@ -58,7 +58,7 @@ export default function AlignStart_AddOneWidth() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOneWidth_01');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');

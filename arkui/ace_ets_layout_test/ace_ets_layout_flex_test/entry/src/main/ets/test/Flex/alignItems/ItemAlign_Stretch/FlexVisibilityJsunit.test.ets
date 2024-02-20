@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -22,8 +22,8 @@ import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 export default function flexVisibility_StretchJsunit() {
   describe('flexItemAlignStretchTest', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexVisibility',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexVisibility',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flexVisibility_StretchJsunit() {
         console.info("get FlexVisibility state success " + JSON.stringify(pages));
         if (!("FlexVisibility" == pages.name)) {
           console.info("get FlexVisibility state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexVisibility page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -60,9 +60,9 @@ export default function flexVisibility_StretchJsunit() {
         });
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1: Record<string, Object> = JSON.parse(strJson1);
+        let obj1: ESObject = JSON.parse(strJson1);
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2: Record<string, Object> = JSON.parse(strJson2);
+        let obj2: ESObject = JSON.parse(strJson2);
         expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
         let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01');
         let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02');
@@ -103,9 +103,9 @@ export default function flexVisibility_StretchJsunit() {
         });
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1: Record<string, Object> = JSON.parse(strJson1);
+        let obj1: ESObject = JSON.parse(strJson1);
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2: Record<string, Object> = JSON.parse(strJson2);
+        let obj2: ESObject = JSON.parse(strJson2);
         expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
         let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01');
         let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02');

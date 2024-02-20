@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
@@ -24,8 +24,8 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
   describe('AlignContent_FlexAlign_SpaceEvenly_Margin', () => {
     beforeEach(async () => {
       console.info("AlignContent_FlexAlign_SpaceEvenly_Margin beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/SpaceEvenly/AlignContent_FlexAlign_SpaceEvenly_Margin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/SpaceEvenly/AlignContent_FlexAlign_SpaceEvenly_Margin',
       }
       try {
         router.clear();
@@ -34,7 +34,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
         console.info("get AlignContent_FlexAlign_SpaceEvenly_Margin state success " + JSON.stringify(pages));
         if (!("AlignContent_FlexAlign_SpaceEvenly_Margin" == pages.name)) {
           console.info("get AlignContent_FlexAlign_SpaceEvenly_Margin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_FlexAlign_SpaceEvenly_Margin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -60,7 +60,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
     it('testAlignContentSpaceEvenlyFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyMargin_flex');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let SpaceEvenly_Margin_Column: RectValue = CommonFunc.getComponentRect('SpaceEvenly_Margin_Column');
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex_1');

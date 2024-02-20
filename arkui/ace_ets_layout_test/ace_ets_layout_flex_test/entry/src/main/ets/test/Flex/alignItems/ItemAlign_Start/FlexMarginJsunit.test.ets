@@ -14,14 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
 export default function flexMargin_StartJsunit() {
   describe('flexItemAlignStartTest5', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexMargin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexMargin',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function flexMargin_StartJsunit() {
         console.info("get FlexMargin state success " + JSON.stringify(pages));
         if (!("FlexMargin" == pages.name)) {
           console.info("get FlexMargin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -52,7 +52,7 @@ export default function flexMargin_StartJsunit() {
     it('testItemAlignStartParentSetMargin', 0, async () => {
       console.info('new testItemAlignStartParentSetMargin START');
       let strJson1 = getInspectorByKey('flexMargin');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
       let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
       let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');

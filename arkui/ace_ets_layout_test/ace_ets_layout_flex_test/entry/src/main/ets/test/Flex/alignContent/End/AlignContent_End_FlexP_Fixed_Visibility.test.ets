@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
@@ -23,8 +23,8 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
   describe('AlignContent_End_FlexP_Fixed_Visibility', () => {
     beforeEach(async () => {
       console.info("AlignContent_End_FlexP_Fixed_Visibility beforeEach start");
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignContent/End/AlignContent_End_FlexP_Fixed_Visibility',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/End/AlignContent_End_FlexP_Fixed_Visibility',
       }
       try {
         router.clear();
@@ -33,7 +33,7 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
         console.info("get AlignContent_End_FlexP_Fixed_Visibility state success " + JSON.stringify(pages));
         if (!("AlignContent_End_FlexP_Fixed_Visibility" == pages.name)) {
           console.info("get AlignContent_End_FlexP_Fixed_Visibility state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_End_FlexP_Fixed_Visibility page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -63,9 +63,9 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let strJsonText1 = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_1');
-      let objText1: Record<string, Object> = JSON.parse(strJsonText1);
+      let objText1: ESObject = JSON.parse(strJsonText1);
       console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
       console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_flex001');
@@ -131,9 +131,9 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_flex001');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let strJsonText1 = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_1');
-      let objText1: Record<string, Object> = JSON.parse(strJsonText1);
+      let objText1: ESObject = JSON.parse(strJsonText1);
       let AlignContentFlexEnd_flex002: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_2');

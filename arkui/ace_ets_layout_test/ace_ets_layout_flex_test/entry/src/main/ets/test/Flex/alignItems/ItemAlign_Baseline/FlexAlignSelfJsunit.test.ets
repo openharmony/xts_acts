@@ -14,14 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 
 export default function flexAlignSelf_BaselineJsunit() {
   describe('flexItemAlignBaselineTest7', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexAlignSelf',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Baseline/FlexAlignSelf',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function flexAlignSelf_BaselineJsunit() {
         console.info("get FlexSecond state success " + JSON.stringify(pages));
         if (!("FlexSecond" == pages.name)) {
           console.info("get FlexSecond state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexSecond page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -53,9 +53,9 @@ export default function flexAlignSelf_BaselineJsunit() {
     it('testFlexItemAlignBaselineSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignBaselineSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2: Record<string, Object> = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       let alignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
       let alignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
       let alignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');

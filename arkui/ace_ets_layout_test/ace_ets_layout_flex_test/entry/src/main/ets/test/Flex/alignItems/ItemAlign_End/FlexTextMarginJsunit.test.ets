@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router, { RouterOptions } from '@system.router';
+import router from '@ohos.router';
 import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 import GlobalContext from '../../../../MainAbility/common/GlobalContext';
@@ -22,8 +22,8 @@ import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 export default function flexTextMargin_EndJsunit() {
   describe('flexItemAlignEndTest4', () => {
     beforeEach(async () => {
-      let options: RouterOptions = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexTextMargin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexTextMargin',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function flexTextMargin_EndJsunit() {
         console.info("get FlexTextMargin state success " + JSON.stringify(pages));
         if (!("FlexTextMargin" == pages.name)) {
           console.info("get FlexTextMargin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexTextMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -58,7 +58,7 @@ export default function flexTextMargin_EndJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
@@ -96,7 +96,7 @@ export default function flexTextMargin_EndJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
