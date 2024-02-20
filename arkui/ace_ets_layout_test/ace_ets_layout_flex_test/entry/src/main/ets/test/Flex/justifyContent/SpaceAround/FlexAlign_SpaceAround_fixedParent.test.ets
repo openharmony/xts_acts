@@ -14,15 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function flexAlign_SpaceAround_fixedParent() {
-  describe('FlexAlign_SpaceAround_fixedParent', function () {
-    beforeEach(async function (done) {
+  describe('FlexAlign_SpaceAround_fixedParent', () => {
+    beforeEach(async () => {
       console.info("FlexAlign_SpaceAround_fixedParent beforeEach called");
-      let options = {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/SpaceAround/FlexAlign_SpaceAround_fixedParent',
       }
       try {
@@ -39,38 +40,44 @@ export default function flexAlign_SpaceAround_fixedParent() {
         console.error("push FlexAlign_SpaceAround_fixedParent page error:" + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexAlign_SpaceAround_fixedParent afterEach called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0900
-     * @tc.name      testAlignSpaceAroundRowNoWrapOffset
-     * @tc.desc      Parent component fixed, child component binding offset properties
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0900
+     * @tc.name testAlignSpaceAroundRowNoWrapOffset
+     * @tc.desc Parent component fixed, child component binding offset properties
      */
-    it('testAlignSpaceAroundRowNoWrapOffset', 0, async function (done) {
+    it('testAlignSpaceAroundRowNoWrapOffset', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapOffset START');
-      globalThis.value.message.notify({ name: 'x', value: 15 })
-      globalThis.value.message.notify({ name: 'y', value: 30 })
-      globalThis.value.message.notify({ name: 'visibility', value: Visibility.Visible })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'x', value: 15
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'y', value: 30
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'visibility', value: Visibility.Visible
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround9');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
       let strJson2 = getInspectorByKey('AlignSpaceAround25');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: Record<string, Object> = JSON.parse(strJson2);
       expect(obj2.$attrs.visibility).assertEqual('Visibility.Visible');
-      let locationText1 = CommonFunc.getComponentRect('AlignSpaceAround25');
-      let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround26');
-      let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround27');
-      let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround9');
+      let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceAround25');
+      let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround26');
+      let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround27');
+      let locationFlex: RectValue = CommonFunc.getComponentRect('FlexAlignSpaceAround9');
       expect(Math.abs(locationText1.top - locationFlex.top - vp2px(30)) <= 1).assertTrue();
       expect(Math.abs(locationText1.left - locationFlex.left -
         (vp2px(15) + (locationFlex.right - locationText3.right))) <= 1).assertTrue();
@@ -93,7 +100,7 @@ export default function flexAlign_SpaceAround_fixedParent() {
       expect(Math.abs(locationText3.left - locationText2.right -
         2 * (locationFlex.right - locationText3.right)) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapOffset END');
-      done();
+
     });
   })
 }

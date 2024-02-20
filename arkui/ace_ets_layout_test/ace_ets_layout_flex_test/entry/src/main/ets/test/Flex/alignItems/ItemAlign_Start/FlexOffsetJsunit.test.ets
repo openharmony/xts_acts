@@ -14,12 +14,13 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+
 export default function flexOffset_StartJsunit() {
-  describe('flexItemAlignStartTest1', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignStartTest1', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Start/FlexOffset',
       }
       try {
@@ -36,26 +37,26 @@ export default function flexOffset_StartJsunit() {
         console.error("push flexOffsetTest page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("flexOffsetTest after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_START_1100
-     * @tc.name      testFlexItemAlignStartSetOffset
-     * @tc.desc      First subcomponent set offset attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_START_1100
+     * @tc.name testFlexItemAlignStartSetOffset
+     * @tc.desc First subcomponent set offset attribute.
      */
-    it('testFlexItemAlignStartSetOffset', 0, async function (done) {
+    it('testFlexItemAlignStartSetOffset', 0, async () => {
       console.info('new testFlexItemAlignStartSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1 = JSON.parse(strJson1);
-      let textOffset01 = CommonFunc.getComponentRect('textOffset01');
-      let textOffset02 = CommonFunc.getComponentRect('textOffset02');
-      let textOffset03 = CommonFunc.getComponentRect('textOffset03');
-      let flexOffset = CommonFunc.getComponentRect('flexOffset');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
+      let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
+      let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');
+      let flexOffset: RectValue = CommonFunc.getComponentRect('flexOffset');
 
       expect(Math.abs((textOffset01.right - textOffset02.left) - vp2px(15)) <= 1).assertTrue();
       expect(Math.abs((textOffset01.top - flexOffset.top) - vp2px(30)) <= 1).assertTrue();
@@ -73,7 +74,7 @@ export default function flexOffset_StartJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSetOffset END');
-      done();
+
     });
   })
 }

@@ -14,12 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignStart_AddAlign() {
-  describe('AlignStart_AddAlign', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('AlignStart_AddAlign', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddAlign'
       }
       try {
@@ -36,32 +38,34 @@ export default function AlignStart_AddAlign() {
         console.error("push AlignStart_AddAlign page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignStart_AddAlign after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0800
-     * @tc.name      textFlexAlignStartAlignBottomEnd
-     * @tc.desc      Setting generic properties does not take effect, and owned properties take precedence
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0800
+     * @tc.name textFlexAlignStartAlignBottomEnd
+     * @tc.desc Setting generic properties does not take effect, and owned properties take precedence
      */
-    it('textFlexAlignStartAlignBottomEnd', 0, async function (done) {
+    it('textFlexAlignStartAlignBottomEnd', 0, async () => {
       console.info('[textFlexAlignStartAlignBottomEnd] START');
-      globalThis.value.message.notify({name:'DadAlign', value:Alignment.BottomEnd});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'DadAlign', value: Alignment.BottomEnd
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddAlign_01');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let Start_AddAlign_011 = CommonFunc.getComponentRect('Start_AddAlign_011');
-      let Start_AddAlign_012 = CommonFunc.getComponentRect('Start_AddAlign_012');
-      let Start_AddAlign_013 = CommonFunc.getComponentRect('Start_AddAlign_013');
-      let Start_AddAlign_01 = CommonFunc.getComponentRect('Start_AddAlign_01');
+      let Start_AddAlign_011: RectValue = CommonFunc.getComponentRect('Start_AddAlign_011');
+      let Start_AddAlign_012: RectValue = CommonFunc.getComponentRect('Start_AddAlign_012');
+      let Start_AddAlign_013: RectValue = CommonFunc.getComponentRect('Start_AddAlign_013');
+      let Start_AddAlign_01: RectValue = CommonFunc.getComponentRect('Start_AddAlign_01');
       expect(Math.abs(Start_AddAlign_011.top - Start_AddAlign_012.top) <= 1).assertTrue()
       expect(Math.abs(Start_AddAlign_012.top - Start_AddAlign_013.top) <= 1).assertTrue()
       expect(Math.abs(Start_AddAlign_011.top - Start_AddAlign_01.top) <= 1).assertTrue()
@@ -76,7 +80,7 @@ export default function AlignStart_AddAlign() {
       expect(Math.abs(Start_AddAlign_013.bottom - Start_AddAlign_013.top - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(Start_AddAlign_01.right - Start_AddAlign_013.right - vp2px(50)) <= 1).assertTrue()
       console.info('[textFlexAlignStartAlignBottomEnd] END');
-      done()
+
     });
   })
 }

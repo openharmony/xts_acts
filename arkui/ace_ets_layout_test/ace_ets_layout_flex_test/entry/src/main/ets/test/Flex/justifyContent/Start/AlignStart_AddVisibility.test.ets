@@ -14,12 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignStart_AddVisibility() {
-  describe('AlignStart_AddVisibility', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('AlignStart_AddVisibility', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddVisibility',
       }
       try {
@@ -36,35 +38,37 @@ export default function AlignStart_AddVisibility() {
         console.error("push AlignStart_AddVisibility page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignStart_AddVisibility after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000
-     * @tc.name      testFlexAlignStartTextVisibilityNone
-     * @tc.desc      The subcomponent sets the visibility. None, the child components are hidden in the interface display
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1000
+     * @tc.name testFlexAlignStartTextVisibilityNone
+     * @tc.desc The subcomponent sets the visibility. None, the child components are hidden in the interface display
      */
-    it('testFlexAlignStartTextVisibilityNone', 0, async function (done) {
+    it('testFlexAlignStartTextVisibilityNone', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityNone] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.None});
+      try {
+        GlobalContext.getContext().getObject('value').message.notify({
+          name: 'OneVisibility', value: Visibility.None
+        });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, Object> = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
+        let obj2: Record<string, Object> = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
         expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        let Start_AddVisibility_012: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_01');
         expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_013.top) <= 1).assertTrue();
-        expect(Math.abs(Start_AddVisibility_012.top- Start_AddVisibility_01.top) <= 1).assertTrue();
+        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_01.top) <= 1).assertTrue();
         expect(Math.abs(Start_AddVisibility_012.left - Start_AddVisibility_01.left) <= 1).assertTrue();
         expect(Math.abs(Start_AddVisibility_012.right - Start_AddVisibility_013.left) <= 1).assertTrue();
         expect(Math.abs((Start_AddVisibility_012.right - Start_AddVisibility_012.left) - vp2px(150)) <= 1).assertTrue();
@@ -77,31 +81,33 @@ export default function AlignStart_AddVisibility() {
         expect().assertFail();
       }
       console.info('[testFlexAlignStartTextVisibilityNone] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100
-     * @tc.name      testFlexAlignStartTextVisibilityHidden
-     * @tc.desc      When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1100
+     * @tc.name testFlexAlignStartTextVisibilityHidden
+     * @tc.desc When the subcomponent sets visibility.hidden, the interface of the subcomponent does not occupy the
      * position
      */
-    it('testFlexAlignStartTextVisibilityHidden', 0, async function (done) {
+    it('testFlexAlignStartTextVisibilityHidden', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityHidden] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Hidden});
+      try {
+        GlobalContext.getContext().getObject('value').message.notify({
+          name: 'OneVisibility', value: Visibility.Hidden
+        });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, Object> = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
+        let obj2: Record<string, Object> = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
         expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
-        let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
-        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        let Start_AddVisibility_011: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_011');
+        let Start_AddVisibility_012: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_01');
         expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_011.top) <= 1).assertTrue();
         expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_013.top) <= 1).assertTrue();
         expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_01.top) <= 1).assertTrue();
@@ -120,38 +126,40 @@ export default function AlignStart_AddVisibility() {
         expect().assertFail();
       }
       console.info('[testFlexAlignStartTextVisibilityHidden] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700
-     * @tc.name      testFlexAlignStartTextVisibilityVisible
-     * @tc.desc      The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_1700
+     * @tc.name testFlexAlignStartTextVisibilityVisible
+     * @tc.desc The subcomponent sets the visibility. Visible, the subcomponent does not occupy a position in the
      * interface display
      */
-    it('testFlexAlignStartTextVisibilityVisible', 0, async function (done) {
+    it('testFlexAlignStartTextVisibilityVisible', 0, async () => {
       console.info('[testFlexAlignStartTextVisibilityVisible] START');
-      try{
-        globalThis.value.message.notify({name:'OneVisibility', value:Visibility.Visible});
+      try {
+        GlobalContext.getContext().getObject('value').message.notify({
+          name: 'OneVisibility', value: Visibility.Visible
+        });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('Start_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+        let obj: Record<string, Object> = JSON.parse(strJson);
         let strJson2 = getInspectorByKey('Start_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
+        let obj2: Record<string, Object> = JSON.parse(strJson2);
         expect(obj.$type).assertEqual('Flex');
         expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
         expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
         expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
-        let Start_AddVisibility_011 = CommonFunc.getComponentRect('Start_AddVisibility_011');
-        let Start_AddVisibility_012 = CommonFunc.getComponentRect('Start_AddVisibility_012');
-        let Start_AddVisibility_013 = CommonFunc.getComponentRect('Start_AddVisibility_013');
-        let Start_AddVisibility_01 = CommonFunc.getComponentRect('Start_AddVisibility_01');
+        let Start_AddVisibility_011: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_011');
+        let Start_AddVisibility_012: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_012');
+        let Start_AddVisibility_013: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_013');
+        let Start_AddVisibility_01: RectValue = CommonFunc.getComponentRect('Start_AddVisibility_01');
 
-        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_011.top) <=1).assertTrue()
-        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_013.top) <=1).assertTrue()
-        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_01.top) <=1).assertTrue()
-        expect(Math.abs(Start_AddVisibility_012.left - Start_AddVisibility_011.right) <=1).assertTrue()
-        expect(Math.abs(Start_AddVisibility_013.left - Start_AddVisibility_012.right) <=1).assertTrue()
-        expect(Math.abs(Start_AddVisibility_01.left - Start_AddVisibility_011.left) <=1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_011.top) <= 1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_013.top) <= 1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_012.top - Start_AddVisibility_01.top) <= 1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_012.left - Start_AddVisibility_011.right) <= 1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_013.left - Start_AddVisibility_012.right) <= 1).assertTrue()
+        expect(Math.abs(Start_AddVisibility_01.left - Start_AddVisibility_011.left) <= 1).assertTrue()
         expect(Math.abs((Start_AddVisibility_011.right - Start_AddVisibility_011.left) - vp2px(150)) <= 1).assertTrue();
         expect(Math.abs((Start_AddVisibility_012.right - Start_AddVisibility_012.left) - vp2px(150)) <= 1).assertTrue();
         expect(Math.abs((Start_AddVisibility_013.right - Start_AddVisibility_013.left) - vp2px(150)) <= 1).assertTrue();
@@ -164,7 +172,7 @@ export default function AlignStart_AddVisibility() {
         expect().assertFail();
       }
       console.info('[testFlexAlignStartTextVisibilityVisible] END');
-      done();
+
     });
   })
 }

@@ -25,7 +25,7 @@ struct FlexAlignSelf_Start {
     console.info('FlexAlignSelf_Start page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexTest12').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -34,10 +34,15 @@ struct FlexAlignSelf_Start {
           alignItems: ItemAlign.Start,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).alignSelf(ItemAlign.End).key('textAlignSelf01')
+          Text('1')
+            .width(150)
+            .height(50)
+            .backgroundColor(0xF5DEB3)
+            .alignSelf(ItemAlign.End)
+            .key('textAlignSelf01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textAlignSelf02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textAlignSelf03')
-        } 
+        }
         .key('flexAlignSelf')
         .height(150)
         .width(500)

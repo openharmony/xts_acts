@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
-  describe('Flex_AlignContent_SpaceBetween_FlexMarPadTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_AlignContent_SpaceBetween_FlexMarPadTest', () => {
+    beforeEach(async () => {
       console.info("flex_AlignContent_SpaceBetween_FlexMarPadTest beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMarPad',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMarPad',
       }
       try {
         router.clear();
@@ -37,32 +39,36 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
         console.error("push Flex_AlignContent_SpaceBetween_FlexMarPad page error:" + err);
       }
       console.info("flex_AlignContent_SpaceBetween_FlexMarPadTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_AlignContent_SpaceBetween_FlexMarPadTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200
-     * @tc.name      testFlexAlignContentSpaceAroundFlexMarPadMeet
-     * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0200
+     * @tc.name testFlexAlignContentSpaceAroundFlexMarPadMeet
+     * @tc.desc The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('testFlexAlignContentSpaceAroundFlexMarPadMeet', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundFlexMarPadMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] START');
-      globalThis.value.message.notify({name:'padding', value:50});
-      globalThis.value.message.notify({name:'margin', value:20});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'padding', value: 50
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'margin', value: 20
+      });
 
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let columnContainer = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -84,27 +90,31 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       expect(Math.abs(thirdText.bottom - fourthText.top) <= 1).assertTrue();
       expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(10)));
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadMeet] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300
-     * @tc.name      testFlexAlignContentSpaceAroundFlexMarPadOverflow
-     * @tc.desc      The size of the parent component in the cross direction meets the layout
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0300
+     * @tc.name testFlexAlignContentSpaceAroundFlexMarPadOverflow
+     * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the padding and margin of parent component was changed
      */
-    it('testFlexAlignContentSpaceAroundFlexMarPadOverflow', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundFlexMarPadOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] START');
-      globalThis.value.message.notify({name:'margin', value:30})
-      globalThis.value.message.notify({name:'padding', value:10})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'margin', value: 30
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'padding', value: 10
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let columnContainer = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMarPad04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMarPad_Container01');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMarPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -122,10 +132,12 @@ export default function flex_AlignContent_SpaceBetween_FlexMarPadTest() {
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
       expect(Math.round(flexContainer.bottom - fourthText.bottom)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignContentSpaceAroundFlexMarPadOverflow] END');
-      done();
+
     });
   })
 }

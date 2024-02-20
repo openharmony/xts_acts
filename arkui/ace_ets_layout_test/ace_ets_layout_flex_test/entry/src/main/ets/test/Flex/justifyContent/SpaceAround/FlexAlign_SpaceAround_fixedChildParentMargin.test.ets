@@ -14,15 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function flexAlign_SpaceAround_fixedChildParentMargin() {
-  describe('FlexAlign_SpaceAround_fixedChildParentMargin', function () {
-    beforeEach(async function (done) {
+  describe('FlexAlign_SpaceAround_fixedChildParentMargin', () => {
+    beforeEach(async () => {
       console.info("FlexAlign_SpaceAround_fixedChildParentMargin beforeEach called");
-      let options = {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/SpaceAround/FlexAlign_SpaceAround_fixedChildParentMargin',
       }
       try {
@@ -39,33 +40,35 @@ export default function flexAlign_SpaceAround_fixedChildParentMargin() {
         console.error("push FlexAlign_SpaceAround_fixedChildParentMargin page error:" + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexAlign_SpaceAround_fixedChildParentMargin afterEach called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0500
-     * @tc.name      testAlignSpaceAroundRowNoWrapMargin
-     * @tc.desc      The child component is fixed, and the parent component is bound with margin attributes
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0500
+     * @tc.name testAlignSpaceAroundRowNoWrapMargin
+     * @tc.desc The child component is fixed, and the parent component is bound with margin attributes
      */
-    it('testAlignSpaceAroundRowNoWrapMargin', 0, async function (done) {
+    it('testAlignSpaceAroundRowNoWrapMargin', 0, async () => {
       console.info('new testAlignSpaceAroundRowNoWrapMargin START');
-      globalThis.value.message.notify({ name: 'margin', value: 20 })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'margin', value: 20
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround5');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
-      let locationText1 = CommonFunc.getComponentRect('AlignSpaceAround13');
-      let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround14');
-      let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround15');
-      let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround5');
+      let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceAround13');
+      let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround14');
+      let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround15');
+      let locationFlex: RectValue = CommonFunc.getComponentRect('FlexAlignSpaceAround5');
       expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue();
       expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue();
       expect(Math.abs(locationText1.top - locationFlex.top) <= 1).assertTrue();
@@ -87,7 +90,7 @@ export default function flexAlign_SpaceAround_fixedChildParentMargin() {
       expect(Math.abs(locationText2.left - locationText1.right) -
         2 * (locationFlex.right - locationText3.right) <= 1).assertTrue();
       console.info('new testAlignSpaceAroundRowNoWrapMargin END');
-      done();
+
     });
   })
 }

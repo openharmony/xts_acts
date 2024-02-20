@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexExceed_EndJsunit() {
-  describe('flexItemAlignEndTest2', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignEndTest2', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexExceed',
       }
       try {
@@ -37,29 +39,33 @@ export default function flexExceed_EndJsunit() {
         console.error("push FlexExceed page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexExceed after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0600
-     * @tc.name      testFlexItemAlignEndSetMarPad
-     * @tc.desc      Subcomponent inside when parent component set margin and padding.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_END_0600
+     * @tc.name testFlexItemAlignEndSetMarPad
+     * @tc.desc Subcomponent inside when parent component set margin and padding.
      */
-    it('testFlexItemAlignEndSetMarPad', 0, async function (done) {
+    it('testFlexItemAlignEndSetMarPad', 0, async () => {
       console.info('new testFlexItemAlignEndSetMarPad START');
-      globalThis.value.message.notify({name:'padding', value:10});
-      globalThis.value.message.notify({name:'margin', value:10});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'padding', value: 10
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'margin', value: 10
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
-      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
       expect(Math.abs(textExceed01.bottom - textExceed02.bottom) <= 1).assertTrue()
       expect(Math.abs(textExceed02.bottom - textExceed03.bottom) <= 1).assertTrue()
       expect(Math.abs(flexExceed01.bottom - textExceed01.bottom - Math.round(vp2px(10))) <= 1).assertTrue()
@@ -74,9 +80,9 @@ export default function flexExceed_EndJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndSetMarPad END');
-      done();
+
     });
 
-   
+
   })
 }

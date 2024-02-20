@@ -14,12 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignSpaceEvenly_AddMargin() {
-  describe('AlignSpaceEvenly_AddMargin', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('AlignSpaceEvenly_AddMargin', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/SpaceEvenly/AlignSpaceEvenly_AddMargin',
       }
       try {
@@ -36,34 +38,36 @@ export default function AlignSpaceEvenly_AddMargin() {
         console.error("push AlignSpaceEvenly_AddMargin page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignSpaceEvenly_AddMargin after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500
-     * @tc.name      testFlexAlignSpaceEvenlyFlexMargin
-     * @tc.desc      The interface display where the child component is offset by the margin setting of the parent
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0500
+     * @tc.name testFlexAlignSpaceEvenlyFlexMargin
+     * @tc.desc The interface display where the child component is offset by the margin setting of the parent
      * component
      */
-    it('testFlexAlignSpaceEvenlyFlexMargin', 0, async function (done) {
+    it('testFlexAlignSpaceEvenlyFlexMargin', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyFlexMargin] START');
-      globalThis.value.message.notify({name:'DadMargin',value:20});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'DadMargin', value: 20
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddMargin_01');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-      let SpaceEvenly_AddMargin_011 = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_011');
-      let SpaceEvenly_AddMargin_012 = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_012');
-      let SpaceEvenly_AddMargin_013 = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_013');
-      let SpaceEvenly_AddMargin_01 = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01');
-      let SpaceEvenly_AddMargin_01_Box = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01_Box');
+      let SpaceEvenly_AddMargin_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_011');
+      let SpaceEvenly_AddMargin_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_012');
+      let SpaceEvenly_AddMargin_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_013');
+      let SpaceEvenly_AddMargin_01: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01');
+      let SpaceEvenly_AddMargin_01_Box: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddMargin_01_Box');
       expect(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_012.top) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddMargin_013.top - SpaceEvenly_AddMargin_012.top) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddMargin_011.top - SpaceEvenly_AddMargin_01.top) <= 1).assertTrue()
@@ -79,7 +83,7 @@ export default function AlignSpaceEvenly_AddMargin() {
       expect(Math.abs(SpaceEvenly_AddMargin_012.bottom - SpaceEvenly_AddMargin_012.top - vp2px(100)) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddMargin_013.bottom - SpaceEvenly_AddMargin_013.top - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyFlexMargin] END');
-      done();
+
     });
   })
 }

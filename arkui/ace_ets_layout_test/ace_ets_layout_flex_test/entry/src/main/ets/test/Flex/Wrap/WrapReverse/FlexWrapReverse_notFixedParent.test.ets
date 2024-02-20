@@ -14,15 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common'
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function flexWrapReverse_notFixedParent() {
-  describe('FlexWrapReverse_notFixedParent', function () {
-    beforeEach(async function (done) {
+  describe('FlexWrapReverse_notFixedParent', () => {
+    beforeEach(async () => {
       console.info("FlexWrapReverse_notFixedParent beforeEach called");
-      let options = {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/Wrap/WrapReverse/FlexWrapReverse_notFixedParent',
       }
       try {
@@ -39,119 +40,131 @@ export default function flexWrapReverse_notFixedParent() {
         console.error("push FlexWrapReverse_notFixedParent page error:" + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexWrapReverse_notFixedParent afterEach called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0100
-     * @tc.name      testWrapReverseChildfixedChangeParentInRange
-     * @tc.desc      The parent component changes the location and space of the layout, affecting the layout of child
+     * @tc.number SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0100
+     * @tc.name testWrapReverseChildfixedChangeParentInRange
+     * @tc.desc The parent component changes the location and space of the layout, affecting the layout of child
      *               components, the width and height of parent component meets the requirements of the child components
      */
-    it('testWrapReverseChildfixedChangeParentInRange', 0, async function (done) {
+    it('testWrapReverseChildfixedChangeParentInRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentInRange START');
-      globalThis.value.message.notify({name:'height', value:150})
-      globalThis.value.message.notify({name:'width', value:500})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 150
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 500
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let locationText1 = CommonFunc.getComponentRect('WrapReverseTest1');
-      let locationText2 = CommonFunc.getComponentRect('WrapReverseTest2');
-      let locationText3 = CommonFunc.getComponentRect('WrapReverseTest3');
-      let locationFlex = CommonFunc.getComponentRect('FlexWrapReverseTest1');
-      expect(Math.abs(locationText1.right - locationFlex.right) <=1).assertTrue()
-      expect(Math.abs(locationText1.left - locationText2.right) <=1).assertTrue()
-      expect(Math.abs(locationText2.left - locationText3.right) <=1).assertTrue()
+      let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest1');
+      let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest2');
+      let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest3');
+      let locationFlex: RectValue = CommonFunc.getComponentRect('FlexWrapReverseTest1');
+      expect(Math.abs(locationText1.right - locationFlex.right) <= 1).assertTrue()
+      expect(Math.abs(locationText1.left - locationText2.right) <= 1).assertTrue()
+      expect(Math.abs(locationText2.left - locationText3.right) <= 1).assertTrue()
       expect(Math.abs((locationText3.left - locationFlex.left) - vp2px(50)) <= 1).assertTrue();
-      expect(Math.abs(locationText1.top - locationText2.top) <=1).assertTrue()
-      expect(Math.abs(locationText2.top - locationText3.top) <=1).assertTrue()
-      expect(Math.abs(locationText3.top - locationFlex.top) <=1).assertTrue()
+      expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue()
+      expect(Math.abs(locationText2.top - locationText3.top) <= 1).assertTrue()
+      expect(Math.abs(locationText3.top - locationFlex.top) <= 1).assertTrue()
       expect(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(locationText3.bottom - locationFlex.bottom) <=1).assertTrue()
+      expect(Math.abs(locationText3.bottom - locationFlex.bottom) <= 1).assertTrue()
       expect(Math.abs((locationText1.right - locationText1.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((locationText2.right - locationText2.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((locationText3.right - locationText3.left) - vp2px(150)) <= 1).assertTrue();
       console.info('new testWrapReverseChildfixedChangeParentInRange END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0200
-     * @tc.name      testWrapReverseChildfixedChangeParentChildWidthOutRange
-     * @tc.desc      The parent component changes location and space of layout, affecting layout of child components,
+     * @tc.number SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0200
+     * @tc.name testWrapReverseChildfixedChangeParentChildWidthOutRange
+     * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               the width of parent component does not meet the requirements of child components, but height meets
      */
-    it('testWrapReverseChildfixedChangeParentChildWidthOutRange', 0, async function (done) {
+    it('testWrapReverseChildfixedChangeParentChildWidthOutRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildWidthOutRange START');
-      globalThis.value.message.notify({name:'height', value:250})
-      globalThis.value.message.notify({name:'width', value:400})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 250
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 400
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let locationText1 = CommonFunc.getComponentRect('WrapReverseTest1');
-      let locationText2 = CommonFunc.getComponentRect('WrapReverseTest2');
-      let locationText3 = CommonFunc.getComponentRect('WrapReverseTest3');
-      let locationFlex = CommonFunc.getComponentRect('FlexWrapReverseTest1');
-      expect(Math.abs(locationText1.right - locationFlex.right) <=1).assertTrue()
-      expect(Math.abs(locationText1.left - locationText2.right) <=1).assertTrue()
+      let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest1');
+      let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest2');
+      let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest3');
+      let locationFlex: RectValue = CommonFunc.getComponentRect('FlexWrapReverseTest1');
+      expect(Math.abs(locationText1.right - locationFlex.right) <= 1).assertTrue()
+      expect(Math.abs(locationText1.left - locationText2.right) <= 1).assertTrue()
       expect(Math.abs((locationText2.left - locationFlex.left) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(locationText3.left - locationText1.left) <=1).assertTrue()
-      expect(Math.abs(locationText3.right - locationText1.right) <=1).assertTrue()
-      expect(Math.abs(locationText1.top - locationText2.top) <=1).assertTrue()
-      expect(Math.abs(locationText2.top - locationFlex.top) <=1).assertTrue()
-      expect(Math.abs(locationText3.top - locationText2.bottom) <=1).assertTrue()
+      expect(Math.abs(locationText3.left - locationText1.left) <= 1).assertTrue()
+      expect(Math.abs(locationText3.right - locationText1.right) <= 1).assertTrue()
+      expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue()
+      expect(Math.abs(locationText2.top - locationFlex.top) <= 1).assertTrue()
+      expect(Math.abs(locationText3.top - locationText2.bottom) <= 1).assertTrue()
       expect(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(locationText3.bottom - locationFlex.bottom) <=1).assertTrue()
+      expect(Math.abs(locationText3.bottom - locationFlex.bottom) <= 1).assertTrue()
       expect(Math.abs((locationText1.right - locationText1.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((locationText2.right - locationText2.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((locationText3.right - locationText3.left) - vp2px(150)) <= 1).assertTrue();
       console.info('new testWrapReverseChildfixedChangeParentChildWidthOutRange END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0300
-     * @tc.name      testWrapReverseChildfixedChangeParentChildAllOutRange
-     * @tc.desc      The parent component changes location and space of layout, affecting layout of child components,
+     * @tc.number SUB_ACE_FLEX_WRAPREVERSE_CHILDFIXED_TEST_0300
+     * @tc.name testWrapReverseChildfixedChangeParentChildAllOutRange
+     * @tc.desc The parent component changes location and space of layout, affecting layout of child components,
      *               the width and height of parent component does not meet the requirements of the child components
      */
-    it('testWrapReverseChildfixedChangeParentChildAllOutRange', 0, async function (done) {
+    it('testWrapReverseChildfixedChangeParentChildAllOutRange', 0, async () => {
       console.info('new testWrapReverseChildfixedChangeParentChildAllOutRange START');
-      globalThis.value.message.notify({name:'height', value:100})
-      globalThis.value.message.notify({name:'width', value:400})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 100
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 400
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let locationText1 = CommonFunc.getComponentRect('WrapReverseTest1');
-      let locationText2 = CommonFunc.getComponentRect('WrapReverseTest2');
-      let locationText3 = CommonFunc.getComponentRect('WrapReverseTest3');
-      let locationFlex = CommonFunc.getComponentRect('FlexWrapReverseTest1');
-      expect(Math.abs(locationText1.right - locationFlex.right) <=1).assertTrue()
-      expect(Math.abs(locationText1.left - locationText2.right) <=1).assertTrue()
+      let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest1');
+      let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest2');
+      let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest3');
+      let locationFlex: RectValue = CommonFunc.getComponentRect('FlexWrapReverseTest1');
+      expect(Math.abs(locationText1.right - locationFlex.right) <= 1).assertTrue()
+      expect(Math.abs(locationText1.left - locationText2.right) <= 1).assertTrue()
       expect(Math.abs((locationText2.left - locationFlex.left) - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(locationText3.left - locationText1.left) <=1).assertTrue()
-      expect(Math.abs(locationText3.right - locationText1.right) <=1).assertTrue()
-      expect(Math.abs(locationText1.top - locationText2.top) <=1).assertTrue()
-      expect(Math.abs(locationText2.top - locationFlex.top) <=1).assertTrue()
-      expect(Math.abs(locationText3.top - locationText2.bottom) <=1).assertTrue()
+      expect(Math.abs(locationText3.left - locationText1.left) <= 1).assertTrue()
+      expect(Math.abs(locationText3.right - locationText1.right) <= 1).assertTrue()
+      expect(Math.abs(locationText1.top - locationText2.top) <= 1).assertTrue()
+      expect(Math.abs(locationText2.top - locationFlex.top) <= 1).assertTrue()
+      expect(Math.abs(locationText3.top - locationText2.bottom) <= 1).assertTrue()
       expect(Math.abs((locationText1.bottom - locationText1.top) - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs((locationText2.bottom - locationText2.top) - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs((locationText3.bottom - locationText3.top) - vp2px(150)) <= 1).assertTrue();
@@ -160,7 +173,7 @@ export default function flexWrapReverse_notFixedParent() {
       expect(Math.abs((locationText2.right - locationText2.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((locationText3.right - locationText3.left) - vp2px(150)) <= 1).assertTrue();
       console.info('new testWrapReverseChildfixedChangeParentChildAllOutRange END');
-      done();
+
     });
   })
 }

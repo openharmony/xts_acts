@@ -14,12 +14,13 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+
 export default function flexMargin_StretchJsunit() {
-  describe('flexItemAlignStretchTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignStretchTest', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexMargin',
       }
       try {
@@ -36,26 +37,26 @@ export default function flexMargin_StretchJsunit() {
         console.error("push FlexMargin page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexMargin after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_STRETCH_0500
-     * @tc.name      testItemAlignStretchParentSetMargin
-     * @tc.desc      Parent component set margin attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_STRETCH_0500
+     * @tc.name testItemAlignStretchParentSetMargin
+     * @tc.desc Parent component set margin attribute.
      */
-    it('testItemAlignStretchParentSetMargin', 0, async function (done) {
+    it('testItemAlignStretchParentSetMargin', 0, async () => {
       console.info('new testItemAlignStretchParentSetMargin START');
       let strJson1 = getInspectorByKey('flexMargin');
-      let obj1 = JSON.parse(strJson1);
-      let textFlexMargin01 = CommonFunc.getComponentRect('textFlexMargin01');
-      let textFlexMargin02 = CommonFunc.getComponentRect('textFlexMargin02');
-      let textFlexMargin03 = CommonFunc.getComponentRect('textFlexMargin03');
-      let flexMargin = CommonFunc.getComponentRect('flexMargin');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
+      let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
+      let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');
+      let flexMargin: RectValue = CommonFunc.getComponentRect('flexMargin');
 
       expect(Math.abs(textFlexMargin01.top - textFlexMargin02.top) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin02.top - textFlexMargin03.top) <= 1).assertTrue()
@@ -63,7 +64,7 @@ export default function flexMargin_StretchJsunit() {
 
       expect(Math.abs(textFlexMargin01.bottom - textFlexMargin02.bottom) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin02.bottom - textFlexMargin03.bottom) <= 1).assertTrue()
-      expect(Math.abs( textFlexMargin03.bottom- flexMargin.bottom) <= 1).assertTrue()
+      expect(Math.abs(textFlexMargin03.bottom - flexMargin.bottom) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin01.left - flexMargin.left) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin02.left - textFlexMargin01.right) <= 1).assertTrue()
       expect(Math.abs(textFlexMargin03.left - textFlexMargin02.right) <= 1).assertTrue()
@@ -78,7 +79,7 @@ export default function flexMargin_StretchJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testItemAlignStretchParentSetMargin END');
-      done();
+
     });
   })
 }

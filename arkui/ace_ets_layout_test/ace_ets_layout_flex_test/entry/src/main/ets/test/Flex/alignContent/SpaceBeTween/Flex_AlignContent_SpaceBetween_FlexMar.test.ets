@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
-  describe('Flex_AlignContent_SpaceBetween_FlexMarTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_AlignContent_SpaceBetween_FlexMarTest', () => {
+    beforeEach(async () => {
       console.info("Flex_AlignContent_SpaceBetween_FlexMar beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMar',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexMar',
       }
       try {
         router.clear();
@@ -36,29 +38,31 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
       } catch (err) {
         console.error("push Flex_AlignContent_SpaceBetween_FlexMar page error:" + err);
       }
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_AlignContent_SpaceBetween_FlexMarTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100
-     * @tc.name      testFlexAlignContentSpaceAroundFlexMargin
-     * @tc.desc      the margin of parent component set to 10
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0100
+     * @tc.name testFlexAlignContentSpaceAroundFlexMargin
+     * @tc.desc the margin of parent component set to 10
      */
-    it('testFlexAlignContentSpaceAroundFlexMargin', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundFlexMargin', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexMargin] START');
-      globalThis.value.message.notify({name:'margin', value:10})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'margin', value: 10
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMar_Container01');
-      let columnContainer = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMar_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexMar04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMar_Container01');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMar_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMar_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -77,10 +81,12 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
       expect(Math.abs(firstText.top - flexContainer.top) <= 1).assertTrue();
       expect(Math.abs(fourthText.bottom - flexContainer.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignContentSpaceAroundFlexMargin] END');
-      done();
+
     });
   })
 }

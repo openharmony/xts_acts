@@ -16,8 +16,8 @@
 @Entry
 @Component
 struct FlexMargin_Auto {
-
   private content: string = "FlexMargin_Auto Page";
+
   onPageShow() {
     console.info('FlexMargin_Center page show called');
   }
@@ -26,7 +26,7 @@ struct FlexMargin_Auto {
     console.info('FlexMargin_Auto page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexTest05').fontSize(9).fontColor(0xCCCCCC).width('90%');
@@ -38,7 +38,7 @@ struct FlexMargin_Auto {
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('textFlexMargin01');
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textFlexMargin02');
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textFlexMargin03');
-        } 
+        }
         .key('flexMargin')
         .height(200)
         .width(500)

@@ -14,12 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexVisibility_AutoJsunit() {
-  describe('flexItemAlignAutoTest8', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignAutoTest8', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexVisibility',
       }
       try {
@@ -36,43 +38,49 @@ export default function flexVisibility_AutoJsunit() {
         console.error("push FlexVisibility page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexVisibility after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1100
-     * @tc.name      testFlexItemAlignAutoFlexVisibilityNone
-     * @tc.desc      The first subcomponent set Visibility.None attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_1100
+     * @tc.name testFlexItemAlignAutoFlexVisibilityNone
+     * @tc.desc The first subcomponent set Visibility.None attribute.
      */
-    it('testFlexItemAlignAutoFlexVisibilityNone', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexVisibilityNone', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexVisibilityNone START');
-      try{
-        globalThis.value.message.notify({name:'visibility', value:Visibility.None})
+      try {
+        GlobalContext.getContext().getObject('value').message.notify({
+          name: 'visibility', value: Visibility.None
+        })
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1 = JSON.parse(strJson1);
+        let obj1: Record<string, Object> = JSON.parse(strJson1);
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2 = JSON.parse(strJson2);
+        let obj2: Record<string, Object> = JSON.parse(strJson2);
         expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
-        let textVisible01 = CommonFunc.getComponentRect('textVisible01')
-        let textVisible02 = CommonFunc.getComponentRect('textVisible02')
-        let textVisible03 = CommonFunc.getComponentRect('textVisible03')
-        let flexVisible = CommonFunc.getComponentRect('flexVisible')
+        let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01')
+        let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02')
+        let textVisible03: RectValue = CommonFunc.getComponentRect('textVisible03')
+        let flexVisible: RectValue = CommonFunc.getComponentRect('flexVisible')
 
         expect(Math.abs(textVisible01.left - textVisible01.right) <= 1).assertTrue()
         expect(Math.abs(textVisible01.right - flexVisible.left) <= 1).assertTrue()
         expect(Math.abs(textVisible02.top - textVisible03.top) <= 1).assertTrue()
         expect(Math.abs(textVisible03.top - flexVisible.top) <= 1).assertTrue()
 
-        expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible02.right - textVisible02.left) - Math.round(vp2px(150))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1).assertTrue()
+        expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible02.right - textVisible02.left) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
         expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
         expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
         expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
@@ -81,41 +89,48 @@ export default function flexVisibility_AutoJsunit() {
         expect().assertFail();
       }
       console.info('new testFlexItemAlignAutoFlexVisibilityNone END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_1200
-     * @tc.name      testFlexItemAlignAutoFlexVisibilityHidden
-     * @tc.desc      The first subcomponent set Visibility.Hidden attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_1200
+     * @tc.name testFlexItemAlignAutoFlexVisibilityHidden
+     * @tc.desc The first subcomponent set Visibility.Hidden attribute.
      */
-    it('testFlexItemAlignAutoFlexVisibilityHidden', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexVisibilityHidden', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexVisibilityHidden START');
-      try{
-        globalThis.value.message.notify({name:'visibility', value:Visibility.Hidden});
+      try {
+        GlobalContext.getContext().getObject('value').message.notify({
+          name: 'visibility', value: Visibility.Hidden
+        });
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1 = JSON.parse(strJson1);
+        let obj1: Record<string, Object> = JSON.parse(strJson1);
 
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2 = JSON.parse(strJson2);
+        let obj2: Record<string, Object> = JSON.parse(strJson2);
         expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
 
-        let textVisible01 = CommonFunc.getComponentRect('textVisible01');
-        let textVisible02 = CommonFunc.getComponentRect('textVisible02');
-        let textVisible03 = CommonFunc.getComponentRect('textVisible03');
-        let flexVisible = CommonFunc.getComponentRect('flexVisible');
+        let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01');
+        let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02');
+        let textVisible03: RectValue = CommonFunc.getComponentRect('textVisible03');
+        let flexVisible: RectValue = CommonFunc.getComponentRect('flexVisible');
         expect(Math.abs(textVisible01.left - flexVisible.left) <= 1).assertTrue()
         expect(Math.abs(textVisible01.right - textVisible02.left) <= 1).assertTrue()
         expect(Math.abs(textVisible02.top - textVisible03.top) <= 1).assertTrue()
         expect(Math.abs(textVisible03.top - flexVisible.top) <= 1).assertTrue()
 
         expect(Math.abs(Math.round(textVisible01.bottom - textVisible01.top) - Math.round(vp2px(50))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible01.right - textVisible01.left) - Math.round(vp2px(150))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible02.right - textVisible02.left) - Math.round(vp2px(150))) <= 1).assertTrue()
-        expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1).assertTrue()
+        expect(Math.abs(Math.round(textVisible02.bottom - textVisible02.top) - Math.round(vp2px(100))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible03.bottom - textVisible03.top) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible01.right - textVisible01.left) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible02.right - textVisible02.left) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
+        expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1)
+          .assertTrue()
         expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
         expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       } catch (err) {
@@ -123,7 +138,7 @@ export default function flexVisibility_AutoJsunit() {
         expect().assertFail();
       }
       console.info('new testFlexItemAlignAutoFlexVisibilityHidden END');
-      done();
+
     });
   })
 }

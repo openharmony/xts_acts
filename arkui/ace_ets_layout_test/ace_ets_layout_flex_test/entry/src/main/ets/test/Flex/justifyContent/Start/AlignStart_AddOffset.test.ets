@@ -14,12 +14,14 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignStart_AddOffset() {
-  describe('AlignStart_AddOffset', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('AlignStart_AddOffset', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddOffset'
       }
       try {
@@ -36,32 +38,36 @@ export default function AlignStart_AddOffset() {
         console.error("push AlignStart_AddOffset page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignStart_AddOffset after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0900
-     * @tc.name      testFlexAlignStartTextOffset
-     * @tc.desc      The interface display of the component that sets the offset position when drawing
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0900
+     * @tc.name testFlexAlignStartTextOffset
+     * @tc.desc The interface display of the component that sets the offset position when drawing
      */
-    it('testFlexAlignStartTextOffset', 0, async function (done) {
+    it('testFlexAlignStartTextOffset', 0, async () => {
       console.info('[testFlexAlignStartTextOffset] START');
-      globalThis.value.message.notify({name:'OneOffset', value:{ x: 10, y: 15 }});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'OneOffset', value: {
+          x: 10, y: 15
+        }
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddOffset_01');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Flex');
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let Start_AddOffset_011 = CommonFunc.getComponentRect('Start_AddOffset_011');
-      let Start_AddOffset_012 = CommonFunc.getComponentRect('Start_AddOffset_012');
-      let Start_AddOffset_013 = CommonFunc.getComponentRect('Start_AddOffset_013');
-      let Start_AddOffset_01 = CommonFunc.getComponentRect('Start_AddOffset_01');
+      let Start_AddOffset_011: RectValue = CommonFunc.getComponentRect('Start_AddOffset_011');
+      let Start_AddOffset_012: RectValue = CommonFunc.getComponentRect('Start_AddOffset_012');
+      let Start_AddOffset_013: RectValue = CommonFunc.getComponentRect('Start_AddOffset_013');
+      let Start_AddOffset_01: RectValue = CommonFunc.getComponentRect('Start_AddOffset_01');
       expect(Math.abs(Start_AddOffset_011.top - Start_AddOffset_01.top - vp2px(15)) <= 1).assertTrue()
       expect(Math.abs(Start_AddOffset_011.left - Start_AddOffset_01.left - vp2px(10)) <= 1).assertTrue()
       expect(Math.abs(Start_AddOffset_012.top - Start_AddOffset_013.top) <= 1).assertTrue()
@@ -74,7 +80,7 @@ export default function AlignStart_AddOffset() {
       expect(Math.abs(Start_AddOffset_012.bottom - Start_AddOffset_012.top - vp2px(100)) <= 1).assertTrue()
       expect(Math.abs(Start_AddOffset_013.bottom - Start_AddOffset_013.top - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignStartTextOffset] END');
-      done();
+
     });
   })
 }

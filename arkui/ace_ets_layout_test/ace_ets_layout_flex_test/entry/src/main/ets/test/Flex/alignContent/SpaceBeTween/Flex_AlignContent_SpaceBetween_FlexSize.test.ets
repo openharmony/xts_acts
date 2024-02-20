@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
-  describe('Flex_AlignContent_SpaceBetween_FlexSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_AlignContent_SpaceBetween_FlexSizeTest', () => {
+    beforeEach(async () => {
       console.info("Flex_AlignContent_SpaceBetween_FlexSizeTest beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexSize',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_FlexSize',
       }
       try {
         router.clear();
@@ -37,30 +39,34 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
         console.error("push Flex_AlignContent_SpaceBetween_FlexSize page error:" + err);
       }
       console.info("Flex_AlignContent_SpaceBetween_FlexSizeTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_AlignContent_SpaceBetween_FlexSizeTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600
-     * @tc.name      testFlexAlignContentSpaceAroundFlexSizeMeet
-     * @tc.desc      The size of the parent component in the cross direction meets the layout
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0600
+     * @tc.name testFlexAlignContentSpaceAroundFlexSizeMeet
+     * @tc.desc The size of the parent component in the cross direction meets the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('testFlexAlignContentSpaceAroundFlexSizeMeet', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundFlexSizeMeet', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexSizeMeet] START');
-      globalThis.value.message.notify({name:'width', value:200})
-      globalThis.value.message.notify({name:'height', value:400})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 200
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 400
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexSize_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -77,29 +83,35 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       expect(Math.abs(firstText.top - flexContainer.top) <= 1).assertTrue();
       expect(Math.abs(fourthText.bottom - flexContainer.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.top - firstText.bottom) - Math.round(thirdText.top - secondText.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignContentSpaceAroundFlexSizeMeet] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700
-     * @tc.name      testFlexAlignContentSpaceAroundFlexSizeOverflow
-     * @tc.desc      The size of the parent component in the cross direction is not enough for the layout
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_0700
+     * @tc.name testFlexAlignContentSpaceAroundFlexSizeOverflow
+     * @tc.desc The size of the parent component in the cross direction is not enough for the layout
      *               of the child components when the height and width of parent component changed
      */
-    it('testFlexAlignContentSpaceAroundFlexSizeOverflow', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundFlexSizeOverflow', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] START');
-      globalThis.value.message.notify({name:'width', value:200})
-      globalThis.value.message.notify({name:'height', value:250})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 200
+      })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 250
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexSize_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexSize04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -121,7 +133,7 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
 
       expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(50)));
       console.info('[testFlexAlignContentSpaceAroundFlexSizeOverflow] END');
-      done();
+
     });
   })
 }

@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
-  describe('Flex_AlignContent_SpaceBetween_TextOffsetTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_AlignContent_SpaceBetween_TextOffsetTest', () => {
+    beforeEach(async () => {
       console.info("Flex_AlignContent_SpaceBetween_TextOffsetTest beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextOffset',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/alignContent/SpaceBetween/Flex_AlignContent_SpaceBetween_TextOffset',
       }
       try {
         router.clear();
@@ -37,32 +39,36 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
         console.info("Flex_AlignContent_SpaceBetween_TextOffsetTest beforeEach end");
         console.error("push Flex_AlignContent_SpaceBetween_TextOffset page error:" + err);
       }
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_AlignContent_SpaceBetween_TextOffsetTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000
-     * @tc.name      testFlexAlignContentSpaceAroundTextOffset
-     * @tc.desc      the offset of first subcomponent set to {x:10, y:10}
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_SPACEBETWEEN_1000
+     * @tc.name testFlexAlignContentSpaceAroundTextOffset
+     * @tc.desc the offset of first subcomponent set to {x:10, y:10}
      */
-    it('testFlexAlignContentSpaceAroundTextOffset', 0, async function (done) {
+    it('testFlexAlignContentSpaceAroundTextOffset', 0, async () => {
       console.info('[testFlexAlignContentSpaceAroundTextOffset] START');
-      let firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset01');
-      let secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset02');
+      let firstText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset01');
+      let secondText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset02');
       let distanceBefore = secondText.top - firstText.bottom;
       let secondTextTop = secondText.top - firstText.top;
-      globalThis.value.message.notify({name:'offset', value:{x:10, y:10}})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'offset', value: {
+          x: 10, y: 10
+        }
+      })
       await CommonFunc.sleep(3000);
       firstText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset01');
       secondText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset02');
-      let thirdText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset03');
-      let fourthText = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset04');
-      let flexContainer = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextOffset_Container01');
+      let thirdText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset03');
+      let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextOffset04');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextOffset_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextOffset_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
@@ -79,10 +85,11 @@ export default function flex_AlignContent_SpaceBetween_TextOffsetTest() {
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
       expect(Math.abs(fourthText.bottom - flexContainer.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(fourthText.top - thirdText.bottom)) <= 1)
+        .assertTrue();
       expect(Math.abs(Math.round(thirdText.top - secondText.bottom) - Math.round(distanceBefore)) <= 1).assertTrue();
       console.info('[testFlexAlignContentSpaceAroundTextOffset] END');
-      done();
+
     });
   })
 }

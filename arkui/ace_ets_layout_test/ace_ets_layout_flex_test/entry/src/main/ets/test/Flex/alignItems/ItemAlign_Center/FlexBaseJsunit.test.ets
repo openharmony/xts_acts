@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexBase_CenterJsunit() {
-  describe('flexItemAlignCenterTest3', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignCenterTest3', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexBase',
       }
       try {
@@ -37,29 +39,33 @@ export default function flexBase_CenterJsunit() {
         console.error("push FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexBase after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_0100
-     * @tc.name      testFlexItemAlignCenter
-     * @tc.desc      The subcomponent is inside the parent component.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_CENTER_0100
+     * @tc.name testFlexItemAlignCenter
+     * @tc.desc The subcomponent is inside the parent component.
      */
-    it('testFlexItemAlignCenter', 0, async function (done) {
+    it('testFlexItemAlignCenter', 0, async () => {
       console.info('new testFlexItemAlignCenter START');
-      globalThis.value.message.notify({name:'height', value:200});
-      globalThis.value.message.notify({name:'width', value:500});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 200
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 500
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
-      let textFlex01 = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02 = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03 = CommonFunc.getComponentRect('textFlex03');
-      let flex01 = CommonFunc.getComponentRect('flex01');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
       expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
       expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()
@@ -76,25 +82,29 @@ export default function flexBase_CenterJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       console.info('new testFlexItemAlignCenter END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_0200
-     * @tc.name      testFlexItemAlignCenterExceed
-     * @tc.desc      The subcomponent exceeds the parent component.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_CENTER_0200
+     * @tc.name testFlexItemAlignCenterExceed
+     * @tc.desc The subcomponent exceeds the parent component.
      */
-    it('testFlexItemAlignCenterExceed', 0, async function (done) {
+    it('testFlexItemAlignCenterExceed', 0, async () => {
       console.info('new testFlexItemAlignCenterExceed START');
-      globalThis.value.message.notify({name:'height', value:140});
-      globalThis.value.message.notify({name:'width', value:420});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'height', value: 140
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 420
+      });
       await CommonFunc.sleep(3000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
-      let textFlex01 = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02 = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03 = CommonFunc.getComponentRect('textFlex03');
-      let flex01 = CommonFunc.getComponentRect('flex01');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
       expect(Math.abs(textFlex01.left - flex01.left) <= 1).assertTrue()
       expect(Math.abs(textFlex01.right - textFlex02.left) <= 1).assertTrue()
       expect(Math.abs(textFlex02.right - textFlex03.left) <= 1).assertTrue()
@@ -113,7 +123,7 @@ export default function flexBase_CenterJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       console.info('new testFlexItemAlignCenterExceed END');
-      done();
+
     });
   })
 }

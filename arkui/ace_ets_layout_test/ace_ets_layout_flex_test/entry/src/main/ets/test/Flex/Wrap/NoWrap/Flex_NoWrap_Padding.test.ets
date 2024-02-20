@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_NoWrap_PaddingTest() {
-  describe('Flex_NoWrap_PaddingTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_NoWrap_PaddingTest', () => {
+    beforeEach(async () => {
       console.info("Flex_NoWrap_PaddingTest beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_Padding',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_Padding',
       }
       try {
         router.clear();
@@ -38,30 +40,36 @@ export default function flex_NoWrap_PaddingTest() {
         console.error("push Flex_NoWrap_Padding page error:" + err);
       }
       console.info("Flex_NoWrap_PaddingTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
-      globalThis.value.message.notify({ name: 'flexPadding', value: 0 });
-      globalThis.value.message.notify({ name: 'flexMargin', value: 0 })
+    afterEach(async () => {
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexPadding', value: 0
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexMargin', value: 0
+      })
       await CommonFunc.sleep(1000);
       console.info("Flex_NoWrap_Padding after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1500
-     * @tc.name      testWrapNoWrapFlexPaddingOverflow
-     * @tc.desc      The size of the parent component in the main axis direction is not enough for
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1500
+     * @tc.name testWrapNoWrapFlexPaddingOverflow
+     * @tc.desc The size of the parent component in the main axis direction is not enough for
      *               the layout of the child components when the parent component set padding
      */
-    it('testWrapNoWrapFlexPaddingOverflow', 0, async function (done) {
+    it('testWrapNoWrapFlexPaddingOverflow', 0, async () => {
       console.info('[testWrapNoWrapFlexPaddingOverflow] START');
-      globalThis.value.message.notify({ name: 'flexPadding', value: 60 })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexPadding', value: 60
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_pad1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_pad2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_pad3');
-      let flexContainer = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -77,31 +85,36 @@ export default function flex_NoWrap_PaddingTest() {
       expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
       expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(380) / 3))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(60)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(thirdText.bottom - flexContainer.bottom)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(thirdText.bottom - flexContainer.bottom)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
       console.info('[testWrapNoWrapFlexPaddingOverflow] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1600
-     * @tc.name      testWrapNoWrapFlexPaddingMeet
-     * @tc.desc      The size of the parent component in the main axis direction meets
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1600
+     * @tc.name testWrapNoWrapFlexPaddingMeet
+     * @tc.desc The size of the parent component in the main axis direction meets
      *               the layout of the child components when the parent component set padding
      */
-    it('testWrapNoWrapFlexPaddingMeet', 0, async function (done) {
+    it('testWrapNoWrapFlexPaddingMeet', 0, async () => {
       console.info('[testWrapNoWrapFlexPaddingMeet] START');
-      globalThis.value.message.notify({ name: 'flexPadding', value: 10 })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexPadding', value: 10
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_pad1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_pad2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_pad3');
-      let columnContainer = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
-      let flexContainer = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -117,31 +130,36 @@ export default function flex_NoWrap_PaddingTest() {
       expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
       expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(450) / 3))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(40)))) <= 1)
+        .assertTrue();
       console.info('[testWrapNoWrapFlexPaddingMeet] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1700
-     * @tc.name      testWrapNoWrapFlexMargin
-     * @tc.desc      The size of the parent component in the main axis direction meets
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1700
+     * @tc.name testWrapNoWrapFlexMargin
+     * @tc.desc The size of the parent component in the main axis direction meets
      *               the layout of the child components when the parent component set margin
      */
-    it('testWrapNoWrapFlexMargin', 0, async function (done) {
+    it('testWrapNoWrapFlexMargin', 0, async () => {
       console.info('[testWrapNoWrapFlexMargin] START');
-      globalThis.value.message.notify({ name: 'flexMargin', value: 10 })
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexMargin', value: 10
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_pad1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_pad2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_pad3');
-      let flexContainer = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
-      let columnContainer = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -158,36 +176,45 @@ export default function flex_NoWrap_PaddingTest() {
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(firstText.top - columnContainer.top))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(firstText.top - columnContainer.top))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(450) / 3))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
       console.info('[testWrapNoWrapFlexMargin] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1800
-     * @tc.name      testWrapNoWrapFlexMarPad
-     * @tc.desc      The size of the parent component in the main axis direction
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1800
+     * @tc.name testWrapNoWrapFlexMarPad
+     * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components when the parent component set margin and padding
      */
-    it('testWrapNoWrapFlexMarPad', 0, async function (done) {
+    it('testWrapNoWrapFlexMarPad', 0, async () => {
       console.info('[testWrapNoWrapFlexMarPad] START');
-      globalThis.value.message.notify({ name: 'flexMargin', value: 10 });
-      globalThis.value.message.notify({ name: 'flexPadding', value: 30 });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexMargin', value: 10
+      });
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'flexPadding', value: 30
+      });
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_pad1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_pad2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_pad3');
-      let columnContainer = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
-      let flexContainer = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_pad3');
+      let columnContainer: RectValue = CommonFunc.getComponentRect('Column_NoWrap_FlexPad_Container');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('NoWrap_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('NoWrap_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -200,17 +227,21 @@ export default function flex_NoWrap_PaddingTest() {
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.top - columnContainer.top)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
       expect(Math.abs((Math.round(firstText.top - columnContainer.top)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
 
       expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(440) / 3))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.bottom - thirdText.bottom)) - (Math.round(vp2px(20)))) <= 1)
+        .assertTrue();
       console.info('[testWrapNoWrapFlexMarPad] END');
-      done();
+
     });
   })
 }

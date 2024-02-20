@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+
 export default function flexAlignSelf_StretchJsunit() {
-  describe('flexItemAlignStretchTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignStretchTest', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexAlignSelf',
       }
       try {
@@ -35,29 +36,29 @@ export default function flexAlignSelf_StretchJsunit() {
         console.error("push FlexSecond page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexSecond after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_STRETCH_1300
-     * @tc.name      testFlexItemAlignStretchSetAlignSelf
-     * @tc.desc      The first subcomponent set ItemAlign.End attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_STRETCH_1300
+     * @tc.name testFlexItemAlignStretchSetAlignSelf
+     * @tc.desc The first subcomponent set ItemAlign.End attribute.
      */
-    it('testFlexItemAlignStretchSetAlignSelf', 0, async function (done) {
+    it('testFlexItemAlignStretchSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignStretchSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2 = JSON.parse(strJson2);
-      let textAlignSelf01 = CommonFunc.getComponentRect('textAlignSelf01');
-      let textAlignSelf02 = CommonFunc.getComponentRect('textAlignSelf02');
-      let textAlignSelf03 = CommonFunc.getComponentRect('textAlignSelf03');
-      let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
+      let obj2: Record<string, Object> = JSON.parse(strJson2);
+      let textAlignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
+      let textAlignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
+      let textAlignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');
+      let flexAlignSelf01: RectValue = CommonFunc.getComponentRect('flexAlignSelf');
 
       expect(Math.abs(textAlignSelf02.top - textAlignSelf03.top) <= 1).assertTrue()
       expect(Math.abs(textAlignSelf03.top - flexAlignSelf01.top) <= 1).assertTrue()
@@ -77,7 +78,7 @@ export default function flexAlignSelf_StretchJsunit() {
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End");
       console.info('new testFlexItemAlignStretchSetAlignSelf END');
-      done();
+
     });
   })
 }

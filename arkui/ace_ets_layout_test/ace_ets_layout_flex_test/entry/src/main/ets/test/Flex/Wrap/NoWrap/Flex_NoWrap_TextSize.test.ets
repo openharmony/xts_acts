@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-export default function flex_NoWrap_TextSizeTest()   {
-  describe('Flex_NoWrap_TextSizeTest', function () {
-    beforeEach(async function (done) {
+
+export default function flex_NoWrap_TextSizeTest() {
+  describe('Flex_NoWrap_TextSizeTest', () => {
+    beforeEach(async () => {
       console.info("Flex_NoWrap_TextSizeTest beforeEach start");
-      let options = {
-        url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_TextSize',
+      let options: RouterOptions = {
+        uri: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_TextSize',
       }
       try {
         router.clear();
@@ -38,28 +40,30 @@ export default function flex_NoWrap_TextSizeTest()   {
         console.error("push Flex_NoWrap_TextSize page error:" + err);
       }
       console.info("Flex_NoWrap_TextSizeTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_NoWrap_TextSizeTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_2000
-     * @tc.name      testWrapNoWrapTextSizeMeet
-     * @tc.desc      The size of the parent component in the main axis direction
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_2000
+     * @tc.name testWrapNoWrapTextSizeMeet
+     * @tc.desc The size of the parent component in the main axis direction
      *               meets the layout of the child components when the child component change size
      */
-    it('testWrapNoWrapTextSizeMeet', 0, async function (done) {
+    it('testWrapNoWrapTextSizeMeet', 0, async () => {
       console.info('[testWrapNoWrapTextSizeMeet] START');
-      globalThis.value.message.notify({name:'width', value:150})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 150
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_TextSize1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_TextSize2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_TextSize3');
-      let flexContainer = CommonFunc.getComponentRect('Flex_NoWrap_TextSize_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize3');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_TextSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -75,31 +79,33 @@ export default function flex_NoWrap_TextSizeTest()   {
       expect(Math.abs(secondText.bottom - secondText.top - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - thirdText.top - vp2px(200)) <= 1).assertTrue();
 
-      expect(Math.abs(firstText.right- firstText.left - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(firstText.right- firstText.left - (secondText.right- secondText.left)) <= 1).assertTrue();
-      expect(Math.abs(secondText.right- secondText.left - (thirdText.right- thirdText.left)) <= 1).assertTrue();
+      expect(Math.abs(firstText.right - firstText.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(firstText.right - firstText.left - (secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.abs(secondText.right - secondText.left - (thirdText.right - thirdText.left)) <= 1).assertTrue();
 
       expect(Math.abs(flexContainer.right - thirdText.right - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - flexContainer.bottom) <= 1).assertTrue();
       console.info('[testWrapNoWrapTextSizeMeet] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_2100
-     * @tc.name      testWrapNoWrapTextSizeOverflow
-     * @tc.desc      The size of the parent component in the main axis direction is not enough
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_2100
+     * @tc.name testWrapNoWrapTextSizeOverflow
+     * @tc.desc The size of the parent component in the main axis direction is not enough
      *               for the layout of the child components when the child component change size
      */
-    it('testWrapNoWrapTextSizeOverflow', 0, async function (done) {
+    it('testWrapNoWrapTextSizeOverflow', 0, async () => {
       console.info('[testWrapNoWrapTextSizeOverflow] START');
-      globalThis.value.message.notify({name:'width', value:200})
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'width', value: 200
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_flex_TextSize1');
-      let secondText = CommonFunc.getComponentRect('NoWrap_flex_TextSize2');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_flex_TextSize3');
-      let flexContainer = CommonFunc.getComponentRect('Flex_NoWrap_TextSize_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize1');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize2');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_flex_TextSize3');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_TextSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_TextSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
+      let flexContainerObj: Record<string, Object> = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
@@ -115,14 +121,14 @@ export default function flex_NoWrap_TextSizeTest()   {
       expect(Math.abs(secondText.bottom - secondText.top - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - thirdText.top - Math.round(vp2px(200))) <= 1).assertTrue();
 
-      expect(Math.abs(firstText.right- firstText.left - Math.round(vp2px(500) / 3)) <= 1).assertTrue();
-      expect(Math.abs(firstText.right- firstText.left - (secondText.right- secondText.left)) <= 1).assertTrue();
-      expect(Math.abs(secondText.right- secondText.left - (thirdText.right- thirdText.left)) <= 1).assertTrue();
+      expect(Math.abs(firstText.right - firstText.left - Math.round(vp2px(500) / 3)) <= 1).assertTrue();
+      expect(Math.abs(firstText.right - firstText.left - (secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.abs(secondText.right - secondText.left - (thirdText.right - thirdText.left)) <= 1).assertTrue();
 
       expect(Math.abs(thirdText.right - flexContainer.right) <= 1).assertTrue();
       expect(Math.abs(thirdText.bottom - flexContainer.bottom) <= 1).assertTrue();
       console.info('[testWrapNoWrapTextSizeOverflow] END');
-      done();
+
     });
   })
 }

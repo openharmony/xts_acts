@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router, { RouterOptions } from '@system.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexPadding_EndJsunit() {
-  describe('flexItemAlignEndTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('flexItemAlignEndTest', () => {
+    beforeEach(async () => {
+      let options: RouterOptions = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexPadding',
       }
       try {
@@ -37,30 +39,32 @@ export default function flexPadding_EndJsunit() {
         console.error("push FlexPadding page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexPadding after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0300
-     * @tc.name      testFlexItemAlignEndParentSetPadding
-     * @tc.desc      Parent component set paddding,subcomponent does not exceed the parent component.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_END_0300
+     * @tc.name testFlexItemAlignEndParentSetPadding
+     * @tc.desc Parent component set paddding,subcomponent does not exceed the parent component.
      */
-    it('testFlexItemAlignEndParentSetPadding', 0, async function (done) {
+    it('testFlexItemAlignEndParentSetPadding', 0, async () => {
       console.info('new testFlexItemAlignEndParentSetPadding START');
-      globalThis.value.message.notify({name:'padding', value:10});
+      GlobalContext.getContext().getObject('value').message.notify({
+        name: 'padding', value: 10
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
       let strJson2 = getInspectorByKey('textFlexPadding01');
-      let obj2 = JSON.parse(strJson2);
-      let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01')
-      let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02')
-      let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03')
-      let flexPadding01 = CommonFunc.getComponentRect('flexPadding01')
+      let obj2: Record<string, Object> = JSON.parse(strJson2);
+      let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01')
+      let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02')
+      let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03')
+      let flexPadding01: RectValue = CommonFunc.getComponentRect('flexPadding01')
 
       expect(Math.abs(textFlexPadding01.bottom - textFlexPadding02.bottom) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding02.bottom - textFlexPadding03.bottom) <= 1).assertTrue()
@@ -78,9 +82,9 @@ export default function flexPadding_EndJsunit() {
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndParentSetPadding END');
-      done();
+
     });
 
-    
+
   })
 }
