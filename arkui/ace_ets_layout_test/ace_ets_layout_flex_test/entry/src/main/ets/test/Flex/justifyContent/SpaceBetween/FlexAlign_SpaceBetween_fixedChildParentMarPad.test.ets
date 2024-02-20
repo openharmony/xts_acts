@@ -64,11 +64,11 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceBetween6');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween16');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween17');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween18');
@@ -114,11 +114,11 @@ export default function flexAlign_SpaceBetween_fixedChildParentMarPad() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceBetween6');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween16');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween17');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceBetween18');

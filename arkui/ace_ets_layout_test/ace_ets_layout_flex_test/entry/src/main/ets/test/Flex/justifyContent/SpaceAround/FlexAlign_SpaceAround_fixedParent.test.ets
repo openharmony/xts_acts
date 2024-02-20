@@ -66,14 +66,14 @@ export default function flexAlign_SpaceAround_fixedParent() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround9');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
       let strJson2 = getInspectorByKey('AlignSpaceAround25');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj2.$attrs.visibility).assertEqual('Visibility.Visible');
+
+      expect(JSON.parse(strJson2).$attrs.visibility).assertEqual('Visibility.Visible');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceAround25');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround26');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround27');

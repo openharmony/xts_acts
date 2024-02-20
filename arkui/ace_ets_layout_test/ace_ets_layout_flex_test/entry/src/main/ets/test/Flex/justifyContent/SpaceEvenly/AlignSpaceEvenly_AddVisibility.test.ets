@@ -59,13 +59,13 @@ export default function AlignSpaceEvenly_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+
         let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
-        expect(obj.$type).assertEqual('Flex');
-        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+
+        expect(JSON.parse(strJson).$type).assertEqual('Flex');
+        expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(JSON.parse(strJson2).$attrs.visibility).assertEqual("Visibility.None");
         let SpaceEvenly_AddVisibility_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
         let SpaceEvenly_AddVisibility_01: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_01');
@@ -116,13 +116,13 @@ export default function AlignSpaceEvenly_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+
         let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
-        expect(obj.$type).assertEqual('Flex');
-        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+
+        expect(JSON.parse(strJson).$type).assertEqual('Flex');
+        expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(JSON.parse(strJson2).$attrs.visibility).assertEqual("Visibility.Hidden");
         let SpaceEvenly_AddVisibility_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
         let SpaceEvenly_AddVisibility_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');
@@ -180,13 +180,13 @@ export default function AlignSpaceEvenly_AddVisibility() {
         });
         await CommonFunc.sleep(3000);
         let strJson = getInspectorByKey('SpaceEvenly_AddVisibility_01');
-        let obj = JSON.parse(strJson);
+
         let strJson2 = getInspectorByKey('SpaceEvenly_AddVisibility_011');
-        let obj2 = JSON.parse(strJson2);
-        expect(obj.$type).assertEqual('Flex');
-        expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-        expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-        expect(obj2.$attrs.visibility).assertEqual("Visibility.Visible");
+
+        expect(JSON.parse(strJson).$type).assertEqual('Flex');
+        expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+        expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+        expect(JSON.parse(strJson2).$attrs.visibility).assertEqual("Visibility.Visible");
         let SpaceEvenly_AddVisibility_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_011');
         let SpaceEvenly_AddVisibility_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_012');
         let SpaceEvenly_AddVisibility_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddVisibility_013');

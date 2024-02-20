@@ -58,10 +58,10 @@ export default function AlignCenter_AddAlign() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_AddAlign_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
       let Center_AddAlign_011: RectValue = CommonFunc.getComponentRect('Center_AddAlign_011');
       let Center_AddAlign_012: RectValue = CommonFunc.getComponentRect('Center_AddAlign_012');
       let Center_AddAlign_013: RectValue = CommonFunc.getComponentRect('Center_AddAlign_013');

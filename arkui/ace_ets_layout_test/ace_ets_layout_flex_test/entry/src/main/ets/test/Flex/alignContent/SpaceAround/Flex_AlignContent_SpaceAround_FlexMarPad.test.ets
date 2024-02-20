@@ -69,10 +69,10 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_FlexMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceAround_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_FlexMarPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
@@ -114,10 +114,10 @@ export default function flex_AlignContent_SpaceAround_FlexMarPadTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceAround_FlexMarPad_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceAround_FlexMarPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceAround_FlexMarPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
       expect(Math.abs(firstText.bottom - firstText.top) - vp2px(50) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - secondText.top) - vp2px(100) <= 1).assertTrue();

@@ -52,7 +52,7 @@ export default function flexMargin_StartJsunit() {
     it('testItemAlignStartParentSetMargin', 0, async () => {
       console.info('new testItemAlignStartParentSetMargin START');
       let strJson1 = getInspectorByKey('flexMargin');
-      let obj1 = JSON.parse(strJson1);
+
       let textFlexMargin01: RectValue = CommonFunc.getComponentRect('textFlexMargin01');
       let textFlexMargin02: RectValue = CommonFunc.getComponentRect('textFlexMargin02');
       let textFlexMargin03: RectValue = CommonFunc.getComponentRect('textFlexMargin03');
@@ -73,8 +73,8 @@ export default function flexMargin_StartJsunit() {
       expect(Math.abs((textFlexMargin02.right - textFlexMargin02.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((textFlexMargin03.right - textFlexMargin03.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testItemAlignStartParentSetMargin END');
 
     });

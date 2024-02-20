@@ -58,10 +58,10 @@ export default function AlignStart_AddAlign() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddAlign_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let Start_AddAlign_011: RectValue = CommonFunc.getComponentRect('Start_AddAlign_011');
       let Start_AddAlign_012: RectValue = CommonFunc.getComponentRect('Start_AddAlign_012');
       let Start_AddAlign_013: RectValue = CommonFunc.getComponentRect('Start_AddAlign_013');

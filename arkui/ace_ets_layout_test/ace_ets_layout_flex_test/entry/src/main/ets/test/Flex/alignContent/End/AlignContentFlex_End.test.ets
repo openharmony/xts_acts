@@ -64,9 +64,9 @@ export default function AlignContentFlex_End() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEnd_flex001');
-      let obj = JSON.parse(strJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001_2');
@@ -107,8 +107,8 @@ export default function AlignContentFlex_End() {
 
       expect(AlignContentFlexEnd_4.top).assertEqual(AlignContentFlexEnd_2.bottom);
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       console.info('testAlignContentEndFlexHeightSatisfy END');
 
@@ -128,9 +128,9 @@ export default function AlignContentFlex_End() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEnd_flex001');
-      let obj = JSON.parse(strJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexEnd_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEnd_flex001_2');
@@ -171,8 +171,8 @@ export default function AlignContentFlex_End() {
       expect(AlignContentFlexEnd_4.bottom).assertLarger(AlignContentFlexEnd_flex002.bottom);
       expect(AlignContentFlexEnd_2.bottom).assertEqual(AlignContentFlexEnd_4.top);
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       console.info('testAlignContentEndFlexHeightNoSatisfy END');
 

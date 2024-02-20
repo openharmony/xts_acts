@@ -64,9 +64,9 @@ export default function flex_Wrap_PositionTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_Position03');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_Wrap_Position_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_Wrap_Position_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();

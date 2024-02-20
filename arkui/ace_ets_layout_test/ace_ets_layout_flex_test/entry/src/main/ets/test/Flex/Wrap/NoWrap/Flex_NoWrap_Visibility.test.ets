@@ -72,9 +72,9 @@ export default function flex_NoWrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_Visibility_Container01');
-        let flexContainerObj = JSON.parse(flexContainerStrJson);
-        expect(flexContainerObj.$type).assertEqual('Flex');
-        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+
+        expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
         expect(Math.abs((secondText.top) - (flexContainer.top)) <= 1).assertTrue();
         expect(Math.abs((secondText.top) - (thirdText.top)) <= 1).assertTrue();
@@ -125,9 +125,9 @@ export default function flex_NoWrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_Visibility_Container01');
-        let flexContainerObj = JSON.parse(flexContainerStrJson);
-        expect(flexContainerObj.$type).assertEqual('Flex');
-        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+
+        expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
         expect(Math.abs(flexContainer.left - secondText.left) <= 1).assertTrue();
         expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
@@ -177,9 +177,9 @@ export default function flex_NoWrap_VisibilityTest() {
         let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_Text_Visibility3');
         let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_Visibility_Container01');
         let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_Visibility_Container01');
-        let flexContainerObj = JSON.parse(flexContainerStrJson);
-        expect(flexContainerObj.$type).assertEqual('Flex');
-        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+
+        expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
         expect(Math.abs(secondText.right - thirdText.left) <= 1).assertTrue();
         expect(Math.abs(secondText.top - thirdText.top) <= 1).assertTrue();

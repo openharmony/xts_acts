@@ -65,9 +65,9 @@ export default function AlignContent_End_FlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Margin_flex001');
-      let obj = JSON.parse(strJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_2');
@@ -95,8 +95,8 @@ export default function AlignContent_End_FlexP_Fixed_Margin() {
       expect(Math.abs(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left - vp2px(150)) <= 1).assertTrue()
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       expect(Math.abs(AlignContentFlexEnd_3.top - AlignContentFlexEnd_flex001.top - vp2px(50)) <= 1).assertTrue()
       expect(Math.abs(AlignContentFlexEnd_1.top - AlignContentFlexEnd_2.top - vp2px(10)) <= 1).assertTrue()
@@ -122,7 +122,7 @@ export default function AlignContent_End_FlexP_Fixed_Margin() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Margin_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexEnd_flex002: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Margin_2');
@@ -150,8 +150,8 @@ export default function AlignContent_End_FlexP_Fixed_Margin() {
       expect(Math.abs(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left - vp2px(150)) <= 1).assertTrue()
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       expect(Math.abs(AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex002.top - vp2px(100)) <= 1).assertTrue()
       expect(Math.abs(AlignContentFlexEnd_1.left - AlignContentFlexEnd_flex002.left - vp2px(100)) <= 1).assertTrue()

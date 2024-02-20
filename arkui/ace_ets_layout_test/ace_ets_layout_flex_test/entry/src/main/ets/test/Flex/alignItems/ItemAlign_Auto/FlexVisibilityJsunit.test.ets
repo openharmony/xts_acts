@@ -59,10 +59,10 @@ export default function flexVisibility_AutoJsunit() {
         })
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1 = JSON.parse(strJson1);
+
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2 = JSON.parse(strJson2);
-        expect(obj2.$attrs.visibility).assertEqual("Visibility.None");
+
+        expect(JSON.parse(strJson2).$attrs.visibility).assertEqual("Visibility.None");
         let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01')
         let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02')
         let textVisible03: RectValue = CommonFunc.getComponentRect('textVisible03')
@@ -81,9 +81,9 @@ export default function flexVisibility_AutoJsunit() {
           .assertTrue()
         expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1)
           .assertTrue()
-        expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
-        expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-        expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+        expect(JSON.parse(strJson1).$attrs.visibility).assertEqual("Visibility.Visible");
+        expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+        expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       } catch (err) {
         console.error('[testFlexItemAlignAutoFlexVisibilityNone] failed');
         expect().assertFail();
@@ -105,11 +105,11 @@ export default function flexVisibility_AutoJsunit() {
         });
         await CommonFunc.sleep(2000);
         let strJson1 = getInspectorByKey('flexVisible');
-        let obj1 = JSON.parse(strJson1);
+
 
         let strJson2 = getInspectorByKey('textVisible01');
-        let obj2 = JSON.parse(strJson2);
-        expect(obj2.$attrs.visibility).assertEqual("Visibility.Hidden");
+
+        expect(JSON.parse(strJson2).$attrs.visibility).assertEqual("Visibility.Hidden");
 
         let textVisible01: RectValue = CommonFunc.getComponentRect('textVisible01');
         let textVisible02: RectValue = CommonFunc.getComponentRect('textVisible02');
@@ -131,8 +131,8 @@ export default function flexVisibility_AutoJsunit() {
           .assertTrue()
         expect(Math.abs(Math.round(textVisible03.right - textVisible03.left) - Math.round(vp2px(150))) <= 1)
           .assertTrue()
-        expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-        expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
+        expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+        expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto')
       } catch (err) {
         console.error('[testFlexItemAlignAutoFlexVisibilityHidden] failed');
         expect().assertFail();

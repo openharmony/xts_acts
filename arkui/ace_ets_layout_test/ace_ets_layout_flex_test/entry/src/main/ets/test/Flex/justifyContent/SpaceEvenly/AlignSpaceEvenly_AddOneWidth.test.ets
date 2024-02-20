@@ -58,10 +58,10 @@ export default function AlignSpaceEvenly_AddOneWidth() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneWidth_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
       let SpaceEvenly_AddOneWidth_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_011');
       let SpaceEvenly_AddOneWidth_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_012');
       let SpaceEvenly_AddOneWidth_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneWidth_013');

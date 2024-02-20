@@ -65,9 +65,9 @@ export default function AlignContentFlex_Center() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenter_flex001');
-      let obj = JSON.parse(strJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001_1');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001_2');
@@ -95,8 +95,8 @@ export default function AlignContentFlex_Center() {
       expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
 
       expect(Math.abs((AlignContentFlexCenter_flex001.bottom - AlignContentFlexCenter_4.bottom) - (AlignContentFlexCenter_1.top - AlignContentFlexCenter_flex001.top)) <= 1)
         .assertTrue();
@@ -120,7 +120,7 @@ export default function AlignContentFlex_Center() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenter_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexCenter_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001_1');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenter_flex001_2');
@@ -148,8 +148,8 @@ export default function AlignContentFlex_Center() {
       expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
 
       expect(Math.abs(AlignContentFlexCenter_1.top - AlignContentFlexCenter_flex002.top) <= 1).assertTrue();
       expect(Math.abs(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_4.top) <= 1).assertTrue();

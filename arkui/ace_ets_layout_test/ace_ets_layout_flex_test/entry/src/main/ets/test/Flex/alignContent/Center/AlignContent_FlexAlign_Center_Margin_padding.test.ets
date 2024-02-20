@@ -66,7 +66,7 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterMargin&padding_flex001');
-      let obj = JSON.parse(strJson);
+
       let Center_Margin_Column_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin&padding_Column_1');
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin&padding_flex001');
       let AlignContentFlexCenter_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexCenterMargin&padding_flex001_1');
@@ -94,8 +94,8 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
       expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
 
       expect(Math.abs((AlignContentFlexCenter_flex001.top - Center_Margin_Column_1.top) - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_1.top - Center_Margin_Column_1.top) - vp2px(50)) <= 1).assertTrue();
@@ -120,7 +120,7 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexCenterMargin&padding_flex001');
-      let obj = JSON.parse(strJson);
+
       let Center_Margin_Column_2: RectValue = CommonFunc
         .getComponentRect('AlignContentFlexCenterMargin&padding_Column_1');
       let AlignContentFlexCenter_flex002: RectValue = CommonFunc
@@ -154,8 +154,8 @@ export default function AlignContent_FlexAlign_Center_Margin_padding() {
       expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
 
       expect(Math.abs((AlignContentFlexCenter_flex002.top - Center_Margin_Column_2.top) - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_1.top - Center_Margin_Column_2.top) - vp2px(40)) <= 1).assertTrue();

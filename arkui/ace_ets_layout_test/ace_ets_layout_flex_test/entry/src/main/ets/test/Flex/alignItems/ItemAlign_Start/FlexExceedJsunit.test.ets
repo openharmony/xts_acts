@@ -61,7 +61,7 @@ export default function flexExceed_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
+
       let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
       let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
       let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
@@ -82,8 +82,8 @@ export default function flexExceed_StartJsunit() {
       expect(Math.abs(textExceed01.right - textExceed01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textExceed02.right - textExceed02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textExceed03.right - textExceed03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSetMarPad END');
 
     });
@@ -103,7 +103,7 @@ export default function flexExceed_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
+
       let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
       let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
       let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
@@ -124,8 +124,8 @@ export default function flexExceed_StartJsunit() {
       expect(Math.abs(textExceed01.right - textExceed01.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textExceed02.right - textExceed02.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textExceed03.right - textExceed03.left - vp2px(440 / 3)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSetMarPadExceed END');
 
     });

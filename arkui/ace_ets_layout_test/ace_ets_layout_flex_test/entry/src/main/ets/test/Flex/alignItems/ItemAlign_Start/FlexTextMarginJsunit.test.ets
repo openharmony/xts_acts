@@ -58,7 +58,7 @@ export default function flexTextMargin_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1 = JSON.parse(strJson1);
+
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
@@ -78,8 +78,8 @@ export default function flexTextMargin_StartJsunit() {
       expect(Math.abs(textMargin01.right - textMargin01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textMargin02.right - textMargin02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textMargin03.right - textMargin03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSubSetMargin END');
 
     });
@@ -96,7 +96,7 @@ export default function flexTextMargin_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1 = JSON.parse(strJson1);
+
       let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
       let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
       let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
@@ -116,8 +116,8 @@ export default function flexTextMargin_StartJsunit() {
       expect(Math.abs(textMargin01.right - textMargin01.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textMargin02.right - textMargin02.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textMargin03.right - textMargin03.left - vp2px(440 / 3)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSubSetMarginExceed END');
 
     });

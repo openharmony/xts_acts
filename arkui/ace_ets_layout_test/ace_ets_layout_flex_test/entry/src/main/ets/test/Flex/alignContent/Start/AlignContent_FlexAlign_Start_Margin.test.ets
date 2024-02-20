@@ -59,7 +59,7 @@ export default function AlignContent_FlexAlign_Start_Margin() {
     it('testAlignContentStartFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentStartFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexStartMargin_flex');
-      let obj = JSON.parse(strJson);
+
       let Start_Margin_Column: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_Column');
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_flex');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartMargin_flex_1');
@@ -95,8 +95,8 @@ export default function AlignContent_FlexAlign_Start_Margin() {
       expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left))
         .assertEqual(Math.round(vp2px(150)));
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
       expect(Math.round(AlignContentFlexStart_flex001.top - Start_Margin_Column.top)).assertEqual(Math.round(vp2px(15)))
       expect(Math.round(AlignContentFlexStart_1.top - Start_Margin_Column.top)).assertEqual(Math.round(vp2px(15)))

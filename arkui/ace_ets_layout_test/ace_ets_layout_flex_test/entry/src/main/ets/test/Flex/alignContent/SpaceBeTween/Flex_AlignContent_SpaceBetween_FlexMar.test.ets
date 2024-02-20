@@ -62,10 +62,10 @@ export default function flex_AlignContent_SpaceBetween_FlexMarTest() {
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexMar_Container01');
       let columnContainer: RectValue = CommonFunc.getComponentRect('Column_Align_SpaceBetween_FlexMar_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexMar_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
       expect(Math.abs(firstText.bottom - firstText.top - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs(secondText.bottom - secondText.top - vp2px(100)) <= 1).assertTrue();

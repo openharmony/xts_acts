@@ -63,10 +63,10 @@ export default function flexWrapReverse_fixedParentChildPosition() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest22');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest64');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest65');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest66');

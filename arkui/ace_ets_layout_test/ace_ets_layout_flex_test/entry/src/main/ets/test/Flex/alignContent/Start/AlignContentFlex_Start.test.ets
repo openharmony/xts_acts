@@ -63,9 +63,9 @@ export default function AlignContentFlex_Start() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlex_Start_flex001');
-      let obj = JSON.parse(strJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001_1');
       let AlignContentFlexStart_2: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001_2');
@@ -100,8 +100,8 @@ export default function AlignContentFlex_Start() {
       expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left))
         .assertEqual(Math.round(vp2px(150)));
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
       expect(AlignContentFlexStart_2.top).assertEqual(AlignContentFlexStart_flex001.top);
       expect(AlignContentFlexStart_4.top).assertEqual(AlignContentFlexStart_2.bottom);
@@ -125,7 +125,7 @@ export default function AlignContentFlex_Start() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlex_Start_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexStart_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001_1');
       let AlignContentFlexStart_2: RectValue = CommonFunc.getComponentRect('AlignContentFlex_Start_flex001_2');
@@ -160,8 +160,8 @@ export default function AlignContentFlex_Start() {
       expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left))
         .assertEqual(Math.round(vp2px(150)));
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
       expect(AlignContentFlexStart_1.top).assertEqual(AlignContentFlexStart_flex002.top);
       expect(AlignContentFlexStart_4.bottom).assertLarger(AlignContentFlexStart_flex002.bottom);

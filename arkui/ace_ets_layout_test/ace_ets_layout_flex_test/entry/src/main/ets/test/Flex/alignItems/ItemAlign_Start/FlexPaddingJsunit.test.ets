@@ -58,9 +58,9 @@ export default function flexPadding_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1 = JSON.parse(strJson1);
+
       let strJson2 = getInspectorByKey('textFlexPadding01');
-      let obj2 = JSON.parse(strJson2);
+
       let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01')
       let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02')
       let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03')
@@ -82,8 +82,8 @@ export default function flexPadding_StartJsunit() {
       expect(Math.abs(textFlexPadding01.right - textFlexPadding01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding02.right - textFlexPadding02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding03.right - textFlexPadding03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartParentSetPadding END');
 
     });
@@ -100,7 +100,7 @@ export default function flexPadding_StartJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1 = JSON.parse(strJson1);
+
       let textFlexPadding01: RectValue = CommonFunc.getComponentRect('textFlexPadding01');
       let textFlexPadding02: RectValue = CommonFunc.getComponentRect('textFlexPadding02');
       let textFlexPadding03: RectValue = CommonFunc.getComponentRect('textFlexPadding03');
@@ -119,8 +119,8 @@ export default function flexPadding_StartJsunit() {
       expect(Math.abs(textFlexPadding01.right - textFlexPadding01.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding02.right - textFlexPadding02.left - vp2px(440 / 3)) <= 1).assertTrue()
       expect(Math.abs(textFlexPadding03.right - textFlexPadding03.left - vp2px(440 / 3)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartParentSetPaddingExceed END');
 
     });

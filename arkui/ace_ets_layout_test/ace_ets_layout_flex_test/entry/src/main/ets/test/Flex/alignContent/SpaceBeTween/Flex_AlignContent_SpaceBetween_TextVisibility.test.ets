@@ -69,14 +69,13 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
-        let flexContainerObj = JSON.parse(flexContainerStrJson);
-        expect(flexContainerObj.$type).assertEqual('Flex');
-        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-        expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+
+        expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceBetween_TextVisibility01');
-        let firstTextObj = JSON.parse(firstTextStrJson);
-        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
+        expect(JSON.parse(firstTextStrJson).$attrs.visibility).assertEqual("Visibility.Hidden");
 
         expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
         expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
@@ -119,14 +118,13 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_TextVisibility04');
         let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_TextVisibility_Container01');
         let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_TextVisibility_Container01');
-        let flexContainerObj = JSON.parse(flexContainerStrJson);
-        expect(flexContainerObj.$type).assertEqual('Flex');
-        expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-        expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+
+        expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+        expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
         let firstTextStrJson = getInspectorByKey('AlignContent_SpaceBetween_TextVisibility01');
-        let firstTextObj = JSON.parse(firstTextStrJson);
-        expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
+        expect(JSON.parse(firstTextStrJson).$attrs.visibility).assertEqual("Visibility.None");
 
         expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
         expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));

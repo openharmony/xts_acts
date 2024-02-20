@@ -63,10 +63,10 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexPad04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
@@ -104,9 +104,9 @@ export default function flex_AlignContent_SpaceBetween_FlexPadTest() {
       let fourthText: RectValue = CommonFunc.getComponentRect('AlignContent_SpaceBetween_FlexPad04');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexAlign_SpaceBetween_FlexPad_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexAlign_SpaceBetween_FlexPad_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
-      expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
+
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
       expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));

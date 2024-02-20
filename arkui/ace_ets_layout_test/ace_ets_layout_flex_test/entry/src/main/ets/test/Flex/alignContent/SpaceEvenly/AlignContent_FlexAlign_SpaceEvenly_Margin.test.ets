@@ -60,7 +60,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
     it('testAlignContentSpaceEvenlyFlexMarginSatisfy', 0, async () => {
       console.info('testAlignContentSpaceEvenlyFlexMarginSatisfy START');
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyMargin_flex');
-      let obj = JSON.parse(strJson);
+
       let SpaceEvenly_Margin_Column: RectValue = CommonFunc.getComponentRect('SpaceEvenly_Margin_Column');
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex');
       let AlignContentFlexSpaceEvenly_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin_flex_1');
@@ -97,8 +97,8 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin() {
       expect(Math.round(AlignContentFlexSpaceEvenly_4.right - AlignContentFlexSpaceEvenly_4.left))
         .assertEqual(Math.round(vp2px(150)));
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
 
       expect(Math.round(AlignContentFlexSpaceEvenly_flex001.top - SpaceEvenly_Margin_Column.top))
         .assertEqual(Math.round(vp2px(15)))

@@ -52,7 +52,7 @@ export default function flexOffset_CenterJsunit() {
     it('testFlexItemAlignCenterSetOffset', 0, async () => {
       console.info('new testFlexItemAlignCenterSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1 = JSON.parse(strJson1);
+
       let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
       let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
       let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');
@@ -73,8 +73,8 @@ export default function flexOffset_CenterJsunit() {
       expect(Math.abs(textOffset01.right - textOffset01.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textOffset02.right - textOffset02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textOffset03.right - textOffset03.left - Math.round(vp2px(150))) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       console.info('new testFlexItemAlignCenterSetOffset END');
 
     });

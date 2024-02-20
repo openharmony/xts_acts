@@ -64,7 +64,7 @@ export default function AlignContent_FlexAlign_End_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndPadding_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
@@ -96,8 +96,8 @@ export default function AlignContent_FlexAlign_End_padding() {
       expect(AlignContentFlexEnd_flex001.bottom - AlignContentFlexEnd_4.bottom).assertLess(vp2px(40));
       expect(AlignContentFlexEnd_4.top).assertEqual(AlignContentFlexEnd_2.bottom);
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       console.info('testAlignContentEndFlexPaddingNoSatisfy END');
 
@@ -117,7 +117,7 @@ export default function AlignContent_FlexAlign_End_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndPadding_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexEndPadding_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
@@ -151,8 +151,8 @@ export default function AlignContent_FlexAlign_End_padding() {
         .assertTrue();
 
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
 
       console.info('testAlignContentEndFlexPaddingSatisfy END');
 

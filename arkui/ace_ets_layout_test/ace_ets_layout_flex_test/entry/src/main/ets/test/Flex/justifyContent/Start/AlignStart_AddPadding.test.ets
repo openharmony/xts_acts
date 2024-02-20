@@ -59,10 +59,10 @@ export default function AlignStart_AddPadding() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddPadding_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let Start_AddPadding_011: RectValue = CommonFunc.getComponentRect('Start_AddPadding_011');
       let Start_AddPadding_012: RectValue = CommonFunc.getComponentRect('Start_AddPadding_012');
       let Start_AddPadding_013: RectValue = CommonFunc.getComponentRect('Start_AddPadding_013');
@@ -105,10 +105,10 @@ export default function AlignStart_AddPadding() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddPadding_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let Start_AddPadding_011: RectValue = CommonFunc.getComponentRect('Start_AddPadding_011')
       let Start_AddPadding_012: RectValue = CommonFunc.getComponentRect('Start_AddPadding_012')
       let Start_AddPadding_013: RectValue = CommonFunc.getComponentRect('Start_AddPadding_013')

@@ -52,9 +52,9 @@ export default function flexAlignSelf_StretchJsunit() {
     it('testFlexItemAlignStretchSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignStretchSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1 = JSON.parse(strJson1);
+
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2 = JSON.parse(strJson2);
+
       let textAlignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
       let textAlignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
       let textAlignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');
@@ -74,9 +74,9 @@ export default function flexAlignSelf_StretchJsunit() {
       expect(Math.abs((textAlignSelf03.bottom - textAlignSelf03.top) - vp2px(200)) <= 1).assertTrue()
       expect(Math.abs((textAlignSelf03.right - textAlignSelf03.left) - vp2px(150)) <= 1).assertTrue()
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
-      expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End");
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
+      expect(JSON.parse(strJson2).$attrs.alignSelf).assertEqual("ItemAlign.End");
       console.info('new testFlexItemAlignStretchSetAlignSelf END');
 
     });

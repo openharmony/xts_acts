@@ -68,9 +68,9 @@ export default function flex_Wrap_DisplayPriorityTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_DisplayPriority03');
       let flexContainer: RectValue = CommonFunc.getComponentRect('FlexWrap_DisplayPriority_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexWrap_DisplayPriority_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs(firstText.left - flexContainer.left) <= 1).assertTrue();
       expect(Math.abs(firstText.right - secondText.left) <= 1).assertTrue();

@@ -61,7 +61,7 @@ export default function flexBase_EndJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
+
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
@@ -80,8 +80,8 @@ export default function flexBase_EndJsunit() {
       expect(Math.abs(textFlex01.right - textFlex01.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textFlex02.right - textFlex02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textFlex03.right - textFlex03.left - Math.round(vp2px(150))) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEnd END');
 
     });
@@ -101,7 +101,7 @@ export default function flexBase_EndJsunit() {
       });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
+
       let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
       let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
       let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
@@ -119,8 +119,8 @@ export default function flexBase_EndJsunit() {
       expect(Math.abs(textFlex02.right - textFlex02.left - Math.round(vp2px(140))) <= 1).assertTrue()
       expect(Math.abs(textFlex03.right - textFlex03.left - Math.round(vp2px(140))) <= 1).assertTrue()
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndExceed END');
 
     });

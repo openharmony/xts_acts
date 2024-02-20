@@ -53,7 +53,7 @@ export default function flexHeightModify_AutoJsunit() {
     it('testFlexItemAlignAutoTextHeiCheck', 0, async () => {
       console.info('new testFlexItemAlignAutoTextHeiCheck START');
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
+
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
@@ -72,8 +72,8 @@ export default function flexHeightModify_AutoJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue();
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoTextHeiCheck END');
 
     });
@@ -90,7 +90,7 @@ export default function flexHeightModify_AutoJsunit() {
       })
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
+
       let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
       let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
       let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
@@ -109,8 +109,8 @@ export default function flexHeightModify_AutoJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue();
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoTextHei END');
 
     });

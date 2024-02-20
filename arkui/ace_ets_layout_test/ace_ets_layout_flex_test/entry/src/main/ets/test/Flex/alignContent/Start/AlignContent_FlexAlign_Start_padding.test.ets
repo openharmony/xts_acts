@@ -63,7 +63,7 @@ export default function AlignContent_FlexAlign_Start_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexStartPadding_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexStart_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001_1');
       let AlignContentFlexStart_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001_2');
@@ -91,8 +91,8 @@ export default function AlignContent_FlexAlign_Start_padding() {
       expect(Math.abs(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left) - vp2px(150) <= 1).assertTrue();
       expect(Math.abs(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left) - vp2px(150) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
       expect(Math.abs(AlignContentFlexStart_1.top - AlignContentFlexStart_flex001.top) - vp2px(40) <= 1).assertTrue();
       expect(Math.abs(AlignContentFlexStart_flex001.bottom - AlignContentFlexStart_4.bottom) - vp2px(40) <= 1)
@@ -116,7 +116,7 @@ export default function AlignContent_FlexAlign_Start_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexStartPadding_flex001');
-      let obj = JSON.parse(strJson);
+
       let AlignContentFlexStartPadding_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001');
       let AlignContentFlexStart_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001_1');
       let AlignContentFlexStart_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexStartPadding_flex001_2');
@@ -143,8 +143,8 @@ export default function AlignContent_FlexAlign_Start_padding() {
       expect(Math.abs(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left) - vp2px(150) <= 1).assertTrue();
       expect(Math.abs(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left) - vp2px(150) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
       expect(Math.abs(AlignContentFlexStart_4.top - AlignContentFlexStart_2.bottom) <= 1).assertTrue();
       expect(Math.abs(AlignContentFlexStart_1.top - AlignContentFlexStartPadding_flex002.top) - vp2px(15) <= 1)

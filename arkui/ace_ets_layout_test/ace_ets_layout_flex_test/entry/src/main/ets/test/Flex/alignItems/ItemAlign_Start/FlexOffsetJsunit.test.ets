@@ -52,7 +52,7 @@ export default function flexOffset_StartJsunit() {
     it('testFlexItemAlignStartSetOffset', 0, async () => {
       console.info('new testFlexItemAlignStartSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1 = JSON.parse(strJson1);
+
       let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
       let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
       let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');
@@ -71,8 +71,8 @@ export default function flexOffset_StartJsunit() {
       expect(Math.abs((textOffset02.right - textOffset02.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((textOffset03.right - textOffset03.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartSetOffset END');
 
     });

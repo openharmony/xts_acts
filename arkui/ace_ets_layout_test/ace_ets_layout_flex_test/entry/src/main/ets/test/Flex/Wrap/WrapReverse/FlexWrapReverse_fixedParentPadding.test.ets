@@ -64,10 +64,10 @@ export default function flexWrapReverse_fixedParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest10');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest28');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest29');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest30');
@@ -109,10 +109,10 @@ export default function flexWrapReverse_fixedParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest10');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest28');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest29');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest30');
@@ -154,10 +154,10 @@ export default function flexWrapReverse_fixedParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest10');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest28');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest29');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest30');

@@ -66,12 +66,11 @@ export default function AlignContent_Center_FlexP_Fixed_Visibility() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('AlignContent_Center_FlexP_Fixed_Visibility_flex001');
-      let obj = JSON.parse(strJson);
+
       let textStrJson = getInspectorByKey('AlignContent_Center_FlexP_Fixed_Visibility_1');
-      let textObj = JSON.parse(textStrJson);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
-      console.info('Text1 textObj.$attrs is:' + JSON.stringify(textObj.$attrs));
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
+      console.info('Text1 textObj.$attrs is:' + JSON.stringify(JSON.parse(textStrJson).$attrs));
       let AlignContentFlexCenter_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_Center_FlexP_Fixed_Visibility_flex001');
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContent_Center_FlexP_Fixed_Visibility_2');
       let AlignContentFlexCenter_3: RectValue = CommonFunc.getComponentRect('AlignContent_Center_FlexP_Fixed_Visibility_3');
@@ -94,9 +93,9 @@ export default function AlignContent_Center_FlexP_Fixed_Visibility() {
       expect(Math.abs((AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
-      expect(textObj.$attrs.visibility).assertEqual("Visibility.Hidden");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(textStrJson).$attrs.visibility).assertEqual("Visibility.Hidden");
 
       expect(Math.abs((AlignContentFlexCenter_flex001.bottom - AlignContentFlexCenter_4.bottom) - (AlignContentFlexCenter_3.top - AlignContentFlexCenter_flex001.top)) <= 1)
         .assertTrue();
@@ -126,9 +125,8 @@ export default function AlignContent_Center_FlexP_Fixed_Visibility() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContent_Center_FlexP_Fixed_Visibility_flex001');
-      let obj = JSON.parse(strJson);
+
       let textStrJson = getInspectorByKey('AlignContent_Center_FlexP_Fixed_Visibility_1');
-      let textObj = JSON.parse(textStrJson);
       let AlignContentFlexCenter_flex002: RectValue = CommonFunc.getComponentRect('AlignContent_Center_FlexP_Fixed_Visibility_flex001');
 
       let AlignContentFlexCenter_2: RectValue = CommonFunc.getComponentRect('AlignContent_Center_FlexP_Fixed_Visibility_2');
@@ -153,9 +151,9 @@ export default function AlignContent_Center_FlexP_Fixed_Visibility() {
       expect(Math.abs((AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - vp2px(150)) <= 1).assertTrue();
 
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
-      expect(textObj.$attrs.visibility).assertEqual("Visibility.None");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(textStrJson).$attrs.visibility).assertEqual("Visibility.None");
 
       expect(Math.abs((AlignContentFlexCenter_flex002.bottom - AlignContentFlexCenter_4.bottom) - (AlignContentFlexCenter_3.top - AlignContentFlexCenter_flex002.top)) <= 1)
         .assertTrue();

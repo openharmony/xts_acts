@@ -64,7 +64,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyMargin&padding_flex001');
-      let obj = JSON.parse(strJson);
+
       let SpaceEvenly_Margin_Column_1: RectValue =
       CommonFunc.getComponentRect('AlignContentFlexSpaceEvenlyMargin&paddingColumn_1');
       let AlignContentFlexSpaceEvenly_flex001: RectValue = CommonFunc
@@ -112,8 +112,8 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin_padding() {
       expect(Math.abs(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_2.bottom) <= 1).assertTrue();
       expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom).assertLess(vp2px(40));
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
 
       console.info('testAlignContentSpaceEvenlyFlexMarginAndPaddingNOSatisfy END');
 
@@ -133,7 +133,7 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin_padding() {
       })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexSpaceEvenlyMargin&padding_flex001');
-      let obj = JSON.parse(strJson);
+
       let SpaceEvenly_Margin_Column_2: RectValue = CommonFunc
         .getComponentRect('AlignContentFlexSpaceEvenlyMargin&paddingColumn_1');
       let AlignContentFlexSpaceEvenly_flex002: RectValue = CommonFunc
@@ -176,8 +176,8 @@ export default function AlignContent_FlexAlign_SpaceEvenly_Margin_padding() {
         .assertTrue();
 
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
 
       expect(Math.abs((AlignContentFlexSpaceEvenly_flex002.top - SpaceEvenly_Margin_Column_2.top) - vp2px(10)) <= 1)
         .assertTrue();

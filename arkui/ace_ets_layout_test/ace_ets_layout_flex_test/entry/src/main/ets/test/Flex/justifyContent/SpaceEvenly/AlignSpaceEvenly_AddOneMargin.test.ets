@@ -59,10 +59,10 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneMargin_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
       let SpaceEvenly_AddOneMargin_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_011');
       let SpaceEvenly_AddOneMargin_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_012');
       let SpaceEvenly_AddOneMargin_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_013');
@@ -107,10 +107,10 @@ export default function AlignSpaceEvenly_AddOneMargin() {
       });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOneMargin_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
       let SpaceEvenly_AddOneMargin_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_011');
       let SpaceEvenly_AddOneMargin_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_012');
       let SpaceEvenly_AddOneMargin_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOneMargin_013');

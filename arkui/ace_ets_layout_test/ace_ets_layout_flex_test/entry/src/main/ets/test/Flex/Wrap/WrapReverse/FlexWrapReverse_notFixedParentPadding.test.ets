@@ -67,11 +67,11 @@ export default function flexWrapReverse_notFixedParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest4');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      //expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      //expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest10');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest11');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest12');
@@ -115,10 +115,10 @@ export default function flexWrapReverse_notFixedParentPadding() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexWrapReverseTest4');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.WrapReverse');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
       let locationText1: RectValue = CommonFunc.getComponentRect('WrapReverseTest10');
       let locationText2: RectValue = CommonFunc.getComponentRect('WrapReverseTest11');
       let locationText3: RectValue = CommonFunc.getComponentRect('WrapReverseTest12');

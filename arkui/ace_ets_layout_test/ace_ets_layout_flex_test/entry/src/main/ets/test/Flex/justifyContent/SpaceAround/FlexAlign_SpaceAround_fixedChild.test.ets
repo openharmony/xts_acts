@@ -64,11 +64,11 @@ export default function flexAlign_SpaceAround_fixedChild() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceAround1');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround2');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround3');
@@ -110,11 +110,11 @@ export default function flexAlign_SpaceAround_fixedChild() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('FlexAlignSpaceAround1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
       let locationText1: RectValue = CommonFunc.getComponentRect('AlignSpaceAround1');
       let locationText2: RectValue = CommonFunc.getComponentRect('AlignSpaceAround2');
       let locationText3: RectValue = CommonFunc.getComponentRect('AlignSpaceAround3');

@@ -63,11 +63,10 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_flex001');
-      let obj = JSON.parse(strJson);
+
       let strJsonText1 = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_1');
-      let objText1 = JSON.parse(strJsonText1);
-      console.info('flex [getInspectorByKey] is:' + JSON.stringify(obj));
-      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(obj.$attrs.constructor));
+      console.info('flex [getInspectorByKey] is:' + JSON.stringify(JSON.parse(strJson)));
+      console.info('flex obj.$attrs.constructor is:' + JSON.stringify(JSON.parse(strJson).$attrs.constructor));
       let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_flex001');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_2');
       let AlignContentFlexEnd_3: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_3');
@@ -95,9 +94,9 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
         .assertTrue();
 
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
-      expect(objText1.$attrs.visibility).assertEqual("Visibility.Hidden");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJsonText1).$attrs.visibility).assertEqual("Visibility.Hidden");
 
       expect(Math.abs(Math.round(AlignContentFlexEnd_flex001.bottom) - Math.round(AlignContentFlexEnd_4.bottom)) <= 1)
         .assertTrue();
@@ -131,9 +130,8 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_flex001');
-      let obj = JSON.parse(strJson);
+
       let strJsonText1 = getInspectorByKey('AlignContent_End_FlexP_Fixed_Visibility_1');
-      let objText1 = JSON.parse(strJsonText1);
       let AlignContentFlexEnd_flex002: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_flex001');
       let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_1');
       let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContent_End_FlexP_Fixed_Visibility_2');
@@ -165,9 +163,9 @@ export default function AlignContent_End_FlexP_Fixed_Visibility() {
         .assertTrue();
 
 
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
-      expect(objText1.$attrs.visibility).assertEqual("Visibility.None");
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJsonText1).$attrs.visibility).assertEqual("Visibility.None");
 
       expect(AlignContentFlexEnd_flex002.bottom).assertEqual(AlignContentFlexEnd_4.bottom);
       expect(AlignContentFlexEnd_2.top).assertEqual(AlignContentFlexEnd_3.top);

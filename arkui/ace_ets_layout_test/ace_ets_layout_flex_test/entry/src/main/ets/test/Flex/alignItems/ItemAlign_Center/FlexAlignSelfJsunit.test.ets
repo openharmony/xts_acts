@@ -54,9 +54,9 @@ export default function flexAlignSelf_CenterJsunit() {
     it('testFlexItemAlignCenterSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignCenterSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1 = JSON.parse(strJson1);
+
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2 = JSON.parse(strJson2);
+
       let alignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
       let alignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
       let alignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');
@@ -72,9 +72,9 @@ export default function flexAlignSelf_CenterJsunit() {
         .assertTrue()
       expect(Math.abs(alignSelf03.top - flexAlignSelf01.top - (flexAlignSelf01.bottom - alignSelf03.bottom)) <= 1)
         .assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
-      expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End");
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
+      expect(JSON.parse(strJson2).$attrs.alignSelf).assertEqual("ItemAlign.End");
       expect(Math.abs(alignSelf03.right - alignSelf03.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(alignSelf02.right - alignSelf02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(flexAlignSelf01.right - alignSelf03.right - Math.round(vp2px(50))) <= 1).assertTrue()

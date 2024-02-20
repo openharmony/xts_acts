@@ -66,9 +66,9 @@ export default function flex_Wrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs((firstText.right) - (secondText.left)) <= 1).assertTrue();
       expect(Math.abs((secondText.right) - (thirdText.left)) <= 1).assertTrue();
@@ -113,9 +113,9 @@ export default function flex_Wrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
@@ -161,9 +161,9 @@ export default function flex_Wrap_FlexSizeTest() {
       let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_flexSize_Text3');
       let flexContainer: RectValue = CommonFunc.getComponentRect('Wrap_FlexSize_Container01');
       let flexContainerStrJson = getInspectorByKey('Wrap_FlexSize_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
