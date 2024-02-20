@@ -12,12 +12,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 import { Value } from './Value';
 
 export default class GlobalContext {
   private constructor() {}
   private static instance: GlobalContext;
-  private _objects = new Map<string, Object>();
+  private static _objects = new Map<string, Object>();
 
   public static getContext(): GlobalContext {
     if (!GlobalContext.instance) {
@@ -27,10 +28,10 @@ export default class GlobalContext {
   }
 
   getObject<T>(value: string): Value<T> {
-    return this._objects.get(value) as Value<T>;
+    return GlobalContext._objects.get(value) as Value<T>;
   }
 
-  setObject(key: string, objectClass: Object): void {
-    this._objects.set(key, objectClass);
+  setObject<T>(key: string, objectClass: T): void {
+    GlobalContext._objects.set(key, objectClass);
   }
 }
