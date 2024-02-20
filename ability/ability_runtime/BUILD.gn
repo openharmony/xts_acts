@@ -41,6 +41,7 @@ group("ability_runtime") {
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
       "actsstartrunnertest:ActsStartRunnerTest",
+      "actsstartupruleoptimizetest:actsstartupruleoptimizetest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",
       "actssystemapitest:ActsSystemAPITest",
