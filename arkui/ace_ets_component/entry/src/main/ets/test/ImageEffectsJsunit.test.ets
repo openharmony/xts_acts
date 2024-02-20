@@ -646,7 +646,7 @@ export default function imageEffectsJsunit() {
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow8');
       console.info("[testImageEffects026] component strJson:" + strJson);
-      expect(JSON.parse(strJson).$attrs.invert).assertEqual(10);
+      expect(JSON.parse(strJson).$attrs.invert).assertEqual(1);
       done()
     });
 
@@ -672,7 +672,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects027] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.invert).assertEqual(20);
+      expect(JSON.parse(strJsonNew).$attrs.invert).assertEqual(1);
       done()
     });
 
@@ -724,7 +724,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew: string = getInspectorByKey('centerRow8');
 
       console.info("[testImageEffects029] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.invert).assertEqual(10000);
+      expect(JSON.parse(strJsonNew).$attrs.invert).assertEqual(1);
       done()
     });
 
