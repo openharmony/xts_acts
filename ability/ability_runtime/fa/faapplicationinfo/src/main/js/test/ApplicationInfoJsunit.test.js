@@ -48,8 +48,8 @@ describe('ApplicationInfoTest', function () {
         var formData = formBindingData.createFormBindingData(dataObj)
         console.info(TAG + " result is : " + JSON.stringify(formData))
 
-        let formDataStr  = JSON.stringify(formData.data);
-        let formDataStrToObj = JSON.parse(formDataStr);
+        let formDataStrToObj = formData.data;
+        console.info(TAG + " formDataStrToObj0 is : " + typeof formDataStrToObj + formDataStrToObj)
         if (typeof(formDataStrToObj) == "string" ) {
             console.info(TAG + " formDataStrToObj1 is : " + typeof formDataStrToObj)
             let formDataStrToObj2 = JSON.parse(formDataStrToObj)

@@ -344,7 +344,7 @@ export default function SecurityCryptoFwAgreementDHTestUnit() {
       let testNumber: string = "SUB_Security_CryptoFramework_Agreement_DH_Func_1300";
       console.log(testNumber + ": started.");
       let param: string = "DH";
-      let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(1024, 256);
+      let spec: cryptoFramework.AsyKeySpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(512, 128);
       try {
         let res: boolean = await agreementAsyPromiseFunc.normalProcess(param, spec);
         expect(res).assertTrue();
@@ -375,6 +375,29 @@ export default function SecurityCryptoFwAgreementDHTestUnit() {
         console.log(testNumber + ": agreement succeed");
       } catch (err) {
         console.error(testNumber + ` catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Agreement_DH_Func_1500
+     * @tc.name Test Agreement algName with dh. Process success
+     * @tc.desc create Agreement by DH_modp1536
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Agreement_DH_Func_1500", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Agreement_DH_Func_1500";
+      console.log(testNumber + ": started");
+      let agreementAlg: string = "DH_modp1536";
+      try {
+        let agreement: cryptoFramework.KeyAgreement = cryptoFramework.createKeyAgreement(agreementAlg);
+        expect(agreement.algName == agreementAlg).assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
         expect(null).assertFail();
       }
       console.log(testNumber + ": succeed");

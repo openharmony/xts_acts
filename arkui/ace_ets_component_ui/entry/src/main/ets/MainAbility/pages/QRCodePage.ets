@@ -45,6 +45,7 @@ struct QRCodePage {
 
   build() {
     Column({ space: 5 }) {
+      Text(this.text).fontSize(20).key('text')
       Text('normal').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(200).height(200).key('qr')
         .onClick((event: ClickEvent) => {
@@ -59,7 +60,6 @@ struct QRCodePage {
       // 设置二维码背景色
       Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(200).height(200).backgroundColor(this.backColor).key('qr2')
-      Text(this.text).fontSize(20).margin(10).key('text')
 
       QRCode(this.value).width(200).height(200)
         .color($r('sys.color.ohos_id_color_foreground'))

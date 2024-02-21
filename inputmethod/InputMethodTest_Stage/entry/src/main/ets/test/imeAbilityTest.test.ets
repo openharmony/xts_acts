@@ -43,23 +43,29 @@ export default function imeAbilityTest(abilityContext) {
      */
     afterAll(async function (done) {
       console.info('====>afterAll: switchInputMethod to origionInput.' + JSON.stringify(prop));
-      await inputMethod.switchInputMethod(prop).then((data)=>{
-        console.info('====>afterAll switchInputMethod to origionInput :' + data);
-        expect(data == true).assertTrue();
+      try {
+        await inputMethod.switchInputMethod(prop).then((data)=>{
+          console.info('====>afterAll switchInputMethod to origionInput :' + data);
+          done();
+        }).catch(err =>{
+          console.info('====>afterAll switchInputMethod to origionInput error: ' + err);
+          done();
+        })
+      } catch (err) {
+        console.info(`====>afterAll switchInputMethod: ${JSON.stringify(err)}`);
         done();
-      }).catch(err =>{
-        console.info('====>afterAll switchInputMethod to origionInput error: ' + err);
-        done();
-      })
+      }
+
     });
 
-    /**
-     * @tc.number    SUB_InputMethod_IMEAbility_0001
-     * @tc.desc      Start a inputMethodExtension ability session.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
+    /*
+    * @tc.number  SUB_InputMethod_IMEAbility_0001
+    * @tc.name   SUB_InputMethod_IMEAbility_0001
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_InputMethod_IMEAbility_0001', 0, async function (done) {
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
       let imExtAbilityProperty = {
@@ -69,11 +75,14 @@ export default function imeAbilityTest(abilityContext) {
         id:"com.acts.imeability.test.ImExtAbility",
         extra:{}
       }
-
-      inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to IME :' + data);
-        expect(data == true).assertTrue();
-      });
+      try {
+        inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+          console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to IME :' + data);
+          expect(data == true).assertTrue();
+        });
+      } catch (err) {
+        console.info(`====>SUB_InputMethod_IMEAbility_0001 err: ${JSON.stringify(err)}`);
+      }
       let t = setTimeout(() => {
         console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------' + t);
         clearTimeout(t);
@@ -81,13 +90,14 @@ export default function imeAbilityTest(abilityContext) {
       }, 500);
     })
 
-    /**
-     * @tc.number    SUB_InputMethod_IMEAbility_0002
-     * @tc.desc      Start a inputMethodExtension ability session
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
+    /*
+    * @tc.number  SUB_InputMethod_IMEAbility_0002
+    * @tc.name   SUB_InputMethod_IMEAbility_0002
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_InputMethod_IMEAbility_0002', 0, async function (done) {
       console.info('====>-----------SUB_InputMethod_IMEAbility_0002 start-------------');
 
@@ -99,12 +109,16 @@ export default function imeAbilityTest(abilityContext) {
         extra:{}
       }
 
-      inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
-        console.info('====>SUB_InputMethod_IMEAbility_0002 switchInputMethod to IME :' + data);
-        expect(data == true).assertTrue();
-      });
+      try {
+        inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+          console.info('====>SUB_InputMethod_IMEAbility_0002 switchInputMethod to IME :' + data);
+          expect(data == true).assertTrue();
+        });
+      } catch (err) {
+        console.info(`====>SUB_InputMethod_IMEAbility_0002 err: ${JSON.stringify(err)}`);
+      }
       let t = setTimeout(() => {
-        console.info('====>----------SUB_InputMethod_IMEAbility_0001 end-------------' + t);
+        console.info('====>----------SUB_InputMethod_IMEAbility_0002 end-------------' + t);
         clearTimeout(t);
         done();
       }, 500);

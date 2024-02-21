@@ -97,11 +97,11 @@ export default function ConsumeColor() {
       let button = await driver.findComponent(ON.id('state3'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('state3');
+      let strJson = getInspectorByKey('ConsumeColor');
       let obj = JSON.parse(strJson);
       console.info("[ConsumeColor_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('count type of "[object Undefined]" number is undefined');
       console.info('[ConsumeColor_0100] END');
       done();
     });
@@ -122,7 +122,7 @@ export default function ConsumeColor() {
       let obj = JSON.parse(strJson);
       console.info("[ConsumeColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FFA52A2A');
       console.info('[ConsumeColor_0100] END');
       done();
     });
@@ -139,11 +139,11 @@ export default function ConsumeColor() {
       let button = await driver.findComponent(ON.id('state5'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('state5');
+      let strJson = getInspectorByKey('ConsumeColor');
       let obj = JSON.parse(strJson);
       console.info("[ConsumeColor_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.content));
+      expect(obj.$attrs.content).assertEqual('count type of "[object Null]" number is null');
       console.info('[ConsumeColor_0100] END');
       done();
     });
@@ -164,7 +164,7 @@ export default function ConsumeColor() {
       let obj = JSON.parse(strJson);
       console.info("[ConsumeColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ConsumeColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF007DFF');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');
       console.info('[ConsumeColor_0100] END');
       done();
     });

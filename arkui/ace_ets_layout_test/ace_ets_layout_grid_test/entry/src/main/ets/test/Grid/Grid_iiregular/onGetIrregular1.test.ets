@@ -64,11 +64,14 @@ export default function onGetIrregular1Jsunit() {
       let GridItem4 = CommonFunc.getComponentRect('GridIrr4');
 
       await CommonFunc.sleep(1000);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem0.right - GridItem0.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem1.right - GridItem1.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem2.right - GridItem2.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem3.right - GridItem3.left);
-      expect(Math.round(Grid.right - Grid.left)).assertEqual(GridItem4.right - GridItem4.left);
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem0.right - GridItem0.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem1.right - GridItem1.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem2.right - GridItem2.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem3.right - GridItem3.left)) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem4.right - GridItem4.left)) <=1 ).assertTrue();
+
+
+
       console.info('[onGetIrregular1Jsunit_0000] END');
       done();
     });

@@ -31,7 +31,35 @@ describe("TreeMapTest", function () {
       expect(err.message).assertEqual("The TreeMap's constructor cannot be directly invoked");
     }
   });
-                            
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TREEMAP_01000
+   * @tc.name: testConstructor002
+   * @tc.desc: Create an TreeMap instance and use Compare. For example: TreeMap((a, b) => {return a > b}).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testConstructor002", 0, function () {
+    try {
+      let treeMap = new TreeMap((a, b) => {return a > b});
+      expect(treeMap != undefined).assertEqual(true);
+      treeMap.set("a", 1);
+      treeMap.set("c", 3);
+      treeMap.set("d", 4);
+      treeMap.set("b", 2);
+      expect(treeMap.length).assertEqual(4);
+      expect(treeMap.remove("a")).assertEqual(1);
+      expect(treeMap.remove("b")).assertEqual(2);
+      expect(treeMap.remove("c")).assertEqual(3);
+      expect(treeMap.remove("d")).assertEqual(4);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The TreeMap's constructor cannot be directly invoked");
+    }
+  });
+
   /**
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, "四").

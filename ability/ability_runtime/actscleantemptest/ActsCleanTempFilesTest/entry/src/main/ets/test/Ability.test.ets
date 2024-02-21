@@ -92,6 +92,8 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0102 event call');
           expect(data.parameters.message).assertEqual(0);
           expect(data.parameters.secondMessage).assertEqual(0);
+          expect(data.parameters.files).assertEqual(0);
+          expect(data.parameters.secFiles).assertEqual(0);
           msg['ACTS_RegisterEvent_Second'] = true;
         } else if (data.event == 'Acts_CleanTempFiles_0103') {
           console.log('Acts_CleanTempFiles_0103 event call');
@@ -100,6 +102,7 @@ export default function abilityTest() {
         } else if (data.event == 'Acts_CleanTempFiles_0104') {
           console.log('Acts_CleanTempFiles_0104 event call');
           expect(data.parameters.result).assertEqual(0);
+          expect(data.parameters.files).assertEqual(0);
           msg['ACTS_RegisterEvent_Fourth'] = true;
         }
         if (msg['ACTS_RegisterEvent_First'] == true && msg['ACTS_RegisterEvent_Second'] == true &&
@@ -180,8 +183,8 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0203 call');
           expect(data.parameters.message).assertEqual('Try to write feature str.');
           msg['ACTS_RegisterEvent_Third'] = true;
-          let pkillCmd = 'pkill -f com.acts.cleancachefilesreply';
-          abilityDelegator.executeShellCommand(pkillCmd, (err, res) => {
+          let stop = 'aa force-stop com.acts.cleancachefilesreply';
+          abilityDelegator.executeShellCommand(stop, (err, res) => {
             console.log('Acts_CleanTempFiles_0200 pkill err: ' + JSON.stringify(err) + ' data: ' + JSON.stringify(res));
           })
         } else if (data.event == 'Acts_CleanTempFiles_0204') {

@@ -23,7 +23,7 @@ export default function muslApplicationTargetSdkVersionNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_APPLICATIONTARGETSDKVERSION_GETAPPLICATIONTARGETSDKVERSION_0100
      * @tc.name       : testMuslApplicationTargetSdkVersionGetApplicationTargetSdkVersion001
      * @tc.desc       : get_device_api_version
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

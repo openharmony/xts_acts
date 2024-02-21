@@ -46,7 +46,7 @@ struct P1 {
             const onListenerEvent = 'ACTS_AdComponent_OnListener';
             const options = {
               parameters: {
-                'result': data
+                'result': status
               }
             }
             setTimeout(async () => {

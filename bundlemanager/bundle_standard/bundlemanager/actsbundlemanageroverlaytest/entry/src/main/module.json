@@ -7,7 +7,8 @@
         "mainElement": "ohos.acts.bundle.overlay.test.MainAbility",
         "deviceTypes": [
             "default",
-            "tablet"
+            "tablet",
+            "2in1"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,

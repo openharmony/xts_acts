@@ -23,7 +23,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOENT_0100
      * @tc.name       : testMuslNetDbGetProtoEnt001
      * @tc.desc       : test getprotoent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOBYNAME_0100
      * @tc.name       : testMuslNetDbGetProtoByName001
      * @tc.desc       : test getprotobyname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -51,7 +51,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOBYNAME_0200
      * @tc.name       : testMuslNetDbGetProtoByName002
      * @tc.desc       : test getprotobynumber
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -65,7 +65,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOBYNAME_0300
      * @tc.name       : testMuslNetDbGetProtoByName003
      * @tc.desc       : test getprotobyname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -79,7 +79,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOBYNUMBER_0100
      * @tc.name       : testMuslNetDbGetProtoByNumber001
      * @tc.desc       : test getprotobynumber
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -93,7 +93,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOBYNUMBER_0200
      * @tc.name       : testMuslNetDbGetProtoByNumber002
      * @tc.desc       : test getprotobynumber
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -107,7 +107,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETSERVBYNAME_0100
      * @tc.name       : testMuslNetDbGetServByName001
      * @tc.desc       : test getservbyname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -121,7 +121,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETSERVBYPORT_0100
      * @tc.name       : testMuslNetDbGetServByPort001
      * @tc.desc       : test getservbyport
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -135,7 +135,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYADDR_R_0100
      * @tc.name       : testMuslNetDbGetHostByAddrR001
      * @tc.desc       : test gethostbyaddr_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -149,7 +149,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNAMEINFO_0100
      * @tc.name       : testMuslNetDbGetNameInfo001
      * @tc.desc       : test getnameinfo
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -163,7 +163,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTENT_0100
      * @tc.name       : testMuslNetDbGetHostEnt001
      * @tc.desc       : test gethostent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -177,7 +177,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETSERVENT_0100
      * @tc.name       : testMuslNetDbGetServEnt001
      * @tc.desc       : test getservent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -191,7 +191,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNETENT_0100
      * @tc.name       : testMuslNetDbGetNetEnt001
      * @tc.desc       : test getnetent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -205,7 +205,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNETBYADDR_0100
      * @tc.name       : testMuslNetDbGetNetByAddr001
      * @tc.desc       : test getnetbyaddr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -219,7 +219,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNETBYNAME_0100
      * @tc.name       : testMuslNetDbGetNetByName001
      * @tc.desc       : test getnetbyname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -233,7 +233,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYADDR_0100
      * @tc.name       : testMuslNetDbGetHostByAddr001
      * @tc.desc       : test gethostbyaddr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -247,7 +247,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYNAMER_0100
      * @tc.name       : testMuslNetDbGetHostByNameR001
      * @tc.desc       : test gethostbyname_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -261,7 +261,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYNAME2_0100
      * @tc.name       : testMuslNetDbGetHostByName2001
      * @tc.desc       : test gethostbyname2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -275,7 +275,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYNAME2_R_0100
      * @tc.name       : testMuslNetDbGetHostByName2R001
      * @tc.desc       : test gethostbyname2_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -289,7 +289,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_HSTRERROR_0100
      * @tc.name       : testMuslNetDbHstrerror001
      * @tc.desc       : test hstrerror
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -303,7 +303,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_HERROR_0100
      * @tc.name       : testMuslNetDbHerror001
      * @tc.desc       : test herror
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -317,7 +317,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETHOSTBYNAME_0100
      * @tc.name       : testMuslNetDbGetHostByName001
      * @tc.desc       : test getservbyport
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -332,7 +332,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_SETHOSTENT_0100
      * @tc.name       : testMuslNetdbSethostent001
      * @tc.desc       : test sethostent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -346,7 +346,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_SETNETENT_0100
      * @tc.name       : testMuslNetdbSetnetent001
      * @tc.desc       : test setnetent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -360,7 +360,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_SETPROTOENT_0100
      * @tc.name       : testMuslNetdbSetprotoent001
      * @tc.desc       : test setprotoent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -374,7 +374,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_SETSERVENT_0100
      * @tc.name       : testMuslNetdbSetservent001
      * @tc.desc       : test setservent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -388,7 +388,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_ENDSERVENT_0100
      * @tc.name       : testMuslNetdbEndServEnt001
      * @tc.desc       : test endservent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -401,7 +401,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_ENDPROTOENT_0100
      * @tc.name       : testMuslNetdbEndProToEnt001
      * @tc.desc       : test endprotoent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -414,7 +414,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_ENDNETENT_0100
      * @tc.name       : testMuslNetdbEndNetEnt001
      * @tc.desc       : test endnetent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -427,7 +427,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_ENDHOSTENT_0100
      * @tc.name       : testMuslNetdbEndHostEnt001
      * @tc.desc       : test endhostent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -440,7 +440,7 @@ export default function muslNetdbNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GAI_STRERROR_0100
      * @tc.name       : testMuslNetDbGaiStrerror001
      * @tc.desc       : test gai_strerror
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -455,7 +455,7 @@ export default function muslNetdbNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_FREEADDRINFO_0100
     * @tc.name       : testMuslNetdbFreeaddrinfo001
     * @tc.desc       : test freeaddrinfo
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -469,7 +469,7 @@ export default function muslNetdbNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETADDRINFO_0100
     * @tc.name       : testMuslNetdbGetaddrinfo001
     * @tc.desc       : test getaddrinfo
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */

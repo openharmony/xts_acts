@@ -144,10 +144,10 @@ export default async function SystemDisplayTest() {
 
         /**
          * @tc.number system_display_js_0203
-         * @tc.name set_value_success_value
+         * @tc.name set_value_undefined
          * @tc.desc Check undefined as input of setValue
          */
-        it('set_value_success_value', 0, async function (done) {
+        it('set_value_undefined', 0, async function (done) {
             brightness.setKeepScreenOn({
                 keepScreenOn: true,
                 success: function () {

@@ -321,6 +321,21 @@ export default class EntryAbility extends Ability {
       let count = 0;
       let isCallerRelease = false;
       let isCaller1Release = false;
+      let verifyResult = (str) => {
+        console.info('====>Acts_SingleInstanceCallFunction_0800 verify' + isCallerRelease +" "+ isCaller1Release);
+        if (isCallerRelease && isCaller1Release) {
+          let commonEventData = {
+            parameters: {
+              num: 2,
+              str: str
+            }
+          };
+          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+            console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
+            globalThis.terminate();
+          })
+        }
+      }
       console.info('====>Acts_SingleInstanceCallFunction_0800 entryability data:');
       this.context.startAbilityByCall({
         bundleName: 'com.acts.thirdpartyapprely',
@@ -338,6 +353,7 @@ export default class EntryAbility extends Ability {
               count++;
               isCaller1Release = true;
               receivedData1.num = count;
+              verifyResult(receivedData1.str);
             }
           })
           this.context.startAbilityByCall({
@@ -353,6 +369,7 @@ export default class EntryAbility extends Ability {
                   count++;
                   receivedData.num = count;
                   isCallerRelease = true;
+                  verifyResult(receivedData.str);
                   console.info('====>Acts_SingleInstanceCallFunction_0800 second onRelease:' + receivedData.str);
                 }
               })
@@ -361,24 +378,6 @@ export default class EntryAbility extends Ability {
               abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
                 console.info('====>Acts_SingleInstanceCallFunction_0800 pkillCmd err:' + JSON.stringify(err));
               })
-              setTimeout(()=>{
-                let resultNum = 0;
-                if (isCallerRelease && isCaller1Release) {
-                  resultNum = 2;
-                } else if (isCallerRelease || isCaller1Release) {
-                  resultNum = 1;
-                }
-                let commonEventData = {
-                  parameters: {
-                    num: resultNum,
-                    str: receivedData.str,
-                  }
-                };
-                commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-                  console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
-                  globalThis.terminate();
-                })
-              }, 1000)
             })
           })
         }).catch((err) => {

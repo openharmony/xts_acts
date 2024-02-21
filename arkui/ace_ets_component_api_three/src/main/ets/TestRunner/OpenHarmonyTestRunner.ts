@@ -14,10 +14,10 @@
  */
 import hilog from '@ohos.hilog';
 import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = undefined
+let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs = undefined
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
@@ -58,7 +58,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility';
+    let testAbilityName: string = abilityDelegatorArguments.bundleName + '.TestAbility';
     let lMonitor = {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,

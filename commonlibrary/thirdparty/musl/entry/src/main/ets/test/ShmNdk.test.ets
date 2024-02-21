@@ -23,7 +23,7 @@ export default function shmNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SHM_SHMGET_0100
      * @tc.name       : testMuslShmShmget001
      * @tc.desc       : test shmget
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +37,7 @@ export default function shmNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SHM_SHMCTL_0100
      * @tc.name       : testMuslShmShmctl001
      * @tc.desc       : test shmctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -50,7 +50,7 @@ export default function shmNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SHM_SHMAT_0100
      * @tc.name       : testMuslShmShmat001
      * @tc.desc       : test shmat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -63,7 +63,7 @@ export default function shmNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SHM_SHMDT_0100
      * @tc.name       : testMuslShmShmdt001
      * @tc.desc       : test shmdt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

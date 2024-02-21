@@ -18,13 +18,15 @@ config("nncore_config") {
   include_dirs = [
     "../common",
     "../../../../../../foundation/ai/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
     "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
   cflags_cc = [ "-fexceptions" ]
 }
 
-ohos_moduletest_suite("ActsEndtoendTest") {
+ohos_moduletest_suite("ActsNnrtE2ETest") {
   module_out_path = module_output_path
   sources = [
     "../common/mock_idevice.cpp",

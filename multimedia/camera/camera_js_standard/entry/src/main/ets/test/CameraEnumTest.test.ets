@@ -81,10 +81,26 @@ export default function cameraEnumTest() {
             expect(camera.CameraPosition.CAMERA_POSITION_UNSPECIFIED == 0).assertTrue();
             expect(camera.CameraPosition.CAMERA_POSITION_BACK == 1).assertTrue();
             expect(camera.CameraPosition.CAMERA_POSITION_FRONT == 2).assertTrue();
+            expect(camera.CameraPosition.CAMERA_POSITION_FOLD_INNER == 3).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100 ends here");
             done();
         })
 
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100
+         * @tc.name      : Camera ScenMode Eunm
+         * @tc.desc      : Camera ScenMode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100--------------");
+            expect(camera.SceneMode.NORMAL_PHOTO == 1).assertTrue();
+            expect(camera.SceneMode.NORMAL_VIDEO == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_SCENEMODE_0100 ends here");
+            done();
+        })
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100
@@ -138,6 +154,8 @@ export default function cameraEnumTest() {
             expect(camera.CameraFormat.CAMERA_FORMAT_RGBA_8888 == 3).assertTrue();
             expect(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP == 1003).assertTrue();
             expect(camera.CameraFormat.CAMERA_FORMAT_JPEG == 2000).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_YCBCR_P010 == 2001).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_YCRCB_P010 == 2002).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100 ends here");
             done();
         })
@@ -323,6 +341,24 @@ export default function cameraEnumTest() {
             expect(camera.CameraErrorCode.SERVICE_FATAL_ERROR == 7400201).assertTrue();
             console.info(TAG + "--------------SERVICE_FATAL_ERROR--------------");
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
+            done();
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100
+         * @tc.name      : test torchMode enum
+         * @tc.desc      : assert all torchMode
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_TORCH_0100', 0, async function (done) {
+            expect(camera.TorchMode.OFF == 0).assertTrue();
+            console.info(`${TAG} TorchMode.OFF: ${camera.TorchMode.OFF}`);
+            expect(camera.TorchMode.ON == 1).assertTrue();
+            console.info(`${TAG} TorchMode.ON: ${camera.TorchMode.ON}`);
+            expect(camera.TorchMode.AUTO == 2).assertTrue();
+            console.info(`${TAG} TorchMode.AUTO: ${camera.TorchMode.AUTO}`);
             done();
         })
 

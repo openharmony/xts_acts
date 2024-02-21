@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetVisibility_SubChange() {
-  describe('ColumnSetVisibilityTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetVisibility_SubChange',
+  describe('ColumnSetVisibilityTest', () => {
+    beforeAll(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetVisibility_SubChange',
       }
       try {
         router.clear();
@@ -37,134 +39,147 @@ export default function ColumnSetVisibility_SubChange() {
         console.error("push ColumnSetVisibility page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(3000);
       console.info("ColumnSetVisibility after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2000
-     * @tc.name      testColumnSetVisibilityNoneVisible
-     * @tc.desc      The subcomponents set visibility.none and visibility.visible.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2000
+     * @tc.name testColumnSetVisibilityNoneVisible
+     * @tc.desc The subcomponents set visibility.none and visibility.visible.
      */
-    it('testColumnSetVisibilityNoneVisible', 0, async function (done) {
+    it('testColumnSetVisibilityNoneVisible', 0, async () => {
       console.info('new testColumnSetVisibilityNoneVisible START');
-      try{
-            globalThis.value.message.notify({name:'testVisibility1', value:Visibility.None});
-            globalThis.value.message.notify({name:'testVisibility2', value:Visibility.Visible});
-            await CommonFunc.sleep(3000);
-            let strJson = getInspectorByKey('columnSetVisibility_1');
-            let obj = JSON.parse(strJson);
-            expect(obj.$attrs.visibility).assertEqual("Visibility.None");
-            let columnSetVisibility_1 = CommonFunc.getComponentRect('columnSetVisibility_1');
-            let columnSetVisibility_2 = CommonFunc.getComponentRect('columnSetVisibility_2');
-            let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
-            let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
-            expect(Math.abs(columnSetVisibility_1.bottom - columnSetVisibility_1.top) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility_1.right - columnSetVisibility_1.left) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility.top) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(120))) <= 1).assertTrue()
+      try {
+        globalThis.value.message.notify({
+          name: 'testVisibility1', value: Visibility.None
+        });
+        globalThis.value.message.notify({
+          name: 'testVisibility2', value: Visibility.Visible
+        });
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('columnSetVisibility_1');
+        let obj = JSON.parse(strJson);
+        expect(obj.$attrs.visibility).assertEqual("Visibility.None");
+        let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
+        let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
+        let columnSetVisibility_3: RectValue = CommonFunc.getComponentRect('columnSetVisibility_3');
+        let columnSetVisibility: RectValue = CommonFunc.getComponentRect('columnSetVisibility');
+        expect(Math.abs(columnSetVisibility_1.bottom - columnSetVisibility_1.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_1.right - columnSetVisibility_1.left) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1)
+          .assertTrue()
+        expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(120))) <= 1)
+          .assertTrue()
 
       } catch (err) {
         console.error('[testColumnSetVisibilityNoneVisible] failed');
         expect().assertFail();
       }
       console.info('new testColumnSetVisibilityNoneVisible END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2100
-     * @tc.name      testColumnSetVisibilityHiddenVisible
-     * @tc.desc      The subcomponents set visibility.hidden and visibility.visible.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2100
+     * @tc.name testColumnSetVisibilityHiddenVisible
+     * @tc.desc The subcomponents set visibility.hidden and visibility.visible.
      */
-    it('testColumnSetVisibilityHiddenVisible', 0, async function (done) {
+    it('testColumnSetVisibilityHiddenVisible', 0, async () => {
       console.info('new testColumnSetVisibilityHiddenVisible START');
-      try{
-            globalThis.value.message.notify({name:'testVisibility1', value:Visibility.Hidden});
-            globalThis.value.message.notify({name:'testVisibility2', value:Visibility.Visible});
-            await CommonFunc.sleep(3000);
-            let strJson = getInspectorByKey('columnSetVisibility_1');
-            let obj = JSON.parse(strJson);
-            expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden");
-            let columnSetVisibility_1 = CommonFunc.getComponentRect('columnSetVisibility_1');
-            let columnSetVisibility_2 = CommonFunc.getComponentRect('columnSetVisibility_2');
-            let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
-            let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
-            expect(Math.abs(columnSetVisibility.top - columnSetVisibility_1.top) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
+      try {
+        globalThis.value.message.notify({
+          name: 'testVisibility1', value: Visibility.Hidden
+        });
+        globalThis.value.message.notify({
+          name: 'testVisibility2', value: Visibility.Visible
+        });
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('columnSetVisibility_1');
+        let obj = JSON.parse(strJson);
+        expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden");
+        let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
+        let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
+        let columnSetVisibility_3: RectValue = CommonFunc.getComponentRect('columnSetVisibility_3');
+        let columnSetVisibility: RectValue = CommonFunc.getComponentRect('columnSetVisibility');
+        expect(Math.abs(columnSetVisibility.top - columnSetVisibility_1.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
       } catch (err) {
         console.error('[testColumnSetVisibilityHiddenVisible] failed');
         expect().assertFail();
       }
       console.info('new testColumnSetVisibilityHiddenVisible END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2200
-     * @tc.name      testColumnSetVisibilityVisible
-     * @tc.desc      The subcomponents both set visibility.visible.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2200
+     * @tc.name testColumnSetVisibilityVisible
+     * @tc.desc The subcomponents both set visibility.visible.
      */
-    it('testColumnSetVisibilityVisible', 0, async function (done) {
+    it('testColumnSetVisibilityVisible', 0, async () => {
       console.info('new testColumnSetVisibilityVisible START');
-      try{
-          globalThis.value.message.notify({name:'testVisibility1', value:Visibility.Visible});
-          globalThis.value.message.notify({name:'testVisibility2', value:Visibility.Visible});
-          await CommonFunc.sleep(3000);
-          let strJson = getInspectorByKey('columnSetVisibility_1');
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
-          let columnSetVisibility_1 = CommonFunc.getComponentRect('columnSetVisibility_1');
-          let columnSetVisibility_2 = CommonFunc.getComponentRect('columnSetVisibility_2');
-          let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
-          let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
-         expect(Math.abs(columnSetVisibility.top - columnSetVisibility_1.top) <= 1).assertTrue()
-         expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-         expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-         expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
+      try {
+        globalThis.value.message.notify({
+          name: 'testVisibility1', value: Visibility.Visible
+        });
+        globalThis.value.message.notify({
+          name: 'testVisibility2', value: Visibility.Visible
+        });
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('columnSetVisibility_1');
+        let obj = JSON.parse(strJson);
+        expect(obj.$attrs.visibility).assertEqual("Visibility.Visible");
+        let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
+        let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
+        let columnSetVisibility_3: RectValue = CommonFunc.getComponentRect('columnSetVisibility_3');
+        let columnSetVisibility: RectValue = CommonFunc.getComponentRect('columnSetVisibility');
+        expect(Math.abs(columnSetVisibility.top - columnSetVisibility_1.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_2.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
       } catch (err) {
         console.error('[testColumnSetVisibilityVisible] failed');
         expect().assertFail();
       }
       console.info('new testColumnSetVisibilityVisible END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2300
-     * @tc.name      testColumnSetVisibilityVisibleNone
-     * @tc.desc      The subcomponents set visibility.visible and visibility.none.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_2300
+     * @tc.name testColumnSetVisibilityVisibleNone
+     * @tc.desc The subcomponents set visibility.visible and visibility.none.
      */
-    it('testColumnSetVisibilityVisibleNone', 0, async function (done) {
+    it('testColumnSetVisibilityVisibleNone', 0, async () => {
       console.info('new testColumnSetVisibilityVisibleNone START');
-      try{
-            globalThis.value.message.notify({name:'testVisibility1', value:Visibility.Visible});
-            globalThis.value.message.notify({name:'testVisibility2', value:Visibility.None});
-            await CommonFunc.sleep(3000);
-            let strJson = getInspectorByKey('columnSetVisibility_2');
-            let obj = JSON.parse(strJson);
-            expect(obj.$attrs.visibility).assertEqual("Visibility.None");
-            let columnSetVisibility_1 = CommonFunc.getComponentRect('columnSetVisibility_1');
-            let columnSetVisibility_2 = CommonFunc.getComponentRect('columnSetVisibility_2');
-            let columnSetVisibility_3 = CommonFunc.getComponentRect('columnSetVisibility_3');
-            let columnSetVisibility = CommonFunc.getComponentRect('columnSetVisibility');
-            expect(Math.abs(columnSetVisibility_2.bottom - columnSetVisibility_2.top) <= 1).assertTrue ()
-            expect(Math.abs(columnSetVisibility_2.right - columnSetVisibility_2.left) <= 1).assertTrue ()
-            expect(Math.abs(columnSetVisibility_1.top - columnSetVisibility.top) <= 1).assertTrue ()
-            expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-            expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(170))) <= 1).assertTrue()
+      try {
+        globalThis.value.message.notify({
+          name: 'testVisibility1', value: Visibility.Visible
+        });
+        globalThis.value.message.notify({
+          name: 'testVisibility2', value: Visibility.None
+        });
+        await CommonFunc.sleep(3000);
+        let strJson = getInspectorByKey('columnSetVisibility_2');
+        let obj = JSON.parse(strJson);
+        expect(obj.$attrs.visibility).assertEqual("Visibility.None");
+        let columnSetVisibility_1: RectValue = CommonFunc.getComponentRect('columnSetVisibility_1');
+        let columnSetVisibility_2: RectValue = CommonFunc.getComponentRect('columnSetVisibility_2');
+        let columnSetVisibility_3: RectValue = CommonFunc.getComponentRect('columnSetVisibility_3');
+        let columnSetVisibility: RectValue = CommonFunc.getComponentRect('columnSetVisibility');
+        expect(Math.abs(columnSetVisibility_2.bottom - columnSetVisibility_2.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_2.right - columnSetVisibility_2.left) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_1.top - columnSetVisibility.top) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility_3.top - columnSetVisibility_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
+        expect(Math.abs(columnSetVisibility.bottom - columnSetVisibility_3.bottom - Math.round(vp2px(170))) <= 1).assertTrue()
       } catch (err) {
         console.error('[testColumnSetVisibilityVisibleNone] failed');
         expect().assertFail();
       }
       console.info('new testColumnSetVisibilityVisibleNone END');
-      done();
     });
   })
 }

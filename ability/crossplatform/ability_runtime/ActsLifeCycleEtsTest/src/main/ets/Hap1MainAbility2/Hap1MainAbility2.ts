@@ -30,13 +30,16 @@ export default class Hap1MainAbility2 extends Ability {
 
     onDestroy() {
         console.log("[Demo] Hap1MainAbility2 onDestroy")
+        setTimeout(function () {
+            globalThis.testEvent.push('Hap1MainAbility2onDestroy');
+        }, 800);
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] Hap1MainAbility2 onWindowStageCreate")
 
-        windowStage.loadContent('testability/pages/indexh1a2', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/indexh1a2', (err, data) => {
             if (err.code) {
                 console.log('Hap1MainAbility2 loadContent error');
                 return;

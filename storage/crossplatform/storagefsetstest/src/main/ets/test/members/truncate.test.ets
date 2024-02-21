@@ -17,7 +17,7 @@ import { FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOTruncate() {
-  describe("fileIO_fs_truncate", function () {
+  describe("fileIO_fs_truncate", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_TRUNCATE_ASYNC_0000
      * @tc.name   : fileIO_test_truncate_async_000
@@ -27,16 +27,16 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_000");
+    it("fileIO_test_truncate_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let truncateLen = 5;
+      let truncateLen: number = 5;
 
       try {
         await fileIO.truncate(fpath, truncateLen);
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == truncateLen).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -56,16 +56,16 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_001");
+    it("fileIO_test_truncate_async_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let truncateLen = 5;
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let truncateLen: number = 5;
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
         await fileIO.truncate(file.fd, truncateLen);
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == truncateLen).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -85,9 +85,9 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_truncate_async_002", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_002");
-      let truncateLen = 2;
+    it("fileIO_test_truncate_async_002", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_002");
+      let truncateLen: number = 2;
 
       try {
         await fileIO.truncate(fpath, truncateLen);
@@ -108,15 +108,15 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_003");
+    it("fileIO_test_truncate_async_003", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         await fileIO.truncate(fpath);
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == 0).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -136,10 +136,10 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_004", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_004");
+    it("fileIO_test_truncate_async_004", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let truncateLen = 5;
+      let truncateLen: number = 5;
 
       try {
         fileIO.truncate(fpath, truncateLen, (err) => {
@@ -147,9 +147,9 @@ export default function fileIOTruncate() {
             console.log("fileIO_test_truncate_async_004 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+          let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
           expect(isIntNum(file.fd)).assertTrue();
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == truncateLen).assertTrue();
           fileIO.closeSync(file);
           fileIO.unlinkSync(fpath);
@@ -170,11 +170,11 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_005", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_005");
+    it("fileIO_test_truncate_async_005", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let truncateLen = 5;
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let truncateLen: number = 5;
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
@@ -183,7 +183,7 @@ export default function fileIOTruncate() {
             console.log("fileIO_test_truncate_async_005 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == truncateLen).assertTrue();
           fileIO.closeSync(file);
           fileIO.unlinkSync(fpath);
@@ -204,9 +204,9 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_truncate_async_006", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_006");
-      let truncateLen = 2;
+    it("fileIO_test_truncate_async_006", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_006");
+      let truncateLen: number = 2;
 
       try {
         fileIO.truncate(fpath, truncateLen, (err) => {
@@ -231,8 +231,8 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_007", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_007");
+    it("fileIO_test_truncate_async_007", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_007");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -241,9 +241,9 @@ export default function fileIOTruncate() {
             console.log("fileIO_test_truncate_async_007 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+          let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
           expect(isIntNum(file.fd)).assertTrue();
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == 0).assertTrue();
           fileIO.closeSync(file);
           fileIO.unlinkSync(fpath);
@@ -264,15 +264,15 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_008", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_008");
+    it("fileIO_test_truncate_async_008", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_008");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         await fileIO.truncate(fpath, undefined);
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == 0).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -292,8 +292,8 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_async_009", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_truncate_async_009");
+    it("fileIO_test_truncate_async_009", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_async_009");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -302,9 +302,9 @@ export default function fileIOTruncate() {
             console.log("fileIO_test_truncate_async_009 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+          let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
           expect(isIntNum(file.fd)).assertTrue();
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == 0).assertTrue();
           fileIO.closeSync(file);
           fileIO.unlinkSync(fpath);
@@ -325,16 +325,16 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_truncate_sync_000");
+    it("fileIO_test_truncate_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let truncateLen = 5;
+      let truncateLen: number = 5;
 
       try {
         fileIO.truncateSync(fpath, truncateLen);
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == truncateLen).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -353,16 +353,16 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_sync_001", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_truncate_sync_001");
+    it("fileIO_test_truncate_sync_001", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_sync_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      let truncateLen = 5;
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let truncateLen: number = 5;
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.truncateSync(file.fd, truncateLen);
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == truncateLen).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -381,8 +381,8 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_truncate_sync_002", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_truncate_sync_002");
+    it("fileIO_test_truncate_sync_002", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_sync_002");
 
       try {
         fileIO.truncateSync(fpath);
@@ -402,15 +402,15 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_sync_003", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_truncate_sync_003");
+    it("fileIO_test_truncate_sync_003", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_sync_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.truncateSync(file.fd);
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == 0).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -429,8 +429,8 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_truncate_sync_004", 3, async function () {
-      let truncateLen = 2;
+    it("fileIO_test_truncate_sync_004", 3, async () => {
+      let truncateLen: number = 2;
 
       try {
         fileIO.truncateSync(-1, truncateLen);
@@ -450,15 +450,15 @@ export default function fileIOTruncate() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_truncate_sync_005", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_truncate_sync_005");
+    it("fileIO_test_truncate_sync_005", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_truncate_sync_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.truncateSync(file.fd, undefined);
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == 0).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);

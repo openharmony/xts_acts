@@ -19,7 +19,7 @@ import settings from '@ohos.settings'
 export default function settingUiJsunit() {
   describe('appInfoTest', function () {
     console.log("************* settings Test start*************");
-    it('settings_uri_test_001', 0,async function (done) {
+    it('settings_uri_test_001',  0,(done:function) =>  {
       var name = 'settings.screen.test';
       var uri = settings.getUriSync(name);
       console.info("[settings_uri_test_001] uri is: " + uri);
@@ -1232,6 +1232,163 @@ export default function settingUiJsunit() {
         done();
         return;
       }
+    });
+
+      it('settings_get_value_117', 0, (done:function) =>  {
+      let name = 'settings.screen.brightness117';//关键字
+      let value = 'brightness117';//值
+      let domainName = 'secure';
+      try{
+        settings.setValue(globalThis.abilityContext, name, value, domainName)
+        .then((data)=>{
+          console.info("[settings_get_value_117] value is:" + data);
+          settings.getValue(globalThis.abilityContext, name, domainName).then(ret => {
+            console.info("[settings_get_value_117] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        })
+        .catch((err)=>{
+          console.info("[settings_get_value_117] 1252 error is:" + toString(error));
+          expect(true).assertTrue();
+          done();
+          return;
+        })
+      }catch (err:BusinessError) {
+        console.error("[settings_set_value_118] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    }); 
+
+    it('settings_get_value_118', 0, (done:function) => {
+      let name = 'settings.screen.brightness118';//关键字
+      let value = 'brightness118';//值
+      let domainName = 'secure';
+      try{
+        settings.setValue(globalThis.abilityContext, name, value, domainName)
+        .then((data) => {
+          console.info("[settings_get_value_118] value is:" + data);
+          settings.getValue(globalThis.abilityContext, name, domainName).then(ret => {
+            console.info("[settings_get_value_118] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        })
+        .catch((err)=>{
+          console.info("[settings_get_value_118] 1252 error is:" + toString(error));
+          expect(true).assertTrue();
+          done();
+          return;
+        })
+      }catch (err:BusinessError) {
+        console.error("[settings_set_value_118] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    }); 
+
+    it('settings_get_value_119', 0, (done:function) =>  {
+      let name = 'settings.screen.brightness119';//关键字
+      let obj = '323445.00';//值
+      let domainName = 'secure';
+      try{
+        let value = settings.getValueSync(globalThis.abilityContext, name, obj, domainName);
+        console.info("[settings_set_value_119] value is: " + value);
+        expect(true).assertTrue();
+        } catch (err:BusinessError) {
+        console.error("[settings_set_value_119] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    }); 
+
+    it('settings_get_value_120', 0, (done:function) => {
+      let name = 'settings.screen.brightness120';//关键字
+      let obj = '323445.00';//值
+      let domainName = 'secure';
+      try{
+        let value = settings.setValueSync(globalThis.abilityContext, name, obj, domainName);
+        expect(true).assertTrue();
+      }catch (err:BusinessError) {
+        console.error("[settings_set_value_120] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    });
+
+    it('settings_register_Key_Observer_121', 0, (done:function) => {
+      let name = 'settings.screen.brightness121';//关键字
+      let domainName = 'secure';
+      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+        let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
+        done();
+        })
+    }catch (err:BusinessError) {
+        console.error("[settings_set_value_121] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    });
+
+    it('settings_unregister_Key_Observer_122', 0, (done:function) => {
+      let name = 'settings.screen.brightness122';//关键字
+      let domainName = 'secure';
+      let context = null;
+      try{
+        let value = settings.unregisterKeyObserver(globalThis.abilityContext, name, domainName);
+        expect(true).assertTrue();
+        done();
+    }catch (err:BusinessError) {
+        console.error("[settings_set_value_122] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    });
+
+    it('settings_register_Key_Observer_123', 0, (done:function) => {
+      let name = 'settings.screen.brightness123';//关键字
+      let domainName = settings.domainName.DEVICE_SHARED;
+      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+        let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
+        done();
+        })
+    }catch (err:BusinessError) {
+        console.error("[settings_set_value_123] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
+    });
+
+    it('settings_register_Key_Observer_124', 0, (done:function) => {
+      let name = 'settings.screen.brightness124';//关键字
+      let domainName = settings.domainName.USER_PROPERTY;
+      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
+      try{
+        let value = settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
+        let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
+        expect(ret1 === '1').assertTrue();
+        done();
+        })
+    }catch (err:BusinessError) {
+        console.error("[settings_set_value_124] error = " + err);
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
+          .assertTrue();
+      }
+      done();
     });
   })
 }

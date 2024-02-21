@@ -448,5 +448,57 @@ export default function SecurityCryptoFwKeyGenerateECCTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1700
+     * @tc.name Test key format/algName with ecc. Promise style. Process success
+     * @tc.desc generateKeyPair by X25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1700", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1700";
+      console.log(testNumber + ": started.");
+      let keyAlg: string = "X25519";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(keyAlg);
+        expect(keyPair.pubKey.format == "X.509").assertTrue();
+        expect(keyPair.pubKey.algName == "X25519").assertTrue();
+        expect(keyPair.priKey.format == "PKCS#8").assertTrue();
+        expect(keyPair.priKey.algName == "X25519").assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1800
+     * @tc.name Test key format/algName with ecc. Promise style. Process success
+     * @tc.desc generateKeyPair by X25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1800", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_ECC_Func_1800";
+      console.log(testNumber + ": started");
+      let keyAlg: string = "Ed25519";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(keyAlg);
+        expect(keyPair.pubKey.format == "X.509").assertTrue();
+        expect(keyPair.pubKey.algName == "Ed25519").assertTrue();
+        expect(keyPair.priKey.format == "PKCS#8").assertTrue();
+        expect(keyPair.priKey.algName == "Ed25519").assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
   })
 }

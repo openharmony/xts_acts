@@ -17,9 +17,11 @@ import securityHuksExportSupportJsunit from './Cipher/securityHuksExportSupportJ
 import SecurityHuksRSABasicCallbackJsunit from './Cipher/SecurityHuksRSABasicCallbackJsunit.test.js'
 import SecurityHuksSM4BasicCallbackJsunit from './Cipher/SecurityHuksSM4BasicCallbackJsunit.test.js'
 import SecurityHuksSM2BasicCallbackJsunit from './Cipher/SecurityHuksSM2BasicCallbackJsunit.test.js'
+import SecurityHuksAESBasicCallbackJsunit from './Cipher/SecurityHuksAESBasicCallbackJsunit.test.js'
 export default function testsuite() {
     securityHuksExportSupportJsunit()
     SecurityHuksRSABasicCallbackJsunit()
     SecurityHuksSM4BasicCallbackJsunit()
     SecurityHuksSM2BasicCallbackJsunit()
+    SecurityHuksAESBasicCallbackJsunit()
 }

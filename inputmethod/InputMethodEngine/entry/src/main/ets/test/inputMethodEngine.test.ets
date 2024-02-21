@@ -18,50 +18,51 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver} from '@ohos.UiTest'
-
+import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodEngineJSUnit() {
   describe('inputMethodEngine', function () {
-    var inputSever = {
-      packageName: '',
-      methodId: '',
-      name: '',
-      id: '',
-      extra: {}
-    }
-
-    /**
-     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
-     */
-    beforeAll(async (done) => {
-      let inputM = inputMethod.getCurrentInputMethod();
-      console.info("====>beforeAll: getCurrentInputMethod inputMethodEngineJSUnit to: " + JSON.stringify(inputM));
-      inputSever.packageName = inputM.packageName;
-      inputSever.methodId = inputM.methodId;
-      inputSever.name = inputM.packageName;
-      inputSever.id = inputM.methodId;
-
-      let inputDemoService: subtype = {
-        id: "InputDemoService",
-        label: "",
-        name: "com.acts.inputmethodengine.test",
-        mode: "lower",
-        locale: "",
-        language: "",
-        icon: "",
-        iconId: 0,
-        extra: {}
-      }
+    beforeAll(async (done)=>{
+      console.info('====> inputMethod_enable deviceinfo.deviceType:' + JSON.stringify(deviceinfo.deviceType));
       try {
-        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
-        setTimeout(() => {
-          runCmd()
-          console.info("====>beforeAll: inputMethodEngineJSUnit switchCurrentInputMethodSubtype success");
-          done();
-        }, 3000)
-      } catch (err) {
-        console.info("====>beforeAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
+        let driver: Driver = Driver.create();
+        await driver.delayMs(500);
+        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+        let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+        console.info('====>beforeAll inputMethodSwitch else result: ' + JSON.stringify(result));
+        let list = await driver.waitForComponent(ON.type('List'), 1000);
+        console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
+        if (JSON.stringify(list) == 'null') {
+          await driver.delayMs(200);
+          list = await driver.findComponent(ON.type('List'));
+          console.info('====>beforeAll inputMethodSwitch second list: ' + JSON.stringify(list));
+        }
+        await driver.delayMs(500);
+        let inputMethod_name: Component = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+        console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
+        if (JSON.stringify(inputMethod_name) == 'null') {
+          await driver.delayMs(200);
+          inputMethod_name = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+        }
+        await inputMethod_name.click();
+        console.info('====>beforeAll inputMethodSwitch else done' )
+        await driver.delayMs(2000);
+        let data = await inputMethod.getController().detach();
+        console.info(`====>runCmd detach`);
+        let textConfig: inputMethod.TextConfig = {
+          inputAttribute: {
+            textInputType: 0,
+            enterKeyType: 1
+          }
+        };
+        await inputMethod.getController().attach(true, textConfig);
+        console.info(`====>runCmd attach`);
+        done();
+      } catch(err) {
+        console.info('====>beforeAll inputMethodSwitch else err:' + JSON.stringify(err));
+        done();
       }
     })
 
@@ -69,15 +70,8 @@ export default function inputMethodEngineJSUnit() {
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputSever);
-        setTimeout(() => {
-          console.info("====>afterAll: inputMethodEngineJSUnit switchInputMethod success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>afterAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
-      }
+
+      done();
     })
 
     let dis = display.getDefaultDisplaySync();

@@ -17,7 +17,7 @@ import { FILE_CONTENT, prepareFile, nextFileName, describe, it, expect } from ".
 import fileIO from "@ohos.file.fs";
 
 export default function fileIOUnlink() {
-  describe("fileIO_fs_unlink", function () {
+  describe("fileIO_fs_unlink", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_UNLINK_ASYNC_0000
      * @tc.name   : fileIO_test_unlink_async_000
@@ -27,13 +27,12 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_unlink_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_unlink_async_000");
+    it("fileIO_test_unlink_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         await fileIO.unlink(fpath);
-        // @ts-nocheck
         expect(!fileIO.accessSync(fpath)).assertTrue();
         done();
       } catch (e) {
@@ -51,8 +50,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_001", 3, async function (done) {
-      let fpath = await nextFileName("fileIOTest");
+    it("fileIO_test_unlink_async_001", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIOTest");
 
       try {
         await fileIO.unlink(fpath);
@@ -73,8 +72,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_002", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_unlink_async_002");
+    it("fileIO_test_unlink_async_002", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_unlink_async_002");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -97,8 +96,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_unlink_async_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_unlink_async_003");
+    it("fileIO_test_unlink_async_003", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_async_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -107,7 +106,6 @@ export default function fileIOUnlink() {
             console.log("fileIO_test_unlink_async_003 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          // @ts-nocheck
           expect(!fileIO.accessSync(fpath)).assertTrue();
           done();
         });
@@ -126,8 +124,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_004", 3, async function (done) {
-      let fpath = await nextFileName("fileIOTest");
+    it("fileIO_test_unlink_async_004", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIOTest");
 
       try {
         fileIO.unlink(fpath, (err) => {
@@ -152,8 +150,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_005", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_unlink_async_005");
+    it("fileIO_test_unlink_async_005", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_unlink_async_005");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -180,8 +178,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_006", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_unlink_async_006");
+    it("fileIO_test_unlink_async_006", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_async_006");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -205,8 +203,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_async_007", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_unlink_async_007");
+    it("fileIO_test_unlink_async_007", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_async_007");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -238,13 +236,12 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_unlink_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_unlink_sync_000");
+    it("fileIO_test_unlink_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         fileIO.unlinkSync(fpath);
-        // @ts-nocheck
         expect(!fileIO.accessSync(fpath)).assertTrue();
       } catch (e) {
         console.log("fileIO_test_unlink_sync_000 has failed for " + e.message + ", code: " + e.code);
@@ -261,8 +258,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_sync_001", 3, async function () {
-      let fpath = await nextFileName("fileIOTest");
+    it("fileIO_test_unlink_sync_001", 3, async () => {
+      let fpath: string = await nextFileName("fileIOTest");
 
       try {
         fileIO.unlinkSync(fpath);
@@ -282,8 +279,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_sync_002", 3, async function () {
-      let dpath = await nextFileName("fileIO_test_unlink_sync_002");
+    it("fileIO_test_unlink_sync_002", 3, async () => {
+      let dpath: string = await nextFileName("fileIO_test_unlink_sync_002");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -305,8 +302,8 @@ export default function fileIOUnlink() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_unlink_sync_003", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_unlink_sync_003");
+    it("fileIO_test_unlink_sync_003", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_unlink_sync_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {

@@ -27,13 +27,13 @@
 #include <uv.h>
 
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define TWOVAL 2
 #define THRVAL 3
 #define MAX_NAMBER 1024
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TEN 10
 #define ERRON_0 0
@@ -42,9 +42,9 @@ static napi_value GetGrNamR(napi_env env, napi_callback_info info)
 {
     char buf[512];
     struct group *grp;
-    struct group grp_storage;
-    const char *group_name = "root";
-    int getInfo = getgrnam_r(group_name, &grp_storage, buf, sizeof(buf), &grp);
+    struct group grpStorage;
+    const char *groupName = "root";
+    int getInfo = getgrnam_r(groupName, &grpStorage, buf, sizeof(buf), &grp);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;
@@ -52,15 +52,15 @@ static napi_value GetGrNamR(napi_env env, napi_callback_info info)
 
 static napi_value GetGroupList(napi_env env, napi_callback_info info)
 {
-    static int server_ngroups;
+    static int serverNgroups;
     static gid_t *server_groups;
     int ret;
-    const char *server_user = "root";
-    struct passwd *pwd = getpwnam(server_user);
+    const char *serverUser = "root";
+    struct passwd *pwd = getpwnam(serverUser);
     gid_t server_gid = pwd->pw_gid;
-    ret = getgrouplist(server_user, server_gid, nullptr, &server_ngroups);
-    server_groups = (gid_t *)malloc(server_ngroups * sizeof(gid_t));
-    ret = getgrouplist(server_user, server_gid, server_groups, &server_ngroups);
+    ret = getgrouplist(serverUser, server_gid, nullptr, &serverNgroups);
+    server_groups = (gid_t *)malloc(serverNgroups * sizeof(gid_t));
+    ret = getgrouplist(serverUser, server_gid, server_groups, &serverNgroups);
     if (ret != FAIL) {
         ret = SUCCESS;
     }
@@ -116,7 +116,6 @@ static napi_value EndGRent(napi_env env, napi_callback_info info)
 
 static napi_value Getgrgid(napi_env env, napi_callback_info info)
 {
-
     gid_t gid = PARAM_0;
     struct group *grp = getgrgid(gid);
     int resultValue = FAIL;
@@ -130,13 +129,12 @@ static napi_value Getgrgid(napi_env env, napi_callback_info info)
 
 static napi_value Getgrgid_r(napi_env env, napi_callback_info info)
 {
-
     char buf[512];
     gid_t gid = PARAM_0;
     struct group *grp;
-    struct group grp_storage;
+    struct group grpStorage;
 
-    int resultValue = getgrgid_r(gid, &grp_storage, buf, sizeof(buf), &grp);
+    int resultValue = getgrgid_r(gid, &grpStorage, buf, sizeof(buf), &grp);
     napi_value result = nullptr;
     napi_create_int32(env, resultValue, &result);
     return result;
@@ -144,9 +142,8 @@ static napi_value Getgrgid_r(napi_env env, napi_callback_info info)
 
 static napi_value Getgrnam(napi_env env, napi_callback_info info)
 {
-
-    const char *group_name = "root";
-    struct group *grp = getgrnam(group_name);
+    const char *groupName = "root";
+    struct group *grp = getgrnam(groupName);
 
     int resultValue = FAIL;
     if (grp) {

@@ -55,6 +55,9 @@ export default function abilityTest() {
      * @tc.name: Support specifying app subscriptions for custom events.
      * @tc.desc: Verify that the specified PublisherBundlerName receives multiple events published by the specified
      *           publisher (testing the ability of the application itself, depending on the application ability).
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level Level 3
      */
     it('Acts_CommonEventTest_0100', 0, async function (done) {
       let subscriber1;
@@ -136,6 +139,9 @@ export default function abilityTest() {
      * @tc.name: Support specifying app subscriptions for custom events.
      * @tc.desc: Verify that multiple subscription objects subscribe to events, one of which specifies
      *           PublisherBundlerName, and successfully receives events published by non-specified publishers.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level Level 3
      */
     it('Acts_CommonEventTest_0200', 0, async function (done) {
       let subscriber1;
@@ -216,6 +222,9 @@ export default function abilityTest() {
      * @tc.name: Support specifying app subscriptions for custom events.
      * @tc.desc: Verify that multiple subscription objects subscribe to events, specify multiple identical
      *           PublisherBundlerName, and successfully receive events published by the specified publisher.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level Level 3
      */
     it('Acts_CommonEventTest_0300', 0, async function (done) {
       let subscriber1;

@@ -22,11 +22,10 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
-
 #define SHM_RDONLY 010000
 #define PARAM_0 0
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define TEST_MODE 0666
 #define VALUE100 100
 #define ERRON_0 0
@@ -84,7 +83,7 @@ static napi_value Shmat(napi_env env, napi_callback_info info)
         napi_create_int32(env, PARAM_0, &result);
     }
     return result;
-}  
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {

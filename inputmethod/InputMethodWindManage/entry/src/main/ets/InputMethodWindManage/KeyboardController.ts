@@ -172,6 +172,10 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 event:' + data.event);
                     that.Sub_InputMethod_IMF_SecurityKeyboard_0800();
                     break;
+                case 215:
+                    console.debug(TAG + '====>Sub_InputMethod_IMF_getSecurityMode_0100 event:' + data.event);
+                    that.Sub_InputMethod_IMF_getSecurityMode_0100();
+                    break;
             }
         }
 
@@ -1024,7 +1028,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0600(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0600 success');
         try {
@@ -1054,7 +1058,7 @@ export class KeyboardController {
 
         private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0700 success');
         try {
@@ -1084,7 +1088,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0800(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success');
         try {
@@ -1113,6 +1117,32 @@ export class KeyboardController {
         }
     }
 
-
+    private Sub_InputMethod_IMF_getSecurityMode_0100(): void {
+        let commonEventPublishData = {
+            data: 'FAILED'
+        };
+        console.info(TAG + '====>receive Sub_InputMethod_IMF_getSecurityMode_0100 success');
+        try {
+            let mode1: inputmethodengine.SecurityMode = inputMethodAbility.getSecurityMode();
+            if (mode1 === inputmethodengine.SecurityMode.BASIC || mode1 === inputmethodengine.SecurityMode.FULL) {
+                console.info('====>getSecurityMode, securityMode is : ${mode1}');
+                commonEventPublishData = {
+                    data: 'SUCCESS'
+                };
+                commoneventmanager.publish('Sub_InputMethod_IMF_getSecurityMode_0100', commonEventPublishData, this.publishCallback);
+            } else {
+                commonEventPublishData = {
+                    data: 'FAILED'
+                };
+                console.info('====>Failed to getSecurityMode: ${JSON.stringify(err)}');
+            }
+        } catch (error) {
+            commonEventPublishData = {
+                data: 'FAILED'
+            };
+            console.info(TAG + '====>receive Sub_InputMethod_IMF_getSecurityMode_0100 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish('Sub_InputMethod_IMF_getSecurityMode_0100', commonEventPublishData, this.publishCallback);
+        }
+    }
 
 }

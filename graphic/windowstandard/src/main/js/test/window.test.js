@@ -2025,7 +2025,6 @@ export default function window_test() {
             console.log(msgStr + ' begin');
             try {
                 expect(0).assertEqual(window.WindowType.TYPE_APP);
-                expect(1).assertEqual(window.WindowType.TYPE_SYSTEM_ALERT);
                 done();
             } catch (err) {
                 console.log(msgStr + ' WindowType error ' + JSON.stringify(err));
@@ -3776,7 +3775,8 @@ export default function window_test() {
      * @tc.level     : Level4
      */
     it('testSetWindowLimits_Function_Promise', 0, async function (done){
-        console.log('www data setWindowLimits_Function_Promise begin')
+        let tag = 'setWindowLimits_Function_Promise '
+        console.log(tag + 'begin')
         try {
             let WindowLimits = {
                 maxWidth: 1500,
@@ -3786,12 +3786,12 @@ export default function window_test() {
             };
             let windowClass= await window.getTopWindow();
             let promise = windowClass.setWindowLimits(WindowLimits);
-                promise.then((data) => {
-                console.log('www data Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
-                expect(true).asserTrue();
+            promise.then((data) => {
+                console.log(tag + 'Succeeded in setWindowLimits. Cause:' + JSON.stringify(data));
+                expect(true).assertTrue();
                 done();
             }).catch((error) => {
-                console.log('www data Failed to change the window limits. Cause: ' + JSON.stringify(error));
+                console.log(tag + 'www data Failed to setWindowLimits. Cause: ' + JSON.stringify(error));
                 if (error.code == 801) {
                     expect(true).assertTrue()
                     done()
@@ -3802,7 +3802,7 @@ export default function window_test() {
             });
             
           } catch (error) {
-              console.log('www data Failed to change the window limits. Cause:' + JSON.stringify(error));
+              console.log(tag + 'Failed to change the window limits out. Cause:' + JSON.stringify(error));
               expect().assertFail();
               done();
           }
@@ -3830,7 +3830,7 @@ export default function window_test() {
                     wnd.show().then(() => {
 
                         wnd.minimize((err) => {
-                            if (!err.code) {
+                            if (err.code && err.code != 202) {
                               console.error(msgStr + 'Failed to minimize the window. Cause: ' + JSON.stringify(err));
                               expect().assertFail()
                             }

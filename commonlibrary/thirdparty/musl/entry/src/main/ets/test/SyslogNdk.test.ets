@@ -23,7 +23,7 @@ export default function syslogNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_SETLOMASK_0100
      * @tc.name       : testMuslSyslogSetlogmask001
      * @tc.desc       : test setlogmask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -36,7 +36,7 @@ export default function syslogNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_OPENLOG_0100
      * @tc.name       : testMuslSyslogOpenlog001
      * @tc.desc       : test openlog
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +52,7 @@ export default function syslogNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_SYSLOG_0100
      * @tc.name       : testMuslSyslogSyslog001
      * @tc.desc       : test syslog
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

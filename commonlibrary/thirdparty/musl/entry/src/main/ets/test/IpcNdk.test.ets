@@ -22,7 +22,7 @@ export default function ipcNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IPC_FTOK_0100
      * @tc.name       : testMuslIpcFtok001
      * @tc.desc       : test ftok
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

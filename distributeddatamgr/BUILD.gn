@@ -19,7 +19,7 @@ group("distributeddatamgr") {
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
-      "dataObjectjstest/hap:dataObject_js_test",
+      "dataObjecttest:dataObjecttest",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",

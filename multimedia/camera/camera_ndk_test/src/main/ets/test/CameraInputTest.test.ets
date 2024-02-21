@@ -146,59 +146,94 @@ export default function CameraInputTest() {
       console.info('afterAll case');
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100
      * @tc.name      : camera status callback on CameraInput async api for error
      * @tc.desc      : camera status callback on CameraInput async api for error
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100--------------");
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 start for camera");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100--------------");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100 start for camera");
       await startCameraSession();
       await createInput();
       let ret = cameraObj.cameraInputOpen();
       if (ret != 0) {
         expect().assertFail();
       }
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 end for camera");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_ON_ERROR_0100 end for camera");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100
      * @tc.name      : open/close Camera with cameraInput callback api
      * @tc.desc      : open/close Camera with cameraInput callback api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', 0, async () => {
-      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100--------------");
       await startCameraSession();
       let ret = cameraObj.sessionBegin();
       if (ret != 0) {
         expect().assertFail();
       }
       console.info(TAG + "CameraCallbackCode = " + cameraObj.getCameraCallbackCode());
-      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 ends here");
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_CALLBACK_0100 ends here");
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100
      * @tc.name      : open/close Camera with cameraInput promise api
      * @tc.desc      : open/close Camera with cameraInput promise api
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100', 0, async () => {
-      let functionTag = "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100";
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100', 0, async () => {
+      let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100";
       console.info(functionTag);
       await startCameraSession();
       let ret = cameraObj.cameraInputClose();
       if (ret != 0) {
         expect().assertFail();
       }
-      console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 ends here");
+      console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_OPEN_CLOSE_PROMISE_0100 ends here");
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_UNREGISTER_CALLBACK_PROMISE_0100
+     * @tc.name      : unregister Camera with cameraInput promise api
+     * @tc.desc      : unregister Camera with cameraInput promise api
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_UNREGISTER_CALLBACK_PROMISE_0100', 0, async () => {
+      let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_UNREGISTER_CALLBACK_PROMISE_0100";
+      console.info(functionTag);
+      await startCameraSession();
+      let ret = cameraObj.cameraInputRelease();
+      if (ret != 0) {
+        expect().assertFail();
+      }
+      console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_UNREGISTER_CALLBACK_PROMISE_0100 ends here");
+    });
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100
+     * @tc.name      : create CameraInput with position and type
+     * @tc.desc      : create CameraInput with position and type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100', 0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100--------------");
+      let functionTag = "SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100";
+      let ret = cameraObj.createCameraInputWithPositionAndType(2, 1);
+      if (ret) {
+        expect().assertFail();
+      }
+      console.info(TAG + functionTag + "Entering SUB_MULTIMEDIA_CAMERA_NDK_CAMERA_INPUT_WITHPOSITIONANDTYPE_ON_ERROR_0100 ends here");
     });
   })
 }

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function girdContainerJsunit() {
-  describe('girdContainerTest', function () {
-    beforeEach(async function (done) {
+  describe('girdContainerTest', () => {
+    beforeEach(async (done:Function) => {
       console.info("girdContainer beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gridContainer',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridContainer'
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get girdContainer state pages:" + JSON.stringify(pages));
         if (!("gridContainer" == pages.name)) {
           console.info("get girdContainer state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push girdContainer page result:" + JSON.stringify(result));
         }
@@ -41,36 +41,35 @@ export default function girdContainerJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("girdContainer after each called");
     });
 
-    it('testGirdContainer01', 0, async function (done) {
+    it('testGirdContainer01', 0, async (done:Function) => {
       console.info('[testGirdContainer01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('gridContainer');
-      let obj = JSON.parse(strJson);
-      console.info("[testGirdContainer01] obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('GridContainer');
-      expect(obj.$attrs.constructor.columns).assertEqual('12');
-      expect(obj.$attrs.constructor.sizeType).assertEqual('SizeType.XS');
-      expect(obj.$attrs.constructor.gutter).assertEqual('10.00vp');
-      expect(obj.$attrs.constructor.margin).assertEqual('20.00vp');
+      let strJson: string = getInspectorByKey('gridContainer');
+      console.info("[testGirdContainer01] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('GridContainer');
+      expect(JSON.parse(strJson).$attrs.constructor.columns).assertEqual('12');
+      expect(JSON.parse(strJson).$attrs.constructor.sizeType).assertEqual('SizeType.XS');
+      expect(JSON.parse(strJson).$attrs.constructor.gutter).assertEqual('10.00vp');
+      expect(JSON.parse(strJson).$attrs.constructor.margin).assertEqual('20.00vp');
       console.info('testGirdContainer01 END');
-      done();
+      done()
     });
 
 
-    it('testGirdContainer02', 0, async function (done) {
+    it('testGirdContainer02', 0, async (done:Function) => {
       console.info('[testEllipse02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "sizeType": 'SM'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 109,
           priority: events_emitter.EventPriority.LOW
         }
@@ -80,12 +79,11 @@ export default function girdContainerJsunit() {
         console.log("[testGirdContainer02] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('gridContainer');
-      let obj = JSON.parse(strJson);
-      console.info("[testGirdContainer02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.constructor.sizeType).assertEqual('SizeType.SM');
+      let strJson: string = getInspectorByKey('gridContainer');
+      console.info("[testGirdContainer02] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.constructor.sizeType).assertEqual('SizeType.SM');
       console.info('testGirdContainer02 END');
-      done();
+      done()
     });
   })
 }

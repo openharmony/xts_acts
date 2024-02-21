@@ -22,13 +22,16 @@ export default class MainAbility2 extends Ability {
 
     onDestroy() {
         console.log("[Demo] MainAbility2 onDestroy")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility2onDestroy');
+        }, 800);
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility2 onWindowStageCreate")
         globalThis.ability2 = this.context;
-        windowStage.loadContent('testability/pages/index2', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index2', (err, data) => {
             if (err.code) {
                 console.log('MainAbility2 loadContent error');
                 return;
@@ -45,6 +48,9 @@ export default class MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility2 onForeground")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility2onForeground');
+        }, 800);
         globalThis.MainAbility2onForeground = true;
         setTimeout(function () {
             globalThis.ability2.terminateSelf()

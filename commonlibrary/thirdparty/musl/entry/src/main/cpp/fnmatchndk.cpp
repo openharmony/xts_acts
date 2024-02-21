@@ -15,6 +15,7 @@
 
 #include "napi/native_api.h"
 #include <cstdlib>
+#include <ctime>
 #include <dlfcn.h>
 #include <fnmatch.h>
 #include <js_native_api_types.h>
@@ -29,13 +30,25 @@
 #include <sys/timex.h>
 #include <sys/wait.h>
 #include <threads.h>
-#include <time.h>
 #include <unistd.h>
 #include <utime.h>
+
 #define PARAM_5 5
 #define PARAM_0 0
 #define PARAM_1 1
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
+#define PARAM_1999 1999
+#define PARAM_12 12
+#define PARAM_17 17
+#define PARAM_06 06
+#define PARAM_30 30
+#define PARAM_23 23
+#define PARAM_1900 1900
+#define PARAM_02 02
+#define PARAM_07 07
+#define PARAM_16 16
+#define PARAM_15 15
+#define PARAM_20 20
 
 static napi_value FnMatch(napi_env env, napi_callback_info info)
 {
@@ -78,7 +91,7 @@ static napi_value NanoSleep_time64(napi_env env, napi_callback_info info)
 {
     int returnParam = PARAM_1;
     struct timespec timeSpec {
-        0, 0
+        PARAM_0, PARAM_0
     };
     timeSpec.tv_sec = PARAM_5;
     timeSpec.tv_nsec = PARAM_0;
@@ -97,6 +110,7 @@ static napi_value FStat_time64(napi_env env, napi_callback_info info)
     returnParam = __fstat_time64(fileDescribe, &stat);
     napi_value result = nullptr;
     napi_create_int32(env, returnParam, &result);
+    close(fileDescribe);
     return result;
 }
 
@@ -131,29 +145,6 @@ static napi_value UTimeNsAt_time64(napi_env env, napi_callback_info info)
     const char *secondParam = nullptr;
     const struct timespec timeSpec[2]{};
     returnParam = __utimensat_time64(firstParam, secondParam, timeSpec, fourthParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, returnParam, &result);
-    return result;
-}
-
-extern "C" int __adjtimex_time64(struct timex *);
-static napi_value AdjTimex_time64(napi_env env, napi_callback_info info)
-{
-    int returnParam = PARAM_1;
-    struct timex firstParam {};
-    returnParam = __adjtimex_time64(&firstParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, returnParam, &result);
-    return result;
-}
-
-extern "C" int __clock_adjtime64(clockid_t, struct timex *);
-static napi_value Clock_adjTime64(napi_env env, napi_callback_info info)
-{
-    int returnParam = PARAM_1;
-    clockid_t firstParam = PARAM_1;
-    struct timex secondParam {};
-    returnParam = __clock_adjtime64(firstParam, &secondParam);
     napi_value result = nullptr;
     napi_create_int32(env, returnParam, &result);
     return result;
@@ -256,8 +247,8 @@ static napi_value DiffTime64(napi_env env, napi_callback_info info)
     newyear.tm_sec = PARAM_0;
     newyear.tm_mon = PARAM_0;
     newyear.tm_mday = PARAM_1;
-    time_t firstTime = 1999 - 12 - 17 - 06 - 30 - 23;
-    time_t secondTime = 1900 - 02 - 07 - 16 - 15 - 20;
+    time_t firstTime = PARAM_1999 - PARAM_12 - PARAM_17 - PARAM_06 - PARAM_30 - PARAM_23;
+    time_t secondTime = PARAM_1900 - PARAM_02 - PARAM_07 - PARAM_16 - PARAM_15 - PARAM_20;
     checkParam = __difftime64(firstTime, secondTime);
     if (checkParam) {
         returnParam = PARAM_0;
@@ -280,18 +271,7 @@ static napi_value DlSym_time64(napi_env env, napi_callback_info info)
     }
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __fstatat_time64(int, const char *__restrict, struct stat *__restrict, int);
-static napi_value FStatAt_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL, firstParam = PARAM_1, fourthParam = PARAM_1;
-    const char *secondParam = nullptr;
-    struct stat thirdParam {};
-    backParam = __fstatat_time64(firstParam, secondParam, &thirdParam, fourthParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
+    dlclose(ptr);
     return result;
 }
 
@@ -324,40 +304,6 @@ static napi_value FuTimesAt_time64(napi_env env, napi_callback_info info)
     const char *secondParam = nullptr;
     const struct timeval thirdParam[2]{};
     backParam = __futimesat_time64(firstParam, secondParam, thirdParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __getitimer_time64(int, struct itimerval *);
-static napi_value GetITimer_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL, firstParam = PARAM_1;
-    struct itimerval secondParam {};
-    backParam = __getitimer_time64(firstParam, &secondParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __getrusage_time64(int, struct rusage *);
-static napi_value GetRusAge_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL, firstParam = PARAM_1;
-    struct rusage secondParam {};
-    backParam = __getrusage_time64(firstParam, &secondParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __gettimeofday_time64(struct timeval *__restrict, void *__restrict);
-static napi_value GetTimeOfDay_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL;
-    struct timeval firstParam {};
-    void *secondParam = nullptr;
-    backParam = __gettimeofday_time64(&firstParam, secondParam);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -479,22 +425,6 @@ static napi_value PPoll_time64(napi_env env, napi_callback_info info)
     return result;
 }
 
-extern "C" int __pselect_time64(int, fd_set *__restrict, fd_set *__restrict, fd_set *__restrict,
-                                const struct timespec *__restrict, const sigset_t *__restrict);
-static napi_value PSelect_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL, firstParam = PARAM_1;
-    fd_set *secondParam = nullptr;
-    fd_set *thirdParam = nullptr;
-    fd_set *fourthParam = nullptr;
-    struct timespec fifthParam {};
-    const sigset_t *sixthParam = nullptr;
-    backParam = __pselect_time64(firstParam, secondParam, thirdParam, fourthParam, &fifthParam, sixthParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
 extern "C" int __pthread_mutex_timedlock_time64(pthread_mutex_t *__restrict, const struct timespec *__restrict);
 static napi_value PThread_mutex_timedLock_time64(napi_env env, napi_callback_info info)
 {
@@ -596,18 +526,6 @@ static napi_value SemTimeDop_time64(napi_env env, napi_callback_info info)
     return result;
 }
 
-extern "C" int __setitimer_time64(int, const struct itimerval *__restrict, struct itimerval *__restrict);
-static napi_value SetITimer_time64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_UNNORMAL, firstParam = PARAM_1;
-    struct itimerval secondParam {};
-    struct itimerval thirdParam {};
-    backParam = __setitimer_time64(firstParam, &secondParam, &thirdParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
 extern "C" int __settimeofday_time64(const struct timeval *, const struct timezone *);
 static napi_value SetTimeOfDay_time64(napi_env env, napi_callback_info info)
 {
@@ -653,8 +571,8 @@ static napi_value Time64(napi_env env, napi_callback_info info)
     int backParam = PARAM_1;
     time_t firstParam;
     checkParam = __time64(&firstParam);
-    if (checkParam != -1) {
-        backParam = 0;
+    if (checkParam != PARAM_UNNORMAL) {
+        backParam = PARAM_0;
     }
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
@@ -671,31 +589,6 @@ static napi_value TimeGm_time64(napi_env env, napi_callback_info info)
     if (checkParam != PARAM_UNNORMAL) {
         backParam = PARAM_0;
     }
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __timer_gettime64(timer_t, struct itimerspec *);
-static napi_value Timer_getTime64(napi_env env, napi_callback_info info)
-{
-    int backParam = PARAM_0;
-    timer_t firstParam = nullptr;
-    struct itimerspec secondParam {};
-    backParam = __timer_gettime64(firstParam, &secondParam);
-    napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
-    return result;
-}
-
-extern "C" int __timer_settime64(timer_t, int, const struct itimerspec *__restrict, struct itimerspec *__restrict);
-static napi_value Timer_setTime64(napi_env env, napi_callback_info info)
-{
-    int backParam, secondParam = PARAM_1;
-    timer_t firstParam = nullptr;
-    struct itimerspec thirdParam {};
-    struct itimerspec fourthParam {};
-    backParam = __timer_settime64(firstParam, secondParam, &thirdParam, &fourthParam);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -786,8 +679,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"__lstat_time64", nullptr, LStat_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__stat_time64", nullptr, Stat_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__utimensat_time64", nullptr, UTimeNsAt_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__adjtimex_time64", nullptr, AdjTimex_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__clock_adjtime64", nullptr, Clock_adjTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__clock_getres_time64", nullptr, Clock_getRes_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__clock_nanosleep_time64", nullptr, Clock_nanoSleep_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__clock_settime64", nullptr, Clock_setTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -796,13 +687,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"__ctime64_r", nullptr, CTime64_r, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__difftime64", nullptr, DiffTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__dlsym_time64", nullptr, DlSym_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__fstatat_time64", nullptr, FStatAt_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__futimens_time64", nullptr, FuTimeNs_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__futimes_time64", nullptr, FuTimes_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__futimesat_time64", nullptr, FuTimesAt_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__getitimer_time64", nullptr, GetITimer_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__getrusage_time64", nullptr, GetRusAge_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__gettimeofday_time64", nullptr, GetTimeOfDay_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__gmtime64", nullptr, GmTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__gmtime64_r", nullptr, GmTime64_r, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__localtime64", nullptr, Localtime64, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -811,7 +698,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"__mktime64", nullptr, MkTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__mtx_timedlock_time64", nullptr, Mtx_timedLock_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__ppoll_time64", nullptr, PPoll_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__pselect_time64", nullptr, PSelect_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__pthread_mutex_timedlock_time64", nullptr, PThread_mutex_timedLock_time64, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"__pthread_rwlock_timedrdlock_time64", nullptr, PThread_rwLock_timedrdLock_time64, nullptr, nullptr, nullptr,
@@ -824,14 +710,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"__select_time64", nullptr, Select_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__sem_timedwait_time64", nullptr, Sem_timedWait_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__semtimedop_time64", nullptr, SemTimeDop_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__setitimer_time64", nullptr, SetITimer_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__settimeofday_time64", nullptr, SetTimeOfDay_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__sigtimedwait_time64", nullptr, SigTimedWait_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__thrd_sleep_time64", nullptr, THrd_sleep_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__time64", nullptr, Time64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__timegm_time64", nullptr, TimeGm_time64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__timer_gettime64", nullptr, Timer_getTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"__timer_settime64", nullptr, Timer_setTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__timerfd_gettime64", nullptr, TimerFd_getTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__timerfd_settime64", nullptr, TimerFd_setTime64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"__timespec_get_time64", nullptr, TimerSpec_get_time64, nullptr, nullptr, nullptr, napi_default, nullptr},

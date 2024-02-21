@@ -18,7 +18,9 @@ struct ListRebound {
   @State Number: String[] = ['0', '1', '2', '3']
   scroller: Scroller = new Scroller()
   @State isRefreshing: boolean = false
-  @Builder customBuilder() {
+
+  @Builder
+  customBuilder() {
     Column() {
       Text(`Refresh_Text`)
         .backgroundColor(Color.Red)
@@ -33,15 +35,18 @@ struct ListRebound {
         ForEach(this.Number, (day1: string) => {
           ForEach(this.Number, (day2: string) => {
             GridItem() {
-              Text(day1+day2)
+              Text(day1 + day2)
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
                 .height(80)
                 .textAlign(TextAlign.Center)
-            }.width(80).height(80).border({width:5, color:Color.White})
-          }, day2 => day2)
-        }, day1 => day1)
+            }
+            .width(80)
+            .height(80)
+            .border({ width: 5, color: Color.White })
+          }, (day2: string) => day2)
+        }, (day1: string) => day1)
       }
       .edgeEffect(EdgeEffect.Spring)
       .columnsTemplate('1fr 1fr 1fr 1fr')
@@ -64,9 +69,12 @@ struct ListRebound {
                     .width('100%')
                     .height(80)
                     .textAlign(TextAlign.Center)
-                }.width(80).height(80).border({ width: 5, color: Color.White })
-              }, day2 => day2)
-            }, day1 => day1)
+                }
+                .width(80)
+                .height(80)
+                .border({ width: 5, color: Color.White })
+              }, (day2: string) => day2)
+            }, (day1: string) => day1)
           }
           .edgeEffect(EdgeEffect.Fade)
           .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -91,9 +99,12 @@ struct ListRebound {
                     .width('100%')
                     .height(80)
                     .textAlign(TextAlign.Center)
-                }.width(80).height(80).border({ width: 5, color: Color.White })
-              }, day2 => day2)
-            }, day1 => day1)
+                }
+                .width(80)
+                .height(80)
+                .border({ width: 5, color: Color.White })
+              }, (day2: string) => day2)
+            }, (day1: string) => day1)
           }
           .edgeEffect(EdgeEffect.None)
           .columnsTemplate('1fr 1fr 1fr 1fr 1fr')

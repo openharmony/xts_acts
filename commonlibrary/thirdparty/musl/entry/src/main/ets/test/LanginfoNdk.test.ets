@@ -21,7 +21,7 @@ export default function langInfoNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_LANGINFO_NL_LANGINFO_0100
     * @tc.name       : testMuslLanginfoNlLanginfo001
     * @tc.desc       : test nl_langinfo
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
@@ -35,7 +35,7 @@ export default function langInfoNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_LANGINFO_NL_LANGINFO_L_0100
     * @tc.name       : testMuslLanginfoNlLanginfoL001
     * @tc.desc       : nl_langinfo_l
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

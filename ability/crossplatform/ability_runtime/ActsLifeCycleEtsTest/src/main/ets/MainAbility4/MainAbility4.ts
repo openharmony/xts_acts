@@ -119,8 +119,7 @@ export default class MainAbility4 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility4 onWindowStageCreate")
         globalThis.ability4 = this.context;
-
-        windowStage.loadContent('testability/pages/index4', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index4', (err, data) => {
             if (err.code) {
                 console.log('MainAbility4 loadContent error');
                 return;
@@ -137,6 +136,9 @@ export default class MainAbility4 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility4 onForeground")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility4onForeground');
+        }, 500);
         setTimeout(function () {
             globalThis.ability4.terminateSelf()
                 .then((data) => {

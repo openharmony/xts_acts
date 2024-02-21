@@ -23,10 +23,10 @@ export default function muslKlogNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_KLOG_KLOGCTL_0100
      * @tc.name       : testMuslKlogKlogctl001
      * @tc.desc       : test klogctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    //block
+
   })
 }

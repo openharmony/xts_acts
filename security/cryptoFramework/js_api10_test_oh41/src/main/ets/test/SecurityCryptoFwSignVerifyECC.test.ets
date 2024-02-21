@@ -171,5 +171,126 @@ export default function SecurityCryptoFwSignVerifyECCTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600
+     * @tc.name Test signVerify algName with ECC. Process success
+     * @tc.desc create Sign/Verify with Ed25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0600";
+      console.log(testNumber + ": started.");
+      let signVerifyAlg: string = "Ed25519";
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        expect(sign.algName == signVerifyAlg).assertTrue();
+        expect(verify.algName == signVerifyAlg).assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700
+     * @tc.name Test signVerify algName with ECC. Process fail
+     * @tc.desc create Sign/Verify with error algName ED25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0700";
+      console.log(testNumber + ": started.");
+      let signVerifyAlg: string = "ED25519";
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        expect(err.code == 401).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      try {
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        expect(err.code == 401).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800
+     * @tc.name Test signVerify algName with ECC. Process fail
+     * @tc.desc create Sign/Verify with unavailable algName X25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0800";
+      console.log(testNumber + ": started.");
+      let signVerifyAlg: string = "X25519";
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        console.log(testNumber + ": " + err.code);
+        expect(err.code == 401).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      try {
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        expect(null).assertFail();
+      } catch (err) {
+        expect(err.code == 801).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900
+     * @tc.name Test signVerify with ECC. Promise style. Process fail
+     * @tc.desc init Sign/Verify with unavailable algName X25519
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_SignVerify_ECC_Func_0900";
+      console.log(testNumber + ": started");
+      let signVerifyAlg: string = "Ed25519";
+      let keyAlg: string = "X25519";
+      let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(keyAlg);
+      try {
+        let sign: cryptoFramework.Sign = cryptoFramework.createSign(signVerifyAlg);
+        await sign.init(keyPair.priKey);
+        expect(null).assertFail();
+      } catch (err) {
+        console.log(testNumber + ": " + err.code);
+        expect(err.code == 17630001).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      try {
+        let verify: cryptoFramework.Verify = cryptoFramework.createVerify(signVerifyAlg);
+        await verify.init(keyPair.pubKey);
+        expect(null).assertFail();
+      } catch (err) {
+        expect(err.code == 17630001).assertTrue();
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": succeed");
+      done();
+    });
+
   })
 }

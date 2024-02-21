@@ -22,15 +22,17 @@ let imageSourceSystem = '/data/storage/el2/base/haps/wp.png';
 let imageSourceLockscreen = '/data/storage/el2/base/haps/wp.png';
 
 export default function wallpaperNoPermissionJSUnit() {
-    describe('wallpaperNoPermissionTest', function () {
+    describe('wallpaperNoPermissionTest', () => {
 
         /*
         * @tc.number  testResetCallbackSystemNoPermission101
         * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackSystemNoPermission101', 0, async function (done) {
+        it('testResetCallbackSystemNoPermission101', 0, async (done: Function) => {
             console.info('--------------testResetCallbackSystemNoPermission101 start-----------------');
             wallpaper.reset(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -55,9 +57,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testResetPromiseSystemNoPermission101
         * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseSystemNoPermission101', 0, async function (done) {
+        it('testResetPromiseSystemNoPermission101', 0, async (done: Function) => {
             console.info('--------------testResetPromiseSystemNoPermission101 start-----------------');
             try{
                 console.info('====>testResetPromiseSystemNoPermission101 NoPermission check');
@@ -77,9 +81,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testResetCallbackLockNoPermission102
         * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetCallbackLockNoPermission102', 0, async function (done) {
+        it('testResetCallbackLockNoPermission102', 0, async (done: Function) => {
             console.info('--------------testResetCallbackLockNoPermission102 start-----------------');
             wallpaper.reset(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -104,9 +110,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testResetPromiseLockNoPermission102
         * @tc.name    Test reset() to removes a wallpaper of the specified type and reset the default one.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testResetPromiseLockNoPermission102', 0, async function (done) {
+        it('testResetPromiseLockNoPermission102', 0, async (done: Function) => {
             console.info('--------------testResetPromiseLockNoPermission102 start-----------------');
             try{
                 console.info('====>testResetPromiseLockNoPermission102 NoPermission check');
@@ -127,9 +135,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.name    Test setPixelMap() to sets a wallpaper of the specified type based on the uri path from a
                     JPEG or PNG file or the pixel map of a PNG file.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseLockNoPermission104', 0, async function (done) {
+        it('testSetWallpaperURLPromiseLockNoPermission104', 0, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseLockNoPermission104 start------------------' );
             try{
                 console.info('====>testSetWallpaperURLPromiseLockNoPermission104 NoPermission check');
@@ -150,9 +160,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.name    Test setWallpaper() to sets a wallpaper of the specified type based on the uri path from a
                     JPEG or PNG file or the pixel map of a PNG file.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackSystemNoPermission103', 0, async function (done) {
+        it('testSetWallpaperURLCallbackSystemNoPermission103', 0, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackSystemNoPermission103 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_SYSTEM, (err, data) => {
                 try{
@@ -178,9 +190,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.name    Test setWallpaper() to sets a wallpaper of the specified type based on the uri path from a
                     JPEG or PNG file or the pixel map of a PNG file.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLPromiseSystemNoPermission103', 0, async function (done) {
+        it('testSetWallpaperURLPromiseSystemNoPermission103', 0, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLPromiseSystemNoPermission103 start------------------' );
             try{
                 console.info('====>testSetWallpaperURLPromiseSystemNoPermission103 NoPermission check');
@@ -201,9 +215,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.name    Test setWallpaper() to sets a wallpaper of the specified type based on the uri path from a
                     JPEG or PNG file or the pixel map of a PNG file.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testSetWallpaperURLCallbackLockNoPermission104', 0, async function (done) {
+        it('testSetWallpaperURLCallbackLockNoPermission104', 0, async (done: Function) => {
             console.info('--------------------testSetWallpaperURLCallbackLockNoPermission104 start------------------' );
             wallpaper.setWallpaper(imageSourceSystem, WALLPAPER_LOCKSCREEN, (err, data) => {
                 try{
@@ -228,9 +244,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testGetFileCallbackNoPermission101
         * @tc.name    Obtains a file of the wallpaper of the specified type.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFileCallbackNoPermission101', 0, async function (done) {
+        it('testGetFileCallbackNoPermission101', 0, async (done: Function) => {
             console.info('--------------testGetFileCallbackNoPermission101 start-----------------');
             wallpaper.getFile(WALLPAPER_SYSTEM, (err, data) => {
                 try {
@@ -255,9 +273,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testGetFilePromiseNoPermission101
         * @tc.name    Obtains a file of the wallpaper of the specified type.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFilePromiseNoPermission101', 0, async function (done) {
+        it('testGetFilePromiseNoPermission101', 0, async (done: Function) => {
             console.info('--------------testGetFilePromiseNoPermission101 start-----------------');
             try{
                 console.info('====>testGetFilePromiseNoPermission101 NoPermission check');
@@ -277,9 +297,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testGetFileCallbackNoPermission102
         * @tc.name    Obtains a file of the wallpaper of the specified type.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFileCallbackNoPermission102', 0, async function (done) {
+        it('testGetFileCallbackNoPermission102', 0, async (done: Function) => {
             console.info('--------------testGetFileCallbackNoPermission102 start-----------------');
             wallpaper.getFile(WALLPAPER_LOCKSCREEN, (err, data) => {
                 try {
@@ -304,9 +326,11 @@ export default function wallpaperNoPermissionJSUnit() {
         * @tc.number  testGetFilePromiseNoPermission102
         * @tc.name    Obtains a file of the wallpaper of the specified type.
         * @tc.desc    Function test
+        * @tc.size    : MediumTest
+        * @tc.type    : Function
         * @tc.level   0
         */
-        it('testGetFilePromiseNoPermission102', 0, async function (done) {
+        it('testGetFilePromiseNoPermission102', 0, async (done: Function) => {
             console.info('--------------testGetFilePromiseNoPermission102 start-----------------');
             try{
                 console.info('====>testGetFilePromiseNoPermission102 NoPermission check');

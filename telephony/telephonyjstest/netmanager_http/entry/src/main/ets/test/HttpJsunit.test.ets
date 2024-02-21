@@ -46,7 +46,7 @@ export default function httpJsunit() {
 
 	function expectFalse() {
 	  try {
-		expect().assertFail();
+      expect().assertFail();
 	  } catch (err) {
 		console.info('assertion failure');
 	  }
@@ -57,11 +57,14 @@ export default function httpJsunit() {
 	}
 	
     /**
-     * @tc.number Telephony_Http_Http_createHttp_0100
+     * @tc.number SUB_Telephony_Http_Http_createHttp_0100
      * @tc.name createHttp
      * @tc.desc Test Create HTTP authentication.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_Http_Http_createHttp_0100", 0, async function (done) {
+    it("SUB_SUB_Telephony_Http_Http_createHttp_0100", 0, async function (done) {
       console.log("-----------------------http createHttp Test is starting-----------------------");
       var httpRequest = http.createHttp();
       expect(httpRequest != null).assertTrue();
@@ -71,17 +74,20 @@ export default function httpJsunit() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getDefaultNetSync
+     * @tc.number SUB_Telephony_NetworkManager_getDefaultNetSync
      * @tc.name Test getDefaultNetSync() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getDefaultNetSync', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getDefaultNetSync'
+    it('SUB_Telephony_NetworkManager_getDefaultNetSync', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getDefaultNetSync'
       let handleInstance = undefined;
       handleInstance = connection.getDefaultNetSync();
       if (handleInstance == undefined) {
         console.log(`${caseName} gethandleInstance fail`);
-        expect().assertFail();
+        expectFalse();
         done();
       } else {
         console.log(`${caseName} gethandleInstance success`);
@@ -91,16 +97,19 @@ export default function httpJsunit() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_isDefaultNetMetered_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100
      * @tc.name Test isDefaultNetMetered() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_isDefaultNetMetered_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_isDefaultNetMetered_Async_0100'
+    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_isDefaultNetMetered_Async_0100'
       connection.isDefaultNetMetered((error, data) => {
         if (error) {
           console.log(`${caseName} isDefaultNetMetered  error`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} isDefaultNetMetered success`);
@@ -112,34 +121,40 @@ export default function httpJsunit() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_isDefaultNetMetered_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100
      * @tc.name Test isDefaultNetMetered() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_isDefaultNetMetered_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_isDefaultNetMetered_Promise_0100'
+    it('SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_isDefaultNetMetered_Promise_0100'
       connection.isDefaultNetMetered().then((data) => {
         console.log(`${caseName} isDefaultNetMetered success`);
         expect(data).assertEqual(true);
         done();
       }).catch((error) => {
         console.log(JSON.stringify(error));
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getDefaultHttpProxy_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100
      * @tc.name Test getDefaultHttpProxy() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getDefaultHttpProxy_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getDefaultHttpProxy_Async_0100';
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0100';
       connection.getDefaultHttpProxy((error, data) => {
         if (error) {
           console.log(`${caseName} getDefaultHttpProxy  error`);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getDefaultHttpProxy success`);
@@ -150,29 +165,38 @@ export default function httpJsunit() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100
      * @tc.name Test getDefaultHttpProxy() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0100';
       connection.getDefaultHttpProxy().then((data) => {
         console.log(`${caseName} getDefaultHttpProxy success`);
+        console.log(JSON.stringify(data));
+        expect(data.host == '').assertTrue();
+        expect(data.port == 0).assertTrue();
         done();
       }).catch((error) => {
         console.log(JSON.stringify(error));
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getDefaultHttpProxy_Async_0200
+     * @tc.number SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200
      * @tc.name Test getDefaultHttpProxy() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getDefaultHttpProxy_Async_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getDefaultHttpProxy_Async_0200';
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Async_0200';
       connection.getDefaultNet().then(function (netHandle) {
         console.log("netHandle is " +JSON.stringify(netHandle));
         connection.setAppNet(netHandle).then(() => {
@@ -180,64 +204,74 @@ export default function httpJsunit() {
           connection.getDefaultHttpProxy((error, data) => {
             if (error) {
               console.log(`${caseName} getDefaultHttpProxy  error`);
-              expect().assertFail();
+              expectFalse();
               done();
             } else {
               console.log(`${caseName} getDefaultHttpProxy success`);
+              expect(data.host == '').assertTrue();
+              expect(data.port == 0).assertTrue();
               done();
             }
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
       }).catch(error => {
           console.log("getDefaultNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200
+     * @tc.number SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200
      * @tc.name Test getDefaultHttpProxy() to check return value
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200';
+    it('SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getDefaultHttpProxy_Promise_0200';
       connection.getDefaultNet().then(function (netHandle) {
         console.log("netHandle is " +JSON.stringify(netHandle));
         connection.setAppNet(netHandle).then(() => {
           console.log("setAppNet success");
           connection.getDefaultHttpProxy().then((data) => {
             console.log(`${caseName} getDefaultHttpProxy success`);
+            expect(data.host == '').assertTrue();
+            expect(data.port == 0).assertTrue();
             done();
           }).catch((error) => {
             console.log(JSON.stringify(error));
-            expect().assertFail();
+            expectFalse();
             done();
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
       }).catch(error => {
           console.log("getDefaultNet err " + JSON.stringify(error));
-          expect().assertFail();
+          expectFalse();
           done();
         });
     });
 
     /**
-     * @tc.number Telephony_Connection_Request_Socket_0100
+     * @tc.number SUB_Telephony_Connection_Request_Socket_0100
      * @tc.name Test type
      * @tc.desc Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_Connection_Request_Socket_0100', 0, async function (done) {
+    it('SUB_Telephony_Connection_Request_Socket_0100', 0, async function (done) {
         try{
-            let caseName = 'Telephony_Connection_Request_Socket_0100';
+            let caseName = 'SUB_Telephony_Connection_Request_Socket_0100';
             type HttpRequest = http.HttpRequest;
             type HttpProxy = connection.HttpProxy;
             type TCPSocket = socket.TCPSocket;
@@ -254,7 +288,7 @@ export default function httpJsunit() {
                 done();
             }
         } catch (error) {
-            console.info("Telephony_Connection_Request_Socket_0100  catch " + error);
+            console.info("SUB_Telephony_Connection_Request_Socket_0100  catch " + error);
             done();
         }
      }); 
@@ -265,6 +299,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_addMembership_Promise_0100
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_addMembership_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0100"
@@ -283,6 +320,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_addMembership_Promise_0200
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_addMembership_Promise_0200", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0200"
@@ -301,6 +341,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_addMembership_Promise_0300
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_addMembership_Promise_0300", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0300"
@@ -319,6 +362,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_addMembership_Promise_0400
      * @tc.name UDPSocket::addMembership
      * @tc.desc Test addMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_addMembership_Promise_0400", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_addMembership_Promise_0400"
@@ -345,6 +391,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Promise_0100
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0100"
@@ -364,6 +413,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Promise_0200
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0200", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0200"
@@ -382,6 +434,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setMulticastTTL_Promise_0300
      * @tc.name UDPSocket::setMulticastTTL
      * @tc.desc Test setMulticastTTL property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setMulticastTTL_Promise_0300", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setMulticastTTL_Promise_0300"
@@ -407,6 +462,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_getMulticastTTL_Promise_0100
      * @tc.name UDPSocket::getMulticastTTL
      * @tc.desc Test getMulticastTTL property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_getMulticastTTL_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_getMulticastTTL_Promise_0100"
@@ -427,6 +485,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Promise_0100
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0100"
@@ -445,6 +506,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Promise_0200
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0200", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0200"
@@ -463,6 +527,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_setLoopbackMode_Promise_0300
      * @tc.name UDPSocket::setLoopbackMode
      * @tc.desc Test setLoopbackMode property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_setLoopbackMode_Promise_0300", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_setLoopbackMode_Promise_0300"
@@ -488,6 +555,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_getLoopbackMode_Promise_0100
      * @tc.name UDPSocket::getLoopbackMode
      * @tc.desc Test getLoopbackMode property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Promise_0100"
@@ -514,6 +584,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_getLoopbackMode_Promise_0200
      * @tc.name UDPSocket::getLoopbackMode
      * @tc.desc Test getLoopbackMode property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_getLoopbackMode_Promise_0200", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_getLoopbackMode_Promise_0200"
@@ -541,6 +614,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_dropMembership_Promise_0100
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_dropMembership_Promise_0100", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0100"
@@ -560,6 +636,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_dropMembership_Promise_0200
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_dropMembership_Promise_0200", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0200"
@@ -578,6 +657,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_dropMembership_Promise_0300
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_dropMembership_Promise_0300", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0300"
@@ -596,6 +678,9 @@ export default function httpJsunit() {
      * @tc.number NetworkManager_UDPSocket_dropMembership_Promise_0400
      * @tc.name UDPSocket::dropMembership
      * @tc.desc Test dropMembership property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
     it("NetworkManager_UDPSocket_dropMembership_Promise_0400", 0, async function (done) {
       let caseName = "NetworkManager_UDPSocket_dropMembership_Promise_0400"

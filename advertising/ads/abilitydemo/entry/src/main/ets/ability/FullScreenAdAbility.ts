@@ -35,7 +35,7 @@ export default class FullScreenAdAbility extends UIAbility {
 
   async onWindowStageCreate(windowStage: window.WindowStage) {
     Logger.i(TAG, 'FullScreenAdAbility onWindowStageCreate');
-    windowStage.loadContent('adsmanager/pages/FullScreenAdPage', (err, data) => {
+    windowStage.loadContent('pages/FullScreenAdPage', (err, data) => {
       if (err.code) {
         Logger.i(TAG, 'Failed to load the content.');
         return;

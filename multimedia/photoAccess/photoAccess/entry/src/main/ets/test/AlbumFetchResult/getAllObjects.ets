@@ -113,6 +113,43 @@ export default function albumGetAllObjectTest () {
         done();
       }
     });
+    
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_GET_ALL_OBJECTS_0200
+     * @tc.name      : album_getAllObjects_callback_002
+     * @tc.desc      : get all album
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('album_getAllObjects_callback_002', 0, async function (done) {
+      const testNum = 'album_getAllObjects_callback_002';
+      try {
+        const albumName = genRadomStr(10);
+        await createUserAlbum(testNum, albumName);
+        const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
+        const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.ANY, fetchOps);
+        expect(fetchResult.getCount()).assertEqual(1);
+        fetchResult.getAllObjects(async (err, allObj) => {
+          try {
+            if (err !== undefined) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              expect(allObj.length).assertEqual(1);
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          fetchResult.close();
+          done();
+        })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
 
     //promise
     /**
@@ -166,6 +203,34 @@ export default function albumGetAllObjectTest () {
         await createUserAlbum(testNum, albumName);
         const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
         const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
+        console.info(`${testNum} fetchResult: ${fetchResult}`);
+        expect(fetchResult.getCount()).assertEqual(1);
+        const allObj = await fetchResult.getAllObjects();
+        expect(allObj.length).assertEqual(1);
+        fetchResult.close();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+    
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ALBUM_GET_ALL_OBJECTS_0200
+     * @tc.name      : album_getAllObjects_promise_002
+     * @tc.desc      : get all album
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('album_getAllObjects_promise_002', 0, async function (done) {
+      const testNum = 'album_getAllObjects_promise_002';
+      try {
+        const albumName = genRadomStr(10);
+        await createUserAlbum(testNum, albumName);
+        const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
+        const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.ANY, fetchOps);
         console.info(`${testNum} fetchResult: ${fetchResult}`);
         expect(fetchResult.getCount()).assertEqual(1);
         const allObj = await fetchResult.getAllObjects();

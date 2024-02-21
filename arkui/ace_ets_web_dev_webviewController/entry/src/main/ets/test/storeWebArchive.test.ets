@@ -67,7 +67,7 @@ export default function storeWebArchive() {
 
 
       /*
-     *tc.number SUB_ACE_BASIC_ETS_API_003
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_003
      *tc.name testStoreWebArchiveCallback
      *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is ture.
      */
@@ -78,7 +78,7 @@ export default function storeWebArchive() {
     })
 
       /*
-     *tc.number SUB_ACE_BASIC_ETS_API_004
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_004
      *tc.name testStoreWebArchiveCallbackFalse
      *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is false.
      */
@@ -89,7 +89,7 @@ export default function storeWebArchive() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_005
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_005
      *tc.name testStoreWebArchivePromise
      *tc.desic test storeWebArchive interface when choose Promise mode and autoName parameter is ture.
      */
@@ -100,7 +100,7 @@ export default function storeWebArchive() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_006
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_006
      *tc.name testStoreWebArchivePromiseFalse
      *tc.desic test storeWebArchive interface when choose Promise mode and autoName parameter is false.
      */

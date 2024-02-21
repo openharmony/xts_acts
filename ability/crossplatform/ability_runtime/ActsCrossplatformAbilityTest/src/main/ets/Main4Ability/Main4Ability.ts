@@ -20,10 +20,12 @@ export default class Main4Ability extends UIAbility {
     onCreate(want, launchParam) {
         console.log('testTag', '%{public}s', 'Ability onCreate');
         globalThis.want = want;
+        globalThis.main2AbilityContext = this.context;
     }
 
     onDestroy() {
         console.log('testTag', '%{public}s', 'Ability onDestroy');
+        globalThis.main4AbilityContext = undefined;
     }
 
     onWindowStageCreate(windowStage: window.WindowStage) {
@@ -45,6 +47,7 @@ export default class Main4Ability extends UIAbility {
     }
 
     onForeground() {
+        globalThis.main4AbilityonForeground = true;
         // Ability has brought to foreground
         console.log('testTag', '%{public}s', 'Ability onForeground');
     }

@@ -45,11 +45,12 @@ export default function ActsAllowTest() {
           });
           await sleep(1500);
           let driver = Driver.create();
+          await sleep(1500)
           let button = await driver.findComponent(ON.text('允许'));
           log(`button is ${JSON.stringify(button)}`);
           if (button !== null) {
-            await button.click();
             await sleep(1500);
+            await button.click();
           } else {
             exit('null button');
           }

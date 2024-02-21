@@ -13,6 +13,7 @@ include_directories(${NATIVERENDER_ROOT_PATH}
 add_library(nativerender SHARED
             render/egl_core.cpp
             render/plugin_render.cpp
+            render/native_xcomponent.cpp
             plugin_manager.cpp
             napi/napi_init.cpp
             )

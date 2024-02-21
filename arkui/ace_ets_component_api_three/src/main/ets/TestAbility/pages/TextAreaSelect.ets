@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import {MessageManager,Callback} from '../../test/MessageManager';
+import { MessageManager, Callback } from '../../test/MessageManager';
+
 @Entry
 @Component
 struct TextAreaSelect {
@@ -22,60 +23,61 @@ struct TextAreaSelect {
   controller3: TextAreaController = new TextAreaController()
   @State text: string = '123456'
   @State text1: string = "Show selected "
-  messageManager:MessageManager = new MessageManager()
-  onPageShow() {
+  messageManager: MessageManager = new MessageManager()
 
+  onPageShow() {
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: any) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'Show selected (-2,-1)') {
-          this.controller.setTextSelection(-2,-1)
+        this.controller.setTextSelection(-2, -1)
       }
       if (message.name == 'requestFocus') {
-          focusControl.requestFocus("TextAreaSelect_TextArea_1")
+        focusControl.requestFocus("TextAreaSelect_TextArea_1")
       }
       if (message.name == 'Show selected (-1,0)') {
-          this.controller.setTextSelection(-1,0)
+        this.controller.setTextSelection(-1, 0)
       }
       if (message.name == 'Show selected (0,3)') {
-          this.controller.setTextSelection(0,3)
+        this.controller.setTextSelection(0, 3)
       }
       if (message.name == 'Show selected (1,3)') {
 
-          this.controller.setTextSelection(1,3)
+        this.controller.setTextSelection(1, 3)
       }
       if (message.name == 'Show selected (-1,6)') {
-          this.controller.setTextSelection(-1,6)
+        this.controller.setTextSelection(-1, 6)
       }
-       if (message.name == 'Show selected (0,6)') {
-          this.controller.setTextSelection(0,6)
+      if (message.name == 'Show selected (0,6)') {
+        this.controller.setTextSelection(0, 6)
       }
       if (message.name == 'Show selected (-1,8)') {
-          this.controller.setTextSelection(-1,8)
+        this.controller.setTextSelection(-1, 8)
       }
-       if (message.name == 'Show selected (0,8)') {
-          this.controller.setTextSelection(0,8)
+      if (message.name == 'Show selected (0,8)') {
+        this.controller.setTextSelection(0, 8)
       }
-       if (message.name == 'Show selected (null,null)') {
-          this.controller.setTextSelection(null,null)
+      if (message.name == 'Show selected (null,null)') {
+        this.controller.setTextSelection(null, null)
       }
-       if (message.name == 'Show selected (null,undefined)') {
-          this.controller.setTextSelection(null,undefined)
+      if (message.name == 'Show selected (null,undefined)') {
+        this.controller.setTextSelection(null, undefined)
       }
-       if (message.name == 'Show selected (undefined,null)') {
-          this.controller.setTextSelection(undefined,null)
+      if (message.name == 'Show selected (undefined,null)') {
+        this.controller.setTextSelection(undefined, null)
       }
 
       if (message.name == 'Show selected(undefined,undefined)') {
-          this.controller.setTextSelection(undefined,undefined)
+        this.controller.setTextSelection(undefined, undefined)
       }
 
     }
     this.messageManager.registerCallback(callback)
 
   }
+
   build() {
     Column() {
       TextArea({ text: this.text, placeholder: 'input your word', controller: this.controller })
@@ -90,12 +92,15 @@ struct TextAreaSelect {
         .fontColor(Color.Red)
         .tabIndex(1)
         .key('TextAreaSelect_TextArea_1')
-        .focusable(true).focusOnTouch(true).defaultFocus(true)
+        .focusable(true)
+        .focusOnTouch(true)
+        .defaultFocus(true)
 
-        Button("Show selected (-2,-1)")
+
+      Button("Show selected (-2,-1)")
         .margin(30)
         .onClick(() => {
-          this.controller.setTextSelection(-2,-1)
+          this.controller.setTextSelection(-2, -1)
         })
         .key('TextAreaSelect_Button_1')
 
@@ -114,7 +119,7 @@ struct TextAreaSelect {
       Button("Show selected (1,3)")
         .margin(30)
         .onClick(() => {
-          this.controller2.setTextSelection(1,3)
+          this.controller2.setTextSelection(1, 3)
         })
         .key('TextAreaSelect_Button_13')
       TextArea({ text: '北京aaaaa上海tianjin深圳', placeholder: 'input your word', controller: this.controller3 })
@@ -134,7 +139,7 @@ struct TextAreaSelect {
       Button("Show selected (6,10)")
         .margin(30)
         .onClick(() => {
-          this.controller3.setTextSelection(6,10)
+          this.controller3.setTextSelection(6, 10)
         })
         .key('TextAreaSelect_Button_14')
     }

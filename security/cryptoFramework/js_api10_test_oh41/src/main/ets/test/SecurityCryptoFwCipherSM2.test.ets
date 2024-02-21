@@ -262,5 +262,28 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1100
+     * @tc.name Test Cipher algName with SM2_256, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1100", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1100";
+      console.log(testNumber + ": started");
+      let cipherAlg: string = "SM2_256|SM3";
+      try {
+        let cipher: cryptoFramework.Cipher = cryptoFramework.createCipher(cipherAlg);
+        expect(cipher.algName == cipherAlg);
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
   })
 }

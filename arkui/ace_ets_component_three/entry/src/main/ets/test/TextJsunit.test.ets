@@ -218,7 +218,6 @@ export default function textJsunit() {
       done();
     });
 
-  
     it('testText_1200', 0, async function (done) {
       console.info('testText_1200 START');
       try {

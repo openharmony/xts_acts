@@ -16,28 +16,33 @@
 #include "malloc.h"
 #include "napi/native_api.h"
 #include <cerrno>
-#include <js_native_api_types.h>
 #include <cstdlib>
+#include <js_native_api_types.h>
 #include <unistd.h>
+
 #define TEST_AT_FDCWD (-100)
 #define TEST_ERROR_AT_FDCWD 100
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TEN 10
 #define TEST_MODE 0666
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_64 64
+#define PARAM_10 10
+#define PARAM_8 8
+#define PARAM_256 256
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 
 static napi_value Malloc(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     int ret = PARAM_UNNORMAL;
-    size_t memsize = 64;
-    int *memory = (int *)malloc(memsize);
+    size_t memsize = PARAM_64;
+    int *memory = static_cast<int*>(malloc(memsize));
     if (memory == nullptr) {
         ret = PARAM_UNNORMAL;
     } else {
@@ -52,7 +57,7 @@ static napi_value Malloc(napi_env env, napi_callback_info info)
 
 static napi_value MallocUsableSize(napi_env env, napi_callback_info info)
 {
-    int mallocSize = 256;
+    int mallocSize = PARAM_256;
     void *p = malloc(mallocSize);
     size_t ret = malloc_usable_size(p);
     free(p);
@@ -70,7 +75,7 @@ static napi_value Memalign(napi_env env, napi_callback_info info)
 {
     int align = getpagesize();
     int ret = FAIL;
-    void *buff = (void *)memalign(align, 8 * align);
+    void *buff = (void *)memalign(align, PARAM_8 * align);
     if (buff != nullptr) {
         ret = SUCCESS;
     } else {
@@ -84,7 +89,7 @@ static napi_value Memalign(napi_env env, napi_callback_info info)
 }
 static napi_value Mallopt(napi_env env, napi_callback_info info)
 {
-    int ret = mallopt(0, 10);
+    int ret = mallopt(PARAM_0, PARAM_10);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

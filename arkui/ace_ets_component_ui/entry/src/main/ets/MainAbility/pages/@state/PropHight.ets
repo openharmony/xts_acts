@@ -26,7 +26,7 @@ struct Child_AP {
         .onClick(() => {
           this.hight = 100
         })
-        .key('state1')
+        .key('PropHeight1')
 
       Text("设置变量string类型50-->'200'")
       Button('change')
@@ -34,7 +34,7 @@ struct Child_AP {
         .onClick(() => {
           this.hight = '200'
         })
-        .key('state2')
+        .key('PropHeight2')
 
       Text("设置变量Resource类型50-->Resource")
       Button('change')
@@ -42,7 +42,7 @@ struct Child_AP {
         .onClick(() => {
           this.hight = $r('app.string.number')
         })
-        .key('state3')
+        .key('PropHeight3')
 
     }.width('100%')
   }

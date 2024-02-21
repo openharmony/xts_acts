@@ -16,21 +16,22 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
 
-export default {
+
+class Test  {
   onCreate() {
     console.info('Application onCreate')
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
-    abilityDelegatorArguments.parameters['-s timeout'] = 300000
+    abilityDelegatorArguments.parameters['-s timeout'] = String(300000)
     setTimeout(()=>{
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+      Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     },3000)
-  },
+  }
   onDestroy() {
     console.info('Application onDestroy')
-  },
+  }
 
 }
+
+export default new Test()

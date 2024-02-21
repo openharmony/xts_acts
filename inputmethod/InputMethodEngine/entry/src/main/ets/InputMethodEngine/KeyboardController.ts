@@ -454,7 +454,7 @@ export class KeyboardController {
                 };
             } else {
                 console.info(TAG + '====>inputMethodEngine_test_036 getForward value:' + JSON.stringify(value));
-                if (value){
+                if (typeof(value) !== null) {
                     commonEventPublishData = {
                         data: "SUCCESS"
                     };
@@ -473,7 +473,7 @@ export class KeyboardController {
         let commonEventPublishData;
         let value =  await this.TextInputClient.getForward(1);
         console.info(TAG + '====>inputMethodEngine_test_037 getForward:' + JSON.stringify(value));
-        if (value){
+        if (typeof(value) !== null) {
             commonEventPublishData = {
                 data: "SUCCESS"
             };
@@ -671,7 +671,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_071", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },500);
+        },1000);
     }
 
     async inputMethodEngine_test_072() {
@@ -694,7 +694,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_072", commonEventPublishData, this.publishCallback);
             clearTimeout(t1);
-        },500);
+        },1500);
     }
 
     async inputMethodEngine_test_073() {
@@ -727,7 +727,7 @@ export class KeyboardController {
             };
             commoneventmanager.publish("inputMethodEngine_test_073", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },300);
+        },1000);
     }
 
     async inputMethodEngine_test_074() {

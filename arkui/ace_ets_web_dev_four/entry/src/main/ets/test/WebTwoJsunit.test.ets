@@ -65,7 +65,7 @@ export default function webTwoJsunit() {
       done();
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_001                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_001                                                                                                                                                                     
      *tc.name GetCertificate                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
@@ -75,7 +75,7 @@ export default function webTwoJsunit() {
       sendEventByKey('webcomponenttwo',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_002                                                                                                                                                                     
      *tc.name onDownloadFailed                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
@@ -85,7 +85,7 @@ export default function webTwoJsunit() {
       sendEventByKey('webcomponenttwo',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_003                                                                                                                                                                   
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_003                                                                                                                                                                   
      *tc.name setDownloadDelegate                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
@@ -95,13 +95,23 @@ export default function webTwoJsunit() {
       sendEventByKey('webcomponenttwo',10,'');
     })
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_004                                                                                                                                                                 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_004                                                                                                                                                                 
      *tc.name resumeDownload                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */
     it('resumeDownload',0,async function(done){
-      emitKey="emitresumeDownload";
+      emitKey="emitRegisterJavaScriptProxy";
       Utils.registerEvent("resumeDownload",true,12,done);
+      sendEventByKey('webcomponenttwo',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_005                                                                                                                                                             
+     *tc.name RegisterJavaScriptProxy                                                                                                                                                                                                                 
+     *tc.desic Sets allow the Web access overview mode
+     */
+    it('RegisterJavaScriptProxy',0,async function(done){
+      emitKey="emitRegisterJavaScriptProxy";
+      Utils.registerEvent("RegisterJavaScriptProxy",'\"okok\"',14,done);
       sendEventByKey('webcomponenttwo',10,'');
     })
   })

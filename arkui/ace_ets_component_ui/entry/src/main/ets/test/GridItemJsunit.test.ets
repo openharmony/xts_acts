@@ -100,7 +100,7 @@ export default function GridItemJsunit() {
       console.info("[GridItemJsunit_0200] component obj is: " + JSON.stringify(obj));
       //expect(obj.$attrs.rowStart).assertEqual('2');
       //expect(obj.$attrs.rowEnd).assertEqual('5');
-      expect(obj.$attrs.selectable).assertEqual('false');
+      expect(obj.$attrs.selectable).assertEqual('true');
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('gridItem2');
       let obj2 = JSON.parse(strJson2);
@@ -134,7 +134,7 @@ export default function GridItemJsunit() {
       console.info("[GridItemJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.rowStart).assertEqual('0');
       expect(obj.$attrs.rowEnd).assertEqual('0');
-      expect(obj.$attrs.selectable).assertEqual('false');
+      expect(obj.$attrs.selectable).assertEqual('true');
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('gridItem2');
       let obj2 = JSON.parse(strJson2);

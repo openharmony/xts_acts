@@ -21,9 +21,6 @@
 				"power-shell wakeup",
 				"uinput -T -g 100 100 500 500",
 				"power-shell setmode 602"
-			],
-			"teardown-command":[
-				"power-shell setmode 601"
 			]
 		}	
     ]

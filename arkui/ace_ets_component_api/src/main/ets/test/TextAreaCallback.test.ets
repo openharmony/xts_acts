@@ -14,27 +14,26 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+
 export default function TextAreaCallbackTest() {
 
-  const SUITE = 'TextAreaCallback'
-  const waitUiReadyMs = 500;
+  const SUITE: string = 'TextAreaCallback'
+  const waitUiReadyMs: number = 500;
 
-  describe('TextAreaCallbackTest', function () {
+  describe('TextAreaCallbackTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/TextAreaCallback",
       }
       try {
         router.clear();
         let pages = router.getState();
         if (pages == null || !("TextAreaCallback" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -48,30 +47,16 @@ export default function TextAreaCallbackTest() {
      *tc.name   TextArea.onEditChange
      *tc.desc   TextArea.onEditChange
      */
-    it('ArkUI_TextArea_Callback_0100', 0, async function (done) {
+    it('ArkUI_TextArea_Callback_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_TextArea_Callback_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      async function step2() {
-        let callback = (event) => {
-          expect(event.data.isEditing).assertEqual(false);
-          done();
-        }
-        let event = {
-          eventId: 60201,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(event, callback);
-        let driver = Driver.create()
-        await driver.delayMs(waitUiReadyMs)
-        sendEventByKey('TextAreaCallback_TextArea2', 10, "")
-      }
 
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.isEditing).assertEqual(true);
         step2()
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60202,
         priority: events_emitter.EventPriority.LOW
       }
@@ -79,9 +64,23 @@ export default function TextAreaCallbackTest() {
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('TextAreaCallback_TextArea1', 10, "")
-
+      done()
       console.info(`${SUITE} ${CASE} END`);
     });
 
   })
+}
+
+async function step2() {
+  let callback = (event: events_emitter.EventData) => {
+    expect(event.data.isEditing).assertEqual(false);
+  }
+  let event: events_emitter.InnerEvent = {
+    eventId: 60201,
+    priority: events_emitter.EventPriority.LOW
+  }
+  events_emitter.on(event, callback);
+  let driver = Driver.create()
+  await driver.delayMs(500)
+  sendEventByKey('TextAreaCallback_TextArea2', 10, "")
 }

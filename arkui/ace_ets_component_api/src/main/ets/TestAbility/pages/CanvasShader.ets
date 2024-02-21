@@ -72,8 +72,8 @@ struct CanvasShader {
     }
   }
 
-  createConicGradient1(){
-    var grad = this.context.createConicGradient(0, 100, 100)
+  createConicGradient1() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -81,8 +81,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient2(){
-    var grad = this.context.createConicGradient(0, -10, 100)
+  createConicGradient2() {
+    let grad = this.context.createConicGradient(0, -10, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -90,38 +90,29 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient3(){
-    var grad = this.context.createConicGradient(0, 100, 100)
+  createConicGradient3() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     this.context.fillStyle = grad
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient4(){
-    var grad = this.context.createConicGradient(0, 100, 100)
+  createConicGradient4() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     this.context.fillStyle = grad
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient5(){
-    var grad = this.context.createConicGradient(0, 100, 100)
-    grad.addColorStop(0.0, '#ff0000')
-    grad.addColorStop(0.3, '#0000ff')
-    this.context.fillStyle = grad
-    this.context.fillRect(0, 0, 200, 200)
-  }
-
-  createConicGradient6(){
-    var grad = this.context.createConicGradient(0, 100, 100)
+  createConicGradient5() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
-    grad.addColorStop(1.0, '#ff00ff')
     this.context.fillStyle = grad
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient7(){
-    var grad = this.context.createConicGradient(0, 100, 100)
+  createConicGradient6() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -129,8 +120,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient8(){
-    var grad = this.context.createConicGradient(45 * Math.PI / 180, 100, 100)
+  createConicGradient7() {
+    let grad = this.context.createConicGradient(0, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -138,8 +129,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient9(){
-    var grad = this.context.createConicGradient(-45 * Math.PI / 180, 100, 100)
+  createConicGradient8() {
+    let grad = this.context.createConicGradient(45 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -147,8 +138,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient10(){
-    var grad = this.context.createConicGradient(450 * Math.PI / 180, 100, 100)
+  createConicGradient9() {
+    let grad = this.context.createConicGradient(-45 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -156,8 +147,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient11(){
-    var grad = this.context.createConicGradient(0, null, 100)
+  createConicGradient10() {
+    let grad = this.context.createConicGradient(450 * Math.PI / 180, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -165,8 +156,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient12(){
-    var grad = this.context.createConicGradient(0, undefined, 100)
+  createConicGradient11() {
+    let grad = this.context.createConicGradient(0, null, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -174,8 +165,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient13(){
-    var grad = this.context.createConicGradient(0, 100, null)
+  createConicGradient12() {
+    let grad = this.context.createConicGradient(0, undefined, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -183,8 +174,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient14(){
-    var grad = this.context.createConicGradient(0, 100, undefined)
+  createConicGradient13() {
+    let grad = this.context.createConicGradient(0, 100, null)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -192,8 +183,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient15(){
-    var grad = this.context.createConicGradient(null, 100, 100)
+  createConicGradient14() {
+    let grad = this.context.createConicGradient(0, 100, undefined)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -201,8 +192,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient16(){
-    var grad = this.context.createConicGradient(undefined, 100, 100)
+  createConicGradient15() {
+    let grad = this.context.createConicGradient(null, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -210,8 +201,8 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  createConicGradient17(){
-    var grad = this.context.createConicGradient(null, null, null)
+  createConicGradient16() {
+    let grad = this.context.createConicGradient(undefined, 100, 100)
     grad.addColorStop(0.0, '#ff0000')
     grad.addColorStop(0.3, '#0000ff')
     grad.addColorStop(1.0, '#ff00ff')
@@ -219,52 +210,60 @@ struct CanvasShader {
     this.context.fillRect(0, 0, 200, 200)
   }
 
-  clamp1(){
-    var pattern = this.context1.createPattern(this.img, 'clamp')
+  createConicGradient17() {
+    let grad = this.context.createConicGradient(null, null, null)
+    grad.addColorStop(0.0, '#ff0000')
+    grad.addColorStop(0.3, '#0000ff')
+    grad.addColorStop(1.0, '#ff00ff')
+    this.context.fillStyle = grad
+    this.context.fillRect(0, 0, 200, 200)
+  }
+
+  clamp1() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(276*2), px2vp(183))
+    this.context1.fillRect(0, 0, px2vp(276 * 2), px2vp(183))
   }
 
-  clamp2(){
-    var pattern = this.context1.createPattern(this.img, 'clamp')
+  clamp2() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(276), px2vp(183*2))
+    this.context1.fillRect(0, 0, px2vp(276), px2vp(183 * 2))
   }
 
-  clamp3(){
-    var pattern = this.context1.createPattern(this.img, 'clamp')
+  clamp3() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(276*2), px2vp(183*2))
+    this.context1.fillRect(0, 0, px2vp(276 * 2), px2vp(183 * 2))
   }
 
-  clamp4(){
-    var pattern = this.context1.createPattern(this.img, 'clamp')
+  clamp4() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'clamp')
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(276), px2vp(183))
   }
 
-  mirror1(){
-    var pattern = this.context1.createPattern(this.img, 'mirror')
+  mirror1() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(150*2), px2vp(150))
+    this.context1.fillRect(0, 0, px2vp(150 * 2), px2vp(150))
   }
 
-  mirror2(){
-    var pattern = this.context1.createPattern(this.img, 'mirror')
+  mirror2() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(150), px2vp(150*2))
+    this.context1.fillRect(0, 0, px2vp(150), px2vp(150 * 2))
   }
 
-  mirror3(){
-    var pattern = this.context1.createPattern(this.img, 'mirror')
+  mirror3() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
     this.context1.fillStyle = pattern
-    this.context1.fillRect(0, 0, px2vp(150*2), px2vp(150*2))
+    this.context1.fillRect(0, 0, px2vp(150 * 2), px2vp(150 * 2))
   }
 
-  mirror4(){
-    var pattern = this.context1.createPattern(this.img, 'mirror')
+  mirror4() {
+    let pattern: CanvasPattern = this.context1.createPattern(this.img, 'mirror')
     this.context1.fillStyle = pattern
     this.context1.fillRect(0, 0, px2vp(150), px2vp(150))
   }
-
 }

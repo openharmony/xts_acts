@@ -35,6 +35,8 @@ export default function avVideoRecorderTestOne() {
         let trackArray;
         let fdObject;
         let fdPath;
+        let maxAmplitudeStartTimes = 0;
+        let maxAmplitudePauseTimes = 0;
         let TAG = "[avVideoRecorderTestOne] ";
         let avProfile = {
             audioBitrate : 48000,
@@ -43,7 +45,7 @@ export default function avVideoRecorderTestOne() {
             audioSampleRate : 48000,
             fileFormat : media.ContainerFormatType.CFT_MPEG_4,
             videoBitrate : 280000, // 视频比特率
-            videoCodec : media.CodecMimeType.VIDEO_MPEG4,
+            videoCodec : media.CodecMimeType.VIDEO_AVC,
             videoFrameWidth : 640,  // 视频分辨率的宽
             videoFrameHeight : 480, // 视频分辨率的高
             videoFrameRate : 30 // 视频帧率
@@ -61,7 +63,7 @@ export default function avVideoRecorderTestOne() {
         let avProfileMpeg = {
             fileFormat: media.ContainerFormatType.CFT_MPEG_4,
             videoBitrate: 280000,
-            videoCodec: media.CodecMimeType.VIDEO_MPEG4,
+            videoCodec: media.CodecMimeType.VIDEO_AVC,
             videoFrameWidth: 640,
             videoFrameHeight: 480,
             videoFrameRate: 30
@@ -82,7 +84,7 @@ export default function avVideoRecorderTestOne() {
             audioSampleRate: 48000,
             fileFormat: media.ContainerFormatType.CFT_MPEG_4,
             videoBitrate: 280000,
-            videoCodec: media.CodecMimeType.VIDEO_MPEG4,
+            videoCodec: media.CodecMimeType.VIDEO_AVC,
             videoFrameWidth: 640,
             videoFrameHeight: 480,
             videoFrameRate: 30
@@ -114,6 +116,25 @@ export default function avVideoRecorderTestOne() {
                 latitude: 30, longitude: 130
             }
         }
+
+        let avProfileH265 = {
+            fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+            videoBitrate: 280000,
+            videoCodec: media.CodecMimeType.VIDEO_HEVC,
+            videoFrameWidth: 640,
+            videoFrameHeight: 480,
+            videoFrameRate: 30
+        }
+        let avConfigH265 = {
+            videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfileH265,
+            url: 'fd://35',
+            rotation: 0,
+            location: {
+                latitude: 30, longitude: 130
+            }
+        }
+
         let avProfileH264Aac = {
             audioBitrate: 48000,
             audioChannels: 2,
@@ -129,6 +150,40 @@ export default function avVideoRecorderTestOne() {
         let avConfigH264Aac = {
             audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
             videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfileH264Aac,
+            url: 'fd://35',
+            rotation: 0,
+            location: {
+                latitude: 30, longitude: 130
+            }
+        }
+
+        let avProfileH265Aac = {
+            audioBitrate: 48000,
+            audioChannels: 2,
+            audioCodec: media.CodecMimeType.AUDIO_AAC,
+            audioSampleRate: 48000,
+            fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+            videoBitrate: 280000,
+            videoCodec: media.CodecMimeType.VIDEO_HEVC,
+            videoFrameWidth: 640,
+            videoFrameHeight: 480,
+            videoFrameRate: 30,
+            isHdr: false
+        }
+        let avConfigH265Aac = {
+            audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+            videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES,
+            profile: avProfileH265Aac,
+            url: 'fd://35',
+            rotation: 0,
+            location: {
+                latitude: 30, longitude: 130
+            }
+        }
+	
+	 let avConfigOnlyAac = {
+            audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
             profile: avProfileH264Aac,
             url: 'fd://35',
             rotation: 0,
@@ -154,17 +209,24 @@ export default function avVideoRecorderTestOne() {
         const RESETRECORDER_CALLBACK_EVENT = 'resetCallback';
         const RELEASECORDER_CALLBACK_EVENT = 'releaseCallback';
         const RELEASECAMERA_EVENT = 'releaseCamera';
+        const CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT = 'audioCapturerInfoCallback';
+        const ENCODER_INFO_CALLBACK_EVENT = 'availableEncoderCallback';
+        const MAX_AMPLITUDE_CALLBACK_EVENT = 'maxAmplitudeCallback';
         const END_EVENT = 'end';
 
         const CREATE_PROMISE_EVENT = 'createPromise';
         const PREPARE_PROMISE_EVENT = 'preparePromise';
         const GETINPUTSURFACE_PROMISE_EVENT = 'getInputSurfacePromise';
+        const GETAVRECORDERCONFIG_PROMISE_EVENT = 'getAVRecorderConfigPromise';
         const STARTRECORDER_PROMISE_EVENT = 'startPromise';
         const PAUSERECORDER_PROMISE_EVENT = 'pausePromise';
         const RESUMERECORDER_PROMISE_EVENT = 'resumePromise';
         const STOPRECORDER_PROMISE_EVENT = 'stopPromise';
         const RESETRECORDER_PROMISE_EVENT = 'resetPromise';
         const RELEASECORDER_PROMISE_EVENT = 'releasePromise';
+        const CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT = 'audioCapturerInfoPromise';
+        const ENCODER_INFO_PROMISE_EVENT = 'availableEncoderPromise';
+        const MAX_AMPLITUDE_PROMISE_EVENT = 'maxAmplitudePromise';
 
         let cameraManager;
         let videoOutput;
@@ -209,7 +271,7 @@ export default function avVideoRecorderTestOne() {
             let availableVideoProfileList = [];
             getVideoProfile(cameraOutputCapability.videoProfiles, defaultDisplay.width, defaultDisplay.height, availableVideoProfileList, 0);
             myProfile = availableVideoProfileList[0];
-            let configs = [avConfig, avConfigMpeg, avConfigMpegAac, avConfigH264, avConfigH264Aac]
+            let configs = [avConfig, avConfigMpeg, avConfigMpegAac, avConfigH264, avConfigH264Aac, avConfigH265, avConfigH265Aac]
             for (let i = 0; i < configs.length; i++) {
                 checkDevice(configs[i])
             }
@@ -501,6 +563,19 @@ export default function avVideoRecorderTestOne() {
             });
         });
 
+        eventEmitter.on(GETAVRECORDERCONFIG_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            avRecorder.getAVRecorderConfig().then((config) => {
+                console.info('getAVRecorderConfig success');
+                expect(config.audioSourceType).assertEqual(avConfig.audioSourceType);
+                expect(config.audioBitrate).assertEqual(avConfig.audioBitrate);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }).catch((err) => {
+                console.info('getAVRecorderConfig failed and catch error is ' + err.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            });
+        });
+
         eventEmitter.on(INITCAMERA_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
             steps.shift();
             try{
@@ -716,6 +791,141 @@ export default function avVideoRecorderTestOne() {
             });
         });
 
+        eventEmitter.on(CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let state = avRecorder.state;
+            avRecorder.getCurrentAudioCapturerInfo().then((captureInfo) => {
+                switch(state) {
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.IDLE:
+                        console.info('getCurrentAudioCapturerInfo in idle state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.PREPARED:
+                        console.info('getCurrentAudioCapturerInfo in prepared state');
+                        expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PREPARED);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.STARTED:
+                        console.info('getCurrentAudioCapturerInfo in started state');
+                        expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.STARTED);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.PAUSED:
+                        console.info('getCurrentAudioCapturerInfo in paused state');
+                        expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PAUSED);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.STOPPED:
+                        console.info('getCurrentAudioCapturerInfo in stopped state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED:
+                        console.info('getCurrentAudioCapturerInfo in released state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    default:
+                        break;
+                }
+            }).catch((error) => {
+                console.info('getCurrentAudioCapturerInfo failed and catch error is ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            })
+        });
+
+        eventEmitter.on(ENCODER_INFO_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let state = avRecorder.state;
+            avRecorder.getAvailableEncoder().then((encoderInfo) => {
+                if (state == avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED) {
+                    console.info('getAvailableEncoder in released state');
+                    toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                } else {
+                    console.info('getAvailableEncoder encoderInfo length: ' + encoderInfo.length);
+                    expect(encoderInfo.length).assertLarger(0);
+                    for (let i = 0; i < encoderInfo.length; i++) {
+                        if (encoderInfo[i].type == 'video') {
+                            console.info('getAvailableEncoder video encoder frameRate min ' + encoderInfo[i].frameRate.min);
+                            console.info('getAvailableEncoder video encoder frameRate max ' + encoderInfo[i].frameRate.max);
+                            if (encoderInfo[i].frameRate.min == 0 && encoderInfo[i].frameRate.max == 0) {
+                                continue;
+                            }
+                            expect(encoderInfo[i].frameRate.max).assertLarger(0);
+                        } else {
+                            console.info('getAvailableEncoder audio encoder bitrate min ' + encoderInfo[i].bitRate.min);
+                            console.info('getAvailableEncoder audio encoder bitrate max ' + encoderInfo[i].bitRate.max);
+                            if (encoderInfo[i].bitRate.min == 0 && encoderInfo[i].bitRate.max == 0) {
+                                continue;
+                            }
+                            expect(encoderInfo[i].bitRate.max).assertLarger(0);
+                        }
+                    }
+                    toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                }
+            }).catch((error) => {
+                console.info('avRecorder getAvailableEncoder failed and catch error is: ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            })
+        });
+
+        eventEmitter.on(MAX_AMPLITUDE_PROMISE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let state = avRecorder.state;
+            avRecorder.getAudioCapturerMaxAmplitude().then((maxAmplitude) => {
+                switch (state) {
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.IDLE:
+                        maxAmplitudeStartTimes = 0;
+                        maxAmplitudePauseTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in idle state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.PREPARED:
+                        maxAmplitudeStartTimes = 0;
+                        maxAmplitudePauseTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in prepared state');
+                        expect(maxAmplitude).assertEqual(0);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.STARTED:
+                        maxAmplitudePauseTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in started state');
+                        if (maxAmplitudeStartTimes != 0) {
+                            expect(maxAmplitude).assertLarger(0);
+                        }
+                        maxAmplitudeStartTimes++;
+                        mediaTestBase.msleep(300);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.PAUSED:
+                        maxAmplitudeStartTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in paused state');
+                        if (maxAmplitudePauseTimes != 0) {
+                            expect(maxAmplitude).assertEqual(0);
+                        }
+                        maxAmplitudePauseTimes++;
+                        mediaTestBase.msleep(100);
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.STOPPED:
+                        maxAmplitudeStartTimes = 0;
+                        maxAmplitudePauseTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in stopped state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    case avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED:
+                        maxAmplitudeStartTimes = 0;
+                        maxAmplitudePauseTimes = 0;
+                        console.info('getAudioCapturerMaxAmplitude in released state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                        break;
+                    default:
+                        break;
+                }
+            }).catch((error) => {
+                console.info('avRecorder getAudioCapturerMaxAmplitude failed and catch error is ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            })
+        });
+
         async function startCameraOutput(avRecorder, avConfig, recorderTime, steps, done) {
             console.info('startCameraOutput start')
             await videoOutput.start(async (err) => {
@@ -747,6 +957,147 @@ export default function avVideoRecorderTestOne() {
 
             }catch(error){
                 console.info('releaseCamera failed and catch error is ' + error.message);
+            }
+        });
+
+        eventEmitter.on(CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            try {
+                let state = avRecorder.state;
+                avRecorder.getCurrentAudioCapturerInfo((err, captureInfo) => {
+                    switch(state) {
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.IDLE:
+                            console.info('getCurrentAudioCapturerInfo in idle state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.PREPARED:
+                            console.info('getCurrentAudioCapturerInfo in prepared state');
+                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PREPARED);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.STARTED:
+                            console.info('getCurrentAudioCapturerInfo in started state');
+                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.STARTED);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.PAUSED:
+                            console.info('getCurrentAudioCapturerInfo in paused state');
+                            expect(captureInfo.capturerState).assertEqual(avVideoRecorderTestBase.AV_RECORDER_AUDIO_STATE.PAUSED);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.STOPPED:
+                            console.info('getCurrentAudioCapturerInfo in stopped state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED:
+                            console.info('getCurrentAudioCapturerInfo in released state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        default:
+                            break;
+                    }
+                })
+            } catch (error) {
+                console.info('avRecorder getCurrentAudioCapturerInfo failed and catch error is ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }
+        });
+
+        eventEmitter.on(ENCODER_INFO_CALLBACK_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            try {
+                let state = avRecorder.state;
+                avRecorder.getAvailableEncoder((err, encoderInfo) => {
+                    if (state == avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED) {
+                        console.info('getAvailableEncoder in released state');
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                    } else {
+                        console.info('getAvailableEncoder encoderInfo length: ' + encoderInfo.length);
+                        expect(encoderInfo.length).assertLarger(0);
+                        for (let i = 0; i < encoderInfo.length; i++) {
+                            if (encoderInfo[i].type == 'video') {
+                                console.info('getAvailableEncoder video encoder frameRate min ' + encoderInfo[i].frameRate.min);
+                                console.info('getAvailableEncoder video encoder frameRate max ' + encoderInfo[i].frameRate.max);
+                                if (encoderInfo[i].frameRate.min == 0 && encoderInfo[i].frameRate.max == 0) {
+                                    continue;
+                                }
+                                expect(encoderInfo[i].frameRate.max).assertLarger(0);
+                            } else {
+                                console.info('getAvailableEncoder audio encoder bitrate min ' + encoderInfo[i].bitRate.min);
+                                console.info('getAvailableEncoder audio encoder bitrate max ' + encoderInfo[i].bitRate.min);
+                                if (encoderInfo[i].bitRate.min == 0 && encoderInfo[i].bitRate.max == 0) {
+                                    continue;
+                                }
+                                expect(encoderInfo[i].bitRate.max).assertLarger(0);
+                            }
+                        }
+                        toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                    }
+                });
+            } catch (error) {
+                console.info('avRecorder getAvailableEncoder failed and catch error is ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }
+        });
+
+        eventEmitter.on(MAX_AMPLITUDE_CALLBACK_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            try {
+                let state = avRecorder.state;
+                avRecorder.getAudioCapturerMaxAmplitude((err, maxAmplitude) => {
+                    switch (state) {
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.IDLE:
+                            maxAmplitudeStartTimes = 0;
+                            maxAmplitudePauseTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in idle state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.PREPARED:
+                            maxAmplitudeStartTimes = 0;
+                            maxAmplitudePauseTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in prepared state');
+                            expect(maxAmplitude).assertEqual(0);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.STARTED:
+                            maxAmplitudePauseTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in started state');
+                            if (maxAmplitudeStartTimes != 0) {
+                                expect(maxAmplitude).assertLarger(0);
+                            }
+                            maxAmplitudeStartTimes++;
+                            mediaTestBase.msleep(300);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.PAUSED:
+                            maxAmplitudeStartTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in paused state');
+                            if (maxAmplitudePauseTimes != 0) {
+                                expect(maxAmplitude).assertEqual(0);
+                            }
+                            maxAmplitudePauseTimes++;
+                            mediaTestBase.msleep(100);
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.STOPPED:
+                            maxAmplitudeStartTimes = 0;
+                            maxAmplitudePauseTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in stopped state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        case avVideoRecorderTestBase.AV_RECORDER_STATE.RELEASED:
+                            maxAmplitudeStartTimes = 0;
+                            maxAmplitudePauseTimes = 0;
+                            console.info('getAudioCapturerMaxAmplitude in released state');
+                            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                            break;
+                        default:
+                            break;
+                    }
+                })
+            } catch (error) {
+                console.info('avRecorder getAudioCapturerMaxAmplitude failed and catch error is ' + error.message);
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
             }
         });
 
@@ -2675,7 +3026,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : 48000,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -2726,7 +3077,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : -1,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -2777,7 +3128,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : 48000,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : -1, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -2828,7 +3179,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : 48000,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : -1 // 视频帧率
@@ -4171,7 +4522,7 @@ export default function avVideoRecorderTestOne() {
             let avNewProfile = {
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -4223,7 +4574,7 @@ export default function avVideoRecorderTestOne() {
             let avNewProfile = {
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -4277,7 +4628,7 @@ export default function avVideoRecorderTestOne() {
             let avNewProfile = {
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -4333,7 +4684,7 @@ export default function avVideoRecorderTestOne() {
             let avNewProfile = {
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -4387,7 +4738,7 @@ export default function avVideoRecorderTestOne() {
             let avNewProfile = {
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -5177,7 +5528,7 @@ export default function avVideoRecorderTestOne() {
                 audioCodec : media.CodecMimeType.AUDIO_AAC,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000,
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4,
+                videoCodec : media.CodecMimeType.VIDEO_AVC,
                 videoFrameWidth : 640,
                 videoFrameHeight : 480,
                 videoFrameRate : 30,
@@ -5224,7 +5575,7 @@ export default function avVideoRecorderTestOne() {
                 audioCodec : media.CodecMimeType.AUDIO_AAC,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000,
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4,
+                videoCodec : media.CodecMimeType.VIDEO_AVC,
                 videoFrameWidth : 640,
                 videoFrameHeight : 480,
                 videoFrameRate : 30,
@@ -5271,7 +5622,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : 48000,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : -1, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : 30 // 视频帧率
@@ -5318,7 +5669,7 @@ export default function avVideoRecorderTestOne() {
                 audioSampleRate : 48000,
                 fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
                 videoBitrate : 280000, // 视频比特率
-                videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+                videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持mpeg4和avc两种格式
                 videoFrameWidth : 640,  // 视频分辨率的宽
                 videoFrameHeight : 480, // 视频分辨率的高
                 videoFrameRate : -1 // 视频帧率
@@ -7884,5 +8235,406 @@ export default function avVideoRecorderTestOne() {
             eventEmitter.emit(mySteps[0], avRecorder, avConfigH264, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H264_1200 end')
         })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100
+            * @tc.name      : 02. prepare->getAVRecorderConfig
+            * @tc.desc      : 1.create 2.prepare 3.getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 start')
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH264Aac.url = fdPath;
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT, PREPARE_PROMISE_EVENT,
+                // init camera
+                GETINPUTSURFACE_PROMISE_EVENT, INITCAMERA_EVENT,
+                // getAVRecorderConfigPromise
+                GETAVRECORDERCONFIG_PROMISE_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH264Aac, recorderTime, mySteps, done);
+
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100
+        * @tc.name      : 01.AVRecorder Record H265+AAC
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath;
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT, PREPARE_PROMISE_EVENT,
+                // init camera
+                GETINPUTSURFACE_PROMISE_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_PROMISE_EVENT,
+                // pause recorder
+                PAUSERECORDER_PROMISE_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_PROMISE_EVENT,
+                // stop recorder
+                STOPRECORDER_PROMISE_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_PROMISE_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H265_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100
+        * @tc.name      : 01.AVRecorder Record H265+AAC
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath;
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200
+        * @tc.name      : 02.AVRecorder Record isHdr
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200 start')
+            if (deviceInfo.deviceInfo === 'default') {
+                avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
+            }
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigH265Aac.url = fdPath
+            avConfigH265Aac.isHdr = false
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
+                // init camera
+                GETINPUTSURFACE_CALLBACK_EVENT, INITCAMERA_EVENT,
+                // start recorder
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // resume recorder
+                STARTCAMERA_EVENT, RESUMERECORDER_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT, RELEASECAMERA_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigH265Aac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H265_0200 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_CALLBACK_0100
+        * @tc.name      : 13.AVRecorder getCurrentAudioCapturerInfo
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_CALLBACK_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_CALLBACK_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_CALLBACK_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_CALLBACK_0100
+        * @tc.name      : 13.AVRecorder getAvailableEncoder
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_CALLBACK_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_CALLBACK_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, ENCODER_INFO_CALLBACK_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_CALLBACK_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_CALLBACK_0100
+        * @tc.name      : 13.AVRecorder getMaxAmplitude
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_CALLBACK_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_CALLBACK_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT, MAX_AMPLITUDE_CALLBACK_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_CALLBACK_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_PROMISE_0100
+        * @tc.name      : 13.AVRecorder getCurrentAudioCapturerInfo
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_PROMISE_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_PROMISE_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, CURRENT_AUDIOCAPTURER_INFO_PROMISE_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_PROMISE_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_PROMISE_0100
+        * @tc.name      : 13.AVRecorder getAvailableEncoder
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_PROMISE_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_PROMISE_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT, ENCODER_INFO_PROMISE_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_PROMISE_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_PROMISE_0100
+        * @tc.name      : 13.AVRecorder getMaxAmplitude
+        * @tc.desc      : Recorder video
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+    */
+        it('SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_PROMISE_0100', 0, async function (done) {
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_PROMISE_0100 start')
+
+            let fileName = avVideoRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfigOnlyAac.url = fdPath
+
+            let mySteps = new Array(
+                // init avRecorder
+                CREATE_CALLBACK_EVENT,
+                // prepare avRecorder
+                PREPARE_CALLBACK_EVENT, MAX_AMPLITUDE_PROMISE_EVENT,
+                // start recorder
+                STARTRECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_PROMISE_EVENT, MAX_AMPLITUDE_PROMISE_EVENT,
+                // pause recorder
+                PAUSERECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_PROMISE_EVENT, MAX_AMPLITUDE_PROMISE_EVENT,
+                // resume recorder
+                RESUMERECORDER_CALLBACK_EVENT, MAX_AMPLITUDE_PROMISE_EVENT, MAX_AMPLITUDE_PROMISE_EVENT,
+                // stop recorder
+                STOPRECORDER_CALLBACK_EVENT,
+                // release avRecorder and camera
+                RELEASECORDER_CALLBACK_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfigOnlyAac, recorderTime, mySteps, done);
+            console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_PROMISE_0100 end')
+        })
+
+        /* *
+        * @tc.number    : SUM_MULTIMEDIA_MEDIA_ERRORCODE_ENUM_0100
+        * @tc.name      : ErrorCode
+        * @tc.desc      : Test Enumerate ErrorCode
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level2
+        */
+       it('SUM_MULTIMEDIA_MEDIA_ERRORCODE_ENUM_0100', 0, async function (done) {
+        let newErrorCode = media.AVErrorCode.AVERR_AUDIO_INTERRUPTED;
+        console.info('AVERR_AUDIO_INTERRUPTED:' + newErrorCode);
+        done();
+       })
     })
 }

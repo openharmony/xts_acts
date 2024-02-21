@@ -22,7 +22,7 @@ export default function ucharNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UCHAR_C16RTOMB_0100
      * @tc.name       : testMuslUcharC16rtomb001
      * @tc.desc       : test c16rtomb
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +37,7 @@ export default function ucharNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UCHAR_C32RTOMB_0100
      * @tc.name       : testMuslUcharC32rtomb001
      * @tc.desc       : test c32rtomb
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

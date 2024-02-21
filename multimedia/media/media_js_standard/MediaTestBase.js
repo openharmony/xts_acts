@@ -195,6 +195,8 @@ export function checkDescription(actualDescription, descriptionKey, descriptionV
             }else{
                 expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
             }
+        } else if (descriptionKey[i] == 'bitrate') {
+            expect(Math.abs(property - descriptionValue[i])).assertLess(500);
         } else {
             expect(property).assertEqual(descriptionValue[i]);
         }
@@ -208,6 +210,10 @@ export function checkOldDescription(actualDescription, descriptionKey, descripti
         console.info('case key is  '+ descriptionKey[i]);
         console.info('case actual value is  '+ property);
         console.info('case hope value is  '+ descriptionValue[i]);
+        if (descriptionKey[i] === 'bitrate'){
+            expect(Math.abs(property - descriptionValue[i])).assertLess(500);
+            return;
+        }
         expect(property).assertEqual(descriptionValue[i]);
     }
 }

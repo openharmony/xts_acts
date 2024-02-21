@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import events_emitter from '@ohos.events.emitter';
+import Utils from './Utils';
+import router from '@ohos.router';
 
 export default function flexJsunit() {
-  describe('flexTest', function () {
-    beforeEach(async function (done) {
+  describe('flexTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/flex',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/flex',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get flex state success " + JSON.stringify(pages));
         if (!("flex" == pages.name)) {
           console.info("get flex state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push flex page success " + JSON.stringify(result));
         }
@@ -41,79 +41,73 @@ export default function flexJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("flex after each called");
     });
 
-    it('testFlex_0100', 0, async function (done) {
+    it('testFlex_0100', 0, async (done:Function) => {
       console.info("testFlex_0100 START");
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('flexBasis');
+      let strJson: string = getInspectorByKey('flexBasis');
       console.info("testFlex_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
       await Utils.sleep(2000);
-      console.info("testFlex_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.flexBasis).assertEqual("auto");
+      console.info("testFlex_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.flexBasis).assertEqual("auto");
       console.info('testFlex_0100 END');
-      done();
+      done()
     });
 
-    it('testFlex_0200', 0, async function (done) {
+    it('testFlex_0200', 0, async (done:Function) => {
       console.info('testFlex_0200 START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('flexGrow');
+      let strJson: string = getInspectorByKey('flexGrow');
       console.info("testFlex_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testFlex_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.flexGrow).assertEqual(0);
+      console.info("testFlex_0200 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.flexGrow).assertEqual(0);
       console.info('testFlex_0200 END');
-      done();
+      done()
     });
 
-    it('testFlex_0300', 0, async function (done) {
+    it('testFlex_0300', 0, async (done:Function) => {
       console.info('testFlex_0300 START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('flexShrink');
+      let strJson: string = getInspectorByKey('flexShrink');
       console.info("testFlex_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testFlex_0300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.flexShrink).assertEqual(0);
+      console.info("testFlex_0300 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.flexShrink).assertEqual(0);
       console.info('testFlex_0300 END');
-      done();
+      done()
     });
 
-    it('testFlex_0400', 0, async function (done) {
+    it('testFlex_0400', 0, async (done:Function) => {
       console.info('testFlex_0400 START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('alignSelf');
+      let strJson: string = getInspectorByKey('alignSelf');
       console.info("testFlex_0400 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testFlex_0400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Auto");
+      console.info("testFlex_0400 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.alignSelf).assertEqual("ItemAlign.Auto");
       console.info('testFlex_0400 END');
-      done();
+      done()
     });
 
-    it('testFlex_0500', 0, async function (done) {
+    it('testFlex_0500', 0, async (done:Function) => {
       console.info('testFlex_0500 START');
-      let strJson = getInspectorByKey('flex');
+      let strJson: string = getInspectorByKey('flex');
       console.info("testFlex_0500 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testFlex_0500 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Flex');
-      done();
+      console.info("testFlex_0500 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      done()
     });
 
-    it('testFlex_0600', 0, async function (done) {
+    it('testFlex_0600', 0, async (done:Function) => {
       console.info('testFlex_0600 START');
-      let strJson = getInspectorByKey('flex');
+      let strJson: string = getInspectorByKey('flex');
       console.info("testFlex_0600 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testFlex_0600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      console.info("testFlex_0600 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       console.info('testFlex_0600 END');
-      done();
+      done()
     });
   })
 }

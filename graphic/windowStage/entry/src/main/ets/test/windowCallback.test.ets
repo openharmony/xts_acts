@@ -40,7 +40,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     };
     var systemWindowTypeArr = [];
     var systemWindowTypeDic = {
-      'TYPE_SYSTEM_ALERT': 1,
       'TYPE_FLOAT': 8,
     }
     var windowLayoutModeArr = [];
@@ -67,11 +66,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log('jsunittest beforeall');
       console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
-    beforeEach(function () {
-    })
-    afterAll(function () {
-    })
-
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
@@ -885,7 +879,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let loopCount = systemWindowTypeArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
       let tempWnd = null
-      let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let tempType = ohosWindow.WindowType.TYPE_FLOAT;
 
       function createWin(windId) {
         return new Promise(function (resolve, reject) {
@@ -985,7 +979,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       function createFirstWin() {
         return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, windowId, 1, (err, data) => {
+          ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT, (err, data) => {
             console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
             if (err && err.code) {
               reject(null)
@@ -1003,7 +997,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         done();
       });
       expect(!!dataOne).assertTrue();
-      ohosWindow.create(context, windowId, 1, async (err, data) => {
+      ohosWindow.create(context, windowId, ohosWindow.WindowType.TYPE_FLOAT, async (err, data) => {
         console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
         if (err && err.code) {
           console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
@@ -1105,7 +1099,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testDestroy_Callbcak', 0, async function (done) {
       let caseName = 'testDestroy_Callbcak';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'destroy_Callbcak';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1158,7 +1152,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testLoadContent_Exist_Create_SysWin_Callback', 0, async function (done) {
       let caseName = 'testLoadContent_Exist_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContent_Exist_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1207,7 +1201,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
     it('testLoadContent_Para_Is_Null_Create_SysWin_Callback', 0, async function (done) {
       let caseName = 'testLoadContent_Para_Is_Null_Create_SysWin_Callback';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'loadContent_Para_Is_Null_Create_SysWin_Callback';
       console.log(msgStr + 'begin');
       let tempWnd = null
@@ -1521,7 +1515,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       function createWin() {
         return new Promise(function (resolve, reject) {
-          ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
+          ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_FLOAT, (err, data) => {
             if (err && err.code) {
               console.log(msgStr + 'ohosWindow.create fail err:' + JSON.stringify(err));
               reject(null)
@@ -1863,7 +1857,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
       let wndId = 'animationForShownTest2';
-      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
       let tempWnd = null;
       ohosWindow.create(context, wndId, baseType, async (err, data) => {
         if (err && err.code) {
@@ -2142,5 +2136,139 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       
       
     });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0100
+     * @tc.name      : testGetTitleButtonRect
+     * @tc.desc      : Test the function of getTitleButtonRect
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+     it('testGetTitleButtonRect', 0, async function(done){
+      let msgStr = 'testGetTitleButtonRect';
+      console.log(msgStr + 'begin');
+      let windowClass = await ohosWindow.getLastWindow(context);
+      try {
+        let TitleButtonRect = windowClass.getTitleButtonRect();
+        console.log(msgStr + 'Succeeded in obtaining the area of title buttons. Data: ' + JSON.stringify(TitleButtonRect));
+        expect(TitleButtonRect.right !== null).assertTrue();
+        expect(TitleButtonRect.top !== null).assertTrue();
+        expect(TitleButtonRect.height !== null).assertTrue();
+        expect(TitleButtonRect.width !== null).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to get the area of title buttons. Cause: ' + JSON.stringify(error));
+        if (error.code == 1300002) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }          
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+     * @tc.name      : testWindowTitleButtonRectChange_on_Function_Callback
+     * @tc.desc      : Test the function of windowTitleButtonRectChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowTitleButtonRectChange_on_Function_Callback', 0, async function(done){
+      let  msgStr = 'testWindowTitleButtonRectChange_on';
+      console.log(msgStr + "begin on")
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        windowClass.on('windowTitleButtonRectChange', (titleButtonRect) => {
+          console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes. Data: ' + JSON.stringify(titleButtonRect));
+          expect(true).assertTrue();
+          done();
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
+        if (err.code == 801) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }
+      }
+   });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
+     * @tc.name      : testWindowTitleButtonRectChange_off_Function_Callback
+     * @tc.desc      : Test the function of windowTitleButtonRectChange
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testWindowTitleButtonRectChange_off_Function_Callback', 0, async function(done){
+      let msgStr = 'testWindowTitleButtonRectChange_off';
+      console.log(msgStr + 'begin off');
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        windowClass.off('windowTitleButtonRectChange');
+        console.log(msgStr + 'Succeeded in enabling the listener for window title buttons area changes');
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to disable the listener for window title buttons area changes. Cause: ' + JSON.stringify(error));
+        if (error.code == 1300002) {
+            expect(true).assertTrue()
+            done()
+        } else {
+            expect().assertFail();
+            done();
+        }  
+      }
+   });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2630
+     * @tc.name      : testEnumWindow_windowType
+     * @tc.desc      : window type enumeration
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testEnumWindow_windowType', 0, async function(){
+      console.info('testEnumWindow_windowType test the enum value of windowType begin');
+      console.info('testEnumWindow_windowType' + JSON.stringify(ohosWindow.WindowType));
+      try {
+        expect(0).assertEqual(ohosWindow.WindowType.TYPE_APP);
+        expect(1).assertEqual(ohosWindow.WindowType.TYPE_SYSTEM_ALERT);
+        expect(2).assertEqual(ohosWindow.WindowType.TYPE_INPUT_METHOD);
+        expect(3).assertEqual(ohosWindow.WindowType.TYPE_STATUS_BAR);
+        expect(4).assertEqual(ohosWindow.WindowType.TYPE_PANEL);
+        expect(5).assertEqual(ohosWindow.WindowType.TYPE_KEYGUARD);
+        expect(6).assertEqual(ohosWindow.WindowType.TYPE_VOLUME_OVERLAY);
+        expect(7).assertEqual(ohosWindow.WindowType.TYPE_NAVIGATION_BAR);
+        expect(8).assertEqual(ohosWindow.WindowType.TYPE_FLOAT);
+        expect(9).assertEqual(ohosWindow.WindowType.TYPE_WALLPAPER);
+        expect(10).assertEqual(ohosWindow.WindowType.TYPE_DESKTOP);
+        expect(11).assertEqual(ohosWindow.WindowType.TYPE_LAUNCHER_RECENT);
+        expect(12).assertEqual(ohosWindow.WindowType.TYPE_LAUNCHER_DOCK);
+        expect(13).assertEqual(ohosWindow.WindowType.TYPE_VOICE_INTERACTION);
+        expect(14).assertEqual(ohosWindow.WindowType.TYPE_POINTER);
+        expect(15).assertEqual(ohosWindow.WindowType.TYPE_FLOAT_CAMERA);
+        expect(16).assertEqual(ohosWindow.WindowType.TYPE_DIALOG);
+        expect(17).assertEqual(ohosWindow.WindowType.TYPE_SCREENSHOT);
+      } catch (error) {
+        console.info('test Enum value of windowType error ' + JSON.stringify(error));
+        expect().assertFail();
+      }
+   });
+
   })
 }

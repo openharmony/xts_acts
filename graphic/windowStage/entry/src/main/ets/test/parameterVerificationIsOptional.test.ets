@@ -91,6 +91,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         }
       })
     }
+    beforeAll(async function () {
+      // 点击掉USB用于的弹窗
+      let msgstr ='USB用于的弹窗'
+      await buttonClick('取消', msgstr).catch(async err => {
+        console.info(msgstr + err);
+      })
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
      * @tc.name      : testTouchOutsideBaseTest
@@ -147,10 +154,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let firstListenFlag = false
       let secondListenFlag = false
       let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowConfig_two = {
-        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let tempWnd = null;
       let tempWnd_two = null;
@@ -271,10 +278,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let windowId = 'touchOutside02';
       let windowId_two = 'touchOutside002';
       let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let windowConfig_two = {
-        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let tempWnd = null;
       let tempWnd_two = null;
@@ -376,7 +383,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'window_off_windowSizeChange_Test_001';
       console.log(msgStr + 'begin');
       let windowConfig = {
@@ -441,7 +448,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let firstListenFlag = false
       let secondListenFlag = false
-      let baseWndType = 1;
+      let baseWndType = ohosWindow.WindowType.TYPE_FLOAT;
       let windowId = 'window_off_windowSizeChange_Test_002';
       let windowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
@@ -629,7 +636,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let secondListenFlag = false
       let windowId = 'window_off_screenshot_Test_001';
       let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let tempWnd = null;
       tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -714,7 +721,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       let windowId = 'window_off_screenshot_Test_002';
       let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
       let tempWnd = null;
       tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -1608,6 +1615,50 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'after uiContext: ' + JSON.stringify(uiContext));
       done();
     })
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2500
+     * @tc.name      : testGetLastWindow_CreateSubWindow
+     * @tc.desc      : Gets the last window displayed in the current app.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testGetLastWindow_CreateSubWindow', 0, async function () {
+      let caseName = 'testGetLastWindow_CreateSubWindow';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow = null;
+      subWindow = await windowStage.createSubWindow('testGetLastWindow_CreateSubWindow').catch((err) => {
+        expect().assertFail();
+      });
+      expect(!!subWindow).assertTrue();
+      await subWindow.resize(400, 400).catch((err) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await subWindow.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.error(msgStr + 'Failed to loadContent the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await subWindow.moveWindowTo(100, 100).catch((err) => {
+        console.error(msgStr + 'Failed to move the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      await subWindow.showWindow().catch((err) => {
+        console.error(msgStr + 'Failed to show the window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      });
+      let lastWindow = null;
+      lastWindow = await ohosWindow.getLastWindow(context).catch((err) => {
+        console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+      expect(!!lastWindow).assertTrue();
+      console.log(msgStr + 'lastWindow is:' + JSON.stringify(lastWindow))
+      let properties = lastWindow.getWindowProperties();
+      expect(properties.windowRect.width).assertEqual(400);
+      expect(properties.windowRect.height).assertEqual(400);
+      await subWindow.destroyWindow();
+    })
   })
 }

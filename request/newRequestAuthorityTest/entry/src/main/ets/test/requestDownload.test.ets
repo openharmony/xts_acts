@@ -485,7 +485,7 @@ export default function requestDownloadJSUnit() {
             await task.resume();
             expect(true).assertEqual(true);
             await request.agent.remove(task.tid);
-            console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume success: " + task);3
+            console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume success: " + task);
             done();
           } catch (err) {
             console.info("====>SUB_Misc_REQUEST_Resume_Download_Promise_0010 download resume err: " + JSON.stringify(err));
@@ -1001,6 +1001,46 @@ export default function requestDownloadJSUnit() {
       }
     });
 
+    /**
+     * @tc.number SUB_REQUEST_Agent_GetTask_Promise_0100
+     * @tc.name   SUB_REQUEST_Agent_GetTask_Promise_0100
+     * @tc.desc   request.agent.getTask(),Promise
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Agent_GetTask_Promise_0100', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'reeateTest',
+        description: 'XTS download test!',
+        saveas: './SUB_REQUEST_Agent_GetTask_Promise_0100.txt',
+        network: request.agent.Network.ANY,
+        priority:0,
+      };
+
+      try {
+        let task = await request.agent.create(globalThis.abilityContext, config);
+        let task1 = await request.agent.getTask(globalThis.abilityContext, task.tid);
+        expect(typeof(task1.tid) === 'string').assertTrue();
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Succeeded in querying a download task: " + task);
+        try {
+          await request.agent.remove(task1.tid);
+          console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 remove success: " + task);
+        } catch (err) {
+          console.info('====>SUB_REQUEST_Agent_GetTask_Promise_0100 task not remove: ' + JSON.stringify(task1.tid));
+        }
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Agent_GetTask_Promise_0100 Failed to query a upload task : " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+      console.info("-----------------------SUB_REQUEST_Agent_GetTask_Promise_0100 end-----------------------");
+      done();
+    });
 
   });
 }

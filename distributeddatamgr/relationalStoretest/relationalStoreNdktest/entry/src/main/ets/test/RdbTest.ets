@@ -20,7 +20,7 @@ export default function rdbTest() {
   describe('RdbTest', () => {
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0010
      * @tc.name       : testCreateValueObject001
      * @tc.desc       : OH_Rdb_CreateValueObject Interface testing
      * @tc.size       : MediumTest
@@ -35,7 +35,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0200
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0020
      * @tc.name       : testCreateValuesBucket001
      * @tc.desc       : OH_Rdb_CreateValuesBucket Interface testing
      * @tc.size       : MediumTest
@@ -50,7 +50,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0300
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0030
      * @tc.name       : testCreatePredicates001
      * @tc.desc       : OH_Rdb_CreatePredicates Interface testing
      * @tc.size       : MediumTest
@@ -64,7 +64,7 @@ export default function rdbTest() {
       done();
     });
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0400
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0040
      * @tc.name       : testCreatePredicates002
      * @tc.desc       : OH_Rdb_CreatePredicates Interface testing
      * @tc.size       : MediumTest
@@ -77,8 +77,24 @@ export default function rdbTest() {
       expect(data).assertEqual(1);
       done();
     });
+
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0500
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0050
+     * @tc.name       : testCreatePredicates003
+     * @tc.desc       : OH_Rdb_CreatePredicates Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testCreatePredicates003', 0, async (done: Function) => {
+      let data = rdb.createPredicatesThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0060
      * @tc.name       : testGetOrOpen001
      * @tc.desc       : OH_Rdb_GetOrOpen Interface testing
      * @tc.size       : MediumTest
@@ -93,7 +109,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0600
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0070
      * @tc.name       : testGetOrOpen002
      * @tc.desc       : OH_Rdb_GetOrOpen Interface testing
      * @tc.size       : MediumTest
@@ -108,7 +124,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0700
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0080
      * @tc.name       : testGetOrOpen003
      * @tc.desc       : OH_Rdb_GetOrOpen Interface testing
      * @tc.size       : MediumTest
@@ -123,7 +139,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0800
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0090
+     * @tc.name       : testGetOrOpen004
+     * @tc.desc       : OH_Rdb_GetOrOpen Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testGetOrOpen004', 0, async (done: Function) => {
+      let data = rdb.getOrOpenFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0100
      * @tc.name       : testCloseStore001
      * @tc.desc       : OH_Rdb_CloseStore Interface testing
      * @tc.size       : MediumTest
@@ -138,7 +169,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_0900
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0110
      * @tc.name       : testCloseStore002
      * @tc.desc       : OH_Rdb_CloseStore Interface testing
      * @tc.size       : MediumTest
@@ -151,8 +182,24 @@ export default function rdbTest() {
       expect(data).assertEqual(1);
       done();
     });
+
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1000
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0120
+     * @tc.name       : testCloseStore003
+     * @tc.desc       : OH_Rdb_CloseStore Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testCloseStore003', 0, async (done: Function) => {
+      let data = rdb.closeStoreThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0130
      * @tc.name       : testDeleteStore001
      * @tc.desc       : OH_Rdb_DeleteStore Interface testing
      * @tc.size       : MediumTest
@@ -167,7 +214,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0140
      * @tc.name       : testDeleteStore002
      * @tc.desc       : OH_Rdb_DeleteStore Interface testing
      * @tc.size       : MediumTest
@@ -182,7 +229,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1200
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0150
+     * @tc.name       : testDeleteStore003
+     * @tc.desc       : OH_Rdb_DeleteStore Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDeleteStore003', 0, async (done: Function) => {
+      let data = rdb.deleteStoreThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0160
      * @tc.name       : testInsert001
      * @tc.desc       : OH_Rdb_Insert Interface testing
      * @tc.size       : MediumTest
@@ -197,7 +259,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1300
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0170
      * @tc.name       : testInsert002
      * @tc.desc       : OH_Rdb_Insert Interface testing
      * @tc.size       : MediumTest
@@ -212,7 +274,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1400
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0180
      * @tc.name       : testInsert003
      * @tc.desc       : OH_Rdb_Insert Interface testing
      * @tc.size       : MediumTest
@@ -227,7 +289,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1500
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0190
      * @tc.name       : testInsert004
      * @tc.desc       : OH_Rdb_Insert Interface testing
      * @tc.size       : MediumTest
@@ -242,7 +304,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1600
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0200
+     * @tc.name       : testInsert005
+     * @tc.desc       : OH_Rdb_Insert Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testInsert005', 0, async (done: Function) => {
+      let data = rdb.insertFive();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0210
      * @tc.name       : testUpdate001
      * @tc.desc       : OH_Rdb_Update Interface testing
      * @tc.size       : MediumTest
@@ -257,7 +334,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1700
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0220
      * @tc.name       : testUpdate002
      * @tc.desc       : OH_Rdb_Update Interface testing
      * @tc.size       : MediumTest
@@ -272,7 +349,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1800
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0230
      * @tc.name       : testUpdate003
      * @tc.desc       : OH_Rdb_Update Interface testing
      * @tc.size       : MediumTest
@@ -287,7 +364,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_1900
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0240
      * @tc.name       : testUpdate004
      * @tc.desc       : OH_Rdb_Update Interface testing
      * @tc.size       : MediumTest
@@ -302,7 +379,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2000
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0250
      * @tc.name       : testUpdate005
      * @tc.desc       : OH_Rdb_Update Interface testing
      * @tc.size       : MediumTest
@@ -317,7 +394,37 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0260
+     * @tc.name       : testUpdate006
+     * @tc.desc       : OH_Rdb_Update Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testUpdate006', 0, async (done: Function) => {
+      let data = rdb.updateSix();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0270
+     * @tc.name       : testUpdate007
+     * @tc.desc       : OH_Rdb_Update Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testUpdate007', 0, async (done: Function) => {
+      let data = rdb.updateSeven();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0280
      * @tc.name       : testDelete001
      * @tc.desc       : OH_Rdb_Delete Interface testing
      * @tc.size       : MediumTest
@@ -332,7 +439,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2200
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0290
      * @tc.name       : testDelete002
      * @tc.desc       : OH_Rdb_Delete Interface testing
      * @tc.size       : MediumTest
@@ -347,7 +454,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2300
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0300
      * @tc.name       : testDelete003
      * @tc.desc       : OH_Rdb_Delete Interface testing
      * @tc.size       : MediumTest
@@ -362,7 +469,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2400
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0310
      * @tc.name       : testDelete004
      * @tc.desc       : OH_Rdb_Delete Interface testing
      * @tc.size       : MediumTest
@@ -377,7 +484,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2500
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0320
+     * @tc.name       : testDelete005
+     * @tc.desc       : OH_Rdb_Delete Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDelete005', 0, async (done: Function) => {
+      let data = rdb.deleteFive();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0330
      * @tc.name       : testQuery001
      * @tc.desc       : OH_Rdb_Query Interface testing
      * @tc.size       : MediumTest
@@ -392,7 +514,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2600
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0340
      * @tc.name       : testQuery002
      * @tc.desc       : OH_Rdb_Query Interface testing
      * @tc.size       : MediumTest
@@ -407,7 +529,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2700
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0350
      * @tc.name       : testQuery003
      * @tc.desc       : OH_Rdb_Query Interface testing
      * @tc.size       : MediumTest
@@ -422,7 +544,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2800
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0360
+     * @tc.name       : testQuery004
+     * @tc.desc       : OH_Rdb_Query Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testQuery004', 0, async (done: Function) => {
+      let data = rdb.queryFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0370
      * @tc.name       : testExecute001
      * @tc.desc       : OH_Rdb_Execute Interface testing
      * @tc.size       : MediumTest
@@ -437,7 +574,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_2900
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0380
      * @tc.name       : testExecute002
      * @tc.desc       : OH_Rdb_Execute Interface testing
      * @tc.size       : MediumTest
@@ -452,7 +589,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3000
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0390
      * @tc.name       : testExecute003
      * @tc.desc       : OH_Rdb_Execute Interface testing
      * @tc.size       : MediumTest
@@ -467,7 +604,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0400
+     * @tc.name       : testExecute004
+     * @tc.desc       : OH_Rdb_Execute Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testExecute004', 0, async (done: Function) => {
+      let data = rdb.executeFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0410
      * @tc.name       : testExecuteQuery001
      * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
      * @tc.size       : MediumTest
@@ -482,7 +634,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3200
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0420
      * @tc.name       : testExecuteQuery002
      * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
      * @tc.size       : MediumTest
@@ -497,7 +649,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3300
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0430
      * @tc.name       : testExecuteQuery003
      * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
      * @tc.size       : MediumTest
@@ -512,7 +664,22 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3400
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0440
+     * @tc.name       : testExecuteQuery004
+     * @tc.desc       : OH_Rdb_ExecuteQuery Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testExecuteQuery004', 0, async (done: Function) => {
+      let data = rdb.executeQueryFour();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0450
      * @tc.name       : testBeginTransaction001
      * @tc.desc       : OH_Rdb_BeginTransaction Interface testing
      * @tc.size       : MediumTest
@@ -527,7 +694,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3500
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0460
      * @tc.name       : testBeginTransaction002
      * @tc.desc       : OH_Rdb_BeginTransaction Interface testing
      * @tc.size       : MediumTest
@@ -542,7 +709,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3600
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0470
      * @tc.name       : testRollBack001
      * @tc.desc       : OH_Rdb_RollBack Interface testing
      * @tc.size       : MediumTest
@@ -557,7 +724,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3700
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0480
      * @tc.name       : testRollBack002
      * @tc.desc       : OH_Rdb_RollBack Interface testing
      * @tc.size       : MediumTest
@@ -572,7 +739,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3800
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0490
      * @tc.name       : testCommit001
      * @tc.desc       : OH_Rdb_Commit Interface testing
      * @tc.size       : MediumTest
@@ -587,7 +754,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_3900
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0500
      * @tc.name       : testCommit002
      * @tc.desc       : OH_Rdb_Commit Interface testing
      * @tc.size       : MediumTest
@@ -602,7 +769,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4000
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0510
      * @tc.name       : testBackup001
      * @tc.desc       : OH_Rdb_Backup Interface testing
      * @tc.size       : MediumTest
@@ -617,7 +784,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4100
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0520
      * @tc.name       : testBackup002
      * @tc.desc       : OH_Rdb_Backup Interface testing
      * @tc.size       : MediumTest
@@ -632,7 +799,21 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4200
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0530
+     * @tc.name       : testBackup003
+     * @tc.desc       : OH_Rdb_Backup Interface testing
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testBackup003', 0, async (done: Function) => {
+      let data = rdb.backupThree();
+      console.info("Test NAPI data= " + JSON.stringify(data));
+      expect(data).assertEqual(1);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0540
      * @tc.name       : testRestore001
      * @tc.desc       : OH_Rdb_Restore Interface testing
      * @tc.size       : MediumTest
@@ -647,7 +828,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4300
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0550
      * @tc.name       : testRestore002
      * @tc.desc       : OH_Rdb_Restore Interface testing
      * @tc.size       : MediumTest
@@ -662,7 +843,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4400
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0560
      * @tc.name       : testRestore003
      * @tc.desc       : OH_Rdb_Restore Interface testing
      * @tc.size       : MediumTest
@@ -677,7 +858,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4500
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0570
      * @tc.name       : testGetVersion001
      * @tc.desc       : OH_Rdb_GetVersion Interface testing
      * @tc.size       : MediumTest
@@ -692,7 +873,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4600
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0580
      * @tc.name       : testGetVersion002
      * @tc.desc       : OH_Rdb_GetVersion Interface testing
      * @tc.size       : MediumTest
@@ -707,7 +888,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4700
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0590
      * @tc.name       : testGetVersion003
      * @tc.desc       : OH_Rdb_GetVersion Interface testing
      * @tc.size       : MediumTest
@@ -722,7 +903,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4800
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0600
      * @tc.name       : testSetVersion001
      * @tc.desc       : OH_Rdb_SetVersion Interface testing
      * @tc.size       : MediumTest
@@ -737,7 +918,7 @@ export default function rdbTest() {
     });
 
     /**
-     * @tc.number     : SUB_DISTRIBUTEDDATAMGR_RELATIONAL_STORE_RDB_4900
+     * @tc.number     : SUB_DistributedData_RelationalStore_SDK_NdkApiTest_0610
      * @tc.name       : testSetVersion002
      * @tc.desc       : OH_Rdb_SetVersion Interface testing
      * @tc.size       : MediumTest

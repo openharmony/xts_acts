@@ -6,7 +6,8 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -31,7 +32,7 @@
     "extensionAbilities": [
       {
         "name": "AdsCoreService",
-        "type": "service",
+        "type": "adsService",
         "srcEntry": "./ets/ability/AdsCoreService.ts",
         "description": "AdsCoreService",
         "exported": true,

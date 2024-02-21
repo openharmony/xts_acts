@@ -33,12 +33,12 @@ struct AreaExample {
         .onClick(() => {
           this.value = this.value + 'Text'
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "value": this.value,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 61,
               priority: events_emitter.EventPriority.LOW
             }
@@ -54,12 +54,12 @@ struct AreaExample {
           this.onActionCalled = true;
           console.info('onAreaChange current action state is: ' + this.onActionCalled);
           try {
-            var backData1 = {
+            let backData1: events_emitter.EventData = {
               data: {
                 "ACTION": this.onActionCalled,
               }
             }
-            var backEvent1 = {
+            let backEvent1: events_emitter.InnerEvent = {
               eventId: 62,
               priority: events_emitter.EventPriority.LOW
             }
@@ -73,6 +73,8 @@ struct AreaExample {
         .key('text2')
         .margin({ right: 30, left: 30 })
     }
-    .width('100%').height('100%').margin({ top: 30 })
+    .width('100%')
+    .height('100%')
+    .margin({ top: 30 })
   }
 }

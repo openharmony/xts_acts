@@ -17,7 +17,6 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import common from '@ohos.app.ability.common';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import { GlobalThis } from '../../test/Constants';
 
 let TAG = 'CameraXts CameraModuleTest: ';
@@ -27,8 +26,6 @@ export let mContext = getContext(this) as common.Context;
 @Entry
 @Component
 struct CameraIndex {
-  @State mSurfaceId: string = GlobalThis.getInstance().getValue();
-
   aboutToAppear() {
     console.info(TAG + ' --------------aboutToAppear--------------');
   }
@@ -46,33 +43,13 @@ struct CameraIndex {
           mXComponentController.setXComponentSurfaceSize({ surfaceWidth: 1920, surfaceHeight: 1080 });
           let surfaceId = mXComponentController.getXComponentSurfaceId();
           GlobalThis.getInstance().setValue(surfaceId);
-          this.mSurfaceId = GlobalThis.getInstance().getValue();
           mContext = getContext(this);
-          let permission = new Permission();
-          permission.getPermission();
-          console.info(TAG + 'CameraModuleTest: XComponent onLoad surfaceId: ' + surfaceId);
-
           let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
           let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
-          setTimeout(() => {
-            console.log(TAG + 'delay 10s');
-            Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-          }, 10000);
+          Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
         })
         .width('1920px')
         .height('1080px')
     }
-  }
-}
-
-class Permission {
-  async getPermission(): Promise<void> {
-    abilityAccessCtrl.createAtManager().requestPermissionsFromUser(mContext, [
-      'ohos.permission.CAMERA',
-      'ohos.permission.MICROPHONE',
-      'ohos.permission.READ_MEDIA',
-      'ohos.permission.WRITE_MEDIA'
-    ]).then(() => {
-    })
   }
 }

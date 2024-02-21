@@ -26,12 +26,15 @@ export default function httpRequestJsunit() {
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_request_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_request_0100
      * @tc.name httprequest::request
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_request_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_request_0100"
+    it("SUB_Telephony_http_HttpRequest_request_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_request_0100"
       console.log("-----------------------HttpRequest_request Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -50,19 +53,22 @@ export default function httpRequestJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_request_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_request_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_request_0200
+     * @tc.number SUB_Telephony_http_HttpRequest_request_0200
      * @tc.name httprequest::request
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_request_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_request_0200"
+    it("SUB_Telephony_http_HttpRequest_request_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_request_0200"
       console.log("-----------------------HttpRequest_request_01 Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -74,19 +80,22 @@ export default function httpRequestJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_request_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_request_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_request_0300
+     * @tc.number SUB_Telephony_http_HttpRequest_request_0300
      * @tc.name httprequest::request
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_request_0300", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_request_0300"
+    it("SUB_Telephony_http_HttpRequest_request_0300", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_request_0300"
       console.log("-----------------------HttpRequest_request_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -109,19 +118,22 @@ export default function httpRequestJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_request_0300 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_request_0300 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_destroy_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_destroy_0100
      * @tc.name httprequest::destroy
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_destroy_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_destroy_0100"
+    it("SUB_Telephony_http_HttpRequest_destroy_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_destroy_0100"
       console.log("-----------------------HttpRequest_destroy Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -145,19 +157,22 @@ export default function httpRequestJsunit() {
           }
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_destroy_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_destroy_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_on_headerReceive_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_on_headerReceive_0100
      * @tc.name httprequest::on_headerReceive
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_on_headerReceive_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_on_headerReceive_0100"
+    it("SUB_Telephony_http_HttpRequest_on_headerReceive_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_on_headerReceive_0100"
       console.log("-----------------------HttpRequest_on_headerReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -172,19 +187,22 @@ export default function httpRequestJsunit() {
         });
 
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_on_headerReceive_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_on_headerReceive_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_off_headerReceive_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_off_headerReceive_0100
      * @tc.name httprequest::off_headerReceive
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_off_headerReceive_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_off_headerReceive_0100"
+    it("SUB_Telephony_http_HttpRequest_off_headerReceive_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_off_headerReceive_0100"
       console.log("-----------------------HttpRequest_off_headerReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -203,7 +221,7 @@ export default function httpRequestJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_off_headerReceive_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_off_headerReceive_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -211,13 +229,16 @@ export default function httpRequestJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequest_on_headersReceive_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_on_headersReceive_0100
      * @tc.name httprequest::on_headersReceive
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequest_on_headersReceive_0100", 0, function (done) {
-      var casename = "Telephony_http_HttpRequest_on_headersReceive_0100"
+    it("SUB_Telephony_http_HttpRequest_on_headersReceive_0100", 0, function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_on_headersReceive_0100"
       console.log("-----------------------HttpRequest_on_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -231,19 +252,22 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_on_headersReceive_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_on_headersReceive_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_off_headersReceive_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_off_headersReceive_0100
      * @tc.name httprequest::off_headersReceive
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_off_headersReceive_0100", 0, function (done) {
-      var casename = "Telephony_http_HttpRequest_off_headersReceive_0100"
+    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0100", 0, function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_off_headersReceive_0100"
       console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -259,18 +283,21 @@ export default function httpRequestJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_off_headersReceive_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_off_headersReceive_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_off_headersReceive_0200
+     * @tc.number SUB_Telephony_http_HttpRequest_off_headersReceive_0200
      * @tc.name httprequest::off_headersReceive_0200
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_off_headersReceive_0200", 0, function (done) {
+    it("SUB_Telephony_http_HttpRequest_off_headersReceive_0200", 0, function (done) {
       console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -280,19 +307,22 @@ export default function httpRequestJsunit() {
         console.log("-----------------------HttpRequest_off_headersReceive_0200 Test end-----------------------");
         done();
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_off_headersReceive_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_off_headersReceive_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequest_once_headersReceive_0100
+     * @tc.number SUB_Telephony_http_HttpRequest_once_headersReceive_0100
      * @tc.name httprequest::once_headersReceive_0100
      * @tc.desc Test Test httprequest property.
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequest_once_headersReceive_0100", 0, function (done) {
-      var casename = "Telephony_http_HttpRequest_once_headersReceive_0100"
+    it("SUB_Telephony_http_HttpRequest_once_headersReceive_0100", 0, function (done) {
+      var casename = "SUB_Telephony_http_HttpRequest_once_headersReceive_0100"
       console.log("-----------------------HttpRequest_once_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -307,7 +337,7 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequest_once_headersReceive_010 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequest_once_headersReceive_010 : error = " + error);
         expect(false).assertTrue();
         done();
       }

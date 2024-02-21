@@ -22,7 +22,7 @@
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 
 static napi_value IfFreeNameIndex(napi_env env, napi_callback_info info)
 {

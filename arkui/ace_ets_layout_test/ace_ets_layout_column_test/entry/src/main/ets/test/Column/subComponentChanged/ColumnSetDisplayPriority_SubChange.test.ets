@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetDisplayPriority_SubChange() {
-  describe('ColumnSetDisplayPriorityTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetDisplayPriority_SubChange',
+  describe('ColumnSetDisplayPriorityTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetDisplayPriority_SubChange',
       }
       try {
         router.clear();
@@ -37,32 +39,37 @@ export default function ColumnSetDisplayPriority_SubChange() {
         console.error("push SetDisplayPriority page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("SetDisplayPriority after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1400
-     * @tc.name      testColumnSetDisplayPriorityWithRateOneTwoThree
-     * @tc.desc      Subcomponents set display priority(1-2-3) attribute.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1400
+     * @tc.name testColumnSetDisplayPriorityWithRateOneTwoThree
+     * @tc.desc Subcomponents set display priority(1-2-3) attribute.
      */
-    it('testColumnSetDisplayPriorityWithRateOneTwoThree', 0, async function (done) {
+    it('testColumnSetDisplayPriorityWithRateOneTwoThree', 0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateOneTwoThree START');
-      globalThis.value.message.notify({name:'testpriority1', value:1});
-      globalThis.value.message.notify({name:'testpriority2', value:2});
-      globalThis.value.message.notify({name:'testpriority3', value:3});
+      globalThis.value.message.notify({
+        name: 'testpriority1', value: 1
+      });
+      globalThis.value.message.notify({
+        name: 'testpriority2', value: 2
+      });
+      globalThis.value.message.notify({
+        name: 'testpriority3', value: 3
+      });
       await CommonFunc.sleep(2000);
-      let setDisplayPriority1 = CommonFunc.getComponentRect('setDisplayPriority1');
-      let setDisplayPriority2 = CommonFunc.getComponentRect('setDisplayPriority2');
-      let setDisplayPriority3 = CommonFunc.getComponentRect('setDisplayPriority3');
-      let setDisplayPriority = CommonFunc.getComponentRect('setDisplayPriority');
+      let setDisplayPriority1: RectValue = CommonFunc.getComponentRect('setDisplayPriority1');
+      let setDisplayPriority2: RectValue = CommonFunc.getComponentRect('setDisplayPriority2');
+      let setDisplayPriority3: RectValue = CommonFunc.getComponentRect('setDisplayPriority3');
+      let setDisplayPriority: RectValue = CommonFunc.getComponentRect('setDisplayPriority');
       expect(Math.abs(setDisplayPriority.top - setDisplayPriority1.top) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority1.top - setDisplayPriority2.top) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority3.top - setDisplayPriority2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-      expect(Math.abs(setDisplayPriority.bottom - setDisplayPriority3.bottom - Math.round(vp2px(20))) <= 1).assertTrue(Math.round(vp2px(20)))
+      expect(Math.abs(setDisplayPriority.bottom - setDisplayPriority3.bottom - Math.round(vp2px(20))) <= 1).assertTrue()
 
       expect(Math.abs(setDisplayPriority1.right - setDisplayPriority1.left - Math.round(vp2px(300))) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority2.right - setDisplayPriority2.left - Math.round(vp2px(300))) <= 1).assertTrue()
@@ -71,24 +78,29 @@ export default function ColumnSetDisplayPriority_SubChange() {
       expect(Math.abs(setDisplayPriority2.bottom - setDisplayPriority2.top - Math.round(vp2px(200))) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority3.bottom - setDisplayPriority3.top - Math.round(vp2px(150))) <= 1).assertTrue()
       console.info('new testColumnSetDisplayPriorityWithRateOneTwoThree END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1500
-     * @tc.name      testColumnSetDisplayPriorityWithRateTwoOneTwo
-     * @tc.desc      Subcomponents set display priority(1-0.5-1) attribute.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1500
+     * @tc.name testColumnSetDisplayPriorityWithRateTwoOneTwo
+     * @tc.desc Subcomponents set display priority(1-0.5-1) attribute.
      */
-    it('testColumnSetDisplayPriorityWithRateTwoOneTwo', 0, async function (done) {
+    it('testColumnSetDisplayPriorityWithRateTwoOneTwo', 0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateTwoOneTwo START');
-      globalThis.value.message.notify({name:'testpriority1', value:1});
-      globalThis.value.message.notify({name:'testpriority2', value:0.5});
-      globalThis.value.message.notify({name:'testpriority3', value:1});
+      globalThis.value.message.notify({
+        name: 'testpriority1', value: 1
+      });
+      globalThis.value.message.notify({
+        name: 'testpriority2', value: 0.5
+      });
+      globalThis.value.message.notify({
+        name: 'testpriority3', value: 1
+      });
       await CommonFunc.sleep(2000);
-      let setDisplayPriority1 = CommonFunc.getComponentRect('setDisplayPriority1');
-      let setDisplayPriority2 = CommonFunc.getComponentRect('setDisplayPriority2');
-      let setDisplayPriority3 = CommonFunc.getComponentRect('setDisplayPriority3');
-      let setDisplayPriority = CommonFunc.getComponentRect('setDisplayPriority');
+      let setDisplayPriority1: RectValue = CommonFunc.getComponentRect('setDisplayPriority1');
+      let setDisplayPriority2: RectValue = CommonFunc.getComponentRect('setDisplayPriority2');
+      let setDisplayPriority3: RectValue = CommonFunc.getComponentRect('setDisplayPriority3');
+      let setDisplayPriority: RectValue = CommonFunc.getComponentRect('setDisplayPriority');
       expect(Math.abs(setDisplayPriority.top - setDisplayPriority1.top) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority1.top - setDisplayPriority2.top) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority3.top - setDisplayPriority2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
@@ -101,7 +113,6 @@ export default function ColumnSetDisplayPriority_SubChange() {
       expect(Math.abs(setDisplayPriority2.bottom - setDisplayPriority2.top - Math.round(vp2px(200))) <= 1).assertTrue()
       expect(Math.abs(setDisplayPriority3.bottom - setDisplayPriority3.top - Math.round(vp2px(150))) <= 1).assertTrue()
       console.info('new testColumnSetDisplayPriorityWithRateTwoOneTwo END');
-      done();
     });
   })
 }

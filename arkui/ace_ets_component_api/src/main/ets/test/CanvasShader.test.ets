@@ -14,25 +14,24 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+
 export default function CanvasShaderTest() {
 
-  const SUITE = 'CanvasShader'
-  describe('CanvasShaderTest', function () {
+  const SUITE: string = 'CanvasShader'
+  describe('CanvasShaderTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CanvasShader",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages:router.RouterState = router.getState();
         if (pages == null || !("CanvasShader" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -46,12 +45,11 @@ export default function CanvasShaderTest() {
      *tc.name   CanvasRenderingContext2D support createConicGradient
      *tc.desc   CanvasRenderingContext2D support createConicGradient
      */
-    it('ArkUI_Canvas_Shader_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Canvas_Shader_0100'
+    it('ArkUI_Canvas_Shader_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Canvas_Shader_0100'
       console.info(`${SUITE} ${CASE} START`)
       let strJson = getInspectorByKey('CanvasShader_Canvas1')
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas')
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });
@@ -61,15 +59,13 @@ export default function CanvasShaderTest() {
      *tc.name   CanvasRenderingContext2D.createPattern support "clamp" and "mirror"
      *tc.desc   CanvasRenderingContext2D.createPattern support "clamp" and "mirror"
      */
-    it('ArkUI_Canvas_Shader_0200', 0, async function (done) {
-      let CASE = 'ArkUI_Canvas_Shader_0200'
+    it('ArkUI_Canvas_Shader_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Canvas_Shader_0200'
       console.info(`${SUITE} ${CASE} START`)
-      let strJson = getInspectorByKey('CanvasShader_Canvas2')
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas')
+      let strJson: string = getInspectorByKey('CanvasShader_Canvas2')
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });
-
   })
 }

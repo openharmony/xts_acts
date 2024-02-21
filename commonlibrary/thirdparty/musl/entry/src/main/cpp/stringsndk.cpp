@@ -15,63 +15,68 @@
 
 #include "common/napi_helper.cpp"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <clocale>
 #include <cstdlib>
 #include <cstring>
 #include <malloc.h>
 #include <strings.h>
 #include <sys/procfs.h>
+
 #define PARAM_0 0
 #define TWOVALUE 2
 #define PARAM_6 6
-#define PARAM_UNNORMAL -1
+#define PARAM_2 2
+#define PARAM_3 3
+#define PARAM_4 4
+#define PARAM_1 1
+#define PARAM_10 10
+#define PARAM_UNNORMAL (-1)
 
 static napi_value Strcasecmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
-    int sin_value = strcasecmp(valueFirst, valueSecond);
+    int sinValue = strcasecmp(valueFirst, valueSecond);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strcasecmp_l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
     locale_t locale = nullptr;
-    int sin_value = strcasecmp_l(valueFirst, valueSecond, locale);
+    int sinValue = strcasecmp_l(valueFirst, valueSecond, locale);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strncasecmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
     int valueThird;
     napi_get_value_int32(env, args[2], &valueThird);
-    int sin_value = strncasecmp(valueFirst, valueSecond, valueThird);
+    int sinValue = strncasecmp(valueFirst, valueSecond, valueThird);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strncasecmp_l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
+    size_t argc = PARAM_4;
     napi_value args[4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -80,21 +85,21 @@ static napi_value Strncasecmp_l(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[2], &valueThird);
     int value4;
     napi_get_value_int32(env, args[3], &value4);
-    int sin_value;
+    int sinValue;
     if (value4 == PARAM_0) {
         locale_t locale = newlocale(LC_ALL_MASK, "en_US", nullptr);
-        sin_value = strncasecmp_l(valueFirst, valueSecond, valueThird, locale);
+        sinValue = strncasecmp_l(valueFirst, valueSecond, valueThird, locale);
     } else {
-        sin_value = strncasecmp_l(valueFirst, valueSecond, valueThird, nullptr);
+        sinValue = strncasecmp_l(valueFirst, valueSecond, valueThird, nullptr);
     }
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Stpcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
@@ -107,7 +112,7 @@ static napi_value Stpcpy(napi_env env, napi_callback_info info)
 
 static napi_value Strcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
@@ -120,7 +125,7 @@ static napi_value Strcpy(napi_env env, napi_callback_info info)
 
 static napi_value Strcspn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -133,28 +138,28 @@ static napi_value Strcspn(napi_env env, napi_callback_info info)
 }
 static napi_value Index(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    char *param_src = NapiHelper::GetString(env, args[0]);
+    char *paramSrc = NapiHelper::GetString(env, args[0]);
 
-    char *ret = index(param_src, 'C');
-    int result_value = PARAM_UNNORMAL;
+    char *ret = index(paramSrc, 'C');
+    int resultValue = PARAM_UNNORMAL;
     if (ret != nullptr) {
-        result_value = PARAM_0;
+        resultValue = PARAM_0;
     } else {
-        result_value = PARAM_UNNORMAL;
+        resultValue = PARAM_UNNORMAL;
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Ffs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int firstParam;
@@ -167,7 +172,7 @@ static napi_value Ffs(napi_env env, napi_callback_info info)
 
 static napi_value FfsL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -180,7 +185,7 @@ static napi_value FfsL(napi_env env, napi_callback_info info)
 
 static napi_value FfsLL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double firstParam;
@@ -195,7 +200,7 @@ napi_value Bcmp(napi_env env, napi_callback_info info)
 {
     const char *valueFirst = "Hello";
     const char *valueSecond = "Hello";
-    size_t size = 10;
+    size_t size = PARAM_10;
     int resultValue = bcmp(valueFirst, valueSecond, size);
     napi_value result;
     napi_create_int32(env, resultValue, &result);
@@ -204,11 +209,11 @@ napi_value Bcmp(napi_env env, napi_callback_info info)
 
 static napi_value Bcopy(napi_env env, napi_callback_info info)
 {
-    void *dest = malloc(6);
+    void *dest = malloc(PARAM_6);
     bcopy("hello", dest, PARAM_6);
     napi_value result = nullptr;
-    if (strcmp((char *)dest, "hello")) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (strcmp(static_cast<char *>(dest), "hello")) {
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
@@ -220,8 +225,8 @@ static napi_value Bzero(napi_env env, napi_callback_info info)
     char dest[] = "hello";
     bzero((void *)dest, PARAM_6);
     napi_value result = nullptr;
-    if (0 != *(char *)dest) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+    if (PARAM_0 != *static_cast<char *>(dest) ){
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }

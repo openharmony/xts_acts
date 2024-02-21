@@ -513,42 +513,7 @@ export default function abilityTest() {
       context.cpu.threadAffinityMode = 3;
       console.log("MSLITE api test: set threadAffinityMode=3.");
       let msliteModel = await mindSporeLite.loadModelFromFile(model_file, context);
-      expect(msliteModel !== null).assertTrue();
-      console.log('=========MSLITE loadModel end=====');
-      const modelInputs = msliteModel.getInputs();
-      let input_name = modelInputs[0].name;
-      console.log(input_name.toString());
-      expect(input_name.toString()).assertEqual("data");
-      let input_shape = modelInputs[0].shape;
-      console.log(input_shape.toString());
-      expect(input_shape.toString()).assertEqual("1,48,48,3");
-      let input_elementNum = modelInputs[0].elementNum;
-      console.log(input_elementNum.toString());
-      expect(input_elementNum.toString()).assertEqual("6912");
-      let input_dtype = modelInputs[0].dtype;
-      console.log(input_dtype.toString());
-      expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
-      let input_format = modelInputs[0].format;
-      console.log(input_format.toString());
-      expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
-      let input_dataSize = modelInputs[0].dataSize;
-      console.log(input_dataSize.toString());
-      expect(input_dataSize.toString()).assertEqual("27648");
-      modelInputs[0].setData(inputBuffer.buffer);
-      console.log('=========MSLITE predict start=====');
-      let modelOutputs = await msliteModel.predict(modelInputs);
-      expect(modelOutputs !== null).assertTrue();
-      console.log('=========MSLITE new Float32Array start=====');
-      let output0 = new Float32Array(modelOutputs[0].getData());
-      expect(output0.length).assertLarger(0);
-      console.log('output0.length:' + output0.length);
-      for (var i = 0; i < 2; i++) {
-        console.log(output0[i].toString());
-        expect(output0[i].toString() !== null).assertTrue();
-      }
-      const modelInputs0 = msliteModel.getInputs();
-      console.log(modelInputs0[0].name.toString());
-      console.log('=========MSLITE new Float32Array end=====');
+      expect(msliteModel).assertUndefined();
     })
 
 

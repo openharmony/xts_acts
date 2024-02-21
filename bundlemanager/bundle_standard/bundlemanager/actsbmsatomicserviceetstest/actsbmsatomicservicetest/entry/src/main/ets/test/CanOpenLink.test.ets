@@ -1,0 +1,122 @@
+/**
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or impligetProfileByAbilityEmptyAbilityCalled.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import bundle from '@ohos.bundle.bundleManager';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+
+const PARAM_ERROR_CODE = 401;
+const ERROR_SCHEME_NOT_IN_QUERYSCHEMES = 17700056;
+const ERROR_INVALID_LINK = 17700055;
+
+export default function canOpenLink() {
+  describe('canOpenLink', function() {
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0010
+     * @tc.name: canOpenLinkCanOpen
+     * @tc.desc: Test canOpenLink, return true.
+     */
+    it('canOpenLinkCanOpen', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink("http://");
+        expect(data).assertTrue();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0020
+     * @tc.name: canOpenLinkCanNotOpen
+     * @tc.desc: Test canOpenLink, return false.
+     */
+    it('canOpenLinkCanNotOpen', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink("welink://");
+        expect(data).assertFalse();
+        done();
+      } catch (err) {
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0030
+     * @tc.name: canOpenLinkNotInQuerySchemes
+     * @tc.desc: The scheme of the specified link is not in the querySchemes.
+     */
+    it('canOpenLinkNotInQuerySchemes', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink("https://");
+        expect(data).assertFail();
+        done();
+      } catch (err) {
+        expect(err.code).assertEqual(ERROR_SCHEME_NOT_IN_QUERYSCHEMES);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0040
+     * @tc.name: canOpenLinkInvalidLink
+     * @tc.desc: The specified link is invalid.
+     */
+    it('canOpenLinkInvalidLink', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink("http:/");
+        expect(data).assertFail();
+        done();
+      } catch (err) {
+        expect(err.code).assertEqual(ERROR_INVALID_LINK);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0050
+     * @tc.name: canOpenLinkNullType
+     * @tc.desc: The parameter type is incorrect.
+     */
+    it('canOpenLinkNullType', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink(null);
+        expect(data).assertFail();
+        done();
+      } catch (err) {
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number: SUB_BMS_CANOPENLINK_0060
+     * @tc.name: canOpenLinkUndefinedType
+     * @tc.desc: The parameter type is incorrect.
+     */
+    it('canOpenLinkUndefinedType', 0, async function (done) {
+      try {
+        let data = bundle.canOpenLink(undefined);
+        expect(data).assertFail();
+        done();
+      } catch (err) {
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    });
+  })
+}

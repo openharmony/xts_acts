@@ -19,15 +19,15 @@ export default class MainAbility1 extends Ability {
         console.log("[Demo] MainAbility1 onCreate")
         globalThis.abilityWant1 = want;
         console.log("[Demo] MainAbility1 context: " + JSON.stringify(this.context));
-        var listKey1 = [];
+        globalThis.list1 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onAbilityCreate");
+                globalThis.list1.push(abilityname + " onAbilityCreate");
             },
             onWindowStageCreate(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onWindowStageCreate");
+                globalThis.list1.push(abilityname + " onWindowStageCreate");
             },
             onWindowStageActive(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
@@ -39,34 +39,30 @@ export default class MainAbility1 extends Ability {
             },
             onWindowStageDestroy(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onWindowStageDestroy");
+                globalThis.list1.push(abilityname + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onAbilityDestroy");
+                globalThis.list1.push(abilityname + " onAbilityDestroy");
             },
             onAbilityForeground(ability) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onAbilityForeground");
+                globalThis.list1.push(abilityname + " onAbilityForeground");
             },
             onAbilityBackground(ability) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onAbilityBackground");
+                globalThis.list1.push(abilityname + " onAbilityBackground");
             },
             onAbilityContinue(ability) {
                 let abilityname = ability.context.abilityInfo.name;
-                listKey1.push(abilityname + " onAbilityContinue");
+                globalThis.list1.push(abilityname + " onAbilityContinue");
             }
         }
         globalThis.applicationContext1 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext1.on('abilityLifecycle', AbilityLifecycleCallback);
+        globalThis.callbackid1 = lifecycleid;
         console.log("[Demo] registerAbilityLifecycleCallback1 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback1 listKey: " + JSON.stringify(listKey1));
-            globalThis.list1 = listKey1;
-            globalThis.callbackid1 = lifecycleid;
-            globalThis.applicationContext1onAbilityLifecycle = true;
-        }, 3000);
+        globalThis.applicationContext1onAbilityLifecycle = true;
     }
 
     onDestroy() {
@@ -78,7 +74,7 @@ export default class MainAbility1 extends Ability {
         console.log("[Demo] MainAbility1 onWindowStageCreate")
         globalThis.ability1context = this.context;
 
-        windowStage.loadContent('testability/pages/index1', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index1', (err, data) => {
             if (err.code) {
                 console.log('MainAbility1 loadContent error');
                 return;
@@ -96,6 +92,9 @@ export default class MainAbility1 extends Ability {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility1 onForeground")
         globalThis.MainAbility1onForeground = true;
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility1onForeground');
+        }, 800);
     }
 
     onBackground() {

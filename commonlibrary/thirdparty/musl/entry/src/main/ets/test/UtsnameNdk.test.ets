@@ -22,7 +22,7 @@ export default function utsnameNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTSNAME_UNAME_0100
      * @tc.name       : testMuslUtsnameUname001
      * @tc.desc       : test uname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

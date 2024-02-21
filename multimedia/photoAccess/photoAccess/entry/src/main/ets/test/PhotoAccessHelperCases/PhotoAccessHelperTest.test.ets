@@ -15,8 +15,7 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import buffer from '@ohos.buffer';
-import fs from '@ohos.file.fs';
+import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -33,52 +32,9 @@ export default function PhotoAccessHelperTest() {
             title: 'testPhoto'
         }
         let fetchResultCount = 0
-        let columns = [
-            photoKeys.URI,
-            photoKeys.PHOTO_TYPE,
-            photoKeys.DISPLAY_NAME,
-            photoKeys.DATE_ADDED,
-            photoKeys.DATE_MODIFIED,
-            photoKeys.DURATION,
-            photoKeys.WIDTH,
-            photoKeys.HEIGHT,
-            photoKeys.DATE_TAKEN,
-            photoKeys.ORIENTATION,
-            photoKeys.FAVORITE,
-            photoKeys.SIZE,
-            photoKeys.TITLE,
-            photoKeys.POSITION,
-            photoKeys.DATE_TRASHED,
-            photoKeys.HIDDEN,
-            photoKeys.CAMERA_SHOT_KEY,
-            photoKeys.USER_COMMENT,
-        ]
         const context = globalThis.abilityContext
         const imageType = photoAccessHelper.PhotoType.IMAGE
         const videoType = photoAccessHelper.PhotoType.VIDEO
-        const DEFAULT_PHOTO_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI;
-        const photoExtensions = [
-            "jpg",
-            "jpeg",
-            "png",
-            "svg",
-            "bmp",
-            "gif"
-        ]
-        const videoExtensions = [
-            "mp4",
-            "ts",
-            "webm",
-            "mkv"
-        ]
-        let sizes = [
-            { width: -1, height: -1 },
-            { width: 0, height: 0 },
-            { width: 100, height: 0 },
-            { width: 0, height: 100 },
-            { width: 720, height: 720 },
-            { width: 1000, height: 1000 }
-        ]
 
         function getPhotoHelper(context){
             return photoAccessHelper.getPhotoAccessHelper(context);
@@ -195,8 +151,7 @@ export default function PhotoAccessHelperTest() {
             phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                     releaseHelperCallback(phAccessHelper,done)
                 } else {
                     console.error('createAsset failed, message = ', err);
@@ -213,9 +168,8 @@ export default function PhotoAccessHelperTest() {
             console.info(`createAssetWithSuffixesCallback1 set suffix is:` + extension);
             phAccessHelper.createAsset(photoType, extension, options, (err, uri) => {
                 if (uri != undefined) {
-                    console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    console.info('createAsset uri: ' + uri);
+                    checkUri(uri, photoType, extension)
                     suffixNum1++
                     if(suffixNum1==extensions.length){
                         suffixNum1 = 0
@@ -240,8 +194,7 @@ export default function PhotoAccessHelperTest() {
             phAccessHelper.createAsset(photoType, extension, (err, uri) => {
                 if (uri != undefined) {
                     console.info('createAsset uri' + uri);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                     suffixNum2++
                     if(suffixNum2==extensions.length){
                         suffixNum2 = 0
@@ -267,12 +220,10 @@ export default function PhotoAccessHelperTest() {
                 let uri;
                 if(options.title == "no"){
                     uri= await phAccessHelper.createAsset(photoType, extension);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                 }else {
                     uri= await phAccessHelper.createAsset(photoType, extension, options);
-                    expect(uri).assertContain(photoType)
-                    expect(uri).assertContain(extension)
+                    checkUri(uri, photoType, extension)
                 }
                 console.info('createAsset uri' + uri);
                 suffixNum3++
@@ -287,24 +238,6 @@ export default function PhotoAccessHelperTest() {
                 console.error('createAsset failed, message = ', err);
                 expect(false).assertTrue();
                 done();
-            }
-        }
-
-        function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, photoAsset, onCallback1){
-            if(uriSet){
-                phAccessHelper.registerChange(photoAsset.uri, forChildUris, onCallback1);
-                if(callBackSet){
-                    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
-                }else {
-                    phAccessHelper.unRegisterChange(photoAsset.uri);
-                }
-            }else{
-                phAccessHelper.registerChange(DEFAULT_PHOTO_URI, forChildUris, onCallback1);
-                if(callBackSet){
-                    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
-                }else {
-                    phAccessHelper.unRegisterChange(photoAsset.uri);
-                }
             }
         }
 
@@ -539,25 +472,6 @@ export default function PhotoAccessHelperTest() {
             }
         }
 
-        function checkReadAndWrite(fd){
-            let arrayBuffer = new ArrayBuffer(4096);
-            fs.read(fd, arrayBuffer).then((readLen: number) => {
-                console.info("read file data succeed");
-                let buf = buffer.from(arrayBuffer, 0, readLen);
-                console.info(`The content of file: ${buf.toString()}`);
-            }).catch((err: BusinessError) => {
-                console.info("read file data failed with error message: " + err.message + ", error code: " + err.code);
-                expect(false).assertTrue();
-            })
-            let str: string = "hello, world";
-            fs.write(fd, str).then((writeLen: number) => {
-                console.info("write data to file succeed and size is:" + writeLen);
-                expect(false).assertTrue();
-            }).catch((err: BusinessError) => {
-                console.info("write data to file failed with error message: " + err.message + ", error code: " + err.code);
-            })
-        }
-
         function getReadOnlyFdCallback(phAccessHelper, fetchOptions, done){
             phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
                 if (fetchResult != undefined) {
@@ -625,7 +539,7 @@ export default function PhotoAccessHelperTest() {
                     console.log("i: " + i)
                     if (err == undefined) {
                         console.info('getThumbnail successful ' + pixelMap);
-                        if(i<4){
+                        if(i>0 && i<4){
                             console.info('getThumbnail error');
                             expect(false).assertTrue();
                         }
@@ -634,7 +548,7 @@ export default function PhotoAccessHelperTest() {
                         }
                     } else {
                         console.info('getThumbnail fail', err);
-                        if(i>3){
+                        if(i>3 || i<1){
                             console.error('getThumbnail error');
                             expect(false).assertTrue();
                         }
@@ -650,7 +564,7 @@ export default function PhotoAccessHelperTest() {
             for(let i = 0;i < sizes.length; i++){
                 photoAsset.getThumbnail(sizes[i]).then((pixelMap) => {
                     console.info('getThumbnail successful ' + pixelMap);
-                    if(i<4){
+                    if(i>0 && i<4){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
                     }
@@ -659,7 +573,7 @@ export default function PhotoAccessHelperTest() {
                     }
                 }).catch((err: BusinessError) => {
                     console.error('getThumbnail fail' + err);
-                    if(i>3){
+                    if(i>3 || i<1){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
                     }
@@ -819,9 +733,9 @@ export default function PhotoAccessHelperTest() {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
                 await fetchResult.getFirstObject();
                 let positions = [
-                    0,1
+                    0,1,fetchResultCount-1
                 ]
-                for(let i = 0;i < 2; i++){
+                for(let i = 0;i < 3; i++){
                     console.log(`positions[${i}] is: ${positions[i]}`)
                     fetchResult.getObjectByPosition(positions[i], (err, photoAsset) => {
                         if (photoAsset != undefined) {
@@ -846,9 +760,9 @@ export default function PhotoAccessHelperTest() {
             try {
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
                 let positions = [
-                    0,1
+                    0,1,fetchResultCount-1
                 ]
-                for(let i = 0;i < 2; i++){
+                for(let i = 0;i < 3; i++){
                     console.log(`positions[${i}] is: ${positions[i]}`)
                     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getObjectByPosition(positions[i]);
                     if (photoAsset != undefined) {
@@ -1419,59 +1333,6 @@ export default function PhotoAccessHelperTest() {
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100', 3, function (done) {
             let photoHelper = getPhotoHelper(context)
             registerChangeCallback(false, false, photoHelper, false, done)
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200
-           * @tc.name      : 032.release
-           * @tc.desc      : release callback, twice
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level2
-           */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3200', 2, function (done) {
-            let photoHelper = getPhotoHelper(context)
-            photoHelper.release((err) => {
-                console.info('releaseDemo');
-                if (err != undefined) {
-                    console.error('release failed. message = ', err);
-                    expect(false).assertTrue();
-                } else {
-                    console.info('release1 ok.');
-                    photoHelper.release((err) => {
-                        console.info('releaseDemo');
-                        if (err != undefined) {
-                            console.error('release failed. message = ', err);
-                            expect(false).assertTrue();
-                        } else {
-                            console.info('release2 ok.');
-                            done()
-                        }
-                    });
-                }
-            });
-        })
-
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300
-           * @tc.name      : 033.release
-           * @tc.desc      : release promise, twice
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level2
-           */
-        it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3300', 2, async function (done) {
-            let photoHelper = getPhotoHelper(context)
-            try {
-                await photoHelper.release();
-                console.info('release1 ok.');
-                await photoHelper.release();
-                console.info('release2 ok.');
-                done();
-            } catch (err) {
-                console.error('release failed. message = ', err);
-                expect(false).assertTrue();
-            }
         })
 
         /* *

@@ -23,7 +23,7 @@ export default function muslIfaddrsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_IFADDRS_GETIFADDRS_0100
      * @tc.name       : testMuslIfAddrsGetIfAddrs001
      * @tc.desc       : test getifaddrs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -34,14 +34,14 @@ export default function muslIfaddrsNdkTest() {
       done()
     });
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_IFADDRS_FREEIFADDRS_0100
-     * @tc.name       : testMuslIfAddrsFreeIfAddrs001
+     * @tc.number     : SUB_THIRDPARTY_MUSL_IFADDRS_FREEIFADDRS_0200
+     * @tc.name       : testMuslIfAddrsFreeIfAddrs002
      * @tc.desc       : test freeifaddrs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testMuslIfAddrsFreeIfAddrs001', 0, async (done: Function) => {
+    it('testMuslIfAddrsFreeIfAddrs002', 0, async (done: Function) => {
       let data: string = ifAddrs.freeIfAddrs();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
