@@ -14,10 +14,11 @@
  */
 
 import { describe, it, expect } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
 
-  let abilityDelegator: ESObject = AppStorage.get("abilityDelegator");
+  let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
 
   describe('AACommandTest', () => {
     /**
@@ -29,7 +30,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0100', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146ACTS_AACommand_finish_01_0100';
       abilityDelegator.finishTest(msg, 1, () => {
         console.log("ACTS_AACommand_finish_01_0100 finishTest  test  end ========> callback ");
         done();
@@ -44,13 +45,15 @@ export default function abilityTest() {
      */
     it('ACTS_AACommand_finish_01_0200', 0, async (done: Function) => {
       done();
-      let code: ESObject = abilityDelegator.finishTest(null, 1, () => {
+      let code = -1;
+      abilityDelegator.finishTest(null, 1, () => {
         console.log(" ACTS_AACommand_finish_01_0200 finishTest  test  end ========> callback ");
+        code = 0;
         expect().assertFail();
       });
       setTimeout(() => {
         console.log('ACTS_AACommand_finish_01_0200 code:' + JSON.stringify(code));
-        if (code != undefined) {
+        if (code == -1) {
           console.log('ACTS_AACommand_finish_01_0200 start failed');
           expect().assertFail();
         };
@@ -64,14 +67,16 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0300', 0, async (done: Function) => {
-      let code: ESObject = abilityDelegator.finishTest(undefined, 1, () => {
+      let code = -1;
+      abilityDelegator.finishTest(undefined, 1, () => {
         console.log(" ACTS_AACommand_finish_01_0300 finishTest  test  end ========> callback ");
+        code = 0;
         expect().assertFail();
         ;
       });
       setTimeout(() => {
         console.log('ACTS_AACommand_finish_01_0300 code:' + JSON.stringify(code));
-        if (code != undefined) {
+        if (code == -1) {
           console.log('ACTS_AACommand_finish_01_0300 start failed');
           expect().assertFail();
         };
@@ -87,7 +92,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0400', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MAX_VALUE, () => {
         console.log("ACTS_AACommand_finish_01_0400 finishTest  test  end ========> callback ");
         done();
@@ -102,7 +107,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0500', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MIN_VALUE, () => {
         console.log("ACTS_AACommand_finish_01_0500 finishTest  test  end ========> callback ");
         done();
@@ -117,7 +122,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0600', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, (Number.MIN_VALUE + 1), () => {
         console.log("ACTS_AACommand_finish_01_0600 finishTest  test  end ========> callback ");
         done();
@@ -132,26 +137,10 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0700', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, (Number.MIN_VALUE - 1), () => {
         console.log("ACTS_AACommand_finish_01_0700 finishTest  test  end ========> callback ");
         done();
-      });
-    });
-
-    /**
-     * @tc.number: ACTS_AACommand_finishTest_01_0800
-     * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
-     *           mode. The msg parameter is invalid(including Chinese and special characters) and the
-     *           code parameter is valid (“ABCD”)
-     * @tc.desc: Verify that the process of the test framework is not stopped by calling this interface.
-     */
-    it('ACTS_AACommand_finish_01_0800', 0, async (done: Function) => {
-      done();
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
-      abilityDelegator.finishTest(msg, 'ABCD', () => {
-        console.log(" ACTS_AACommand_finish_01_0800 finishTest  test  end ========> callback ");
-        expect().assertFail();
       });
     });
 
@@ -163,7 +152,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_0900', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, 1).then(() => {
         console.log("ACTS_AACommand_finish_01_0900 finishTest  test  end ========> callback ");
         done();
@@ -200,7 +189,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_1200', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(() => {
         console.log("ACTS_AACommand_finish_01_1200 finishTest  test  end ========> callback ");
         done();
@@ -215,7 +204,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_1300', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(() => {
         console.log("ACTS_AACommand_finish_01_1300 finishTest  test  end ========> callback ");
         done();
@@ -230,7 +219,7 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_1400', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MIN_VALUE + 1).then(() => {
         console.log("ACTS_AACommand_finish_01_1400 finishTest  test  end ========> callback ");
         done();
@@ -245,32 +234,11 @@ export default function abilityTest() {
      * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
      */
     it('ACTS_AACommand_finish_01_1500', 0, async (done: Function) => {
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.finishTest(msg, Number.MIN_VALUE - 1).then(() => {
         console.log("ACTS_AACommand_finish_01_1500 finishTest  test  end ========> callback ");
         done();
       });
-    });
-
-    /**
-     * @tc.number: ACTS_AACommand_finishTest_01_1600
-     * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-     *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-     *           is valid (ABCD)
-     * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-     */
-    it('ACTS_AACommand_finish_01_1600', 0, async (done: Function) => {
-      let code: ESObject;
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
-      code = abilityDelegator.finishTest(msg, 'ABCD');
-      setTimeout(() => {
-        console.log('ACTS_AACommand_finish_01_1600 code:' + JSON.stringify(code));
-        if (code != undefined) {
-          console.log('ACTS_AACommand_finish_01_1600 start failed');
-          expect().assertFail();
-        };
-        done();
-      }, 3000);
     });
   });
 };

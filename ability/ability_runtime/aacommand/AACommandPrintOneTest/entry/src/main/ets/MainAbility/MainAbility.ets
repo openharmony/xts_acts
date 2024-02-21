@@ -14,13 +14,14 @@
 */
 
 import Ability from '@ohos.app.ability.UIAbility';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import testsuite from '../test/List.test';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
-import { BusinessError } from '@ohos.base';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
+import { Hypium } from '@ohos/hypium';
+import { BusinessError } from '@ohos.base';
 
 async function startAbilityTest(TAG: string, context: common.UIAbilityContext) {
   let wantInfo: Want = {
@@ -41,17 +42,17 @@ function sleep(ms: number) {
 export default class MainAbility extends Ability {
   async onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
-    console.log('MainAbility onCreate')
+    console.log('MainAbility onCreate');
     let cmd: string;
-    let abilityDelegatorArguments: ESObject;
-    let abilityDelegator: ESObject;
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
 
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
 
     cmd = 'aa test -b com.example.aacommandrelyhap -m entry_test  -s class AACommandPrintOneTest#ACTS_AACo' +
       'mmand_print_01_0100 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0100 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0100 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0100 stdResult = ' + data.stdResult);
@@ -64,7 +65,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class AACommandPrintOneTest#ACTS_AAComm' +
       'and_print_01_0200 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0200 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0200 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0200 stdResult = ' + data.stdResult);
@@ -77,7 +78,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class AACommandPrintOneTest#ACTS_' +
       'AACommand_print_01_0300 -s unittest OpenHarmonyTestRunner'
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0300 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0300 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0300 stdResult = ' + data.stdResult);
@@ -90,7 +91,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class AACommandPrintOneTest#ACTS_AAComma' +
       'nd_print_01_0400 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0400 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0400 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0400 stdResult = ' + data.stdResult);
@@ -103,7 +104,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class AACommandPrintOneTest#ACTS_AAComm' +
       'and_print_01_0500 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0500 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0500 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0500 stdResult = ' + data.stdResult);
@@ -116,7 +117,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class AACommandPrintOneTest#ACTS_AA' +
       'Command_print_01_0600 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0600 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0600 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0600 stdResult = ' + data.stdResult);
@@ -129,7 +130,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
       'AACommandPrintOneTest#ACTS_AACommand_print_01_0700 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0700 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0700 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0700 stdResult = ' + data.stdResult);
@@ -142,7 +143,7 @@ export default class MainAbility extends Ability {
 
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
       'class AACommandPrintOneTest#ACTS_AACommand_print_01_0800 -s unittest OpenHarmonyTestRunner';
-    abilityDelegator.executeShellCommand(cmd, async (err: ESObject, data: ESObject) => {
+    abilityDelegator.executeShellCommand(cmd, async (err: BusinessError, data: AbilityDelegatorRegistry.ShellCmdResult) => {
       console.log('ACTS_AACommand_print_01_0800 - executeShellCommand: start ');
       console.log('ACTS_AACommand_print_01_0800 start err: ' + JSON.stringify(err));
       console.log('ACTS_AACommand_print_01_0800 stdResult = ' + data.stdResult);
@@ -160,10 +161,9 @@ export default class MainAbility extends Ability {
     console.log('MainAbility onDestroy');
   };
 
-  onWindowStageCreate(windowStage: ESObject) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.log('MainAbility onWindowStageCreate');
-    windowStage.setUIContent(this.context, 'pages/index', null);
-
+    windowStage.loadContent('pages/index', null);
   };
 
   onWindowStageDestroy() {

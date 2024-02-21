@@ -14,10 +14,11 @@
 */
 
 import TestRunner from '@ohos.application.testRunner';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
 
-let abilityDelegator = undefined;
-let abilityDelegatorArguments = undefined;
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
@@ -28,7 +29,7 @@ function translateParamsToString(parameters) {
   let targetParams = '';
   for (const key in parameters) {
     if (keySet.has(key)) {
-      targetParams = `${targetParams} ${key} ${parameters[key]}`
+      targetParams = `${targetParams} ${key} ${parameters[key]}`;
     };
   };
 
@@ -39,7 +40,7 @@ async function onAbilityCreateCallback() {
   console.log("onAbilityCreateCallback");
 };
 
-async function addAbilityMonitorCallback(err: ESObject) {
+async function addAbilityMonitorCallback(err: BusinessError) {
   console.info("addAbilityMonitorCallback : " + JSON.stringify(err));
 };
 
@@ -66,7 +67,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     console.info('cmd : ' + cmd);
     abilityDelegator.executeShellCommand(cmd,
-      (err: ESObject, d: ESObject) => {
+      (err: BusinessError, d: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info('executeShellCommand : err : ' + JSON.stringify(err));
         console.info('executeShellCommand : data : ' + d.stdResult);
         console.info('executeShellCommand : data : ' + d.exitCode);
