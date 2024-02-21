@@ -13,17 +13,35 @@
  * limitations under the License.
  */
 
-#include "include/c_api/context_c.h"
-#include "include/c_api/data_type_c.h"
-#include "include/c_api/model_c.h"
-#include "include/c_api/status_c.h"
-#include "include/c_api/types_c.h"
+#include "mindspore/context.h"
+#include "mindspore/data_type.h"
+#include "mindspore/model.h"
+#include "mindspore/status.h"
 #include "napi/native_api.h"
 #include "native_common.h"
 #include <cerrno>
-#include <js_native_api_types.h>
 #include <cstdlib>
-#include <uv.h>
+#include <fstream>
+#include <js_native_api_types.h>
+
+#define SUCCESS 0
+#define FAIL (-1)
+int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs)
+{
+    for (size_t i = 0; i < inputs.handle_num; ++i) {
+        float *input_data = (float *)OH_AI_TensorGetMutableData(inputs.handle_list[i]);
+        if (input_data == NULL) {
+            printf("MSTensorGetMutableData failed.\n");
+            return OH_AI_STATUS_LITE_ERROR;
+        }
+        int64_t num = OH_AI_TensorGetElementNum(inputs.handle_list[i]);
+        const int divisor = 10;
+        for (size_t j = 0; j < num; j++) {
+            input_data[j] = (float)(rand() % divisor) / divisor;
+        }
+    }
+    return OH_AI_STATUS_SUCCESS;
+}
 
 static napi_value OHAIContextCreateOne(napi_env env, napi_callback_info)
 {
@@ -317,7 +335,7 @@ static napi_value OHAIDeviceInfoSetProviderOne(napi_env env, napi_callback_info 
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -346,7 +364,7 @@ static napi_value OHAIDeviceInfoSetProviderTwo(napi_env env, napi_callback_info 
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -375,7 +393,7 @@ static napi_value OHAIDeviceInfoSetProviderThree(napi_env env, napi_callback_inf
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -403,7 +421,7 @@ static napi_value OHAIDeviceInfoSetProviderFour(napi_env env, napi_callback_info
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -426,7 +444,7 @@ static napi_value OHAIDeviceInfoGetProviderOne(napi_env env, napi_callback_info 
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -464,7 +482,7 @@ static napi_value OHAIDeviceInfoSetProviderDeviceOne(napi_env env, napi_callback
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -492,7 +510,7 @@ static napi_value OHAIDeviceInfoSetProviderDeviceTwo(napi_env env, napi_callback
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -520,7 +538,7 @@ static napi_value OHAIDeviceInfoSetProviderDeviceThree(napi_env env, napi_callba
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -548,7 +566,7 @@ static napi_value OHAIDeviceInfoGetProviderDeviceOne(napi_env env, napi_callback
     napi_get_value_int32(env, args[0], &valueOne);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[1], valueTwo, length, &stResult);
 
     napi_value result = nullptr;
@@ -1112,7 +1130,7 @@ static napi_value OHAITensorSetNameOne(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     size_t length = 64, stResult = 0;
     char *valueTwo = (char *)malloc(sizeof(char) * length);
-        NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
+    NAPI_ASSERT(env, valueTwo != nullptr, "malloc result is nullptr");
     napi_get_value_string_utf8(env, args[0], valueTwo, length, &stResult);
     napi_value result = nullptr;
 
@@ -1507,13 +1525,16 @@ static napi_value OHAIModelResizeOne(napi_env env, napi_callback_info)
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
-    NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
+    NAPI_ASSERT(env, ret == 0, "ret STATUS Error");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     NAPI_ASSERT(env, inputs.handle_list != nullptr, "inputs Create Error");
-    OH_AI_ShapeInfo shape_infos = {4, {1, 64, 256, 1}};
+    OH_AI_ShapeInfo shape_infos = {};
     OH_AI_Status resize_ret = OH_AI_ModelResize(model, inputs, &shape_infos, inputs.handle_num);
+
     napi_create_int32(env, resize_ret == OH_AI_STATUS_SUCCESS, &result);
     return result;
 }
@@ -1525,11 +1546,14 @@ static napi_value OHAIModelPredictOne(napi_env env, napi_callback_info)
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     NAPI_ASSERT(env, inputs.handle_list != nullptr, "inputs Create Error");
+    GenerateInputDataWithRandom(inputs);
     OH_AI_TensorHandleArray output;
     OH_AI_Status retData = OH_AI_ModelPredict(model, inputs, &output, nullptr, nullptr);
     napi_create_int32(env, retData == OH_AI_STATUS_SUCCESS, &result);
@@ -1543,8 +1567,10 @@ static napi_value OHAIModelGetInputsOne(napi_env env, napi_callback_info)
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     napi_create_int32(env, inputs.handle_list != nullptr, &result);
@@ -1558,8 +1584,10 @@ static napi_value OHAIModelGetOutputsOne(napi_env env, napi_callback_info)
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
     OH_AI_TensorHandleArray outputs = OH_AI_ModelGetOutputs(model);
     napi_create_int32(env, outputs.handle_list != nullptr, &result);
@@ -1573,10 +1601,12 @@ static napi_value OHAIModelGetInputByTensorNameOne(napi_env env, napi_callback_i
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
-    OH_AI_TensorHandle tensor = OH_AI_ModelGetOutputByTensorName(model, "data");
+    OH_AI_TensorHandle tensor = OH_AI_ModelGetOutputByTensorName(model, "prob");
     napi_create_int32(env, tensor != nullptr, &result);
     return result;
 }
@@ -1588,14 +1618,45 @@ static napi_value OHAIModelGetOutputByTensorNameOne(napi_env env, napi_callback_
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
     OH_AI_TensorHandle tensor = OH_AI_ModelGetInputByTensorName(model, "data");
     napi_create_int32(env, tensor != nullptr, &result);
     return result;
 }
 
+char *ReadFile(const char *file, size_t *size)
+{
+    printf("[common.cpp] Loading data from: %s\n", file);
+
+    std::ifstream ifs(file);
+    if (!ifs.good()) {
+        return nullptr;
+    }
+
+    if (!ifs.is_open()) {
+        ifs.close();
+        return nullptr;
+    }
+
+    ifs.seekg(0, std::ios::end);
+    *size = ifs.tellg();
+
+    char *buf = new char[*size];
+    if (buf == nullptr) {
+        ifs.close();
+        return nullptr;
+    }
+
+    ifs.seekg(0, std::ios::beg);
+    ifs.read(buf, *size);
+    ifs.close();
+
+    return buf;
+}
 static napi_value OHAITensorSetUserDataOne(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
@@ -1603,18 +1664,31 @@ static napi_value OHAITensorSetUserDataOne(napi_env env, napi_callback_info)
     NAPI_ASSERT(env, model != nullptr, "model Create Error");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     NAPI_ASSERT(env, context != nullptr, "context Create Error");
-    OH_AI_Status ret =
-        OH_AI_ModelBuildFromFile(model, "/data/storage/el1/bundle/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/storage/el2/base/files/ml_face_isface.ms",
+                                                OH_AI_MODELTYPE_MINDIR, context);
+
     NAPI_ASSERT(env, ret == OH_AI_STATUS_SUCCESS, "ret STATUS Error");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     NAPI_ASSERT(env, inputs.handle_list != nullptr, "inputs Create Error");
-    OH_AI_Status userData =
-        OH_AI_TensorSetUserData(inputs.handle_list[0], inputs.handle_list, sizeof(inputs.handle_list[0]));
-    napi_create_int32(env, userData == OH_AI_STATUS_SUCCESS, &result);
+    for (size_t i = 0; i < inputs.handle_num; ++i) {
+        size_t size1;
+        size_t *ptr_size1 = &size1;
+        const char *imagePath = "/data/storage/el2/base/files/ml_face_isface.input";
+        char *imageBuf = ReadFile(imagePath, ptr_size1);
+        OH_AI_TensorHandle tensor = inputs.handle_list[i];
+        size_t data_size = OH_AI_TensorGetDataSize(tensor);
+        auto userData = OH_AI_TensorSetUserData(tensor, imageBuf, data_size);
+        if (userData == OH_AI_STATUS_SUCCESS) {
+            napi_create_int32(env, true, &result);
+            break;
+        }
+    }
     return result;
 }
 
-static napi_value OHAIDeviceInfoCreateTwo(napi_env env, napi_callback_info info)
+static napi_value OHAIDeviceInfoCreateTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
     OH_AI_DeviceInfoHandle oH_AI_DeviceInfoHandle = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_INVALID);
@@ -1653,9 +1727,7 @@ static napi_value OHAISetFrequencyTwo(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueOne;
     napi_get_value_int32(env, args[0], &valueOne);
-
     napi_value result = nullptr;
-
     OH_AI_DeviceInfoHandle oH_AI_DeviceInfoHandle = nullptr;
     OH_AI_DeviceInfoSetFrequency(oH_AI_DeviceInfoHandle, valueOne);
     int frequency = OH_AI_DeviceInfoGetFrequency(oH_AI_DeviceInfoHandle);
@@ -1663,10 +1735,9 @@ static napi_value OHAISetFrequencyTwo(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHAIGetFrequencyTwo(napi_env env, napi_callback_info info)
+static napi_value OHAIGetFrequencyTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     OH_AI_DeviceInfoHandle oH_AI_DeviceInfoHandle = nullptr;
     int frequency = OH_AI_DeviceInfoGetFrequency(oH_AI_DeviceInfoHandle);
     napi_create_int32(env, frequency, &result);
@@ -1676,7 +1747,6 @@ static napi_value OHAIGetFrequencyTwo(napi_env env, napi_callback_info info)
 static napi_value OHAITensorCreateTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor = nullptr;
@@ -1685,10 +1755,9 @@ static napi_value OHAITensorCreateTwo(napi_env env, napi_callback_info)
     return result;
 }
 
-static napi_value OHAITensorSetNameTwo(napi_env env, napi_callback_info info)
+static napi_value OHAITensorSetNameTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1701,10 +1770,9 @@ static napi_value OHAITensorSetNameTwo(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value OHAITensorGetNameTwo(napi_env env, napi_callback_info info)
+static napi_value OHAITensorGetNameTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1720,7 +1788,6 @@ static napi_value OHAITensorGetNameTwo(napi_env env, napi_callback_info info)
 static napi_value OHAITensorSetDataTypeTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1736,7 +1803,6 @@ static napi_value OHAITensorSetDataTypeTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetDataTypeTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1752,7 +1818,6 @@ static napi_value OHAITensorGetDataTypeTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorSetShapeTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t newShapeNum = 4;
     int64_t newShape[newShapeNum] = {1, 32, 32, 1};
     OH_AI_TensorSetShape(nullptr, newShape, newShapeNum);
@@ -1765,7 +1830,6 @@ static napi_value OHAITensorSetShapeTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetShapeTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t newShapeNum = 6;
     int64_t newShape[newShapeNum] = {16, 32, 64, 64, 32, 16};
     OH_AI_TensorSetShape(nullptr, newShape, newShapeNum);
@@ -1778,7 +1842,6 @@ static napi_value OHAITensorGetShapeTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorSetFormatTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     OH_AI_TensorSetFormat(nullptr, OH_AI_FORMAT_HWKC);
     OH_AI_Format data_format = OH_AI_TensorGetFormat(nullptr);
     napi_create_int32(env, data_format == 0, &result);
@@ -1788,7 +1851,6 @@ static napi_value OHAITensorSetFormatTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetFormatTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     OH_AI_TensorSetFormat(nullptr, OH_AI_FORMAT_HWKC);
     OH_AI_Format get_data_format = OH_AI_TensorGetFormat(nullptr);
     napi_create_int32(env, get_data_format == 0, &result);
@@ -1798,7 +1860,6 @@ static napi_value OHAITensorGetFormatTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorSetDataTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1814,7 +1875,6 @@ static napi_value OHAITensorSetDataTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetDataTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     constexpr size_t createShapeNum = 4;
     int64_t createShape[createShapeNum] = {1, 48, 48, 3};
     OH_AI_TensorHandle tensor =
@@ -1830,7 +1890,6 @@ static napi_value OHAITensorGetDataTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetMutableDataTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     void *inputData = OH_AI_TensorGetMutableData(nullptr);
     napi_create_int32(env, inputData == nullptr, &result);
     return result;
@@ -1839,7 +1898,6 @@ static napi_value OHAITensorGetMutableDataTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetElementNumTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     int64_t elementNum = OH_AI_TensorGetElementNum(nullptr);
     napi_create_int32(env, elementNum == 0, &result);
     return result;
@@ -1848,7 +1906,6 @@ static napi_value OHAITensorGetElementNumTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorGetDataSizeTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     size_t dataSize = OH_AI_TensorGetDataSize(nullptr);
     napi_create_int32(env, dataSize == 0, &result);
     return result;
@@ -1859,9 +1916,12 @@ static napi_value OHAIDeviceInfoSetPriorityTwo(napi_env env, napi_callback_info)
     napi_value result = nullptr;
     OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
     NAPI_ASSERT(env, nnrt_device_info != nullptr, "nnrt_device_info Create Error");
-    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
-    OH_AI_Priority priority = OH_AI_DeviceInfoGetPriority(nnrt_device_info);
-    napi_create_int32(env, priority, &result);
+    try {
+        OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+        napi_create_int32(env, SUCCESS, &result);
+    } catch (std::exception& e) {
+        napi_create_int32(env, FAIL, &result);
+    }
     OH_AI_DeviceInfoDestroy(&nnrt_device_info);
     return result;
 }
@@ -1869,7 +1929,6 @@ static napi_value OHAIDeviceInfoSetPriorityTwo(napi_env env, napi_callback_info)
 static napi_value OHAITensorCloneTwo(napi_env env, napi_callback_info)
 {
     napi_value result = nullptr;
-
     OH_AI_TensorHandle clone = OH_AI_TensorClone(nullptr);
     napi_create_int32(env, clone == nullptr, &result);
     return result;
@@ -1897,6 +1956,23 @@ static napi_value OHAIDeviceInfoAddExtensionThree(napi_env env, napi_callback_in
     return result;
 }
 
+static napi_value OHAIModelBuildOne(napi_env env, napi_callback_info)
+{
+    napi_value result = nullptr;
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    NAPI_ASSERT(env, model != nullptr, "model Create Error");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    NAPI_ASSERT(env, context != nullptr, "context Create Error");
+    OH_AI_DeviceInfoHandle cpu_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_CPU);
+    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
+    size_t size1;
+    size_t *ptr_size1 = &size1;
+    const char *imagePath = "/data/storage/el2/base/files/ml_face_isface.ms";
+    char *imageBuf = ReadFile(imagePath, ptr_size1);
+    OH_AI_Status userData = OH_AI_ModelBuild(model, imageBuf, size1, OH_AI_MODELTYPE_MINDIR, context);
+    napi_create_int32(env, userData == OH_AI_STATUS_SUCCESS, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2055,7 +2131,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHAITensorSetUserDataOne", nullptr, OHAITensorSetUserDataOne, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-
         {"oHAIDeviceInfoCreateTwo", nullptr, OHAIDeviceInfoCreateTwo, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"oHAIContextSetThreadAffinityCoreListTwo", nullptr, OHAIContextSetThreadAffinityCoreListTwo, nullptr, nullptr,
          nullptr, napi_default, nullptr},
@@ -2089,7 +2164,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"oHAIDeviceInfoAddExtensionThree", nullptr, OHAIDeviceInfoAddExtensionThree, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-
+        {"oHAIModelBuildOne", nullptr, OHAIModelBuildOne, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
