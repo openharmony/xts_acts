@@ -12,42 +12,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Grid_RowCol_ItemVisibility{
+struct Grid_RowCol_ItemVisibility {
   @State secondGridItemVisibility: number = Visibility.Visible;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemVisibility onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'secondGridItemVisibility') {
         this.secondGridItemVisibility = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Grid(){
+
+  build() {
+    Column({ space: 30 }) {
+      Grid() {
         GridItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .key('Grid_RowCol_ItemVisibility01')
+
         GridItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .visibility(this.secondGridItemVisibility)
         .key('Grid_RowCol_ItemVisibility02')
+
         GridItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .key('Grid_RowCol_ItemVisibility03')
+
         GridItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }

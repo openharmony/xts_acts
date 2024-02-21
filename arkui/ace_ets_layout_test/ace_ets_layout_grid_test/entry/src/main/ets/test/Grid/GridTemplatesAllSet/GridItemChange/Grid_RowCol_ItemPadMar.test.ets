@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function grid_RowCol_ItemPadMarTest() {
-  describe('Grid_RowCol_ItemPadMarTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_ItemPadMarTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_ItemPadMarTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemPadMar',
       }
       try {
@@ -29,7 +30,7 @@ export default function grid_RowCol_ItemPadMarTest() {
         console.info("get Grid_RowCol_ItemPadMar state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_ItemPadMar" == pages.name)) {
           console.info("get Grid_RowCol_ItemPadMar state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_ItemPadMar page result:" + JSON.stringify(result));
         }
@@ -39,30 +40,36 @@ export default function grid_RowCol_ItemPadMarTest() {
       console.info("Grid_RowCol_ItemPadMarTest beforeEach end");
       done();
     });
-    afterEach(async function () {
-      globalThis.value.message.notify({name:'secondGridItemPadding', value:0});
-      globalThis.value.message.notify({name:'secondGridItemMargin', value:0});
+    afterEach(async () => {
+      globalThis.value.message.notify({
+        name: 'secondGridItemPadding', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'secondGridItemMargin', value: 0
+      });
       await CommonFunc.sleep(1000);
       console.info("Grid_RowCol_ItemPadMarTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0100
-     * @tc.name      testGridRowColItemMargin
-     * @tc.desc      The second griditem set margin to 10
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0100
+     * @tc.name testGridRowColItemMargin
+     * @tc.desc The second griditem set margin to 10
      */
-    it('testGridRowColItemMargin', 0, async function (done) {
+    it('testGridRowColItemMargin', 0, async (done: Function) => {
       console.info('[testGridRowColItemMargin] START');
-      globalThis.value.message.notify({name:'secondGridItemMargin', value:10});
+      globalThis.value.message.notify({
+        name: 'secondGridItemMargin', value: 10
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
-      let secondText = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
+      let secondText: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemPadMar_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
 
       expect(Math.abs(secondGridItem.left - firstGridItem.right - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(secondGridItem.top - gridContainer.top - vp2px(10)) <= 1).assertTrue(); //margin = 10
@@ -98,23 +105,25 @@ export default function grid_RowCol_ItemPadMarTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0200
-     * @tc.name      testGridRowColItemPadding
-     * @tc.desc      The second griditem set padding to 10
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0200
+     * @tc.name testGridRowColItemPadding
+     * @tc.desc The second griditem set padding to 10
      */
-    it('testGridRowColItemPadding', 0, async function (done) {
+    it('testGridRowColItemPadding', 0, async (done: Function) => {
       console.info('[testGridRowColItemPadding] START');
-      globalThis.value.message.notify({name:'secondGridItemPadding', value:10});
+      globalThis.value.message.notify({
+        name: 'secondGridItemPadding', value: 10
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
-      let secondText = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
+      let secondText: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemPadMar_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
       expect(Math.abs(secondText.left - secondGridItem.left - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(secondText.top - secondGridItem.top - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(secondGridItem.right - secondText.right - vp2px(10)) <= 1).assertTrue();
@@ -144,24 +153,28 @@ export default function grid_RowCol_ItemPadMarTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0300
-     * @tc.name      testGridRowColItemMarPad
-     * @tc.desc      The second griditem set padding to 10,margin to 10
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0300
+     * @tc.name testGridRowColItemMarPad
+     * @tc.desc The second griditem set padding to 10,margin to 10
      */
-    it('testGridRowColItemMarPad', 0, async function (done) {
+    it('testGridRowColItemMarPad', 0, async (done: Function) => {
       console.info('[testGridRowColItemMarPad] START');
-      globalThis.value.message.notify({name:'secondGridItemPadding', value:10});
-      globalThis.value.message.notify({name:'secondGridItemMargin', value:10});
+      globalThis.value.message.notify({
+        name: 'secondGridItemPadding', value: 10
+      });
+      globalThis.value.message.notify({
+        name: 'secondGridItemMargin', value: 10
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
-      let secondText = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar01');
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar02');
+      let secondText: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Text02');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar03');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar04');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemPadMar_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemPadMar_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
 
       expect(Math.abs(secondGridItem.left - firstGridItem.right - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(secondGridItem.top - gridContainer.top - vp2px(10)) <= 1).assertTrue(); //margin = 10

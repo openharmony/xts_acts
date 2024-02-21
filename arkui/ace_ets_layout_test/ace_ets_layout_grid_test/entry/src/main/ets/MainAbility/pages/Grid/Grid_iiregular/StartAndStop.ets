@@ -15,10 +15,10 @@
 @Entry
 @Component
 struct StartAndStop {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State text1 : string = ''
-  @State text2 : string = ''
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State text1: string = '';
+  @State text2: string = '';
 
   build() {
     Column({ space: 5 }) {
@@ -58,5 +58,5 @@ struct StartAndStop {
 
       }.width('100%').margin({ top: 5 })
     }
-   }
   }
+}
