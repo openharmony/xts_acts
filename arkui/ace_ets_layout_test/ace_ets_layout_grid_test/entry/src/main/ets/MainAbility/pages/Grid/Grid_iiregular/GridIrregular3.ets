@@ -20,7 +20,7 @@ struct GridIrregular3 {
   scroller: Scroller = new Scroller();
   layoutOptions2: GridLayoutOptions = {
     regularSize: [1, 1],
-    irregularIndexes: [undefined],
+    irregularIndexes: [],
     onGetIrregularSizeByIndex: (index: number) => {
       if (index === 3) {
         return [1, 5];

@@ -20,7 +20,7 @@ import { MessageManager, Callback, Message } from '../../../../common/MessageMan
 struct Grid_RowCol_ItemContentSize {
   @State secondGridItemContentHeight: string = '%100';
   @State secondGridItemContentWidth: string = '%100';
-  messageManager: MessageManager<number> = new MessageManager();
+  messageManager: MessageManager<string> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemContentSize onPageShow');
@@ -28,7 +28,7 @@ struct Grid_RowCol_ItemContentSize {
       name: 'messageManager',
       message: this.messageManager
     };
-    let callback: Callback<number> = (message: Message<number>) => {
+    let callback: Callback<string> = (message: Message<string>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'secondGridItemContentHeight') {
         this.secondGridItemContentHeight = message.value;

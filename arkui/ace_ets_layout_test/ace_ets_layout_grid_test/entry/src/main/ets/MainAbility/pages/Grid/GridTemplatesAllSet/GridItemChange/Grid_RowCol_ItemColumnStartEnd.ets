@@ -62,7 +62,7 @@ struct Grid_RowCol_ItemColumnStartEnd {
               .height('100%')
           }
           .key('Grid_RowCol_ItemColumnStartEnd' + item)
-        }, item => item)
+        }, (item: string) => item)
       }
       .width(300)
       .height(300)
