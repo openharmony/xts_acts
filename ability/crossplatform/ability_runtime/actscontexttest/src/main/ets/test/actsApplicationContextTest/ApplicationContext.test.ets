@@ -456,7 +456,7 @@ export default function ApplicationContext() {
     it("testCreateModuleContext004", 0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext004 begin");
-        let abilityContext: common.UIAbilityContext = GlobalContext.getContext().getObject('abilityContext') as common.UIAbilityContext;
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
         let context: common.ApplicationContext = abilityContext.getApplicationContext();
         let moduleContext = context.createModuleContext("abc");
@@ -481,7 +481,7 @@ export default function ApplicationContext() {
     it("testCreateModuleContext005", 0, async (done: Function) => {
       try {
         console.info("testCreateModuleContext005 begin");
-        let abilityContext: common.UIAbilityContext = GlobalContext.getContext().getObject('abilityContext') as common.UIAbilityContext;
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
         let context: common.ApplicationContext = abilityContext.getApplicationContext();
         let moduleContext = context.createModuleContext(undefined);
@@ -506,7 +506,7 @@ export default function ApplicationContext() {
     it("testGetApplicationContext001", 0, async (done: Function) => {
       try {
         console.info("testGetApplicationContext001 begin");
-        let abilityContext: common.UIAbilityContext = GlobalContext.getContext().getObject('abilityContext') as common.UIAbilityContext;
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         expect(abilityContext != null).assertTrue();
         let context: common.ApplicationContext = abilityContext.getApplicationContext();
         let applicationContext = context.getApplicationContext();
