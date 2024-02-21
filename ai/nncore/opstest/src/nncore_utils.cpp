@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -110,7 +110,7 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
             graphArgs.paramIndices.end()) {
             ret = OH_NNModel_SetTensorData(model, i, operandTem.data, operandTem.length);
             if (ret != OH_NN_SUCCESS) {
-                LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%d\n", ret);
+                LOGE("[NNRtTest] OH_NNModel_SetTensorData failed! ret=%{public}d\n", ret);
                 return ret;
             }
         }
