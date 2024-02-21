@@ -49,7 +49,7 @@ export default function abilityTest() {
      */
     it('ACTS_AACommand_printSync_0100', 0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0100 --- start');
-      msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       expect(AppStorage.get("stdResult1")).assertContain(msg);
       done();
     })
@@ -74,7 +74,7 @@ export default function abilityTest() {
         '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae';
-      expect(AppStorage.get("stdResult2")).assertContain(msg);
+      expect(AppStorage.get<string>("stdResult2")).assertContain(msg);
       done();
     })
 
@@ -98,7 +98,7 @@ export default function abilityTest() {
         '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
         '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae';
-      expect(AppStorage.get("stdResult3")).assertContain(msg);
+      expect(AppStorage.get<string>("stdResult3")).assertContain(msg);
       done();
     })
 
@@ -112,7 +112,7 @@ export default function abilityTest() {
     it('ACTS_AACommand_printSync_0400', 0, async (done: Function) => {
       console.log('ACTS_AACommand_printSync_0400 --- start');
       msg = 'start ability successfully';
-      expect(AppStorage.get("stdResult4")).assertContain(msg);
+      expect(AppStorage.get<string>("stdResult4")).assertContain(msg);
       done();
     })
   })

@@ -14,9 +14,10 @@
 */
 
 import { describe, it } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function abilityTest() {
-  let abilityDelegator: ESObject = AppStorage.get("abilityDelegator");
+  let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator");
   describe('AACommandPrintTest', () => {
     /**
      * @tc.number: ACTS_AACommand_printSync_01_0100
@@ -28,14 +29,13 @@ export default function abilityTest() {
     it('ACTS_AACommand_printSync_01_0100', 0, async (done: Function) => {
       done();
       console.log("ACTS_AACommand_printSync_01_0100 start ====> ");
-      let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
+      let msg = ' 测试日志！@#$%^&*()_+QWE {}|?><Fafq3146';
       abilityDelegator.printSync(msg);
-      console.log("ACTS_AACommand_printSync_01_0100 printSync end ====> ")
+      console.log("ACTS_AACommand_printSync_01_0100 printSync end ====> ");
       let finishmsg = 'ACTS_AACommand_printSync_01_0100 end';
-      abilityDelegator.finishTest(finishmsg, 1).then((data: ESObject) => {
-        console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback ")
-        console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end " +
-          "========> callback data: " + JSON.stringify(data))
+      abilityDelegator.finishTest(finishmsg, 1).then(() => {
+        console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback ");
+        console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end " + "========> callback successfully" );
       })
     })
 

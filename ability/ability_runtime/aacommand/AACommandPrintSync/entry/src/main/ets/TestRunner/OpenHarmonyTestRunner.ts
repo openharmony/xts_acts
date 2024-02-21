@@ -14,10 +14,11 @@
 */
 
 import TestRunner from '@ohos.application.testRunner';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
 
-let abilityDelegator;
-let abilityDelegatorArguments;
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
@@ -37,7 +38,7 @@ async function onAbilityCreateCallback() {
   console.log("onAbilityCreateCallback");
 }
 
-async function addAbilityMonitorCallback(err: ESObject) {
+async function addAbilityMonitorCallback(err: BusinessError) {
   console.info("addAbilityMonitorCallback : " + JSON.stringify(err));
 }
 
@@ -53,7 +54,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     console.log('OpenHarmonyTestRunner onRun run');
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    AppStorage.setOrCreate("abilityDelegator", AbilityDelegatorRegistry.getAbilityDelegator());
+    AppStorage.setOrCreate<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator", abilityDelegator);
     let MainAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility';
     let lMonitor = {
       abilityName: MainAbilityName,
@@ -64,7 +65,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     console.info('cmd : ' + cmd);
     abilityDelegator.executeShellCommand(cmd,
-      (err: ESObject, d: ESObject) => {
+      (err: BusinessError, d: AbilityDelegatorRegistry.ShellCmdResult) => {
         console.info('executeShellCommand : err : ' + JSON.stringify(err));
         console.info('executeShellCommand : data : ' + d.stdResult);
         console.info('executeShellCommand : data : ' + d.exitCode);

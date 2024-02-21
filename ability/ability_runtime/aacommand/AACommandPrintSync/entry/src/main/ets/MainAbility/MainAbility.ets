@@ -14,19 +14,18 @@
 */
 
 import Ability from '@ohos.app.ability.UIAbility';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import testsuite from '../test/List.test';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
+import { Hypium } from '@ohos/hypium';
 
 export default class MainAbility extends Ability {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.log('MainAbility onCreate')
-    let abilityDelegator: ESObject;
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: ESObject;
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
@@ -35,9 +34,9 @@ export default class MainAbility extends Ability {
     console.log('MainAbility onDestroy');
   }
 
-  onWindowStageCreate(windowStage: ESObject) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.log('MainAbility onWindowStageCreate');
-    windowStage.setUIContent(this.context, 'MainAbility/pages/index', null);
+    windowStage.loadContent('MainAbility/pages/index', null);
   }
 
   onWindowStageDestroy() {
