@@ -13,8 +13,8 @@
 * limitations under the License.
 */
 
-import abilityTest from './AACommandPrint.test'
+import abilityTest from './AACommandPrint.test';
 
 export default function testsuite() {
-  abilityTest()
+  abilityTest();
 }
