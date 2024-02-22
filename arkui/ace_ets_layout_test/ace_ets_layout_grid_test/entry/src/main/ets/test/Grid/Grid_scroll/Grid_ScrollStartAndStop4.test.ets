@@ -71,7 +71,7 @@ export default function Grid_ScrollStartandStop4() {
         y: Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`)
       },
         {
-          x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left,}`),
+          x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
           y: Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.3 + gridRect.top}`)
         }, 5, 1000);
       await CommonFunc.sleep(2000);
