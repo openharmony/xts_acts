@@ -23,56 +23,56 @@ import { BusinessError } from '@ohos.base';
 
 
 
-export default function openCustomDialog() {
-  describe('openCustomDialog', function () {
+export default function openCustomDialogNew() {
+  describe('openCustomDialogNew', function () {
     beforeEach(async function (done) {
-      console.info("openCustomDialog beforeEach start");
+      console.info("openCustomDialogNew beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/showInSubWindow/openCustomDialog',
+        uri: 'MainAbility/pages/showInSubWindow/openCustomDialogNew',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get openCustomDialog state pages: " + JSON.stringify(pages));
-        if (!("openCustomDialog" == pages.name)) {
-          console.info("get openCustomDialog state pages.name: " + JSON.stringify(pages.name));
+        console.info("get openCustomDialogNew state pages: " + JSON.stringify(pages));
+        if (!("openCustomDialogNew" == pages.name)) {
+          console.info("get openCustomDialogNew state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push openCustomDialog success: " + JSON.stringify(result));
+          console.info("push openCustomDialogNew success: " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push openCustomDialog page error: " + err);
+        console.error("push openCustomDialogNew page error: " + err);
         expect().assertFail();
       }
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_openCustomDialog_0100
-     * @tc.name      openCustomDialog_0100
+     * @tc.number    SUB_ACE_openCustomDialogNew_0100
+     * @tc.name      openCustomDialogNew_0100
      * @tc.desc      set api
      * @tc.level:    Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('openCustomDialog_0100', 0, async function (done) {
-      console.info('openCustomDialog_0100 START');
+    it('openCustomDialogNew_0100', 0, async function (done) {
+      console.info('openCustomDialogNew_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('openCustomDialog'));
+      let button = await driver.findComponent(ON.id('openCustomDialogNew'));
       await button.click();
       await CommonFunc.sleep(1000);
 
       let windowClass: window.Window | undefined = undefined;
       windowClass = await window.getLastWindow(globalThis.abilityContext);
       let properties: window.WindowProperties = windowClass.getWindowProperties();
-      console.info("[openCustomDialog_0100] title: " + JSON.stringify(properties.type));
+      console.info("[openCustomDialogNew_0100] title: " + JSON.stringify(properties.type));
       expect(properties.type).assertEqual(1)//1表示系统告警窗口TYPE_SYSTEM_ALERT
 
       await CommonFunc.sleep(1000);
       await driver.click(200,200);
       await CommonFunc.sleep(1000);
-      console.info('[openCustomDialog_0100] END');
+      console.info('[openCustomDialogNew_0100] END');
       done();
     });
 

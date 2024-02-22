@@ -78,7 +78,7 @@
         "MainAbility/pages/showInSubWindow/CustomPopupOptionsFalse",
         "MainAbility/pages/showInSubWindow/CustomPopupOptionsTrue",
         "MainAbility/pages/showInSubWindow/DatePickerDialog",
-        "MainAbility/pages/showInSubWindow/openCustomDialog",
+        "MainAbility/pages/showInSubWindow/openCustomDialogNew",
         "MainAbility/pages/showInSubWindow/openCustomDialogFalse",
         "MainAbility/pages/showInSubWindow/openCustomDialogTrue",
         "MainAbility/pages/showInSubWindow/PopupOptions",

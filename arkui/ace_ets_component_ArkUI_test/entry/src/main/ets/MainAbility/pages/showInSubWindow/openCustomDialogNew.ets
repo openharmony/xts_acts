@@ -32,14 +32,14 @@ function customDialogBuilder() {
 
 @Entry
 @Component
-struct openCustomDialogExample {
-  @State message: string = 'openCustomDialog'
+struct openCustomDialogNewExample {
+  @State message: string = 'openCustomDialogNew'
 
   build() {
     Row() {
       Column() {
         Button(this.message)
-          .id("openCustomDialog")
+          .id("openCustomDialogNew")
           .margin(100)
           .onClick(() => {
             promptAction.openCustomDialog({

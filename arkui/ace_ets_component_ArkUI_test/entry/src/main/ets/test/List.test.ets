@@ -88,7 +88,7 @@ import CustomPopupOptions from './showInSubWindowTest/CustomPopupOptions.test.et
 import CustomPopupOptionsFalse from './showInSubWindowTest/CustomPopupOptionsFalse.test.ets'
 import CustomPopupOptionsTrue from './showInSubWindowTest/CustomPopupOptionsTrue.test.ets'
 import DatePickerDialog from './showInSubWindowTest/DatePickerDialog.test.ets'
-import openCustomDialog from './showInSubWindowTest/openCustomDialog.test.ets'
+import openCustomDialogNew from './showInSubWindowTest/openCustomDialogNew.test.ets'
 import openCustomDialogFalse from './showInSubWindowTest/openCustomDialogFalse.test.ets'
 import openCustomDialogTrue from './showInSubWindowTest/openCustomDialogTrue.test.ets'
 import PopupOptions from './showInSubWindowTest/PopupOptions.test.ets'
@@ -181,7 +181,7 @@ export default function testsuite() {
   CustomPopupOptionsFalse();
   CustomPopupOptionsTrue();
   DatePickerDialog();
-  openCustomDialog();
+  openCustomDialogNew();
   openCustomDialogFalse();
   openCustomDialogTrue();
   PopupOptions();
