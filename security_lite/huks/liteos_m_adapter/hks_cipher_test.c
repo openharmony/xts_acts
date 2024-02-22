@@ -160,7 +160,7 @@ static void ExecHksCipherTest009(void const *argument)
 static void ExecHksCipherTest010(void const *argument)
 {
     LiteTestPrint("HksCipherTest010 Begin!\n");
-    TEST_ASSERT_TRUE(BaseTestDecrypt(1, TEST_INDEX_2, 1) == 0);
+    TEST_ASSERT_TRUE(BaseTestCipher(1, TEST_INDEX_2, 1) == 0);
     LiteTestPrint("HksCipherTest010 End!\n");
     osThreadExit();
 }
