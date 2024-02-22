@@ -16,6 +16,7 @@
 import Log from '../common/Log.ets';
 import Utils from '../common/Utils.ets';
 import events_emitter from '@ohos.events.emitter';
+import RectValue from '../common/Rect';
 
 const TAG = 'ets_apiLack_add';
 
@@ -23,23 +24,23 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct RefreshDrag {
   dragRefresh() {
-    var rect = Utils.getComponentRect("Refresh")
-    Utils.drag(rect["left"],rect["top"],rect["right"],rect["bottom"],20)
+    let rect: RectValue = Utils.getComponentRect("Refresh")
+    Utils.drag(rect.left, rect.top, rect.right, rect.bottom, 20)
   }
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear RefreshDrag start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear RefreshDrag end`)
   }
 
   @State isRefreshing: boolean = false
   @State counter: number = 0
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("refresh-Drag")
         .width(100)
@@ -70,30 +71,30 @@ struct RefreshDrag {
         .key("RefreshText")
 
 
-      Refresh({refreshing: this.isRefreshing, offset: 120, friction: 100}) {
+      Refresh({ refreshing: this.isRefreshing, offset: 120, friction: 100 }) {
         Text('Pull Down and refresh: ' + this.counter)
           .fontSize(30)
           .margin(10)
       }
       .key("Refresh")
-      .onClick(()=>{
+      .onClick(() => {
         this.dragRefresh()
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
         console.info('Refresh onStatueChange state is ' + refreshStatus)
-        if(refreshStatus === RefreshStatus.Drag){
+        if (refreshStatus === RefreshStatus.Drag) {
           console.info("refreshStatus RefreshStatus.Drag")
         }
-        if(refreshStatus === RefreshStatus.Refresh){
+        if (refreshStatus === RefreshStatus.Refresh) {
           console.info("refreshStatus RefreshStatus.Refresh")
         }
         try {
-          var backDataTwo = {
+          let backDataTwo: events_emitter.EventData = {
             data: {
               "Result": true
             }
           }
-          let backEventTwo = {
+          let backEventTwo: events_emitter.InnerEvent = {
             eventId: 60305,
             priority: events_emitter.EventPriority.LOW
           }
@@ -110,12 +111,12 @@ struct RefreshDrag {
         }, 1000)
         console.log('onRefreshing test')
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
               "Result": true
             }
           }
-          let backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 60304,
             priority: events_emitter.EventPriority.LOW
           }

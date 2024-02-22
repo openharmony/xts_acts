@@ -20,17 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct CopyOption {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CopyOption start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CopyOption end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text("copyOption-InApp")
         .width(100)
         .height(70)
@@ -43,8 +42,7 @@ struct CopyOption {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("InAppText")
-//        .copyOption(CopyOption.InApp)
+        .key("InAppText")//        .copyOption(CopyOption.InApp)
         .visibility(Visibility.None)
 
       Text("copyOption-LocalDevice")
@@ -59,10 +57,10 @@ struct CopyOption {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("LocalDeviceText")
-//        .copyOption(CopyOption.LocalDevice)
+        .key("LocalDeviceText")//        .copyOption(CopyOption.LocalDevice)
         .visibility(Visibility.None)
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
