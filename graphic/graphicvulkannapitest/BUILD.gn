@@ -35,7 +35,6 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
   ]
 
   deps = [
-    "$comPath/frameworks/surface:surface",
     "$comPath/rosen/modules/2d_graphics:2d_graphics",
     "$comPath/rosen/modules/render_service_base:librender_service_base",
     "$comPath/rosen/modules/render_service_client:librender_service_client",
@@ -46,7 +45,6 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
   ]
 
   include_dirs = [
-    "$comPath/frameworks/surface/include",
     "$comPath/interfaces/inner_api/surface",
     "$comPath/interfaces/inner_api/common",
     "$comPath/rosen/modules/render_service_client",
@@ -54,6 +52,7 @@ ohos_moduletest_suite("ActsGraphicVulkanTest") {
 
   external_deps = [
     "c_utils:utils",
+    "graphic_surface:surface",
     "hilog:libhilog",
   ]
 }
