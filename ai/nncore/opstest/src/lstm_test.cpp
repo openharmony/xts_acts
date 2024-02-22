@@ -29,9 +29,7 @@ struct LSTMModel1 {
     const std::vector<int32_t> bias_shape = {16};
     const std::vector<int32_t> hx_shape = {2, 2};
     const std::vector<int32_t> output_shape = {5, 2};
-    // int64_t inputSizeValue[1] = {10};
-    // int64_t hiddenSizeValue[1] = {2};
-    // int64_t numLayersValue[1] = {1};
+    
     float inputValue[5][2][10] = {1};
     float wihValue[8][10] = {1};
     float whhValue[8][2] = {1};
@@ -64,7 +62,8 @@ struct LSTMModel1 {
     OHNNOperandTest hiddenSize = {OH_NN_INT64, OH_NN_LSTM_HIDDEN_SIZE, {1}, hiddenSizeValue, sizeof(int64_t)};
     OHNNOperandTest numLayers = {OH_NN_INT64, OH_NN_LSTM_NUM_LAYERS, {1}, numLayersValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_LSTM,
-                               .operands = {input, wih, whh, bias, hx, cx, output, hy, cy, inputSize, hiddenSize, numLayers},
+                               .operands = {input, wih, whh, bias, hx, cx, output, hy,
+                                            cy, inputSize, hiddenSize, numLayers},
                                .paramIndices = {9, 10, 11},
                                .inputIndices = {0, 1, 2, 3, 4, 5},
                                .outputIndices = {6, 7, 8}};
@@ -259,7 +258,8 @@ HWTEST_F(LSTMTest, SUB_AI_NNRt_Func_North_LSTM_Model_SetOperandValue_01, Functio
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 

@@ -145,7 +145,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Build_03, F
 
     ConstantOfShapeModel1 constantOfShapeModel;
     OHNNGraphArgs graphArgs = constantOfShapeModel.graphArgs;
-    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.input, constantOfShapeModel.output, constantOfShapeModel.dataType, constantOfShapeModel.value};
+    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.input, constantOfShapeModel.output,
+                          constantOfShapeModel.dataType, constantOfShapeModel.value};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3, 4};
@@ -170,7 +171,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Build_04, F
 
     ConstantOfShapeModel1 constantOfShapeModel;
     OHNNGraphArgs graphArgs = constantOfShapeModel.graphArgs;
-    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.output, constantOfShapeModel.output, constantOfShapeModel.dataType, constantOfShapeModel.value};
+    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.output, constantOfShapeModel.output,
+                          constantOfShapeModel.dataType, constantOfShapeModel.value};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3, 4};
@@ -198,7 +200,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Build_05, F
     
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
-    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.output, constantOfShapeModel.dataType, constantOfShapeModel.value, activation};
+    graphArgs.operands = {constantOfShapeModel.input, constantOfShapeModel.output, constantOfShapeModel.dataType,
+                          constantOfShapeModel.value, activation};
     graphArgs.paramIndices = {2, 3, 4};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
     
@@ -261,7 +264,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Finis
  * @tc.desc: 设置操作数值，操作数不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_01, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -279,7 +283,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOp
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                      model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 
@@ -291,7 +296,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOp
  * @tc.desc: 设置操作数值，buufer为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_02, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -321,7 +327,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOp
  * @tc.desc: 设置操作数值，length为0
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_03, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOperandValue_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -351,7 +358,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SetOp
  * @tc.desc: 设置输入输出，inputIndices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -377,7 +385,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -404,7 +413,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -431,7 +441,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_04,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -458,7 +469,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_05,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -484,7 +496,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，outputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_06,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -511,7 +524,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_07,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -538,7 +552,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 设置输入输出，outputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_SpecifyInputsAndOutputs_08,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -565,7 +580,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_Speci
  * @tc.desc: 添加算子，paramindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_01, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -590,7 +606,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，paramindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_02, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -617,7 +634,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，paramindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_03, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -644,7 +662,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，paramindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_04, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_04,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -671,7 +690,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，inputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_05, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_05,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -696,7 +716,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_06, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_06,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -723,7 +744,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_07, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_07,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -750,7 +772,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_08, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_08,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -777,7 +800,8 @@ HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOp
  * @tc.desc: 添加算子，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_09, Function | MediumTest | Level3)
+HWTEST_F(ConstantOfShapeTest, SUB_AI_NNRt_Func_North_ConstantOfShape_Model_AddOperation_09,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);

@@ -248,7 +248,8 @@ HWTEST_F(ExpTest, SUB_AI_NNRt_Func_North_Exp_Build_05, Function | MediumTest | L
 
     ExpModel1 expModel;
     OHNNGraphArgs graphArgs = expModel.graphArgs;
-    graphArgs.operands = {expModel.input, expModel.input, expModel.output, expModel.base, expModel.scale, expModel.shift};
+    graphArgs.operands = {expModel.input, expModel.input, expModel.output,
+                          expModel.base, expModel.scale, expModel.shift};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3, 4, 5};
@@ -273,7 +274,8 @@ HWTEST_F(ExpTest, SUB_AI_NNRt_Func_North_Exp_Build_06, Function | MediumTest | L
 
     ExpModel1 expModel;
     OHNNGraphArgs graphArgs = expModel.graphArgs;
-    graphArgs.operands = {expModel.input, expModel.output, expModel.output, expModel.base, expModel.scale, expModel.shift};
+    graphArgs.operands = {expModel.input, expModel.output, expModel.output,
+                          expModel.base, expModel.scale, expModel.shift};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3, 4, 5};
@@ -301,7 +303,8 @@ HWTEST_F(ExpTest, SUB_AI_NNRt_Func_North_Exp_Build_07, Function | MediumTest | L
     
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
-    graphArgs.operands = {expModel.input, expModel.output, expModel.base, expModel.scale, expModel.shift, activation};
+    graphArgs.operands = {expModel.input, expModel.output, expModel.base,
+                          expModel.scale, expModel.shift, activation};
     graphArgs.paramIndices = {2, 3, 4, 5};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
     
@@ -382,7 +385,8 @@ HWTEST_F(ExpTest, SUB_AI_NNRt_Func_North_Exp_Model_SetOperandValue_01, Function 
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 

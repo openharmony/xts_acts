@@ -32,7 +32,8 @@ struct LeakyReluModel1 {
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
-    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1}, negativeSlopeValue, sizeof(float)};
+    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1},
+                                     negativeSlopeValue, sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_LEAKY_RELU,
                                .operands = {input, output, negativeSlope},
                                .paramIndices = {2},
@@ -50,7 +51,8 @@ struct LeakyReluModel2 {
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
-    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1}, negativeSlopeValue, sizeof(float)};
+    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1},
+                                     negativeSlopeValue, sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_LEAKY_RELU,
                                .operands = {input, output, negativeSlope},
                                .paramIndices = {2},
@@ -68,7 +70,8 @@ struct LeakyReluModel3 {
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
-    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1}, negativeSlopeValue, sizeof(float)};
+    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1},
+                                     negativeSlopeValue, sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_LEAKY_RELU,
                                .operands = {input, output, negativeSlope},
                                .paramIndices = {2},
@@ -239,7 +242,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_05, Function | Me
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.operands = {leakyReluModel.input, leakyReluModel.input, leakyReluModel.output, leakyReluModel.negativeSlope};
+    graphArgs.operands = {leakyReluModel.input, leakyReluModel.input,
+                          leakyReluModel.output, leakyReluModel.negativeSlope};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3};
@@ -264,7 +268,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_06, Function | Me
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.operands = {leakyReluModel.input, leakyReluModel.output, leakyReluModel.output, leakyReluModel.negativeSlope};
+    graphArgs.operands = {leakyReluModel.input, leakyReluModel.output,
+                          leakyReluModel.output, leakyReluModel.negativeSlope};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3};
@@ -373,7 +378,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 
@@ -445,7 +451,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
  * @tc.desc: 设置输入输出，inputIndices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -471,7 +478,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -498,7 +506,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -525,7 +534,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_04,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -552,7 +562,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_05,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -578,7 +589,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_06,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -605,7 +617,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_07,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -632,7 +645,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
+HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndOutputs_08,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);

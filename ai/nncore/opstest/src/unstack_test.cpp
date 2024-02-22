@@ -287,7 +287,8 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Build_06, Function | Medium
 
     UnstackModel1 unstackModel;
     OHNNGraphArgs graphArgs = unstackModel.graphArgs;
-    graphArgs.operands = {unstackModel.input, unstackModel.input, unstackModel.output, unstackModel.output, unstackModel.axis};
+    graphArgs.operands = {unstackModel.input, unstackModel.input, unstackModel.output,
+                          unstackModel.output, unstackModel.axis};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2, 3};
     graphArgs.paramIndices = {4};
@@ -396,7 +397,8 @@ HWTEST_F(UnstackTest, SUB_AI_NNRt_Func_North_Unstack_Model_SetOperandValue_01, F
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 

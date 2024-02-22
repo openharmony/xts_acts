@@ -55,7 +55,8 @@ struct ErfModel2 {
 
 struct ErfModel3 {
     const std::vector<int32_t> tensor_shape = {5};
-    float inputValue[5] = {std::numeric_limits<float>::quiet_NaN(), std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity(), 1.0e20f, -1.0e20f};
+    float inputValue[5] = {std::numeric_limits<float>::quiet_NaN(), std::numeric_limits<float>::infinity(),
+                           -std::numeric_limits<float>::infinity(), 1.0e20f, -1.0e20f};
     float outputValue[5] = {0};
     float expectValue[5] = {};
 
@@ -315,7 +316,8 @@ HWTEST_F(ErfTest, SUB_AI_NNRt_Func_North_Erf_Model_SetOperandValue_01, Function 
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 

@@ -49,7 +49,8 @@ struct DepthToSpaceModel1 {
 struct DepthToSpaceModel2 {
     const std::vector<int32_t> tensor_shape = {1, 12, 1, 1};
     std::vector<int64_t> blockSizeValue = {0};
-    float inputValue[1][12][1][1] = {{{{1}}, {{2}}, {{3}}, {{4}}, {{5}}, {{6}}, {{7}}, {{8}}, {{9}}, {{10}}, {{11}}, {{12}}}};
+    float inputValue[1][12][1][1] = {{{{1}}, {{2}}, {{3}}, {{4}}, {{5}}, {{6}}, 
+                                      {{7}}, {{8}}, {{9}}, {{10}}, {{11}}, {{12}}}};
     float outputValue[1][12][1][1] = {0};
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, tensor_shape, inputValue, 12*sizeof(float)};
@@ -144,7 +145,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_03, Functio
 
     DepthToSpaceModel1 depthToSpaceModel;
     OHNNGraphArgs graphArgs = depthToSpaceModel.graphArgs;
-    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.input, depthToSpaceModel.output, depthToSpaceModel.blockSize};
+    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.input,
+                          depthToSpaceModel.output, depthToSpaceModel.blockSize};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3};
@@ -169,7 +171,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_04, Functio
 
     DepthToSpaceModel1 depthToSpaceModel;
     OHNNGraphArgs graphArgs = depthToSpaceModel.graphArgs;
-    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.output, depthToSpaceModel.output, depthToSpaceModel.blockSize};
+    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.output,
+                          depthToSpaceModel.output, depthToSpaceModel.blockSize};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3};
@@ -197,7 +200,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_05, Functio
     
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
-    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.output, depthToSpaceModel.blockSize, activation};
+    graphArgs.operands = {depthToSpaceModel.input, depthToSpaceModel.output,
+                          depthToSpaceModel.blockSize, activation};
     graphArgs.paramIndices = {2, 3};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
     
@@ -260,7 +264,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_Finish_03, 
  * @tc.desc: 设置操作数值，操作数不存在
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_01, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -278,7 +283,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, operandTem.length));
+            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+                model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 
@@ -290,7 +296,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
  * @tc.desc: 设置操作数值，buufer为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_02, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -320,7 +327,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
  * @tc.desc: 设置操作数值，length为0
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_03, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandValue_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -350,7 +358,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
  * @tc.desc: 设置输入输出，inputIndices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_01,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -376,7 +385,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_02,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -403,7 +413,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_03,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -430,7 +441,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_04,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -457,7 +469,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_05,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -483,7 +496,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，outputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_06,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -510,7 +524,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_07,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -537,7 +552,8 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInpu
  * @tc.desc: 设置输入输出，outputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level3)
+HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SpecifyInputsAndOutputs_08,
+         Function | MediumTest | Level3)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
