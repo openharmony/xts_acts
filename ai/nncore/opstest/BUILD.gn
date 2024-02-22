@@ -18,9 +18,9 @@ config("ops_config") {
   include_dirs = [
     "include",
     "../../../../../../foundation/ai/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
-    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
-    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
+    "../../../../../../foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
+    "../../../../../../foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
+    "../../../../../../third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
   cflags_cc = [ "-fexceptions" ]

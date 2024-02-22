@@ -103,7 +103,7 @@ struct UnstackModel5 {
                                .operands = {input, output, axis},
                                .paramIndices = {2},
                                .inputIndices = {0},
-                               .outputIndices = {1,}};
+                               .outputIndices = {1}};
 };
 
 /**

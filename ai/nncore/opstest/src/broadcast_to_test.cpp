@@ -191,7 +191,8 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_04, Function 
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.operands = {broadcastToModel.input, broadcastToModel.input, broadcastToModel.output, broadcastToModel.shape};
+    graphArgs.operands = {broadcastToModel.input, broadcastToModel.input,
+                          broadcastToModel.output, broadcastToModel.shape};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3};
@@ -216,7 +217,8 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_05, Function 
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.operands = {broadcastToModel.input, broadcastToModel.output, broadcastToModel.output, broadcastToModel.shape};
+    graphArgs.operands = {broadcastToModel.input, broadcastToModel.output,
+                          broadcastToModel.output, broadcastToModel.shape};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3};

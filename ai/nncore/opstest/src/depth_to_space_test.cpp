@@ -49,7 +49,7 @@ struct DepthToSpaceModel1 {
 struct DepthToSpaceModel2 {
     const std::vector<int32_t> tensor_shape = {1, 12, 1, 1};
     std::vector<int64_t> blockSizeValue = {0};
-    float inputValue[1][12][1][1] = {{{{1}}, {{2}}, {{3}}, {{4}}, {{5}}, {{6}}, 
+    float inputValue[1][12][1][1] = {{{{1}}, {{2}}, {{3}}, {{4}}, {{5}}, {{6}},
                                       {{7}}, {{8}}, {{9}}, {{10}}, {{11}}, {{12}}}};
     float outputValue[1][12][1][1] = {0};
 
