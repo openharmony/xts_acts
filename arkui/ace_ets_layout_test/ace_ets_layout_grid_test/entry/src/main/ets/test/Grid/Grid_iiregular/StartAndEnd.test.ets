@@ -55,10 +55,10 @@ export default function StartAndEnd() {
       let driver = Driver.create()
       await CommonFunc.sleep(1000);
       await driver.swipe(
-        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
-        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
-        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
-        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
+        Number.parseInt(`${`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`}`),
+        Number.parseInt(`${`${`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`}`}`),
+        Number.parseInt(`${`${`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`}`}`),
+        Number.parseInt(`${`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`}`),
         1000);
       await CommonFunc.sleep(2000);
 
@@ -68,10 +68,10 @@ export default function StartAndEnd() {
       expect(JSON.parse(strJson1).$attrs.content).assertEqual('onReachEnd');
 
       await driver.swipe(
-        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
-        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
-        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
-        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`),
         1000);
       await CommonFunc.sleep(2000);
 
