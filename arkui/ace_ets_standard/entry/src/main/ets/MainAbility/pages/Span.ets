@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct span_textcase {
-
   onPageShow() {
     console.info('Span page show called');
   }

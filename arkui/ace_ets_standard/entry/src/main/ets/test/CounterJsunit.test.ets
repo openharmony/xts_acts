@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, beforeEach, describe, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function counterJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('counterTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Counter',
+  describe('counterTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Counter',
       }
       try {
         router.clear();
@@ -40,30 +41,30 @@ export default function counterJsunit() {
         console.info("get Counter state success " + JSON.stringify(pages));
         if (!("Counter" == pages.name)) {
           console.info("get Counter state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.push(options);
           console.info("push Counter page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Counter page error " + JSON.stringify(result));
+        console.error("push Counter page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Counter after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0720
-     * @tc.name      testCounterGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0720
+     * @tc.name testCounterGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('testCounterGetInspectorByKey010', 0, async function (done) {
+    it('testCounterGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('counter');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.info('testGetInspectorByKey END');
       done();
