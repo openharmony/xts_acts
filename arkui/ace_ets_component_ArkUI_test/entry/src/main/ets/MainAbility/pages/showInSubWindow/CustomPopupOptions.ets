@@ -17,7 +17,6 @@
 struct CustomPopupOptionsExample {
   @State customPopup: boolean = false
 
-  // popup构造器定义弹框内容
   @Builder popupBuilder() {
     Row({ space: 2 }) {
       Image($r("app.media.icon")).width(24).height(24).margin({ left: -5 })
@@ -27,7 +26,6 @@ struct CustomPopupOptionsExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // CustomPopupOptions 类型设置弹框内容
       Button('CustomPopupOptions')
         .id("CustomPopupOptions")
         .onClick(() => {

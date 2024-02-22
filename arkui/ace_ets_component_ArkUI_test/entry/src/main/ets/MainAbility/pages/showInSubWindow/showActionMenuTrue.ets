@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import promptAction from '@ohos.promptAction';
-import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct showActionMenuTrueExample {

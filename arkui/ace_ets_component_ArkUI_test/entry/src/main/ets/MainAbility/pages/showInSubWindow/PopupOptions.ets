@@ -19,7 +19,6 @@ struct PopupOptionsExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
       Button('PopupOptions')
         .margin(100)
         .id("PopupOptions")
@@ -37,7 +36,6 @@ struct PopupOptionsExample {
               console.info('confirm Button click')
             }
           },
-          // 第二个按钮
           secondaryButton: {
             value: 'cancel',
             action: () => {

@@ -39,7 +39,6 @@ struct CustomDialogOne {
     alignment: DialogAlignment.Bottom,
     offset: { dx: 0, dy: -25 } })
   controller?: CustomDialogController
-  // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面
   cancel: () => void = () => {
   }
   confirm: () => void = () => {
@@ -79,7 +78,6 @@ struct CustomDialogOne {
         })
         .margin(20)
     }.borderRadius(10)
-    // 如果需要使用border属性或cornerRadius属性，请和borderRadius属性一起使用。
   }
 }
 @Entry
@@ -103,9 +101,8 @@ struct CustomDialogExample {
     cornerRadius: 10,
   })
 
-  // 在自定义组件即将析构销毁时将dialogControlle置空
   aboutToDisappear() {
-    this.dialogController = null // 将dialogController置空
+    this.dialogController = null
   }
 
   onCancel() {

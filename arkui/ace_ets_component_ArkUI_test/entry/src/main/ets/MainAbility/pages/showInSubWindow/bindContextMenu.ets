@@ -36,7 +36,6 @@ struct bindContextMenuExample {
           .backgroundColor(0xAFEEEE)
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
           .onDragStart(()=>{
-            // 拖拽时关闭菜单
             ContextMenu.close()
           })
       }

@@ -52,9 +52,9 @@ struct CustomDialogTrueExample {
     customStyle: false,
     cornerRadius: 10,
   })
-  // 在自定义组件即将析构销毁时将dialogControlle置空
+
   aboutToDisappear() {
-    this.dialogController = null // 将dialogController置空
+    this.dialogController = null
   }
 
   onCancel() {
