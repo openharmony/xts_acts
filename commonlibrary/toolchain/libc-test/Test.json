@@ -37,6 +37,11 @@
                 "mv /data/local/tmp/libc-test-lib/libsupport_002.so /data/tests/libc-test/src/rpath_support_C",
                 "mv /data/local/tmp/libc-test-lib/libatexit_dlclose_dso.so /data/tests/libc-test/src",
                 "mv /data/local/tmp/libc-test-lib/libldso_cfi_test_lib.so /data/tests/libc-test/src",
+                "cp /data/local/tmp/libc-test-lib/libdlopen_ns_dso.so /data/local/tmp/libdlopen_ns_dso_ndk.so",
+                "cp /data/local/tmp/libc-test-lib/libdlopen_ns_dso.so /data/local/tmp/libdlopen_ns_dso_sys.so",
+                "cp /data/local/tmp/libc-test-lib/libdlopen_dso.so /data/local/tmp/lib_for_no_delete.so",
+                "cp /data/local/tmp/libc-test-lib/libdlopen_dso.so /data/local/tmp/lib_for_dlopen.so",
+                "cp /data/local/tmp/libc-test-lib/* /data/local/tmp",
                 "param set debug.hitrace.tags.enableflags 1",
                 "echo 'root:This.is.a.test:18997:0:99999:7:::'>/etc/shadow",
                 "rm -rf /data/local/tmp/libc-test/vsyslog",
@@ -73,17 +78,8 @@
                 "rm -rf /data/local/tmp/libc-test/dynlink_default",
                 "rm -rf /data/local/tmp/libc-test/dlvsym",
                 "rm -rf /data/local/tmp/libc-test/tgkill",
-                "rm -rf /data/local/tmp/libc-test/tls_init_dlopen",
-                "rm -rf /data/local/tmp/libc-test/tls_align",
-                "rm -rf /data/local/tmp/libc-test/dlopen_ns",
-                "rm -rf /data/local/tmp/libc-test/tls_align_dlopen",
-                "rm -rf /data/local/tmp/libc-test/dlclose_reset",
-                "rm -rf /data/local/tmp/libc-test/pthread_cancel",
-                "rm -rf /data/local/tmp/libc-test/tls_init",
-                "rm -rf /data/local/tmp/libc-test/dlopen",
                 "rm -rf /data/local/tmp/libc-test/malloc-brk-fail",
                 "rm -rf /data/local/tmp/libc-test/pthread_atfork-errno-clobber",
-                "rm -rf /data/local/tmp/libc-test/tls_get_new-dtv",
                 "rm -rf /data/local/tmp/libc-test/flockfile-list",
                 "rm -rf /data/local/tmp/libc-test/rintf",
                 "rm -rf /data/local/tmp/libc-test/nearbyint",
@@ -106,11 +102,10 @@
                 "rm -rf /data/local/tmp/libc-test/tgkill_ext",
                 "rm -rf /data/local/tmp/libc-test/res_send",
                 "rm -rf /data/local/tmp/libc-test/unittest_ldso_ns_config",
-                "rm -rf /data/local/tmp/libc-test/unittest_ldso_dynlink",
-                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_right_test",
-                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_left_test"
+                "rm -rf /data/local/tmp/libc-test/unittest_ldso_dynlink"
             ],
             "cleanup-apps": true
         }
     ]
 }
+ 
