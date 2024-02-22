@@ -17,45 +17,47 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import relationalStore from "@ohos.data.relationalStore";
 import curves from "@ohos.curves";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: "RSTest.db",
   securityLevel: relationalStore.SecurityLevel.S1
 }
 
-function sleep(ms) {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 let rdbStore;
 
 export default function relationalStoreTest() {
-  describe("relationalStoreTest", function () {
-    beforeAll(async function () {
+  describe("relationalStoreTest", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       await rdbStore.executeSql("DELETE FROM test");
       rdbStore = null
       await relationalStore.deleteRdbStore(context, "RSTest.db");
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
 
@@ -69,9 +71,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStore001", 0, async function (done) {
+    it("testGetRdbStore001", 0, async (done: Function) => {
       console.log(TAG + "************* testGetRdbStore001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -107,9 +109,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS2001", 0, async function (done) {
+    it("testGetRdbStoreS2001", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS2001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S2,
       };
@@ -145,9 +147,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS3001", 0, async function (done) {
+    it("testGetRdbStoreS3001", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS3001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S3,
       };
@@ -183,9 +185,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreS4001", 0, async function (done) {
+    it("testGetRdbStoreS4001", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreS4001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S4,
       };
@@ -221,9 +223,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStore002", 0, async function (done) {
+    it("testGetRdbStore002", 0, async (done: Function) => {
       console.log(TAG + "************* testGetRdbStore002 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -241,7 +243,7 @@ export default function relationalStoreTest() {
           expect(getResult).assertTrue();
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           expect(!err).assertTrue();
           done();
         });
@@ -257,9 +259,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError001", 0, async function (done) {
+    it("testGetRdbStoreError001", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -286,9 +288,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError002", 0, async function (done) {
+    it("testGetRdbStoreError002", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError002 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -315,9 +317,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError003", 0, async function (done) {
+    it("testGetRdbStoreError003", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError003 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -342,9 +344,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError004", 0, async function (done) {
+    it("testGetRdbStoreError004", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError004 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -368,7 +370,7 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testGetRdbStoreError005", 0, async function (done) {
+    it("testGetRdbStoreError005", 0, async (done: Function) => {
       console.info(TAG + "************* testGetRdbStoreError005 start *************");
       try {
         relationalStore.getRdbStore(undefined, undefined);
@@ -389,9 +391,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore001", 0, async function (done) {
+    it("testDeleteRdbStore001", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -423,9 +425,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore002", 0, async function (done) {
+    it("testDeleteRdbStore002", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore002 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -441,7 +443,7 @@ export default function relationalStoreTest() {
           expect(deleteResult).assertTrue();
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
           expect(!err).assertTrue();
           done();
@@ -457,9 +459,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore003", 0, async function (done) {
+    it("testDeleteRdbStore003", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore003 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -496,9 +498,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStore004", 0, async function (done) {
+    it("testDeleteRdbStore004", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStore004 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -515,7 +517,7 @@ export default function relationalStoreTest() {
             expect(deleteResult).assertTrue();
             done();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
             expect(!err).assertTrue();
             done();
@@ -534,9 +536,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError001", 0, async function (done) {
+    it("testDeleteRdbStoreError001", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError001 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -565,9 +567,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError002", 0, async function (done) {
+    it("testDeleteRdbStoreError002", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError002 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -595,9 +597,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError003", 0, async function (done) {
+    it("testDeleteRdbStoreError003", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError003 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -623,9 +625,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError004", 0, async function (done) {
+    it("testDeleteRdbStoreError004", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError004 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -650,9 +652,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError005", 0, async function (done) {
+    it("testDeleteRdbStoreError005", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStoreError005 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -684,9 +686,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError006", 0, async function (done) {
+    it("testDeleteRdbStoreError006", 0, async (done: Function) => {
       console.log(TAG + "************* testDeleteRdbStoreError006 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -702,7 +704,7 @@ export default function relationalStoreTest() {
           expect(deleteResult).assertTrue();
           done();
         })
-        .catch((err) => {
+        .catch((err: BusinessError) => {
           console.error(`testDeleteRdbStoreError006 Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
           expect(!err).assertTrue();
           done();
@@ -718,9 +720,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError007", 0, async function (done) {
+    it("testDeleteRdbStoreError007", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError007 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -748,9 +750,9 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testDeleteRdbStoreError008", 0, async function (done) {
+    it("testDeleteRdbStoreError008", 0, async (done: Function) => {
       console.info(TAG + "************* testDeleteRdbStoreError008 start *************");
-      let config = {
+      let config: relationalStore.StoreConfig = {
         name: "secure.db",
         securityLevel: relationalStore.SecurityLevel.S1,
       };
@@ -775,11 +777,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution001", 0, async function (done) {
+    it("testConflictResolution001", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution001 start *************");
-      var u8 = new Uint8Array([1, 2, 3]);
+      let u8 = new Uint8Array([1, 2, 3]);
 
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -788,7 +790,7 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_NONE);
 
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -801,7 +803,7 @@ export default function relationalStoreTest() {
         expect(0).assertEqual(ret);
         console.log(TAG + " testConflictResolution001 insert first done: " + ret);
         expect().assertFail();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.log(TAG + " testConflictResolution001 insert with wrong valuebucket2 and ConflictResolution is default");
         expect(err.code == 14800000).assertTrue();
         done();
@@ -818,10 +820,10 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution002", 0, async function (done) {
+    it("testConflictResolution002", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution002 start *************");
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -830,8 +832,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket1);
 
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -840,8 +842,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket2);
 
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -872,7 +874,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution002 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -889,14 +891,14 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution002 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
           done();
           console.log(TAG + "************* testConflictResolution002 end   *************");
         }
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.log(TAG + "testConflictResolution002 error");
         expect(!err).assertTrue();
         console.log(TAG + "************* testConflictResolution002 end   *************");
@@ -912,11 +914,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution003", 0, async function (done) {
+    it("testConflictResolution003", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution003 start *************");
 
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -925,8 +927,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket1);
 
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -935,8 +937,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket2);
 
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -968,7 +970,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution003 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -985,14 +987,14 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution003 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
           done();
           console.log(TAG + "************* testConflictResolution003 end   *************");
         }
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.log(TAG + "testConflictResolution003 error");
         expect(!err).assertTrue();
         console.log(TAG + "************* testConflictResolution003 end   *************");
@@ -1009,11 +1011,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution004", 0, async function (done) {
+    it("testConflictResolution004", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution004 start *************");
 
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1021,8 +1023,8 @@ export default function relationalStoreTest() {
         "blobType": u81,
       }
       await rdbStore.insert("test", valueBucket1);
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -1031,8 +1033,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket2);
 
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -1064,7 +1066,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution004 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -1081,7 +1083,7 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution004 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
@@ -1089,7 +1091,7 @@ export default function relationalStoreTest() {
           console.log(TAG + "************* testConflictResolution004 end   *************");
         }
 
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.log(TAG + "testConflictResolution004 error");
         expect(!err).assertFail();
         done();
@@ -1106,11 +1108,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution005", 0, async function (done) {
+    it("testConflictResolution005", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution005 start *************");
-      var u8 = new Uint8Array([1, 2, 3]);
+      let u8 = new Uint8Array([1, 2, 3]);
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1118,7 +1120,7 @@ export default function relationalStoreTest() {
         "blobType": u8,
       }
       await rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_IGNORE);
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1155,11 +1157,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution006", 0, async function (done) {
+    it("testConflictResolution006", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution006 start *************");
 
-      var u8 = new Uint8Array([1, 2, 3]);
-      const valueBucket = {
+      let u8 = new Uint8Array([1, 2, 3]);
+      const valueBucket: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1168,8 +1170,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
 
-      var u8 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      u8 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1216,11 +1218,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution007", 0, async function (done) {
+    it("testConflictResolution007", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution007 start *************");
 
-      var u8 = new Uint8Array([1, 2, 3]);
-      const valueBucket = {
+      let u8 = new Uint8Array([1, 2, 3]);
+      const valueBucket: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1229,8 +1231,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
 
-      var u8 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      u8 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1279,11 +1281,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution008", 0, async function (done) {
+    it("testConflictResolution008", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution008 start *************");
-      var u8 = new Uint8Array([1, 2, 3]);
+      let u8 = new Uint8Array([1, 2, 3]);
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1293,7 +1295,7 @@ export default function relationalStoreTest() {
       await rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_IGNORE);
 
 
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1332,11 +1334,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution009", 0, async function (done) {
+    it("testConflictResolution009", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution009 start *************");
 
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1346,8 +1348,8 @@ export default function relationalStoreTest() {
       await rdbStore.insert("test", valueBucket1);
 
 
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -1356,8 +1358,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket2);
 
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -1388,7 +1390,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution004 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -1405,7 +1407,7 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution009 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
@@ -1425,11 +1427,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution010", 0, async function (done) {
+    it("testConflictResolution010", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution010 start *************");
 
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1437,8 +1439,8 @@ export default function relationalStoreTest() {
         "blobType": u81,
       }
       await rdbStore.insert("test", valueBucket1);
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -1446,8 +1448,8 @@ export default function relationalStoreTest() {
         "blobType": u82,
       }
       await rdbStore.insert("test", valueBucket2);
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -1478,7 +1480,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution010 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -1495,7 +1497,7 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution010 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
@@ -1515,10 +1517,10 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution011", 0, async function (done) {
+    it("testConflictResolution011", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution011 start *************");
-      var u81 = new Uint8Array([1, 2, 3]);
-      const valueBucket1 = {
+      let u81 = new Uint8Array([1, 2, 3]);
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1527,8 +1529,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket1);
 
-      var u82 = new Uint8Array([4, 5, 6]);
-      const valueBucket2 = {
+      let u82 = new Uint8Array([4, 5, 6]);
+      const valueBucket2: ValuesBucket = {
         "id": 2,
         "name": "lisi",
         "age": 19,
@@ -1537,8 +1539,8 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket2);
 
-      var u83 = new Uint8Array([7, 8, 9]);
-      const valueBucket3 = {
+      let u83 = new Uint8Array([7, 8, 9]);
+      const valueBucket3: ValuesBucket = {
         "id": 3,
         "name": "wangjing",
         "age": 20,
@@ -1568,7 +1570,7 @@ export default function relationalStoreTest() {
           await expect(2).assertEqual(blobType[1]);
           await expect(3).assertEqual(blobType[2]);
           console.log(TAG + "testConflictResolution011 {id=" + id + ", name=" + name + ", age=" + age + ", salary="
-          + salary + ", blobType=" + blobType);
+            + salary + ", blobType=" + blobType);
 
           await expect(true).assertEqual(resultSet.goToNextRow());
           const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"));
@@ -1585,7 +1587,7 @@ export default function relationalStoreTest() {
           await expect(8).assertEqual(blobType_1[1]);
           await expect(9).assertEqual(blobType_1[2]);
           console.log(TAG + "testConflictResolution011 {id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-          + salary_1 + ", blobType=" + blobType_1);
+            + salary_1 + ", blobType=" + blobType_1);
           await expect(false).assertEqual(resultSet.goToNextRow());
 
           resultSet.close();
@@ -1605,11 +1607,11 @@ export default function relationalStoreTest() {
      * @tc.type   : Function
      * @tc.level  : Level 0
      */
-    it("testConflictResolution012", 0, async function (done) {
+    it("testConflictResolution012", 0, async (done: Function) => {
       console.log(TAG + "************* testConflictResolution012 start *************");
-      var u8 = new Uint8Array([1, 2, 3]);
+      let u8 = new Uint8Array([1, 2, 3]);
 
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,
@@ -1618,7 +1620,7 @@ export default function relationalStoreTest() {
       }
       await rdbStore.insert("test", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_NONE);
 
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         "id": 1,
         "name": "zhangsan",
         "age": 18,

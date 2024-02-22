@@ -16,45 +16,141 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import relationalStore from "@ohos.data.relationalStore";
 import curves from "@ohos.curves";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_ALL_DATA_TYPE_SQL =
   "CREATE TABLE IF NOT EXISTS AllDataType " +
-  "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , " +
-  "integerValue INTEGER NOT NULL , longValue INTEGER NOT NULL , shortValue INTEGER NOT NULL , " +
-  "booleanValue INTEGER DEFAULT 0 , doubleValue REAL NOT NULL , floatValue REAL NOT NULL, " +
-  "stringValue CHAR(50) DEFAULT NULL , blobValue BLOB , clobValue TEXT DEFAULT NULL , byteValue INTEGER DEFAULT 0 , " +
-  "dateValue INTEGER DEFAULT 0 , timeValue INTEGER DEFAULT 0 , timestampValue INTEGER DEFAULT 0 , " +
-  "calendarValue INTEGER DEFAULT 0 , characterValue TEXT DEFAULT NULL , primIntValue INTEGER DEFAULT 0 , " +
-  "primLongValue INTEGER DEFAULT NULL , primShortValue INTEGER DEFAULT 0 , primFloatValue REAL DEFAULT 0 , " +
-  "primDoubleValue REAL DEFAULT 0 , primBooleanValue INTEGER DEFAULT 0 , primByteValue INTEGER DEFAULT 0 , " +
-  "primCharValue CHAR(50) DEFAULT NULL , `order` INTEGER DEFAULT 0 );";
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , " +
+    "integerValue INTEGER NOT NULL , longValue INTEGER NOT NULL , shortValue INTEGER NOT NULL , " +
+    "booleanValue INTEGER DEFAULT 0 , doubleValue REAL NOT NULL , floatValue REAL NOT NULL, " +
+    "stringValue CHAR(50) DEFAULT NULL , blobValue BLOB , clobValue TEXT DEFAULT NULL , byteValue INTEGER DEFAULT 0 , " +
+    "dateValue INTEGER DEFAULT 0 , timeValue INTEGER DEFAULT 0 , timestampValue INTEGER DEFAULT 0 , " +
+    "calendarValue INTEGER DEFAULT 0 , characterValue TEXT DEFAULT NULL , primIntValue INTEGER DEFAULT 0 , " +
+    "primLongValue INTEGER DEFAULT NULL , primShortValue INTEGER DEFAULT 0 , primFloatValue REAL DEFAULT 0 , " +
+    "primDoubleValue REAL DEFAULT 0 , primBooleanValue INTEGER DEFAULT 0 , primByteValue INTEGER DEFAULT 0 , " +
+    "primCharValue CHAR(50) DEFAULT NULL , `order` INTEGER DEFAULT 0 );";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "data1 TEXT NOT NULL, " + "data2 INTEGER, " + "data3 REAL, " + "data4 BLOB)";
 
 let rdbStore = undefined;
 let dbName = 'IgnorePredicates.db';
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: dbName,
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 let DOUBLE_MAX = 9223372036854775807;
 
-function sleep(ms) {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function buildAllDataType1() {
+  console.info(TAG + "buildAllDataType1 start");
+  {
+    let u8 = new Uint8Array([1, 2, 3]);
+    const valueBucket: ValuesBucket = {
+      integerValue: 2147483647,
+      doubleValue: DOUBLE_MAX,
+      booleanValue: true,
+      floatValue: -0.123,
+      longValue: 9223372036854775807,
+      shortValue: 32767,
+      characterValue: " ",
+      stringValue: "ABCDEFGHIJKLMN",
+      blobValue: u8,
+      byteValue: 127,
+    };
+    await rdbStore.insert("AllDataType", valueBucket);
+  }
+}
+
+async function buildAllDataType2() {
+  console.info(TAG + "buildAllDataType2 start");
+  {
+    let u8 = new Uint8Array([1, 2, 3]);
+    const valueBucket: ValuesBucket = {
+      integerValue: 1,
+      doubleValue: 1.0,
+      booleanValue: false,
+      floatValue: 1.0,
+      longValue: 1,
+      shortValue: 1,
+      characterValue: "中",
+      stringValue: "ABCDEFGHIJKLMN",
+      blobValue: u8,
+      byteValue: 1,
+    };
+    await rdbStore.insert("AllDataType", valueBucket);
+  }
+}
+
+async function buildAllDataType3() {
+  console.info(TAG + "buildAllDataType3 start");
+  {
+    let u8 = new Uint8Array([1, 2, 3]);
+    const valueBucket: ValuesBucket = {
+      integerValue: -2147483648,
+      doubleValue: Number.MIN_VALUE,
+      booleanValue: false,
+      floatValue: 0.1234567,
+      longValue: -9223372036854775808,
+      shortValue: -32768,
+      characterValue: "#",
+      stringValue: "ABCDEFGHIJKLMN",
+      blobValue: u8,
+      byteValue: -128,
+    };
+    await rdbStore.insert("AllDataType", valueBucket);
+  }
+}
+
+async function createTest() {
+  console.info(TAG + "createTest data start");
+  {
+    let u8 = new Uint8Array([1, 2, 3]);
+    const valueBucket: ValuesBucket = {
+      data1: "hello",
+      data2: 10,
+      data3: 1.0,
+      data4: u8,
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+  {
+    let u8 = new Uint8Array([3, 4, 5]);
+    const valueBucket: ValuesBucket = {
+      data1: "2",
+      data2: -5,
+      data3: 2.5,
+      data4: u8,
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+  {
+    let u8 = new Uint8Array(0);
+    const valueBucket: ValuesBucket = {
+      data1: "hello world",
+      data2: 3,
+      data3: 1.8,
+      data4: u8,
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+  console.info(TAG + "createTest data end");
+}
+
 export default function RdbStoreIgnore() {
-  describe("RdbStoreIgnore", function () {
-    beforeAll(async function () {
+  describe("RdbStoreIgnore", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
@@ -65,110 +161,16 @@ export default function RdbStoreIgnore() {
       await createTest();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, dbName);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
 
-    async function buildAllDataType1() {
-      console.info(TAG + "buildAllDataType1 start");
-      {
-        var u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket = {
-          integerValue: 2147483647,
-          doubleValue: DOUBLE_MAX,
-          booleanValue: true,
-          floatValue: -0.123,
-          longValue: 9223372036854775807,
-          shortValue: 32767,
-          characterValue: " ",
-          stringValue: "ABCDEFGHIJKLMN",
-          blobValue: u8,
-          byteValue: 127,
-        };
-        await rdbStore.insert("AllDataType", valueBucket);
-      }
-    }
-
-    async function buildAllDataType2() {
-      console.info(TAG + "buildAllDataType2 start");
-      {
-        var u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket = {
-          integerValue: 1,
-          doubleValue: 1.0,
-          booleanValue: false,
-          floatValue: 1.0,
-          longValue: 1,
-          shortValue: 1,
-          characterValue: "中",
-          stringValue: "ABCDEFGHIJKLMN",
-          blobValue: u8,
-          byteValue: 1,
-        };
-        await rdbStore.insert("AllDataType", valueBucket);
-      }
-    }
-
-    async function buildAllDataType3() {
-      console.info(TAG + "buildAllDataType3 start");
-      {
-        var u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket = {
-          integerValue: -2147483648,
-          doubleValue: Number.MIN_VALUE,
-          booleanValue: false,
-          floatValue: 0.1234567,
-          longValue: -9223372036854775808,
-          shortValue: -32768,
-          characterValue: "#",
-          stringValue: "ABCDEFGHIJKLMN",
-          blobValue: u8,
-          byteValue: -128,
-        };
-        await rdbStore.insert("AllDataType", valueBucket);
-      }
-    }
-
-    async function createTest() {
-      console.info(TAG + "createTest data start");
-      {
-        var u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket = {
-          data1: "hello",
-          data2: 10,
-          data3: 1.0,
-          data4: u8,
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-      {
-        var u8 = new Uint8Array([3, 4, 5]);
-        const valueBucket = {
-          data1: "2",
-          data2: -5,
-          data3: 2.5,
-          data4: u8,
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-      {
-        var u8 = new Uint8Array(0);
-        const valueBucket = {
-          data1: "hello world",
-          data2: 3,
-          data3: 1.8,
-          data4: u8,
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-      console.info(TAG + "createTest data end");
-    }
     /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2810
      * @tc.name   : testRdbPredicatesConstructor005
@@ -177,7 +179,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesConstructor005", 0, async function (done) {
+    it("testRdbPredicatesConstructor005", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesConstructor005 start *************");
       try {
         // @ts-ignore
@@ -198,7 +200,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesConstructor006", 0, async function (done) {
+    it("testRdbPredicatesConstructor006", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesConstructor006 start *************");
       try {
         // @ts-ignore
@@ -220,7 +222,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesEqualTo014", 0, async function (done) {
+    it("testRdbPredicatesEqualTo014", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesEqualTo014 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -245,7 +247,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesNotEqualTo014", 0, async function (done) {
+    it("testRdbPredicatesNotEqualTo014", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesNotEqualTo014 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -270,7 +272,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIsNull009", 0, async function (done) {
+    it("testRdbPredicatesIsNull009", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIsNull009 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -292,7 +294,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIsNull010", 0, async function (done) {
+    it("testRdbPredicatesIsNull010", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIsNull010 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -314,7 +316,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIsNotNull009", 0, async function (done) {
+    it("testRdbPredicatesIsNotNull009", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIsNotNull009 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -336,7 +338,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIsNotNull010", 0, async function (done) {
+    it("testRdbPredicatesIsNotNull010", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIsNotNull010 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -358,7 +360,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesLike012", 0, async function (done) {
+    it("testRdbPredicatesLike012", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesLike012 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -380,7 +382,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesLike013", 0, async function (done) {
+    it("testRdbPredicatesLike013", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesLike013 start *************");
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       try {
@@ -403,7 +405,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesGlob012", 0, async function (done) {
+    it("testRdbPredicatesGlob012", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesGlob012 start *************");
       {
         try {
@@ -427,7 +429,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesBetween023", 0, async function (done) {
+    it("testRdbPredicatesBetween023", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesBetween023 start *************");
       {
         try {
@@ -451,7 +453,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesNotBetween018", 0, async function (done) {
+    it("testRdbPredicatesNotBetween018", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesNotBetween018 start *************");
       {
         try {
@@ -475,7 +477,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesGreaterThan017", 0, async function (done) {
+    it("testRdbPredicatesGreaterThan017", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesGreaterThan017 start *************");
       {
         try {
@@ -499,7 +501,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesLessThan011", 0, async function (done) {
+    it("testRdbPredicatesLessThan011", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesLessThan011 start *************");
       {
         try {
@@ -523,7 +525,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesGreaterThanOrEqualTo006", 0, async function (done) {
+    it("testRdbPredicatesGreaterThanOrEqualTo006", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo006 start *************");
       {
         try {
@@ -547,7 +549,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesLessThanOrEqualTo018", 0, async function (done) {
+    it("testRdbPredicatesLessThanOrEqualTo018", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo018 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -570,7 +572,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesLessThanOrEqualTo019", 0, async function (done) {
+    it("testRdbPredicatesLessThanOrEqualTo019", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo019 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -593,7 +595,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesOrderByDesc003", 0, async function (done) {
+    it("testRdbPredicatesOrderByDesc003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesOrderByDesc003 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -618,7 +620,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesOrderByDesc004", 0, async function (done) {
+    it("testRdbPredicatesOrderByDesc004", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesOrderByDesc004 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -643,7 +645,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIndexedBy003", 0, async function (done) {
+    it("testRdbPredicatesIndexedBy003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIndexedBy003 start *************");
       try {
         await rdbStore.executeSql("CREATE INDEX index_name ON AllDataType (characterValueX);", null);
@@ -667,7 +669,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesIn007", 0, async function (done) {
+    it("testRdbPredicatesIn007", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesIn007 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -690,7 +692,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbPredicatesNotIn006", 0, async function (done) {
+    it("testRdbPredicatesNotIn006", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbPredicatesNotIn006 start *************");
       try {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
@@ -713,21 +715,21 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0016", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0016", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0016 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3 : ValuesBucket= {
         name: "wangwu",
         age: 20,
         salary: 100.5,
@@ -758,7 +760,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo005", 0, async function (done) {
+    it("testResultSetGoTo005", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo005 start *************");
       {
         try {
@@ -783,7 +785,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoTo006", 0, async function (done) {
+    it("testResultSetGoTo006", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGoTo006 start *************");
       {
         try {
@@ -808,7 +810,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow005", 0, async function (done) {
+    it("testResultSetGoToRow005", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow005 start *************");
       {
         try {
@@ -833,7 +835,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGoToRow006", 0, async function (done) {
+    it("testResultSetGoToRow006", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGoToRow006 start *************");
       {
         try {
@@ -858,7 +860,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetBlob003", 0, async function (done) {
+    it("testResultSetGetBlob003", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetBlob003 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -881,7 +883,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetBlob004", 0, async function (done) {
+    it("testResultSetGetBlob004", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetBlob004 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -904,7 +906,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetBlob005", 0, async function (done) {
+    it("testResultSetGetBlob005", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetBlob005 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -930,7 +932,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString005", 0, async function (done) {
+    it("testResultSetGetString005", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString005 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -957,7 +959,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString006", 0, async function (done) {
+    it("testResultSetGetString006", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString006 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
@@ -984,7 +986,7 @@ export default function RdbStoreIgnore() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testResultSetGetString007", 0, async function (done) {
+    it("testResultSetGetString007", 0, async (done: Function) => {
       console.info(TAG + "************* testResultSetGetString007 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
