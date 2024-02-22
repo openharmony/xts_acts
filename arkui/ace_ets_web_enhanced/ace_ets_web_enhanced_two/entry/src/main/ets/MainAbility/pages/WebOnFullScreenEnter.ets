@@ -30,6 +30,8 @@ struct WebOnFullScreenEnter {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State onFullScreenEnterCalled: boolean = false;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+  " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State checkEleResult: string = "";
 
   onPageShow() {
@@ -90,6 +92,7 @@ struct WebOnFullScreenEnter {
         .domStorageAccess(this.domStorageAccess)
         .onlineImageAccess(this.onlineImageAccess)
         .databaseAccess(this.databaseAccess)
+        .userAgent(this.userAgent)
         .onFullScreenEnter((event) => {
           console.log("onFullScreenEnter...")
           this.handler = event.handler
