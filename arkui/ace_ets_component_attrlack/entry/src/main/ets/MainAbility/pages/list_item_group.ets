@@ -26,7 +26,8 @@ class TimeTable {
 @Entry
 @Component
 struct ListItemGroupExample {
-  @Builder itemHead(text:string) {
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
@@ -34,13 +35,15 @@ struct ListItemGroupExample {
       .padding(10)
   }
 
-  @Builder itemFoot(num:number) {
+  @Builder
+  itemFoot(num: number) {
     Text('共' + num + "节课")
       .fontSize(16)
       .backgroundColor(0xAABBCC)
       .width("100%")
       .padding(5)
   }
+
   private timetable: Array<TimeTable> = [
     {
       title: 'Mon',
@@ -74,9 +77,9 @@ struct ListItemGroupExample {
                   .textAlign(TextAlign.Center)
                   .backgroundColor(0xFFFFFF)
               }
-            }, (item:string) => item)
+            }, (item: string) => item)
           }
-          .key(item)
+          .key(item.toString())
           .borderRadius(20)
           .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
         })
