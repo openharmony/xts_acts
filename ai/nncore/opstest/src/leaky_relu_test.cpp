@@ -32,8 +32,8 @@ struct LeakyReluModel1 {
 
     OHNNOperandTest input = {OH_NN_FLOAT32, OH_NN_TENSOR, input_shape, inputValue, 3*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, outputValue, 3*sizeof(float)};
-    OHNNOperandTest negativeSlope = {OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1},
-                                     negativeSlopeValue, sizeof(float)};
+    OHNNOperandTest negativeSlope = {
+        OH_NN_FLOAT32, OH_NN_LEAKY_RELU_NEGATIVE_SLOPE, {1}, negativeSlopeValue, sizeof(float)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_LEAKY_RELU,
                                .operands = {input, output, negativeSlope},
                                .paramIndices = {2},

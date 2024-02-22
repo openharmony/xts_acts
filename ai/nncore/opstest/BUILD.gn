@@ -29,8 +29,6 @@ config("ops_config") {
 ohos_moduletest_suite("ActsOpsTest") {
   module_out_path = module_output_path
   sources = [
-    "src/mock_idevice.cpp",
-    "src/nncore_utils.cpp",
     "src/abs_test.cpp",
     "src/broadcast_to_test.cpp",
     "src/clip_test.cpp",
@@ -46,6 +44,8 @@ ohos_moduletest_suite("ActsOpsTest") {
     "src/leaky_relu_test.cpp",
     "src/less_test.cpp",
     "src/lstm_test.cpp",
+    "src/mock_idevice.cpp",
+    "src/nncore_utils.cpp",
     "src/not_equal_test.cpp",
     "src/range_test.cpp",
     "src/real_div_test.cpp",
