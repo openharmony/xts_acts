@@ -12,30 +12,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct List_Space_Percentage{
+struct List_Space_Percentage {
   @State space: string = '10';
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<string> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemContentSize onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<string> = (message: Message<string>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'space') {
         this.space = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column(){
-      List({ space:this.space }){
-        ListItem(){
+
+  build() {
+    Column() {
+      List({ space: this.space }) {
+        ListItem() {
           Text('1')
             .width(300)
             .height(50)
@@ -45,7 +48,8 @@ struct List_Space_Percentage{
             .backgroundColor(0xAFEEEE)
             .key('List_Space_Percentage_ListItem_01')
         }
-        ListItem(){
+
+        ListItem() {
           Text('2')
             .width(300)
             .height(50)
@@ -56,7 +60,8 @@ struct List_Space_Percentage{
             .key('List_Space_Percentage_ListItem_02')
 
         }
-        ListItem(){
+
+        ListItem() {
           Text('3')
             .width(300)
             .height(50)
@@ -67,7 +72,8 @@ struct List_Space_Percentage{
             .key('List_Space_Percentage_ListItem_03')
 
         }
-        ListItem(){
+
+        ListItem() {
           Text('4')
             .width(300)
             .height(50)

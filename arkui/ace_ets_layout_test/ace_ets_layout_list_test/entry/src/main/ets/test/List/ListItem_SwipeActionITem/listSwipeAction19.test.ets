@@ -15,16 +15,16 @@
 
 import router from '@ohos.router';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import { Driver, ON, On } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function listSwipeAction19Jsunit() {
-  describe('listSwipeAction19Test', ()=> {
-    beforeAll(async (done:Function)=> {
+  describe('listSwipeAction19Test', () => {
+    beforeAll(async (done: Function) => {
       console.info("listSwipeAction19Test beforeEach start");
-      let options : router.RouterOptions = {
-          url : "MainAbility/pages/List/ListItem_SwipeActionItem/listTest19"
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/List/ListItem_SwipeActionItem/listTest19"
       }
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function listSwipeAction19Jsunit() {
       done();
     });
 
-    afterEach(async (done:Function) => {
+    afterEach(async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info("listSwipeActionTest19 after each called");
       // reset the init state
@@ -49,7 +49,7 @@ export default function listSwipeAction19Jsunit() {
       buttonReset.click();
       await CommonFunc.sleep(2000);
       done();
-     
+
     });
 
     /*
@@ -57,16 +57,16 @@ export default function listSwipeAction19Jsunit() {
      * @tc.name   : when swipe,then return the init position
      * @tc.desc   : test the onStateChange function parameter state
      */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190', 0, async (done:Function)=> {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190 START');
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
+      let driver = Driver.create();
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190 driver' + driver);
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipe19Action0');
-      let obj = JSON.parse(strJson);
-      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190] current component obj is: " + JSON.stringify(obj));
+
+      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
         Math.round(vp2px(115)), Math.round(vp2px(100)), Math.round(vp2px(115)), Math.round(vp2px(350))
@@ -74,9 +74,10 @@ export default function listSwipeAction19Jsunit() {
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
       let textSwipeState = getInspectorByKey('swipe19State');
-      let textString = JSON.parse(textSwipeState);
-      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190 json is ' + JSON.stringify(textString.$attrs));
-      expect(textString.$attrs.content).assertEqual('1')
+
+      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0190 json is ' + JSON.stringify(JSON.parse(textSwipeState)
+        .$attrs));
+      expect(JSON.parse(textSwipeState).$attrs.content).assertEqual('1')
       done();
     });
 
