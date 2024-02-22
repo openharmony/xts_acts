@@ -1,4 +1,3 @@
-import Drags from './Drags';
 import RectValue from './Rect';
 
 /**
@@ -68,9 +67,15 @@ export default class Utils {
       id: 1,
       x: downX,
       y: downY,
-      type: TouchType.Down,
+      displayX: downX,
+      displayY: downY,
+      windowX: downX,
+      windowY: downY,
+      screenX: downX,
+      screenY: downY,
+      type: TouchType.Down
     }
-    console.info('down touch started: ' + JSON.stringify(downPonit))
+    console.info('down touch started: ' + JSON.stringify(downPoint))
     sendTouchEvent(downPoint);
     console.info('start to move')
     if (true) {
@@ -81,6 +86,12 @@ export default class Utils {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
+        displayX: downX + (xStep * i),
+        displayY: downY + (yStep * i),
+        windowX: downX + (xStep * i),
+        windowY: downY + (yStep * i),
+        screenX: downX + (xStep * i),
+        screenY: downY + (yStep * i),
         type: TouchType.Move,
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
@@ -98,6 +109,12 @@ export default class Utils {
       id: 1,
       x: upX,
       y: upY,
+      displayX: upX,
+      displayY: upY,
+      windowX: upX,
+      windowY: upY,
+      screenX: upX,
+      screenY: upY,
       type: TouchType.Up,
     }
     console.info('up touch started: ' + JSON.stringify(upPoint))
