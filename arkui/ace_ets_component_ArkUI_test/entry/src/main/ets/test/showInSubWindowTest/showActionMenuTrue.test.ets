@@ -20,7 +20,6 @@ import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
-// import { On, ON } from '@ohos.UiTest';
 
 
 
@@ -72,9 +71,6 @@ export default function showActionMenuTrue() {
       expect(properties.type).assertEqual(0)//0表示应用子窗口TYPE_APP
 
       await CommonFunc.sleep(1000);
-      // await driver.click(200,200);
-      // let button = await driver.findComponent(ON.text('取消'));
-      // await button.click();
       await driver.triggerKey(2070);
       await CommonFunc.sleep(1000);
       console.info('[showActionMenuTrue_0100] END');

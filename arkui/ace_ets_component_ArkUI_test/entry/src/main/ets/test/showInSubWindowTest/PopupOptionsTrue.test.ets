@@ -20,7 +20,6 @@ import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
-// import { On, ON } from '@ohos.UiTest';
 
 
 
@@ -72,8 +71,6 @@ export default function PopupOptionsTrue() {
 
       await CommonFunc.sleep(1000);
       await driver.click(200,200);
-      // let button = await driver.findComponent(ON.text('cancel'));
-      // await button.click();
       await CommonFunc.sleep(1000);
       console.info('[PopupOptionsTrue_0100] END');
       done();
