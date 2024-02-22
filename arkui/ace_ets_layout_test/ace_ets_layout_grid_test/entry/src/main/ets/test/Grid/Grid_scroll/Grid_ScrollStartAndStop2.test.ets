@@ -66,10 +66,10 @@ export default function Grid_ScrollStartandStop2() {
       let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollStartandStop_grid')
       let driver = Driver.create()
       await driver.swipe(
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.9 + gridRect.top,
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.1 + gridRect.top,
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
         1000);
       await CommonFunc.sleep(2000);
 

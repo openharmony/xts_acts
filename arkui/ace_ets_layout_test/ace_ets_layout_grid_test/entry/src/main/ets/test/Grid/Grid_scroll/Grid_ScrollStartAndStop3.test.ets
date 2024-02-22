@@ -66,10 +66,10 @@ export default function Grid_ScrollStartandStop3() {
       let scrollBarRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollStartandStop_scrollBar')
       let driver = Driver.create()
       await driver.swipe(
-        (scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left,
-        (scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top,
-        (scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left,
-        (scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top,
+        Number.parseInt((scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left),
+        Number.parseInt((scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top),
+        Number.parseInt((scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left),
+        Number.parseInt((scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top),
         1000);
       await CommonFunc.sleep(2000);
 

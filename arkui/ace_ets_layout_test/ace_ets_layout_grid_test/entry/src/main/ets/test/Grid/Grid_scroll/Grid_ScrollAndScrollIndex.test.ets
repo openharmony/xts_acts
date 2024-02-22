@@ -78,10 +78,10 @@ export default function Grid_ScrollAndScrollIndex() {
       let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
       await driver.swipe(
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.9 + gridRect.top,
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.1 + gridRect.top,
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
         1000);
       await CommonFunc.sleep(2000);
 
@@ -104,10 +104,10 @@ export default function Grid_ScrollAndScrollIndex() {
       let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_grid')
       let driver = Driver.create()
       await driver.swipe(
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.9 + gridRect.top,
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.1 + gridRect.top,
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
         1000); //grid滑到底部会再触发两次onScrollIndex事件
       await CommonFunc.sleep(2000);
 
@@ -130,10 +130,10 @@ export default function Grid_ScrollAndScrollIndex() {
       let scrollBarRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollAndScrollIndex_scrollBar')
       let driver = Driver.create()
       await driver.swipe(
-        (scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left,
-        (scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top,
-        (scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left,
-        (scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top,
+        Number.parseInt((scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left),
+        Number.parseInt((scrollBarRect.bottom - scrollBarRect.top) * 0.1 + scrollBarRect.top),
+        Number.parseInt((scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left),
+        Number.parseInt((scrollBarRect.bottom - scrollBarRect.top) * 0.9 + scrollBarRect.top),
         1000); //scrollBar滑到底部，会再触发两次onScrollIndex事件
       await CommonFunc.sleep(2000);
 

@@ -55,23 +55,23 @@ export default function StartAndEnd() {
       let driver = Driver.create()
       await CommonFunc.sleep(1000);
       await driver.swipe(
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.9 + gridRect.top,
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.1 + gridRect.top,
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
         1000);
       await CommonFunc.sleep(2000);
 
-      let strJson1 = getInspectorByKey('StartAndEnd_end')
+      let strJson1 = getInspectorByKey('StartAndEnd_end');
 
       console.info("[StartAndEnd_0001] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)))
       expect(JSON.parse(strJson1).$attrs.content).assertEqual('onReachEnd');
 
       await driver.swipe(
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.1 + gridRect.top,
-        (gridRect.right - gridRect.left) * 0.5 + gridRect.left,
-        (gridRect.bottom - gridRect.top) * 0.9 + gridRect.top,
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.1 + gridRect.top),
+        Number.parseInt((gridRect.right - gridRect.left) * 0.5 + gridRect.left),
+        Number.parseInt((gridRect.bottom - gridRect.top) * 0.9 + gridRect.top),
         1000);
       await CommonFunc.sleep(2000);
 
