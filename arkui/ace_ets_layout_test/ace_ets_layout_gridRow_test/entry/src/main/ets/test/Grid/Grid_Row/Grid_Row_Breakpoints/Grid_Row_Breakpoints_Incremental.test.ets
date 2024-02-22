@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function GridRowBreakpoints_Value1() {
-  describe('Grid_Row_Breakpoints_Incremental', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Breakpoints_Incremental', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Breakpoints_Incremental beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Incremental",
       }
       try {
@@ -29,7 +30,7 @@ export default function GridRowBreakpoints_Value1() {
         console.info("get Grid_Row_Breakpoints_Incremental state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Breakpoints_Incremental" == pages.name)) {
           console.info("get Grid_Row_Breakpoints_Incremental pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Breakpoints_Incremental page result:" + JSON.stringify(result));
         }
@@ -40,25 +41,25 @@ export default function GridRowBreakpoints_Value1() {
       console.info("Grid_Row_Breakpoints_Incremental beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("GridRowBreakpoints_Value1 after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_0100
-     * @tc.name      testBreakpoints
-     * @tc.desc      The breakpoint range value monotonically increases
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_0100
+     * @tc.name testBreakpoints
+     * @tc.desc The breakpoint range value monotonically increases
      */
-    it('SUB_ACE_GridRowBreakpoints_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowBreakpoints_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowBreakpoints_0100 START');
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental2');
-      let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental3');
-      let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental4');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental2');
+      let fourthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental3');
+      let fifthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Incremental4');
 
       expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
