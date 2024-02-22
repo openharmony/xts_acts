@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function Grid_Col_Span_Number() {
-  describe('Grid_Col_Span_Number', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Col_Span_Number', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Col_Span_Number beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Col/Grid_Col_Span/Grid_Col_Span_Number",
       }
       try {
@@ -30,7 +31,7 @@ export default function Grid_Col_Span_Number() {
         console.info("get Grid_Col_Span_Number state pages:" + JSON.stringify(pages));
         if (!("Grid_Col_Span_Number" == pages.name)) {
           console.info("get Grid_Col_Span_Number pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Col_Span_Number page result:" + JSON.stringify(result));
         }
@@ -40,31 +41,33 @@ export default function Grid_Col_Span_Number() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Col_Span_Number after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Span_Number_TEST_0100
-     * @tc.name      testGridColSpan
-     * @tc.desc      GridCol set span to -2
+     * @tc.number SUB_ACE_Grid_Col_Span_Number_TEST_0100
+     * @tc.name testGridColSpan
+     * @tc.desc GridCol set span to -2
      */
-    it('SUB_ACE_Grid_Col_Span_Number_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Span_Number_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0100] START');
-      globalThis.value.message.notify({name:'addSpan', value:-2});
+      globalThis.value.message.notify({
+        name: 'addSpan', value: -2
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Span_Number_00 = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
-      let Grid_Col_Span_Number_01 = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
-      let Grid_Col_Span_Number_02 = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
-      let Grid_Col_Span_Number_03 = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
-      let Grid_Col_Span_Number_04 = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
-      let Grid_Col_Span_Number_05 = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
-      let Grid_Col_Span_Number_06 = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
-      let Grid_Col_Span_Number_07 = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
+      let Grid_Col_Span_Number_00: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
+      let Grid_Col_Span_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
+      let Grid_Col_Span_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
+      let Grid_Col_Span_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
+      let Grid_Col_Span_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
+      let Grid_Col_Span_Number_05: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
+      let Grid_Col_Span_Number_06: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
+      let Grid_Col_Span_Number_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
 
 
       console.log('assert space')
@@ -82,50 +85,54 @@ export default function Grid_Col_Span_Number() {
 
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Span_Number_TEST_0200
-     * @tc.name      testGridColSpan
-     * @tc.desc      GridCol set span to 0
+     * @tc.number SUB_ACE_Grid_Col_Span_Number_TEST_0200
+     * @tc.name testGridColSpan
+     * @tc.desc GridCol set span to 0
      */
-    it('SUB_ACE_Grid_Col_Span_Number_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Span_Number_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0200] START');
-      globalThis.value.message.notify({name:'addSpan', value:0});
+      globalThis.value.message.notify({
+        name: 'addSpan', value: 0
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Span_Number_00 = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
-      let Grid_Col_Span_Number_01 = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
-      let Grid_Col_Span_Number_02 = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
-      let Grid_Col_Span_Number_03 = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
-      let Grid_Col_Span_Number_04 = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
-      let Grid_Col_Span_Number_05 = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
-      let Grid_Col_Span_Number_06 = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
-      let Grid_Col_Span_Number_07 = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
+      let Grid_Col_Span_Number_00: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
+      let Grid_Col_Span_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
+      let Grid_Col_Span_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
+      let Grid_Col_Span_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
+      let Grid_Col_Span_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
+      let Grid_Col_Span_Number_05: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
+      let Grid_Col_Span_Number_06: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
+      let Grid_Col_Span_Number_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
 
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0200] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Span_Number_TEST_0300
-     * @tc.name      testGridColSpan
-     * @tc.desc      GridCol set span to 2
+     * @tc.number SUB_ACE_Grid_Col_Span_Number_TEST_0300
+     * @tc.name testGridColSpan
+     * @tc.desc GridCol set span to 2
      */
-    it('SUB_ACE_Grid_Col_Span_Number_TEST_0300', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Span_Number_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0300] START');
-      globalThis.value.message.notify({name:'addSpan', value:2});
+      globalThis.value.message.notify({
+        name: 'addSpan', value: 2
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Span_Number_00 = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
-      let Grid_Col_Span_Number_01 = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
-      let Grid_Col_Span_Number_02 = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
-      let Grid_Col_Span_Number_03 = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
-      let Grid_Col_Span_Number_04 = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
-      let Grid_Col_Span_Number_05 = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
-      let Grid_Col_Span_Number_06 = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
-      let Grid_Col_Span_Number_07 = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
+      let Grid_Col_Span_Number_00: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
+      let Grid_Col_Span_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
+      let Grid_Col_Span_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
+      let Grid_Col_Span_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
+      let Grid_Col_Span_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
+      let Grid_Col_Span_Number_05: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
+      let Grid_Col_Span_Number_06: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
+      let Grid_Col_Span_Number_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
 
 
       console.log('assert space')
@@ -148,25 +155,27 @@ export default function Grid_Col_Span_Number() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Span_Number_TEST_0400
-     * @tc.name      testGridColSpan
-     * @tc.desc      GridCol set span to 8
+     * @tc.number SUB_ACE_Grid_Col_Span_Number_TEST_0400
+     * @tc.name testGridColSpan
+     * @tc.desc GridCol set span to 8
      */
-    it('SUB_ACE_Grid_Col_Span_Number_TEST_0400', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Span_Number_TEST_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Span_Number_TEST_0400] START');
-      globalThis.value.message.notify({name:'addSpan', value:8});
+      globalThis.value.message.notify({
+        name: 'addSpan', value: 8
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Span_Number_00 = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
-      let Grid_Col_Span_Number_01 = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
-      let Grid_Col_Span_Number_02 = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
-      let Grid_Col_Span_Number_03 = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
-      let Grid_Col_Span_Number_04 = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
-      let Grid_Col_Span_Number_05 = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
-      let Grid_Col_Span_Number_06 = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
-      let Grid_Col_Span_Number_07 = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
+      let Grid_Col_Span_Number_00: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_00');
+      let Grid_Col_Span_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_01');
+      let Grid_Col_Span_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_02');
+      let Grid_Col_Span_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_03');
+      let Grid_Col_Span_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_04');
+      let Grid_Col_Span_Number_05: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_05');
+      let Grid_Col_Span_Number_06: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_06');
+      let Grid_Col_Span_Number_07: RectValue = CommonFunc.getComponentRect('Grid_Col_Span_Number_07');
 
       console.log('assert space')
       expect(Math.abs((Grid_Col_Span_Number_01.top - Grid_Col_Span_Number_00.bottom) - vp2px(10)) <= 1).assertTrue();
