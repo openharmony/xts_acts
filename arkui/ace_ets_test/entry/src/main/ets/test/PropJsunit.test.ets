@@ -13,25 +13,25 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function propJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('propTest', function () {
+  describe('propTest', () => {
 
-    beforeEach(async function (done) {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Prop',
       }
@@ -45,52 +45,49 @@ export default function propJsunit() {
           console.info("push Prop page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Prop page error " + JSON.stringify(result));
+        console.error("push Prop page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Prop after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0470
-     * @tc.name      propTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0470
+     * @tc.name propTest001
+     * @tc.desc aceEtsTest
      */
-    it('propTest001', 0, async function (done) {
+    it('propTest001', 0, async () => {
       console.info('propTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Text001');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       console.log(JSON.stringify(obj.$type))
       console.log("cd attrs.conten type1" + typeof ("10"))
-      console.log("yr prop0 content-'10'" + obj.$attrs.content)
-      expect(obj.$attrs.content).assertEqual("10");
+      console.log("yr prop0 content-'10'" + JSON.parse(strJson).$attrs.content)
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("10");
       console.info('propTest001 END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0480
-     * @tc.name      propTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0480
+     * @tc.name propTest001
+     * @tc.desc aceEtsTest
      */
-    it('propTest002', 0, async function (done) {
+    it('propTest002', 0, async () => {
       console.info('propTest002 START');
       let strJson = getInspectorByKey('Text002');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("cd attrs.conten type" + typeof (obj.$attrs.content))
+      console.log("cd attrs.conten type" + typeof (JSON.parse(strJson).$attrs.content))
       console.log("cd attrs.conten type1 " + typeof ("10"))
-      expect(obj.$attrs.content).assertEqual("10");
-      console.log("cd prop0 content-'10'" + JSON.stringify(obj.$attrs.content))
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("10");
+      console.log("cd prop0 content-'10'" + JSON.stringify(JSON.parse(strJson).$attrs.content))
       console.info('propTest002 END');
-      done();
     });
   })
 }
