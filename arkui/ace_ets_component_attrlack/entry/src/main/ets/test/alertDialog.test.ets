@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
-import measure from '@ohos.measure'
+import measure, { MeasureOptions } from '@ohos.measure'
 
 export default function alertDialogCenterStartJsunit() {
-  describe('alertDialogCenterStartTest', function () {
-    beforeEach(async function (done) {
+  describe('alertDialogCenterStartTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/alertDialog',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/alertDialog',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function alertDialogCenterStartJsunit() {
         console.info("get alertDialog state success " + JSON.stringify(pages));
         if (!("alertDialog" == pages.name)) {
           console.info("get alertDialog state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push alertDialog page success " + JSON.stringify(result));
         }
@@ -42,7 +42,7 @@ export default function alertDialogCenterStartJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("alertDialogCenterStart after each called");
     });
@@ -52,15 +52,15 @@ export default function alertDialogCenterStartJsunit() {
      * @tc.name         testalertDialogCenterStart0001
      * @tc.desic         acealertDialogCenterStartEtsTest0001
      */
-    it('testalertDialogCenterStart0001', 0, async function (done) {
+    it('testalertDialogCenterStart0001', 0, async (done: Function) => {
       console.info('alertDialogCenterStart testalertDialogCenterStart0011 START');
       await Utils.sleep(2000);
       try {
-        var event = {
+        let event: events_emitter.InnerEvent = {
           eventId: 81601,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testalertDialogCenterStart0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(true);
           console.info('testalertDialogCenterStart0001 END');
@@ -78,15 +78,17 @@ export default function alertDialogCenterStartJsunit() {
      * @tc.name         testMeasureText0001
      * @tc.desic        test text width
      */
-    it('testMeasureText0001', 0, async function (done) {
+    it('testMeasureText0001', 0, async (done: Function) => {
       console.info('testMeasureText0001 start');
       await Utils.sleep(2000);
       try {
-           let measureOptions = {textContent : "alertDialog-CenterStart"};
-           let width = measure.measureText(measureOptions);
-           console.info("++++++++++++++++++++++" + width.toString());
-           expect(width > 0).assertTrue();
-           done();
+        let measureOptions: MeasureOptions = {
+          textContent: "alertDialog-CenterStart"
+        };
+        let width = measure.measureText(measureOptions);
+        console.info("++++++++++++++++++++++" + width.toString());
+        expect(width > 0).assertTrue();
+        done();
       } catch (err) {
         console.info("testMeasureText0001 err : " + JSON.stringify(err));
         expect().assertFail();

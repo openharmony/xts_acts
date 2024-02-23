@@ -14,17 +14,17 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function ohosrouterJsunit() {
-  describe('ohosrouterJsunit', function () {
-    beforeAll(async function (done) {
+  describe('ohosrouterJsunit', () => {
+    beforeAll(async (done: Function) => {
       console.info("ohosrouterJsunit beforeAll");
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ohosrouterJsunit aftereach");
     });
@@ -34,15 +34,14 @@ export default function ohosrouterJsunit() {
      * @tc.name         ohosrouterJsunit_001
      * @tc.desc         test routermode
      */
-    it('ohosrouterJsunit_001', 0, async function (done) {
+    it('ohosrouterJsunit_001', 0, async (done: Function) => {
       try {
-          expect(1).assertEqual(router.RouterMode.Single);
-          done();
+        expect(1).assertEqual(router.RouterMode.Single);
+        done();
       } catch (error) {
         console.error(`ohosrouterJsunit_001 pushUrl args error code is ${error.code}, message is ${error.message}`)
         expect().assertFail();
-      };
-
+      }
     });
   })
 }
