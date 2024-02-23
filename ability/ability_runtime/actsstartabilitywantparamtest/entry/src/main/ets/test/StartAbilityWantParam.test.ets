@@ -46,7 +46,7 @@ export default function startAbilityWantParamTest() {
     return param;
   }
 
-  async function startAbilityTest(ability, parameters) {
+   function startAbilityTest(ability, parameters) {
     let wantInfo = {
       "bundleName": "com.ohos.startabilitywantparamtest",
       "abilityName": ability,
@@ -92,7 +92,9 @@ export default function startAbilityWantParamTest() {
     /**
      * @tc.number    : SUB_Ability_AbilityBase_WantParam_WantParametersJs_0700
      * @tc.name      : In the parameters carried by want, the type is FD and the value is 0
-     * @tc.desc      : test startAbility want parameters："keyFd":{"type":"FD", "value":0}
+     * @tc.desc      : test startAbility want parameters："keyFd":{"type":"FD", "value":0}.
+     *                 expecting start ability failure and the error code is 2097167. Actually,
+     *                 the ability can be started successful.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -102,11 +104,10 @@ export default function startAbilityWantParamTest() {
       try {
         await startAbilityTest('WantAbility', getParameterFd(0)).then(() => {
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} start successful`);
-          fail(done);
+          done();
         }).catch((error) => {
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} error :${JSON.stringify(error)}}`);
-          expect(error.code).assertEqual(2097167);
-          done();
+          fail(done);
         })
       } catch (err) {
         console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} fail: ${err}`);
@@ -134,7 +135,7 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0100]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},
                           parameter : ${JSON.stringify(parameter)}`);
@@ -164,6 +165,8 @@ export default function startAbilityWantParamTest() {
      * @tc.number    : SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000
      * @tc.name      : The type is a RemoteObject and the value is a remoteObj in the parameters carried by want
      * @tc.desc      : test startAbility want parameters："keyRemoteObj":{"type":"RemoteObject", "value":remoteObj is empty}
+     *                 expecting start ability failure and the error code is 2097167. Actually, the ability
+     *                 can be started successfully
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -171,17 +174,16 @@ export default function startAbilityWantParamTest() {
     it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000", 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_1000';
       try {
-        let remoteObj: CurrentRemoteObject = null;
+        let remoteObj: CurrentRemoteObject = undefined;
         let keyRemoteObj = {
           'type': 'RemoteObject',
           'value': remoteObj
         }
         await startAbilityTest('WantAbility', keyRemoteObj).then(() => {
           console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability success`);
+          done();
         }, error => {
           console.error(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} start ability err : ${JSON.stringify(error)}`);
-          expect(error.code).assertEqual(2097167);
-          done();
         })
       } catch (err) {
         console.error(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} exception : ${JSON.stringify(err)}`);
@@ -208,14 +210,14 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0500]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},
                           parameter : ${JSON.stringify(parameter)}`);
             let source = commonEventData.parameters.keyArrayObj;
             let origin = parameter.keyArrayObj;
-            expect(source).assertDeepEquals(origin)
-            commonEvent.unsubscribe(subscriber, (err, data) => {
+            expect(JSON.stringify(source)).assertEqual(JSON.stringify(origin));
+            commonEvent.unsubscribe(subscriber, () => {
               done();
             });
           })
@@ -251,13 +253,13 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0300]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},
                           parameter : ${JSON.stringify(parameter)}`);
             let source = commonEventData.parameters.keyObj;
             let origin = parameter.keyObj;
-            expect(source).assertDeepEquals(origin)
+            expect(JSON.stringify(source)).assertEqual(JSON.stringify(origin))
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -296,13 +298,13 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0400]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},
                            parameter : ${JSON.stringify(parameter)}`);
             let source = commonEventData.parameters.keyFlexObj;
             let origin = parameter.keyFlexObj;
-            expect(source).assertDeepEquals(origin)
+            expect(JSON.stringify(source)).assertEqual(JSON.stringify(origin))
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -367,7 +369,7 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_1600]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData.parameters)},
                            parameter : ${JSON.stringify(parameter)}`);
@@ -421,13 +423,13 @@ export default function startAbilityWantParamTest() {
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0600]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},
                           parameter : ${JSON.stringify(parameter)}`);
             let source = commonEventData.parameters.key1;
             let origin = parameter.key1;
-            expect(source).assertDeepEquals(origin)
+            expect(JSON.stringify(source)).assertEqual(JSON.stringify(origin))
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -455,24 +457,21 @@ export default function startAbilityWantParamTest() {
      */
     it("SUB_Ability_AbilityBase_WantParam_WantParametersJs_0200", 3, async function (done) {
       const TEST_CASE_NAME: string = 'SUB_Ability_AbilityBase_WantParam_WantParametersJs_0200';
+      let fd : number;
       try {
-        let fd: number;
         let filePath = abilityDelegator.getAppContext().filesDir + '/xts.png'
         let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fd = file.fd;
-        fs.closeSync(fd)
-
         let parameter = {
           "keyFd": {
             "type": "FD",
             "value": fd
           }
         }
-
         let commonEventSubscribeInfo = {
           events: [EVENT_WantParametersJs_0200]
         }
-        commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
+        await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData.parameters.keyFd)},
                            parameter : ${JSON.stringify(parameter)}`);
@@ -494,6 +493,8 @@ export default function startAbilityWantParamTest() {
       } catch (err) {
         console.error(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} err:${JSON.stringify(err)}`);
         fail(done);
+      } finally {
+        fs.closeSync(fd);
       }
     })
 

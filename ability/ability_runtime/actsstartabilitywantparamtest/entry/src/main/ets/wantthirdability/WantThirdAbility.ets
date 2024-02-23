@@ -48,6 +48,9 @@ export default class WantThirdAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      setTimeout(() => {
+        this.context.terminateSelf();
+      }, 500)
     });
   }
 

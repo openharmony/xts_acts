@@ -24,13 +24,6 @@ const EVENT_WantParametersJs_0500 = 'SUB_Ability_AbilityBase_WantParam_WantParam
 export default class WantNinthAbility extends UIAbility {
   onCreate(want: Want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'WantNinthAbility Ability onCreate' + JSON.stringify(want));
-    // commonEvent.publish(EVENT_WantParametersJs_0500,  {
-    //     parameters: {
-    //         'keyArrayObj': want.parameters.keyArrayObj
-    //     }
-    // }, (err, data) => {
-    //     hilog.info(0x0000, 'testTag', '%{public}s', `WantNinthAbility Ability publish event : ${EVENT_WantParametersJs_0500}`);
-    // } )
   }
 
   onDestroy() {
@@ -48,6 +41,9 @@ export default class WantNinthAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
+    setTimeout(() => {
+      this.context.terminateSelf();
+    }, 500)
   }
 
   onWindowStageDestroy() {

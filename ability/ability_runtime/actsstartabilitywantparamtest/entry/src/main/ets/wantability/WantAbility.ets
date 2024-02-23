@@ -20,10 +20,6 @@ import window from '@ohos.window';
 export default class WantAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'WantAbility Ability onCreate' + JSON.stringify(want));
-    globalThis.parameters = null;
-    if (want.parameters) {
-      globalThis.parameters = want.parameters;
-    }
   }
 
   onDestroy() {
@@ -32,7 +28,6 @@ export default class WantAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
-    globalThis.abilityWantContext = this.context;
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('wantability/pages/Index', (err, data) => {
@@ -41,7 +36,9 @@ export default class WantAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-
+      setTimeout(() => {
+        this.context.terminateSelf();
+      }, 500)
     });
   }
 
@@ -53,6 +50,9 @@ export default class WantAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    setTimeout(() => {
+      this.context.terminateSelf()
+    }, 500)
   }
 
   onBackground() {
