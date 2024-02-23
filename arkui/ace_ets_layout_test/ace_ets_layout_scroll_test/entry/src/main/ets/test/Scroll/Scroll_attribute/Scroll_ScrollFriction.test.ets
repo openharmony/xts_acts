@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager, Callback, RectValue } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function scroll_ScrollFrictionTest() {
   describe('scroll_ScrollFrictionTest', () => {
