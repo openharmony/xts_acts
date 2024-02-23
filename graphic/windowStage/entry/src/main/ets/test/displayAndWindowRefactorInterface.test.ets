@@ -53,8 +53,9 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         windowTypeArr.push(ohosWindow.WindowType[i])
       }
     })
+
     async function sleep(time) {
-      let timeoutId= null;
+      let timeoutId = null;
       let promise = new Promise(resolve => {
         timeoutId = setTimeout(() => {
           resolve('sleep finished');
@@ -63,6 +64,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let result = await promise;
       clearTimeout(timeoutId)
     }
+
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0450
      * @tc.name      : tesGetAllDisplays_Promise
@@ -151,7 +153,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeDicArr.length;
       console.log(msgStr + 'loopCount: ' + loopCount);
-      for(let i=0;i<loopCount;i++ ){
+      for (let i = 0; i < loopCount; i++) {
         let tempType = Number(ohosWindow.WindowType[systemWindowTypeDicArr[i]])
         let windId = 'createWindowTest1' + i;
         console.log(msgStr + 'ohosWindow.createWindow:  ' + tempType + ' start');
@@ -173,7 +175,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'finished, step: ' + i);
         expect(!!tempWnd).assertTrue();
         await tempWnd.destroyWindow();
-        if (i == loopCount-1) done();
+        if (i == loopCount - 1) done();
       }
     })
 
@@ -977,6 +979,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -999,6 +1002,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           ;
         })
       }
+
       let winData;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
@@ -1021,7 +1025,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0930
@@ -1040,6 +1045,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -1062,6 +1068,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           ;
         })
       }
+
       let winData;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
@@ -1084,7 +1091,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0950
@@ -1103,6 +1111,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -1125,6 +1134,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           ;
         })
       }
+
       let winData;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
@@ -1147,7 +1157,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0910
@@ -1166,6 +1177,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -1188,6 +1200,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           ;
         })
       }
+
       let winData;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
@@ -1210,7 +1223,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to move the window. Cause:' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1060
@@ -1440,7 +1454,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         });
         console.log(msgStr + 'ohosWindow.createWindow ' + baseWndType + ' wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
-        for(let i=0;i<5;i++){
+        for (let i = 0; i < 5; i++) {
           console.log(msgStr + 'begin resize current step:' + i)
           await tempWnd.resize(100, 100).catch((err) => {
             console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
@@ -1449,7 +1463,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
             return;
           })
           console.log(msgStr + 'success resize current step:' + i)
-          if(i==4){
+          if (i == 4) {
             console.log(msgStr + 'finish resize current step:' + i)
             done()
           }
@@ -1479,6 +1493,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -1524,7 +1539,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(exception));
-      };
+      }
+      ;
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1000
@@ -1543,6 +1559,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -1565,9 +1582,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
           ;
         })
       }
-      function resizeFun(width, height,i){
-        console.log(msgStr + 'resize begin step:'+i)
-        return new Promise((resolve,reject)=>{
+
+      function resizeFun(width, height, i) {
+        console.log(msgStr + 'resize begin step:' + i)
+        return new Promise((resolve, reject) => {
           try {
             winData.resize(width, height, async (err) => {
               if (err.code) {
@@ -1580,25 +1598,27 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
                 done();
                 reject(null)
               }
-              console.info(msgStr + 'Succeeded in changing the window size. step:'+i);
+              console.info(msgStr + 'Succeeded in changing the window size. step:' + i);
               resolve(true)
             });
           } catch (exception) {
             console.error(msgStr + 'Failed to change the window size. Cause:' + JSON.stringify(exception));
-          };
+          }
+          ;
         })
       }
+
       let winData;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
       let width = 100;
       let height = 100;
-      for(let i=1;i<5;i++){
+      for (let i = 1; i < 5; i++) {
         width = width * i;
         height = height * i;
-        await resizeFun(width, height,i);
-        if(i==4){
-          console.log(msgStr + 'resize finished step:'+i)
+        await resizeFun(width, height, i);
+        if (i == 4) {
+          console.log(msgStr + 'resize finished step:' + i)
           await winData.destroyWindow();
           done()
         }
@@ -1671,6 +1691,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let winsowConfig = {
         name: windowId, windowType: baseWndType, ctx: context
       };
+
       function createFirstWindow() {
         return new Promise((resolve, reject) => {
           try {
@@ -2123,7 +2144,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         expect(wnd != null).assertTrue();
         try {
           let isLayoutFullScreen = false;
-         await wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+          await wnd.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
             console.info(msgStr + 'Succeeded in setting the window not layout to full-screen mode.');
             try {
               let propData = wnd.getWindowProperties()
@@ -2283,31 +2304,31 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetExpectedFrameRateRange',0, async function (done){
-        let msg = "testSetExpectedFrameRateRange"
-        let backDisplaySyncBigger = displaySync.create()
-        console.log(msg + ' www data '  + backDisplaySyncBigger)
-        try {
-          let range : ExpectedFrameRateRange = {
-            expected: 10,
-            min:0,
-            max:120
-          };
-          console.log(msg + ' www data '  + range)
-          backDisplaySyncBigger.setExpectedFrameRateRange(range)
+    it('testSetExpectedFrameRateRange', 0, async function (done) {
+      let msg = "testSetExpectedFrameRateRange"
+      let backDisplaySyncBigger = displaySync.create()
+      console.log(msg + ' www data ' + backDisplaySyncBigger)
+      try {
+        let range: ExpectedFrameRateRange = {
+          expected: 10,
+          min: 0,
+          max: 120
+        };
+        console.log(msg + ' www data ' + range)
+        backDisplaySyncBigger.setExpectedFrameRateRange(range)
+        expect(true).assertTrue()
+        done()
+      } catch (error) {
+        console.log(msg + ' www data Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+        if (error.code) {
+          expect().assertFail()
+        } else {
           expect(true).assertTrue()
-          done()
-        } catch (error) {
-          console.log(msg + ' www data Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          if (error.code) {
-            expect().assertFail()
-          } else {
-            expect(true).assertTrue()
-          }
-          done()
+        }
+        done()
       }
     })
-     /**
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1820
      * @tc.name      : testTargetTimestamp
      * @tc.desc      : test the enum value of IntervalInfo
@@ -2315,26 +2336,26 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testTargetTimestamp',0, async function (done){
-        let msg = "testTargetTimestamp"
-        let backDisplaySyncBigger = displaySync.create()
-        console.log(msg + ' www data ' + backDisplaySyncBigger)
-        try {
-            let bigger = (frameInfo) => {
-                let a = frameInfo.targetTimestamp
-                console.log(msg + ' www data' + JSON.stringify(a))
-            }
-            expect(true).assertTrue()
-            done()
-        } catch (error) {
-            console.log(msg + ' www data Failed to Cause: ' + JSON.stringify(error));
-            if (error.code) {
-                expect().assertFail()
-            } else {
-                expect(true).assertTrue()
-            }
-            done()
+    it('testTargetTimestamp', 0, async function (done) {
+      let msg = "testTargetTimestamp"
+      let backDisplaySyncBigger = displaySync.create()
+      console.log(msg + ' www data ' + backDisplaySyncBigger)
+      try {
+        let bigger = (frameInfo) => {
+          let a = frameInfo.targetTimestamp
+          console.log(msg + ' www data' + JSON.stringify(a))
         }
+        expect(true).assertTrue()
+        done()
+      } catch (error) {
+        console.log(msg + ' www data Failed to Cause: ' + JSON.stringify(error));
+        if (error.code) {
+          expect().assertFail()
+        } else {
+          expect(true).assertTrue()
+        }
+        done()
+      }
     })
   })
 }

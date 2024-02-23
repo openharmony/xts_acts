@@ -12,32 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
-import screen from '@ohos.screen';
-import display from '@ohos.display';
 import deviceInfo from '@ohos.deviceInfo';
-import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
-export default function interfaceSupportSessionManagerTest(context, windowStage, abilityStorage) {
-  describe('interface_support_sessionManager_test', function () {
+export default function interfaceSupportSessionManagerTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
+  describe('interface_support_sessionManager_test', () => {
     console.log('describe interface_support_sessionManager_test start!!!')
 
-    async function sleep(time) {
-      let timeoutId = null;
-      let promise = new Promise(resolve => {
-        timeoutId = setTimeout(() => {
-          resolve('sleep finished');
-        }, time);
-      })
-      let result = await promise;
-      clearTimeout(timeoutId)
-    }
-
-    let currentDeviceIsRk = false;
-    beforeAll(async function () {
+    let currentDeviceIsRk: boolean = false;
+    beforeAll(async () => {
       // 获取当前的设备类型，区分是否是RK
-      let deviceTypeInfo = deviceInfo.deviceType
+      let deviceTypeInfo: string = deviceInfo.deviceType
       currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
       console.info('the value of the deviceType is :' + deviceInfo.deviceType);
     })
@@ -49,26 +37,26 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SubWindow_True', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_SubWindow_True';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_SubWindow_True', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_SubWindow_True';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindow = null;
-      subWindow = await windowStage.createSubWindow('testKeepKeyboardOnFocus_SubWindow').catch((err) => {
-        expect().assertFail();
-      });
+      let subWindow: ohosWindow.Window | void = await windowStage.createSubWindow('testKeepKeyboardOnFocus_SubWindow')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+        });
       expect(!!subWindow).assertTrue();
       try {
-        subWindow.keepKeyboardOnFocus(true);
-        await subWindow.destroyWindow();
+        (subWindow as ohosWindow.Window).keepKeyboardOnFocus(true);
+        await (subWindow as ohosWindow.Window).destroyWindow();
       } catch (exception) {
-        await subWindow.destroyWindow();
+        await (subWindow as ohosWindow.Window).destroyWindow();
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
+          console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
       }
@@ -81,26 +69,26 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SubWindow_False', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_SubWindow_False';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_SubWindow_False', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_SubWindow_False';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindow = null;
-      subWindow = await windowStage.createSubWindow('testKeepKeyboardOnFocus_SubWindow_False').catch((err) => {
-        expect().assertFail();
-      });
+      let subWindow: ohosWindow.Window | void = await windowStage.createSubWindow('testKeepKeyboardOnFocus_SubWindow_False')
+        .catch((err: BusinessError) => {
+          expect().assertFail();
+        });
       expect(!!subWindow).assertTrue();
       try {
-        subWindow.keepKeyboardOnFocus(false);
-        await subWindow.destroyWindow();
+        (subWindow as ohosWindow.Window).keepKeyboardOnFocus(false);
+        await (subWindow as ohosWindow.Window).destroyWindow();
       } catch (exception) {
-        await subWindow.destroyWindow();
+        await (subWindow as ohosWindow.Window).destroyWindow();
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
+          console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
       }
@@ -113,32 +101,32 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SystemWindow_False', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_SystemWindow_False';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_SystemWindow_False', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_False';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: 'testKeepKeyboardOnFocus_SystemWindow_False',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
+        windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT,
         ctx: context
       };
-      let tempWnd = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
-        expect().assertFail();
-      });
+      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
+        .catch((err: BusinessError) => {
+          console.log(msgStr + 'createWindow tempWnd failed');
+          expect().assertFail();
+        });
       expect(!!tempWnd).assertTrue();
       try {
-        tempWnd.keepKeyboardOnFocus(false);
-        await tempWnd.destroyWindow();
+        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
+        await (tempWnd as ohosWindow.Window).destroyWindow();
       } catch (exception) {
-        await tempWnd.destroyWindow();
+        await (tempWnd as ohosWindow.Window).destroyWindow();
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
+          console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
       }
@@ -151,32 +139,32 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_SystemWindow_True', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_SystemWindow_True';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_SystemWindow_True', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_True';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: 'testKeepKeyboardOnFocus_SystemWindow_True',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
+        windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT,
         ctx: context
       };
-      let tempWnd = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
-        expect().assertFail();
-      });
+      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
+        .catch((err: BusinessError) => {
+          console.log(msgStr + 'createWindow tempWnd failed');
+          expect().assertFail();
+        });
       expect(!!tempWnd).assertTrue();
       try {
-        tempWnd.keepKeyboardOnFocus(false);
-        await tempWnd.destroyWindow();
+        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
+        await (tempWnd as ohosWindow.Window).destroyWindow();
       } catch (exception) {
-        await tempWnd.destroyWindow();
+        await (tempWnd as ohosWindow.Window).destroyWindow();
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
           expect().assertFail();
         } else {
           console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
-          console.log(msgStr + +JSON.stringify(exception))
+          console.log(msgStr + JSON.stringify(exception))
           expect(exception.code).assertEqual(801);
         }
       }
@@ -189,24 +177,24 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_WindowStateAbnormal', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_SystemWindow_True';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_WindowStateAbnormal', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_SystemWindow_True';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: 'testKeepKeyboardOnFocus_SystemWindow_True',
-        windowType: ohosWindow.WindowType.TYPE_SYSTEM_TOAST,
+        windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT,
         ctx: context
       };
-      let tempWnd = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        console.log(msgStr + 'createWindow tempWnd failed');
-        expect().assertFail();
-      });
+      let tempWnd: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig)
+        .catch((err: BusinessError) => {
+          console.log(msgStr + 'createWindow tempWnd failed');
+          expect().assertFail();
+        });
       expect(!!tempWnd).assertTrue();
-      await tempWnd.destroyWindow();
+      await (tempWnd as ohosWindow.Window).destroyWindow();
       try {
-        tempWnd.keepKeyboardOnFocus(false);
+        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(false);
         expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
@@ -221,17 +209,16 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testKeepKeyboardOnFocus_MainWindow', 0, async function () {
-      let caseName = 'testKeepKeyboardOnFocus_MainWindow';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testKeepKeyboardOnFocus_MainWindow', 0, async () => {
+      let caseName: string = 'testKeepKeyboardOnFocus_MainWindow';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let tempWnd = null
-      tempWnd = await windowStage.getMainWindow().catch((err) => {
+      let tempWnd: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
         expect().assertFail();
       });
       expect(!!tempWnd).assertTrue();
       try {
-        tempWnd.keepKeyboardOnFocus(true);
+        (tempWnd as ohosWindow.Window).keepKeyboardOnFocus(true);
         expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
@@ -247,27 +234,27 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowVisibilityChange_UnregisteredOff', 0, async function () {
-      let caseName = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testWindowOffWindowVisibilityChange_UnregisteredOff', 0, async () => {
+      let caseName: string = 'testWindowOffWindowVisibilityChange_UnregisteredOff';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testWindowOffWindowVisibilityChange_UnregisteredOff",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
       try {
-        win.off('windowVisibilityChange');
-        await win.destroyWindow();
+        // @ts-ignore
+        (win as ohosWindow.Window).off('windowVisibilityChange');
+        await (win as ohosWindow.Window).destroyWindow();
         expect().assertFail();
       } catch (exception) {
-        await win.destroyWindow();
+        await (win as ohosWindow.Window).destroyWindow();
         console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300002);
       }
@@ -280,23 +267,23 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testWindowOffWindowVisibilityChange_RepeatOff', 0, async function () {
-      let caseName = 'testWindowOffWindowVisibilityChange_RepeatOff';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testWindowOffWindowVisibilityChange_RepeatOff', 0, async () => {
+      let caseName: string = 'testWindowOffWindowVisibilityChange_RepeatOff';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testWindowOffWindowVisibilityChange_RepeatOff",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
       try {
-        win.on('windowVisibilityChange', (boolean) => {
+        // @ts-ignore
+        (win as ohosWindow.Window).on('windowVisibilityChange', (boolean) => {
           console.info(msgStr + 'Window visibility changed, isVisible=' + boolean);
         });
       } catch (exception) {
@@ -310,7 +297,8 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
         }
       }
       try {
-        win.off('windowVisibilityChange');
+        // @ts-ignore
+        (win as ohosWindow.Window).off('windowVisibilityChange');
       } catch (exception) {
         if (!currentDeviceIsRk) {
           console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
@@ -322,11 +310,11 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
         }
       }
       try {
-        win.off('windowVisibilityChange');
-        await win.destroyWindow();
+        (win as ohosWindow.Window).off('windowVisibilityChange');
+        await (win as ohosWindow.Window).destroyWindow();
         expect().assertFail();
       } catch (exception) {
-        await win.destroyWindow();
+        await (win as ohosWindow.Window).destroyWindow();
         console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(1300002);
       }
@@ -339,25 +327,24 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSingleFrameComposerEnabled_True', 0, async function () {
-      let caseName = 'testSetSingleFrameComposerEnabled_True';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testSetSingleFrameComposerEnabled_True', 0, async () => {
+      let caseName: string = 'testSetSingleFrameComposerEnabled_True';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetSingleFrameComposerEnabled_True",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
-      await win.setSingleFrameComposerEnabled(true).then(async () => {
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(true).then(async () => {
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await win.destroyWindow();
-      }).catch((err) => {
+        await (win as ohosWindow.Window).destroyWindow();
+      }).catch((err: BusinessError) => {
         if (!currentDeviceIsRk) {
           console.error(msgStr + `ailed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
           expect().assertFail();
@@ -376,25 +363,24 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSingleFrameComposerEnabled_False', 0, async function () {
-      let caseName = 'testSetSingleFrameComposerEnabled_False';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testSetSingleFrameComposerEnabled_False', 0, async () => {
+      let caseName: string = 'testSetSingleFrameComposerEnabled_False';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetSingleFrameComposerEnabled_False",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
-      await win.setSingleFrameComposerEnabled(false).then(async () => {
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false).then(async () => {
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await win.destroyWindow();
-      }).catch((err) => {
+        await (win as ohosWindow.Window).destroyWindow();
+      }).catch((err: BusinessError) => {
         if (!currentDeviceIsRk) {
           console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
           expect().assertFail();
@@ -413,26 +399,25 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSingleFrameComposerEnabled_WindowStateAbnormal', 0, async function () {
-      let caseName = 'testSetSingleFrameComposerEnabled_WindowStateAbnormal';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testSetSingleFrameComposerEnabled_WindowStateAbnormal', 0, async () => {
+      let caseName: string = 'testSetSingleFrameComposerEnabled_WindowStateAbnormal';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetSingleFrameComposerEnabled_WindowStateAbnormal",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
-      await win.destroyWindow();
-      await win.setSingleFrameComposerEnabled(false).then(() => {
+      await (win as ohosWindow.Window).destroyWindow();
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false).then(() => {
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
         expect().assertFail();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
         expect(err.code).assertEqual(1300002);
       });
@@ -445,28 +430,28 @@ export default function interfaceSupportSessionManagerTest(context, windowStage,
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSetSingleFrameComposerEnabled_Invalid_ParameThree', 0, async function () {
-      let caseName = 'testSetSingleFrameComposerEnabled_Invalid_ParameThree';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+    it('testSetSingleFrameComposerEnabled_Invalid_ParameThree', 0, async () => {
+      let caseName: string = 'testSetSingleFrameComposerEnabled_Invalid_ParameThree';
+      let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowConfig = {
+      let windowConfig: ohosWindow.Configuration = {
         name: "testSetSingleFrameComposerEnabled_Invalid_ParameThree",
         windowType: ohosWindow.WindowType.TYPE_FLOAT,
         ctx: context,
       };
-      let win = null;
-      win = await ohosWindow.createWindow(windowConfig).catch((err) => {
+      let win: ohosWindow.Window | void = await ohosWindow.createWindow(windowConfig).catch((err: BusinessError) => {
         console.log(msgStr + 'ohosWindow.createWindow ' + 'catched, err: ' + JSON.stringify(err));
         expect().assertFail();
       });
       expect(!!win).assertTrue();
-      await win.setSingleFrameComposerEnabled(false, true).then(async () => {
+      // @ts-ignore
+      await (win as ohosWindow.Window).setSingleFrameComposerEnabled(false, true).then(async () => {
         console.info(msgStr + 'Succeeded in enabling the single-frame-composer function.');
-        await win.destroyWindow();
+        await (win as ohosWindow.Window).destroyWindow();
         expect().assertFail();
-      }).catch(async (err) => {
+      }).catch(async (err: BusinessError) => {
         console.error(msgStr + `Failed to enable the single-frame-composer function. code:${err.code}, message:${err.message}.`);
-        await win.destroyWindow();
+        await (win as ohosWindow.Window).destroyWindow();
         expect(err.code).assertEqual(401);
       });
     })
