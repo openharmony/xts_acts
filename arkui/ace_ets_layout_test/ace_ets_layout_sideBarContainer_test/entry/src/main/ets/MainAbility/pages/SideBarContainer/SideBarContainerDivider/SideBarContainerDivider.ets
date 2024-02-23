@@ -12,39 +12,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct SideBarContainerDivider {
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State sideBarWidth: number = 150
-  @State minSideBarWidth: number = 200
-  @State maxSideBarWidth: number = 200
-  minContentWidth: Dimension = 400
-  @State width1: number = 700
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State sideBarWidth: number = 150;
+  @State minSideBarWidth: number = 200;
+  @State maxSideBarWidth: number = 200;
+  minContentWidth: Dimension = 400;
+  @State width1: number = 700;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('SideBarContainerDivider page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'sideBarWidth') {
         this.sideBarWidth = message.value;
-      }else if(message.name == 'minSideBarWidth'){
+      } else if (message.name == 'minSideBarWidth') {
         this.minSideBarWidth = message.value;
-      }else if(message.name == 'maxSideBarWidth'){
+      } else if (message.name == 'maxSideBarWidth') {
         this.maxSideBarWidth = message.value;
-      }else if(message.name == 'minContentWidth'){
+      } else if (message.name == 'minContentWidth') {
         this.minContentWidth = message.value;
-      }else if(message.name == 'width1'){
+      } else if (message.name == 'width1') {
         this.width1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -80,5 +81,4 @@ struct SideBarContainerDivider {
     .key("SideBarContainerDivider_SideBarContainer_01")
     .divider({ strokeWidth: '10vp', color: Color.Gray, startMargin: '4vp', endMargin: '4vp' })
   }
-
 }
