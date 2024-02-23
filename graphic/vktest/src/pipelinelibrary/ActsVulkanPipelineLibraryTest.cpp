@@ -14,7 +14,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <stdlib.h>
+#include <cstdlib.h>
 #include "ActsVulkanPipelineLibraryTest.h"
 
 namespace OHOS {
@@ -41,7 +41,9 @@ namespace OHOS {
     HWTEST_F(ActsVulkanPipelineLibraryTest, TestVulkanPipelineTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanPipelineLibraryTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/pipeline-library.txt --deqp-log-filename=ActsVulkanPipelineLibraryTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+            "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/pipeline-library.txt "
+            "--deqp-log-filename=ActsVulkanPipelineLibraryTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanPipelineLibraryTest------\n");
     }
