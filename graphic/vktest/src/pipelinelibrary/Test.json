@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsVulkanPipelineTest test cases",
+    "description": "Config for ActsVulkanPipelineLibraryTest test cases",
     "driver": {
-        "module-name": "ActsVulkanPipelineTest",
+        "module-name": "ActsVulkanPipelineLibraryTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -27,7 +27,7 @@
             ],
             
             "push": [
-                "ActsVulkanPipelineTest->/data/local/tmp/ActsVulkanPipelineTest",
+                "ActsVulkanPipelineLibraryTest->/data/local/tmp/ActsVulkanPipelineLibraryTest",
                 "vulkandata/deqp_vk_execute->/data/local/tmp/deqp_vk_execute",
                 "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
@@ -44,7 +44,7 @@
             "teardown": [
                 {
                     "name": "pull",
-                    "value": "/data/local/tmp/ActsVulkanPipelineTest.qpa->ActsVulkanPipelineTest.qpa"
+                    "value": "/data/local/tmp/ActsVulkanPipelineLibraryTest.qpa->ActsVulkanPipelineLibraryTest.qpa"
                 }
             ]
         },
@@ -56,7 +56,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py ActsVulkanPipelineTest pipeline.txt"
+                "python testcases/vulkandata/genlocal.py ActsVulkanPipelineLibraryTest pipeline/pipeline-library.txt"
             ]
         }
 

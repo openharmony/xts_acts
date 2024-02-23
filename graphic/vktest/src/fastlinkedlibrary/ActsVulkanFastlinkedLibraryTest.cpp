@@ -14,35 +14,37 @@
  */
 
 #include <gtest/gtest.h>
-#include <stdlib.h>
-#include "ActsVulkanPipelineTest.h"
+#include <cstdlib.h>
+#include "ActsVulkanFastlinkedLibraryTest.h"
 
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
 
     // Preset action of the test suite, which is executed before the first test case
-    void ActsVulkanPipelineTest::SetUpTestCase(void)
+    void ActsVulkanFastlinkedLibraryTest::SetUpTestCase(void)
     {
     }
     // Test suite cleanup action, which is executed after the last test case
-    void ActsVulkanPipelineTest::TearDownTestCase(void)
+    void ActsVulkanFastlinkedLibraryTest::TearDownTestCase(void)
     {
     }
     // Preset action of the test case
-    void ActsVulkanPipelineTest::SetUp()
+    void ActsVulkanFastlinkedLibraryTest::SetUp()
     {
     }
     // Cleanup action of the test case
-    void ActsVulkanPipelineTest::TearDown()
+    void ActsVulkanFastlinkedLibraryTest::TearDown()
     {
     }
 
-    HWTEST_F(ActsVulkanPipelineTest, TestVulkanPipelineTestCase, Function | MediumTest | Level2)
+    HWTEST_F(ActsVulkanFastlinkedLibraryTest, TestVulkanFastlinkedLibraryTestCase, Function | MediumTest | Level2)
     {
-        printf("------start ActsVulkanPipelineTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline.txt --deqp-log-filename=ActsVulkanPipelineTest.qpa");
+        printf("------start ActsVulkanFastlinkedLibraryTest------\n");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute "
+            "--deqp-caselist-file=/data/local/tmp/vulkan/vk-default/pipeline/fast-linked-library.txt "
+            "--deqp-log-filename=ActsVulkanFastlinkedLibraryTest.qpa");
         EXPECT_TRUE(true);
-        printf("------end ActsVulkanPipelineTest------\n");
+        printf("------end ActsVulkanFastlinkedLibraryTest------\n");
     }
 }
