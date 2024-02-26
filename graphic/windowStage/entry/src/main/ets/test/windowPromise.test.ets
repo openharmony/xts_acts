@@ -60,8 +60,11 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     let systemWindowTypeDic: Record<string, number> = {
       'TYPE_FLOAT': 8,
     }
-
+    let currentDeviceIsRk = false;
     beforeAll(() => {
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -1562,11 +1565,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
 
         } catch (exception) {
           console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 801) {
-            expect(true).assertTrue()
-            done()
-          } else {
+          if (!currentDeviceIsRk) {
+            console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + +JSON.stringify(exception))
+            expect(exception.code).assertEqual(801);
             done();
           }
         }
@@ -1594,11 +1600,14 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         } catch (exception) {
           console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 801) {
-            expect(true).assertTrue()
-            done()
-          } else {
+          if (!currentDeviceIsRk) {
+            console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + +JSON.stringify(exception))
+            expect(exception.code).assertEqual(801);
             done();
           }
         }
