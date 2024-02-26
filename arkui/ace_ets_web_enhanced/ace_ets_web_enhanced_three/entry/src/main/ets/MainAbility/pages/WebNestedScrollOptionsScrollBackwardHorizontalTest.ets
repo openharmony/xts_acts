@@ -28,6 +28,7 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
   @State parentScrollTime: number = 0
   @State scrollForwardEnums: number = NestedScrollMode.SELF_FIRST
   @State scrollBackwardEnums: number = NestedScrollMode.SELF_FIRST
+  @State userAgentPC:string = "";
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -71,7 +72,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 9001)
               } catch (error) {
@@ -92,7 +98,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 9002)
               } catch (error) {
@@ -113,7 +124,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.scroller.scrollBy(40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 9003)
               } catch (error) {
@@ -132,7 +148,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 9004)
               } catch (error) {
@@ -151,7 +172,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 9005)
               } catch (error) {
@@ -172,7 +198,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 9006)
               } catch (error) {
@@ -193,7 +224,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.scroller.scrollBy(40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 9007)
               } catch (error) {
@@ -212,7 +248,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 9008)
               } catch (error) {
@@ -231,7 +272,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 9009)
               } catch (error) {
@@ -252,7 +298,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 9010)
               } catch (error) {
@@ -273,7 +324,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.scroller.scrollBy(40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 9011)
               } catch (error) {
@@ -292,7 +348,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 9012)
               } catch (error) {
@@ -311,7 +372,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime == 0 && this.selfScrollTime != 0, 9013)
               } catch (error) {
@@ -332,7 +398,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > this.selfScrollTime && this.selfScrollTime > 0, 9014)
               } catch (error) {
@@ -353,7 +424,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.scroller.scrollBy(40, 0)
                 await Utils.sleep(3000)
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime < this.selfScrollTime && this.parentScrollTime > 0, 9015)
               } catch (error) {
@@ -372,7 +448,12 @@ struct WebNestedScrollOptionsScrollBackwardHorizontalTest {
                 this.selfScrollTime = 0
                 this.parentScrollTime = 0
                 let driver = Driver.create();
-                await driver.swipe(X - 100, Y, X + 100, Y);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(X - 100, Y, X + 100, Y);
+                }
                 await Utils.sleep(3000)
                 Utils.emitEvent(this.parentScrollTime > 0 && this.selfScrollTime > 0, 9016)
               } catch (error) {
