@@ -14,12 +14,12 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-
 struct ImageExample {
   build() {
     Column() {
@@ -27,7 +27,7 @@ struct ImageExample {
         Column() {
           Image($rawfile('test.png'))
             .width(240).height(240)
-            .colorFilter([1,2,3])
+            .colorFilter([1, 2, 3])
             .overlay('colorFilter', { align: Alignment.Bottom, offset: { x: 0, y: -15 } })
         }.border({ color: Color.Black, width: 2 })
       }.width('100%')
