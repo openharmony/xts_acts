@@ -135,7 +135,7 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
+      let theTop: number = Stack_ZIndex_012.top;
       let num = await imageComparisonAssert(0, theTop);
       await CommonFunc.sleep(1000);
       console.log('num is', num);
@@ -183,8 +183,8 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
-      let theLeft: RectValue = Stack_ZIndex_012.left;
+      let theTop: number = Stack_ZIndex_012.top;
+      let theLeft: number = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft, theTop);
       await CommonFunc.sleep(1000);
       console.log('num is', num);
@@ -235,8 +235,8 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
-      let theLeft: RectValue = Stack_ZIndex_012.left;
+      let theTop: number = Stack_ZIndex_012.top;
+      let theLeft: number = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft, theTop);
       await CommonFunc.sleep(1000);
       console.log('num is', num);
@@ -284,7 +284,7 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
+      let theTop: number = Stack_ZIndex_012.top;
       let num = await imageComparisonAssert(0, theTop);
       await CommonFunc.sleep(1000);
       console.log('num is', num);
@@ -329,8 +329,8 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
-      let theLeft: RectValue = Stack_ZIndex_012.left;
+      let theTop: number = Stack_ZIndex_012.top;
+      let theLeft: number = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft, theTop);
       await CommonFunc.sleep(3000);
       console.log('num is', num);
@@ -378,8 +378,8 @@ export default function Stack_ZIndex() {
       let Stack_ZIndex_011: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_011');
       let Stack_ZIndex_012: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_012');
       let Stack_ZIndex_01: RectValue = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theTop: RectValue = Stack_ZIndex_012.top;
-      let theLeft: RectValue = Stack_ZIndex_012.left;
+      let theTop: number = Stack_ZIndex_012.top;
+      let theLeft: number = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft, theTop);
       await CommonFunc.sleep(3000);
       console.log('num is', num);
