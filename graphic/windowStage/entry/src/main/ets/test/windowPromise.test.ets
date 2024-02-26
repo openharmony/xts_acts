@@ -17,6 +17,7 @@ import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowPromiseTest(context, windowStage, abilityStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
