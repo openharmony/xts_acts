@@ -59,7 +59,7 @@ export default function CustomDialog() {
       console.info('CustomDialog_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
-      let button = await driver.findComponent(ON.id('CustomDialog'));
+      let button = await driver.findComponent(ON.id('CustomDialog123'));
       await button.click();
       await CommonFunc.sleep(1000);
 

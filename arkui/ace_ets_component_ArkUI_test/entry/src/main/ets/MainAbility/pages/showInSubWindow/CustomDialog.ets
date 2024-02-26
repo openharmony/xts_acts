@@ -120,7 +120,7 @@ struct CustomDialogExample {
     Column() {
       Button(this.inputValue)
         .margin(100)
-        .id("CustomDialog")
+        .id("CustomDialog123")
         .onClick(() => {
           if (this.dialogController != null) {
             this.dialogController.open()
