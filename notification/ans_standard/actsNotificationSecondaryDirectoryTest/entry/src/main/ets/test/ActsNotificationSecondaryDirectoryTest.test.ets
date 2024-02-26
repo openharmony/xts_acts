@@ -17,12 +17,14 @@ import notificationManager from '@ohos.notificationManager'
 import notification from '@ohos.notification'
 import WantAgent from '@ohos.wantAgent'
 import image from '@ohos.multimedia.image'
-
+import { Driver, ON } from '@ohos.UiTest';
+import { logGenerator, succeedGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../common/utils';
+import common from '@ohos.app.ability.common';
 export default function ActsNotificationSecondaryDirectoryTest() {
 describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST START')
-
+    let log = logGenerator(TAG);
     afterEach(async function (done) {
         console.info(`${TAG} afterEach START`)
         try{
@@ -52,8 +54,9 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
      */
     it('Sub_Notification_Ans_Publish_Publish_3850', 0, async function (done) {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 START`);
-
-        let basicContent: notificationManager.NotificationBasicContent = {
+          let ctx: common.UIAbilityContext = AppStorage.get('ctx');
+          notificationManager.requestEnableNotification(ctx).then(() => {
+         let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
@@ -67,16 +70,15 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             content: notifyContent,
             id: 1
         }
-
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+             notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
                     done()
                 } else {
-                    console.info(`${TAG} publish AsyncCallback success`)
+                    console.info(`${TAG} publish AsyncCallback success`);
                     expect(true).assertTrue()
                     done()
                 }
@@ -85,8 +87,23 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()
-        }
-
+        };
+          }).catch((err: Error) => {
+            expect(false).assertTrue();
+            done();
+          });
+          await sleep(1500);
+          let driver = Driver.create();
+          await sleep(1500)
+          let button = await driver.findComponent(ON.text('允许'));
+          log(`button is ${JSON.stringify(button)}`);
+          if (button !== null) {
+            await sleep(1500);
+            await button.click();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 END`);
     });
 
