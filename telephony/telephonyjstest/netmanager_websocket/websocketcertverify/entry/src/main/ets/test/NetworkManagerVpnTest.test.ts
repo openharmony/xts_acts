@@ -113,7 +113,6 @@ export class vpnExtAbility extends VpnExtensionAbility {
       console.log(tag + `create fail ${JSON.stringify(err)}`);
     })
   }
-
   onDestroy(): void {
     let vpnInstance = vpnExtension.createVpnConnection(context);
     vpnInstance.destroy().then(() => {
@@ -136,15 +135,15 @@ export default function NetworkManagerVpnTest() {
     });
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
-     * @tc.name: wTest startVpnExtensionAbility() interface
+     * @tc.number: SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100
+     * @tc.name: Test startVpnExtensionAbility() interface
      * @tc.desc: Function test
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('NetworkManager_startVpnExtensionAbility_0100', 0, (done: Function) => {
-      let caseName = 'NetworkManager_startVpnExtensionAbility_0100';
+    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0100';
       let want: Want = {};
       try {
         vpnExtension.startVpnExtensionAbility(want);
@@ -159,15 +158,15 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
-     * @tc.name: wTest startVpnExtensionAbility() interface
+     * @tc.number: SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200
+     * @tc.name: Test startVpnExtensionAbility() interface
      * @tc.desc: Function test
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('NetworkManager_startVpnExtensionAbility_0200', 0, (done: Function) => {
-      let caseName = 'NetworkManager_startVpnExtensionAbility_0200';
+    it('SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_startVpnExtensionAbility_Promise_0200';
       try {
         vpnExtension.startVpnExtensionAbility(null);
         console.log(`${caseName} startVpnExtensionAbility success`);
@@ -182,15 +181,102 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_NetworkManager_create_0100
+     * @tc.number: SUB_NetworkManager_VPN_createVpnConnection_Async_0100
      * @tc.name: Test createVpnConnection() interface
      * @tc.desc: Function test
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_create_0100', 0, (done: Function) => {
-      let caseName = 'SUB_NetworkManager_create_0100';
+    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_createVpnConnection_Async_0100';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        console.log(`${caseName} create success`);
+        expect().assertTrue();
+        done();
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_createVpnConnection_Async_0200
+     * @tc.name: Test createVpnConnection() interface
+     * @tc.desc: Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_createVpnConnection_Async_0200', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_createVpnConnection_Async_0200';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(null);
+        console.log(`${caseName} create success`);
+        expect().assertTrue();
+        done();
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100
+     * @tc.name: Test setAlwaysOnVpnEnabled() interface
+     * @tc.desc: Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_setAlwaysOnVpnEnabled_Promise_0100';
+      try {
+        vpnExtension.setAlwaysOnVpnEnabled(true, 'com.example.vpn_xts');
+        console.log(`${caseName} setAlwaysOnVpnEnabled success`);
+        expect().assertTrue();
+        done();
+      }
+      catch (error) {
+        expect(error.code == undefined).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100
+     * @tc.name: Test isAlwaysOnVpnEnabled() interface
+     * @tc.desc: Function test
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_isAlwaysOnVpnEnabled_Promise_0100';
+      try {
+        vpnExtension.isAlwaysOnVpnEnabled('com.example.vpn_xts');
+        console.log(`${caseName} isAlwaysOnVpnEnabled success`);
+        expect().assertTrue();
+        done();
+      }
+      catch (error) {
+        expect(error.code == undefined).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_create_Promise_0100
+     * @tc.name: Test create() interface
+     * @tc.desc: Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_create_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_create_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context);
         vpnInstance.create(config).then(() => {
@@ -210,15 +296,43 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_NetworkManager_protect_0100
-     * @tc.name: wTest createVpnConnection() interface
+     * @tc.number: SUB_NetworkManager_VPN_create_Promise_0200
+     * @tc.name: Test create() interface
+     * @tc.desc: Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_create_Promise_0200', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_create_Promise_0200';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        vpnInstance.create(null).then(() => {
+          console.log(`${caseName} create success`);
+          expect().assertTrue();
+          done();
+        }).catch((err:BusinessError) => {
+          console.log(`${caseName} create fail ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_protect_Promise_0100
+     * @tc.name: Test protect() interface
      * @tc.desc: Function test
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_protect_0100', 0, (done: Function) => {
-      let caseName = 'SUB_NetworkManager_protect_0100';
+    it('SUB_NetworkManager_VPN_protect_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_protect_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context);
         vpnInstance.protect(socketFd).then(() => {
@@ -238,15 +352,43 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_NetworkManager_destroy_0100
-     * @tc.name: wTest createVpnConnection() interface
+     * @tc.number: SUB_NetworkManager_VPN_protect_Promise_0200
+     * @tc.name: Test protect() interface
+     * @tc.desc: Function test
+     * @tc.level 3
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('SUB_NetworkManager_VPN_protect_Promise_0200', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_protect_Promise_0200';
+      try {
+        let vpnInstance = vpnExtension.createVpnConnection(context);
+        vpnInstance.protect(null).then(() => {
+          console.log(`${caseName} protect success`);
+          expect().assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`${caseName} protect fail ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+      }
+      catch (error) {
+        expect(error.code == 401).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_NetworkManager_VPN_destroy_Promise_0100
+     * @tc.name: Test destroy() interface
      * @tc.desc: Function test
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_destroy_0100', 0, (done: Function) => {
-      let caseName = 'SUB_NetworkManager_destroy_0100';
+    it('SUB_NetworkManager_VPN_destroy_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_destroy_Promise_0100';
       try {
         let vpnInstance = vpnExtension.createVpnConnection(context);
         vpnInstance.destroy().then(() => {
@@ -266,15 +408,15 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
-     * @tc.name: wTest stopVpnExtensionAbility() interface
+     * @tc.number: SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100
+     * @tc.name: Test stopVpnExtensionAbility() interface
      * @tc.desc: Function test
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('NetworkManager_stopVpnExtensionAbility_0100', 0, (done: Function) => {
-      let caseName = 'NetworkManager_stopVpnExtensionAbility_0100';
+    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0100';
       let want: Want = {};
       try {
         vpnExtension.stopVpnExtensionAbility(want);
@@ -289,15 +431,15 @@ export default function NetworkManagerVpnTest() {
     })
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_WebSocket_CertVerify_Xts_0600
-     * @tc.name: wTest stopVpnExtensionAbility() interface
+     * @tc.number: SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200
+     * @tc.name: Test stopVpnExtensionAbility() interface
      * @tc.desc: Function test
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('NetworkManager_stopVpnExtensionAbility_0200', 0, (done: Function) => {
-      let caseName = 'NetworkManager_stopVpnExtensionAbility_0200';
+    it('SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200', 0, (done: Function) => {
+      let caseName = 'SUB_NetworkManager_VPN_stopVpnExtensionAbility_Promise_0200';
       try {
         vpnExtension.stopVpnExtensionAbility(null);
         console.log(`${caseName} stopVpnExtensionAbility success`);
