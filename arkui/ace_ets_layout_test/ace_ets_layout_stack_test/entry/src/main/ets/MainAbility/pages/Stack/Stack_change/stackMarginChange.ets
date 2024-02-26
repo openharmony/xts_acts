@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct stackMarginChange {
-  @State testMargin: number = 0
-  @State testAlignContentValue: number = Alignment.Center
-  messageManager:MessageManager = new MessageManager()
+  @State testMargin: number = 0;
+  @State testAlignContentValue: number = Alignment.Center;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "stackMarginChange Page";
+
   onPageShow() {
     console.info('stackMarginChange onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'margin') {
         this.testMargin = message.value;
@@ -33,7 +36,7 @@ struct stackMarginChange {
       if (message.name == 'alignContent') {
         this.testAlignContentValue = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -42,10 +45,15 @@ struct stackMarginChange {
   }
 
   build() {
-    Column(){
-        Stack({alignContent: this.testAlignContentValue}) {
-          Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackMarginKey01')
-       }.width(300).height(300).backgroundColor(0xAFEEEE).key('stackMarginKey').margin(this.testMargin)
-     }.alignItems(HorizontalAlign.Start)
+    Column() {
+      Stack({ alignContent: this.testAlignContentValue }) {
+        Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackMarginKey01')
+      }
+      .width(300)
+      .height(300)
+      .backgroundColor(0xAFEEEE)
+      .key('stackMarginKey')
+      .margin(this.testMargin)
+    }.alignItems(HorizontalAlign.Start)
   }
 }

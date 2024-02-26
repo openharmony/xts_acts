@@ -12,21 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct StackSizeChange {
-  @State testHeight: number = 500
-  @State testWidth: number = 500
-  @State testAlignContentValue: number = Alignment.Center
-  messageManager:MessageManager = new MessageManager()
+  @State testHeight: number = 500;
+  @State testWidth: number = 500;
+  @State testAlignContentValue: number = Alignment.Center;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "StackSizeChange Page";
+
   onPageShow() {
     console.info('StackSizeChange onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
@@ -37,7 +40,7 @@ struct StackSizeChange {
       if (message.name == 'alignContent') {
         this.testAlignContentValue = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -46,12 +49,12 @@ struct StackSizeChange {
   }
 
   build() {
-    Column(){
-          Column(){
-                Stack({alignContent: this.testAlignContentValue}) {
-                Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackSizeKey01')
-                }.width(this.testWidth).height(this.testHeight).backgroundColor(0xAFEEEE).key('stackSizeKey')
-     }.alignItems(HorizontalAlign.Start)
-   }.width(500).height(500).backgroundColor(0xc1cbac)
+    Column() {
+      Column() {
+        Stack({ alignContent: this.testAlignContentValue }) {
+          Text('1').width(200).height(200).backgroundColor(0xF5DEB3).key('stackSizeKey01')
+        }.width(this.testWidth).height(this.testHeight).backgroundColor(0xAFEEEE).key('stackSizeKey')
+      }.alignItems(HorizontalAlign.Start)
+    }.width(500).height(500).backgroundColor(0xc1cbac)
   }
 }
