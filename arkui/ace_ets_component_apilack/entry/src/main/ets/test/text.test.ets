@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textMinFontSizeJsunit() {
-  describe('textMinFontSizeTest', function () {
-    beforeAll(async function (done) {
+  describe('textMinFontSizeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/text',
@@ -37,10 +37,9 @@ export default function textMinFontSizeJsunit() {
       } catch (err) {
         console.error("push text page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textMinFontSize after each called");
     });
@@ -50,16 +49,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0001
      * @tc.desic         acetextMinFontSizeEtsTest0001
      */
-    it('testtextMinFontSize0001', 0, async function (done) {
+    it('testtextMinFontSize0001', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testtextMinFontSize0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testtextMinFontSize0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0002
      * @tc.desic         acetextMinFontSizeEtsTest0002
      */
-    it('testtextMinFontSize0002', 0, async function (done) {
+    it('testtextMinFontSize0002', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testtextMinFontSize0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("70.00vp");
+      console.info("[testtextMinFontSize0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0003
      * @tc.desic         acetextMinFontSizeEtsTest0003
      */
-    it('testtextMinFontSize0003', 0, async function (done) {
+    it('testtextMinFontSize0003', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("30.00px");
-      console.info("[testtextMinFontSize0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("30.00px");
+      console.info("[testtextMinFontSize0003] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
+
     });
 
 
@@ -102,16 +101,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0004
      * @tc.desic         acetextMinFontSizeEtsTest0004
      */
-    it('testtextMinFontSize0004', 0, async function (done) {
+    it('testtextMinFontSize0004', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testtextMinFontSize0004] opacity value :" + obj.$attrs.opacity);
-      done();
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
+      console.info("[testtextMinFontSize0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
+
     });
 
     /*
@@ -119,16 +118,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0005
      * @tc.desic         acetextMinFontSizeEtsTest0005
      */
-    it('testtextMinFontSize0005', 0, async function (done) {
+    it('testtextMinFontSize0005', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testtextMinFontSize0005] align value :" + obj.$attrs.align);
-      done();
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopStart");
+      console.info("[testtextMinFontSize0005] align value :" + JSON.parse(strJson).$attrs.align);
+
     });
 
     /*
@@ -136,16 +135,15 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0006
      * @tc.desic         acetextMinFontSizeEtsTest0006
      */
-    it('testtextMinFontSize0006', 0, async function (done) {
+    it('testtextMinFontSize0006', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testtextMinFontSize0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFCCCCCC");
+      console.info("[testtextMinFontSize0006] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
     });
 
     /*
@@ -153,16 +151,15 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0007
      * @tc.desic         acetextMinFontSizeEtsTest0007
      */
-    it('testtextMinFontSize0007', 0, async function (done) {
+    it('testtextMinFontSize0007', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.lineHeight).assertEqual("25.00fp");
-      console.info("[testtextMinFontSize0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual("25.00fp");
+      console.info("[testtextMinFontSize0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
     });
 
     /*
@@ -170,16 +167,16 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0009
      * @tc.desic         acetextMinFontSizeEtsTest0009
      */
-    it('testtextMinFontSize0009', 0, async function (done) {
+    it('testtextMinFontSize0009', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testtextMinFontSize0009] padding value :" + obj.$attrs.padding);
-      done();
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual("10.00vp");
+      console.info("[testtextMinFontSize0009] padding value :" + JSON.parse(strJson).$attrs.padding);
+
     });
 
     /*
@@ -187,40 +184,40 @@ export default function textMinFontSizeJsunit() {
      * @tc.name         testtextMinFontSize0010
      * @tc.desic         acetextMinFontSizeEtsTest0010
      */
-    it('testtextMinFontSize0010', 0, async function (done) {
+    it('testtextMinFontSize0010', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
-      console.info("[testtextMinFontSize0010] textAlign value :" + obj.$attrs.textAlign);
-      done();
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center");
+      console.info("[testtextMinFontSize0010] textAlign value :" + JSON.parse(strJson).$attrs.textAlign);
+
     });
 
-    it('testtextMinFontSize0011', 0, async function (done) {
+    it('testtextMinFontSize0011', 0, async () => {
       console.info('textMinFontSize testtextMinFontSize0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('minFontSizeText');
       console.info("[testtextMinFontSize0011] component minFontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.minFontSize).assertEqual("50.00px");
-      console.info("[testtextMinFontSize0011] minFontSize value :" + obj.$attrs.minFontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.minFontSize).assertEqual("50.00px");
+      console.info("[testtextMinFontSize0011] minFontSize value :" + JSON.parse(strJson).$attrs.minFontSize);
+
     });
 
-    it('testtextCopyOptionText0001', 0, async function (done) {
+    it('testtextCopyOptionText0001', 0, async () => {
       console.info('textMinFontSize testtextCopyOptionText0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('copyOptionText');
       console.info("[testtextCopyOptionText0001] component copyOption strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
-      console.info("[testtextCopyOptionText0001] copyOption value :" + obj.$attrs.copyOption);
-      done();
+      expect(JSON.parse(strJson).$attrs.copyOption).assertEqual("CopyOptions.None");
+      console.info("[testtextCopyOptionText0001] copyOption value :" + JSON.parse(strJson).$attrs.copyOption);
+
     });
   })
 }

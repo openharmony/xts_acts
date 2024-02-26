@@ -12,51 +12,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function focusControlJsunit() {
-  describe('focusControlTest', function () {
-    beforeEach(async function (done) {
+  describe('focusControlTest', () => {
+    beforeEach(async () => {
       console.info("focusControlTest beforeEach start");
       let options = {
         uri: 'MainAbility/pages/focusControl',
       }
-      let result;
+      // let result = '';
       try {
         router.clear();
         let pages = router.getState();
         console.info("get focus state pages: " + JSON.stringify(pages));
         if (!("focusControl" == pages.name)) {
           console.info("get focus state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          let result = await router.push(options);
           await Utils.sleep(2000);
           console.info("push focus page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push focus page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("focus after each called");
     })
 
-    it('testFocusOnTouch01', 0, async function (done) {
+    it('testFocusOnTouch01', 0, async () => {
       console.info('[testFocusOnTouch01] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch01] get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.value).assertEqual('FocusOnTouchGrpBtn')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60232,
         priority: events_emitter.EventPriority.LOW
       }
@@ -69,17 +67,16 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch01] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch02', 0, async function (done) {
+    it('testFocusOnTouch02', 0, async () => {
       console.info('[testFocusOnTouch02] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch02] get event state result is: " + JSON.stringify(eventData))
           expect(eventData.data.value).assertEqual('FocusOnTouchBtn1')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60233,
         priority: events_emitter.EventPriority.LOW
       }
@@ -92,17 +89,16 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch02] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch03', 0, async function (done) {
+    it('testFocusOnTouch03', 0, async () => {
       console.info('[testFocusOnTouch03] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch03] get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.value).assertEqual('FocusOnTouchBtn2')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60234,
         priority: events_emitter.EventPriority.LOW
       }
@@ -115,17 +111,16 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch03] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch04', 0, async function (done) {
+    it('testFocusOnTouch04', 0, async () => {
       console.info('[testFocusOnTouch04] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch04] get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.value).assertEqual('OnTouchBtn3')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60235,
         priority: events_emitter.EventPriority.LOW
       }
@@ -138,17 +133,16 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch04] testSendTouchEvent END');
     });
 
-    it('testFocusOnTouch05', 0, async function (done) {
+    it('testFocusOnTouch05', 0, async () => {
       console.info('[testFocusOnTouch05] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testFocusOnTouch05] get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.value).assertEqual('OnTouchBtn4')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60236,
         priority: events_emitter.EventPriority.LOW
       }
@@ -161,17 +155,16 @@ export default function focusControlJsunit() {
       console.info('[testFocusOnTouch05] testSendTouchEvent END');
     });
 
-    it('testDefaultFocus06', 0, async function (done) {
+    it('testDefaultFocus06', 0, async () => {
       console.info('[testDefaultFocus06] START');
       await Utils.sleep(1000);
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         if (eventData != null) {
           console.info("[testDefaultFocus06] get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.value).assertEqual('defaultFocus')
-          done()
         }
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60237,
         priority: events_emitter.EventPriority.LOW
       }
