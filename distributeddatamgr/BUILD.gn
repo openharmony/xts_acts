@@ -19,6 +19,7 @@ group("distributeddatamgr") {
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
+      "dataAbilityEtsTest:ActsDataAbilityTest",
       "dataObjecttest:dataObjecttest",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
@@ -27,7 +28,6 @@ group("distributeddatamgr") {
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
       "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
-      "dataAbilityEtsTest:ActsDataAbilityTest",
     ]
   } else {
     deps = [
