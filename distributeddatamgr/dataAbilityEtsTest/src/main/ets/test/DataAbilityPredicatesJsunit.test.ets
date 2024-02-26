@@ -136,7 +136,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3100
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0001', 0, async function (done) {
@@ -156,7 +156,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3000
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0002', 0, async function (done) {
@@ -176,7 +176,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3700
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0003', 0, async function (done) {
@@ -196,7 +196,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3200
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0004', 0, async function (done) {
@@ -216,7 +216,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3600
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0005', 0, async function (done) {
@@ -236,7 +236,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3400
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0006', 0, async function (done) {
@@ -256,7 +256,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3500
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0007', 0, async function (done) {
@@ -276,7 +276,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates equalTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3300
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0008', 0, async function (done) {
@@ -297,7 +297,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9900
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0001', 0, async function (done) {
@@ -317,7 +317,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9800
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0002', 0, async function (done) {
@@ -338,7 +338,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0160
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0160
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0003', 0, async function (done) {
@@ -358,7 +358,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0110
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0110
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0004', 0, async function (done) {
@@ -378,7 +378,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0150
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0150
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0005', 0, async function (done) {
@@ -398,7 +398,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0130
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0130
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0006', 0, async function (done) {
@@ -418,7 +418,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0140
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0140
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0007', 0, async function (done) {
@@ -438,7 +438,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates notEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0120
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0120
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0008', 0, async function (done) {
@@ -458,7 +458,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name resultSet isNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6900
      * @tc.desc resultSet isNull normal test
      */
     it('testIsNull0001', 0, async function (done) {
@@ -476,7 +476,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6800
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0002', 0, async function (done) {
@@ -494,7 +494,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7100
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0003', 0, async function (done) {
@@ -512,7 +512,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7000
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0004', 0, async function (done) {
@@ -530,7 +530,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6500
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0001', 0, async function (done) {
@@ -548,7 +548,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6400
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0002', 0, async function (done) {
@@ -566,7 +566,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6700
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0003', 0, async function (done) {
@@ -584,7 +584,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates isNotNull normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6600
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0004', 0, async function (done) {
@@ -602,7 +602,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5400
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0001', 0, async function (done) {
@@ -622,7 +622,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4800
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0002', 0, async function (done) {
@@ -642,7 +642,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5000
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0003', 0, async function (done) {
@@ -662,7 +662,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5200
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0004', 0, async function (done) {
@@ -683,7 +683,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5500
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0005', 0, async function (done) {
@@ -703,7 +703,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4900
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0006', 0, async function (done) {
@@ -723,7 +723,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5100
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0007', 0, async function (done) {
@@ -743,7 +743,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5300
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0008', 0, async function (done) {
@@ -763,7 +763,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4700
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0001', 0, async function (done) {
@@ -783,7 +783,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4400
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0002', 0, async function (done) {
@@ -803,7 +803,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4500
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0003', 0, async function (done) {
@@ -823,7 +823,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates greaterThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4600
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0004', 0, async function (done) {
@@ -843,7 +843,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8200
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0001', 0, async function (done) {
@@ -863,7 +863,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7600
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0002', 0, async function (done) {
@@ -883,7 +883,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7800
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0003', 0, async function (done) {
@@ -903,7 +903,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8000
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0004', 0, async function (done) {
@@ -924,7 +924,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8300
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0005', 0, async function (done) {
@@ -944,7 +944,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7700
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0006', 0, async function (done) {
@@ -964,7 +964,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7900
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0007', 0, async function (done) {
@@ -984,7 +984,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThan normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8100
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0008', 0, async function (done) {
@@ -1005,7 +1005,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7500
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0001', 0, async function (done) {
@@ -1025,7 +1025,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7200
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0002', 0, async function (done) {
@@ -1045,7 +1045,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7300
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0003', 0, async function (done) {
@@ -1065,7 +1065,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates lessThanOrEqualTo normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_7400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_7400
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0004', 0, async function (done) {
@@ -1085,7 +1085,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1800
      * @tc.desc predicates between normal test
      */
     it('testBetween0001', 0, async function (done) {
@@ -1105,7 +1105,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1200
      * @tc.desc predicates between normal test
      */
     it('testBetween0002', 0, async function (done) {
@@ -1125,7 +1125,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1400
      * @tc.desc predicates between normal test
      */
     it('testBetween0003', 0, async function (done) {
@@ -1145,7 +1145,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1600
      * @tc.desc predicates between normal test
      */
     it('testBetween0004', 0, async function (done) {
@@ -1165,7 +1165,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1900
      * @tc.desc predicates between normal test
      */
     it('testBetween0005', 0, async function (done) {
@@ -1185,7 +1185,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1300
      * @tc.desc predicates between normal test
      */
     it('testBetween0006', 0, async function (done) {
@@ -1205,7 +1205,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1500
      * @tc.desc predicates between normal test
      */
     it('testBetween0007', 0, async function (done) {
@@ -1225,7 +1225,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates between normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1700
      * @tc.desc predicates between normal test
      */
     it('testBetween0008', 0, async function (done) {
@@ -1245,7 +1245,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0001
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9700
      * @tc.desc test string value with notBetween.
      */
     it('testNotBetween0001', 0, async function (done) {
@@ -1266,7 +1266,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0002
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9400
      * @tc.desc test double value with notBetween.
      */
     it('testNotBetween0002', 0, async function (done) {
@@ -1287,7 +1287,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0003
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9500
      * @tc.desc test integer value with notBetween.
      */
     it('testNotBetween0003', 0, async function (done) {
@@ -1308,7 +1308,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0004
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9600
      * @tc.desc test long value with notBetween.
      */
     it('testNotBetween0004', 0, async function (done) {
@@ -1329,7 +1329,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0001
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4000
      * @tc.desc end with ? by glob.
      */
     it('testGlob0001', 0, async function (done) {
@@ -1350,7 +1350,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0002
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3900
      * @tc.desc begin with * by glob.
      */
     it('testGlob0002', 0, async function (done) {
@@ -1371,7 +1371,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0003
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4200
      * @tc.desc end with ? by glob.
      */
     it('testGlob0003', 0, async function (done) {
@@ -1392,7 +1392,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0004
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4300
      * @tc.desc begin with ? by glob.
      */
     it('testGlob0004', 0, async function (done) {
@@ -1413,7 +1413,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0005
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_3800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_3800
      * @tc.desc begin and end with * by glob.
      */
     it('testGlob0005', 0, async function (done) {
@@ -1434,7 +1434,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0006
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_4100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_4100
      * @tc.desc begin and end with ? by glob.
      */
     it('testGlob0006', 0, async function (done) {
@@ -1455,7 +1455,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2300
      * @tc.desc predicates contains normal test
      */
     it('testContains0001', 0, async function (done) {
@@ -1473,7 +1473,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2400
      * @tc.desc predicates contains normal test
      */
     it('testContains0002', 0, async function (done) {
@@ -1491,7 +1491,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2500
      * @tc.desc predicates contains normal test
      */
     it('testContains0003', 0, async function (done) {
@@ -1509,7 +1509,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates contains normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2200
      * @tc.desc predicates contains normal test
      */
     it('testContains0004', 0, async function (done) {
@@ -1527,7 +1527,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0400
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0001', 0, async function (done) {
@@ -1545,7 +1545,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0500
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0002', 0, async function (done) {
@@ -1563,7 +1563,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0600
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0003', 0, async function (done) {
@@ -1581,7 +1581,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0300
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0004', 0, async function (done) {
@@ -1599,7 +1599,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2700
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0001', 0, async function (done) {
@@ -1617,7 +1617,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2800
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0002', 0, async function (done) {
@@ -1635,7 +1635,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2900
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0003', 0, async function (done) {
@@ -1653,7 +1653,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates endsWith normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2600
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0004', 0, async function (done) {
@@ -1671,7 +1671,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8500
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8500
      * @tc.desc predicates like normal test
      */
     it('testLike0001', 0, async function (done) {
@@ -1689,7 +1689,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8600
      * @tc.desc predicates like normal test
      */
     it('testLike0002', 0, async function (done) {
@@ -1707,7 +1707,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8700
      * @tc.desc predicates like normal test
      */
     it('testLike0003', 0, async function (done) {
@@ -1725,7 +1725,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8400
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8400
      * @tc.desc predicates like normal test
      */
     it('testLike0004', 0, async function (done) {
@@ -1743,7 +1743,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1000
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0001', 0, async function (done) {
@@ -1768,7 +1768,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0900
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0002', 0, async function (done) {
@@ -1791,7 +1791,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0700
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0003', 0, async function (done) {
@@ -1814,7 +1814,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_1100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_1100
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0004', 0, async function (done) {
@@ -1836,7 +1836,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates beginWrap normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0800
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0005', 0, async function (done) {
@@ -1858,7 +1858,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0100
      * @tc.desc predicates and normal test
      */
     it('testAnd0001', 0, async function (done) {
@@ -1880,7 +1880,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates or normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0290
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0290
      * @tc.desc predicates or normal test
      */
     it('testAnd0002', 0, async function (done) {
@@ -1905,7 +1905,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0200
      * @tc.desc predicates and normal test
      */
     it('testAnd0003', 0, async function (done) {
@@ -1925,7 +1925,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates and normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0310
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0310
      * @tc.desc predicates and normal test
      */
     it('testAnd0004', 0, async function (done) {
@@ -1945,7 +1945,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0250
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0250
      * @tc.desc predicates order normal test
      */
     it('testOrder0001', 0, async function (done) {
@@ -1971,7 +1971,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0270
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0270
      * @tc.desc predicates order normal test
      */
     it('testOrder0002', 0, async function (done) {
@@ -1997,7 +1997,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0280
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0280
      * @tc.desc predicates order normal test
      */
     it('testOrder0003', 0, async function (done) {
@@ -2017,7 +2017,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates order normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0260
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0260
      * @tc.desc predicates order normal test
      */
     it('testOrder0004', 0, async function (done) {
@@ -2037,7 +2037,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9200
      * @tc.desc predicates limit normal test
      */
     it('testLimit0001', 0, async function (done) {
@@ -2055,7 +2055,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9300
      * @tc.desc predicates limit normal test
      */
     it('testLimit0002', 0, async function (done) {
@@ -2073,7 +2073,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9100
      * @tc.desc predicates limit normal test
      */
     it('testLimit0003', 0, async function (done) {
@@ -2091,7 +2091,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8800
      * @tc.desc predicates limit normal test
      */
     it('testLimit0004', 0, async function (done) {
@@ -2109,7 +2109,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_9000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_9000
      * @tc.desc predicates limit normal test
      */
     it('testLimit0005', 0, async function (done) {
@@ -2127,7 +2127,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates limit normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_8900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_8900
      * @tc.desc predicates limit normal test
      */
     it('testLimit0006', 0, async function (done) {
@@ -2145,7 +2145,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0230
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0230
      * @tc.desc predicates offset normal test
      */
     it('testOffset0001', 0, async function (done) {
@@ -2163,7 +2163,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0220
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0220
      * @tc.desc predicates offset normal test
      */
     it('testOffset0002', 0, async function (done) {
@@ -2181,7 +2181,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0240
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0240
      * @tc.desc predicates offset normal test
      */
     it('testOffset0003', 0, async function (done) {
@@ -2199,7 +2199,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates offset normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0210
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0210
      * @tc.desc predicates offset normal test
      */
     it('testOffset0004', 0, async function (done) {
@@ -2217,7 +2217,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates constructor test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2000
      * @tc.desc predicates constructor test
      */
     it('testCreate0001', 0, async function (done) {
@@ -2232,7 +2232,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates constructor test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_2100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_2100
      * @tc.desc predicates constructor test
      */
     it('testCreate0002', 0, async function (done) {
@@ -2248,7 +2248,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates groupBy test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5600
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5600
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0001', 0, async function (done) {
@@ -2266,7 +2266,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates groupBy test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5700
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5700
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0002', 0, async function (done) {
@@ -2284,7 +2284,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates indexedBy test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5800
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5800
      * @tc.desc predicates indexedBy test
      */
     it('testIndexedBy0001', 0, async function () {
@@ -2303,7 +2303,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates indexedBy test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_5900
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_5900
      * @tc.desc predicates indexedBy test
      */
     it('testIndexedBy0002', 0, async function () {
@@ -2319,7 +2319,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0001
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0180
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0180
      * @tc.desc the common and min value test with notin.
      */
     it('testNotIn0001', 0, async function (done) {
@@ -2338,7 +2338,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0002
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0190
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0190
      * @tc.desc the common and max value test with notin.
      */
     it('testNotIn0002', 0, async function (done) {
@@ -2357,7 +2357,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0003
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_0170
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_0170
      * @tc.desc the min and max value test with notin.
      */
     it('testNotIn0003', 0, async function (done) {
@@ -2376,7 +2376,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6300
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6300
      * @tc.desc predicates in normal test
      */
     it('testIn0001', 0, async function (done) {
@@ -2393,7 +2393,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6000
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6000
      * @tc.desc predicates in normal test
      */
     it('testIn0002', 0, async function (done) {
@@ -2410,7 +2410,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6100
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6100
      * @tc.desc predicates in normal test
      */
     it('testIn0003', 0, async function (done) {
@@ -2427,7 +2427,7 @@ describe('dataAbilityPredicatesTest', function () {
 
     /**
      * @tc.name predicates in normal test
-     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesJsAPITest_6200
+     * @tc.number SUB_DistributedData_DataAbility_SDK_PredicatesEtsAPITest_6200
      * @tc.desc predicates in normal test
      */
     it('testIn0004', 0, async function (done) {
