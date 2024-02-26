@@ -18,57 +18,65 @@ import Utils from '../../test/Utils';
 @Entry
 @Component
 struct Second {
-    controller:WebController = new WebController()
-    @State str:string="emitOverviewModeAccessTrue"
-    @State overviewModeAccess:boolean=true
-    @State overviewScale:string=""
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        };
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack);
+  controller: WebController = new WebController();
+  @State str: string = "emitOverviewModeAccessTrue";
+  @State overviewModeAccess: boolean = true;
+  @State overviewScale: string = "";
+
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
+    };
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack);
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info("web page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("web page valueChangeCallBack");
-        if(eventData != null){
-             console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-             if(eventData.data.ACTION != null){
-                 this.str = eventData.data.ACTION;
-             }
-        }
-    }
-    build(){
-        Column(){
-            Row(){
-                Button("web click").key('webcomponenttwo').onClick(async ()=>{
-                    console.info("key==>"+this.str);
-                    switch(this.str){
-                        case "emitOverviewModeAccessTrue":{
-                            this.controller.loadUrl({url:"resource://rawfile/overview.html"})
-                            this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
-                                console.info("getViewResult==>"+res);
-                                this.overviewScale=res;
-                                Utils.emitEventTwo(res,"1",168);
-                            }});
-                        break;
-                        }
-                        case "emitOverviewModeAccessFalse":{
-                            this.overviewModeAccess=false;
-                            await Utils.sleep(2000);
-                            this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
-                                console.info("getViewResult==>"+res);
-                                Utils.emitEventTwo(this.overviewScale,res,170);
-                            }});
-                            break;
-                        }    
-                        default:
-                            console.info("can not match case");
-                    }
-                })
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webcomponenttwo').onClick(async () => {
+          console.info("key==>" + this.str);
+          switch (this.str) {
+            case "emitOverviewModeAccessTrue": {
+              this.controller.loadUrl({ url: "resource://rawfile/overview.html" });
+              this.controller.runJavaScript({
+                script: "getViewResult()", callback: (res) => {
+                  console.info("getViewResult==>" + res);
+                  this.overviewScale = res;
+                  Utils.emitEventTwo(res, "1", 168);
+                }
+              });
+              break;
             }
-            Web({src:$rawfile('overview.html'),controller:this.controller})
-            .overviewModeAccess(this.overviewModeAccess)
-        }
+            case "emitOverviewModeAccessFalse": {
+              this.overviewModeAccess = false;
+              await Utils.sleep(2000);
+              this.controller.runJavaScript({
+                script: "getViewResult()", callback: (res) => {
+                  console.info("getViewResult==>" + res);
+                  Utils.emitEventTwo(this.overviewScale, res, 170);
+                }
+              });
+              break;
+            }
+            default:
+              console.info("can not match case");
+          }
+        })
+      }
+
+      Web({ src: $rawfile('overview.html'), controller: this.controller })
+        .overviewModeAccess(this.overviewModeAccess)
     }
+  }
 }
