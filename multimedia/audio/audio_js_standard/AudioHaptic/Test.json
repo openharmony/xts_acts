@@ -21,10 +21,23 @@
             "run-command": [
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "mkdir -p /data/storage/el2/base/haps/entry_test/files/",
+                "chmod 777 -R /data/storage/el2/base/haps/entry_test/files/"
             ],
             "teardown-command":[
                 "power-shell setmode 600"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                
+                "./resource/audio/audioManager/ringtone.ogg ->/data/storage/el2/base/haps/entry_test/files/",
+                "./resource/audio/audioManager/ringtone.json ->/data/storage/el2/base/haps/entry_test/files/",
+                "./resource/audio/audioManager/notification.ogg ->/data/storage/el2/base/haps/entry_test/files/",
+                "./resource/audio/audioManager/notification.json ->/data/storage/el2/base/haps/entry_test/files/"
             ]
         }
     ]
