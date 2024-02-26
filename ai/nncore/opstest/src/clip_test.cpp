@@ -434,6 +434,7 @@ HWTEST_F(ClipTest, SUB_AI_NNRt_Func_North_Clip_Model_SetOperandValue_01, Functio
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
@@ -465,6 +466,7 @@ HWTEST_F(ClipTest, SUB_AI_NNRt_Func_North_Clip_Model_SetOperandValue_02, Functio
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
@@ -495,6 +497,7 @@ HWTEST_F(ClipTest, SUB_AI_NNRt_Func_North_Clip_Model_SetOperandValue_03, Functio
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
                       graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
