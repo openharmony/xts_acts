@@ -43,7 +43,6 @@ export default class Utils {
 
     return Utils.rect_value = {
       width: Utils.rect_width,
-      height: Utils.rect_localOffsetX,
       height: Utils.rect_height,
       localOffsetX: Utils.rect_localOffsetX,
       localOffsetY: Utils.rect_localOffsetY,

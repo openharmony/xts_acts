@@ -271,7 +271,7 @@ struct noBarrierComponents {
             console.log(`form info : ${JSON.stringify(form)}`);
             this.formId = form.id;
           })
-          .onError((err: BusinessError) => {
+          .onError((err: ESObject) => {
             console.log(`fail to add form, err: ${JSON.stringify(err)}`);
           })
           .key("FormComponent")
