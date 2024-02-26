@@ -227,7 +227,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_04, Functio
  * @tc.desc: GreaterEqualModel1模型输入Tensor+1进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_05, Function | MediumTest | Level1)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_05, Function | MediumTest | Level2)
 {
     std::vector<NN_Tensor*> inputTensors;
     std::vector<NN_Tensor*> outputTensors;
@@ -252,7 +252,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_05, Functio
  * @tc.desc: GreaterEqualModel1模型输出Tensor+1进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_06, Function | MediumTest | Level1)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_06, Function | MediumTest | Level2)
 {
     std::vector<NN_Tensor*> inputTensors;
     std::vector<NN_Tensor*> outputTensors;
@@ -277,7 +277,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_06, Functio
  * @tc.desc: GreaterEqualModel1模型传入非法参数进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_07, Function | MediumTest | Level1)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_07, Function | MediumTest | Level2)
 {
     std::vector<NN_Tensor*> inputTensors;
     std::vector<NN_Tensor*> outputTensors;
@@ -303,7 +303,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Build_07, Functio
  * @tc.desc: 模型构图，未添加操作数
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_01, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -319,7 +319,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_01, 
  * @tc.desc: 模型构图，未设置输入输出
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_02, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -337,7 +337,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_02, 
  * @tc.desc: 模型构图，设置输入输出，构图成功
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_03, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_03, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -355,7 +355,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_Finish_03, 
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandValue_01,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -388,7 +388,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandValue_02,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -420,7 +420,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandValue_03,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -452,7 +452,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SetOperandV
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_01,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -479,7 +479,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_02,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -507,7 +507,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_03,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -535,7 +535,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_04,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -563,7 +563,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_05,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -590,7 +590,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_06,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -618,7 +618,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_07,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -646,7 +646,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.type: FUNC
  */
 HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInputsAndOutputs_08,
-         Function | MediumTest | Level3)
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -673,7 +673,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_SpecifyInpu
  * @tc.desc: 添加算子，paramindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_01, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -698,7 +698,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，paramindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_02, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -725,7 +725,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，paramindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_03, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -752,7 +752,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，paramindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_04, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_04, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -779,7 +779,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，inputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_05, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_05, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -804,7 +804,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_06, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -831,7 +831,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_07, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -858,7 +858,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_08, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
@@ -885,7 +885,7 @@ HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperatio
  * @tc.desc: 添加算子，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_09, Function | MediumTest | Level3)
+HWTEST_F(GreaterEqualTest, SUB_AI_NNRt_Func_North_GreaterEqual_Model_AddOperation_09, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
