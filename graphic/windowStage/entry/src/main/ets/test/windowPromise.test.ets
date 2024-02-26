@@ -17,6 +17,7 @@ import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
 
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
