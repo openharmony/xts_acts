@@ -19,20 +19,20 @@ import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
 import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
 
 async function imageComparisonAssert(left: number, top: number) {
-  let windowClass: window.Window = null;
   let theWinTop = 0;
   let isTrue = true
   try {
     let winTop = window.getLastWindow(globalThis.abilityContext);
     winTop.then((data) => {
-      windowClass = data;
+      let windowClass: window.Window = data;
       console.info('Succeeded in obtaining the top window. Data: ' + JSON.stringify(data));
       let properties = windowClass.getWindowProperties();
       console.info('Succeeded in obtaining the window properties. Data: ' + properties.windowRect.top);
       theWinTop = properties.windowRect.top + top
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
       console.error('Failed to obtain the top window. Cause: ' + err);
     });
   } catch (exception) {
