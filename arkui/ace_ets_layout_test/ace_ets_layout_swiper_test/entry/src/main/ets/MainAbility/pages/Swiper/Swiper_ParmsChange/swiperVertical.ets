@@ -19,14 +19,14 @@ import { MessageManager, Callback, Message } from '../../../common/MessageManage
 @Component
 struct SwiperVerticalTest {
   @State testVertical: boolean = false;
-  messageManager: MessageManager<number> = new MessageManager();
+  messageManager: MessageManager<boolean> = new MessageManager();
 
   onPageShow() {
     console.info('swiperVertical onPageShow');
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     };
-    let callback: Callback<number> = (message: Message<number>) => {
+    let callback: Callback<boolean> = (message: Message<boolean>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'swiperVertical') {
         this.testVertical = message.value;
