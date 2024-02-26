@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ModelSheetTest from './ModelSheet.test'
+import ModelSheetTest from './ModelSheet.test';
 
 export default function testsuite() {
-  ModelSheetTest()
+  ModelSheetTest();
 }
