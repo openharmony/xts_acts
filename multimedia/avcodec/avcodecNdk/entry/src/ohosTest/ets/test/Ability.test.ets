@@ -35,7 +35,7 @@ export default function abilityTest() {
       DRM_ERR_MAX_SYSTEM_NUM_REACHED = 24700510,
       DRM_ERR_MAX_SESSION_NUM_REACHED = 24700511,
       DRM_ERR_EXTEND_START = 24700600
-      }
+    }
 
     /* *
     * @tc.number    : SUB_MULTIMEDIA_AVCODEC_C_API_001
