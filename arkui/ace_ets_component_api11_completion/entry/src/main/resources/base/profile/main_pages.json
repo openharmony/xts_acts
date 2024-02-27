@@ -138,6 +138,14 @@
         "MainAbility/pages/relativeApi11/Navigation3",
         "MainAbility/pages/relativeApi11/Navigation4",
         "MainAbility/pages/relativeApi11/RelativeContainer",
-        "MainAbility/pages/AttrApi/ObserverApi2"
+        "MainAbility/pages/AttrApi/ObserverApi2",
+	"MainAbility/pages/swiper2/swiper_stretch_test_width",
+        "MainAbility/pages/swiper2/siwper_page_test",
+        "MainAbility/pages/swiper2/siwper_group_test",
+        "MainAbility/pages/swiper2/swiper_next_previous",
+        "MainAbility/pages/swiper2/siwper_adddelete_test",
+        "MainAbility/pages/swiper2/siwpe_leftEdge",
+        "MainAbility/pages/swiper2/siwpe_leftscroll",
+        "MainAbility/pages/swiper2/siwpe_rightscroll"
     ]
 }

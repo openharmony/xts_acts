@@ -151,6 +151,17 @@ import SwiperVisibility from './Swiper/SwiperVisibility.test'
 import swiper1 from './Swiper/swiper1.test.ets'
 import swiper2 from './Swiper/swiper2.test.ets'
 
+import swiperWidthTest from './swiper2/swiperTwidth.test.ets'
+import swiperGroupTest from './swiper2/swiperGroup.test.ets'
+
+import swiperPageTest from './swiper2/swiperPage.test.ets'
+import swiperNextPreTest from './swiper2/swiperNextPrevious.test.ets'
+import swiperDelAddTest from './swiper2/swiperDeleteAdd.test.ets'
+
+import swiperEdgeTest from './swiper2/swiperEdge.test.ets'
+import swipeleftScrollTest from './swiper2/swiperleftScroll.test.ets'
+import swiperRightScrollTest from './swiper2/swiperightscroll.test.ets'
+
 export default function testsuite() {
 
   SwiperLoop()
@@ -288,4 +299,14 @@ export default function testsuite() {
   NavPathStackApi2()
   NavPathStackApi3()
   ObserverApi()
+  swiperWidthTest()
+  swiperPageTest()
+  swiperGroupTest()
+  swiperNextPreTest()
+  swiperDelAddTest()
+  swiperEdgeTest()
+  swipeleftScrollTest()
+  swiperRightScrollTest()
+
+  
 }
