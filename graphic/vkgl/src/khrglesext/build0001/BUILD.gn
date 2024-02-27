@@ -26,8 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libkhrglesextfunc0001") {
-  subsystem_name = "graphic"
-  part_name = "graphic_2d"
+  subsystem_name = "xts"
+  part_name = "acts"
   sources = common_src
   sources += [ "../KhrglesextBaseFunc.cpp" ]
 
@@ -41,8 +41,8 @@ ohos_static_library("libkhrglesextfunc0001") {
 }
 
 ohos_moduletest_suite("ActsKhrglesextTestSuite0001") {
-  subsystem_name = "graphic"
-  part_name = "graphic_2d"
+  subsystem_name = "xts"
+  part_name = "acts"
   sources = [
     "../ActsKhrglesext0001TestSuite.cpp",
     "../disjoint_timer_query/KhrglesextKHR-GLESEXT_disjoint_timer_queryTestCase.cpp",
