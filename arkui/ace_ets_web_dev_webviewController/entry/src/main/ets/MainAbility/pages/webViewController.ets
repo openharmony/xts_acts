@@ -95,7 +95,7 @@ struct Index {
       }
     }
   }
-  private jsObj: JsProxyObject = {
+  private jsObj = {
     test: (res: object) => {
       Utils.emitEvent(res, 102);
     },
