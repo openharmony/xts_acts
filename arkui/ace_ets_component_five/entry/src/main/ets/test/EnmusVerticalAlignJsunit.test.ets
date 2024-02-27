@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsVerticalAlignJsunit() {
-  describe('enumsVerticalAlign', function () {
-    beforeEach(async function (done) {
+  describe('enumsVerticalAlign', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================enumsFlexItem test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsVerticalAlign',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enumsVerticalAlign',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsVerticalAlignJsunit() {
         console.info('beforeEach get enumsVerticalAlign state pages:' + JSON.stringify(pages));
         if (!('enumsVerticalAlign' == pages.name)) {
           console.info('beforeEach get enumsVerticalAlign state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsVerticalAlign page result:' + JSON.stringify(result));
         }
@@ -40,19 +39,18 @@ export default function enumsVerticalAlignJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsFlexItemTest test after each called===================');
     });
 
-    it('enumsVerticalAlignTest_0100', 0, async function (done) {
+    it('enumsVerticalAlignTest_0100', 0, async (done: Function) => {
       console.info('enumsVerticalAlignTest_0100 START');
       await Utils.sleep(1500);
-      let strJson = getInspectorByKey('VerticalAlign');
+      let strJson: string = getInspectorByKey('VerticalAlign');
       console.info("enumsVerticalAlignTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsVerticalAlignTest_0100 component obj is: " + JSON.stringify(obj.$attrs.alignItems));
-      expect(obj.$attrs.alignItems).assertEqual('VerticalAlign.Center');
+      console.info("enumsVerticalAlignTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.alignItems));
+      expect(JSON.parse(strJson).$attrs.alignItems).assertEqual('VerticalAlign.Center');
       console.info('enumsVerticalAlignTest_0100 END');
       done();
     });
