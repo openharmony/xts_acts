@@ -146,8 +146,17 @@ import Navigation2 from './relativeApi11/Navigation2.test'
 import Navigation3 from './relativeApi11/Navigation3.test'
 import Navigation4 from './relativeApi11/Navigation4.test'
 import RelativeContainer from './relativeApi11/RelativeContainer.test'
+import SwiperLoop from './Swiper/SwiperLoop.test'
+import SwiperVisibility from './Swiper/SwiperVisibility.test'
+import swiper1 from './Swiper/swiper1.test.ets'
+import swiper2 from './Swiper/swiper2.test.ets'
 
 export default function testsuite() {
+
+  SwiperLoop()
+  SwiperVisibility()
+  swiper1()
+  swiper2()
   Navigation1()
   Navigation2()
   Navigation3()
