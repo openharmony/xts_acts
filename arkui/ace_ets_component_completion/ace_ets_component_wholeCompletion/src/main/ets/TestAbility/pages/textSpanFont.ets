@@ -48,7 +48,9 @@ struct textSpanFont {
 
 
         Text() {
-          Span('修改字重为0').font({ weight: 0, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0100")
+          Span('修改字重为0')
+            .font({ weight: 0, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0100")
         }
 
         Text() {
@@ -58,15 +60,21 @@ struct textSpanFont {
         }
 
         Text() {
-          Span('修改字重为100').font({ weight: 100, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0300")
+          Span('修改字重为100')
+            .font({ weight: 100, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0300")
         }
 
         Text() {
-          Span('修改字重为900').font({ weight: 900, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0400")
+          Span('修改字重为900')
+            .font({ weight: 900, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0400")
         }
 
         Text() {
-          Span('修改字重为700').font({ weight: "700", size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0500")
+          Span('修改字重为700')
+            .font({ weight: "700", size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0500")
         }
 
         Text() {
@@ -76,23 +84,33 @@ struct textSpanFont {
         }
 
         Text() {
-          Span('修改字重为1000').font({ weight: 1000, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0700")
+          Span('修改字重为1000')
+            .font({ weight: 1000, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0700")
         }
 
         Text() {
-          Span('修改字重为undefined').font({ weight: undefined, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0800")
+          Span('修改字重为undefined')
+            .font({ weight: undefined, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0800")
         }
 
         Text() {
-          Span('修改字重为-1').font({ weight: -1, size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_0900")
+          Span('修改字重为-1')
+            .font({ weight: -1, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_0900")
         }
 
         Text() {
-          Span('修改字重为""').font({ weight: "", size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_1000")
+          Span('修改字重为""')
+            .font({ weight: "", size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_1000")
         }
 
         Text() {
-          Span('修改字重为乱码').font({ weight: "  %  ", size: 16 }).key("ArkUX_Stage_Span_Font_FontWeight_1100")
+          Span('修改字重为乱码')
+            .font({ weight: "  %  ", size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontWeight_1100")
         }
 
         Text() {
@@ -113,43 +131,63 @@ struct textSpanFont {
         Text('修改字号为20').font({ size: 20, weight: undefined }).key("ArkUX_Stage_Text_Font_FontSize_1000")
 
         Text() {
-          Span('修改字号为0').font({ size: 0 }).key("ArkUX_Stage_Span_Font_FontSize_0100")
+          Span('修改字号为0')
+            .font({ size: 0 })
+            .key("ArkUX_Stage_Span_Font_FontSize_0100")
         }
 
         Text() {
-          Span('修改字号为默认值').font({ size: 16 }).key("ArkUX_Stage_Span_Font_FontSize_0200")
+          Span('修改字号为默认值')
+            .font({ size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontSize_0200")
         }
 
         Text() {
-          Span('修改字号为30px').font({ size: "30px" }).key("ArkUX_Stage_Span_Font_FontSize_0300")
+          Span('修改字号为30px')
+            .font({ size: "30px" })
+            .key("ArkUX_Stage_Span_Font_FontSize_0300")
         }
 
         Text() {
-          Span('修改字号为30fp').font({ size: "30vp" }).key("ArkUX_Stage_Span_Font_FontSize_0400")
+          Span('修改字号为30fp')
+            .font({ size: "30vp" })
+            .key("ArkUX_Stage_Span_Font_FontSize_0400")
         }
 
         Text() {
-          Span('修改字号为30lpx').font({ size: "30lpx" }).key("ArkUX_Stage_Span_Font_FontSize_0500")
+          Span('修改字号为30lpx')
+            .font({ size: "30lpx" })
+            .key("ArkUX_Stage_Span_Font_FontSize_0500")
         }
 
         Text() {
-          Span('修改字号为30%').font({ size: "30%" }).key("ArkUX_Stage_Span_Font_FontSize_0600")
+          Span('修改字号为30%')
+            .font({ size: "30%" })
+            .key("ArkUX_Stage_Span_Font_FontSize_0600")
         }
 
         Text() {
-          Span('修改字号为-1').font({ size: -1 }).key("ArkUX_Stage_Span_Font_FontSize_0700")
+          Span('修改字号为-1')
+            .font({ size: -1 })
+            .key("ArkUX_Stage_Span_Font_FontSize_0700")
         }
 
         Text() {
-          Span('修改字号为""').font({ size: "" }).key("ArkUX_Stage_Span_Font_FontSize_0800")
+          Span('修改字号为""')
+            .font({ size: "" })
+            .key("ArkUX_Stage_Span_Font_FontSize_0800")
         }
 
         Text() {
-          Span('修改字号为乱码').font({ size: "  %  " }).key("ArkUX_Stage_Span_Font_FontSize_0900")
+          Span('修改字号为乱码')
+            .font({ size: "  %  " })
+            .key("ArkUX_Stage_Span_Font_FontSize_0900")
         }
 
         Text() {
-          Span('修改字号为20').font({ size: 20, weight: undefined }).key("ArkUX_Stage_Span_Font_FontSize_1000")
+          Span('修改字号为20')
+            .font({ size: 20, weight: undefined })
+            .key("ArkUX_Stage_Span_Font_FontSize_1000")
         }
 
         Text('修改字体样式为FontStyle.Italic')
@@ -178,7 +216,9 @@ struct textSpanFont {
         }
 
         Text() {
-          Span('修改字体样式为1').font({ style: 1, size: 16 }).key("ArkUX_Stage_Span_Font_FontStyle_0300")
+          Span('修改字体样式为1')
+            .font({ style: 1, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontStyle_0300")
         }
 
         Text() {
@@ -188,7 +228,9 @@ struct textSpanFont {
         }
 
         Text() {
-          Span('修改字体样式为-1').font({ style: -1, size: 16 }).key("ArkUX_Stage_Span_Font_FontStyle_0500")
+          Span('修改字体样式为-1')
+            .font({ style: -1, size: 16 })
+            .key("ArkUX_Stage_Span_Font_FontStyle_0500")
         }
 
         Text() {
@@ -254,7 +296,8 @@ struct textSpanFont {
         }
 
       }.width("100%")
-    }.width("100%").height("80%")
-
+    }
+    .width("100%")
+    .height("80%")
   }
 }

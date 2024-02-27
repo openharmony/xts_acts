@@ -57,11 +57,9 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0100');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0100 START  :' + JSON.stringify(strJson));
-          
-          console.info("ArkUX_Stage_Text_Font_FontWeight_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
-          console.info("ArkUX_Stage_Text_Font_FontWeight_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
+          console.info("ArkUX_Stage_Text_Font_FontWeight_0100 obj.$attrs.font is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.font));
+          console.info("ArkUX_Stage_Text_Font_FontWeight_0100 font is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Text_Font_FontWeight_0100 END ');
@@ -79,10 +77,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0200');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -101,10 +99,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0300');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("100");
@@ -123,10 +121,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0400');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("900");
@@ -145,10 +143,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0500');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("700");
@@ -167,10 +165,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0600');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Bolder");
@@ -189,10 +187,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0700');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -211,10 +209,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0800');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0800 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0800 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -233,10 +231,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_0900');
           console.info('ArkUX_Stage_Text_Font_FontWeight_0900 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0900 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -255,10 +253,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_1000');
           console.info('ArkUX_Stage_Text_Font_FontWeight_1000 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1000 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1000 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -277,10 +275,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_1100');
           console.info('ArkUX_Stage_Text_Font_FontWeight_1100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -299,10 +297,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontWeight_1200');
           console.info('ArkUX_Stage_Text_Font_FontWeight_1200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontWeight_1200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -321,10 +319,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0100');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -343,10 +341,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0200');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -365,10 +363,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0300');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("100");
@@ -387,10 +385,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0400');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("900");
@@ -409,10 +407,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0500');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("700");
@@ -431,10 +429,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0600');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Bolder");
@@ -453,10 +451,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0700');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -475,10 +473,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0800');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0800 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0800 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -497,10 +495,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_0900');
           console.info('ArkUX_Stage_Span_Font_FontWeight_0900 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0900 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -519,10 +517,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_1000');
           console.info('ArkUX_Stage_Span_Font_FontWeight_1000 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1000 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1000 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -541,10 +539,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_1100');
           console.info('ArkUX_Stage_Span_Font_FontWeight_1100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -563,10 +561,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontWeight_1200');
           console.info('ArkUX_Stage_Span_Font_FontWeight_1200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontWeight_1200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).weight).assertEqual("FontWeight.Normal");
@@ -585,10 +583,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0100');
           console.info('ArkUX_Stage_Text_Font_FontSize_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("0.00px");
@@ -607,10 +605,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0200');
           console.info('ArkUX_Stage_Text_Font_FontSize_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -629,10 +627,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0300');
           console.info('ArkUX_Stage_Text_Font_FontSize_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00px");
@@ -651,10 +649,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0400');
           console.info('ArkUX_Stage_Text_Font_FontSize_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00vp");
@@ -673,10 +671,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0500');
           console.info('ArkUX_Stage_Text_Font_FontSize_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00lpx");
@@ -695,10 +693,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0600');
           console.info('ArkUX_Stage_Text_Font_FontSize_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -717,10 +715,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0700');
           console.info('ArkUX_Stage_Text_Font_FontSize_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -739,10 +737,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0800');
           console.info('ArkUX_Stage_Text_Font_FontSize_0800 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0800 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -761,10 +759,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_0900');
           console.info('ArkUX_Stage_Text_Font_FontSize_0900 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0900 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -783,10 +781,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontSize_1000');
           console.info('ArkUX_Stage_Text_Font_FontSize_1000 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontSize_1000 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontSize_1000 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("20.00fp");
@@ -805,10 +803,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0100');
           console.info('ArkUX_Stage_Span_Font_FontSize_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("0.00fp");
@@ -827,10 +825,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0200');
           console.info('ArkUX_Stage_Span_Font_FontSize_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -849,10 +847,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0300');
           console.info('ArkUX_Stage_Span_Font_FontSize_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00px");
@@ -871,10 +869,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0400');
           console.info('ArkUX_Stage_Span_Font_FontSize_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00vp");
@@ -893,10 +891,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0500');
           console.info('ArkUX_Stage_Span_Font_FontSize_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("30.00lpx");
@@ -915,10 +913,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0600');
           console.info('ArkUX_Stage_Span_Font_FontSize_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -937,10 +935,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0700');
           console.info('ArkUX_Stage_Span_Font_FontSize_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -959,10 +957,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0800');
           console.info('ArkUX_Stage_Span_Font_FontSize_0800 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0800 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0800 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -981,10 +979,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_0900');
           console.info('ArkUX_Stage_Span_Font_FontSize_0900 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0900 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_0900 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("16.00fp");
@@ -1003,10 +1001,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontSize_1000');
           console.info('ArkUX_Stage_Span_Font_FontSize_1000 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontSize_1000 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontSize_1000 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).size).assertEqual("20.00fp");
@@ -1025,10 +1023,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0100');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1047,10 +1045,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0200');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Normal");
@@ -1069,10 +1067,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0300');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1091,10 +1089,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0400');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Normal");
@@ -1113,10 +1111,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0500');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1135,10 +1133,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontStyle_0600');
           console.info('ArkUX_Stage_Text_Font_FontStyle_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontStyle_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1157,10 +1155,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0100');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1179,10 +1177,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0200');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Normal");
@@ -1201,10 +1199,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0300');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1223,10 +1221,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0400');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Normal");
@@ -1245,10 +1243,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0500');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1267,10 +1265,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontStyle_0600');
           console.info('ArkUX_Stage_Span_Font_FontStyle_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontStyle_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).style).assertEqual("FontStyle.Italic");
@@ -1289,10 +1287,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0100');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("zidingyi");
@@ -1311,10 +1309,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0200');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1333,10 +1331,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0300');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1355,10 +1353,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0400');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1377,10 +1375,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0500');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1399,10 +1397,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0600');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1422,10 +1420,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_Font_FontFamily_0700');
           console.info('ArkUX_Stage_Text_Font_FontFamily_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Text_Font_FontFamily_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("Arial, sans-serif");
@@ -1444,10 +1442,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0100');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0100 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0100 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0100 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("zidingyi");
@@ -1466,10 +1464,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0200');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0200 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0200 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0200 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1488,10 +1486,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0300');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0300 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0300 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0300 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1510,10 +1508,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0400');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0400 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0400 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0400 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1532,10 +1530,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0500');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0500 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0500 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0500 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1554,10 +1552,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0600');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0600 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0600 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0600 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("HarmonyOS Sans");
@@ -1576,10 +1574,10 @@ export default function textSpanFontTest() {
         try {
           let strJson = getInspectorByKey('ArkUX_Stage_Span_Font_FontFamily_0700');
           console.info('ArkUX_Stage_Span_Font_FontFamily_0700 START  :' + JSON.stringify(strJson));
-          
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0700 JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
-          JSON.stringify(JSON.parse(strJson).$attrs.JSON.parse(JSON.parse(strJson).$attrs.font)));
-          
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
+
           console.info("ArkUX_Stage_Span_Font_FontFamily_0700 JSON.parse(JSON.parse(strJson).$attrs.font) is: " +
           JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.font)));
           expect(JSON.parse(JSON.parse(strJson).$attrs.font).family).assertEqual("Arial, sans-serif");
