@@ -68,7 +68,7 @@ struct swiper2 {
       .cachedCount(2)
       .index(0)
       .autoPlay(false)
-      .interval(4000)
+      .interval(1000)
       .loop(false)
       .effectMode(EdgeEffect.None)
       .duration(1000)
@@ -81,7 +81,6 @@ struct swiper2 {
           .selectedItemHeight(15)
           .color(Color.Gray)
           .selectedColor(Color.Blue))
-      .height(500)
       .onChange((index: number) => {
         this.value = 'change'
       })

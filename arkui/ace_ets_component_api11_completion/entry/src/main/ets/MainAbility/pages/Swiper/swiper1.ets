@@ -53,7 +53,6 @@ struct swiper1 {
 
   build() {
     Column({ space: 5 }) {
-      Text(this.value).key('swiperText1')
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item.toString())
@@ -68,12 +67,11 @@ struct swiper1 {
       .cachedCount(2)
       .index(1)
       .autoPlay(false)
-      .interval(4000)
+      .interval(1000)
       .vertical(true)
       .loop(true)
       .duration(1000)
       .itemSpace(0)
-      .height(500)
       .indicator( // 设置圆点导航点样式
         new DotIndicator()
           .itemWidth(15)
@@ -85,6 +83,7 @@ struct swiper1 {
       .onChange((index: number) => {
         this.value = 'change'
       })
+      Text(this.value).key('swiperText1')
     }.width('100%')
     .margin({ top: 5 })
   }

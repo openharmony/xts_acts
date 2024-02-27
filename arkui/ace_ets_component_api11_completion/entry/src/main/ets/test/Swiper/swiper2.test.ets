@@ -65,29 +65,13 @@ export default function swiper2() {
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
       driver.swipe(Math.round(btLeft), Math.round(btBottom/2), Math.round(btRight)+40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3500);
+      await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('swiperText2');
       let obj = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0260] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='').assertTrue();
 
-
-
-
-
-
-
-
-      // get the component of text_3
-      // let text3:Component = await driver.findComponent(ON.text('3'));
-      // let ttContent = await text3.getText();
-      // expect(ttContent).assertEqual("3")
-      // let tt = CommonFunc.getComponentRect('itemS3');
-      // let ttWidth = Math.round(tt.right - tt.left);
-      // console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270] text_3 width " + ttWidth);
-      // judge the text component
-      // expect(ttWidth).assertEqual(btWidth)
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0130] END');
       done();
     });
