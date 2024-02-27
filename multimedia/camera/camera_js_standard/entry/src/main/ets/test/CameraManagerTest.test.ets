@@ -142,9 +142,8 @@ export default function cameraManagerTest() {
 
     async function releaseVideoReceiveSurface() {
         console.log(TAG + 'Entering releaseVideoReceiveSurface')
-        mVideoRecorder.release((err) => {
-            console.info(TAG + 'Entering release video receiver')
-        })
+        await mVideoRecorder.release()
+        mVideoRecorder = null
         await closeFd();
         console.log(TAG + 'Exit releaseVideoReceiveSurface')
     }
@@ -248,8 +247,8 @@ describe('CameraManagerTest', function () {
         console.info('afterEach case');
     })
 
-    afterAll(function () {
-        releaseVideoReceiveSurface();
+    afterAll(async function () {
+        await releaseVideoReceiveSurface();
         sleep(1000);
         console.info('afterAll case');
     })
