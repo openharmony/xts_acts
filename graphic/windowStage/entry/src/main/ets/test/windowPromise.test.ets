@@ -17,6 +17,7 @@ import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
+import deviceInfo from '@ohos.deviceInfo';
 
 export default function windowPromiseTest(context, windowStage, abilityStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
@@ -57,7 +58,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     var newWindowObj = null;
     const WINDOW_NAME = 'windowName';
 
+    let currentDeviceIsRk = false;
     beforeAll(function () {
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -1524,11 +1529,14 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
         } catch (exception) {
           console.error(msgStr + 'Failed to set the visibility of window decor. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 801) {
-            expect(true).assertTrue()
-            done()
-          } else {
+          if (!currentDeviceIsRk) {
+            console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
             expect().assertFail();
+            done();
+          } else {
+            console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+            console.log(msgStr + +JSON.stringify(exception))
+            expect(exception.code).assertEqual(801);
             done();
           }
         }
@@ -1556,11 +1564,14 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
             done()
           } catch (exception) {
             console.error(msgStr + ' Failed to set the height of window decor. Cause: ' + JSON.stringify(exception));
-            if (exception.code == 801) {
-              expect(true).assertTrue()
-              done()
-            } else {
+            if (!currentDeviceIsRk) {
+              console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(exception));
               expect().assertFail();
+              done();
+            } else {
+              console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+              console.log(msgStr + +JSON.stringify(exception))
+              expect(exception.code).assertEqual(801);
               done();
             }
           }
