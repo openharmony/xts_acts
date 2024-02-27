@@ -164,6 +164,8 @@ export default function cameraJSUnitOutput() {
 
   async function release() {
     console.log(TAG + "start release");
+    await videoRecorder.release();
+    videoRecorder = null;
     await captureSession.release();
     console.log(TAG + "release end")
   }
