@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct SliderExample {
-  @State value:string= '10'
-  @State font:object={size: 30, weight:400, family: 'serif', style: FontStyle.Normal }
-  @State fontColor: Color= 0xCCCCCC
-
-  private stateChangCallBack = (eventData) => {
+  @State value: string = '10';
+  @State font: Font = { size: 30, weight: 400, family: 'serif', style: FontStyle.Normal };
+  @State fontColor: Color = 0xCCCCCC;
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("select page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data.value != null) {
@@ -34,11 +33,11 @@ struct SliderExample {
         this.fontColor = eventData.data.fontColor;
       }
     }
-  }
+  };
 
   onPageShow() {
     console.info('select page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 191,
       priority: events_emitter.EventPriority.LOW
     }
@@ -47,19 +46,19 @@ struct SliderExample {
 
   build() {
     Column() {
-      Select([{value:'aaa',icon: "/images/img.png"},
-              {value:'bbb',icon: "/images/img.png"},
-              {value:'ccc',icon: "/images/img.png"},
-              {value:'ddd',icon: "/images/img.png"}])
+      Select([{ value: 'aaa', icon: "/images/img.png" },
+        { value: 'bbb', icon: "/images/img.png" },
+        { value: 'ccc', icon: "/images/img.png" },
+        { value: 'ddd', icon: "/images/img.png" }])
         .selected(2)
         .value('TTT')
         .value(this.value)
         .font(this.font)
         .fontColor(this.fontColor)
-        .selectedOptionFont({size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
-        .optionFont({size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
+        .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
+        .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
         .key('select')
-        .onSelect((index:number)=>{
+        .onSelect((index: number) => {
           console.info("Select:" + index)
         })
     }
