@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+
+import router, { RouterOptions } from '@system.router';
 
 async function routePage() {
-  let options = {
+  let options: RouterOptions = {
     uri: 'pages/second'
   }
   try {
-    await router.push(options)
+    router.push(options);
   } catch (err) {
-    console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
+    console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`);
   }
 }
 
@@ -37,13 +38,14 @@ struct Index {
         Text('next page')
           .fontSize(25)
           .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
+      }
+      .type(ButtonType.Capsule)
       .margin({
         top: 20
       })
       .backgroundColor('#0D9FFB')
       .onClick(() => {
-        routePage()
+        routePage();
       })
     }
     .width('100%')
