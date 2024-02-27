@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct RowExample {
+struct RowExampleV {
   build() {
     Column({ space: 5 }) {
       Text('alignItems(Bottom)')
