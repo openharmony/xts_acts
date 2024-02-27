@@ -15,6 +15,8 @@
 
 import Ability from '@ohos.app.ability.UIAbility';
 import commonEvent from '@ohos.commonEvent';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
 
 let callBackSeq = "";
 
@@ -78,7 +80,7 @@ async function startAbilityProcess(abilityContext, parameters) {
 }
 
 async function onShowProcess() {
-  let abilityWant: ESObject = AppStorage.get("abilityWant")!;
+  let abilityWant: Want = AppStorage.get<Want>("abilityWant")!;
   let callBackData = "AppA:"
   callBackSeq += AppStorage.get("onAcceptWantCalledSeq")!;
   callBackData += callBackSeq;
@@ -115,11 +117,11 @@ export default class MainAbility extends Ability {
     console.log("AbilityMultiInstanceAppA onDestroy");
   }
 
-  onWindowStageCreate(windowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
     console.log("AbilityMultiInstanceAppA onWindowStageCreate");
     AppStorage.setOrCreate("abilityContext", this.context);
-    windowStage.setUIContent(this.context, "pages/index/index", null);
+    windowStage.loadContent("pages/index/index", null);
   }
 
   onWindowStageDestroy() {
