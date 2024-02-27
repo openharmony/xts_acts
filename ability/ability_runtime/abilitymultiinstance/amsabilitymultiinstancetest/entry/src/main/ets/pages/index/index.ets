@@ -13,15 +13,14 @@
  * limitations under the License.
  */
 
-
 @Entry
 @Component
 struct Index {
-  aboutToAppear(){
+  aboutToAppear() {
   }
 
   build() {
-    Flex({ direction:FlexDirection.Column, alignItems:ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -35,7 +34,6 @@ struct Index {
       })
       .backgroundColor('#0D9FFB')
       .onClick(() => {
-
       })
     }
     .width('100%')
