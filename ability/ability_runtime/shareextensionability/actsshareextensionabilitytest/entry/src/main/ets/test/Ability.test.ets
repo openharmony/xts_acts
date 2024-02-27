@@ -81,6 +81,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsshareextensionabilitytest]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -150,6 +153,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsshareextensionabilitytest]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [feature]");
+                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -218,6 +224,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsshareextensionabilityrely]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsshareextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [feature]");
+                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               }
