@@ -12,26 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-var onAcceptWantCalledSeq;
+import AbilityStage from "@ohos.app.ability.AbilityStage";
+
+let onAcceptWantCalledSeq;
 
 export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.log("AbilityMultiInstanceAppD MyAbilityStage onCreate")
-        globalThis.stageOnCreateRun = 1;
-        globalThis.stageContext = this.context;
-    }
+  onCreate() {
+    console.log("AbilityMultiInstanceAppD MyAbilityStage onCreate");
+    // globalThis.stageOnCreateRun = 1;
+    // globalThis.stageContext = this.context;
+  }
 
-    onAcceptWant(want) {
-        console.log("AbilityMultiInstanceAppD onAcceptWant called want:" + JSON.stringify(want));
-        var abilityId = want.parameters.startId.toString();
-        onAcceptWantCalledSeq = "onAcceptWantCalled";
-        onAcceptWantCalledSeq += "Id";
-        onAcceptWantCalledSeq += abilityId;
-        globalThis.onAcceptWantCalledSeq = onAcceptWantCalledSeq;
-        globalThis.abilityWant = want;
-        console.log("AbilityMultiInstanceAppD set globalThis result :" + globalThis.onAcceptWantCalledSeq);
-        return abilityId;
-    }
+  onAcceptWant(want) {
+    console.log("AbilityMultiInstanceAppD onAcceptWant called want:" + JSON.stringify(want));
+    let abilityId = want.parameters.startId.toString();
+    onAcceptWantCalledSeq = "onAcceptWantCalled";
+    onAcceptWantCalledSeq += "Id";
+    onAcceptWantCalledSeq += abilityId;
+    AppStorage.setOrCreate("onAcceptWantCalledSeq", onAcceptWantCalledSeq);
+    AppStorage.setOrCreate("abilityWant", want);
+    console.log("AbilityMultiInstanceAppD set globalThis result :" + AppStorage.get("onAcceptWantCalledSeq")!);
+    return abilityId;
+  }
 }
