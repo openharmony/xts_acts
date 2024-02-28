@@ -1540,6 +1540,36 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
     /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
+    * @tc.name      : testSetSpecificSystemBarEnabled_2_Function_Promise
+    * @tc.desc      : Test the function of setSpecificSystemBarEnabled
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */
+    it('testSetSpecificSystemBarEnabled_2_Function_Promise', 0, async function(done){
+      let msgStr = 'testSetSpecificSystemBarEnabled_2';
+      console.log(msgStr + 'begin')
+      try {
+        let windowClass = await ohosWindow.getLastWindow(context);
+        let specificSystemBar: ohosWindow.SpecificSystemBar = 'navigationIndicator'
+        let promise = windowClass.setSpecificSystemBarEnabled(specificSystemBar, true);
+        promise.then(() => {
+          console.log(msgStr + 'Succeeded in setting the system bar to be invisible.');
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to set the system bar to be invisible. Cause:' + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1220
      * @tc.name      : testSetWindowDecorVisible
      * @tc.desc      : test the function of SetWindowDecorVisible
