@@ -72,6 +72,9 @@ static napi_value GetMnTent(napi_env env, napi_callback_info info)
     if (fp != nullptr) {
         endmntent(fp);
     }
+    if (fileDescribe != MPARAM_1) {
+        close(fileDescribe);
+    }
     remove(TEMP_FILE);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -121,6 +124,9 @@ static napi_value GetMnTentR(napi_env env, napi_callback_info info)
     } while (PARAM_0);
     if (fp != nullptr) {
         endmntent(fp);
+    }
+    if (fileDescribe != MPARAM_1) {
+        close(fileDescribe);
     }
     remove(TEMP_FILE);
     napi_value result = nullptr;

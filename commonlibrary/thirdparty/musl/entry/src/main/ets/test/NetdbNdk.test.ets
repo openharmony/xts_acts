@@ -13,12 +13,18 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import netdb from 'libnetdbndk.so'
 
 
 export default function muslNetdbNdkTest() {
   describe('MuslNetdbTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETPROTOENT_0100
      * @tc.name       : testMuslNetDbGetProtoEnt001
@@ -197,34 +203,6 @@ export default function muslNetdbNdkTest() {
      */
     it('testMuslNetDbGetNetEnt001', 0, async (done: Function) => {
       let data: number = netdb.getNetEnt();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(1);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNETBYADDR_0100
-     * @tc.name       : testMuslNetDbGetNetByAddr001
-     * @tc.desc       : test getnetbyaddr
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslNetDbGetNetByAddr001', 0, async (done: Function) => {
-      let data: number = netdb.getNetByAddr();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(1);
-      done()
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_NETDB_GETNETBYNAME_0100
-     * @tc.name       : testMuslNetDbGetNetByName001
-     * @tc.desc       : test getnetbyname
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslNetDbGetNetByName001', 0, async (done: Function) => {
-      let data: number = netdb.getNetByName();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
       done()

@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import ptrace from 'libptracendk.so'
 
 export default function muslPtraceNdkTest() {
   describe('MuslPtraceTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTRACE_PTRACE_0100
      * @tc.name       : testMuslPtracePtrace001

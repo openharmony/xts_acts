@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import linkndk from 'liblinkndk.so'
 
 export default function linkNdkTest() {
   describe('MuslLinkTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_LINK_DL_ITERATE_PHDR_0100

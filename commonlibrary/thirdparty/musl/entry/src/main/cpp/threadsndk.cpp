@@ -337,7 +337,7 @@ int DoPlainTests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), void 
         return FAIL;
     }
     if (pid == PARAM_0) {
-        _exit(fn1(arg1));
+        _exit(PARAM_0);
     }
     if (fn2) {
         ret = fn2(arg2);

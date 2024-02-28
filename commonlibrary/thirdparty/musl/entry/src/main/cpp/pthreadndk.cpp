@@ -1051,7 +1051,7 @@ void *threadFuncA(void *)
 {
     int value = PARAM_0;
     pthread_setspecific(g_testGetSpecificKey, &value);
-    keyRet = static_cast<int*>(pthread_getspecific(g_testGetSpecificKey));
+    keyRet = static_cast<int *>(pthread_getspecific(g_testGetSpecificKey));
     keyRes = *keyRet;
     pthread_exit(&keyRes);
 }
@@ -1442,7 +1442,7 @@ static int testOnce(int input)
         }
         pthread_join(pidFirst, &pThreadResult);
     }
-    return *static_cast<int*>(pThreadResult);
+    return *static_cast<int *>(pThreadResult);
 }
 static napi_value PThreadOnce(napi_env env, napi_callback_info info)
 {
@@ -1820,7 +1820,7 @@ static int testSetSpecific(int input)
         pthread_join(pidFirst, &pThreadResult);
         pthread_key_delete(testSetSpecificKey);
     }
-    return *static_cast<int*>(pThreadResult);
+    return *static_cast<int *>(pThreadResult);
 }
 static napi_value PThreadSetSpecific(napi_env env, napi_callback_info info)
 {

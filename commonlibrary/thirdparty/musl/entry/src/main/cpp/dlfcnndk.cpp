@@ -14,11 +14,11 @@
  */
 
 #include "napi/native_api.h"
+#include <cerrno>
 #include <dirent.h>
 #include <dlfcn.h>
 #include <fcntl.h>
 #include <js_native_api_types.h>
-#include <cerrno>
 
 #define INIT (-1)
 #define SUCCESS 0
