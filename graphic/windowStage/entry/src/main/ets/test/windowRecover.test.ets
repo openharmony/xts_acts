@@ -59,23 +59,26 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done()
           }).catch((err: BusinessError) => {
             console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
-            if (err.code == 1300001 || err.code == 801) {
-              expect(true).assertTrue()
-              done()
+            if (!currentDeviceIsRk) {
+              console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(err));
+              if(err.code == 1300001){
+                expect(true).assertTrue()
+                done()
+              }else{
+                expect().assertFail();
+                done()
+              }
             } else {
-              expect().assertFail()
+              console.log(msgStr + ' NOT SUPPORT SystemCapability.Window.SessionManager')
+              console.log(msgStr + JSON.stringify(err))
+              expect(err.code).assertEqual(801);
               done()
             }
           });
         } catch (exception) {
           console.error(msgStr + ' Failed to recover the window. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 1300001 || exception.code == 801) {
-            expect(true).assertTrue()
-            done()
-          } else {
-            expect().assertFail();
-            done();
-          }
+          expect().assertFail();
+          done();
         }
       })
     })
