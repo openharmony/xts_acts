@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function lineNeJsunit() {
-  describe('lineNeTest', function () {
-    beforeAll(async function (done) {
+  describe('lineNeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/line',
@@ -37,10 +37,9 @@ export default function lineNeJsunit() {
       } catch (err) {
         console.error("push line page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("lineNe after each called");
     });
@@ -50,16 +49,16 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0001
      * @tc.desic         acelineNeEtsTest0001
      */
-    it('testlineNe0001', 0, async function (done) {
+    it('testlineNe0001', 0, async () => {
       console.info('lineNe testlineNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Line');
-      expect(obj.$attrs.width).assertEqual("50.00vp");
-      console.info("[testlineNe0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("50.00vp");
+      console.info("[testlineNe0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0002
      * @tc.desic         acelineNeEtsTest0002
      */
-    it('testlineNe0002', 0, async function (done) {
+    it('testlineNe0002', 0, async () => {
       console.info('lineNe testlineNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Line');
-      expect(obj.$attrs.height).assertEqual("100.00vp");
-      console.info("[testlineNe0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00vp");
+      console.info("[testlineNe0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0005
      * @tc.desic         acelineNeEtsTest0005
      */
-    it('testlineNe0005', 0, async function (done) {
+    it('testlineNe0005', 0, async () => {
       console.info('lineNe testlineNe0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0005] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Line');
-      expect(obj.$attrs.width).assertEqual("200.00vp");
-      console.info("[testlineNe0005] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("200.00vp");
+      console.info("[testlineNe0005] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -101,16 +100,16 @@ export default function lineNeJsunit() {
      * @tc.name         testlineNe0006
      * @tc.desic         acelineNeEtsTest0006
      */
-    it('testlineNe0006', 0, async function (done) {
+    it('testlineNe0006', 0, async () => {
       console.info('lineNe testlineNe0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0006] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Line');
-      expect(obj.$attrs.height).assertEqual("200.00vp");
-      console.info("[testlineNe0006] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("200.00vp");
+      console.info("[testlineNe0006] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
   })
 }

@@ -12,19 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 
 export default function AbilityDelegatorTest() {
-  describe("AbilityDelegatorTest", function () {
+  describe("AbilityDelegatorTest", () => {
     /**
      * @tc.number GET_ABILITY_DELEGATOR_0001
      * @tc.name getAbilityDelegator0001
@@ -33,7 +25,7 @@ export default function AbilityDelegatorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("GET_ABILITY_DELEGATOR_0001", 0, async function (done) {
+    it("GET_ABILITY_DELEGATOR_0001", 0, async (done: Function) => {
       const abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       expect(abilityDelegator != null).assertTrue();
       abilityDelegator.printSync("GET_ABILITY_DELEGATOR_0001 pass");
@@ -48,12 +40,12 @@ export default function AbilityDelegatorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("GET_ARGUMENTS_0001", 0, async function (done) {
+    it("GET_ARGUMENTS_0001", 0, async (done: Function) => {
       const abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       const abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
-      var bundleName = abilityDelegatorArguments.bundleName;
-      var testRunnerClassName = abilityDelegatorArguments.testRunnerClassName;
-      var parameters = abilityDelegatorArguments.parameters;
+      let bundleName: string = abilityDelegatorArguments.bundleName;
+      let testRunnerClassName: string = abilityDelegatorArguments.testRunnerClassName;
+      let parameters: Record<string, string> = abilityDelegatorArguments.parameters;
       let moduleName = parameters["moduleName"];
       let timeout = parameters["timeout"];
       abilityDelegator.printSync(
@@ -68,7 +60,7 @@ export default function AbilityDelegatorTest() {
       abilityDelegator.printSync("GET_ARGUMENTS_0001 timeout: " + timeout);
       expect(bundleName).assertEqual("com.example.delegatortest");
       expect(testRunnerClassName).assertEqual("OpenHarmonyTestRunner");
-      expect(moduleName==null).assertFalse();
+      expect(moduleName == null).assertFalse();
       expect(timeout).assertEqual(undefined);
       abilityDelegator.printSync("GET_ARGUMENTS_0001 pass");
       done();

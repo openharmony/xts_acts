@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +26,6 @@ struct NavigationExample {
   @State onActionCalled: boolean = false
   @State hideNavBar: boolean = false
   @State titleMode: NavigationTitleMode = NavigationTitleMode.Free
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("tabs page state change called:" + JSON.stringify(eventData));
@@ -51,14 +49,15 @@ struct NavigationExample {
 
   onPageShow() {
     console.info('progress page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 135,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  @Builder NavigationTitle() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Text('title')
         .width(80)
@@ -71,7 +70,8 @@ struct NavigationExample {
     })
   }
 
-  @Builder NavigationMenus() {
+  @Builder
+  NavigationMenus() {
     Row() {
       Image('images/add.png')
         .width(25)
@@ -88,7 +88,7 @@ struct NavigationExample {
       Navigation() {
         Search({ value: '', placeholder: "" }).width('85%').margin(26)
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -98,7 +98,7 @@ struct NavigationExample {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .key('Navigation')
@@ -107,18 +107,21 @@ struct NavigationExample {
         .width('100%')
 
         Button(this.hideBar ? "tool bar" : "hide bar")
-          .backgroundColor(0x2788D9).width(200).height(100).fontSize(20)
+          .backgroundColor(0x2788D9)
+          .width(200)
+          .height(100)
+          .fontSize(20)
           .key('NavigationContent1')
           .onClick(() => {
             this.hideBar = !this.hideBar;
             console.info('navigationContent1 current action state is: ' + this.hideBar);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.hideBar,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 1366,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -134,7 +137,7 @@ struct NavigationExample {
       .subTitle('subtitle')
       .backButtonIcon()
       .navBarWidth(5)
-      .navBarPosition(NavBarPosition.end)
+      .navBarPosition(NavBarPosition.End)
       .menus(this.NavigationMenus)
       .titleMode(NavigationTitleMode.Free)
       .hideTitleBar(false)

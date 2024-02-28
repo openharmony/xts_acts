@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,10 +23,17 @@ struct PathExample {
   onBuildDone() {
     console.info('path page build done called');
   }
+
   build() {
     Column({ space: 5 }) {
       Text('Straight line').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Path().width(300).height(10).commands('M0 0 L900 0').stroke(Color.Black).strokeWidth(3).key('path')
+      Path()
+        .width(300)
+        .height(10)
+        .commands('M0 0 L900 0')
+        .stroke(Color.Black)
+        .strokeWidth(3)
+        .key('path')
 
       Text('Straight line graph').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceAround }) {

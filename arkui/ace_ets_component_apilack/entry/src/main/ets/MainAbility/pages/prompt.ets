@@ -16,6 +16,7 @@
 import prompt from '@ohos.prompt'
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -47,12 +48,12 @@ struct PromptShowDialog {
         .key("showDialogText")
         .onClick(() => {
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "STATUS": true
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60220,
               priority: events_emitter.EventPriority.LOW
             }
@@ -78,12 +79,12 @@ struct PromptShowDialog {
         .key("showActionMenuText")
         .onClick(() => {
           try {
-            var backData1 = {
+            let backData1: events_emitter.EventData = {
               data: {
                 "STATUS": true
               }
             }
-            let backEvent1 = {
+            let backEvent1: events_emitter.InnerEvent = {
               eventId: 60221,
               priority: events_emitter.EventPriority.LOW
             }
