@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,7 +99,7 @@ struct CalendarComponentExample {
   @State scheduleMarkerRadius: number = 3;
   @State boundaryRowOffset: number = 3;
   @State weekAndDayRowSpace: number = 3;
-  @State direction: Axis = Axis.Horizontal;
+  @State direction1: Axis = Axis.Horizontal;
   @State weekStyle: WeekStyle = {
     weekColor: Color.Black,
     weekendDayColor: Color.Red,
@@ -150,8 +151,8 @@ struct CalendarComponentExample {
       }
 
       if (eventData.data.direction != null) {
-        this.direction = eventData.data.direction;
-        console.log("Calendar page direction value" + this.direction);
+        this.direction1 = eventData.data.direction;
+        console.log("Calendar page direction value" + this.direction1);
       }
     }
   }
@@ -192,7 +193,7 @@ struct CalendarComponentExample {
           boundaryRowOffset: this.boundaryRowOffset
         })
         .weekStyle(this.weekStyle)
-        .direction(this.direction)
+        .direction(this.direction1)
         .backgroundColor(0x317aff)
         .width(100)
         .height(50)
