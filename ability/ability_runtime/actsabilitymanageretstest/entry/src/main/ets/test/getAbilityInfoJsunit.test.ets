@@ -260,8 +260,8 @@ export default function getHapModuleInfoJsunit() {
      * @tc.level 0
      */
     it('context_getAbilityInfo_test_0200', 0, async (done: Function) => {
-      let context = ability_featureAbility.getContext();
       try {
+        let context = ability_featureAbility.getContext();
         console.info('[context_getAbilityInfo_test_0200] START');
         await Utils.sleep(1000);
         let timeOldStamp = await Utils.getNowTime();
@@ -271,14 +271,14 @@ export default function getHapModuleInfoJsunit() {
           console.info('[context_getAbilityInfo_test_0200] data is:' + JSON.stringify(data));
           expect(typeof (data)).assertEqual("object");
         })
+        let callback = await context.getAbilityInfo();
+        console.info('---[context_getAbilityInfo_test_0200] check---');
+        checkAbilityInfo('context_getAbilityInfo_test_0200', callback);
+        console.info('[context_getAbilityInfo_test_0200] FINISH');
+        done();
       } catch (error) {
         console.error('[context_getAbilityInfo_test_0200] failed: ' + JSON.stringify(error));
       }
-      let callback = await context.getAbilityInfo();
-      console.info('---[context_getAbilityInfo_test_0200] check---');
-      checkAbilityInfo('context_getAbilityInfo_test_0200', callback);
-      console.info('[context_getAbilityInfo_test_0200] FINISH');
-      done();
     })
 
     /**

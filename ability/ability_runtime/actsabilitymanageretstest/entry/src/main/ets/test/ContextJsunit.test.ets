@@ -72,16 +72,16 @@ export default function ContextJsunit() {
             Utils.getDurationTime('context_getCacheDir_test_0100', timeOldStamp, timeNewStamp);
             console.log("context_getCacheDir_test_0100: CacheDir is " + data);
           })
+        let data1: string = await context.getCacheDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
+        done();
+        console.log("------------------end context_getCacheDir_test_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
-      let data1: string = await context.getCacheDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
-      done();
-      console.log("------------------end context_getCacheDir_test_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getCacheDir_test_0200
@@ -99,15 +99,15 @@ export default function ContextJsunit() {
           Utils.getDurationTime('context_getCacheDir_test_0200', timeOldStamp, timeNewStamp);
           console.log("context_getCacheDir_test_0200: getCacheDir successful, result = " + data);
         })
+        let data1: string = await context.getCacheDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
+        done();
+        console.log("------------------end context_getCacheDir_test_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
-      let data1: string = await context.getCacheDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
-      done();
-      console.log("------------------end context_getCacheDir_test_0200-------------------");
     })
 
     /*
@@ -127,16 +127,16 @@ export default function ContextJsunit() {
             Utils.getDurationTime('context_getFilesDir_test_0100', timeOldStamp, timeNewStamp);
             console.log("context_getFilesDir_test_0100：FilesDir is " + data);
           })
+        let data1: string = await context.getFilesDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
+        done();
+        console.log("------------------end context_getFilesDir_test_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
-      let data1: string = await context.getFilesDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
-      done();
-      console.log("------------------end context_getFilesDir_test_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getFilesDir_test_0200
@@ -154,15 +154,15 @@ export default function ContextJsunit() {
           Utils.getDurationTime('context_getFilesDir_test_0200', timeOldStamp, timeNewStamp);
           console.log("context_getFilesDir_test_0200: getFilesDir successful, result = " + data);
         })
+        let data1: string = await context.getFilesDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
+        done();
+        console.log("------------------end context_getFilesDir_test_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
-      let data1: string = await context.getFilesDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
-      done();
-      console.log("------------------end context_getFilesDir_test_0200-------------------");
     })
 
 
@@ -182,16 +182,16 @@ export default function ContextJsunit() {
           Utils.getDurationTime('context_getOrCreateDistributedDir_0100', timeOldStamp, timeNewStamp);
           console.log("context_getOrCreateDistributedDir_0100: DistributedDir is " + data);
         })
+        let data1: string = await context.getOrCreateDistributedDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/distributedfiles");
+        done();
+        console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0100: error = " + error);
         expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
-      let data1: string = await context.getOrCreateDistributedDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
-      done();
-      console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
-    });
+    })
 
     /*
      * @tc.number: context_getOrCreateDistributedDir_0200
@@ -209,15 +209,15 @@ export default function ContextJsunit() {
           Utils.getDurationTime('context_getOrCreateDistributedDir_0200', timeOldStamp, timeNewStamp);
           console.log("context_getOrCreateDistributedDir_0200: getOrCreateDistributedDir successful, result = " + data);
         })
+        let data1: string = await context.getOrCreateDistributedDir();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("/data/storage/el2/distributedfiles");
+        done();
+        console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getOrCreateDistributedDir_0200: error = " + error);
         expect(error).assertEqual("/data/storage/el2/distributedfiles/entry");
       }
-      let data1: string = await context.getOrCreateDistributedDir();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
-      done();
-      console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
     })
 
     /*
@@ -237,15 +237,15 @@ export default function ContextJsunit() {
             Utils.getDurationTime('context_getAppType_0100_0100', timeOldStamp, timeNewStamp);
             console.log("context_getAppType_0100: AppType is " + data);
           })
+        let data1: string = await context.getAppType();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("system");
+        done();
+        console.log("------------------end context_getAppType_0100-------------------");
       } catch (error) {
         console.log("logMessage context_getAppType_0100: error = " + error);
         expect(error).assertEqual("system");
       }
-      let data1: string = await context.getAppType();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("system");
-      done();
-      console.log("------------------end context_getAppType_0100-------------------");
     })
 
     /*
@@ -264,15 +264,15 @@ export default function ContextJsunit() {
           Utils.getDurationTime('context_getAppType_0200_0100', timeOldStamp, timeNewStamp);
           console.log("context_getAppType_0200: getAppType successful, result = " + data);
         })
+        let data1: string = await context.getAppType();
+        expect(typeof (data1)).assertEqual("string");
+        expect(data1).assertEqual("system");
+        done();
+        console.log("------------------end context_getAppType_0200-------------------");
       } catch (error) {
         console.log("logMessage context_getAppType_0200: error = " + error);
         expect(error).assertEqual("system");
       }
-      let data1: string = await context.getAppType();
-      expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("system");
-      done();
-      console.log("------------------end context_getAppType_0200-------------------");
     })
   })
 }
