@@ -171,5 +171,4 @@ HWTEST_F(ConsumerSurfaceTest, UserDataChangeListen002, Function | MediumTest | L
     t2.join();
 }
 
-
 }
