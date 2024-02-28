@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,20 +23,31 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      Text('Software uninstall').width('70%').fontSize(20).margin({ top: 10, bottom: 10 })
-      Image('/images/dialog.png').width(80).height(80)
-      Text('Whether to uninstall a software?').fontSize(16).margin({ bottom: 10 })
+      Text('Software uninstall')
+        .width('70%')
+        .fontSize(20)
+        .margin({ top: 10, bottom: 10 })
+      Image('/images/dialog.png')
+        .width(80)
+        .height(80)
+      Text('Whether to uninstall a software?')
+        .fontSize(16)
+        .margin({ bottom: 10 })
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
         Button('cancel')
           .onClick(() => {
             this.controller.close()
             this.cancel()
-          }).backgroundColor(0xffffff).fontColor(Color.Black)
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             this.controller.close()
             this.confirm()
-          }).backgroundColor(0xffffff).fontColor(Color.Red)
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Red)
       }.margin({ bottom: 10 })
     }
   }
@@ -50,8 +60,7 @@ struct CustomDialogUser {
   @State customStyle: boolean = false
   @State alignment: DialogAlignment = DialogAlignment.Default
   @State onClickValue: boolean = false
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("checkboxGroup page stateChangCallBack");
     if (eventData != null) {
       console.info("checkboxGroup page state change called:" + JSON.stringify(eventData));
@@ -60,7 +69,7 @@ struct CustomDialogUser {
 
   onPageShow() {
     console.info('checkboxGroup page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 79,
       priority: events_emitter.EventPriority.LOW
     }
@@ -80,9 +89,11 @@ struct CustomDialogUser {
   onCancel() {
     console.info('Callback when the first button is clicked')
   }
+
   onAccept() {
     console.info('Callback when the second button is clicked')
   }
+
   existApp() {
     console.info('Click the callback in the blank area')
   }
@@ -94,12 +105,12 @@ struct CustomDialogUser {
           this.onClickValue = true;
           this.dialogController.open();
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.onClickValue
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 236,
               priority: events_emitter.EventPriority.LOW
             }
@@ -108,7 +119,11 @@ struct CustomDialogUser {
           } catch (err) {
             console.info("click action state err: " + JSON.stringify(err.message))
           }
-        }).backgroundColor(0x317aff).key('dialogController')
-    }.width('100%').margin({ top: 5 })
+        })
+        .backgroundColor(0x317aff)
+        .key('dialogController')
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,22 +16,22 @@
 @Entry
 @Component
 struct MouseEventExample {
-  @State hoverText: string = 'no hover'
-  @State mouseText: string = 'MouseText'
-  @State color: Color = Color.Blue
-  @State eventButton: string = ''
-  @State eventAction: string = ''
+  @State hoverText: string = 'no hover';
+  @State mouseText: string = 'MouseText';
+  @State color: Color = Color.Blue;
+  @State eventButton: string = '';
+  @State eventAction: string = '';
 
   build() {
-    Column({ space:20 }) {
+    Column({ space: 20 }) {
       Button(this.hoverText)
         .onHover((isHover: boolean) => {
           if (isHover) {
-            this.hoverText = 'on hover'
-            this.color = Color.Pink
+            this.hoverText = 'on hover';
+            this.color = Color.Pink;
           } else {
-            this.hoverText = 'no hover'
-            this.color = Color.Blue
+            this.hoverText = 'no hover';
+            this.color = Color.Blue;
           }
         })
         .backgroundColor(this.color)
@@ -44,15 +43,13 @@ struct MouseEventExample {
           if (event.button === MouseButton.None) {
             this.eventButton = 'None'
           }
-          if (event.event.action === MouseAction.Release) {
+          if (event.action === MouseAction.Release) {
             this.eventAction = 'Release'
           }
-          if (event.event.action === MouseAction.Hover) {
+          if (event.action === MouseAction.Hover) {
             this.eventAction = 'Hover'
           }
-          if (event.event.action === MouseAction.None) {
-            this.eventAction = 'None'
-          }
+
           console.log(this.mouseText = 'onMouse:\nButton = ' + event.button + '\nAction = ' + event.action + '\nlocalXY=(' + event.x + ',' + event.y + ')' + '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
           console.log(this.mouseText = 'onMouse:\nButton = ' + this.eventAction + '\nAction = ' + this.eventAction + '\nlocalXY=(' + event.x + ',' + event.y + ')' + '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
           stopPropagation: () => {

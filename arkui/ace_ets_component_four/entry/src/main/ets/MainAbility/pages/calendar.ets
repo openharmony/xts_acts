@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -101,15 +100,15 @@ struct CalendarComponentExample {
   @State weekAndDayRowSpace: number = 3;
   @State direction: Axis = Axis.Horizontal;
   @State weekStyle: WeekStyle = {
-    weekColor: Color.black,
-    weekendDayColor: Color.red,
-    weekendLunarColor:  Color.green,
+    weekColor: Color.Black,
+    weekendDayColor: Color.Red,
+    weekendLunarColor:  Color.Green,
     weekFontSize: 1,
     weekHeight: 2,
     weekWidth: 3,
     weekAndDayRowSpace: this.weekAndDayRowSpace
   };
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Calendar page state change called:" + JSON.stringify(eventData));
       if (eventData.data.colSpace != null) {
@@ -159,7 +158,7 @@ struct CalendarComponentExample {
 
   onPageShow() {
     console.info('Calendar page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 74,
       priority: events_emitter.EventPriority.LOW
     }
