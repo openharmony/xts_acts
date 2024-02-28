@@ -12,12 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import Want from '@ohos.app.ability.Want';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Second application'
+  @State message: string = 'Second application';
   @StorageLink('want') want: Want = {
     action: "AsyncCallback_0200",
     bundleName: 'com.example.actsactionextensionabilityrely',
@@ -26,6 +27,7 @@ struct Index {
       'ability.want.params.uiExtensionType': 'action'
     }
   }
+
   build() {
     Row() {
       Column() {
@@ -33,9 +35,9 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({width:'100%',height:'100'})
+          .size({ width: '100%', height: '100' })
           .backgroundColor(Color.Blue)
-          .border({width:5,color:Color.Red})
+          .border({ width: 5, color: Color.Red })
       }
       .width('100%')
     }
