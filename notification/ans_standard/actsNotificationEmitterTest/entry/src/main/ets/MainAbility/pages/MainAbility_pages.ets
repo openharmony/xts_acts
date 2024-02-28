@@ -25,8 +25,8 @@ struct Index {
 
   aboutToAppear() {
     console.info("start run testcase!!!!");
-    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
