@@ -24,22 +24,22 @@ struct webResourceResponseSet {
   responseWeb: WebResourceResponse = new WebResourceResponse()
   heads: Header[] = new Array()
   webData: string = "<!DOCTYPE html>\n" +
-  "<html>\n" +
-  "<head>\n" +
-  "<title>intercept test</title>\n" +
-  "</head>\n" +
-  "<body>\n" +
-  "<h1>intercept test</h1>\n" +
-  "<script>" +
-  "function getTitle(){ return document.write(document.title); }" +
-  "gettitle()" +
-  "</script>" +
-  "</body>\n" +
-  "</html>"
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "<script>" +
+    "function getTitle(){ return document.write(document.title); }" +
+    "gettitle()" +
+    "</script>" +
+    "</body>\n" +
+    "</html>"
   @State str: string = "emitOnHttpErrorReceiveByExampleWebc";
   @State javaScriptAccess: boolean = true;
   @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
+    "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State title: string = "test";
   @State getRequestHeaderValue: number = 0
   @State getResponseHeaderValue: boolean = false

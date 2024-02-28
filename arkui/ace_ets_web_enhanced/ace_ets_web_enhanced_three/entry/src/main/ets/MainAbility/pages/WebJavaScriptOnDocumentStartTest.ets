@@ -27,8 +27,8 @@ struct WebJavaScriptOnDocumentStartTest {
   @State switchCase: number = 0;
   @State scripts: Array<ScriptItem> = [
     { script: "if (typeof(Storage) !== 'undefined') {" +
-    "   localStorage.setItem('color', 'Red');" +
-    "}", scriptRules: ["*"] }
+      "   localStorage.setItem('color', 'Red');" +
+      "}", scriptRules: ["*"] }
   ];
 
   onPageShow() {
@@ -83,8 +83,8 @@ struct WebJavaScriptOnDocumentStartTest {
                 try {
                   this.scripts = [
                     { script: "if (typeof(Storage) !== 'undefined') {" +
-                    "   localStorage.setItem('color', 'Blue');" +
-                    "}", scriptRules: ["123"] }
+                      "   localStorage.setItem('color', 'Blue');" +
+                      "}", scriptRules: ["123"] }
                   ];
                   this.controller.loadUrl($rawfile('javaScriptOnDocumentStart.html'))
                   await Utils.sleep(2000)
