@@ -48,7 +48,7 @@ export default function QueryNavDestinationInfoNavDestinationJsunit() {
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('QueryNavDestinationInfoNavDestinationText01'));
       await btn1.click();
-
+      await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('QueryNavDestinationInfoNavDestinationTextObserver');
       let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
