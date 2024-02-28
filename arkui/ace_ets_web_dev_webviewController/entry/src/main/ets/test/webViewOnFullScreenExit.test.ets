@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-// @ts-nocheck
+
 let emitKey = "emitOnfullscreenexit";
+
 export default function webViewOnFullScreenExit() {
-  describe('ActsAceWebDevWebViewOnFullScreenExitTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceWebDevWebViewOnFullScreenExitTest', () => {
+    beforeAll(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/webViewOnFullScreenExit',
       }
@@ -39,27 +40,27 @@ export default function webViewOnFullScreenExit() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webViewOnFullScreenExit beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webViewOnFullScreenExit afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,11 +70,11 @@ export default function webViewOnFullScreenExit() {
      *tc.name testOnFullScreenExit
      *tc.desc test interface of onfullscreenexit with runjavascript exitFullscreen
      */
-    it('testOnFullScreenExit',0,async function(done){
-      sendEventByKey('TestwebViewOnFullScreenExit',10,'');
-      emitKey="emitOnfullscreenexit";
-      Utils.registerEvent("testOnFullScreenExit","2\"false\"",344,done);
-      sendEventByKey('webViewOnFullScreenExit',10,'');
+    it('testOnFullScreenExit', 0, async (done: Function) => {
+      sendEventByKey('TestwebViewOnFullScreenExit', 10, '');
+      emitKey = "emitOnfullscreenexit";
+      Utils.registerEvent("testOnFullScreenExit", "2\"false\"", 344, done);
+      sendEventByKey('webViewOnFullScreenExit', 10, '');
     })
   })
 }

@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
-import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect,beforeAll } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
+
 let emitKey = "emitSetPrintBackgroundOne";
+
 export default function webViewSetPrintBackgroundJsunit() {
-  describe('ActsAceWebViewSetPrintBackgroundTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceWebViewSetPrintBackgroundTest', () => {
+    beforeAll(async (done: Function) => {
       let options = {
         uri: "MainAbility/pages/webViewSetPrintBackground"
       }
@@ -39,27 +40,27 @@ export default function webViewSetPrintBackgroundJsunit() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webViewSetPrintBackground beforeEach start");
       done();
     })
-    afterEach(async function (done) {
-      console.info("webViewSetPrintBackground afterEach start:"+emitKey);
+    afterEach(async (done: Function) => {
+      console.info("webViewSetPrintBackground afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +70,10 @@ export default function webViewSetPrintBackgroundJsunit() {
      * tc.name testSetPrintBackgroundOne
      * tc.desc Support printing background colors
    */
-    it('testSetPrintBackgroundOne',0,async function(done){
-      emitKey="emitSetPrintBackgroundOne";
-      Utils.registerEvent("testSetPrintBackgroundOne",false,214,done);
-      sendEventByKey('webcomponentSetPrintBackground',10,'');
+    it('testSetPrintBackgroundOne', 0, async (done: Function) => {
+      emitKey = "emitSetPrintBackgroundOne";
+      Utils.registerEvent("testSetPrintBackgroundOne", false, 214, done);
+      sendEventByKey('webcomponentSetPrintBackground', 10, '');
     })
   })
 }

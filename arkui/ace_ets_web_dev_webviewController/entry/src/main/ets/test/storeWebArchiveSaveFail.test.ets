@@ -16,10 +16,12 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
+
 let emitKey = "emitStoreWebArchiveCallbackSaveFail";
+
 export default function storeWebArchiveSaveFail() {
-  describe('ActsAceWebControllerTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceWebControllerTest', () => {
+    beforeAll(async (done: Function) => {
       let options = {
         uri: "MainAbility/pages/storeWebArchiveSaveFail"
       }
@@ -39,26 +41,26 @@ export default function storeWebArchiveSaveFail() {
       await Utils.sleep(2000);
       done()
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("web beforeEach start");
       done();
     })
-    afterEach(async function (done) {
-      console.info("ActsAceWebControllerTest afterEach start:"+emitKey);
+    afterEach(async (done: Function) => {
+      console.info("ActsAceWebControllerTest afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       console.info("ActsAceWebControllerTest afterEach end");
@@ -70,10 +72,10 @@ export default function storeWebArchiveSaveFail() {
      *tc.name testStoreWebArchiveCallback
      *tc.desic test storeWebArchiveCallback interface when save file failed.
      */
-    it('testStoreWebArchiveCallback',0,async function(done){
-      emitKey="emitStoreWebArchivePromiseSaveFail";
-      Utils.registerEvent("testStoreWebArchiveCallback","/data/storage/el2/base/blanknull.html.mht",138,done);
-      sendEventByKey('webcomponent03',10,'');
+    it('testStoreWebArchiveCallback', 0, async (done: Function) => {
+      emitKey = "emitStoreWebArchivePromiseSaveFail";
+      Utils.registerEvent("testStoreWebArchiveCallback", "/data/storage/el2/base/blanknull.html.mht", 138, done);
+      sendEventByKey('webcomponent03', 10, '');
     })
 
     /*
@@ -81,10 +83,10 @@ export default function storeWebArchiveSaveFail() {
      *tc.name testStoreWebArchivePromise
      *tc.desic test storeWebArchivePromise interface when save file failed.
      */
-    it('testStoreWebArchivePromise',0,async function(done){
+    it('testStoreWebArchivePromise', 0, async (done: Function) => {
 
-      Utils.registerEvent("testStoreWebArchivePromise","/data/storage/el2/base/blanknull.html-0.mht",140,done);
-      sendEventByKey('webcomponent03',10,'');
+      Utils.registerEvent("testStoreWebArchivePromise", "/data/storage/el2/base/blanknull.html-0.mht", 140, done);
+      sendEventByKey('webcomponent03', 10, '');
     })
   })
 }
