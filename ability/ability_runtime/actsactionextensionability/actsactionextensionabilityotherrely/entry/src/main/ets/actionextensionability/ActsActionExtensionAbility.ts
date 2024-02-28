@@ -15,6 +15,8 @@
 
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
+
 
 let count = 0;
 const TIME_OUT = 500;
@@ -46,7 +48,7 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
     commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {
     })
     setTimeout(() => {
-      globalThis.session.terminateSelf();
+      AppStorage.get<UIExtensionContentSession>("session")!.terminateSelf();
     }, TIME_OUT)
   }
 
@@ -60,7 +62,7 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
         'messages': this.message
       })
     session.loadContent('pages/PageThree', this.storage);
-    globalThis.session = session;
+    AppStorage.setOrCreate<UIExtensionContentSession>("session", session);
   }
 
   onDestroy() {
