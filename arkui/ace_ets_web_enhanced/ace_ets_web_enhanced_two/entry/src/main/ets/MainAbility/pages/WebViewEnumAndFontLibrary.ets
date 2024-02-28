@@ -37,7 +37,8 @@ class TestObj {
 struct WebViewEnumAndFontLibrary {
   @State listData: number[] = [0, 0, 0]
 
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       ForEach(this.listData, (index: number | undefined) => {
         Column() {
