@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function copyOptionJsunit() {
-  describe('copyOptionTest', function () {
-    beforeEach(async function (done) {
+  describe('copyOptionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/copyOption',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/copyOption',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function copyOptionJsunit() {
         console.info("get copyOption state success " + JSON.stringify(pages));
         if (!("copyOption" == pages.name)) {
           console.info("get copyOption state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push copyOption page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function copyOptionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("copyOption after each called");
     });
@@ -50,15 +50,14 @@ export default function copyOptionJsunit() {
      * @tc.name         testcopyOption0001
      * @tc.desic         acecopyOptionEtsTest0001
      */
-    it('testcopyOption0001', 0, async function (done) {
+    it('testcopyOption0001', 0, async (done: Function) => {
       console.info('hoverEffect testcopyOption0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('InAppText');
+      let strJson: string = getInspectorByKey('InAppText');
       console.info("[testcopyOption0001] component copyOption strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
-      console.info("[testcopyOption0001] copyOption value :" + obj.$attrs.copyOption);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.copyOption).assertEqual("CopyOptions.None");
+      console.info("[testcopyOption0001] copyOption value :" + JSON.parse(strJson).$attrs.copyOption);
       done();
     });
 
@@ -67,15 +66,14 @@ export default function copyOptionJsunit() {
      * @tc.name         testcopyOption0002
      * @tc.desic         acecopyOptionEtsTest0002
      */
-    it('testcopyOption0002', 0, async function (done) {
+    it('testcopyOption0002', 0, async (done: Function) => {
       console.info('hoverEffect testcopyOption0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('LocalDeviceText');
+      let strJson: string = getInspectorByKey('LocalDeviceText');
       console.info("[testcopyOption0002] component copyOption strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
-      console.info("[testcopyOption0002] copyOption value :" + obj.$attrs.copyOption);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.copyOption).assertEqual("CopyOptions.None");
+      console.info("[testcopyOption0002] copyOption value :" + JSON.parse(strJson).$attrs.copyOption);
       done();
     });
   })

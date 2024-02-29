@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets'
 
 export default function checkBoxGroupPartJsunit() {
-  describe('checkBoxGroupPartTest', function () {
-    beforeEach(async function (done) {
+  describe('checkBoxGroupPartTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkBoxGroup',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/checkBoxGroup',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function checkBoxGroupPartJsunit() {
         console.info("get checkBoxGroup state success " + JSON.stringify(pages));
         if (!("checkBoxGroup" == pages.name)) {
           console.info("get checkBoxGroup state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push checkBoxGroup page success " + JSON.stringify(result));
         }
@@ -41,18 +41,18 @@ export default function checkBoxGroupPartJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("checkBoxGroupPart after each called");
     });
 
-    it('testcheckBoxGroupPart0011', 0, async function (done) {
+    it('testcheckBoxGroupPart0011', 0, async (done: Function) => {
       console.info('checkBoxGroupPart testcheckBoxGroupPart0011 START');
       await Utils.sleep(2000);
       try {
         console.info("testcheckBoxGroupPart_0011 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
         await Utils.sleep(2000);
-        let strJson = getInspectorByKey('Checkbox2');
+        let strJson: string = getInspectorByKey('Checkbox2');
         console.info("[testcheckBoxGroupPart0011] component select strJson:" + strJson);
         let obj = JSON.parse(strJson);
         expect(obj.$type).assertEqual('Checkbox');
@@ -65,20 +65,20 @@ export default function checkBoxGroupPartJsunit() {
       done();
     });
 
-    it('testcheckBoxGroup0001', 0, async function (done) {
+    it('testcheckBoxGroup0001', 0, async (done: Function) => {
       console.info('checkBoxGroup testcheckBoxGroup0001 START');
       await Utils.sleep(2000);
       try {
         console.info("testcheckBoxGroup0001 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
         await Utils.sleep(2000);
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60301,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testcheckBoxGroup0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(2);
-         
+
         }
         events_emitter.on(innerEvent, callback);
       } catch (err) {
