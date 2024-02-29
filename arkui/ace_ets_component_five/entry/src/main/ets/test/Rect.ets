@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 
-import AbilityStage from "@ohos.app.ability.AbilityStage"
-
-export default class MyAbilityStage extends AbilityStage {
-  onCreate() {
-    console.log("[Demo] MyAbilityStage onCreate")
-    globalThis.stageOnCreateRun = 1;
-    globalThis.stageContext = this.context;
-  }
+export default class RectValue {
+  width: number = 0;
+  height: number = 0;
+  localOffsetX: number = 0;
+  localOffsetY: number = 0;
+  windowOffsetX: number = 0;
+  windowOffsetY: number = 0;
+  screenOffsetX: number = 0;
+  screenOffsetY: number = 0;
 }
