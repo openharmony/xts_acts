@@ -12,22 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct FlexAlign_SpaceAround_fixedChildParentItemAlignEnd {
-  @State testHeight: number = 150
-  @State testWidth: number = 450
-  messageManager:MessageManager = new MessageManager()
+  @State testHeight: number = 150;
+  @State testWidth: number = 450;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "FlexAlign_SpaceAround_fixedChildParentItemAlignEnd Page"
-  
+
   onPageShow() {
     console.info('FlexAlign_SpaceAround_fixedChildParentItemAlignEnd page show called');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
@@ -35,7 +40,7 @@ struct FlexAlign_SpaceAround_fixedChildParentItemAlignEnd {
       if (message.name == 'width') {
         this.testWidth = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -45,17 +50,17 @@ struct FlexAlign_SpaceAround_fixedChildParentItemAlignEnd {
 
   build() {
     Column() {
-        Text('justifyContent:Align_SpaceAround8').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.SpaceAround }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignSpaceAround22')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignSpaceAround23')
-          Text('3').width(150).height(150).backgroundColor(0xffa500).key('AlignSpaceAround24')
-        }
-        .key('FlexAlignSpaceAround8')
-        .height(this.testHeight)
-        .width(this.testWidth)
-        .align(Alignment.BottomEnd)
-        .backgroundColor(0xAFEEEE)
+      Text('justifyContent:Align_SpaceAround8').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Flex({ direction: FlexDirection.Row, wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.SpaceAround }) {
+        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignSpaceAround22')
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignSpaceAround23')
+        Text('3').width(150).height(150).backgroundColor(0xffa500).key('AlignSpaceAround24')
+      }
+      .key('FlexAlignSpaceAround8')
+      .height(this.testHeight)
+      .width(this.testWidth)
+      .align(Alignment.BottomEnd)
+      .backgroundColor(0xAFEEEE)
     }.width('100%')
   }
 }

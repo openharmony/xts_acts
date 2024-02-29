@@ -12,23 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct FlexWrapReverse_fixedParentChildVisibility {
-  @State test1Width: number = 150
-  @State test2Width: number = 300
-  @State testVisibility: number = Visibility.Visible  
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexWrapReverse_fixedParentChildVisibility Page"
-  
+  @State test1Width: number = 150;
+  @State test2Width: number = 300;
+  @State testVisibility: number = Visibility.Visible;
+  messageManager: MessageManager<number> = new MessageManager();
+  private content: string = "FlexWrapReverse_fixedParentChildVisibility Page";
+
   onPageShow() {
     console.info('FlexWrapReverse_fixedParentChildVisibility page show called');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'test1Width') {
         this.test1Width = message.value;
@@ -39,7 +44,7 @@ struct FlexWrapReverse_fixedParentChildVisibility {
       if (message.name == 'visibility') {
         this.testVisibility = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -49,16 +54,21 @@ struct FlexWrapReverse_fixedParentChildVisibility {
 
   build() {
     Column() {
-        Text('Wrap:WrapReverseTest19').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.WrapReverse }) {
-          Text('1').width(this.test1Width).height(50).backgroundColor(0xF5DEB3).key('WrapReverseTest55').visibility(this.testVisibility)
-          Text('2').width(this.test2Width).height(100).backgroundColor(0xD2B48C).key('WrapReverseTest56')
-          Text('3').width(this.test2Width).height(150).backgroundColor(0xffa500).key('WrapReverseTest57')
-        }
-        .key('FlexWrapReverseTest19')
-        .height(300)
-        .width(500)
-        .backgroundColor(0xAFEEEE)
+      Text('Wrap:WrapReverseTest19').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Flex({ direction: FlexDirection.Row, wrap: FlexWrap.WrapReverse }) {
+        Text('1')
+          .width(this.test1Width)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .key('WrapReverseTest55')
+          .visibility(this.testVisibility)
+        Text('2').width(this.test2Width).height(100).backgroundColor(0xD2B48C).key('WrapReverseTest56')
+        Text('3').width(this.test2Width).height(150).backgroundColor(0xffa500).key('WrapReverseTest57')
+      }
+      .key('FlexWrapReverseTest19')
+      .height(300)
+      .width(500)
+      .backgroundColor(0xAFEEEE)
     }.width('100%')
   }
 }
