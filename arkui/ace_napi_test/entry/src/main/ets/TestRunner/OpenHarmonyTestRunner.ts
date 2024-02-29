@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -58,7 +59,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    let testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
+    var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
     let cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)

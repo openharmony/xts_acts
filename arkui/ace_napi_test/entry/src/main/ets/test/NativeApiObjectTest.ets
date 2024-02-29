@@ -40,6 +40,7 @@ function deepStrictEqualOfObject(obj1, obj2) {
 function addSeal() {
   const obj = { x: 'a', y: 'b', z: 'c' };
   napitest.SealTest(obj);
+  // @ts-ignore
   obj.w = 'd';
 }
 
@@ -58,6 +59,7 @@ function assignFreeze() {
 function addFreeze() {
   const obj = { x: 10, y: 10, z: 10 };
   napitest.FreezeTest(obj);
+  // @ts-ignore
   obj.w = 15;
 }
 
@@ -74,6 +76,7 @@ function createObject() {
     inherited: 1,
   }
   };
+  // @ts-ignore
   object.normal = 2;
   object[fooSymbol] = 3;
   Object.defineProperty(object,
