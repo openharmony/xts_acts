@@ -71,10 +71,10 @@ public:
     int32_t PrepareModel(const Model& model, const ModelConfig& config, sptr<IPreparedModel>& preparedModel) override;
 
     int32_t PrepareOfflineModel(const std::vector<SharedBuffer>& offlineModels, const ModelConfig& config,
-        sptr<OHOS::HDI::Nnrt::V2_1::IPreparedModel>& preparedModel) override;
+                                sptr<OHOS::HDI::Nnrt::V2_1::IPreparedModel>& preparedModel) override;
 
     int32_t PrepareModelFromModelCache(const std::vector<SharedBuffer>& modelCache, const ModelConfig& config,
-        sptr<IPreparedModel>& preparedModel) override;
+                                       sptr<IPreparedModel>& preparedModel) override;
 
     int32_t MemoryCopy(float* data, uint32_t length);
 
