@@ -283,6 +283,7 @@ int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
         LOGE("[NNRtTest] Read shared memory failed.");
         return HDF_ERR_MALLOC_FAIL;
     }
+
     bool ret = ashptr->MapReadAndWriteAshmem();
     if (!ret) {
         LOGE("[NNRtTest] Map fd to write ashptr failed.");
@@ -324,6 +325,7 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         LOGE("[NNRtTest] The parameters of ExportModelCache should be an empty vector.");
         return HDF_ERR_INVALID_PARAM;
     }
+
     uint8_t buffer[4] = {0, 1, 2, 3};
     uint32_t size = sizeof(buffer);
     sptr<Ashmem> cache = Ashmem::CreateAshmem("cache", size);
@@ -331,20 +333,22 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         LOGE("[NNRtTest] Create shared memory failed.");
         return HDF_ERR_MALLOC_FAIL;
     }
+
     bool ret = cache->MapReadAndWriteAshmem();
     if (!ret) {
         LOGE("[NNRtTest] Map fd to write cache failed.");
         return HDF_FAILURE;
     }
+
     int fd = cache->GetAshmemFd();
     m_ashmems[fd] = cache;
-    
     ret = cache->WriteToAshmem(buffer, size, 0);
     cache->UnmapAshmem();
     if (!ret) {
         LOGE("[NNRtTest] Write cache failed.");
         return HDF_FAILURE;
     }
+
     // SharedBuffer: fd, bufferSize, offset, dataSize
     modelCache.emplace_back(SharedBuffer {cache->GetAshmemFd(), cache->GetAshmemSize(), 0, cache->GetAshmemSize()});
     return HDF_SUCCESS;
@@ -360,7 +364,6 @@ int32_t MockIPreparedModel::GetVersion(uint32_t &majorVersion, uint32_t &minorVe
 int32_t MockIPreparedModel::Run(const std::vector<IOTensor>& inputs, const std::vector<IOTensor>& outputs,
     std::vector<std::vector<int32_t>>& outputsDims)
 {
-    LOGI("[mock]--------------run-------------");
     outputsDims = {{2, 2, 2, 2}};
     return HDF_SUCCESS;
 }
@@ -368,7 +371,6 @@ int32_t MockIPreparedModel::Run(const std::vector<IOTensor>& inputs, const std::
 int32_t MockIPreparedModel::GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims,
                                               std::vector<std::vector<uint32_t>>& maxInputDims)
 {
-    LOGI("[mock]--------------GetInputDimRanges-------------");
     minInputDims = {{2, 2, 2, 2}, {2, 2, 2, 2}};
     maxInputDims = {{2, 100, 100, 10}, {2, 100, 100, 10}};
 

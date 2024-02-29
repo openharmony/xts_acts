@@ -62,6 +62,7 @@ int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
+
     if (graphArgs.addOperation) {
         ret = OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices,
                                       &outputIndices);
@@ -70,6 +71,7 @@ int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
             return ret;
         }
     }
+
     if (graphArgs.specifyIO) {
         LOGI("[NNRtTest] OH_NNModel_SpecifyInputsAndOutputs start!");
         ret = OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices);
@@ -78,6 +80,7 @@ int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
             return ret;
         }
     }
+
     if (graphArgs.build) {
         ret = OH_NNModel_Finish(model);
         if (ret != OH_NN_SUCCESS) {
@@ -96,16 +99,19 @@ int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
         NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
                                                      (uint32_t) operandTem.shape.size(),
                                                      operandTem.dataType, operandTem.format);
+
         ret = OH_NNModel_AddTensorToModel(model, tensorDesc);
         if (ret != OH_NN_SUCCESS) {
             LOGE("[NNRtTest] OH_NNModel_AddTensor failed! ret=%d\n", ret);
             return ret;
         }
+
         ret = OH_NNModel_SetTensorType(model, i, operandTem.type);
         if (ret != OH_NN_SUCCESS) {
             LOGE("[NNRtTest] OH_NNBackend_SetModelTensorType failed! ret=%d\n", ret);
             return ret;
         }
+
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
             ret = OH_NNModel_SetTensorData(model, i, operandTem.data, operandTem.length);
@@ -124,11 +130,13 @@ OH_NN_ReturnCode GetDeviceID(size_t *deviceId)
     OH_NN_ReturnCode ret = OH_NN_FAILED;
     const size_t *devicesID{nullptr};
     uint32_t devicesCount{0};
+
     ret = OH_NNDevice_GetAllDevicesID(&devicesID, &devicesCount);
     if (ret != OH_NN_SUCCESS) {
         LOGE("[NNRtTest] OH_NNDevice_GetAllDevicesID failed! ret=%d\n", ret);
         return ret;
     }
+
     if (devicesCount <= NO_DEVICE_COUNT) {
         LOGE("[NNRtTest] devicesCount <= 0  devicesCount=%d\n", devicesCount);
         return OH_NN_FAILED;
@@ -156,6 +164,7 @@ OH_NN_ReturnCode GetDeviceID(size_t *deviceId)
 int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &compileParam)
 {
     int ret = 0;
+
     // set cache
     if (!compileParam.cacheDir.empty()) {
         ret = OH_NNCompilation_SetCache(compilation, compileParam.cacheDir.c_str(),
@@ -165,6 +174,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
             return ret;
         }
     }
+
     // set performance
     if (compileParam.performanceMode != OH_NN_PERFORMANCE_NONE) {
         ret = OH_NNCompilation_SetPerformanceMode(compilation, compileParam.performanceMode);
@@ -173,6 +183,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
             return ret;
         }
     }
+
     // set priority
     if (compileParam.priority != OH_NN_PRIORITY_NONE) {
         ret = OH_NNCompilation_SetPriority(compilation, compileParam.priority);
@@ -181,6 +192,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
             return ret;
         }
     }
+
     // enable fp16
     if (compileParam.enableFp16) {
         ret = OH_NNCompilation_EnableFloat16(compilation, compileParam.enableFp16);
@@ -189,6 +201,7 @@ int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &comp
             return ret;
         }
     }
+
     // build
     ret = OH_NNCompilation_Build(compilation);
     return ret;
@@ -200,10 +213,12 @@ void Free(OH_NNModel *model, OH_NNCompilation *compilation, OH_NNExecutor *execu
         OH_NNModel_Destroy(&model);
         ASSERT_EQ(nullptr, model);
     }
+
     if (compilation != nullptr) {
         OH_NNCompilation_Destroy(&compilation);
         ASSERT_EQ(nullptr, compilation);
     }
+
     if (executor != nullptr) {
         OH_NNExecutor_Destroy(&executor);
         ASSERT_EQ(nullptr, executor);

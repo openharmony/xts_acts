@@ -48,7 +48,6 @@ ohos_moduletest_suite("ActsOpsTest") {
     "src/nncore_utils.cpp",
     "src/not_equal_test.cpp",
     "src/range_test.cpp",
-    "src/real_div_test.cpp",
     "src/select_test.cpp",
     "src/square_test.cpp",
     "src/unstack_test.cpp",

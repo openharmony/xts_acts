@@ -30,8 +30,8 @@ struct OHNNOperandTest {
     OH_NN_DataType dataType;
     OH_NN_TensorType type;
     std::vector<int32_t> shape;
-    void *data{nullptr};
-    int32_t length{0};
+    void *data {nullptr};
+    int32_t length {0};
     OH_NN_Format format = OH_NN_FORMAT_NONE;
     const OH_NN_QuantParam *quantParam = nullptr;
 };

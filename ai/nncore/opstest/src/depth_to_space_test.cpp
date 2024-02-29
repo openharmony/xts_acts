@@ -70,10 +70,6 @@ struct DepthToSpaceModel2 {
  */
 HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_01, Function | MediumTest | Level1)
 {
-    std::vector<NN_Tensor*> inputTensors;
-    std::vector<NN_Tensor*> outputTensors;
-    size_t inputCount = 0;
-    size_t outputCount = 0;
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
 
@@ -103,10 +99,6 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_01, Functio
  */
 HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_02, Function | MediumTest | Level1)
 {
-    std::vector<NN_Tensor*> inputTensors;
-    std::vector<NN_Tensor*> outputTensors;
-    size_t inputCount = 0;
-    size_t outputCount = 0;
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
 
@@ -136,10 +128,6 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_02, Functio
  */
 HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_03, Function | MediumTest | Level2)
 {
-    std::vector<NN_Tensor*> inputTensors;
-    std::vector<NN_Tensor*> outputTensors;
-    size_t inputCount = 0;
-    size_t outputCount = 0;
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
 
@@ -162,10 +150,6 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_03, Functio
  */
 HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_04, Function | MediumTest | Level2)
 {
-    std::vector<NN_Tensor*> inputTensors;
-    std::vector<NN_Tensor*> outputTensors;
-    size_t inputCount = 0;
-    size_t outputCount = 0;
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
 
@@ -188,10 +172,6 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_04, Functio
  */
 HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Build_05, Function | MediumTest | Level2)
 {
-    std::vector<NN_Tensor*> inputTensors;
-    std::vector<NN_Tensor*> outputTensors;
-    size_t inputCount = 0;
-    size_t outputCount = 0;
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
 
@@ -283,7 +263,7 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
-                      graphArgs.paramIndices.end()) {
+            graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
                 model, 1000+i, operandTem.data, operandTem.length));
         }
@@ -316,7 +296,7 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
-                      graphArgs.paramIndices.end()) {
+            graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
         }
     }
@@ -348,7 +328,7 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_SetOperandV
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
-                      graphArgs.paramIndices.end()) {
+            graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
         }
     }
@@ -625,7 +605,7 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_AddOperatio
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.data = nullptr;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
-                                                            &paramIndices, &inputIndices, &outputIndices));
+                                                               &paramIndices, &inputIndices, &outputIndices));
     
     Free(model, nullptr, nullptr);
 }
@@ -679,7 +659,7 @@ HWTEST_F(DepthToSpaceTest, SUB_AI_NNRt_Func_North_DepthToSpace_Model_AddOperatio
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.size = 0;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
-                                                            &paramIndices, &inputIndices, &outputIndices));
+                                                               &paramIndices, &inputIndices, &outputIndices));
     
     Free(model, nullptr, nullptr);
 }
