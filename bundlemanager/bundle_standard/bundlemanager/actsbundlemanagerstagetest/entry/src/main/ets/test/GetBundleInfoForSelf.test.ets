@@ -317,6 +317,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].excludeFromDock).assertFalse();
         expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
@@ -419,6 +420,7 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
+          expect(data.hapModulesInfo[0].abilitiesInfo[0].excludeFromDock).assertFalse();
           expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
@@ -1276,6 +1278,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].abilitiesInfo[0].iconId).assertLarger(0);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
       expect(data.hapModulesInfo[0].abilitiesInfo[0].exported).assertTrue();
+      expect(data.hapModulesInfo[0].abilitiesInfo[0].excludeFromDock).assertFalse();
       expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
       expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
@@ -1681,6 +1684,7 @@ export default function getBundleInfoForSelf() {
       expect(data.iconId).assertLarger(0);
       expect(data.process).assertEqual("");
       expect(data.exported).assertTrue();
+      expect(data.excludeFromDock).assertFalse();
       expect(data.permissions.length).assertEqual(0);
       expect(data.deviceTypes.length).assertEqual(3);
       console.info("checkComm" + JSON.stringify(data.deviceTypes[0]));
