@@ -14,13 +14,14 @@
  */
 
 {
+  "license": "",
+  "devDependencies": {
+    "@types/libentry.so": "file:./src/main/cpp/types/libentry"
+  },
+  "author": "",
   "name": "entry",
-  "version": "1.0.0",
   "description": "Please describe the basic information.",
   "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
-    "libentry.so": "file:./src/main/cpp/types/libentry"
-  }
+  "version": "1.0.0",
+  "dependencies": {}
 }

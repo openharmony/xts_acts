@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "360000",
-        "bundle-name": "com.example.nativecc",
-        "module-name": "com.example.nativecc",
+        "bundle-name": "com.example.myapplication",
+        "module-name": "entry_test",
         "shell-timeout": "360000",
         "testcase-timeout": 70000
     },

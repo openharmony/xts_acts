@@ -12,27 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+    ],
+    "compileSdkVersion": 11,
+    "compatibleSdkVersion": 11,
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
-        "compileSdkVersion": 12,
-        "compatibleSdkVersion": 12,     
-        "runtimeOS": "OpenHarmony"
       }
     ],
-    "buildModeSet": [
-      {
-        "name": "debug",
-      },
-      {
-        "name": "release"
-      }
-    ]
   },
   "modules": [
     {
