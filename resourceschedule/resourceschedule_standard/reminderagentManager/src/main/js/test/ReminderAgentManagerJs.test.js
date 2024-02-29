@@ -16,12 +16,10 @@
 // @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import reminderAgent from '@ohos.reminderAgentManager'
+import notificationManager from '@ohos.notificationManager';
 
 export default function ReminderAgentManagerTest() {
     describe('ReminderAgentManagerTest', function () {
-
-        const TRIGGER_TIME_IN_SECONDS = 100;
-
         beforeAll(function () {
 
             /*
@@ -56,11 +54,11 @@ export default function ReminderAgentManagerTest() {
 
         console.info('start################################start');
 
-      /**
-       * @tc.number    
-       * @tc.name      reminderRequestAttribute_0001
-       * @tc.desc      test ReminderRequest Attribute tapDismissed and autoDeletedTime
-       */
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0001
+         * @tc.desc      test ReminderRequest Attribute tapDismissed and autoDeletedTime
+         */
         it("reminderRequestAttribute_0001", 0, async function (done) {
             console.info('----------------------reminderRequestAttribute_0001---------------------------');
             let timer = {
@@ -128,7 +126,7 @@ export default function ReminderAgentManagerTest() {
                     minute: 11,
                     second: 11
                 },
-                actionButton:[
+                actionButton: [
                     {
                         title: 'close',
                         type: 0,
@@ -143,8 +141,8 @@ export default function ReminderAgentManagerTest() {
                         console.info('reminderRequestAttribute_0003 callback reminderId = ' + reminderId);
                         try {
                             reminderAgent.getValidReminders((err, reminder) => {
-                                if(reminder.length = 0){
-                                    reminder = [{titleResource: ''}]
+                                if (reminder.length = 0) {
+                                    reminder = [{ titleResource: '' }]
                                 }
                                 console.info('reminderRequestAttribute_0003 callback reminder = ' + reminder.titleResource);
                                 expect(reminderId).assertLarger(0);
@@ -223,7 +221,7 @@ export default function ReminderAgentManagerTest() {
         it("reminderRequestAttribute_0004", 0, async function (done) {
             console.info('----------------------testPublishReminderTimer_030---------------------------');
             try {
-                reminderAgent.cancelAllReminders().then((err,data) => {
+                reminderAgent.cancelAllReminders().then((err, data) => {
                     console.info('reminderRequestAttribute_0004 cancelAllReminders success');
                     expect(true).assertTrue();
                     done();
@@ -233,1614 +231,411 @@ export default function ReminderAgentManagerTest() {
             }
         })
 
-    /*
-     * @tc.name: testReminderHelper001
-     * @tc.desc: test spent time by publishReminder with timer (callback)
-     * @tc.type: FUNC
-     * @tc.require:
-     */
-    it("testReminderHelper001", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      function reminderCallback(err, reminderId){
-          let end = getTime();
-          let times = end - begin;
-          if (times < 500) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.publishReminder(timer, reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-  * @tc.name: testReminderHelper002
-  * @tc.desc: test spent time by publishReminder with timer (promise)
-  * @tc.type: FUNC
-  * @tc.require:
-  */
-  it("testReminderHelper002", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.publishReminder(timer).then((reminderId) => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          });
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
-
-  /*
-   * @tc.name: testReminderHelper003
-   * @tc.desc: test spent time by publishReminder with alarm (callback)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper003", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      function reminderCallback(err, reminderId){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let times = 0;
-      let begin = getTime();
-      try {
-          reminderAgent.publishReminder(alarm, reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-  * @tc.name: testReminderHelper004
-  * @tc.desc: test spent time by publishReminder with alarm (promise)
-  * @tc.type: FUNC
-  * @tc.require:
-  */
-
-  it("testReminderHelper004", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.publishReminder(alarm).then((reminderId) => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          });
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
-
-  /*
-   * @tc.name: testReminderHelper005
-   * @tc.desc: test spent time by publishReminder with calendar (callback)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper005", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          }
-      }
-      function reminderCallback(err, reminderId){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.publishReminder(calendar, reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-   * @tc.name: testReminderHelper006
-   * @tc.desc: test spent time by publishReminder with calendar (promise)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper006", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          }
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.publishReminder(calendar).then((reminderId) => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
-
-  /*
-   * @tc.name: testReminderHelper007
-   * @tc.desc: test spent time by cancelReminder with not reminderId (callback)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper007", 0, async function (done) {
-      function reminderCallback(err, data){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.cancelReminder(1, reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-   * @tc.name: testReminderHelper008
-   * @tc.desc: test spent time by cancelReminder with not reminderId (promise)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper008", 0, async function (done) {
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.cancelReminder(1).then(() => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
-
-  /*
-   * @tc.name: testReminderHelper009
-   * @tc.desc: test spent time by cancelReminder with timer (callback)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper009", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      function reminderCallback(err, data){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = 0;
-      let times = 0;
-      try {
-          reminderAgent.publishReminder(timer, (err, reminderId) => {
-              begin = getTime();
-              try {
-                  reminderAgent.cancelReminder(reminderId, reminderCallback);
-              } catch (e) {
-                  expect(false).assertTrue();
-              };
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-   * @tc.name: testReminderHelper010
-   * @tc.desc: test spent time by cancelReminder with calendar (promise)
-   * @tc.type: FUNC
-   * @tc.require:
-   */
-  it("testReminderHelper010", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          }
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = 0;
-      let times = 0;
-      try {
-          reminderAgent.publishReminder(calendar, (err, reminderId) => {
-              begin = getTime();
-              try {
-                  reminderAgent.cancelReminder(reminderId).then(() => {
-                      let end = getTime();
-                      times = end - begin;
-                      if (times < 50) {
-                          expect(true).assertTrue();
-                      } else {
-                          expect(false).assertTrue();
-                      }
-                  })
-              } catch (e) {
-                  expect(false).assertTrue();
-              };
-              
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
-
-  /*
-   * @tc.name: testReminderHelper011
-   * @tc.desc: test spent time by getValidReminders with not (callback)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper011", 0, async function (done) {
-      function reminderCallback(err, reminders){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.getValidReminders(reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
-
-  /*
-   * @tc.name: testReminderHelper012
-   * @tc.desc: test spent time by getValidReminders with not (promise)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper012", 0, async function (done) {
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.getValidReminders().then((reminders) => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
+        /**
+          * @tc.number    
+          * @tc.name      reminderRequestAttribute_0007
+          * @tc.desc      test publishReminder callbacl REMINDER_TYPE_CALENDAR
+          */
+        it("reminderRequestAttribute_0007", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0007---------------------------');
+            let calendar = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: 2024,
+                    month: 1,
+                    day: 31,
+                    hour: 10,
+                    minute: 30,
+                    second: 10
+                },
+                repeatMonths: [3],
+                repeatDays: [6, 7],
+                actionButton: [
+                    {
+                        title: "close",
+                        titleResource: 'English',
+                        type: 0,
+                    },
+                    {
+                        title: "snooze",
+                        titleResource: 'English',
+                        type: 1
+                    }
+                ],
+                wantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                maxScreenWantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                ringDuration: 2,
+                snoozeTimes: 1,
+                timeInterval: 3,
+                title: "this is title",
+                content: "this is content",
+                expiredContent: "this reminder has expired",
+                snoozeContent: "remind later",
+                notificationId: 500,
+                groupId: 'this is groupId',
+            }
+            try {
+                reminderAgent.publishReminder(calendar, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0007 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0007 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.info("reminderRequestAttribute_0007 publishReminder error.code:" + error.code);
+            }
+        })
 
 
-  /*
-   * @tc.name: testReminderHelper013
-   * @tc.desc: test spent time by cancelAllReminders (callback)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper013", 0, async function (done) {
-      function reminderCallback(err, data){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.cancelAllReminders(reminderCallback)
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
+        /**
+          * @tc.number    
+          * @tc.name      reminderRequestAttribute_0008
+          * @tc.desc      test publishReminder promise REMINDER_TYPE_CALENDAR
+          */
+        it("reminderRequestAttribute_0008", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0008---------------------------');
+            let calendar = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
+                dateTime: {
+                    year: 2024,
+                    month: 1,
+                    day: 28,
+                    hour: 13,
+                    minute: 14,
+                    second: 32
+                },
+                repeatMonths: [5],
+                repeatDays: [1, 2, 3, 4, 5],
+                actionButton: [
+                    {
+                        title: "close",
+                        titleResource: 'English',
+                        type: 0,
+                    },
+                    {
+                        title: "snooze",
+                        titleResource: 'English',
+                        type: 1
+                    }
+                ],
+                wantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                maxScreenWantAgent: {
+                    pkgName: "ohos.acts.resourceschedule.reminderagentMgr.js.function",
+                    abilityName: "ohos.acts.resourceschedule.reminderagentMgr.js.function.MainAbility"
+                },
+                ringDuration: 10,
+                snoozeTimes: 3,
+                timeInterval: 30,
+                title: "#",
+                content: "#",
+                expiredContent: "#",
+                snoozeContent: "#",
+                notificationId: 1000,
+                groupId: '#',
+            }
+            try {
+                reminderAgent.publishReminder(calendar).then((reminderId) => {
+                    console.info('reminderRequestAttribute_0008 promise reminderId = ' + reminderId);
+                    expect(reminderId).assertLarger(0);
+                    done();
+                }).catch((err) => {
+                    console.info('reminderRequestAttribute_0008 promise err.code is :' + err.code);
+                });
+            } catch (error) {
+                console.info("reminderRequestAttribute_0008 publishReminder error.code:" + error.code);
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper014
-   * @tc.desc: test spent time by cancelAllReminders (promise)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper014", 0, async function (done) {
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.cancelAllReminders().then(() => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0009
+         * @tc.desc      test getValidReminders callback
+         */
+        it("reminderRequestAttribute_0009", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0009---------------------------');
+            try {
+                reminderAgent.getValidReminders((err, reminders) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0009 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0009 callback reminders.length = ' + reminders.length);
+                        expect(reminders.length).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.info("reminderRequestAttribute_0009 publishReminder error.code:" + error.code);
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper015
-   * @tc.desc: test spent time by addNotificationSlot (callback)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper015", 0, async function (done) {
-      function reminderCallback(err, data){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.addNotificationSlot(1, reminderCallback)
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0010
+         * @tc.desc      test getValidReminders promise
+         */
+        it("reminderRequestAttribute_0010", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0010---------------------------');
+            try {
+                reminderAgent.getValidReminders().then((reminders) => {
+                    console.info('reminderRequestAttribute_0010 promise reminders.length = ' + reminders.length);
+                    expect(reminders.length).assertLarger(0);
+                    done();
+                }).catch((err) => {
+                    console.info('reminderRequestAttribute_0010 promise err.code is :' + err.code);
+                })
+            } catch (error) {
+                console.info("reminderRequestAttribute_0010 getValidReminders error.code:" + error.code);
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper016
-   * @tc.desc: test spent time by addNotificationSlot (promise)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper016", 0, async function (done) {
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      try {
-          reminderAgent.addNotificationSlot(1).then(() => {
-              let end = getTime();
-              let times = end - begin;
-              if (times < 50) {
-                  expect(true).assertTrue();
-              } else {
-                  expect(false).assertTrue();
-              }
-          })
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0011
+         * @tc.desc      test cancelAllReminders callback.
+         */
+        it("reminderRequestAttribute_0011", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0011---------------------------');
+            try {
+                reminderAgent.cancelAllReminders((err, data) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0011 cancelAllReminders callback er.code:' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0011 cancelAllReminders callback date =' + data);
+                        expect(true).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.info("reminderRequestAttribute_0011 cancelAllReminders error.code:" + error.code);
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper017
-   * @tc.desc: test spent time by removeNotificationSlot (callback)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper017", 0, async function (done) {
-      var tarRemoveSlot = {
-          type: 1
-      }
-      function reminderCallback(err, data){
-          let end = getTime();
-          times = end - begin;
-          if (times < 50) {
-              expect(true).assertTrue();
-          } else {
-              expect(false).assertTrue();
-          }
-          setTimeout(() => {
-              done();
-          }, 500);
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      let begin = getTime();
-      let times = 0;
-      try {
-          reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
-              begin = getTime();
-              reminderAgent.removeNotificationSlot(1, reminderCallback)
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name    reminderRequestAttribute_0012
+         * @tc.desc    test addNotificationSlot promise mySlot type 3
+         */
+        it('reminderRequestAttribute_0012', 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0012---------------------------');
+            let mySlot = {
+                type: 5
+            }
+            try {
+                reminderAgent.addNotificationSlot(mySlot).then(() => {
+                    console.info('reminderRequestAttribute_0012  promise mySliot.type is :' + mySlot.type)
+                    expect(mySlot.type).assertEqual(5);
+                    done();
+                }, (err) => {
+                    console.info('reminderRequestAttribute_0012 promise err.code is :' + err.code)
+                });
+            } catch (error) {
+                console.info('reminderRequestAttribute_0012 addNotificationSlot error.code is :' + error.code)
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper018
-   * @tc.desc: test spent time by cancelAllReminders (promise)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper018", 0, async function (done) {
-      var tarRemoveSlot = {
-          type: 1
-      }
-      function getTime(){
-          var time = new Date();
-          var Milliseconds = time.getTime();
-          return Milliseconds;
-      }
-      try {
-          reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
-              let begin = getTime();
-              reminderAgent.removeNotificationSlot(tarRemoveSlot.type).then(() => {
-                  let end = getTime();
-                  let times = end - begin;
-                  if (times < 50) {
-                      expect(true).assertTrue();
-                  } else {
-                      expect(false).assertTrue();
-                  }
-              })
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      
-      setTimeout(() => {
-          done();
-      }, 500);
-  })
+        /**
+         * @tc.number  
+         * @tc.name    reminderRequestAttribute_0013
+         * @tc.desc    test removeNotificationSlot promise
+         */
+        it('reminderRequestAttribute_0013', 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0013---------------------------');
+            try {
+                reminderAgent.removeNotificationSlot(5).then(() => {
+                    console.info("reminderRequestAttribute_0013 promise success");
+                    expect(true).assertTrue();
+                    done();
+                }).catch((err) => {
+                    console.info("reminderRequestAttribute_0013 promise err.code:" + err.code);
+                });
+            } catch (error) {
+                console.info("removeNotificationSlot promise error.code:" + error.code)
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper019
-   * @tc.desc: test publishReminder can return correct reminder id.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper019", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      let expectId = -1;
-      try {
-          reminderAgent.publishReminder(timer).then((reminderId) => {
-              expectId = reminderId + 1;
-              try {
-                  reminderAgent.publishReminder(timer).then((reminderId) => {
-                      if (reminderId === expectId){
-                          expect(true).assertTrue();
-                          setTimeout(() => {
-                              done();
-                          }, 500);
-                      }
-                  }, (error) => {
-                      expect(false).assertTrue();
-                      setTimeout(() => {
-                          done();
-                      }, 500);
-                  });
-              } catch (e) {
-                  expect(false).assertTrue();
-              };
-              
-          });
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-  })
+        /**
+         * @tc.number   
+         * @tc.name    reminderRequestAttribute_0014
+         * @tc.desc    test addNotificationSlot callback mySlot type 2
+         */
+        it('reminderRequestAttribute_0014', 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0014---------------------------');
+            let mySlot = {
+                type: 10086
+            }
+            try {
+                reminderAgent.addNotificationSlot(mySlot, (err) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0014 callback err.code is :' + err.code)
+                    } else {
+                        console.info('reminderRequestAttribute_0014 callback success ')
+                    }
+                });
+            } catch (error) {
+                console.info('reminderRequestAttribute_0014 addNotificationSlot error.code is :' + error.code)
+                expect(error.code).assertEqual('401');
+                done();
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper020
-   * @tc.desc: test publishReminder can return correct reminder id.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper020", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      let expectId = -1;
-      function reminderCallback(err, reminderId) {
-          expect(reminderId).assertEqual(expectId);
-      }
-      try {
-          reminderAgent.publishReminder(timer, (err, reminderId) => {
-              expectId = reminderId + 1;
-              try {
-                  reminderAgent.publishReminder(timer, reminderCallback);
-              } catch (e) {
-                  expect(false).assertTrue();
-              };
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number  
+         * @tc.name    reminderRequestAttribute_0015
+         * @tc.desc    test removeNotificationSlot callback
+         */
+        it('reminderRequestAttribute_0015', 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0015---------------------------');
+            try {
+                reminderAgent.removeNotificationSlot(10086, (err) => {
+                    if (err) {
+                        console.info("reminderRequestAttribute_0015 callback err.code:" + err.code);
+                    } else {
+                        console.info("reminderRequestAttribute_0015 callback success");
+                    }
+                });
+            } catch (error) {
+                console.info("reminderRequestAttribute_0015 removeNotificationSlot error.code:" + error.code)
+                expect(error.code).assertEqual(401);
+                done();
+            }
+        })
 
-  /*
-   * @tc.name: testReminderHelper021
-   * @tc.desc: test addNotificationSlot instance with null
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper021", 0, async function (done) {
-      function reminderCallback(err, data){
-          expect(true).assertEqual(true);
-      }
-      try {
-          reminderAgent.addNotificationSlot(0, reminderCallback);
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
 
-  /*
-   * @tc.name: testReminderHelper022
-   * @tc.desc: test addNotificationSlot instance with null
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper022", 0, async function (done) {
-      let mySlot = null;
-      let promise = new Promise((resolve, reject) => {
-          try {
-              reminderAgent.addNotificationSlot(mySlot).then(() => {
-                  resolve();
-              })
-          } catch (e) {
-              expect(true).assertTrue();
-          };
-          reject(new Error('errr occurred.'));
-      });
-      promise.then(() => {
-      }, err => {
-          let i = 0;
-          expect(0).assertEqual(i);
-      }).catch(res => {});
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0016
+         * @tc.desc      test UNKNOWN_TYPE default parameter with 0.
+         */
+        it("reminderRequestAttribute_0016", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0016---------------------------');
+            let type = notificationManager.SlotType.UNKNOWN_TYPE;
+            expect(type).assertEqual(0);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper023
-   * @tc.desc: test addNotificationSlot with normal value
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper023", 0, async function (done) {
-      let mySlot = {
-          type: 2
-      }
-      try {
-          reminderAgent.addNotificationSlot(mySlot).then(() => {
-              let i = 0;
-              expect(i).assertEqual(0);
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0017
+         * @tc.desc      test SOCIAL_COMMUNICATION default parameter with 1.
+         */
+        it("reminderRequestAttribute_0017", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0017---------------------------');
+            let type = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+            expect(type).assertEqual(1);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper024
-   * @tc.desc: test addNotificationSlot with normal value
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper024", 0, async function (done) {
-      try {
-          reminderAgent.addNotificationSlot(3, (err, data) => {
-              let i = 0;
-              expect(i).assertEqual(0);
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0018
+         * @tc.desc      test SERVICE.INFORMATION default parameter with 2.
+         */
+        it("reminderRequestAttribute_0018", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0018---------------------------');
+            let type = notificationManager.SlotType.SERVICE_INFORMATION;
+            expect(type).assertEqual(2);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper025
-   * @tc.desc: test cancelAllReminders can cancel all exist reminders
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper025", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          }
-      }
-      try {
-          reminderAgent.publishReminder(timer).then((reminderId) => {});
-          reminderAgent.publishReminder(calendar).then((reminderId) => {});
-          setTimeout(() => {
-              reminderAgent.cancelAllReminders().then(() => {
-                  reminderAgent.getValidReminders().then((reminders) => {
-                      expect(reminders.length === 0).assertEqual(true);
-                  });
-              });
-          }, 5000);
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0019
+         * @tc.desc      test CONTENT_INFORMATION default parameter with 3.
+         */
+        it("reminderRequestAttribute_0019", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0019---------------------------');
+            let type = notificationManager.SlotType.CONTENT_INFORMATION;
+            expect(type).assertEqual(3);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper026
-   * @tc.desc: test cancelAllReminders can cancel all exist reminders
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper026", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          }
-      }
-      try {
-          reminderAgent.publishReminder(timer).then((reminderId) => {});
-          reminderAgent.publishReminder(calendar).then((reminderId) => {});
-          setTimeout(() => {
-              reminderAgent.cancelAllReminders((err, data) => {
-                  reminderAgent.getValidReminders().then((reminders) => {
-                      expect(reminders.length === 0).assertEqual(true);
-                  });
-              });
-          }, 5000);
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0020
+         * @tc.desc      test CONTENT_INFORMATION default parameter with 3.
+         */
+        it("reminderRequestAttribute_0020", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0020---------------------------');
+            let type = notificationManager.SlotType.CUSTOMER_SERVICE;
+            expect(type).assertEqual(5);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper027
-   * @tc.desc: test cancelReminder with not exit reminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper027", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      let publishlength = -1;
-      let cancellength = -1;
-      let firstdiff = -1;
-      try {
-          reminderAgent.publishReminder(timer).then(() => {
-              reminderAgent.getValidReminders().then((reminders) => {
-                  publishlength=reminders.length
-                  reminderAgent.cancelReminder(0).then(() => {
-                      reminderAgent.getValidReminders().then((reminders) => {
-                          cancellength = reminders.length
-                          firstdiff = publishlength - cancellength;
-                          expect(0).assertEqual(firstdiff);
-                      });
-                  });
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0021
+         * @tc.desc      test OTHER_TYPES default parameter with 65535.
+         */
+        it("reminderRequestAttribute_0021", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0021`---------------------------');
+            let type = notificationManager.SlotType.OTHER_TYPES;
+            expect(type).assertEqual(65535);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper028
-   * @tc.desc: test cancelReminder with not exit reminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper028", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      let publishlength = -1;
-      let cancellength = -1;
-      let firstdiff = -1;
-      try {
-          reminderAgent.publishReminder(timer).then(() => {
-              reminderAgent.getValidReminders((err, reminders) => {
-                  publishlength = reminders.length;
-                  reminderAgent.cancelReminder(0, (err, data)=>{
-                      reminderAgent.getValidReminders((err, reminders) => {
-                          cancellength = reminders.length;
-                          firstdiff = publishlength - cancellength;
-                          expect(0).assertEqual(firstdiff);
-                      });
-                  });
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0022
+         * @tc.desc      test button close default parameter with 0.
+         */
+        it("reminderRequestAttribute_0022", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0022---------------------------');
+            let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
+            expect(button).assertEqual(0);
+            done();
+        })
 
-      /*
-   * @tc.name: testReminderHelper029
-   * @tc.desc: test cancelReminder with exist reminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper029", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      let publishlength = -1;
-      let cancellength = -1;
-      let firstdiff = -1;
-      try {
-          reminderAgent.publishReminder(alarm, (err, reminderId) => {
-              reminderAgent.getValidReminders((err, reminders) => {
-                  publishlength = reminders.length;
-              });
-              setTimeout(() => {
-                  reminderAgent.cancelReminder(reminderId, (err, data) => {
-                      reminderAgent.getValidReminders((err, reminders) => {
-                          cancellength = reminders.length;
-                          firstdiff = publishlength - cancellength;
-                          if (firstdiff === 0 || firstdiff === 1) {
-                              expect(0).assertEqual(firstdiff);
-                          }
-                      });
-                  });
-              }, 1000);
-          });
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0023
+         * @tc.desc      test button snooze default parameter with 1.
+         */
+        it("reminderRequestAttribute_0023", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0023---------------------------');
+            let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
+            expect(button).assertEqual(1);
+            done();
+        })
 
-  /*
-   * @tc.name: testReminderHelper030
-   * @tc.desc: test cancelReminder with exist reminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper030", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      let publishlength = -1;
-      let cancellength = -1;
-      let firstdiff = -1;
-      try {
-          reminderAgent.publishReminder(alarm, (err, reminderId) => {
-              reminderAgent.getValidReminders((err, reminders) => {
-                  publishlength = reminders.length;
-              });
-              setTimeout(() => {
-                  reminderAgent.cancelReminder(reminderId).then(() => {
-                      reminderAgent.getValidReminders((err, reminders) => {
-                          cancellength = reminders.length;
-                          firstdiff = publishlength - cancellength;
-                          if (firstdiff === 0 || firstdiff === 1) {
-                              expect(0).assertEqual(firstdiff);
-                          }
-                      });
-                  });
-              }, 1000);
-          });
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      
-      done();
-  })
+        /**
+         * @tc.number    
+         * @tc.name      reminderRequestAttribute_0024
+         * @tc.desc      test publishReminder REMINDER_TYPE_ALARM 
+         */
+        it("reminderRequestAttribute_0024", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0024---------------------------');
+            try {
+                let alarm = {
+                    reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
+                    hour: 13,
+                    minute: 14,
+                    daysOfWeek: [1, 2, 3, 4, 5]
+                }
+                reminderAgent.publishReminder(alarm).then((reminderId) => {
+                    if (reminderId != -1) {
+                        console.info("reminderRequestAttribute_0024 reminderId =" + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done()
+                    }
+                }).catch((err => {
+                    console.info('reminderRequestAttribute_0024 promise err.code is :' + err.code);
+                }))
+            } catch (error) {
+                console.info("reminderRequestAttribute_0024 publishReminder err.code:" + error.code);
+            }
 
-  /*
-   * @tc.name: testReminderHelper031
-   * @tc.desc: test getValidReminders, verify all the information is correct.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper031", 0, async function (done) {
-      var alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      var timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      try {
-          reminderAgent.cancelAllReminders((err, data) => {
-              reminderAgent.publishReminder(timer, (error, reminderId) => {});
-              reminderAgent.publishReminder(alarm, (error, reminderId) => {});
-              setTimeout(() => {
-                  reminderAgent.getValidReminders().then((reminders) => {
-                      expect(reminders.length).assertEqual(2);
-                  });
-              }, 1000);
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper032
-   * @tc.desc: test getValidReminders, verify all the information is correct.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper032", 0, async function (done) {
-      var alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      var timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      try {
-          reminderAgent.cancelAllReminders((err, data) => {
-              reminderAgent.publishReminder(timer, (error, reminderId) => {});
-              reminderAgent.publishReminder(alarm, (error, reminderId) => {});
-              setTimeout(() => {
-                  reminderAgent.getValidReminders((err, reminders) => {
-                      expect(reminders.length).assertEqual(2);
-                  });
-              }, 1000);
-          })
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper033
-   * @tc.desc: test removeNotificationSlot with not exist slot.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper033", 0, function (done) {
-      function reminderCallback(err, data){
-          let i = 0;
-          expect(0).assertEqual(i);
-      }
-      try {
-          reminderAgent.removeNotificationSlot(0, reminderCallback);
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper034
-   * @tc.desc: test removeNotificationSlot with not exist slot.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper034", 0, function (done) {
-     let promise = new Promise((resolve, reject) => {
-          try {
-              reminderAgent.removeNotificationSlot(1).then(() => {
-                  resolve();
-              });
-          } catch (e) {
-              expect(true).assertTrue();
-          };
-         reject(new Error('errr occurred.'));
-     });
-     promise.then(() => {
-     }, err => {
-         let i = 0;
-         expect(0).assertEqual(i);
-     }).catch(res => {});
-     done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper035
-   * @tc.desc: test removeNotificationSlot with exist slot.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper035", 0, async function (done) {
-      var tarRemoveSlot = {
-          type: 1
-      }
-      try {
-          reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
-              reminderAgent.removeNotificationSlot(tarRemoveSlot.type, (err, data) => {
-                  expect(0).assertEqual(err.code);
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper036
-   * @tc.desc: test removeNotificationSlot with exist slot.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper036", 0, async function (done) {
-      var tarRemoveSlot = {
-          type: 1
-      }
-      try {
-          reminderAgent.addNotificationSlot(tarRemoveSlot.type, (err, data) => {
-              reminderAgent.removeNotificationSlot(tarRemoveSlot.type).then(() => {
-                  let i = 0;
-                  expect(0).assertEqual(i);
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper037
-   * @tc.desc: test getValidReminders.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper037", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      try {
-          reminderAgent.publishReminder(timer).then((reminderId) => { });
-          setTimeout(() => {
-              reminderAgent.getValidReminders().then((reminders) => {
-                  expect(reminders.length === 0).assertEqual(true);
-              });
-          }, 5000);
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name:testReminderHelper038
-   * @tc.desc: test getValidReminders.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper038", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 3
-      }
-      try {
-          reminderAgent.publishReminder(timer, (err, data) => { });
-          setTimeout(() => {
-              reminderAgent.getValidReminders((err, reminders) => {
-                  expect(reminders.length === 0).assertEqual(true);
-              });
-          }, 5000);
-      } catch (e) {
-          expect(false).assertTrue();
-      };
-      
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper039
-   * @tc.desc: test publishReminder a normal alarm.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper039", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      let expectId = -1;
-      try {
-          reminderAgent.publishReminder(alarm).then((reminderId) => {
-              expectId = reminderId + 1;
-              reminderAgent.publishReminder(alarm).then((reminderId) => {
-                  if (reminderId === expectId){
-                      expect(reminderId).assertEqual(expectId);
-                  }
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper040
-   * @tc.desc: test publishReminder a normal alarm.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper040", 0, async function (done) {
-      let alarm = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-          hour: 21,
-          minute: 14,
-          title: "this is title",
-          content: "this is content"
-      }
-      let expectId = -1;
-      function reminderCallback(err, reminderId) {
-          expect(reminderId).assertEqual(expectId);
-      }
-      try {
-          reminderAgent.publishReminder(alarm, (err, reminderId) => {
-              expectId = reminderId + 1;
-              reminderAgent.publishReminder(alarm, reminderCallback);
-          })
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper041
-   * @tc.desc: test publishReminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper041", 0, function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          },
-          repeatMonths:[2],
-          repeatDays:[2],
-          actionButton:[
-              {
-                  title:"close",
-                  type:0
-              },
-              {
-                  title:"snooze",
-                  type:1
-              }
-          ],
-          wantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          maxScreenWantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          ringDuration:5,
-          snoozeTimes:2,
-          timeInterval:5,
-          title:"this is title",
-          content:"this is content",
-          expiredContent:"this reminder has expired",
-          snoozeContent:"remind later",
-          notificationId:100,
-          slotType:3
-      }
-      try {
-          reminderAgent.publishReminder(calendar).then((reminderId) => {
-              reminderAgent.getValidReminders().then((reminders) => {
-                  for (let i = 0; i < reminders.length; i++) {
-                      console.log("getValidReminders = " + JSON.stringify(reminders[i]));
-                      console.log("getValidReminders, reminderType = " + reminders[i].reminderType);
-                      for (let j = 0; j < reminders[i].actionButton.length; j++) {
-                          console.log("getValidReminders, actionButton.title = " + reminders[i].actionButton[j].title);
-                          console.log("getValidReminders, actionButton.type = " + reminders[i].actionButton[j].type);
-                      }
-                      console.log("getValidReminders, wantAgent.pkgName = " + reminders[i].wantAgent.pkgName);
-                      console.log("getValidReminders, wantAgent.abilityName = " + reminders[i].wantAgent.abilityName);
-                      console.log("getValidReminders, maxScreenWantAgent.pkgName = "
-                          + reminders[i].maxScreenWantAgent.pkgName);
-                      console.log("getValidReminders, maxScreenWantAgent.abilityName = "
-                          + reminders[i].maxScreenWantAgent.abilityName);
-                      expect(reminders[i].ringDuration).assertEqual(5);
-                      console.log("getValidReminders, ringDuration = " + reminders[i].ringDuration);
-                      expect(reminders[i].snoozeTimes).assertEqual(2);
-                      console.log("getValidReminders, snoozeTimes = " + reminders[i].snoozeTimes);
-                      console.log("getValidReminders, timeInterval = " + reminders[i].timeInterval);
-                      expect(reminders[i].title).assertEqual("this is title");
-                      console.log("getValidReminders, title = " + reminders[i].title);
-                      expect(reminders[i].content).assertEqual("this is content");
-                      console.log("getValidReminders, content = " + reminders[i].content);
-                      expect(reminders[i].expiredContent).assertEqual("this reminder has expired");
-                      console.log("getValidReminders, expiredContent = " + reminders[i].expiredContent);
-                      expect(reminders[i].snoozeContent).assertEqual("remind later");
-                      console.log("getValidReminders, snoozeContent = " + reminders[i].snoozeContent);
-                      expect(reminders[i].notificationId).assertEqual(100);
-                      console.log("getValidReminders, notificationId = " + reminders[i].notificationId);
-                      console.log("getValidReminders, slotType = " + reminders[i].slotType);
-                  }
-              })
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper042
-   * @tc.desc: test publishReminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper042", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          },
-          repeatMonths:[2],
-          repeatDays:[2],
-          actionButton:[
-              {
-                  title:"close",
-                  type:0
-              },
-              {
-                  title:"snooze",
-                  type:1
-              }
-          ],
-          wantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          maxScreenWantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          ringDuration:5,
-          snoozeTimes:2,
-          timeInterval:5,
-          title:"this is title",
-          content:"this is content",
-          expiredContent:"this reminder has expired",
-          snoozeContent:"remind later",
-          notificationId:100,
-          slotType:3
-      }
-      try {
-          reminderAgent.publishReminder(calendar, (err,reminderId) => {
-              reminderAgent.getValidReminders().then((reminders) => {
-                  for (let i = 0; i < reminders.length; i++) {
-                      console.log("getValidReminders = " + JSON.stringify(reminders[i]));
-                      console.log("getValidReminders, reminderType = " + reminders[i].reminderType);
-                      for (let j = 0; j < reminders[i].actionButton.length; j++) {
-                          console.log("getValidReminders, actionButton.title = " + reminders[i].actionButton[j].title);
-                          console.log("getValidReminders, actionButton.type = " + reminders[i].actionButton[j].type);
-                      }
-                      console.log("getValidReminders, wantAgent.pkgName = " + reminders[i].wantAgent.pkgName);
-                      console.log("getValidReminders, wantAgent.abilityName = " + reminders[i].wantAgent.abilityName);
-                      console.log("getValidReminders, maxScreenWantAgent.pkgName = "
-                          + reminders[i].maxScreenWantAgent.pkgName);
-                      console.log("getValidReminders, maxScreenWantAgent.abilityName = "
-                          + reminders[i].maxScreenWantAgent.abilityName);
-                      expect(reminders[i].ringDuration).assertEqual(5);
-                      console.log("getValidReminders, ringDuration = " + reminders[i].ringDuration);
-                      expect(reminders[i].snoozeTimes).assertEqual(2);
-                      console.log("getValidReminders, snoozeTimes = " + reminders[i].snoozeTimes);
-                      console.log("getValidReminders, timeInterval = " + reminders[i].timeInterval);
-                      expect(reminders[i].title).assertEqual("this is title");
-                      console.log("getValidReminders, title = " + reminders[i].title);
-                      expect(reminders[i].content).assertEqual("this is content");
-                      console.log("getValidReminders, content = " + reminders[i].content);
-                      expect(reminders[i].expiredContent).assertEqual("this reminder has expired");
-                      console.log("getValidReminders, expiredContent = " + reminders[i].expiredContent);
-                      expect(reminders[i].snoozeContent).assertEqual("remind later");
-                      console.log("getValidReminders, snoozeContent = " + reminders[i].snoozeContent);
-                      expect(reminders[i].notificationId).assertEqual(100);
-                      console.log("getValidReminders, notificationId = " + reminders[i].notificationId);
-                      console.log("getValidReminders, slotType = " + reminders[i].slotType);
-                  }
-              })
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper043
-   * @tc.desc: test publishReminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper043", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          },
-          repeatMonths:[2],
-          repeatDays:[2],
-          actionButton:[
-              {
-                  title:"close",
-                  type:0
-              },
-              {
-                  title:"snooze",
-                  type:1
-              }
-          ],
-          wantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          maxScreenWantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          ringDuration:5,
-          snoozeTimes:2,
-          timeInterval:5,
-          title:"this is title",
-          content:"this is content",
-          expiredContent:"this reminder has expired",
-          snoozeContent:"remind later",
-          notificationId:100,
-          slotType:3
-      }
-      let expectId = -1;
-      try {
-          reminderAgent.publishReminder(calendar).then((reminderId) => {
-              expectId = reminderId + 1;
-              reminderAgent.publishReminder(calendar).then((reminderId) => {
-                  if (reminderId === expectId){
-                      expect(reminderId).assertEqual(expectId);
-                  }
-              });
-          });
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper044
-   * @tc.desc: test publishReminder.
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper044", 0, async function (done) {
-      let calendar = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
-          dateTime : {
-              year: 2025,
-              month: 10,
-              day: 10,
-              hour: 23,
-              minute: 30
-          },
-          repeatMonths:[2],
-          repeatDays:[2],
-          actionButton:[
-              {
-                  title:"close",
-                  type:0
-              },
-              {
-                  title:"snooze",
-                  type:1
-              }
-          ],
-          wantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          maxScreenWantAgent:{
-              pkgName:"com.test.pkg",
-              abilityName:"com.test.pkg.MainAbility"
-          },
-          ringDuration:5,
-          snoozeTimes:2,
-          timeInterval:5,
-          title:"this is title",
-          content:"this is content",
-          expiredContent:"this reminder has expired",
-          snoozeContent:"remind later",
-          notificationId:100,
-          slotType:3
-      }
-      let expectId = -1;
-      function reminderCallback(err, reminderId) {
-          expect(reminderId).assertEqual(expectId);
-      }
-      try {
-          reminderAgent.publishReminder(calendar, (err, reminderId) => {
-              expectId = reminderId + 1;
-              reminderAgent.publishReminder(calendar, reminderCallback);
-          })
-      } catch (e) {
-          expect(true).assertTrue();
-      };
-      done();
-  })
-
-  /*
-   * @tc.name: testReminderHelper045
-   * @tc.desc: test publishReminder (max number limit of each application)
-   * @tc.type: FUNC
-   */
-  it("testReminderHelper045", 0, async function (done) {
-      let timer = {
-          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-          triggerTimeInSeconds: 100
-      }
-      let maxLimitNumsOfApp = 30;
-      let firstId = 0;
-      let secondId = 0;
-      let diffId = 0;
-      for (let i = 0; i < maxLimitNumsOfApp; i++) {
-          (function (i) {
-              var i = i;
-              setTimeout(function () {
-                  try {
-                      reminderAgent.publishReminder(timer).then((reminderId) => {
-                          if (i === 0) {
-                              firstId = reminderId
-                          }
-                          if (i === 29) {
-                              secondId = reminderId
-                              diffId = secondId - firstId
-                              expect(29).assertEqual(diffId);
-                              i = null
-                          }
-                      });
-                  } catch (e) {
-                      expect(true).assertTrue();
-                  };
-              }, 500 * i);
-          })(i);
-      }
-      done();
-  })
-})
-
+        })
+    })
 }
