@@ -52,7 +52,7 @@ export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
             console.info('test beforeEach called');
         });
 
-        it('Security_HUKS_Agree_API9_EDCH_101', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_ECDH_101', 0, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {
@@ -79,7 +79,7 @@ export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
         });
 
         // abort
-        it('Security_HUKS_Agree_API9_EDCH_102', 0, async function (done) {
+        it('Security_HUKS_Agree_API9_ECDH_102', 0, async function (done) {
             const srcKeyAliesFirst = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_01_101';
             const srcKeyAliesSecond = 'testAgreeECDHSize256Abort63KBAgreeKeyAlias_02_101';
             let huksOptionsFinish = {
