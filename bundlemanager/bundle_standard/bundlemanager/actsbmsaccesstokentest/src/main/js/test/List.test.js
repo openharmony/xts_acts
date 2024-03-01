@@ -14,6 +14,7 @@
  */
 
 import ActsBmsAccessTokenTest from './ActsBmsAccessTokenTest.test.js'
+
 export default function testsuite() {
-ActsBmsAccessTokenTest()
+    ActsBmsAccessTokenTest()
 }
