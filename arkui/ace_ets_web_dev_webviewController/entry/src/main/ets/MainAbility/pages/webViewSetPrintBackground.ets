@@ -20,61 +20,65 @@ import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 
 let loadedUrl;
+
 @Entry
 @Component
 struct webViewSetPrintBackground {
-    controller: web_webview.WebviewController = new web_webview.WebviewController();
-    @State str:string="emitSetPrintBackgroundOne";
-    @State res:boolean = false;
+  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  @State str: string = "emitSetPrintBackgroundOne";
+  @State res: boolean = false;
 
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("web page valueChangeCallBack");
-        if(eventData != null){
-             console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-             if(eventData.data.ACTION != null){
-                 this.str = eventData.data.ACTION;
-             }
-        }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info("web page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
     }
-    build(){
-        Column(){
-            Row() {
-                Button("web click").key('webcomponentSetPrintBackground').onClick(async () => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitSetPrintBackgroundOne" :{
-                            this.controller.runJavaScript("tryPrint()",(error, result) => {
-                                if (error) {
-                                    console.info(`emitSetPrintBackgroundOne runJavaScript error: ` + JSON.stringify(error))
-                                    return;
-                                } else {
-                                    console.log("emitSetPrintBackgroundOne runJavaScript.result: " + result);
-                                }
-                            })
-                            await Utils.sleep(2000);
-                            try {
-                                this.controller.setPrintBackground(false);
-                                await Utils.sleep(2000);
-                                let enable = this.controller.getPrintBackground();
-                                console.info("getPrintBackground: " + enable);
-                                Utils.emitEvent(enable, 214)
-                                console.info("emitSetPrintBackgroundOne  res: " + enable);
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            break;
-                        }
-                    }
-                })
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webcomponentSetPrintBackground').onClick(async () => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitSetPrintBackgroundOne": {
+              this.controller.runJavaScript("tryPrint()", (error, result) => {
+                if (error) {
+                  console.info(`emitSetPrintBackgroundOne runJavaScript error: ` + JSON.stringify(error))
+                  return;
+                } else {
+                  console.log("emitSetPrintBackgroundOne runJavaScript.result: " + result);
+                }
+              })
+              await Utils.sleep(2000);
+              try {
+                this.controller.setPrintBackground(false);
+                await Utils.sleep(2000);
+                let enable = this.controller.getPrintBackground();
+                console.info("getPrintBackground: " + enable);
+                Utils.emitEvent(enable, 214)
+                console.info("emitSetPrintBackgroundOne  res: " + enable);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
             }
-            Web({src:$rawfile('theScroll.html'),controller:this.controller})
-        }
+          }
+        })
+      }
+
+      Web({ src: $rawfile('theScroll.html'), controller: this.controller })
     }
+  }
 }

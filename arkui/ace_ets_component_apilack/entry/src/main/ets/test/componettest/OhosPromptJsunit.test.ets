@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ohosPromptJsunit() {
-  describe('appInfoTest_four_3', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_3', () => {
+    beforeEach(async () => {
       console.info("OhosPrompt beforeEach start");
       let options = {
         uri: 'pages/ohosPrompt',
@@ -38,21 +37,20 @@ export default function ohosPromptJsunit() {
       } catch (err) {
         console.error("push OhosPrompt  page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("OhosPrompt each called");
     });
 
-    it('test_OhosPrompt_001', 0, async function (done) {
+    it('test_OhosPrompt_001', 0, async () => {
       await Utils.sleep(1000)
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         console.info("[test_OhosPrompt_001] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.matrix1).assertEqual("[100, 10]")
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 142,
         priority: events_emitter.EventPriority.LOW
       }
@@ -64,11 +62,7 @@ export default function ohosPromptJsunit() {
       console.info('[test_OhosPrompt_001] sendEventByKey ' + JSON.stringify(sendEventByKey('rotate5', 10, "")));
       await Utils.sleep(1000)
       console.info('[test_OhosPrompt_001] testSendTouchEvent END');
-      done();
+
     });
   })
 }
-
-
-
-

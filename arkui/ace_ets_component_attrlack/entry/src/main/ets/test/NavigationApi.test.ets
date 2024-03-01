@@ -13,16 +13,14 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
-
-
 export default function NavigationApi() {
-  describe('NavigationApi', function () {
-    beforeEach(async function (done) {
+  describe('NavigationApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/NavigationApi',
       }
       try {
@@ -41,7 +39,7 @@ export default function NavigationApi() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("NavigationApi after each called");
     });
@@ -54,19 +52,16 @@ export default function NavigationApi() {
      * @tc.type
      * @tc.size
      */
-    it('NavigationApi_001', 0, async function (done) {
+    it('NavigationApi_001', 0, async (done: Function) => {
       console.info('[NavigationApi_001] START');
       await Utils.sleep(2000);
 
-      let strJson = getInspectorByKey('NavigationApi_Navigation');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('NavigationApi_Navigation');
       await Utils.sleep(1000);
-      console.info("[NavigationApi_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Navigation');
-
+      console.info("[NavigationApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Navigation');
       console.info('[NavigationApi_001] END');
       done();
-
     });
   })
 }

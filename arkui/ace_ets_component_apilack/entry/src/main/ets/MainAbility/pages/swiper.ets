@@ -45,7 +45,6 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct SwiperCurve {
-
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource = new MyDataSource([])
 
@@ -58,18 +57,23 @@ struct SwiperCurve {
     this.data = new MyDataSource(list)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear SwiperCurve end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Column({ space: 5 }) {
 
         Swiper(this.swiperController) {
           LazyForEach(this.data, (item: string) => {
-            Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(20)
+            Text(item)
+              .width('90%')
+              .height(160)
+              .backgroundColor(0xAFEEEE)
+              .textAlign(TextAlign.Center)
+              .fontSize(20)
           }, item => item)
         }
         .key("swiper")

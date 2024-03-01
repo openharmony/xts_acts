@@ -12,20 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct FlexBase_End {
-  @State testHeight: number = 150
-  @State testWidth: number = 450
-  messageManager:MessageManager = new MessageManager()
+  @State testHeight: number = 150;
+  @State testWidth: number = 450;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "FlexBase_End Page";
+
   onPageShow() {
     console.info('FlexBase_Center onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
@@ -33,7 +39,7 @@ struct FlexBase_End {
       if (message.name == 'width') {
         this.testWidth = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -41,7 +47,7 @@ struct FlexBase_End {
     console.info('FlexBase_End page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexBase_1').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -53,7 +59,7 @@ struct FlexBase_End {
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('textFlex01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textFlex02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textFlex03')
-        } 
+        }
         .key('flex01')
         .height(this.testHeight)
         .width(this.testWidth)

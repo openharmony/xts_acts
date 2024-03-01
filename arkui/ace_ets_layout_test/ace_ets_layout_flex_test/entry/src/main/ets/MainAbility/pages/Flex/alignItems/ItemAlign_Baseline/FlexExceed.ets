@@ -12,20 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct FlexExceed_Baseline {
   @State testPadding: number = 0
   @State testMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "FlexExceed_Baseline Page";
+
   onPageShow() {
     console.info('FlexBase_Center onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
@@ -33,7 +39,7 @@ struct FlexExceed_Baseline {
       if (message.name == 'margin') {
         this.testMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -41,7 +47,7 @@ struct FlexExceed_Baseline {
     console.info('FlexExceed_Baseline page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexExceed_1').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -53,7 +59,7 @@ struct FlexExceed_Baseline {
           Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('textExceed01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textExceed02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textExceed03')
-        } 
+        }
         .key('flexExceed01')
         .height(200)
         .width(500)

@@ -29,7 +29,7 @@ import gridMaxCountJsunit from './grid.test.ets';
 import gridItemOnSelectJsunit from './gridItem.test.ets';
 import grid_colSpanJsunit from './grid_col.test.ets';
 import grid_rowOnBreakpointChangeJsunit from './grid_row.test.ets';
-import inspectorJsunit from  './inspector.test.ets'
+import inspectorJsunit from './inspector.test.ets'
 import lazyForEachOnDataAddJsunit from './lazyForEach.test.ets';
 import lineNeJsunit from './line.test.ets';
 import listNewJsunit from './listTest.test.ets';

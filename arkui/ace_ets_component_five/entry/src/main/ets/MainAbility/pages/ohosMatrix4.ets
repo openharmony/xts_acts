@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,28 +27,35 @@ struct ohosMatrix4 {
     centerY: 8,
     angle: 300
   }
-  @State translateValue: object= { x: 100, y: 5 }
-  @State scaleValue: object= { x: 2, y: 0.5 }
-  @State transformValue: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
-  @State transformValue1: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
-  @State matrix1: object= Matrix4.identity().transformPoint([100, 10])
+  @State scaleValue: ScaleOptions = { x: 2, y: 0.5 }
+  @State transformValue: object = Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
+  @State transformValue1: object = Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
+  @State matrix1: object = Matrix4.identity().transformPoint([100, 10])
   @State matrix2: Matrix4.Matrix4Transit = Matrix4.identity().translate({ x: 300 }).copy()
   @State matrix3: Matrix4.Matrix4Transit = Matrix4.identity().scale({ x: 3 }).copy()
-  @State matrix4: object = Matrix4.identity().rotate({x:1, y:1, z:2, angle:30})
-  @State matrix5: object = Matrix4.identity().scale({x:5, y:1, z:1, centerX:50, centerY:50})
-  @State matrix6: object = Matrix4.identity().translate({x:100, y:200, z:30})
-  @State matrix7: Matrix4.Matrix4Transit = Matrix4.identity().translate({ x: 300 }).combine(Matrix4.identity().scale({ x: 3 }));
-  @State onClickValue:boolean = false;
-
-  private stateChangCallBack = (eventData) => {
+  @State matrix4: object = Matrix4.identity().rotate({ x: 1, y: 1, z: 2, angle: 30 })
+  @State matrix5: object = Matrix4.identity()
+    .scale({
+      x: 5,
+      y: 1,
+      z: 1,
+      centerX: 50,
+      centerY: 50
+    })
+  @State matrix6: object = Matrix4.identity().translate({ x: 100, y: 200, z: 30 })
+  @State matrix7: Matrix4.Matrix4Transit = Matrix4.identity()
+    .translate({ x: 300 })
+    .combine(Matrix4.identity().scale({ x: 3 }));
+  @State onClickValue: boolean = false;
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("transFormExample page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("eventData value is");
       if (eventData.data.matrix2 != null && eventData.data.matrix3 != null) {
         let matrixV = Matrix4.identity().translate(eventData.data.matrix2);
         if (matrixV != null) {
-           this.matrix2 = Matrix4.identity().translate(eventData.data.matrix2).copy();
-           this.matrix3 = Matrix4.identity().scale(eventData.data.matrix3).copy();
+          this.matrix2 = Matrix4.identity().translate(eventData.data.matrix2).copy();
+          this.matrix3 = Matrix4.identity().scale(eventData.data.matrix3).copy();
         }
       } else {
         console.info("this.matrix value is not");
@@ -66,7 +72,7 @@ struct ohosMatrix4 {
   onPageShow() {
     console.info('transFormExample page show called');
 
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 140,
       priority: events_emitter.EventPriority.LOW
     }
@@ -75,7 +81,11 @@ struct ohosMatrix4 {
 
   build() {
     Column() {
-      Text('rotate').width('10%').fontColor(0xCCCCCC).padding(5).fontSize(5)
+      Text('rotate')
+        .width('10%')
+        .fontColor(0xCCCCCC)
+        .padding(5)
+        .fontSize(5)
       Row()
         .rotate(this.rotateValue)
         .width(10)
@@ -83,7 +93,11 @@ struct ohosMatrix4 {
         .backgroundColor(0xAFEEEE)
         .key('rotate')
 
-      Text('translate').width('10%').fontColor(0xCCCCCC).padding(5).fontSize(5)
+      Text('translate')
+        .width('10%')
+        .fontColor(0xCCCCCC)
+        .padding(5)
+        .fontSize(5)
       Row()
         .translate(this.transformValue)
         .width(10)
@@ -92,7 +106,11 @@ struct ohosMatrix4 {
         .margin({ bottom: 10 })
         .key('rotate2')
 
-      Text('scale').width('90%').fontColor(0xCCCCCC).padding(5).fontSize(5)
+      Text('scale')
+        .width('90%')
+        .fontColor(0xCCCCCC)
+        .padding(5)
+        .fontSize(5)
       Row()
         .scale(this.scaleValue)
         .width(10)
@@ -100,7 +118,11 @@ struct ohosMatrix4 {
         .backgroundColor(0xAFEEEE)
         .key('rotate3')
 
-      Text('Matrix4').width('10%').fontColor(0xCCCCCC).padding(5).fontSize(5)
+      Text('Matrix4')
+        .width('10%')
+        .fontColor(0xCCCCCC)
+        .padding(5)
+        .fontSize(5)
       Row()
         .width(10)
         .height(10)
@@ -112,13 +134,13 @@ struct ohosMatrix4 {
           prompt.showToast({ message: JSON.stringify(this.matrix1), duration: 200 })
           this.onClickValue = true;
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "matrix1": "[100, 10]",
                 "ACTION": this.onClickValue
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 141,
               priority: events_emitter.EventPriority.LOW
             }
@@ -135,12 +157,14 @@ struct ohosMatrix4 {
         .height(100)
         .margin({ top: 5 })
         .key('rotate6')
-      Image('/images/bg.jpg').transform(this.matrix4)
+      Image('/images/bg.jpg')
+        .transform(this.matrix4)
         .padding(5)
         .width("40%")
         .height(100)
         .key('rotate7')
-      Image('/images/bg.jpg').transform(this.matrix5)
+      Image('/images/bg.jpg')
+        .transform(this.matrix5)
         .padding(5)
         .width("40%")
         .height(100)
@@ -149,6 +173,8 @@ struct ohosMatrix4 {
         .width("40%")
         .height(100)
         .key('rotate9')
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

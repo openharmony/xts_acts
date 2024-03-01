@@ -14,6 +14,7 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import { expect } from '@ohos/hypium';
 import fs from '@ohos.file.fs';
 import buffer from '@ohos.buffer';
@@ -63,6 +64,7 @@ let sizes = [
   { width: 720, height: 720 },
   { width: 1000, height: 1000 }
 ]
+const fetchOptions_allocate_file = initFetchOptions()
 
 export function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, photoAsset, onCallback1){
   if(uriSet){
@@ -73,7 +75,7 @@ export function checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, phot
       phAccessHelper.unRegisterChange(photoAsset.uri);
     }
   }else{
-    phAccessHelper.registerChange(DEFAULT_PHOTO_URI, forChildUris, onCallback1);
+    phAccessHelper.registerChange(DEFAULT_PHOTO_URI, true, onCallback1);
     if(callBackSet){
       phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
     }else {
@@ -110,9 +112,32 @@ export function checkReadAndWrite(fd){
   })
 }
 
+export function getPhotoAssetAttrs(photoAsset){
+  let photoAssetUri: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.URI.toString());
+  expect(photoAssetUri).not().assertUndefined()
+  console.info('photoAsset.uri : ' + photoAssetUri);
+  let photoAssetType: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.PHOTO_TYPE.toString());
+  expect(photoAssetType).not().assertUndefined()
+  console.info('photoAsset.photoType : ' + photoAssetType);
+  let photoAssetName: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.DISPLAY_NAME.toString());
+  expect(photoAssetName).not().assertUndefined()
+  console.info('photoAsset.displayName : ' + photoAssetName);
+}
+
+export function initFetchOptions(){
+  let predicates_getThumbnail: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions_allocate_file: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates_getThumbnail
+  };
+  predicates_getThumbnail.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, "addCb01.jpg")
+  return fetchOptions_allocate_file
+}
+
 export {
   columns,
   photoExtensions,
   videoExtensions,
-  sizes
+  sizes,
+  fetchOptions_allocate_file
 };

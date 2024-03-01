@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function sidebarIconsJsunit() {
-  describe('sidebarIconsTest', function () {
-    beforeEach(async function (done) {
+  describe('sidebarIconsTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/sidebar',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/sidebar',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function sidebarIconsJsunit() {
         console.info("get sidebar state success " + JSON.stringify(pages));
         if (!("sidebarIcons" == pages.name)) {
           console.info("get sidebar state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push sidebar page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function sidebarIconsJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sidebarIcons after each called");
     });
@@ -50,15 +50,14 @@ export default function sidebarIconsJsunit() {
      * @tc.name         testsidebarIcons0011
      * @tc.desic         acesidebarIconsEtsTest0011
      */
-    it('testsidebarIcons0011', 0, async function (done) {
+    it('testsidebarIcons0011', 0, async (done: Function) => {
       console.info('sidebarIcons testsidebarIcons0011 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('SideBarContainer');
+      let strJson: string = getInspectorByKey('SideBarContainer');
       console.info("[testsidebarIcons0011] component controlButton strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('SideBarContainer');
-      expect(obj.$attrs.controlButton.icons).assertEqual(undefined);
-      console.info("[testsidebarIcons0011] controlButton value :" + obj.$attrs.controlButton);
+      expect(JSON.parse(strJson).$type).assertEqual('SideBarContainer');
+      expect(JSON.parse(strJson).$attrs.controlButton.icons).assertEqual(undefined);
+      console.info("[testsidebarIcons0011] controlButton value :" + JSON.parse(strJson).$attrs.controlButton);
       done();
     });
   })

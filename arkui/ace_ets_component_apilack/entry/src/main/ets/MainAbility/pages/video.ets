@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct VideoOnFullscreenChange {
-
   @State srcs: Resource = $rawfile('videoTest.mp4');
   @State currentProgressRates: number = 1;
   @State autoPlays: boolean = false;
@@ -30,18 +30,20 @@ struct VideoOnFullscreenChange {
     Log.showInfo(TAG, `aboutToAppear VideoOnFullscreenChange start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear VideoOnFullscreenChange end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Video({
         src: this.srcs,
         currentProgressRate: this.currentProgressRates,
         controller: this.controller
-      }).width(600).height(400)
+      })
+        .width(600)
+        .height(400)
         .autoPlay(this.autoPlays)
         .key("onFullscreenChangeText")
         .onStart(() => {
@@ -52,8 +54,8 @@ struct VideoOnFullscreenChange {
           console.info('screen is changed')
           console.error('screen is changed')
           console.warn('screen is changed')
-          try{
-            var backData = {
+          try {
+            let backData: events_emitter.EventData = {
               data: {
                 "result": "success"
               }
@@ -64,7 +66,7 @@ struct VideoOnFullscreenChange {
             }
             console.info("video_101 onClick start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch(err) {
+          } catch (err) {
             console.info("video_101 onClick emit action state err: " + JSON.stringify(err.message))
           }
         })
@@ -95,13 +97,13 @@ struct VideoOnFullscreenChange {
           .onClick(() => {
             this.controller.requestFullscreen(true);
             console.info("video_101 onClick start to fullScreen");
-        });
+          });
 
         Button("ExitFullScreen")
           .key("exitFullScreen")
           .onClick(() => {
-          this.controller.exitFullscreen()
-        });
+            this.controller.exitFullscreen()
+          });
       }
 
       Row() {
@@ -115,7 +117,7 @@ struct VideoOnFullscreenChange {
           this.controller.stop();
         });
       }
-    
+
     }.width("100%").height("100%")
   }
 }

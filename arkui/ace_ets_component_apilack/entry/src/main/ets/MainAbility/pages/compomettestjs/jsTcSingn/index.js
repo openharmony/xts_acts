@@ -16,8 +16,8 @@
 export default {
     data: {
         title: "",
-        watchVal:"123",
-        Version:"1.0"
+        watchVal: "123",
+        Version: "1.0"
     },
     onInit() {
         this.$watch("watchVal", "onwatch")
@@ -64,7 +64,6 @@ export default {
     onwatch(newVal, oldVal) {
         console.log("watch newVal = " + newVal + ",oldVal =" + oldVal)
     },
-   
 }
 
 

@@ -17,6 +17,7 @@
 import uiAppearance from '@ohos.uiAppearance';
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
 
 const TAG = 'ets_apiLack_add';
 uiAppearance.DarkMode.ALWAYS_DARK
@@ -24,17 +25,16 @@ uiAppearance.DarkMode.ALWAYS_DARK
 @Entry
 @Component
 struct UiAppearanceALWAYS_DARK {
-
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear UiAppearanceALWAYS_DARK start`)
+    Log.showInfo(TAG, `aboutToAppear UiAppearanceALWAYS_DARK start`);
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear UiAppearanceALWAYS_DARK end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear UiAppearanceALWAYS_DARK end`);
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("uiAppearance-ALWAYS_DARK")
         .width(100)
@@ -49,24 +49,24 @@ struct UiAppearanceALWAYS_DARK {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ALWAYS_DARKText")
-        .onClick(()=>{
-          uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (err) => {
+        .onClick(() => {
+          uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK, (err: BusinessError) => {
             console.info(`${err}`);
           })
-          let darkMode = uiAppearance.getDarkMode();
-          try{
-            var backData = {
+          let darkMode: ESObject = uiAppearance.getDarkMode();
+          try {
+            let backData: events_emitter.EventData = {
               data: {
                 "Mode": darkMode
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60308,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("AlwaysDark start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch(err) {
+          } catch (err) {
             console.info("AlwaysDark emit action state err: " + JSON.stringify(err.message))
           }
         })
@@ -84,28 +84,28 @@ struct UiAppearanceALWAYS_DARK {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ALWAYS_LIGHTText")
-        .onClick(()=>{
-          uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_LIGHT, (err) => {
+        .onClick(() => {
+          uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_LIGHT, (err: BusinessError) => {
             console.info(`${err}`);
           })
-          let darkMode = uiAppearance.getDarkMode();
-          try{
-            var backData = {
+          let darkMode: ESObject = uiAppearance.getDarkMode();
+          try {
+            let backData: events_emitter.EventData = {
               data: {
                 "Mode": darkMode
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60309,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("AlwaysLight start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch(err) {
+          } catch (err) {
             console.info("AlwaysLight emit action state err: " + JSON.stringify(err.message))
           }
         })
-    
+
     }.width("100%").height("100%")
   }
 }

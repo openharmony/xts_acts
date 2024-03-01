@@ -18,21 +18,21 @@ import configurationConstant from '@ohos.app.ability.ConfigurationConstant';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function Configuration() {
-  describe("Configuration", function () {
+  describe("Configuration", () => {
 
-    beforeAll(async function () {
+    beforeAll(async () => {
       console.info("beforeAll case");
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info("beforeEach case");
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info('afterEach case');
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll case");
     });
 
@@ -44,7 +44,7 @@ export default function Configuration() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testColorMode001', 0, async function (done) {
+    it('testColorMode001', 0, async (done: Function) => {
       try {
         let colorMode = globalThis.colorMode;
         let context: common.UIAbilityContext = globalThis.abilityContext;
@@ -77,7 +77,7 @@ export default function Configuration() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testDirection001', 0, async function (done) {
+    it('testDirection001', 0, async (done: Function) => {
       try {
         let direction = globalThis.direction;
         let context: common.UIAbilityContext = globalThis.abilityContext;

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function sliderMovingJsunit() {
-  describe('sliderMovingTest', function () {
-    beforeEach(async function (done) {
+  describe('sliderMovingTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/slider',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/slider',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function sliderMovingJsunit() {
         console.info("get slider state success " + JSON.stringify(pages));
         if (!("sliderMoving" == pages.name)) {
           console.info("get slider state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push slider page success " + JSON.stringify(result));
         }
@@ -41,27 +41,26 @@ export default function sliderMovingJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sliderMoving after each called");
     });
 
-    it('testsliderMoving0011', 0, async function (done) {
+    it('testsliderMoving0011', 0, async (done: Function) => {
       console.info('sliderMoving testsliderMoving0011 START');
       await Utils.sleep(2000);
       try {
-        var event = {
+        let event: events_emitter.InnerEvent = {
           eventId: 60307,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
-          try
-            {
-              console.info("testsliderMoving0011 get event data is: " + JSON.stringify(eventData));
-              expect(eventData.data.Mode).assertEqual(0);
-            } catch(err) {
-               console.info("testsliderMoving0011 get event err data is: " + JSON.stringify(err));
-            }
+        let callback = (eventData: events_emitter.EventData) => {
+          try {
+            console.info("testsliderMoving0011 get event data is: " + JSON.stringify(eventData));
+            expect(eventData.data.Mode).assertEqual(0);
+          } catch (err) {
+            console.info("testsliderMoving0011 get event err data is: " + JSON.stringify(err));
+          }
         }
         events_emitter.on(event, callback);
         console.info("testsliderMoving0011 click result is: " + JSON.stringify(sendEventByKey('Slider', 10, "")));

@@ -1,5 +1,3 @@
-// @ts-nocheck
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +24,10 @@ struct PatternLockTest {
   @State color3: string = '#20B2AA';
   @State color4: string = '#BDB76B';
   @State color5: string = '#FF8C00';
-  @State stroke: number= 30;
-  @State isAutoReset: boolean= true;
+  @State stroke: number = 30;
+  @State isAutoReset: boolean = true;
   private patternLockController: PatternLockController = new PatternLockController();
+
   onPageShow() {
     console.info('patternLock page show called');
   }
@@ -36,6 +35,7 @@ struct PatternLockTest {
   onBuildDone() {
     console.info('patternLock page build done called');
   }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       PatternLock(this.patternLockController)
@@ -54,7 +54,7 @@ struct PatternLockTest {
             return;
           }
           console.info(input.toString());
-          if (input.Length < 4) {
+          if (input.length < 4) {
             this.patternLockController.reset()
             return
           }

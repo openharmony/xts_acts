@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexBase_AutoJsunit() {
-  describe('flexItemAlignAutoTest3', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexBase',
+  describe('flexItemAlignAutoTest3', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexBase',
       }
       try {
         router.clear();
@@ -29,37 +31,40 @@ export default function flexBase_AutoJsunit() {
         console.info("get FlexBase state success " + JSON.stringify(pages));
         if (!("FlexBase" == pages.name)) {
           console.info("get FlexBase state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexBase page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexBase after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0100
-     * @tc.name      testFlexItemAlignAutoFlexWidHeiMeet
-     * @tc.desc      The subcomponent is inside the parent component when the width of parent component set to 500,
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_0100
+     * @tc.name testFlexItemAlignAutoFlexWidHeiMeet
+     * @tc.desc The subcomponent is inside the parent component when the width of parent component set to 500,
      *               the height of parent component set to 200.
      */
-    it('testFlexItemAlignAutoFlexWidHeiMeet', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexWidHeiMeet', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiMeet START');
-      globalThis.value.message.notify({name:'height', value:200});
-      globalThis.value.message.notify({name:'width', value:500});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'height', value: 200
+      });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'width', value: 500
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
-      let textFlex01 = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02 = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03 = CommonFunc.getComponentRect('textFlex03');
-      let flex01 = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
       expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue();
       expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue();
       expect(Math.abs(textFlex02.top - textFlex03.top) <= 1).assertTrue();
@@ -74,29 +79,32 @@ export default function flexBase_AutoJsunit() {
       expect(Math.abs(Math.round(textFlex01.right - textFlex01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textFlex02.right - textFlex02.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textFlex03.right - textFlex03.left) - Math.round(vp2px(150))) <= 1).assertTrue();
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexWidHeiMeet END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0200
-     * @tc.name      testFlexItemAlignAutoFlexWidHeiOverflow
-     * @tc.desc      The subcomponent exceeds the parent component when the width of parent component set to 420,
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_0200
+     * @tc.name testFlexItemAlignAutoFlexWidHeiOverflow
+     * @tc.desc The subcomponent exceeds the parent component when the width of parent component set to 420,
      *               the height of parent component set to 140.
      */
-    it('testFlexItemAlignAutoFlexWidHeiOverflow', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexWidHeiOverflow', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexWidHeiOverflow START');
-      globalThis.value.message.notify({name:'height', value:140});
-      globalThis.value.message.notify({name:'width', value:420});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'height', value: 140
+      });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'width', value: 420
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flex01');
-      let obj1 = JSON.parse(strJson1);
-      let textFlex01 = CommonFunc.getComponentRect('textFlex01');
-      let textFlex02 = CommonFunc.getComponentRect('textFlex02');
-      let textFlex03 = CommonFunc.getComponentRect('textFlex03');
-      let flex01 = CommonFunc.getComponentRect('flex01');
+      let textFlex01: RectValue = CommonFunc.getComponentRect('textFlex01');
+      let textFlex02: RectValue = CommonFunc.getComponentRect('textFlex02');
+      let textFlex03: RectValue = CommonFunc.getComponentRect('textFlex03');
+      let flex01: RectValue = CommonFunc.getComponentRect('flex01');
       expect(Math.abs(flex01.top - textFlex01.top) <= 1).assertTrue();
       expect(Math.abs(textFlex01.top - textFlex02.top) <= 1).assertTrue();
       expect(Math.abs(textFlex02.top - textFlex03.top) <= 1).assertTrue();
@@ -110,10 +118,10 @@ export default function flexBase_AutoJsunit() {
       expect(Math.abs(Math.round(textFlex02.right - textFlex02.left) - Math.round(vp2px(140))) <= 1).assertTrue();
       expect(Math.abs(Math.round(textFlex03.right - textFlex03.left) - Math.round(vp2px(140))) <= 1).assertTrue();
 
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexWidHeiOverflow END');
-      done();
+
     });
   })
 }
