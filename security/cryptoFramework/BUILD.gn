@@ -18,6 +18,7 @@ group("cryptoFramework") {
     deps = [
       "js_api10_test_oh50:ActsCryptoFrameworkAPI12JSFuncTest",
       "js_api10_test_oh41:ActsCryptoFrameworkAPI10JSFuncTest",
+	  "js_api10_test_oh50:ActsCryptoFrameworkAPI12JSFuncTest",
       "js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "js_api_test_oh41:ActsCryptoFrameworkThreeJSFuncTest",
       "js_api_test_one:ActsCryptoFrameworkJSNormalTest",
