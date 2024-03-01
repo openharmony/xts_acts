@@ -13,56 +13,58 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
+
 
 export default function stepperJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('stepperTest', function () {
+  describe('stepperTest', () => {
 
     /**
-    * run after testcase
-    */
-    afterEach(async function () {
-      console.info('[stepperTest] after each called')
+     * run after testcase
+     */
+    afterEach(async () => {
+      console.info('[stepperTest] after each called');
       router.clear();
-      await sleep(1)
+      await sleep(1);
     });
 
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1400
-     * @tc.name      testStepper010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1400
+     * @tc.name testStepper010
+     * @tc.desc aceEtsTest
      */
-    it('testStepper010', 0, async function (done) {
+    it('testStepper010', 0, async (done: Function) => {
       console.info('testStepper010 START');
-      let options = {
-        uri: 'MainAbility/pages/Stepper',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Stepper',
       }
       try {
         let result = await router.push(options)
         console.info("push stepper page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("push stepper page error " + JSON.stringify(result));
+        console.error("push stepper page error " + JSON.stringify(err));
       }
-      await sleep(1)
+      await sleep(1);
       let strJson = getInspectorByKey('stepper');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[stepper] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Stepper')
-      expect(obj.$attrs.index).assertEqual('0')
+      expect(obj.$type).assertEqual('Stepper');
+      expect(obj.$attrs.index).assertEqual('0');
       console.info('testStepper010 End');
       done();
     });
