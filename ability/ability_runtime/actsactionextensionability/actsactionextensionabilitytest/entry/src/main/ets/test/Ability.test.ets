@@ -85,10 +85,16 @@ export default function abilityTest() {
           }
           if (data.event == 'ACTS_TEST_DESTROY') {
             expect(data.parameters.count).assertEqual(6);
+            console.info(`====>Acts_ActionExtensionAbility_0100 20240301: ACTS_TEST_DESTROY ${data.parameters.count}`);
             setTimeout(() => {
               commonEvent.unsubscribe(subscriber, async () => {
-                await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0100');
-                await AppStorage.get<Function>("terminateCalledAbility")('Acts_ActionExtensionAbility_0100');
+                if (AppStorage.get<Function>("terminate")!) {
+                  console.info(`====>Acts_ActionExtensionAbility_0100 20240301: AppStorage terminate is exists`);
+                } else {
+                  console.info(`====>Acts_ActionExtensionAbility_0100 20240301: AppStorage terminate is not exists`);
+                }
+                await AppStorage.get<Function>("terminate")!('Acts_ActionExtensionAbility_0100');
+                await AppStorage.get<Function>("terminateCalledAbility")!('Acts_ActionExtensionAbility_0100');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_0100 unSubscribeCallback`);
                   done();
