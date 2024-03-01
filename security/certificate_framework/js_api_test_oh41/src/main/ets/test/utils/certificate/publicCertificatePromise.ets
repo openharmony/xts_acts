@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -438,11 +438,7 @@ function verifyX509CRLPromise(crlType: string, flag?: string | cryptoFramework.P
         expect(convertKeyPair != null).assertTrue();
         let pubKey = convertKeyPair.pubKey;
         if (flag != undefined) {
-          if (flag != "error") {
-            pubKey = flag as cryptoFramework.PubKey;
-          } else {
-            pubKey = convertKeyPair.priKey;
-          }
+          pubKey = flag as cryptoFramework.PubKey;
         }
         return globalCrlInstance.verify(pubKey);
       })
