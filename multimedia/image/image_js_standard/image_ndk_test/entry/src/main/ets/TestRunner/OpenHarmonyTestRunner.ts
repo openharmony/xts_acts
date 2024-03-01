@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,13 +54,13 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
     abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
+    let testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
     let lMonitor = {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
-    var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
+    let cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     console.info('cmd : ' + cmd);
     abilityDelegator.executeShellCommand(cmd,
@@ -71,7 +70,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         console.info('executeShellCommand : data : ' + d.exitCode);
       });
     console.info('OpenHarmonyTestRunner onRun call abilityDelegator.getAppContext');
-    var context = abilityDelegator.getAppContext();
+    let context = abilityDelegator.getAppContext();
     console.info('getAppContext : ' + JSON.stringify(context));
     console.info('OpenHarmonyTestRunner onRun end');
   }
