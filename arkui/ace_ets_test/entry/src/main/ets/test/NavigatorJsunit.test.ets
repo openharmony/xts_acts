@@ -13,30 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function navigatorJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('navigatorTest', function () {
-    beforeEach(async function (done) {
+  describe('navigatorTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Navigator',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Navigator state success " + JSON.stringify(pages));
         if (!("Navigator" == pages.name)) {
@@ -45,80 +45,76 @@ export default function navigatorJsunit() {
           console.info("push Navigator page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Navigator page error " + JSON.stringify(result));
+        console.error("push Navigator page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Navigator after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0420
-     * @tc.name      navigatorTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0420
+     * @tc.name navigatorTest001
+     * @tc.desc aceEtsTest
      */
-    it('navigatorTest001', 0, async function (done) {
+    it('navigatorTest001', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('navigator');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s target is ' + JSON.stringify(obj.$attrs.target))
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      console.log('Navigator‘s active is ' + JSON.stringify(obj.$attrs.active))
-      console.log('Navigator‘s params is ' + JSON.stringify(obj.$attrs.params))
-      expect(obj.$attrs.target).assertEqual('pages/index')
-      expect(obj.$attrs.type).assertEqual('NavigationType.Back')
-      expect(obj.$attrs.active).assertEqual('false')
-      expect(obj.$attrs.params).assertEqual(JSON.stringify({
-        "data": 24
+      console.log('Navigator‘s target is ' + JSON.stringify(JSON.parse(strJson).$attrs.target))
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('Navigator‘s active is ' + JSON.stringify(JSON.parse(strJson).$attrs.active))
+      console.log('Navigator‘s params is ' + JSON.stringify(JSON.parse(strJson).$attrs.params))
+      expect(JSON.parse(strJson).$attrs.target).assertEqual('pages/index')
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Back')
+      expect(JSON.parse(strJson).$attrs.active).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.params).assertEqual(JSON.stringify({
+        data: 24
       }))
       console.info('++++++++++++++++ Navigator TestCase 1 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0430
-     * @tc.name      navigatorTest002
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0430
+     * @tc.name navigatorTest002
+     * @tc.desc aceEtsTest
      */
-    it('navigatorTest002', 0, async function (done) {
+    it('navigatorTest002', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 2 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('navigator2');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      expect(obj.$attrs.type).assertEqual('NavigationType.Push')
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Push')
       console.info('++++++++++++++++ Navigator TestCase 2 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0440
-     * @tc.name      navigatorTest003
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0440
+     * @tc.name navigatorTest003
+     * @tc.desc aceEtsTest
      */
-    it('navigatorTest003', 0, async function (done) {
+    it('navigatorTest003', 0, async () => {
       console.info('++++++++++++++++ Navigator TestCase 3 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('navigator3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Navigator')
-      console.log('Navigator‘s type is ' + JSON.stringify(obj.$attrs.type))
-      expect(obj.$attrs.type).assertEqual('NavigationType.Replace')
+      console.log('Navigator‘s type is ' + JSON.stringify(JSON.parse(strJson).$attrs.type))
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('NavigationType.Replace')
       console.info('++++++++++++++++ Navigator TestCase 3 End ++++++++++++++++');
-      done();
     });
   })
 }

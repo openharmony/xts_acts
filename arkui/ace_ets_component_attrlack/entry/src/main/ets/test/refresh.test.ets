@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function refreshDragJsunit() {
-  describe('refreshDragTest', function () {
-    beforeEach(async function (done) {
+  describe('refreshDragTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/refresh',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/refresh',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function refreshDragJsunit() {
         console.info("get refresh state success " + JSON.stringify(pages));
         if (!("refresh" == pages.name)) {
           console.info("get refresh state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push refresh page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function refreshDragJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("refreshDrag after each called");
     });
@@ -51,15 +51,15 @@ export default function refreshDragJsunit() {
      * @tc.name         testrefreshDrag0011
      * @tc.desic         acerefreshDragEtsTest0011
      */
-    it('testrefreshDrag0011', 0, async function (done) {
+    it('testrefreshDrag0011', 0, async (done: Function) => {
       console.info('refreshDrag testrefreshDrag0011 START');
       await Utils.sleep(2000);
       try {
-        var event = {
+        let event: events_emitter.InnerEvent = {
           eventId: 60304,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testrefreshDrag0011 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(true);
           done();
@@ -77,15 +77,15 @@ export default function refreshDragJsunit() {
      * @tc.name         testrefreshRefresh0001
      * @tc.desic         acerefreshRefreshEtsTest0001
      */
-    it('testrefreshRefresh0001', 0, async function (done) {
+    it('testrefreshRefresh0001', 0, async (done: Function) => {
       console.info('refreshDrag testrefreshRefresh0001 START');
       await Utils.sleep(2000);
       try {
-        var eventTwo = {
+        let eventTwo: events_emitter.InnerEvent = {
           eventId: 60305,
           priority: events_emitter.EventPriority.LOW
         }
-        var callbackTwo = (eventData) => {
+        let callbackTwo = (eventData: events_emitter.EventData) => {
           console.info("testrefreshRefresh0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(true);
           done();

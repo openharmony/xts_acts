@@ -23,6 +23,7 @@ group("ai") {
       "mindspore/mindsporectest:ActsMindSporeTest",
       "mindspore/mindsporejstest:ActsMindsporeJSTest",
       "mindspore/mindsporendktest:ActsMindSporeNdkTest",
+      "nnrtndk:ActsAInnrtNdkTest",
     ]
   }
 }

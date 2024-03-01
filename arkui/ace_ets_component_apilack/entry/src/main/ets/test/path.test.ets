@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function pathNewTest() {
-  describe('pathNewTest', function () {
-    beforeAll(async function (done) {
+  describe('pathNewTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/path',
@@ -37,10 +37,9 @@ export default function pathNewTest() {
       } catch (err) {
         console.error("push path page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("pathNe after each called");
     });
@@ -50,16 +49,16 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0001
      * @tc.desic         acepathNeEtsTest0001
      */
-    it('testpathNe0001', 0, async function (done) {
+    it('testpathNe0001', 0, async () => {
       console.info('pathNe testpathNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Path');
-      expect(obj.$attrs.width).assertEqual("100.00px");
-      console.info("[testpathNe0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00px");
+      console.info("[testpathNe0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0002
      * @tc.desic         acepathNeEtsTest0002
      */
-    it('testpathNe0002', 0, async function (done) {
+    it('testpathNe0002', 0, async () => {
       console.info('pathNe testpathNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Path');
-      expect(obj.$attrs.height).assertEqual("100.00px");
-      console.info("[testpathNe0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00px");
+      console.info("[testpathNe0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function pathNewTest() {
      * @tc.name         testpathNe0003
      * @tc.desic         acepathNeEtsTest0003
      */
-    it('testpathNe0003', 0, async function (done) {
+    it('testpathNe0003', 0, async () => {
       console.info('pathNe testpathNe0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Path');
-      expect(obj.$attrs.commands).assertEqual("M150 0 L300 300 L0 300 Z");
-      console.info("[testpathNe0003] commands value :" + obj.$attrs.commands);
-      done();
+      expect(JSON.parse(strJson).$attrs.commands).assertEqual("M150 0 L300 300 L0 300 Z");
+      console.info("[testpathNe0003] commands value :" + JSON.parse(strJson).$attrs.commands);
+
     });
   })
 }

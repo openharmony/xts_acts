@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function canvasActualBoundingBoxAscentJsunit() {
-  describe('canvasActualBoundingBoxAscentTest', function () {
-    beforeEach(async function (done) {
+  describe('canvasActualBoundingBoxAscentTest', () =>{
+    beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/canvas',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/canvas',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function canvasActualBoundingBoxAscentJsunit() {
         console.info("get canvas state success " + JSON.stringify(pages));
         if (!("canvas" == pages.name)) {
           console.info("get canvas state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push canvas page success " + JSON.stringify(result));
         }
@@ -40,70 +40,68 @@ export default function canvasActualBoundingBoxAscentJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("canvasActualBoundingBoxAscent after each called");
     });
 
-    it('testcanvasAttributes0001', 0, async function (done) {
+    it('testcanvasAttributes0001', 0, async (done:Function) => {
       console.info('canvasAttributes0001 testcanvasAttributes0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Canvas');
+      let strJson: string = getInspectorByKey('Canvas');
       console.info("[testcanvasAttributes0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas');
-      expect(obj.$attrs.width).assertEqual("100.00%");
-      console.info("[testcanvasAttributes0001] width value :" + obj.$attrs.width);
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00%");
+      console.info("[testcanvasAttributes0001] width value :" + JSON.parse(strJson).$attrs.width);
       done();
     });
 
-    it('testcanvasAttributes0002', 0, async function (done) {
+    it('testcanvasAttributes0002', 0, async (done:Function) => {
       console.info('canvasAttributes0002 testcanvasAttributes0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Canvas');
+      let strJson: string = getInspectorByKey('Canvas');
       console.info("[testcanvasAttributes0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas');
-      expect(obj.$attrs.height).assertEqual("100.00%");
-      console.info("[testcanvasAttributes0002] height value :" + obj.$attrs.height);
+      
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas');
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00%");
+      console.info("[testcanvasAttributes0002] height value :" + JSON.parse(strJson).$attrs.height);
       done();
     });
 
-    it('testcanvasAttributes0003', 0, async function (done) {
+    it('testcanvasAttributes0003', 0, async (done:Function) => {
       console.info('canvasAttributes0003 testcanvasAttributes0003 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Canvas');
+      let strJson: string = getInspectorByKey('Canvas');
       console.info("[testcanvasAttributes0003] component backgroundColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas');
-      expect(obj.$attrs.backgroundColor).assertEqual("#FFFFFF00");
-      console.info("[testcanvasAttributes0003] backgroundColor value :" + obj.$attrs.backgroundColor);
+      
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas');
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("#FFFFFF00");
+      console.info("[testcanvasAttributes0003] backgroundColor value :" + JSON.parse(strJson).$attrs.backgroundColor);
       done();
     });
 
-    it('testcanvasAttributes0004', 0, async function (done) {
+    it('testcanvasAttributes0004', 0, async (done:Function) => {
       console.info('canvasAttributes0003 testcanvasAttributes0004 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Canvas');
+      let strJson: string = getInspectorByKey('Canvas');
       console.info("[testcanvasAttributes0004] component position strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas');
-      expect(obj.$attrs.position.x).assertEqual("3.00vp");
-      console.info("[testcanvasAttributes0004] position value :" + obj.$attrs.position);
+      
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas');
+      expect(JSON.parse(strJson).$attrs.position.x).assertEqual("3.00vp");
+      console.info("[testcanvasAttributes0004] position value :" + JSON.parse(strJson).$attrs.position);
       done();
     });
 
-    it('testcanvasAttributes0005', 0, async function (done) {
+    it('testcanvasAttributes0005', 0, async (done:Function) => {
       console.info('canvasAttributes0005 testcanvasAttributes0004 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Canvas');
+      let strJson: string = getInspectorByKey('Canvas');
       console.info("[testcanvasAttributes0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas');
-      expect(obj.$attrs.align).assertEqual("Alignment.Center");
-      console.info("[testcanvasAttributes0005] align value :" + obj.$attrs.align);
+      
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas');
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.Center");
+      console.info("[testcanvasAttributes0005] align value :" + JSON.parse(strJson).$attrs.align);
       done();
     });
-
   })
 }

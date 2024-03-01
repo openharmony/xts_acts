@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_NoWrap_LayoutWeightTest() {
-  describe('Flex_NoWrap_LayoutWeightTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_NoWrap_LayoutWeightTest', () => {
+    beforeEach(async () => {
       console.info("Flex_NoWrap_LayoutWeightTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_LayoutWeight',
       }
       try {
@@ -29,7 +31,7 @@ export default function flex_NoWrap_LayoutWeightTest() {
         console.info("get Flex_NoWrap_LayoutWeight state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_LayoutWeight" == pages.name)) {
           console.info("get Flex_NoWrap_LayoutWeight state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(1000);
           console.info("push Flex_NoWrap_LayoutWeight page result:" + JSON.stringify(result));
         }
@@ -37,32 +39,38 @@ export default function flex_NoWrap_LayoutWeightTest() {
         console.error("push Flex_NoWrap_LayoutWeight page error:" + err);
       }
       console.info("Flex_NoWrap_LayoutWeightTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_NoWrap_LayoutWeight after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1400
-     * @tc.name      testWrapNoWrapTextLayoutWeight
-     * @tc.desc      The size of the parent component in the main axis direction meets the layout of
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1400
+     * @tc.name testWrapNoWrapTextLayoutWeight
+     * @tc.desc The size of the parent component in the main axis direction meets the layout of
      *               the child components,and LayoutWeight of the child components set different values
      */
-    it('testWrapNoWrapTextLayoutWeight', 0, async function (done) {
+    it('testWrapNoWrapTextLayoutWeight', 0, async () => {
       console.info('[testWrapNoWrapTextLayoutWeight] START');
-      globalThis.value.message.notify({ name: 'firstTextLayoutWeight', value: 1 })
-      globalThis.value.message.notify({ name: 'secondTextLayoutWeight', value: 2 })
-      globalThis.value.message.notify({ name: 'thirdTextLayoutWeight', value: 3 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'firstTextLayoutWeight', value: 1
+      })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'secondTextLayoutWeight', value: 2
+      })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'thirdTextLayoutWeight', value: 3
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_LayoutWeight01');
-      let secondText = CommonFunc.getComponentRect('NoWrap_LayoutWeight02');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_LayoutWeight03');
-      let flexContainer = CommonFunc.getComponentRect('Flex_NoWrap_layoutWeight_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_LayoutWeight01');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_LayoutWeight02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_LayoutWeight03');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_layoutWeight_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_layoutWeight_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       expect(Math.abs((firstText.top) - (flexContainer.top)) <= 1).assertTrue();
       expect(Math.abs((firstText.top) - (secondText.top)) <= 1).assertTrue();
       expect(Math.abs((secondText.top) - (thirdText.top)) <= 1).assertTrue();
@@ -77,10 +85,12 @@ export default function flex_NoWrap_LayoutWeightTest() {
       expect(Math.abs((firstText.left) - (flexContainer.left)) <= 1).assertTrue();
       expect(Math.abs((thirdText.right) - (flexContainer.right)) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(2 * (firstText.right - firstText.left))) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-      expect(Math.abs((Math.round((1.5 * (secondText.right - secondText.left)) * 10) / 10) - (Math.round((thirdText.right - thirdText.left) * 10) / 10)) <= 1).assertTrue();
+      expect(Math.abs((Math.round(2 * (firstText.right - firstText.left))) - (Math.round(secondText.right - secondText.left))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round((1.5 * (secondText.right - secondText.left)) * 10) / 10) - (Math.round((thirdText.right - thirdText.left) * 10) / 10)) <= 1)
+        .assertTrue();
       console.info('[testWrapNoWrapTextLayoutWeight] END');
-      done();
+
     });
   })
 }

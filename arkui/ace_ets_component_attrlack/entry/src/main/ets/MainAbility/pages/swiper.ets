@@ -25,9 +25,9 @@ struct SwiperMask {
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear SwiperMask start`)
-    let list = []
-    for (var i = 1; i <= 5; i++) {
-      list.push(i.toString());
+    let list: number[] = []
+    for (let i = 1; i <= 5; i++) {
+      list.push(i);
     }
     this.data = new MyDataSource(list)
   }
@@ -61,7 +61,7 @@ struct SwiperMask {
               .backgroundColor(0xAFEEEE)
               .textAlign(TextAlign.Center)
               .fontSize(20)
-          }, item => item)
+          }, (item: string) => item)
         }
         .cachedCount(2)
         .index(1)
@@ -98,7 +98,7 @@ class MyDataSource implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): number | string {
     return this.list[index]
   }
 

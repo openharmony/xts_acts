@@ -40,7 +40,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     console.info(TAG, `UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`);
     let storage = new LocalStorage({
       'session': session
-    });
+    })
     session.loadContent('pages/Index', storage);
     globalThis.session = session;
   }

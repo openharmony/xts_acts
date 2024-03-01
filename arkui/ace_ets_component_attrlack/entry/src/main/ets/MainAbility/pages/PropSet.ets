@@ -14,7 +14,7 @@
  */
 @Component
 struct PropSetChild {
-  @Prop message: Set<number> = new Set([1, 2 ,3 ])
+  @Prop message: Set<number> = new Set([1, 2, 3])
 
   build() {
     Column() {
@@ -23,43 +23,42 @@ struct PropSetChild {
         Divider()
       })
       Button('init set').id("propSet_init")
-        .onClick(() =>{
-          this.message = new Set([1, 2 ,3 ])
-      }).margin(10)
+        .onClick(() => {
+          this.message = new Set([1, 2, 3])
+        }).margin(10)
 
       Button('set new one').id("propSet_set")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.add(5)
-      }).margin(10)
+        }).margin(10)
 
       Button('clear').id("propSet_clear")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.clear()
-          if (Array.from(this.message.entries())){
+          if (Array.from(this.message.entries())) {
             this.message.add(0)
           }
-      }).margin(10)
+        }).margin(10)
 
       Button('delete the first one').id("propSet_delete")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.delete(0)
-      })
+        })
     }
     .width('100%')
   }
 }
 
 
-
 @Entry
 @Component
 struct PropSetSample11 {
-  @State message: Set<number> = new Set([1, 2 ,3 ])
+  @State message: Set<number> = new Set([1, 2, 3])
 
   build() {
     Row() {
       Column() {
-        PropSetChild({message:this.message})
+        PropSetChild({ message: this.message })
       }
       .width('100%')
     }

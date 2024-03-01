@@ -14,16 +14,29 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from './Utils.ets'
 
 export default function LinkSet() {
-  describe('LinkSet', function () {
-    beforeEach(async function (done) {
+  describe('LinkSet', () => {
+    beforeEach(async (done: Function) => {
       console.info("LinkSet beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/LinkSet',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/LinkSet',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function LinkSet() {
         console.info("get LinkSet state pages: " + JSON.stringify(pages));
         if (!("LinkSet" == pages.name)) {
           console.info("get LinkSet state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push LinkSet success: " + JSON.stringify(result));
         }
@@ -49,9 +62,9 @@ export default function LinkSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkSet_0100', 0, async function (done) {
+    it('LinkSet_0100', 0, async (done: Function) => {
       console.info('LinkSet_0100 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkSet_init'));
       await btn_init.click();
@@ -59,11 +72,11 @@ export default function LinkSet() {
       let button = await driver.findComponent(ON.id('LinkSet_set'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkSet_value_5');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkSet_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkSet_0100] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('5');
+      let strJson: string = getInspectorByKey('LinkSet_value_5');
+
+      console.info("[LinkSet_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkSet_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('5');
       console.info('[LinkSet_0100] END');
       done();
     });
@@ -75,9 +88,9 @@ export default function LinkSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkSet_0200', 0, async function (done) {
+    it('LinkSet_0200', 0, async (done: Function) => {
       console.info('LinkSet_0200 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkSet_init'));
       await btn_init.click();
@@ -85,11 +98,11 @@ export default function LinkSet() {
       let button = await driver.findComponent(ON.id('LinkSet_clear'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkSet_value_0');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkSet_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkSet_0200] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('0');
+      let strJson: string = getInspectorByKey('LinkSet_value_0');
+
+      console.info("[LinkSet_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkSet_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0');
       console.info('[LinkSet_0200] END');
       done();
     });
@@ -101,9 +114,9 @@ export default function LinkSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkSet_0300', 0, async function (done) {
+    it('LinkSet_0300', 0, async (done: Function) => {
       console.info('LinkSet_0300 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkSet_init'));
       await btn_init.click();
@@ -111,14 +124,13 @@ export default function LinkSet() {
       let button = await driver.findComponent(ON.id('LinkSet_delete'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkSet_value_2');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkSet_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkSet_0300] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('2');
+      let strJson: string = getInspectorByKey('LinkSet_value_2');
+
+      console.info("[LinkSet_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkSet_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('2');
       console.info('[LinkSet_0300] END');
       done();
     });
-
   })
 }

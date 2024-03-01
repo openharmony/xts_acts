@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +30,7 @@ struct ColumnExample {
 
   onPageShow() {
     this.animation.onrepeat(() => {
-      var repeatoptions = {
+      let repeatoptions = {
         duration: 2000,
         iterations: 1,
         direction: 'alternate',
@@ -61,7 +60,7 @@ struct ColumnExample {
             this.animation.play();
           });
           Button('update').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            var newoptions = {
+            let newoptions = {
               duration: 5000,
               iterations: 2,
               begin: 120,
@@ -71,7 +70,7 @@ struct ColumnExample {
             this.animation.play();
           });
           Button('create').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            var newoptions = {
+            let newoptions = {
               duration: 5000,
               easing: 'friction',
               delay: 0,

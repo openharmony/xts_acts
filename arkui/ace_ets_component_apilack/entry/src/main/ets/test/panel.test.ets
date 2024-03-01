@@ -15,12 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function panelBackgroundMaskJsunit() {
-  describe('panelBackgroundMaskTest', function () {
-    beforeAll(async function (done) {
+  describe('panelBackgroundMaskTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/panel',
@@ -38,10 +38,9 @@ export default function panelBackgroundMaskJsunit() {
       } catch (err) {
         console.error("push panel page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("panelBackgroundMask after each called");
     });
@@ -51,17 +50,17 @@ export default function panelBackgroundMaskJsunit() {
      * @tc.name         testpanelBackgroundMask0001
      * @tc.desic         acepanelBackgroundMaskEtsTest0001
      */
-    it('testpanelBackgroundMask0001', 0, async function (done) {
+    it('testpanelBackgroundMask0001', 0, async () => {
       console.info('panelBackgroundMask testpanelBackgroundMask0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('panel');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Panel')
-      console.log('Panel‘s backgroundMask is ' + JSON.stringify(obj.$attrs.backgroundMask))
-      expect(obj.$attrs.backgroundMask).assertEqual('#FF00FF00');
-      done();
+      console.log('Panel‘s backgroundMask is ' + JSON.stringify(JSON.parse(strJson).$attrs.backgroundMask))
+      expect(JSON.parse(strJson).$attrs.backgroundMask).assertEqual('#FF00FF00');
+
     });
 
     /*
@@ -69,19 +68,19 @@ export default function panelBackgroundMaskJsunit() {
      * @tc.name         testpanelOnHeightChange0002
      * @tc.desic         acepanelBackgroundMaskEtsTest0002
      */
-    it('testpanelOnHeightChange0002', 0, async function (done) {
+    it('testpanelOnHeightChange0002', 0, async () => {
       console.info('panelBackgroundMask testpanelOnHeightChange0002 START');
-      var panelOnHeightChangeEvent = {
+      let panelOnHeightChangeEvent: events_emitter.InnerEvent = {
         eventId: 10111,
         priority: events_emitter.EventPriority.LOW
       }
-      var callback1 = (backData) => {
+      let callback1 = (backData) => {
         console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data.result);
-        try{
-          console.info("testpanelOnHeightChange0002 callback1 success" );
+        try {
+          console.info("testpanelOnHeightChange0002 callback1 success");
           expect(backData.data.result).assertEqual("success");
-          done();
-        }catch(err){
+
+        } catch (err) {
           console.info("testpanelOnHeightChange0002 on events_emitter err : " + JSON.stringify(err));
         }
       }

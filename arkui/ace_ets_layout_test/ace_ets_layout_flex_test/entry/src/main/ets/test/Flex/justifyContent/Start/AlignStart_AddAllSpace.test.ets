@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignStart_AddAllSpace() {
-  describe('AlignStart_AddAllSpace', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddAllSpace'
+  describe('AlignStart_AddAllSpace', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/Start/AlignStart_AddAllSpace'
       }
       try {
         router.clear();
@@ -28,7 +30,7 @@ export default function AlignStart_AddAllSpace() {
         console.info("get AlignStart_AddAllSpace state success " + JSON.stringify(pages));
         if (!("AlignStart_AddAllSpace" == pages.name)) {
           console.info("get AlignStart_AddAllSpace state pages.name " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push AlignStart_AddAllSpace page success " + JSON.stringify(result));
         }
@@ -36,86 +38,112 @@ export default function AlignStart_AddAllSpace() {
         console.error("push AlignStart_AddAllSpace page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignStart_AddAllSpace after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600
-     * @tc.name      testFlexAlignStartFlexSpaceOverflow
-     * @tc.desc      the space of the parent component set to 20
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0600
+     * @tc.name testFlexAlignStartFlexSpaceOverflow
+     * @tc.desc the space of the parent component set to 20
      */
-    it('testFlexAlignStartFlexSpaceOverflow', 0, async function (done) {
+    it('testFlexAlignStartFlexSpaceOverflow', 0, async () => {
       console.info('[testFlexAlignStartFlexSpaceOverflow] START');
-      globalThis.value.message.notify({ name: 'DadAllSpace', value: 30 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'DadAllSpace', value: 30
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddAllSpace_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let Start_AddAllSpace_011 = CommonFunc.getComponentRect('Start_AddAllSpace_011');
-      let Start_AddAllSpace_012 = CommonFunc.getComponentRect('Start_AddAllSpace_012');
-      let Start_AddAllSpace_013 = CommonFunc.getComponentRect('Start_AddAllSpace_013');
-      let Start_AddAllSpace_01 = CommonFunc.getComponentRect('Start_AddAllSpace_01');
-      let Start_AddAllSpace_01_Box = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      let Start_AddAllSpace_011: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_011');
+      let Start_AddAllSpace_012: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_012');
+      let Start_AddAllSpace_013: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_013');
+      let Start_AddAllSpace_01: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_01');
+      let Start_AddAllSpace_01_Box: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
       expect(Math.abs(Start_AddAllSpace_011.top - Start_AddAllSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_012.top - Start_AddAllSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_012.left - Start_AddAllSpace_011.right) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_013.left - Start_AddAllSpace_012.right) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.top - Start_AddAllSpace_01.top)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.left - Start_AddAllSpace_01.left)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.right - Start_AddAllSpace_013.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left)) - (Math.round(vp2px(440 / 3)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.top - Start_AddAllSpace_01.top)) - (Math.round(vp2px(30)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.left - Start_AddAllSpace_01.left)) - (Math.round(vp2px(30)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.right - Start_AddAllSpace_013.right)) - (Math.round(vp2px(30)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left)) - (Math.round(vp2px(440 / 3)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left)) - (Math.round(vp2px(440 / 3)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left)) - (Math.round(vp2px(440 / 3)))) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignStartFlexSpaceOverflow] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700
-     * @tc.name      testFlexAlignStartFlexSpaceMeet
-     * @tc.desc      the space of the parent component set to 20
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_START_TEST_0700
+     * @tc.name testFlexAlignStartFlexSpaceMeet
+     * @tc.desc the space of the parent component set to 20
      */
-    it('testFlexAlignStartFlexSpaceMeet', 0, async function (done) {
+    it('testFlexAlignStartFlexSpaceMeet', 0, async () => {
       console.info('[testFlexAlignStartFlexSpaceMeet] START');
-      globalThis.value.message.notify({ name: 'DadAllSpace', value: 20 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'DadAllSpace', value: 20
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Start_AddAllSpace_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
-      let Start_AddAllSpace_011 = CommonFunc.getComponentRect('Start_AddAllSpace_011');
-      let Start_AddAllSpace_012 = CommonFunc.getComponentRect('Start_AddAllSpace_012');
-      let Start_AddAllSpace_013 = CommonFunc.getComponentRect('Start_AddAllSpace_013');
-      let Start_AddAllSpace_01 = CommonFunc.getComponentRect('Start_AddAllSpace_01');
-      let Start_AddAllSpace_01_Box = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
+      let Start_AddAllSpace_011: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_011');
+      let Start_AddAllSpace_012: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_012');
+      let Start_AddAllSpace_013: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_013');
+      let Start_AddAllSpace_01: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_01');
+      let Start_AddAllSpace_01_Box: RectValue = CommonFunc.getComponentRect('Start_AddAllSpace_01_Box');
       expect(Math.abs(Start_AddAllSpace_011.top - Start_AddAllSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_012.top - Start_AddAllSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_012.left - Start_AddAllSpace_011.right) <= 1).assertTrue();
       expect(Math.abs(Start_AddAllSpace_013.left - Start_AddAllSpace_012.right) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.left - Start_AddAllSpace_01.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.right - Start_AddAllSpace_013.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.top - Start_AddAllSpace_01.top)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.left - Start_AddAllSpace_01.left)) - (Math.round(vp2px(20)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.right - Start_AddAllSpace_013.right)) - (Math.round(vp2px(30)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.top - Start_AddAllSpace_01.top)) - (Math.round(vp2px(20)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.left - Start_AddAllSpace_01_Box.left)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_01.top - Start_AddAllSpace_01_Box.top)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.right - Start_AddAllSpace_011.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_012.right - Start_AddAllSpace_012.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_013.right - Start_AddAllSpace_013.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_011.bottom - Start_AddAllSpace_011.top)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_012.bottom - Start_AddAllSpace_012.top)) - (Math.round(vp2px(100)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Start_AddAllSpace_013.bottom - Start_AddAllSpace_013.top)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignStartFlexSpaceMeet] END');
-      done();
+
     });
   })
 }

@@ -14,23 +14,23 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 let my_line = new Line()
 
 @Entry
 @Component
 struct LineNe {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear LineNe start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear LineNe end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("line-Ne")
         .width(100)
@@ -46,7 +46,12 @@ struct LineNe {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
       Line({ width: 50, height: 100 }).startPoint([0, 0]).endPoint([50, 100]).key("line1")
-      Line().width(200).height(200).startPoint([50, 50]).endPoint([150, 400]).key("line2")
+      Line()
+        .width(200)
+        .height(200)
+        .startPoint([50, 50])
+        .endPoint([150, 400])
+        .key("line2")
     }.width("100%").height("100%")
   }
 }
