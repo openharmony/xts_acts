@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import TestRunner from '@ohos.application.testRunner'
+import TestRunner from '@ohos.application.testRunner';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 let abilityDelegator = undefined;
@@ -59,9 +59,9 @@ export default class OpenHarmonyTestRunner implements TestRunner {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    let testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
+    var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
     abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
-    let cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
+    var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
     cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
     console.info('cmd : ' + cmd);
     abilityDelegator.executeShellCommand(cmd,
@@ -71,7 +71,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         console.info('executeShellCommand : data : ' + d.exitCode);
       });
     console.info('OpenHarmonyTestRunner onRun call abilityDelegator.getAppContext');
-    let context = abilityDelegator.getAppContext();
+    var context = abilityDelegator.getAppContext();
     console.info('getAppContext : ' + JSON.stringify(context));
     console.info('OpenHarmonyTestRunner onRun end');
   }
