@@ -24,7 +24,7 @@ export default class CalledAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onCreate');
     console.log('=====> first app CalledAbility =====>');
     const TIMEOUT = 50;
-    AppStorage.setOrCreate<Function>("terminateCalledAbility", (str) => {
+    globalThis.terminateCalledAbility = (str) => {
       setTimeout(() => {
         this.context.terminateSelf()
           .then(() => {
@@ -34,7 +34,7 @@ export default class CalledAbility extends UIAbility {
             console.info('====>terminateSelf ' + JSON.stringify(str) + ' err:' + JSON.stringify(err));
           })
       }, TIMEOUT)
-    })
+    };
 
     if (want.action === 'Acts_ActionExtensionAbility_1000') {
       this.context.terminateSelf();

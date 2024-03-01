@@ -23,7 +23,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     const TIMEOUT = 50;
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    AppStorage.setOrCreate<Function>("terminate", (str) => {
+    globalThis.terminate = (str) => {
       setTimeout(() => {
         this.context.terminateSelf()
           .then(() => {
@@ -33,7 +33,7 @@ export default class EntryAbility extends UIAbility {
             console.info('====>terminateSelf ' + JSON.stringify(str) + ' err:' + JSON.stringify(err));
           })
       }, TIMEOUT)
-    })
+    };
 
     if (want.action === 'Acts_ActionExtensionAbility_0100') {
       console.info('====>EntryAbility want.action == Acts_ActionExtensionAbility_0100');

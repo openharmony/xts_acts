@@ -48,69 +48,64 @@ export default function abilityTest() {
      */
     it('Acts_ActionExtensionAbility_0100', 0, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber;
-      commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
-        console.info(`====>Acts_ActionExtensionAbility_0100 createSubscriber  ${data}`);
-        subscriber = data;
-        commonEvent.subscribe(data, async (err, data) => {
-          console.log('====>Acts_ActionExtensionAbility_0100 subscribeCallBack :' + JSON.stringify(data));
-          if (data.event == 'ACTS_TEST_FOREGROUND') {
-            expect(data.parameters.count).assertEqual(3);
-            await abilityDelegator.executeShellCommand('aa dump -a')
-              .then((data) => {
-                console.info('====>Acts_ActionExtensionAbility_0100 : data : ' + JSON.stringify(data.stdResult));
-                let firstString = data.stdResult.split("entry/ActsActionExtensionAbility");
-                let result = firstString[1].split("uri");
-                console.info('====>Acts_ActionExtensionAbility_0100 result aa string: ' + JSON.stringify(result[0]));
-                try {
-                  expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
-                  expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
-                  expect(result[0]).assertContain("ability type [UIEXTENSION]");
-                  expect(result[0]).assertContain("app state #FOREGROUND");
-                } catch {
-                  expect().assertFail();
-                }
-              });
+      commonEvent.createSubscriber(ACTS_EVENT)
+        .then(async (data) => {
+          console.info(`====>Acts_ActionExtensionAbility_0100 createSubscriber  ${data}`);
+          subscriber = data;
+          commonEvent.subscribe(data, async (err, data) => {
+            console.log('====>Acts_ActionExtensionAbility_0100 subscribeCallBack :' + JSON.stringify(data));
+            if (data.event == 'ACTS_TEST_FOREGROUND') {
+              expect(data.parameters.count).assertEqual(3);
+              await abilityDelegator.executeShellCommand('aa dump -a')
+                .then((data) => {
+                  console.info('====>Acts_ActionExtensionAbility_0100 : data : ' + JSON.stringify(data.stdResult));
+                  let firstString = data.stdResult.split("entry/ActsActionExtensionAbility");
+                  let result = firstString[1].split("uri");
+                  console.info('====>Acts_ActionExtensionAbility_0100 result aa string: ' + JSON.stringify(result[0]));
+                  try {
+                    expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
+                    expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
+                    expect(result[0]).assertContain("ability type [UIEXTENSION]");
+                    expect(result[0]).assertContain("app state #FOREGROUND");
+                  } catch {
+                    expect().assertFail();
+                  }
+                });
 
-            setTimeout(() => {
-              AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
-                bundleName: 'com.example.actsactionextensionabilitytest',
-                abilityName: 'CalledAbility'
-              }, (err) => {
-                expect(err.code).assertEqual(0);
-              });
-            }, 1000);
-          }
-          if (data.event == 'ACTS_TEST_RELEASE') {
-            expect(data.parameters.releaseCode).assertEqual(0);
-          }
-          if (data.event == 'ACTS_TEST_DESTROY') {
-            expect(data.parameters.count).assertEqual(6);
-            console.info(`====>Acts_ActionExtensionAbility_0100 20240301: ACTS_TEST_DESTROY ${data.parameters.count}`);
-            setTimeout(() => {
-              commonEvent.unsubscribe(subscriber, async () => {
-                if (AppStorage.get<Function>("terminate")!) {
-                  console.info(`====>Acts_ActionExtensionAbility_0100 20240301: AppStorage terminate is exists`);
-                } else {
-                  console.info(`====>Acts_ActionExtensionAbility_0100 20240301: AppStorage terminate is not exists`);
-                }
-                await AppStorage.get<Function>("terminate")!('Acts_ActionExtensionAbility_0100');
-                await AppStorage.get<Function>("terminateCalledAbility")!('Acts_ActionExtensionAbility_0100');
-                setTimeout(() => {
-                  console.info(`====>Acts_ActionExtensionAbility_0100 unSubscribeCallback`);
-                  done();
-                }, 2000);
-              });
-            }, 500);
-          }
+              setTimeout(() => {
+                AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
+                  bundleName: 'com.example.actsactionextensionabilitytest',
+                  abilityName: 'CalledAbility'
+                }, (err) => {
+                  expect(err.code).assertEqual(0);
+                });
+              }, 1000);
+            }
+            if (data.event == 'ACTS_TEST_RELEASE') {
+              expect(data.parameters.releaseCode).assertEqual(0);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              expect(data.parameters.count).assertEqual(6);
+              setTimeout(() => {
+                commonEvent.unsubscribe(subscriber, async () => {
+                  await globalThis.terminate('Acts_ActionExtensionAbility_0100');
+                  await globalThis.terminateCalledAbility('Acts_ActionExtensionAbility_0100');
+                  setTimeout(() => {
+                    console.info(`====>Acts_ActionExtensionAbility_0100 unSubscribeCallback`);
+                    done();
+                  }, 2000);
+                });
+              }, 500);
+            }
+          });
+          AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
+            bundleName: 'com.example.actsactionextensionabilitytest',
+            abilityName: 'EntryAbility',
+            action: 'Acts_ActionExtensionAbility_0100'
+          }, (err) => {
+            expect(err.code).assertEqual(0);
+          });
         });
-        AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
-          bundleName: 'com.example.actsactionextensionabilitytest',
-          abilityName: 'EntryAbility',
-          action: 'Acts_ActionExtensionAbility_0100'
-        }, (err) => {
-          expect(err.code).assertEqual(0);
-        });
-      });
     })
 
     /**
@@ -120,61 +115,62 @@ export default function abilityTest() {
      */
     it('Acts_ActionExtensionAbility_0200', 0, async (done: Function) => {
       let subscriber: commonEventManager.CommonEventSubscriber;
-      commonEvent.createSubscriber(ACTS_EVENT).then(async (data) => {
-        subscriber = data;
-        commonEvent.subscribe(data, async (err, data) => {
-          console.log('====>Acts_ActionExtensionAbility_0200 subscribeCallBack :' + JSON.stringify(data));
-          if (data.event == 'ACTS_TEST_FOREGROUND') {
-            expect(data.parameters.count).assertEqual(3);
-            await abilityDelegator.executeShellCommand('aa dump -a')
-              .then((data) => {
-                console.info('====>Acts_ActionExtensionAbility_0200 : data : ' + JSON.stringify(data.stdResult));
-                let firstString = data.stdResult.split("entry/ActsActionExtensionAbility");
-                let result = firstString[1].split("uri");
-                console.info('====>Acts_ActionExtensionAbility_0200 result aa string: ' + JSON.stringify(result[0]));
-                try {
-                  expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
-                  expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
-                  expect(result[0]).assertContain("ability type [UIEXTENSION]");
-                  expect(result[0]).assertContain("app state #FOREGROUND");
-                } catch {
-                  expect().assertFail();
-                }
-              });
-            setTimeout(() => {
-              AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
-                bundleName: 'com.example.actsactionextensionabilitytest',
-                abilityName: 'CalledAbility'
-              }, (err) => {
-                expect(err.code).assertEqual(0);
-              });
-            }, 1000);
-          }
-          if (data.event == 'ACTS_TEST_RELEASE') {
-            expect(data.parameters.releaseCode).assertEqual(0);
-          }
-          if (data.event == 'ACTS_TEST_DESTROY') {
-            expect(data.parameters.count).assertEqual(6);
-            setTimeout(() => {
-              commonEvent.unsubscribe(subscriber, async () => {
-                await AppStorage.get<Function>("featureTerminate")('Acts_ActionExtensionAbility_0200');
-                await AppStorage.get<Function>("terminateCalledAbility")('Acts_ActionExtensionAbility_0200');
-                setTimeout(() => {
-                  console.info(`====>Acts_ActionExtensionAbility_0200 unSubscribeCallback`);
-                  done();
-                }, 2000);
-              });
-            }, 500);
-          }
+      commonEvent.createSubscriber(ACTS_EVENT)
+        .then(async (data) => {
+          subscriber = data;
+          commonEvent.subscribe(data, async (err, data) => {
+            console.log('====>Acts_ActionExtensionAbility_0200 subscribeCallBack :' + JSON.stringify(data));
+            if (data.event == 'ACTS_TEST_FOREGROUND') {
+              expect(data.parameters.count).assertEqual(3);
+              await abilityDelegator.executeShellCommand('aa dump -a')
+                .then((data) => {
+                  console.info('====>Acts_ActionExtensionAbility_0200 : data : ' + JSON.stringify(data.stdResult));
+                  let firstString = data.stdResult.split("entry/ActsActionExtensionAbility");
+                  let result = firstString[1].split("uri");
+                  console.info('====>Acts_ActionExtensionAbility_0200 result aa string: ' + JSON.stringify(result[0]));
+                  try {
+                    expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
+                    expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
+                    expect(result[0]).assertContain("ability type [UIEXTENSION]");
+                    expect(result[0]).assertContain("app state #FOREGROUND");
+                  } catch {
+                    expect().assertFail();
+                  }
+                });
+              setTimeout(() => {
+                AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
+                  bundleName: 'com.example.actsactionextensionabilitytest',
+                  abilityName: 'CalledAbility'
+                }, (err) => {
+                  expect(err.code).assertEqual(0);
+                });
+              }, 1000);
+            }
+            if (data.event == 'ACTS_TEST_RELEASE') {
+              expect(data.parameters.releaseCode).assertEqual(0);
+            }
+            if (data.event == 'ACTS_TEST_DESTROY') {
+              expect(data.parameters.count).assertEqual(6);
+              setTimeout(() => {
+                commonEvent.unsubscribe(subscriber, async () => {
+                  await globalThis.featureTerminate('Acts_ActionExtensionAbility_0200');
+                  await globalThis.terminateCalledAbility('Acts_ActionExtensionAbility_0200');
+                  setTimeout(() => {
+                    console.info(`====>Acts_ActionExtensionAbility_0200 unSubscribeCallback`);
+                    done();
+                  }, 2000);
+                });
+              }, 500);
+            }
+          });
+          AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
+            bundleName: 'com.example.actsactionextensionabilitytest',
+            abilityName: 'FeatureAbility',
+            action: 'Acts_ActionExtensionAbility_0200'
+          }, (err) => {
+            expect(err.code).assertEqual(0);
+          });
         });
-        AppStorage.get<common.UIAbilityContext>("context")!.startAbility({
-          bundleName: 'com.example.actsactionextensionabilitytest',
-          abilityName: 'FeatureAbility',
-          action: 'Acts_ActionExtensionAbility_0200'
-        }, (err) => {
-          expect(err.code).assertEqual(0);
-        });
-      });
     })
 
     /**
@@ -222,7 +218,7 @@ export default function abilityTest() {
             expect(data.parameters.count).assertEqual(6);
             setTimeout(() => {
               commonEvent.unsubscribe(subscriber, async () => {
-                await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0300');
+                await globalThis.terminate('Acts_ActionExtensionAbility_0300');
                 let cmd = 'aa force-stop com.example.actsactionextensionabilityrely';
                 await abilityDelegator.executeShellCommand(cmd)
                   .catch((error: BusinessError) => {
@@ -267,8 +263,8 @@ export default function abilityTest() {
             }
             if (count == 2) {
               commonEvent.unsubscribe(subscriber, async () => {
-                await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0400');
-                await AppStorage.get<Function>("featureTerminate")('Acts_ActionExtensionAbility_0400');
+                await globalThis.terminate('Acts_ActionExtensionAbility_0400');
+                await globalThis.featureTerminate('Acts_ActionExtensionAbility_0400');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_0400 unSubscribeCallback`);
                   done();
@@ -302,7 +298,7 @@ export default function abilityTest() {
             flag = false;
             expect(data.parameters.err.code).assertEqual(1011);
             commonEvent.unsubscribe(subscriber, async () => {
-              await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0500');
+              await globalThis.terminate('Acts_ActionExtensionAbility_0500');
               setTimeout(() => {
                 console.info(`====>Acts_ActionExtensionAbility_0500 unSubscribeCallback`);
                 done();
@@ -337,7 +333,7 @@ export default function abilityTest() {
               flag = false;
               expect(data.parameters.err.code).assertEqual(1011);
               commonEvent.unsubscribe(subscriber, () => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0600');
+                globalThis.terminate('Acts_ActionExtensionAbility_0600');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_0600 unSubscribeCallback`);
                   done();
@@ -372,7 +368,7 @@ export default function abilityTest() {
             flag = false;
             expect(data.parameters.err.code).assertEqual(1011);
             commonEvent.unsubscribe(subscriber, () => {
-              AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0700');
+              globalThis.terminate('Acts_ActionExtensionAbility_0700');
               setTimeout(() => {
                 console.info(`====>Acts_ActionExtensionAbility_0700 unSubscribeCallback`);
                 done();
@@ -425,7 +421,7 @@ export default function abilityTest() {
               setTimeout(async () => {
                 commonEvent.unsubscribe(subscriber, async (err, data) => {
                   expect(result!.want!.action).assertEqual('ACTION');
-                  await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0800');
+                  await globalThis.terminate('Acts_ActionExtensionAbility_0800');
                   setTimeout(() => {
                     console.info(`====>Acts_ActionExtensionAbility_0800 unSubscribeCallback`);
                     done();
@@ -435,7 +431,7 @@ export default function abilityTest() {
             }
           });
         }).catch((error: BusinessError) => {
-          AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0800');
+          globalThis.terminate('Acts_ActionExtensionAbility_0800');
           setTimeout(() => {
             console.log("createSubscriber err : " + JSON.stringify(error));
             expect().assertFail();
@@ -486,7 +482,7 @@ export default function abilityTest() {
               setTimeout(async () => {
                 commonEvent.unsubscribe(subscriber, async (err, data) => {
                   expect(JSON.stringify(result)).assertEqual(resultCheck);
-                  await AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0900');
+                  await globalThis.terminate('Acts_ActionExtensionAbility_0900');
                   setTimeout(() => {
                     console.info(`====>Acts_ActionExtensionAbility_0900 unSubscribeCallback`);
                     done();
@@ -496,7 +492,7 @@ export default function abilityTest() {
             }
           });
         }).catch((error: BusinessError) => {
-          AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_0900');
+          globalThis.terminate('Acts_ActionExtensionAbility_0900');
           setTimeout(() => {
             console.log("createSubscriber err : " + JSON.stringify(error));
             expect().assertFail();
@@ -521,7 +517,7 @@ export default function abilityTest() {
               expect(data.parameters.num).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1000 unSubscribeCallback 'ACTS_CALL_EVENT'`);
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1000');
+                globalThis.terminate('Acts_ActionExtensionAbility_1000');
                 setTimeout(() => {
                   done();
                 }, 2000);
@@ -555,7 +551,7 @@ export default function abilityTest() {
               expect(data.parameters.str).assertEqual('success');
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1100 unSubscribeCallback 'ACTS_CALL_EVENT'`);
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1100');
+                globalThis.terminate('Acts_ActionExtensionAbility_1100');
                 setTimeout(() => {
                   done();
                 }, 2000);
@@ -589,7 +585,7 @@ export default function abilityTest() {
               expect(data.parameters.num).assertEqual(16000001);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1200 unSubscribeCallback 'ACTS_CALL_EVENT'`);
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1200');
+                globalThis.terminate('Acts_ActionExtensionAbility_1200');
                 setTimeout(() => {
                   done();
                 }, 2000);
@@ -624,7 +620,7 @@ export default function abilityTest() {
               expect(data.parameters.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1300 unSubscribeCallback 'ACTS_CALL_EVENT'`);
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1300');
+                globalThis.terminate('Acts_ActionExtensionAbility_1300');
                 setTimeout(() => {
                   done();
                 }, 2000);
@@ -660,7 +656,7 @@ export default function abilityTest() {
               expect(data.parameters.result).assertEqual(0);
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1400 unSubscribeCallback 'ACTS_CALL_EVENT'`);
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1400');
+                globalThis.terminate('Acts_ActionExtensionAbility_1400');
                 setTimeout(() => {
                   done();
                 }, 2000);
@@ -697,7 +693,7 @@ export default function abilityTest() {
               commonEvent.unsubscribe(subscriber, () => {
                 console.info(`====>Acts_ActionExtensionAbility_1500 unSubscribeCallback 'ACTS_CALL_EVENT'`);
                 setTimeout(() => {
-                  AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1500');
+                  globalThis.terminate('Acts_ActionExtensionAbility_1500');
                   done();
                 }, 2000);
               });
@@ -741,7 +737,7 @@ export default function abilityTest() {
               let resultCheck: string = '{"name":{"test":"actionExtensionTest"}}';
               expect(JSON.stringify(data.parameters.result)).assertEqual(resultCheck);
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1600');
+                globalThis.terminate('Acts_ActionExtensionAbility_1600');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_1600 unSubscribeCallback`);
                   done();
@@ -777,7 +773,7 @@ export default function abilityTest() {
             expect().assertFail();
           }
         });
-      AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1700');
+      globalThis.terminate('Acts_ActionExtensionAbility_1700');
       setTimeout(() => {
         console.info(`====>Acts_ActionExtensionAbility_1700 unSubscribeCallback`);
         done();
@@ -820,7 +816,7 @@ export default function abilityTest() {
                   }
                 });
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1800');
+                globalThis.terminate('Acts_ActionExtensionAbility_1800');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_1800 unSubscribeCallback`);
                   done();
@@ -879,7 +875,7 @@ export default function abilityTest() {
                 console.log(`Acts_ActionExtensionAbility_1900 success`);
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1900');
+                    globalThis.terminate('Acts_ActionExtensionAbility_1900');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_1900 unSubscribeCallback`);
                       done();
@@ -887,7 +883,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_1900');
+                globalThis.terminate('Acts_ActionExtensionAbility_1900');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_1900 fail: ` + err);
                   expect().assertFail();
@@ -931,7 +927,7 @@ export default function abilityTest() {
                 console.log(`Acts_ActionExtensionAbility_2000 success`);
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2000');
+                    globalThis.terminate('Acts_ActionExtensionAbility_2000');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_2000 unSubscribeCallback`);
                       done();
@@ -939,7 +935,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2000');
+                globalThis.terminate('Acts_ActionExtensionAbility_2000');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_2000 fail: ` + err);
                   expect().assertFail();
@@ -997,7 +993,7 @@ export default function abilityTest() {
                 expect(extensionAbilityInfo.name == 'UIExtAbility').assertTrue();
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2100');
+                    globalThis.terminate('Acts_ActionExtensionAbility_2100');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_2100 unSubscribeCallback`);
                       done();
@@ -1005,7 +1001,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2100');
+                globalThis.terminate('Acts_ActionExtensionAbility_2100');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_2100 fail: ` + err);
                   expect().assertFail();
@@ -1045,7 +1041,7 @@ export default function abilityTest() {
               expect(data.parameters.resourceManager != null).assertTrue();
               console.log('Acts_ActionExtensionAbility_2200 success');
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2200');
+                globalThis.terminate('Acts_ActionExtensionAbility_2200');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2200 unSubscribeCallback`);
                   done();
@@ -1101,7 +1097,7 @@ export default function abilityTest() {
               console.log(`Acts_ActionExtensionAbility_2300 success`);
 
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2300');
+                globalThis.terminate('Acts_ActionExtensionAbility_2300');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2300 unSubscribeCallback`);
                   done();
@@ -1144,7 +1140,7 @@ export default function abilityTest() {
               console.log(`Acts_ActionExtensionAbility_2400 success`);
 
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2400');
+                globalThis.terminate('Acts_ActionExtensionAbility_2400');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2400 unSubscribeCallback`);
                   done();
@@ -1187,7 +1183,7 @@ export default function abilityTest() {
               console.log(`Acts_ActionExtensionAbility_2500 success`);
 
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2500');
+                globalThis.terminate('Acts_ActionExtensionAbility_2500');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2500 unSubscribeCallback`);
                   done();
@@ -1229,7 +1225,7 @@ export default function abilityTest() {
               expect(typeof (filesDir) == 'string').assertTrue();
               console.log(`Acts_ActionExtensionAbility_2600 success`);
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2600');
+                globalThis.terminate('Acts_ActionExtensionAbility_2600');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2600 unSubscribeCallback`);
                   done();
@@ -1271,7 +1267,7 @@ export default function abilityTest() {
               expect(typeof (databaseDir) == 'string').assertTrue();
               console.log(`Acts_ActionExtensionAbility_2700 success`);
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2700');
+                globalThis.terminate('Acts_ActionExtensionAbility_2700');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2700 unSubscribeCallback`);
                   done();
@@ -1314,7 +1310,7 @@ export default function abilityTest() {
               console.log(`Acts_ActionExtensionAbility_2800 success`);
 
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2800');
+                globalThis.terminate('Acts_ActionExtensionAbility_2800');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2800 unSubscribeCallback`);
                   done();
@@ -1357,7 +1353,7 @@ export default function abilityTest() {
               console.log(`Acts_ActionExtensionAbility_2900 success`);
 
               commonEvent.unsubscribe(subscriber, async (err, data) => {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_2900');
+                globalThis.terminate('Acts_ActionExtensionAbility_2900');
                 setTimeout(() => {
                   console.info(`====>Acts_ActionExtensionAbility_2900 unSubscribeCallback`);
                   done();
@@ -1398,7 +1394,7 @@ export default function abilityTest() {
                 expect(data.parameters.bundleName).assertEqual("com.example.actsactionextensionabilitytest");
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3000');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3000');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3000 unSubscribeCallback`);
                       done();
@@ -1406,7 +1402,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3000');
+                globalThis.terminate('Acts_ActionExtensionAbility_3000');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3000 fail: ` + err);
                   expect().assertFail();
@@ -1447,7 +1443,7 @@ export default function abilityTest() {
                 expect(data.parameters.bundleName).assertEqual("com.example.actsactionextensionabilitytest");
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3100');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3100');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3000 unSubscribeCallback`);
                       done();
@@ -1455,7 +1451,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3100');
+                globalThis.terminate('Acts_ActionExtensionAbility_3100');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3100 fail: ` + err);
                   expect().assertFail();
@@ -1495,7 +1491,7 @@ export default function abilityTest() {
                 expect(!data.parameters.moduleContext).assertTrue();
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3200');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3200');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3200 unSubscribeCallback`);
                       done();
@@ -1503,7 +1499,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3200');
+                globalThis.terminate('Acts_ActionExtensionAbility_3200');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3200 fail: ` + err);
                   expect().assertFail();
@@ -1543,7 +1539,7 @@ export default function abilityTest() {
                 expect(!data.parameters.moduleContext).assertTrue();
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3300');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3300');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3300 unSubscribeCallback`);
                       done();
@@ -1551,7 +1547,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3300');
+                globalThis.terminate('Acts_ActionExtensionAbility_3300');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3300 fail: ` + err);
                   expect().assertFail();
@@ -1591,7 +1587,7 @@ export default function abilityTest() {
                 expect(!data.parameters.moduleContext).assertTrue();
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3400');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3400');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3400 unSubscribeCallback`);
                       done();
@@ -1599,7 +1595,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3400');
+                globalThis.terminate('Acts_ActionExtensionAbility_3400');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3400 fail: ` + err);
                   expect().assertFail();
@@ -1639,7 +1635,7 @@ export default function abilityTest() {
                 expect(data.parameters.applicationContext != null).assertTrue();
                 setTimeout(async () => {
                   commonEvent.unsubscribe(subscriber, async (err, data) => {
-                    AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3500');
+                    globalThis.terminate('Acts_ActionExtensionAbility_3500');
                     setTimeout(() => {
                       console.info(`====>Acts_ActionExtensionAbility_3500 unSubscribeCallback`);
                       done();
@@ -1647,7 +1643,7 @@ export default function abilityTest() {
                   });
                 }, 1000);
               } catch (err) {
-                AppStorage.get<Function>("terminate")('Acts_ActionExtensionAbility_3500');
+                globalThis.terminate('Acts_ActionExtensionAbility_3500');
                 setTimeout(() => {
                   console.log(`Acts_ActionExtensionAbility_3500 fail: ` + err);
                   expect().assertFail();

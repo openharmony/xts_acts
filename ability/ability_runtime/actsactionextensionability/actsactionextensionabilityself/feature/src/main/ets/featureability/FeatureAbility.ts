@@ -23,7 +23,7 @@ export default class FeatureAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     const TIMEOUT = 50;
-    AppStorage.setOrCreate<Function>("featureTerminate", (str: string) => {
+    globalThis.featureTerminate = (str: string) => {
       setTimeout(() => {
         this.context.terminateSelf().then(() => {
           console.info('====>terminateSelf' + JSON.stringify(str) + ' end');
@@ -31,7 +31,7 @@ export default class FeatureAbility extends UIAbility {
           console.info('====>terminateSelf ' + JSON.stringify(str) + ' err:' + JSON.stringify(err));
         });
       }, TIMEOUT);
-    });
+    };
 
     if (want.action === 'Acts_ActionExtensionAbility_0400') {
       console.info('====>FeatureAbility want.action == Acts_ActionExtensionAbility_0400');
