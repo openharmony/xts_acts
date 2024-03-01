@@ -30,9 +30,12 @@ ohos_moduletest_suite("ActsOpsTest") {
   module_out_path = module_output_path
   sources = [
     "src/abs_test.cpp",
+    "src/all_test.cpp",
+    "src/assert_test.cpp",
     "src/broadcast_to_test.cpp",
     "src/clip_test.cpp",
     "src/constant_of_shape_test.cpp",
+    "src/cos_test.cpp",
     "src/depth_to_space_test.cpp",
     "src/equal_test.cpp",
     "src/erf_test.cpp",
@@ -43,14 +46,25 @@ ohos_moduletest_suite("ActsOpsTest") {
     "src/instance_norm_test.cpp",
     "src/leaky_relu_test.cpp",
     "src/less_test.cpp",
+    "src/log_test.cpp",
+    "src/logical_and_test.cpp",
+    "src/logical_not_test.cpp",
+    "src/logical_or_test.cpp",
     "src/lstm_test.cpp",
     "src/mock_idevice.cpp",
+    "src/mod_test.cpp",
+    "src/neg_test.cpp",
     "src/nncore_utils.cpp",
     "src/not_equal_test.cpp",
+    "src/pow_test.cpp",
     "src/range_test.cpp",
+    "src/reciprocal_test.cpp",
     "src/select_test.cpp",
+    "src/sin_test.cpp",
+    "src/sparse_to_dense_test.cpp",
     "src/square_test.cpp",
     "src/unstack_test.cpp",
+    "src/where_test.cpp",
   ]
 
   configs = [ ":ops_config" ]

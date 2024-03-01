@@ -341,9 +341,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
                                                      (uint32_t) operandTem.shape.size(),
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
@@ -354,6 +355,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
                 model, 1000+i, operandTem.data, operandTem.length));
         }
+    }
+
+    if (tensorDesc != nullptr) {
+        tensorDesc = nullptr;
     }
 
     Free(model, nullptr, nullptr);
@@ -373,9 +378,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
 
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
                                                      (uint32_t) operandTem.shape.size(),
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
@@ -385,6 +391,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
             graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
         }
+    }
+
+    if (tensorDesc != nullptr) {
+        tensorDesc = nullptr;
     }
     
     Free(model, nullptr, nullptr);
@@ -404,9 +414,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
                                                      (uint32_t) operandTem.shape.size(),
                                                      operandTem.dataType, operandTem.format);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
@@ -416,6 +427,10 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
             graphArgs.paramIndices.end()) {
             ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
         }
+    }
+
+    if (tensorDesc != nullptr) {
+        tensorDesc = nullptr;
     }
     
     Free(model, nullptr, nullptr);
