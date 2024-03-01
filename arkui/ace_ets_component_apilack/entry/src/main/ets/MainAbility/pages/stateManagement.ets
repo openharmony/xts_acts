@@ -14,11 +14,12 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
 let storage1 = LocalStorage.GetShared()
-let storage2 = new LocalStorage({"PropA":47});
+let storage2 = new LocalStorage({ "PropA": 47 });
 
 @Entry(storage1)
 @Component
@@ -29,23 +30,23 @@ struct StateManagementGetShared {
     Log.showInfo(TAG, `aboutToAppear StateManagementGetShared start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear StateManagementGetShared end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text(`Parent from LocalStorage ${ this.simpleVarName }`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`)
         .key("GetSharedText")
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            var backDataOne = {
+            let backDataOne: events_emitter.EventData = {
               data: {
                 "Result": (storage1 != null)
               }
             }
-            let backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 60223,
               priority: events_emitter.EventPriority.LOW
             }
@@ -56,16 +57,16 @@ struct StateManagementGetShared {
           }
         })
 
-      Text(`Parent from LocalStorage ${ this.simpleVarName }`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`)
         .key("setAndLinkText")
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data: {
                 "Result": "callback2"
               }
             }
-            let backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 60224,
               priority: events_emitter.EventPriority.LOW
             }
@@ -74,20 +75,20 @@ struct StateManagementGetShared {
           } catch (err) {
             console.info("setAndLink emit action state err: " + JSON.stringify(err.message))
           }
-         // storage1.setAndLink("storageSimpleProp",48)
-         // console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
+          // storage1.setAndLink("storageSimpleProp",48)
+          // console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
         })
 
-      Text(`Parent from LocalStorage ${ this.simpleVarName }`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`)
         .key("setOrCreateText")
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data: {
                 "Result": "callback3"
               }
             }
-            let backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 60225,
               priority: events_emitter.EventPriority.LOW
             }
@@ -96,20 +97,20 @@ struct StateManagementGetShared {
           } catch (err) {
             console.info("setOrCreate emit action state err: " + JSON.stringify(err.message))
           }
-         // storage1.setOrCreate("storageSimpleProp",47)
+          // storage1.setOrCreate("storageSimpleProp",47)
           // console.log("storageSimpleProp setOrCreate is :  " + this.simpleVarName)
         })
 
-      Text(`Parent from LocalStorage ${ this.simpleVarName }`)
+      Text(`Parent from LocalStorage ${this.simpleVarName}`)
         .key("setAndPropText")
-        .onClick(()=>{
+        .onClick(() => {
           try {
-            var backDataFour = {
+            let backDataFour: events_emitter.EventData = {
               data: {
                 "Result": "callback4"
               }
             }
-            let backEventFour = {
+            let backEventFour: events_emitter.InnerEvent = {
               eventId: 60226,
               priority: events_emitter.EventPriority.LOW
             }
@@ -119,19 +120,20 @@ struct StateManagementGetShared {
             console.info("setAndProp emit action state err: " + JSON.stringify(err.message))
           }
 
-         // storage1.setAndProp("storageSimpleProp",49)
-        //console.log("storageSimpleProp setAndProp is :  " + this.simpleVarName)
+          // storage1.setAndProp("storageSimpleProp",49)
+          //console.log("storageSimpleProp setAndProp is :  " + this.simpleVarName)
         })
-    
+
     }.width("100%").height("100%")
   }
 }
 
 @Component
-struct Child{
+struct Child {
   @LocalStorageLink("PropA") storLink: number = 1;
+
   build() {
-    Text(`Parent from LocalStorage ${ this.storLink }`)
-      .onClick(()=>this.storLink+=1)
+    Text(`Parent from LocalStorage ${this.storLink}`)
+      .onClick(() => this.storLink += 1)
   }
 }

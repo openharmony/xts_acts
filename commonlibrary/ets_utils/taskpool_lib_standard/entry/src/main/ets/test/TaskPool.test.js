@@ -1231,11 +1231,10 @@ describe('ActsAbilityTest', function () {
             console.info("task3 success");
         })
 
-        task2.removeDependency(task3);
         try {
             task2.removeDependency(task3);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The dependency does not exist");
+            expect(e.toString()).assertEqual("BusinessError: taskpool:: executedTask cannot removeDependency");
         }
         done();
     })

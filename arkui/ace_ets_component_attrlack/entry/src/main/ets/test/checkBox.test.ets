@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function checkBoxGroupJsunit() {
-  describe('checkBoxGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('checkBoxGroupTest', () =>{
+    beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkBox',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/checkBox',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function checkBoxGroupJsunit() {
         console.info("get checkBox state success " + JSON.stringify(pages));
         if (!("checkBox" == pages.name)) {
           console.info("get checkBox state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push checkBox page success " + JSON.stringify(result));
         }
@@ -40,21 +40,20 @@ export default function checkBoxGroupJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("checkBoxGroup after each called");
     });
 
-    it('testcheckBoxGroup001', 0, async function (done) {
+    it('testcheckBoxGroup001', 0, async (done:Function) => {
       console.info('checkBoxGroup testcheckBoxGroup001 START');
       await Utils.sleep(2000);
       try {
         console.info("testcheckBoxGroup_0011 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
-        let strJson = getInspectorByKey('Checkbox2');
+        let strJson: string = getInspectorByKey('Checkbox2');
         console.info("[testcheckBoxGroup001] component select strJson:" + strJson);
-        let obj = JSON.parse(strJson);
-        expect(obj.$type).assertEqual('Checkbox');
-        expect(obj.$attrs.select).assertEqual("false");
+        expect(JSON.parse(strJson).$type).assertEqual('Checkbox');
+        expect(JSON.parse(strJson).$attrs.select).assertEqual("false");
       } catch (err) {
         console.info("testcheckBoxGroup_0011 on click err : " + JSON.stringify(err));
       }

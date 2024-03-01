@@ -19,14 +19,12 @@ import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSessi
 import common from '@ohos.app.ability.common';
 
 let context = getContext(this) as common.UIExtensionContext;
-
-
-let storage = LocalStorage.getShared()
+let storage = LocalStorage.getShared();
 
 @Entry(storage)
 @Component
 struct Index {
-  @State message: string = 'UIExtAbility has been started'
+  @State message: string = 'UIExtAbility has been started';
   private session = storage.get<UIExtensionContentSession>('session');
 
   build() {

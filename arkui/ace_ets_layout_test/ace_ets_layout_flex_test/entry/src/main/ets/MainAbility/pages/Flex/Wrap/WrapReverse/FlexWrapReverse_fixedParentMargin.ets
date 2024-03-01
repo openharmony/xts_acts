@@ -12,22 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct FlexWrapReverse_fixedParentMargin {
-  @State testPadding: number = 0
-  @State testMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "FlexWrapReverse_fixedParentMargin Page"
-  
+  @State testPadding: number = 0;
+  @State testMargin: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+  private content: string = "FlexWrapReverse_fixedParentMargin Page";
+
   onPageShow() {
     console.info('FlexWrapReverse_fixedParentMargin page show called');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
@@ -35,7 +40,7 @@ struct FlexWrapReverse_fixedParentMargin {
       if (message.name == 'margin') {
         this.testMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -45,17 +50,23 @@ struct FlexWrapReverse_fixedParentMargin {
 
   build() {
     Column() {
-        Text('Wrap:WrapReverseTest13').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.WrapReverse }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).padding(this.testPadding).margin(this.testMargin).key('WrapReverseTest37')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('WrapReverseTest38')
-          Text('3').width(150).height(150).backgroundColor(0xffa500).key('WrapReverseTest39')
-        }
-        .key('FlexWrapReverseTest13')
-        .height(300)
-        .width(500)
-        .margin(20)
-        .backgroundColor(0xAFEEEE)
+      Text('Wrap:WrapReverseTest13').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Flex({ direction: FlexDirection.Row, wrap: FlexWrap.WrapReverse }) {
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .padding(this.testPadding)
+          .margin(this.testMargin)
+          .key('WrapReverseTest37')
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('WrapReverseTest38')
+        Text('3').width(150).height(150).backgroundColor(0xffa500).key('WrapReverseTest39')
+      }
+      .key('FlexWrapReverseTest13')
+      .height(300)
+      .width(500)
+      .margin(20)
+      .backgroundColor(0xAFEEEE)
     }.width('100%')
   }
 }

@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function selectOnSelectJsunit() {
-  describe('selectOnSelectTest', function () {
-    beforeAll(async function (done) {
+  describe('selectOnSelectTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/select',
@@ -38,10 +38,9 @@ export default function selectOnSelectJsunit() {
       } catch (err) {
         console.error("push select page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("selectOnSelect after each called");
     });
@@ -51,16 +50,16 @@ export default function selectOnSelectJsunit() {
      * @tc.name         testselectOnSelect0001
      * @tc.desic         aceselectOnSelectEtsTest0001
      */
-    it('testselectOnSelect0001', 0, async function (done) {
+    it('testselectOnSelect0001', 0, async () => {
       console.info('selectOnSelect testselectOnSelect0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Select');
       console.info("[testselectOnSelect0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Select');
-      expect(obj.$attrs.selected).assertEqual("2");
-      console.info("[testselectOnSelect0001] selected value :" + obj.$attrs.selected);
-      done();
+      expect(JSON.parse(strJson).$attrs.selected).assertEqual("2");
+      console.info("[testselectOnSelect0001] selected value :" + JSON.parse(strJson).$attrs.selected);
+
     });
 
     /*
@@ -68,16 +67,16 @@ export default function selectOnSelectJsunit() {
      * @tc.name         testselectOnSelect0002
      * @tc.desic         aceselectOnSelectEtsTest0002
      */
-    it('testselectOnSelect0002', 0, async function (done) {
+    it('testselectOnSelect0002', 0, async () => {
       console.info('selectOnSelect testselectOnSelect0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Select');
       console.info("[testselectOnSelect0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Select');
-      expect(obj.$attrs.value).assertEqual("TTT");
-      console.info("[testselectOnSelect0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.value).assertEqual("TTT");
+      console.info("[testselectOnSelect0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
   })
 }

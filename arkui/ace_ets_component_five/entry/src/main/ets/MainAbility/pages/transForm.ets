@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +13,23 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter'
-import Matrix4 from '@ohos.matrix4'
+import events_emitter from '@ohos.events.emitter';
+import Matrix4 from '@ohos.matrix4';
 
 @Entry
 @Component
 struct TransformExample {
-  @State rotateValue: object= {
+  @State rotateValue: RotateOptions = {
     x: 1,
     y: 1,
     z: 1,
     centerX: '50%',
     centerY: '50%',
     angle: 300
-  }
-  @State translateValue: object= { x: 100, y: 5 }
-  @State scaleValue: object= { x: 2, y: 0.5 }
-  @State transformValue: object= Matrix4.identity().translate({ x: 100, y: 100, z: 30 })
-
-  private stateChangCallBack = (eventData) => {
+  };
+  @State scaleValue: ScaleOptions = { x: 2, y: 0.5 };
+  @State transformValue: object = Matrix4.identity().translate({ x: 100, y: 100, z: 30 });
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("transFormExample page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data.rotateValue != null) {
@@ -42,17 +39,17 @@ struct TransformExample {
         this.scaleValue = JSON.parse(eventData.data.scaleValue);
       }
     }
-  }
+  };
 
   onPageShow() {
     console.info('transFormExample page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 45,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 46,
       priority: events_emitter.EventPriority.LOW
     }
@@ -61,7 +58,11 @@ struct TransformExample {
 
   build() {
     Column() {
-      Text('rotate').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(30)
+      Text('rotate')
+        .width('90%')
+        .fontColor(0xCCCCCC)
+        .padding(15)
+        .fontSize(30)
       Row()
         .rotate(this.rotateValue)
         .width(100)
@@ -69,7 +70,11 @@ struct TransformExample {
         .backgroundColor(0xAFEEEE)
         .key('rotate')
 
-      Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(30)
+      Text('translate')
+        .width('90%')
+        .fontColor(0xCCCCCC)
+        .padding(10)
+        .fontSize(30)
       Row()
         .translate(this.transformValue)
         .width(100)
@@ -78,7 +83,11 @@ struct TransformExample {
         .margin({ bottom: 10 })
         .key('rotate2')
 
-      Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(30)
+      Text('scale')
+        .width('90%')
+        .fontColor(0xCCCCCC)
+        .padding(15)
+        .fontSize(30)
       Row()
         .scale(this.scaleValue)
         .width(100)
@@ -86,13 +95,19 @@ struct TransformExample {
         .backgroundColor(0xAFEEEE)
         .key('rotate3')
 
-      Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(30)
+      Text('Matrix4')
+        .width('90%')
+        .fontColor(0xCCCCCC)
+        .padding(15)
+        .fontSize(30)
       Row()
         .width(100)
         .height(100)
         .backgroundColor(0xAFEEEE)
         .transform(Matrix4.identity().translate({ x: 100, y: 100, z: 30 }))
         .key('rotate4')
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

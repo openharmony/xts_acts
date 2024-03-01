@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function loadingProgressCircularJsunit() {
-  describe('loadingProgressCircularTest', function () {
-    beforeEach(async function (done) {
+  describe('loadingProgressCircularTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/loadingProgress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/loadingProgress',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function loadingProgressCircularJsunit() {
         console.info("get loadingProgress state success " + JSON.stringify(pages));
         if (!("loadingProgress" == pages.name)) {
           console.info("get loadingProgress state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push loadingProgress page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function loadingProgressCircularJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("loadingProgressCircular after each called");
     });
@@ -50,19 +50,18 @@ export default function loadingProgressCircularJsunit() {
      * @tc.name         testloadingProgressCircular0011
      * @tc.desic         aceloadingProgressCircularEtsTest0011
      */
-    it('testloadingProgressCircular0011', 0, async function (done) {
+    it('testloadingProgressCircular0011', 0, async (done: Function) => {
       console.info('loadingProgressCircular testloadingProgressCircular0010 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('CircularText');
+      let strJson: string = getInspectorByKey('CircularText');
       console.info("[testloadingProgressCircular0011] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.color).assertEqual(undefined);
-      expect(obj.$attrs.width).assertEqual('100.00vp');
-      expect(obj.$attrs.margin).assertEqual('5.00vp');
-      console.info("[testloadingProgressCircular0011] color value :" + obj.$attrs.color);
-      console.info("[testloadingProgressCircular0011] width value :" + obj.$attrs.width);
-      console.info("[testloadingProgressCircular0011] margin value :" + obj.$attrs.margin);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.color).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('100.00vp');
+      expect(JSON.parse(strJson).$attrs.margin).assertEqual('5.00vp');
+      console.info("[testloadingProgressCircular0011] color value :" + JSON.parse(strJson).$attrs.color);
+      console.info("[testloadingProgressCircular0011] width value :" + JSON.parse(strJson).$attrs.width);
+      console.info("[testloadingProgressCircular0011] margin value :" + JSON.parse(strJson).$attrs.margin);
       done();
     });
 
@@ -71,19 +70,18 @@ export default function loadingProgressCircularJsunit() {
      * @tc.name         testloadingProgressCircular0001
      * @tc.desic         aceloadingProgressCircularEtsTest0011
      */
-    it('testloadingProgressOrbital0001', 0, async function (done) {
+    it('testloadingProgressOrbital0001', 0, async (done: Function) => {
       console.info('loadingProgressOrbital testloadingProgressCircular0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('OrbitalText');
+      let strJson: string = getInspectorByKey('OrbitalText');
       console.info("[testloadingProgressOrbital0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.color).assertEqual(undefined);
-      expect(obj.$attrs.width).assertEqual('100.00vp');
-      expect(obj.$attrs.margin).assertEqual('5.00vp');
-      console.info("[testloadingProgressOrbital0001] color value :" + obj.$attrs.color);
-      console.info("[testloadingProgressOrbital0001] width value :" + obj.$attrs.width);
-      console.info("[testloadingProgressOrbital0001] margin value :" + obj.$attrs.margin);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.color).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('100.00vp');
+      expect(JSON.parse(strJson).$attrs.margin).assertEqual('5.00vp');
+      console.info("[testloadingProgressOrbital0001] color value :" + JSON.parse(strJson).$attrs.color);
+      console.info("[testloadingProgressOrbital0001] width value :" + JSON.parse(strJson).$attrs.width);
+      console.info("[testloadingProgressOrbital0001] margin value :" + JSON.parse(strJson).$attrs.margin);
       done();
     });
   })

@@ -22,22 +22,22 @@ const TAG = 'ets_apiLack_add';
 struct WebEditText {
   controller: WebController = new WebController();
   webResourceResponse: WebResourceResponse = new WebResourceResponse();
+
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear WebEditText start`)
+    Log.showInfo(TAG, `aboutToAppear WebEditText start`);
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear WebEditText end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear WebEditText end`);
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
-      Web({ src:'www.baidu.com', controller:this.controller })
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Web({ src: 'www.baidu.com', controller: this.controller })
         .javaScriptAccess(true)
         .height(500)
         .padding(20)
-        .blur(2)
-        // .fileFromUrlAccess(true)
+        .blur(2)// .fileFromUrlAccess(true)
         .initialScale(2)
         .onRenderExited((event) => {
           console.info('onRenderExited getAcceptType: ', event.renderExitReason);
@@ -47,7 +47,7 @@ struct WebEditText {
           console.info('onShowFileSelector getTitle: ', event.fileSelector.getTitle());
           console.info('onShowFileSelector getMode: ', event.fileSelector.getMode());
           console.info('onShowFileSelector isCapture: ', event.fileSelector.isCapture());
-          event.result.handleFileList(["D:\DevEcoStudioProjects","D:\DevEcoStudioProjects"])
+          event.result.handleFileList(["D:\DevEcoStudioProjects", "D:\DevEcoStudioProjects"])
           return true;
         })
         .onInterceptRequest((event) => {
@@ -90,7 +90,9 @@ struct WebEditText {
             console.log('The response header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
           }
         })
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

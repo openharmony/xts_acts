@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function listtestIdleJsunit() {
-  describe('listtestIdleTest', function () {
-    beforeEach(async function (done) {
+  describe('listtestIdleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listtest',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listtest',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function listtestIdleJsunit() {
         console.info("get listtest state success " + JSON.stringify(pages));
         if (!("listtest" == pages.name)) {
           console.info("get listtestI state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push listtest page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function listtestIdleJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("listtestIdle after each called");
     });
@@ -51,15 +51,14 @@ export default function listtestIdleJsunit() {
      * @tc.name         testlisttestIdle0001
      * @tc.desic         acelisttestIdleEtsTest0001
      */
-    it('testlisttestIdle0001', 0, async function (done) {
+    it('testlisttestIdle0001', 0, async (done: Function) => {
       console.info('listtestIdle testlisttestIdle0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ScrollList');
+      let strJson: string = getInspectorByKey('ScrollList');
       console.info("[testlisttestIdle0001] component controlButton strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.editMode).assertEqual(true);
-      console.info("[testlisttestIdle0001] editMode value :" + obj.$attrs.editMode);
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      expect(JSON.parse(strJson).$attrs.editMode).assertEqual(true);
+      console.info("[testlisttestIdle0001] editMode value :" + JSON.parse(strJson).$attrs.editMode);
       done();
     });
   })

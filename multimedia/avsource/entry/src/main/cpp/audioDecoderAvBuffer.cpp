@@ -949,8 +949,10 @@ static napi_value OHAudioDecoderPushInputBuffer(napi_env env, napi_callback_info
     OH_AudioCodec_RegisterCallback(audioDec, callback, signal_);
     OH_AudioCodec_Configure(audioDec, format);
     OH_AudioCodec_Start(audioDec);
-    unique_lock<mutex> lock(signal_->inMutex_);
-    signal_->inCond_.wait(lock, []() { return (signal_->inQueue_.size() > 0);});
+	{
+	    unique_lock<mutex> lock(signal_->inMutex_);
+	    signal_->inCond_.wait(lock, []() { return (signal_->inQueue_.size() > 0);});
+	}
     if (signal_->inQueue_.front() == 0) {
         backParam = SUCCESS;
     }
@@ -980,8 +982,10 @@ static napi_value OHAudioDecoderFreeOutputBuffer(napi_env env, napi_callback_inf
     OH_AudioCodec_RegisterCallback(audioDec, callback, signal_);
     OH_AudioCodec_Configure(audioDec, format);
     OH_AudioCodec_Start(audioDec);
-    unique_lock<mutex> lock(signal_->outMutex_);
-    signal_->outCond_.wait(lock, []() { return (signal_->outQueue_.size() > 0); });
+    {
+        unique_lock<mutex> lock(signal_->outMutex_);
+        signal_->outCond_.wait(lock, []() { return (signal_->outQueue_.size() > 0); });
+    }
     if (signal_->outQueue_.front() == 0) {
         backParam = SUCCESS;
     }

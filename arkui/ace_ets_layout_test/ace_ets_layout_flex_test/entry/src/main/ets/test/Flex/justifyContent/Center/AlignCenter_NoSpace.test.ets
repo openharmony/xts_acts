@@ -14,14 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
 
 export default function AlignCenter_NoSpace() {
-  describe('AlignCenter_NoSpace', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/justifyContent/Center/AlignCenter_NoSpace'
+  describe('AlignCenter_NoSpace', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/Center/AlignCenter_NoSpace'
       }
       try {
         router.clear();
@@ -29,7 +30,7 @@ export default function AlignCenter_NoSpace() {
         console.info("get AlignCenter_NoSpace state success " + JSON.stringify(pages));
         if (!("AlignCenter_NoSpace" == pages.name)) {
           console.info("get AlignCenter_NoSpace state pages.name " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push AlignCenter_NoSpace page success " + JSON.stringify(result));
         }
@@ -37,33 +38,35 @@ export default function AlignCenter_NoSpace() {
         console.error("push AlignCenter_NoSpace page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignCenter_NoSpace after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100
-     * @tc.name      testFlexAlignCenterFlexWidthOverflow
-     * @tc.desc      The parent component layout space does not meet the interface display of the spindle layout of
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0100
+     * @tc.name testFlexAlignCenterFlexWidthOverflow
+     * @tc.desc The parent component layout space does not meet the interface display of the spindle layout of
      * the child component
      */
-    it('testFlexAlignCenterFlexWidthOverflow', 0, async function (done) {
+    it('testFlexAlignCenterFlexWidthOverflow', 0, async () => {
       console.info('[testFlexAlignCenterFlexWidthOverflow] START');
-      globalThis.value.message.notify({ name: 'DadWidth', value: 400 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'DadWidth', value: 400
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_NoSpace_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      let Center_NoSpace_011 = CommonFunc.getComponentRect('Center_NoSpace_011');
-      let Center_NoSpace_012 = CommonFunc.getComponentRect('Center_NoSpace_012');
-      let Center_NoSpace_013 = CommonFunc.getComponentRect('Center_NoSpace_013');
-      let Center_NoSpace_01 = CommonFunc.getComponentRect('Center_NoSpace_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+      let Center_NoSpace_011: RectValue = CommonFunc.getComponentRect('Center_NoSpace_011');
+      let Center_NoSpace_012: RectValue = CommonFunc.getComponentRect('Center_NoSpace_012');
+      let Center_NoSpace_013: RectValue = CommonFunc.getComponentRect('Center_NoSpace_013');
+      let Center_NoSpace_01: RectValue = CommonFunc.getComponentRect('Center_NoSpace_01');
       expect(Math.abs(Center_NoSpace_011.top - Center_NoSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_012.top - Center_NoSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_011.top - Center_NoSpace_01.top) <= 1).assertTrue();
@@ -74,46 +77,59 @@ export default function AlignCenter_NoSpace() {
       expect(Math.abs(Center_NoSpace_011.bottom - Center_NoSpace_011.top - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_012.bottom - Center_NoSpace_012.top - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_013.bottom - Center_NoSpace_013.top - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(Center_NoSpace_011.right - Center_NoSpace_011.left - Math.round(vp2px(400 / 3))) <= 1).assertTrue();
-      expect(Math.abs(Center_NoSpace_012.right - Center_NoSpace_012.left - Math.round(vp2px(400 / 3))) <= 1).assertTrue();
-      expect(Math.abs(Center_NoSpace_013.right - Center_NoSpace_013.left - Math.round(vp2px(400 / 3))) <= 1).assertTrue();
+      expect(Math.abs(Center_NoSpace_011.right - Center_NoSpace_011.left - Math.round(vp2px(400 / 3))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Center_NoSpace_012.right - Center_NoSpace_012.left - Math.round(vp2px(400 / 3))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Center_NoSpace_013.right - Center_NoSpace_013.left - Math.round(vp2px(400 / 3))) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignCenterFlexWidthOverflow] END');
-      done();
+
     });
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200
-     * @tc.name      testFlexAlignCenterFlexWidthMeet
-     * @tc.desc      The interface display where the parent component layout space satisfies the spindle layout of
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_CENTER_TEST_0200
+     * @tc.name testFlexAlignCenterFlexWidthMeet
+     * @tc.desc The interface display where the parent component layout space satisfies the spindle layout of
      * the child component
      */
-    it('testFlexAlignCenterFlexWidthMeet', 0, async function (done) {
+    it('testFlexAlignCenterFlexWidthMeet', 0, async () => {
       console.info('[testFlexAlignCenterFlexWidthMeet] START');
-      globalThis.value.message.notify({ name: 'DadWidth', value: 500 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'DadWidth', value: 500
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Center_NoSpace_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
-      let Center_NoSpace_011 = CommonFunc.getComponentRect('Center_NoSpace_011');
-      let Center_NoSpace_012 = CommonFunc.getComponentRect('Center_NoSpace_012');
-      let Center_NoSpace_013 = CommonFunc.getComponentRect('Center_NoSpace_013');
-      let Center_NoSpace_01 = CommonFunc.getComponentRect('Center_NoSpace_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+      let Center_NoSpace_011: RectValue = CommonFunc.getComponentRect('Center_NoSpace_011');
+      let Center_NoSpace_012: RectValue = CommonFunc.getComponentRect('Center_NoSpace_012');
+      let Center_NoSpace_013: RectValue = CommonFunc.getComponentRect('Center_NoSpace_013');
+      let Center_NoSpace_01: RectValue = CommonFunc.getComponentRect('Center_NoSpace_01');
       expect(Math.abs(Center_NoSpace_011.top - Center_NoSpace_012.top) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_012.top - Center_NoSpace_013.top) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_011.top - Center_NoSpace_01.top) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_011.right - Center_NoSpace_012.left) <= 1).assertTrue();
       expect(Math.abs(Center_NoSpace_013.left - Center_NoSpace_012.right) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Center_NoSpace_011.left - Center_NoSpace_01.left) - Math.round(Center_NoSpace_01.right - Center_NoSpace_013.right)) <= 1).assertTrue();
-      expect(Math.abs((Math.round((Center_NoSpace_011.left - Center_NoSpace_01.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_011.bottom - Center_NoSpace_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_012.bottom - Center_NoSpace_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Center_NoSpace_013.bottom - Center_NoSpace_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Center_NoSpace_011.left - Center_NoSpace_01.left) - Math.round(Center_NoSpace_01.right - Center_NoSpace_013.right)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round((Center_NoSpace_011.left - Center_NoSpace_01.left) * 10) / 10) - (Math.round(vp2px(25) * 10) / 10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_011.right - Center_NoSpace_011.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_012.right - Center_NoSpace_012.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_013.right - Center_NoSpace_013.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_011.bottom - Center_NoSpace_011.top)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_012.bottom - Center_NoSpace_012.top)) - (Math.round(vp2px(100)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Center_NoSpace_013.bottom - Center_NoSpace_013.top)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
       console.info('[testFlexAlignCenterFlexWidthMeet] END');
-      done();
+
     });
   })
 }

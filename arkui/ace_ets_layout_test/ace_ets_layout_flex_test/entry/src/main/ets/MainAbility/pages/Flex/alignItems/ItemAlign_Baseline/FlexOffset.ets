@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct FlexOffset_Baseline {
@@ -26,7 +26,7 @@ struct FlexOffset_Baseline {
     console.info('FlexOffset_Baseline page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexTest09').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -35,10 +35,15 @@ struct FlexOffset_Baseline {
           alignItems: ItemAlign.Baseline,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).offset({ x: 15, y: 30 }).key('textOffset01')
+          Text('1')
+            .width(150)
+            .height(50)
+            .backgroundColor(0xF5DEB3)
+            .offset({ x: 15, y: 30 })
+            .key('textOffset01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textOffset02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textOffset03')
-        } 
+        }
         .key('flexOffset')
         .height(200)
         .width(500)
