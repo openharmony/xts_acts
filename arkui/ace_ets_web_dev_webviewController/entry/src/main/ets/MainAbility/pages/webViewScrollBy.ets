@@ -55,6 +55,8 @@ struct webViewScrollBy {
           console.info("key==>" + this.str)
           switch (this.str) {
             case "emitScrollByOne": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'))
               this.xNum = 0;
               this.yNum = 1717;
@@ -83,6 +85,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByTwo": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = 0;
               this.yNum = 3500;
@@ -111,6 +115,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByThree": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = 0;
               this.yNum = -1717;
@@ -134,6 +140,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByFour": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = 0;
               this.yNum = -3500;
@@ -157,6 +165,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByFive": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = 1500;
               this.yNum = 0;
@@ -185,6 +195,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollBySix": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'))
               this.xNum = 4000;
               this.yNum = 0;
@@ -213,6 +225,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollBySeven": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'))
               this.xNum = -4000;
               this.yNum = 0;
@@ -236,6 +250,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByEight": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'))
               this.xNum = -1500;
               this.yNum = 0;
@@ -259,6 +275,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByNine": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'))
               this.xNum = 1500;
               this.yNum = 1717;
@@ -287,6 +305,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByTen": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = 4000;
               this.yNum = 3500;
@@ -316,6 +336,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByEleven": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = -1500;
               this.yNum = -1717;
@@ -341,6 +363,8 @@ struct webViewScrollBy {
               break;
             }
             case "emitScrollByTwelve": {
+              this.controller.loadUrl('www.example.com')
+              await Utils.sleep(1000);
               this.controller.loadUrl($rawfile('theScroll.html'));
               this.xNum = -4000;
               this.yNum = -3500;
