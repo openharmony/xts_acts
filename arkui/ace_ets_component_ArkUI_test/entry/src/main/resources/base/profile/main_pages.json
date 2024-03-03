@@ -102,6 +102,7 @@
         "MainAbility/pages/observeTrack/TwoNestTrack",
         "MainAbility/pages/observeTrack/TrackDate",
         "MainAbility/pages/observeTrack/TrackMap",
-        "MainAbility/pages/observeTrack/TrackSet"
+        "MainAbility/pages/observeTrack/TrackSet",
+        "MainAbility/pages/observeTrack/ArrayTrack"
     ]
 }

@@ -113,6 +113,7 @@ import TrackDateTest from './observeTrack/TrackDateTest.test';
 import TrackMapTest from './observeTrack/TrackMapTest.test';
 import TrackSetTest from './observeTrack/TrackSetTest.test';
 import TwoNestTrackTest from './observeTrack/TwoNestTrackTest.test';
+import ArrayTrackTest from './observeTrack/ArrayTrackTest.test';
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -215,4 +216,5 @@ export default function testsuite() {
   TrackMapTest();
   TrackSetTest();
   TwoNestTrackTest();
+  ArrayTrackTest();
 }
