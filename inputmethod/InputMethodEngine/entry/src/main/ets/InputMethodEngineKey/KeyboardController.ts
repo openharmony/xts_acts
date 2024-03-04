@@ -1,4 +1,3 @@
-import prompt from '@ohos.prompt';
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +12,8 @@ import prompt from '@ohos.prompt';
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import prompt from '@ohos.prompt';
 import inputmethodengine from '@ohos.inputMethodEngine';
 import display from '@ohos.display';
 import windowManager from '@ohos.window';
