@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function navigatorTargetJsunit() {
-  describe('navigatorTargetTest', function () {
-    beforeAll(async function (done) {
+  describe('navigatorTargetTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/navigator',
@@ -37,10 +37,9 @@ export default function navigatorTargetJsunit() {
       } catch (err) {
         console.error("push navigator page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("navigatorTarget after each called");
     });
@@ -50,16 +49,16 @@ export default function navigatorTargetJsunit() {
      * @tc.name         testnavigatorTarget0001
      * @tc.desic         acenavigatorTargetEtsTest0001
      */
-    it('testnavigatorTarget0001', 0, async function (done) {
+    it('testnavigatorTarget0001', 0, async () => {
       console.info('navigatorTarget testnavigatorTarget0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Navigator');
       console.info("[testnavigatorTarget0001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Navigator');
-      expect(obj.$attrs.target).assertEqual("pages/index");
-      console.info("[testnavigatorTarget0001] target value :" + obj.$attrs.target);
-      done();
+      expect(JSON.parse(strJson).$attrs.target).assertEqual("pages/index");
+      console.info("[testnavigatorTarget0001] target value :" + JSON.parse(strJson).$attrs.target);
+
     });
   })
 }

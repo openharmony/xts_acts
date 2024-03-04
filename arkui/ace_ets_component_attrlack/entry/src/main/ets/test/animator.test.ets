@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function animatorOnframeJsunit() {
-  describe('animatorOnframeTest', function () {
-    beforeEach(async function (done) {
+  describe('animatorOnframeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/animator',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/animator',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function animatorOnframeJsunit() {
         console.info("get animator state success " + JSON.stringify(pages));
         if (!("animator" == pages.name)) {
           console.info("get animator state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push animator page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function animatorOnframeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("animatorOnframe after each called");
     });
@@ -50,15 +50,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0001
      * @tc.desic         aceanimatorOnframeEtsTest0001
      */
-    it('testanimatorOnframe0001', 0, async function (done) {
+    it('testanimatorOnframe0001', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testanimatorOnframe0001] width value :" + obj.$attrs.width);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testanimatorOnframe0001] width value :" + JSON.parse(strJson).$attrs.width);
       done();
     });
 
@@ -67,15 +67,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0002
      * @tc.desic         aceanimatorOnframeEtsTest0002
      */
-    it('testanimatorOnframe0002', 0, async function (done) {
+    it('testanimatorOnframe0002', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testanimatorOnframe0002] height value :" + obj.$attrs.height);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("70.00vp");
+      console.info("[testanimatorOnframe0002] height value :" + JSON.parse(strJson).$attrs.height);
       done();
     });
 
@@ -84,15 +84,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0003
      * @tc.desic         aceanimatorOnframeEtsTest0003
      */
-    it('testanimatorOnframe0003', 0, async function (done) {
+    it('testanimatorOnframe0003', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0003 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("20.00fp");
-      console.info("[testanimatorOnframe0003] fontSize value :" + obj.$attrs.fontSize);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("20.00fp");
+      console.info("[testanimatorOnframe0003] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
       done();
     });
 
@@ -101,15 +101,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0004
      * @tc.desic         aceanimatorOnframeEtsTest0004
      */
-    it('testanimatorOnframe0004', 0, async function (done) {
+    it('testanimatorOnframe0004', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0004 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testanimatorOnframe0004] opacity value :" + obj.$attrs.opacity);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
+      console.info("[testanimatorOnframe0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
       done();
     });
 
@@ -118,15 +118,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0005
      * @tc.desic         aceanimatorOnframeEtsTest0005
      */
-    it('testanimatorOnframe0005', 0, async function (done) {
+    it('testanimatorOnframe0005', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0005 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testanimatorOnframe0005] align value :" + obj.$attrs.align);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopStart");
+      console.info("[testanimatorOnframe0005] align value :" + JSON.parse(strJson).$attrs.align);
       done();
     });
 
@@ -135,15 +135,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0006
      * @tc.desic         aceanimatorOnframeEtsTest0006
      */
-    it('testanimatorOnframe0006', 0, async function (done) {
+    it('testanimatorOnframe0006', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0006 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testanimatorOnframe0006] fontColor value :" + obj.$attrs.fontColor);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFCCCCCC");
+      console.info("[testanimatorOnframe0006] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
       done();
     });
 
@@ -152,15 +152,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0007
      * @tc.desic         aceanimatorOnframeEtsTest0007
      */
-    it('testanimatorOnframe0007', 0, async function (done) {
+    it('testanimatorOnframe0007', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0007 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.lineHeight).assertEqual("25.00fp");
-      console.info("[testanimatorOnframe0007] lineHeight value :" + obj.$attrs.lineHeight);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual("25.00fp");
+      console.info("[testanimatorOnframe0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
       done();
     });
 
@@ -170,15 +170,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0009
      * @tc.desic         aceanimatorOnframeEtsTest0009
      */
-    it('testanimatorOnframe0009', 0, async function (done) {
+    it('testanimatorOnframe0009', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe009 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testanimatorOnframe0009] padding value :" + obj.$attrs.padding);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual("10.00vp");
+      console.info("[testanimatorOnframe0009] padding value :" + JSON.parse(strJson).$attrs.padding);
       done();
     });
 
@@ -187,15 +187,15 @@ export default function animatorOnframeJsunit() {
      * @tc.name         testanimatorOnframe0010
      * @tc.desic         aceanimatorOnframeEtsTest0010
      */
-    it('testanimatorOnframe0010', 0, async function (done) {
+    it('testanimatorOnframe0010', 0, async (done: Function) => {
       console.info('animatorOnframe testanimatorOnframe0010 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onframeText');
+      let strJson: string = getInspectorByKey('onframeText');
       console.info("[testanimatorOnframe0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
-      console.info("[testanimatorOnframe0010] textAlign value :" + obj.$attrs.textAlign);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center");
+      console.info("[testanimatorOnframe0010] textAlign value :" + JSON.parse(strJson).$attrs.textAlign);
       done();
     });
   })

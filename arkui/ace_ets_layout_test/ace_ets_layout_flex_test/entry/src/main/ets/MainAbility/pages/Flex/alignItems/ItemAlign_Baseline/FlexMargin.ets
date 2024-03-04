@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct FlexMargin_Baseline {
@@ -26,7 +26,7 @@ struct FlexMargin_Baseline {
     console.info('FlexMargin_Baseline page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexMargin').fontSize(9).fontColor(0xCCCCCC).width('90%')

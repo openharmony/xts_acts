@@ -42,6 +42,7 @@ let subscriberOnAcquired;
 let subscriberOnReleased;
 let subscriberOnDeleted;
 let subscriberSupply;
+let isSupportChangeTime;
 
 export default function test() {
     describe(`FmsDeleteFormTest`, () => {
@@ -618,78 +619,123 @@ export default function test() {
             commonEvent.publish(`fms.time_speed`, { code: 900 }, () => {
                 console.info(`${tcNumber} time speed up`);
             });
+
+            isSupportChangeTime = false;
             await changeTime(10, 29, 55);
+            console.info(`${tcNumber} setTime  ${JSON.stringify(isSupportChangeTime)}`);
 
-            async function delPublishCallback() {
-                console.info(`${tcNumber} delPublishCallback`);
-                await sleep(5000);
-                commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback(tcNumber));
-                if (supplyFlag && supplyFlagUpdate) {
-                    deleteFormB();
-                } else {
-                    deleteFormB();
+            if (isSupportChangeTime) {
+                async function delPublishCallback() {
+                    console.info(`${tcNumber} delPublishCallback`);
+                    await sleep(5000);
+                    commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback(tcNumber));
+                    if (supplyFlag && supplyFlagUpdate) {
+                        deleteFormB();
+                    } else {
+                        deleteFormB();
+                    }
+                    console.info(`${tcNumber} delPublishCallback end`);
                 }
-                console.info(`${tcNumber} delPublishCallback end`);
-            }
 
-            async function delPublishCallbackB() {
-                console.info(`${tcNumber} delPublishCallbackB`);
-                console.info(`${tcNumber} delPublishCallbackB end`);
-                console.info(`${tcNumber} end`);
-                await systemTime.setTime(currentTime).then((data)=>{
-                    console.info(`${tcNumber} setTime  ${JSON.stringify(data)}`);
-                    done();
-                }).catch((error)=>{
-                    console.info(`${tcNumber} setTime  ${JSON.stringify(error)}`);
-                    done();
-                })
-            }
+                async function delPublishCallbackB() {
+                    console.info(`${tcNumber} delPublishCallbackB`);
+                    console.info(`${tcNumber} delPublishCallbackB end`);
+                    console.info(`${tcNumber} end`);
+                    await systemTime.setTime(currentTime).then((data)=>{
+                        console.info(`${tcNumber} setTime  ${JSON.stringify(data)}`);
+                        done();
+                    }).catch((error)=>{
+                        console.info(`${tcNumber} setTime  ${JSON.stringify(error)}`);
+                        done();
+                    })
+                }
 
-            async function deleteFormB() {
-                console.info(`${tcNumber} deleteFormB start`);
-                // timer speed reset
-                commonEvent.publish(`fms.time_speed`, { code: 1 }, () => {
-                    console.info(`${tcNumber} time speed up`);
-                });
-                await sleep(1000);
-                const commonEventPublishData = {
-                    bundleName: "com.ohos.st.formsystemhostc",
-                    data: formIdB
+                async function deleteFormB() {
+                    console.info(`${tcNumber} deleteFormB start`);
+                    // timer speed reset
+                    commonEvent.publish(`fms.time_speed`, { code: 1 }, () => {
+                        console.info(`${tcNumber} time speed up`);
+                    });
+                    await sleep(1000);
+                    const commonEventPublishData = {
+                        bundleName: "com.ohos.st.formsystemhostc",
+                        data: formIdB
+                    };
+                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallbackB);
+                    console.info(`${tcNumber} deleteFormB end`);
+                }
+
+                const onAcquiredCallbackB = async (_, data) => {
+                    console.info(`${tcNumber} onAcquiredCallbackB data: ${JSON.stringify(data)}`);
+                    expect(data.event).assertEqual(`FMS_FormOnAcquired_commonEvent`);
+                    formIdB = data.data;
+                    commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
+                    const commonEventPublishData = {
+                        bundleName: "com.ohos.st.formsystemhostd",
+                        data: formId
+                    };
+                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallback);
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallbackB);
-                console.info(`${tcNumber} deleteFormB end`);
-            }
 
-            const onAcquiredCallbackB = async (_, data) => {
-                console.info(`${tcNumber} onAcquiredCallbackB data: ${JSON.stringify(data)}`);
-                expect(data.event).assertEqual(`FMS_FormOnAcquired_commonEvent`);
-                formIdB = data.data;
-                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
-                const commonEventPublishData = {
-                    bundleName: "com.ohos.st.formsystemhostd",
-                    data: formId
+                const onAcquiredCallback = async (_, data) => {
+                    console.info(`${tcNumber} onAcquiredCallback data: ${JSON.stringify(data)}`);
+                    expect(data.event).assertEqual(`FMS_FormOnAcquired_commonEvent`);
+                    commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
+                    formId = data.data;
+                    subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                    await sleep(1000);
+                    commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
+
+                    console.info(`${tcNumber} featureAbility.startAbility again start`);
+                    await featureAbility.startAbility({
+                        want: {
+                            bundleName: "com.ohos.st.formsystemhostc",
+                            abilityName: "com.ohos.st.formsystemhostc.MainAbility",
+                            parameters: {
+                                formId: "0",
+                                name: "Form_Js001",
+                                bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                                ability: "FormAbility",
+                                moduleName: "entry",
+                                temporary: false,
+                                isCreate: true
+                            }
+                        }
+                    }).then((res: any) => {
+                        console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
+                    }).catch((err: any) => {
+                        console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                        expect().assertFail();
+                        done();
+                    });
+                    console.info(`${tcNumber} featureAbility.startAbility again end`);
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallback);
-            };
+                commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
 
-            const onAcquiredCallback = async (_, data) => {
-                console.info(`${tcNumber} onAcquiredCallback data: ${JSON.stringify(data)}`);
-                expect(data.event).assertEqual(`FMS_FormOnAcquired_commonEvent`);
-                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback(tcNumber));
-                formId = data.data;
-                subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
-                await sleep(1000);
-                commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallbackB);
+                const onSupplyCallback = async (_, data) => {
+                    if (data.parameters.kind == "onDestroy") {
+                        console.info(`${tcNumber} onSupplyCallback ${JSON.stringify(data)}`);
+                        supplyFlag = true;
+                    }
+                    if (data.parameters.kind == "onUpdate") {
+                        if (data.parameters.parameters == formId) {
+                            expect().assertFail();
+                        } else if (data.parameters.parameters == formIdB) {
+                            supplyFlagUpdate = true;
+                        }
+                    }
+                };
+                commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
-                console.info(`${tcNumber} featureAbility.startAbility again start`);
+                console.info(`${tcNumber} featureAbility.startAbility start`);
                 await featureAbility.startAbility({
                     want: {
-                        bundleName: "com.ohos.st.formsystemhostc",
-                        abilityName: "com.ohos.st.formsystemhostc.MainAbility",
+                        bundleName: "com.ohos.st.formsystemhostd",
+                        abilityName: "com.ohos.st.formsystemhostd.MainAbility",
                         parameters: {
                             formId: "0",
-                            name: "Form_Js001",
-                            bundle: "com.acts.form.formsystemtestservicea.hmservice",
+                            name: "Form_Js002",
+                            bundle: "com.acts.form.formsystemtestserviceb.hmservice",
                             ability: "FormAbility",
                             moduleName: "entry",
                             temporary: false,
@@ -703,48 +749,12 @@ export default function test() {
                     expect().assertFail();
                     done();
                 });
-                console.info(`${tcNumber} featureAbility.startAbility again end`);
-            };
-            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallback);
-
-            const onSupplyCallback = async (_, data) => {
-                if (data.parameters.kind == "onDestroy") {
-                    console.info(`${tcNumber} onSupplyCallback ${JSON.stringify(data)}`);
-                    supplyFlag = true;
-                }
-                if (data.parameters.kind == "onUpdate") {
-                    if (data.parameters.parameters == formId) {
-                        expect().assertFail();
-                    } else if (data.parameters.parameters == formIdB) {
-                        supplyFlagUpdate = true;
-                    }
-                }
-            };
-            commonEvent.subscribe(subscriberSupply, onSupplyCallback);
-
-            console.info(`${tcNumber} featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhostd",
-                    abilityName: "com.ohos.st.formsystemhostd.MainAbility",
-                    parameters: {
-                        formId: "0",
-                        name: "Form_Js002",
-                        bundle: "com.acts.form.formsystemtestserviceb.hmservice",
-                        ability: "FormAbility",
-                        moduleName: "entry",
-                        temporary: false,
-                        isCreate: true
-                    }
-                }
-            }).then((res: any) => {
-                console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-            }).catch((err: any) => {
-                console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-                expect().assertFail();
+                console.info(`${tcNumber} featureAbility.startAbility end`);
+            } else {
+                console.info(`${tcNumber} not support change time`);
+                expect(true).assertTrue();
                 done();
-            });
-            console.info(`${tcNumber} featureAbility.startAbility end`);
+            }
         });
 
         /**
@@ -1072,8 +1082,10 @@ const changeTime = async (hour, min, second) => {
     try {
         await systemTime.setTime(s);
         console.info(`FMS_deleteForm set time success: ${formatTime}`);
+        isSupportChangeTime = true;
     } catch (error) {
         console.info(`FMS_deleteForm set time failure: ${error}`);
+        isSupportChangeTime = false;
     }
     console.info(`FMS_deleteForm changeTime end`);
 };

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function stepperItemDisabledJsunit() {
-  describe('stepperItemDisabledTest', function () {
-    beforeEach(async function (done) {
+  describe('stepperItemDisabledTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/stepperItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/stepperItem',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function stepperItemDisabledJsunit() {
         console.info("get stepperItem state success " + JSON.stringify(pages));
         if (!("stepperItem" == pages.name)) {
           console.info("get stepperItem state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push stepperItem page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function stepperItemDisabledJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("stepperItemDisabled after each called");
     });
@@ -50,15 +50,14 @@ export default function stepperItemDisabledJsunit() {
      * @tc.name         teststepperItemDisabled0001
      * @tc.desic         acestepperItemDisabledEtsTest0001
      */
-    it('teststepperItemDisabled0001', 0, async function (done) {
+    it('teststepperItemDisabled0001', 0, async (done: Function) => {
       console.info('stepperItemDisabled teststepperItemDisabled0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('StepperItem');
+      let strJson: string = getInspectorByKey('StepperItem');
       console.info("[teststepperItemDisabled0001] component status strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('StepperItem');
-      expect(obj.$attrs.status).assertEqual("ItemState.Disabled");
-      console.info("[teststepperItemDisabled0001] status value :" + obj.$attrs.status);
+      expect(JSON.parse(strJson).$type).assertEqual('StepperItem');
+      expect(JSON.parse(strJson).$attrs.status).assertEqual("ItemState.Disabled");
+      console.info("[teststepperItemDisabled0001] status value :" + JSON.parse(strJson).$attrs.status);
       done();
     });
   })

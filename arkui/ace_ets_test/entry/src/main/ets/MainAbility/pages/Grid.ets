@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct grid_testcase {
@@ -34,8 +34,8 @@ struct grid_testcase {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
           .rowsTemplate('1fr 1fr 1fr 1fr 1fr')

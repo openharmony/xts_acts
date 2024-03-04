@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -26,12 +27,12 @@ struct CircleNe {
     Log.showInfo(TAG, `aboutToAppear CircleNew start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CircleNew end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("circle-New")
         .width(100)
@@ -55,7 +56,7 @@ struct CircleNe {
       Image($rawfile('test.png'))
         .mask(new Circle({ width: '150px', height: '150px' }).fill(Color.Gray))
         .width('500px').height('280px')
-    
+
     }.width("100%").height("100%")
   }
 }

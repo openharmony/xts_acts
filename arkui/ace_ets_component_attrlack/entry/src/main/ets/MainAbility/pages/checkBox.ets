@@ -20,17 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct CheckBoxGroup {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CheckBoxGroup start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CheckBoxGroup end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("checkBox-Group")
         .width(100)
@@ -47,29 +46,31 @@ struct CheckBoxGroup {
         .key("groupText")
 
       Row() {
-        CheckboxGroup({group : 'checkboxGroup'})
+        CheckboxGroup({ group: 'checkboxGroup' })
           .selectedColor(0xed6f21)
           .key('CheckboxGroup')
-          .onChange((itemName:CheckboxGroupResult) => {
+          .onChange((itemName: CheckboxGroupResult) => {
             console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
           })
         Text('select all').fontSize(20)
-        Checkbox({name: 'checkbox1',  group: 'checkboxGroup'})
+        Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
           .key('Checkbox1')
           .select(true)
           .selectedColor(0xed6f21)
           .onChange((value: boolean) => {
-            console.info('Checkbox1 change is'+ value)
+            console.info('Checkbox1 change is' + value)
           })
-        Checkbox({name: 'checkbox2',  group: 'checkboxGroup'})
+        Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
           .key('Checkbox2')
           .select(false)
           .selectedColor(0x39a2db)
           .onChange((value: boolean) => {
-            console.info('Checkbox2 change is'+ value)
+            console.info('Checkbox2 change is' + value)
           })
       }
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,11 +18,23 @@
 struct RowExample {
   build() {
     Column({ space: 5 }) {
-      Text('alignItems(Start)').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('alignItems(Start)')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Column() {
-        Column().width('50%').height(50).backgroundColor(0x00FFFF)
-        Column().width('50%').height(50).backgroundColor(0xAFEEEE)
-      }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+        Column()
+          .width('50%')
+          .height(50)
+          .backgroundColor(0x00FFFF)
+        Column()
+          .width('50%')
+          .height(50)
+          .backgroundColor(0xAFEEEE)
+      }
+      .alignItems(HorizontalAlign.Center)
+      .width('90%')
+      .border({ width: 1 })
     }.width('100%')
     .key('HorizontalAlign')
   }

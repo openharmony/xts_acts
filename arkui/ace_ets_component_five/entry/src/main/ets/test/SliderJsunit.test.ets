@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function sliderJsunit() {
-  describe('appInfoTest_five_3', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/slider',
+  describe('appInfoTest_five_3', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/slider',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function sliderJsunit() {
         console.info("get slider state success " + JSON.stringify(pages));
         if (!("slider" == pages.name)) {
           console.info("get slider success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(3000);
           console.info("push slider page success " + JSON.stringify(result));
         }
@@ -40,31 +39,30 @@ export default function sliderJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("slider after each called");
     });
 
-    it('testSlider001', 0, async function (done) {
+    it('testSlider001', 0, async (done: Function) => {
       console.info('[testSlider001] START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('slider');
+      let strJson: string = getInspectorByKey('slider');
       console.info("[testSlider001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSlider001] decoration:" + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.decoration).assertEqual(undefined);
+      console.info("[testSlider001] decoration:" + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(undefined);
       done();
     });
 
-    it('testSlider002', 0, async function (done) {
+    it('testSlider002', 0, async (done: Function) => {
       console.info('[testSlider002] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "decorationValue": Axis.Horizontal
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 196,
           priority: events_emitter.EventPriority.LOW
         }
@@ -74,34 +72,32 @@ export default function sliderJsunit() {
         console.log("[testSlider002] change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('slider');
+      let strJson: string = getInspectorByKey('slider');
       console.info("[testSlider002] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSlider002] decoration:" + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual(undefined);
+      console.info("[testSlider002] decoration:" + JSON.parse(strJson).$attrs.decoration);
+      expect(JSON.parse(strJson).$attrs.decoration).assertEqual(undefined);
       done();
     });
 
-    it('testSlider003', 0, async function (done) {
+    it('testSlider003', 0, async (done: Function) => {
       console.info('[testSlider003] START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('slider');
+      let strJson: string = getInspectorByKey('slider');
       console.info("[testSlider003] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.value).assertEqual(undefined);
+      expect(JSON.parse(strJson).$attrs.value).assertEqual(undefined);
       done();
     });
 
-    it('testSlider004', 0, async function (done) {
+    it('testSlider004', 0, async (done: Function) => {
       console.info('[testSlider004] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "value": "10",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 196,
           priority: events_emitter.EventPriority.LOW
         }
@@ -112,32 +108,30 @@ export default function sliderJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('slider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testSlider004] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.value).assertEqual(undefined);
+      console.info("[testSlider004] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.value).assertEqual(undefined);
       done();
     });
 
-    it('testSlider005', 0, async function (done) {
+    it('testSlider005', 0, async (done: Function) => {
       console.info('testSlider005 START');
-      let strJson = getInspectorByKey('slider');
+      let strJson: string = getInspectorByKey('slider');
       console.info("testSlider005 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testSlider005 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.step).assertEqual(undefined);
+      console.info("testSlider005 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.step).assertEqual(undefined);
       console.info('testSlider005 END');
       done();
     });
 
-    it('testSlider006', 0, async function (done) {
+    it('testSlider006', 0, async (done: Function) => {
       console.info('testSlider006 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "stepValue": "10",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 196,
           priority: events_emitter.EventPriority.LOW
         }
@@ -147,10 +141,9 @@ export default function sliderJsunit() {
         console.log("testSlider006 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('slider');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testSlider006 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.step).assertEqual(undefined);
+      let strJsonNew: string = getInspectorByKey('slider');
+      console.info("testSlider006 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.step).assertEqual(undefined);
       console.info('testSlider006 END');
       done();
     });

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +13,24 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function alphabetIndexerJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('alphabetIndexerTest', function () {
-    beforeEach(async function (done) {
+  describe('alphabetIndexerTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'pages/AlphabetIndexer',
       }
@@ -44,45 +44,42 @@ export default function alphabetIndexerJsunit() {
           console.info("push AlphabetIndexer page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push AlphabetIndexer page error " + JSON.stringify(result));
+        console.error("push AlphabetIndexer page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("AlphabetIndexer after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0100
-     * @tc.name      alphabetIndexerTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0100
+     * @tc.name alphabetIndexerTest001
+     * @tc.desc aceEtsTest
      */
-    it('alphabetIndexerTest001', 0, async function (done) {
+    it('alphabetIndexerTest001', 0, async () => {
       console.info('AlphabetIndexerTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('alphabetIndexer');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('AlphabetIndexer');
       console.info('AlphabetIndexerTest001 END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0110
-     * @tc.name      alphabetIndexerTest002
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0110
+     * @tc.name alphabetIndexerTest002
+     * @tc.desc aceEtsTest
      */
-    it('alphabetIndexerTest002', 0, async function (done) {
+    it('alphabetIndexerTest002', 0, async () => {
       console.info('AlphabetIndexerTest002 START');
       let strJson = getInspectorByKey('alphabetIndexer1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.info('AlphabetIndexerTest002 END');
-      done();
     });
   })
 }

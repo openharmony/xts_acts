@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
@@ -24,14 +25,13 @@ struct ListLanes {
   @State listPosition: number = 0 // 0代表滚动到List顶部，1代表中间值，2代表滚动到List底
   @State edgeEffect: EdgeEffect = EdgeEffect.None;
   @State alwaysEnabled: boolean = true
-
   private scroller: Scroller = new Scroller()
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear ListLanes start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear ListLanes end`)
   }
 
@@ -46,15 +46,15 @@ struct ListLanes {
 
   onPageShow() {
     console.info('list page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 322,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("list-Lanes")
         .width(100)
@@ -118,7 +118,7 @@ struct ListLanes {
           .editMode(true)
           .alignListItem(ListItemAlign.Start)
           .border({ width: 3, color: Color.Red })
-          .edgeEffect(this.edgeEffect, {alwaysEnabled: this.alwaysEnabled})
+          .edgeEffect(this.edgeEffect, { alwaysEnabled: this.alwaysEnabled })
           .lanes(4)
           .onScrollFrameBegin((offset: number, state: ScrollState) => {
             if ((this.listPosition == 0 && offset >= 0) || (this.listPosition == 2 && offset <= 0)) {
@@ -129,9 +129,9 @@ struct ListLanes {
             return { offsetRemain: offset }
 
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
-                  "result":"success"
+                  "result": "success"
                 }
               }
               let backEvent = {

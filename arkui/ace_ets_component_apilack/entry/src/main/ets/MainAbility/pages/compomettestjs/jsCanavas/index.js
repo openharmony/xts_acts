@@ -14,12 +14,13 @@
  */
 
 import prompt from '@system.prompt';
+
 export default {
-    data:{
-        left:0,
-        top:0,
+    data: {
+        left: 0,
+        top: 0,
     },
-    onShow(){
+    onShow() {
         // 屬性
         this.props1()
         this.props2()
@@ -87,7 +88,7 @@ export default {
         ctx.stroke();
     },
     props5() {
-        const el =this.$refs.canvas5;
+        const el = this.$refs.canvas5;
         const ctx = el.getContext('2d');
         ctx.lineWidth = 5;
         ctx.lineJoin = 'miter';
@@ -98,13 +99,13 @@ export default {
         ctx.stroke();
     },
     props6() {
-        const el =this.$refs.canvas6;
+        const el = this.$refs.canvas6;
         const ctx = el.getContext('2d');
         ctx.font = '20px sans-serif';
         ctx.fillText("Hello World", 10, 20);
     },
     props7() {
-        const el =this.$refs.canvas7;
+        const el = this.$refs.canvas7;
         const ctx = el.getContext('2d');
         ctx.fillStyle = 'rgb(255,0,0)';
         ctx.fillRect(0, 0, 40, 40);
@@ -114,15 +115,15 @@ export default {
 
     },
     props8() {
-        const el =this.$refs.canvas8;
+        const el = this.$refs.canvas8;
         const ctx = el.getContext('2d');
         ctx.arc(50, 40, 30, 0, 6.28);
-        ctx.setLineDash([10,20]);
+        ctx.setLineDash([10, 20]);
         ctx.lineDashOffset = 10.0;
         ctx.stroke();
     },
     props9() {
-        const el =this.$refs.canvas9;
+        const el = this.$refs.canvas9;
         const ctx = el.getContext('2d');
         ctx.fillStyle = 'rgb(255,0,0)';
         ctx.fillRect(10, 10, 30, 30);
@@ -137,7 +138,7 @@ export default {
         ctx.fillRect(85, 25, 30, 30);
     },
     props10() {
-        const el =this.$refs.canvas10;
+        const el = this.$refs.canvas10;
         const ctx = el.getContext('2d');
         ctx.shadowBlur = 30;
         ctx.shadowColor = 'rgb(0,0,0)';
@@ -145,7 +146,7 @@ export default {
         ctx.fillRect(20, 20, 70, 50);
     },
     props11() {
-        const el =this.$refs.canvas11;
+        const el = this.$refs.canvas11;
         const ctx = el.getContext('2d');
         ctx.shadowBlur = 10;
         ctx.shadowOffsetX = 20;
@@ -155,31 +156,31 @@ export default {
         ctx.fillRect(10, 0, 70, 50);
     },
     props12() {
-        const el =this.$refs.canvas12;
+        const el = this.$refs.canvas12;
         const ctx = el.getContext('2d');
         var img = new Image();
         img.src = 'common/images/image.png';
-        img.onload = function() {
+        img.onload = function () {
             ctx.imageSmoothingEnabled = false;
             ctx.drawImage(img, 10, 0, 100, 60);
         };
     },
 
     functionTouch1() {
-        const el =this.$refs.function1;
+        const el = this.$refs.function1;
         const ctx = el.getContext('2d');
         ctx.fillStyle = 'rgb(0,0,255)';
         ctx.fillRect(0, 0, 100, 40);
         ctx.clearRect(20, 10, 60, 20);
     },
     functionTouch2() {
-        const el =this.$refs.function2;
+        const el = this.$refs.function2;
         const ctx = el.getContext('2d');
         ctx.font = '18px sans-serif';
         ctx.strokeText("Hello World!", 0, 20);
     },
     functionTouch3() {
-        const el =this.$refs.function3;
+        const el = this.$refs.function3;
         const ctx = el.getContext('2d');
         ctx.font = '16px sans-serif';
         var txt = 'Hello World';
@@ -187,7 +188,7 @@ export default {
         ctx.fillText(txt, 0, 25);
     },
     functionTouch4() {
-        const el =this.$refs.function4;
+        const el = this.$refs.function4;
         const ctx = el.getContext('2d');
         ctx.beginPath();
         ctx.moveTo(5, 5);
@@ -197,7 +198,7 @@ export default {
         ctx.stroke();
     },
     functionTouch5() {
-        const el =this.$refs.function5;
+        const el = this.$refs.function5;
         const ctx = el.getContext('2d');
         var img = new Image();
         img.src = 'common/images/sun.png';
@@ -206,7 +207,7 @@ export default {
         ctx.fillRect(20, 0, 60, 50);
     },
     functionTouch6() {
-        const el =this.$refs.function6;
+        const el = this.$refs.function6;
         const ctx = el.getContext('2d');
         ctx.beginPath();
         ctx.moveTo(10, 10);
@@ -214,7 +215,7 @@ export default {
         ctx.stroke();
     },
     functionTouch7() {
-        const el =this.$refs.function7;
+        const el = this.$refs.function7;
         const ctx = el.getContext('2d');
         ctx.beginPath();
         ctx.moveTo(10, 10);
@@ -222,27 +223,27 @@ export default {
         ctx.stroke();
     },
     functionTouch8() {
-        const el =this.$refs.function8;
+        const el = this.$refs.function8;
         const ctx = el.getContext('2d');
         ctx.moveTo(30, 20);
         ctx.arcTo(70, 10, 70, 20, 30); // Create an arc
         ctx.stroke();
     },
     functionTouch9() {
-        const el =this.$refs.function9;
+        const el = this.$refs.function9;
         const ctx = el.getContext('2d');
         ctx.beginPath();
         ctx.ellipse(50, 50, 30, 60, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
         ctx.stroke();
     },
     functionTouch10() {
-        const el =this.$refs.function10;
+        const el = this.$refs.function10;
         const ctx = el.getContext('2d');
         ctx.rect(10, 0, 60, 60); // Create a 100*100 rectangle at (20, 20)
         ctx.fill(); // Draw it in default setting
     },
     functionTouch11() {
-        const el =this.$refs.function11;
+        const el = this.$refs.function11;
         const ctx = el.getContext('2d');
         ctx.rect(10, 0, 50, 50);
         ctx.stroke();
@@ -252,20 +253,20 @@ export default {
         ctx.fillRect(0, 0, 40, 40);
     },
     functionTouch12() {
-        const el =this.$refs.function12;
+        const el = this.$refs.function12;
         const ctx = el.getContext('2d');
         ctx.rotate(45 * Math.PI / 180); // Rotate the rectangle 45 degrees
         ctx.fillRect(20, 0, 20, 20);
     },
     functionTouch13() {
-        const el =this.$refs.function13;
+        const el = this.$refs.function13;
         const ctx = el.getContext('2d');
         ctx.strokeRect(10, 10, 25, 25);
-        ctx.scale(1.5, 1.5);// Scale to 200%
+        ctx.scale(1.5, 1.5); // Scale to 200%
         ctx.strokeRect(10, 10, 20, 20);
     },
     functionTouch14() {
-        const el =this.$refs.function14;
+        const el = this.$refs.function14;
         const ctx = el.getContext('2d');
         ctx.fillStyle = 'rgb(0,0,0)';
         ctx.fillRect(0, 0, 30, 30)
@@ -277,35 +278,35 @@ export default {
         ctx.fillRect(0, 0, 30, 30);
     },
     functionTouch15() {
-        const el =this.$refs.function15;
+        const el = this.$refs.function15;
         const ctx = el.getContext('2d');
         ctx.fillRect(10, 10, 30, 30);
         ctx.translate(50, 10);
         ctx.fillRect(10, 10, 30, 30);
     },
     functionTouch16() {
-        const el =this.$refs.function15;
+        const el = this.$refs.function15;
         const ctx = el.getContext('2d');
         ctx.fillRect(10, 10, 30, 30);
-        ctx.translate3d(50, 10,10);
+        ctx.translate3d(50, 10, 10);
         ctx.fillRect(10, 10, 30, 30);
     },
     functionTouch17() {
-        const el =this.$refs.function15;
+        const el = this.$refs.function15;
         const ctx = el.getContext('2d');
         ctx.fillRect(10, 10, 30, 30);
         ctx.matrix(40, 10);
         ctx.fillRect(10, 10, 30, 30);
     },
     functionTouch18() {
-        const el =this.$refs.function15;
+        const el = this.$refs.function15;
         const ctx = el.getContext('2d');
         ctx.fillRect(10, 10, 30, 30);
-        ctx.matrix3d(50, 10,20);
+        ctx.matrix3d(50, 10, 20);
         ctx.fillRect(10, 10, 30, 30);
     },
     functionTouch19() {
-        const el =this.$refs.function15;
+        const el = this.$refs.function15;
         const ctx = el.getContext('2d');
         ctx.fillRect(10, 10, 30, 30);
         ctx.translateX(5);

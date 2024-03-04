@@ -20,21 +20,22 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PageRouteExample {
-  @State private angle:number = 1;
-  @State private imageSize:number = 2;
-  @State private speed:number = 5;
-  @State private interval:number = 0;
-  @State private state:string = '';
+  @State private angle: number = 1;
+  @State private imageSize: number = 2;
+  @State private speed: number = 5;
+  @State private interval: number = 0;
+  @State private state: string = '';
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center })
-    {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Image($rawfile('test.png'))
-        .width(100).height(100).objectFit(ImageFit.Contain)
-        .margin({top:50,bottom:150,right:10})
-        .rotate({ x: 0, y: 0, z: 2, angle:this.angle}) // 组件以(1,1,1)为旋转轴，中心点顺时针旋转 300度
+        .width(100)
+        .height(100)
+        .objectFit(ImageFit.Contain)
+        .margin({ top: 50, bottom: 150, right: 10 })
+        .rotate({ x: 0, y: 0, z: 2, angle: this.angle })// 组件以(1,1,1)为旋转轴，中心点顺时针旋转 300度
         .scale({ x: this.imageSize, y: this.imageSize })
-      Text('speed '+ this.speed)
+      Text('speed ' + this.speed)
         .fontSize(20).fontWeight(FontWeight.Bold)
       Slider({
         value: this.speed,
@@ -54,41 +55,42 @@ struct PageRouteExample {
         .onClick(() => {
           console.info('to next page')
           router.push({
-            uri:'pages/index'
+            uri: 'pages/index'
           })
         })
     }
     .width('100%')
     .height('100%')
   }
-  speedChange(){
-    var that = this
-    this.interval = setInterval(function(){
+
+  speedChange() {
+    let that = this
+    this.interval = setInterval(() => {
       that.angle += that.speed
-    },15)
+    }, 15)
   }
 
   onPageHide() {
     console.info('current page will be hidden, value changed')
     this.state = 'onPageHide'
     try {
-      var eventData = {
+      let eventData: events_emitter.EventData = {
         data: {
           "value": this.state,
         }
       }
-      var event = {
+      let eventt: events_emitter.InnerEvent = {
         eventId: 10,
         priority: events_emitter.EventPriority.LOW
       }
       console.info("page start to emit action state")
-      events_emitter.emit(event, eventData)
-    } catch(err) {
+      events_emitter.emit(eventt, eventData)
+    } catch (err) {
       console.info("page emit action state err: " + JSON.stringify(err.message))
     }
   }
 
-  onPageShow(){
+  onPageShow() {
     this.speedChange()
   }
 }

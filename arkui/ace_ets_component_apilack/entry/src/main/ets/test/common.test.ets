@@ -18,8 +18,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Utils from './Utils.ets'
 
 export default function commonBackgroundBlurStyleJsunit() {
-  describe('commonBackgroundBlurStyleTest', function () {
-    beforeEach(async function (done) {
+  describe('commonBackgroundBlurStyleTest', () => {
+    beforeEach(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/common',
@@ -37,10 +37,9 @@ export default function commonBackgroundBlurStyleJsunit() {
       } catch (err) {
         console.error("push common page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("commonBackgroundBlurStyle after each called");
     });
@@ -50,12 +49,12 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle001
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest001
      */
-    it('testcommonBackgroundBlurStyle001', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle001', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('borderImageText');
       console.info("[testcommonBackgroundBlurStyle001] component borderImage strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
 
       let targetValue = {
@@ -73,9 +72,9 @@ export default function commonBackgroundBlurStyleJsunit() {
         repeat: RepeatMode.Stretch,
         fill: false
       };
-      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      let jsonObject: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.borderImage);
       expect(jsonObject.width).assertEqual("10.00px");
-      done();
+
     });
 
     /*
@@ -83,16 +82,16 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle002
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest002
      */
-    it('testcommonBackgroundBlurStyle002', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle002', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabIndexText');
       console.info("[testcommonBackgroundBlurStyle002] component tabIndex strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.tabIndex).assertEqual(1);
-      console.info("[testcommonBackgroundBlurStyle002] tabIndex value :" + obj.$attrs.textAlign);
-      done();
+      expect(JSON.parse(strJson).$attrs.tabIndex).assertEqual(1);
+      console.info("[testcommonBackgroundBlurStyle002] tabIndex value :" + JSON.parse(strJson).$attrs.textAlign);
+
     });
 
     /*
@@ -100,16 +99,16 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle003
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest003
      */
-    it('testcommonBackgroundBlurStyle003', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle003', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('sepiaText');
       console.info("[testcommonBackgroundBlurStyle003] component sepia strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.sepia).assertEqual(1);
-      console.info("[testcommonBackgroundBlurStyle003] sepia value :" + obj.$attrs.sepia);
-      done();
+      expect(JSON.parse(strJson).$attrs.sepia).assertEqual(1);
+      console.info("[testcommonBackgroundBlurStyle003] sepia value :" + JSON.parse(strJson).$attrs.sepia);
+
     });
 
     /*
@@ -117,12 +116,12 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle004
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest004
      */
-    it('testcommonBackgroundBlurStyle004', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle004', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alignRulesText');
       console.info("[testcommonBackgroundBlurStyle004] component alignRules strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       let targetValue = {
         top: {
@@ -132,9 +131,11 @@ export default function commonBackgroundBlurStyleJsunit() {
           anchor: "target", align: HorizontalAlign.Center
         }
       };
-      expect(obj.$attrs.alignRules).assertEqual(undefined);
-      console.info("[testcommonBackgroundBlurStyle004] alignRules value :" + JSON.stringify(obj.$attrs.alignRules));
-      done();
+      expect(JSON.parse(strJson).$attrs.alignRules).assertEqual(undefined);
+      console.info("[testcommonBackgroundBlurStyle004] alignRules value :" + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .alignRules));
+
     });
 
     /*
@@ -142,16 +143,18 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle005
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest005
      */
-    it('testcommonBackgroundBlurStyle005', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle005', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('backgroundBlurStyleText');
       console.info("[testcommonBackgroundBlurStyle005] component backgroundBlurStyle strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      let testL = obj.$attrs.backgroundBlurStyle;
-      expect(testL instanceof Object).assertTrue();
-      console.info("[testcommonBackgroundBlurStyle005] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
-      done();
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      // let testL = obj.$attrs.backgroundBlurStyle;
+      expect(JSON.parse(strJson).$attrs.backgroundBlurStyle instanceof Object).assertTrue();
+      console.info("[testcommonBackgroundBlurStyle005] backgroundBlurStyle value :" + JSON.parse(strJson)
+        .$attrs
+        .backgroundBlurStyle);
+
     });
 
     /*
@@ -159,10 +162,10 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonBackgroundBlurStyle006
      * @tc.desic        acecommonBackgroundBlurStyleEtsTest006
      */
-    it('testcommonBackgroundBlurStyle006', 0, async function (done) {
+    it('testcommonBackgroundBlurStyle006', 0, async () => {
       console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle006 START');
       console.info("common onKeyEvent click result is: " + JSON.stringify(sendEventByKey('onKeyEventButton', 10, "")));
-      done();
+
     });
 
     /*
@@ -170,15 +173,15 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonHoverEffectHighlight0006
      * @tc.desic        acecommonHoverEffectHighlightEtsTest0006
      */
-    it('testcommonHoverEffectHighlight0001', 0, async function (done) {
+    it('testcommonHoverEffectHighlight0001', 0, async () => {
       console.info('commonHoverEffectHighlight testcommonHoverEffectHighlight0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('hoverEffectText');
       console.info("[testcommonHoverEffectHighlight0001] component hoverEffect strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Highlight');
-      console.info("[testcommonHoverEffectHighlight0001] hoverEffect value :" + obj.$attrs.hoverEffect);
-      done();
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.hoverEffect).assertEqual('HoverEffect.Highlight');
+      console.info("[testcommonHoverEffectHighlight0001] hoverEffect value :" + JSON.parse(strJson).$attrs.hoverEffect);
+
     });
 
     /*
@@ -186,15 +189,15 @@ export default function commonBackgroundBlurStyleJsunit() {
      * @tc.name         testcommonHoverEffectScale0007
      * @tc.desic        acecommonHoverEffectScaleEtsTest0007
      */
-    it('testcommonHoverEffectScale0001', 0, async function (done) {
+    it('testcommonHoverEffectScale0001', 0, async () => {
       console.info('commonHoverEffectScale testcommonHoverEffectScale0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('hoverEffectScaleText');
       console.info("[testcommonHoverEffectScale0001] component hoverEffect strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Scale');
-      console.info("[testcommonHoverEffectScale0001] hoverEffect value :" + obj.$attrs.hoverEffect);
-      done();
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.hoverEffect).assertEqual('HoverEffect.Scale');
+      console.info("[testcommonHoverEffectScale0001] hoverEffect value :" + JSON.parse(strJson).$attrs.hoverEffect);
+
     });
 
   })

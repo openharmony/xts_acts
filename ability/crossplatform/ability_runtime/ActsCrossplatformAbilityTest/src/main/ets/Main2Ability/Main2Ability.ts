@@ -15,44 +15,46 @@
 
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
 export default class Main2Ability extends UIAbility {
-    onCreate(want, launchParam) {
-        console.log('testTag', '%{public}s', 'Ability onCreate');
-        globalThis.want = want;
-        globalThis.main2AbilityContext = this.context;
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log('testTag', '%{public}s', 'Ability onCreate');
+    globalThis.want = want;
+    globalThis.main2AbilityContext = this.context;
+  }
 
-    onDestroy() {
-        console.log('testTag', '%{public}s', 'Ability onDestroy');
-        globalThis.main2AbilityContext = undefined;
-    }
+  onDestroy() {
+    console.log('testTag', '%{public}s', 'Ability onDestroy');
+    globalThis.main2AbilityContext = undefined;
+  }
 
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // Main window is created, set main page for this ability
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.log('testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('testability/pages/Main2', (err: BusinessError) => {
+      if (err.code) {
         console.log('testTag', '%{public}s', 'Ability onWindowStageCreate');
+        return;
+      }
+    });
+  }
 
-        windowStage.loadContent('testability/pages/Main2', (err, data) => {
-            if (err.code) {
-                console.log('testTag', '%{public}s', 'Ability onWindowStageCreate');
-                return;
-            }
-            console.log('testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-        });
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log('testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log('testTag', '%{public}s', 'Ability onWindowStageDestroy');
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log('testTag', '%{public}s', 'Ability onForeground');
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log('testTag', '%{public}s', 'Ability onForeground');
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.log('testTag', '%{public}s', 'Ability onBackground');
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log('testTag', '%{public}s', 'Ability onBackground');
+  }
 }
