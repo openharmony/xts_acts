@@ -13,60 +13,265 @@ Vulkan测试套件使用VK-GL-CTS三方库内原有的vulkancts，通过acts测�
 ├── comm.gni
 ├── cpVulkan.sh
 ├── genlocal.py
+├── README_zh.md
 ├── src
 │   ├── ActsVulkanTest.cpp
-│   └── ActsVulkanTest.h
+│   ├── ActsVulkanTest.h
 │   ├── apitest
+│   │   ├── ActsVulkanApiTest.cpp
+│   │   ├── ActsVulkanApiTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── bindingmodeltest
+│   │   ├── ActsVulkanBinding_modelTest.cpp
+│   │   ├── ActsVulkanBinding_modelTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── clippingtest
+│   │   ├── ActsVulkanClippingTest.cpp
+│   │   ├── ActsVulkanClippingTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── computetest
+│   │   ├── ActsVulkanComputeTest.cpp
+│   │   ├── ActsVulkanComputeTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── conditionalrenderingtest
+│   │   ├── ActsVulkanConditional_renderingTest.cpp
+│   │   ├── ActsVulkanConditional_renderingTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── descriptorindexingtest
+│   │   ├── ActsVulkanDescriptor_indexingTest.cpp
+│   │   ├── ActsVulkanDescriptor_indexingTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── devicegrouptest
+│   │   ├── ActsVulkanDevice_groupTest.cpp
+│   │   ├── ActsVulkanDevice_groupTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── drawtest
+│   │   ├── ActsVulkanDrawTest.cpp
+│   │   ├── ActsVulkanDrawTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── drmformatmodifierstest
+│   │   ├── ActsVulkanDrm_format_modifiersTest.cpp
+│   │   ├── ActsVulkanDrm_format_modifiersTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── dynamicrenderingtest
+│   │   ├── ActsVulkanDynamic_renderingTest.cpp
+│   │   ├── ActsVulkanDynamic_renderingTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── dynamicstatetest
+│   │   ├── ActsVulkanDynamic_stateTest.cpp
+│   │   ├── ActsVulkanDynamic_stateTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── fastlinkedlibrary
+│   │   ├── ActsVulkanFastlinkedLibraryTest.cpp
+│   │   ├── ActsVulkanFastlinkedLibraryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── fractionmandatorytests
+│   │   ├── ActsVulkanFraction_mandatory_testsTest.cpp
+│   │   ├── ActsVulkanFraction_mandatory_testsTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── fragmentoperationstest
+│   │   ├── ActsVulkanFragment_operationsTest.cpp
+│   │   ├── ActsVulkanFragment_operationsTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── fragmentshaderinterlocktest
+│   │   ├── ActsVulkanFragment_shader_interlockTest.cpp
+│   │   ├── ActsVulkanFragment_shader_interlockTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── fragmentshadingratetest
+│   │   ├── ActsVulkanFragment_shading_rateTest.cpp
+│   │   ├── ActsVulkanFragment_shading_rateTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── geometrytest
+│   │   ├── ActsVulkanGeometryTest.cpp
+│   │   ├── ActsVulkanGeometryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── glsltest
+│   │   ├── ActsVulkanGlslTest.cpp
+│   │   ├── ActsVulkanGlslTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── graphicsfuzztest
+│   │   ├── ActsVulkanGraphicsfuzzTest.cpp
+│   │   ├── ActsVulkanGraphicsfuzzTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── imagelessframebuffertest
+│   │   ├── ActsVulkanImageless_framebufferTest.cpp
+│   │   ├── ActsVulkanImageless_framebufferTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── imagetest
+│   │   ├── ActsVulkanImageTest.cpp
+│   │   ├── ActsVulkanImageTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── infotest
+│   │   ├── ActsVulkanInfoTest.cpp
+│   │   ├── ActsVulkanInfoTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── mastertest
+│   │   ├── ActsVulkanMasterTest.cpp
+│   │   ├── ActsVulkanMasterTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── memorymodeltest
+│   │   ├── ActsVulkanMemory_modelTest.cpp
+│   │   ├── ActsVulkanMemory_modelTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── memorytest
+│   │   ├── ActsVulkanMemoryTest.cpp
+│   │   ├── ActsVulkanMemoryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── meshshadertest
+│   │   ├── ActsVulkanMesh_shaderTest.cpp
+│   │   ├── ActsVulkanMesh_shaderTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── monolithic
+│   │   ├── ActsVulkanMonolithicTest.cpp
+│   │   ├── ActsVulkanMonolithicTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── multiviewtest
+│   │   ├── ActsVulkanMultiviewTest.cpp
+│   │   ├── ActsVulkanMultiviewTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── pipelinelibrary
+│   │   ├── ActsVulkanPipelineLibraryTest.cpp
+│   │   ├── ActsVulkanPipelineLibraryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── protectedmemorytest
+│   │   ├── ActsVulkanProtected_memoryTest.cpp
+│   │   ├── ActsVulkanProtected_memoryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── querypooltest
+│   │   ├── ActsVulkanQuery_poolTest.cpp
+│   │   ├── ActsVulkanQuery_poolTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── rasterizationtest
+│   │   ├── ActsVulkanRasterizationTest.cpp
+│   │   ├── ActsVulkanRasterizationTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── rayquerytest
+│   │   ├── ActsVulkanRay_queryTest.cpp
+│   │   ├── ActsVulkanRay_queryTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── raytracingpipelinetest
+│   │   ├── ActsVulkanRay_tracing_pipelineTest.cpp
+│   │   ├── ActsVulkanRay_tracing_pipelineTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── reconvergencetest
+│   │   ├── ActsVulkanReconvergenceTest.cpp
+│   │   ├── ActsVulkanReconvergenceTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── renderpass2test
+│   │   ├── ActsVulkanRenderpass2Test.cpp
+│   │   ├── ActsVulkanRenderpass2Test.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── renderpasstest
+│   │   ├── ActsVulkanRenderpassTest.cpp
+│   │   ├── ActsVulkanRenderpassTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── robustnesstest
+│   │   ├── ActsVulkanRobustnessTest.cpp
+│   │   ├── ActsVulkanRobustnessTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── sparseresourcestest
+│   │   ├── ActsVulkanSparse_resourcesTest.cpp
+│   │   ├── ActsVulkanSparse_resourcesTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── spirvassemblytest
+│   │   ├── ActsVulkanSpirv_assemblyTest.cpp
+│   │   ├── ActsVulkanSpirv_assemblyTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── ssbotest
+│   │   ├── ActsVulkanSsboTest.cpp
+│   │   ├── ActsVulkanSsboTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── subgroupstest
+│   │   ├── ActsVulkanSubgroupsTest.cpp
+│   │   ├── ActsVulkanSubgroupsTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── synchronization2test
+│   │   ├── ActsVulkanSynchronization2Test.cpp
+│   │   ├── ActsVulkanSynchronization2Test.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── synchronizationtest
+│   │   ├── ActsVulkanSynchronizationTest.cpp
+│   │   ├── ActsVulkanSynchronizationTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── tessellationtest
+│   │   ├── ActsVulkanTessellationTest.cpp
+│   │   ├── ActsVulkanTessellationTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── testissuestest
+│   │   ├── ActsVulkanTest_issuesTest.cpp
+│   │   ├── ActsVulkanTest_issuesTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── texturetest
+│   │   ├── ActsVulkanTextureTest.cpp
+│   │   ├── ActsVulkanTextureTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── transformfeedbacktest
+│   │   ├── ActsVulkanTransform_feedbackTest.cpp
+│   │   ├── ActsVulkanTransform_feedbackTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── ubotest
+│   │   ├── ActsVulkanUboTest.cpp
+│   │   ├── ActsVulkanUboTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   ├── wsitest
+│   │   ├── ActsVulkanWsiTest.cpp
+│   │   ├── ActsVulkanWsiTest.h
+│   │   ├── BUILD.gn
+│   │   └── Test.json
 │   └── ycbcrtest
+│       ├── ActsVulkanYcbcrTest.cpp
+│       ├── ActsVulkanYcbcrTest.h
+│       ├── BUILD.gn
+│       └── Test.json
 └── Test.json
 ```
 
@@ -85,8 +290,6 @@ Vulkan测试套件使用VK-GL-CTS三方库内原有的vulkancts，通过acts测�
   ```bash
   ./build.sh --product-name rk3568 --gn-args build_xts=true --build-target "acts" --gn-args is_standard_system=true
   ```
-
-
 
 * 测试运行：进入suites/acts目录，执行python -m xdevice，然后在命令框里输入一下命令
 
@@ -144,4 +347,8 @@ Vulkan测试套件使用VK-GL-CTS三方库内原有的vulkancts，通过acts测�
   run -l ActsVulkanYcbcrTest
   ```
 
+* vkgl测试套件运行结束会生成qpa文件方便开发人员调试，qpa文件可以通过vk-gl-cts/scripts/log内的脚本进行解析，具体命令如下：
 
+  ```bash
+  python2 log_to_xml.py TestResults.qpa TestResults.xml
+  ```
