@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function timeStampJsunit() {
-  describe('timeStampTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/timeStamp',
+  describe('timeStampTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/timeStamp',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function timeStampJsunit() {
         console.info("get timeStamp state success " + JSON.stringify(pages));
         if (!("timeStamp" == pages.name)) {
           console.info("get timeStamp state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push timeStamp page success " + JSON.stringify(result));
         }
@@ -40,19 +39,19 @@ export default function timeStampJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("timeStamp after each called");
     });
 
-    it('timeStampTest_0100', 0, async function (done) {
+    it('timeStampTest_0100', 0, async (done: Function) => {
       console.info('timeStampTest_0100 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("timeStampTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(isNaN(indexEvent.data.Text)).assertFalse();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 230,
         priority: events_emitter.EventPriority.LOW
       }
