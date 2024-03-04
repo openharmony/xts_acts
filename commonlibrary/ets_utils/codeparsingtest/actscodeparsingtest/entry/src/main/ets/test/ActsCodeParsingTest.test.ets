@@ -15,14 +15,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function actscodeparsingtest() {
-  describe('ActsCodeParsingTest', function () {
+  describe('ActsCodeParsingTest', () => {
 
     /*
      * @tc.number: SUB_Runtime_Language_PublicFundation_StringParsing_0100
      * @tc.name: Hexadecimal parsing.
      * @tc.desc: Hexadecimal parsing.
      */
-    it('SUB_Runtime_Language_PublicFundation_StringParsing_0100', 0, async function (done) {
+    it('SUB_Runtime_Language_PublicFundation_StringParsing_0100', 0, async (done: Function) => {
       let TAG = 'SUB_Runtime_Language_PublicFundation_StringParsing_0100 ';
       let ustr1 = '\\uD800\\uDC11';
       let ustr2 = '\\uD80C\\uDC00';
@@ -37,34 +37,34 @@ export default function actscodeparsingtest() {
       let ustr_n3 = undefined;
       let ustr_n4 = undefined;
       try {
-        let obj1 = JSON.parse(jsonstr1);
+        let obj1: Record<string, Object> = JSON.parse(jsonstr1);
         ustr_n1 = obj1.ustr;
         console.info(TAG + 'obj1: ' + obj1);
-      } catch(err) {
+      } catch (err) {
         console.info(TAG + 'obj1 catch: ' + err.code + '; ' + err.message);
         expect().assertFail();
       }
       try {
-        let obj2 = JSON.parse(jsonstr2);
+        let obj2: Record<string, Object> = JSON.parse(jsonstr2);
         ustr_n2 = obj2.ustr;
         console.info(TAG + 'obj2: ' + obj2);
-      } catch(err) {
+      } catch (err) {
         console.info(TAG + 'obj2 catch: ' + err.code + '; ' + err.message);
         expect().assertFail();
       }
       try {
-        let obj3 = JSON.parse(jsonstr3);
+        let obj3: Record<string, Object> = JSON.parse(jsonstr3);
         ustr_n3 = obj3.ustr;
         console.info(TAG + 'obj3: ' + obj3);
-      } catch(err) {
+      } catch (err) {
         console.info(TAG + 'obj3 catch: ' + err.code + '; ' + err.message);
         expect().assertFail();
       }
       try {
-        let obj4 = JSON.parse(jsonstr4);
+        let obj4: Record<string, Object> = JSON.parse(jsonstr4);
         ustr_n4 = obj4.ustr;
         console.info(TAG + 'obj4: ' + obj4);
-      } catch(err) {
+      } catch (err) {
         console.info(TAG + 'obj4 catch: ' + err.code + '; ' + err.message);
         expect().assertFail();
       }
