@@ -260,7 +260,7 @@ export default function NetworkManagerMulticastSSLTest() {
       try {
         let result = networkSecurity.certVerificationSync(caCert);
         console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
-        ExpectTrue(result == 0);
+        expect(result == 0).assertTrue();
         done();
       } catch (error) {
         console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);
