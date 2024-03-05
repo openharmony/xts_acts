@@ -13,43 +13,45 @@
  * limitations under the License.
  */
 
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
-        console.log("[DataShareServer]: MainAbility onCreate")
-        globalThis.abilityWant = want;
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log("[DataShareServer]: MainAbility onCreate")
+    AppStorage.setOrCreate<Want>("abilityWant", want);
+  }
 
-    onDestroy() {
-        console.log("[DataShareServer]: MainAbility onDestroy")
-    }
+  onDestroy() {
+    console.log("[DataShareServer]: MainAbility onDestroy");
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[DataShareServer]: MainAbility onWindowStageCreate")
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("[DataShareServer]: MainAbility onWindowStageCreate");
 
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.error("[DataShareServer]: Failed to load the content. Cause: " + JSON.stringify(err));
-                return;
-            }
-            console.log("[DataShareServer]: Succeeded in loading the content. Data: " + JSON.stringify(data))
-        });
-    }
+    windowStage.loadContent("pages/index", (err, data) => {
+      if (err.code) {
+        console.error("[DataShareServer]: Failed to load the content. Cause: " + JSON.stringify(err));
+        return;
+      }
+      console.log("[DataShareServer]: Succeeded in loading the content. Data: " + JSON.stringify(data));
+    });
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[DataShareServer]: MainAbility onWindowStageDestroy")
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("[DataShareServer]: MainAbility onWindowStageDestroy");
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("[DataShareServer]: MainAbility onForeground")
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("[DataShareServer]: MainAbility onForeground");
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("[DataShareServer]: MainAbility onBackground")
-    }
-};
+  onBackground() {
+    // Ability has back to background
+    console.log("[DataShareServer]: MainAbility onBackground");
+  }
+}

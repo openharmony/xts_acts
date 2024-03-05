@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'stagemode: datashare server'
+  @State message: string = 'stagemode: datashare server';
 
   build() {
     Row() {
