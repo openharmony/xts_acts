@@ -13,7 +13,5 @@
 
 group("ActsAceEtsComponentState") {
   testonly = true
-    deps = [
-      "ace_ets_component_statemangagement_observe_api12:ActsAceEtsComponentStateObserve",
-    ]
+  deps = [ "ace_ets_component_statemangagement_observe_api12:ActsAceEtsComponentStateObserve" ]
 }
