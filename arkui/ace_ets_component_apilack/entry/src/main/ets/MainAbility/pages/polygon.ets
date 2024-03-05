@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -50,7 +51,7 @@ struct PolygonNe {
         .key("neText")
 
       Polygon({ width: "100px", height: "100px" }).points([[0, 0], [50, 100], [100, 0]])
-      .key("Polygon")
+        .key("Polygon")
 
     }.width("100%").height("100%")
   }

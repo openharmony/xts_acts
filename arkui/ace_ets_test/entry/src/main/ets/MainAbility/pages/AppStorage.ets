@@ -12,29 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import router from '@system.router'
 
-AppStorage.SetOrCreate("PropC", 1)
-var link3 = AppStorage.Link("PropC");
+AppStorage.setOrCreate("PropC", 1)
+let link3: SubscribedAbstractProperty<number> = AppStorage.link("PropC");
 
-AppStorage.SetOrCreate("PropA", 47);
-var link1 = AppStorage.Link("PropA");
-var link2 = AppStorage.Link("PropA");
-var prop1 = AppStorage.Prop("PropA");
+AppStorage.setOrCreate("PropA", 47);
+let link1: SubscribedAbstractProperty<number> = AppStorage.link("PropA");
+let link2: SubscribedAbstractProperty<number> = AppStorage.link("PropA");
+let prop1: SubscribedAbstractProperty<number> = AppStorage.prop("PropA");
 
-AppStorage.SetAndLink("PropB", 50)
-var PropBValue = String(AppStorage.Get("PropB"))
+AppStorage.setAndLink("PropB", 50)
+let PropBValue = String(AppStorage.get("PropB"))
 
-AppStorage.SetAndProp("PropA", 47)
-var PropAValue = String(AppStorage.Get("PropA"))
-for (let key of AppStorage.Keys()) {
-  var keys = key
+AppStorage.setAndProp("PropA", 47)
+let PropAValue = String(AppStorage.get("PropA"))
+let kays: string = '';
+for (let key of AppStorage.keys()) {
+  kays = key
 }
-var setPropAValue = String(AppStorage.Set("PropA", 20))
-var deleteValue = String(AppStorage.Delete("PropC"))
-var hasValue = String(AppStorage.Has("PropB"))
-var isMutableValue = String(AppStorage.IsMutable("PropB"))
+let setPropAValue = String(AppStorage.set("PropA", 20))
+let deleteValue = String(AppStorage.delete("PropC"))
+let hasValue = String(AppStorage.has("PropB"))
+let isMutableValue = String(AppStorage.IsMutable("PropB"))
 
 
 @Entry
@@ -47,12 +48,12 @@ struct appStorage_test {
   @State str6: string = link3.get().toString();
   @State PropB: string = PropBValue
   @State PropA: string = PropAValue
-  @State keys: string = keys
+  @State keys: string = kays
   @State str4: string = link1.get().toString()
   @State str5: string = setPropAValue
   @State str7: string = deleteValue
-  @State str8: string= hasValue
-  @State str9: string= isMutableValue
+  @State str8: string = hasValue
+  @State str9: string = isMutableValue
 
   onPageShow() {
     console.info('appStorage page show called');

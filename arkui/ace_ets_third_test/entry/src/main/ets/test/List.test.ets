@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import navigationTest from './NavigationJsunit.test.ets';
-import scrollbarTest from  './ScrollerBarJsunit.test.ets';
-import stepperTest  from './StepperJsunit.test.ets';
-import textAreaTest from './TextAreaJsunit.test.ets';
-import textInputTest from './TextInputJsunit.test.ets';
-import toggleTest from './ToggleJsunit.test.ets';
+import navigationTest from './NavigationJsunit.test';
+import scrollbarTest from './ScrollerBarJsunit.test';
+import stepperTest from './StepperJsunit.test';
+import textAreaTest from './TextAreaJsunit.test';
+import textInputTest from './TextInputJsunit.test';
+import toggleTest from './ToggleJsunit.test';
 
 export default function testsuite() {
   navigationTest()

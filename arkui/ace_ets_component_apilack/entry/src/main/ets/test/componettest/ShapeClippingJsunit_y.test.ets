@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function shapeClippingJsunit() {
-  describe('borderTest_five_4', function () {
-    beforeEach(async function (done) {
+  describe('borderTest_five_4', () => {
+    beforeEach(async () => {
       console.info("shapeClipping beforeEach start");
       let options = {
         uri: 'pages/shapeClipping',
@@ -38,51 +37,50 @@ export default function shapeClippingJsunit() {
       } catch (err) {
         console.error("push shapeClipping page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("shapeClipping after each called");
     });
 
-    it('testShapeClipping001', 0, async function (done) {
+    it('testShapeClipping001', 0, async () => {
       console.info('[testShapeClipping001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('image_clip');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("[testShapeClipping001] component obj is: " + JSON.stringify(obj));
-      let clip = JSON.parse(obj.$attrs.clip);
+      let clip: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.clip);
       expect(clip.shape).assertEqual('Circle');
       let strJson1 = getInspectorByKey('image_clip_true');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
       console.info("[testShapeClipping001] component obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.clip).assertEqual('true');
+      expect(JSON.parse(strJson1).$attrs.clip).assertEqual('true');
       console.info('[testShapeClipping001] END');
-      done();
+
     });
 
-    it('testShapeClipping002', 0, async function (done) {
+    it('testShapeClipping002', 0, async () => {
       console.info('[testShapeClipping002] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('image_mask');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("[testShapeClipping002] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.mask.shape).assertEqual('Rect');
-      expect(obj.$attrs.clip).assertEqual('false');
+      expect(JSON.parse(strJson).$attrs.mask.shape).assertEqual('Rect');
+      expect(JSON.parse(strJson).$attrs.clip).assertEqual('false');
       console.info('[testShapeClipping002] END');
-      done();
+
     });
 
-    it('testShapeClipping003', 0, async function (done) {
+    it('testShapeClipping003', 0, async () => {
       console.info('[testShapeClipping003] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "maskValue": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 32,
           priority: events_emitter.EventPriority.LOW
         }
@@ -93,22 +91,22 @@ export default function shapeClippingJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('image_mask');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, Object> = JSON.parse(strJsonNew);
       console.info("[testShapeClipping003] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.mask.shape).assertEqual('Circle');
+      expect(JSON.parse(strJsonNew).$attrs.mask.shape).assertEqual('Circle');
       console.info('[testShapeClipping003] END');
-      done();
+
     });
 
-    it('testShapeClipping004', 0, async function (done) {
+    it('testShapeClipping004', 0, async () => {
       console.info('[testShapeClipping004] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "clipValue": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 33,
           priority: events_emitter.EventPriority.LOW
         }
@@ -119,23 +117,23 @@ export default function shapeClippingJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('image_clip');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, Object> = JSON.parse(strJsonNew);
       console.info("[testShapeClipping004] component objNew is: " + JSON.stringify(objNew));
-      let clip = JSON.parse(objNew.$attrs.clip);
+      let clip: Record<string, Object> = JSON.parse(JSON.parse(strJsonNew).$attrs.clip);
       expect(clip.shape).assertEqual('Rect');
       console.info('[testShapeClipping004] END');
-      done();
+
     });
 
-    it('testShapeClipping004', 0, async function (done) {
+    it('testShapeClipping004', 0, async () => {
       console.info('[testShapeClipping004] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "clipValue": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 33,
           priority: events_emitter.EventPriority.LOW
         }
@@ -146,12 +144,12 @@ export default function shapeClippingJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('shapeType_clip');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, Object> = JSON.parse(strJsonNew);
       console.info("[testShapeClipping004] component objNew is: " + JSON.stringify(objNew));
-      let clip = JSON.parse(objNew.$attrs.clip);
+      let clip: Record<string, Object> = JSON.parse(JSON.parse(strJsonNew).$attrs.clip);
       expect(clip.shape).assertEqual('Rect');
       console.info('[testShapeClipping004] END');
-      done();
+
     });
   })
 }

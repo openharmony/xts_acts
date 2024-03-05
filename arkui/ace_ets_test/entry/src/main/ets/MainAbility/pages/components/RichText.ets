@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,8 @@
 @Entry
 @Component
 struct richTextTest {
-  @State data: string= "<div class=\"item-title\"><h1>文本测试(h1测试)</h1></div>"
+  @State data: string = "<div class=\"item-title\"><h1>文本测试(h1测试)</h1></div>"
+
   onPageShow() {
     console.info('richText page show called');
   }
@@ -25,6 +25,7 @@ struct richTextTest {
   onBuildDone() {
     console.info('richText page build done called');
   }
+
   build() {
     Column() {
       RichText(this.data)

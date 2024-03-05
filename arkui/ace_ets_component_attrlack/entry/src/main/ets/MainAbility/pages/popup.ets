@@ -14,28 +14,37 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct PopupExample {
-  @State noHandlePopup: boolean = false
-  @State handlePopup: boolean = false
-  @State customPopup: boolean = false
+  @State noHandlePopup: boolean = false;
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear Popup start`)
+    Log.showInfo(TAG, `aboutToAppear Popup start`);
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear Popup end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear Popup end`);
   }
 
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
-      Image($rawfile('test.png')).width(24).height(24).margin({ left: -5 })
-      Text('Custom Popup').fontSize(10)
-    }.width(100).height(50).backgroundColor(Color.White)
+      Image($rawfile('test.png'))
+        .width(24)
+        .height(24)
+        .margin({ left: -5 })
+      Text('Custom Popup')
+        .fontSize(10)
+    }
+    .width(100)
+    .height(50)
+    .backgroundColor(Color.White)
   }
 
   build() {
@@ -94,6 +103,8 @@ struct PopupExample {
           }
         })
         .position({ x: 100, y: 350 })
-    }.width('100%').padding({ top: 5 })
+    }
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

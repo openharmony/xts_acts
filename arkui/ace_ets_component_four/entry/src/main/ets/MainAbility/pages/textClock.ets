@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,39 +19,40 @@ import events_emitter from '@ohos.events.emitter';
 struct Second {
   @State accumulateTime: number = 0;
   @State fontSize: number = 20;
-  @State fontColor: Color= Color.Red;
+  @State fontColor: Color = Color.Red;
   @State format: string = "hhmmss";
   @State onActionCalled: boolean = false;
+  @State onActionCalledOne: boolean = false;
   controller: TextClockController = new TextClockController();
 
   onPageShow() {
     console.info('swiper page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 219,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 220,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 221,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 222,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
       if (eventData.data.fontSize != null) {
@@ -71,26 +71,26 @@ struct Second {
   }
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('current milliseconds is' + this.accumulateTime)
         .fontSize(this.fontSize)
         .fontColor(this.fontColor)
-      TextClock({timeZoneOffset: -8, controller: this.controller})
+      TextClock({ timeZoneOffset: -8, controller: this.controller })
         .key('textClock')
         .format(this.format)
         .fontSize(this.fontSize)
         .fontColor(this.fontColor)
         .onDateChange((value: number) => {
           this.accumulateTime = value
-          this.onActionCalled= true;
+          this.onActionCalled = true;
           console.info('onChange current action state is: ' + this.onActionCalled);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.onActionCalled,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 223,
               priority: events_emitter.EventPriority.LOW
             }
@@ -104,22 +104,22 @@ struct Second {
         .fontSize(30)
       Button("start TextClock")
         .margin({ bottom: 10 })
-        .onClick(()=>{
+        .onClick(() => {
           this.controller.start()
         })
       Button("stop TextClock")
         .key('button')
-        .onClick(()=>{
+        .onClick(() => {
           this.controller.stop()
           this.onActionCalledOne = true;
           console.info('button2 current action state is: ' + this.onActionCalledOne);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.onActionCalledOne,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 224,
               priority: events_emitter.EventPriority.LOW
             }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,11 +17,21 @@
 @Component
 struct JustifyContentFlex {
   @State justifyContent: FlexAlign = FlexAlign.Center
+
   build() {
     Flex({ justifyContent: this.justifyContent }) {
-      Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
-      Text('2').width('20%').height(50).backgroundColor(0xD2B48C)
-      Text('3').width('20%').height(50).backgroundColor(0xF5DEB3)
+      Text('1')
+        .width('20%')
+        .height(50)
+        .backgroundColor(0xF5DEB3)
+      Text('2')
+        .width('20%')
+        .height(50)
+        .backgroundColor(0xD2B48C)
+      Text('3')
+        .width('20%')
+        .height(50)
+        .backgroundColor(0xF5DEB3)
     }.key("justifyContent")
     .width('90%')
     .padding(10)

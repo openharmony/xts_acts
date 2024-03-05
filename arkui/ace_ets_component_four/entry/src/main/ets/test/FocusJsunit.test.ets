@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function focusJsunit() {
-  describe('appInfoTest_four_2', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_2', () => {
+    beforeEach(async (done: Function) => {
       console.info("focus beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/focus',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/focus',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function focusJsunit() {
         console.info("get focus state pages:" + JSON.stringify(pages));
         if (!("focus" == pages.name)) {
           console.info("get focus state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push focus page result:" + JSON.stringify(result));
         }
@@ -41,20 +40,20 @@ export default function focusJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("focus after each called");
     });
 
-    it('focusTest_0100', 0, async function (done) {
+    it('focusTest_0100', 0, async (done: Function) => {
       console.info('focusTest_0100 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "focusable": true
           }
         }
-        let indexEventOne = {
+        let indexEventOne: events_emitter.InnerEvent = {
           eventId: 101,
           priority: events_emitter.EventPriority.LOW
         }

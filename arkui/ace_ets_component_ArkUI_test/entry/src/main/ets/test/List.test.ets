@@ -72,6 +72,48 @@ import TapGesture2 from './GestureTest/TapGesture2.test.ets'
 import TapGesture3 from './GestureTest/TapGesture3.test.ets'
 import menuBackgroundBlurStyle from './selectAttributeTest/menuBackgroundBlurStyle.test.ets'
 import menuBackgroundColor from './selectAttributeTest/menuBackgroundColor.test.ets'
+import ActionSheet from './showInSubWindowTest/ActionSheet.test.ets'
+import ActionSheetFalse from './showInSubWindowTest/ActionSheetFalse.test.ets'
+import ActionSheetTrue from './showInSubWindowTest/ActionSheetTrue.test.ets'
+import AlertDialog from './showInSubWindowTest/AlertDialog.test.ets'
+import AlertDialogFalse from './showInSubWindowTest/AlertDialogFalse.test.ets'
+import AlertDialogTrue from './showInSubWindowTest/AlertDialogTrue.test.ets'
+import bindContextMenu from './showInSubWindowTest/bindContextMenu.test'
+import bindMenu from './showInSubWindowTest/bindMenu.test'
+import CalendarPickerDialog from './showInSubWindowTest/CalendarPickerDialog.test.ets'
+import CustomDialog from './showInSubWindowTest/CustomDialog.test.ets'
+import CustomDialogFalse from './showInSubWindowTest/CustomDialogFalse.test.ets'
+import CustomDialogTrue from './showInSubWindowTest/CustomDialogTrue.test.ets'
+import CustomPopupOptions from './showInSubWindowTest/CustomPopupOptions.test.ets'
+import CustomPopupOptionsFalse from './showInSubWindowTest/CustomPopupOptionsFalse.test.ets'
+import CustomPopupOptionsTrue from './showInSubWindowTest/CustomPopupOptionsTrue.test.ets'
+import DatePickerDialog from './showInSubWindowTest/DatePickerDialog.test.ets'
+import openCustomDialogNew from './showInSubWindowTest/openCustomDialogNew.test.ets'
+import openCustomDialogFalse from './showInSubWindowTest/openCustomDialogFalse.test.ets'
+import openCustomDialogTrue from './showInSubWindowTest/openCustomDialogTrue.test.ets'
+import PopupOptions from './showInSubWindowTest/PopupOptions.test.ets'
+import PopupOptionsFalse from './showInSubWindowTest/PopupOptionsFalse.test.ets'
+import PopupOptionsTrue from './showInSubWindowTest/PopupOptionsTrue.test.ets'
+import showActionMenu from './showInSubWindowTest/showActionMenu.test.ets'
+import showActionMenuFalse from './showInSubWindowTest/showActionMenuFalse.test.ets'
+import showActionMenuTrue from './showInSubWindowTest/showActionMenuTrue.test.ets'
+import showDialog from './showInSubWindowTest/showDialog.test.ets'
+import showDialogFalse from './showInSubWindowTest/showDialogFalse.test.ets'
+import showDialogTrue from './showInSubWindowTest/showDialogTrue.test.ets'
+import showToast from './showInSubWindowTest/showToast.test.ets'
+import TextPickerDialog from './showInSubWindowTest/TextPickerDialog.test.ets'
+import TimePickerDialog from './showInSubWindowTest/TimePickerDialog.test.ets'
+import ExtendTrackTest from './observeTrack/ExtendTrackTest.test';
+import NestTrackTest from './observeTrack/NestTrackTest.test';
+import NoStateTest from './observeTrack/NoStateTest.test';
+import ObjectArrayTest from './observeTrack/ObjectArrayTest.test';
+import OnlyObserveTest from './observeTrack/OnlyObserveTest.test';
+import StaticTrackTest from './observeTrack/StaticTrackTest.test';
+import TrackDateTest from './observeTrack/TrackDateTest.test';
+import TrackMapTest from './observeTrack/TrackMapTest.test';
+import TrackSetTest from './observeTrack/TrackSetTest.test';
+import TwoNestTrackTest from './observeTrack/TwoNestTrackTest.test';
+import ArrayTrackTest from './observeTrack/ArrayTrackTest.test';
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -133,4 +175,46 @@ export default function testsuite() {
   TapGesture3();
   menuBackgroundBlurStyle();
   menuBackgroundColor();
+  ActionSheet();
+  ActionSheetFalse();
+  ActionSheetTrue();
+  AlertDialog();
+  AlertDialogFalse();
+  AlertDialogTrue();
+  bindContextMenu();
+  bindMenu();
+  CalendarPickerDialog();
+  CustomDialog();
+  CustomDialogFalse();
+  CustomDialogTrue();
+  CustomPopupOptions();
+  CustomPopupOptionsFalse();
+  CustomPopupOptionsTrue();
+  DatePickerDialog();
+  openCustomDialogNew();
+  openCustomDialogFalse();
+  openCustomDialogTrue();
+  PopupOptions();
+  PopupOptionsFalse();
+  PopupOptionsTrue();
+  showActionMenu();
+  showActionMenuFalse();
+  showActionMenuTrue();
+  showDialog();
+  showDialogFalse();
+  showDialogTrue();
+  showToast();
+  TextPickerDialog();
+  TimePickerDialog();
+  ExtendTrackTest();
+  NestTrackTest();
+  NoStateTest();
+  ObjectArrayTest();
+  OnlyObserveTest();
+  StaticTrackTest();
+  TrackDateTest();
+  TrackMapTest();
+  TrackSetTest();
+  TwoNestTrackTest();
+  ArrayTrackTest();
 }

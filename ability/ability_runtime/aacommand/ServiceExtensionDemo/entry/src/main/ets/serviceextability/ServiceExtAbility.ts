@@ -21,7 +21,6 @@ const REQUEST_CODE = 210;
 
 
 class StubTest extends rpc.RemoteObject {
-
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {

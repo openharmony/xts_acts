@@ -27,7 +27,6 @@ import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
 
 export default function testsuite() {
   getBundleInfoForSelf();
-  getBundleArchiveInfo();
   getAbilityIcon();
   getLaunchWantForBundle();
   getNameForUid();
@@ -35,9 +34,8 @@ export default function testsuite() {
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();
   getabilityInfo();
-
   getAbilityLabelJsUnit();
-
   isAbilityEnableETSUnit();
   isApplicationEnabledETSUnit();
+  getBundleArchiveInfo();
 }

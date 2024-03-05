@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct StateSetSample {
-  @State message: Set<number> = new Set([1, 2 ,3 ])
+  @State message: Set<number> = new Set([1, 2, 3])
 
   build() {
     Row() {
@@ -26,27 +26,27 @@ struct StateSetSample {
           Divider()
         })
         Button('init set').id("stateSet_init")
-          .onClick(() =>{
-            this.message = new Set([1, 2 ,3 ])
-        }).margin(10)
+          .onClick(() => {
+            this.message = new Set([1, 2, 3])
+          }).margin(10)
 
         Button('set new one').id("stateSet_set")
-          .onClick(() =>{
+          .onClick(() => {
             this.message.add(5)
-        }).margin(10)
+          }).margin(10)
 
         Button('clear').id("stateSet_clear")
-          .onClick(() =>{
+          .onClick(() => {
             this.message.clear()
-            if (Array.from(this.message.entries())){
+            if (Array.from(this.message.entries())) {
               this.message.add(0)
             }
-        }).margin(10)
+          }).margin(10)
 
         Button('delete the first one').id("stateSet_delete")
-          .onClick(() =>{
+          .onClick(() => {
             this.message.delete(0)
-        }).margin(10)
+          }).margin(10)
       }
       .width('100%')
     }

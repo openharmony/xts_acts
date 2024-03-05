@@ -17,33 +17,34 @@
 @Entry
 @Component
 struct FormComponentPage {
-  @State dimension:FormDimension = FormDimension.Dimension_2_2
+  @State dimension: FormDimension = FormDimension.Dimension_2_2
+
   build() {
-    Column(){
+    Column() {
 
       FormComponent({
-        id:0,
-        name:"four_four",
-        bundle:"com.example.myapplication",
-        ability:"com.example.myapplication.MainAbility",
-        module:"fa_widget",
-        dimension:this.dimension,
-        temporary:true
+        id: 0,
+        name: "four_four",
+        bundle: "com.example.myapplication",
+        ability: "com.example.myapplication.MainAbility",
+        module: "fa_widget",
+        dimension: this.dimension,
+        temporary: true
       })
-        .size({width:100,height:100})
+        .size({ width: 100, height: 100 })
         .moduleName("fa_widget")
         .dimension(this.dimension)
         .allowUpdate(true)
         .visibility(Visibility.Visible)
-        .onAcquired((e)=>{
-          console.log('onAcquired id : '+ e.id)
+        .onAcquired((e) => {
+          console.log('onAcquired id : ' + e.id)
         })
-        .onRouter(()=>{
+        .onRouter(() => {
           console.log('onRouter : ')
         })
-        .onError((error)=>{
-          console.log('error code :'+error.errcode);
-          console.log('error msg :'+error.msg);
+        .onError((error) => {
+          console.log('error code :' + error.errcode);
+          console.log('error msg :' + error.msg);
         })
 
 

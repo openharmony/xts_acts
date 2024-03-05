@@ -99,17 +99,17 @@ struct CalendarComponentExample {
   @State scheduleMarkerRadius: number = 3;
   @State boundaryRowOffset: number = 3;
   @State weekAndDayRowSpace: number = 3;
-  @State direction: Axis = Axis.Horizontal;
+  @State direction1: Axis = Axis.Horizontal;
   @State weekStyle: WeekStyle = {
-    weekColor: Color.black,
-    weekendDayColor: Color.red,
-    weekendLunarColor:  Color.green,
+    weekColor: Color.Black,
+    weekendDayColor: Color.Red,
+    weekendLunarColor:  Color.Green,
     weekFontSize: 1,
     weekHeight: 2,
     weekWidth: 3,
     weekAndDayRowSpace: this.weekAndDayRowSpace
   };
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Calendar page state change called:" + JSON.stringify(eventData));
       if (eventData.data.colSpace != null) {
@@ -151,15 +151,15 @@ struct CalendarComponentExample {
       }
 
       if (eventData.data.direction != null) {
-        this.direction = eventData.data.direction;
-        console.log("Calendar page direction value" + this.direction);
+        this.direction1 = eventData.data.direction;
+        console.log("Calendar page direction value" + this.direction1);
       }
     }
   }
 
   onPageShow() {
     console.info('Calendar page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 74,
       priority: events_emitter.EventPriority.LOW
     }
@@ -193,7 +193,7 @@ struct CalendarComponentExample {
           boundaryRowOffset: this.boundaryRowOffset
         })
         .weekStyle(this.weekStyle)
-        .direction(this.direction)
+        .direction(this.direction1)
         .backgroundColor(0x317aff)
         .width(100)
         .height(50)

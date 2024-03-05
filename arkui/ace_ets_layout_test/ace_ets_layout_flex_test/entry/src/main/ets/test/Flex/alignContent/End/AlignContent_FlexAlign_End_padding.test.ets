@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common'
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+
 export default function AlignContent_FlexAlign_End_padding() {
 
-  describe('AlignContent_FlexAlign_End_padding', function () {
-    beforeEach(async function (done) {
+  describe('AlignContent_FlexAlign_End_padding', () => {
+    beforeEach(async () => {
       console.info("AlignContent_FlexAlign_End_padding beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_padding',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignContent/End/AlignContent_FlexAlign_End_padding',
       }
       try {
         router.clear();
@@ -33,7 +34,7 @@ export default function AlignContent_FlexAlign_End_padding() {
         console.info("get AlignContent_FlexAlign_End_padding state success " + JSON.stringify(pages));
         if (!("AlignContent_FlexAlign_End_padding" == pages.name)) {
           console.info("get AlignContent_FlexAlign_End_padding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AlignContent_FlexAlign_End_padding page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,43 +42,45 @@ export default function AlignContent_FlexAlign_End_padding() {
       }
       await CommonFunc.sleep(1000)
       console.info("AlignContent_FlexAlign_End_padding beforeEach end");
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("AlignContent_FlexAlign_End_padding after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_END_0300
-     * @tc.name      testAlignContentEndFlexPaddingNoSatisfy
-     * @tc.desc      The AlignContent property of the Flex component is set to FlexAlign.End, and the padding setting 
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_END_0300
+     * @tc.name testAlignContentEndFlexPaddingNoSatisfy
+     * @tc.desc The AlignContent property of the Flex component is set to FlexAlign.End, and the padding setting
      *               for the Flex component does not meet the height requirements of the subcomponent.
      */
 
-    it('testAlignContentEndFlexPaddingNoSatisfy', 0, async function (done) {
+    it('testAlignContentEndFlexPaddingNoSatisfy', 0, async () => {
       console.info('testAlignContentEndFlexPaddingNoSatisfy START');
-      globalThis.value.message.notify({ name:'padding', value:40 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'padding', value: 40
+      })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndPadding_flex001');
-      let obj = JSON.parse(strJson);
-      let AlignContentFlexEnd_flex001 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
-      let AlignContentFlexEnd_1 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
-      let AlignContentFlexEnd_2 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
-      let AlignContentFlexEnd_3 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_3');
-      let AlignContentFlexEnd_4 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_4');
 
-      console.log('AlignContentFlexEndPadding_flex001 rect_value is:'+
+      let AlignContentFlexEnd_flex001: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
+      let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
+      let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
+      let AlignContentFlexEnd_3: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_3');
+      let AlignContentFlexEnd_4: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_4');
+
+      console.log('AlignContentFlexEndPadding_flex001 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_flex001));
 
-      console.log('AlignContentFlexEndPadding_flex001_1 rect_value is:'+
+      console.log('AlignContentFlexEndPadding_flex001_1 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_1));
-      console.log('AlignContentFlexEndPadding_flex001_2 rect_value is:'+
+      console.log('AlignContentFlexEndPadding_flex001_2 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_2));
-      console.log('AlignContentFlexEndPadding_flex001_3 rect_value is:'+
+      console.log('AlignContentFlexEndPadding_flex001_3 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_3));
-      console.log('AlignContentFlexEndPadding_flex001_4 rect_value is:'+
+      console.log('AlignContentFlexEndPadding_flex001_4 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_4));
 
       expect(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top)).assertEqual(Math.round(vp2px(50)));
@@ -92,42 +95,44 @@ export default function AlignContent_FlexAlign_End_padding() {
       expect(Math.round(AlignContentFlexEnd_1.top - AlignContentFlexEnd_flex001.top)).assertEqual(vp2px(40));
       expect(AlignContentFlexEnd_flex001.bottom - AlignContentFlexEnd_4.bottom).assertLess(vp2px(40));
       expect(AlignContentFlexEnd_4.top).assertEqual(AlignContentFlexEnd_2.bottom);
-  
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
-  
+
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+
       console.info('testAlignContentEndFlexPaddingNoSatisfy END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNCONTENT_END_0400
-     * @tc.name      testAlignContentEndFlexPaddingSatisfy
-     * @tc.desc      Set the AlignContent property of the Flex component to FlexAlign.End, and set padding for the 
+     * @tc.number SUB_ACE_FLEXALIGNCONTENT_END_0400
+     * @tc.name testAlignContentEndFlexPaddingSatisfy
+     * @tc.desc Set the AlignContent property of the Flex component to FlexAlign.End, and set padding for the
      *               Flex component to meet the height requirements of the subcomponen.
      */
 
-    it('testAlignContentEndFlexPaddingSatisfy', 0, async function (done) {
+    it('testAlignContentEndFlexPaddingSatisfy', 0, async () => {
       console.info('testAlignContentEndFlexPaddingSatisfy START');
-      globalThis.value.message.notify({ name:'padding', value:15 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'padding', value: 15
+      })
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('AlignContentFlexEndPadding_flex001');
-      let obj = JSON.parse(strJson);
-      let AlignContentFlexEndPadding_flex002 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
-      let AlignContentFlexEnd_1 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
-      let AlignContentFlexEnd_2 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
-      let AlignContentFlexEnd_3 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_3');
-      let AlignContentFlexEnd_4 = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_4');
 
-      console.log('AlignContentFlexEndPadding_flex002 rect_value is:'+
+      let AlignContentFlexEndPadding_flex002: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001');
+      let AlignContentFlexEnd_1: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_1');
+      let AlignContentFlexEnd_2: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_2');
+      let AlignContentFlexEnd_3: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_3');
+      let AlignContentFlexEnd_4: RectValue = CommonFunc.getComponentRect('AlignContentFlexEndPadding_flex001_4');
+
+      console.log('AlignContentFlexEndPadding_flex002 rect_value is:' +
       JSON.stringify(AlignContentFlexEndPadding_flex002))
-      console.log('AlignContentFlexEnd_1 rect_value is:'+
+      console.log('AlignContentFlexEnd_1 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_1));
-      console.log('AlignContentFlexEnd_2 rect_value is:'+
+      console.log('AlignContentFlexEnd_2 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_2));
-      console.log('AlignContentFlexEnd_3 rect_value is:'+
+      console.log('AlignContentFlexEnd_3 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_3));
-      console.log('AlignContentFlexEnd_4 rect_value is:'+
+      console.log('AlignContentFlexEnd_4 rect_value is:' +
       JSON.stringify(AlignContentFlexEnd_4));
 
       expect(Math.round(AlignContentFlexEnd_1.bottom - AlignContentFlexEnd_1.top)).assertEqual(Math.round(vp2px(50)));
@@ -138,18 +143,19 @@ export default function AlignContent_FlexAlign_End_padding() {
       expect(Math.round(AlignContentFlexEnd_2.right - AlignContentFlexEnd_2.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexEnd_3.right - AlignContentFlexEnd_3.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(AlignContentFlexEnd_4.right - AlignContentFlexEnd_4.left)).assertEqual(Math.round(vp2px(150)));
-      expect(Math.abs(Math.round(AlignContentFlexEnd_4.top) - Math.round(AlignContentFlexEnd_2.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round((AlignContentFlexEnd_1.top - AlignContentFlexEndPadding_flex002.top)*10)/10 -vp2px(45)) <=1).assertTrue();
-      expect(Math.abs(Math.round((AlignContentFlexEndPadding_flex002.bottom - AlignContentFlexEnd_4.bottom)*10)/10 -vp2px(15)) <=1).assertTrue(); 
-     
-    
-      
-      
-      expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
-      expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
-  
+      expect(Math.abs(Math.round(AlignContentFlexEnd_4.top) - Math.round(AlignContentFlexEnd_2.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round((AlignContentFlexEnd_1.top - AlignContentFlexEndPadding_flex002.top) * 10) / 10 - vp2px(45)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round((AlignContentFlexEndPadding_flex002.bottom - AlignContentFlexEnd_4.bottom) * 10) / 10 - vp2px(15)) <= 1)
+        .assertTrue();
+
+
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
+      expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.End");
+
       console.info('testAlignContentEndFlexPaddingSatisfy END');
-      done();
+
     });
   })
 }
