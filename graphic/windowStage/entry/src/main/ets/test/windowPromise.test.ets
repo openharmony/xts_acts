@@ -827,19 +827,21 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         });
       } catch (err) {
         console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       }
-      if (tempWnd != undefined) {
-        let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
-        expect(!!tempWindow).assertTrue();
-        console.log(msgStr + 'tempWnd.loadContent start');
-        let load: void = await tempWindow.loadContent('pages/second/second').catch((err: BusinessError) => {
-          unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.loadContent', done);
-          console.log(msgStr + 'tempWnd.loadContent(pages/second/second) err=' + JSON.stringify(err));
-        });
-        console.log(msgStr + 'tempWnd.loadContent(pages/second/second) load=' + JSON.stringify(load));
-        expect(!Boolean(load)).assertTrue();
-        await tempWindow.destroy();
-      }
+      let tempWindow: ohosWindow.Window = tempWnd as ohosWindow.Window
+      expect(!!tempWindow).assertTrue();
+      console.log(msgStr + 'tempWnd.loadContent start');
+      let load: void = await tempWindow.loadContent('pages/second/second').then(() => {
+        console.info(msgStr + ' Succeeded in loading the content.');
+        expect().assertFail();
+        done();
+      }).catch((err: BusinessError) => {
+        expect(err.code).assertEqual(401);
+        console.log(msgStr + 'tempWnd.loadContent(pages/second/second) err=' + JSON.stringify(err));
+      });
+      await tempWindow.destroy();
       done();
     })
 

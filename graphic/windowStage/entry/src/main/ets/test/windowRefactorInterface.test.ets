@@ -396,21 +396,22 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
           try {
             if (err.code) {
               console.error('Failed to load the content callback. Cause:' + JSON.stringify(err));
-              expect().assertFail();
-
+              await winData.destroyWindow();
+              expect(err.code).assertEqual(401);
+              done();
             } else {
               console.info('Succeeded in loading the content.');
-              expect(TRUE_FLAG).assertTrue();
+              await winData.destroyWindow();
+              expect().assertFail();
+              done();
             }
           } catch (err) {
             console.log('setUIContentTestCallBack1 assert result catch' + JSON.stringify(err));
           }
-          done();
-          await winData.destroyWindow();
         });
       } catch (exception) {
         console.error('Failed callback to load the content. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
+        expect(exception.code).assertEqual(401);
         await winData.destroyWindow();
         done();
       }
@@ -487,12 +488,12 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
         // 设置setUIContent
         await (win as ohosWindow.Window).setUIContent('pages/second/he').then(async () => {
           console.info('setUIContent3 . Cause: success');
-          expect(TRUE_FLAG).assertTrue();
+          expect().assertFail();
           await (win as ohosWindow.Window).destroyWindow();
           done();
         }).catch(async (err: BusinessError) => {
           console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(401);
           await (win as ohosWindow.Window).destroyWindow();
           done();
         });
