@@ -17,8 +17,7 @@
 @Entry
 @Component
 struct getcomponent {
-  @State message: string = 'Hello World'
-
+  @State message: string = 'Hello World';
 
   build() {
     Column() {
@@ -32,18 +31,24 @@ struct getcomponent {
         .backgroundColor('#0D9FFB')
 
       Button("返回值").margin(30)
-        .onClick(()=>{
+        .onClick(() => {
           let strJson = getInspectorByKey("ArkUX_Get_component_0010")
-          let Rectangle = JSON.parse(strJson);
+          let Rectangle: ESObject = JSON.parse(strJson);
           this.message = "sizeWidth: " + JSON.stringify(Rectangle.$attrs.width)
-          + "\n sizeHeight: " + JSON.stringify(Rectangle.$attrs.height)
-          + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.x)
-          + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.y)
-          + "\n offsetX: " + JSON.stringify(Rectangle.$attrs.shadow.offsetX)
-          + "\n offsetY: " + JSON.stringify(Rectangle.$attrs.shadow.offsetY)
+            + "\n sizeHeight: " + JSON.stringify(Rectangle.$attrs.height)
+            + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.x)
+            + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.y)
+            + "\n offsetX: " + JSON.stringify(Rectangle.$attrs.shadow.offsetX)
+            + "\n offsetY: " + JSON.stringify(Rectangle.$attrs.shadow.offsetY)
         })
 
-      Text(this.message).fontSize(25).padding(15).fontWeight(FontWeight.Bold).margin(10)
-    }.width("100%").height("100%")
+      Text(this.message)
+        .fontSize(25)
+        .padding(15)
+        .fontWeight(FontWeight.Bold)
+        .margin(10)
+    }
+    .width("100%")
+    .height("100%")
   }
 }
