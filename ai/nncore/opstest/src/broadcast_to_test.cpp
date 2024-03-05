@@ -101,7 +101,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_01, Function 
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
-    
+
     Free(model, compilation, executor);
 }
 
@@ -130,7 +130,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_02, Function 
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
-    
+
     Free(model, compilation, executor);
 }
 
@@ -159,7 +159,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_03, Function 
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
     ASSERT_NE(nullptr, executor);
-    
+
     Free(model, compilation, executor);
 }
 
@@ -181,7 +181,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_04, Function 
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -203,7 +203,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_05, Function 
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -219,13 +219,13 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Build_06, Function 
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    
+
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
     graphArgs.operands = {broadcastToModel.input, broadcastToModel.output, broadcastToModel.shape, activation};
     graphArgs.paramIndices = {2, 3};
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -241,7 +241,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_Finish_01, Fu
 
     OHNNGraphArgs graphArgs;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -259,7 +259,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_Finish_02, Fu
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
     graphArgs.specifyIO = false;
     ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -276,7 +276,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_Finish_03, Fu
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -292,14 +292,17 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    
+
     int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
@@ -310,10 +313,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
         }
     }
 
-    if (tensorDesc != nullptr) {
-        tensorDesc = nullptr;
-    }
-
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -332,11 +332,14 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
 
     int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
@@ -346,10 +349,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
         }
     }
 
-    if (tensorDesc != nullptr) {
-        tensorDesc = nullptr;
-    }
-
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -365,14 +365,17 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    
+
     int ret = 0;
     NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
         tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
         ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
         ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
@@ -382,10 +385,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SetOperandVal
         }
     }
 
-    if (tensorDesc != nullptr) {
-        tensorDesc = nullptr;
-    }
-
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -402,15 +402,12 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -429,18 +426,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.data = nullptr;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -457,18 +451,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.inputIndices = {100000};
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -485,18 +476,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.size = 0;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -513,17 +501,14 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, nullptr);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -540,18 +525,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.data = nullptr;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -568,18 +550,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.outputIndices = {100000};
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -596,18 +575,15 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_SpecifyInputs
 
     BroadcastToModel1 broadcastToModel;
     OHNNGraphArgs graphArgs = broadcastToModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.size = 0;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -632,7 +608,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                nullptr, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -659,7 +635,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     paramIndices.data = nullptr;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -686,7 +662,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -713,7 +689,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     paramIndices.size = 0;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -738,7 +714,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, nullptr, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -765,7 +741,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     inputIndices.data = nullptr;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -792,7 +768,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -819,7 +795,7 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     inputIndices.size = 0;
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -844,6 +820,6 @@ HWTEST_F(BroadcastToTest, SUB_AI_NNRt_Func_North_BroadcastTo_Model_AddOperation_
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, nullptr));
-    
+
     Free(model, nullptr, nullptr);
 }

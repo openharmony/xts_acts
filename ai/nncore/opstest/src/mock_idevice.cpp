@@ -289,7 +289,7 @@ int32_t MockIDevice::MemoryCopy(float* data, uint32_t length)
         LOGE("[NNRtTest] Map fd to write ashptr failed.");
         return HDF_FAILURE;
     }
-        
+
     ret = ashptr->WriteToAshmem(data, length, 0);
     ashptr->UnmapAshmem();
     if (!ret) {

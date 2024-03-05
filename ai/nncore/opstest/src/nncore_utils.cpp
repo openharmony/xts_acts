@@ -73,7 +73,6 @@ int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs)
     }
 
     if (graphArgs.specifyIO) {
-        LOGI("[NNRtTest] OH_NNModel_SpecifyInputsAndOutputs start!");
         ret = OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices);
         if (ret != OH_NN_SUCCESS) {
             LOGE("[NNRtTest] OH_NNModel_SpecifyInputsAndOutputs failed! ret=%{public}d\n", ret);
@@ -225,6 +224,14 @@ void Free(OH_NNModel *model, OH_NNCompilation *compilation, OH_NNExecutor *execu
     }
 }
 
+void FreeTensorDescVec(std::vector<NN_TensorDesc*> tensorDescVec) {
+    if (!tensorDescVec.empty()) {
+        for (auto tensorDesc : tensorDescVec) {
+            OH_NNTensorDesc_Destroy(&tensorDesc);
+            ASSERT_EQ(nullptr, tensorDesc);
+        }
+    }
+}
 } // namespace Test
 } // namespace NeuralNetworkRuntime
 } // namespace OHOS
