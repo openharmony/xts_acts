@@ -28,7 +28,8 @@ export default function commonJsunit() {
       console.info("commonJsunit beforeEach start");
       await display.getDefaultDisplay().then(dsp => {
         console.info('getDefaultDisplay id : ' + JSON.stringify(dsp));
-        console.info('getDefaultDisplay dpiValue is : ' + JSON.stringify(dsp.densityDPI));
+        dpiValue = dsp.densityDPI;
+        console.info('getDefaultDisplay dpiValue is : ' + JSON.stringify(dpiValue));
         Utils.sleep(2000);
       }, (err: BusinessError) => {
         console.info('getDefaultDisplay failed, err :' + JSON.stringify(err));
