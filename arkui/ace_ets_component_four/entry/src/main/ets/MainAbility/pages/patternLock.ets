@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,19 +18,19 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PatternLockExample {
-  @State passwords: Number[] = []
-  @State message: string = 'please input password'
+  @State passwords: Number[] = [];
+  @State message: string = 'please input password';
   @State sideLength: number = 150;
   @State circleRadius: number = 7;
   @State pathStrokeWidth: number = 17;
-  @State backgroundColor: Color = "#FF008000";
+  @State backgroundColor1: string = "#FF008000";
   @State autoReset: boolean = true;
-  private patternLockController: PatternLockController = new PatternLockController()
-  @State onActionCalled :boolean = false
+  private patternLockController: PatternLockController = new PatternLockController();
+  @State onActionCalled: boolean = false;
 
   onPageShow() {
     console.info('[PatternLock] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 152,
       priority: events_emitter.EventPriority.LOW
     }
@@ -39,23 +38,23 @@ struct PatternLockExample {
 
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[PatternLock] page stateChangCallBack");
     if (eventData != null) {
       console.info("[PatternLock] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.sideLength != null) {
+      if (eventData.data.sideLength != null) {
         this.sideLength = eventData.data.sideLength;
       }
-      if(eventData.data.circleRadius != null) {
+      if (eventData.data.circleRadius != null) {
         this.circleRadius = eventData.data.circleRadius;
       }
-      if(eventData.data.pathStrokeWidth != null) {
+      if (eventData.data.pathStrokeWidth != null) {
         this.pathStrokeWidth = eventData.data.pathStrokeWidth;
       }
-      if(eventData.data.backgroundColor != null) {
-        this.backgroundColor = eventData.data.backgroundColor;
+      if (eventData.data.backgroundColor != null) {
+        this.backgroundColor1 = eventData.data.backgroundColor;
       }
-      if(eventData.data.autoReset != null) {
+      if (eventData.data.autoReset != null) {
         this.autoReset = eventData.data.autoReset;
       }
     }
@@ -68,53 +67,55 @@ struct PatternLockExample {
         .sideLength(this.sideLength)
         .circleRadius(this.circleRadius)
         .pathStrokeWidth(this.pathStrokeWidth)
-        .backgroundColor(`${this.backgroundColor}`)
+        .backgroundColor(`${this.backgroundColor1}`)
         .autoReset(this.autoReset)
         .key('PatternLock')
         .onPatternComplete((input: Array<number>) => {
           console.log('PatternLock onPatternComplete')
           if (input == null || input == undefined || input.length < 5) {
-            this.message = 'The password length needs to be greater than 5.'
-            console.log('The password length needs to be greater than 5')
+            this.message = 'The password length needs to be greater than 5.';
+            console.log('The password length needs to be greater than 5');
             return
           }
           if (this.passwords.length > 0) {
             if (this.passwords.toString() == input.toString()) {
-              this.passwords = input
-              this.message = 'Set password successfully: ' + this.passwords.toString()
-              console.log('Set password successfully: ' + this.passwords.toString())
+              this.passwords = input;
+              this.message = 'Set password successfully: ' + this.passwords.toString();
+              console.log('Set password successfully: ' + this.passwords.toString());
 
             } else {
-              this.message = 'Inconsistent passwords, please enter again.'
-              console.log('Inconsistent passwords, please enter again')
+              this.message = 'Inconsistent passwords, please enter again.';
+              console.log('Inconsistent passwords, please enter again');
             }
           } else {
-            this.passwords = input
-            this.message = "Please enter again."
-            console.log('Please enter again')
+            this.passwords = input;
+            this.message = "Please enter again.";
+            console.log('Please enter again');
           }
         })
       Button('reset button').margin(30).onClick(() => {
-        this.patternLockController.reset()
-        this.passwords = []
-        this.message = 'Please input password'
+        this.patternLockController.reset();
+        this.passwords = [];
+        this.message = 'Please input password';
         this.onActionCalled = true;
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
               "ACTION": this.onActionCalled,
             }
           }
-          var backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 153,
             priority: events_emitter.EventPriority.LOW
           }
-          console.info("reset button start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          console.info("reset button start to emit action state");
+          events_emitter.emit(backEvent, backData);
         } catch (err) {
-          console.info("reset button emit action state err: " + JSON.stringify(err.message))
+          console.info("reset button emit action state err: " + JSON.stringify(err.message));
         }
       }).key('button1')
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
