@@ -15,8 +15,9 @@
 import AbilityStage from "@ohos.app.ability.AbilityStage"
 
 var printLog0 = 'Worker:AbilityStage:'
+
 export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.info(printLog0 + "onCreate")
-    }
+  onCreate() {
+    console.info(printLog0 + "onCreate")
+  }
 }
