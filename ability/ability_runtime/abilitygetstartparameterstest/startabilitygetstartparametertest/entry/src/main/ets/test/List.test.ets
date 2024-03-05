@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import StartAbilityGetStartParameterTest from './StartAbilityGetStartParameter.test'
+import StartAbilityGetStartParameterTest from './StartAbilityGetStartParameter.test';
 
 export default function testsuite() {
-  StartAbilityGetStartParameterTest()
+  StartAbilityGetStartParameterTest();
 }
