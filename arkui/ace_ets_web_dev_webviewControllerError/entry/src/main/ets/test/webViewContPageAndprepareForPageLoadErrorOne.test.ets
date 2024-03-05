@@ -65,7 +65,7 @@ export default function webViewContPageAndprepareForPageLoadErrorOne() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWERROR_0100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTPAGEANDPREPAREFORPAGELOADERROEONE_0100
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */

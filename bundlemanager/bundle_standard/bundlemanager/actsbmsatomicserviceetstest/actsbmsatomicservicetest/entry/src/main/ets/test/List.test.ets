@@ -14,7 +14,9 @@
  */
 
 import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
+import canOpenLink from './CanOpenLink.test.ets';
 
 export default function testsuite() {
   getBundleInfoForSelf();
+  canOpenLink();
 }

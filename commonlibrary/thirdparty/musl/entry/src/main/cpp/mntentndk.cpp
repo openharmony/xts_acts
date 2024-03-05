@@ -16,7 +16,6 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
@@ -26,60 +25,89 @@
 #include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
+
+#define ZEROVAL 0
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define PARAM_0 0
 #define PARAM_1 1
-#define PARAM_2 2
-#define PARAM_UNNORMAL -1
-#define ERRON_0 0
+#define FAIL (-1)
+#define SIZE_1024 1024
 
 static napi_value Setmntent(napi_env env, napi_callback_info info)
 {
-    FILE *ffp = setmntent("/data/storage/el2/base/files/test.txt", "r");
+    FILE *ffp = setmntent("/data/storage/el2/base/files", "r");
     napi_value result;
     if (ffp != nullptr) {
-        napi_create_int32(env, PARAM_0, &result);
+        napi_create_int32(env, ZEROVAL, &result);
     } else {
         napi_create_int32(env, ONEVAL, &result);
     }
     return result;
 }
 
-static napi_value GetMnTent(napi_env env, napi_callback_info info)
+int DoPlainTests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), void *arg2)
+{
+    int ret = PARAM_0;
+    int pid = PARAM_0;
+    pid = fork();
+    if (pid == FAIL) {
+        return FAIL;
+    }
+    if (pid == PARAM_0) {
+        _exit(fn1(arg1));
+    }
+    if (fn2) {
+        ret = fn2(arg2);
+    }
+    return ret;
+}
+
+int getmntenttest(void *testarg)
 {
     FILE *mtab = nullptr;
     struct mntent *part;
-    errno = ERRON_0;
-    errno = ERRON_0;
-    mtab = setmntent("/data/storage/el2/base/files/test.txt", "w+");
+    mtab = setmntent("/data/storage/el2/base/files/test.txt", "r");
     part = getmntent(mtab);
     endmntent(mtab);
-    napi_value result;
     if (part == nullptr) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        return FAIL;
     } else {
-        napi_create_int32(env, PARAM_0, &result);
+        return PARAM_0;
     }
+}
+
+static napi_value GetMnTent(napi_env env, napi_callback_info info)
+{
+    void *test = nullptr;
+    DoPlainTests(getmntenttest, test, nullptr, nullptr);
+    napi_value result = nullptr;
+    napi_create_int32(env, ZEROVAL, &result);
     return result;
 }
 
-static napi_value GetMnTentR(napi_env env, napi_callback_info info)
+int GetmntentRtest(void *testarg)
 {
     FILE *mtab = nullptr;
     struct mntent *part = nullptr;
     struct mntent mnt;
-    char strings[1024];
-    mtab = setmntent("/data/storage/el2/base/files/test.txt", "w+");
-    errno = ERRON_0;
+    char strings[SIZE_1024];
+    mtab = setmntent("/data/storage/el2/base/files/test.txt", "r");
     part = getmntent_r(mtab, &mnt, strings, sizeof(strings));
     endmntent(mtab);
-    napi_value result;
     if (part == nullptr) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        return FAIL;
     } else {
-        napi_create_int32(env, PARAM_0, &result);
+        return PARAM_0;
     }
+}
+
+static napi_value GetMnTentR(napi_env env, napi_callback_info info)
+{
+    void *test = nullptr;
+    DoPlainTests(GetmntentRtest, test, nullptr, nullptr);
+    napi_value result = nullptr;
+    napi_create_int32(env, ZEROVAL, &result);
     return result;
 }
 
@@ -92,7 +120,7 @@ static napi_value Hasmntopt(napi_env env, napi_callback_info info)
     char *ret = hasmntopt(&ent, "hasmntopt");
     napi_value result;
     if (ret == nullptr) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, FAIL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }

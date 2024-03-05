@@ -14,24 +14,24 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct TabsBarPosition {
-
   private controller: TabsController = new TabsController()
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear TabsBarPosition start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear TabsBarPosition end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("tabs-BarPosition")
         .width(100)
@@ -59,13 +59,18 @@ struct TabsBarPosition {
 
       }
       .key("barPositionTabs")
-      .vertical(true).scrollable(true).barMode(BarMode.Fixed)
-      .barWidth(70).barHeight(150).animationDuration(400)
+      .vertical(true)
+      .scrollable(true)
+      .barMode(BarMode.Fixed)
+      .barWidth(70)
+      .barHeight(150)
+      .animationDuration(400)
       .onChange((index: number) => {
         console.info(index.toString())
       })
-      .width('90%').backgroundColor(0xF5F5F5)
-    
+      .width('90%')
+      .backgroundColor(0xF5F5F5)
+
     }.width("100%").height("100%")
   }
 }

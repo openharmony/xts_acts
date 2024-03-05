@@ -42,13 +42,6 @@ export default function textArea_center() {
       }
       done();
     });
-    afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      // router.back()
-      let driver = await UiDriver.create()
-      await driver.pressBack();
-      console.info("ListItem_Delete_End after each called");
-    });
 
     /* *
     * @tc.number: SUB_ACE_TS_COMPONENT_TextArea_Center_001
@@ -62,10 +55,7 @@ export default function textArea_center() {
       await CommonFunc.sleep(1000);
 
       console.log('get click before  Initial value')
-      let text_00 = CommonFunc.getComponentRect('textArea_center_text_0');
-      let text_10 = CommonFunc.getComponentRect('textArea_center_text_10');
       let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let column_01 = CommonFunc.getComponentRect('textArea_center_column_01');
 
       console.log('assert position')
       let y1 = textArea_01.top
@@ -82,11 +72,15 @@ export default function textArea_center() {
       let y2 = textArea_02.top
       expect(y1).assertEqual(y2);
 
+      let btn = await driver.findComponent(ON.id('textArea_center_btn'));
+      await btn.click();
+      await CommonFunc.sleep(1000);
+
       done();
     });
 
     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_TextArea_Center_001
+    * @tc.number: SUB_ACE_TS_COMPONENT_TextArea_Center_002
     * @tc.name  : testSearch
     * @tc.desc  : When textArea is in the middle, clicking on the middle of the input box triggers the keyboard
     * @tc.level : Level 2
@@ -97,10 +91,7 @@ export default function textArea_center() {
       await CommonFunc.sleep(1000);
 
       console.log('get click before  Initial value')
-      let text_00 = CommonFunc.getComponentRect('textArea_center_text_0');
-      let text_10 = CommonFunc.getComponentRect('textArea_center_text_10');
       let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let column_01 = CommonFunc.getComponentRect('textArea_center_column_01');
 
       console.log('assert position')
       let y1 = textArea_01.top
@@ -117,11 +108,15 @@ export default function textArea_center() {
       let y2 = textArea_02.top
       expect(y2).assertLess(y1);
 
+      let btn = await driver.findComponent(ON.id('textArea_center_btn'));
+      await btn.click();
+      await CommonFunc.sleep(1000);
+
       done();
     });
 
     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_TextArea_Center_001
+    * @tc.number: SUB_ACE_TS_COMPONENT_TextArea_Center_003
     * @tc.name  : testSearch
     * @tc.desc  : When textArea is in the middle, clicking on the bottom of the input box triggers the keyboard
     * @tc.level : Level 2
@@ -131,16 +126,18 @@ export default function textArea_center() {
       console.info('[textArea_center_003] START');
       await CommonFunc.sleep(1000);
 
+      let driver = await Driver.create()
+      await CommonFunc.sleep(1000);
+      let btn1 = await driver.findComponent(ON.id('textArea_center_btn'));
+      await btn1.click();
+      await CommonFunc.sleep(1000);
+
       console.log('get click before  Initial value')
-      let text_00 = CommonFunc.getComponentRect('textArea_center_text_0');
-      let text_10 = CommonFunc.getComponentRect('textArea_center_text_10');
       let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let column_01 = CommonFunc.getComponentRect('textArea_center_column_01');
 
       console.log('assert position')
-      let y1 = textArea_01.bottom
+      let y5 = textArea_01.bottom
 
-      let driver = await Driver.create();
       await CommonFunc.sleep(500);
       await driver.click(
         (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45 *44))
@@ -149,8 +146,8 @@ export default function textArea_center() {
 
       console.log('get click after Initial value')
       let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let y2 = textArea_02.bottom
-      expect(y2).assertLess(y1);
+      let y6 = textArea_02.bottom
+      expect(y6).assertLess(y5);
 
       done();
     });

@@ -14,25 +14,27 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base'
+
 export default function ListScrollTest() {
 
-  const SUITE = 'ListScroll'
-  const waitUiReadyMs = 500;
-  describe('ListScrollTest', function () {
+  const SUITE: string = 'ListScroll'
+  const waitUiReadyMs: number = 500;
+  describe('ListScrollTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/ListScroll",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("ListScroll" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -47,14 +49,14 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0100', 0, async function (done) {
-      let CASE = 'ArkUI_List_Scroll_0100'
+    it('ArkUI_List_Scroll_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Scroll_0100'
       console.info(`${SUITE} ${CASE} START`)
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.start).assertEqual(14);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60000,
         priority: events_emitter.EventPriority.LOW
       }
@@ -62,7 +64,6 @@ export default function ListScrollTest() {
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('ListScroll_Button_To_14', 10, "")
-
       console.info(`${SUITE} ${CASE} END`)
     });
 
@@ -71,14 +72,14 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0200', 0, async function (done) {
-      let CASE = 'ArkUI_List_Scroll_0200'
+    it('ArkUI_List_Scroll_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Scroll_0200'
       console.info(`${SUITE} ${CASE} START`)
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.start).assertEqual(15);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60001,
         priority: events_emitter.EventPriority.LOW
       }
@@ -86,7 +87,6 @@ export default function ListScrollTest() {
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('ListScroll_Button_To_15', 10, "")
-
       console.info(`${SUITE} ${CASE} END`)
     });
 
@@ -95,14 +95,14 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0300', 0, async function (done) {
-      let CASE = 'ArkUI_List_Scroll_0300'
+    it('ArkUI_List_Scroll_0300', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Scroll_0300'
       console.info(`${SUITE} ${CASE} START`)
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.start).assertEqual(0);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60002,
         priority: events_emitter.EventPriority.LOW
       }
@@ -110,7 +110,6 @@ export default function ListScrollTest() {
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('ListScroll_Button_To_0', 10, "")
-
       console.info(`${SUITE} ${CASE} END`)
     });
 
@@ -119,22 +118,21 @@ export default function ListScrollTest() {
      *tc.name   Scroller.scrollToIndex(List) support animation
      *tc.desc   Scroller.scrollToIndex(List) support animation
      */
-    it('ArkUI_List_Scroll_0400', 0, async function (done) {
-      let CASE = 'ArkUI_List_Scroll_0400'
+    it('ArkUI_List_Scroll_0400', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Scroll_0400'
       console.info(`${SUITE} ${CASE} START`)
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.end).assertEqual(59);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 60003,
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('ListScroll_Button_To_max', 10, "")
-
       console.info(`${SUITE} ${CASE} END`)
     });
   })

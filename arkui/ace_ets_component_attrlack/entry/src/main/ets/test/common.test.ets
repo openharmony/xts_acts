@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function commonColorModeJsunit() {
-  describe('commonColorModeTest', function () {
-    beforeEach(async function (done) {
+  describe('commonColorModeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/common',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/common',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function commonColorModeJsunit() {
         console.info("get common state success " + JSON.stringify(pages));
         if (!("common" == pages.name)) {
           console.info("get common state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push common page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function commonColorModeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("commonColorMode after each called");
     });
@@ -51,16 +51,16 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonColorMode0011
      * @tc.desic        acecommonColorModeEtsTest0011
      */
-    it('testCommonColorMode0011', 0, async function (done) {
+    it('testCommonColorMode0011', 0, async (done: Function) => {
       console.info('commonColorMode testCommonColorMode0011 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ThinText');
+      let strJson: string = getInspectorByKey('ThinText');
       console.info("[testCommonColorMode0011] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonColorMode0011] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
-      let testObject = obj.$attrs.backgroundBlurStyle;
-      expect(testObject instanceof Object).assertTrue();
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonColorMode0011] backgroundBlurStyle value :" + JSON.parse(strJson)
+        .$attrs
+        .backgroundBlurStyle);
+      expect(JSON.parse(strJson).$attrs.backgroundBlurStyle instanceof Object).assertTrue();
       done();
     });
 
@@ -69,16 +69,18 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonColorMode0012
      * @tc.desic        acecommonColorModeEtsTest0012
      */
-    it('testCommonColorMode0012', 0, async function (done) {
+    it('testCommonColorMode0012', 0, async (done: Function) => {
       console.info('commonColorMode testCommonColorMode0012 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ThickText');
+      let strJson: string = getInspectorByKey('ThickText');
       console.info("[testCommonColorMode0012] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonColorMode0012] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
-      let testObject = obj.$attrs.backgroundBlurStyle;
-      expect(testObject instanceof Object).assertTrue();
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonColorMode0012] backgroundBlurStyle value :" + JSON.parse(strJson)
+        .$attrs
+        .backgroundBlurStyle);
+
+      expect(JSON.parse(strJson).$attrs.backgroundBlurStyle instanceof Object).assertTrue();
       done();
     });
 
@@ -87,16 +89,16 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonMiddle0001
      * @tc.desic        acecommonMiddleEtsTest0001
      */
-    it('testCommonMiddle0001', 0, async function (done) {
+    it('testCommonMiddle0001', 0, async (done: Function) => {
       console.info('commonMiddle testCommonMiddle0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('middleText');
+      let strJson: string = getInspectorByKey('middleText');
       console.info("[testCommonMiddle0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonMiddle0001] alignRules value :" + obj.$attrs.alignRules);
-      expect(obj.$attrs.alignRules).assertEqual(undefined);
-      console.info("[testCommonMiddle0001] alignRules value :" + obj.$attrs.alignRules);
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonMiddle0001] alignRules value :" + JSON.parse(strJson).$attrs.alignRules);
+      expect(JSON.parse(strJson).$attrs.alignRules).assertEqual(undefined);
+      console.info("[testCommonMiddle0001] alignRules value :" + JSON.parse(strJson).$attrs.alignRules);
       done();
     });
 
@@ -105,16 +107,15 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonOutset0001
      * @tc.desic        acecommonOutsetEtsTest0001
      */
-    it('testCommonOutset0001', 0, async function (done) {
+    it('testCommonOutset0001', 0, async (done: Function) => {
       console.info('commonOutset testCommonOutset0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('outsetText');
+      let strJson: string = getInspectorByKey('outsetText');
       console.info("[testCommonOutset0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonOutset0001] borderImage value :" + obj.$attrs.borderImage);
-      let jsonObject = JSON.parse(obj.$attrs.borderImage);
-      expect(jsonObject.width).assertEqual("10.00px");
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonOutset0001] borderImage value :" + JSON.parse(strJson).$attrs.borderImage);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.borderImage).width).assertEqual("10.00px");
       done();
     });
 
@@ -123,16 +124,15 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonRepeat0001
      * @tc.desic        acecommonRepeatEtsTest0001
      */
-    it('testCommonRepeat0001', 0, async function (done) {
+    it('testCommonRepeat0001', 0, async (done: Function) => {
       console.info('commonRepeat testCommonRepeat0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('RepeatText');
+      let strJson: string = getInspectorByKey('RepeatText');
       console.info("[testCommonRepeat0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonOutset0001] borderImage value :" + obj.$attrs.borderImage);
-      let jsonObject = JSON.parse(obj.$attrs.borderImage);
-      expect(jsonObject.width).assertEqual("10.00px");
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonOutset0001] borderImage value :" + JSON.parse(strJson).$attrs.borderImage);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.borderImage).width).assertEqual("10.00px");
       done();
     });
 
@@ -141,16 +141,15 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonSpace0001
      * @tc.desic        acecommonSpaceEtsTest0001
      */
-    it('testCommonSpace0001', 0, async function (done) {
+    it('testCommonSpace0001', 0, async (done: Function) => {
       console.info('commonSpace testCommonSpace0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('SpaceText');
+      let strJson: string = getInspectorByKey('SpaceText');
       console.info("[testCommonSpace0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonSpace0001] borderImage value :" + obj.$attrs.borderImage);
-      let jsonObject = JSON.parse(obj.$attrs.borderImage);
-      expect(jsonObject.width).assertEqual("10.00px");
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonSpace0001] borderImage value :" + JSON.parse(strJson).$attrs.borderImage);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.borderImage).width).assertEqual("10.00px");
       done();
     });
 
@@ -159,16 +158,15 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonSlice0001
      * @tc.desic        acecommonSliceEtsTest0001
      */
-    it('testCommonSlice0001', 0, async function (done) {
+    it('testCommonSlice0001', 0, async (done: Function) => {
       console.info('commonSlice testCommonSlice0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('sliceText');
+      let strJson: string = getInspectorByKey('sliceText');
       console.info("[testCommonSlice0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testCommonSlice0001] borderImage value :" + obj.$attrs.borderImage);
-      let jsonObject = JSON.parse(obj.$attrs.borderImage);
-      expect(jsonObject.width).assertEqual("10.00px");
+
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testCommonSlice0001] borderImage value :" + JSON.parse(strJson).$attrs.borderImage);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.borderImage).width).assertEqual("10.00px");
       done();
     });
 
@@ -177,15 +175,15 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonArea0001
      * @tc.desic        acecommonAreaEtsTest0001
      */
-    it('testCommonArea0001', 0, async function (done) {
+    it('testCommonArea0001', 0, async (done: Function) => {
       console.info('commonSlice testCommonArea0001 START');
       await Utils.sleep(500);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60312,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonArea0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(320);
         }
@@ -203,22 +201,22 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonTouches0001
      * @tc.desic        acecommonTouchesEtsTest0001
      */
-    it('testCommonTouches0001', 0, async function (done) {
+    it('testCommonTouches0001', 0, async (done: Function) => {
       console.info('commonSlice testCommonTouches0001 START');
       await Utils.sleep(500);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60313,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonTouches0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(undefined);
 
         }
         events_emitter.on(innerEvent, callback);
         console.info("testCommonTouches0001 click result is: " + JSON.stringify(sendEventByKey('touchesText', 10, "")));
-        await Utils.sleep(2000);   
+        await Utils.sleep(2000);
       } catch (err) {
         console.info("testCommonTouches0001 on click err : " + JSON.stringify(err));
       }
@@ -230,21 +228,21 @@ export default function commonColorModeJsunit() {
      * @tc.name         testCommonChangedTouches0001
      * @tc.desic        acecommonTouchesEtsTest0001
      */
-    it('testCommonChangedTouches0001', 0, async function (done) {
+    it('testCommonChangedTouches0001', 0, async (done: Function) => {
       console.info('commonSlice testCommonChangedTouches0001 START');
       await Utils.sleep(500);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60314,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testCommonChangedTouches0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(undefined);
         }
         events_emitter.on(innerEvent, callback);
         console.info("changedTouches0001 click is: " + JSON.stringify(sendEventByKey('changedTouchesText', 10, "")));
-        await Utils.sleep(2000);  
+        await Utils.sleep(2000);
       } catch (err) {
         console.info("testCommonChangedTouches0001 on click err : " + JSON.stringify(err));
       }

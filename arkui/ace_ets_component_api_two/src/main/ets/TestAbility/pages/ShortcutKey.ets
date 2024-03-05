@@ -12,35 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
+
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct ShortcutKey {
   private functionKey: FunctionKey[] = [
-  FunctionKey.ESC,
-  FunctionKey.F1,
-  FunctionKey.F2,
-  FunctionKey.F3,
-  FunctionKey.F4,
-  FunctionKey.F5,
-  FunctionKey.F6,
-  FunctionKey.F7,
-  FunctionKey.F8,
-  FunctionKey.F9,
-  FunctionKey.F10,
-  FunctionKey.F11,
-  FunctionKey.F12,
+    FunctionKey.ESC,
+    FunctionKey.F1,
+    FunctionKey.F2,
+    FunctionKey.F3,
+    FunctionKey.F4,
+    FunctionKey.F5,
+    FunctionKey.F6,
+    FunctionKey.F7,
+    FunctionKey.F8,
+    FunctionKey.F9,
+    FunctionKey.F10,
+    FunctionKey.F11,
+    FunctionKey.F12,
   ]
 
-  sendEvent(message, eventId) {
-    var eventData = {
+  sendEvent(message: string, eventId: number) {
+    let eventData: events_emitter.EventData = {
       data: {
         "msg": message
       }
     }
-    let event = {
+    let event: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }
@@ -60,7 +60,7 @@ struct ShortcutKey {
           })
           .key('ShortcutKey_Button_0')
 
-        ForEach(this.functionKey, (item, index) => {
+        ForEach(this.functionKey, (item: string, index) => {
           Button("CTRL + " + item)
             .keyboardShortcut(item, [ModifierKey.CTRL])
             .onClick(() => {
@@ -68,7 +68,7 @@ struct ShortcutKey {
             })
             .width("80%")
             .key('ShortcutKey2_Ctrl_' + item)
-        }, item => item)
+        }, (item: string) => item)
 
         Button("Shift+1")
           .keyboardShortcut("1", [ModifierKey.SHIFT])
@@ -76,7 +76,7 @@ struct ShortcutKey {
             this.sendEvent('Shift_1', 72002)
           })
         Button("Alt+Q")
-          .keyboardShortcut("Q",[ModifierKey.ALT])
+          .keyboardShortcut("Q", [ModifierKey.ALT])
           .onClick(() => {
             this.sendEvent('Alt_Q', 72003)
           })

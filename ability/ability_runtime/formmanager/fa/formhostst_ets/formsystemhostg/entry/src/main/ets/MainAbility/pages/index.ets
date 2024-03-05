@@ -21,8 +21,8 @@ import formHost from '@ohos.application.formHost';
 @Component
 struct Index {
   @State formId: number = 0;
-  @State bundle: string = "com.form.formsystemtestservicea.hmservice";
-  @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
+  @State bundle: string = "com.acts.form.formsystemtestservicea.hmservice";
+  @State ability: string = "MainAbility";
   @State moduleName: string = "entry";
   @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;

@@ -15,36 +15,35 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function curvesStepsJsunit() {
-  describe('curvesStepsTest', function () {
+  describe('curvesStepsTest', () => {
 
     /**
-    * run before testcase
-    */
-    beforeAll(async function (done) {
+     * run before testcase
+     */
+    beforeAll(async () => {
       console.info('[curvesStepsTest] before each called')
 
-      let result;
+      // let result = '';
       let options = {
         uri: 'MainAbility/pages/curves'
       }
       try {
-        result = router.push(options)
+        let result = router.push(options)
         console.info("push curves page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("push curves page error " + JSON.stringify(result));
+        console.error("push curves page error " + JSON.stringify(err));
       }
       await Utils.sleep(4000)
-      done()
     });
 
     /**
-    * run after testcase
-    */
-    afterAll(async function () {
+     * run after testcase
+     */
+    afterAll(async () => {
       console.info('[curvesStepsTest] after each called')
       await Utils.sleep(1000)
     });
@@ -54,27 +53,27 @@ export default function curvesStepsJsunit() {
      * @tc.name         testcurvesSteps0001
      * @tc.desic         acecurvesStepsEtsTest0001
      */
-    it('testcurvesSteps0001', 0, async function (done) {
+    it('testcurvesSteps0001', 0, async () => {
       console.info('curvesSteps testcurvesSteps0001 START');
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 60229,
         priority: events_emitter.EventPriority.LOW
       }
-      var callback = (eventData) => {
-        try{
-          console.info("callback success" );
+      let callback = (eventData) => {
+        try {
+          console.info("callback success");
           console.info("curveApi eventData.data.curveApi result is: " + eventData.data.curveApi);
           expect(eventData.data.curveApi).assertEqual("callBackSuccess");
           console.info("curveApi end");
-        }catch(err){
+        } catch (err) {
           console.info("curveApi on events_emitter err : " + JSON.stringify(err));
         }
-        done();
+
       }
-      try{
+      try {
         console.info("curveApi click result is: " + JSON.stringify(sendEventByKey('stepsText', 10, "")));
         events_emitter.on(innerEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("curveApi on events_emitter err : " + JSON.stringify(err));
       }
     });

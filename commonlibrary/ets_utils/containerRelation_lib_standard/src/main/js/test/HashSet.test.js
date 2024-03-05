@@ -590,5 +590,28 @@ describe("HashSetTest", function () {
       expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 11`);
     }
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_HASHSET_01000
+   * @tc.name: testEntries037
+   * @tc.desc: Iterate over all elements of the HashSet instance. For example: hashSet.entries().
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testEntries037", 0, function () {
+    let hashSet = new HashSet();
+    hashSet.add(1);
+    hashSet.add(2);
+    hashSet.add(3);
+    hashSet.add(4);
+    hashSet.add(5);
+    let iter = hashSet.entries();
+    let temp = iter.next();
+    while(!temp.done) {
+      expect(temp.value[0]).assertEqual(temp.value[1]);
+      temp = iter.next();
+    }
+  });
 });
 }

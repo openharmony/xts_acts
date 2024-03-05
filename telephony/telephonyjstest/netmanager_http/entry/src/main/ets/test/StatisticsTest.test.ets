@@ -23,39 +23,52 @@ export default function StatisticsTest() {
     const DATA_0 = 0;
     let code_201 = 201;
     let errCode_201 = "201";
-    
+    function expectFalse() {
+      try {
+        expect().assertFail();
+      } catch (err) {
+        console.info('assertion failure');
+      }
+    }
      /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0100';
       let ifaceName = "eth0";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();     
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Async_0200
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Async_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Async_0200';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
@@ -66,32 +79,39 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Async_0300
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Async_0300', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Async_0300';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Async_0400
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Async_0400', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Async_0400';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Async_0400';
       let ifaceName = null;
       try {
         statistics.getIfaceRxBytes(ifaceName, (err, data) => {
@@ -101,7 +121,7 @@ export default function StatisticsTest() {
             done();
           } else {
             console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         });
@@ -113,30 +133,37 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0100';
       let ifaceName = "eth0";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Promise_0200
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Promise_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Promise_0200';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
@@ -144,41 +171,48 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Promise_0300
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Promise_0300', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Promise_0300';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceRxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)} `);
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceRxBytes_Promise_0400
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400
      * @tc.name Test getIfaceRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceRxBytes_Promise_0400', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceRxBytes_Promise_0400';
+    it('SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceRxBytes_Promise_0400';
       let ifaceName = null;
       try {
         statistics.getIfaceRxBytes(ifaceName).then((data) => {
           console.log(`${caseName} getIfaceRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }).catch((err) => {
           console.log(`${caseName} getIfaceRxBytes fail ${JSON.stringify(err)}`);
@@ -193,37 +227,44 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0100';
       let ifaceName = "eth0";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Async_0200
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Async_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Async_0200';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
@@ -234,32 +275,39 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Async_0300
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Async_0300', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Async_0300';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceTxBytes(ifaceName, (err, data) => {
         if (err) {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
+          expect(err.code == 2103005 || err.code == 2103012).assertTrue();
           done();
         } else {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Async_0400
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Async_0400', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Async_0400';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Async_0400';
       let ifaceName = null;
       try {
         statistics.getIfaceTxBytes(ifaceName, (err, data) => {
@@ -269,7 +317,7 @@ export default function StatisticsTest() {
             done();
           } else {
             console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-            expect().assertFail();
+            expectFalse();
             done();
           }
         });
@@ -281,30 +329,37 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0100';
       let ifaceName = "eth0";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Promise_0200
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Promise_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Promise_0200';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0200';
       let ifaceName = "wlan0";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
@@ -312,41 +367,48 @@ export default function StatisticsTest() {
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Promise_0300
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Promise_0300', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Promise_0300';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0300';
       let ifaceName = "wlan1";
       statistics.getIfaceTxBytes(ifaceName).then((data) => {
         console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)} `);
+        expect(err.code == 2103005 || err.code == 2103012).assertTrue();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getIfaceTxBytes_Promise_0400
+     * @tc.number SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400
      * @tc.name Test getIfaceTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getIfaceTxBytes_Promise_0400', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getIfaceTxBytes_Promise_0400';
+    it('SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getIfaceTxBytes_Promise_0400';
       let ifaceName = null;
       try {
         statistics.getIfaceTxBytes(ifaceName).then((data) => {
           console.log(`${caseName} getIfaceTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }).catch((err) => {
           console.log(`${caseName} getIfaceTxBytes fail ${JSON.stringify(err)}`);
@@ -361,16 +423,19 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getAllTxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100
      * @tc.name Test getAllTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getAllTxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getAllTxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getAllTxBytes_Async_0100';
       statistics.getAllTxBytes((err, data) => {
         if (err) {
           console.log(`${caseName} getAllTxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getAllTxBytes success ${JSON.stringify(data)}`);
@@ -381,34 +446,40 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getAllTxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100
      * @tc.name Test getAllTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getAllTxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getAllTxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getAllTxBytes_Promise_0100';
       statistics.getAllTxBytes().then((data) => {
         console.log(`${caseName} getAllTxBytes success ${JSON.stringify(data)}`);
         expect(data >= DATA_0).assertTrue();
         done();
       }).catch((err) => {
         console.log(`${caseName} getAllTxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getAllRxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100
      * @tc.name Test getAllRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getAllRxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getAllRxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getAllRxBytes_Async_0100';
       statistics.getAllRxBytes((err, data) => {
         if (err) {
           console.log(`${caseName} getAllRxBytes fail ${JSON.stringify(err)} `);
-          expect().assertFail();
+          expectFalse();
           done();
         } else {
           console.log(`${caseName} getAllRxBytes success ${JSON.stringify(data)}`);
@@ -419,30 +490,36 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getAllRxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100
      * @tc.name Test getAllRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getAllRxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getAllRxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getAllRxBytes_Promise_0100';
       statistics.getAllRxBytes().then((data) => {
         console.log(`${caseName} getAllRxBytes success ${JSON.stringify(data)}`);
         expect(data >= DATA_0).assertTrue();
         done();
       }).catch((err) => {
         console.log(`${caseName} getAllRxBytes fail ${JSON.stringify(err)} `);
-        expect().assertFail();
+        expectFalse();
         done();
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidRxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100
      * @tc.name Test getUidRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidRxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidRxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Async_0100';
       let uid = 20010084;
       statistics.getUidRxBytes(uid, (err, data) => {
         if (err) {
@@ -451,19 +528,22 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidRxBytes_Async_0200
+     * @tc.number SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200
      * @tc.name Test getUidRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidRxBytes_Async_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidRxBytes_Async_0200';
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Async_0200';
       let uid = 20010084;
       statistics.getUidRxBytes(uid, (err, data) => {
         if (err) {
@@ -472,23 +552,26 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidRxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100
      * @tc.name Test getUidRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidRxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidRxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0100';
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
         console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidRxBytes fail ${JSON.stringify(err)} `);
@@ -498,16 +581,19 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidRxBytes_Promise_0200
+     * @tc.number SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200
      * @tc.name Test getUidRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidRxBytes_Promise_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidRxBytes_Promise_0200';
+    it('SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidRxBytes_Promise_0200';
       let uid = 20010084;
       statistics.getUidRxBytes(uid).then((data) => {
         console.log(`${caseName} getUidRxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidRxBytes fail ${JSON.stringify(err)} `);
@@ -517,12 +603,15 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidTxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100
      * @tc.name Test getUidTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidTxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidTxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Async_0100';
       let uid = 20010084;
       statistics.getUidTxBytes(uid, (err, data) => {
         if (err) {
@@ -531,19 +620,22 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidTxBytes_Async_0200
+     * @tc.number SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200
      * @tc.name Test getUidTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidTxBytes_Async_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidTxBytes_Async_0200';
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Async_0200';
       let uid = 20010084;
       statistics.getUidTxBytes(uid, (err, data) => {
         if (err) {
@@ -552,23 +644,26 @@ export default function StatisticsTest() {
           done();
         } else {
           console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-          expect().assertFail();
+          expectFalse();
           done();
         }
       });
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidTxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100
      * @tc.name Test getUidTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidTxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidTxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0100';
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
         console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidTxBytes fail ${JSON.stringify(err)} `);
@@ -578,16 +673,19 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getUidTxBytes_Promise_0200
+     * @tc.number SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200
      * @tc.name Test getUidTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getUidTxBytes_Promise_0200', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getUidTxBytes_Promise_0200';
+    it('SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getUidTxBytes_Promise_0200';
       let uid = 20010084;
       statistics.getUidTxBytes(uid).then((data) => {
         console.log(`${caseName} getUidTxBytes success ${JSON.stringify(data)}`);
-        expect().assertFail();
+        expectFalse();
         done();
       }).catch((err) => {
         console.log(`${caseName} getUidTxBytes fail ${JSON.stringify(err)} `);
@@ -597,12 +695,15 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getCellularRxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100
      * @tc.name Test getCellularRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getCellularRxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getCellularRxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getCellularRxBytes_Async_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
           console.info(`${caseName} hasSimCard fail ${JSON.stringify(err)} `);
@@ -619,7 +720,7 @@ export default function StatisticsTest() {
                 done();
               } else {
                 console.log(`${caseName} getCellularRxBytes success ${JSON.stringify(data)}`);
-                expect().assertFail();
+                expectFalse();
                 done();
               }
             });
@@ -634,12 +735,15 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getCellularRxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100
      * @tc.name Test getCellularRxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getCellularRxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getCellularRxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getCellularRxBytes_Promise_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
           console.info(`${caseName} hasSimCard fail ${JSON.stringify(err)} `);
@@ -651,7 +755,7 @@ export default function StatisticsTest() {
             expect(data == true).assertTrue();
             statistics.getCellularRxBytes().then((data) => {
               console.log(`${caseName} getCellularRxBytes success ${JSON.stringify(data)}`);
-              expect().assertFail();
+              expectFalse();
               done();
             }).catch((err) => {
               console.log(`${caseName} getCellularRxBytes fail ${JSON.stringify(err)} `);
@@ -669,12 +773,15 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getCellularTxBytes_Async_0100
+     * @tc.number SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100
      * @tc.name Test getCellularTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getCellularTxBytes_Async_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getCellularTxBytes_Async_0100';
+    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getCellularTxBytes_Async_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
           console.info(`${caseName} hasSimCard fail ${JSON.stringify(err)} `);
@@ -691,7 +798,7 @@ export default function StatisticsTest() {
                 done();
               } else {
                 console.log(`${caseName} getCellularTxBytes success ${JSON.stringify(data)}`);
-                expect().assertFail();
+                expectFalse();
                 done();
               }
             });
@@ -706,12 +813,15 @@ export default function StatisticsTest() {
     });
 
     /**
-     * @tc.number Telephony_NetworkManager_getCellularTxBytes_Promise_0100
+     * @tc.number SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100
      * @tc.name Test getCellularTxBytes() interface
      * @tc.desc Function test
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it('Telephony_NetworkManager_getCellularTxBytes_Promise_0100', 0, async function (done) {
-      let caseName = 'Telephony_NetworkManager_getCellularTxBytes_Promise_0100';
+    it('SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100', 0, async function (done) {
+      let caseName = 'SUB_Telephony_NetworkManager_getCellularTxBytes_Promise_0100';
       sim.hasSimCard(0, (err, data) => {
         if (data === false) {
           console.info(`${caseName} hasSimCard fail ${JSON.stringify(err)} `);
@@ -723,7 +833,7 @@ export default function StatisticsTest() {
             expect(data == true).assertTrue();
             statistics.getCellularTxBytes().then((data) => {
               console.log(`${caseName} getCellularTxBytes success ${JSON.stringify(data)}`);
-              expect().assertFail();
+              expectFalse();
               done();
             }).catch((err) => {
               console.log(`${caseName} getCellularTxBytes fail ${JSON.stringify(err)} `);

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
+
+class SweepGradientValue {
+  center: Array<ESObject>;
+  start: number;
+  colors: Array<ESObject>;
+  end: number;
+  repeating: boolean;
+}
+
+class RadialGradientValue {
+  center: Array<ESObject>;
+  radius: number | string;
+  colors: Array<ESObject>;
+  repeating: boolean;
+}
+
+class LinearGradientValue {
+  angle: number;
+  direction: GradientDirection;
+  colors: Array<ESObject>;
+  repeating: boolean;
+}
 
 export default function colorGradientJsunit() {
-  describe('borderTest_five_2', function () {
-    beforeEach(async function (done) {
+  describe('borderTest_five_2', () => {
+    beforeEach(async (done: Function) => {
       console.info("colorGradient beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/colorGradient',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/colorGradient',
       }
       try {
         router.clear();
@@ -31,7 +52,7 @@ export default function colorGradientJsunit() {
         console.info("get colorGradient state pages:" + JSON.stringify(pages));
         if (!("colorGradient" == pages.name)) {
           console.info("get colorGradient state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push colorGradient page result:" + JSON.stringify(result));
         }
@@ -41,40 +62,41 @@ export default function colorGradientJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("colorGradient after each called");
     });
 
-    it('testColorGradient001', 0, async function (done) {
+    it('testColorGradient001', 0, async (done: Function) => {
       console.info('[testColorGradient001] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('linearGradient');
-      let obj = JSON.parse(strJson);
-      console.info("[testColorGradient001] component obj is: " + JSON.stringify(obj.$attrs.linearGradient));
-      expect(obj.$attrs.linearGradient.angle).assertEqual('90.00px');
-      expect(obj.$attrs.linearGradient.direction).assertEqual('GradientDirection.Left');
-      expect(obj.$attrs.linearGradient.repeating).assertEqual('true');
+      let strJson: string = getInspectorByKey('linearGradient');
+      console.info("[testColorGradient001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .linearGradient));
+      expect(JSON.parse(strJson).$attrs.linearGradient.angle).assertEqual('90.00px');
+      expect(JSON.parse(strJson).$attrs.linearGradient.direction).assertEqual('GradientDirection.Left');
+      expect(JSON.parse(strJson).$attrs.linearGradient.repeating).assertEqual('true');
       console.info('[testColorGradient001] END');
       done();
     });
 
-    it('testColorGradient002', 0, async function (done) {
+    it('testColorGradient002', 0, async (done: Function) => {
       console.info('[testColorGradient002] START');
       await Utils.sleep(1000);
-      let linearGradientValue = {
+      let linearGradientValue: LinearGradientValue = {
         angle: 80,
         direction: GradientDirection.Top,
         colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
         repeating: false
       };
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "linearGradientValue": JSON.stringify(linearGradientValue)
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 5,
           priority: events_emitter.EventPriority.LOW
         }
@@ -85,33 +107,32 @@ export default function colorGradientJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('linearGradient');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testColorGradient002] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.linearGradient.angle).assertEqual('80.00px');
-      expect(objNew.$attrs.linearGradient.direction).assertEqual('GradientDirection.Top');
-      expect(objNew.$attrs.linearGradient.repeating).assertEqual('false');
+
+      console.info("[testColorGradient002] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.linearGradient.angle).assertEqual('80.00px');
+      expect(JSON.parse(strJsonNew).$attrs.linearGradient.direction).assertEqual('GradientDirection.Top');
+      expect(JSON.parse(strJsonNew).$attrs.linearGradient.repeating).assertEqual('false');
       console.info('[testColorGradient002] END');
       done();
     });
 
-    it('testColorGradient003', 0, async function (done) {
+    it('testColorGradient003', 0, async (done: Function) => {
       await Utils.sleep(1000)
       console.info('[testColorGradient003] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('sweepGradient');
-      let obj = JSON.parse(strJson);
-      console.info("[testColorGradient003] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.sweepGradient.end).assertEqual('359.00px');
-      expect(obj.$attrs.sweepGradient.start).assertEqual('0.00px');
-      expect(obj.$attrs.sweepGradient.repeating).assertEqual('true');
+      let strJson: string = getInspectorByKey('sweepGradient');
+      console.info("[testColorGradient003] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.sweepGradient.end).assertEqual('359.00px');
+      expect(JSON.parse(strJson).$attrs.sweepGradient.start).assertEqual('0.00px');
+      expect(JSON.parse(strJson).$attrs.sweepGradient.repeating).assertEqual('true');
       console.info('[testColorGradient003] END');
       done();
     });
 
-    it('testColorGradient004', 0, async function (done) {
+    it('testColorGradient004', 0, async (done: Function) => {
       console.info('[testColorGradient004] START');
       await Utils.sleep(1000);
-      let sweepGradientValue = {
+      let sweepGradientValue: SweepGradientValue = {
         center: [50, 50],
         start: 10,
         end: 356,
@@ -119,12 +140,12 @@ export default function colorGradientJsunit() {
         repeating: false
       };
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "sweepGradientValue": JSON.stringify(sweepGradientValue)
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 6,
           priority: events_emitter.EventPriority.LOW
         }
@@ -135,46 +156,45 @@ export default function colorGradientJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('sweepGradient');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testColorGradient004] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.sweepGradient.end).assertEqual('356.00px');
-      expect(objNew.$attrs.sweepGradient.start).assertEqual('10.00px');
-      expect(objNew.$attrs.sweepGradient.repeating).assertEqual('false');
+      console.info("[testColorGradient004] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.sweepGradient.end).assertEqual('356.00px');
+      expect(JSON.parse(strJsonNew).$attrs.sweepGradient.start).assertEqual('10.00px');
+      expect(JSON.parse(strJsonNew).$attrs.sweepGradient.repeating).assertEqual('false');
       console.info('[testColorGradient004] END');
       done();
     });
 
-    it('testColorGradient005', 0, async function (done) {
+    it('testColorGradient005', 0, async (done: Function) => {
       await Utils.sleep(1000)
       console.info('[testColorGradient005] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('radialGradient');
-      let obj = JSON.parse(strJson);
-      console.info("[testColorGradient005] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.radialGradient.radius).assertEqual('60.00vp');
-      expect(obj.$attrs.radialGradient.center[0]).assertEqual('50.00vp');
-      expect(obj.$attrs.radialGradient.center[1]).assertEqual('50.00vp');
-      expect(obj.$attrs.radialGradient.repeating).assertEqual('true');
+      let strJson: string = getInspectorByKey('radialGradient');
+
+      console.info("[testColorGradient005] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.radialGradient.radius).assertEqual('60.00vp');
+      expect(JSON.parse(strJson).$attrs.radialGradient.center[0]).assertEqual('50.00vp');
+      expect(JSON.parse(strJson).$attrs.radialGradient.center[1]).assertEqual('50.00vp');
+      expect(JSON.parse(strJson).$attrs.radialGradient.repeating).assertEqual('true');
       console.info('[testColorGradient005] END');
       done();
     });
 
-    it('testColorGradient006', 0, async function (done) {
+    it('testColorGradient006', 0, async (done: Function) => {
       console.info('[testColorGradient006] START');
       await Utils.sleep(1000);
-      let radialGradientValue = {
+      let radialGradientValue: RadialGradientValue = {
         center: [60, 60],
         radius: 70,
         colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
         repeating: false
       };
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "radialGradientValue": JSON.stringify(radialGradientValue)
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 7,
           priority: events_emitter.EventPriority.LOW
         }
@@ -185,12 +205,11 @@ export default function colorGradientJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('radialGradient');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testColorGradient006] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.radialGradient.radius).assertEqual('70.00vp');
-      expect(objNew.$attrs.radialGradient.center[0]).assertEqual('60.00vp');
-      expect(objNew.$attrs.radialGradient.center[1]).assertEqual('60.00vp');
-      expect(objNew.$attrs.radialGradient.repeating).assertEqual('false');
+      console.info("[testColorGradient006] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.radialGradient.radius).assertEqual('70.00vp');
+      expect(JSON.parse(strJsonNew).$attrs.radialGradient.center[0]).assertEqual('60.00vp');
+      expect(JSON.parse(strJsonNew).$attrs.radialGradient.center[1]).assertEqual('60.00vp');
+      expect(JSON.parse(strJsonNew).$attrs.radialGradient.repeating).assertEqual('false');
       console.info('[testColorGradient006] END');
       done();
     });

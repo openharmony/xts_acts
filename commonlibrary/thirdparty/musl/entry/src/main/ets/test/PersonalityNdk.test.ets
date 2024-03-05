@@ -22,7 +22,7 @@ export default function personalityNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PERSONALITY_PERSONALITY_0100
      * @tc.name       : testMuslPersonalityPersonality001
      * @tc.desc       : test personality
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

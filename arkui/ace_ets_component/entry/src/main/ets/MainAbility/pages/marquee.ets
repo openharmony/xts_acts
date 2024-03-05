@@ -49,12 +49,12 @@ struct MarqueeExample {
           console.log('Marquee animation complete onStart')
           console.info('Onstart current action state is: ' + this.fontColor);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "fontColor": this.fontColor,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 127,
               priority: events_emitter.EventPriority.LOW
             }
@@ -68,12 +68,12 @@ struct MarqueeExample {
           console.log('Marquee animation complete onBounce')
           console.info('Onbounce current action state is: ' + this.fontSize);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "fontSize": this.fontSize,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 128,
               priority: events_emitter.EventPriority.LOW
             }
@@ -88,12 +88,12 @@ struct MarqueeExample {
           this.onActionCalledThree = true;
           console.info('Onfinish current action state is: ' + this.onActionCalledThree);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.onActionCalledThree,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 129,
               priority: events_emitter.EventPriority.LOW
             }
@@ -108,12 +108,12 @@ struct MarqueeExample {
         .onClick(() => {
           this.start = true
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "start": this.start,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 130,
               priority: events_emitter.EventPriority.LOW
             }

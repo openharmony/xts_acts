@@ -23,7 +23,7 @@
 #include <uv.h>
 
 #define NO_ERRS 0
-#define FAIL -1
+#define FAIL (-1)
 
 static napi_value Glob(napi_env env, napi_callback_info info)
 {

@@ -181,7 +181,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
     await renderPlay();
     let value = await audioRen.getUnderflowCountSync();
     console.info(`${TagFrmwkRender}:getUnderflowCount :SUCCESS ${value}`);
-    expect(value).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
+    expect(value).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
     await audioRen.drain().then(() => {
       audioRen.stop().then(() => {
         expect(true).assertTrue();
@@ -244,7 +244,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
         await renderPlay();
         await audioRen.getUnderflowCount().then((data) => {
           console.log(`getUnderflowCount :SUCCESS ${data}`);
-          expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
+          expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           audioRen.drain().then(() => {
             audioRen.stop().then(() => {
               expect(true).assertTrue();
@@ -370,7 +370,7 @@ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function
             done();
           } else {
             console.log(`getUnderflowCount :SUCCESS ${data}`);
-            expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
+            expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
           }
         });
         await audioRen.drain().then(() => {

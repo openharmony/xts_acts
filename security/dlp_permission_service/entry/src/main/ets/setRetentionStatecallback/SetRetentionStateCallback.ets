@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import hilog from '@ohos.hilog';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
 import window from '@ohos.window';
 import dlpPermission from '@ohos.dlpPermission';
-import {terminateSelfWithResult} from '../common/utils';
+import { terminateSelfWithResult } from '../common/utils';
+import { BusinessError } from '@ohos.base';
 
 const TAG = "DLP_XTS_SetRetentionStateCallback";
 
@@ -35,14 +35,14 @@ export default class SetRetentionStateCallback extends UIAbility {
     // Main window is created, set main page for this ability
     var success = <boolean> globalThis.want.parameters['ohos.dlp.params.success'];
     var number = <number> globalThis.want.parameters['ohos.dlp.params.number'];
-    var uriArray=[];
-    if(success){
+    let uriArray: string[] = [];
+    if (success) {
       uriArray = ['uri'];
     }
-    if(number == 2){
-      uriArray = ['uri','uri2'];
+    if (number == 2) {
+      uriArray = ['uri', 'uri2'];
     }
-    dlpPermission.setRetentionState(uriArray,async (error, data) => {
+    dlpPermission.setRetentionState(uriArray, async (error: BusinessError) => {
       if (error) {
         console.error(TAG, "SetRetentionState callback fail", error.code, error.message);
         terminateSelfWithResult(error.code);

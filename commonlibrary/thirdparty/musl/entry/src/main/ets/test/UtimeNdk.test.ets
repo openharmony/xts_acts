@@ -25,7 +25,7 @@ export default function utimeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_UTIME_UTIME_0100
      * @tc.name       : testMuslUtimeUtime001
      * @tc.desc       : test utime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

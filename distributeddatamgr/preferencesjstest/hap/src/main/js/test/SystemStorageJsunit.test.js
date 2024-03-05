@@ -53,6 +53,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testSet001
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_1200
          * @tc.desc set and can get correct value in success callback, finally get complete callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testSet001', 0, async function (done) {
             console.info(TAG + '************* testSet001 start *************');
@@ -90,6 +93,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testSet002
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0900
          * @tc.desc set null key can receive fail callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testSet002', 0, async function (done) {
             console.info(TAG + '************* testSet002 start *************');
@@ -125,6 +131,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testSet003
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_1000
          * @tc.desc set key which size over 32 bytes and can receive fail callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testSet003', 0, async function (done) {
             console.info(TAG + '************* testSet003 start *************');
@@ -161,6 +170,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testSet004
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_1100
          * @tc.desc set value which size over 128 bytes and can receive fail callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testSet004', 0, async function (done) {
             console.info(TAG + '************* testSet004 start *************');
@@ -195,6 +207,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testGet001
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0800
          * @tc.desc set and can get correct value in success callback, finally receive a get complete callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGet001', 0, async function (done) {
             console.info(TAG + '************* testGet001 start *************');
@@ -233,6 +248,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testGet002
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0700
          * @tc.desc get value without set any value and can get default in success callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGet002', 0, async function (done) {
             console.info(TAG + '************* testGet002 start *************');
@@ -264,6 +282,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testGet003
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0500
          * @tc.desc get default size over 128 and can receive fail callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGet003', 0, async function (done) {
             console.info(TAG + '************* testGet003 start *************');
@@ -304,6 +325,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testGet004
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0600
          * @tc.desc get null key and can return default value
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testGet004', 0, async function (done) {
             console.info(TAG + '************* testGet004 start *************');
@@ -335,6 +359,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testDelete001
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0400
          * @tc.desc delete value and can not get value
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testDelete001', 0, async function (done) {
             console.info(TAG + '************* testDelete001 start *************');
@@ -384,6 +411,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testDelete002
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0200
          * @tc.desc delete null key and can get fail callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testDelete002', 0, async function (done) {
             console.info(TAG + '************* testDelete002 start *************');
@@ -433,6 +463,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testDelete003
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0300
          * @tc.desc delete incorrect key and can get success callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testDelete003', 0, async function (done) {
             console.info(TAG + '************* testDelete003 start *************');
@@ -485,6 +518,9 @@ export default function SystemStorageJsunit(){
          * @tc.name testClear001
          * @tc.number SUB_DistributedData_Preference_SDK_StorageSystemApiTest_0100
          * @tc.desc clear and can receive success callback
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testClear001', 0, async function (done) {
             console.info(TAG + '************* testClear001 start *************');

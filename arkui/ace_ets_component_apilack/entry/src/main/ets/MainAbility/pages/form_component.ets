@@ -23,41 +23,40 @@ struct Index {
   @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
   @State isShowing: boolean = true;
-
   private dimension: FormDimension = FormDimension.Dimension_1_2;
-
   private deleteForm = false;
   private deleteId = "-1";
-  private temporaryId="-1";
+  private temporaryId = "-1";
   private temporary = false;
   private castForm = false;
 
   build() {
+    Column() {
+      Text('form component test begin')
       Column() {
-        Text('form component test begin')
-        Column() {
-          FormComponent({
-            id: this.formId,
-            name: this.name,
-            bundle: this.bundle,
-            ability: this.ability,
-            module: this.moduleName,
-            dimension: this.dimension,
-            temporary: this.temporary,
+        FormComponent({
+          id: this.formId,
+          name: this.name,
+          bundle: this.bundle,
+          ability: this.ability,
+          module: this.moduleName,
+          dimension: this.dimension,
+          temporary: this.temporary,
+        })
+          .allowUpdate(this.allowUpate)
+          .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
+          .onUninstall((info) => {
+            console.log("[FormComponent] onUninstall:" + JSON.stringify(info));
           })
-            .allowUpdate(this.allowUpate)
-            .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
-            .onUninstall((info) => {
-              console.log("[FormComponent] onUninstall:" + JSON.stringify(info));
-            })
-            .onError((error) => {
-              console.log("[FormComponent.host] error code:" + error.errcode);
-              console.log("[FormComponent.host] error msg:" + error.msg);
-            })
-        }
-        .backgroundColor(Color.White)
-        Text('form component test end')
+          .onError((error) => {
+            console.log("[FormComponent.host] error code:" + error.errcode);
+            console.log("[FormComponent.host] error msg:" + error.msg);
+          })
       }
       .backgroundColor(Color.White)
+
+      Text('form component test end')
+    }
+    .backgroundColor(Color.White)
   }
 }

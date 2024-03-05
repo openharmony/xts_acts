@@ -15,16 +15,16 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import { UiDriver, BY } from '@ohos.UiTest'
-// @ts-nocheck
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
-// @ts-ignore
 import myaudioNdk from "libaudioNdkTest.so"
 const Tag = 'audio_ndk_test:'
-export default function nativeApiImageJsunit() {
-    describe('napiTest', function () {
+export default function audioNDK() {
+    describe('audioNDKTest', function () {
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
+        const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         async function getPermission() {
             let permissions = ['ohos.permission.MICROPHONE'];
             featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
@@ -38,6 +38,10 @@ export default function nativeApiImageJsunit() {
             await sleep(100);
             console.info(Tag + `UiDriver start`);
             let button = await driver.findComponent(BY.text('允许'));
+            if(button == null){
+                let cmd = "hidumper -s WindowManagerService -a'-a'"
+                await delegator.executeShellCommand(cmd);
+            }
             console.info(Tag + `button is ${JSON.stringify(button)}`);
             await sleep(100);
             await button.click();
@@ -62,705 +66,866 @@ export default function nativeApiImageJsunit() {
         })
 
         /* *
-            * @tc.number    : TC_001
-            * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-            * @tc.desc      :
-            * @tc.size      :
-            * @tc.type      : Functional
-            * @tc.level     : FWK Layer
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100
+            * @tc.name      : create OH_AudioStreamBuilder with AUDIOSTREAM_TYPE_CAPTURER
+            * @tc.desc      : test OH_AudioStreamBuilder with AUDIOSTREAM_TYPE_CAPTURER
+            * @tc.size      : MediumTest 
+            * @tc.type      : Function
+            * @tc.level     : Level0
         */
-        it('TC_001', 0, async function (done) {
-            let a = myaudioNdk.createAudioCapture();
-            console.info(Tag + "TC_001-------------createAudioCapture:" + a);
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100', 0, async function (done) {
+            let a = myaudioNdk.createAudioStreamBuilder();
+            console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CREATE_STREAM_BUILDER_0100 createAudioStreamBuilder: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-            * @tc.number    : TC_002
-            * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-            * @tc.desc      :
-            * @tc.size      :
-            * @tc.type      : Functional
-            * @tc.level     : FWK Layer
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100
+            * @tc.name      : generate audioCapturer with OH_AudioStreamBuilder_GenerateCapturer 
+            * @tc.desc      : test OH_AudioStreamBuilder_GenerateCapturer
+            * @tc.size      : MediumTest 
+            * @tc.type      : Function
+            * @tc.level     : Level0
         */
-        it('TC_002', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGenerate();
-            console.info(Tag, "TC_002-------------audioCaptureGenerate:" + a);
+            console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GENERATE_CAPTURER_0100 audioCaptureGenerate: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
 
         /* *
-            * @tc.number    : TC_003
-            * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-            * @tc.desc      :
-            * @tc.size      :
-            * @tc.type      : Functional
-            * @tc.level     : FWK Layer
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100
+            * @tc.name      : generate audioCapturer err 
+            * @tc.desc      : test OH_AudioStreamBuilder is not instantiated in OH_AudioStreamBuilder_GenerateCapturer 
+            * @tc.size      : MediumTest MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level3
         */
-        it('TC_003', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGenerateErr();
-            console.info("TC_003-------------audioCaptureGenerateErr:" + a);
+            console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GERNERTATE_CAPTURER_ERR_0100 audioCaptureGenerateErr: ${a}`);
             expect(a).assertEqual(1)
             done()
         })
 
         /* *
-            * @tc.number    : TC_004
-            * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-            * @tc.desc      :
-            * @tc.size      :
-            * @tc.type      : Functional
-            * @tc.level     : FWK Layer
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100
+            * @tc.name      : start audioCapturer
+            * @tc.desc      : test OH_AudioCapturer_Start
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level0
         */
-        it('TC_004', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureStart();
-            console.info("TC_004-------------audioCaptureStart:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_0100 audioCaptureStart: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
 
         /* *
-            * @tc.number    : TC_005
-            * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-            * @tc.desc      :
-            * @tc.size      :
-            * @tc.type      : Functional
-            * @tc.level     : FWK Layer
+            * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100
+            * @tc.name      : start audioCapture twice
+            * @tc.desc      : test OH_AudioCapturer_Start twice
+            * @tc.size      : MediumTest
+            * @tc.type      : Function
+            * @tc.level     : Level2
         */
-        it('TC_005', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureStartErr();
-            console.info("TC_005-------------audioCaptureStartErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_START_ERR_0100 audioCaptureStartErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_006
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100
+           * @tc.name      : pause audioCapturer after start
+           * @tc.desc      : test OH_AudioCapturer_Pause
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_006', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100', 0, async function (done) {
             let a = myaudioNdk.audioCapturePause();
-            console.info("TC_006-------------audioCapturePause:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_0100 audioCapturePause: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_007
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100
+           * @tc.name      : pause audioCapturer without start
+           * @tc.desc      : test OH_AudioCapturer_Pause without OH_AudioCapturer_Start
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_007', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCapturePauseErr();
-            console.info("TC_007-------------audioCapturePauseErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_PAUSE_ERR_0100 audioCapturePauseErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_008
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100
+           * @tc.name      : stop audioCapturer after start
+           * @tc.desc      : test OH_AudioCapturer_Stop
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_008', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureStop();
-            console.info("TC_008-------------audioCaptureStop:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_0100 audioCaptureStop: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_009
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100
+           * @tc.name      : stop audioCapturer without start 
+           * @tc.desc      : test OH_AudioCapturer_Stop without start
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_009', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureStopErr();
-            console.info("TC_009-------------audioCaptureStopErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_STOP_ERR_0100 audioCaptureStopErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_010
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100
+           * @tc.name      : flush audioCapturer after start 
+           * @tc.desc      : test OH_AudioCapturer_Flush
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level1
        */
-        it('TC_010', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureFlush();
-            console.info("TC_010-------------audioCaptureFlush:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_0100 audioCaptureFlush: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_011
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100
+           * @tc.name      : flush audioCapturer without start
+           * @tc.desc      : test OH_AudioCapturer_Flush without start
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
            * @tc.level     : FWK Layer
        */
-        it('TC_011', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureFlushErr();
-            console.info("TC_011-------------audioCaptureFlushErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_FLUSH_ERR_0100 audioCaptureFlushErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_012
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100
+           * @tc.name      : release audioCapturer after start 
+           * @tc.desc      : test OH_AudioCapturer_Release
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_012', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureRelease();
-            console.info("TC_012-------------audioCaptureRelease:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_0100 audioCaptureRelease: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_013
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100
+           * @tc.name      : release audioCapturer twice
+           * @tc.desc      : test OH_AudioCapturer_Release twice
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_013', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureReleaseErr();
-            console.info("TC_013-------------audioCaptureReleaseErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_RELEASE_ERR_0100 audioCaptureReleaseErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_014
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100
+           * @tc.name      : get latency mode after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetLatencyMode
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_014', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetParameter();
-            console.info("TC_014-------------audioCaptureGetParameter:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_PARAMETER_0100 audioCaptureGetParameter: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_015
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100
+           * @tc.name      : get current state after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetCurrentState
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_015', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetCurrentState();
-            console.info("TC_015-------------audioCaptureGetCurrentState:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CURRENT_STATE_0100 audioCaptureGetCurrentState: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_016
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100
+           * @tc.name      : get streamId after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetStreamId
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_016', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetStreamId();
-            console.info("TC_016-------------audioCaptureGetStreamId:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_STREAM_ID_0100 audioCaptureGetStreamId: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_017
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100
+           * @tc.name      : get sampleRate after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetSamplingRate
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_017', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetSamplingRate();
-            console.info("TC_017-------------audioCaptureGetSamplingRate:" + a);
-            expect(a).assertEqual(0)
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_RATE_0100 audioCaptureGetSamplingRate: ${a}`);
+			expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_018
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100
+           * @tc.name      : get sampleFormat after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetSampleFormat
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_018', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetSampleFormat();
-            console.info("TC_018-------------audioCaptureGetSampleFormat:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_SAMPLE_FORMAT_0100 audioCaptureGetSampleFormat: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_019
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100
+           * @tc.name      : get encodingType after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetEncodingType
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_019', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetEncodingType();
-            console.info("TC_019-------------audioCaptureGetEncodingType:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_ENCODING_TYPE_0100 audioCaptureGetEncodingType: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_020
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100
+           * @tc.name      : get capturerInfo after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetCapturerInfo
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_020', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100', 0, async function (done) {
             let a = myaudioNdk.audioCaptureGetCapturerInfo();
-            console.info("TC_020-------------audioCaptureGetCapturerInfo:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CAPTURER_INFO_0100 audioCaptureGetCapturerInfo: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+		/* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100
+           * @tc.name      : get channelCount after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetChannelCount
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetChannelCount();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_CHANNEL_COUNT_0100 audioCaptureGetChannelCount: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_021
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100
+           * @tc.name      : GetTimestamp after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetTimestamp
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_021', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetTimestamp();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_TINESTAMP_0100 audioCaptureGetTimestamp: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100
+           * @tc.name      : get FramesRead after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetFramesRead
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetFramesRead();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMEAREAD_0100 audioCaptureGetFramesRead: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100
+           * @tc.name      : get FrameSizeInCallback after generate audioCaptuer
+           * @tc.desc      : test OH_AudioCapturer_GetFrameSizeInCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetFrameSizeInCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_CAPTURER_GET_FRAMESIZEINCALLBACK_0100 audioCaptureGetFrameSizeInCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100
+           * @tc.name      : SetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_SetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_SPEED_0100 audioRendererSetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100
+           * @tc.name      : GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GET_SPEED_0100 audioRendererGetSpeed: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100
+           * @tc.name      : SetSpeed&GetSpeed with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioRenderer_GetSpeed
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRendererSetGetSpeed();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_GET_SPEED_0100 audioRendererSetGetSpeed: ${a}`);
+            expect(a).assertEqual(1.5)
+            done()
+        })
+        
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100
+           * @tc.name      : SetRendererOutputDeviceChangeCallback with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100', 0, async function (done) {
+            let a = myaudioNdk.audioSetRendererOutputDeviceChangeCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_SET_RENDERER_OUTPUTDEVICECHANGE_0100 audioCaptureGetCapturerInfo: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100
+           * @tc.name      : GetFramesWritten with OH_AudioRenderer_GetFramesWritten  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetFramesWritten();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESWRITTEN_0100 audioRenderGetFramesWritten: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100
+           * @tc.name      : GetTimestamp with OH_AudioRenderer_GetTimestamp  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetTimestamp();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETTIMESTAMP_0100 audioRenderGetTimestamp: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100
+           * @tc.name      : GetFrameSizeInCallback with OH_AudioRenderer_GetFrameSizeInCallback  
+           * @tc.desc      : test OH_AudioRenderer_GetFramesWritten
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetFrameSizeInCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GETFRAMESIZEINCALLBACK_0100 audioRenderGetFrameSizeInCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_0100
+           * @tc.name      : generate audioRenderer with OH_AudioStreamBuilder_GenerateRenderer  
+           * @tc.desc      : test OH_AudioStreamBuilder_GenerateRenderer
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGenerate();
-            console.info("TC_021-------------audioRenderGenerate:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_0100 audioCaptureGetCapturerInfo: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_022
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_ERR_0100
+           * @tc.name      : generate audioRenderer err
+           * @tc.desc      : test OH_AudioStreamBuilder is not instantiated in OH_AudioStreamBuilder_GenerateRenderer
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_022', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGenerateErr();
-            console.info("TC_022-------------audioRenderGenerateErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_GERNERATE_RENDERER_ERR_0100 audioRenderGenerateErr: ${a}`);
             expect(a).assertEqual(1)
             done()
         })
         /* *
-           * @tc.number    : TC_023
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100
+           * @tc.name      : start audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_Start
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_023', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderStart();
-            console.info("TC_023-------------audioRenderStart:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_0100 audioRenderStart: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_024
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100
+           * @tc.name      : start audioRenderer after start
+           * @tc.desc      : test OH_AudioRenderer_Start twice
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_024', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderStartErr();
-            console.info("TC_024-------------audioRenderStartErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_START_ERR_0100 audioRenderStartErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_025
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100
+           * @tc.name      : pause audioRenderer after start  
+           * @tc.desc      : test OH_AudioRenderer_Pause
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_025', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderPause();
-            console.info("TC_025-------------audioRenderPause:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_0100 audioRenderPause: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_026
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100
+           * @tc.name      : pause audioRenderer without start
+           * @tc.desc      : test OH_AudioRenderer_Pause without start 
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_026', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderPauseErr();
-            console.info("TC_026-------------audioRenderPauseErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_PAUSE_ERR_0100 audioRenderPauseErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_027
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100
+           * @tc.name      : stop audioRenderer after start
+           * @tc.desc      : test OH_AudioRenderer_Stop 
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_027', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderStop();
-            console.info("TC_027-------------audioRenderStop:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_0100 audioRenderStop: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_028
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100
+           * @tc.name      : stop audioRenderer without start 
+           * @tc.desc      : test OH_AudioRenderer_Stop without start 
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_028', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderStopErr();
-            console.info("TC_028-------------audioRenderStopErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_STOP_ERR_0100 audioRenderStopErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_029
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100
+           * @tc.name      : flush audioRenderer after start
+           * @tc.desc      : test OH_AudioRenderer_Flush 
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_029', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderFlush();
-            console.info("TC_029-------------audioRenderFlush:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_0100 audioRenderFlush: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_030
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100
+           * @tc.name      : flush audioRenderer without start 
+           * @tc.desc      : test OH_AudioRenderer_Flush without start 
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_030', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderFlushErr();
-            console.info("TC_030-------------audioRenderFlushErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_FLUSH_ERR_0100 audioRenderFlushErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_031
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100
+           * @tc.name      : release audioRenderer after start 
+           * @tc.desc      : test OH_AudioRenderer_Release
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level0
        */
-        it('TC_031', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderRelease();
-            console.info("TC_031-------------audioRenderRelease:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_0100 audioRenderRelease: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_032
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100
+           * @tc.name      : release audioRenderer twice
+           * @tc.desc      : test OH_AudioRenderer_Release twice
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level3
        */
-        it('TC_032', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderReleaseErr();
-            console.info("TC_032-------------audioRenderReleaseErr:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_RELEASE_ERR_0100 audioRenderReleaseErr: ${a}`);
             expect(a).assertEqual(2)
             done()
         })
         /* *
-           * @tc.number    : TC_033
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100
+           * @tc.name      : get current state after generate audioRenderer 
+           * @tc.desc      : test OH_AudioRenderer_GetCurrentState
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_033', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetCurrentState();
-            console.info("TC_033-------------audioRenderGetCurrentState:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CURRENT_STATE_0100 audioRenderGetCurrentState: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_034
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100
+           * @tc.name      : get latencyMode after generate audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_GetLatencyMode
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_034', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetParameter();
-            console.info("TC_034-------------audioRenderGetParameter:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_PARAMETER_0100 audioRenderGetParameter: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_035
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100
+           * @tc.name      : get streamId after generate audioRenderer 
+           * @tc.desc      : test OH_AudioRenderer_GetStreamId
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_035', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetStreamId();
-            console.info("TC_035-------------audioRenderGetStreamId:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_STREAM_ID_0100 audioRenderGetStreamId: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_036
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100
+           * @tc.name      : get samplingRate after generate audioRenderer 
+           * @tc.desc      : test OH_AudioRenderer_GetSamplingRate
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_036', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetSamplingRate();
-            console.info("TC_036-------------audioRenderGetSamplingRate:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLING_RATE_0100 audioRenderGetSamplingRate: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_037
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100
+           * @tc.name      : get sampleFormat after generate audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_GetSampleFormat
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_037', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetSampleFormat();
-            console.info("TC_037-------------audioRenderGetSampleFormat:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_SAMPLE_FORMAT_0100 audioRenderGetSampleFormat: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_038
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100
+           * @tc.name      : get encodingType after generate audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_GetEncodingType
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_038', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetEncodingType();
-            console.info("TC_038-------------audioRenderGetEncodingType:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_ENCODING_TYPE_0100 audioRenderGetEncodingType: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
         /* *
-           * @tc.number    : TC_039
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100
+           * @tc.name      : get RendererInfo after generate audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_GetRendererInfo
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_039', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetRendererInfo();
-            console.info("TC_039-------------audioRenderGetRendererInfo:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_RENDERER_INFO_0100 audioRenderGetRendererInfo: ${a}`);
             expect(a).assertEqual(0)
             done()
         })
-        /* *
-           * @tc.number    : TC_040
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
+		/* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100
+           * @tc.name      : get ChannelCount after generate audioRenderer
+           * @tc.desc      : test OH_AudioRenderer_GetChannelCount
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
        */
-        it('TC_040', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetSamplingRate();
-            console.info("TC_040-------------audioStreamBuilderSetSamplingRate:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_041
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_041', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetChannelCount();
-            console.info("TC_041-------------audioStreamBuilderSetChannelCount:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_042
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_042', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetSampleFormat();
-            console.info("TC_042-------------audioStreamBuilderSetSampleFormat:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_043
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_043', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetEncodingType();
-            console.info("TC_043-------------audioStreamBuilderSetEncodingType:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_044
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_044', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetLatencyMode();
-            console.info("TC_044-------------audioStreamBuilderSetLatencyMode:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_045
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_045', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetRendererInfo();
-            console.info("TC_045-------------audioStreamBuilderSetRendererInfo:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_046
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_046', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetCapturerInfo();
-            console.info("TC_046-------------audioStreamBuilderSetCapturerInfo:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_047
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_047', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetRendererCallback();
-            console.info("TC_047-------------audioStreamBuilderSetRendererCallback:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_048
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_048', 0, async function (done) {
-            let a = myaudioNdk.audioStreamBuilderSetCapturerCallback();
-            console.info("TC_048-------------audioStreamBuilderSetCapturerCallback:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_049
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_049', 0, async function (done) {
-            let a = myaudioNdk.audioCaptureGetChannelCount();
-            console.info("TC_049-------------audioCaptureGetChannelCount:" + a);
-            expect(a).assertEqual(0)
-            done()
-        })
-        /* *
-           * @tc.number    : TC_050
-           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
-           * @tc.desc      :
-           * @tc.size      :
-           * @tc.type      : Functional
-           * @tc.level     : FWK Layer
-       */
-        it('TC_050', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100', 0, async function (done) {
             let a = myaudioNdk.audioRenderGetChannelCount();
-            console.info("TC_050-------------audioRenderGetChannelCount:" + a);
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_GET_CHANNEL_COUNT_0100 audioRenderGetChannelCount: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100
+           * @tc.name      : set sampleRate 48000 after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetSamplingRate
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetSamplingRate();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAPMLING_RATE_0100 audioStreamBuilderSetSamplingRate: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100
+           * @tc.name      : set channelCount 1 after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetChannelCount
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetChannelCount();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CHANNEL_COUNT_0100 audioStreamBuilderSetChannelCount: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100
+           * @tc.name      : set sampleFormat AUDIOSTREAM_SAMPLE_U8 after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetSampleFormat
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetSampleFormat();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_SAMPLE_FORMAT_0100 audioStreamBuilderSetSampleFormat: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100
+           * @tc.name      : set encodingType AUDIOSTREAM_ENCODING_TYPE_RAW after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetEncodingType
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetEncodingType();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_ENCODING_TYPE_0100 audioStreamBuilderSetEncodingType: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100
+           * @tc.name      : set latencyMode AUDIOSTREAM_LATENCY_MODE_NORMAL streamUsage after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetLatencyMode
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetLatencyMode();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_LATENCY_MODE_0100 audioStreamBuilderSetLatencyMode: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100
+           * @tc.name      : set captureInfo AUDIOSTREAM_USAGE_MUSIC after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetRendererInfo
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetRendererInfo();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_INFO_0100 audioStreamBuilderSetRendererInfo: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100
+           * @tc.name      : set captureInfo AUDIOSTREAM_SOURCE_TYPE_MIC after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerInfo
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetCapturerInfo();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_INFO_0100 audioStreamBuilderSetCapturerInfo: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100
+           * @tc.name      : set rendererCallback after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetRendererCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetRendererCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_CALLBACK_0100 audioStreamBuilderSetRendererCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100
+           * @tc.name      : set captureCallback after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetCapturerCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetCapturerCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_CAPTURER_CALLBACK_0100 audioStreamBuilderSetCapturerCallback: ${a}`);
+            expect(a).assertEqual(0)
+            done()
+        })
+
+
+        /* *
+           * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100
+           * @tc.name      : set framesize in callback after create audioStreamBuilder
+           * @tc.desc      : test OH_AudioStreamBuilder_SetFrameSizeInCallback
+           * @tc.size      : MediumTest
+           * @tc.type      : Function
+           * @tc.level     : Level2
+       */
+        it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetFrameSizeInCallback();
+			console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_FRAME_SIZE_IN_CALLBACK_0100 audioStreamBuilderSetFrameSizeInCallback: ${a}`);
             expect(a).assertEqual(0)
             done()
         })

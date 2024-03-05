@@ -22,7 +22,7 @@ export default function timexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMEX_ADJTIMEX_0100
      * @tc.name       : testMuslTimexAdjtimex001
      * @tc.desc       : test adjtimex
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

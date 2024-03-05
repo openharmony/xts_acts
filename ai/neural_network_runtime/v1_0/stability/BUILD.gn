@@ -17,12 +17,15 @@ config("nnrt_config") {
   include_dirs = [
     "../common",
     "../../../../../../../foundation/ai/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_runtime",
+    "//foundation/ai/neural_network_runtime/frameworks/native/neural_network_core",
     "../../../../../../../foundation/ai/neural_network_runtime/third_party/include",
     "//third_party/googletest/googletest/include",
     "//third_party/googletest/googlemock/include",
     "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
   ]
   cflags = [ "-Wno-error" ]
+  cflags_cc = [ "-fexceptions" ]
 }
 
 ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
@@ -36,7 +39,6 @@ ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
   configs = [ ":nnrt_config" ]
 
   deps = [
-    "../../../../../../../foundation/ai/neural_network_runtime/frameworks:libneural_network_runtime",
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
   ]
@@ -50,6 +52,7 @@ ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
     "hitrace:libhitracechain",
     "ipc:ipc_single",
     "mindspore:mindir",
+    "neural_network_runtime:nnrt_target",
   ]
 
   subsystem_name = "ai"

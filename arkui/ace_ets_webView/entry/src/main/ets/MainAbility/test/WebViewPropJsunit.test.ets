@@ -77,7 +77,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0601
     * @tc.name      testWebViewDomStorageAccessFalse
     * @tc.desc      aceEtsTest
     */
@@ -98,7 +98,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0602
     * @tc.name      testWebViewFileAccessTrue
     * @tc.desc      aceEtsTest
     */
@@ -119,7 +119,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0603
     * @tc.name      testWebViewFileAccessFalse
     * @tc.desc      aceEtsTest
     */
@@ -140,7 +140,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0604
     * @tc.name      testWebViewImageAccessTrue
     * @tc.desc      aceEtsTest
     */
@@ -165,7 +165,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0605
     * @tc.name      testWebViewImageAccessFalse
     * @tc.desc      aceEtsTest
     */
@@ -190,7 +190,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0606
     * @tc.name      testWebViewJavaScriptAccessTrue
     * @tc.desc      aceEtsTest
     */
@@ -215,7 +215,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-   * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+   * @tc.number    SUB_ACE_BASIC_ETS_API_0607
    * @tc.name      testWebViewJavaScriptAccessFalse
    * @tc.desc      aceEtsTest
    */
@@ -240,7 +240,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-  * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+  * @tc.number    SUB_ACE_BASIC_ETS_API_0608
   * @tc.name      testWebViewOnlineImageAccessTrue
   * @tc.desc      aceEtsTest
   */
@@ -265,7 +265,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0609
     * @tc.name      testWebViewOnlineImageAccessFalse
     * @tc.desc      aceEtsTest
     */
@@ -290,7 +290,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0610
     * @tc.name      testWebViewZoomAccessTrue
     * @tc.desc      aceEtsTest
     */
@@ -315,7 +315,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0611
     * @tc.name      testWebViewZoomAccessFalse
     * @tc.desc      aceEtsTest
     */
@@ -340,7 +340,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0612
     * @tc.name      testWebViewMixedModeNone
     * @tc.desc      aceEtsTest
     */
@@ -365,7 +365,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0613
     * @tc.name      testWebViewMixedModeAll
     * @tc.desc      aceEtsTest
     */
@@ -390,7 +390,7 @@ export default function webViewPropJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0614
     * @tc.name      testWebViewMixedModeCompatible
     * @tc.desc      aceEtsTest
     */

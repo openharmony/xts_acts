@@ -14,18 +14,27 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
+
 export default class Utils {
-  static sendEvent(message, eventId) {
-    var eventData = {
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
+  static sendEvent(message: string, eventId: number) {
+    let eventData: events_emitter.EventData = {
       data: {
         "msg": message
       }
     }
-    let event = {
+    let event: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.emit(event, eventData)
   }
-
 }

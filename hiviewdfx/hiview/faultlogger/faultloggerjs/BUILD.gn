@@ -19,6 +19,7 @@ ohos_js_hap_suite("faultloggerjs_test") {
     ":faultloggerjs_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
+  shared_libraries = [ "./src/main/cpp:faultlogger_test_napi_xts" ]
   hap_name = "ActsFaultloggerJsTest"
   part_name = "faultloggerd"
   subsystem_name = "hiviewdfx"

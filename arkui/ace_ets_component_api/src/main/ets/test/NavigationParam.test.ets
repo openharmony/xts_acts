@@ -14,36 +14,28 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import Utils from '../TestAbility/common/MyUtils';
+
 export default function NavigationParamTest() {
 
-  const SUITE = 'NavigationParam'
-  const waitUiReadyMs = 500;
-  function sleep(time) {
-    let date = new Date()
-    let start = date.getSeconds()
-    let end = start
-    while ( (end - start) < time ) {
-      let endDate = new Date()
-      end = endDate.getSeconds()
-    }
-  }
+  const SUITE: string = 'NavigationParam'
+  const waitUiReadyMs: number = 500;
 
-  describe('NavigationParamTest', function () {
 
-    beforeEach(async function (done) {
-      let options = {
+  describe('NavigationParamTest', () => {
+
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/NavigationParam",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("NavigationParam" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -57,12 +49,11 @@ export default function NavigationParamTest() {
      *tc.name   Set Navigation.title with Resource
      *tc.desc   Set Navigation.title with Resource
      */
-    it('ArkUI_Navigation_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Navigation_0100'
+    it('ArkUI_Navigation_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Navigation_0100'
       console.info(`${SUITE} ${CASE} START`)
-      let strJson = getInspectorByKey('NavigationParam_Navigation1')
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Navigation')
+      let strJson: string = getInspectorByKey('NavigationParam_Navigation1')
+      expect(JSON.parse(strJson).$type).assertEqual('Navigation')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });
@@ -72,12 +63,11 @@ export default function NavigationParamTest() {
      *tc.name   Set Navigation.title with string
      *tc.desc   Set Navigation.title with string
      */
-    it('ArkUI_Navigation_0200', 0, async function (done) {
-      let CASE = 'ArkUI_Navigation_0200'
+    it('ArkUI_Navigation_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Navigation_0200'
       console.info(`${SUITE} ${CASE} START`)
-      let strJson = getInspectorByKey('NavigationParam_Navigation2')
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.title).assertEqual('test_string_title')
+      let strJson: string = getInspectorByKey('NavigationParam_Navigation2')
+      expect(JSON.parse(strJson).$attrs.title).assertEqual('test_string_title')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });

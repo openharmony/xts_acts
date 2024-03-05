@@ -66,8 +66,11 @@ export default function abilityTest() {
               try {
                 expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
-                expect(result[0]).assertContain("ability type [SERVICE]");
+                expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -134,8 +137,11 @@ export default function abilityTest() {
               try {
                 expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
-                expect(result[0]).assertContain("ability type [SERVICE]");
+                expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [feature]");
+                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               };
@@ -201,8 +207,11 @@ export default function abilityTest() {
               try {
                 expect(result[0]).assertContain("main name [ActsActionExtensionAbility]");
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilityrely]");
-                expect(result[0]).assertContain("ability type [SERVICE]");
+                expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -462,7 +471,7 @@ export default function abilityTest() {
       var appearEvent = 'ACTS_UIExtension_AboutToAppear';
       var onReceiveEvent = 'ACTS_UIExtension_OnReceive';
       var sendDataEvent = 'ACTS_UIExtension_SendData';
-    
+
       var subscriber;
       var subscribeInfo = {
         events: [appearEvent, onReceiveEvent]
@@ -477,10 +486,10 @@ export default function abilityTest() {
         }, (err) => {
           expect(err.code).assertEqual(0);
         });
-    
+
         commonEvent.subscribe(subscriber, async (err, data) => {
           console.log("SubscribeInfoCallback : " + JSON.stringify(data));
-    
+
           if (data.event == appearEvent) {
             commonEvent.publish(sendDataEvent, (err) => {
               if (err) {
@@ -1167,7 +1176,7 @@ export default function abilityTest() {
             console.log(`Acts_ActionExtensionAbility_2400 cacheDir:` + cacheDir);
             expect(typeof (cacheDir) == 'string').assertTrue();
             console.log(`Acts_ActionExtensionAbility_2400 success`);
-  
+
             commonEvent.unsubscribe(subscriber, async (err, data) => {
               globalThis.terminate('Acts_ActionExtensionAbility_2400');
               setTimeout(() => {
@@ -1209,7 +1218,7 @@ export default function abilityTest() {
             console.log(`Acts_ActionExtensionAbility_2500 tempDir:` + tempDir);
             expect(typeof (tempDir) == 'string').assertTrue();
             console.log(`Acts_ActionExtensionAbility_2500 success`);
-  
+
             commonEvent.unsubscribe(subscriber, async (err, data) => {
               globalThis.terminate('Acts_ActionExtensionAbility_2500');
               setTimeout(() => {
@@ -1375,7 +1384,7 @@ export default function abilityTest() {
             console.log(`Acts_ActionExtensionAbility_2900 bundleCodeDir:` + bundleCodeDir);
             expect(typeof (bundleCodeDir) == 'string').assertTrue();
             console.log(`Acts_ActionExtensionAbility_2900 success`);
-  
+
             commonEvent.unsubscribe(subscriber, async (err, data) => {
               globalThis.terminate('Acts_ActionExtensionAbility_2900');
               setTimeout(() => {

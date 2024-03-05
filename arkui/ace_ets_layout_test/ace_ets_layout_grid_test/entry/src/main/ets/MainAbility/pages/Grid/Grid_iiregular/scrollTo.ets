@@ -53,12 +53,12 @@ struct scrollTo {
       .backgroundColor(0xFAEEE0)
       .height(80)
 
-      Button('scrollTo+100')
+      Button('scrollTo+90')
         .height('5%')
         .id('scrollTo1')
         .onClick(() => {
           const yOffset: number = this.scroller.currentOffset().yOffset;
-          this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 100 })
+          this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 90 })
         })
 
 
@@ -87,11 +87,11 @@ struct scrollTo {
         })
 
 
-      Button('scrollTo 1000')
+      Button('scrollTo 900')
         .height('5%')
         .id('scrollTo5')
         .onClick(() => {
-          this.scroller.scrollTo({ xOffset: 0, yOffset: 1000 })
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 900 })
         })
 
       Button('scrollTo 300')
@@ -99,7 +99,7 @@ struct scrollTo {
         .id('scrollTo6')
         .onClick(() => {
           const yOffset: number = this.scroller.currentOffset().yOffset;
-          this.scroller.scrollTo({ xOffset: 0, yOffset: px2vp(300) })
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 300 })
         })
 
 

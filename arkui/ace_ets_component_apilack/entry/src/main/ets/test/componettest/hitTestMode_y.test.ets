@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import Utils from './Utils.ets'
 
 export default function hitTestModeJsunit() {
-  describe('hitTestModeJsunit', function () {
-    beforeEach(async function (done) {
+  describe('hitTestModeJsunit', () => {
+    beforeEach(async () => {
       console.info("hitTestMode beforeEach start");
       let options = {
         uri: 'pages/hitTestMode',
@@ -37,10 +37,9 @@ export default function hitTestModeJsunit() {
       } catch (err) {
         console.error("push hitTestMode page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("hitTestModeTest after each called");
     });
@@ -50,16 +49,16 @@ export default function hitTestModeJsunit() {
      * @tc.name         testhitTestMode0002
      * @tc.desic         acehitTestModelEtsTest0002
      */
-    it('testhitTestMode0002', 0, async function (done) {
+    it('testhitTestMode0002', 0, async () => {
       console.info('hitTestMode testhitTestMode0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Block');
       console.info("[testhitTestMode0002] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Stack');
-      console.info("[testhitTestMode0002] hitTestBehavior value :" + obj.$attrs.hitTestBehavior);
-//      expect(obj.$attrs.hitTestBehavior).assertEqual(undefined);
-      done();
+      console.info("[testhitTestMode0002] hitTestBehavior value :" + JSON.parse(strJson).$attrs.hitTestBehavior);
+      //      expect(obj.$attrs.hitTestBehavior).assertEqual(undefined);
+
     });
   })
 }

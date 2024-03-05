@@ -29,7 +29,7 @@ export default class MainAbility6 extends Ability {
         console.log("[Demo] MainAbility6 onWindowStageCreate")
         globalThis.ability6 = this.context;
 
-        windowStage.loadContent('testability/pages/index6', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index6', (err, data) => {
             if (err.code) {
                 console.log('MainAbility6 loadContent error');
                 return;

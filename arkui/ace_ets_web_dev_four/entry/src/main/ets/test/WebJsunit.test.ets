@@ -45,7 +45,7 @@ export default function webJsunit() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_001
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_0010
      *tc.name OnLoadIntercept                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
     it('OnLoadIntercept',0,async function(done){
@@ -54,7 +54,7 @@ export default function webJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_002
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV_FOUR_API_0020
      *tc.name OnControllerAttached                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
     it('OnControllerAttached',0,async function(done){

@@ -37,6 +37,9 @@ struct Ancestors_AU {
       Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + JSON.stringify(this.Array1))
         .fontSize(20).margin(30).key('ProvideArray1')
 
+      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(30).key('ProvideArray1New')
+
 
       Text("设置变量Array<Length>类型[1]-->[10]")
       Button('change')

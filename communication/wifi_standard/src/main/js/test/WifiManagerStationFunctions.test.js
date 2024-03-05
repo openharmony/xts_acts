@@ -306,7 +306,13 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function(done) {
-            let scanResult = wifiMg.scan();
+            try
+            {
+                let scanResult = wifiMg.scan();
+            }catch(error){
+                console.info("[error] it's the scan fail reason: "+JSON.stringify(error));
+                expect(true).assertEqual(error.code=='2501000');
+            }
             await sleep(3000);
             let getScanInfoListResult = wifiMg.getScanResultsSync();
             console.info("[wifi_test]wifi getScanInfoList  result : " + JSON.stringify(getScanInfoListResult));

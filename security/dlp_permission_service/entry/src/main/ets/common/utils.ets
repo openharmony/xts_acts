@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import common from '@ohos.app.ability.common';
+
 function terminateSelfWithResult(resultCode: number, info?): void {
-  let abilityResult = {
+  let abilityResult: common.AbilityResult = {
     resultCode: resultCode,
     want: {
       parameters: {

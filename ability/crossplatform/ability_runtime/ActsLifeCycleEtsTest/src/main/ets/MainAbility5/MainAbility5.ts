@@ -29,7 +29,7 @@ export default class MainAbility5 extends Ability {
         console.log("[Demo] MainAbility5 onWindowStageCreate")
         globalThis.ability5 = this.context;
 
-        windowStage.loadContent('testability/pages/index5', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index5', (err, data) => {
             if (err.code) {
                 console.log('MainAbility5 loadContent error');
                 return;
@@ -47,6 +47,7 @@ export default class MainAbility5 extends Ability {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility5 onForeground")
         setTimeout(function () {
+            globalThis.testEvent.push('MainAbility5onForeground');
             globalThis.ability5.terminateSelf()
                 .then((data) => {
                     console.info('[Demo] MainAbility5 terminateself succeeded: ' + data);

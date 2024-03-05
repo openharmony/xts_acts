@@ -15,39 +15,43 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
+
 @Entry
 @Component
 struct getOrigins {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State str:string= "emitGetOriginsCallbackLoadWebkit01";
-  @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-  @State testMultiWindowAccess:boolean = true;
-  @State testAllowWindowOpenMethod:boolean = true;
-  @State javaScriptAccess:boolean= true;
-  @State fileAccess:boolean= true;
-  @State domStorageAccess:boolean= true
-  @State imageAccess:boolean= true
-  @State onlineImageAccess:boolean= true
-  @State databaseAccess:boolean= true
-  @State origin:string= 'resource://rawfile/'
-  onPageShow(){
-    let valueChangeEvent={
-      eventId:10,
-      priority:events_emitter.EventPriority.LOW
+  @State str: string = "emitGetOriginsCallbackLoadWebkit01";
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State testMultiWindowAccess: boolean = true;
+  @State testAllowWindowOpenMethod: boolean = true;
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = true
+  @State imageAccess: boolean = true
+  @State onlineImageAccess: boolean = true
+  @State databaseAccess: boolean = true
+  @State origin: string = 'resource://rawfile/'
+
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
   }
-  private valueChangeCallBack=(eventData)=>{
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");
-    if(eventData != null){
-      console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-      if(eventData.data.ACTION != null){
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
   }
-  build(){
-    Column(){
+
+  build() {
+    Column() {
       Row() {
         Button("web click").key('webStorage').onClick(async () => {
           console.info("key==>" + this.str)
@@ -98,11 +102,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7140);
+                  Utils.emitEventTwo(0, quota.toString(), 7140);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7140);
+                Utils.emitEventTwo(0, quota.toString(), 7140);
               }
               break;
             }
@@ -155,11 +159,11 @@ struct getOrigins {
                       console.log(`quota is: ${origins[0].quota}`);
                     }
                     console.log(`getOrigins  call end`);
-                    Utils.emitEvent(quota.toString(), 7146);
+                    Utils.emitEventTwo(0, quota.toString(), 7146);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7146);
+                Utils.emitEventTwo(0, quota.toString(), 7146);
               }
               break;
             }
@@ -212,11 +216,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7152);
+                  Utils.emitEventTwo(0, quota.toString(), 7152);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7152);
+                Utils.emitEventTwo(0, quota.toString(), 7152);
               }
               break;
             }
@@ -272,11 +276,11 @@ struct getOrigins {
                       console.log(`quota is: ${origins[0].quota}`);
                     }
                     console.log(`getOrigins callback call end`);
-                    Utils.emitEvent(quota.toString(), 7158);
+                    Utils.emitEventTwo(0, quota.toString(), 7158);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7158);
+                Utils.emitEventTwo(0, quota.toString(), 7158);
               }
               break;
             }
@@ -329,11 +333,11 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7164);
+                  Utils.emitEventTwo(0, quota.toString(), 7164);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7164);
+                Utils.emitEventTwo(0, quota.toString(), 7164);
               }
               break;
             }
@@ -367,16 +371,16 @@ struct getOrigins {
                     if (origins) {
                       quota = origins[0].quota;
                       console.log(`quota is: ${origins[0].quota}`);
-                      Utils.emitEvent(quota.toString(), 7170);
+                      Utils.emitEventTwo(0, quota.toString(), 7170);
                     }
                     console.log(`getOrigins call end`);
                   }).catch(error => {
-                    console.log('getOrigins error: ' + JSON.stringify(error));
-                    Utils.emitEvent(quota.toString(), 7170);
+                  console.log('getOrigins error: ' + JSON.stringify(error));
+                  Utils.emitEventTwo(0, quota.toString(), 7170);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7170);
+                Utils.emitEventTwo(0, quota.toString(), 7170);
               }
               break;
             }
@@ -384,7 +388,7 @@ struct getOrigins {
               let getUsage = -1
               try {
                 web_webview.WebStorage.deleteOrigin(this.origin);
-                setTimeout(()=> {
+                setTimeout(() => {
                   web_webview.WebStorage.getOriginUsage(this.origin)
                     .then(usage => {
                       console.log('usage is: ' + usage);
@@ -395,7 +399,7 @@ struct getOrigins {
                       console.log('getOriginUsage error: ' + JSON.stringify(error));
                       Utils.emitEvent(getUsage, 7172);
                     })
-                },3000)
+                }, 3000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(getUsage, 7172);
@@ -432,11 +436,11 @@ struct getOrigins {
                     console.log('quota is: ' + quota);
                     getQuota = quota;
                   }
-                  Utils.emitEvent(getQuota.toString(), 7176);
+                  Utils.emitEventTwo(0, getQuota.toString(), 7176);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(getQuota.toString(), 7176);
+                Utils.emitEventTwo(0, getQuota.toString(), 7176);
               }
               break;
             }
@@ -448,15 +452,15 @@ struct getOrigins {
                   .then(quota => {
                     console.log('quota is: ' + quota);
                     getQuota = quota;
-                    Utils.emitEvent(getQuota.toString(), 7178);
+                    Utils.emitEventTwo(0, getQuota.toString(), 7178);
                   })
                   .catch(error => {
                     console.log('getOriginQuota error: ' + JSON.stringify(error));
-                    Utils.emitEvent(getQuota.toString(), 7178);
+                    Utils.emitEventTwo(0, getQuota.toString(), 7178);
                   })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                Utils.emitEvent(getQuota.toString(), 7178);
+                Utils.emitEventTwo(0, getQuota.toString(), 7178);
               }
               break;
             }
@@ -508,17 +512,18 @@ struct getOrigins {
                     console.log(`quota is: ${origins[0].quota}`);
                   }
                   console.log(`getOrigins callback call end`);
-                  Utils.emitEvent(quota.toString(), 7184);
+                  Utils.emitEventTwo(0, quota.toString(), 7184);
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
-                Utils.emitEvent(quota.toString(), 7184);
+                Utils.emitEventTwo(0, quota.toString(), 7184);
               }
               break;
             }
           }
         })
       }
+
       Web({ src: 'https://webkit.org/demos/sticky-notes/index.html', controller: this.controller })
         .multiWindowAccess(this.testMultiWindowAccess)
         .allowWindowOpenMethod(this.testAllowWindowOpenMethod)

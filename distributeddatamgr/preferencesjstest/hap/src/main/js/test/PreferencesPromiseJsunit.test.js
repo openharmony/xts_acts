@@ -31,13 +31,21 @@ let context;
 export default function preferencesPromiseTest(){
     describe('preferencesPromiseTest', function () {
         beforeAll(async function () {
-            console.info('beforeAll');
-            context = featureAbility.getContext();
-            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            console.info('beforeAll')
+            context = featureAbility.getContext()
         })
 
         afterAll(async function () {
-            console.info('afterAll');
+            console.info('afterAll')
+        })
+
+        beforeEach(async function () {
+            console.info('beforeEach')
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+        })
+        
+        afterEach(async function () {
+            console.info('afterEach')
             await dataPreferences.deletePreferences(context, NAME);
         })
 
@@ -45,6 +53,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put StringArray promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0800
          * @tc.desc put StringArray promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutStringArray0131', 0, async function (done) {
             await mPreferences.clear();
@@ -65,6 +76,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put NumberArray promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0700
          * @tc.desc put NumberArray promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutNumberArray0132', 0, async function (done) {
             await mPreferences.clear();
@@ -85,6 +99,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put BoolArray promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0600
          * @tc.desc put BoolArray promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutBoolArray0133', 0, async function (done) {
             await mPreferences.clear();
@@ -105,6 +122,9 @@ export default function preferencesPromiseTest(){
          * @tc.name getAll promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1000
          * @tc.desc getAll promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetAll0001', 0, async function (done) {
             await mPreferences.clear();
@@ -149,6 +169,9 @@ export default function preferencesPromiseTest(){
          * @tc.name clear promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_2100
          * @tc.desc clear promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesClear0011', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
@@ -167,6 +190,9 @@ export default function preferencesPromiseTest(){
          * @tc.name has string interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0900
          * @tc.desc has string interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesHasKey0031', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
@@ -183,6 +209,9 @@ export default function preferencesPromiseTest(){
          * @tc.name has int interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1700
          * @tc.desc has int interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesHasKey0032', 0, async function (done) {
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
@@ -200,6 +229,9 @@ export default function preferencesPromiseTest(){
          * @tc.name has float interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1500
          * @tc.desc has float interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesHasKey0033', 0, async function (done) {
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
@@ -216,6 +248,9 @@ export default function preferencesPromiseTest(){
          * @tc.name has boolean interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1300
          * @tc.desc has boolean interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesHasKey0034', 0, async function (done) {
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -232,6 +267,9 @@ export default function preferencesPromiseTest(){
          * @tc.name has long interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1800
          * @tc.desc has long interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesHasKey0035', 0, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
@@ -249,6 +287,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get string promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1100
          * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetDefValue0061', 0, async function (done) {
             await mPreferences.clear();
@@ -265,6 +306,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get float promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1400
          * @tc.desc get float promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetFloat0071', 0, async function (done) {
             await mPreferences.clear();
@@ -282,6 +326,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get int promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1600
          * @tc.desc get int promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetInt0081', 0, async function (done) {
             await mPreferences.clear();
@@ -299,6 +346,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get long promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1900
          * @tc.desc get long promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetLong0091', 0, async function (done) {
             await mPreferences.clear();
@@ -316,6 +366,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get String promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_2000
          * @tc.desc get String promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('tesPreferencesGetString101', 0, async function (done) {
             await mPreferences.clear();
@@ -334,6 +387,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put boolean promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0100
          * @tc.desc put boolean promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutBoolean0121', 0, async function (done) {
             await mPreferences.clear();
@@ -350,6 +406,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put float promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0200
          * @tc.desc put float promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutFloat0131', 0, async function (done) {
             await mPreferences.clear();
@@ -366,6 +425,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put int promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0300
          * @tc.desc put int promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutInt0141', 0, async function (done) {
             await mPreferences.clear();
@@ -382,6 +444,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put long promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0400
          * @tc.desc put long promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutLong0151', 0, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
@@ -397,6 +462,9 @@ export default function preferencesPromiseTest(){
          * @tc.name put String promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_0500
          * @tc.desc put String promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesPutString0161', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
@@ -412,6 +480,9 @@ export default function preferencesPromiseTest(){
          * @tc.name get string promise interface test
          * @tc.number SUB_DistributedData_Preference_SDK_PreferenceJsApiPromiseTest_1200
          * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
          */
         it('testPreferencesGetDefValue00162', 0, async function (done) {
             await mPreferences.clear();

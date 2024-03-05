@@ -25,16 +25,15 @@
 #include <utime.h>
 #include <utmp.h>
 #include <uv.h>
-#include "napi/native_api.h"
 
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define PARAM_1 1
 #define SIZE_64 64
 
 static napi_value Utime(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 

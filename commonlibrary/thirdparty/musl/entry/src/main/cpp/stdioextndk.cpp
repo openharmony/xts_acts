@@ -24,21 +24,21 @@
 #include <sys/eventfd.h>
 #include <unistd.h>
 
-
-#define errornumber 0
-#define success 1
+#define ERRORNUMBER 0
+#define SUCCESSRET 1
 #define PARAM_0 0
-#define INIT -1
+#define PARAM_5 5
+#define INIT (-1)
 #define SUCCESS 0
 
 static napi_value Flushlbf(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    errno = errornumber;
+    errno = ERRORNUMBER;
     _flushlbf();
-    int returnValue = errornumber;
-    if (errno == errornumber) {
-        returnValue = success;
+    int returnValue = ERRORNUMBER;
+    if (errno == ERRORNUMBER) {
+        returnValue = SUCCESSRET;
     }
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -47,13 +47,13 @@ static napi_value Flushlbf(napi_env env, napi_callback_info info)
 static napi_value Flbf(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    errno = errornumber;
+    errno = ERRORNUMBER;
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     __flbf(file);
-    int returnValue = errornumber;
-    if (errno == errornumber) {
-        returnValue = success;
+    int returnValue = ERRORNUMBER;
+    if (errno == ERRORNUMBER) {
+        returnValue = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, returnValue, &result);
@@ -66,9 +66,9 @@ static napi_value Fwriting(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __fwriting(file);
-    int backInfo = errornumber;
-    if (returnValue == errornumber) {
-        backInfo = success;
+    int backInfo = ERRORNUMBER;
+    if (returnValue == ERRORNUMBER) {
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -81,9 +81,9 @@ static napi_value Fpending(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __fpending(file);
-    int backInfo = errornumber;
+    int backInfo = ERRORNUMBER;
     if (returnValue != PARAM_0) {
-        backInfo = success;
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -96,9 +96,9 @@ static napi_value FBufSize(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __fbufsize(file);
-    int backInfo = errornumber;
+    int backInfo = ERRORNUMBER;
     if (returnValue != PARAM_0) {
-        backInfo = success;
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -111,9 +111,9 @@ static napi_value Fpurge(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     __fpurge(file);
-    int backInfo = errornumber;
-    if (errno == errornumber) {
-        backInfo = success;
+    int backInfo = ERRORNUMBER;
+    if (errno == ERRORNUMBER) {
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -126,9 +126,9 @@ static napi_value Freadable(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __freadable(file);
-    int backInfo = errornumber;
-    if (returnValue != errornumber) {
-        backInfo = success;
+    int backInfo = ERRORNUMBER;
+    if (returnValue != ERRORNUMBER) {
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -141,9 +141,9 @@ static napi_value Freading(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __freading(file);
-    int backInfo = errornumber;
-    if (returnValue != errornumber) {
-        backInfo = success;
+    int backInfo = ERRORNUMBER;
+    if (returnValue != ERRORNUMBER) {
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -170,9 +170,9 @@ static napi_value Fwritable(napi_env env, napi_callback_info info)
     int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
     FILE *file = fopen("/data/storage/el2/base/files/fzl.txt", "a+");
     int returnValue = __fwritable(file);
-    int backInfo = errornumber;
-    if (returnValue != errornumber) {
-        backInfo = success;
+    int backInfo = ERRORNUMBER;
+    if (returnValue != ERRORNUMBER) {
+        backInfo = SUCCESSRET;
     }
     close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
@@ -305,7 +305,7 @@ static napi_value FMemOpen(napi_env env, napi_callback_info info)
 {
     int backParam = INIT;
     void *buf = nullptr;
-    size_t size = 5;
+    size_t size = PARAM_5;
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
     const char *mode = "r";
     fopen(path, mode);

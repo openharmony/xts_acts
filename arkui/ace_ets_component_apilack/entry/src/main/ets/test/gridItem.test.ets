@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +14,13 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function gridItemOnSelectJsunit() {
-  describe('gridItemOnSelectTest', function () {
-    beforeAll(async function (done) {
+  describe('gridItemOnSelectTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/gridItem',
@@ -39,24 +38,23 @@ export default function gridItemOnSelectJsunit() {
       } catch (err) {
         console.error("push gridItem page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gridItemOnSelect after each called");
     });
 
 
-    it('testgridItemOnSelect0001', 0, async function (done) {
+    it('testgridItemOnSelect0001', 0, async () => {
       console.info('testgridItemOnSelect testgridItemOnSelect0001 START');
       await Utils.sleep(2000);
       let callback = (indexEvent) => {
         console.info("onSelect_0001 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.STATUS).assertEqual(true);
-        done();
+
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 60207,
         priority: events_emitter.EventPriority.LOW
       }
@@ -67,8 +65,10 @@ export default function gridItemOnSelectJsunit() {
         console.info("onSelect_0001 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testgridItemOnSelect0001 END');
-      done();
+
     });
 
-  })
+  }
+
+  )
 }

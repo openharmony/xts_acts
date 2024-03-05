@@ -79,6 +79,7 @@ export default class MainAbility1 extends Ability {
                 + JSON.stringify(ability));
             }
         }
+        globalThis.ability1context = this.context;
         globalThis.applicationContext1 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext1.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback1 number: " + JSON.stringify(lifecycleid));
@@ -88,7 +89,7 @@ export default class MainAbility1 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onCreate", ()=>{
                 console.log("[Demo] MainAbility1 onCreate")
             });
-        }, 500)
+        }, 1500)
     }
 
     onDestroy() {
@@ -97,13 +98,12 @@ export default class MainAbility1 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onDestroy", ()=>{
                 console.log("[Demo] MainAbility1 onDestroy")
             });
-        }, 500)
+        }, 1500)
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility1 onWindowStageCreate")
-        globalThis.ability1context = this.context;
         windowStage.setUIContent(this.context, "MainAbility/pages/index1", null)
     }
 
@@ -119,7 +119,7 @@ export default class MainAbility1 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility1.onForeground", ()=>{
                 console.log("[Demo] MainAbility1 onForeground")
             });
-        }, 500)
+        }, 1500)
     }
 
     onBackground() {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Curves from '@ohos.curves'
+import Curves from '@ohos.curves';
+import { GlobalContext } from '../utils/GlobalContext';
 
 @Entry
 @Component
@@ -42,9 +42,9 @@ struct CurveExample {
         .onClick(() => {
           let curve = Curves.stepsCurve(9, true);
           this.widthSize = curve.interpolate(0.5) * this.widthSize;
-          globalThis.widthSize = this.widthSize;
+          GlobalContext.getContext().setObject('widthSize', this.widthSize);
           this.heightSize = curve.interpolate(0.5) * this.heightSize;
-          globalThis.heightSize = this.heightSize;
+          GlobalContext.getContext().setObject('heightSize', this.heightSize);
           console.info("Curves heightSize" + this.heightSize);
           console.info("Curves widthSize" + this.widthSize);
         })
@@ -65,9 +65,9 @@ struct CurveExample {
         .onClick(() => {
           let curve = Curves.springCurve(10, 1, 28, 3);
           this.widthSize1 = curve.interpolate(0.5) * this.widthSize1;
-          globalThis.widthSize1 = this.widthSize1;
+          GlobalContext.getContext().setObject('widthSize1', this.widthSize1);
           this.heightSize1 = curve.interpolate(0.5) * this.heightSize1;
-          globalThis.heightSize1 = this.heightSize1;
+          GlobalContext.getContext().setObject('heightSize1', this.heightSize1);
           console.info("Curves heightSize1" + this.heightSize1);
           console.info("Curves widthSize1" + this.widthSize1);
         })
@@ -88,9 +88,9 @@ struct CurveExample {
         .onClick(() => {
           let curve = Curves.initCurve();
           this.widthSize2 = curve.interpolate(0.5) * this.widthSize2;
-          globalThis.widthSize2 = this.widthSize2;
+          GlobalContext.getContext().setObject('widthSize2', this.widthSize2);
           this.heightSize2 = curve.interpolate(0.5) * this.heightSize2;
-          globalThis.heightSize2 = this.heightSize2;
+          GlobalContext.getContext().setObject('heightSize2', this.heightSize2);
           console.info("Curves heightSize2" + this.heightSize2);
           console.info("Curves widthSize2" + this.widthSize2);
         })
@@ -111,9 +111,9 @@ struct CurveExample {
         .onClick(() => {
           let curve = Curves.cubicBezierCurve(0.1, 1, 0.1, 1);
           this.widthSize3 = curve.interpolate(0.5) * this.widthSize3;
-          globalThis.widthSize3 = this.widthSize3;
+          GlobalContext.getContext().setObject('widthSize3', this.widthSize3);
           this.heightSize3 = curve.interpolate(0.5) * this.heightSize3;
-          globalThis.heightSize3 = this.heightSize3;
+          GlobalContext.getContext().setObject('heightSize3', this.heightSize3);
           console.info("Curves heightSize3" + this.heightSize3);
           console.info("Curves widthSize23" + this.widthSize3);
         })

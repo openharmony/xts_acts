@@ -26,7 +26,12 @@ class ImageSourceNDKTest {
 public:
     static napi_value Init(napi_env env, napi_value exports);
     static napi_value Create(napi_env env, napi_callback_info info);
+    static napi_value CreateFromFd(napi_env env, napi_callback_info info);
+    static napi_value CreateFromUri(napi_env env, napi_callback_info info);
+    static napi_value CreateFromData(napi_env env, napi_callback_info info);
+    static napi_value CreateFromRawFile(napi_env env, napi_callback_info info);
     static napi_value CreateIncremental(napi_env env, napi_callback_info info);
+    static napi_value CreateIncrementalFromData(napi_env env, napi_callback_info info);
     static napi_value InitNative(napi_env env, napi_callback_info info);
     static napi_value CreatePixelMap(napi_env env, napi_callback_info info);
     static napi_value CreatePixelMapList(napi_env env, napi_callback_info info);

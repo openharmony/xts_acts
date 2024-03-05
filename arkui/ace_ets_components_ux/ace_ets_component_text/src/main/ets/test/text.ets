@@ -533,10 +533,7 @@ export default function textTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Text_TextShadow_2100');
           let obj = JSON.parse(strJson);
           console.info("--->Text Shadow " + JSON.stringify(obj.$attrs.textShadow))
-          expect(obj.$attrs.textShadow.radius).assertEqual("0.000000")
-          expect(obj.$attrs.textShadow.color).assertEqual("#FF000000")
-          expect(obj.$attrs.textShadow.offsetX).assertEqual("0.000000")
-          expect(obj.$attrs.textShadow.offsetY).assertEqual("0.000000")
+          expect(JSON.stringify(obj.$attrs.textShadow)).assertEqual("[]")
           done()
         } catch (err) {
           expect().assertFail()

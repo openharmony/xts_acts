@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function layoutConstraintsJsunit() {
-  describe('layoutConstraintsTest', function () {
-    beforeEach(async function (done) {
+  describe('layoutConstraintsTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("layoutConstraints beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/layoutConstraints',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/layoutConstraints',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         console.info("get layoutConstraints state pages:" + JSON.stringify(pages));
         if (!("layoutConstraints" == pages.name)) {
           console.info("get layoutConstraints state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push layoutConstraints page result:" + JSON.stringify(result));
         }
@@ -41,31 +41,30 @@ export default function layoutConstraintsJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("layoutConstraints after each called");
     });
 
-    it('testLayoutConstraints001', 0, async function (done) {
+    it('testLayoutConstraints001', 0, async (done: Function) => {
       console.info('[testLayoutConstraints001] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('aspectRatio');
+      let strJson: string = getInspectorByKey('aspectRatio');
       console.info("[testLayoutConstraints001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints001] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual(1.5);
-      done();
+      console.info("[testLayoutConstraints001] aspectRatio: " + JSON.parse(strJson).$attrs.aspectRatio);
+      expect(JSON.parse(strJson).$attrs.aspectRatio).assertEqual(1.5);
+      done()
     });
 
-    it('testLayoutConstraints002', 0, async function (done) {
+    it('testLayoutConstraints002', 0, async (done: Function) => {
       console.info('[testLayoutConstraints002] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "aspectRatio": 2
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 20,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,34 +74,32 @@ export default function layoutConstraintsJsunit() {
         console.log("[testLayoutConstraints002] change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('aspectRatio');
+      let strJson: string = getInspectorByKey('aspectRatio');
       console.info("[testLayoutConstraints002] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints002] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual(2);
-      done();
+      console.info("[testLayoutConstraints002] aspectRatio: " + JSON.parse(strJson).$attrs.aspectRatio);
+      expect(JSON.parse(strJson).$attrs.aspectRatio).assertEqual(2);
+      done()
     });
 
-    it('testLayoutConstraints003', 0, async function (done) {
+    it('testLayoutConstraints003', 0, async (done: Function) => {
       console.info('[testLayoutConstraints003] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('displayPriority');
+      let strJson: string = getInspectorByKey('displayPriority');
       console.info("[testLayoutConstraints003] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints003] displayPriority: " + obj.$attrs.displayPriority);
-      expect(obj.$attrs.displayPriority).assertEqual(1);
-      done();
+      console.info("[testLayoutConstraints003] displayPriority: " + JSON.parse(strJson).$attrs.displayPriority);
+      expect(JSON.parse(strJson).$attrs.displayPriority).assertEqual(1);
+      done()
     });
 
-    it('testLayoutConstraints004', 0, async function (done) {
+    it('testLayoutConstraints004', 0, async (done: Function) => {
       console.info('[testLayoutConstraints004] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "displayPriority": 5
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 21,
           priority: events_emitter.EventPriority.LOW
         }
@@ -114,21 +111,20 @@ export default function layoutConstraintsJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('displayPriority');
       console.info("[testLayoutConstraints004] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints004] displayPriority: " + obj.$attrs.displayPriority);
-      expect(obj.$attrs.displayPriority).assertEqual(1);
+      console.info("[testLayoutConstraints004] displayPriority: " + JSON.parse(strJson).$attrs.displayPriority);
+      expect(JSON.parse(strJson).$attrs.displayPriority).assertEqual(1);
       done();
     });
 
-    it('testLayoutConstraints005', 0, async function (done) {
+    it('testLayoutConstraints005', 0, async (done: Function) => {
       console.info('[testLayoutConstraints005] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "aspectRatio": -4
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1112,
           priority: events_emitter.EventPriority.LOW
         }
@@ -138,23 +134,22 @@ export default function layoutConstraintsJsunit() {
         console.log("[testLayoutConstraints005] change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('aspectRatio');
+      let strJson: string = getInspectorByKey('aspectRatio');
       console.info("[testLayoutConstraints005] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints005] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual("");
-      done();
+      console.info("[testLayoutConstraints005] aspectRatio: " + JSON.parse(strJson).$attrs.aspectRatio);
+      expect(JSON.parse(strJson).$attrs.aspectRatio).assertEqual("");
+      done()
     });
 
-    it('testLayoutConstraints006', 0, async function (done) {
+    it('testLayoutConstraints006', 0, async (done: Function) => {
       console.info('[testLayoutConstraints006] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "aspectRatio": 9997077
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1112,
           priority: events_emitter.EventPriority.LOW
         }
@@ -164,12 +159,11 @@ export default function layoutConstraintsJsunit() {
         console.log("[testLayoutConstraints006] change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('aspectRatio');
+      let strJson: string = getInspectorByKey('aspectRatio');
       console.info("[testLayoutConstraints006] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testLayoutConstraints006] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual(9997077);
-      done();
+      console.info("[testLayoutConstraints006] aspectRatio: " + JSON.parse(strJson).$attrs.aspectRatio);
+      expect(JSON.parse(strJson).$attrs.aspectRatio).assertEqual(9997077);
+      done()
     });
   });
 }

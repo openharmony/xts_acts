@@ -22,26 +22,26 @@ struct VisibilityExample {
   @State visibility: Visibility = Visibility.Visible;
 
   onPageShow() {
-    let hiddenChangeEvent = {
+    let hiddenChangeEvent: events_emitter.InnerEvent = {
       eventId: 47,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(hiddenChangeEvent, this.hiddenChangCallBack)
 
-    let noneChangeEvent = {
+    let noneChangeEvent: events_emitter.InnerEvent = {
       eventId: 48,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(noneChangeEvent, this.noneChangCallBack)
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 1116,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.hiddenChangCallBack);
   }
 
-  private hiddenChangCallBack = (eventData) => {
+  private hiddenChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[hiddenChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[hiddenChangCallBack] state change called:" + JSON.stringify(eventData));
@@ -50,7 +50,7 @@ struct VisibilityExample {
       }
     }
   }
-  private noneChangCallBack = (eventData) => {
+  private noneChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[noneChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[noneChangCallBack] state change called:" + JSON.stringify(eventData));
@@ -63,7 +63,10 @@ struct VisibilityExample {
   build() {
     Column() {
       Column() {
-        Text('BoxOne').fontSize(9).width('90%').fontColor(0xCCCCCC)
+        Text('BoxOne')
+          .fontSize(9)
+          .width('90%')
+          .fontColor(0xCCCCCC)
         Row()
           .visibility(this.visibility)
           .width('90%')
@@ -72,14 +75,21 @@ struct VisibilityExample {
           .padding(20)
           .key('box')
 
-        Text('BoxTwo').fontSize(9).width('90%').fontColor(0xCCCCCC)
+        Text('BoxTwo')
+          .fontSize(9)
+          .width('90%')
+          .fontColor(0xCCCCCC)
         Row()
           .visibility(Visibility.Visible)
           .width('90%')
           .height(80)
           .backgroundColor(0xAFEEEE)
           .padding(20)
-      }.width('90%').border({ width: 1 })
-    }.width('100%').margin({ top: 5 })
+      }
+      .width('90%')
+      .border({ width: 1 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

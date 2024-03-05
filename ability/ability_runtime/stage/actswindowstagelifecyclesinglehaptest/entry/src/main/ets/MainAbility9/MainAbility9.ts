@@ -97,7 +97,7 @@ export default class MainAbility9 extends Ability {
             commonEvent.publish("com.example.windowstagelifecycle_xts.MainAbility9.onForeground", ()=>{
                 console.log("[Demo] MainAbility9 onForeground")
             });
-        }, 1000)
+        }, 1500)
     }
 
     onBackground() {

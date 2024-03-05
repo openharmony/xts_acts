@@ -41,6 +41,11 @@ struct ObjectLinkFar2 {
 
   build() {
     Column() {
+      Button("Reset").id("ObjectLinkFar2_reset")
+        .onClick(() => {
+          this.classA = new ClassAN(new ClassBN(5))
+          this.count = 5
+        })
       // 注意：@State无法监听到类嵌套类的属性，@ObjectLink可以监听到类嵌套@Observed修饰的类的属性
       Text('父组件').fontSize(24).margin({ top: 20 })
       Text(`ClassBN + 1: ${this.classA.classB.numB}`).key("farClassBN")

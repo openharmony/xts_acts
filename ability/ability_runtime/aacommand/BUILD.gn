@@ -19,12 +19,14 @@ group("aacommand") {
     deps = [
       "AACommand07:AACommand07",
       "AACommand08:AACommand08",
+      "AACommandImplicitStartTest:AACommandImplicitStartTest",
       "AACommandPrintOneTest:ActsAACommandPrintOneTest",
       "AACommandPrintSync:AACommandPrintSync",
       "AACommandPrintSyncTest:ActsAACommandPrintSyncTest",
       "AACommandRelyHap:AACommandRelyHap",
       "AACommandpackage:AACommandpackage",
       "AACommandtest:ActsAACommandTest",
+      "ServiceExtensionDemo:ServiceExtensionDemo",
     ]
   }
 }

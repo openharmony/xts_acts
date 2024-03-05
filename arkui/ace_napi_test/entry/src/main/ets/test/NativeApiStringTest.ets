@@ -1682,5 +1682,119 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0115
+     * @tc.name      aceNapiTest0115
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0115', 0, async function (done) {
+      console.info('aceNapiTest0115 START');
+      value = napitest.asyncWorkWithQos(1000, (input) => {
+        console.info('asyncWorkWithQos ' + (input * 2));
+        return input * 2;
+      });
+      console.info('aceNapiTest0115 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value === 0).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0116
+     * @tc.name      aceNapiTest0116
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0116', 0, async function (done) {
+      console.info('aceNapiTest0116 START');
+      value = napitest.coerceToNativeBindingObject();
+      console.info('aceNapiTest0116 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(2000);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0117
+     * @tc.name      aceNapiTest0117
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0117', 0, async function (done) {
+      console.info('aceNapiTest0117 START');
+      value = napitest.createObjectWithProperties();
+      console.info('aceNapiTest0117 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0118
+     * @tc.name      aceNapiTest0118
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0118', 0, async function (done) {
+      console.info('aceNapiTest0118 START');
+      value = napitest.createObjectWithNamedProperties();
+      console.info('aceNapiTest0118 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0119
+     * @tc.name      aceNapiTest0119
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0119', 0, async function (done) {
+      console.info('aceNapiTest0119 START');
+      const hook_result = {
+        id: null,
+        resource: null,
+        init_called: false,
+        destroy_called: false,
+      };
+      const resourceWrap = napitest.createAsyncResource(
+        /**
+         * set resource to NULL to generate a managed resource object
+         */
+        undefined,
+      );
+      expect(hook_result.destroy_called).assertFalse();
+      const recv = {};
+      napitest.makeCallback(resourceWrap, recv, function callback() {
+        expect(hook_result.destroy_called).assertFalse();
+        expect(this).assertEqual(recv);
+      });
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0120
+     * @tc.name      aceNapiTest0120
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0120', 0, async function (done) {
+      console.info('aceNapiTest0120 START');
+      function myMultiArgFunc(arg1, arg2, arg3) {
+        expect(arg1).assertEqual(1);
+        expect(arg2).assertEqual(2);
+        expect(arg3).assertEqual(3);
+        return 42;
+      }
+      const resource = {};
+      let process = {};
+      expect(napitest.makeCallbackOne(resource, process, function() {
+        expect(arguments.length).assertEqual(0);
+        expect(this).assertEqual(process);
+        return 42;
+      })).assertEqual(42);
+      expect(napitest.makeCallbackOne(resource, process, function(x) {
+        expect(arguments.length).assertEqual(1);
+        expect(this).assertEqual(process);
+        expect(x).assertEqual(1337);
+        return 42;
+      }, 1337)).assertEqual(42);
+      let obj = {};
+      expect(napitest.makeCallbackOne(resource, obj, myMultiArgFunc, 1, 2, 3)).assertEqual(42);
+      done();
+    });
   })
 }

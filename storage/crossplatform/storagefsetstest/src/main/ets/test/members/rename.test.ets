@@ -18,7 +18,7 @@ import { FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, randomSt
 import fileIO from "@ohos.file.fs";
 
 export default function fileIORename() {
-  describe("fileIO_fs_rename", function () {
+  describe("fileIO_fs_rename", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_RENAME_ASYNC_0000
      * @tc.name   : fileIO_test_rename_async_000
@@ -28,14 +28,13 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_000");
+    it("fileIO_test_rename_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let newf = fpath + "123";
+      let newf: string = fpath + "123";
 
       try {
         await fileIO.rename(fpath, newf);
-        // @ts-nocheck
         expect(fileIO.accessSync(newf)).assertTrue();
         fileIO.unlinkSync(newf);
         done();
@@ -54,8 +53,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_001", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_001");
+    it("fileIO_test_rename_async_001", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_001");
 
       try {
         await fileIO.rename(fpath, fpath + "bbb");
@@ -76,8 +75,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_002", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_002");
+    it("fileIO_test_rename_async_002", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -100,8 +99,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_003", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_003");
+    it("fileIO_test_rename_async_003", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -124,17 +123,16 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_004", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_rename_async_004");
-      let fpath = dpath + "/file_001";
+    it("fileIO_test_rename_async_004", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_rename_async_004");
+      let fpath: string = dpath + "/file_001";
       fileIO.mkdirSync(dpath);
       fileIO.mkdirSync(dpath + "/dir_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let newf = dpath + "/dir_001/newFileName";
+        let newf: string = dpath + "/dir_001/newFileName";
         await fileIO.rename(fpath, newf);
-        // @ts-nocheck
         expect(fileIO.accessSync(newf)).assertTrue();
         fileIO.rmdirSync(dpath);
         done();
@@ -153,9 +151,9 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_005", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_005");
-      let fpathTarget = fpath + randomString(250);
+    it("fileIO_test_rename_async_005", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_005");
+      let fpathTarget: string = fpath + randomString(250);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -178,10 +176,10 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_006", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_006");
+    it("fileIO_test_rename_async_006", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_006");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let newf = fpath + "aaa";
+      let newf: string = fpath + "aaa";
 
       try {
         fileIO.rename(fpath, newf, (err) => {
@@ -189,7 +187,6 @@ export default function fileIORename() {
             console.log("fileIO_test_rename_async_006 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          // @ts-nocheck
           expect(fileIO.accessSync(newf)).assertTrue();
           fileIO.unlinkSync(newf);
           done();
@@ -209,8 +206,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_007", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_007");
+    it("fileIO_test_rename_async_007", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_007");
 
       try {
         fileIO.rename(fpath, fpath + "bbb", (err) => {
@@ -235,21 +232,20 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_008", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_rename_async_008");
-      let fpath = dpath + "/file_002";
+    it("fileIO_test_rename_async_008", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_rename_async_008");
+      let fpath: string = dpath + "/file_002";
       fileIO.mkdirSync(dpath);
       fileIO.mkdirSync(dpath + "/dir_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let newf = dpath + "/dir_002/newFileName";
+        let newf: string = dpath + "/dir_002/newFileName";
         fileIO.rename(fpath, newf, (err) => {
           if (err) {
             console.log("fileIO_test_rename_async_008 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          // @ts-nocheck
           expect(fileIO.accessSync(newf)).assertTrue();
           fileIO.rmdirSync(dpath);
         });
@@ -269,9 +265,9 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_async_009", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_009");
-      let fpathTarget = fpath + randomString(250);
+    it("fileIO_test_rename_async_009", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_009");
+      let fpathTarget: string = fpath + randomString(250);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -298,13 +294,12 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_010", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_010");
+    it("fileIO_test_rename_async_010", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_010");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         await fileIO.rename(fpath, fpath);
-        // @ts-nocheck
         expect(fileIO.accessSync(fpath)).assertTrue();
         fileIO.unlinkSync(fpath);
         done();
@@ -323,8 +318,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_async_011", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_rename_async_011");
+    it("fileIO_test_rename_async_011", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_rename_async_011");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -333,7 +328,6 @@ export default function fileIORename() {
             console.log("fileIO_test_rename_async_011 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
-          // @ts-nocheck
           expect(fileIO.accessSync(fpath)).assertTrue();
           fileIO.unlinkSync(fpath);
           done();
@@ -353,14 +347,13 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_000");
+    it("fileIO_test_rename_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let newf = fpath + "test";
+        let newf: string = fpath + "test";
         fileIO.renameSync(fpath, newf);
-        // @ts-nocheck
         expect(fileIO.accessSync(newf)).assertTrue();
         fileIO.unlinkSync(newf);
       } catch (e) {
@@ -378,8 +371,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_sync_001", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_001");
+    it("fileIO_test_rename_sync_001", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_001");
 
       try {
         fileIO.renameSync(fpath, fpath + "test");
@@ -399,8 +392,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_sync_002", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_002");
+    it("fileIO_test_rename_sync_002", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -422,8 +415,8 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_sync_003", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_003");
+    it("fileIO_test_rename_sync_003", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_003");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -445,17 +438,16 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_sync_004", 2, async function () {
-      let dpath = await nextFileName("fileIO_test_rename_sync_004");
-      let fpath = dpath + "/file_000";
+    it("fileIO_test_rename_sync_004", 2, async () => {
+      let dpath: string = await nextFileName("fileIO_test_rename_sync_004");
+      let fpath: string = dpath + "/file_000";
       fileIO.mkdirSync(dpath);
       fileIO.mkdirSync(dpath + "/dir_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let newf = dpath + "/dir_000/newFileName";
+        let newf: string = dpath + "/dir_000/newFileName";
         fileIO.renameSync(fpath, newf);
-        // @ts-nocheck
         expect(fileIO.accessSync(newf)).assertTrue();
         fileIO.rmdirSync(dpath);
       } catch (e) {
@@ -473,9 +465,9 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_rename_sync_005", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_005");
-      let fpathTarget = fpath + randomString(250);
+    it("fileIO_test_rename_sync_005", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_005");
+      let fpathTarget: string = fpath + randomString(250);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -497,13 +489,12 @@ export default function fileIORename() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_rename_sync_006", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_rename_sync_006");
+    it("fileIO_test_rename_sync_006", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_rename_sync_006");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         fileIO.renameSync(fpath, fpath);
-        // @ts-nocheck
         expect(fileIO.accessSync(fpath)).assertTrue();
         fileIO.unlinkSync(fpath);
       } catch (e) {

@@ -27,7 +27,7 @@ struct CanvasAPI {
   private path2Da: Path2D = new Path2D("M250 0 L350 0 L350 200 L250 200 L250 0")
   private path2Db: Path2D = new Path2D()
 
-  createMatrix2D(a, b, c, d, e, f) {
+  createMatrix2D(a: number, b: number, c: number, d: number, e: number, f: number) {
     let matrix2d: Matrix2D = new Matrix2D();
     matrix2d.scaleX = a;
     matrix2d.rotateY = b;
@@ -417,5 +417,4 @@ struct CanvasAPI {
     path2Db.addPath(this.path2Da, matrix2d)
     this.context6.stroke(path2Db)
   }
-
 }

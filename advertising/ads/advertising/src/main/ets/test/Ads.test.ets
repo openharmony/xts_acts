@@ -14,6 +14,8 @@
  */
 import hilog from '@ohos.hilog';
 import common from '@ohos.app.ability.common';
+import commonEventManager from '@ohos.commonEventManager';
+import router from '@ohos.router'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium';
 import advertising from '@ohos.advertising';
 
@@ -115,7 +117,7 @@ export default function adsTest() {
       }
      })
 
-         /**
+    /**
      * @tc.number: SUB_CLOUD_ADS_LOAD_MULTI_AD_0300
      * @tc.name: testLoadMultiAdByCallback
      * @tc.desc: Load multi ad by callback is not null.
@@ -141,6 +143,50 @@ export default function adsTest() {
       };
       let load = new advertising.AdLoader(context);
       load.loadAdWithMultiSlots(multiAdRequest, adOption, adLoaderListener);
+    })
+
+    /**
+     * @tc.number: SUB_CLOUD_ADS_INTERACTION_LISTENER_0400
+     * @tc.name: testAdInteractionListener
+     * @tc.desc: callback data is not null.
+     * @tc.size: LargeTest
+     * @tc.type: Function
+     * @tc.level: Level0
+     */
+    it("testAdInteractionListener", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done) => {
+      let subscriber: commonEventManager.CommonEventSubscriber = null;
+      let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+        events: ["ACTS_AdComponent_OnListener"],
+      }
+      let adInteractionListener: advertising.AdInteractionListener = {
+        onStatusChanged: (status: string, ad: advertising.Advertisement, data: string) => {
+        }
+      };
+      commonEventManager.createSubscriber(subscribeInfo, (err, data) => {
+        if (err) {
+          hilog.error(Domain, TAG, `createSubscriber failed, code is ${err.code}`);
+        } else {
+          hilog.info(Domain, TAG, `CreateSubscriber success`);
+          subscriber = data;
+          // ¶©ÔÄ¹«¹²ÊÂ¼þ»Øµ÷
+          if (subscriber !== null) {
+            commonEventManager.subscribe(subscriber, (err, data) => {
+              if (err) {
+                hilog.error(Domain, TAG, `subscribe failed, code is ${err.code}`);
+              } else {
+                hilog.info(Domain, TAG, `SubscribeCallBack data=${JSON.stringify(data)}`);
+                expect(data?.parameters?.["result"]).assertEqual("onAdOpen");
+                done();
+              }
+            })
+          } else {
+            hilog.info(Domain, TAG, `Need create subscriber`);
+          }
+        }
+      })
+      router.pushUrl({
+        url: 'MainAbility/pages/index/p1'
+      })
     })
   })
 }

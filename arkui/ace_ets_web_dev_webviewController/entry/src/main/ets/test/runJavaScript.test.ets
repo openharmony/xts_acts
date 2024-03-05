@@ -65,7 +65,7 @@ export default function runJavaScript() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_001
+     *tc.number SUB_ACE_BASIC_ETS_RUNJAVASCRIPT_API_001
      *tc.name RunJsCallback
      *tc.desic test RunJavascrit interface when choose callback mode.
      */
@@ -76,7 +76,7 @@ export default function runJavaScript() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_002
+     *tc.number SUB_ACE_BASIC_ETS_RUNJAVASCRIPT_API_002
      *tc.name RunJsPromise
      *tc.desic test RunJavascrit interface when choose promise mode.
      */

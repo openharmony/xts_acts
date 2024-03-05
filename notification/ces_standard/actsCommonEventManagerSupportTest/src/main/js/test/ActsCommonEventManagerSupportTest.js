@@ -89,6 +89,8 @@ export default function ActsCommonEventManagerSupportTest() {
     it('Sub_Notification_Ces_Publish_Support_0500', 0, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_0500 START`)
       expect(commonEventManager.Support.COMMON_EVENT_PACKAGE_ADDED).assertEqual('usual.event.PACKAGE_ADDED')
+      expect(commonEventManager.Support.COMMON_EVENT_PACKAGE_INSTALLATION_STARTED)
+        .assertEqual('usual.event.PACKAGE_INSTALLATION_STARTED')
       expect(commonEventManager.Support.COMMON_EVENT_PACKAGE_REPLACED).assertEqual('usual.event.PACKAGE_REPLACED')
       expect(commonEventManager.Support.COMMON_EVENT_MY_PACKAGE_REPLACED).assertEqual('usual.event.MY_PACKAGE_REPLACED')
       expect(commonEventManager.Support.COMMON_EVENT_PACKAGE_REMOVED).assertEqual('usual.event.PACKAGE_REMOVED')
@@ -169,7 +171,7 @@ export default function ActsCommonEventManagerSupportTest() {
     /*
      * @tc.number    : Sub_Notification_Ces_Publish_Support_1000
      * @tc.name      : commonEventManager.Support
-     * @tc.desc      : Distributed account
+     * @tc.desc      : Distributed account, privacy
      */
     it('Sub_Notification_Ces_Publish_Support_1000', 0, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_1000 START`)
@@ -177,6 +179,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT).assertEqual('common.event.DISTRIBUTED_ACCOUNT_LOGOUT')
       expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID).assertEqual('common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID')
       expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF).assertEqual('common.event.DISTRIBUTED_ACCOUNT_LOGOFF')
+      expect(commonEventManager.Support.COMMON_EVENT_PRIVACY_STATE_CHANGED).assertEqual('usual.event.PRIVACY_STATE_CHANGED')
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_1000 END`)
     })
 

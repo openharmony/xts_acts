@@ -16,15 +16,12 @@ import screenLock from '@ohos.screenLock';
 import { describe, expect, it, beforeEach} from "hypium/index";
 
 export default function screenLockJSUnit() {
-    const INTERACTIVE_STATE_END_SLEEP = 0;
-    const INTERACTIVE_STATE_USERID = 2;
-    const INTERACTIVE_STATE_BEGIN_SLEEP = 3;
 
-    describe('ScreenLockServiceTest', function () {
+    describe('ScreenLockServiceTest', () => {
         console.info("====>-----------------------ScreenlockTest is starting-----------------------");
 
         let result = false
-        beforeEach(async function (done) {
+        beforeEach(async (done: Function) => {
             result = await screenLock.isScreenLocked();
             done();
         });
@@ -33,11 +30,11 @@ export default function screenLockJSUnit() {
          * @tc.number    SUB_MISC_THEME_screenLock_API_0001
          * @tc.name      Set to locked screen, query the lock screen state is locked state
          * @tc.desc      Test ScreenLock API functionality.
-         * @tc.size      : MEDIUM
+         * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0001", 0, async function (done) {
+        it("SUB_MISC_THEME_screenLock_API_0001", 0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0001-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {
@@ -68,11 +65,11 @@ export default function screenLockJSUnit() {
          * @tc.number    SUB_MISC_THEME_screenLock_API_0002
          * @tc.name      Set to locked screen, query the lock screen state is locked state
          * @tc.desc      Test ScreenLock API functionality.
-         * @tc.size      : MEDIUM
+         * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0002", 0, async function (done) {
+        it("SUB_MISC_THEME_screenLock_API_0002", 0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0002-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {
@@ -97,11 +94,11 @@ export default function screenLockJSUnit() {
          * @tc.number    SUB_MISC_THEME_screenLock_API_0003
          * @tc.name      Set to locked screen, query the lock screen state is locked state
          * @tc.desc      Test ScreenLock API functionality.
-         * @tc.size      : MEDIUM
+         * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0003", 0, async function (done) {
+        it("SUB_MISC_THEME_screenLock_API_0003", 0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0003-------------------");
             try {
                 screenLock.isSecureMode((err, data) => {
@@ -126,11 +123,11 @@ export default function screenLockJSUnit() {
          * @tc.number    SUB_MISC_THEME_screenLock_API_0004
          * @tc.name      Set to locked screen, query the lock screen state is locked state
          * @tc.desc      Test ScreenLock API functionality.
-         * @tc.size      : MEDIUM
+         * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0004", 0, async function (done) {
+        it("SUB_MISC_THEME_screenLock_API_0004", 0, async (done: Function) => {
             console.info("------------------start SUB_MISC_THEME_screenLock_API_0004-------------------");
             try {
                 screenLock.unlockScreen((err) => {
@@ -161,11 +158,11 @@ export default function screenLockJSUnit() {
          * @tc.number    SUB_MISC_THEME_screenLock_API_0007
          * @tc.name      Set to locked screen, query the lock screen state is locked state
          * @tc.desc      Test ScreenLock API functionality.
-         * @tc.size      : MEDIUM
+         * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MISC_THEME_screenLock_API_0007", 0, async function (done) {
+        it("SUB_MISC_THEME_screenLock_API_0007", 0, async (done: Function) => {
             console.info("====>------------------start SUB_MISC_THEME_screenLock_API_0007-------------------");
             try {
                 screenLock.isScreenLocked((err, data) => {

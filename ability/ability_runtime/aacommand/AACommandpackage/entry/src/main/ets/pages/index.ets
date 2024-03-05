@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = '测试框架'
+  @State message: string = '测试框架';
 
   build() {
     Row() {

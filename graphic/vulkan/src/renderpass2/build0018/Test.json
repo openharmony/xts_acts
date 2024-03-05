@@ -15,7 +15,7 @@
                 "mount -o rw,remount /",
                 "chmod -R 777 /data/local/tmp/*",
                 "mkdir /data/local/tmp/vkTest",
-                "tar zxvf /data/local/tmp/vkTestdata.tar.gz -C /data/local/tmp/vkTest",
+                "tar zxvf /data/local/tmp/vulkandata.tar.gz -C /data/local/tmp/vkTest",
                 "chmod -R 777 /data/local/tmp/vkTest/*",
                 "cp -r /data/local/tmp/vkTest /data/local/tmp",
                 "cp /data/local/tmp/libdeqp* /system/lib",
@@ -24,13 +24,13 @@
             ],
             "push": [
                 "ActsRenderpass2TestSuite0018->/data/local/tmp/ActsRenderpass2TestSuite0018",
-                "vkTestdata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
-                "vkTestdata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
-                "vkTestdata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
-                "vkTestdata/libdeqp_amber.z.so->/data/local/tmp/libdeqp_amber.z.so",
-                "vkTestdata/libdeqp_spvremapper.z.so->/data/local/tmp/libdeqp_spvremapper.z.so", 
-                "vkTestdata/libskia_canvaskit.z.so->/data/local/tmp/libskia_canvaskit.z.so",  
-                "vkTestdata/vkTestdata.tar.gz->/data/local/tmp/vkTestdata.tar.gz"
+                "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
+                "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
+                "vulkandata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
+                "vulkandata/libdeqp_amber.z.so->/data/local/tmp/libdeqp_amber.z.so",
+                "vulkandata/libdeqp_spvremapper.z.so->/data/local/tmp/libdeqp_spvremapper.z.so", 
+                "vulkandata/libskia_canvaskit.z.so->/data/local/tmp/libskia_canvaskit.z.so",  
+                "vulkandata/vulkandata.tar.gz->/data/local/tmp/vulkandata.tar.gz"
 
             ],
             "type": "PushKit"

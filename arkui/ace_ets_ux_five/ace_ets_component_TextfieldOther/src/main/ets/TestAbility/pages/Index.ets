@@ -16,6 +16,7 @@ import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -33,6 +34,7 @@ struct Index {
   }
 
   @State text: string = ''
+  @State input: number = 40
   controller: TextAreaController = new TextAreaController()
   inputCounterOptions: InputCounterOptions = {
     thresholdPercentage: 50
@@ -48,7 +50,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(true, this.inputCounterOptions)
+        .showCounter(true, { thresholdPercentage: this.input, highlightBorder: true })
         .maxLength(5)
 
       TextArea({
@@ -59,7 +61,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(false, this.inputCounterOptions)
+        .showCounter(false, { thresholdPercentage: this.input, highlightBorder: false })
         .maxLength(5)
 
       TextArea({
@@ -70,7 +72,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(true, this.inputCounterOptions)
+        .showCounter(true, { thresholdPercentage: this.input, highlightBorder: false })
         .maxLength(5)
 
       TextArea({

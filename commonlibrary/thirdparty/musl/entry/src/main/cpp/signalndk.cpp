@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-#include <cerrno>
 #include <csignal>
 #include <cstdio>
 #include <cstdlib>
@@ -27,20 +26,21 @@
 
 #define PARAM_0 0
 #define PARAM_1 1
+#define PARAM_2 2
 #define PARAM_6000 6000
 #define PARAM_99999 99999
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define STRLENGTH 64
 #define SUCCESS 1
 #define ONE 1
 #define SFD_CLOEXEC O_CLOEXEC
 #define ONEVAL 1
-#define MINUSONE -1
-#define MINUSTWO -2
+#define MINUSONE (-1)
+#define MINUSTWO (-2)
 #define THRVAL 3
 #define ERRON_0 0
-typedef void *(func)(void *);
+typedef void *(Func)(void *);
 struct Sig {
     int flag;
     int param;
@@ -51,7 +51,7 @@ struct SigString {
 };
 static int intInput(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int expect;
@@ -61,7 +61,7 @@ static int intInput(napi_env env, napi_callback_info info)
 
 static void structInput(napi_env env, napi_callback_info info, struct Sig *siginfo)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_int32(env, args[0], &(siginfo->flag));
@@ -70,7 +70,7 @@ static void structInput(napi_env env, napi_callback_info info, struct Sig *sigin
 
 static void structStringInput(napi_env env, napi_callback_info info, struct SigString *siginfo)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_int32(env, args[0], &(siginfo->flag));
@@ -79,38 +79,38 @@ static void structStringInput(napi_env env, napi_callback_info info, struct SigS
     napi_get_value_string_utf8(env, args[1], siginfo->param, size, &actualVal);
 }
 
-static int SigMain(struct Sig siginfo, func testfunction)
+static int SigMain(struct Sig siginfo, Func testfunction)
 {
     pthread_t pid;
 
-    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_create(&pid, nullptr, testfunction, &siginfo);
     pthread_detach(pid);
 
     return NO_ERR;
 }
-static int SigMainInt(int siginfo, func testfunction)
+static int SigMainInt(int siginfo, Func testfunction)
 {
     pthread_t pid;
 
-    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_create(&pid, nullptr, testfunction, &siginfo);
     pthread_detach(pid);
 
     return NO_ERR;
 }
-static int SigMainNull(func testfunction)
+static int SigMainNull(Func testfunction)
 {
     pthread_t pid;
 
-    pthread_create(&pid, NULL, testfunction, NULL);
+    pthread_create(&pid, nullptr, testfunction, nullptr);
     pthread_detach(pid);
 
     return NO_ERR;
 }
-static int SigMainString(struct SigString siginfo, func testfunction)
+static int SigMainString(struct SigString siginfo, Func testfunction)
 {
     pthread_t pid;
 
-    pthread_create(&pid, NULL, testfunction, &siginfo);
+    pthread_create(&pid, nullptr, testfunction, &siginfo);
     pthread_detach(pid);
 
     return NO_ERR;
@@ -357,7 +357,6 @@ static napi_value SigMainProcmask(napi_env env, napi_callback_info info)
 
 static napi_value Kill(napi_env env, napi_callback_info info)
 {
-
     napi_value result = {PARAM_0};
     napi_create_int32(env, PARAM_0, &result);
     return result;
@@ -480,10 +479,10 @@ static napi_value SigMainIsmember(napi_env env, napi_callback_info info)
 }
 
 static int g_count = PARAM_0;
-static void signal_handler(int signo) { g_count++; }
+static void signalHandler(int signo) { g_count++; }
 void *Signal(void *pro)
 {
-    signal(SIGHUP, signal_handler);
+    signal(SIGHUP, signalHandler);
     return nullptr;
 }
 
@@ -513,7 +512,7 @@ static napi_value SigMainNalfd(napi_env env, napi_callback_info info)
     return result;
 }
 
-static inline void unsupported_api(const char *func) { fprintf(stderr, "[ERR]Unsupported API %s\n", func); }
+static inline void unsupported_api(const char *Func) { fprintf(stderr, "[ERR]Unsupported API %s\n", Func); }
 void *Siginterrupt(void *pro)
 {
     int sig = SIGABRT;
@@ -541,7 +540,7 @@ static napi_value SigMainInterrupt(napi_env env, napi_callback_info info)
 
 void *Sigset(void *pro)
 {
-    if (*((int *)pro) == PARAM_0) {
+    if (*(static_cast<int*>(pro)) == PARAM_0) {
         sigset(SIGALRM, SIG_DFL);
     } else {
         sigset(PARAM_99999, SIG_DFL);
@@ -599,8 +598,8 @@ static napi_value SigMainQueue(napi_env env, napi_callback_info info)
     return result;
 }
 
-static int count = ERRON_0;
-static void signaler(int signo) { count++; }
+static int g_countNum = ERRON_0;
+static void signaler(int signo) { g_countNum++; }
 void *BsdSignal(void *pro)
 {
     bsd_signal(SIGHUP, signaler);
@@ -611,6 +610,24 @@ static napi_value SigMainBsdSignal(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int resSig = SigMainNull(BsdSignal);
+    napi_create_int32(env, resSig, &result);
+    return result;
+}
+
+void *Sigsuspend(void *pro)
+{
+    int sig = SIGALRM;
+    sigset_t set_without_sig;
+    sigfillset(&set_without_sig);
+    sigdelset(&set_without_sig, sig);
+    sigsuspend(&set_without_sig);
+    return nullptr;
+}
+
+static napi_value SigMainSuspend(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int resSig = SigMainNull(Sigsuspend);
     napi_create_int32(env, resSig, &result);
     return result;
 }
@@ -645,7 +662,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"raise", nullptr, Raise, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"psignal", nullptr, SigMainPsignal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"pSigInfo", nullptr, SigMainPSigInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"bsdSignal", nullptr, SigMainBsdSignal, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"bsdSignal", nullptr, SigMainBsdSignal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigsuspend", nullptr, SigMainSuspend, nullptr, nullptr, nullptr, napi_default, nullptr},
+    };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

@@ -73,7 +73,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0001
      * @tc.desc      alled when the current download session is in process.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -121,7 +121,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0002
      * @tc.desc       Called when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -164,7 +164,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0003
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0003
      * @tc.desc       Called when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -209,7 +209,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0004
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0004
      * @tc.desc       Called when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -253,7 +253,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0005
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0005
      * @tc.desc      Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -292,7 +292,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0006
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0006
      * @tc.desc      Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -330,7 +330,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001
      * @tc.desc      alled when the current download session is in process.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -363,7 +363,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0002
      * @tc.desc      alled when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -393,7 +393,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003
      * @tc.desc      alled when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -423,7 +423,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0004
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0004
      * @tc.desc      alled when the current download session complete、pause or remove.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -453,7 +453,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005
      * @tc.desc      Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -483,7 +483,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_REMOVE_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_REMOVE_0001
      * @tc.desc      Deletes a download session and the downloaded files.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -527,7 +527,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_REMOVE_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_REMOVE_0002
      * @tc.desc      Deletes a download session and the downloaded files.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -557,7 +557,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_PAUSE_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_PAUSE_0001
      * @tc.desc      Pause a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -593,7 +593,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_PAUSE_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_PAUSE_0002
      * @tc.desc      Pause a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -622,7 +622,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_REMUSE_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_REMUSE_0001
      * @tc.desc      Resume a paused download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -658,7 +658,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_REMUSE_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_REMUSE_0002
      * @tc.desc      Resume a paused download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -687,7 +687,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_QUERY_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_QUERY_0001
      * @tc.desc      Queries download information of a session, which is defined in DownloadSession.DownloadInfo.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -738,7 +738,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_QUERY_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_QUERY_0002
      * @tc.desc      Queries download information of a session, which is defined in DownloadSession.DownloadInfo.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -798,7 +798,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001
      * @tc.desc      Queries the MIME type of the download file.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -862,7 +862,7 @@ export default function requestDownloadJSUnit() {
      * @tc.number    SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0002
      * @tc.name    SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0002
      * @tc.desc      Queries the MIME type of the download file.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -902,6 +902,35 @@ export default function requestDownloadJSUnit() {
           done();
         }
       })
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100
+     * @tc.name      SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100
+     * @tc.desc      Deletes a download session and the downloaded files.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100 is starting-----------------------");
+      downloadConfig.filePath += 'SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100.txt';
+      let filePath: string = downloadConfig.filePath;
+      let task: request.DownloadTask;
+      try{
+        task = await request.download(downloadConfig);
+        console.info('====>SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100 download success');
+        expect(typeof task === 'object').assertEqual(true);
+        let data = await task.remove();
+        console.info('====>SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100 removed success: ' + JSON.stringify(data));
+        fileio.unlinkSync(filePath);
+        console.info('====>SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100 deleted files success');
+        done();
+      }catch(err){
+        console.error("====>SUB_REQUEST_DOWNLOAD_STAGE_PROMISE_0100 error: " + err);
+        fileio.unlinkSync(filePath);
+        done();
+      }
     });
   })
 }

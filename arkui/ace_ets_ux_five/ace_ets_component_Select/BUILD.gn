@@ -22,7 +22,7 @@ ohos_js_hap_suite("SelectTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "SelectTest"
+  hap_name = "ActsSelectTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }

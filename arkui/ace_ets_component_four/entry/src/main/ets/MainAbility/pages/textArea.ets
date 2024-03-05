@@ -123,9 +123,9 @@ struct TextAreaExample2 {
           console.info("index:" + this.positionInfo.index)
           this.caretIndex = this.positionInfo.index
         })
-        .key('caretOffsetBtn')
+        .key('caretOffsetBtn1')
 
-      Text("Index" + this.caretIndex).key('caretOffsetText')
+      Text("Index" + this.caretIndex).key('caretOffsetText1')
     }
   }
 }

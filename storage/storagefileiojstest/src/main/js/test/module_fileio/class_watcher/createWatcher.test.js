@@ -36,7 +36,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 1;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_000 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == event).assertTrue();
         flag = 1;
       });
@@ -70,7 +74,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 2;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_001 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         flag = 1;
       });
       let fd = fileio.openSync(fpath, 0o2);
@@ -103,7 +111,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 1;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_002 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == event).assertTrue();
         flag = 1;
       });
@@ -136,7 +148,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 1;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_003 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == event).assertTrue();
         flag = 3;
       });
@@ -169,7 +185,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 2;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_004 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == 2).assertTrue();
         flag = 4;
       });
@@ -204,7 +224,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 1;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_005 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == event).assertTrue();
         flag = flag + 1;
       });
@@ -240,7 +264,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 2;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_006 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         expect(data == 2).assertTrue();
         flag = flag + 1;
       });
@@ -275,7 +303,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 3;
       let flag = 0;
-      let ob = await fileio.createWatcher(fpath, event, function (data) {
+      let ob = await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_007 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         flag = flag + 1;
       });
       let fd = fileio.openSync(fpath, 0o2);
@@ -310,7 +342,11 @@ describe('fileio_createWatcher', function () {
     try {
       let event = 3;
       let flag = 0;
-      await fileio.createWatcher(fpath, event, function (data) {
+      await fileio.createWatcher(fpath, event, (err, data) => {
+        if (err) {
+          console.log('fileio_test_createWatcher_async_008 error: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
         flag = flag + 1;
       });
       let fd = fileio.openSync(fpath, 0o2);

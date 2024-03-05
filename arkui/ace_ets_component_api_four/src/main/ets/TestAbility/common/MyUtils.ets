@@ -1,4 +1,5 @@
-/*
+// @ts-nocheck
+/**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,57 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import RectValue from './Rect'
 
-import events_emitter from '@ohos.events.emitter';
 export default class Utils {
-  static rect_left;
-  static rect_top;
-  static rect_right;
-  static rect_bottom;
-  static rect_value;
-  public static instance;
+  static rect_left: number;
+  static rect_top: number;
+  static rect_right: number;
+  static rect_bottom: number;
+  static rect_value: RectValue;
 
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
-      try {
-        setTimeout(() => {
-          resolve(0)
-        }, time)
-      } catch (err) {
-        console.error('sleep error:' + err);
-        reject()
-      }
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
     }).then(() => {
       console.info(`sleep ${time} over...`)
     })
   }
 
-  static getComponentRect(key) {
-    let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']')
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+  //获取组件所占矩形区域坐标
+  static getComponentRect(key: string): RectValue {
+    let strJson: string = getInspectorByKey(key);
+    let rectInfo: Array<string> = JSON.parse('[' + JSON.parse(strJson).$rect + ']');
+    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
+    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];
+    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];
+    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
+    return Utils.rect_value = {
+      left: Utils.rect_left, top: Utils.rect_top, right: Utils.rect_right, bottom: Utils.rect_bottom
     }
   }
-
-  static sendEvent(message, eventId) {
-    var eventData = {
-      data: {
-        "msg": message
-      }
-    }
-    let event = {
-      eventId: eventId,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.emit(event, eventData)
-  }
-
 }
+
+
+
+

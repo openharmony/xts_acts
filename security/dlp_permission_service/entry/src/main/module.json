@@ -129,6 +129,14 @@
         "visible": true
       },
       {
+        "name": "SandboxConfigPromise",
+        "srcEntry": "./ets/sandboxconfigpromise/SandboxConfigPromise.ets",
+        "description": "$string:SandboxConfigPromise_desc",
+        "icon": "$media:icon",
+        "label": "$string:SandboxConfigPromise_label",
+        "visible": true
+      },
+      {
         "name": "SetRetentionStateCallback",
         "srcEntry": "./ets/setRetentionStatecallback/SetRetentionStateCallback.ets",
         "description": "$string:SetRetentionStateCallback_desc",

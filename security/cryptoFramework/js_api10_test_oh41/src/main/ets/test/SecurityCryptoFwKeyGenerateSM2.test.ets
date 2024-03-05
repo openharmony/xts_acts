@@ -263,6 +263,33 @@ export default function SecurityCryptoFwKeyGenerateSM2TestUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200
+     * @tc.name Test getAsyKeySpec sm2. get format,algName. process success
+     * @tc.desc AsyKeyGenerator with spec
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_AsyKeyGenerator_SM2_Func_1200";
+      console.log(testNumber + ": started");
+      try {
+        let spec: cryptoFramework.AsyKeySpec = specUtil.genSM2KeySpec(cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC);
+        let keyPair: cryptoFramework.KeyPair = await asyKeyGenPromiseFunc.genKeyPair(spec);
+        console.log(testNumber + ": generateKeyPair succeed.");
+        expect(keyPair.pubKey.format == "X.509").assertTrue();
+        expect(keyPair.pubKey.algName == "SM2").assertTrue();
+        expect(keyPair.priKey.format == "PKCS#8").assertTrue();
+        expect(keyPair.priKey.algName == "SM2").assertTrue();
+      } catch (err) {
+        console.error(testNumber + `: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success.");
+      done();
+    });
+
 
   })
 }

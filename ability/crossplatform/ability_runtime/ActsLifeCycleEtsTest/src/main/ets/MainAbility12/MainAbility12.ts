@@ -97,7 +97,7 @@ export default class MainAbility12 extends Ability {
         console.log("[Demo] MainAbility12 onWindowStageCreate")
         globalThis.ability12 = this.context;
 
-        windowStage.loadContent('testability/pages/index12', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/index12', (err, data) => {
             if (err.code) {
                 console.log('MainAbility12 loadContent error');
                 return;

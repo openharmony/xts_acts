@@ -44,12 +44,12 @@ struct TouchAbleExample {
           this.text2 = 'Ellipse Clicked';
           console.info("touchAble text2:" + this.text2);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.text2
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 237,
               priority: events_emitter.EventPriority.LOW
             }

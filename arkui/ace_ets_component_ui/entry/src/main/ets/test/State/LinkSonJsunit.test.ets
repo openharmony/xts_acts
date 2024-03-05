@@ -43,8 +43,12 @@ export default function LinkSonJsunit() {
       done();
     });
     afterEach(async function () {
+      let driver = Driver.create();
+      await CommonFunc.sleep(500);      
+      let button = await driver.findComponent(ON.id('ParentLink_reset'));
+      await button.click();
+      console.log('reset button click succ')
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('LinkSonJsunit_0100', 0, async function (done) {

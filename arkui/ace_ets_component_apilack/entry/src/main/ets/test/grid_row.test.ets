@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function grid_rowOnBreakpointChangeJsunit() {
-  describe('grid_rowOnBreakpointChangeTest', function () {
-    beforeAll(async function (done) {
+  describe('grid_rowOnBreakpointChangeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/grid_row',
@@ -37,10 +37,9 @@ export default function grid_rowOnBreakpointChangeJsunit() {
       } catch (err) {
         console.error("push grid_row page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("grid_rowOnBreakpointChange after each called");
     });
@@ -50,16 +49,16 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange001
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest001
      */
-    it('testgrid_rowOnBreakpointChange001', 0, async function (done) {
+    it('testgrid_rowOnBreakpointChange001', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
-      expect(obj.$attrs.width).assertEqual("100vp");
-      console.info("[testgrid_rowOnBreakpointChange001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100vp");
+      console.info("[testgrid_rowOnBreakpointChange001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange002
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest002
      */
-    it('testgrid_rowOnBreakpointChange002', 0, async function (done) {
+    it('testgrid_rowOnBreakpointChange002', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
-      expect(obj.$attrs.height).assertEqual("100vp");
-      console.info("[testgrid_rowOnBreakpointChange002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100vp");
+      console.info("[testgrid_rowOnBreakpointChange002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,18 @@ export default function grid_rowOnBreakpointChangeJsunit() {
      * @tc.name      testgrid_rowOnBreakpointChange003
      * @tc.desic     acegrid_rowOnBreakpointChangeEtsTest003
      */
-    it('testgrid_rowOnBreakpointChange003', 0, async function (done) {
+    it('testgrid_rowOnBreakpointChange003', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_rowOnBreakpointChange003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('GridRow');
       console.info("[testgrid_rowOnBreakpointChange003] component backgroundColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridRow');
-      expect(obj.$attrs.backgroundColor).assertEqual("0xFF0000");
-      console.info("[testgrid_rowOnBreakpointChange003] backgroundColor value :" + obj.$attrs.backgroundColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("0xFF0000");
+      console.info("[testgrid_rowOnBreakpointChange003] backgroundColor value :" + JSON.parse(strJson)
+        .$attrs
+        .backgroundColor);
+
     });
   })
 }

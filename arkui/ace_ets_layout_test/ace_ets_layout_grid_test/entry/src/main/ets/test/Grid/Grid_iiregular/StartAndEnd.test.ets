@@ -18,10 +18,10 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
-export default function Grid_ReachStartAndEnd() {
-  describe('Grid_ReachStartAndEnd', function () {
+export default function StartAndEnd() {
+  describe('StartAndEnd', function () {
     beforeEach(async function (done) {
-      console.info("Grid_ReachStartAndEnd beforeEach start");
+      console.info("StartAndEnd beforeEach start");
       let options = {
         url: "MainAbility/pages/Grid/Grid_iiregular/StartAndEnd",
       }

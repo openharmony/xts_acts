@@ -20,10 +20,11 @@ import * as keyGenPromiseFunc from '../keyGenerate/asyKeyGenPromiseFunc';
 
 async function normalProcess(cipherAlgName: string, spec: cpFw.AsyKeySpec | string): Promise<boolean> {
   let agreementKeyPair: cpFw.KeyPair;
-  let agreement = cpFw.createKeyAgreement(cipherAlgName);
+  let agreement: cpFw.KeyAgreement = cpFw.createKeyAgreement(cipherAlgName);
   try {
     agreementKeyPair = await keyGenPromiseFunc.genKeyPair(spec);
-    agreement.generateSecret(agreementKeyPair.priKey, agreementKeyPair.pubKey);
+    console.log("[Promise] genKeyPair agreement success.");
+    await agreement.generateSecret(agreementKeyPair.priKey, agreementKeyPair.pubKey);
     console.log("[Promise] agreementPromiseNormalProcess agreement success.");
     return true;
   } catch (err) {

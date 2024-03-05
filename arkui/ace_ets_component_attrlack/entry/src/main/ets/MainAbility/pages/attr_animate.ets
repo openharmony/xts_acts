@@ -23,39 +23,30 @@ struct AttrAnimationExample {
   @State widthSize: number = 200
   @State heightSize: number = 80
   @State flag: boolean = true
-
   @State widthSizeEaseOut: number = 200
   @State heightSizeEaseOut: number = 80
   @State flagEaseOut: boolean = true
-
   @State widthSizeFastOutSlowIn: number = 200
   @State heightSizeFastOutSlowIn: number = 80
   @State flagFastOutSlowIn: boolean = true
-
   @State widthSizeLinearOutSlowIn: number = 200
   @State heightSizeLinearOutSlowIn: number = 80
   @State flagLinearOutSlowIn: boolean = true
-
   @State widthSizeFastOutLinearIn: number = 200
   @State heightSizeFastOutLinearIn: number = 80
   @State flagFastOutLinearIn: boolean = true
-
   @State widthSizeExtremeDeceleration: number = 200
   @State heightSizeExtremeDeceleration: number = 80
   @State flagExtremeDeceleration: boolean = true
-
   @State widthSizeSharp: number = 200
   @State heightSizeSharp: number = 80
   @State flagSharp: boolean = true
-
   @State widthSizeRhythm: number = 200
   @State heightSizeRhythm: number = 80
   @State flagRhythm: boolean = true
-
   @State widthSizeSmooth: number = 200
   @State heightSizeSmooth: number = 80
   @State flagSmooth: boolean = true
-
   @State widthSizeFriction: number = 200
   @State heightSizeFriction: number = 80
   @State flagFriction: boolean = true
@@ -73,7 +64,9 @@ struct AttrAnimationExample {
           }
           this.flag = !this.flag
         })
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000, // 动画时长
           curve: Curve.EaseInOut, // 动画曲线
@@ -93,7 +86,9 @@ struct AttrAnimationExample {
           }
           this.flagEaseOut = !this.flagEaseOut
         })
-        .width(this.widthSizeEaseOut).height(this.heightSizeEaseOut).backgroundColor(0x317aff)
+        .width(this.widthSizeEaseOut)
+        .height(this.heightSizeEaseOut)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.EaseOut,
@@ -113,7 +108,9 @@ struct AttrAnimationExample {
           }
           this.flagFastOutSlowIn = !this.flagFastOutSlowIn
         })
-        .width(this.widthSizeFastOutSlowIn).height(this.heightSizeFastOutSlowIn).backgroundColor(0x317aff)
+        .width(this.widthSizeFastOutSlowIn)
+        .height(this.heightSizeFastOutSlowIn)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.FastOutSlowIn,
@@ -133,7 +130,9 @@ struct AttrAnimationExample {
           }
           this.flagLinearOutSlowIn = !this.flagLinearOutSlowIn
         })
-        .width(this.widthSizeLinearOutSlowIn).height(this.heightSizeLinearOutSlowIn).backgroundColor(0x317aff)
+        .width(this.widthSizeLinearOutSlowIn)
+        .height(this.heightSizeLinearOutSlowIn)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.LinearOutSlowIn,
@@ -153,7 +152,9 @@ struct AttrAnimationExample {
           }
           this.flagFastOutLinearIn = !this.flagFastOutLinearIn
         })
-        .width(this.widthSizeFastOutLinearIn).height(this.heightSizeFastOutLinearIn).backgroundColor(0x317aff)
+        .width(this.widthSizeFastOutLinearIn)
+        .height(this.heightSizeFastOutLinearIn)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.FastOutLinearIn,
@@ -173,7 +174,9 @@ struct AttrAnimationExample {
           }
           this.flagExtremeDeceleration = !this.flagExtremeDeceleration
         })
-        .width(this.widthSizeExtremeDeceleration).height(this.heightSizeExtremeDeceleration).backgroundColor(0x317aff)
+        .width(this.widthSizeExtremeDeceleration)
+        .height(this.heightSizeExtremeDeceleration)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.ExtremeDeceleration,
@@ -193,7 +196,9 @@ struct AttrAnimationExample {
           }
           this.flagSharp = !this.flagSharp
         })
-        .width(this.widthSizeSharp).height(this.heightSizeSharp).backgroundColor(0x317aff)
+        .width(this.widthSizeSharp)
+        .height(this.heightSizeSharp)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.Sharp,
@@ -213,7 +218,9 @@ struct AttrAnimationExample {
           }
           this.flagRhythm = !this.flagRhythm
         })
-        .width(this.widthSizeRhythm).height(this.heightSizeRhythm).backgroundColor(0x317aff)
+        .width(this.widthSizeRhythm)
+        .height(this.heightSizeRhythm)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.Rhythm,
@@ -233,7 +240,9 @@ struct AttrAnimationExample {
           }
           this.flagSmooth = !this.flagSmooth
         })
-        .width(this.widthSizeSmooth).height(this.heightSizeSmooth).backgroundColor(0x317aff)
+        .width(this.widthSizeSmooth)
+        .height(this.heightSizeSmooth)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.Smooth,
@@ -253,7 +262,9 @@ struct AttrAnimationExample {
           }
           this.flagFriction = !this.flagFriction
         })
-        .width(this.widthSizeFriction).height(this.heightSizeFriction).backgroundColor(0x317aff)
+        .width(this.widthSizeFriction)
+        .height(this.heightSizeFriction)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 2000,
           curve: Curve.Friction,

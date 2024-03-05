@@ -46,12 +46,13 @@ export default function ActsNotificationRequestTest() {
         });
         await sleep(1500);
         let driver = await UiDriver.create();
+        await sleep(1500)
         log(`driver is ${JSON.stringify(driver)}`);
         let button = await driver.findComponent(BY.text('允许'));
         log(`button is ${JSON.stringify(button)}`);
         if (button !== null) {
-          await button.click();
           await sleep(1500);
+          await button.click();
         } else {
           exit('null button');
         }

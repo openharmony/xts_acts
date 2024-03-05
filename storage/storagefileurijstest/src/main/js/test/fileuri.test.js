@@ -30,6 +30,9 @@ describe('file_uri_test', function () {
    * @tc.number SUB_STORAGE_FileUri_GetUriFromPath_0000
    * @tc.name FileUri_GetUriFromPath_000
    * @tc.desc Function of API, get Uri from Path. Test normal function.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
    */
   it('FileUri_GetUriFromPath_000', 0, async function () {
     try {
@@ -50,6 +53,9 @@ describe('file_uri_test', function () {
    * @tc.number SUB_STORAGE_FileUri_GetUriFromPath_0100
    * @tc.name FileUri_GetUriFromPath_001
    * @tc.desc Function of API, get Uri from Path. Test path is empty.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
    */
   it('FileUri_GetUriFromPath_001', 0, async function () {
     try {
@@ -69,6 +75,9 @@ describe('file_uri_test', function () {
    * @tc.number SUB_STORAGE_FileUri_GetUriFromPath_0200
    * @tc.name FileUri_GetUriFromPath_002
    * @tc.desc Function of API, get Uri from Path. Test argument is empty.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
    */
   it('FileUri_GetUriFromPath_002', 0, async function () {
     try {
@@ -84,6 +93,9 @@ describe('file_uri_test', function () {
    * @tc.number SUB_STORAGE_FileUri_GetUriFromPath_0300
    * @tc.name FileUri_GetUriFromPath_003
    * @tc.desc Function of API, get Uri from Path. Test argument is number.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
    */
   it('FileUri_GetUriFromPath_003', 0, async function () {
     try {
@@ -205,5 +217,171 @@ describe('file_uri_test', function () {
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
-})
+
+  /**
+   * @tc.number SUB_STORAGE_FileUri_Other_Function_0000
+   * @tc.name FileUri_Other_Function_000
+   * @tc.desc Get the FileURI object through 'uri' and validates the properties of the FileURI object.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('FileUri_Other_Function_000', 0, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let exceptPath = '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test1.txt';
+      let testUri2 = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt';
+      let uri = new fileUri.FileUri(testUri);
+      let uri2 = new fileUri.FileUri(testUri);
+      let uri3 = new fileUri.FileUri(testUri2);
+      expect(uri.normalize().path === exceptPath).assertTrue();
+      expect(uri.checkIsAbsolute() === true).assertTrue();
+      expect(uri.scheme === 'file').assertTrue();
+      expect(uri.userInfo === '').assertTrue();
+      expect(uri.port === '-1').assertTrue();
+      expect(uri.query === 'query=1').assertTrue();
+      expect(uri.fragment === 'other').assertTrue();
+      expect(uri.authority === 'com.demo.b').assertTrue();
+      expect(uri.host === 'com.demo.b').assertTrue();
+      expect(uri.ssp === '//com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1').assertTrue();
+      expect(uri.name === 'test1.txt').assertTrue();
+      expect(uri.path === '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt').assertTrue();
+      expect(testUri === uri.toString()).assertTrue();
+      expect(uri.equalsTo(uri2) === true).assertTrue();
+      expect(uri.equalsTo(uri3) === false).assertTrue();
+      expect(uri.equals(uri2) === true).assertTrue();
+      expect(uri.equals(uri3) === false).assertTrue();
+    } catch (e) {
+      console.log('SUB_STORAGE_FileUri_Other_Function_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_EqualsTo_0000
+   * @tc.name FileUri_EqualsTo_000
+   * @tc.desc Enter the illegal parameter type.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_EqualsTo_000', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.equalsTo(testUri);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('FileUri_EqualsTo_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_EqualsTo_0100
+   * @tc.name FileUri_EqualsTo_001
+   * @tc.desc Enter the illegal parameter num.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_EqualsTo_001', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.equalsTo(testUri, 3);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('FileUri_EqualsTo_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 401 && e.message == 'The input parameter is invalid').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Equals_0000
+   * @tc.name FileUri_Equals_000
+   * @tc.desc Enter the illegal parameter type.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_Equals_000', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.equals(testUri);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('FileUri_Equals_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_Equals_0100
+   * @tc.name FileUri_Equals_001
+   * @tc.desc Enter the illegal parameter num.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_Equals_001', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.equals(testUri, 3);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('FileUri_Equals_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_CheckIsAbsolute_0000
+   * @tc.name FileUri_CheckIsAbsolute_000
+   * @tc.desc Enter the illegal parameter num.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_CheckIsAbsolute_000', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.checkIsAbsolute(3);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('FileUri_CheckIsAbsolute_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileUri_Normalize_0000
+   * @tc.name FileUri_Normalize_000
+   * @tc.desc Enter the illegal parameter num.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('FileUri_Normalize_000', 3, async function () {
+    try {
+      let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
+      let uri = new fileUri.FileUri(testUri);
+      uri.normalize(testUri);
+      expect(false).assertTrue();
+   } catch (e) {
+      console.log('FileUri_Normalize_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+});
 }

@@ -22,7 +22,7 @@ export default function muslSysMmanTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSMMAN_POSIX_MADVISE_0100
      * @tc.name       : testMuslSysMmanPosixMadvise001
      * @tc.desc       : test posixMadvise
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

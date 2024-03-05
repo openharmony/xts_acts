@@ -47,7 +47,7 @@ struct Child_AAs {
       Button('change')
         .backgroundColor(this.color)
         .onClick(() => {
-          this.color = '0xa52a2a';
+          this.color = '#FFA52A2A';
         })
         .key('state4')
 

@@ -20,7 +20,7 @@ export default class MainAbility6 extends Ability {
         console.log("[Demo] MainAbility6 onCreate")
         globalThis.abilityWant = want;
 
-        var listKey = [];
+        globalThis.mainAbility6ListKey = [];
         var abilityName = "";
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
@@ -30,26 +30,26 @@ export default class MainAbility6 extends Ability {
             onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageCreate")
-                listKey.push(abilityName + " onWindowStageCreate");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageCreate");
+                console.log("listKey is :" + globalThis.mainAbility6ListKey);
             },
             onWindowStageActive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageActive")
-                listKey.push(abilityName + " onWindowStageActive");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageActive");
+                console.log("listKey is :" + globalThis.mainAbility6ListKey);
             },
             onWindowStageInactive(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageInactive")
-                listKey.push(abilityName + " onWindowStageInactive");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageInactive");
+                console.log("listKey is :" + globalThis.mainAbility6ListKey);
             },
             onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onWindowStageDestroy")
-                listKey.push(abilityName + " onWindowStageDestroy");
-                console.log("listKey is :" + listKey);
+                globalThis.mainAbility6ListKey.push(abilityName + " onWindowStageDestroy");
+                console.log("listKey is :" + globalThis.mainAbility6ListKey);
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -68,19 +68,18 @@ export default class MainAbility6 extends Ability {
                 console.log(abilityName + " onAbilityContinue")
             }
         }
+        globalThis.abilityContext6 = this.context;
         globalThis.ApplicationContext6 = this.context.getApplicationContext();
         var callBackId = globalThis.ApplicationContext6.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("callBackId is aaa :" + callBackId);
-        setTimeout(() => {
-            globalThis.mainAbility6ListKey = listKey
-            globalThis.mainAbility6CallBackId = callBackId
-            console.log("listKey is :" + listKey);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
+        globalThis.mainAbility6CallBackId = callBackId
     }
 
     onDestroy() {
         console.log("[Demo] MainAbility6 onDestroy")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility6onDestroy');
+        }, 1500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -98,6 +97,9 @@ export default class MainAbility6 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] MainAbility6 onForeground")
+        setTimeout(() => {
+            globalThis.testEvent.push('MainAbility6onForeground');
+        }, 1500);
     }
 
     onBackground() {

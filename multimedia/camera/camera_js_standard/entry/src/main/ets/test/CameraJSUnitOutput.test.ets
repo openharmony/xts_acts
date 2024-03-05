@@ -41,7 +41,7 @@ let videoProfile = {
   audioSampleRate: 48000,
   fileFormat: 'mp4',
   videoBitrate: 2000000,
-  videoCodec: 'video/mp4v-es',
+  videoCodec: 'video/avc',
   videoFrameWidth: 640,
   videoFrameHeight: 480,
   videoFrameRate: 30
@@ -164,6 +164,8 @@ export default function cameraJSUnitOutput() {
 
   async function release() {
     console.log(TAG + "start release");
+    await videoRecorder.release();
+    videoRecorder = null;
     await captureSession.release();
     console.log(TAG + "release end")
   }
@@ -1243,6 +1245,38 @@ export default function cameraJSUnitOutput() {
       done();
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100
+     * @tc.name      : photo output callback on captureStart
+     * @tc.desc      : photo output callback on captureStart
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100', 1, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100 previewOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100 to operate");
+        let count = 0;
+        photoOutput.on('captureStartWithInfo', async (err, data : cameraObj.CaptureStartInfo) => {
+          if (!err) {
+            expect((!isEmpty(data.captureId)) && (!isEmpty(data.time))).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100 success");
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_WITH_INFO_0100 FAILED: " + err.message);
+          }
+        })
+        await sleep(1000);
+        photoOutput.capture();
+      }
+      await sleep(1000);
+      done();
+    })
+
 
 
     /**
@@ -1352,45 +1386,6 @@ export default function cameraJSUnitOutput() {
       await sleep(1000);
       done();
     })
-
-
-
-
-
-    /**
-      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100
-      * @tc.name      : Create previewOutput instance async api
-      * @tc.desc      : Create previewOutput instance async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 1
-    */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', 1, async function (done) {
-      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100--------------");
-      if (isEmpty(photoOutput)) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 photoOutput == null || undefined")
-        expect().assertFail();
-      } else {
-        photoOutput.release(async (err) => {
-          if (!err) {
-            expect(true).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 success");
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 FAILED: " + err.message);
-          }
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 ends here");
-          await sleep(1000);
-          done();
-        })
-      }
-      await sleep(1000);
-      done();
-    })
-
-
-
-
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_PROMISE_0100
@@ -1642,6 +1637,37 @@ export default function cameraJSUnitOutput() {
             expect().assertFail();
             console.info(TAG + "Error in SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_CALLBACK_ON_FRAME_ERROR_0100 FAILED: " + err.message);
           }
+          await sleep(1000);
+          done();
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100
+      * @tc.name      : Create previewOutput instance async api
+      * @tc.desc      : Create previewOutput instance async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 photoOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        photoOutput.release(async (err) => {
+          if (!err) {
+            expect(true).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 success");
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 FAILED: " + err.message);
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_RELEASE_CALLBACK_0100 ends here");
           await sleep(1000);
           done();
         })

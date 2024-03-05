@@ -33,14 +33,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0140
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0140
      * @tc.desc      Create a download Task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_create_Callback_0140", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND ,
@@ -61,9 +61,9 @@ export default function requestDownloadOneJSUnitTest() {
           task.on("completed", (progress) => {
             task.off("completed");
             let downloadSize = progress.sizes[0];
-            console.debug('====>downloadSize:' + downloadSize);
+            console.info('====>downloadSize:' + downloadSize);
             let fileSize = config.ends - config.begins + 1;
-            console.debug('====>fileSize:'+ fileSize);
+            console.info('====>fileSize:'+ fileSize);
             expect(downloadSize).assertEqual(fileSize);
             console.info("====>----------SUB_Misc_REQUEST_create_Callback_0140 is end---------------");
             done();
@@ -80,14 +80,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0140
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0140
      * @tc.desc      Create a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_Create_Promise_0140", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -105,9 +105,9 @@ export default function requestDownloadOneJSUnitTest() {
         async function onCompletedCallback(progress){
           task.off("completed");
           let downloadSize = progress.sizes[0]
-          console.debug('====>downloadSize:' + downloadSize)
+          console.info('====>downloadSize:' + downloadSize)
           let fileSize = config.ends - config.begins + 1
-          console.debug('====>fileSize:'+ fileSize)
+          console.info('====>fileSize:'+ fileSize)
           expect(downloadSize).assertEqual(fileSize)
           done();
         }
@@ -123,14 +123,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0160
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0160
      * @tc.desc      Create a download Task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_create_Callback_0160", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -138,7 +138,7 @@ export default function requestDownloadOneJSUnitTest() {
         saveas: "./SUB_Misc_REQUEST_create_Callback_0160.txt",
         network: request.agent.Network.WIFI,
         index: 0,
-        begins: 150335340,
+        begins: 274619068,
         ends: -1,
       };
       console.info("====>-------------------SUB_Misc_REQUEST_create_Callback_0160 is starting---------------------");
@@ -151,7 +151,7 @@ export default function requestDownloadOneJSUnitTest() {
           task.on("completed", (progress) => {
             task.off("completed");
             let downloadSize = progress.sizes[0];
-            console.debug('====>downloadSize:' + downloadSize);
+            console.info('====>downloadSize:' + downloadSize);
             expect(downloadSize).assertEqual(100);
             console.info("====>----------SUB_Misc_REQUEST_create_Callback_0160 is end---------------");
             done();
@@ -168,14 +168,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0160
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0160
      * @tc.desc      Create a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_Create_Promise_0160", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -183,7 +183,7 @@ export default function requestDownloadOneJSUnitTest() {
         saveas: "./SUB_Misc_REQUEST_Create_Promise_0160.txt",
         network: request.agent.Network.WIFI,
         index: 0,
-        begins: 150335340,
+        begins: 274619068,
         ends: -1,
       };
       console.info("====>-------------------SUB_Misc_REQUEST_Create_Promise_0160 is starting---------------------");
@@ -193,7 +193,7 @@ export default function requestDownloadOneJSUnitTest() {
         async function onCompletedCallback(progress){
           task.off("completed");
           let downloadSize = progress.sizes[0];
-          console.debug('====>downloadSize:' + downloadSize);
+          console.info('====>downloadSize:' + downloadSize);
           expect(downloadSize).assertEqual(100);
           done();
         }
@@ -209,14 +209,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0170
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0170
      * @tc.desc      Create a download Task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_create_Callback_0170", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -237,9 +237,9 @@ export default function requestDownloadOneJSUnitTest() {
           task.on("completed", (progress) => {
             task.off("completed");
             let downloadSize = progress.sizes[0];
-            console.debug('====>downloadSize:' + downloadSize);
+            console.info('====>downloadSize:' + downloadSize);
             let fileSize = config.ends - config.begins + 1;
-            console.debug('====>fileSize:'+ fileSize);
+            console.info('====>fileSize:'+ fileSize);
             expect(downloadSize).assertEqual(fileSize);
             console.info("====>-----------------SUB_Misc_REQUEST_create_Callback_0170 is end--------------------");
             done();
@@ -256,14 +256,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0170
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0170
      * @tc.desc      Create a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_Create_Promise_0170", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -281,9 +281,9 @@ export default function requestDownloadOneJSUnitTest() {
         async function onCompletedCallback(progress){
           task.off("completed");
           let downloadSize = progress.sizes[0];
-          console.debug('====>downloadSize:' + downloadSize);
+          console.info('====>downloadSize:' + downloadSize);
           let fileSize = config.ends - config.begins + 1;
-          console.debug('====>fileSize:'+ fileSize);
+          console.info('====>fileSize:'+ fileSize);
           expect(downloadSize).assertEqual(fileSize);
           done();
         }
@@ -299,14 +299,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0180
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0180
      * @tc.desc      Create a download Task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_create_Callback_0180", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -342,14 +342,14 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0180
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0180
      * @tc.desc      Create a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it("SUB_Misc_REQUEST_Create_Promise_0180", 0, async function (done) {
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
         title: 'createTest',
         description: 'Sample code for create task',
         mode: request.agent.Mode.FOREGROUND,
@@ -381,7 +381,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0090
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0090
      * @tc.desc      Create a download Task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -439,7 +439,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0090
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0090
      * @tc.desc      Create a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -495,7 +495,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0020
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0020
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -540,7 +540,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0020
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -573,7 +573,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
      * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_removeNormal_callback_0030
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -606,7 +606,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0030
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0030
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -629,7 +629,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0040
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0040
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -652,7 +652,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0040
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0040
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -685,7 +685,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Callback_0050
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Callback_0050
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -736,7 +736,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0050
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0050
      * @tc.desc      remove the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -771,7 +771,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0060
      * @tc.name    SUB_Misc_REQUEST_Remove_Download_Promise_0060
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -793,7 +793,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060
      * @tc.name    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0060
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -820,7 +820,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0030
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0030
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -866,7 +866,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0040
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0040
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -912,7 +912,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Create_Download_Promise_0020
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -950,7 +950,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0130
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0130
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -994,7 +994,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0060
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0060
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1039,7 +1039,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Callback_0050
      * @tc.name    SUB_Misc_REQUEST_Create_Download_Callback_0050
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1068,7 +1068,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0070
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0070
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1108,7 +1108,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0070
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0070
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1146,7 +1146,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0080
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0080
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1189,7 +1189,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0080
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0080
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1225,7 +1225,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0110
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0110
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1261,7 +1261,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0110
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0110
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1304,7 +1304,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0150
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0150
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1341,7 +1341,7 @@ export default function requestDownloadOneJSUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Create_Callback_0150
      * @tc.name    SUB_Misc_REQUEST_Create_Callback_0150
      * @tc.desc      remove a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

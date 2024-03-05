@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import colorSpaceManagerTest from './colorSpaceManager.test'
+import colorSpaceManagerTest from './colorSpaceManager.test';
 
 export default function testsuite(context, windowStage, abilityStorage) {
-  colorSpaceManagerTest(context, windowStage, abilityStorage)
+  colorSpaceManagerTest(context, windowStage, abilityStorage);
 }

@@ -31,29 +31,43 @@ struct ImageText {
     Scroll() {
       Column() {
         Text() {
-          ImageSpan($r('app.media.icon')).width('114px').height("114px")
+          ImageSpan($r('app.media.icon'))
+            .width('114px')
+            .height("114px")
             .verticalAlign(this.align1)
             .key('ImageText_ImageSpan1')
-          Span('Span').fontSize(this.fontSize1)
-          ImageSpan('/pages/images/img1.png').width('150px').height("150px")
+          Span('Span')
+            .fontSize(this.fontSize1)
+          ImageSpan('/pages/images/img1.png')
+            .width('150px')
+            .height("150px")
             .verticalAlign(this.align2)
             .key('ImageText_ImageSpan2')
-          Span('Span').fontSize(this.fontSize2)
-          ImageSpan($r('app.media.icon')).width('114px').height("114px")
+          Span('Span')
+            .fontSize(this.fontSize2)
+          ImageSpan($r('app.media.icon'))
+            .width('114px')
+            .height("114px")
             .verticalAlign(this.align3)
             .key('ImageText_ImageSpan3')
-          Span('Span').fontSize(this.fontSize3)
-          ImageSpan('/pages/images/img1.png').width('150px').height("150px")
+          Span('Span')
+            .fontSize(this.fontSize3)
+          ImageSpan('/pages/images/img1.png')
+            .width('150px')
+            .height("150px")
             .verticalAlign(this.align4)
             .key('ImageText_ImageSpan4')
-          Span('Span Text4').fontSize(this.fontSize4)
+          Span('Span Text4')
+            .fontSize(this.fontSize4)
         }
         .borderWidth(1).borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.Contain)
             .key('ImageText_ImageSpan5')
         }
@@ -63,7 +77,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.Cover)
             .key('ImageText_ImageSpan6')
         }
@@ -73,7 +89,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.Auto)
             .key('ImageText_ImageSpan7')
         }
@@ -83,7 +101,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.Fill)
             .key('ImageText_ImageSpan8')
         }
@@ -93,7 +113,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.ScaleDown)
             .key('ImageText_ImageSpan9')
         }
@@ -103,7 +125,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width(this.w+'px').height(this.h+'px')
+          ImageSpan('/pages/images/test1.jpg')
+            .width(this.w+'px')
+            .height(this.h+'px')
             .objectFit(ImageFit.None)
             .key('ImageText_ImageSpan10')
         }
@@ -113,13 +137,18 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          Span('Span Text1 ').fontSize(20)
+          Span('Span Text1 ')
+            .fontSize(20)
             .key('ImageText_Span1')
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan11')
-          Span('Span Text2 ').fontSize(20)
+          Span('Span Text2 ')
+            .fontSize(20)
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({top: 15})
         .width('90%')
         .textIndent(this.indent)
@@ -138,23 +167,31 @@ struct ImageText {
           .key('ImageText_Button1')
 
         Text() {
-          ImageSpan(null).width('276px').height("183px")
+          ImageSpan(null)
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan12')
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
 
         Text() {
-          ImageSpan(undefined).width('276px').height("183px")
+          ImageSpan(undefined)
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan13')
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
 
         Text() {
-          ImageSpan('').width('276px').height("183px")
+          ImageSpan('')
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan14')
         }
         .borderWidth(1).borderColor(Color.Green)
@@ -163,16 +200,21 @@ struct ImageText {
 
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .verticalAlign(null)
             .key('ImageText_ImageSpan15')
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .verticalAlign(undefined)
             .key('ImageText_ImageSpan16')
         }
@@ -181,7 +223,9 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .objectFit(null)
             .key('ImageText_ImageSpan17')
         }
@@ -190,32 +234,39 @@ struct ImageText {
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .objectFit(undefined)
             .key('ImageText_ImageSpan18')
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan19')
         }
-        .borderWidth(1).borderColor(Color.Green)
+        .borderWidth(1)
+        .borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
         .textIndent(null)
 
         Text() {
-          ImageSpan('/pages/images/test1.jpg').width('276px').height("183px")
+          ImageSpan('/pages/images/test1.jpg')
+            .width('276px')
+            .height("183px")
             .key('ImageText_ImageSpan20')
         }
         .borderWidth(1).borderColor(Color.Green)
         .margin({ top: 5 })
         .width('90%')
         .textIndent(undefined)
-
       }
     }
   }

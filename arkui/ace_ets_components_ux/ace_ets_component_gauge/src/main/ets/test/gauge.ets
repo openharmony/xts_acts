@@ -1186,7 +1186,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0200 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(-10);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(-10);
           }
@@ -1217,7 +1217,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0300 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(0);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(0);
           }
@@ -1281,7 +1281,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0500 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(-10);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(-10);
           }
@@ -1313,7 +1313,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0600 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(-10);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(-10);
           }
@@ -1345,7 +1345,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0700 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1376,7 +1376,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0800 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1407,7 +1407,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_0900 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1438,7 +1438,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_1000 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1469,7 +1469,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_1100 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1500,7 +1500,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_1200 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }
@@ -1560,7 +1560,7 @@ export default function GaugeTest() {
           if (targetVersion < 11) {
             console.info("ArkUX_Gauge_TrackShadow_InterfaceName_1400 API is not 11")
           } else {
-            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(5);
+            expect(parseFloat(obj.$attrs.trackShadow.radius)).assertEqual(20);
             expect(parseFloat(obj.$attrs.trackShadow.offsetX)).assertEqual(5);
             expect(parseFloat(obj.$attrs.trackShadow.offsetY)).assertEqual(5);
           }

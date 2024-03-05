@@ -154,7 +154,7 @@ export default function TextfieldMultiTest() {
           let color = icon.color
           let src = icon.src
           expect(style).assertEqual(2);
-          expect(size).assertEqual("0.00px");
+          expect(size).assertEqual("24.00vp");
           expect(typeof src).assertEqual("string");
           expect(color).assertEqual("#FF000000");
           console.info('ArkUX_Text_Visual_0140 END ');

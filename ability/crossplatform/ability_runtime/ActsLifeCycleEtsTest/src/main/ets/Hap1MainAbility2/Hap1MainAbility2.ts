@@ -20,6 +20,7 @@ export default class Hap1MainAbility2 extends Ability {
         globalThis.ability2Hap1Want = want;
         setTimeout(() => {
             this.context.terminateSelf().then((data) => {
+                globalThis.Hap1MainAbility2terminateSelf = true;
                 console.log("Hap1MainAbility2 EventTest terminateSelf data: " + JSON.stringify(data));
             }).catch((error) => {
                 console.log("Hap1MainAbility2 EventTest terminateSelf error: " + JSON.stringify(error));
@@ -29,13 +30,16 @@ export default class Hap1MainAbility2 extends Ability {
 
     onDestroy() {
         console.log("[Demo] Hap1MainAbility2 onDestroy")
+        setTimeout(function () {
+            globalThis.testEvent.push('Hap1MainAbility2onDestroy');
+        }, 800);
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] Hap1MainAbility2 onWindowStageCreate")
 
-        windowStage.loadContent('testability/pages/indexh1a2', (err, data) => {
+        windowStage.loadContent('TestAbility/pages/indexh1a2', (err, data) => {
             if (err.code) {
                 console.log('Hap1MainAbility2 loadContent error');
                 return;
@@ -52,6 +56,7 @@ export default class Hap1MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("[Demo] Hap1MainAbility2 onForeground")
+        globalThis.Hap1MainAbility2onForeground = true;
     }
 
     onBackground() {

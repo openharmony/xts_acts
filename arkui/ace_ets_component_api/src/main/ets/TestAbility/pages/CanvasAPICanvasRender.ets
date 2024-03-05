@@ -79,17 +79,17 @@ struct CanvasAPICanvasRender {
 
   context_fillText2() {
     this.context.font = '50px'
-    this.context.fillText("Hello World!", 20, 100,300)
+    this.context.fillText("Hello World!", 20, 100, 300)
   }
 
   context_fillText3() {
     this.context.font = '50px'
-    this.context.fillText("Hello World!", 20, 100,0)
+    this.context.fillText("Hello World!", 20, 100, 0)
   }
 
   context_fillText4() {
     this.context.font = '50px'
-    this.context.fillText("Hello World!", 20, 100,-1)
+    this.context.fillText("Hello World!", 20, 100, -1)
   }
 
   context_fillText5() {
@@ -104,17 +104,17 @@ struct CanvasAPICanvasRender {
 
   context_fillText7() {
     this.context.font = "50px"
-    this.context.fillText("Hello World!", 20, 100 , undefined)
+    this.context.fillText("Hello World!", 20, 100, undefined)
   }
 
   context_fillText8() {
     this.context.font = "150px"
-    this.context.fillText("1,2,3,4,5,6,7,8,9", 20, 100 , 1000)
+    this.context.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
   }
 
   context_fillText9() {
     this.context.font = "150px"
-    this.context.fillText("1,2,3,4,5,6,7,8,9", 20, 100 , 210)
+    this.context.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
   }
 
   context_strokeText1() {
@@ -124,17 +124,17 @@ struct CanvasAPICanvasRender {
 
   context_strokeText2() {
     this.context.font = '50px'
-    this.context.strokeText("Hello World!", 20, 100,100)
+    this.context.strokeText("Hello World!", 20, 100, 100)
   }
 
   context_strokeText3() {
     this.context.font = '50px'
-    this.context.strokeText("Hello World!", 20, 100,0)
+    this.context.strokeText("Hello World!", 20, 100, 0)
   }
 
   context_strokeText4() {
     this.context.font = '50px'
-    this.context.strokeText("Hello World!", 20, 100,-1)
+    this.context.strokeText("Hello World!", 20, 100, -1)
   }
 
   context_strokeText5() {
@@ -149,157 +149,156 @@ struct CanvasAPICanvasRender {
 
   context_strokeText7() {
     this.context.font = "50px"
-    this.context.strokeText("Hello World!", 20, 100 , undefined)
+    this.context.strokeText("Hello World!", 20, 100, undefined)
   }
 
   context_strokeText8() {
     this.context.font = "150px"
-    this.context.strokeText("1,2,3,4,5,6,7,8,9", 20, 100 , 1000)
+    this.context.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
   }
 
   context_strokeText9() {
     this.context.font = "150px"
-    this.context.strokeText("1,2,3,4,5,6,7,8,9", 20, 100,210)
+    this.context.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
   }
 
   off_context_fillText1() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 20)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText2() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText3() {
     this.offContext.font = '150px'
     this.offContext.fillText("Hello World!", 20, 100, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText4() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, 0)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText5() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, -1)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText6() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText7() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, null)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText8() {
     this.offContext.font = '50px'
     this.offContext.fillText("Hello World!", 20, 100, undefined)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText9() {
     this.offContext.font = '150px'
     this.offContext.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_fillText10() {
     this.offContext.font = '150px'
     this.offContext.fillText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText1() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 50)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText2() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText3() {
     this.offContext.font = '150px'
     this.offContext.strokeText("Hello World!", 20, 100, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText4() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, 0)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText5() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, -1)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText6() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText7() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, null)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText8() {
     this.offContext.font = '50px'
     this.offContext.strokeText("Hello World!", 20, 100, undefined)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText9() {
     this.offContext.font = '150px'
     this.offContext.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 1000)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
 
   off_context_strokeText10() {
     this.offContext.font = '150px'
     this.offContext.strokeText("1,2,3,4,5,6,7,8,9", 20, 100, 210)
-    var image = this.offContext.transferToImageBitmap()
+    let image = this.offContext.transferToImageBitmap()
     this.context.transferFromImageBitmap(image)
   }
-
 }

@@ -28,7 +28,7 @@ async function getClientAppUid(): Promise<string> {
     return clientAppUid.toString();
   } catch (err) {
     console.error("getClientAppUid error: " + err);
-    throw err;
+    throw err as Error;
   }
 }
 
@@ -42,7 +42,7 @@ async function installPrivateCertificates(): Promise<void> {
     await certManager.installPrivateCertificate(keystore2, keystorePwd, "testPriCredential002");
   } catch (err) {
     console.error("installPrivateCertificates err: " + err.code);
-    throw err;
+    throw err as Error;
   }
 }
 
@@ -51,11 +51,11 @@ function isOpenHarmonyDevice(): Boolean {
   let displayVersion: string = deviceInfo.displayVersion.toLowerCase();
   console.warn(`device info deviceType is : ${deviceType}`);
   console.warn(`device info displayVersion is : ${displayVersion}`);
-  if ((deviceType == "default") && (displayVersion.indexOf("openharmony") !== -1) ){
+  if ((deviceType == "default") && (displayVersion.indexOf("openharmony") !== -1)) {
     return true;
   } else {
     return false;
   }
 }
 
-export { getClientAppUid, installPrivateCertificates, isOpenHarmonyDevice}
+export { getClientAppUid, installPrivateCertificates, isOpenHarmonyDevice }

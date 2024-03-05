@@ -15,12 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function inspectorJsunit() {
-  describe('inspectorTest', function () {
-    beforeAll(async function (done) {
+  describe('inspectorTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/inspector',
@@ -38,10 +38,9 @@ export default function inspectorJsunit() {
       } catch (err) {
         console.error("push inspector page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info("inspectorTest after each called");
     });
 
@@ -50,16 +49,16 @@ export default function inspectorJsunit() {
      * @tc.name         testlazyForEachOnDataAdd0001
      * @tc.desic         acelazyForEachOnDataAddEtsTest0001
      */
-    it('testInspectorTestAdd0001', 0, async function (done) {
+    it('testInspectorTestAdd0001', 0, async () => {
       console.info('Inspector testInspectorTestAdd0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("50.00fp");
-      console.info("[testInspectorTestAdd0001] fontSize value :" + obj.$attrs.fontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("50.00fp");
+      console.info("[testInspectorTestAdd0001] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0002
      * @tc.desic         aceTestInspectorTestAdd0002
      */
-    it('testInspectorTestAdd0002', 0, async function (done) {
+    it('testInspectorTestAdd0002', 0, async () => {
       console.info('Inspector testInspectorTestAdd0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('inspectorApiOne');
       console.info("[testInspectorTestAdd0002] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold");
-      console.info("[testInspectorTestAdd0002] fontWeight value :" + obj.$attrs.fontWeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontWeight).assertEqual("FontWeight.Bold");
+      console.info("[testInspectorTestAdd0002] fontWeight value :" + JSON.parse(strJson).$attrs.fontWeight);
+
     });
 
     /*
@@ -84,27 +83,27 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0003
      * @tc.desic         aceTestInspectorTestAdd0003
      */
-    it('testInspectorTestAdd0003', 0, async function (done) {
+    it('testInspectorTestAdd0003', 0, async () => {
       console.info("testInspectorTestAdd0003 start test");
-      var innerEvent1 = {
+      let innerEvent1: events_emitter.InnerEvent = {
         eventId: 60208,
         priority: events_emitter.EventPriority.LOW
       }
-      var callback1 = (eventData) => {
+      let callback1 = (eventData) => {
         console.info("eventData.data.getInspectorNodes result is: " + eventData.data.getInspectorNodes);
-        try{
-          console.info("callback1 success" );
+        try {
+          console.info("callback1 success");
           console.info("inspector_101 eventData.data.result result is: " + eventData.data.result);
           expect(eventData.data.result).assertEqual("success");
           console.info("inspector_101 end: ");
-          if(eventData.data.getInspectorNodes != null){
+          if (eventData.data.getInspectorNodes != null) {
             console.info("eventData.data.result result is: " + eventData.data.result);
             expect(eventData.data.result).assertEqual("success");
           }
-        }catch(err){
+        } catch (err) {
           console.info("inspector_101 on events_emitter err : " + JSON.stringify(err));
         }
-        done();
+
       }
       try {
         events_emitter.on(innerEvent1, callback1);
@@ -119,29 +118,29 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0004
      * @tc.desic         aceTestInspectorTestAdd0004
      */
-    it('testInspectorTestAdd0004', 0, async function (done) {
-      var innerEvent2 = {
+    it('testInspectorTestAdd0004', 0, async () => {
+      let innerEvent2: events_emitter.InnerEvent = {
         eventId: 60209,
         priority: events_emitter.EventPriority.LOW
       }
-      var callback2 = (eventData) => {
+      let callback2 = (eventData) => {
         console.info("eventData.data.getInspectorNodeById result is: " + eventData.data.getInspectorNodeById);
-        try{
-          console.info("callback2 success" );
+        try {
+          console.info("callback2 success");
           console.info("inspector_102 eventData.data.result result is: " + eventData.data.result);
           expect(eventData.data.result).assertEqual("success");
           console.info("inspector_102 end");
-        }catch(err){
+        } catch (err) {
           console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
         }
-        
+
       }
-      try{
+      try {
         console.info("inspector_102 click result is: " + JSON.stringify(sendEventByKey('inspectorApiTwo', 10, "")));
         events_emitter.on(innerEvent2, callback2);
         await Utils.sleep(2000);
-        done();
-      }catch(err){
+
+      } catch (err) {
         console.info("inspector_102 on events_emitter err : " + JSON.stringify(err));
       }
     });
@@ -151,15 +150,15 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0005
      * @tc.desic         aceTestInspectorTestAdd0005
      */
-    it('testInspectorTestAdd0005', 0, async function (done) {
+    it('testInspectorTestAdd0005', 0, async () => {
       console.info('testInspectorTestAdd0005 START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "setColor": 'red'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60211,
           priority: events_emitter.EventPriority.LOW
         }
@@ -167,7 +166,7 @@ export default function inspectorJsunit() {
       } catch (err) {
         console.log("[testInspectorTestAdd0005] change component data error: " + err.message);
       }
-      done();
+
     });
 
     /*
@@ -175,26 +174,26 @@ export default function inspectorJsunit() {
      * @tc.name         testInspectorTestAdd0006
      * @tc.desic         aceTestInspectorTestAdd0006
      */
-    it('testInspectorTestAdd0006', 0, async function (done) {
-      var innerEvent3 = {
+    it('testInspectorTestAdd0006', 0, async () => {
+      let innerEvent3: events_emitter.InnerEvent = {
         eventId: 60210,
         priority: events_emitter.EventPriority.LOW
       }
-      var callback3 = (eventData) => {
-        try{
-          console.info("callback3 success" );
+      let callback3 = (eventData) => {
+        try {
+          console.info("callback3 success");
           console.info("inspector_103 eventData.data.result result is: " + eventData.data.catchStatus);
           expect(eventData.data.catchStatus).assertEqual("callBackSuccess");
           console.info("inspector_103 end");
-        }catch(err){
+        } catch (err) {
           console.info("inspector_103 on events_emitter err : " + JSON.stringify(err));
         }
-        done();
+
       }
-      try{
+      try {
         console.info("inspector_103 click result is: " + JSON.stringify(sendEventByKey('inspectorApiFour', 10, "")));
         events_emitter.on(innerEvent3, callback3);
-      }catch(err){
+      } catch (err) {
         console.info("inspector_103 on events_emitter err : " + JSON.stringify(err));
       }
     });

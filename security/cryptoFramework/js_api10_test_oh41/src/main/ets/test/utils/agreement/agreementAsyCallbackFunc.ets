@@ -23,6 +23,7 @@ async function normalProcess(cipherAlgName: string, spec: cpFw.AsyKeySpec | stri
   let agreement = cpFw.createKeyAgreement(cipherAlgName);
   return new Promise(async (resolve, reject) => {
     agreementKeyPair = await keyGenCallbackFunc.genKeyPair(spec);
+    console.log("[Callback] genKeyPair agreement success.");
     agreement.generateSecret(agreementKeyPair.priKey, agreementKeyPair.pubKey, (err) => {
       if (err) {
         console.log("[Callback] agreementCallbackNormalProcess agreement fail.");

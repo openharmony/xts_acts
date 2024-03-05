@@ -16,68 +16,20 @@
 #include "napi/native_api.h"
 #include <cerrno>
 #include <csetjmp>
-#include <cstdio>
-#include <cstdlib>
 #include <js_native_api.h>
 #include <node_api.h>
-#include <csetjmp>
+#include <pthread.h>
 
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
+#define NO_ERR 0
 
-static napi_value Setjmp(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst = PARAM_0;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond = PARAM_0;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    jmp_buf jmp;
-    if (valueFirst == PARAM_0) {
-        int setValue = setjmp(jmp);
-        napi_create_int32(env, setValue, &result);
-    } else {
-        int setValue = setjmp(jmp);
-        if (setValue == PARAM_0) {
-            longjmp(jmp, valueSecond);
-        }
-        napi_create_int32(env, setValue, &result);
-    }
-    return result;
-}
-
-static napi_value Sigsetjmp(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst = PARAM_0;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    int valueSecond = PARAM_0;
-    napi_get_value_int32(env, args[1], &valueSecond);
-    sigjmp_buf jmp;
-    if (valueFirst == PARAM_0) {
-        int sigValue = sigsetjmp(jmp, PARAM_0);
-        napi_create_int32(env, sigValue, &result);
-    } else {
-        int sigValue = sigsetjmp(jmp, PARAM_0);
-        if (sigValue == PARAM_0) {
-            siglongjmp(jmp, valueSecond);
-        }
-        napi_create_int32(env, sigValue, &result);
-    }
-    return result;
-}
-void subroutine(jmp_buf jumper) { longjmp(jumper, 1); }
+void subroutine(jmp_buf jumper) { longjmp(jumper, PARAM_1); }
 void subroutine(jmp_buf);
 static napi_value Longjmp(napi_env env, napi_callback_info info)
 {
@@ -89,25 +41,9 @@ static napi_value Longjmp(napi_env env, napi_callback_info info)
     if (value != PARAM_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
         subroutine(jumper);
     }
-    return result;
-}
-
-static napi_value Siglongjmp(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int valueFirst = PARAM_0;
-    napi_get_value_int32(env, args[0], &valueFirst);
-    sigjmp_buf bufjmp;
-    int jmpValue = sigsetjmp(bufjmp, PARAM_0);
-
-    napi_value result = nullptr;
-    siglongjmp(bufjmp, valueFirst);
-    napi_create_int32(env, jmpValue, &result);
     return result;
 }
 
@@ -146,16 +82,52 @@ static napi_value _Setjmp(napi_env env, napi_callback_info info)
     }
 }
 
+void *sigThread(void *args)
+{
+    sigjmp_buf jmpbuf;
+    sigsetjmp(jmpbuf, PARAM_1);
+    siglongjmp(jmpbuf, PARAM_1);
+    return nullptr;
+}
+
+static napi_value SigLongJmp(napi_env env, napi_callback_info info)
+{
+    pthread_t tid = PARAM_0;
+    pthread_create(&tid, nullptr, sigThread, nullptr);
+    pthread_detach(tid);
+    napi_value result = nullptr;
+    napi_create_int32(env, NO_ERR, &result);
+    return result;
+}
+
+static napi_value SetJmp(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    jmp_buf jb;
+    int ret = setjmp(jb);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+static napi_value SigSetJmp(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    sigjmp_buf sjb;
+    int ret = sigsetjmp(sjb, PARAM_1);
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         {"longjmp", nullptr, Longjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"setjmp", nullptr, Setjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"sigsetjmp", nullptr, Sigsetjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"siglongjmp", nullptr, Siglongjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"_longjmp", nullptr, _Longjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"_setjmp", nullptr, _Setjmp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setJmp", nullptr, SetJmp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigLongJmp", nullptr, SigLongJmp, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"sigSetJmp", nullptr, SigSetJmp, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

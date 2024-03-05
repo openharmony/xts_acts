@@ -23,7 +23,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_SPLICE_0100
      * @tc.name       : testMuslFcntlSplice001
      * @tc.desc       : test splice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +38,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_SPLICE_0200
      * @tc.name       : testMuslFcntlSplice002
      * @tc.desc       : test splice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -53,7 +53,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_SPLICE_0300
      * @tc.name       : testMuslFcntlSplice003
      * @tc.desc       : test splice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -68,7 +68,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_TEE_0100
      * @tc.name       : testMuslFcntlTee001
      * @tc.desc       : test tee
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -82,7 +82,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_VMSPLICE_0100
      * @tc.name       : testMuslFcntlVmsplice001
      * @tc.desc       : test vmsplice
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -96,7 +96,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_READAHEAD_0100
      * @tc.name       : testMuslFcntlReadahead001
      * @tc.desc       : test readahead
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -108,20 +108,10 @@ export default function fcntlNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_FWRITECHK_0100
-     * @tc.name       : testMuslFcntlFwritechk001
-     * @tc.desc       : test fwritechk
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    //block comment
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_POSIX_FALLOCATE_0100
      * @tc.name       : testMuslFcntlPosixFallocate001
      * @tc.desc       : test posixfallocate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -134,7 +124,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_POSIX_FALLOCATE64_0100
      * @tc.name       : testMuslFcntlPosixFallocate64001
      * @tc.desc       : test posixfallocate64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -147,7 +137,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_POSIX_FADVISE_0100
      * @tc.name       : testMuslFcntlPosixFadvise001
      * @tc.desc       : test posixfallocate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -160,7 +150,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_POSIX_FADVISE64_0100
      * @tc.name       : testMuslFcntlPosixFadvise64001
      * @tc.desc       : test posixfallocate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -173,7 +163,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_FCNTL_0100
      * @tc.name       : testMuslFcntlFcnTl001
      * @tc.desc       : test fcntl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -186,7 +176,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_FALLOCATE_0100
      * @tc.name       : testMuslFcntlFalLocate001
      * @tc.desc       : test fallocate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -199,7 +189,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_FALLOCATE64_0100
      * @tc.name       : testMuslFcntlFalLocate64001
      * @tc.desc       : test fallocate64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -211,7 +201,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_NAME_TO_HANDLE_AT_0100
      * @tc.name       : testMuslFcntlNameToHandleAt001
      * @tc.desc       : test name_to_handle_at
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -225,7 +215,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPEN_0100
      * @tc.name       : testMuslFcntlOpen001
      * @tc.desc       : test open
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -239,7 +229,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPEN64_0100
      * @tc.name       : testMuslFcntlOpen64001
      * @tc.desc       : test open64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -253,7 +243,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPEN_BY_HANDLE_AT_0100
      * @tc.name       : testMuslFcntlOpenByHandleAt001
      * @tc.desc       : test open_by_handle_at
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -268,7 +258,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPENAT_0100
      * @tc.name       : testMuslFcntlOpenat001
      * @tc.desc       : test openat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -282,7 +272,7 @@ export default function fcntlNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPENAT64_0100
      * @tc.name       : testMuslFcntlOpenat64001
      * @tc.desc       : test openat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -290,6 +280,62 @@ export default function fcntlNdkTest() {
       let data: number = fcntl.openat64();
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPEN_CHK_0100
+     * @tc.name       : testMuslFcntlOpenChk001
+     * @tc.desc       : test __open_chk
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslFcntlOpenChk001', 0, async (done: Function) => {
+      let data = fcntl.openChk();
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPEN64_CHK_0100
+     * @tc.name       : testMuslFcntlOpen64Chk001
+     * @tc.desc       : test __open64_chk
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslFcntlOpen64Chk001', 0, async (done: Function) => {
+      let data = fcntl.open64Chk();
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPENAT_CHK_0100
+     * @tc.name       : testMuslFcntlOpenatChk001
+     * @tc.desc       : test __openat_chk
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslFcntlOpenatChk001', 0, async (done: Function) => {
+      let data = fcntl.openatChk();
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
+      done();
+    });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_OPENAT64_CHK_0100
+     * @tc.name       : testMuslFcntlOpenat64Chk001
+     * @tc.desc       : test __openat64_chk
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testMuslFcntlOpenat64Chk001', 0, async (done: Function) => {
+      let data = fcntl.openat64Chk();
+      console.info("Test NAPI data = \"" + data + "\"");
+      expect(data).assertEqual(0);
       done();
     });
 

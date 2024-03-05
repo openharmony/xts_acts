@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,59 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function visibilityJsunit() {
-  describe('visibilityTest', function () {
-    beforeEach(async function (done) {
+  describe('visibilityTest', () => {
+    beforeEach(async () => {
       console.info("visibility beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/visibility',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/visibility',
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages:router.RouterState = router.getState();
         console.info("get visibility state pages:" + JSON.stringify(pages));
         if (!("visibility" == pages.name)) {
           console.info("get visibility state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push visibility page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push visibility page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("visibility after each called");
     });
 
-    it('testVisibility01', 0, async function (done) {
+    it('testVisibility01', 0, async () => {
       console.info('[testVisibility01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('box');
-      let obj = JSON.parse(strJson);
-      console.info("[testVisibility01] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.Visible');
+      let strJson: string = getInspectorByKey('box');
+      
+      console.info("[testVisibility01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       console.info('[testVisibility01] END');
-      done();
+
     });
 
-    it('testVisibility02', 0, async function (done) {
+    it('testVisibility02', 0, async () => {
       console.info('[testVisibility02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "visibility": Visibility.Hidden,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 47,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,23 +74,23 @@ export default function visibilityJsunit() {
         console.log("[testVisibility02] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('box');
-      let obj = JSON.parse(strJson);
-      console.info("[testVisibility02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.Hidden');
+      let strJson: string = getInspectorByKey('box');
+      
+      console.info("[testVisibility02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Hidden');
       console.info('[testVisibility02] END');
-      done();
+
     });
 
-    it('testVisibility03', 0, async function (done) {
+    it('testVisibility03', 0, async () => {
       console.info('[testVisibility03] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "visibility": Visibility.None,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 48,
           priority: events_emitter.EventPriority.LOW
         }
@@ -101,23 +100,23 @@ export default function visibilityJsunit() {
         console.log("[testVisibility03] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('box');
-      let obj = JSON.parse(strJson);
-      console.info("[testVisibility03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.None');
+      let strJson: string = getInspectorByKey('box');
+      
+      console.info("[testVisibility03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.None');
       console.info('[testVisibility03] END');
-      done();
+
     });
 
-    it('testVisibility04', 0, async function (done) {
+    it('testVisibility04', 0, async () => {
       console.info('[testVisibility04] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "visibility": 0.11111
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1116,
           priority: events_emitter.EventPriority.LOW
         }
@@ -127,23 +126,22 @@ export default function visibilityJsunit() {
         console.log("[testVisibility04] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('box');
-      let obj = JSON.parse(strJson);
-      console.info("[testVisibility04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.Visible');
+      let strJson: string = getInspectorByKey('box');
+      
+      console.info("[testVisibility04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       console.info('[testVisibility04] END');
-      done();
     });
 
-    it('testVisibility05', 0, async function (done) {
+    it('testVisibility05', 0, async () => {
       console.info('[testVisibility05] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "visibility": 'nothing',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1116,
           priority: events_emitter.EventPriority.LOW
         }
@@ -153,12 +151,10 @@ export default function visibilityJsunit() {
         console.log("[testVisibility05] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('box');
-      let obj = JSON.parse(strJson);
-      console.info("[testVisibility05] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.Visible');
+      let strJson: string = getInspectorByKey('box');
+      console.info("[testVisibility05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
       console.info('[testVisibility05] END');
-      done();
     });
   })
 }

@@ -15,7 +15,6 @@
 
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
-#include <cerrno>
 #include <js_native_api.h>
 #include <js_native_api_types.h>
 #include <node_api.h>
@@ -25,9 +24,9 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_100 100
@@ -36,22 +35,22 @@
 #define SIZE_8192 8192
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define BUFSIZ 1024
 
 static napi_value ResInit(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int result_value = res_init();
+    int resultValue = res_init();
 
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value ResMkquery(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
@@ -63,25 +62,25 @@ static napi_value ResMkquery(napi_env env, napi_callback_info info)
     const unsigned char *data = (const unsigned char *)"";
     unsigned char buf[SIZE_1024] = {PARAM_0};
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
-        result_value = res_mkquery(op, dname, cla, T_ANY + PARAM_1, data, PARAM_0, nullptr, nullptr, PARAM_0);
+        resultValue = res_mkquery(op, dname, cla, T_ANY + PARAM_1, data, PARAM_0, nullptr, nullptr, PARAM_0);
     } else {
         int ret = res_mkquery(op, dname, cla, T_TXT, data, PARAM_0, nullptr, buf, sizeof(buf));
         if (ret > PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value ResQuery(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param = PARAM_0;
@@ -92,18 +91,18 @@ static napi_value ResQuery(napi_env env, napi_callback_info info)
     const int type = T_TXT;
     unsigned char buf[PARAM_1] = {PARAM_0};
 
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_UNNORMAL) {
-        result_value = res_query(dname, cla, type, buf, sizeof(buf));
+        resultValue = res_query(dname, cla, type, buf, sizeof(buf));
     } else {
         int ret = res_query(dname, cla, T_ANY + 1, buf, sizeof(buf));
         if (ret > PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -116,10 +115,10 @@ static napi_value ResQuerydomain(napi_env env, napi_callback_info info)
     const int type = T_TXT;
     unsigned char buf[PARAM_1] = {PARAM_0};
 
-    int result_value = res_querydomain(name, domain, cla, type, buf, sizeof(buf));
+    int resultValue = res_querydomain(name, domain, cla, type, buf, sizeof(buf));
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -134,7 +133,7 @@ static napi_value ResSend(napi_env env, napi_callback_info info)
     int resultValue = FAIL;
     unsigned char buf[BUFSIZ] = {0};
     unsigned char answer[512];
-    int value = res_mkquery(op, dname, cla, type, data, 0, nullptr, buf, sizeof(buf));
+    int value = res_mkquery(op, dname, cla, type, data, PARAM_0, nullptr, buf, sizeof(buf));
     int ret = res_send(buf, value, answer, sizeof(answer));
     if (ret >= NO_ERR) {
         resultValue = SUCCESS;
@@ -148,10 +147,14 @@ static napi_value ResSearch(napi_env env, napi_callback_info info)
 {
     char name[] = "www.baidu.com";
     int cla = C_IN;
-    unsigned char answer[PARAM_1] = {PARAM_0};
-    int ret = res_search(name, cla, T_TXT, answer, PARAM_1);
-    napi_value result;
-    NAPI_CALL(env, napi_create_int32(env, ret, &result));
+    unsigned char answer[MAXDNAME_A] = {PARAM_0};
+    int ret = res_search(name, cla, T_TXT, answer, sizeof(answer));
+    int resultValue = FAIL;
+    if (ret >= NO_ERR) {
+        resultValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
@@ -162,7 +165,7 @@ static napi_value Dn_expand(napi_env env, napi_callback_info info)
     unsigned char buff[MAXDNAME_A] = {0};
     unsigned char *bufPtr = buff;
     int ret = dn_comp(domain, bufPtr, MAXDNAME_A, nullptr, nullptr);
-    if (ret != -1) {
+    if (ret != PARAM_UNNORMAL) {
         char expandDn[MAXDNAME_A];
         const unsigned char *eomorig = buff + MAXDNAME_A;
         backParam = dn_expand(buff, eomorig, buff, expandDn, MAXDNAME_A);

@@ -44,6 +44,23 @@ describe("ListTest", function () {
   });
     
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01000
+   * @tc.name: testGet003
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(1).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testGet003", 0, function () {
+    let list = new List();
+    list.add(0);
+    list.add(1);
+    let s = Math.trunc(1.33);
+    let res = list.get(s);
+    expect(res).assertEqual(1);
+  });
+    
+  /**
    * @tc.name: testAdd003
    * @tc.desc: Add a element to the end of the List instance. For example: list.add(8).
    */
@@ -1209,5 +1226,26 @@ describe("ListTest", function () {
       expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
     }
   });
-});
+
+  /**
+   * @tc.name: testGetSubList076
+   * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty.bind({}, "a")().
+   */
+  it("testGetSubList076", 0, function () {
+    let list = new List();
+    list.add(4);
+    list.add(0);
+    list.add(1);
+    list.add(2);
+    let res = list.getSubList(1, 4);
+    let arr = [];
+    res.forEach((item, index) => {
+      arr.push(item);
+    });
+    let a = [0, 1, 2];
+    for (let i = 0; i < a.length; i++) {
+      expect(arr[i]).assertEqual(a[i]);
+    }
+    });
+  });
 }

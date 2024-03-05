@@ -19,6 +19,7 @@
 struct TextAenExample {
   @State text: string = ''
   controller: TextAreaController = new TextAreaController()
+  controller1: TextInputController = new TextInputController()
   @State text1: string = 'TextArea组件事件触发'
   @State text2: string = 'TextInput组件事件触发'
   @State text3: string = ''
@@ -63,7 +64,7 @@ struct TextAenExample {
       Column(){
         Text(this.text2).key("tiEnable")
           .margin({top: 10})
-        TextInput({ text: this.text3, placeholder: 'input your word...', controller: this.controller })
+        TextInput({ text: this.text3, placeholder: 'input your word...', controller: this.controller1 })
           .key("tiText")
           .placeholderColor(Color.Grey)
           .placeholderFont({ size: 16, weight: 400 })

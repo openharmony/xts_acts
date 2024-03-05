@@ -41,7 +41,7 @@ export default function SecurityHuksECDHBasicFinish63KBCallbackJsunit() {
       };
       console.info('test beforeEach called');
     });
-    it('Security_HUKS_Agree_API9_EDCH_001', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_ECDH_001', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_01_001';
       const srcKeyAliesSecond = 'testAgreeECDHSize256Finish63KBAgreeKeyAlias_02_001';
       let huksOptionsFinish = {
