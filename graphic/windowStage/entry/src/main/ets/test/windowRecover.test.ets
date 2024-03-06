@@ -65,19 +65,11 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done()
           }).catch((err: BusinessError) => {
             console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
-            if (!currentDeviceIsRk) {
-              console.error(msgStr + 'Failed to keep keyboard onFocus. Cause: ' + JSON.stringify(err));
-              if(err.code == 1300001){
-                expect(true).assertTrue()
-                done()
-              }else{
-                expect().assertFail();
-                done()
-              }
+            if (err.code == 801) {
+              expect(true).assertTrue()
+              done()
             } else {
-              console.log(msgStr + ' NOT SUPPORT SystemCapability.Window.SessionManager')
-              console.log(msgStr + JSON.stringify(err))
-              expect(err.code).assertEqual(801);
+              expect().assertFail()
               done()
             }
           });
