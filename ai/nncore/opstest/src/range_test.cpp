@@ -144,23 +144,23 @@ struct RangeModel5 {
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_01, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
+    EXPECT_NE(nullptr, executor);
 
     Free(model, compilation, executor);
 }
@@ -173,23 +173,23 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_01, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_02, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel2 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
+    EXPECT_NE(nullptr, executor);
 
     Free(model, compilation, executor);
 }
@@ -202,23 +202,23 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_02, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_03, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel3 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
+    EXPECT_NE(nullptr, executor);
 
     Free(model, compilation, executor);
 }
@@ -231,23 +231,23 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_03, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_04, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel4 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
+    EXPECT_NE(nullptr, executor);
 
     Free(model, compilation, executor);
 }
@@ -260,23 +260,23 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_04, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_05, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel5 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
+    EXPECT_NE(nullptr, executor);
 
     Free(model, compilation, executor);
 }
@@ -289,7 +289,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_05, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -298,7 +298,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_06, Function | MediumTest
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3, 4, 5, 6};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -311,7 +311,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_06, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -320,7 +320,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_07, Function | MediumTest
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3, 4, 5, 6};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -333,7 +333,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_07, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -343,7 +343,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_08, Function | MediumTest
     graphArgs.operands = {rangeModel.output, rangeModel.dType, rangeModel.start,
                           rangeModel.limit, rangeModel.delta, activation};
     graphArgs.paramIndices = {2, 3, 4, 5, 6};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -356,10 +356,10 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_08, Function | MediumTest
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     OHNNGraphArgs graphArgs;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -372,12 +372,12 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_01, Function | Med
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -390,11 +390,11 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_02, Function | Med
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_03, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
 }
@@ -407,7 +407,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_Finish_03, Function | Med
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -422,12 +422,12 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_01, Funct
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
                 model, 1000+i, operandTem.data, operandTem.length));
         }
     }
@@ -444,7 +444,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_01, Funct
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -459,12 +459,12 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_02, Funct
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
         }
     }
 
@@ -480,7 +480,7 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_02, Funct
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
@@ -495,12 +495,12 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_03, Funct
                                       (uint32_t) operandTem.shape.size(),
                                       operandTem.dataType, operandTem.format);
         tensorDescVec.emplace_back(tensorDesc);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
         }
     }
 
@@ -516,17 +516,17 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SetOperandValue_03, Funct
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -539,18 +539,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -563,18 +563,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.inputIndices = {100000};
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -587,18 +587,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -611,17 +611,17 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
 
     Free(model, nullptr, nullptr);
 }
@@ -634,18 +634,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -658,18 +658,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.outputIndices = {100000};
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -682,18 +682,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -706,18 +706,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                nullptr, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -731,20 +731,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_01, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -758,20 +758,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_02, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.paramIndices = {100000};
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -785,20 +785,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_03, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_04, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -812,18 +812,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_04, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_05, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, nullptr, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -837,20 +837,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_05, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -864,20 +864,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_06, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.inputIndices = {100000};
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -891,20 +891,20 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_07, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
 
     Free(model, nullptr, nullptr);
@@ -918,18 +918,18 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_08, Function
 HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Model_AddOperation_09, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, nullptr));
 
     Free(model, nullptr, nullptr);
