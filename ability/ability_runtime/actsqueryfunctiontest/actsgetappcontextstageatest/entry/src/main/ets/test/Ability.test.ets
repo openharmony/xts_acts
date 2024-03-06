@@ -13,58 +13,61 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import commonEvent from '@ohos.commonEvent'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import commonEvent from '@ohos.commonEvent';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import common from '@ohos.app.ability.common';
+import commonEventManager from '@ohos.commonEventManager';
+
 const START_ABILITY_TIMEOUT = 5000;
-var GetAppContext1 = {
-    events: ["ACTS_GetAppContext"]
+let GetAppContext1: commonEventManager.CommonEventSubscribeInfo = {
+  events: ["ACTS_GetAppContext"]
 };
+
 export default function abilityTest() {
-    describe('ACTS_GetAppContext_TEST', function () {
-        /*
-         * @tc.number  : ACTS_GetAppContext_0200
-         * @tc.name    : The test framework needs to provide the following query-related functions
-         * @tc.desc    : Get the context of the application, Ability
-         */
-        it('ACTS_GetAppContext_0200', 0, async function (done) {
-            let Subscriber
-            var flag = true
-            var AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            function UnSubscribeCallback() {
-                console.debug("====>UnSubscribeCallback====");
-                flag = false
-                done();
-            }
-            function SubscribeCallBack (err, data) {
-                expect(data.event == "ACTS_GetAppContext").assertTrue();
-                console.debug("====>0200 Subscribe CallBack data:" + JSON.stringify(data));
-                var context = AbilityDelegator.getAppContext();
-                console.debug("====>ACTS_GetAppContext_0200 context:" + context);
-                expect(context.applicationInfo.name).assertEqual("com.example.actsgetappcontextstageatest");
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-            }
-            commonEvent.createSubscriber(GetAppContext1).then(async (data) => {
-                console.debug("ACTS_GetAppContext_0200====>Create Subscriber====");
-                Subscriber = data;
-                await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-                console.debug("====>start startAbility====");
-                globalThis.abilityContext.startAbility(
-                    {
-                        bundleName: 'com.example.actsgetappcontextstageatest',
-                        abilityName: 'MainAbility1'
-                    }).then(()=>{
-                    console.debug("====>startAbility end====");
-                })
-            })
-            function timeout() {
-                if(flag == true) {
-                    expect().assertFail();
-                    console.debug('ACTS_GetAppContext_0200 - timeout');
-                    done();
-                }
-            }
-            setTimeout(timeout, START_ABILITY_TIMEOUT);
+  describe('ACTS_GetAppContext_TEST', () => {
+    /*
+     * @tc.number  : ACTS_GetAppContext_0200
+     * @tc.name    : The test framework needs to provide the following query-related functions
+     * @tc.desc    : Get the context of the application, Ability
+     */
+    it('ACTS_GetAppContext_0200', 0, async (done: Function) => {
+      let Subscriber: commonEventManager.CommonEventSubscriber;
+      let flag = true;
+      let AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      commonEvent.createSubscriber(GetAppContext1).then(async (data) => {
+        console.debug("ACTS_GetAppContext_0200====>Create Subscriber====");
+        Subscriber = data;
+        commonEvent.subscribe(Subscriber, (err, data) => {
+          expect(data.event == "ACTS_GetAppContext").assertTrue();
+          console.debug("====>0200 Subscribe CallBack data:" + JSON.stringify(data));
+          let context = AbilityDelegator.getAppContext();
+          console.debug("====>ACTS_GetAppContext_0200 context:" + context);
+          expect(context.applicationInfo.name).assertEqual("com.example.actsgetappcontextstageatest");
+          commonEvent.unsubscribe(Subscriber, () => {
+            console.debug("====>UnSubscribeCallback====");
+            flag = false
+            done();
+          });
+        });
+        console.debug("====>start startAbility====");
+
+        AppStorage.get<common.UIAbilityContext>("abilityContext")!.startAbility(
+          {
+            bundleName: 'com.example.actsgetappcontextstageatest',
+            abilityName: 'MainAbility1'
+          }).then(() => {
+          console.debug("====>startAbility end====");
         })
+      })
+
+      setTimeout(() => {
+        if (flag == true) {
+          expect().assertFail();
+          console.debug('ACTS_GetAppContext_0200 - timeout');
+          done();
+        }
+      }, START_ABILITY_TIMEOUT);
     })
+  })
 }
