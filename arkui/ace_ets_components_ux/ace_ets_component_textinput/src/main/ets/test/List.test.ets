@@ -16,6 +16,6 @@ import textInputTest from './textinput'
 import textinputSec from './textinputSec'
 
 export default function testsuite() {
-      textInputTest()
-      textinputSec()
+  textInputTest()
+  textinputSec()
 }
