@@ -16,66 +16,66 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import appAccount from "@ohos.account.appAccount"
 
 export default function oauthTokenInfoTest() {
-    describe('OAuthTokenInfoTest', function () {
-        beforeAll(async function (done) {
-            console.info('AccountTsTest: beforeAll');
-            done();
-        })
-
-        afterAll(async function (done) {
-            console.info('AccountTsTest: afterAll');
-            done();
-        })
-
-        beforeEach(async function (done) {
-            console.info('AccountTsTest: beforeEach');
-            done();
-        })
-
-        afterEach(async function (done) {
-            console.info('AccountTsTest: afterEach');
-            done();
-        })
-
-        /*
-         * @tc.number  OAuthTokenInfoTest_0100
-         * @tc.name    OAuthTokenInfoTest_0100
-         * @tc.desc    AuthTokenInfo without account. 
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('OAuthTokenInfoTest_0100', 0, async function (done) {
-            let info : appAccount.AuthTokenInfo = {
-                authType: "getSocialData",
-                token: "xxxxx"
-            }
-            console.log("OAuthTokenInfoTest_0100 info: " + JSON.stringify(info));
-            expect(info.hasOwnProperty("accounts")).assertEqual(false)
-            expect(info.hasOwnProperty("account")).assertEqual(false)
-            done()
-        })
-
-        /*
-         * @tc.number  OAuthTokenInfoTest_0200
-         * @tc.name    OAuthTokenInfoTest_0200
-         * @tc.desc    AuthTokenInfo with account. 
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('OAuthTokenInfoTest_0200', 0, async function (done) {
-            let info : appAccount.AuthTokenInfo = {
-                authType: "getSocialData",
-                token: "xxxxx",
-                account: {
-                    name: "zhangsan",
-                    owner: "com.ohos.testapp"
-                }
-            }
-            console.log("OAuthTokenInfoTest_0200 info: " + JSON.stringify(info))
-            expect(info.hasOwnProperty("accounts")).assertEqual(false)
-            expect(info.hasOwnProperty("account")).assertEqual(true)
-            expect(info.account.owner).assertEqual("com.ohos.testapp")
-            done();
-        })
+  describe('OAuthTokenInfoTest', () => {
+    beforeAll(async (done: Function) => {
+      console.info('AccountTsTest: beforeAll');
+      done();
     })
+
+    afterAll(async (done: Function) => {
+      console.info('AccountTsTest: afterAll');
+      done();
+    })
+
+    beforeEach(async (done: Function) => {
+      console.info('AccountTsTest: beforeEach');
+      done();
+    })
+
+    afterEach(async (done: Function) => {
+      console.info('AccountTsTest: afterEach');
+      done();
+    })
+
+    /*
+     * @tc.number  OAuthTokenInfoTest_0100
+     * @tc.name    OAuthTokenInfoTest_0100
+     * @tc.desc    AuthTokenInfo without account.
+     * @tc.size    SmallTest
+     * @tc.type    User
+     */
+    it('OAuthTokenInfoTest_0100', 0, async (done: Function) => {
+      let info: appAccount.AuthTokenInfo = {
+        authType: "getSocialData",
+        token: "xxxxx"
+      }
+      console.log("OAuthTokenInfoTest_0100 info: " + JSON.stringify(info));
+      expect(info.hasOwnProperty("accounts")).assertEqual(false)
+      expect(info.hasOwnProperty("account")).assertEqual(false)
+      done()
+    })
+
+    /*
+     * @tc.number  OAuthTokenInfoTest_0200
+     * @tc.name    OAuthTokenInfoTest_0200
+     * @tc.desc    AuthTokenInfo with account.
+     * @tc.size    SmallTest
+     * @tc.type    User
+     */
+    it('OAuthTokenInfoTest_0200', 0, async (done: Function) => {
+      let info: appAccount.AuthTokenInfo = {
+        authType: "getSocialData",
+        token: "xxxxx",
+        account: {
+          name: "zhangsan",
+          owner: "com.ohos.testapp"
+        }
+      }
+      console.log("OAuthTokenInfoTest_0200 info: " + JSON.stringify(info))
+      expect(info.hasOwnProperty("accounts")).assertEqual(false)
+      expect(info.hasOwnProperty("account")).assertEqual(true)
+      expect(info.account.owner).assertEqual("com.ohos.testapp")
+      done();
+    })
+  })
 }
