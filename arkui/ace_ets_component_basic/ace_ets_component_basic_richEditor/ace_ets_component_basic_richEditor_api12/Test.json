@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsComponentBasicRichEditorApi12.hap"
+            "ActsAceEtsComponentBasicRichEditorApi12Test.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

@@ -14,6 +14,6 @@
 group("ActsAceEtsComponentBasicRichEditorTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "ace_ets_component_basic_richEditor_api12:ActsAceEtsComponentBasicRichEditorApi12" ]
+    deps = [ "ace_ets_component_basic_richEditor_api12:ActsAceEtsComponentBasicRichEditorApi12Test" ]
   }
 }
