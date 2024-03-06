@@ -1,6 +1,5 @@
 {
     "src": [
-
         "MainAbility/pages/index/index",
         "MainAbility/pages/onSelectionChange/onSelectionChange1",
         "MainAbility/pages/onSelectionChange/onSelectionChange2",
