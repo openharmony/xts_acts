@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function gridContainerJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('gridContainerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/GridContainer',
+  describe('gridContainerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GridContainer',
       }
       try {
         router.clear();
@@ -40,29 +40,29 @@ export default function gridContainerJsunit() {
         console.info("get GridContainer state success " + JSON.stringify(pages));
         if (!("GridContainer" == pages.name)) {
           console.info("get GridContainer state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push GridContainer page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push GridContainer page error " + JSON.stringify(result));
+        console.error("push GridContainer page error " + JSON.stringify(err));
       }
-      await sleep(1)
-      done()
+      await sleep(1);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("GridContainer after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0830
-     * @tc.name      testGridContainer010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0830
+     * @tc.name testGridContainer010
+     * @tc.desc aceEtsTest
      */
-    it('testGridContainer010', 0, async function (done) {
+    it('testGridContainer010', 0, async (done: Function) => {
       console.info('new GridContainer0 START');
       let strJson = getInspectorByKey('gridContainer');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('GridContainer');
       console.info("yr GridContainer0 type: " + JSON.stringify(obj.$type));
@@ -72,14 +72,14 @@ export default function gridContainerJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0840
-     * @tc.name      testGridContainer020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0840
+     * @tc.name testGridContainer020
+     * @tc.desc aceEtsTest
      */
-    it('testGridContainer020', 0, async function (done) {
+    it('testGridContainer020', 0, async (done: Function) => {
       console.info('new GridContainer1 START');
       let strJson = getInspectorByKey('gridContainer1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Center');
       console.log("yr gridContainer1 obj.$attrs.alignItems-'HorizontalAlign.Center':" + JSON.stringify(obj.$attrs.alignItems));
@@ -88,14 +88,14 @@ export default function gridContainerJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0850
-     * @tc.name      testGridContainer030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0850
+     * @tc.name testGridContainer030
+     * @tc.desc aceEtsTest
      */
-    it('testGridContainer030', 0, async function (done) {
+    it('testGridContainer030', 0, async (done: Function) => {
       console.info('new GridContainer2 START');
       let strJson = getInspectorByKey('gridContainer2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.End');
       console.log("yr gridContainer obj.$attrs.alignItems-'HorizontalAlign.End':" + JSON.stringify(obj.$attrs.alignItems));
@@ -104,14 +104,14 @@ export default function gridContainerJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0860
-     * @tc.name      testGridContainer040
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0860
+     * @tc.name testGridContainer040
+     * @tc.desc aceEtsTest
      */
-    it('testGridContainer040', 0, async function (done) {
+    it('testGridContainer040', 0, async (done: Function) => {
       console.info('new GridContainer3 START');
       let strJson = getInspectorByKey('gridContainer3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.End');
       console.log("yr gridContainer3 obj.$attrs.alignItems-'HorizontalAlign.End':" + JSON.stringify(obj.$attrs.alignItems));
@@ -120,14 +120,14 @@ export default function gridContainerJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0870
-     * @tc.name      testGridContainer050
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0870
+     * @tc.name testGridContainer050
+     * @tc.desc aceEtsTest
      */
-    it('testGridContainer050', 0, async function (done) {
+    it('testGridContainer050', 0, async (done: Function) => {
       console.info('new GridContainer4 START');
       let strJson = getInspectorByKey('gridContainer4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("gridContainer obj.$attrs.sizeType:" + JSON.stringify(obj.$attrs.sizeType)); //undefinde
       console.info('new GridContainer4  END');

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct PanelExample {
@@ -51,7 +51,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
 
@@ -69,7 +69,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
 
@@ -87,7 +87,7 @@ struct PanelExample {
       .fullHeight(500)
       .halfHeight(250)
       .miniHeight(100)
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
 

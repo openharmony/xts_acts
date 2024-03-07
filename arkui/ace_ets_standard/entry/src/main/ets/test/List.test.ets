@@ -12,27 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import badgeJsunit from './BadgeJsunit.test.ets';
-import dividerJsunit from './DividerJsunit.test.ets'
-import buttonJsunit from './ButtonJsunit.test.ets'
-import blankJsunit from './BlankJsunit.test.ets'
-import datapanelJsunit from './DataPanelJsunit.test.ets'
-import textJsunit from './TextJsunit.test.ets'
-import rowSplitJsunit from './RowSplitJsunit.test.ets'
-import ScrollJsunit from './ScrollJsunit.test.ets'
-import StackJsunit from './StackJsunit.test.ets'
-import imageJsunit from './ImageJsunit.test.ets'
-import progressJsunit from './ProgressJsunit.test.ets'
-import qrcodeJsunit from './QrcodeJsunit.test.ets'
-import ratingJsunit from './RatingJsunit.test.ets'
-import spanJsunit from './SpanJsunit.test.ets'
-import sliderJsunit from './SliderJsunit.test.ets'
-import gridContainerJsunit from './GridContainerJsunit.test.ets';
-import flexJsunit from './FlexJsunit.test.ets';
-import counterJsunit from './CounterJsunit.test.ets';
-import columnSplitJsunit from './ColumnSplitJsunit.test.ets';
-import columnJsunit from './ColumnJsunit.test.ets';
+
+import badgeJsunit from './BadgeJsunit.test';
+import dividerJsunit from './DividerJsunit.test';
+import buttonJsunit from './ButtonJsunit.test';
+import blankJsunit from './BlankJsunit.test';
+import datapanelJsunit from './DataPanelJsunit.test';
+import textJsunit from './TextJsunit.test';
+import rowSplitJsunit from './RowSplitJsunit.test';
+import ScrollJsunit from './ScrollJsunit.test';
+import StackJsunit from './StackJsunit.test';
+import imageJsunit from './ImageJsunit.test';
+import progressJsunit from './ProgressJsunit.test';
+import qrcodeJsunit from './QrcodeJsunit.test';
+import ratingJsunit from './RatingJsunit.test';
+import spanJsunit from './SpanJsunit.test';
+import sliderJsunit from './SliderJsunit.test';
+import gridContainerJsunit from './GridContainerJsunit.test';
+import flexJsunit from './FlexJsunit.test';
+import counterJsunit from './CounterJsunit.test';
+import columnSplitJsunit from './ColumnSplitJsunit.test';
+import columnJsunit from './ColumnJsunit.test';
 
 export default function testsuite() {
   buttonJsunit()
