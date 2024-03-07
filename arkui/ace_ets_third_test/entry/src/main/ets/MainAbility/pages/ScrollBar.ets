@@ -40,7 +40,7 @@ struct ScrollBarExample {
       Flex({ direction: FlexDirection.Row }) {
         Scroll(this.scroller1) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr1, (item) => {
+            ForEach(this.arr1, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('90%')
@@ -50,7 +50,7 @@ struct ScrollBarExample {
                   .textAlign(TextAlign.Center)
                   .margin(5)
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ left: 50 })
         }
         .scrollable(ScrollDirection.Vertical)
@@ -83,7 +83,7 @@ struct ScrollBarExample {
       Flex({ direction: FlexDirection.Column }) {
         Scroll(this.scroller2) {
           Flex({ direction: FlexDirection.Row }) {
-            ForEach(this.arr2, (item) => {
+            ForEach(this.arr2, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('10%')
@@ -93,7 +93,7 @@ struct ScrollBarExample {
                   .textAlign(TextAlign.Center)
                   .margin(5)
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ left: 15 })
         }
         .scrollable(ScrollDirection.Horizontal)
@@ -104,7 +104,7 @@ struct ScrollBarExample {
             .height(20)
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
-        }.height(20).backgroundColor('#ededed').key('scrollbar4').margin({top:30})
+        }.height(20).backgroundColor('#ededed').key('scrollbar4').margin({ top: 30 })
 
         ScrollBar({ scroller: this.scroller2, direction: ScrollBarDirection.Horizontal, state: BarState.On }) {
           Text()
@@ -112,7 +112,7 @@ struct ScrollBarExample {
             .height(20)
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
-        }.width(30).backgroundColor('#ededed').key('scrollbar5').margin({top:30})
+        }.width(30).backgroundColor('#ededed').key('scrollbar5').margin({ top: 30 })
 
         ScrollBar({ scroller: this.scroller2, direction: ScrollBarDirection.Horizontal, state: BarState.Off }) {
           Text()
@@ -120,8 +120,8 @@ struct ScrollBarExample {
             .height(20)
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
-        }.width(30).backgroundColor('#ededed').key('scrollbar6').margin({top:30})
-      }.height('45%').width('90%').margin({top:30})
+        }.width(30).backgroundColor('#ededed').key('scrollbar6').margin({ top: 30 })
+      }.height('45%').width('90%').margin({ top: 30 })
     }
   }
 }

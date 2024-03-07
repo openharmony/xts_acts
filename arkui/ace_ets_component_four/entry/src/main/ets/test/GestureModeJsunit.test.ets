@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function fontWeightJsunit() {
-  describe('fontWeightTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/gestureMode',
+  describe('fontWeightTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gestureMode',
       }
       try {
         router.clear();
@@ -29,7 +28,7 @@ export default function fontWeightJsunit() {
         console.info("get gestureMode state success " + JSON.stringify(pages));
         if (!("panel" == pages.name)) {
           console.info("get gestureMode state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(4000);
           console.info("push gestureMode page success " + JSON.stringify(result));
         }
@@ -39,19 +38,18 @@ export default function fontWeightJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gestureMode after each called");
     });
 
-      it('fillModeText_0100', 0, async function (done) {
-        console.info('fillModeText_0100 START');
-        let strJson = getInspectorByKey('gestureMode');
-        console.info("fillModeText_0100 component strJson:" + strJson);
-        let obj = JSON.parse(strJson);
-        console.info("fillModeText_0100 component obj is: " + JSON.stringify(obj));
-        expect(obj.$type).assertEqual('Flex');
-        done();
-      });
+    it('fillModeText_0100', 0, async (done: Function) => {
+      console.info('fillModeText_0100 START');
+      let strJson: string = getInspectorByKey('gestureMode');
+      console.info("fillModeText_0100 component strJson:" + strJson);
+      console.info("fillModeText_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      done();
+    });
   })
 }

@@ -12,16 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
@@ -30,7 +25,7 @@ export default function AbilityStageMonitorTest() {
     bundleName: string,
     abilityName: string,
     moduleName: string
-  ) => {
+  ): Want => {
     return {
       bundleName: bundleName,
       abilityName: abilityName,
@@ -38,7 +33,7 @@ export default function AbilityStageMonitorTest() {
     };
   };
 
-  describe("AbilityStageMonitorTest", function () {
+  describe("AbilityStageMonitorTest", () => {
     /**
      * @tc.number ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0100
      * @tc.name actsAddAbilityStageMonitorCallback0100
@@ -50,13 +45,13 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0100",
       0,
-      async function (done) {
+      async (done: Function) => {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor = null;
         try {
           abilityDelegator.addAbilityStageMonitor(
             monitor,
-            (err: any, data: any) => {
+            (err: BusinessError) => {
               abilityDelegator.printSync(
                 "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0100" + err.code
               );
@@ -92,32 +87,37 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0200",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
+
+        abilityDelegator.addAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
-
-        abilityDelegator.addAbilityStageMonitor(monitor, (err, data) => {
+        }, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0200 waitAbilityStageMonitor data: " +
               data
           );
         });
 
-        abilityDelegator.waitAbilityStageMonitor(monitor, (err, data) => {
+        abilityDelegator.waitAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        }, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0200 waitAbilityStageMonitor data: " +
               data
           );
         });
 
-        abilityDelegator.removeAbilityStageMonitor(monitor, (err, data) => {
+        abilityDelegator.removeAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        }, (err, data) => {
           expect(true).assertTrue();
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0200 removeAbilityStageMonitor pass"
@@ -135,7 +135,7 @@ export default function AbilityStageMonitorTest() {
      * @tc.type      : Method
      * @tc.level     : Level 3
      */
-    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let monitor = null;
       try {
@@ -169,26 +169,25 @@ export default function AbilityStageMonitorTest() {
      * @tc.type      : Method
      * @tc.level     : Level 2
      */
-    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200", 0, async (done: Function) => {
       const want = factoryWant(
         "com.example.delegatortest",
         "MainAbility",
         "featureassist"
       );
-      let monitor = {
-        moduleName: "featureassist",
-        srcEntrance: "./ets/Application/AbilityStage.ts",
-      };
 
       abilityDelegator
-        .addAbilityStageMonitor(monitor)
+        .addAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        })
         .then((data) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 waitAbilityStageMonitor data: " +
               data
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 wait catch error" +
               error
@@ -196,14 +195,17 @@ export default function AbilityStageMonitorTest() {
         });
 
       abilityDelegator
-        .waitAbilityStageMonitor(monitor)
+        .waitAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        })
         .then((data) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 waitAbilityStageMonitor data: " +
               data
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 wait catch error" +
               error
@@ -211,7 +213,10 @@ export default function AbilityStageMonitorTest() {
         });
 
       abilityDelegator
-        .removeAbilityStageMonitor(monitor)
+        .removeAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        })
         .then((data) => {
           expect(true).assertTrue();
           abilityDelegator.printSync(
@@ -219,7 +224,7 @@ export default function AbilityStageMonitorTest() {
           );
           done();
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 remove catch error" +
               error
@@ -238,10 +243,10 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0100",
       0,
-      async function (done) {
+      async (done: Function) => {
         let monitor = null;
         try {
-          abilityDelegator.removeAbilityStageMonitor(monitor, (err: any) => {
+          abilityDelegator.removeAbilityStageMonitor(monitor, (err: BusinessError) => {
             expect().assertFail();
             abilityDelegator.printSync(
               "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0100 error"
@@ -254,7 +259,7 @@ export default function AbilityStageMonitorTest() {
           );
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0100 message:" +
-              e.message
+            e.message
           );
           expect(e.message).assertEqual("Incorrect parameters.");
           expect(e.code).assertEqual(401);
@@ -283,25 +288,27 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0200",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
+
+        abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
-
-        abilityDelegator.waitAbilityStageMonitor(monitor, (err, data) => {
+        }, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0200 waitAbilityStageMonitor data: " +
               data
           );
         });
 
-        abilityDelegator.removeAbilityStageMonitor(monitor, (err, data) => {
+        abilityDelegator.removeAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        }, (err, data) => {
           expect(true).assertTrue();
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0200 removeAbilityStageMonitor pass"
@@ -322,25 +329,27 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0300",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
+
+        abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
-
-        abilityDelegator.waitAbilityStageMonitor(monitor, 6000, (err, data) => {
+        }, 6000, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0300 waitAbilityStageMonitor data: " +
               data
           );
         });
 
-        abilityDelegator.removeAbilityStageMonitor(monitor, (err, data) => {
+        abilityDelegator.removeAbilityStageMonitor({
+          moduleName: "featureassist",
+          srcEntrance: "./ets/Application/AbilityStage.ts",
+        }, (err, data) => {
           expect(true).assertTrue();
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0300 removeAbilityStageMonitor pass"
@@ -361,7 +370,7 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0100",
       0,
-      async function (done) {
+      async (done: Function) => {
         let monitor = null;
         try {
           await abilityDelegator.removeAbilityStageMonitor(monitor);
@@ -379,7 +388,7 @@ export default function AbilityStageMonitorTest() {
           );
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0100 message:" +
-              e.message
+            e.message
           );
           expect(e.message).assertEqual("Incorrect parameters.");
           expect(e.code).assertEqual(401);
@@ -402,26 +411,25 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
-          moduleName: "featureassist",
-          srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
 
         abilityDelegator
-          .waitAbilityStageMonitor(monitor)
+          .waitAbilityStageMonitor({
+            moduleName: "featureassist",
+            srcEntrance: "./ets/Application/AbilityStage.ts",
+          })
           .then((data) => {
             abilityDelegator.printSync(
               "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200 waitAbilityStageMonitor data: " +
                 data
             );
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             abilityDelegator.printSync(
               "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200 wait catch error" +
                 error
@@ -429,7 +437,10 @@ export default function AbilityStageMonitorTest() {
           });
 
         abilityDelegator
-          .removeAbilityStageMonitor(monitor)
+          .removeAbilityStageMonitor({
+            moduleName: "featureassist",
+            srcEntrance: "./ets/Application/AbilityStage.ts",
+          })
           .then((data) => {
             expect(true).assertTrue();
             abilityDelegator.printSync(
@@ -437,7 +448,7 @@ export default function AbilityStageMonitorTest() {
             );
             done();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             abilityDelegator.printSync(
               "ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200 remove catch error" +
                 error
@@ -457,10 +468,10 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0100",
       0,
-      async function (done) {
+      async (done: Function) => {
         let monitor = null;
         try {
-          abilityDelegator.waitAbilityStageMonitor(monitor, (err: any) => {
+          abilityDelegator.waitAbilityStageMonitor(monitor, (err: BusinessError) => {
             expect().assertFail();
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0100 callback "
@@ -495,13 +506,13 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0200",
       0,
-      async function (done) {
+      async (done: Function) => {
         let monitor = null;
         try {
           abilityDelegator.waitAbilityStageMonitor(
             monitor,
             6000,
-            (err: any) => {
+            (err: BusinessError) => {
               expect().assertFail();
               abilityDelegator.printSync(
                 "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0200 error"
@@ -543,20 +554,19 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0300",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
+        abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
-        abilityDelegator.waitAbilityStageMonitor(monitor, (err, data) => {
+        }, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0300 err code: " +
-              err.code
+            err.code
           );
           expect(err.code).assertEqual(16000100);
           abilityDelegator.printSync(
@@ -578,20 +588,19 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0400",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
+        abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
-        abilityDelegator.waitAbilityStageMonitor(monitor, 6000, (err, data) => {
+        }, 6000, (err, data) => {
           abilityDelegator.printSync(
             "ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0400 err code: " +
-              err.code
+            err.code
           );
           expect(err.code).assertEqual(16000100);
           abilityDelegator.printSync(
@@ -612,7 +621,7 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0100",
       0,
-      async function (done) {
+      async (done: Function) => {
         let monitor = null;
         try {
           await abilityDelegator.waitAbilityStageMonitor(monitor);
@@ -649,24 +658,23 @@ export default function AbilityStageMonitorTest() {
     it(
       "ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0200",
       0,
-      async function (done) {
+      async (done: Function) => {
         const want = factoryWant(
           "com.example.delegatortest",
           "MainAbility",
           "featureassist"
         );
-        let monitor = {
-          moduleName: "featureassist",
-          srcEntrance: "./ets/Application/AbilityStage.ts",
-        };
         abilityDelegator
-          .waitAbilityStageMonitor(monitor)
+          .waitAbilityStageMonitor({
+            moduleName: "featureassist",
+            srcEntrance: "./ets/Application/AbilityStage.ts",
+          })
           .then((data) => {
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0200 pass data: " + data
             );
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0200 error: " + error
             );

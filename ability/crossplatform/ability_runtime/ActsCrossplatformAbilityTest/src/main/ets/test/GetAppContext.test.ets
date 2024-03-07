@@ -12,19 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 
 export default function GetAppContextTest() {
-  describe("GetAppContextTest", function () {
+  describe("GetAppContextTest", () => {
     /**
      * @tc.number: ACTS_GET_APP_CONTENT_0001
      * @tc.name  : actsGetAppContextCallback0001
@@ -33,8 +25,8 @@ export default function GetAppContextTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_APP_CONTENT_0001", 0, async function (done) {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    it("ACTS_GET_APP_CONTENT_0001", 0, async (done: Function) => {
+      let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let context = abilityDelegator.getAppContext();
       if (context != null) {
         abilityDelegator.printSync(

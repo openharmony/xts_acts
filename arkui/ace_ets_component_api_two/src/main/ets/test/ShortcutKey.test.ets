@@ -19,16 +19,9 @@ import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
 import { BusinessError } from '@ohos.base';
+import Utils from '../TestAbility/common/MyUtils';
 
-function sleep(time: number) {
-  let date = new Date()
-  let start = date.getSeconds()
-  let end = start
-  while ((end - start) < time) {
-    let endDate = new Date()
-    end = endDate.getSeconds()
-  }
-}
+
 
 export default function ShortcutKeyTest() {
 
@@ -90,7 +83,7 @@ export default function ShortcutKeyTest() {
     });
 
     afterEach(async () => {
-      sleep(2)
+      await Utils.sleep(2000)
     });
 
     /*

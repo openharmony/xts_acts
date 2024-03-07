@@ -12,24 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct FlexTextMargin_Stretch {
-  @State testTextMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State testTextMargin: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "FlexTextMargin_Stretch Page";
+
   onPageShow() {
     console.info('FlexTextMargin_Stretch onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'margin') {
         this.testTextMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -37,7 +44,7 @@ struct FlexTextMargin_Stretch {
     console.info('FlexTextMargin_Stretch page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexTextMargin_1').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -46,10 +53,15 @@ struct FlexTextMargin_Stretch {
           alignItems: ItemAlign.Stretch,
           wrap: FlexWrap.NoWrap,
         }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).margin(this.testTextMargin).key('textMargin01')
+          Text('1')
+            .width(150)
+            .height(50)
+            .backgroundColor(0xF5DEB3)
+            .margin(this.testTextMargin)
+            .key('textMargin01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textMargin02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textMargin03')
-        } 
+        }
         .key('flexTextMargin01')
         .height(200)
         .width(500)

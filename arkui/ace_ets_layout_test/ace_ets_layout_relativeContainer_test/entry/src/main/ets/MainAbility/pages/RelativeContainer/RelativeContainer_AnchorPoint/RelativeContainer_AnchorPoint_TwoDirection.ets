@@ -20,15 +20,19 @@ struct RelativeContainer_AnchorPoint_TwoDirection {
     console.info('RelativeContainer_AnchorPoint_TwoDirection onPageShow');
 
   }
+
   build() {
     Row() {
       RelativeContainer() {
-        Row().width(100).height(100).backgroundColor("#FF66FF")
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor("#FF66FF")
           .alignRules({
-            top:{anchor:"__container__",align:VerticalAlign.Top},
-            bottom:{anchor:"__container__",align:VerticalAlign.Bottom},
-            left:{anchor:"__container__",align:HorizontalAlign.Start},
-            right:{anchor:"__container__",align:HorizontalAlign.End},
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+            left: { anchor: "__container__", align: HorizontalAlign.Start },
+            right: { anchor: "__container__", align: HorizontalAlign.End },
           })
           .key("RelativeContainer_AnchorPoint_TwoDirection_row1")
           .id("RelativeContainer_AnchorPoint_TwoDirection_row1")

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function webEditTextJsunit() {
-  describe('webEditTextTest', function () {
-    beforeEach(async function (done) {
+  describe('webEditTextTest', () =>{
+    beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/web',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/web',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function webEditTextJsunit() {
         console.info("get web state success " + JSON.stringify(pages));
         if (!("web" == pages.name)) {
           console.info("get web state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push web page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function webEditTextJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("webEditText after each called");
     });

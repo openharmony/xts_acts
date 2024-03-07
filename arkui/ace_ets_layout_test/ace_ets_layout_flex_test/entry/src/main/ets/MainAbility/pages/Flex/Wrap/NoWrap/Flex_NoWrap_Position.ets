@@ -12,30 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Flex_NoWrap_Position{
-  @State testPosition: object = { x:0, y:0 };
-  messageManager:MessageManager = new MessageManager();
+struct Flex_NoWrap_Position {
+  @State testPosition: Position = { x: 0, y: 0 };
+  messageManager: MessageManager<Position> = new MessageManager();
 
   onPageShow() {
     console.info('Flex_NoWrap_Position onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<Position> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<Position> = (message: Message<Position>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'position') {
         this.testPosition = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({ space:30 }){
-      Flex({ wrap:FlexWrap.NoWrap }){
-        Text('1').width(150).height(100).backgroundColor(0xF5DEB3).key('NoWrap_Position01').position(this.testPosition);
+
+  build() {
+    Column({ space: 30 }) {
+      Flex({ wrap: FlexWrap.NoWrap }) {
+        Text('1')
+          .width(150)
+          .height(100)
+          .backgroundColor(0xF5DEB3)
+          .key('NoWrap_Position01')
+          .position(this.testPosition);
         Text('2').width(150).height(150).backgroundColor(0xD2B48C).key('NoWrap_Position02');
         Text('3').width(150).height(200).backgroundColor(0xF5DEB3).key('NoWrap_Position03');
       }

@@ -14,18 +14,30 @@
  */
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
 import { describe, beforeEach, afterEach, expect, it } from "@ohos/hypium";
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import UIAbility from '@ohos.app.ability.UIAbility';
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let monitor: AbilityDelegatorRegistry.AbilityMonitor | null | undefined
+let TAG: string = "";
+let LABLE: string = "AbilityMonitorTest";
 
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-let monitor = undefined;
-let TAG = "";
-let LABLE = "AbilityMonitorTest";
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function AbilityMonitorTest() {
   const factoryWant = (
     bundleName: string,
     abilityName: string,
     moduleName: string
-  ) => {
+  ): Want => {
     return {
       bundleName: bundleName,
       abilityName: abilityName,
@@ -33,18 +45,18 @@ export default function AbilityMonitorTest() {
     };
   };
 
-  describe("AbilityMonitorTest", function () {
-    beforeEach(async function (done) {
+  describe("AbilityMonitorTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("AbilityMonitorTest before each called");
       await sleep(1000);
       done();
     });
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info(LABLE + TAG + "AbilityMonitorTest afterEach each called");
       if (monitor) {
         console.info(LABLE + TAG + "AbilityMonitorTest afterEach removeAbilityMonitor called");
-        abilityDelegator.removeAbilityMonitor(monitor,()=>{
+        abilityDelegator.removeAbilityMonitor(monitor, () => {
           monitor = undefined;
         });
       }
@@ -69,9 +81,6 @@ export default function AbilityMonitorTest() {
       done()
     });
 
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
-    }
 
     /**
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100
@@ -81,12 +90,12 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100";
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       monitor = null;
       try {
-        abilityDelegator.addAbilityMonitor(monitor, (err: any, data: any) => {
+        abilityDelegator.addAbilityMonitor(monitor, (err: BusinessError) => {
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100" + err.code
           );
@@ -118,7 +127,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200";
       const want = factoryWant(
         "com.example.delegatortest",
@@ -126,30 +135,28 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        console.log("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200 ");
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          abilityDelegator.removeAbilityMonitor(monitor);
-          monitor = undefined;
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          abilityDelegator.removeAbilityMonitor(monitor);
-          monitor = undefined;
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data)=> {
+          console.log("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200 ");
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            abilityDelegator.removeAbilityMonitor(monitor);
+            monitor = undefined;
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            abilityDelegator.removeAbilityMonitor(monitor);
+            monitor = undefined;
+            done();
+          });
+        },
       };
-      abilityDelegator.addAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.addAbilityMonitor(monitor, (err: BusinessError) => {
         console.log("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200");
       });
       setTimeout(() => {
@@ -165,7 +172,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300";
       const want = factoryWant(
         "com.example.delegatortest",
@@ -173,27 +180,25 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300 pass "
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-        });
-        abilityDelegator.removeAbilityMonitor(monitor, ()=>{
-          monitor = undefined;
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300 pass "
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+          });
+          abilityDelegator.removeAbilityMonitor(monitor, () => {
+            monitor = undefined;
+            done();
+          });
+        },
       };
-      abilityDelegator.addAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.addAbilityMonitor(monitor, (err: BusinessError) => {
         console.log("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300");
       });
       setTimeout(() => {
@@ -209,7 +214,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0100";
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let monitor = null;
@@ -245,7 +250,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0200";
       const want = factoryWant(
         "com.example.delegatortest",
@@ -253,21 +258,19 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        expect(true).assertTrue();
-        abilityDelegator.printSync('AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0200 pass');
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate:  (data) =>{
+          expect(true).assertTrue();
+          abilityDelegator.printSync('AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0200 pass');
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       await abilityDelegator.addAbilityMonitor(monitor);
       setTimeout(() => {
@@ -283,7 +286,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
+    it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300";
       const want = factoryWant(
         "com.example.delegatortest",
@@ -291,26 +294,24 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        expect(true).assertTrue();
-        data.context.terminateSelf().then((data) => {
-          abilityDelegator.printSync(
-            "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
-          );
-        }).catch((error) => {
-          abilityDelegator.printSync(
-            "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
-          );
-        });
-        abilityDelegator.removeAbilityMonitor(monitor, ()=>{
-          monitor = undefined;
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          expect(true).assertTrue();
+          data.context.terminateSelf().then((data) => {
+            abilityDelegator.printSync(
+              "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
+            );
+          }).catch((error:BusinessError) => {
+            abilityDelegator.printSync(
+              "AbilityMonitorTest ACTS_ADD_ABILITY_MONITOR_PROMISE_0300 pass"
+            );
+          });
+          abilityDelegator.removeAbilityMonitor(monitor, () => {
+            monitor = undefined;
+            done();
+          });
+        },
       };
       await abilityDelegator.addAbilityMonitor(monitor);
       await abilityDelegator.addAbilityMonitor(monitor);
@@ -325,11 +326,11 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100";
       let monitor = null;
       try {
-        abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {
+        abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
           expect().assertFail();
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100 error"
@@ -361,7 +362,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -371,19 +372,19 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        result = 1;
-      }
+
 
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () => {
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          result = 1;
+        },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       abilityDelegator.addAbilityMonitor(monitor);
       console.log(LABLE + TAG + "removeAbilityMonitor");
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         monitor = undefined;
       });
       setTimeout(() => {
@@ -408,25 +409,23 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300";
       console.log(LABLE + TAG + "start");
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300 onAbilityCreateCallback"
-        );
-        result = 1;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300 onAbilityCreateCallback"
+          );
+          result = 1;
+        },
       };
       console.log(LABLE + TAG + "removeAbilityMonitor");
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         console.log(LABLE + TAG + "removeAbilityMonitor callback");
         abilityDelegator.printSync(
           "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0300 removeAbilityMonitor"
@@ -452,7 +451,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0400";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -462,19 +461,17 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        result = 1;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          result = 1;
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor");
       abilityDelegator.waitAbilityMonitor(monitor);
       console.log(LABLE + TAG + "removeAbilityMonitor");
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         console.log(LABLE + TAG + "removeAbilityMonitor callback");
         monitor = undefined;
       });
@@ -498,7 +495,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -508,19 +505,17 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        result = 1;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          result = 1;
+        },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       abilityDelegator.addAbilityMonitor(monitor);
       console.log(LABLE + TAG + "removeAbilityMonitor");
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {
+      abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         console.log(LABLE + TAG + "removeAbilityMonitor callback" + JSON.stringify(err));
         monitor = undefined;
       });
@@ -544,7 +539,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0100";
       console.log(LABLE + TAG + "start");
       let monitor = null;
@@ -583,7 +578,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -593,17 +588,15 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback(err) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback err = " + JSON.stringify(err));
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback "
-        );
-        result = 1;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (err) =>{
+        console.log(LABLE + TAG + "onAbilityCreateCallback err = " + JSON.stringify(err));
+        abilityDelegator.printSync(
+        "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback "
+        );
+        result = 1;
+      },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       await abilityDelegator.addAbilityMonitor(monitor);
@@ -616,7 +609,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 callback"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + "removeAbilityMonitor catch error = " + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 error:" + error
@@ -642,7 +635,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -652,17 +645,15 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        result = 1;
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300 onAbilityCreateCallback"
-        );
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          result = 1;
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300 onAbilityCreateCallback"
+          );
+        },
       };
       abilityDelegator
         .removeAbilityMonitor(monitor)
@@ -678,7 +669,7 @@ export default function AbilityMonitorTest() {
           );
           done();
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + "removeAbilityMonitor catch error" + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300 error:" + error
@@ -705,7 +696,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -715,14 +706,12 @@ export default function AbilityMonitorTest() {
       );
       let result = 0;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        result = 1;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          result = 1;
+        },
       };
       abilityDelegator.waitAbilityMonitor(monitor);
       abilityDelegator
@@ -734,7 +723,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + "removeAbilityMonitor catch error = " + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400 error:" + error
@@ -762,7 +751,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500", 0, async function (done) {
+    it("ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -772,17 +761,15 @@ export default function AbilityMonitorTest() {
       );
       let result = 1;
 
-      function onAbilityCreateCallback() {
-        console.log(LABLE + TAG + "onAbilityCreateCallback");
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500 onAbilityCreateCallback"
-        );
-        result = 0;
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: () =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback");
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500 onAbilityCreateCallback"
+          );
+          result = 0;
+        },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       await abilityDelegator.addAbilityMonitor(monitor);
@@ -796,7 +783,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500 callback"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + "removeAbilityMonitor catch error = " + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500 error:" + error
@@ -824,12 +811,12 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0100";
       console.log(LABLE + TAG + "start");
       let monitor = null;
       try {
-        abilityDelegator.waitAbilityMonitor(monitor, (err: any) => {
+        abilityDelegator.waitAbilityMonitor(monitor, (err: BusinessError) => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback , err = " + JSON.stringify(err));
           expect().assertFail();
           abilityDelegator.printSync(
@@ -862,35 +849,35 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300";
       console.log(LABLE + TAG + "start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback data = " + JSON.stringify(data));
-        expect(data.context.abilityInfo.name).assertEqual("Main2Ability");
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
 
-      let want = {
+      let want:Want = {
         bundleName: "com.example.delegatortest",
         abilityName: "Main2Ability",
         moduleName: "entry",
       };
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback data = " + JSON.stringify(data));
+          expect(data.context.abilityInfo.name).assertEqual("Main2Ability");
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor");
-      abilityDelegator.waitAbilityMonitor(monitor, (err: any, data: any) => { });
+      abilityDelegator.waitAbilityMonitor(monitor, () => {
+      });
       console.log(LABLE + TAG + "startAbility");
       await sleep(500);
       await abilityDelegator.startAbility(want);
@@ -904,12 +891,12 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0400";
       console.log(LABLE + TAG + "start");
       let monitor = null;
       try {
-        abilityDelegator.waitAbilityMonitor(monitor, 6000, (err: any) => {
+        abilityDelegator.waitAbilityMonitor(monitor, 6000, (err: BusinessError) => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback , err = " + JSON.stringify(err));
           expect().assertFail();
           abilityDelegator.printSync(
@@ -943,7 +930,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
@@ -952,25 +939,22 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500 error"
-        );
-        expect(true).assertTrue();
-        done();
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500 error"
+          );
+          expect(true).assertTrue();
+          done();
+        },
       };
       abilityDelegator.waitAbilityMonitor(
         monitor,
         6000,
-        (err: any, data: any) => {
+        (err: BusinessError) => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback, err = " + JSON.stringify(err));
-          console.log(LABLE + TAG + "waitAbilityMonitor callback, data = " + JSON.stringify(data));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500 : " + err.code
           );
@@ -995,23 +979,9 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600";
       console.log(LABLE + TAG + "start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
 
       const want = factoryWant(
         "com.example.delegatortest",
@@ -1020,13 +990,27 @@ export default function AbilityMonitorTest() {
       );
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0600 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor");
       abilityDelegator.waitAbilityMonitor(
         monitor,
         6000,
-        (err: any, data: any) => { }
+        () => {
+        }
       );
       console.log(LABLE + TAG + "startAbility");
       await sleep(500);
@@ -1041,23 +1025,9 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700";
       console.log(LABLE + TAG + "start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
 
       const want = factoryWant(
         "com.example.delegatortest",
@@ -1066,13 +1036,26 @@ export default function AbilityMonitorTest() {
       );
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0700 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor start");
       abilityDelegator.waitAbilityMonitor(
         monitor,
         0,
-        (err: any, data: any) => {
+        () => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback");
         }
       );
@@ -1089,23 +1072,9 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800";
       console.log(LABLE + TAG + "start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
 
       const want = factoryWant(
         "com.example.delegatortest",
@@ -1114,13 +1083,26 @@ export default function AbilityMonitorTest() {
       );
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0800 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor start");
       abilityDelegator.waitAbilityMonitor(
         monitor,
         4000,
-        (err: any, data: any) => {
+        () => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback");
         }
       );
@@ -1137,23 +1119,9 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900";
       console.log(LABLE + TAG + "start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900 pass"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
 
       const want = factoryWant(
         "com.example.delegatortest",
@@ -1162,13 +1130,26 @@ export default function AbilityMonitorTest() {
       );
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + "onAbilityCreateCallback, data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0900 pass"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + "waitAbilityMonitor start");
       abilityDelegator.waitAbilityMonitor(
         monitor,
         -1,
-        (err: any, data: any) => {
+        () => {
           console.log(LABLE + TAG + "waitAbilityMonitor callback");
         }
       );
@@ -1185,15 +1166,12 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000";
       console.log(LABLE + TAG + " start");
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + " onAbilityCreateCallback, data = " + JSON.stringify(data));
-        abilityDelegator.printSync(
-          "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 onAbilityCreateCallback"
-        );
-      }
+
+
+
       const want = factoryWant(
         "com.example.delegatortest",
         "Main2Ability",
@@ -1201,7 +1179,12 @@ export default function AbilityMonitorTest() {
       );
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + " onAbilityCreateCallback, data = " + JSON.stringify(data));
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 onAbilityCreateCallback"
+          );
+        },
       };
       console.log(LABLE + TAG + " waitAbilityMonitor start");
       abilityDelegator.waitAbilityMonitor(monitor);
@@ -1209,7 +1192,7 @@ export default function AbilityMonitorTest() {
       console.log(LABLE + TAG + " startAbility start");
       abilityDelegator.startAbility(want);
       setTimeout(() => {
-        abilityDelegator.getCurrentTopAbility((err: any, data: any) => {
+        abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
           try {
             abilityDelegator.printSync(
               "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 getCurrentTopAbility ability: " +
@@ -1239,7 +1222,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0100";
       console.log(LABLE + TAG + " start");
       let monitor = null;
@@ -1275,7 +1258,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1284,24 +1267,22 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + " onAbilityCreateCallback data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync(
-          "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback"
-        );
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + " onAbilityCreateCallback data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync(
+            "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback"
+          );
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + " waitAbilityMonitor start");
       abilityDelegator
@@ -1313,7 +1294,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 pass"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + " waitAbilityMonitor catch error = " + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 error:" + error
@@ -1334,7 +1315,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1343,21 +1324,21 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + " onAbilityCreateCallback callback , data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        data.context.terminateSelf().then((data) => {
-          abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
-          done();
-        }).catch((error) => {
-          abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
-          done();
-        });
-      }
+
 
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + " onAbilityCreateCallback callback , data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          data.context.terminateSelf().then((data) => {
+            abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
+            done();
+          }).catch((error:BusinessError) => {
+            abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0300 pass");
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + " addAbilityMonitor start");
       await abilityDelegator.addAbilityMonitor(monitor);
@@ -1371,7 +1352,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest actsWaitAbilityMonitorPromise0300 waitAbilityMonitor"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           console.log(LABLE + TAG + " waitAbilityMonitor catch error, error = " + JSON.stringify(error));
           abilityDelegator.printSync(
             "AbilityMonitorTest actsWaitAbilityMonitorPromise0300 error:" + error
@@ -1392,7 +1373,7 @@ export default function AbilityMonitorTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400", 0, async function (done) {
+    it("ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400", 0, async (done: Function) => {
       TAG = "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400";
       console.log(LABLE + TAG + " start");
       const want = factoryWant(
@@ -1401,22 +1382,20 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback(data) {
-        console.log(LABLE + TAG + " onAbilityCreateCallback, data = " + JSON.stringify(data));
-        expect(true).assertTrue();
-        abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0400 pass");
-        data.context.terminateSelf().then((data) => {
-          console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
-          done();
-        }).catch((error) => {
-          console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
-          done();
-        });
-      }
-
       monitor = {
         abilityName: "Main2Ability",
-        onAbilityCreate: onAbilityCreateCallback,
+        onAbilityCreate: (data) =>{
+          console.log(LABLE + TAG + " onAbilityCreateCallback, data = " + JSON.stringify(data));
+          expect(true).assertTrue();
+          abilityDelegator.printSync("AbilityMonitorTest ACTS_WAITABILITYMONTOR_PROMISE_0400 pass");
+          data.context.terminateSelf().then((data) => {
+            console.log("AbilityMonitorTest terminateSelf successful data: " + JSON.stringify(data));
+            done();
+          }).catch((error:BusinessError) => {
+            console.log("AbilityMonitorTest terminateSelf error: " + JSON.stringify(error));
+            done();
+          });
+        },
       };
       console.log(LABLE + TAG + " addAbilityMonitor start");
       await abilityDelegator.addAbilityMonitor(monitor);
@@ -1429,7 +1408,7 @@ export default function AbilityMonitorTest() {
             "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400 waitAbilityMonitor"
           );
         })
-        .catch((error) => {
+        .catch((error:BusinessError) => {
           abilityDelegator.printSync(
             "AbilityMonitorTest ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400 error:" + error
           );

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +19,31 @@ struct ShapeExample {
   build() {
     Column({ space: 5 }) {
       Shape() {
-        Rect().width(300).height(50)
-        Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
-        Path().width(300).height(10).commands('M0 0 L900 0').offset({ x: 0, y: 120 })
+        Rect()
+          .width(300)
+          .height(50)
+        Ellipse()
+          .width(300)
+          .height(50)
+          .offset({ x: 0, y: 60 })
+        Path()
+          .width(300)
+          .height(10)
+          .commands('M0 0 L900 0')
+          .offset({ x: 0, y: 120 })
       }
       .viewPort({ x: -2, y: -2, width: 304, height: 130 })
-      .fill(0x317Af7).stroke(Color.Black).strokeWidth(4)
-      .strokeDashArray([20]).strokeDashOffset(10).strokeLineCap(LineCapStyle.Butt)
-      .strokeLineJoin(LineJoinStyle.Round).antiAlias(true)
+      .fill(0x317Af7)
+      .stroke(Color.Black)
+      .strokeWidth(4)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+      .strokeLineCap(LineCapStyle.Butt)
+      .strokeLineJoin(LineJoinStyle.Round)
+      .antiAlias(true)
       .key('Butt')
-    }.width('100%').margin({ top: 15 })
+    }
+    .width('100%')
+    .margin({ top: 15 })
   }
 }

@@ -2919,5 +2919,48 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_inputMethod_IMF_InputMethodSettings_1000
+    * @tc.name   SUB_inputMethod_IMF_InputMethodSettings_1000
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_inputMethod_IMF_InputMethodSettings_1000', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        await sleep(10);
+        console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 publishCallback start");
+        if (err){
+          console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft start");
+            inputMethod.getController().on("deleteLeft",async (num) => {
+              try {
+                console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft success: " + num);
+                inputMethod.getController().off("deleteLeft");
+                await inputMethod.getController().detach();
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft fail: " + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft catch err: " + JSON.stringify(err));
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:450
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
   })
 }

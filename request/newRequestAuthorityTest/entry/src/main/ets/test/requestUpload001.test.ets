@@ -17,6 +17,7 @@ import hilog from '@ohos.hilog';
 import request from "@ohos.request";
 import fileio from '@ohos.fileio'
 import commonEvent from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestUploadOnetJSUnitTest() {
@@ -913,6 +914,46 @@ export default function requestUploadOnetJSUnitTest() {
     });
 
     /**
+     * @tc.number    SUB_REQUEST_Off_Upload_Completed_0200
+     * @tc.name    SUB_REQUEST_Off_Upload_Completed_0200
+     * @tc.desc      Starts a upload session.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_Off_Upload_Completed_0200', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_Off_Upload_Completed_0200 is starting-----------------------");
+      let flage = true;
+      let on_offCompletedCallback1 =async (pro1: request.agent.Progress) => {
+        flage = false;
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 pro1: " + JSON.stringify(pro1));
+      }
+
+      let on_offCompletedCallback2 =async (pro2: request.agent.Progress) => {
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 pro2: " + JSON.stringify(pro2));
+      }
+      try {
+        let task1: request.agent.Task = await request.agent.create(globalThis.abilityContext, config);
+        let task2: request.agent.Task = await request.agent.create(globalThis.abilityContext, config);
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 create task1 and task2 success");
+        task1.on('completed', on_offCompletedCallback1);
+        task2.on('completed', on_offCompletedCallback2);
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 task1.on and task2.on success");
+        task1.off('completed', on_offCompletedCallback1);
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 off completed success");
+        await task1.start();
+        await sleep(10)
+        expect(flage).assertTrue();
+        task2.off('completed', on_offCompletedCallback2);
+        done();
+      } catch (err) {
+        console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 create catch err: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_On_Upload_Completed_0030
      * @tc.name    SUB_Misc_REQUEST_On_Upload_Completed_0030
      * @tc.desc      Starts a upload session.
@@ -1611,6 +1652,73 @@ export default function requestUploadOnetJSUnitTest() {
     });
 
     /**
+     * @tc.number SUB_REQUEST_On_Upload_Failed_0300
+     * @tc.name SUB_REQUEST_On_Upload_Failed_0300
+     * @tc.desc download task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_On_Upload_Failed_0300', 0, async function (done) {
+      console.info('====>-----------------------SUB_REQUEST_On_Upload_Failed_0300 is starting-----------------------');
+      let attachments: Array<request.agent.FormItem> = [{
+        name: "uploadTest",
+        value: {
+          path: "./test.txt",
+          filename: "test.txt",
+          mimeType: "application/octet-stream"
+        }
+      }]
+      let config_: request.agent.Config = {
+        action: request.agent.Action.UPLOAD,
+        url: 'http://127.0.0.1',
+        title: 'createTest',
+        description: 'XTS download test!',
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        mode: request.agent.Mode.BACKGROUND,
+        method: "POST",
+        data: attachments,
+      };
+
+      let arr = new Array();
+      let arr1 = [0, 1];
+      try {
+        request.agent.create(globalThis.abilityContext, config_, async (err: BusinessError, task: request.agent.Task) => {
+          if (err) {
+            console.info("====>SUB_REQUEST_On_Upload_Failed_0300 create err: " + JSON.stringify(err));
+            expect().assertFail();
+          }
+          let pro1 = (task1: request.agent.Progress) => {
+            console.info("====>SUB_REQUEST_On_Upload_Failed_0300 pro1: " + JSON.stringify(task1));
+            arr.push(0);
+          }
+
+          let pro2 = (task2: request.agent.Progress) => {
+            try {
+              task.off('failed');
+              console.info("====>SUB_REQUEST_On_Upload_Failed_0300 pro2: " + JSON.stringify(task2));
+              arr.push(1);
+              console.info("====>SUB_REQUEST_On_Upload_Failed_0300 task2 failed on arr: " + JSON.stringify(arr));
+              expect(arr.join()).assertEqual(arr1.join());
+              done();
+            } catch (err) {
+              console.info("====>SUB_REQUEST_On_Upload_Failed_0300 catch err: " + JSON.stringify(err));
+              done();
+            }
+          }
+          task.on('failed', pro1);
+          task.on('failed', pro2);
+          await task.start();
+          console.info("====>SUB_REQUEST_On_Upload_Failed_0300 task.start");
+        });
+      } catch (err) {
+        console.info("====>SUB_REQUEST_On_Upload_Failed_0300 create catch err: " + JSON.stringify(err));
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_REQUEST_Off_Upload_Failed_0500
      * @tc.name SUB_REQUEST_Off_Upload_Failed_0500
      * @tc.desc Starts a upload session.
@@ -1686,7 +1794,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_Off_Upload_Failed_0600', 0, async function (done) {
-      console.info('====>-----------------------SUB_REQUEST_Upload_backgroundOnFailed_0500 is starting-----------------------');
+      console.info('====>-----------------------SUB_REQUEST_Off_Upload_Failed_0600 is starting-----------------------');
       let config_ = {
         action: request.agent.Action.UPLOAD,
         url: 'http://127.0.0.1',

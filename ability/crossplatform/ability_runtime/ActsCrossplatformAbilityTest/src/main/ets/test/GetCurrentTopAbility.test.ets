@@ -12,30 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
 
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 
 export default function GetCurrentTopAbilityTest() {
-  describe("GetCurrentTopAbilityTest", function () {
-    beforeAll(function () {
-      let want = {
+  describe("GetCurrentTopAbilityTest", () => {
+    beforeAll(() => {
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.delegatortest",
         moduleName: "entry",
-      };
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      abilityDelegator.startAbility(want);
+      });
     });
 
     /**
@@ -46,22 +39,21 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001", 0, async function (done) {
-      let abilityDelegator;
+    it("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001", 0, async (done: Function) => {
+      let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let want = {
-        abilityName: "Main4Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
       setTimeout(() => {
-        abilityDelegator.startAbility(want, () => {
+        abilityDelegator.startAbility({
+          abilityName: "Main4Ability",
+          bundleName: "com.example.delegatortest",
+          moduleName: "entry",
+        }, () => {
           setTimeout(() => {
-            abilityDelegator.getCurrentTopAbility((err: any, ability2: any) => {
+            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability2: UIAbility) => {
               if (ability2 != null) {
                 abilityDelegator.printSync(
                   "ACTS_GetCurrentTopAbility_CALLBACK_0001 getCurrentTopAbility2: " +
-                    ability2.context.abilityInfo.name
+                  ability2.context.abilityInfo.name
                 );
                 expect(ability2.context.abilityInfo.name).assertEqual(
                   "Main4Ability"
@@ -88,26 +80,25 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002", 0, async function (done) {
-      let abilityDelegator;
+    it("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002", 0, async (done: Function) => {
+      let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let want = {
-        abilityName: "Main3Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
       abilityDelegator.printSync(
         "ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002 getCurrentTopAbility start"
       );
-      abilityDelegator.startAbility(want);
+      abilityDelegator.startAbility({
+        abilityName: "Main3Ability",
+        bundleName: "com.example.delegatortest",
+        moduleName: "entry",
+      });
       setTimeout(() => {
         abilityDelegator
           .getCurrentTopAbility()
-          .then((ability: any) => {
+          .then((ability: UIAbility) => {
             if (ability != null) {
               abilityDelegator.printSync(
                 "ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002 getCurrentTopAbility1: " +
-                  ability.context.abilityInfo.name
+                ability.context.abilityInfo.name
               );
               expect(ability.context.abilityInfo.name).assertEqual(
                 "Main3Ability"
@@ -121,7 +112,7 @@ export default function GetCurrentTopAbilityTest() {
               done();
             }
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             abilityDelegator.printSync(
               "ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002 catch error: " + error
             );

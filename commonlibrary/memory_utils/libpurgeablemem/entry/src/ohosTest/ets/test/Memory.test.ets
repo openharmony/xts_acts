@@ -13,11 +13,15 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { afterEach, describe, expect, it } from '@ohos/hypium'
 import memory from 'libmemory.so'
+import Utils from './Utils'
 
 export default function memoryTest() {
   describe('MemoryTest', () => {
+    afterEach(async () => {
+      await Utils.sleep(1000)
+    })
 
     /**
      * @tc.number     : SUB_COMMONLIBRARY_MEMORY_UTILS_PURGEABLE_MEMORY_0100

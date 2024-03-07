@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,12 +18,11 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct CheckboxExample {
   @State select: boolean = false
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("Checkbox page stateChangCallBack");
     if (eventData != null) {
       console.info("Checkbox page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.select != null) {
+      if (eventData.data.select != null) {
         this.select = eventData.data.select;
       }
     }
@@ -32,7 +30,7 @@ struct CheckboxExample {
 
   onPageShow() {
     console.info('Checkbox page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 76,
       priority: events_emitter.EventPriority.LOW
     }
@@ -41,20 +39,20 @@ struct CheckboxExample {
 
   build() {
     Row() {
-      Checkbox({name: 'checkbox1',  group: 'checkboxGroup'})
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
         .select(true)
         .key('Checkbox1')
 
         .selectedColor(0xed6f21)
         .onChange((value: boolean) => {
-          console.info('Checkbox1 change is'+ value)
+          console.info('Checkbox1 change is' + value)
         })
-      Checkbox({name: 'checkbox2',  group: 'checkboxGroup'})
+      Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
         .select(false)
         .key('Checkbox2')
         .selectedColor(0x39a2db)
         .onChange((value: boolean) => {
-          console.info('Checkbox2 change is'+ value)
+          console.info('Checkbox2 change is' + value)
         })
     }
   }

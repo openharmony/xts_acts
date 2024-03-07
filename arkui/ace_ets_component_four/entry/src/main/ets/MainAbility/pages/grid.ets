@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,7 @@
 @Entry
 @Component
 struct GridExample {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
 
   build() {
     Column({ space: 5 }) {
@@ -31,10 +30,9 @@ struct GridExample {
                 .width('100%')
                 .height('100%')
                 .textAlign(TextAlign.Center)
-                .selectable(true)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -60,8 +58,8 @@ struct GridExample {
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -83,8 +81,8 @@ struct GridExample {
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -95,7 +93,10 @@ struct GridExample {
       .height(300)
       .layoutDirection(GridDirection.Column)
 
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('scroll')
+        .fontColor(0xCCCCCC)
+        .fontSize(9)
+        .width('90%')
       Grid() {
         ForEach(this.Number, (day: string) => {
           ForEach(this.Number, (day: string) => {
@@ -107,10 +108,9 @@ struct GridExample {
                 .height(80)
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
-      .layoutDirection(Column)
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)
       .rowsGap(10)
@@ -120,6 +120,7 @@ struct GridExample {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height(300)
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
+    .margin({ top: 5 })
   }
 }

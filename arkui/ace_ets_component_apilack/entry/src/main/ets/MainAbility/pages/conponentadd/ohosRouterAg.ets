@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +20,7 @@ import newrouter from '@ohos.router';
 @Component
 struct OhosRouterA {
   build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('A Page')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -29,7 +28,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -42,7 +41,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -55,7 +54,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -68,7 +67,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -81,7 +80,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -94,7 +93,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -108,7 +107,7 @@ struct OhosRouterA {
         .key('pushurlButton1')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           newrouter.pushurl({
             uri: 'pages/ohosRouterB',
@@ -122,7 +121,7 @@ struct OhosRouterA {
         .key('pushurlButton1A')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           newrouter.pushurl({
             uri: 'pages/ohosRouterB',
@@ -130,13 +129,13 @@ struct OhosRouterA {
               data: 'B Page'
             }
           });
-        },newrouter.RouterMode.Standard);
+        }, newrouter.RouterMode.Standard);
 
       Button('replaceurl1')
         .key('replaceurl1A')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           newrouter.replaceUrl({
             uri: 'pages/ohosRouterB',
@@ -150,7 +149,7 @@ struct OhosRouterA {
         .key('replaceurl1')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
 
           newrouter.replaceUrl({
@@ -159,7 +158,7 @@ struct OhosRouterA {
               data: 'B Page'
             }
           });
-        },newrouter.RouterMode.Standard);
+        }, newrouter.RouterMode.Standard);
     }.width('100%').height('100%')
   }
 }

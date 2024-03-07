@@ -15,13 +15,13 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import font from '@ohos.font'
 
 export default function common_ts_ets_apiStaticClearJsunit() {
-  describe('common_ts_ets_apiStaticClearTest', function () {
-    beforeAll(async function (done) {
+  describe('common_ts_ets_apiStaticClearTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/common_ts_ets_api',
@@ -39,10 +39,9 @@ export default function common_ts_ets_apiStaticClearJsunit() {
       } catch (err) {
         console.error("push common_ts_ets_api page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("common_ts_ets_apiStaticClear after each called");
     });
@@ -52,18 +51,17 @@ export default function common_ts_ets_apiStaticClearJsunit() {
      * @tc.name         testcommon_ts_ets_apiPersistProp0001
      * @tc.desic         acecommon_ts_ets_apiPersistPropEtsTest0001
      */
-    it('testcommon_ts_ets_apiPersistProp0001', 0, async function (done) {
+    it('testcommon_ts_ets_apiPersistProp0001', 0, async () => {
       console.info('common_ts_ets_apiPersistProp testcommon_ts_ets_apiPersistProp0001 START');
       await Utils.sleep(2000);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60230,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData) => {
           console.info("common_ts_ets_apiPersistProp0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Score).assertEqual("Score");
-          done()
         }
         console.info("PersistProp0001 click result is: " + JSON.stringify(sendEventByKey('PersistPropText', 10, "")));
         events_emitter.on(innerEvent, callback);
@@ -77,18 +75,17 @@ export default function common_ts_ets_apiStaticClearJsunit() {
      * @tc.name         testcommon_ts_ets_apiEnvProp0001
      * @tc.desic         acecommon_ts_ets_apiEnvPropEtsTest0001
      */
-    it('testcommon_ts_ets_apiEnvProp0001', 0, async function (done) {
+    it('testcommon_ts_ets_apiEnvProp0001', 0, async () => {
       console.info('common_ts_ets_apiEnvProp testcommon_ts_ets_apiEnvProp0001 START');
       await Utils.sleep(2000);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60231,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData) => {
           console.info("common_ts_ets_apiEnvProp0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(false);
-          done()
         }
         console.info("EnvProp0001 click result is: " + JSON.stringify(sendEventByKey('EnvPropText', 10, "")));
         events_emitter.on(innerEvent, callback);
@@ -102,20 +99,20 @@ export default function common_ts_ets_apiStaticClearJsunit() {
     * @tc.name         test_font_registerFont_0001
     * @tc.desc        Register a customized font in the FontManager
     */
-    it('test_font_registerFont_0001', 0, async function (done) {
+    it('test_font_registerFont_0001', 0, async () => {
       console.info('test_font_registerFont_0001 Register a customized font in the FontManagerSTART');
       await Utils.sleep(2000);
-      let fontOptions = {
-          familyName: "Italy",
-          familySrc: "resource/base/Italy"
+      let fontOptions: font.FontOptions = {
+        familyName: "Italy",
+        familySrc: "resource/base/Italy"
       }
       try {
-           let result = font.registerFont(fontOptions);
-           done();
+        let result = font.registerFont(fontOptions);
+
       } catch (err) {
-           console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
-           expect().assertFail();
-           done();
+        console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
+        expect().assertFail();
+
       }
     });
 

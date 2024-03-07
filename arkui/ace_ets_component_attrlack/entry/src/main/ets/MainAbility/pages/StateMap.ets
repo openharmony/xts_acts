@@ -26,32 +26,32 @@ struct StateMapSample {
           Divider()
         })
         Button('init map').id("stateMap_init")
-          .onClick(() =>{
-          this.message = new Map([[0, "a"], [1, "b"], [3, "c"]])
-        }).margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, "a"], [1, "b"], [3, "c"]])
+          }).margin(10)
 
         Button('set new one').id("stateMap_set")
-          .onClick(() =>{
-          this.message.set(4, "d")
-        }).margin(10)
+          .onClick(() => {
+            this.message.set(4, "d")
+          }).margin(10)
 
         Button('clear').id("stateMap_clear")
-          .onClick(() =>{
+          .onClick(() => {
             this.message.clear()
-            if (Array.from(this.message.entries())){
+            if (Array.from(this.message.entries())) {
               this.message.set(0, "K")
             }
-        }).margin(10)
+          }).margin(10)
 
         Button('replace the first one').id("stateMap_replace")
-          .onClick(() =>{
-          this.message.set(0, "aa")
-        }).margin(10)
+          .onClick(() => {
+            this.message.set(0, "aa")
+          }).margin(10)
 
         Button('delete the first one').id("stateMap_delete")
-          .onClick(() =>{
-          this.message.delete(0)
-        }).margin(10)
+          .onClick(() => {
+            this.message.delete(0)
+          }).margin(10)
       }
       .width('100%')
     }

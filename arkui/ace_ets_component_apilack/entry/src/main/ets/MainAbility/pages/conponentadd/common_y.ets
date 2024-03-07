@@ -15,37 +15,34 @@
 
 import Log from '../common/Log.ets';
 import inputEventClient from '@ohos.multimodalInput.inputEventClient';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct CommonBackgroundBlurStyle {
   @State value: string = ''
-  isEnv:boolean =  Environment.EnvProp('accessibilityEnabled', 'default')
-
-  configuration : Configuration = {
+  isEnv: boolean = Environment.EnvProp('accessibilityEnabled', 'default')
+  configuration: Configuration = {
     colorMode: "xxx",
     fontScale: 20
   }
-  layoutInfo : LayoutInfo = {
+  layoutInfo: LayoutInfo = {
 
-        position: {
-          x:20,
-          y:30
-        },
-       constraint: {}
+    position: {
+      x: 20,
+      y: 30
+    },
+    constraint: {}
   }
+  constraint: ConstraintSizeOptions = {}
 
-  constraint:ConstraintSizeOptions = {
-
-
-  }
-
-  onMeasure(children,constraint) {
-     console.info('onMeasure');
+  onMeasure(children, constraint) {
+    console.info('onMeasure');
     children[0].measure(constraint)
 
   }
+
   onLayout(childen, constraint) {
     console.info('onLayout');
     childen[0].layout(this.layoutInfo)
@@ -59,56 +56,54 @@ struct CommonBackgroundBlurStyle {
     Log.showInfo(TAG, `aboutToDisAppear CommonBackgroundBlurStyle end`)
   }
 
-  onPageHide(): void  {
+  onPageHide(): void {
     Log.showInfo(TAG, `onPageHide CommonBackgroundBlurStyle start`)
   }
 
-  onBackPress(): void  {
+  onBackPress(): void {
     Log.showInfo(TAG, `onBackPress CommonBackgroundBlurStyle start`)
   }
 
-  @Styles pressedStyles() {
+  @Styles
+  pressedStyles() {
     .backgroundColor('red')
     .opacity(1)
   }
 
-
-
-
-buttonTab(){
-    let keyEventDown = {
+  buttonTab() {
+    let keyEventDown: inputEventClient.KeyEvent = {
       isPressed: true,
       keyCode: 2049,
       keyDownDuration: 0,
       isIntercepted: false
     }
-    let res1 = inputEventClient.injectEvent({KeyEvent: keyEventDown});
+    let res1 = inputEventClient.injectEvent({ KeyEvent: keyEventDown });
 
-    let keyEventUp = {
+    let keyEventUp: inputEventClient.KeyEvent = {
       isPressed: false,
       keyCode: 2049,
       keyDownDuration: 0,
       isIntercepted: false
     }
-    let res2 = inputEventClient.injectEvent({KeyEvent: keyEventUp});
+    let res2 = inputEventClient.injectEvent({ KeyEvent: keyEventUp });
   }
 
-  buttonOnKey(){
-    let keyEventDown = {
+  buttonOnKey() {
+    let keyEventDown: inputEventClient.KeyEvent = {
       isPressed: true,
       keyCode: 2054,
       keyDownDuration: 0,
       isIntercepted: false
     }
-    let res3 = inputEventClient.injectEvent({KeyEvent: keyEventDown});
+    let res3 = inputEventClient.injectEvent({ KeyEvent: keyEventDown });
 
-    let keyEventUp = {
+    let keyEventUp: inputEventClient.KeyEvent = {
       isPressed: false,
       keyCode: 2054,
       keyDownDuration: 0,
       isIntercepted: false
     }
-    let res4 = inputEventClient.injectEvent({KeyEvent: keyEventUp});
+    let res4 = inputEventClient.injectEvent({ KeyEvent: keyEventUp });
   }
 
   build() {
@@ -200,7 +195,7 @@ buttonTab(){
         .key("onKeyEventText")
 
       Button('common-OnKeyEvent')
-        .onClick(()=>{
+        .onClick(() => {
           this.buttonTab()
           this.buttonOnKey()
         })

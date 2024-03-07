@@ -13,39 +13,39 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-export default function abilityTest() {
-    describe('ACTS_AACommand_01_3', function () {
+import { describe, it, expect } from '@ohos/hypium';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-        /**
-         * @tc.number: ACTS_AACommand_test_0300_9
-         * @tc.name: -b, -s unittest, -p, -s class, -s level, -s size, -s testType, -s timeout,
-         *           -s <any-key> <any-value>, -w, etc. of the test command arguments are
-         *           valid ( -s class specifies only test suites).
-         * @tc.desc: Verify that the test framework can start normally through the test command.
-         */
-        it('ACTS_AACommand_test_0300_9', 0, async function (done) {
-            console.log("ACTS_AACommand_test_0300_9 ---------3-------- start")
-            var msg = 'ACTS_AACommand_0200/0300/0400/0500/0600'
-            globalThis.abilityDelegator.print(msg,()=>{
-                console.log("ACTS_AACommand_test_0300_9 print  test  end ========> callback ")
-            })
-            var AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments()
-            console.debug("====>getArguments is====>" + JSON.stringify(AbilityDelegatorArgs));
-            expect(AbilityDelegatorArgs.bundleName).assertEqual('com.example.actsaacommandtestatest')
-            expect(AbilityDelegatorArgs.parameters['-b']).assertEqual('com.example.actsaacommandtestatest')
-            expect(AbilityDelegatorArgs.parameters['-p']).assertEqual('com.example.actsaacommandtestatest')
-            expect(AbilityDelegatorArgs.parameters['-s unittest']).assertEqual('OpenHarmonyTestRunner')
-            expect(AbilityDelegatorArgs.parameters['-w']).assertEqual("40")
-            expect(AbilityDelegatorArgs.parameters['-s class']).assertEqual("ACTS_AACommand_01_3")
-            expect(AbilityDelegatorArgs.parameters['-s level']).assertEqual("1")
-            expect(AbilityDelegatorArgs.parameters['-s size']).assertEqual("0")
-            expect(AbilityDelegatorArgs.parameters['-s testType']).assertEqual("aaa")
-            expect(AbilityDelegatorArgs.parameters['-s timeout']).assertEqual("5")
-            expect(AbilityDelegatorArgs.parameters['-s 1']).assertEqual("3")
-            expect(AbilityDelegatorArgs.testRunnerClassName).assertEqual('OpenHarmonyTestRunner')
-            done();
-        })
+export default function abilityTest() {
+  describe('ACTS_AACommand_01_3', () => {
+    /**
+     * @tc.number: ACTS_AACommand_test_0300_9
+     * @tc.name: -b, -s unittest, -p, -s class, -s level, -s size, -s testType, -s timeout,
+     *           -s <any-key> <any-value>, -w, etc. of the test command arguments are
+     *           valid ( -s class specifies only test suites).
+     * @tc.desc: Verify that the test framework can start normally through the test command.
+     */
+    it('ACTS_AACommand_test_0300_9', 0, async (done: Function) => {
+      console.log("ACTS_AACommand_test_0300_9 ---------3-------- start");
+      let msg = 'ACTS_AACommand_0200/0300/0400/0500/0600';
+      AppStorage.get<AbilityDelegatorRegistry.AbilityDelegator>("abilityDelegator").print(msg, () => {
+        console.log("ACTS_AACommand_test_0300_9 print  test  end ========> callback ");
+      })
+      let AbilityDelegatorArgs: AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments();
+      console.debug("====>getArguments is====>" + JSON.stringify(AbilityDelegatorArgs));
+      expect(AbilityDelegatorArgs.bundleName).assertEqual('com.example.actsaacommandtestatest');
+      expect(AbilityDelegatorArgs.parameters['-b']).assertEqual('com.example.actsaacommandtestatest');
+      expect(AbilityDelegatorArgs.parameters['-p']).assertEqual('com.example.actsaacommandtestatest');
+      expect(AbilityDelegatorArgs.parameters['-s unittest']).assertEqual('OpenHarmonyTestRunner');
+      expect(AbilityDelegatorArgs.parameters['-w']).assertEqual("40");
+      expect(AbilityDelegatorArgs.parameters['-s class']).assertEqual("ACTS_AACommand_01_3");
+      expect(AbilityDelegatorArgs.parameters['-s level']).assertEqual("1");
+      expect(AbilityDelegatorArgs.parameters['-s size']).assertEqual("0");
+      expect(AbilityDelegatorArgs.parameters['-s testType']).assertEqual("aaa");
+      expect(AbilityDelegatorArgs.parameters['-s timeout']).assertEqual("5");
+      expect(AbilityDelegatorArgs.parameters['-s 1']).assertEqual("3");
+      expect(AbilityDelegatorArgs.testRunnerClassName).assertEqual('OpenHarmonyTestRunner');
+      done();
     })
-};
+  })
+}

@@ -31,8 +31,8 @@ struct prop {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Scroll(){
-        Column(){
+      Scroll() {
+        Column() {
           Text(`${this.content}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
@@ -44,12 +44,14 @@ struct prop {
             }.onClick(() => {
               this.countDownStartValue += 1
             })
+
             Button() {
               Text('-1  - Nuggets in New Game')
             }.onClick(() => {
               this.countDownStartValue -= 1
             })
-            CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2})
+
+            CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2 })
           }
         }
       }
@@ -70,4 +72,5 @@ struct CountDownComponent {
       Text(`${this.count}`)
         .key("Text002")
     }
-  }}
+  }
+}

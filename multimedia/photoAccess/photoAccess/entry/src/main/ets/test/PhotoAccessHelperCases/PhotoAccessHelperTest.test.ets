@@ -15,7 +15,8 @@
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes } from './common.ets'
+import { checkSet,checkUri,checkReadAndWrite,columns,photoExtensions,videoExtensions,sizes,getPhotoAssetAttrs,
+    fetchOptions_allocate_file} from './common.ets'
 import { BusinessError } from '@ohos.base';
 import { getPermission, photoKeys } from '../../../../../../../common'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -57,6 +58,7 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error(`getAssetsForKeysCallback ${tag} fetchResult fail ${keyNumCallback}` + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -80,6 +82,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getAssets failed, message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -100,6 +103,7 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error('fetchResult fail' + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -120,6 +124,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getAssets failed, message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -258,11 +263,13 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('photoAsset failed with err:' + err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 } else {
                     console.error('fetchResult fail' + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -275,18 +282,6 @@ export default function PhotoAccessHelperTest() {
             }
             checkSet(callBackSet, uriSet, phAccessHelper, forChildUris, photoAsset, onCallback1)
             releaseHelperPromise(phAccessHelper,done)
-        }
-
-        function getPhotoAssetAttrs(photoAsset){
-            let photoAssetUri: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.URI.toString());
-            expect(photoAssetUri).not().assertUndefined()
-            console.info('photoAsset.uri : ' + photoAssetUri);
-            let photoAssetType: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.PHOTO_TYPE.toString());
-            expect(photoAssetType).not().assertUndefined()
-            console.info('photoAsset.photoType : ' + photoAssetType);
-            let photoAssetName: photoAccessHelper.MemberType = photoAsset.get(photoAccessHelper.PhotoKeys.DISPLAY_NAME.toString());
-            expect(photoAssetName).not().assertUndefined()
-            console.info('photoAsset.displayName : ' + photoAssetName);
         }
 
         function getPhotoAssetAttrsCallback(phAccessHelper,fetchOptions, done){
@@ -303,11 +298,13 @@ export default function PhotoAccessHelperTest() {
                     }catch(err){
                         console.error('getFirstObject fail, err is: ' + err.message);
                         expect(false).assertTrue();
+                        done();
                     }
                     releaseHelperCallback(phAccessHelper,done)
                 } else {
                     console.error('fetchResult fail' + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -323,6 +320,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getPhotoAssetAttrsPromise failed. message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -346,6 +344,7 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error(`getPhotoAssetForKeysCallback fetchResult fail ${keyNum1}` + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -372,6 +371,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getAssets failed, message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -388,6 +388,7 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error(`setPhotoAssetTitleCallback fetchResult fail is: ` + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -407,6 +408,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('setPhotoAssetTitlePromise failed, message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -435,11 +437,13 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('commitModify failed, message =', err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 } else {
                     console.error(`commitModifyCallback fetchResult fail is: ` + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -469,6 +473,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('release failed. message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -485,11 +490,13 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('File err' + err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 } else {
                     console.error(`getReadOnlyFdCallback fetchResult fail is: ` + err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
         }
@@ -507,10 +514,12 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error(' open File fail');
                     expect(false).assertTrue();
+                    done();
                 }
             } catch (err) {
                 console.error('open Demo err' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -525,6 +534,7 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error('getThumbnail fail', err);
                     expect(false).assertTrue();
+                    done();
                 }
             });
             releaseHelperCallback(phAccessHelper,done)
@@ -542,6 +552,7 @@ export default function PhotoAccessHelperTest() {
                         if(i>0 && i<4){
                             console.info('getThumbnail error');
                             expect(false).assertTrue();
+                            done();
                         }
                         if(i==sizes.length-1){
                             releaseHelperCallback(phAccessHelper,done)
@@ -551,6 +562,7 @@ export default function PhotoAccessHelperTest() {
                         if(i>3 || i<1){
                             console.error('getThumbnail error');
                             expect(false).assertTrue();
+                            done();
                         }
                     }
                 });
@@ -567,6 +579,7 @@ export default function PhotoAccessHelperTest() {
                     if(i>0 && i<4){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
+                        done();
                     }
                     if(i==sizes.length-1){
                         releaseHelperPromise(phAccessHelper,done)
@@ -576,6 +589,7 @@ export default function PhotoAccessHelperTest() {
                     if(i>3 || i<1){
                         console.info('getThumbnail error');
                         expect(false).assertTrue();
+                        done();
                     }
                 });
             }
@@ -597,6 +611,7 @@ export default function PhotoAccessHelperTest() {
             } else {
                 console.info('photoAsset  not isAfterLast ');
                 expect(false).assertTrue();
+                done();
             }
             releaseHelperPromise(phAccessHelper,done)
         }
@@ -608,6 +623,7 @@ export default function PhotoAccessHelperTest() {
                 try{
                     fetchResult.getCount();
                     expect(false).assertTrue();
+                    done();
                 } catch (err) {
                     console.info('fetchResult.getCount() fail. message = ' + err);
                     console.info('close succeed.');
@@ -616,6 +632,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('closeFetchResult fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -629,11 +646,13 @@ export default function PhotoAccessHelperTest() {
                     } else {
                         console.error('photoAsset failed with err:' + err);
                         expect(false).assertTrue();
+                        done();
                     }
                 });
             } catch (err) {
                 console.error('getFirstObjectCallback fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -647,10 +666,12 @@ export default function PhotoAccessHelperTest() {
                 } else {
                     console.error('getFirstObjectPromise failed');
                     expect(false).assertTrue();
+                    done();
                 }
             } catch (err) {
                 console.error('getFirstObjectPromise fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -666,12 +687,14 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('photoAsset failed with err: ' + err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 }
             } catch (err) {
                 console.error('getNextObjectCallback fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -688,6 +711,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getNextObjectPromise fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -704,12 +728,14 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('photoAsset failed with err: ' + err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 }
             } catch (err) {
                 console.error('getLastObjectCallback fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -725,6 +751,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('getLastObjectPromise fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -747,12 +774,14 @@ export default function PhotoAccessHelperTest() {
                         } else {
                             console.error('photoAsset failed with err: ' + err);
                             expect(false).assertTrue();
+                            done();
                         }
                     });
                 }
             } catch (err) {
                 console.error('getObjectByPositionCallback fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -776,6 +805,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('close fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -790,11 +820,13 @@ export default function PhotoAccessHelperTest() {
                     } else {
                         console.error('photoAssetList failed with err:' + err);
                         expect(false).assertTrue();
+                        done();
                     }
                 });
             } catch (err) {
                 console.error('close fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -808,6 +840,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('close fail. message = ' + err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -817,6 +850,7 @@ export default function PhotoAccessHelperTest() {
                 if (err != undefined) {
                     console.error('release failed. message = ', err);
                     expect(false).assertTrue();
+                    done();
                 } else {
                     console.info('release ok.');
                     done();
@@ -832,6 +866,7 @@ export default function PhotoAccessHelperTest() {
             } catch (err) {
                 console.error('release failed. message = ', err);
                 expect(false).assertTrue();
+                done();
             }
         }
 
@@ -858,7 +893,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100
-           * @tc.name      : 001.getPhotoAccessHelper
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0100
            * @tc.desc      : getPhotoAccessHelper with correct context
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -878,7 +913,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200
-           * @tc.name      : 002.getAssets
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0200
            * @tc.desc      : getAssets with callback fetchOptions.fetchColumns = []
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -898,7 +933,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210
-           * @tc.name      : 00201.getAssets
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0210
            * @tc.desc      : getAssets with promise fetchOptions.fetchColumns = []
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -918,7 +953,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300
-           * @tc.name      : 003.getAssets
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0300
            * @tc.desc      : getAssets with callback fetchOptions.fetchColumns = columns, all photoKeys
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -931,7 +966,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400
-           * @tc.name      : 004.getAssets
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0400
            * @tc.desc      : getAssets with promise fetchOptions.fetchColumns = columns, all photoKeys
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -944,7 +979,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500
-           * @tc.name      : 005.getAssets
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0500
            * @tc.desc      : getAssets with callback fetchOptions.fetchColumns = [uri,displayName,photoType]
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -958,7 +993,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
        * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0510
-       * @tc.name      : 00501.getAssets
+       * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0510
        * @tc.desc      : getAssets with promise fetchOptions.fetchColumns = [uri,displayName,photoType]
        * @tc.size      : MediumTest
        * @tc.type      : Function test
@@ -971,7 +1006,7 @@ export default function PhotoAccessHelperTest() {
         })
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600
-           * @tc.name      : 006.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0600
            * @tc.desc      : createAsset callback with imageType and photoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -984,7 +1019,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700
-           * @tc.name      : 007.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0700
            * @tc.desc      : createAsset callback with videoType and videoExtensions
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -997,7 +1032,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800
-           * @tc.name      : 008.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0800
            * @tc.desc      : createAsset callback with imageType and photoExtensions, without options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1010,7 +1045,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900
-           * @tc.name      : 009.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_0900
            * @tc.desc      : createAsset callback with videoType and videoExtensions, without options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1023,7 +1058,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000
-           * @tc.name      : 010.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1000
            * @tc.desc      : createAsset promise with imageType and photoExtensions, without options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1036,7 +1071,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100
-           * @tc.name      : 011.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1100
            * @tc.desc      : createAsset promise with videoType and videoExtensions, without options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1049,7 +1084,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200
-           * @tc.name      : 012.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1200
            * @tc.desc      : createAsset promise with imageType and photoExtensions, with options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1065,7 +1100,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300
-           * @tc.name      : 013.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1300
            * @tc.desc      : createAsset promise with videoType and videoExtensions, with options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1081,7 +1116,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400
-           * @tc.name      : 014.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1400
            * @tc.desc      : createAsset promise with imageType and photoExtensions, with disallowed options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1097,7 +1132,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500
-           * @tc.name      : 015.createAsset
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1500
            * @tc.desc      : createAsset promise with videoType and videoExtensions, with disallowed options
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1113,7 +1148,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600
-           * @tc.name      : 016.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1600
            * @tc.desc      : registerChange promise, register photoAsset.uri,unRegister prescriptive callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1127,7 +1162,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700
-           * @tc.name      : 017.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1700
            * @tc.desc      : registerChange promise, register photoAsset.uri,unRegister prescriptive callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1141,7 +1176,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800
-           * @tc.name      : 018.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1800
            * @tc.desc      : registerChange promise, register DEFAULT_PHOTO_URI,unRegister prescriptive callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1155,7 +1190,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900
-           * @tc.name      : 019.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_1900
            * @tc.desc      : registerChange promise, register DEFAULT_PHOTO_URI,unRegister prescriptive callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1169,7 +1204,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000
-           * @tc.name      : 020.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2000
            * @tc.desc      : registerChange promise, register photoAsset.uri,unRegister all callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1183,7 +1218,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100
-           * @tc.name      : 021.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2100
            * @tc.desc      : registerChange promise, register photoAsset.uri,unRegister all callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1197,7 +1232,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200
-           * @tc.name      : 022.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2200
            * @tc.desc      : registerChange promise, register DEFAULT_PHOTO_URI,unRegister all callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1211,7 +1246,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300
-           * @tc.name      : 023.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2300
            * @tc.desc      : registerChange promise, register DEFAULT_PHOTO_URI,unRegister all callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1225,7 +1260,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400
-           * @tc.name      : 024.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2400
            * @tc.desc      : registerChange callback, register photoAsset.uri,unRegister prescriptive callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1239,7 +1274,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500
-           * @tc.name      : 025.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2500
            * @tc.desc      : registerChange callback, register photoAsset.uri,unRegister prescriptive callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1253,7 +1288,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600
-           * @tc.name      : 026.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2600
            * @tc.desc      : registerChange callback, register DEFAULT_PHOTO_URI,unRegister prescriptive callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1267,7 +1302,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700
-           * @tc.name      : 027.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2700
            * @tc.desc      : registerChange callback, register DEFAULT_PHOTO_URI,unRegister prescriptive callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1281,7 +1316,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800
-           * @tc.name      : 028.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2800
            * @tc.desc      : registerChange callback, register photoAsset.uri,unRegister all callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1295,7 +1330,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900
-           * @tc.name      : 029.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_2900
            * @tc.desc      : registerChange callback, register photoAsset.uri,unRegister all callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1309,7 +1344,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000
-           * @tc.name      : 030.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3000
            * @tc.desc      : registerChange callback, register DEFAULT_PHOTO_URI,unRegister all callback,
                              forChildUris=true
            * @tc.size      : MediumTest
@@ -1323,7 +1358,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100
-           * @tc.name      : 031.registerChangeAndUnRegister
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3100
            * @tc.desc      : registerChange callback, register DEFAULT_PHOTO_URI,unRegister all callback,
                              forChildUris=false
            * @tc.size      : MediumTest
@@ -1337,7 +1372,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400
-           * @tc.name      : 034.photoAsset.get
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3400
            * @tc.desc      : photoAsset.get callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1350,7 +1385,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500
-           * @tc.name      : 035.photoAsset.get
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3500
            * @tc.desc      : photoAsset.get promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1363,7 +1398,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600
-           * @tc.name      : 036.photoAsset.get
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3600
            * @tc.desc      : photoAsset.get callback, for all photoKeys
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1376,7 +1411,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700
-           * @tc.name      : 037.photoAsset.get
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3700
            * @tc.desc      : photoAsset.get promise, for all photoKeys
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1389,7 +1424,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800
-           * @tc.name      : 038.photoAsset.set
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3800
            * @tc.desc      : photoAsset.set(title) callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1402,7 +1437,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900
-           * @tc.name      : 039.photoAsset.set
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_3900
            * @tc.desc      : photoAsset.set(title) promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1415,7 +1450,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000
-           * @tc.name      : 040.commitModify
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4000
            * @tc.desc      : photoAsset.commitModify callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1428,7 +1463,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100
-           * @tc.name      : 041.commitModify
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4100
            * @tc.desc      : photoAsset.commitModify promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1441,7 +1476,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200
-           * @tc.name      : 042.getReadOnlyFd
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4200
            * @tc.desc      : getReadOnlyFd callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1454,7 +1489,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300
-           * @tc.name      : 035.getReadOnlyFd
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4300
            * @tc.desc      : getReadOnlyFd promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1467,7 +1502,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400
-           * @tc.name      : 044.getThumbnail
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400
            * @tc.desc      : getThumbnail callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1475,12 +1510,12 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4400', 1, function (done) {
             let photoHelper = getPhotoHelper(context)
-            getThumbnailCallback(photoHelper, fetchOptions, done)
+            getThumbnailCallback(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500
-           * @tc.name      : 045.getThumbnail
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500
            * @tc.desc      : getThumbnail callback with sizes
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1488,12 +1523,12 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4500', 4, function (done) {
             let photoHelper = getPhotoHelper(context)
-            getThumbnailCallbackWithSize(photoHelper, fetchOptions, done)
+            getThumbnailCallbackWithSize(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600
-           * @tc.name      : 046.getThumbnail
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600
            * @tc.desc      : getThumbnail promise with sizes
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1501,12 +1536,13 @@ export default function PhotoAccessHelperTest() {
            */
         it('SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4600', 4, function (done) {
             let photoHelper = getPhotoHelper(context)
-            getThumbnailPromiseWithSize(photoHelper, fetchOptions, done)
+            fetchOptions.fetchColumns = columns
+            getThumbnailPromiseWithSize(photoHelper, fetchOptions_allocate_file, done)
         })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4700
-           * @tc.name      : 047.getCount
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4700
            * @tc.desc      : fetchResult.getCount
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1519,7 +1555,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4800
-           * @tc.name      : 048.isAfterLast
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4800
            * @tc.desc      : fetchResult.isAfterLast
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1532,7 +1568,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4900
-           * @tc.name      : 049.close
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_4900
            * @tc.desc      : fetchResult.close
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1545,7 +1581,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000
-           * @tc.name      : 050.getFirstObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5000
            * @tc.desc      : getFirstObject callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1558,7 +1594,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010
-           * @tc.name      : 050.getFirstObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5010
            * @tc.desc      : getFirstObject promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1571,7 +1607,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100
-           * @tc.name      : 051.getNextObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5100
            * @tc.desc      : getNextObject callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1584,7 +1620,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5200
-           * @tc.name      : 052.getNextObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5200
            * @tc.desc      : getNextObject promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1597,7 +1633,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5300
-           * @tc.name      : 053.getLastObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5300
            * @tc.desc      : getLastObject callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1610,7 +1646,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5400
-           * @tc.name      : 054.getLastObject
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5400
            * @tc.desc      : getLastObject promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1623,7 +1659,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5500
-           * @tc.name      : 055.getObjectByPosition
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5500
            * @tc.desc      : getObjectByPosition callback -1 0 1
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1636,7 +1672,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5600
-           * @tc.name      : 056.getObjectByPosition
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5600
            * @tc.desc      : getObjectByPosition promise -1 0 1
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1649,7 +1685,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5700
-           * @tc.name      : 057.getAllObjects
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5700
            * @tc.desc      : getAllObjects callback
            * @tc.size      : MediumTest
            * @tc.type      : Function test
@@ -1662,7 +1698,7 @@ export default function PhotoAccessHelperTest() {
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5800
-           * @tc.name      : 058.getAllObjects
+           * @tc.name      : SUB_MULTIMEDIA_MEDIA_PHOTOACCESSHELPER_FUNCTION_5800
            * @tc.desc      : getAllObjects promise
            * @tc.size      : MediumTest
            * @tc.type      : Function test
