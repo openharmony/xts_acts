@@ -12,53 +12,57 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+
+import Ability from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import window from '@ohos.window';
+import common from '@ohos.app.ability.common';
 
 export default class MainAbility extends Ability {
-    onCreate(want,launchParam){
-        // Ability is creating, initialize resources for this ability
-        console.log("MainAbility onCreate");
-        globalThis.abilityWant = want;
-        globalThis.abilityContext = this.context;
-        globalThis.applicationContext = this.context.getApplicationContext();
-        globalThis.requestDialogSuccess = false;
-        globalThis.validRequestInfo = false;
-        globalThis.validRequestCallback = false;
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // Ability is creating, initialize resources for this ability
+    console.log("MainAbility onCreate");
+    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
+    AppStorage.setOrCreate<boolean>("requestDialogSuccess", false);
+    AppStorage.setOrCreate<boolean>("validRequestInfo", false);
+    AppStorage.setOrCreate<boolean>("validRequestCallback", false);
+  }
 
-    onDestroy() {
-        // Ability is destroying, release resources for this ability
-        console.log("MainAbility onDestroy");
-        globalThis.applicationContext.killAllProcesses().then((data)=>{
-          console.log(`MainAbility getRunningProcessInformation data ${JSON.stringify(data)}`);
-        }).catch((err)=>{
-          console.log(`MainAbility getRunningProcessInformation err  ${JSON.stringify(err)}`);
-        })
+  onDestroy() {
+    // Ability is destroying, release resources for this ability
+    console.log("MainAbility onDestroy");
+    this.context.getApplicationContext().killAllProcesses()
+      .then((data) => {
+        console.log(`MainAbility getRunningProcessInformation data ${JSON.stringify(data)}`);
+      })
+      .catch((err) => {
+        console.log(`MainAbility getRunningProcessInformation err  ${JSON.stringify(err)}`);
+      })
 
-        globalThis.applicationContext.killAllProcesses((err, data)=>{
-          console.log(`MainAbility getRunningProcessInformation data ${JSON.stringify(data)}
-          err: ${JSON.stringify(err)}`);
-        })
-    }
+    this.context.getApplicationContext().killAllProcesses((err, data) => {
+      console.log(`MainAbility getRunningProcessInformation data ${JSON.stringify(data)} err: ${JSON.stringify(err)}`);
+    })
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("MainAbility onWindowStageCreate");
-        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
-    }
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.log("MainAbility onWindowStageCreate");
+    windowStage.loadContent("MainAbility/pages/index/index", null);
+  }
 
-    onWindowStageDestroy() {
-        //Main window is destroyed, release UI related resources
-        console.log("MainAbility onWindowStageDestroy");
-    }
+  onWindowStageDestroy() {
+    //Main window is destroyed, release UI related resources
+    console.log("MainAbility onWindowStageDestroy");
+  }
 
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("MainAbility onForeground");
-    }
+  onForeground() {
+    // Ability has brought to foreground
+    console.log("MainAbility onForeground");
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("MainAbility onBackground");
-    }
-};
+  onBackground() {
+    // Ability has back to background
+    console.log("MainAbility onBackground");
+  }
+}
