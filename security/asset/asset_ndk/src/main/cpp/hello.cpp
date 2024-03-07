@@ -17,7 +17,7 @@
 #include <bits/alltypes.h>
 #include <cstring>
 
-static const int MAGIC_RET = MAGIC_RET;
+static const int MAGIC_RET = 9999;
 static const int BUFF_MAX = 2048;
 static const char *DEMO_LABEL = "demo_label";
 
@@ -143,7 +143,7 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
     } else {
         result = -1;
     }
-    
+    OH_Asset_FreeBlob(&challenge);
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -203,7 +203,6 @@ static napi_value Asset_PreAndPostQueryError(napi_env env, napi_callback_info in
     } else {
         result = -1;
     }
-
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -240,9 +239,8 @@ static napi_value Asset_PreQuery(napi_env env, napi_callback_info info)
             ret = -1;
         }
     }
-
+    OH_Asset_FreeBlob(&challenge);
     napi_create_uint32(env, ret, &result);
-
     return result;
 }
 
@@ -283,9 +281,8 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
             ret = -1;
         }
     }
-
+    OH_Asset_FreeBlob(&challenge);
     napi_create_uint32(env, ret, &result);
-
     return result;
 }
 
@@ -759,7 +756,7 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] ={
+    napi_property_descriptor desc[] = {
         {"asset_add", nullptr, Asset_Add, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryNum", nullptr, Asset_QueryNum, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryAll", nullptr, Asset_QueryAll, nullptr, nullptr, nullptr, napi_default, nullptr},

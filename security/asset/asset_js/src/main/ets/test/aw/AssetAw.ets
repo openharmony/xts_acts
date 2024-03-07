@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,9 @@ import util from '@ohos.util';
 export const secLong = "0123456789123456".repeat(64);
 
 export const secTooLong = "0123456789123456".repeat(64) + '1';
+
 export const secShort = "1";
+
 export const valueEmpty = "";
 
 
@@ -77,9 +78,10 @@ export const labelList = [
 export const updateSecret = 'ihadbeenupdated';
 
 
-export const Sleep = (ms:number)=> {
-    return new Promise<void>(resolve=>setTimeout(resolve,ms));
+export const Sleep = (ms: number) => {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
 }
+
 export function assetLog(assetLog: string) {
   hilog.info(0x0000, 'asset_service', 'assetXTSlog' + assetLog);
 }
@@ -138,7 +140,7 @@ export async function assetAddFull(attr: asset.AssetMap) {
   return await assetAddAttr(attr);
 }
 
-export async function assetAddFullAll(testAlias1:string,times: number) {
+export async function assetAddFullAll(testAlias1: string, times: number) {
 
   let attr: asset.AssetMap = new Map();
   for (let i = 0; i < times; i++) {
@@ -146,6 +148,7 @@ export async function assetAddFullAll(testAlias1:string,times: number) {
     await assetAddFull(attr);
   }
 }
+
 export async function assetAddAttr(attr: asset.AssetMap) {
   try {
     await asset.add(attr);

@@ -13,12 +13,9 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
-//import { asset } from '@kit.AssetStoreKit';
-
-import asset from '@ohos.security.asset'
+import asset from '@ohos.security.asset';
 
 
 export default function AssetPerformanceNewtest() {
@@ -46,21 +43,17 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0200
-     * @tc. name 非首次写入单个关键资产时，JS API平均时延不大于120ms
+     * @tc.name 非首次写入单个关键资产时，JS API平均时延不大于120ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0200', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0200', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
-      let attr: asset.AssetMap = new Map();
-
       let times = 100;
-
-
       let beginTime = new Date().getTime();
-      await aw.assetAddFullAll(testAlias1,times);
+      await aw.assetAddFullAll(testAlias1, times);
       let endTime = new Date().getTime();
       expect((endTime - beginTime) / times).assertLess(120);
 
@@ -69,17 +62,17 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0400
-     * @tc. name 非首次查询单个关键资产时，JS API平均时延不大于120ms
+     * @tc.name 非首次查询单个关键资产时，JS API平均时延不大于120ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0400', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0400', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
 
-      await aw.assetAddFullAll(testAlias1,times);
+      await aw.assetAddFullAll(testAlias1, times);
 
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
@@ -96,17 +89,17 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0700
-     * @tc. name 更新单个关键资产时，JS API平均时延不大于120ms
+     * @tc.name 更新单个关键资产时，JS API平均时延不大于120ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0700', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0700', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
 
-      await aw.assetAddFullAll(testAlias1,times);
+      await aw.assetAddFullAll(testAlias1, times);
 
       let attr2: asset.AssetMap = new Map();
       let attr3: asset.AssetMap = new Map();
@@ -124,17 +117,17 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0800
-     * @tc. name 删除单个关键资产时，JS API平均时延不大于50ms
+     * @tc.name 删除单个关键资产时，JS API平均时延不大于50ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0800', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0800', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
 
-      await aw.assetAddFullAll(testAlias1,times);
+      await aw.assetAddFullAll(testAlias1, times);
 
       let attr2: asset.AssetMap = new Map();
       let beginTime = new Date().getTime();
@@ -150,18 +143,18 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0500
-     * @tc. name 查询100个关键资产时，JS API平均时延不大于1500ms
+     * @tc.name 查询100个关键资产时，JS API平均时延不大于1500ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0500', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0500', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 10;
       let limit = 100;
 
-      await aw.assetAddFullAll(testAlias1,limit+20);
+      await aw.assetAddFullAll(testAlias1, limit + 20);
 
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.RETURN_LIMIT, limit);
@@ -177,18 +170,18 @@ export default function AssetPerformanceNewtest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Performance_0600
-     * @tc. name 查询100个关键资产时，JS API平均时延不大于7500ms
+     * @tc.name 查询100个关键资产时，JS API平均时延不大于7500ms
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('SUB_Security_DataSecurity_Asset_Performance_0600', 0, async (done:Function) => {
+    it('SUB_Security_DataSecurity_Asset_Performance_0600', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 10;
       let limit = 500;
 
-      await aw.assetAddFullAll(testAlias1,limit+20);
+      await aw.assetAddFullAll(testAlias1, limit + 20);
 
       let attr2: asset.AssetMap = new Map();
       attr2.set(asset.Tag.RETURN_LIMIT, limit);

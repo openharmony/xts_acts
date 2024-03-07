@@ -38,15 +38,10 @@ ohos_shared_library("assetNdkTest") {
   part_name = "asset"
   sources = [ "./hello.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
-  include_dirs =
-      [ "$ASSET_ROOT_DIR/interfaces/kits/c/inc" ]
+  include_dirs = [ "$ASSET_ROOT_DIR/interfaces/kits/c/inc" ]
 
   configs = [ ":config" ]
-  deps = [
-    "$ASSET_ROOT_DIR//interfaces/kits/c:asset_ndk",
-  ]
- external_deps = [ "napi:ace_napi" ]
+  deps = [ "$ASSET_ROOT_DIR//interfaces/kits/c:asset_ndk" ]
+  external_deps = [ "napi:ace_napi" ]
   output_extension = "so"
-
 }
-

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 
 import * as aw from './aw/AssetAwNdk';
 import asset from '@ohos.security.asset';
@@ -93,7 +93,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0200
-     * @tc.name  :使用NDK接口查询数据，传入正常参数
+     * @tc.name  :assetQueryNormal
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -115,7 +115,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0700
-     * @tc.name  :使用NDK接口查询数据，传入异常参数
+     * @tc.name  :assetQueryError
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -130,7 +130,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0300
-     * @tc.name  :使用NDK接口更新数据，传入正常参数
+     * @tc.name  :assetUpdateNormal
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -151,7 +151,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0800
-     * @tc.name  :使用NDK接口更新数据，传入异常参数
+     * @tc.name  :assetUpdateError
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -174,7 +174,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0400
-     * @tc.name  :使用NDK接口删除数据，传入正常参数
+     * @tc.name  :assetDeleteNormal
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -194,7 +194,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0900
-     * @tc.name  :使用NDK接口删除数据，传入异常参数
+     * @tc.name  :assetDeleteError
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -209,7 +209,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0500
-     * @tc.name  :使用NDK接口调用prequery和postquery，传入正常参数
+     * @tc.name  :assetPreAndPostQueryNormal
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func
@@ -225,7 +225,7 @@ export default function AssetNdkTest() {
 
     /**
      * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_1000
-     * @tc.name  :使用NDK接口调用prequery和postquery，传入异常参数
+     * @tc.name  :assetPreAndPostQueryError
      * @tc.desc  :test error cases
      * @tc.size  :Medium
      * @tc.type  :Func

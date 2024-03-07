@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-
 import AssetDeleteTest from './AssetDelete.test';
 import AssetUpdateTest from './AssetUpdate.test';
-import AssetWriteAndQueryNewTest from './AssetWriteAndQuery.test'
+import AssetWriteAndQueryNewTest from './AssetWriteAndQuery.test';
 import AssetAuthQuery from './AssetAuthQuery.test';
 import AssetSynctest from './AssetSync.test';
 import AssetPerformanceNewtest from './AssetPerformanceNew.test';

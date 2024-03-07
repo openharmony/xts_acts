@@ -113,13 +113,13 @@ export function addSome() {
 }
 
 
-export function assetAddTask(times:number,attr:asset.AssetMap,testAlias:string):number {
+export function assetAddTask(times: number, attr: asset.AssetMap, testAlias: string): number {
   let textEncoder = new util.TextEncoder();
   let beginTime = new Date().getTime();
   for (let i = 0; i < times; i++) {
     let alias = textEncoder.encodeInto(testAlias + String(i))
     attr.set(asset.Tag.ALIAS, alias);
-    try{
+    try {
       asset.addSync(attr);
     } catch (e) {
       return e.code
@@ -131,13 +131,13 @@ export function assetAddTask(times:number,attr:asset.AssetMap,testAlias:string):
 }
 
 
-export function assetQueryTask(times:number,attr:asset.AssetMap,testAlias:string):number {
+export function assetQueryTask(times: number, attr: asset.AssetMap, testAlias: string): number {
   let textEncoder = new util.TextEncoder();
   let beginTime = new Date().getTime();
   for (let i = 0; i < times; i++) {
     let alias = textEncoder.encodeInto(testAlias + String(i))
     attr.set(asset.Tag.ALIAS, alias);
-    try{
+    try {
       asset.querySync(attr);
     } catch (e) {
       return e.code
@@ -147,14 +147,14 @@ export function assetQueryTask(times:number,attr:asset.AssetMap,testAlias:string
   return (endTime - beginTime) / times;
 }
 
-export function assetUpdateTask(times:number,attr1:asset.AssetMap,attr2:asset.AssetMap,testAlias:string):number {
+export function assetUpdateTask(times: number, attr1: asset.AssetMap, attr2: asset.AssetMap, testAlias: string): number {
   let textEncoder = new util.TextEncoder();
   let beginTime = new Date().getTime();
   for (let i = 0; i < times; i++) {
     let alias = textEncoder.encodeInto(testAlias + String(i))
     attr1.set(asset.Tag.ALIAS, alias);
-    try{
-      asset.updateSync(attr1,attr2);
+    try {
+      asset.updateSync(attr1, attr2);
     } catch (e) {
       return e.code
     }
@@ -164,13 +164,13 @@ export function assetUpdateTask(times:number,attr1:asset.AssetMap,attr2:asset.As
 }
 
 
-export function assetRemoveTask(times:number,attr:asset.AssetMap,testAlias:string):number {
+export function assetRemoveTask(times: number, attr: asset.AssetMap, testAlias: string): number {
   let textEncoder = new util.TextEncoder();
   let beginTime = new Date().getTime();
   for (let i = 0; i < times; i++) {
     let alias = textEncoder.encodeInto(testAlias + String(i))
     attr.set(asset.Tag.ALIAS, alias);
-    try{
+    try {
       asset.removeSync(attr);
     } catch (e) {
       return e.code

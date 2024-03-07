@@ -13,12 +13,9 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
-//import { asset } from '@kit.AssetStoreKit';
-
-import asset from '@ohos.security.asset'
+import asset from '@ohos.security.asset';
 
 export default function abilityTest() {
   describe('AssetDeleteTest', () => {
@@ -44,7 +41,7 @@ export default function abilityTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_Remove_Func_0200
-     * @tc. name 使用接口销毁数据后，数据被删除
+     * @tc.name 使用接口销毁数据后，数据被删除
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -71,7 +68,7 @@ export default function abilityTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_Remove_Func_0900
-     * @tc. name 数据删除后，相同数据能再次写入
+     * @tc.name 数据删除后，相同数据能再次写入
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -86,7 +83,7 @@ export default function abilityTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_Remove_Func_1000
-     * @tc. name 删除接口传入异常数据
+     * @tc.name 删除接口传入异常数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -115,7 +112,7 @@ export default function abilityTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_Remove_Func_1500
-     * @tc. name 通过更新接口修改卸载后不删除的参数
+     * @tc.name 通过更新接口修改卸载后不删除的参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func

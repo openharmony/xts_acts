@@ -14,11 +14,9 @@
  */
 
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAwSync';
-
-import asset from '@ohos.security.asset'
-import taskpool from '@ohos.taskpool';
+import asset from '@ohos.security.asset';
 
 
 export default function AssetSynctest() {
@@ -45,7 +43,7 @@ export default function AssetSynctest() {
     });
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0100
-     * @tc. name 使用同步写入接口，传入正常参数
+     * @tc.name 使用同步写入接口，传入正常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -97,7 +95,7 @@ export default function AssetSynctest() {
     });
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0600
-     * @tc. name 使用同步写入接口，传入异常参数
+     * @tc.name 使用同步写入接口，传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -148,7 +146,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Stability_0200
-     * @tc. name 同步接口性能测试
+     * @tc.name 同步接口性能测试
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -188,7 +186,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0200
-     * @tc. name 使用同步查询接口，传入正常参数
+     * @tc.name 使用同步查询接口，传入正常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -216,7 +214,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0700
-     * @tc. name 使用同步查询接口，传入异常参数
+     * @tc.name 使用同步查询接口，传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -259,7 +257,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0300
-     * @tc. name 使用同步更新接口，传入正常参数
+     * @tc.name 使用同步更新接口，传入正常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -284,7 +282,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0800
-     * @tc. name 使用同步更新接口，传入异常参数
+     * @tc.name 使用同步更新接口，传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -357,7 +355,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0400
-     * @tc. name 使用同步删除接口，传入正常参数
+     * @tc.name 使用同步删除接口，传入正常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -387,7 +385,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0900
-     * @tc. name 使用同步删除接口，传入异常参数
+     * @tc.name 使用同步删除接口，传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -423,7 +421,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_0500
-     * @tc. name 使用同步接口调用prequerySync和postQuerySync，传入正常参数
+     * @tc.name 使用同步接口调用prequerySync和postQuerySync，传入正常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -457,7 +455,7 @@ export default function AssetSynctest() {
 
     /**
      * @tc.number SUB_Security_DataSecurity_Asset_Sync_Func_1000
-     * @tc. name 使用同步接口调用prequerySync和postQuerySync，传入异常参数
+     * @tc.name 使用同步接口调用prequerySync和postQuerySync，传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func

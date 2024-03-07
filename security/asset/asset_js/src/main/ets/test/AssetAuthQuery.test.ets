@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
-import asset from '@ohos.security.asset'
+import asset from '@ohos.security.asset';
 
 
 export default function abilityTest() {
@@ -43,7 +43,7 @@ export default function abilityTest() {
 
     /**
      * @tc.number Security_DataSecurity_Asset_Authentication_Func_0600
-     * @tc. name 打开超过16个session
+     * @tc.name 打开超过16个session
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -69,7 +69,7 @@ export default function abilityTest() {
 
     /**
      * @tc.number Security_DataSecurity_Asset_Authentication_Func_0700
-     * @tc. name 请求创建session时，指定0,11分钟有效期
+     * @tc.name 请求创建session时，指定0,11分钟有效期
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -90,7 +90,7 @@ export default function abilityTest() {
 
     /**
      * @tc.number Security_DataSecurity_Asset_Authentication_Func_1200
-     * @tc. name 二次访问控制接口传入异常参数
+     * @tc.name 二次访问控制接口传入异常参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -116,7 +116,7 @@ export default function abilityTest() {
 
     /**
      * @tc.number Security_DataSecurity_Asset_Authentication_Func_1600
-     * @tc. name prequery与postquery接口测试正例
+     * @tc.name prequery与postquery接口测试正例
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -137,7 +137,7 @@ export default function abilityTest() {
 
     /**
      * @tc.number Security_DataSecurity_Asset_Authentication_Func_1500
-     * @tc. name 不使用二次访问控制查询需要锁屏密码的数据
+     * @tc.name 不使用二次访问控制查询需要锁屏密码的数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func

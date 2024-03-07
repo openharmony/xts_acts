@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import * as aw from './aw/AssetAw';
-import asset from '@ohos.security.asset'
+import asset from '@ohos.security.asset';
 
 export default function AssetWriteAndQueryNewTest() {
   describe('AssetWriteAndQueryNewTest', () => {
@@ -42,22 +41,41 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0100
-     * @tc. name 空数据库中，写入异常数据（过长，过短，空）
+     * @tc.name 空数据库中，写入异常数据（过长，过短，空）
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
     it('Security_DataSecurity_Asset_WriteAndQuery_Func_0100', 0, async () => {
+      let valueType: asset.Value = asset.SyncType.NEVER;
+      expect(valueType).assertEqual(0);
+      expect(asset.SyncType.THIS_DEVICE).assertEqual(1);
+      expect(asset.SyncType.TRUSTED_DEVICE).assertEqual(2);
+      expect(asset.ErrorCode.PERMISSION_DENIED).assertEqual(201);
+      expect(asset.ErrorCode.SERVICE_UNAVAILABLE).assertEqual(24000001);
+      expect(asset.ErrorCode.ACCESS_DENIED).assertEqual(24000004);
+      expect(asset.ErrorCode.STATUS_MISMATCH).assertEqual(24000005);
+      expect(asset.ErrorCode.OUT_OF_MEMORY).assertEqual(24000006);
+      expect(asset.ErrorCode.DATA_CORRUPTED).assertEqual(24000007);
+      expect(asset.ErrorCode.DATABASE_ERROR).assertEqual(24000008);
+      expect(asset.ErrorCode.CRYPTO_ERROR).assertEqual(24000009);
+      expect(asset.ErrorCode.IPC_ERROR).assertEqual(24000010);
+      expect(asset.ErrorCode.BMS_ERROR).assertEqual(24000011);
+      expect(asset.ErrorCode.ACCOUNT_ERROR).assertEqual(24000012);
+      expect(asset.ErrorCode.ACCESS_TOKEN_ERROR).assertEqual(24000013);
+      expect(asset.ErrorCode.FILE_OPERATION_ERROR).assertEqual(24000014);
+      expect(asset.ErrorCode.GET_SYSTEM_TIME_ERROR).assertEqual(24000015);
+      expect(asset.ErrorCode.UNSUPPORTED).assertEqual(24000017);
+
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[0], aw.secTooLong)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
       expect(Number(await aw.assetAddEasy(aw.aliasNameList[1], aw.valueEmpty)))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0200
-     * @tc. name 空数据库中，正常格式的短敏感数据写入
+     * @tc.name 空数据库中，正常格式的短敏感数据写入
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -70,6 +88,7 @@ export default function AssetWriteAndQueryNewTest() {
         .assertEqual(asset.ErrorCode.DUPLICATED);
 
       let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.SYNC_TYPE, asset.SyncType.NEVER);
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[1]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[1]));
       attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.NONE);
@@ -88,7 +107,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0300
-     * @tc. name 正常数据库中，写入异常数据（过长，过短，空）
+     * @tc.name 正常数据库中，写入异常数据（过长，过短，空）
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -104,7 +123,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0400
-     * @tc. name 正常数据库中，正常格式的短敏感数据写入，精确查询，批量查询
+     * @tc.name 正常数据库中，正常格式的短敏感数据写入，精确查询，批量查询
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -142,7 +161,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0500
-     * @tc. name 写入单个关键资产时，传入异常的别名参数——超长、空
+     * @tc.name 写入单个关键资产时，传入异常的别名参数——超长、空
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -157,7 +176,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0600
-     * @tc. name 写入单个关键资产时，传入异常的标签参数——超长、空
+     * @tc.name 写入单个关键资产时，传入异常的标签参数——超长、空
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -178,7 +197,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0700
-     * @tc. name 写入单个关键资产时，每个label字段都传入参数
+     * @tc.name 写入单个关键资产时，每个label字段都传入参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -218,7 +237,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0800
-     * @tc. name 重复写入单个关键资产时，冲突覆盖参数分别传入报错、重写和不传
+     * @tc.name 重复写入单个关键资产时，冲突覆盖参数分别传入报错、重写和不传
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -242,7 +261,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_0900
-     * @tc. name 查询不存在数据失败，包含精确查询，批量查询
+     * @tc.name 查询不存在数据失败，包含精确查询，批量查询
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -260,7 +279,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1200
-     * @tc. name 传入不同的查询接口RETURN_LIMIT字段
+     * @tc.name 传入不同的查询接口RETURN_LIMIT字段
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -285,7 +304,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1300
-     * @tc. name 查询接口的RETURN_OFFSET字段，指定的偏移量大于或者小于总条目数，或者0，或者不传
+     * @tc.name 查询接口的RETURN_OFFSET字段，指定的偏移量大于或者小于总条目数，或者0，或者不传
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -310,7 +329,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1400
-     * @tc. name 批量查询时，传入RETURN_ORDER_BY指定排序字段
+     * @tc.name 批量查询时，传入RETURN_ORDER_BY指定排序字段
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -349,7 +368,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1600
-     * @tc. name 写入接口传入异常数据
+     * @tc.name 写入接口传入异常数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
@@ -388,7 +407,7 @@ export default function AssetWriteAndQueryNewTest() {
     });
     /**
      * @tc.number Security_DataSecurity_Asset_WriteAndQuery_Func_1700
-     * @tc. name 查询接口传入异常数据
+     * @tc.name 查询接口传入异常数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
