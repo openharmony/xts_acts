@@ -20,6 +20,7 @@ group("security") {
   if (is_standard_system) {
     deps = [
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
+      "asset",
       "certificate_framework",
       "certificate_manager",
       "cipher/datacipher:datacipher",
@@ -31,7 +32,6 @@ group("security") {
       "security_component:ActsSecComponentTest",
       "security_huks_basic",
       "security_huks_reformed_test",
-      "asset",
     ]
   }
 }

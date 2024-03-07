@@ -102,9 +102,7 @@ export async function assetAddEasy(alias:string,secret:string) {
   let attr:asset.AssetMap = new Map();
   attr.set(asset.Tag.ALIAS,StringToArray(alias));
   attr.set(asset.Tag.SECRET,StringToArray(secret));
-
   attr.set(asset.Tag.ACCESSIBILITY,asset.Accessibility.DEVICE_POWERED_ON);
-
   return await assetAddAttr(attr);
 }
 
