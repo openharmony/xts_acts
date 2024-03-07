@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,30 +15,51 @@
 
 import events_emitter from '@ohos.events.emitter';
 
+class LinearGradientValue {
+  angle: number;
+  direction: GradientDirection;
+  colors: Array<ESObject>;
+  repeating: boolean;
+}
+
+class SweepGradientValue {
+  center: Array<ESObject>;
+  start: number;
+  colors: Array<ESObject>;
+  end: number;
+  repeating: boolean;
+}
+
+class RadialGradientValue {
+  center: Array<ESObject>;
+  radius: number | string;
+  colors: Array<ESObject>;
+  repeating: boolean;
+}
+
 @Entry
 @Component
 struct ColorGradientExample {
-  @State linearGradientValue: object = {
+  @State linearGradientValue: LinearGradientValue = {
     angle: 90,
     direction: GradientDirection.Left,
     colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
     repeating: true
   };
-  @State sweepGradientValue: object = {
+  @State sweepGradientValue: SweepGradientValue = {
     center: [50, 50],
     start: 0,
     end: 359,
     colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
     repeating: true
   };
-  @State radialGradientValue: object = {
+  @State radialGradientValue: RadialGradientValue = {
     center: [50, 50],
     radius: 60,
-    colors:[[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
+    colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]],
     repeating: true
   };
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[ColorGradient] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ColorGradient] page state change called:" + JSON.stringify(eventData));
@@ -57,38 +77,47 @@ struct ColorGradientExample {
 
   onPageShow() {
     console.info('[ColorGradient] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent1: events_emitter.InnerEvent = {
       eventId: 5,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent1, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 6,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 7,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
   }
 
   build() {
     Column({ space: 5 }) {
-      Text('linearGradient').fontSize(12).width('90%').fontColor(0xCCCCCC)
+      Text('linearGradient')
+        .fontSize(12)
+        .width('90%')
+        .fontColor(0xCCCCCC)
       Row()
         .width('90%')
         .height(50)
         .linearGradient(this.linearGradientValue).key('linearGradient')
-      Text('sweepGradient').fontSize(12).width('90%').fontColor(0xCCCCCC)
+      Text('sweepGradient')
+        .fontSize(12)
+        .width('90%')
+        .fontColor(0xCCCCCC)
       Row()
         .width(100)
         .height(100)
         .sweepGradient(this.sweepGradientValue).key('sweepGradient')
-      Text('radialGradient').fontSize(12).width('90%').fontColor(0xCCCCCC)
+      Text('radialGradient')
+        .fontSize(12)
+        .width('90%')
+        .fontColor(0xCCCCCC)
       Row()
         .width(100)
         .height(100)

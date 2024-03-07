@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "./../../../../MainAbility/common/Common"
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function AlignSpaceEvenly_AddOffset() {
-  describe('AlignSpaceEvenly_AddOffset', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/justifyContent/SpaceEvenly/AlignSpaceEvenly_AddOffset',
+  describe('AlignSpaceEvenly_AddOffset', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/justifyContent/SpaceEvenly/AlignSpaceEvenly_AddOffset',
       }
       try {
         router.clear();
@@ -28,7 +30,7 @@ export default function AlignSpaceEvenly_AddOffset() {
         console.info("get AlignSpaceEvenly_AddOffset state success " + JSON.stringify(pages));
         if (!("AlignSpaceEvenly_AddOffset" == pages.name)) {
           console.info("get AlignSpaceEvenly_AddOffset state pages.name " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push AlignSpaceEvenly_AddOffset page success " + JSON.stringify(result));
         }
@@ -36,32 +38,36 @@ export default function AlignSpaceEvenly_AddOffset() {
         console.error("push AlignSpaceEvenly_AddOffset page error " + JSON.stringify(err));
         expect().assertFail();
       }
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("AlignSpaceEvenly_AddOffset after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0900
-     * @tc.name      testFlexAlignSpaceEvenlyTextOffset
-     * @tc.desc      The interface display of the component that sets the offset position when drawing
+     * @tc.number SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEEVENLY_TEST_0900
+     * @tc.name testFlexAlignSpaceEvenlyTextOffset
+     * @tc.desc The interface display of the component that sets the offset position when drawing
      */
-    it('testFlexAlignSpaceEvenlyTextOffset', 0, async function (done) {
+    it('testFlexAlignSpaceEvenlyTextOffset', 0, async () => {
       console.info('[testFlexAlignSpaceEvenlyTextOffset] START');
-      globalThis.value.message.notify({name:'OneOffset', value:{ x: 10, y: 15 }})
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
+        name: 'OneOffset', value: {
+          x: 10, y: 15
+        }
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('SpaceEvenly_AddOffset_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Flex');
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
-      let SpaceEvenly_AddOffset_011 = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_011');
-      let SpaceEvenly_AddOffset_012 = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_012');
-      let SpaceEvenly_AddOffset_013 = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_013');
-      let SpaceEvenly_AddOffset_01 = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('Flex');
+      expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
+      let SpaceEvenly_AddOffset_011: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_011');
+      let SpaceEvenly_AddOffset_012: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_012');
+      let SpaceEvenly_AddOffset_013: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_013');
+      let SpaceEvenly_AddOffset_01: RectValue = CommonFunc.getComponentRect('SpaceEvenly_AddOffset_01');
       expect(Math.abs(SpaceEvenly_AddOffset_011.top - SpaceEvenly_AddOffset_01.top - vp2px(15)) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddOffset_011.left - SpaceEvenly_AddOffset_01.left - vp2px(22.5)) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddOffset_012.top - SpaceEvenly_AddOffset_013.top) <= 1).assertTrue()
@@ -76,7 +82,7 @@ export default function AlignSpaceEvenly_AddOffset() {
       expect(Math.abs(SpaceEvenly_AddOffset_012.bottom - SpaceEvenly_AddOffset_012.top - vp2px(100)) <= 1).assertTrue()
       expect(Math.abs(SpaceEvenly_AddOffset_013.bottom - SpaceEvenly_AddOffset_013.top - vp2px(150)) <= 1).assertTrue()
       console.info('[testFlexAlignSpaceEvenlyTextOffset] END');
-      done();
+
     });
   })
 }

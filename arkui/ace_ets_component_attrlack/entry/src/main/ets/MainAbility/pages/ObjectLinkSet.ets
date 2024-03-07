@@ -16,6 +16,7 @@
 @Observed
 class SetClassA {
   public a: MySet<number>;
+
   constructor(a: MySet<number>) {
     this.a = a;
   }
@@ -23,13 +24,12 @@ class SetClassA {
 
 
 @Observed
-export class MySet<T> extends Set<T>  {
-
+export class MySet<T> extends Set<T> {
   public name: string;
 
   constructor(name?: string, args?: T[]) {
     super(args);
-    this.name = name ? name: "My Set";
+    this.name = name ? name : "My Set";
   }
 
   getName() {
@@ -40,17 +40,17 @@ export class MySet<T> extends Set<T>  {
 @Entry
 @Component
 struct ObjectLinkSetNested {
-  @State message: SetClassA = new SetClassA( new MySet("Set", [1, 2 ,3 ]));
+  @State message: SetClassA = new SetClassA(new MySet("Set", [1, 2, 3]));
 
   build() {
     Row() {
       Column() {
         Button('init set').id("ObtLinkSet_init")
-          .onClick(() =>{
-            this.message.a = new MySet("Set", [1, 2 ,3 ])
+          .onClick(() => {
+            this.message.a = new MySet("Set", [1, 2, 3])
           })
 
-        ObjectLinkSetNestedChild({mySet: this.message.a})
+        ObjectLinkSetNestedChild({ mySet: this.message.a })
       }
       .width('100%')
     }
@@ -61,31 +61,37 @@ struct ObjectLinkSetNested {
 @Component
 struct ObjectLinkSetNestedChild {
   @ObjectLink mySet: MySet<number>
-  @State st :string = ''
+  @State st: string = ''
+
   build() {
     Row() {
       Column() {
         ForEach(Array.from(this.mySet.entries()), (item: number) => {
-          Text(`${item}`).fontSize(20).id("ObtLinkSet_value_" + item[0])
+          Text(`${item}`)
+            .fontSize(20)
+            .id("ObtLinkSet_value_" + item[0])
           Divider()
         })
         Button('set new one').id("ObtLinkSet_set")
-          .onClick(() =>{
+          .onClick(() => {
             this.mySet.add(5)
-        }).margin(10)
+          })
+          .margin(10)
 
         Button('clear').id("ObtLinkSet_clear")
-          .onClick(() =>{
+          .onClick(() => {
             this.mySet.clear()
-            if (Array.from(this.mySet.entries())){
+            if (Array.from(this.mySet.entries())) {
               this.mySet.add(0)
             }
-        }).margin(10)
+          })
+          .margin(10)
 
-        Button('delete the first one').id("ObtLinkSet_delete")
-          .onClick(() =>{
+        Button('delete the first one')
+          .id("ObtLinkSet_delete")
+          .onClick(() => {
             this.mySet.delete(0)
-        })
+          })
       }
       .width('100%')
     }

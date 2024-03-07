@@ -26,23 +26,19 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libkhrglesextfunc0001") {
-  subsystem_name = "graphic"
-  part_name = "graphic_2d"
+  subsystem_name = "xts"
+  part_name = "acts"
   sources = common_src
   sources += [ "../KhrglesextBaseFunc.cpp" ]
 
   include_dirs = common_include
-  deps = common_depends
-  external_deps = [
-    "hilog:libhilog",
-    "image_framework:image_native",
-  ]
+  deps = common_depends_glesext
   configs = [ ":deqp_platform_ohos_config" ]
 }
 
 ohos_moduletest_suite("ActsKhrglesextTestSuite0001") {
-  subsystem_name = "graphic"
-  part_name = "graphic_2d"
+  subsystem_name = "xts"
+  part_name = "acts"
   sources = [
     "../ActsKhrglesext0001TestSuite.cpp",
     "../disjoint_timer_query/KhrglesextKHR-GLESEXT_disjoint_timer_queryTestCase.cpp",

@@ -13,27 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function textPickerJsunit() {
-  describe('appInfoTest_four_13', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_13', () => {
+    beforeEach(async (done: Function) => {
       console.info("button beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textPickerDialog',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textPickerDialog',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textPickerDialog state pages: " + JSON.stringify(pages));
         if (!("textPickerDialog" == pages.name)) {
           console.info("get textPickerDialog state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textPickerDialog page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textPickerDialog page error: " + err);
@@ -41,28 +39,26 @@ export default function textPickerJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textPickerDialog after each called");
     })
 
-    it('testTextPickerDialog0100', 0, async function (done) {
+    it('testTextPickerDialog0100', 0, async (done: Function) => {
       console.info('[testTextPickerDialog0100] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textPickerDialog');
-      let obj = JSON.parse(strJson);
-      console.info("[testTextPickerDialog0100] component obj is: " + JSON.stringify(obj));
-      console.info("[testTextPickerDialog0100] expect(obj.$type) is: " + (obj.$type));
-      console.info("[testTextPickerDialog0100] obj.$attrs.type is: " + (obj.$attrs.type));
+      let strJson: string = getInspectorByKey('textPickerDialog');
+      console.info("[testTextPickerDialog0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[testTextPickerDialog0100] expect(obj.$type) is: " + (JSON.parse(strJson).$type));
+      console.info("[testTextPickerDialog0100] obj.$attrs.type is: " + (JSON.parse(strJson).$attrs.type));
       done();
     });
 
-    it('testTextPickerDialog0200', 0, async function (done) {
+    it('testTextPickerDialog0200', 0, async (done: Function) => {
       console.info('[testTextPickerDialog0200] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textPickerDialog');
-      let obj = JSON.parse(strJson);
-      if(true){
+      let strJson: string = getInspectorByKey('textPickerDialog');
+      if (true) {
         done();
         return;
       }

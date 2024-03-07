@@ -146,8 +146,28 @@ import Navigation2 from './relativeApi11/Navigation2.test'
 import Navigation3 from './relativeApi11/Navigation3.test'
 import Navigation4 from './relativeApi11/Navigation4.test'
 import RelativeContainer from './relativeApi11/RelativeContainer.test'
+import SwiperLoop from './Swiper/SwiperLoop.test'
+import SwiperVisibility from './Swiper/SwiperVisibility.test'
+import swiper1 from './Swiper/swiper1.test.ets'
+import swiper2 from './Swiper/swiper2.test.ets'
+
+import swiperWidthTest from './swiper2/swiperTwidth.test.ets'
+import swiperGroupTest from './swiper2/swiperGroup.test.ets'
+
+import swiperPageTest from './swiper2/swiperPage.test.ets'
+import swiperNextPreTest from './swiper2/swiperNextPrevious.test.ets'
+import swiperDelAddTest from './swiper2/swiperDeleteAdd.test.ets'
+
+import swiperEdgeTest from './swiper2/swiperEdge.test.ets'
+import swipeleftScrollTest from './swiper2/swiperleftScroll.test.ets'
+import swiperRightScrollTest from './swiper2/swiperightscroll.test.ets'
 
 export default function testsuite() {
+
+  SwiperLoop()
+  SwiperVisibility()
+  swiper1()
+  swiper2()
   Navigation1()
   Navigation2()
   Navigation3()
@@ -279,4 +299,14 @@ export default function testsuite() {
   NavPathStackApi2()
   NavPathStackApi3()
   ObserverApi()
+  swiperWidthTest()
+  swiperPageTest()
+  swiperGroupTest()
+  swiperNextPreTest()
+  swiperDelAddTest()
+  swiperEdgeTest()
+  swipeleftScrollTest()
+  swiperRightScrollTest()
+
+  
 }

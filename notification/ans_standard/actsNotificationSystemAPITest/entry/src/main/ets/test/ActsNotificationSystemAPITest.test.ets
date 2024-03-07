@@ -100,6 +100,43 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
     });
 
     /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4300
+     * @tc.name: publishAsBundle
+     * @tc.desc: test function publishAsBundle
+     */
+    it('Sub_Notification_Ans_Publish_Publish_4300', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4300 START`);
+
+        let bundleOpt : notificationManager.BundleOption = {
+            bundle: "example.bundleName",
+            uid: 0
+        }
+        let notificationRequest : notificationManager.NotificationRequest = {
+            id: 1,
+            content: {
+                notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                normal: {
+                    title: "test_title",
+                    text: "test_text",
+                    additionalText: "test_Publish"
+                }
+            }
+        }
+
+        notificationManager.publishAsBundle(bundleOpt, notificationRequest).then(() => {
+            console.info(`${TAG} publishAsBundle AsyncCallback success`)
+            expect(false).assertTrue()
+            done()
+        }).catch((err) =>{
+            console.info(`${TAG} publishAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(202);
+            done()  
+        });
+
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4300 END`);
+    });
+
+    /*
      * @tc.number: Sub_Notification_Ans_Publish_Cancel_0150
      * @tc.name: cancelAsBundle
      * @tc.desc: test function cancelAsBundle
@@ -120,6 +157,31 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
         });
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0150 END`);
+    });
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Cancel_0160
+     * @tc.name: cancelAsBundle
+     * @tc.desc: test function cancelAsBundle
+     */
+    it('Sub_Notification_Ans_Publish_Cancel_0160', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0160 START`);
+
+        let bundleOpt : notificationManager.BundleOption = {
+            bundle: "example.bundleName",
+            uid: 0
+        }
+        notificationManager.cancelAsBundle(bundleOpt, 1).then(() => {
+            console.info(`${TAG} cancelAsBundle AsyncCallback success`)
+            expect(false).assertTrue()
+            done()
+        }).catch((err) =>{
+            console.info(`${TAG} cancelAsBundle AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
+            expect(err.code).assertEqual(202);
+            done()  
+        });
+
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_0160 END`);
     });
 
     /*

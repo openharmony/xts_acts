@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function routerStandardJsunit() {
-  describe('routerStandardTest', function () {
-    beforeEach(async function (done) {
+  describe('routerStandardTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/router',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/router',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function routerStandardJsunit() {
         console.info("get router state success " + JSON.stringify(pages));
         if (!("router" == pages.name)) {
           console.info("get router state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push router page success " + JSON.stringify(result));
         }
@@ -41,29 +41,29 @@ export default function routerStandardJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("routerStandard after each called");
     });
 
-    it('testrouterStandard0011', 0, async function (done) {
+    it('testrouterStandard0011', 0, async (done: Function) => {
       console.info('routerStandard testrouterStandard0011 START');
       await Utils.sleep(2000);
       try {
-        var standardEvent = {
+        let standardEvent: events_emitter.InnerEvent = {
           eventId: 101,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testrouterStandard_0011 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.ArrayData).assertEqual("45");
-        
+
         }
         events_emitter.on(standardEvent, callback1);
         console.info("testrouterStandard_0011 click result1 is: " + JSON.stringify(sendEventByKey('StandardText', 10, "")));
         await Utils.sleep(2000);
         console.info("testrouterStandard_0011 click result2 is: " + JSON.stringify(sendEventByKey('DataText', 10, "")));
-        await Utils.sleep(2000);  
+        await Utils.sleep(2000);
       } catch (err) {
         console.info("testrouterStandard_0011 on events_emitter err : " + JSON.stringify(err));
       }
@@ -71,15 +71,15 @@ export default function routerStandardJsunit() {
       done();
     });
 
-    it('testrouterSingle0001', 0, async function (done) {
+    it('testrouterSingle0001', 0, async (done: Function) => {
       console.info('routerSingle testrouterSingle0001 START');
       await Utils.sleep(2000);
       try {
-        var singleEvent = {
+        let singleEvent: events_emitter.InnerEvent = {
           eventId: 102,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback2 = (eventData) => {
+        let callback2 = (eventData: events_emitter.EventData) => {
           console.info("testrouterSingle_0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.ArrayData).assertEqual("46");
         }

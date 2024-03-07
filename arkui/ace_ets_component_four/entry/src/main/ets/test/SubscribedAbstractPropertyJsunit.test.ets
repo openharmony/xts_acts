@@ -13,18 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, it } from "@ohos/hypium"
 
 export default function subscribedAbstractPropertyJsunit() {
-  describe('appInfoTest_four_8', function () {
-    it('subscribedAbstractProperty0100', 0, async function (done) {
+  describe('appInfoTest_four_8', () => {
+    it('subscribedAbstractProperty0100', 0, async (done: Function) => {
       console.info('[subscribedAbstractProperty0100] START');
-      if(true){
+      if (true) {
         done();
         return;
       }
-      const subscribedAbstractProperty  = new SubscribedAbstractProperty('subscribtest');
-      let number = subscribedAbstractProperty.numberOfSubscrbers();
+      const subscribedAbstractProperty = new SubscribedAbstractProperty('subscribtest');
       subscribedAbstractProperty.notifyPropertyRead();
       subscribedAbstractProperty.notifyHasChanged('subscribtest');
       subscribedAbstractProperty.unlinkSuscriber(0);

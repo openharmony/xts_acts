@@ -25,7 +25,7 @@ struct ImageAnimatorExample {
   @State iterations: number = 1
 
   build() {
-    Column({ space:5 }) {
+    Column({ space: 5 }) {
       ImageAnimator()
         .images([
           {
@@ -62,12 +62,15 @@ struct ImageAnimatorExample {
           }
         ])
         .key("ImageAnimator")
-        .state(this.state).reverse(this.reverse).fixedSize(false).preDecode(2)
+        .state(this.state)
+        .reverse(this.reverse)
+        .fixedSize(false)
+        .preDecode(2)
         .fillMode(FillMode.Forwards)
         .iterations(this.iterations)
         .width(325)
         .height(210)
-        .margin({top:100})
+        .margin({ top: 100 })
         .onStart(() => { // 当帧动画开始播放后触发
           console.info('Start')
         })
@@ -95,6 +98,7 @@ struct ImageAnimatorExample {
           this.state = AnimationStatus.Stopped
         })
       }
+
       Row() {
         Button('reverse').width(100).padding(5).onClick(() => {
           this.reverse = !this.reverse
@@ -106,6 +110,9 @@ struct ImageAnimatorExample {
           this.iterations = -1
         })
       }
-    }.width('100%').height('100%').backgroundColor(0xF1F3F5)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
   }
 }

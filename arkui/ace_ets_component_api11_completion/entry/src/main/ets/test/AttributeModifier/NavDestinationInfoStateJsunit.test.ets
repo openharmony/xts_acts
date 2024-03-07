@@ -49,7 +49,7 @@ export default function NavDestinationInfoStateJsunit() {
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavDestinationInfoStateText01'));
       await btn1.click();
-
+      await CommonFunc.sleep(2000);  
       let strcontent = getInspectorByKey('NavDestinationInfoStateText02');
       let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);

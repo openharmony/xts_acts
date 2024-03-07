@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexHeightModify_EndJsunit() {
-  describe('flexItemAlignEndTest6', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexHeightModify',
+  describe('flexItemAlignEndTest6', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexHeightModify',
       }
       try {
         router.clear();
@@ -30,33 +32,33 @@ export default function flexHeightModify_EndJsunit() {
         console.info("get FlexHeightModify state success " + JSON.stringify(pages));
         if (!("FlexHeightModify" == pages.name)) {
           console.info("get FlexHeightModify state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexHeightModify page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexHeightModify after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0800
-     * @tc.name      testFlexItemAlignEndDefaultSize
-     * @tc.desc      Check the the default height of the first subcomponent.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_END_0800
+     * @tc.name testFlexItemAlignEndDefaultSize
+     * @tc.desc Check the the default height of the first subcomponent.
      */
-    it('testFlexItemAlignEndDefaultSize', 0, async function (done) {
+    it('testFlexItemAlignEndDefaultSize', 0, async () => {
       console.info('new testFlexItemAlignEndDefaultSize START');
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
-      let textHeightModify01 = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
+
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
 
       expect(Math.abs(textHeightModify01.bottom - textHeightModify02.bottom) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.bottom - textHeightModify03.bottom) <= 1).assertTrue()
@@ -72,27 +74,29 @@ export default function flexHeightModify_EndJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndDefaultSize END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0900
-     * @tc.name      testFlexItemAlignEndHeightModify
-     * @tc.desc      Modify the first subcomponent's height.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_END_0900
+     * @tc.name testFlexItemAlignEndHeightModify
+     * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignEndHeightModify', 0, async function (done) {
+    it('testFlexItemAlignEndHeightModify', 0, async () => {
       console.info('new testFlexItemAlignEndHeightModify START');
-      globalThis.value.message.notify({name:'height', value:80});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'height', value: 80
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
-      let textHeightModify01 = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
+
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
 
       expect(Math.abs(textHeightModify01.bottom - textHeightModify02.bottom) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.bottom - textHeightModify03.bottom) <= 1).assertTrue()
@@ -108,10 +112,10 @@ export default function flexHeightModify_EndJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndHeightModify END');
-      done();
+
     });
   })
 }

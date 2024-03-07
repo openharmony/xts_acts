@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -51,7 +52,7 @@ struct PathNew {
         .key("neText")
 
       Path().width("100px").height("100px").commands('M150 0 L300 300 L0 300 Z')
-      .key("Path")
+        .key("Path")
 
       Image($rawfile('test.png'))
         .mask(new Path({ width: '150px', height: '150px' }).fill(Color.Gray))

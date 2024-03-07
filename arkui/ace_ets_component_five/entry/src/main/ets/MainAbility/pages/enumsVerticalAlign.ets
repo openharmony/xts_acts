@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,14 +15,26 @@
 
 @Entry
 @Component
-struct RowExample {
+struct RowExampleV {
   build() {
     Column({ space: 5 }) {
-      Text('alignItems(Bottom)').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('alignItems(Bottom)')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Row() {
-        Row().width('50%').height(50).backgroundColor(0x00FFFF)
-        Row().width('50%').height(50).backgroundColor(0xAFEEEE)
-      }.alignItems(VerticalAlign.Center).width('90%').height(100).border({ width: 1 })
+        Row()
+          .width('50%')
+          .height(50)
+          .backgroundColor(0x00FFFF)
+        Row()
+          .width('50%')
+          .height(50).backgroundColor(0xAFEEEE)
+      }
+      .alignItems(VerticalAlign.Center)
+      .width('90%')
+      .height(100)
+      .border({ width: 1 })
       .key('VerticalAlign')
     }.width('100%')
   }

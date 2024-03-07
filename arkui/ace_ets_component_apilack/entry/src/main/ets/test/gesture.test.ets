@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gestureSetDirectionJsunit() {
-  describe('gestureSetDirectionTest', function () {
-    beforeAll(async function (done) {
+  describe('gestureSetDirectionTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/gesture',
@@ -38,38 +38,37 @@ export default function gestureSetDirectionJsunit() {
       } catch (err) {
         console.error("push gesture page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gestureSetDirection after each called");
     });
 
- /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0001
-     * @tc.name         testgestureSetDirection0001
-     * @tc.desic         acegestureSetDirectionEtsTest0001
-     */
-    it('testgestureSetDirection0001', 0, async function (done) {
+    /*
+        * @tc.number       SUB_ACE_BASIC_ETS_API_0001
+        * @tc.name         testgestureSetDirection0001
+        * @tc.desic         acegestureSetDirectionEtsTest0001
+        */
+    it('testgestureSetDirection0001', 0, async () => {
       console.info('gestureSetDirection testgestureSetDirection0001 START');
       await Utils.sleep(2000);
-      try{
+      try {
         let callback = (indexEvent) => {
           console.info("onClick_0001 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertEqual(PanDirection.Vertical);
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 60204,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('setDirectionPanGesture', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("onClick_0001 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('gestureSetDirection testgestureSetDirection0002 END')
-      done();
+
     });
 
     /*
@@ -77,25 +76,25 @@ export default function gestureSetDirectionJsunit() {
      * @tc.name         testgestureSetDistance0002
      * @tc.desic         acegestureSetDistanceEtsTest0002
      */
-    it('testgestureSetDistance0002', 0, async function (done) {
+    it('testgestureSetDistance0002', 0, async () => {
       console.info('gestureSetDistance testgestureSetDistance0002 START');
       await Utils.sleep(2000);
-      try{
+      try {
         let callback = (indexEvent) => {
           console.info("onClick_0002 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertEqual(4.0);
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 60205,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('setDistancePanGesture', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("onClick_0002 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('gestureSetDistance testgestureSetDistance0002 END');
-      done();
+
     });
 
     /*
@@ -103,25 +102,25 @@ export default function gestureSetDirectionJsunit() {
      * @tc.name         testgestureSetFingers0003
      * @tc.desic         acegestureSetFingersEtsTest0003
      */
-    it('testgestureSetFingers0003', 0, async function (done) {
+    it('testgestureSetFingers0003', 0, async () => {
       console.info('gestureSetFingers testgestureSetFingers0003 START');
       await Utils.sleep(2000);
-      try{
+      try {
         let callback = (indexEvent) => {
           console.info("onClick_0003 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertEqual(true);
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 60206,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('setFingersPanGesture', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("onClick_0003 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('gestureSetFingers testgestureSetFingers0003 END');
-      done();
+
     });
 
   })

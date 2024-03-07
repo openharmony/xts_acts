@@ -87,6 +87,8 @@ export default function ActscommonEventSupportTest() {
     it('Sub_Notification_Ces_Publish_Support_2500', 0, async  function () {
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_2500 START`)
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_ADDED).assertEqual('usual.event.PACKAGE_ADDED')
+      expect(commonEvent.Support.COMMON_EVENT_PACKAGE_INSTALLATION_STARTED)
+        .assertEqual('usual.event.PACKAGE_INSTALLATION_STARTED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_REPLACED).assertEqual('usual.event.PACKAGE_REPLACED')
       expect(commonEvent.Support.COMMON_EVENT_MY_PACKAGE_REPLACED).assertEqual('usual.event.MY_PACKAGE_REPLACED')
       expect(commonEvent.Support.COMMON_EVENT_PACKAGE_REMOVED).assertEqual('usual.event.PACKAGE_REMOVED')

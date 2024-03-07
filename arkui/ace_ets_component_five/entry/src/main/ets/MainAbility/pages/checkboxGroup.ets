@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,18 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct CheckboxGroupExample {
   @State select: boolean = false
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("checkboxGroup page stateChangCallBack");
     if (eventData != null) {
       console.info("checkboxGroup page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.select != null) {
+      if (eventData.data.select != null) {
         this.select = eventData.data.select;
       }
     }
@@ -32,7 +30,7 @@ struct CheckboxGroupExample {
 
   onPageShow() {
     console.info('checkboxGroup page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 75,
       priority: events_emitter.EventPriority.LOW
     }
@@ -42,10 +40,10 @@ struct CheckboxGroupExample {
   build() {
     Scroll() {
       Column() {
-        CheckboxGroup({group : 'checkboxGroup'})
+        CheckboxGroup({ group: 'checkboxGroup' })
           .selectedColor(0xed6f21)
           .key('CheckboxGroup')
-          .onChange((itemName:CheckboxGroupResult) => {
+          .onChange((itemName: CheckboxGroupResult) => {
             console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
           })
         Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })

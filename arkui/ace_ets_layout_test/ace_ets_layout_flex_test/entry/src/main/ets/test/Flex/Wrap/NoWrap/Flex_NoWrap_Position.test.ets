@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_NoWrap_PositionTest() {
-  describe('Flex_NoWrap_PositionTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_NoWrap_PositionTest', () => {
+    beforeEach(async () => {
       console.info("Flex_NoWrap_PositionTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Flex/Wrap/NoWrap/Flex_NoWrap_Position',
       }
       try {
@@ -29,7 +31,7 @@ export default function flex_NoWrap_PositionTest() {
         console.info("get Flex_NoWrap_Position state pages:" + JSON.stringify(pages));
         if (!("Flex_NoWrap_Position" == pages.name)) {
           console.info("get Flex_NoWrap_Position state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_NoWrap_Position page result:" + JSON.stringify(result));
         }
@@ -37,30 +39,34 @@ export default function flex_NoWrap_PositionTest() {
         console.error("push Flex_NoWrap_Position page error:" + err);
       }
       console.info("Flex_NoWrap_PositionTest beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_NoWrap_Position after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_NOWRAP_1900
-     * @tc.name      testWrapNoWrapTextPosition
-     * @tc.desc      The size of the parent component in the main axis direction meets the layout
+     * @tc.number SUB_ACE_FLEXWRAP_NOWRAP_1900
+     * @tc.name testWrapNoWrapTextPosition
+     * @tc.desc The size of the parent component in the main axis direction meets the layout
      *               of the child components when the first child components change position
      */
-    it('testWrapNoWrapTextPosition', 0, async function (done) {
+    it('testWrapNoWrapTextPosition', 0, async () => {
       console.info('[testWrapNoWrapTextPosition] START');
-      globalThis.value.message.notify({ name: 'position', value: { x: 20, y: 40 } })
+      GlobalContext.getContext().getObject<Position>('value').message.notify({
+        name: 'position', value: {
+          x: 20, y: 40
+        }
+      })
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('NoWrap_Position01');
-      let secondText = CommonFunc.getComponentRect('NoWrap_Position02');
-      let thirdText = CommonFunc.getComponentRect('NoWrap_Position03');
-      let flexContainer = CommonFunc.getComponentRect('Flex_NoWrap_Position_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('NoWrap_Position01');
+      let secondText: RectValue = CommonFunc.getComponentRect('NoWrap_Position02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('NoWrap_Position03');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('Flex_NoWrap_Position_Container01');
       let flexContainerStrJson = getInspectorByKey('Flex_NoWrap_Position_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
       expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
@@ -71,13 +77,14 @@ export default function flex_NoWrap_PositionTest() {
       expect(Math.abs((secondText.top) - (thirdText.top)) <= 1).assertTrue();
       expect(Math.abs((secondText.right) - (thirdText.left)) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(200)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(flexContainer.right - thirdText.right)) - (Math.round(vp2px(200)))) <= 1)
+        .assertTrue();
       expect(Math.abs((thirdText.bottom) - (flexContainer.bottom)) <= 1).assertTrue();
 
       expect(Math.abs((Math.round(firstText.top - flexContainer.top)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(firstText.left - flexContainer.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
       console.info('[testWrapNoWrapTextPosition] END');
-      done();
+
     });
   })
 }

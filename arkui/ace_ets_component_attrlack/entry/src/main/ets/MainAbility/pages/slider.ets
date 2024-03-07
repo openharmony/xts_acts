@@ -16,6 +16,7 @@
 import Log from '../common/Log.ets';
 import Utils from '../common/Utils.ets';
 import events_emitter from '@ohos.events.emitter';
+import RectValue from '../common/Rect';
 
 const TAG = 'ets_apiLack_add';
 
@@ -23,10 +24,11 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct SliderMoving {
   @State outSetValue: number = 40;
-  @State move:SliderChangeMode = SliderChangeMode.Moving;
+  @State move: SliderChangeMode = SliderChangeMode.Moving;
+
   slide() {
-    var rect = Utils.getComponentRect("Slider")
-    Utils.drag(rect["left"],rect["top"],rect["right"],rect["bottom"],20)
+    let rect: RectValue = Utils.getComponentRect("Slider")
+    Utils.drag(rect.left, rect.top, rect.right, rect.bottom, 20)
   }
 
   aboutToAppear() {
@@ -71,12 +73,12 @@ struct SliderMoving {
           Log.showInfo(TAG, 'SliderChangeMode.Moving: ' + SliderChangeMode.Moving.toString())
           Log.showInfo(TAG, 'value:' + value + 'mode:' + mode.toString())
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Mode": 0
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60307,
               priority: events_emitter.EventPriority.LOW
             }

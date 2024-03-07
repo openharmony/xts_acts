@@ -20,79 +20,76 @@ import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 
 
-
-
 @Entry
 @Component
 struct Index {
-    // add
-    @State isVoid: boolean = true;
-    handler: FullScreenExitHandler = null;
-    @State atio: number = 150;
-    @State defaultSize: number = 13;
-    @State defaultFixed: number = 8;
-    @State minLogicalSize: number = 1;
-    @State netWorkStatus: boolean = false;
-    ports: WebMessagePort[] = null;
-    testObj = {
-        test: (data1, data2, data3) => {
-            console.log("data1:" + data1);
-            console.log("data2:" + data2);
-            console.log("data3:" + data3);
-            return "AceString";
-        },
-        toString: () => {
-            console.log('toString' + "interface instead.");
-        }
+  // add
+  @State isVoid: boolean = true;
+  handler: FullScreenExitHandler = null;
+  @State atio: number = 150;
+  @State defaultSize: number = 13;
+  @State defaultFixed: number = 8;
+  @State minLogicalSize: number = 1;
+  @State netWorkStatus: boolean = false;
+  ports: WebMessagePort[] = null;
+  testObj = {
+    test: (data1, data2, data3) => {
+      console.log("data1:" + data1);
+      console.log("data2:" + data2);
+      console.log("data3:" + data3);
+      return "AceString";
+    },
+    toString: () => {
+      console.log('toString' + "interface instead.");
     }
+  }
+  message = new ConsoleMessage("1", "12", 23, MessageLevel.Debug);
+  controller: WebController = new WebController();
+  controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
+  responseweb: WebResourceResponse = new WebResourceResponse()
+  @State str: string = "emitStoreWebArchive"
 
-    message = new ConsoleMessage("1","12",23,MessageLevel.Debug);
-
-
-    controller:WebController = new WebController();
-    controllerTwo: web_webview.WebviewController = new web_webview.WebviewController();
-    responseweb: WebResourceResponse = new WebResourceResponse()
-    @State str:string="emitStoreWebArchive"
-
-
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("web page valueChangeCallBack");
-        if(eventData != null){
-             console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-             if(eventData.data.ACTION != null){
-                 this.str = eventData.data.ACTION;
-             }
-        }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData) => {
+    console.info("web page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
     }
-    private jsObj={
-        test:(res)=>{
-            Utils.emitEvent(res,102);
-        },
-        toString:(str)=>{
-            console.info("ets toString:"+String(str));
-        },
-        register:(res)=>{
-            Utils.emitEvent(res,86);
-            return "web222"
-        }
+  }
+  private jsObj = {
+    test: (res) => {
+      Utils.emitEvent(res, 102);
+    },
+    toString: (str) => {
+      console.info("ets toString:" + String(str));
+    },
+    register: (res) => {
+      Utils.emitEvent(res, 86);
+      return "web222"
     }
-    aboutToAppear(){
-        let abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
-    }
-    build(){
-        Column() {
+  }
+
+  aboutToAppear() {
+    let abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
+
+  build() {
+    Column() {
             // add api9
             Web({ src: 'www.baidu.com', controller: this.controller })
                 .multiWindowAccess(true).key('multiwindow')
@@ -222,8 +219,8 @@ struct Index {
                         Utils.emitEvent(webId,816);
                         break;
                     case "emitpostMessage":
-                        var sendPortArray = new Array(this.ports[1]);
-                        var msgEvent = new WebMessageEvent();
+                        let sendPortArray = new Array(this.ports[1]);
+                        let msgEvent = new WebMessageEvent();
                         msgEvent.setData("__init_port__");
                         msgEvent.setPorts(sendPortArray);
                         this.controller.postMessage({message: msgEvent, uri: "*"});
@@ -279,7 +276,7 @@ struct Index {
                         Utils.emitEvent(isThirdParty,827);
                         break;
                     case "hasImage":
-                        let flag = true
+                        // let flag = true
                         try{
                             thid.controllerTwo.hasImage((err.data)=>{
                                 if(err) {
@@ -321,7 +318,7 @@ struct Index {
                         Utils.emitEvent(this.netWorkStatus,832);
                         break;
                     case "history":
-                        var res = 1;
+                        let res = 1;
                         let historyList = this.controllerTwo.getBackForwardEntries();
                         this.controllerTwo.initializeWebEngine();
                         let historyItem = historyList.getItemIndex(this.res);
@@ -329,7 +326,7 @@ struct Index {
                         Utils.emitEvent(this.netWorkStatus,833);
                         break;
                     case "pageUp":
-                        var res = true
+                        let res = true
                         this.controllerTwo.pageUp(true);
                         this.controllerTwo.pageDown(true);
                         this.controllerTwo.removeCache(true);
@@ -342,5 +339,5 @@ struct Index {
             })
         }
 
-    }
+  }
 }

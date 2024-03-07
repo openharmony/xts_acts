@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct row_testcase {
-  @State alignItems: VerticalAlign= VerticalAlign.Top
+  @State alignItems: VerticalAlign = VerticalAlign.Top
   @State active: boolean = false
 
   build() {

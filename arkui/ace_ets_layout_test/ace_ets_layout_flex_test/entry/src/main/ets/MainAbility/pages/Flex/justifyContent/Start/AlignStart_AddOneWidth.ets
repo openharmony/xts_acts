@@ -13,26 +13,34 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback } from './../../../../common/MessageManager';
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct AlignStart_AddOneWidth {
   @State OneWidth: number = 100;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('AlignStart_AddOneWidth onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneWidth') {
         this.OneWidth = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   @State justifyContent: FlexAlign = FlexAlign.Start;
+
   build() {
     Column() {
       Text('justifyContent:FlexAlign.Start').fontSize(9).fontColor(0xCCCCCC).width('90%');
@@ -45,6 +53,6 @@ struct AlignStart_AddOneWidth {
       .width(500)
       .height(200)
       .backgroundColor(0xAFEEEE)
-      }
+    }
   }
 }

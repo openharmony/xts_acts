@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function ScrollExampleJsunit() {
-  describe('ScrollExampleTest', function () {
-    beforeAll(async function (done) {
+  describe('ScrollExampleTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/scroll_edge',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/scroll_edge',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function ScrollExampleJsunit() {
         console.info("get scroll_edge state success " + JSON.stringify(pages));
         if (!("ScrollExample" == pages.name)) {
           console.info("get scroll_edge state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push scroll_edge page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function ScrollExampleJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ScrollExample after each called");
     });
@@ -51,16 +51,16 @@ export default function ScrollExampleJsunit() {
      * @tc.name         testscrollEdgeMiddle0001
      * @tc.desic         acescrollEdgeMiddleEtsTest0001
      */
-    it('testscrollEdgeMiddle0001', 0, async function (done) {
+    it('testscrollEdgeMiddle0001', 0, async (done: Function) => {
       console.info('scrollEdgeMiddle testscrollEdgeMiddle0001 START');
 
       await Utils.sleep(2000);
       try {
-        var innerEventOne = {
+        let innerEventOne: events_emitter.InnerEvent = {
           eventId: 60306,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback1 = (eventData) => {
+        let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testscrollEdgeMiddle0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(true);
           done();

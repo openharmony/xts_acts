@@ -15,15 +15,15 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import inspector from '@ohos.arkui.inspector';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function assemblyCallbackTest() {
-  describe('assemblyCallbackTest', function () {
+  describe('assemblyCallbackTest', () => {
 
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/assemblyCallback',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/assemblyCallback',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function assemblyCallbackTest() {
         console.info("get assemblyCallback state success " + JSON.stringify(pages));
         if (!("assemblyCallback" == pages.name)) {
           console.info("get assemblyCallback state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push assemblyCallback page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,106 +40,106 @@ export default function assemblyCallbackTest() {
       done()
     });
 
-    it('ArkUX_Callback_notification_0210', 0, async function (done) {
+    it('ArkUX_Callback_notification_0210', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0210 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener11 = inspector.createComponentObserver("null")
-          console.info('ArkUX_Callback_notification_0210 START  :'+ listener11);
-          console.info('ArkUX_Callback_notification_0210 START  :'+ typeof listener11);
+          console.info('ArkUX_Callback_notification_0210 START  :' + listener11);
+          console.info('ArkUX_Callback_notification_0210 START  :' + typeof listener11);
           expect(typeof listener11).assertEqual("object")
           console.info('ArkUX_Callback_notification_0210 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0210 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0210 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Callback_notification_0220', 0, async function (done) {
+    it('ArkUX_Callback_notification_0220', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0220 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener12 = inspector.createComponentObserver("")
-          console.info('ArkUX_Callback_notification_0220 START  :'+ listener12);
-          console.info('ArkUX_Callback_notification_0220 START  :'+ typeof listener12);
+          console.info('ArkUX_Callback_notification_0220 START  :' + listener12);
+          console.info('ArkUX_Callback_notification_0220 START  :' + typeof listener12);
           expect(typeof listener12).assertEqual("object")
           console.info('ArkUX_Callback_notification_0220 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0220 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0220 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Callback_notification_0230', 0, async function (done) {
+    it('ArkUX_Callback_notification_0230', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0230 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener13 = inspector.createComponentObserver("object")
-          console.info('ArkUX_Callback_notification_0230 START  :'+ listener13);
-          console.info('ArkUX_Callback_notification_0230 START  :'+ typeof listener13);
+          console.info('ArkUX_Callback_notification_0230 START  :' + listener13);
+          console.info('ArkUX_Callback_notification_0230 START  :' + typeof listener13);
           expect(typeof listener13).assertEqual("object")
           console.info('ArkUX_Callback_notification_0230 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0230 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0230 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Callback_notification_0240', 0, async function (done) {
+    it('ArkUX_Callback_notification_0240', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0240 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener14 = inspector.createComponentObserver("null")
-          console.info('ArkUX_Callback_notification_0240 START  :'+ listener14);
-          console.info('ArkUX_Callback_notification_0240 START  :'+ typeof listener14);
+          console.info('ArkUX_Callback_notification_0240 START  :' + listener14);
+          console.info('ArkUX_Callback_notification_0240 START  :' + typeof listener14);
           expect(typeof listener14).assertEqual("object")
           console.info('ArkUX_Callback_notification_0240 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0240 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0240 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Callback_notification_0250', 0, async function (done) {
+    it('ArkUX_Callback_notification_0250', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0250 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener15 = inspector.createComponentObserver("")
-          console.info('ArkUX_Callback_notification_0250 START  :'+ listener15);
-          console.info('ArkUX_Callback_notification_0250 START  :'+ typeof listener15);
+          console.info('ArkUX_Callback_notification_0250 START  :' + listener15);
+          console.info('ArkUX_Callback_notification_0250 START  :' + typeof listener15);
           expect(typeof listener15).assertEqual("object")
           console.info('ArkUX_Callback_notification_0250 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0250 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0250 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Callback_notification_0260', 0, async function (done) {
+    it('ArkUX_Callback_notification_0260', 0, async (done: Function) => {
       console.info('ArkUX_Callback_notification_0260 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let listener16 = inspector.createComponentObserver("object")
-          console.info('ArkUX_Callback_notification_0260 START  :'+ listener16);
-          console.info('ArkUX_Callback_notification_0260 START  :'+ typeof listener16);
+          console.info('ArkUX_Callback_notification_0260 START  :' + listener16);
+          console.info('ArkUX_Callback_notification_0260 START  :' + typeof listener16);
           expect(typeof listener16).assertEqual("object")
           console.info('ArkUX_Callback_notification_0260 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Callback_notification_0260 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Callback_notification_0260 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
   })

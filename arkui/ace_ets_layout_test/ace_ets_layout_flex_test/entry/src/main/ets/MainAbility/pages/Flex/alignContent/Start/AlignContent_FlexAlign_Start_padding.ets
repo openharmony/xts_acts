@@ -13,23 +13,28 @@
  * limitations under the License.
  */
 
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct AlignContent_FlexAlign_Start_padding {
   @State flexPadding: number = 10;
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('AlignContentFlex onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.flexPadding = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -52,7 +57,6 @@ struct AlignContent_FlexAlign_Start_padding {
       .height(360)
       .backgroundColor(0xAFEEEE)
       .padding(this.flexPadding)
-
 
     }.width('100%')
   }

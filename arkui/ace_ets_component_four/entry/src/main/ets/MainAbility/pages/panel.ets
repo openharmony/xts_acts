@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,15 +18,14 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct PanelExample {
-  @State show: boolean = true
-  @State type: PanelType = PanelType.Foldable
-  @State mode: PanelMode = PanelMode.Half
-
-  private stateChangCallBack = (eventData) => {
+  @State show: boolean = true;
+  @State type: PanelType = PanelType.Foldable;
+  @State mode: PanelMode = PanelMode.Half;
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("rating page stateChangCallBack");
     if (eventData != null) {
       console.info("rating page state change called:" + JSON.stringify(eventData.data.rating));
-      if(eventData.data.type != null) {
+      if (eventData.data.type != null) {
         this.type = eventData.data.type;
       }
     }
@@ -35,17 +33,17 @@ struct PanelExample {
 
   onPageShow() {
     console.info('rating page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 147,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 148,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 149,
       priority: events_emitter.EventPriority.LOW
     }
@@ -55,8 +53,11 @@ struct PanelExample {
   build() {
     Column() {
       Text('2021-09-30    Today Calendar: 1.afternoon......Click for details')
-        .width('90%').height(50).borderRadius(10)
-        .backgroundColor(0xFF0000).padding({ left: 20 })
+        .width('90%')
+        .height(50)
+        .borderRadius(10)
+        .backgroundColor(0xFF0000)
+        .padding({ left: 20 })
         .onClick(() => {
           this.show = !this.show
         })
@@ -67,13 +68,18 @@ struct PanelExample {
           Text('1. afternoon 4:00 The project meeting')
         }
       }
-      .type(this.type).mode(this.mode)
+      .type(this.type)
+      .mode(this.mode)
       .dragBar(true)
       .halfHeight(500)
       .key('Panel')
-      .onChange((value: any) => {
+      .onChange((value: ESObject) => {
         console.info(`width:${value.width},height:${value.height},mode:${value.mode}`)
       })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
   }
 }

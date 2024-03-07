@@ -16,22 +16,22 @@
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils.ets'
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct CheckBoxGroupPart {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CheckBoxGroupPart start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CheckBoxGroupPart end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("checkBoxGroup-Part")
         .width(100)
@@ -61,19 +61,19 @@ struct CheckBoxGroupPart {
         .textOverflow({ overflow: TextOverflow.None })
         .key("groupText")
 
-      CheckboxGroup({group : 'checkboxGroup'})
+      CheckboxGroup({ group: 'checkboxGroup' })
         .key('CheckboxGroup')
         .selectedColor(0xed6f21)
-        .onChange((itemName:CheckboxGroupResult) => {
+        .onChange((itemName: CheckboxGroupResult) => {
           console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
           console.info("TextPicker::dialogResult is" + JSON.stringify(itemName.status))
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "STATUS": itemName.status
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60301,
               priority: events_emitter.EventPriority.LOW
             }
@@ -83,32 +83,28 @@ struct CheckBoxGroupPart {
             console.info("Part emit action state err: " + JSON.stringify(err.message))
           }
           Utils.sleep(1000);
-          if(itemName.status === SelectStatus.Part){
+          if (itemName.status === SelectStatus.Part) {
             console.info("CheckboxGroup SelectStatus.Part")
           }
         })
       Text('select all').fontSize(20)
-      Checkbox({name: 'checkbox1',  group: 'checkboxGroup'})
+      Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
         .key('Checkbox1')
         .select(true)
         .selectedColor(0xed6f21)
         .onChange((value: boolean) => {
-          console.info('Checkbox1 change is'+ value)
+          console.info('Checkbox1 change is' + value)
         })
-      Checkbox({name: 'checkbox2',  group: 'checkboxGroup'})
+      Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
         .key('Checkbox2')
         .select(false)
         .selectedColor(0x39a2db)
         .onChange((value: boolean) => {
-          console.info('Checkbox2 change is'+ value)
+          console.info('Checkbox2 change is' + value)
         })
-
-    
-    }.width("100%").height("100%")
-
-
-
-
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 
