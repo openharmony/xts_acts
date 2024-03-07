@@ -284,9 +284,9 @@ static napi_value Insque(napi_env env, napi_callback_info info)
 
 static int compare(const void *pa, const void *pb)
 {
-    if (*static_cast<const int *>(pa)< *static_cast<const int *>(pb))
+    if (*static_cast<const int *>(pa) < *static_cast<const int *>(pb))
         return PARAM_UNNORMAL;
-    if (*static_cast<const int *>(pa)> *static_cast<const int *>(pb))
+    if (*static_cast<const int *>(pa) > *static_cast<const int *>(pb))
         return PARAM_1;
     return PARAM_0;
 }
@@ -308,7 +308,7 @@ static napi_value Lfind(napi_env env, napi_callback_info info)
     } else {
         key = PARAM_0;
     }
-    ret = static_cast<int*>(lfind(&key, array, &nlength, sizeof(int), compare));
+    ret = static_cast<int *>(lfind(&key, array, &nlength, sizeof(int), compare));
 
     napi_value result = nullptr;
     if (!ret) {
@@ -332,7 +332,7 @@ static napi_value LSearch(napi_env env, napi_callback_info info)
     int array[5] = {1, 2, 3, 4, 5};
     size_t nlength = PARAM_5;
     if (param == PARAM_0) {
-        ret = static_cast<int*>(lsearch(&key, array, &nlength, sizeof(int), compare));
+        ret = static_cast<int *>(lsearch(&key, array, &nlength, sizeof(int), compare));
     }
 
     napi_value result = nullptr;

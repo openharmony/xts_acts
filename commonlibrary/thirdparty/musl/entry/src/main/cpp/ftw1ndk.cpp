@@ -15,13 +15,13 @@
 
 #include "napi/native_api.h"
 #include <cerrno>
+#include <climits>
 #include <cstdio>
 #include <cstring>
 #include <dirent.h>
 #include <fcntl.h>
 #include <ftw.h>
 #include <js_native_api.h>
-#include <climits>
 #include <node_api.h>
 #include <unistd.h>
 

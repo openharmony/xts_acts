@@ -33,6 +33,11 @@
 #define VALUE9898 9898
 #define VALUE1234 1234
 #define PARAM_6000 6000
+#define PARAM_6001 6001
+#define PARAM_6002 6002
+#define PARAM_6003 6003
+#define PARAM_6004 6004
+#define PARAM_6005 6005
 #define PARAM_8000 8000
 
 #define PARAM_0 0
@@ -71,79 +76,160 @@ static napi_value Socketpair(napi_env env, napi_callback_info info)
 static napi_value Sendmsg(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    struct msghdr msg = {PARAM_0};
-    struct sockaddr_in addr = {PARAM_0};
-    int sockfd = socket(AF_INET, SOCK_DGRAM, PARAM_0);
-    if (sockfd == MINUSONE) {
-        napi_create_int32(env, sockfd, &result);
+    int ret = PARAM_1;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6000);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
+    } else {
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6000);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            int conn = PARAM_1;
+            while (conn) {
+                conn = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                               sizeof(server));
+            }
+            struct msghdr msg = {PARAM_0};
+            ret = sendmsg(sock, &msg, PARAM_0);
+        }
+        close(sock);
     }
-    if (connect(sockfd, (struct sockaddr *)&addr, sizeof(addr)) == MINUSONE) {
-        napi_create_int32(env, MINUSTWO, &result);
-    }
-    int retval = sendmsg(sockfd, &msg, PARAM_0);
-    if (retval == MINUSONE) {
-        napi_create_int32(env, TWOVAL, &result);
-    }
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
 static napi_value Send(napi_env env, napi_callback_info info)
 {
-    struct sockaddr_in addr = {PARAM_0};
-    int sockfd = socket(AF_INET, SOCK_DGRAM, PARAM_0);
-    int sign = connect(sockfd, (struct sockaddr *)&addr, sizeof(addr));
-    char sendBuf[] = "x";
-    int sendRet = send(sockfd, sendBuf, sizeof(sendBuf), PARAM_0);
     napi_value result = nullptr;
-    if (sockfd == MINUSONE) {
-        napi_create_int32(env, PARAM_0, &result);
-    }
-    if (sign == MINUSONE) {
-        napi_create_double(env, MINUSTWO, &result);
+    int ret = PARAM_1;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6004);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
     } else {
-        napi_create_double(env, sendRet, &result);
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6004);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            int conn = PARAM_1;
+            while (conn) {
+                conn = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                               sizeof(server));
+            }
+            char sendBuf[] = "x";
+            ret = send(sock, sendBuf, sizeof(sendBuf), PARAM_0);
+        }
+        close(sock);
     }
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
 static napi_value Sendto(napi_env env, napi_callback_info info)
 {
-    struct sockaddr_in addr = {PARAM_0};
-    int sockfd = socket(AF_INET, SOCK_DGRAM, PARAM_0);
-    int sign = connect(sockfd, (struct sockaddr *)&addr, sizeof(addr));
-    char sendBuf[] = "it is a test";
-    int sendRet = sendto(sockfd, sendBuf, sizeof(sendBuf), PARAM_0, nullptr, PARAM_0);
     napi_value result = nullptr;
-    if (sockfd == MINUSONE) {
-        napi_create_int32(env, PARAM_0, &result);
-    }
-    if (sign == MINUSONE) {
-        napi_create_double(env, MINUSTWO, &result);
+    int ret = PARAM_1;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6005);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
     } else {
-        napi_create_double(env, sendRet, &result);
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6005);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            int conn = PARAM_1;
+            while (conn) {
+                conn = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                               sizeof(server));
+            }
+            char sendBuf[] = "it is a test";
+            ret = sendto(sock, sendBuf, sizeof(sendBuf), PARAM_0, nullptr, PARAM_0);
+        }
+        close(sock);
     }
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
 static napi_value Sendmmsg(napi_env env, napi_callback_info info)
 {
-    int sockfd = PARAM_0;
-    struct sockaddr_in addr = {PARAM_0};
-    struct mmsghdr msg[2];
-    int retval = PARAM_0;
-    sockfd = socket(AF_INET, SOCK_DGRAM, PARAM_0);
     napi_value result = nullptr;
-    if (sockfd == MINUSONE) {
-        napi_create_int32(env, sockfd, &result);
+    int ret = PARAM_1;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6001);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
+    } else {
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6001);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            int conn = PARAM_1;
+            while (conn) {
+                conn = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                               sizeof(server));
+            }
+            struct mmsghdr msg[2];
+            ret = sendmmsg(sock, msg, TWOVAL, PARAM_0);
+        }
+        close(sock);
     }
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-    addr.sin_port = htons(VALUE1234);
-    if (connect(sockfd, (struct sockaddr *)&addr, sizeof(addr)) == MINUSONE) {
-        napi_create_int32(env, MINUSONE, &result);
-    }
-    retval = sendmmsg(sockfd, msg, TWOVAL, PARAM_0);
-    napi_create_int32(env, retval, &result);
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
@@ -264,90 +350,107 @@ static napi_value Recvmmsg(napi_env env, napi_callback_info info)
 
 static napi_value Connect(napi_env env, napi_callback_info info)
 {
-    int sockfd = socket(PARAM_1, PARAM_1, PARAM_1);
-    struct sockaddr_in serv_addr = {PARAM_0};
-    socklen_t addrlen = sizeof(serv_addr);
-    int backResult = connect(sockfd, (struct sockaddr *)(&serv_addr), addrlen);
     napi_value result = nullptr;
-    napi_create_int32(env, backResult, &result);
+    int ret = PARAM_1;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6002);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
+    } else {
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6002);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            while (ret) {
+                ret = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                              sizeof(server));
+            }
+        }
+        close(sock);
+    }
+    napi_create_int32(env, ret, &result);
     return result;
 }
 
 static napi_value Bind(napi_env env, napi_callback_info info)
 {
-    int sfd = PARAM_0;
-    struct sockaddr_un myAddr = {PARAM_0};
-    sfd = socket(AF_UNIX, SOCK_STREAM, PARAM_0);
-    memset(&myAddr, PARAM_0, sizeof(struct sockaddr_un));
-    myAddr.sun_family = AF_UNIX;
-    strncpy(myAddr.sun_path, MY_SOCK_PATH, sizeof(myAddr.sun_path) - PARAM_1);
-    int ret = bind(sfd, (struct sockaddr *)&myAddr, sizeof(struct sockaddr_un));
     napi_value result = nullptr;
+    int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    struct sockaddr_in server = {PARAM_0};
+    server.sin_family = AF_INET;
+    server.sin_port = htons(PARAM_8000);
+    server.sin_addr.s_addr = inet_addr("127.0.0.1");
+    int ret = bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)), sizeof(server));
+    close(sockfd);
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value Listen(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    if (fork() == PARAM_0) {
-        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        struct sockaddr_in server = {PARAM_0};
-        server.sin_family = AF_INET;
-        server.sin_port = htons(PARAM_6000);
-        server.sin_addr.s_addr = inet_addr("192.168.59.65");
-        int ret = PARAM_1;
-        while (ret) {
-            ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
-        }
-        close(sock);
-        _exit(PARAM_0);
-    } else {
-        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        struct sockaddr_in local = {PARAM_0};
-        local.sin_family = AF_INET;
-        local.sin_port = htons(PARAM_6000);
-        local.sin_addr.s_addr = inet_addr("192.168.59.65");
-        bind(sockfd, (struct sockaddr *)&local, sizeof(local));
-        int ret = listen(sockfd, PARAM_5);
-        close(sockfd);
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
+    int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+    struct sockaddr_in local = {PARAM_0};
+    local.sin_family = AF_INET;
+    local.sin_port = htons(PARAM_6000);
+    local.sin_addr.s_addr = inet_addr("192.168.59.65");
+    bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+    int ret = listen(sockfd, PARAM_5);
+    close(sockfd);
+    napi_create_int32(env, ret, &result);
+    return result;
 }
 static napi_value Getpeername(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
+    int ret = PARAM_1;
     if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd >= PARAM_0) {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PARAM_6003);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+        }
+        close(sockfd);
+        _exit(PARAM_0);
+    } else {
         int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        struct sockaddr_in server = {PARAM_0};
-        server.sin_family = AF_INET;
-        server.sin_port = htons(PARAM_8000);
-        server.sin_addr.s_addr = inet_addr("192.168.59.65");
-        int ret = PARAM_1;
-        while (ret) {
-            ret = connect(sock, (struct sockaddr *)&server, sizeof(server));
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PARAM_6003);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            int conn = PARAM_1;
+            while (conn) {
+                conn = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                               sizeof(server));
+            }
+            struct sockaddr addr = {PARAM_0};
+            socklen_t addrLen = sizeof(addr);
+            ret = getpeername(sock, &addr, &addrLen);
         }
         close(sock);
-        _exit(PARAM_0);
-
-    } else {
-        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
-        struct sockaddr_in local = {PARAM_0};
-        local.sin_family = AF_INET;
-        local.sin_port = htons(PARAM_8000);
-        local.sin_addr.s_addr = inet_addr("192.168.59.65");
-        bind(sockfd, (struct sockaddr *)&local, sizeof(local));
-        listen(sockfd, PARAM_5);
-        struct sockaddr_in clnAddr = {PARAM_0};
-        socklen_t clnAddrLen = sizeof(clnAddr);
-        int sClient = accept(sockfd, (struct sockaddr *)&clnAddr, &clnAddrLen);
-        struct sockaddr addr = {PARAM_0};
-        socklen_t addrLen = sizeof(addr);
-        int ret = getpeername(sClient, &addr, &addrLen);
-        close(sockfd);
-        napi_create_int32(env, ret, &result);
-        return result;
     }
+    napi_create_int32(env, ret, &result);
+    return result;
 }
 
 static napi_value Getsockname(napi_env env, napi_callback_info info)

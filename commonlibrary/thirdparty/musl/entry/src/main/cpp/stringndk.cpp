@@ -121,6 +121,8 @@ static napi_value Strerror_l(napi_env env, napi_callback_info info)
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
             errorValue = strerror_l(errno, locale);
+        } else {
+            fclose(file);
         }
     } else if (valueFirst == ONE) {
         errorValue = strerror_l(FAIL, locale);
@@ -155,12 +157,16 @@ static napi_value Strerror_r(napi_env env, napi_callback_info info)
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
             errorValue = strerror_r(errno, src, MAX_NUMBER);
+        } else {
+            fclose(file);
         }
     } else if (valueFirst == FOURVALUE) {
         char src[MAX_NUMBER] = "error_message";
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
             errorValue = strerror_r(errno, src, MIM_NUMBER);
+        } else {
+            fclose(file);
         }
     }
     napi_value result = nullptr;
@@ -667,7 +673,7 @@ static napi_value Strlcpy(napi_env env, napi_callback_info info)
     char valueFirst[4];
     char *valueSecond = NapiHelper::GetString(env, args[0]);
     int len = strlen(valueSecond);
-    int strlcpyValue = strlcpy(valueFirst, valueSecond,len);
+    int strlcpyValue = strlcpy(valueFirst, valueSecond, len);
     napi_value result = nullptr;
     napi_create_int32(env, strlcpyValue, &result);
     return result;

@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import pthread from 'libpthreadndk1.so'
 
 export default function muslPThreadNdk1Test() {
   describe('MuslPThread1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATFORK_0100
      * @tc.name       : testMuslPThreadPThreadAtFork001

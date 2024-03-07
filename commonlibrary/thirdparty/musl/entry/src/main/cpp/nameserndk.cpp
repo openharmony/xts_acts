@@ -15,9 +15,9 @@
 #include "napi/native_api.h"
 #include <arpa/nameser.h>
 #include <cerrno>
+#include <cstddef>
 #include <cstring>
 #include <js_native_api_types.h>
-#include <cstddef>
 #include <stdint.h>
 #include <sys/inotify.h>
 #include <unistd.h>
@@ -164,7 +164,6 @@ static napi_value NsSkiPrr(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, FAILD, &result);
     }
-    napi_create_int32(env, ret, &result);
     return result;
 }
 

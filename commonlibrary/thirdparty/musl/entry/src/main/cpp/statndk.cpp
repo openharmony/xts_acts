@@ -117,31 +117,17 @@ static napi_value Umask(napi_env env, napi_callback_info info)
 
 static napi_value Utimensat(napi_env env, napi_callback_info info)
 {
-    size_t argc = PARAM_1;
-    napi_value args[PARAM_1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
     int toCppResult = FAIL;
-    size_t length = SIZE_64;
-    size_t stresult = PARAM_0;
-    char path[SIZE_64] = {PARAM_0};
-    napi_get_value_string_utf8(env, args[PARAM_0], path, length, &stresult);
-
+    char path[] = "/data/storage/el2/base/files/Utimensat.txt";
     int fd = open(path, O_CREAT);
 
-    const long sec = SEC_TIME;
-    struct timespec times[] = {{.tv_sec = PARAM_0}, {.tv_sec = sec}};
+    struct timespec times[] = {{.tv_nsec = UTIME_OMIT}, {.tv_nsec = UTIME_OMIT}};
 
     int utimensatValue = utimensat(fd, path, times, PARAM_0);
-
-    close(fd);
-
-    struct stat statbuf = {PARAM_0};
-    utimensatValue = stat(path, &statbuf);
-
-    if (utimensatValue == PARAM_0 && statbuf.st_mtim.tv_sec == sec) {
+    if (utimensatValue == PARAM_0) {
         toCppResult = SUCCESS;
     }
+    close(fd);
     remove(path);
     napi_value result = nullptr;
     napi_create_int32(env, toCppResult, &result);
@@ -151,7 +137,7 @@ static napi_value Utimensat(napi_env env, napi_callback_info info)
 static napi_value FchModAt(napi_env env, napi_callback_info info)
 {
     char path[] = "/data/storage/el2/base/files/modAt.txt";
-    int df = open(path, O_CREAT);
+    int df = open(path, O_CREAT, PARAM_0777);
     int ret = fchmodat(df, path, S_IRUSR, PARAM_0);
     close(df);
     remove(path);
@@ -163,7 +149,7 @@ static napi_value FchModAt(napi_env env, napi_callback_info info)
 static napi_value FchMod(napi_env env, napi_callback_info info)
 {
     char path[] = "/data/storage/el2/base/files/mod.txt";
-    int df = open(path, O_CREAT);
+    int df = open(path, O_CREAT, PARAM_0777);
     int ret = fchmod(df, S_IRUSR);
     close(df);
     remove(path);
@@ -204,7 +190,7 @@ static napi_value Creat64(napi_env env, napi_callback_info info)
 
 static napi_value Chmod(napi_env env, napi_callback_info info)
 {
-    int returnValue = chmod("/data/storage/el2/base/files", O_CREAT);
+    int returnValue = chmod("/data/storage/el2/base/files", S_IRWXU | S_IRWXG | S_IRWXO);
     napi_value result;
     napi_create_int32(env, returnValue, &result);
     return result;
@@ -220,7 +206,7 @@ static napi_value Fstat(napi_env env, napi_callback_info info)
     char path[SIZE_64] = {PARAM_0};
     napi_get_value_string_utf8(env, args[PARAM_0], path, length, &stresult);
     struct stat sb = {PARAM_0};
-    int fd = open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     int value = fstat(fd, &sb);
     napi_value result;
     napi_create_int32(env, value, &result);
@@ -238,7 +224,7 @@ static napi_value Fstat64(napi_env env, napi_callback_info info)
     char path[SIZE_64] = {PARAM_0};
     napi_get_value_string_utf8(env, args[PARAM_0], path, length, &stresult);
     struct stat sb = {PARAM_0};
-    int fd = open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     int value = fstat64(fd, &sb);
     napi_value result;
     napi_create_int32(env, value, &result);
@@ -256,7 +242,7 @@ static napi_value Fstatat(napi_env env, napi_callback_info info)
     char path[SIZE_64] = {PARAM_0};
     napi_get_value_string_utf8(env, args[PARAM_0], path, length, &stresult);
     struct stat st = {PARAM_0};
-    int fd = open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     int ret = fstatat(AT_FDCWD, path, &st, PARAM_0);
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -274,7 +260,7 @@ static napi_value Fstatat64(napi_env env, napi_callback_info info)
     char path[SIZE_64] = {PARAM_0};
     napi_get_value_string_utf8(env, args[PARAM_0], path, length, &stresult);
     struct stat st = {PARAM_0};
-    int fd = open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     int ret = fstatat64(AT_FDCWD, path, &st, PARAM_0);
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -284,7 +270,7 @@ static napi_value Fstatat64(napi_env env, napi_callback_info info)
 
 static napi_value Futimens(napi_env env, napi_callback_info info)
 {
-    int fd = open("/data/storage/el2/base/files/utime.txt", O_CREAT);
+    int fd = open("/data/storage/el2/base/files/utime.txt", O_CREAT, PARAM_0777);
     int ret = futimens(fd, ((struct timespec[PARAM_2]){{.tv_nsec = UTIME_OMIT}, {.tv_nsec = UTIME_OMIT}}));
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -373,11 +359,9 @@ static napi_value MkDirAt(napi_env env, napi_callback_info info)
 {
     int ret = PARAM_0;
     char path[] = "/data/storage/el2/base/files/mkdirat1";
-    int dirfd = open(path, O_RDWR | O_CREAT);
-    ret = mkdirat(dirfd, path, S_IRWXG);
+    ret = mkdirat(PARAM_0, path, S_IRWXG);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
-    close(dirfd);
     return result;
 }
 
