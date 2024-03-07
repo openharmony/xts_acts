@@ -29,6 +29,7 @@ export default function userauthTest_API12() {
         /*
             * @tc.number    : SUB_Security_IAM_Func_API12_0100
             * @tc.name      : GetEnrolledState parameter validity check
+            * @tc.desc      : GetEnrolledState parameter validity check
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 1
