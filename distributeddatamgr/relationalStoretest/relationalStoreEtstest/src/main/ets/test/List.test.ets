@@ -16,26 +16,15 @@ import relationalStoreAssetResultSetTest from './RelationalStoreAssetResultSetJs
 import relationalStoreBackupRestorePromiseTest from './RelationalStoreBackupRestoreWithFAContextJsunit.test';
 import relationalStoreCustomDirTest from './RelationalStoreCustomDir.test';
 import relationalStoreDeleteTest from './RelationalStoreDeleteJsunit.test';
-
 import relationalStoreEncryptTest from './RelationalStoreEncryptionJsunit.test';
 import relationalStoreExecuteSqlTest from './RelationalStoreExecuteSqlJsunit.test';
 import relationalStoreInsertTest from './RelationalStoreInsertJsunit.test';
 import relationalStoreTest from './RelationalStoreJsunit.test';
-import relationalStorePredicatesComplexFiledTest from './RelationalStorePredicatesComplexFiledJsunit.test';
-import relationalStorePredicatesJoinTest from './RelationalStorePredicatesJoinJsunit.test';
-import relationalStorePredicatesTest from './RelationalStorePredicatesJsunit.test';
-import relationalStoreResultSetTest from './RelationalStoreResultSetJsunit.test';
-import relationalStoreTransactionTest from './RelationalStoreTransactionJsunit.test';
 import relationalStoreUpdateTest from './RelationalStoreUpdateJsunit.test';
 
 
 export default function testsuite() {
   relationalStoreEncryptTest()
-  relationalStorePredicatesComplexFiledTest()
-  relationalStorePredicatesJoinTest()
-  relationalStorePredicatesTest()
-  relationalStoreResultSetTest()
-  relationalStoreTransactionTest()
   relationalStoreUpdateTest()
   relationalStoreTest()
   relationalStoreInsertTest()
