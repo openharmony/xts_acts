@@ -838,15 +838,19 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         });
       } catch (err) {
         console.log(msgStr + 'ohosWindow.create catch err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       }
       expect(!!tempWnd).assertTrue();
       console.log(msgStr + 'tempWnd.loadContent start');
-      let load = await tempWnd.loadContent('pages/second/second').catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+      await tempWnd.loadContent('pages/second/second').then(() => {
+        console.info(msgStr + ' Succeeded in loading the content.');
+        expect().assertFail();
+        done();
+      }).catch((err) => {
+        expect(err.code).assertEqual(401);
         console.log(msgStr + 'tempWnd.loadContent(pages/second/second) err=' + JSON.stringify(err));
       });
-      console.log(msgStr + 'tempWnd.loadContent(pages/second/second) load=' + JSON.stringify(load));
-      expect(!load).assertTrue();
       await tempWnd.destroy();
       done();
     })

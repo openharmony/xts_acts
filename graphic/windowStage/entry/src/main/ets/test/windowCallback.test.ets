@@ -1178,14 +1178,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       tempWnd.loadContent('pages/index', async (err, data) => {
         if (err && err.code) {
-          unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-        } else {
-          try {
-            expect(!data).assertTrue();
-          } catch (error) {
-            console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
-          }
           await tempWnd.destroy();
+          expect(err.code).assertEqual(401);
+          done();
+        } else {
+          await tempWnd.destroy();
+          expect().assertFail();
           done()
         }
       })

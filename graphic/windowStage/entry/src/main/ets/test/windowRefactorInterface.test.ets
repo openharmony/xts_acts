@@ -63,10 +63,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     }
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
-	   * @tc.name      : testSetWindowSystemBarProperties_Callback
-	   * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
+     * @tc.name      : testSetWindowSystemBarProperties_Callback
+     * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -119,10 +119,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
-	   * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
-	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
+     * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -180,10 +180,10 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
-	   * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
-	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
+     * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
@@ -409,21 +409,22 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           try{
             if (err.code) {
               console.error('Failed to load the content callback. Cause:' + JSON.stringify(err));
-              expect().assertFail();
-
+              await winData.destroyWindow();
+              expect(err.code).assertEqual(401);
+              done();
             } else {
               console.info('Succeeded in loading the content.');
-              expect(TRUE_FLAG).assertTrue();
+              await winData.destroyWindow();
+              expect().assertFail();
+              done();
             }
           }catch(err){
             console.log('setUIContentTestCallBack1 assert result catch' + JSON.stringify(err));
           }
-          done();
-          await winData.destroyWindow();
         });
       } catch (exception) {
         console.error('Failed callback to load the content. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
+        expect(exception.code).assertEqual(401);
         await winData.destroyWindow();
         done();
       };
@@ -499,12 +500,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         // 设置setUIContent
         await win.setUIContent('pages/second/he').then(async () => {
           console.info('setUIContent3 . Cause: success');
-          expect(TRUE_FLAG).assertTrue();
+          expect().assertFail();
           await win.destroyWindow();
           done();
         }).catch(async (err) => {
           console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
-          expect().assertFail();
+          expect(err.code).assertEqual(401);
           await win.destroyWindow();
           done();
         });
@@ -1352,9 +1353,9 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isKeepScreenOn).assertTrue();
-     await wnd.setWindowKeepScreenOn(true).then(() => {
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isKeepScreenOn).assertTrue();
+      await wnd.setWindowKeepScreenOn(true).then(() => {
         console.info('windowTest setKeepScreenOnTest2 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(data2.isKeepScreenOn).assertTrue();
@@ -1436,8 +1437,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest testSetWindowPrivacyMode_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isPrivacyMode).assertTrue();
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(false).then(() => {
         console.info('windowTest setWindowPrivacyMode1 success ');
         let data2 = wnd.getWindowProperties();
@@ -1462,8 +1463,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isPrivacyMode).assertTrue();
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(true).then(() => {
         console.info('windowTest setWindowPrivacyMode2 success ');
         let data2 = wnd.getWindowProperties();
