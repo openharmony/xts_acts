@@ -43,12 +43,12 @@ export default function AssetNdkTest() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0100
-     * @tc. name 使用NDK接口写入数据，传入正常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number :SUB_Security_DataSecurity_Asset_NDK_Func_0100
+     * @tc.name  :assetAddNormal
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0100', 0, () => {
       expect(myAssetNdk.asset_add(aw.aliasLong, aw.secLong))
@@ -68,12 +68,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0600
-     * @tc. name 使用NDK接口写入数据，传入异常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0600
+     * @tc.name  :assetAddError
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0600', 0, () => {
       expect(myAssetNdk.asset_add('', ''))
@@ -92,12 +92,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0200
-     * @tc. name 使用NDK接口查询数据，传入正常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0200
+     * @tc.name  :使用NDK接口查询数据，传入正常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0200', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -114,12 +114,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0700
-     * @tc. name 使用NDK接口查询数据，传入异常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0700
+     * @tc.name  :使用NDK接口查询数据，传入异常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0700', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -129,12 +129,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0300
-     * @tc. name 使用NDK接口更新数据，传入正常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0300
+     * @tc.name  :使用NDK接口更新数据，传入正常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0300', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -150,12 +150,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0800
-     * @tc. name 使用NDK接口更新数据，传入异常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0800
+     * @tc.name  :使用NDK接口更新数据，传入异常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0800', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -173,12 +173,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0400
-     * @tc. name 使用NDK接口删除数据，传入正常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0400
+     * @tc.name  :使用NDK接口删除数据，传入正常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0400', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -193,12 +193,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0900
-     * @tc. name 使用NDK接口删除数据，传入异常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0900
+     * @tc.name  :使用NDK接口删除数据，传入异常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0900', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -208,12 +208,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_0500
-     * @tc. name 使用NDK接口调用prequery和postquery，传入正常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_0500
+     * @tc.name  :使用NDK接口调用prequery和postquery，传入正常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_0500', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -224,12 +224,12 @@ export default function AssetNdkTest() {
     })
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_NDK_Func_1000
-     * @tc. name 使用NDK接口调用prequery和postquery，传入异常参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number  :SUB_Security_DataSecurity_Asset_NDK_Func_1000
+     * @tc.name  :使用NDK接口调用prequery和postquery，传入异常参数
+     * @tc.desc  :test error cases
+     * @tc.size  :Medium
+     * @tc.type  :Func
+     * @tc.level  :Level3
      */
     it('SUB_Security_DataSecurity_Asset_NDK_Func_1000', 0, async () => {
       let attr: asset.AssetMap = new Map();
