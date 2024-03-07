@@ -17,11 +17,13 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import Utils from './Utils.ets';
+
 let emitKey = "emitUserAgent";
+
 export default function web9Jsunit() {
 
-  describe('web9Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('web9Jsunit', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/web_api_9',
       }
@@ -35,32 +37,31 @@ export default function web9Jsunit() {
           console.info("push web9Jsunit page success " + JSON.stringify(result));
         }
       } catch (err) {
-         console.error("push web9Jsunit page error " + JSON.stringify(err));
+        console.error("push web9Jsunit page error " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       console.info("web beforeEach start");
-      done()
 
     })
-    afterEach(async function (done) {
-      console.info("web afterEach start:"+emitKey);
+    afterEach(async () => {
+      console.info("web afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
-      done();
+
     })
 
     /*
@@ -68,9 +69,9 @@ export default function web9Jsunit() {
      * tc.name WebContextMenuResult
      * tc.desic webContextMenuResult
      */
-    it('webContextMenuResultTest001',0,async function(done){
-      emitKey="emitwebContextMenuResult";
-      Utils.registerContainEvent("webContextMenuResult",true,1101,done);
+    it('webContextMenuResultTest001', 0, async () => {
+      emitKey = "emitwebContextMenuResult";
+      Utils.registerContainEvent("webContextMenuResult", true, 1101);
     })
 
     /*
@@ -78,9 +79,9 @@ export default function web9Jsunit() {
      * tc.name  HitTestValue
      * tc.desic webContextMenuResult
      */
-    it('setWebControllerTest002',0,async function(done){
-      emitKey="emitsetWebController";
-      Utils.registerContainEvent("setWebController",true,1102,done);
+    it('setWebControllerTest002', 0, async () => {
+      emitKey = "emitsetWebController";
+      Utils.registerContainEvent("setWebController", true, 1102);
     })
 
     /*
@@ -88,13 +89,11 @@ export default function web9Jsunit() {
     * tc.name  HitTestValue
     * tc.desic webContextMenuResult
     */
-    it('setWebControllerTest003',0,async function(done){
-      emitKey="emitHitTestValue";
-      Utils.registerContainEvent("HitTestValue",true,1103,done);
-      sendEventByKey('web2',10,'');
+    it('setWebControllerTest003', 0, async () => {
+      emitKey = "emitHitTestValue";
+      Utils.registerContainEvent("HitTestValue", true, 1103);
+      sendEventByKey('web2', 10, '');
     })
-
-
 
 
   })

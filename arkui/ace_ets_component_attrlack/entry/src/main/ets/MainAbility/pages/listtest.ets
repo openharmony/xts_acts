@@ -30,12 +30,12 @@ struct ListIdle {
     Log.showInfo(TAG, `aboutToAppear ListIdle start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear ListIdle end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("list-Idle")
         .width(100)
@@ -82,13 +82,17 @@ struct ListIdle {
       Stack({ alignContent: Alignment.TopStart }) {
         Scroll(this.scroller) {
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('' + item)
-                  .width('100%').height(100).fontSize(16)
-                  .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
               }.editable(true)
-            }, item => item)
+            }, (item: string) => item)
 
           }
           .editMode(true)
@@ -97,20 +101,20 @@ struct ListIdle {
           .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
           .edgeEffect(EdgeEffect.None) // 滑动到边缘无效果
           .chainAnimation(false) // 联动特效关闭
-          .onScroll((scrollOffset: 5, scrollState:ScrollState) => {
+          .onScroll((scrollOffset: 5, scrollState: ScrollState) => {
             console.info('scrollOffset' + scrollOffset)
             console.info('scrollState   ' + ScrollState.Scroll)
             console.info('scrollState   ' + ScrollState.Idle)
             console.info('scrollState   ' + ScrollState.Fling)
           })
-          .onClick(()=>{
+          .onClick(() => {
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "State": this.onScroll
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60303,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -141,10 +145,9 @@ struct ListIdle {
           console.info('Scroll Stop')
         })
       }
-    }.width("100%").height("100%")
-
-
-
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

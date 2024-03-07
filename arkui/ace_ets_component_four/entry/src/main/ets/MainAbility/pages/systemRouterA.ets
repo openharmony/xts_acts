@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +13,13 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 
 @Entry
 @Component
 struct SystemRouterA {
   build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('A Page')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -28,10 +27,10 @@ struct SystemRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
-          router.push({
-            uri: 'MainAbility/pages/systemRouterB',
+          router.pushUrl({
+            url: 'MainAbility/pages/systemRouterB',
             params: {
               data: 'B Page'
             }
@@ -41,15 +40,17 @@ struct SystemRouterA {
         .key('ReplaceButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
-          router.replace({
-            uri: 'MainAbility/pages/systemRouterB',
+          router.replaceUrl({
+            url: 'MainAbility/pages/systemRouterB',
             params: {
               data: 'B Page'
             }
           });
         });
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }

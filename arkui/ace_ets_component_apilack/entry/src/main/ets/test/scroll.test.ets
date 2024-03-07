@@ -14,13 +14,13 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function scrollOnScrollBeginJsunit() {
-  describe('scrollOnScrollBeginTest', function () {
-    beforeAll(async function (done) {
+  describe('scrollOnScrollBeginTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/scroll',
@@ -38,10 +38,9 @@ export default function scrollOnScrollBeginJsunit() {
       } catch (err) {
         console.error("push scroll page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("scrollOnScrollBegin after each called");
     });
@@ -51,16 +50,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0001
      * @tc.desic         acescrollOnScrollBeginEtsTest0001
      */
-    it('testscrollOnScrollBegin0001', 0, async function (done) {
+    it('testscrollOnScrollBegin0001', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.width).assertEqual("100.00%");
-      console.info("[testscrollOnScrollBegin0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00%");
+      console.info("[testscrollOnScrollBegin0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -68,16 +67,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0002
      * @tc.desic         acescrollOnScrollBeginEtsTest0002
      */
-    it('testscrollOnScrollBegin0002', 0, async function (done) {
+    it('testscrollOnScrollBegin0002', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.height).assertEqual("100.00%");
-      console.info("[testscrollOnScrollBegin0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00%");
+      console.info("[testscrollOnScrollBegin0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -85,16 +84,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0003
      * @tc.desic         acescrollOnScrollBeginEtsTest0003
      */
-    it('testscrollOnScrollBegin0003', 0, async function (done) {
+    it('testscrollOnScrollBegin0003', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.scrollBar).assertEqual("BarState.On");
-      console.info("[testscrollOnScrollBegin0003] scrollBar value :" + obj.$attrs.scrollBar);
-      done();
+      expect(JSON.parse(strJson).$attrs.scrollBar).assertEqual("BarState.On");
+      console.info("[testscrollOnScrollBegin0003] scrollBar value :" + JSON.parse(strJson).$attrs.scrollBar);
+
     });
 
     /*
@@ -102,16 +101,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0004
      * @tc.desic         acescrollOnScrollBeginEtsTest0004
      */
-    it('testscrollOnScrollBegin0004', 0, async function (done) {
+    it('testscrollOnScrollBegin0004', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.scrollBarColor).assertEqual("#FF808080");
-      console.info("[testscrollOnScrollBegin0004] scrollBarColor value :" + obj.$attrs.scrollBarColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.scrollBarColor).assertEqual("#FF808080");
+      console.info("[testscrollOnScrollBegin0004] scrollBarColor value :" + JSON.parse(strJson).$attrs.scrollBarColor);
+
     });
 
     /*
@@ -119,16 +118,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0005
      * @tc.desic         acescrollOnScrollBeginEtsTest0005
      */
-    it('testscrollOnScrollBegin0005', 0, async function (done) {
+    it('testscrollOnScrollBegin0005', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.scrollBarWidth).assertEqual("30.00vp");
-      console.info("[testscrollOnScrollBegin0005] scrollBarWidth value :" + obj.$attrs.scrollBarWidth);
-      done();
+      expect(JSON.parse(strJson).$attrs.scrollBarWidth).assertEqual("30.00vp");
+      console.info("[testscrollOnScrollBegin0005] scrollBarWidth value :" + JSON.parse(strJson).$attrs.scrollBarWidth);
+
     });
 
     /*
@@ -136,7 +135,7 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.name         testscrollOnScrollBegin0005
      * @tc.desic         acescrollOnScrollBeginEtsTest0006
      */
-    it('testscrollOnScrollBegin0006', 0, async function (done) {
+    it('testscrollOnScrollBegin0006', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0006 START');
       await Utils.sleep(2000);
 
@@ -144,7 +143,7 @@ export default function scrollOnScrollBeginJsunit() {
         console.info("scrollOnScrollBegin get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.STATUS).assertEqual(true);
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 10086,
         priority: events_emitter.EventPriority.LOW
       }
@@ -155,7 +154,7 @@ export default function scrollOnScrollBeginJsunit() {
         console.info("scrollOnScrollBegin on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testscrollOnScrollBegin0006 END');
-      done();
+
     });
 
     /**
@@ -166,15 +165,15 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testscrollOnScrollBegin0007', 0, async function (done) {
+    it('testscrollOnScrollBegin0007', 0, async () => {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
       console.info("[testscrollOnScrollBegin0007] component align strJson:" + strJson);
-      let obj7 = JSON.parse(strJson);
-      expect(obj7.$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
-      console.info("EdgeEffectOptions value :" +obj7.$attrs.edgeEffectOptions.alwaysEnabled);
-      done();
+      let obj7: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
+      console.info("EdgeEffectOptions value :" + JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled);
+
     });
 
     /**
@@ -185,16 +184,16 @@ export default function scrollOnScrollBeginJsunit() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testscrollOnScrollBegin0008', 0, async function (done) {
+    it('testscrollOnScrollBegin0008', 0, async () => {
       console.info('testEdgeEffectOptions testscrollOnScrollBegin0008 START');
       await Utils.sleep(2000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "alwaysEnabled": true
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 323,
           priority: events_emitter.EventPriority.LOW
         }
@@ -205,10 +204,10 @@ export default function scrollOnScrollBeginJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Scroll');
-      let obj1 = JSON.parse(strJson);
-      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
-      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
-      done();
+      let obj1: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
+      console.info("edgeEffectOptions value :" + JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled);
+
     });
   })
 }

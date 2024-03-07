@@ -12,22 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import checkboxJsunit from './CheckboxJsunit.test.ets';
-import ohosMatrix4Jsunit from './OhosMatrix4Jsunit.test.ets';
-import selectJsunit from './SelectJsunit.test.ets';
-import fillModeJsunit from './FillModeJsunit.test.ets';
-import enumsImageJsunit from './EnmusImageJsunit.test.ets';
-import checkboxGroupJsunit from './CheckboxGroupJsunit.test.ets';
-import sliderJsunit from './SliderJsunit.test.ets';
-import edgeEffectJsunit from './EdgeEffectJsunit.test.ets';
-import transFormJsunit from './TransFormJsunit.test.ets';
-import visibilityJsunit from './VisibilityJsunit.test.ets';
-import positionSettingJsunit from './PositionSettingJsunit.test.ets';
-import shapeClippingJsunit from './ShapeClippingJsunit.test.ets';
-import backgroundAndSizeSettingJsunit from './BackgroundAndSizeSettingJsunit.test.ets';
-import borderJsunit from './BorderJsunit.test.ets';
-import colorGradientJsunit from './ColorGradientJsunit.test.ets';
-import enmusHorizontalAlignJsunit from './EnmusHorizontalAlignJsunit.test.ets';
+import checkboxJsunit from './CheckboxJsunit.test';
+import ohosMatrix4Jsunit from './OhosMatrix4Jsunit.test';
+import selectJsunit from './SelectJsunit.test';
+import fillModeJsunit from './FillModeJsunit.test';
+import enumsImageJsunit from './EnmusImageJsunit.test';
+import checkboxGroupJsunit from './CheckboxGroupJsunit.test';
+import sliderJsunit from './SliderJsunit.test';
+import edgeEffectJsunit from './EdgeEffectJsunit.test';
+import transFormJsunit from './TransFormJsunit.test';
+import visibilityJsunit from './VisibilityJsunit.test';
+import positionSettingJsunit from './PositionSettingJsunit.test';
+import shapeClippingJsunit from './ShapeClippingJsunit.test';
+import backgroundAndSizeSettingJsunit from './BackgroundAndSizeSettingJsunit.test';
+import borderJsunit from './BorderJsunit.test';
+import colorGradientJsunit from './ColorGradientJsunit.test';
+import enmusHorizontalAlignJsunit from './EnmusHorizontalAlignJsunit.test';
 
 export default function testsuite() {
   checkboxJsunit();

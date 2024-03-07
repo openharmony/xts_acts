@@ -14,16 +14,29 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from './Utils.ets'
 
 export default function ProvideSet() {
-  describe('ProvideSet', function () {
-    beforeEach(async function (done) {
+  describe('ProvideSet', () => {
+    beforeEach(async (done: Function) => {
       console.info("ProvideSet beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/ProvideSet',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ProvideSet',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function ProvideSet() {
         console.info("get ProvideSet state pages: " + JSON.stringify(pages));
         if (!("ProvideSet" == pages.name)) {
           console.info("get ProvideSet state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push ProvideSet success: " + JSON.stringify(result));
         }
@@ -49,9 +62,9 @@ export default function ProvideSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideSet_0100', 0, async function (done) {
+    it('ProvideSet_0100', 0, async (done: Function) => {
       console.info('ProvideSet_0100 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
@@ -59,11 +72,10 @@ export default function ProvideSet() {
       let button = await driver.findComponent(ON.id('consumeSet_set'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('provideSet_value_5');
-      let obj = JSON.parse(strJson);
-      console.info("[ProvideSet_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[ProvideSet_0100] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('5');
+      let strJson: string = getInspectorByKey('provideSet_value_5');
+      console.info("[ProvideSet_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[ProvideSet_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('5');
       console.info('[ProvideSet_0100] END');
       done();
     });
@@ -75,9 +87,9 @@ export default function ProvideSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideSet_0200', 0, async function (done) {
+    it('ProvideSet_0200', 0, async (done: Function) => {
       console.info('ProvideSet_0200 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
@@ -85,11 +97,10 @@ export default function ProvideSet() {
       let button = await driver.findComponent(ON.id('consumeSet_clear'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('provideSet_value_0');
-      let obj = JSON.parse(strJson);
-      console.info("[ProvideSet_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[ProvideSet_0200] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('0');
+      let strJson: string = getInspectorByKey('provideSet_value_0');
+      console.info("[ProvideSet_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[ProvideSet_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0');
       console.info('[ProvideSet_0200] END');
       done();
     });
@@ -101,9 +112,9 @@ export default function ProvideSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideSet_0300', 0, async function (done) {
+    it('ProvideSet_0300', 0, async (done: Function) => {
       console.info('ProvideSet_0300 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
@@ -111,11 +122,10 @@ export default function ProvideSet() {
       let button = await driver.findComponent(ON.id('consumeSet_delete'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('provideSet_value_2');
-      let obj = JSON.parse(strJson);
-      console.info("[ProvideSet_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[ProvideSet_0300] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('2');
+      let strJson: string = getInspectorByKey('provideSet_value_2');
+      console.info("[ProvideSet_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[ProvideSet_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('2');
       console.info('[ProvideSet_0300] END');
       done();
     });
@@ -127,9 +137,9 @@ export default function ProvideSet() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('ProvideSet_0400', 0, async function (done) {
+    it('ProvideSet_0400', 0, async (done: Function) => {
       console.info('ProvideSet_0400 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('consumeSet_init'));
       await btn_init.click();
@@ -137,14 +147,12 @@ export default function ProvideSet() {
       let button = await driver.findComponent(ON.id('provideSet_add'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('provideSet_value_4');
-      let obj = JSON.parse(strJson);
-      console.info("[ProvideSet_0400] component obj is: " + JSON.stringify(obj));
-      console.info("[ProvideSet_0400] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('4');
+      let strJson: string = getInspectorByKey('provideSet_value_4');
+      console.info("[ProvideSet_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[ProvideSet_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('4');
       console.info('[ProvideSet_0400] END');
       done();
     });
-
   })
 }

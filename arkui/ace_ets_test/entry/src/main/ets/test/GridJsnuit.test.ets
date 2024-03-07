@@ -13,30 +13,29 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function gridJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  describe('gridTest', function () {
-    beforeEach(async function (done) {
+  describe('gridTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Grid',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Grid state success " + JSON.stringify(pages));
         if (!("Grid" == pages.name)) {
@@ -45,40 +44,38 @@ export default function gridJsunit() {
           console.info("push Grid page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Grid page error " + JSON.stringify(result));
+        console.error("push Grid page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Grid after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0350
-     * @tc.name      gridItemTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0350
+     * @tc.name gridItemTest001
+     * @tc.desc aceEtsTest
      */
-    it('gridTest001', 0, async function (done) {
+    it('gridTest001', 0, async () => {
       console.info('gridTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Grid');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("属性值集合: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Grid')
-      console.log(JSON.stringify(obj.$attrs.columnsTemplate))
-      console.log(JSON.stringify(obj.$attrs.rowsTemplate))
-      console.log(JSON.stringify(obj.$attrs.rowsTemplate))
-      console.log(JSON.stringify(obj.$attrs.columnsGap))
-      console.log(JSON.stringify(obj.$attrs.rowsGap))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.columnsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsTemplate))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.columnsGap))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.rowsGap))
       await sleep(1)
-      expect(obj.$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
-      expect(obj.$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+      expect(JSON.parse(strJson).$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+      expect(JSON.parse(strJson).$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
       console.info('gridTest001 END');
-      done();
     });
   }
 

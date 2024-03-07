@@ -35,7 +35,7 @@
     <input id="function6" class="title" onclick="functionTest6">
         set/delete test
     </input>
-     <input id="function7" class="title" onclick="functionTest7">
+    <input id="function7" class="title" onclick="functionTest7">
         set/delete test
     </input>
 </div>

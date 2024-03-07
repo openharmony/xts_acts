@@ -17,8 +17,9 @@ import inspector from '@ohos.arkui.inspector';
 @Entry
 @Component
 struct assemblyCallback {
-  @State message: string = 'Blank'
-  private scroller: Scroller = new Scroller()
+  @State message: string = 'Blank';
+  private scroller: Scroller = new Scroller();
+
   build() {
     Row() {
       Text('Bluetooth').fontSize(18)
@@ -36,7 +37,7 @@ struct assemblyCallback {
         Image('').key("13")
         Menu().key("14")
         Radio({ value: 'Radio1', group: 'radioGroup' }).key("15")
-        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical,state: BarState.Auto }).key("16")
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }).key("16")
         Toggle({ type: ToggleType.Switch })
       }
       .width('100%')
@@ -52,28 +53,28 @@ struct assemblyCallback {
   listener16 = inspector.createComponentObserver('16')
 
   aboutToAppear() {
-    let Func11layout = this.layout11.bind(this) // bind current js instance
-    let Func11draw = this.draw11.bind(this) // bind current js instance
+    let Func11layout: ESObject = this.layout11.bind(this) // bind current js instance
+    let Func11draw: ESObject = this.draw11.bind(this) // bind current js instance
     this.listener11.on('layout', Func11layout)
     this.listener11.on('draw', Func11draw)
-    let Func12layout = this.layout12.bind(this) // bind current js instance
-    let Func12draw = this.draw12.bind(this) // bind current js instance
+    let Func12layout: ESObject = this.layout12.bind(this) // bind current js instance
+    let Func12draw: ESObject = this.draw12.bind(this) // bind current js instance
     this.listener12.on('layout', Func12layout)
     this.listener12.on('draw', Func12draw)
-    let Func13layout = this.layout13.bind(this) // bind current js instance
-    let Func13draw = this.draw13.bind(this) // bind current js instance
+    let Func13layout: ESObject = this.layout13.bind(this) // bind current js instance
+    let Func13draw: ESObject = this.draw13.bind(this) // bind current js instance
     this.listener13.on('layout', Func13layout)
     this.listener13.on('draw', Func13draw)
-    let Func14layout = this.layout14.bind(this) // bind current js instance
-    let Func14draw = this.draw14.bind(this) // bind current js instance
+    let Func14layout: ESObject = this.layout14.bind(this) // bind current js instance
+    let Func14draw: ESObject = this.draw14.bind(this) // bind current js instance
     this.listener14.on('layout', Func14layout)
     this.listener14.on('draw', Func14draw)
-    let Func15layout = this.layout15.bind(this) // bind current js instance
-    let Func15draw = this.draw15.bind(this) // bind current js instance
+    let Func15layout: ESObject = this.layout15.bind(this) // bind current js instance
+    let Func15draw: ESObject = this.draw15.bind(this) // bind current js instance
     this.listener15.on('layout', Func15layout)
     this.listener15.on('draw', Func15draw)
-    let Func16layout = this.layout16.bind(this) // bind current js instance
-    let Func16draw = this.draw16.bind(this) // bind current js instance
+    let Func16layout: ESObject = this.layout16.bind(this) // bind current js instance
+    let Func16draw: ESObject = this.draw16.bind(this) // bind current js instance
     this.listener16.on('layout', Func16layout)
     this.listener16.on('draw', Func16draw)
   }
@@ -125,5 +126,4 @@ struct assemblyCallback {
   draw16() {
     console.log("skScrollBar, draw")
   }
-
 }

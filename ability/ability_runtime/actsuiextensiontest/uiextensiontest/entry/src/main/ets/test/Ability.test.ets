@@ -91,6 +91,25 @@ export default function abilityTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == appearEvent) {
+            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            await abilityDelegator.executeShellCommand('aa dump -e').then((data) => {
+              console.info(TAG + 'data: ' + JSON.stringify(data.stdResult));
+              var firstString = data.stdResult.split("entry/UIExtAbility");
+              var result = firstString[1].split("uri");
+              console.info(TAG + 'aa string: ' + JSON.stringify(result[0]));
+              try {
+                expect(result[0]).assertContain("main name [UIExtAbility]");
+                expect(result[0]).assertContain("bundle name [com.acts.uiextensionprovider]");
+                expect(result[0]).assertContain("ability type [UIEXTENSION]");
+                expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.uiextensiontest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [TestAbility]");
+              } catch {
+                expect().assertFail();
+              }
+            });
+
             commonEventManager.publish(terminateSelfWithResultEvent, (err) => {
               if (err) {
                 console.log(TAG + `publish ACTS_UIExtension_TerminateSelfWithResult failed, code is ${err.code}, message is ${err.message}`);
@@ -658,11 +677,11 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_007
      * @tc.name    : test UIExtension in DifferentApp 007
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission  in foreground
-     */   
+     */
     it('ACTS_UIExtension_DifferentApp_007',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_007 == ';
       console.log(TAG + "begin");
-      router.back()  
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p2',
@@ -724,7 +743,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_008
      * @tc.name    : test UIExtension in DifferentApp 008
      * @tc.desc    : UIExtension connect service visable and invisible with no Permission  in background
-     */   
+     */
     it('ACTS_UIExtension_DifferentApp_008',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_008 == ';
       console.log(TAG + "begin");
@@ -777,12 +796,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_009
      * @tc.name    : test UIExtension in DifferentApp 009
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY Permission in background
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_009',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_009 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p2',
@@ -844,12 +863,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_010
      * @tc.name    : test UIExtension in DifferentApp 010
      * @tc.desc    : different UIExtension connect same service
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_010',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_010 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p3',
@@ -909,12 +928,12 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_DifferentApp_011
      * @tc.name    : test UIExtension in DifferentApp 011
      * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY and START_ABILITIES_FROM_BACKGROUND Permission in background
-     */      
+     */
     it('ACTS_UIExtension_DifferentApp_011',0, async function (done) {
       TAG = 'ACTS_UIExtension_DifferentApp_011 == ';
       console.log(TAG + "begin");
 
-      router.back() 
+      router.back()
       await Utils.sleep(500);
       let options = {
         url: 'TestAbility/pages/p4',
@@ -974,7 +993,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_Device_01
      * @tc.name    : test UIExtension back to desktop
      * @tc.desc    : UIExtension connect service successful back to desktop
-     */      
+     */
     it('ACTS_UIExtension_Device_01',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_01 == ';
       console.log(TAG + "begin");
@@ -1030,7 +1049,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_Device_02
      * @tc.name    : test UIExtension off the screen
      * @tc.desc    : UIExtension connect service successful then off the screen
-     */      
+     */
     it('ACTS_UIExtension_Device_02',0, async function (done) {
       TAG = 'ACTS_UIExtension_Device_02 == ';
       console.log(TAG + "begin");
@@ -1081,12 +1100,12 @@ export default function abilityTest() {
         done();
       })
     })
-  
+
     /*
      * @tc.number  : ACTS_UIExtension_StartAbilityByType001
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
       console.log(TAG + "begin");
@@ -1113,7 +1132,7 @@ export default function abilityTest() {
             });
           } else if (data.event == failStartAbilityByTypeEvent) {
             done();
-          } 
+          }
         });
       }).catch((error) => {
         console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
@@ -1126,7 +1145,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_StartAbilityByType002
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType002',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
       console.log(TAG + "begin");
@@ -1156,7 +1175,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_StartAbilityByType003
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
-     */      
+     */
     it('ACTS_UIExtension_StartAbilityByType003',0, async function (done) {
       TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
       console.log(TAG + "begin");
@@ -1184,7 +1203,7 @@ export default function abilityTest() {
      * @tc.number  : ACTS_UIExtension_RequestModalUIExtension001
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
-     */  
+     */
     it('ACTS_UIExtension_RequestModalUIExtension001',0, async function (done) {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
       console.log(TAG + "begin");
@@ -1209,13 +1228,13 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }
-    })    
+    })
 
     /*
      * @tc.number  : ACTS_UIExtension_RequestModalUIExtension002
-     * @tc.name    : test request Modal UIExtension 
+     * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
-     */      
+     */
     it('ACTS_UIExtension_RequestModalUIExtension002',0, async function (done) {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
       console.log(TAG + "begin");

@@ -16,54 +16,53 @@
 @Entry
 @Component
 struct RelativeContainer_AnchorPoint_Interdependence {
-
   onPageShow() {
     console.info('RelativeContainer_AnchorPoint_Interdependence onPageShow');
   }
 
-    build() {
-      Row() {
-        RelativeContainer() {
-          Row()
-            .width(100)
-            .height(100)
-            .backgroundColor("#FF3333")
-            .alignRules({
-              right: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row2", align: HorizontalAlign.Start },
-              bottom: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row2", align: VerticalAlign.Top }
-            })
-            .key("RelativeContainer_AnchorPoint_Interdependence_row1")
-            .id("RelativeContainer_AnchorPoint_Interdependence_row1")
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor("#FF3333")
+          .alignRules({
+            right: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row2", align: HorizontalAlign.Start },
+            bottom: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row2", align: VerticalAlign.Top }
+          })
+          .key("RelativeContainer_AnchorPoint_Interdependence_row1")
+          .id("RelativeContainer_AnchorPoint_Interdependence_row1")
 
-          Row()
-            .width(100)
-            .height(100)
-            .backgroundColor("#FFCC00")
-            .alignRules({
-              top: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row1", align: VerticalAlign.Bottom },
-              left: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row1", align: HorizontalAlign.End }
-            })
-            .key("RelativeContainer_AnchorPoint_Interdependence_row2")
-            .id("RelativeContainer_AnchorPoint_Interdependence_row2")
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor("#FFCC00")
+          .alignRules({
+            top: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row1", align: VerticalAlign.Bottom },
+            left: { anchor: "RelativeContainer_AnchorPoint_Interdependence_row1", align: HorizontalAlign.End }
+          })
+          .key("RelativeContainer_AnchorPoint_Interdependence_row2")
+          .id("RelativeContainer_AnchorPoint_Interdependence_row2")
 
 
-          Row()
-            .width(100)
-            .height(100)
-            .backgroundColor("#FF9966")
-            .alignRules({
-              top: {anchor: "__container__", align: VerticalAlign.Top},
-              bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-              left: { anchor: "__container__", align: HorizontalAlign.Start },
-            })
-            .key("RelativeContainer_AnchorPoint_Interdependence_row3")
-            .id("RelativeContainer_AnchorPoint_Interdependence_row3")
-
-        }
-        .key("RelativeContainer_AnchorPoint_Interdependence_re1")
-        .width(300).height(300)
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor("#FF9966")
+          .alignRules({
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+            left: { anchor: "__container__", align: HorizontalAlign.Start },
+          })
+          .key("RelativeContainer_AnchorPoint_Interdependence_row3")
+          .id("RelativeContainer_AnchorPoint_Interdependence_row3")
 
       }
-      .height('100%')
+      .key("RelativeContainer_AnchorPoint_Interdependence_re1")
+      .width(300).height(300)
+
     }
+    .height('100%')
+  }
 }

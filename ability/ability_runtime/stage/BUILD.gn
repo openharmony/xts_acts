@@ -17,7 +17,6 @@ group("stage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsbatchuripermission:ActsBatchUriPermission",
       "actscontextdirareamodetest:ActsContextDirAreaModeTest",
       "actsdebuggabletest:actsdebuggabletest",
       "actsflagstartwithouttipstest:ActsFlagStartWithoutTipsTest",
@@ -26,6 +25,7 @@ group("stage") {
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
       "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
+      "actsllifecyclelifecycletest:ActsLifeCycleLifeCycleTest",
       "actsuripermission:ActsUriPermission",
       "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
       "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",

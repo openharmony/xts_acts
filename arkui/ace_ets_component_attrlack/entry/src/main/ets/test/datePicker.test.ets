@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function datePickerLunarJsunit() {
-  describe('datePickerLunarTest', function () {
-    beforeEach(async function (done) {
+  describe('datePickerLunarTest', () =>{
+    beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/datePicker',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/datePicker',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function datePickerLunarJsunit() {
         console.info("get datePicker state success " + JSON.stringify(pages));
         if (!("datePicker" == pages.name)) {
           console.info("get datePicker state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push datePicker page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function datePickerLunarJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("datePickerLunar after each called");
     });
@@ -50,15 +50,14 @@ export default function datePickerLunarJsunit() {
      * @tc.name         testdatePickerLunar001
      * @tc.desic         acedatePickerLunarEtsTest001
      */
-    it('testdatePickerLunar001', 0, async function (done) {
+    it('testdatePickerLunar001', 0, async (done:Function) => {
       console.info('datePickerLunar testdatePickerLunar001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('DatePicker');
+      let strJson: string = getInspectorByKey('DatePicker');
       console.info("[testdatePickerLunar001] component lunar strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('DatePicker');
-      expect(obj.$attrs.lunar).assertEqual("true");
-      console.info("[testdatePickerLunar001] lunar value :" + obj.$attrs.lunar);
+      expect(JSON.parse(strJson).$type).assertEqual('DatePicker');
+      expect(JSON.parse(strJson).$attrs.lunar).assertEqual("true");
+      console.info("[testdatePickerLunar001] lunar value :" + JSON.parse(strJson).$attrs.lunar);
       done();
     });
   })

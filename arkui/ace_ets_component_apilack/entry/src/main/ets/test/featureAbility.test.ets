@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function featureAbilityStartAbilityJsunit() {
-  describe('featureAbilityStartAbilityTest', function () {
-    beforeAll(async function (done) {
+  describe('featureAbilityStartAbilityTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/featureAbility',
@@ -37,10 +37,9 @@ export default function featureAbilityStartAbilityJsunit() {
       } catch (err) {
         console.error("push featureAbility page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("featureAbilityStartAbility after each called");
     });
@@ -50,16 +49,16 @@ export default function featureAbilityStartAbilityJsunit() {
      * @tc.name         testfeatureAbilityStartAbility0001
      * @tc.desic         acefeatureAbilityStartAbilityEtsTest0001
      */
-    it('testfeatureAbilityStartAbility0001', 0, async function (done) {
+    it('testfeatureAbilityStartAbility0001', 0, async () => {
       console.info('featureAbilityStartAbility testfeatureAbilityStartAbility0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('startAbilityText');
       console.info("[testfeatureAbilityStartAbility0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("320.00vp");
-      console.info("[testfeatureAbilityStartAbility0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("320.00vp");
+      console.info("[testfeatureAbilityStartAbility0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
   })
 }

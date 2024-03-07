@@ -114,6 +114,52 @@ static const struct HksTestCipherParams g_testCipherParams[] = {
         { true, DEFAULT_AES_CIPHER_PLAIN_SIZE, true, DEFAULT_AES_CIPHER_PLAIN_SIZE },
         { false, 0, false, 0 }
     },
+    /* success: local aes256-gcm-none, aad not set */
+    { 2, HKS_SUCCESS, { false, 0, false, 0 },
+        {
+            true, /* genKey params */
+            true, HKS_ALG_AES,
+            true, HKS_AES_KEY_SIZE_256,
+            true, HKS_KEY_PURPOSE_ENCRYPT | HKS_KEY_PURPOSE_DECRYPT,
+            false, 0,
+            true, HKS_PADDING_NONE,
+            true, HKS_MODE_GCM,
+            true, HKS_STORAGE_TEMP
+        },
+        { false, 0 },
+        {
+            HKS_TEST_CIPHER_TYPE_AES,  true, /* encrypt params */
+            true, HKS_ALG_AES,
+            true, HKS_KEY_PURPOSE_ENCRYPT,
+            false, 0,
+            true, HKS_PADDING_NONE,
+            true, HKS_MODE_GCM,
+            false, 0,
+            true, AES_DEFAULT_GCM_NONCE_LENGTH,
+            false, 0,
+            true, false
+        },
+        {
+            HKS_TEST_CIPHER_TYPE_AES,  true, /* decrypt params */
+            true, HKS_ALG_AES,
+            true, HKS_KEY_PURPOSE_DECRYPT,
+            false, 0,
+            true, HKS_PADDING_NONE,
+            true, HKS_MODE_GCM,
+            false, 0,
+            true, AES_DEFAULT_GCM_NONCE_LENGTH,
+            false, 0,
+            true, false
+        },
+        {
+            true, DEFAULT_AES_CIPHER_PLAIN_SIZE, true, DEFAULT_AES_CIPHER_PLAIN_SIZE },
+        {
+            true, DEFAULT_AES_CIPHER_PLAIN_SIZE + 16, true, DEFAULT_AES_CIPHER_PLAIN_SIZE + 16 },
+        {
+            true, DEFAULT_AES_CIPHER_PLAIN_SIZE, true, DEFAULT_AES_CIPHER_PLAIN_SIZE },
+        {
+            true, AES_LOCAL_KEY_SIZE_256, true, AES_LOCAL_KEY_SIZE_256 }
+    },
 };
 
 static const struct HksTestEncryptParams g_testEncryptParams[] = {
@@ -176,7 +222,7 @@ static const struct HksTestEncryptParams g_testEncryptParams[] = {
     },
 
     /* aes gcm aad not set */
-    { 2, HKS_ERROR_CHECK_GET_AAD_FAIL, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
+    { 2, HKS_SUCCESS, { true, DEFAULT_KEY_ALIAS_SIZE, true, DEFAULT_KEY_ALIAS_SIZE },
         {
             true, /* genKey params */
             true, HKS_ALG_AES,

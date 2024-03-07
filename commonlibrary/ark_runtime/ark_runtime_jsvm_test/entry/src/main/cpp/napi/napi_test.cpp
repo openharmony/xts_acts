@@ -1399,6 +1399,83 @@ static napi_value Add(napi_env env1, napi_callback_info info) {
         OH_JSVM_DestroyVM(vm);
         return nullptr;
 }
+static JSVM_Value test(JSVM_Env env, JSVM_CallbackInfo info) {
+    JSVM_VM vm1 = nullptr;
+    JSVM_Env env2;
+    JSVM_Script script = nullptr;
+    OH_JSVM_CreateEnvFromSnapshot(vm1, 0, &env2);
+    const uint8_t **data_ptr = nullptr;
+    size_t *length_ptr =nullptr;
+    OH_JSVM_CreateCodeCache(env, script, data_ptr, length_ptr);
+    OH_JSVM_SetInstanceData(
+        env2, 0, [](JSVM_Env env, void *data, void *hint) { ++*static_cast<int *>(data); }, nullptr);
+    JSVM_Ref *refValues;
+    OH_JSVM_GetInstanceData(env, (void **)&refValues);
+    JSVM_Value object = nullptr;
+    OH_JSVM_SetProperty(env, object, 0, NULL);
+    JSVM_Value key = nullptr;
+    bool result;
+    OH_JSVM_DeleteProperty(env, object, key, &result);
+    OH_JSVM_HasOwnProperty(env, object, key, &result);
+    OH_JSVM_SetElement(NULL, object, 0, object);
+    JSVM_Value ret;
+    JSVM_Value funcValue = nullptr;
+    JSVM_CallbackStruct param;
+    OH_JSVM_CreateFunction(env, "func", NAPI_AUTO_LENGTH, &param, &funcValue);
+    OH_JSVM_CallFunction(env, nullptr, funcValue, 0, nullptr, &ret);
+    JSVM_Value constructor = nullptr;
+    JSVM_CallbackInfo info1 = nullptr;
+    OH_JSVM_GetNewTarget(env, info1, &constructor);
+    JSVM_Value value = nullptr;
+    OH_JSVM_TypeTagObject(env, value,nullptr);
+    OH_JSVM_CheckObjectTypeTag(env, object, nullptr, &result);
+    JSVM_Finalize finalizeCb = nullptr;
+    JSVM_Ref result1;
+    OH_JSVM_AddFinalizer(env, object, NULL, finalizeCb, NULL, &result1);
+    OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_NONE);
+    JSVM_Deferred deferred = nullptr;
+    OH_JSVM_ResolveDeferred(env, deferred,value);
+    OH_JSVM_RejectDeferred(env, deferred, value);
+    JSVM_Value value1;
+    OH_JSVM_JsonParse(env, value, &value1);
+    OH_JSVM_JsonStringify(env, object, &value1);
+    return nullptr;
+}
+static napi_value Add1(napi_env env1, napi_callback_info info) {
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = test;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"test", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
 
 EXTERN_C_START
 
@@ -1428,6 +1505,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testWrap",testWrap),
         DECLARE_NAPI_FUNCTION("testOthers",testOthers),
         DECLARE_NAPI_FUNCTION("Add",Add),
+        DECLARE_NAPI_FUNCTION("Add1",Add1),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

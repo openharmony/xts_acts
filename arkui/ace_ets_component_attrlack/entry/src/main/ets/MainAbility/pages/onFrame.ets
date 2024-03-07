@@ -35,7 +35,7 @@ struct ColumnExample {
 
   onPageShow() {
     this.animation.onrepeat(() => {
-      var repeatoptions = {
+      let repeatoptions = {
         duration: 2000,
         iterations: 1,
         direction: 'alternate',
@@ -48,9 +48,9 @@ struct ColumnExample {
   }
 
   playAnimation() {
-    var _this = this;
-    this.animation.onframe = function(value) {
-      _this.translateVal= value
+    let _this = this;
+    this.animation.onframe = (value: number) => {
+      _this.translateVal = value
     };
     this.animation.play();
   }
@@ -71,14 +71,14 @@ struct ColumnExample {
             .width(90)
             .key("button1")
             .onClick(() => {
-              this.animation.onframe((value) => {
+              this.animation.onframe((value: number) => {
                 this.divWidth = value
                 this.divHeight = value
               });
               this.animation.play();
             });
           Button('update').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            var newoptions = {
+            let newoptions = {
               duration: 5000,
               iterations: 2,
               begin: 120,
@@ -115,9 +115,12 @@ struct ColumnExample {
         Row() {
           Button('onframe')
             .key("button1")
-            .borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            this.playAnimation()
-          });
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
+              this.playAnimation()
+            });
         }.margin({ top: 5 })
       }.margin({ top: 30 })
     }

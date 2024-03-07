@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function edgeEffectJsunit(){
-  describe('edgeEffectTest', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/edgeEffect',
+export default function edgeEffectJsunit() {
+  describe('edgeEffectTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/edgeEffect',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function edgeEffectJsunit(){
         console.info("get edgeEffect state success " + JSON.stringify(pages));
         if (!("edgeEffect" == pages.name)) {
           console.info("get edgeEffect state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push edgeEffect page success " + JSON.stringify(result));
         }
@@ -40,30 +39,29 @@ export default function edgeEffectJsunit(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("edgeEffect after each called");
     });
 
-    it('edgeEffectTest_0100', 0, async function (done) {
+    it('edgeEffectTest_0100', 0, async (done: Function) => {
       console.info('edgeEffectTest_0100 START');
-      let strJson = getInspectorByKey('list');
+      let strJson: string = getInspectorByKey('list');
       console.info("edgeEffectTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("edgeEffectTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.edgeEffect).assertEqual("EdgeEffect.None");
+      console.info("edgeEffectTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.edgeEffect).assertEqual("EdgeEffect.None");
       done();
     });
 
-    it('edgeEffectTest_0200', 0, async function (done) {
+    it('edgeEffectTest_0200', 0, async (done: Function) => {
       console.info('edgeEffectTest_0200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "edgeEffect": EdgeEffect.Spring,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 91,
           priority: events_emitter.EventPriority.LOW
         }
@@ -73,10 +71,9 @@ export default function edgeEffectJsunit(){
         console.log("edgeEffectTest_0200 change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJsonNew = getInspectorByKey('list');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("edgeEffectTest_0200 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');
+      let strJsonNew: string = getInspectorByKey('list');
+      console.info("edgeEffectTest_0200 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');
       console.info('edgeEffectTest_0200 END');
       done();
     });

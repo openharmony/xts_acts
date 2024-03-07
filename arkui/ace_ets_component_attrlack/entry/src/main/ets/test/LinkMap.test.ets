@@ -14,16 +14,29 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from './Utils.ets'
 
 export default function LinkMap() {
-  describe('LinkMap', function () {
-    beforeEach(async function (done) {
+  describe('LinkMap', () => {
+    beforeEach(async (done: Function) => {
       console.info("LinkMap beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/LinkMap',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/LinkMap',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function LinkMap() {
         console.info("get LinkMap state pages: " + JSON.stringify(pages));
         if (!("LinkMap" == pages.name)) {
           console.info("get LinkMap state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push LinkMap success: " + JSON.stringify(result));
         }
@@ -49,9 +62,9 @@ export default function LinkMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkMap_0100', 0, async function (done) {
+    it('LinkMap_0100', 0, async (done: Function) => {
       console.info('LinkMap_0100 START');
-      let driver = await Driver.create()
+      let driver: Driver = Driver.create();
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
@@ -59,11 +72,11 @@ export default function LinkMap() {
       let button = await driver.findComponent(ON.id('LinkMap_set'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkMap_value_d');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkMap_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkMap_0100] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('4 d');
+      let strJson: string = getInspectorByKey('LinkMap_value_d');
+
+      console.info("[LinkMap_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkMap_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('4 d');
       console.info('[LinkMap_0100] END');
       done();
     });
@@ -75,9 +88,9 @@ export default function LinkMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkMap_0200', 0, async function (done) {
+    it('LinkMap_0200', 0, async (done: Function) => {
       console.info('LinkMap_0200 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
@@ -85,11 +98,10 @@ export default function LinkMap() {
       let button = await driver.findComponent(ON.id('LinkMap_clear'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkMap_value_K');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkMap_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkMap_0200] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('0 K');
+      let strJson: string = getInspectorByKey('LinkMap_value_K');
+      console.info("[LinkMap_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkMap_0200] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0 K');
       console.info('[LinkMap_0200] END');
       done();
     });
@@ -101,9 +113,9 @@ export default function LinkMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkMap_0300', 0, async function (done) {
+    it('LinkMap_0300', 0, async (done: Function) => {
       console.info('LinkMap_0300 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
@@ -111,11 +123,10 @@ export default function LinkMap() {
       let button = await driver.findComponent(ON.id('LinkMap_replace'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkMap_value_aa');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkMap_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkMap_0300] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('0 aa');
+      let strJson: string = getInspectorByKey('LinkMap_value_aa');
+      console.info("[LinkMap_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkMap_0300] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0 aa');
       console.info('[LinkMap_0300] END');
       done();
     });
@@ -127,9 +138,9 @@ export default function LinkMap() {
     * @tc.type : 
     * @tc.size : 
     */
-    it('LinkMap_0400', 0, async function (done) {
+    it('LinkMap_0400', 0, async (done: Function) => {
       console.info('LinkMap_0400 START');
-      let driver = await Driver.create()
+      let driver: Driver = await Driver.create()
       await Utils.sleep(1000);
       let btn_init = await driver.findComponent(ON.id('LinkMap_init'));
       await btn_init.click();
@@ -137,14 +148,12 @@ export default function LinkMap() {
       let button = await driver.findComponent(ON.id('LinkMap_delete'));
       await button.click();
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('LinkMap_value_b');
-      let obj = JSON.parse(strJson);
-      console.info("[LinkMap_0400] component obj is: " + JSON.stringify(obj));
-      console.info("[LinkMap_0400] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('1 b');
+      let strJson: string = getInspectorByKey('LinkMap_value_b');
+      console.info("[LinkMap_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[LinkMap_0400] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('1 b');
       console.info('[LinkMap_0400] END');
       done();
     });
-
   })
 }

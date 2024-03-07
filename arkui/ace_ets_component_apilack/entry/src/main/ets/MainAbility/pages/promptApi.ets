@@ -16,6 +16,7 @@
 import prompt from '@ohos.prompt'
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -79,7 +80,7 @@ struct PromptShowDialog {
               { text: 'item2', color: '#000000' }
             ]
           }).then(data => {
-            var result=true
+            let result = true
             console.info('showDialog success, click button: ' + data.index)
           }).catch(err => {
             console.info('showDialog error: ' + err)

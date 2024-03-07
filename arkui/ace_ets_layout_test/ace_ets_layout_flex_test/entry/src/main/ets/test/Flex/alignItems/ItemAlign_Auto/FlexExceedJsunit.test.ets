@@ -14,13 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexExceed_AutoJsunit() {
-  describe('flexItemAlignAutoTest2', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexExceed',
+  describe('flexItemAlignAutoTest2', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexExceed',
       }
       try {
         router.clear();
@@ -29,36 +31,40 @@ export default function flexExceed_AutoJsunit() {
         console.info("get FlexExceed state success " + JSON.stringify(pages));
         if (!("FlexExceed" == pages.name)) {
           console.info("get FlexExceed state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexExceed page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexExceed page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexExceed after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0600
-     * @tc.name      testFlexItemAlignAutoFlexPadMarMeet
-     * @tc.desc      Subcomponent inside when parent component set margin and padding.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_0600
+     * @tc.name testFlexItemAlignAutoFlexPadMarMeet
+     * @tc.desc Subcomponent inside when parent component set margin and padding.
      */
-    it('testFlexItemAlignAutoFlexPadMarMeet', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexPadMarMeet', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadMarMeet START');
-      globalThis.value.message.notify({name:'padding', value:10})
-      globalThis.value.message.notify({name:'margin', value:10})
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'padding', value: 10
+      })
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'margin', value: 10
+      })
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
-      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
+
+      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
       expect(Math.abs(textExceed01.left - flexExceed01.left - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(textExceed01.right - textExceed02.left) <= 1).assertTrue();
       expect(Math.abs(textExceed02.right - textExceed03.left) <= 1).assertTrue();
@@ -73,28 +79,32 @@ export default function flexExceed_AutoJsunit() {
       expect(Math.abs(textExceed01.right - textExceed01.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textExceed02.right - textExceed02.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(textExceed03.right - textExceed03.left - vp2px(150)) <= 1).assertTrue();
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexPadMarMeet END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_AUTO_0700
-     * @tc.name      testFlexItemAlignAutoFlexPadMarOverflow
-     * @tc.desc      Subcomponent outside when parent component set margin and padding.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_AUTO_0700
+     * @tc.name testFlexItemAlignAutoFlexPadMarOverflow
+     * @tc.desc Subcomponent outside when parent component set margin and padding.
      */
-    it('testFlexItemAlignAutoFlexPadMarOverflow', 0, async function (done) {
+    it('testFlexItemAlignAutoFlexPadMarOverflow', 0, async () => {
       console.info('new testFlexItemAlignAutoFlexPadMarOverflow START');
-      globalThis.value.message.notify({name:'padding', value:30});
-      globalThis.value.message.notify({name:'margin', value:30});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'padding', value: 30
+      });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'margin', value: 30
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
-      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
+
+      let textExceed01: RectValue = CommonFunc.getComponentRect('textExceed01');
+      let textExceed02: RectValue = CommonFunc.getComponentRect('textExceed02');
+      let textExceed03: RectValue = CommonFunc.getComponentRect('textExceed03');
+      let flexExceed01: RectValue = CommonFunc.getComponentRect('flexExceed01');
       expect(Math.abs(textExceed01.left - flexExceed01.left - vp2px(30)) <= 1).assertTrue();
       expect(Math.abs(textExceed01.right - textExceed02.left) <= 1).assertTrue();
       expect(Math.abs(textExceed02.right - textExceed03.left) <= 1).assertTrue();
@@ -106,13 +116,13 @@ export default function flexExceed_AutoJsunit() {
       expect(Math.abs(textExceed01.bottom - textExceed01.top - vp2px(50)) <= 1).assertTrue();
       expect(Math.abs(textExceed02.bottom - textExceed02.top - vp2px(100)) <= 1).assertTrue();
       expect(Math.abs(textExceed03.bottom - textExceed03.top - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(textExceed01.right - textExceed01.left - vp2px(440/3)) <= 1).assertTrue();
-      expect(Math.abs(textExceed02.right - textExceed02.left - vp2px(440/3)) <= 1).assertTrue();
-      expect(Math.abs(textExceed03.right - textExceed03.left - vp2px(440/3)) <= 1).assertTrue();
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      expect(Math.abs(textExceed01.right - textExceed01.left - vp2px(440 / 3)) <= 1).assertTrue();
+      expect(Math.abs(textExceed02.right - textExceed02.left - vp2px(440 / 3)) <= 1).assertTrue();
+      expect(Math.abs(textExceed03.right - textExceed03.left - vp2px(440 / 3)) <= 1).assertTrue();
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexPadMarOverflow END');
-      done();
+
     });
   })
 }

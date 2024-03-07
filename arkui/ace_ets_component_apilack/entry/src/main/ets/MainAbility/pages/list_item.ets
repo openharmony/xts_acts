@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
@@ -24,12 +25,13 @@ struct List_itemOnSelect {
     Log.showInfo(TAG, `aboutToAppear List_itemOnSelect start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear List_itemOnSelect end`)
   }
 
-  @Builder itemEnd() {
-    Row () {
+  @Builder
+  itemEnd() {
+    Row() {
       Button("Del").margin("4vp").key("Del")
       Button("Set").margin("4vp").key("Set")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
@@ -41,7 +43,7 @@ struct List_itemOnSelect {
         .onClick(() => {
           console.info("Click2" + JSON.stringify(sendEventByKey("Del", 10, "")));
         }).key("Click2")
-      List({space:10}) {
+      List({ space: 10 }) {
         ListItem() {
           Text("Hello world") {
           }
@@ -56,7 +58,7 @@ struct List_itemOnSelect {
         .sticky(Sticky.None)
         .selectable(false)
         .editable(true)
-        .swipeAction({ end:this.itemEnd})
+        .swipeAction({ end: this.itemEnd })
       }
     }
     .padding(10)

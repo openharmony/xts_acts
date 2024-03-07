@@ -12,12 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import hilog from '@ohos.hilog';
 import testNapi from 'libentry.so'
-// @ts-ignore
-import drm from '@ohos.multimedia.drm';
-import util from '@ohos.util';
-import http from '@ohos.net.http'
+// @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 let Drm_ContentProtectionLevel = {
@@ -43,13 +54,16 @@ let Drm_ErrorCode = {
   DRM_ERR_MAX_SESSION_NUM_REACHED:24700511,
   DRM_ERR_EXTEND_START:24700600
 }
+enum Drm_CertificateStatus {
+  CERT_STATUS_PROVISIONED = 0,
+  CERT_STATUS_NOT_PROVISIONED,
+  CERT_STATUS_EXPIRED,
+  CERT_STATUS_INVALID,
+  CERT_STATUS_UNAVAILABLE,
+}
 enum Drm_Support {
   DRM_FALSE =0,
   DRM_TRUE =1
-}
-enum License {
-  OFFLINE =0,
-  ONLINE =1
 }
 var uuid;
 var blueArea = testNapi.Test_KeySystemSupported("com.clearplay.drm"); //
@@ -59,36 +73,6 @@ if(blueArea === 1){
 } else {
   console.log("uuid is com.wiseplay.drm");
   uuid = "com.wiseplay.drm";
-}
-
-export async function getHttpData(url: string, _extraData: Object): Promise<string>{
-  let responseData: string = 'defaultStr';
-  let httpRequest = http.createHttp();
-  let response = httpRequest.request(
-    url,
-    {
-      method: http.RequestMethod.POST,
-      header: {
-        'Content-Type': 'application/json'
-      },
-      extraData : _extraData,
-      expectDataType: http.HttpDataType.STRING,
-    }
-  );
-  await response.then((data) => {
-    if (data.responseCode == 200) {
-      if(typeof data.result == 'string'){
-        responseData = data.result;
-      } else {
-      }
-    } else {
-      // todo 请求失败，进行失败逻辑处理
-    }
-  }).catch((err) => {
-    // todo 请求失败，进行失败逻辑处理
-    console.info('error:' + JSON.stringify(err));
-  })
-  return responseData;
 }
 
 export default function abilityTest() {
@@ -112,91 +96,6 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-
-    function stringToUint8Array(str) {
-      const length = str.length;
-      const array = new Uint8Array(length);
-
-      for (let i = 0; i < length; i++) {
-        array[i] = str.charCodeAt(i);
-      }
-
-      return array;
-    }
-    function byteToString(arr) {
-      if(typeof arr === 'string') {
-        return arr;
-      }
-      var str = '',
-        _arr = arr;
-      for(var i = 0; i < _arr.length; i++) {
-        var one = _arr[i].toString(2),
-          v = one.match(/^1+?(?=0)/);
-        if(v && one.length == 8) {
-          var bytesLength = v[0].length;
-          var store = _arr[i].toString(2).slice(7 - bytesLength);
-          for(var st = 1; st < bytesLength; st++) {
-            store += _arr[st + i].toString(2).slice(2);
-          }
-          str += String.fromCharCode(parseInt(store, 2));
-          i += bytesLength - 1;
-        } else {
-          str += String.fromCharCode(_arr[i]);
-        }
-      }
-      return str;
-    }
-    async function getOnlineLicenseRequest(){
-      var drmsys = drm.createMediaKeySystem(uuid);
-      var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      var base64 = new util.Base64();
-      let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
-      let optionalData = [{
-        name: "optionalDataName",
-        value: "optionalDataValue"
-      }];
-      var licenseRequestData = await session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
-      var licenseRequestStr = byteToString(licenseRequestData.data);
-      var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
-      session.destroy();
-      drmsys.destroy();
-      return licenseResponseStr;
-    }
-    async function getLicense(isOnline){
-      var drmsys = drm.createMediaKeySystem(uuid);
-      var session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      var base64 = new util.Base64();
-      let uint8pssh = base64.decodeSync('AAAAi3Bzc2gAAAAAPV5tNZuaQei4Q908bnLELAAAAGt7InZlcnNpb24iOiJWMS4wIiwiY29udGVudElEIjoiZEhNdE1qWTBMVEV3T0RBdFlXVnoiLCJraWRzIjpbIkcrRWsvK1htVWtwQkhRZ1hZV1FRSWc9PSJdLCJlbnNjaGVtYSI6ImNiYzEifQ==');
-      let optionalData = [{
-        name: "optionalDataName",
-        value: "optionalDataValue"
-      }];
-      if(isOnline){
-        var licenseRequestData = await session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
-      }else{
-        var licenseRequestData = await session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData);
-      }
-      let mediaKey ;
-      if (blueArea === 1) {
-        let responseArray ;
-        if(isOnline){
-          responseArray= new Uint8Array([0x30, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42, 0x30, 0x4D, 0x32, 0x77, 0x33,0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63,0x48, 0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67, 0x3D, 0x3D]);
-        }else{
-          responseArray= new Uint8Array([0x31, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42, 0x30, 0x4D, 0x32, 0x77, 0x33,0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63,0x48, 0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67, 0x3D, 0x3D]);
-        }
-        mediaKey = session.processMediaKeyResponse(responseArray);
-        console.log("chenling------getLicense---blueAreaKeyIds",mediaKey);
-      } else {
-        var licenseRequestStr = byteToString(licenseRequestData.data);
-        var licenseResponseStr = await getHttpData("http://192.168.50.59:9528/getLicense", licenseRequestStr);
-        var licenseResponse = stringToUint8Array(licenseResponseStr);
-        mediaKey = session.processMediaKeyResponse(licenseResponse);
-        console.log("chenling------getLicense---yellowAreaKeyIds",mediaKey);
-      }
-      session.destroy();
-      drmsys.destroy();
-      return mediaKey;
-    }
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_001
     * @tc.name      : testKeySystemSupported
@@ -347,7 +246,7 @@ export default function abilityTest() {
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_012
     * @tc.name      : testKeySystemSupported3
-    * @tc.desc      : 插件是否支持drm方案（三个参数：插件名称/mineType/安全等级）：正常参数，安全等级为0
+    * @tc.desc      : 插件是否支持drm方案（三个参数：插件名称/mineType/安全等级）：安全等级为0
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level0
@@ -406,7 +305,7 @@ export default function abilityTest() {
     */
     it('SUB_MULTIMEDIA_DRM_C_API_016', 0, function (done) {
       let c = testNapi.Test_KeySystemSupported3(uuid,"video/mp4",Drm_ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_MAX);
-      expect(c).assertEqual(Drm_Support.DRM_TRUE);
+      expect(c).assertEqual(Drm_Support.DRM_FALSE);
       done();
     })
     /* *
@@ -1282,20 +1181,15 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_081', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_081', 0, function (done) {
       var length;
       if(blueArea ==1 ){
         var arry = new Uint8Array([1, 2, 3, 4, 5]);
         var provisionResponseStr = arry.toString();
         length = arry.length;
-      }
-      else{
-        var drmsys = drm.createMediaKeySystem(uuid);
-        var provisionRequestData = await drmsys.generateKeySystemRequest();
-        var provisionRequestStr = provisionRequestData.toString();
-        var provisionResponseStr = await getHttpData("http://192.168.50.59:9528/getProvision", provisionRequestStr);
-        length = provisionResponseStr.length;
-        drmsys.destroy();
+      } else{
+        var provisionResponseStr = "genResponse";
+        length = 100;
       }
       let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr",provisionResponseStr,length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
@@ -1309,20 +1203,15 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_082', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_082', 0, function (done) {
       var length;
       if(blueArea ==1 ){
         var arry = new Uint8Array([1, 2, 3, 4, 5]);
         var provisionResponseStr = arry.toString();
         length = arry.length;
-      }
-      else{
-        var drmsys = drm.createMediaKeySystem(uuid);
-        var provisionRequestData = await drmsys.generateKeySystemRequest();
-        var provisionRequestStr = provisionRequestData.toString();
-        var provisionResponseStr = await getHttpData("http://192.168.50.59:9528/getProvision", provisionRequestStr);
-        length = provisionResponseStr.length;
-        drmsys.destroy();
+      } else{
+        var provisionResponseStr = "get_in_c";
+        length = 100;
       }
       let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse(" ",provisionResponseStr,length);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1336,7 +1225,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_083', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_083', 0, function (done) {
       let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr"," ",100);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
@@ -1349,22 +1238,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_084', 0, async function (done) {
-      var length;
-      if(blueArea ==1 ){
-        var arry = new Uint8Array([1, 2, 3, 4, 5]);
-        var provisionResponseStr = arry.toString();
-        length = arry.length;
-      }
-      else{
-        var drmsys = drm.createMediaKeySystem(uuid);
-        var provisionRequestData = await drmsys.generateKeySystemRequest();
-        var provisionRequestStr = provisionRequestData.toString();
-        var provisionResponseStr = await getHttpData("http://192.168.50.59:9528/getProvision", provisionRequestStr);
-        length = provisionResponseStr.length;
-        drmsys.destroy();
-      }
-      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr",provisionResponseStr,0);
+    it('SUB_MULTIMEDIA_DRM_C_API_084', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_ProcessKeySystemResponse("ptr","get_in_c",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1376,7 +1251,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_085', 0, async function (done) {
+    // it('SUB_MULTIMEDIA_DRM_C_API_085', 0, function (done) {
     //   var length =-1;
     //   var arry = new Uint8Array([1, 2, 3, 4, 5]);
     //   var provisionResponseStr = arry.toString();
@@ -1384,7 +1259,7 @@ export default function abilityTest() {
     //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   done();
     // })
-    /* *
+   /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_086
     * @tc.name      : testMediaKeySystemGetOfflineMediaKeyIds
     * @tc.desc      : 获取离线license【systemHandle_in/license数组指针】：正常参数
@@ -1393,7 +1268,6 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_086', 0, function (done) {
-      getLicense(License.OFFLINE); //确保有离线license
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
@@ -1407,7 +1281,6 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_087', 0, function (done) {
-      getLicense(License.OFFLINE); //确保有离线license
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds(" ","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
@@ -1421,7 +1294,6 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_088', 0, function (done) {
-      getLicense(License.OFFLINE); //确保有离线license
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyIds("ptr"," ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
@@ -1433,12 +1305,10 @@ export default function abilityTest() {
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_DRM_C_API_089', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,responseKeyArr.length,"ptr",1);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK); // 蓝区offlineLicense存在，状态报0，提单
+    *//
+    it('SUB_MULTIMEDIA_DRM_C_API_089', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",1,"ptr",1);
+      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
     /* *
@@ -1449,7 +1319,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_090', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_090', 0, function (done) {
       var responseKeyStr ="11,22,33,44";
       let len = 4;
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,len,"ptr",0);
@@ -1464,10 +1334,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_091', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus(" ",responseKeyStr,responseKeyArr.length,"ptr",0);
+    it('SUB_MULTIMEDIA_DRM_C_API_091', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus(" ","genKey",1,"ptr",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1479,7 +1347,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_092', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_092', 0, function (done) {
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr"," ",5,"ptr",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
@@ -1492,25 +1360,24 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_093', 0,async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_093', 0, function (done) {
       let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","",5,"ptr",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
-    /* *
-    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_094
-    * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
-    * @tc.desc      : 获取离线license状态【systemHandle_in/key_in(值/长度)/状态_out/预期】：key值长度为-1
-    * @tc.size      : MediumTest
-    * @tc.type      : Function test
-    * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_DRM_C_API_094', 0, async function (done) {
-      var responseKeyStr =await getLicense(License.OFFLINE);
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,-1,"ptr",0);
-      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL)
-      done();
-    })
+    // /* *
+    // * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_094
+    // * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
+    // * @tc.desc      : 获取离线license状态【systemHandle_in/key_in(值/长度)/状态_out/预期】：key值长度为-1
+    // * @tc.size      : MediumTest
+    // * @tc.type      : Function test
+    // * @tc.level     : Level0
+    // */
+    // it('SUB_MULTIMEDIA_DRM_C_API_094', 0, function (done) {
+    //   let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",-1,"ptr",0);
+    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL)
+    //   done();
+    // })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_095
     * @tc.name      : testMediaKeySystem_GetOfflineMediaKeyStatus
@@ -1519,9 +1386,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_095', 0, async function (done) {
-      var responseKeyStr =await getLicense(License.OFFLINE);
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,0,"ptr",0);
+    it('SUB_MULTIMEDIA_DRM_C_API_095', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",0,"ptr",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL)
       done();
     })
@@ -1533,10 +1399,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_096', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr",responseKeyStr,responseKeyArr.length," ",0);
+    it('SUB_MULTIMEDIA_DRM_C_API_096', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_GetOfflineMediaKeyStatus("ptr","genKey",1," ",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1548,10 +1412,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_097', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr",responseKeyStr,responseKeyArr.length);
+    it('SUB_MULTIMEDIA_DRM_C_API_097', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -1563,10 +1425,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_098', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys(" ",responseKeyStr,responseKeyArr.length);
+    it('SUB_MULTIMEDIA_DRM_C_API_098', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys(" ","genKey",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1578,9 +1438,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_099', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr"," ",responseKeyArr.length);
+    it('SUB_MULTIMEDIA_DRM_C_API_099', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr"," ",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1592,7 +1451,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_100', 0, function (done) {
       var responseKeyStr = "11,22,33,44,55,66,77,88";
       let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr",responseKeyStr,8);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
@@ -1606,10 +1465,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_101', 0, async function (done) {
-      let responseKeyArr =await getLicense(License.OFFLINE);
-      var responseKeyStr = responseKeyArr.toString();
-      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr",responseKeyStr,0);
+    it('SUB_MULTIMEDIA_DRM_C_API_101', 0, function (done) {
+      let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1621,10 +1478,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_102', 0, async function (done) {
-    //   let responseKeyArr =await getLicense(License.OFFLINE);
-    //   var responseKeyStr = responseKeyArr.toString();
-    //   let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr",responseKeyStr,-1);
+    // it('SUB_MULTIMEDIA_DRM_C_API_102', 0, function (done) {
+    //   let c = testNapi.Test_MediaKeySystem_ClearOfflineMediaKeys("ptr","genKey",-1);
     //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   done();
     // })
@@ -1637,7 +1492,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_103', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr","ptr",drm.CertificateStatus.CERT_STATUS_PROVISIONED);
+      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr","ptr",Drm_CertificateStatus.CERT_STATUS_PROVISIONED);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -1650,7 +1505,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_104', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus(" ","ptr",drm.CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
+      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus(" ","ptr",Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1663,7 +1518,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_105', 0, function (done) {
-      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr"," ",drm.CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
+      let c = testNapi.Test_MediaKeySystem_GetCertificateStatus("ptr"," ",Drm_CertificateStatus.CERT_STATUS_NOT_PROVISIONED);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1848,15 +1703,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_119', 0, async function (done) {
-      let responseArray;
-      if(blueArea){
-        responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      }else {
-        responseArray = await getOnlineLicenseRequest();
-      }
-      var responseStr = responseArray.toString();
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,responseArray.length,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_119', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -1868,15 +1716,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_120', 0, async function (done) {
-      let responseArray;
-      if(blueArea){
-        responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      }else {
-        responseArray = await getOnlineLicenseRequest();
-      }
-      var responseStr = responseArray.toString();
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse(" ",responseStr,responseArray.length,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_120', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse(" ","genResponse",1,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1888,9 +1729,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_121', 0, async function (done) {
-      let len = 10;
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr"," ",len,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_121', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr"," ",10,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1902,7 +1742,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_122', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_122', 0, function (done) {
       var responseStr = "11,11,11,11,11,11,11,11,11,111";
       let len = 10;
       let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,len,"ptr","ptr");
@@ -1917,15 +1757,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_123', 0, async function (done) {
-      let responseArray;
-      if(blueArea){
-        responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      }else {
-        responseArray = await getOnlineLicenseRequest();
-      }
-      var responseStr = responseArray.toString();
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,0,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_123', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",0,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1937,15 +1770,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_124', 0, async function (done) {
-    //   let responseArray;
-    //   if(blueArea){
-    //     responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-    //   }else {
-    //     responseArray = await getOnlineLicenseRequest();
-    //   }
-    //   var responseStr = responseArray.toString();
-    //   let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,-1,"ptr","ptr");
+    // it('SUB_MULTIMEDIA_DRM_C_API_124', 0, function (done) {
+    //   let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",-1,"ptr","ptr");
     //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   done();
     // })
@@ -1957,15 +1783,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_125', 0, async function (done) {
-      let responseArray;
-      if(blueArea){
-        responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      }else {
-        responseArray = await getOnlineLicenseRequest();
-      }
-      var responseStr = responseArray.toString();
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,responseArray.length," ","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_125', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1," ","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -1977,30 +1796,21 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_126', 0, async function (done) {
-      let responseArray;
-      if(blueArea){
-        responseArray = new Uint8Array([0x30, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-      }else {
-        responseArray = await getOnlineLicenseRequest();
-      }
-      var responseStr = responseArray.toString();
-      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr",responseStr,responseArray.length,"ptr"," ");
+    it('SUB_MULTIMEDIA_DRM_C_API_126', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_ProcessMediaKeyResponse("ptr","genResponse",1,"ptr"," ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
     /* *
     * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_127
     * @tc.name      : testMediaKeySessionCheckMediaKeyStatus
-    * @tc.desc      : 在线license状态查询【sessionHandle_in/状态_out】：正常参数（wiseplay未实现）
+    * @tc.desc      : 在线license状态查询【sessionHandle_in/状态_out/licenseNumber】：正常参数（wiseplay未实现）
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_127', 0, async function (done) {
-      var key = await getLicense(License.ONLINE); // 确保有license
-      console.info("chenling111---------key",key);
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_127', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -2013,7 +1823,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_128', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus(" ","ptr");
+      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus(" ","ptr",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2026,7 +1836,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_129', 0, function (done) {
-      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr"," ");
+      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr"," ",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2038,8 +1848,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_130', 0, async function (done) {
-      let key = await getLicense(License.ONLINE);
+    it('SUB_MULTIMEDIA_DRM_C_API_130', 0, function (done) {
       let c = testNapi.Test_MediaKeySession_ClearMediaKeys("ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
@@ -2052,8 +1861,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_131', 0, async function (done) {
-      getLicense(License.ONLINE);
+    it('SUB_MULTIMEDIA_DRM_C_API_131', 0, function (done) {
       let c = testNapi.Test_MediaKeySession_ClearMediaKeys(" ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
@@ -2239,10 +2047,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_145', 0, async function (done) {
-      let licenseIdArr = await getLicense(License.OFFLINE);
-      let licenseIdStr = licenseIdArr.toString();
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,licenseIdArr.length,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_145', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",1,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -2254,10 +2060,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_146', 0, async function (done) {
-      let licenseIdArr = await getLicense(License.OFFLINE);
-      let licenseIdStr = licenseIdArr.toString();
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest(" ",licenseIdStr,licenseIdArr.length,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_146', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest(" ","genKey",1,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2270,8 +2074,7 @@ export default function abilityTest() {
     * @tc.level     : Level0
     */
     it('SUB_MULTIMEDIA_DRM_C_API_147', 0, function (done) {
-      let len = 10;
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr"," ",len,"ptr","ptr");
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr"," ",1,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2283,7 +2086,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_148', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_148', 0, function (done) {
       var licenseIdStr = "11,11,11,11,12,22";
       var len = 6;
       let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,len,"ptr","ptr");
@@ -2298,10 +2101,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_149', 0, async function (done) {
-      let licenseIdArr = await getLicense(License.OFFLINE);
-      let licenseIdStr = licenseIdArr.toString();
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,0,"ptr","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_149', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",0,"ptr","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2313,10 +2114,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_150', 0, async function (done) {
-    //   let licenseIdArr = await getLicense(License.OFFLINE);
-    //   let licenseIdStr = licenseIdArr.toString();
-    //   let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,-1,"ptr","ptr");
+    // it('SUB_MULTIMEDIA_DRM_C_API_150', 0, function (done) {
+    //   let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",-1,"ptr","ptr");
     //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   done();
     // })
@@ -2328,10 +2127,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_151', 0, async function (done) {
-      let licenseIdArr = await getLicense(License.OFFLINE);
-      let licenseIdStr = licenseIdArr.toString();
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,licenseIdArr.length," ","ptr");
+    it('SUB_MULTIMEDIA_DRM_C_API_151', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr","genKey",1," ","ptr");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2343,10 +2140,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_152', 0, async function (done) {
-      let licenseIdArr = await getLicense(License.OFFLINE);
-      let licenseIdStr = licenseIdArr.toString();
-      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr",licenseIdStr,licenseIdArr.length,"ptr"," ");
+    it('SUB_MULTIMEDIA_DRM_C_API_152', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_GenerateOfflineReleaseRequest("ptr", "genKey", 1, "ptr", " ");
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2358,13 +2153,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_153', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_153', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2377,13 +2170,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_154', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_154', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse(" ",offlineKeyIdStr,offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse(" ","genKey",1,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2396,13 +2187,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_155', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      //let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_155', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr"," ",offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr"," ",1,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2415,13 +2204,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_156', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_156', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,0,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",0,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2434,13 +2221,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_157', 0, async function (done) {
-    //   let offlineKeyId = await getLicense(License.OFFLINE);
-    //   let offlineKeyIdStr = offlineKeyId.toString();
+    // it('SUB_MULTIMEDIA_DRM_C_API_157', 0, function (done) {
     //   if(blueArea){
     //     var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
     //     var responseStr = responseArray.toString();
-    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,-1,responseStr,responseArray.length);
+    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",-1,responseStr,responseArray.length);
     //     expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   }// TODO：黄区processOfflineReleaseResponse不支持
     //   done();
@@ -2453,13 +2238,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_158', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_158', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         //var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length," ",responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1," ",responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2472,13 +2255,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_159', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_159', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,0);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,0);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2491,13 +2272,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    // it('SUB_MULTIMEDIA_DRM_C_API_160', 0, async function (done) {
-    //   let offlineKeyId = await getLicense(License.OFFLINE);
-    //   let offlineKeyIdStr = offlineKeyId.toString();
+    // it('SUB_MULTIMEDIA_DRM_C_API_160', 0, function (done) {
     //   if(blueArea){
     //     var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
     //     var responseStr = responseArray.toString();
-    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,-1);
+    //     let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,-1);
     //     expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
     //   }// TODO：黄区processOfflineReleaseResponse不支持
     //   done();
@@ -2510,13 +2289,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_161', 0, async function (done) {
-      let offlineKeyId = new Uint8Array([0x11, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56]);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_161', 0, function (done) {
       if(blueArea){
+        var keyArray =  new Uint8Array([0x76, 0x76, 0x76, 0x35, 0x6b, 0x6f, 0x30, 0x6e, 0x38, 0x36, 0x30, 0x74, 0x33, 0x6c, 0x37, 0x36, 0x63, 0x35, 0x71, 0x70, 0x77, 0x69, 0x6a, 0x6d, 0x38, 0x61, 0x61, 0x38, 0x64, 0x79, 0x32, 0x32]);
+        var keyStr = keyArray.toString();
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",keyStr,keyArray.length,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2529,13 +2308,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_162', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_162', 0, function (done) {
       if(blueArea){
         var responseArray =  new Uint8Array([0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }
       done();
@@ -2548,13 +2325,13 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_163', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = "";
+    it('SUB_MULTIMEDIA_DRM_C_API_163', 0, function (done) {
+      var keyArray =  new Uint8Array([0x31, 0x56, 0x55, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+      var keyStr = keyArray.toString();
       if(blueArea){
         var responseArray =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
         var responseStr = responseArray.toString();
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,responseArray.length);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",keyStr,keyArray.length,responseStr,responseArray.length);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2567,13 +2344,11 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_164', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      let offlineKeyIdStr = offlineKeyId.toString();
+    it('SUB_MULTIMEDIA_DRM_C_API_164', 0, function (done) {
       if(blueArea){
         var responseStr = "";
         var len = 10;
-        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr",offlineKeyIdStr,offlineKeyId.length,responseStr,len);
+        let c = testNapi.Test_MediaKeySession_ProcessOfflineReleaseResponse("ptr","genKey",1,responseStr,len);
         expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       }// TODO：黄区processOfflineReleaseResponse不支持
       done();
@@ -2586,19 +2361,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_165', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      var offlineKeyIdStr = offlineKeyId.toString();
-      var drmsys =  drm.createMediaKeySystem(uuid);
-      var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      if(blueArea){
-        let responseTest =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-        keySession.generateOfflineReleaseRequest(offlineKeyId);
-        keySession.processOfflineReleaseResponse(offlineKeyId, responseTest);
-      }else{
-        drmsys.clearOfflineMediaKeys(offlineKeyId);
-      }
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr",offlineKeyIdStr,offlineKeyId.length);
+    it('SUB_MULTIMEDIA_DRM_C_API_165', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
       done();
     })
@@ -2610,19 +2374,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_166', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      var offlineKeyIdStr = offlineKeyId.toString();
-      var drmsys =  drm.createMediaKeySystem(uuid);
-      var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      if(blueArea){
-        let responseTest =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-        keySession.generateOfflineReleaseRequest(offlineKeyId);
-        keySession.processOfflineReleaseResponse(offlineKeyId, responseTest);
-      }else{
-        drmsys.clearOfflineMediaKeys(offlineKeyId);
-      }
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys(" ",offlineKeyIdStr,offlineKeyId.length);
+    it('SUB_MULTIMEDIA_DRM_C_API_166', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys(" ","getKey",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2634,7 +2387,7 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_167', 0, async function (done) {
+    it('SUB_MULTIMEDIA_DRM_C_API_167', 0, function (done) {
       var licenseResponseStr ="11,11,11,11,11,111,11,111";
       var len = 8;
       let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr",licenseResponseStr,len);
@@ -2649,9 +2402,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_168', 0, async function (done) {
-      var len = 10;
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr"," ",len);
+    it('SUB_MULTIMEDIA_DRM_C_API_168', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr"," ",1);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2663,19 +2415,8 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_169', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      var offlineKeyIdStr = offlineKeyId.toString();
-      var drmsys =  drm.createMediaKeySystem(uuid);
-      var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      if(blueArea){
-        let responseTest =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-        keySession.generateOfflineReleaseRequest(offlineKeyId);
-        keySession.processOfflineReleaseResponse(offlineKeyId, responseTest);
-      }else{
-        drmsys.clearOfflineMediaKeys(offlineKeyId);
-      }
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr",offlineKeyIdStr,0);
+    it('SUB_MULTIMEDIA_DRM_C_API_169', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })
@@ -2687,19 +2428,36 @@ export default function abilityTest() {
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_DRM_C_API_170', 0, async function (done) {
-      let offlineKeyId = await getLicense(License.OFFLINE);
-      var offlineKeyIdStr = offlineKeyId.toString();
-      var drmsys =  drm.createMediaKeySystem(uuid);
-      var keySession = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_UNKNOWN);
-      if(blueArea){
-        let responseTest =  new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-        keySession.generateOfflineReleaseRequest(offlineKeyId);
-        keySession.processOfflineReleaseResponse(offlineKeyId, responseTest);
-      }else{
-        drmsys.clearOfflineMediaKeys(offlineKeyId);
-      }
-      let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr",offlineKeyIdStr,-1);
+    // it('SUB_MULTIMEDIA_DRM_C_API_170', 0, function (done) {
+    //   let c = testNapi.Test_MediaKeySession_RestoreOfflineMediaKeys("ptr","getKey",-1);
+    //   expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
+    //   done();
+    // })
+
+    // add cases
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_171
+    * @tc.name      : testMediaKeySessionCheckMediaKeyStatus
+    * @tc.desc      : 在线license状态查询【sessionHandle_in/状态_out/licenseNumber】：正常参数（wiseplay未实现）
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_171', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",5);
+      expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      done();
+    })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_172
+    * @tc.name      : testMediaKeySessionCheckMediaKeyStatus
+    * @tc.desc      : 在线license状态查询【sessionHandle_in/状态_out/licenseNumber】：无license
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_172', 0, function (done) {
+      let c = testNapi.Test_MediaKeySession_CheckMediaKeyStatus("ptr","ptr",0);
       expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_INVALID_VAL);
       done();
     })

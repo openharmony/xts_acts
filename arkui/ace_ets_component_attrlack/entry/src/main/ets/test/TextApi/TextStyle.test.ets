@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../Utils'
 
 export default function TextStyle() {
-  describe('TextStyle', function () {
-    beforeEach(async function (done) {
+  describe('TextStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextStyle beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/TextApi/TextStyle',
       }
       try {
@@ -39,37 +39,28 @@ export default function TextStyle() {
       console.info("TextStyle beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("TextStyle after each called");
     });
 
 
-
     /**
-     * @tc.number    TextStyle_0001
-     * @tc.name      TextStyle_0001
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0001
+     * @tc.name TextStyle_0001
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0001', 0, async function (done) {
+    it('TextStyle_0001', 0, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('buttonStyle');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
-
+      expect(JSON.parse(text1).$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
       console.info('[TextStyle_0001] END');
       done();
     });
-
-
-
-
-
-
   })
 }
