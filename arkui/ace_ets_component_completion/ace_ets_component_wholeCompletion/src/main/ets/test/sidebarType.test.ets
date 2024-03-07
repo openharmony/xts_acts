@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function sidebarTypeTest() {
-  describe('sidebarTypeTest', function () {
-    beforeEach(async function (done) {
+  describe('sidebarTypeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/sidebarType',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/sidebarType',
       }
       try {
         router.clear();
@@ -28,7 +28,7 @@ export default function sidebarTypeTest() {
         console.info("get sidebarType state success " + JSON.stringify(pages));
         if (!("sidebarType" == pages.name)) {
           console.info("get sidebarType state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push sidebarType page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -37,124 +37,100 @@ export default function sidebarTypeTest() {
       done()
     });
 
-    it('ArkUX_SideBarContainer_1000', 0, async function (done) {
+    it('ArkUX_SideBarContainer_1000', 0, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1000 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_SideBarContainer_1000');
-          console.info('ArkUX_SideBarContainer_1000 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_SideBarContainer_1000 obj is: " + JSON.stringify(obj));
-          let type = obj.$attrs.type
-          let minContentWidth = obj.$attrs.minContentWidth
-          let minSideBarWidth = obj.$attrs.minSideBarWidth
-          expect(type).assertEqual("SideBarContainerType.OVERLAY");
-          expect(minContentWidth).assertEqual("300.000000");
-          expect(minSideBarWidth).assertEqual("100.000000");
+          console.info('ArkUX_SideBarContainer_1000 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_SideBarContainer_1000 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.type).assertEqual("SideBarContainerType.OVERLAY");
+          expect(JSON.parse(strJson).$attrs.minContentWidth).assertEqual("300.000000");
+          expect(JSON.parse(strJson).$attrs.minSideBarWidth).assertEqual("100.000000");
           console.info('ArkUX_SideBarContainer_1000 END ');
-
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_SideBarContainer_1000 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_SideBarContainer_1000 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1100', 0, async function (done) {
+    it('ArkUX_SideBarContainer_1100', 0, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1100 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_SideBarContainer_1100');
-          console.info('ArkUX_SideBarContainer_1100 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_SideBarContainer_1100 obj is: " + JSON.stringify(obj));
-          let type = obj.$attrs.type
-          let minContentWidth = obj.$attrs.minContentWidth
-          let minSideBarWidth = obj.$attrs.minSideBarWidth
-          expect(type).assertEqual("SideBarContainerType.OVERLAY");
-          expect(minContentWidth).assertEqual("30000.000000");
-          expect(minSideBarWidth).assertEqual("10000.000000");
+          console.info('ArkUX_SideBarContainer_1100 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_SideBarContainer_1100 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.type).assertEqual("SideBarContainerType.OVERLAY");
+          expect(JSON.parse(strJson).$attrs.minContentWidth).assertEqual("30000.000000");
+          expect(JSON.parse(strJson).$attrs.minSideBarWidth).assertEqual("10000.000000");
           console.info('ArkUX_SideBarContainer_1100 END ');
 
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_SideBarContainer_1100 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_SideBarContainer_1100 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1200', 0, async function (done) {
+    it('ArkUX_SideBarContainer_1200', 0, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1200 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_SideBarContainer_1200');
-          console.info('ArkUX_SideBarContainer_1200 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_SideBarContainer_1200 obj is: " + JSON.stringify(obj));
-          let type = obj.$attrs.type
-          let minContentWidth = obj.$attrs.minContentWidth
-          let minSideBarWidth = obj.$attrs.minSideBarWidth
-          expect(type).assertEqual("SideBarContainerType.Embed");
-          expect(minContentWidth).assertEqual("10.000000");
-          expect(minSideBarWidth).assertEqual("10.000000");
+          console.info('ArkUX_SideBarContainer_1200 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_SideBarContainer_1200 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.type).assertEqual("SideBarContainerType.Embed");
+          expect(JSON.parse(strJson).$attrs.minContentWidth).assertEqual("10.000000");
+          expect(JSON.parse(strJson).$attrs.minSideBarWidth).assertEqual("10.000000");
           console.info('ArkUX_SideBarContainer_1200 END ');
-
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_SideBarContainer_1200 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_SideBarContainer_1200 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1300', 0, async function (done) {
+    it('ArkUX_SideBarContainer_1300', 0, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1300 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_SideBarContainer_1300');
-          console.info('ArkUX_SideBarContainer_1300 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_SideBarContainer_1300 obj is: " + JSON.stringify(obj));
-          let type = obj.$attrs.type
-          let minContentWidth = obj.$attrs.minContentWidth
-          let minSideBarWidth = obj.$attrs.minSideBarWidth
-          expect(type).assertEqual("SideBarContainerType.OVERLAY");
-          expect(minContentWidth).assertEqual("200.000000");
-          expect(minSideBarWidth).assertEqual("400.000000");
+          console.info('ArkUX_SideBarContainer_1300 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_SideBarContainer_1300 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.type).assertEqual("SideBarContainerType.OVERLAY");
+          expect(JSON.parse(strJson).$attrs.minContentWidth).assertEqual("200.000000");
+          expect(JSON.parse(strJson).$attrs.minSideBarWidth).assertEqual("400.000000");
           console.info('ArkUX_SideBarContainer_1300 END ');
-
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_SideBarContainer_1300 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_SideBarContainer_1300 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_SideBarContainer_1400', 0, async function (done) {
+    it('ArkUX_SideBarContainer_1400', 0, async (done: Function) => {
       console.info('ArkUX_SideBarContainer_1400 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_SideBarContainer_1400');
-          console.info('ArkUX_SideBarContainer_1400 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_SideBarContainer_1400 obj is: " + JSON.stringify(obj));
-          let type = obj.$attrs.type
-          let minContentWidth = obj.$attrs.minContentWidth
-          let minSideBarWidth = obj.$attrs.minSideBarWidth
-          expect(type).assertEqual("SideBarContainerType.Embed");
-          expect(minContentWidth).assertEqual("360.000000");
-          expect(minSideBarWidth).assertEqual("240.000000");
+          console.info('ArkUX_SideBarContainer_1400 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_SideBarContainer_1400 JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+          expect(JSON.parse(strJson).$attrs.type).assertEqual("SideBarContainerType.Embed");
+          expect(JSON.parse(strJson).$attrs.minContentWidth).assertEqual("360.000000");
+          expect(JSON.parse(strJson).$attrs.minSideBarWidth).assertEqual("240.000000");
           console.info('ArkUX_SideBarContainer_1400 END ');
-
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_SideBarContainer_1400 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_SideBarContainer_1400 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
   })
 }

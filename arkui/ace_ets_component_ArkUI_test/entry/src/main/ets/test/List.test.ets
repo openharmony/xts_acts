@@ -103,17 +103,6 @@ import showDialogTrue from './showInSubWindowTest/showDialogTrue.test.ets'
 import showToast from './showInSubWindowTest/showToast.test.ets'
 import TextPickerDialog from './showInSubWindowTest/TextPickerDialog.test.ets'
 import TimePickerDialog from './showInSubWindowTest/TimePickerDialog.test.ets'
-import ExtendTrackTest from './observeTrack/ExtendTrackTest.test';
-import NestTrackTest from './observeTrack/NestTrackTest.test';
-import NoStateTest from './observeTrack/NoStateTest.test';
-import ObjectArrayTest from './observeTrack/ObjectArrayTest.test';
-import OnlyObserveTest from './observeTrack/OnlyObserveTest.test';
-import StaticTrackTest from './observeTrack/StaticTrackTest.test';
-import TrackDateTest from './observeTrack/TrackDateTest.test';
-import TrackMapTest from './observeTrack/TrackMapTest.test';
-import TrackSetTest from './observeTrack/TrackSetTest.test';
-import TwoNestTrackTest from './observeTrack/TwoNestTrackTest.test';
-import ArrayTrackTest from './observeTrack/ArrayTrackTest.test';
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()
@@ -206,15 +195,4 @@ export default function testsuite() {
   showToast();
   TextPickerDialog();
   TimePickerDialog();
-  ExtendTrackTest();
-  NestTrackTest();
-  NoStateTest();
-  ObjectArrayTest();
-  OnlyObserveTest();
-  StaticTrackTest();
-  TrackDateTest();
-  TrackMapTest();
-  TrackSetTest();
-  TwoNestTrackTest();
-  ArrayTrackTest();
 }

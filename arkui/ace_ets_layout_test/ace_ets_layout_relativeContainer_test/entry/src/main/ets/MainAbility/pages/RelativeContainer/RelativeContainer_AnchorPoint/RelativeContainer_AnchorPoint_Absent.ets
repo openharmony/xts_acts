@@ -57,5 +57,4 @@ struct RelativeContainer_AnchorPoint_Absent {
     .key("RelativeContainer_AnchorPoint_Absent_row1")
     .height('100%')
   }
-
 }
