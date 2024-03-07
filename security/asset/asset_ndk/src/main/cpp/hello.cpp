@@ -555,7 +555,7 @@ static napi_value Asset_QueryOption(napi_env env, napi_callback_info info)
     napi_get_value_uint32(env, args[2], &return_ordered_by); //2 is index
 
     uint32_t value0;
-    napi_get_value_uint32(env, args[3], &value0);
+    napi_get_value_uint32(env, args[3], &value0);//3 is index
 
 
     Asset_Attr attr[] = {
@@ -637,8 +637,7 @@ static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
     };
     resultSet = {0};
     ret = OH_Asset_Query(attr3, sizeof(attr3) / sizeof(attr3[0]), &resultSet);
-
-
+    
     if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
         result = MAGIC_RET;
     } else {
@@ -653,7 +652,6 @@ static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
     };
     resultSet = {0};
     ret = OH_Asset_Query(attr4, sizeof(attr4) / sizeof(attr4[0]), &resultSet);
-
     if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
         result = MAGIC_RET;
     } else {
@@ -787,7 +785,7 @@ static napi_value Asset_UpdateLabel(napi_env env, napi_callback_info info)
     bufferSize = BUFF_MAX;
     copied = 0;
 
-    napi_get_value_string_utf8(env, args[2], labelBuffer, bufferSize, &copied);
+    napi_get_value_string_utf8(env, args[2], labelBuffer, bufferSize, &copied);//2 is index
 
     Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
@@ -831,7 +829,6 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
     Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
 
-
     int32_t result;
 
     Asset_Attr query[] = {
@@ -859,9 +856,7 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
         result = -1;
     }
 
-
     Asset_Attr query2[] = {
-
     };
     Asset_Attr attributesToUpdate3[] = {
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
@@ -917,7 +912,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"asset_preQuery", nullptr, Asset_PreQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_preAndPostQuery", nullptr, Asset_PreAndPostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_postQuery", nullptr, Asset_PostQuery, nullptr, nullptr, nullptr, napi_default, nullptr},
-
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
