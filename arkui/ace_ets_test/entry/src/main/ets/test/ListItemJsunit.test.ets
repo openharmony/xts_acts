@@ -13,30 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function listItemJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('listItemTest', function () {
-    beforeEach(async function (done) {
+  describe('listItemTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/ListItem',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get ListItem state success " + JSON.stringify(pages));
         if (!("ListItem" == pages.name)) {
@@ -45,98 +45,93 @@ export default function listItemJsunit() {
           console.info("push ListItem page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ListItem page error " + JSON.stringify(result));
+        console.error("push ListItem page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("ListItem after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0390
-     * @tc.name      listItemTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0390
+     * @tc.name listItemTest001
+     * @tc.desc aceEtsTest
      */
-    it('listItemTest001', 0, async function (done) {
+    it('listItemTest001', 0, async () => {
       console.info('++++++++++++++++ ListItem TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('listitem');
       console.log(JSON.stringify(strJson))
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem1‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem1‘s editable is ' + JSON.stringify(obj.$attrs.editable))
-      expect(obj.$attrs.sticky).assertEqual('Sticky.None')
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem1‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem1‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.None')
       console.info('++++++++++++++++ ListItem TestCase 1 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0400
-     * @tc.name      listItemTest002
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0400
+     * @tc.name listItemTest002
+     * @tc.desc aceEtsTest
      */
-    it('listItemTest002', 0, async function (done) {
+    it('listItemTest002', 0, async () => {
       console.info('++++++++++++++++ ListItem TestCase 2 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem2');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem2‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem2‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem2‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem2‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Normal')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Normal')
       console.info('++++++++++++++++ ListItem TestCase 2 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0410
-     * @tc.name      listItemTest003
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0410
+     * @tc.name listItemTest003
+     * @tc.desc aceEtsTest
      */
-    it('listItemTest003', 0, async function (done) {
+    it('listItemTest003', 0, async () => {
       console.info('++++++++++++++++ ListItem TestCase 3 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem3');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem3‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem3‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem3‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem3‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Opacity')
       console.info('++++++++++++++++ ListItem TestCase 3 End ++++++++++++++++');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0420
-     * @tc.name      listItemTest004
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0420
+     * @tc.name listItemTest004
+     * @tc.desc aceEtsTest
      */
-    it('listItemTest004', 0, async function (done) {
+    it('listItemTest004', 0, async () => {
       console.info('++++++++++++++++ ListItem TestCase 4 START ++++++++++++++++');
       let strJson = getInspectorByKey('listitem4');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('ListItem')
-      console.log(JSON.stringify(obj.$attrs.type))
-      console.log('ListItem4‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
-      console.log('ListItem4‘s editable is ' + JSON.stringify(obj.$attrs.editable))
+      console.log(JSON.stringify(JSON.parse(strJson).$attrs.type))
+      console.log('ListItem4‘s sticky is ' + JSON.stringify(JSON.parse(strJson).$attrs.sticky))
+      console.log('ListItem4‘s editable is ' + JSON.stringify(JSON.parse(strJson).$attrs.editable))
       await sleep(1)
-      expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual('Sticky.Opacity')
       console.info('++++++++++++++++ ListItem TestCase 4 End ++++++++++++++++');
-      done();
     });
   })
 }

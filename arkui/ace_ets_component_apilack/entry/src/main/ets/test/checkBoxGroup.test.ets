@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function checkBoxGroupSelectAllJsunit() {
-  describe('checkBoxGroupSelectAllTest', function () {
-    beforeAll(async function (done) {
+  describe('checkBoxGroupSelectAllTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/checkBoxGroup',
@@ -38,10 +38,9 @@ export default function checkBoxGroupSelectAllJsunit() {
       } catch (err) {
         console.error("push checkBoxGroup page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("checkBoxGroupSelectAll after each called");
     });
@@ -51,16 +50,16 @@ export default function checkBoxGroupSelectAllJsunit() {
      * @tc.name         testcheckBoxGroupSelectAll0001
      * @tc.desic         acecheckBoxGroupSelectAllEtsTest0001
      */
-    it('testcheckBoxGroupSelectAll0001', 0, async function (done) {
+    it('testcheckBoxGroupSelectAll0001', 0, async () => {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('CheckboxGroup');
       console.info("[testcheckBoxGroupSelectAll0001] component selectedColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('CheckboxGroup');
-      expect(obj.$attrs.selectedColor).assertEqual("#FFED6F21");
-      console.info("[testcheckBoxGroupSelectAll0001] selectedColor value :" + obj.$attrs.selectedColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FFED6F21");
+      console.info("[testcheckBoxGroupSelectAll0001] selectedColor value :" + JSON.parse(strJson).$attrs.selectedColor);
+
     });
 
     /*
@@ -68,15 +67,15 @@ export default function checkBoxGroupSelectAllJsunit() {
      * @tc.name         testcheckBoxGroupSelectAll0002
      * @tc.desic         acecheckBoxGroupSelectAllEtsTest0002
      */
-    it('testcheckBoxGroupSelectAll0002', 0, async function (done) {
+    it('testcheckBoxGroupSelectAll0002', 0, async () => {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0002 START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "isSelect": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60203,
           priority: events_emitter.EventPriority.LOW
         }
@@ -88,12 +87,12 @@ export default function checkBoxGroupSelectAllJsunit() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('CheckboxOne');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("[testcheckBoxGroupSelectAll0002] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.selectedColor).assertEqual("#FF39A2DB");
-      console.info("[testcheckBoxGroupSelectAll0002] selectedColor value :" + obj.$attrs.selectedColor);
+      expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FF39A2DB");
+      console.info("[testcheckBoxGroupSelectAll0002] selectedColor value :" + JSON.parse(strJson).$attrs.selectedColor);
       console.info('testcheckBoxGroupSelectAll0002 END');
-      done();
+
     });
   })
 }

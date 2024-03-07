@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ohosPromptJsunit() {
-  describe('appInfoTest_four_3', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_3', () => {
+    beforeEach(async (done: Function) => {
       console.info("OhosPrompt beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/ohosPrompt',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ohosPrompt',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function ohosPromptJsunit() {
         console.info("get OhosPrompt state pages:" + JSON.stringify(pages));
         if (!("ohosPrompt " == pages.name)) {
           console.info("get OhosPrompt  state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push OhosPrompt  page result:" + JSON.stringify(result));
         }
@@ -41,18 +40,18 @@ export default function ohosPromptJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("OhosPrompt each called");
     });
 
-    it('test_OhosPrompt_001', 0, async function (done) {
+    it('test_OhosPrompt_001', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosPrompt_001] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.matrix1).assertEqual("[100, 10]")
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 142,
         priority: events_emitter.EventPriority.LOW
       }

@@ -14,22 +14,22 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct Grid_colSpan {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear Grid_colSpan start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear Grid_colSpan end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("grid_col-Span")
         .width(100)
@@ -59,8 +59,8 @@ struct Grid_colSpan {
         .textOverflow({ overflow: TextOverflow.None })
         .key("orderText")
 
-      GridRow(){
-        GridCol({span: 10, offset:50, order: 10}){
+      GridRow() {
+        GridCol({ span: 10, offset: 50, order: 10 }) {
         }
         .width(100)
         .height(100)

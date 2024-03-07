@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct NavigationExample {
-  private arr: number[]= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State hideBar: boolean = true
 
   onPageShow() {
@@ -27,7 +27,8 @@ struct NavigationExample {
     console.info('navigation build done called');
   }
 
-  @Builder NavigationMenus1() {
+  @Builder
+  NavigationMenus1() {
     Image('common/icon.png')
       .width(25)
       .height(25)
@@ -39,7 +40,7 @@ struct NavigationExample {
       Navigation() {
         Search({ value: '', placeholder: '' }).width('90%').margin(0)
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -48,7 +49,7 @@ struct NavigationExample {
                 .fontSize(15)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .listDirection(Axis.Vertical)
         .height(200)
@@ -64,11 +65,13 @@ struct NavigationExample {
       .hideTitleBar(false)
       .hideToolBar(false)
       .hideBackButton(false)
-      .toolBar({ items: [
-        { value: 'app' },
-        { value: 'add' },
-        { value: 'collect' }
-      ] })
+      .toolBar({
+        items: [
+          { value: 'app' },
+          { value: 'add' },
+          { value: 'collect' }
+        ]
+      })
       .onTitleModeChange((titleModel: NavigationTitleMode) => {
         console.log('titleMode:' + titleModel)
       })
@@ -99,14 +102,14 @@ struct NavigationExample {
       Navigation() {
         Search({ value: '', placeholder: '' }).width('90%').margin(25)
         List({ space: 5, initialIndex: 0 }) {
-            ListItem() {
-              Text('Navigation2')
-                .width('90%')
-                .height(50)
-                .backgroundColor('#3366CC')
-                .fontSize(15)
-                .textAlign(TextAlign.Center)
-            }
+          ListItem() {
+            Text('Navigation2')
+              .width('90%')
+              .height(50)
+              .backgroundColor('#3366CC')
+              .fontSize(15)
+              .textAlign(TextAlign.Center)
+          }
         }
         .listDirection(Axis.Vertical)
         .height(50)

@@ -67,8 +67,9 @@ struct DatePickerLunar {
         .onChange((date: DatePickerResult) => {
           Log.showInfo(TAG, 'select current date is: ' + JSON.stringify(date))
         })
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

@@ -26,6 +26,13 @@
             "teardown-command":[
                 "power-shell setmode 600"
             ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+               
+            ]
         }
     ]
 }

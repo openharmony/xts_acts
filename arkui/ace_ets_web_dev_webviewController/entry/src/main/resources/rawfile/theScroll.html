@@ -38,9 +38,15 @@
 </body>
 </html>
 <script>
+    function tryPrint(){
+        window.print()
+        let arr = "ok";
+        console.log(arr)
+        return arr;
+    }
     function getScroll(){
-        let x = document.documentElement.scrollLeft;
-        let y = document.documentElement.scrollTop;
+        let x = Math.round(document.documentElement.scrollLeft);
+        let y = Math.round(document.documentElement.scrollTop);
         let z = document.body.scrollHeight;
         let p = document.body.scrollWidth;
         let arr = [x,y];

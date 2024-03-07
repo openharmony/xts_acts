@@ -16,7 +16,6 @@
 @Entry
 @Component
 struct RelativeContainer_AnchorPoint_Id_Null {
-
   onPageShow() {
     console.info('RelativeContainer_AnchorPoint_Id_Null onPageShow');
   }
@@ -48,7 +47,7 @@ struct RelativeContainer_AnchorPoint_Id_Null {
       }
       .key("RelativeContainer_AnchorPoint_Id_Null_r1")
       .width(300).height(300)
-      .border({  color: "#6699FF" })
+      .border({ color: "#6699FF" })
     }
     .height('100%')
   }

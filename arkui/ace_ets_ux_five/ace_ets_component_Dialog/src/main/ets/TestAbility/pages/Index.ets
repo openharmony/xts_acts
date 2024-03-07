@@ -22,24 +22,22 @@ import promptAction from '@ohos.promptAction';
 @Entry
 @Component
 struct Index {
-  controller: TextInputController = new TextInputController()
+  controller: TextInputController = new TextInputController();
   @State text: string = ''
-  Controller: TextInputController = new TextInputController()
+  Controller: TextInputController = new TextInputController();
 
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
-  @State textValue: string = ''
-  @State inputValue: string = 'click me'
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
   dialogController: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
       cancel: this.onCancel,
@@ -58,19 +56,19 @@ struct Index {
 
   // 在自定义组件即将析构销毁时将dialogControlle置空
   aboutToDisappear() {
-    this.dialogController = null // 将dialogController置空
+    this.dialogController = null; // 将dialogController置空
   }
 
   onCancel() {
-    console.info('Callback when the first button is clicked')
+    console.info('Callback when the first button is clicked');
   }
 
   onAccept() {
-    console.info('Callback when the second button is clicked')
+    console.info('Callback when the second button is clicked');
   }
 
   existApp() {
-    console.info('Click the callback in the blank area')
+    console.info('Click the callback in the blank area');
   }
 
   build() {
@@ -143,7 +141,7 @@ struct Index {
         })
         .key("ArkUX_Dialog_Visual_0060")
         .fontSize(20)
-        .margin(10)
+        .margin(10);
       Button('showInSubWindow true autoCancel true')
         .margin(20)
         .onClick(() => {
@@ -153,7 +151,7 @@ struct Index {
         })
         .backgroundColor(0x317aff)
         .fontSize(20)
-        .margin(10)
+        .margin(10);
       Button('one button dialog')
         .onClick(() => {
           promptAction.showActionMenu({
@@ -177,7 +175,7 @@ struct Index {
             }
             console.info('showActionMenu success callback, click button: ' + data.index);
           })
-        })
+        });
       Button('promptAction.showDialog')
         .onClick(() => {
           promptAction.showDialog({
@@ -202,7 +200,7 @@ struct Index {
             }
             console.info('showDialog success callback, click button: ' + data.index);
           });
-        })
+        });
     }
     .justifyContent(FlexAlign.Center)
     .width('100%')
@@ -212,12 +210,12 @@ struct Index {
 
 @CustomDialog
 struct CustomDialogExample {
-  @Link textValue: string
-  @Link inputValue: string
-  controller: CustomDialogController
+  @Link textValue: string;
+  @Link inputValue: string;
+  controller: CustomDialogController;
   // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在最后
-  cancel: () => void
-  confirm: () => void
+  cancel: () => void;
+  confirm: () => void;
 
   build() {
     Column() {
@@ -237,6 +235,7 @@ struct CustomDialogExample {
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
     }
+
     // dialog默认的borderRadius为24vp，如果需要使用border属性，请和borderRadius属性一起使用。
   }
 }

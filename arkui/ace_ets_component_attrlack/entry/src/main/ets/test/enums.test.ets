@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function enumsCancelJsunit() {
-  describe('enumsCancelTest', function () {
-    beforeEach(async function (done) {
+  describe('enumsCancelTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/enums',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enums',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function enumsCancelJsunit() {
         console.info("get enums state success " + JSON.stringify(pages));
         if (!("enums" == pages.name)) {
           console.info("get enums state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push enums page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function enumsCancelJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("enumsCancel after each called");
     });
@@ -50,15 +50,14 @@ export default function enumsCancelJsunit() {
      * @tc.name         testenumsCancel0001
      * @tc.desic         aceenumsCancelEtsTest0001
      */
-    it('testenumsCancel0001', 0, async function (done) {
+    it('testenumsCancel0001', 0, async (done: Function) => {
       console.info('enumsCancel testenumsCancel0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('HighlightText');
+      let strJson: string = getInspectorByKey('HighlightText');
       console.info("[testenumsCancel0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.hoverEffect).assertEqual("HoverEffect.Highlight");
-      console.info("[testenumsCancel0001] hoverEffect value :" + obj.$attrs.hoverEffect);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.hoverEffect).assertEqual("HoverEffect.Highlight");
+      console.info("[testenumsCancel0001] hoverEffect value :" + JSON.parse(strJson).$attrs.hoverEffect);
       done();
     });
   })

@@ -115,6 +115,7 @@ group("VKGLCTSTest") {
     "src/khrgles31/build0001:ActsKhrgles31TestSuite0001",
     "src/khrgles31/build0002:ActsKhrgles31TestSuite0002",
     "src/khrgles31/build0004:ActsKhrgles31TestSuite0004",
+    "src/khrglesext/build0001:ActsKhrglesextTestSuite0001",
   ]
 }
 

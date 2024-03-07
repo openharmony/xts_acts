@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function imageJsunit() {
-  describe('imageText', function () {
-    beforeEach(async function (done) {
+  describe('imageText', () => {
+    beforeEach(async (done: Function) => {
       console.info("image beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/image',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/image',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function imageJsunit() {
         console.info("get image state pages:" + JSON.stringify(pages));
         if (!("image" == pages.name)) {
           console.info("get image state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push image page result:" + JSON.stringify(result));
         }
@@ -40,32 +39,30 @@ export default function imageJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("image after each called");
     });
 
-    it('imageTest_0100', 0, async function (done) {
+    it('imageTest_0100', 0, async (done: Function) => {
       console.info('imageTest_0100 START');
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('text');
+      let strJson: string = getInspectorByKey('text');
       console.info("imageTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("imageTest_0100 obj.$attrs.content is: " + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('string_hello');
-      expect(obj.$attrs.fontSize).assertEqual('9.00fp');
+      console.info("imageTest_0100 JSON.parse(strJson).$attrs.content is: " + JSON.parse(strJson).$attrs.content);
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('string_hello');
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('9.00fp');
       console.info('imageTest_0100 END');
       done();
     });
 
-    it('imageTest_0200', 0, async function (done) {
+    it('imageTest_0200', 0, async (done: Function) => {
       console.info('imageTest_0200 START');
       await Utils.sleep(3000);
-      let strJson = getInspectorByKey('image');
+      let strJson: string = getInspectorByKey('image');
       console.info("imageTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("imageTest_0200 obj.$attrs.src is: " + obj.$attrs.src);
-      expect(obj.$attrs.src).assertEqual('resource://rawfile/test.png');
+      console.info("imageTest_0200 JSON.parse(strJson).$attrs.src is: " + JSON.parse(strJson).$attrs.src);
+      expect(JSON.parse(strJson).$attrs.src).assertEqual('resource://rawfile/test.png');
       console.info('imageTest_0200 END');
       done();
     });

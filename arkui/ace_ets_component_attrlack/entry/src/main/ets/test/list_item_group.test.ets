@@ -14,16 +14,16 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function list_item_groupJsunit() {
-  describe('list_item_groupJsunit', function () {
-    beforeAll(async function (done) {
+  describe('list_item_groupJsunit', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/list_item_group',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/list_item_group',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function list_item_groupJsunit() {
         console.info("get list_item_group state success " + JSON.stringify(pages));
         if (!("list_item" == pages.name)) {
           console.info("get list_item_group state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push list_item_group page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function list_item_groupJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("list_item_group after each called");
     });
@@ -51,14 +51,13 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0001
      * @tc.desic         acelist_itemOnSelectEtsTest0001
      */
-    it('testlist_item_group0001', 0, async function (done) {
+    it('testlist_item_group0001', 0, async (done: Function) => {
       console.info('testcase testlist_item_group0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Mon');
+      let strJson: string = getInspectorByKey('Mon');
       console.info("[testlist_item_group0001] component state strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('ListItemGroup');
-      console.info("[testlist_item_group0001] editable value :" + obj.$type);
+      expect(JSON.parse(strJson).$type).assertEqual('ListItemGroup');
+      console.info("[testlist_item_group0001] editable value :" + JSON.parse(strJson).$type);
       done();
     });
 
@@ -67,14 +66,13 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0002
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_item_group0002', 0, async function (done) {
+    it('testlist_item_group0002', 0, async (done: Function) => {
       console.info('testcase testlist_item_group0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Tues');
+      let strJson: string = getInspectorByKey('Tues');
       console.info("[testlist_item_group0002] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('ListItemGroup');
-      console.info("[testlist_item_group0002] selectable value :" + obj.$type);
+      expect(JSON.parse(strJson).$type).assertEqual('ListItemGroup');
+      console.info("[testlist_item_group0002] selectable value :" + JSON.parse(strJson).$type);
       done();
     });
 
@@ -83,15 +81,14 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemOnSelect0003
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_item_group0003', 0, async function (done) {
+    it('testlist_item_group0003', 0, async (done: Function) => {
       console.info('testcase testlist_item_group0003 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Wens');
+      let strJson: string = getInspectorByKey('Wens');
       console.info("[testlist_item_group0003] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('ListItemGroup');
-      expect(obj.$attrs.header).assertNotEqual(undefined);
-      console.info("[testlist_itemOnSelect0003] hear value :" + obj.$attrs.header);
+      expect(JSON.parse(strJson).$type).assertEqual('ListItemGroup');
+      expect(JSON.parse(strJson).$attrs.header).assertNotEqual(undefined);
+      console.info("[testlist_itemOnSelect0003] hear value :" + JSON.parse(strJson).$attrs.header);
       done();
     });
 
@@ -100,15 +97,14 @@ export default function list_item_groupJsunit() {
      * @tc.name         testlist_itemSwipeAction0004
      * @tc.desic         acelist_itemSwipeActionEtsTest0004
      */
-    it('testlist_item_group0004', 0, async function (done) {
+    it('testlist_item_group0004', 0, async (done: Function) => {
       console.info('testcase testlist_item_group0004 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Thurs');
+      let strJson: string = getInspectorByKey('Thurs');
       console.info("[testlist_item_group0004] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('ListItemGroup');
-      expect(obj.$attrs.rooter).assertNotEqual(undefined);
-      console.info("[testlist_item_group0004] hear value :" + obj.$attrs.rooter);
+      expect(JSON.parse(strJson).$type).assertEqual('ListItemGroup');
+      expect(JSON.parse(strJson).$attrs.rooter).assertNotEqual(undefined);
+      console.info("[testlist_item_group0004] hear value :" + JSON.parse(strJson).$attrs.rooter);
       done();
     });
   })
