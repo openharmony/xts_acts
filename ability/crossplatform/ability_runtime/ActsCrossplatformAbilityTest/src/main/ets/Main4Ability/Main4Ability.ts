@@ -15,9 +15,12 @@
 
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
 export default class Main4Ability extends UIAbility {
-    onCreate(want, launchParam) {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         console.log('testTag', '%{public}s', 'Ability onCreate');
         globalThis.want = want;
         globalThis.main2AbilityContext = this.context;
@@ -32,12 +35,11 @@ export default class Main4Ability extends UIAbility {
         // Main window is created, set main page for this ability
         console.log('testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-        windowStage.loadContent('testability/pages/Main4', (err, data) => {
+        windowStage.loadContent('testability/pages/Main4', (err:BusinessError) => {
             if (err.code) {
                 console.log('testTag', '%{public}s', 'Ability onWindowStageCreate');
                 return;
             }
-            console.log('testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
         });
     }
 

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function stateManagementDARKJsunit() {
-  describe('stateManagementDARKTest', function () {
-    beforeEach(async function (done) {
+  describe('stateManagementDARKTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/stateManagement',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/stateManagement',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function stateManagementDARKJsunit() {
         console.info("get stateManagement state success " + JSON.stringify(pages));
         if (!("stateManagement" == pages.name)) {
           console.info("get stateManagement state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push stateManagement page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function stateManagementDARKJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("stateManagementDARK after each called");
     });
@@ -50,17 +50,15 @@ export default function stateManagementDARKJsunit() {
      * @tc.name         teststateManagementDARK001
      * @tc.desic         acestateManagementDARKEtsTest001
      */
-    it('teststateManagementDARK001', 0, async function (done) {
+    it('teststateManagementDARK001', 0, async (done: Function) => {
       console.info('stateManagementDARK teststateManagementDARK001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('DARKText');
+      let strJson: string = getInspectorByKey('DARKText');
       console.info("[teststateManagementDARK001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF000001');
-      console.info("[teststateManagementDARK001] backgroundColor value :" + obj.$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FF000001');
+      console.info("[teststateManagementDARK001] backgroundColor value :" + JSON.parse(strJson).$attrs.backgroundColor);
       done();
     });
-
   })
 }

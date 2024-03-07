@@ -24,10 +24,12 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
+    "ConsumerSurfaceTest.cpp",
     "NativeBufferTest.cpp",
     "NativeImageTest.cpp",
     "NativeVsyncTest.cpp",
     "NativeWindowTest.cpp",
+    "ProducerSurfaceTest.cpp",
   ]
 
   cflags = [
@@ -41,7 +43,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   include_dirs = [
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
-    "../../../../../foundation/graphic/graphic_surface/surface/include",
+    "../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
     "../../../../../drivers/peripheral/display/interfaces/include",
   ]
 
@@ -63,6 +65,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
     "$comPath/rosen/modules/composer/vsync:libvsync",
     "$comPath/utils:buffer_handle",
+    "$comPath/utils/sync_fence:sync_fence",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
   ]

@@ -15,12 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function alphabetIndexerOnSelectJsunit() {
-  describe('alphabetIndexerOnSelectTest', function () {
-    beforeAll(async function (done) {
+  describe('alphabetIndexerOnSelectTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/alphabetIndexer',
@@ -38,10 +38,9 @@ export default function alphabetIndexerOnSelectJsunit() {
       } catch (err) {
         console.error("push alphabetIndexer page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("alphabetIndexerOnSelect after each called");
     });
@@ -51,16 +50,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0001
      * @tc.desic         acealphabetIndexerEtsTest0001
      */
-    it('testalphabetIndexerWidth0001', 0, async function (done) {
+    it('testalphabetIndexerWidth0001', 0, async () => {
       console.info('alphabetIndexerWidth testalphabetIndexerWidth0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerWidth0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testalphabetIndexerWidth0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testalphabetIndexerWidth0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -68,16 +67,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0002
      * @tc.desic         acealphabetIndexerEtsTest0002
      */
-    it('testalphabetIndexerHeight0002', 0, async function (done) {
+    it('testalphabetIndexerHeight0002', 0, async () => {
       console.info('alphabetIndexerHeight testalphabetIndexerHeight0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerHeight0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.height).assertEqual("300.00vp");
-      console.info("[testalphabetIndexerHeight0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("300.00vp");
+      console.info("[testalphabetIndexerHeight0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -85,16 +84,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0003
      * @tc.desic         acealphabetIndexerEtsTest0003
      */
-    it('testalphabetIndexerColor0003', 0, async function (done) {
+    it('testalphabetIndexerColor0003', 0, async () => {
       console.info('alphabetIndexerColor testalphabetIndexerColor0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerColor0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.color).assertEqual('#FFFF0000');
-      console.info("[testalphabetIndexerColor0003] color value :" + obj.$attrs.color);
-      done();
+      expect(JSON.parse(strJson).$attrs.color).assertEqual('#FFFF0000');
+      console.info("[testalphabetIndexerColor0003] color value :" + JSON.parse(strJson).$attrs.color);
+
     });
 
     /*
@@ -102,16 +101,18 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0004
      * @tc.desic         acealphabetIndexerEtsTest0004
      */
-    it('testalphabetIndexerSelectedColor0004', 0, async function (done) {
+    it('testalphabetIndexerSelectedColor0004', 0, async () => {
       console.info('alphabetIndexerSelectedColor testalphabetIndexerSelectedColor0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerOnSelect0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.selectedColor).assertEqual("#FFFFFFFF");
-      console.info("[testalphabetIndexerSelectedColor0004] selectedColor value :" + obj.$attrs.selectedColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual("#FFFFFFFF");
+      console.info("[testalphabetIndexerSelectedColor0004] selectedColor value :" + JSON.parse(strJson)
+        .$attrs
+        .selectedColor);
+
     });
 
     /*
@@ -119,16 +120,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0005
      * @tc.desic         acealphabetIndexerEtsTest0005
      */
-    it('testalphabetIndexerPopupColor0005', 0, async function (done) {
+    it('testalphabetIndexerPopupColor0005', 0, async () => {
       console.info('alphabetIndexerPopupColor testalphabetIndexerPopupColor0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerPopupColor0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.popupColor).assertEqual("#FF48D1CC");
-      console.info("[testalphabetIndexerPopupColor0005] popupColor value :" + obj.$attrs.popupColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.popupColor).assertEqual("#FF48D1CC");
+      console.info("[testalphabetIndexerPopupColor0005] popupColor value :" + JSON.parse(strJson).$attrs.popupColor);
+
     });
 
     /*
@@ -136,16 +137,18 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0006
      * @tc.desic         acealphabetIndexerEtsTest0006
      */
-    it('testalphabetIndexerSelectedBackgroundColor0006', 0, async function (done) {
+    it('testalphabetIndexerSelectedBackgroundColor0006', 0, async () => {
       console.info('alphabetIndexerSelectedBackgroundColor testalphabetIndexerSelectedBackgroundColor0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerSelectedBackgroundColor0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.selectedBackgroundColor).assertEqual("#FF0000E6");
-      console.info("[testalphabetIndexerSelectedBackgroundColor0006] selectedBackgroundColor value :" + obj.$attrs.selectedBackgroundColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.selectedBackgroundColor).assertEqual("#FF0000E6");
+      console.info("[testalphabetIndexerSelectedBackgroundColor0006] selectedBackgroundColor value :" + JSON.parse(strJson)
+        .$attrs
+        .selectedBackgroundColor);
+
     });
 
     /*
@@ -153,16 +156,18 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0007
      * @tc.desic         acealphabetIndexerEtsTest0007
      */
-    it('testalphabetIndexerPopupBackground0007', 0, async function (done) {
+    it('testalphabetIndexerPopupBackground0007', 0, async () => {
       console.info('alphabetIndexerPopupBackground testalphabetIndexerPopupBackground0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerPopupBackground0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.popupBackground).assertEqual("#FF00DDDD");
-      console.info("[testalphabetIndexerPopupBackground0007] popupBackground value :" + obj.$attrs.popupBackground);
-      done();
+      expect(JSON.parse(strJson).$attrs.popupBackground).assertEqual("#FF00DDDD");
+      console.info("[testalphabetIndexerPopupBackground0007] popupBackground value :" + JSON.parse(strJson)
+        .$attrs
+        .popupBackground);
+
     });
 
     /*
@@ -170,16 +175,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0009
      * @tc.desic         acealphabetIndexerEtsTest0009
      */
-    it('testalphabetIndexerUsingPopup0009', 0, async function (done) {
+    it('testalphabetIndexerUsingPopup0009', 0, async () => {
       console.info('alphabetIndexerUsingPopup testalphabetIndexerUsingPopup009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerUsingPopup0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.usingPopup).assertEqual('true');
-      console.info("[testalphabetIndexerUsingPopup0009] usingPopup value :" + obj.$attrs.usingPopup);
-      done();
+      expect(JSON.parse(strJson).$attrs.usingPopup).assertEqual('true');
+      console.info("[testalphabetIndexerUsingPopup0009] usingPopup value :" + JSON.parse(strJson).$attrs.usingPopup);
+
     });
 
     /*
@@ -187,16 +192,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0010
      * @tc.desic         acealphabetIndexerEtsTest0010
      */
-    it('testalphabetIndexerItemSize0010', 0, async function (done) {
+    it('testalphabetIndexerItemSize0010', 0, async () => {
       console.info('alphabetIndexerItemSize testalphabetIndexerItemSize0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerItemSize0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.itemSize).assertEqual("28.00vp");
-      console.info("[testalphabetIndexerItemSize0010] itemSize value :" + obj.$attrs.itemSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.itemSize).assertEqual("28.00vp");
+      console.info("[testalphabetIndexerItemSize0010] itemSize value :" + JSON.parse(strJson).$attrs.itemSize);
+
     });
 
     /*
@@ -204,16 +209,16 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexer0011
      * @tc.desic         acealphabetIndexerEtsTest0011
      */
-    it('testalphabetIndexerAlignStyle0011', 0, async function (done) {
+    it('testalphabetIndexerAlignStyle0011', 0, async () => {
       console.info('alphabetIndexerAlignStyle testalphabetIndexerAlignStyle0011 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('alphabetIndexer');
       console.info("[testalphabetIndexerAlignStyle0011] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('AlphabetIndexer');
-      expect(obj.$attrs.alignStyle).assertEqual("IndexerAlign.Left");
-      console.info("[testalphabetIndexerItemSize0010] alignStyle value :" + obj.$attrs.alignStyle);
-      done();
+      expect(JSON.parse(strJson).$attrs.alignStyle).assertEqual("IndexerAlign.Left");
+      console.info("[testalphabetIndexerItemSize0010] alignStyle value :" + JSON.parse(strJson).$attrs.alignStyle);
+
     });
 
     /*
@@ -221,31 +226,31 @@ export default function alphabetIndexerOnSelectJsunit() {
      * @tc.name         testalphabetIndexerOnSelect0012
      * @tc.desic         acealphabetIndexerOnSelectEtsTest0012
      */
-    it('testalphabetIndexerOnSelect0012', 0, async function (done) {
+    it('testalphabetIndexerOnSelect0012', 0, async () => {
       console.info('alphabetIndexerOnSelect testalphabetIndexerOnSelect0011 START');
       await Utils.sleep(2000);
-      try{
+      try {
         let callback = (indexEvent) => {
           console.info("onSelect_0012 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertEqual(true);
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 60201,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('alphabetIndexer', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("onSelect_0012 on events_emitter err : " + JSON.stringify(err));
       }
 
       await Utils.sleep(2000);
       try {
-        var innerEventOne = {
+        let innerEventOne: events_emitter.InnerEvent = {
           eventId: 60202,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback1 = (eventData) => {
+        let callback1 = (eventData) => {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(true);
         }
@@ -255,7 +260,7 @@ export default function alphabetIndexerOnSelectJsunit() {
         console.info("onRequestPopupData_0012 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testalphabetIndexerOnSelect0012 END');
-      done();
+
 
     });
   })

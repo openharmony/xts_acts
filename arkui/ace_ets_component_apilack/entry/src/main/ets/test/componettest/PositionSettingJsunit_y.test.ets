@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function positionSettingJsunit() {
-  describe('borderTest_five_3', function () {
-    beforeEach(async function (done) {
+  describe('borderTest_five_3', () => {
+    beforeEach(async () => {
       console.info("positionSetting beforeEach start");
       let options = {
         uri: 'pages/positionSetting',
@@ -38,47 +37,44 @@ export default function positionSettingJsunit() {
       } catch (err) {
         console.error("push positionSetting page error:" + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("positionSetting after each called");
     });
 
-    it('testPositionSetting001', 0, async function (done) {
+    it('testPositionSetting001', 0, async () => {
       console.info('[testPositionSetting001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('textAlign');
       console.info("[testPositionSetting001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting001] textAlign: " + obj.$attrs.textAlign);
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Left');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting001] textAlign: " + JSON.parse(strJson).$attrs.textAlign);
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Left');
       console.info('[testPositionSetting001] END');
-      done();
     });
 
-    it('testPositionSetting002', 0, async function (done) {
+    it('testPositionSetting002', 0, async () => {
       console.info('[testPositionSetting002] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('rowDirection');
       console.info("[testPositionSetting002] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting002] rowDirection: " + obj.$attrs.direction);
-      expect(obj.$attrs.direction).assertEqual('Direction.Rtl');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting002] rowDirection: " + JSON.parse(strJson).$attrs.direction);
+      expect(JSON.parse(strJson).$attrs.direction).assertEqual('Direction.Rtl');
       console.info('[testPositionSetting002] END');
-      done();
     });
 
-    it('testPositionSetting003', 0, async function (done) {
+    it('testPositionSetting003', 0, async () => {
       console.info('[testPositionSetting003] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": Alignment.BottomEnd
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 25,
           priority: events_emitter.EventPriority.LOW
         }
@@ -90,23 +86,22 @@ export default function positionSettingJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('textAlign');
       console.info("[testPositionSetting003] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting003] textAlign: " + obj.$attrs.textAlign);
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Right");
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting003] textAlign: " + JSON.parse(strJson).$attrs.textAlign);
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Right");
       console.info('[testPositionSetting003] END');
-      done();
     });
 
-    it('testPositionSetting004', 0, async function (done) {
+    it('testPositionSetting004', 0, async () => {
       console.info('[testPositionSetting004] START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": Direction.Ltr
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 26,
           priority: events_emitter.EventPriority.LOW
         }
@@ -118,33 +113,31 @@ export default function positionSettingJsunit() {
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('rowDirection');
       console.info("[testPositionSetting004] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting004] rowDirection: " + obj.$attrs.direction);
-      expect(obj.$attrs.direction).assertEqual('Direction.Ltr');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting004] rowDirection: " + JSON.parse(strJson).$attrs.direction);
+      expect(JSON.parse(strJson).$attrs.direction).assertEqual('Direction.Ltr');
       console.info('[testPositionSetting004] END');
-      done();
     });
 
-    it('testPositionSetting005', 0, async function (done) {
+    it('testPositionSetting005', 0, async () => {
       console.info('[testPositionSetting005] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('position1');
       console.info("[testPositionSetting005] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting005] position: " + JSON.stringify(obj.$attrs.position));
-      expect(obj.$attrs.position.x).assertEqual('25.00vp');
-      expect(obj.$attrs.position.y).assertEqual('15.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting005] position: " + JSON.stringify(JSON.parse(strJson).$attrs.position));
+      expect(JSON.parse(strJson).$attrs.position.x).assertEqual('25.00vp');
+      expect(JSON.parse(strJson).$attrs.position.y).assertEqual('15.00vp');
       let strJson1 = getInspectorByKey('position2');
       console.info("[testPositionSetting005] component strJson1:" + strJson1);
-      let obj1 = JSON.parse(strJson1);
-      console.info("[testPositionSetting005] position1: " + JSON.stringify(obj1.$attrs.position));
-      expect(obj1.$attrs.position.x).assertEqual('50.00%');
-      expect(obj1.$attrs.position.y).assertEqual('70.00%');
+      let obj1: Record<string, Object> = JSON.parse(strJson1);
+      console.info("[testPositionSetting005] position1: " + JSON.stringify(JSON.parse(strJson1).$attrs.position));
+      expect(JSON.parse(strJson1).$attrs.position.x).assertEqual('50.00%');
+      expect(JSON.parse(strJson1).$attrs.position.y).assertEqual('70.00%');
       console.info('[testPositionSetting005] END');
-      done();
     });
 
-    it('testPositionSetting006', 0, async function (done) {
+    it('testPositionSetting006', 0, async () => {
       console.info('[testPositionSetting006] START');
       await Utils.sleep(1000);
       try {
@@ -154,13 +147,13 @@ export default function positionSettingJsunit() {
         let data2 = {
           x: '30%', y: '50%'
         };
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "position1": JSON.stringify(data),
             "position2": JSON.stringify(data2)
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 27,
           priority: events_emitter.EventPriority.LOW
         }
@@ -172,45 +165,45 @@ export default function positionSettingJsunit() {
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('position1');
       console.info("[testPositionSetting006] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting006] position1: " + JSON.stringify(obj.$attrs.position));
-      expect(obj.$attrs.position.x).assertEqual('10.00vp');
-      expect(obj.$attrs.position.y).assertEqual('25.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting006] position1: " + JSON.stringify(JSON.parse(strJson).$attrs.position));
+      expect(JSON.parse(strJson).$attrs.position.x).assertEqual('10.00vp');
+      expect(JSON.parse(strJson).$attrs.position.y).assertEqual('25.00vp');
       let strJson2 = getInspectorByKey('position2');
       console.info("[testPositionSetting006] component strJson2:" + strJson2);
-      let obj2 = JSON.parse(strJson2);
-      console.info("[testPositionSetting006] position2: " + JSON.stringify(obj2.$attrs.position));
-      expect(obj2.$attrs.position.x).assertEqual('30.00%');
-      expect(obj2.$attrs.position.y).assertEqual('50.00%');
-      done();
+      let obj2: Record<string, Object> = JSON.parse(strJson2);
+      console.info("[testPositionSetting006] position2: " + JSON.stringify(JSON.parse(strJson2).$attrs.position));
+      expect(JSON.parse(strJson2).$attrs.position.x).assertEqual('30.00%');
+      expect(JSON.parse(strJson2).$attrs.position.y).assertEqual('50.00%');
+
     });
 
-    it('testPositionSetting007', 0, async function (done) {
+    it('testPositionSetting007', 0, async () => {
       console.info('[testPositionSetting007] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('markAnchor');
       console.info("[testPositionSetting007] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting007] position: " + JSON.stringify(obj.$attrs.markAnchor));
-      expect(obj.$attrs.markAnchor.x).assertEqual('25.00vp');
-      expect(obj.$attrs.markAnchor.y).assertEqual('25.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting007] position: " + JSON.stringify(JSON.parse(strJson).$attrs.markAnchor));
+      expect(JSON.parse(strJson).$attrs.markAnchor.x).assertEqual('25.00vp');
+      expect(JSON.parse(strJson).$attrs.markAnchor.y).assertEqual('25.00vp');
       console.info('[testPositionSetting007] END');
-      done();
+
     });
 
-    it('testPositionSetting008', 0, async function (done) {
+    it('testPositionSetting008', 0, async () => {
       console.info('[testPositionSetting008] START');
       await Utils.sleep(1000);
       try {
         let data = {
           x: 0, y: 0
         };
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "markAnchor": JSON.stringify(data),
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 28,
           priority: events_emitter.EventPriority.LOW
         }
@@ -222,42 +215,42 @@ export default function positionSettingJsunit() {
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('markAnchor');
       console.info("[testPositionSetting008] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting008] markAnchor: " + JSON.stringify(obj.$attrs.markAnchor));
-      expect(obj.$attrs.markAnchor.x).assertEqual('0.00vp');
-      expect(obj.$attrs.markAnchor.y).assertEqual('0.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting008] markAnchor: " + JSON.stringify(JSON.parse(strJson).$attrs.markAnchor));
+      expect(JSON.parse(strJson).$attrs.markAnchor.x).assertEqual('0.00vp');
+      expect(JSON.parse(strJson).$attrs.markAnchor.y).assertEqual('0.00vp');
       console.info('[testPositionSetting008] END');
-      done();
+
     });
 
-    it('testPositionSetting009', 0, async function (done) {
+    it('testPositionSetting009', 0, async () => {
       console.info('[testPositionSetting009] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('offset');
       console.info("[testPositionSetting009] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting009] offset: " + JSON.stringify(obj.$attrs.offset));
-      expect(obj.$attrs.offset.x).assertEqual('10.00vp');
-      expect(obj.$attrs.offset.y).assertEqual('15.00vp');
-      expect(obj.$attrs.span.x).assertEqual('10.00vp');
-      expect(obj.$attrs.span.y).assertEqual('15.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting009] offset: " + JSON.stringify(JSON.parse(strJson).$attrs.offset));
+      expect(JSON.parse(strJson).$attrs.offset.x).assertEqual('10.00vp');
+      expect(JSON.parse(strJson).$attrs.offset.y).assertEqual('15.00vp');
+      expect(JSON.parse(strJson).$attrs.span.x).assertEqual('10.00vp');
+      expect(JSON.parse(strJson).$attrs.span.y).assertEqual('15.00vp');
       console.info('[testPositionSetting009] END');
-      done();
+
     });
 
-    it('testPositionSetting010', 0, async function (done) {
+    it('testPositionSetting010', 0, async () => {
       console.info('[testPositionSetting010] START');
       await Utils.sleep(1000);
       try {
         let data = {
           x: 150, y: 10
         };
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "offset": JSON.stringify(data),
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 29,
           priority: events_emitter.EventPriority.LOW
         }
@@ -269,34 +262,34 @@ export default function positionSettingJsunit() {
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('offset');
       console.info("[testPositionSetting010] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testPositionSetting010] offset: " + JSON.stringify(obj.$attrs.offset));
-      expect(obj.$attrs.offset.x).assertEqual('150.00vp');
-      expect(obj.$attrs.offset.y).assertEqual('10.00vp');
+      let obj: Record<string, Object> = JSON.parse(strJson);
+      console.info("[testPositionSetting010] offset: " + JSON.stringify(JSON.parse(strJson).$attrs.offset));
+      expect(JSON.parse(strJson).$attrs.offset.x).assertEqual('150.00vp');
+      expect(JSON.parse(strJson).$attrs.offset.y).assertEqual('10.00vp');
       console.info('[testPositionSetting010] END');
-      done();
+
     });
 
-    it('testPositionSetting011', 0, async function (done) {
+    it('testPositionSetting011', 0, async () => {
       console.info('[testPositionSetting011] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('opacity');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("[testPositionSetting011] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.opacity).assertEqual(1);
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
       console.info('[testPositionSetting011] END');
-      done();
+
     });
 
-    it('testPositionSetting012', 0, async function (done) {
+    it('testPositionSetting012', 0, async () => {
       console.info('[testPositionSetting012] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "opacityValue": "0.7"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 25,
           priority: events_emitter.EventPriority.LOW
         }
@@ -307,11 +300,11 @@ export default function positionSettingJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('opacity');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, Object> = JSON.parse(strJsonNew);
       console.info("[testPositionSetting012] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.opacity).assertEqual(0.7);
+      expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(0.7);
       console.info('[testPositionSetting012] END');
-      done();
+
     });
   })
 }

@@ -14,24 +14,24 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct TextAreaOnCut {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear TextAreaOnCut start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear TextAreaOnCut end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      TextArea({placeholder: "textArea-OnCut" })
+      TextArea({ placeholder: "textArea-OnCut" })
         .width(100)
         .height(70)
         .fontSize(20)
@@ -40,14 +40,13 @@ struct TextAreaOnCut {
         .fontColor(0xCCCCCC)
         .border({ width: 1 })
         .padding(10)
-        .textAlign(TextAlign.Center)
-          //input输入框中的文字被剪切时触发
+        .textAlign(TextAlign.Center)//input输入框中的文字被剪切时触发
         .onCut(() => {
           console.log('onCut method is triggered');
         })
         .key("onCutText")
 
-      TextArea({placeholder: "textArea-OnPaste" })
+      TextArea({ placeholder: "textArea-OnPaste" })
         .width(100)
         .height(70)
         .fontSize(20)
@@ -56,14 +55,13 @@ struct TextAreaOnCut {
         .fontColor(0xCCCCCC)
         .border({ width: 1 })
         .padding(10)
-        .textAlign(TextAlign.Center)
-          //input输入框中的粘贴文字时触发
+        .textAlign(TextAlign.Center)//input输入框中的粘贴文字时触发
         .onPaste(() => {
           console.log("onPaste method is  triggered")
         })
         .key("onPasteText")
 
-      TextArea({placeholder: "textArea-CopyOption" })
+      TextArea({ placeholder: "textArea-CopyOption" })
         .width(100)
         .height(70)
         .fontSize(20)
@@ -72,13 +70,12 @@ struct TextAreaOnCut {
         .fontColor(0xCCCCCC)
         .border({ width: 1 })
         .padding(10)
-        .textAlign(TextAlign.Center)
-          /**copyOption(value: boolean | CopyOption):
-             * 设置复制选项时调用
-             * InApp = 0,Share in app.
-             * LocalDevice = 1,Share in local device.
-             * CrossDevice = 2,Share cross device.
-             */
+        .textAlign(TextAlign.Center)/**copyOption(value: boolean | CopyOption):
+         * 设置复制选项时调用
+         * InApp = 0,Share in app.
+         * LocalDevice = 1,Share in local device.
+         * CrossDevice = 2,Share cross device.
+         */
         .copyOption(0)
         .key("textAreaCopyOptionText")
 

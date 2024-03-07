@@ -21,32 +21,32 @@ import testsuite from '../test/List.test';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import commonEventManager from '@ohos.commonEventManager';
 
-const CALLER_PID = 'ohos.aafwk.param.callerPid'
-const CALLER_TOKEN = 'ohos.aafwk.param.callerToken'
-const CALLER_UID = 'ohos.aafwk.param.callerUid'
-const TEST_SUITE_NAME: string = 'StartAbilityGetStartParameterTest'
-const EVENT_CASE_1400 = 'ABILITY_StartAbility_GetStartParameters_1400'
+const CALLER_PID = 'ohos.aafwk.param.callerPid';
+const CALLER_TOKEN = 'ohos.aafwk.param.callerToken';
+const CALLER_UID = 'ohos.aafwk.param.callerUid';
+const TEST_SUITE_NAME: string = 'StartAbilityGetStartParameterTest';
+const EVENT_CASE_1400 = 'ABILITY_StartAbility_GetStartParameters_1400';
 let paramWant: Want;
 
 export default class FifthAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    paramWant = want
+    paramWant = want;
     hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME} - paramWant: ${JSON.stringify(paramWant)}`);
 
-    let parameters = {
-      pid: paramWant.parameters[CALLER_PID],
-      tokenId: paramWant.parameters[CALLER_TOKEN],
-      uid: paramWant.parameters[CALLER_UID]
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        pid: paramWant.parameters[CALLER_PID],
+        tokenId: paramWant.parameters[CALLER_TOKEN],
+        uid: paramWant.parameters[CALLER_UID]
+      }
     }
-    commonEvent.publish(EVENT_CASE_1400,
-      {
-        parameters: parameters
-      },
-      (err, data) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} event 800 publish success`);
-      })
+    commonEvent.publish(EVENT_CASE_1400, parameters, (err, data) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} event 800 publish success`);
+    })
   }
 
   onDestroy() {
@@ -62,7 +62,7 @@ export default class FifthAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
         JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {

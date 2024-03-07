@@ -15,6 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -68,12 +69,12 @@ struct PanelBackgroundMask {
       .onHeightChange((value: number) => {
         Log.showInfo(TAG, 'onHeightChange: ' + value)
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
-              "result":"success"
+              "result": "success"
             }
           }
-          let backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 10111,
             priority: events_emitter.EventPriority.LOW
           }
@@ -82,7 +83,7 @@ struct PanelBackgroundMask {
         } catch (err) {
           console.info("testpanelOnHeightChange0002 emit action state err: " + JSON.stringify(err.message))
         }
-       })
+      })
 
     }.width("100%").height("100%")
   }

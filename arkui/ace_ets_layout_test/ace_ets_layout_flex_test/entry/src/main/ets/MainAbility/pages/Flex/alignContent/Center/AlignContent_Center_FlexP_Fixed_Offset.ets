@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct AlignContent_Center_FlexP_Fixed_Offset {
-  alignContent: number
+  alignContent: number = 0;
 
   build() {
     Column() {
@@ -27,7 +27,11 @@ struct AlignContent_Center_FlexP_Fixed_Offset {
         alignContent: FlexAlign.Center,
         alignItems: ItemAlign.Start
       }) {
-        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignContent_Center_FlexP_Fixed_Offset_1')
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .key('AlignContent_Center_FlexP_Fixed_Offset_1')
           .offset({ x: 15, y: 30 })
         Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignContent_Center_FlexP_Fixed_Offset_2')
         Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_Center_FlexP_Fixed_Offset_3')

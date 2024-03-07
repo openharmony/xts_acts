@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import { UiDriver, BY } from '@ohos.UiTest';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textAreaJsunit() {
-  describe('appInfoTest_four_10', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_10', () => {
+    beforeEach(async (done: Function) => {
       console.info("textArea beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textArea',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textArea',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function textAreaJsunit() {
         console.info("get textArea state pages:" + JSON.stringify(pages));
         if (!("textArea" == pages.name)) {
           console.info("get textArea state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push textArea page result:" + JSON.stringify(result));
         }
@@ -42,32 +42,31 @@ export default function textAreaJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textArea after each called");
     });
 
-    it('textAreaTest01', 0, async function (done) {
+    it('textAreaTest01', 0, async (done: Function) => {
       console.info('[textAreaTest01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest01] obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('TextArea');
-      expect(obj.$attrs.fontSize).assertEqual('30.00fp');
+      let strJson: string = getInspectorByKey('textArea');
+      console.info("[textAreaTest01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('TextArea');
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('30.00fp');
       console.info('textAreaTest01 END');
       done();
     });
 
-    it('textAreaTest02', 0, async function (done) {
+    it('textAreaTest02', 0, async (done: Function) => {
       console.info('[textAreaTest02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": '50',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 215,
           priority: events_emitter.EventPriority.LOW
         }
@@ -77,35 +76,35 @@ export default function textAreaJsunit() {
         console.log("[textAreaTest02] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontSize).assertEqual('50.00fp');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('50.00fp');
       console.info('textAreaTest02 END');
       done();
     });
 
-    it('textAreaTest03', 0, async function (done) {
+    it('textAreaTest03', 0, async (done: Function) => {
       console.info('[textAreaTest03] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest03] obj is: " + JSON.stringify(obj));
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       // 适配开发侧非法入参修改
-      expect(obj.$attrs.fontColor).assertEqual('#FF182432');
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#FF182432');
       console.info('textAreaTest03 END');
       done();
     });
 
-    it('textAreaTest04', 0, async function (done) {
+    it('textAreaTest04', 0, async (done: Function) => {
       console.info('[textAreaTest04] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": '#FFFF0000',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 216,
           priority: events_emitter.EventPriority.LOW
         }
@@ -115,34 +114,34 @@ export default function textAreaJsunit() {
         console.log("[textAreaTest04] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontColor).assertEqual('#FFFF0000');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#FFFF0000');
       console.info('textAreaTest04 END');
       done();
     });
 
-    it('textAreaTest05', 0, async function (done) {
+    it('textAreaTest05', 0, async (done: Function) => {
       console.info('[testArea05] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest05] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Center');
       console.info('textAreaTest05 END');
       done();
     });
 
-    it('textAreaTest06', 0, async function (done) {
+    it('textAreaTest06', 0, async (done: Function) => {
       console.info('[textAreaTest06] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": 'TextAlign.Start',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 217,
           priority: events_emitter.EventPriority.LOW
         }
@@ -152,34 +151,36 @@ export default function textAreaJsunit() {
         console.log("[textAreaTest06] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest06] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest06] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('textAreaTest06 END');
       done();
     });
 
-    it('textAreaTest07', 0, async function (done) {
+    it('textAreaTest07', 0, async (done: Function) => {
       console.info('[textAreaTest07] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest07] obj is: " + JSON.stringify(obj.$attrs.constructor));
-      expect(obj.$attrs.constructor.text).assertEqual(undefined);
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest07] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .constructor));
+      expect(JSON.parse(strJson).$attrs.constructor.text).assertEqual(undefined);
       console.info('textAreaTest07 END');
       done();
     });
 
-    it('textAreaTest08', 0, async function (done) {
+    it('textAreaTest08', 0, async (done: Function) => {
       console.info('[textAreaTest08] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "text": 'TextArea_1',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 218,
           priority: events_emitter.EventPriority.LOW
         }
@@ -189,34 +190,36 @@ export default function textAreaJsunit() {
         console.log("[textAreaTest08] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest08] obj is: " + JSON.stringify(obj.$attrs.constructor));
-      expect(obj.$attrs.constructor.text).assertEqual(undefined);
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest08] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .constructor));
+      expect(JSON.parse(strJson).$attrs.constructor.text).assertEqual(undefined);
       console.info('textAreaTest08 END');
       done();
     });
 
-    it('textAreaTest09', 0, async function (done) {
+    it('textAreaTest09', 0, async (done: Function) => {
       console.info('[textAreaTest09] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest09] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest09] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('textAreaTest09 END');
       done();
     });
 
-    it('textAreaTest10', 0, async function (done) {
+    it('textAreaTest10', 0, async (done: Function) => {
       console.info('[textAreaTest10] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.Start,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 218,
           priority: events_emitter.EventPriority.LOW
         }
@@ -226,10 +229,10 @@ export default function textAreaJsunit() {
         console.log("[textAreaTest10] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaTest10] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      let strJson: string = getInspectorByKey('textArea');
+
+      console.info("[textAreaTest10] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('textAreaTest10 END');
       done();
     });
@@ -239,7 +242,7 @@ export default function textAreaJsunit() {
      * @tc.name   :test getCaretOffset when iput text is null
      * @tc.desc   :expect caretOffset index 0 when text is null
      */
-    it('textAreaTest11', 0, async function (done) {
+    it('textAreaTest11', 0, async (done: Function) => {
       console.info('[textAreaTest11] START');
       await Utils.sleep(1000);
       let driver = UiDriver.create();
@@ -258,16 +261,16 @@ export default function textAreaJsunit() {
      * @tc.name   :test getCaretOffset when iput text length not exceed maxLength.
      * @tc.desc   :expect caretOffset index equal text length
      */
-    it('textAreaTest12', 0, async function (done) {
+    it('textAreaTest12', 0, async (done: Function) => {
       console.info('[textAreaTest12] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "text2": '123456789'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 218,
           priority: events_emitter.EventPriority.LOW
         }
@@ -293,16 +296,16 @@ export default function textAreaJsunit() {
      * @tc.name   :test getCaretOffset when iput text length exceed maxLength.
      * @tc.desc   :expect caretOffset index equal maxLength
      */
-    it('textAreaTest13', 0, async function (done) {
+    it('textAreaTest13', 0, async (done: Function) => {
       console.info('[textAreaTest13] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "text2": '1234567890abc'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 218,
           priority: events_emitter.EventPriority.LOW
         }

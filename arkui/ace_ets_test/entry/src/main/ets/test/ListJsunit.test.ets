@@ -13,30 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function listJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('listTest', function () {
-    beforeEach(async function (done) {
+  describe('listTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/List',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get List state success " + JSON.stringify(pages));
         if (!("List" == pages.name)) {
@@ -45,41 +45,39 @@ export default function listJsunit() {
           console.info("push List page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push List page error " + JSON.stringify(result));
+        console.error("push List page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("List after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0410
-     * @tc.name      listTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0410
+     * @tc.name listTest001
+     * @tc.desc aceEtsTest
      */
-    it('listTest001', 0, async function (done) {
+    it('listTest001', 0, async () => {
       console.info('++++++++++++++++ List TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('list');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('List')
-      console.log('List‘s space is ' + JSON.stringify(obj.$attrs.space))
-      console.log('List‘s initialIndex is ' + JSON.stringify(obj.$attrs.initialIndex))
-      console.log('List‘s listDirection is ' + JSON.stringify(obj.$attrs.listDirection))
-      console.log('List‘s divider is ' + JSON.stringify(obj.$attrs.divider))
-      console.log('List‘s edgeEffect is ' + JSON.stringify(obj.$attrs.edgeEffect))
-      expect(obj.$attrs.initialIndex).assertEqual('0')
-      expect(obj.$attrs.listDirection).assertEqual('Axis.Vertical')
-      expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None')
-      expect(obj.$attrs.editMode).assertEqual(false)
+      console.log('List‘s space is ' + JSON.stringify(JSON.parse(strJson).$attrs.space))
+      console.log('List‘s initialIndex is ' + JSON.stringify(JSON.parse(strJson).$attrs.initialIndex))
+      console.log('List‘s listDirection is ' + JSON.stringify(JSON.parse(strJson).$attrs.listDirection))
+      console.log('List‘s divider is ' + JSON.stringify(JSON.parse(strJson).$attrs.divider))
+      console.log('List‘s edgeEffect is ' + JSON.stringify(JSON.parse(strJson).$attrs.edgeEffect))
+      expect(JSON.parse(strJson).$attrs.initialIndex).assertEqual('0')
+      expect(JSON.parse(strJson).$attrs.listDirection).assertEqual('Axis.Vertical')
+      expect(JSON.parse(strJson).$attrs.edgeEffect).assertEqual('EdgeEffect.None')
+      expect(JSON.parse(strJson).$attrs.editMode).assertEqual(false)
       console.info('++++++++++++++++ List TestCase 1 End ++++++++++++++++');
-      done();
     });
   })
 }

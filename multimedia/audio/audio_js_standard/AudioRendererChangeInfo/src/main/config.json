@@ -3,7 +3,7 @@
         "apiVersion": {
             "compatible": 6,
             "releaseType": "Beta1",
-            "target": 7
+            "target": 11
         },
         "vendor": "acts",
         "bundleName": "ohos.acts.multimedia.audio.audiorendererchangeInfo",

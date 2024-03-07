@@ -20,16 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct StepperItemDisabled {
-  @State currentIndex: number = 0
-  @State firstState: ItemState = ItemState.Normal
-  @State secondState: ItemState = ItemState.Normal
+  @State currentIndex: number = 0;
+  @State firstState: ItemState = ItemState.Normal;
+  @State secondState: ItemState = ItemState.Normal;
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear StepperItemDisabled start`)
+    Log.showInfo(TAG, `aboutToAppear StepperItemDisabled start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear StepperItemDisabled end`)
+    Log.showInfo(TAG, `aboutToDisAppear StepperItemDisabled end`);
   }
 
   build() {
@@ -82,7 +82,6 @@ struct StepperItemDisabled {
         })
         .align(Alignment.Center)
         .height('50%')
-
       }
       .width('100%')
     }

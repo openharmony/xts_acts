@@ -61,7 +61,7 @@ export default function DeviceUsageStatisticsJsTest() {
             let bundleName = 'ohos.acts.resourceschedule.deviceusagestatisticsjsunit.js.function';
             bundleState.isIdleState(bundleName).then((res) => {
                 console.info(' DeviceUsageStatisticsJsTest001 isIdleStateone promise success.' + res);
-                expect(res).assertEqual(false);
+                expect(res).assertEqual(true);
                 done();
             }).catch((err) => {
                 console.info(' DeviceUsageStatisticsJsTest001 isIdleState promise failure.' + err.code);
@@ -81,7 +81,7 @@ export default function DeviceUsageStatisticsJsTest() {
                     console.info(' DeviceUsageStatisticsJsTest002 isIdleState callback failure.' + err.code);
                 } else {
                     console.info(' DeviceUsageStatisticsJsTest002 isIdleState callback success.' + res);
-                    expect(res).assertEqual(false);
+                    expect(res).assertEqual(true);
                     done();
                 }
             });

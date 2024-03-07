@@ -106,7 +106,7 @@ HWTEST_F(HksCipherTest, HksCipherTest009, TestSize.Level1)
 
 HWTEST_F(HksCipherTest, HksCipherTest010, TestSize.Level1)
 {
-    ASSERT_TRUE(BaseTestDecrypt(1, 2, 1) == 0);
+    ASSERT_TRUE(BaseTestCipher(1, 2, 1) == 0);
 }
 
 HWTEST_F(HksCipherTest, HksCipherTest011, TestSize.Level1)

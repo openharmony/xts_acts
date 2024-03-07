@@ -29,10 +29,11 @@ struct ColorEnum {
         .key('Transparent')
         .onClick(() => {
           let strJson = getInspectorByKey('Transparent');
-          let obj = JSON.parse(strJson);
-          console.info("testTransparent fontColor is" + obj.$attrs.fontColor);
+          console.info("testTransparent fontColor is" + JSON.parse(strJson).$attrs.fontColor);
         })
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

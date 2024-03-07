@@ -20,16 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct Text_inputPhoneNumber {
-  @State text: string = ''
-  @State text1: string = 'PhoneNumber'
-  @State text2: string = 'Address'
+  @State text: string = '';
+  @State text1: string = 'PhoneNumber';
+  @State text2: string = 'Address';
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear Text_inputPhoneNumber start`)
+    Log.showInfo(TAG, `aboutToAppear Text_inputPhoneNumber start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear Text_inputPhoneNumber end`)
+    Log.showInfo(TAG, `aboutToDisAppear Text_inputPhoneNumber end`);
   }
 
   build() {
@@ -81,8 +81,9 @@ struct Text_inputPhoneNumber {
         .fontColor(Color.Red)
         .style(TextInputStyle.Inline)
         .margin(10)
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct pushUrl {
-  @State message: string = 'Hello World'
+  @State message: string = 'Hello World';
 
   build() {
     Row() {

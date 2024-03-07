@@ -13,26 +13,34 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback } from './../../../../common/MessageManager';
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct AlignStart_AddOneMargin {
   @State OneMargin: number = 10;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('AlignStart_AddOneMargin onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'OneMargin') {
         this.OneMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   @State justifyContent: FlexAlign = FlexAlign.Start;
+
   build() {
     Column() {
       Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {

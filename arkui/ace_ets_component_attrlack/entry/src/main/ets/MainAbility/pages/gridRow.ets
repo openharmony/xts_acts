@@ -21,28 +21,28 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct GridRowXl {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear GridRowXl start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear GridRowXl end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
 
-      GridRow({columns: {xl: 2}}){
-        GridCol(){
+      GridRow({ columns: { xl: 2 } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -53,15 +53,16 @@ struct GridRowXl {
       .backgroundColor(Color.Red)
       .key("GridRowColumnOption——xl")
 
-      GridRow({columns: {xxl: 2}}){
-        GridCol(){
+      GridRow({ columns: { xxl: 2 } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -71,15 +72,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("GridRowColumnOption——xxl")
 
-      GridRow({gutter:{x: {xl: 2}}}){
-        GridCol(){
+      GridRow({ gutter: { x: { xl: 2 } } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -89,15 +91,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("GridRowSizeOption——xl")
 
-      GridRow({gutter:{x: {xxl: 2}}}){
-        GridCol(){
+      GridRow({ gutter: { x: { xxl: 2 } } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -107,15 +110,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("GridRowSizeOption——xxl")
 
-      GridRow({breakpoints: { reference: BreakpointsReference.WindowSize }}){
-        GridCol(){
+      GridRow({ breakpoints: { reference: BreakpointsReference.WindowSize } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -125,15 +129,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("WindowSizeText")
 
-      GridRow({breakpoints: { reference: BreakpointsReference.ComponentSize }}){
-        GridCol(){
+      GridRow({ breakpoints: { reference: BreakpointsReference.ComponentSize } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -143,15 +148,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("ComponentSizeText")
 
-      GridRow({breakpoints: { reference: BreakpointsReference.ComponentSize }}){
-        GridCol(){
+      GridRow({ breakpoints: { reference: BreakpointsReference.ComponentSize } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -161,15 +167,16 @@ struct GridRowXl {
       }.backgroundColor(Color.Red)
       .key("referenceText")
 
-      GridRow({breakpoints: { reference: BreakpointsReference.ComponentSize }}){
-        GridCol(){
+      GridRow({ breakpoints: { reference: BreakpointsReference.ComponentSize } }) {
+        GridCol() {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol(){
+
+        GridCol() {
           Text('World')
             .width(100)
             .height(70)
@@ -178,8 +185,9 @@ struct GridRowXl {
         .backgroundColor(Color.Blue)
       }.backgroundColor(Color.Red)
       .key("breakpointsText")
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 
