@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import DialogTest from './Dialog.test'
+import DialogTest from './Dialog.test';
 
 export default function testsuite() {
-  DialogTest()
+  DialogTest();
 }

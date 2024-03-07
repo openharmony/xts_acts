@@ -13,30 +13,32 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
 
 export default function gridItemJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('gridItemTest', function () {
-    beforeEach(async function (done) {
+  describe('gridItemTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/GridItem',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get GridItem state success " + JSON.stringify(pages));
         if (!("GridItem" == pages.name)) {
@@ -45,43 +47,41 @@ export default function gridItemJsunit() {
           console.info("push GridItem page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push GridItem page error " + JSON.stringify(result));
+        console.error("push GridItem page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("GridItem after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0340
-     * @tc.name      gridItemTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0340
+     * @tc.name gridItemTest001
+     * @tc.desc aceEtsTest
      */
-    it('gridItemTest001', 0, async function (done) {
+    it('gridItemTest001', 0, async () => {
       console.info('gridItemTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('GridItem1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("属性值集合: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('GridItem')
-      console.log('GridItem1‘s rowStart is ' + JSON.stringify(obj.$attrs.rowStart))
-      console.log('GridItem1‘s rowEnd is ' + JSON.stringify(obj.$attrs.rowEnd))
-      console.log('GridItem1‘s columnStart is ' + JSON.stringify(obj.$attrs.columnStart))
-      console.log('GridItem1‘s columnEnd is ' + JSON.stringify(obj.$attrs.columnEnd))
-      console.log('GridItem1‘s forceRebuild is ' + JSON.stringify(obj.$attrs.forceRebuild))
+      console.log('GridItem1‘s rowStart is ' + JSON.stringify(JSON.parse(strJson).$attrs.rowStart))
+      console.log('GridItem1‘s rowEnd is ' + JSON.stringify(JSON.parse(strJson).$attrs.rowEnd))
+      console.log('GridItem1‘s columnStart is ' + JSON.stringify(JSON.parse(strJson).$attrs.columnStart))
+      console.log('GridItem1‘s columnEnd is ' + JSON.stringify(JSON.parse(strJson).$attrs.columnEnd))
+      console.log('GridItem1‘s forceRebuild is ' + JSON.stringify(JSON.parse(strJson).$attrs.forceRebuild))
       await sleep(1)
-      expect(obj.$attrs.rowStart).assertEqual('1')
-      expect(obj.$attrs.rowEnd).assertEqual('4')
-      expect(obj.$attrs.columnStart).assertEqual('1')
-      expect(obj.$attrs.columnEnd).assertEqual('2')
-      expect(obj.$attrs.forceRebuild).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.rowStart).assertEqual('1')
+      expect(JSON.parse(strJson).$attrs.rowEnd).assertEqual('4')
+      expect(JSON.parse(strJson).$attrs.columnStart).assertEqual('1')
+      expect(JSON.parse(strJson).$attrs.columnEnd).assertEqual('2')
+      expect(JSON.parse(strJson).$attrs.forceRebuild).assertEqual('false')
       console.info('gridItemTest001 END');
-      done();
     });
   })
 }

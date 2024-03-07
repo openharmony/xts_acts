@@ -14,22 +14,22 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct TextMinFontSize {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear TextMinFontSize start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear TextMinFontSize end `)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("text-MinFontSize")
         .width(100)
@@ -60,7 +60,7 @@ struct TextMinFontSize {
         .textOverflow({ overflow: TextOverflow.None })
         .key("copyOptionText")
         .copyOption(0)
-    
+
     }.width("100%").height("100%")
   }
 }

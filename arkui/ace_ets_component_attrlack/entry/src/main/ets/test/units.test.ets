@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function unitsModuleNameJsunit() {
-  describe('unitsModuleNameTest', function () {
-    beforeEach(async function (done) {
+  describe('unitsModuleNameTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/units',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/units',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function unitsModuleNameJsunit() {
         console.info("get units state success " + JSON.stringify(pages));
         if (!("units" == pages.name)) {
           console.info("get units state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push units page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function unitsModuleNameJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("unitsModuleName after each called");
     });
@@ -51,24 +51,24 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsModuleName0001
      * @tc.desic         aceunitsModuleNameEtsTest0001
      */
-    it('testunitsModuleName0001', 0, async function (done) {
+    it('testunitsModuleName0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsModuleName0001 START');
       await Utils.sleep(2000);
       try {
         console.info("testunitsModuleName0001 click result is: " + JSON.stringify(sendEventByKey('moduleNameText', 10, "")));
         await Utils.sleep(2000);
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60310,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(eventData));
           try {
-               expect(eventData.data.ModuleName).assertFalse();
+            expect(eventData.data.ModuleName).assertFalse();
           } catch (err) {
-              console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(err));
+            console.info("testunitsModuleName0001 get event state result is: " + JSON.stringify(err));
           }
-          
+
         }
         events_emitter.on(innerEvent, callback);
       } catch (err) {
@@ -83,16 +83,16 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsGlobalPosition0001
      * @tc.desic         aceunitsGlobalPositionEtsTest0001
      */
-    it('testunitsGlobalPosition0001', 0, async function (done) {
+    it('testunitsGlobalPosition0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsGlobalPosition0001 START');
       await Utils.sleep(2000);
       try {
         console.info("testunitsGlobalPosition0001 click result is: " + JSON.stringify(sendEventByKey('globalPositionText', 10, "")));
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60311,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testunitsGlobalPosition0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(true);
         }
@@ -109,17 +109,15 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsMinWidth0001
      * @tc.desic         aceunitsMinWidthEtsTest0001
      */
-    it('testunitsMinWidth0001', 0, async function (done) {
+    it('testunitsMinWidth0001', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('minWidthText');
+      let strJson: string = getInspectorByKey('minWidthText');
       console.info("[testunitsMinWidth0001] component constraintSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      var subobj = JSON.parse(obj.$attrs.constraintSize);
-      console.info('[testunitsMinWidth0001] constraintSize value :' + subobj.minWidth);
-      expect(subobj.minWidth).assertEqual('200.00vp');
-      console.info("[testunitsMinWidth0001] constraintSize value :" + obj.$attrs.constraintSize);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info('[testunitsMinWidth0001] constraintSize value :' + JSON.parse(JSON.parse(strJson).$attrs.constraintSize).minWidth);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.constraintSize).minWidth).assertEqual('200.00vp');
+      console.info("[testunitsMinWidth0001] constraintSize value :" + JSON.parse(strJson).$attrs.constraintSize);
       done();
     });
 
@@ -128,17 +126,15 @@ export default function unitsModuleNameJsunit() {
      * @tc.name         testunitsMinWidth0002
      * @tc.desic         aceunitsMinWidthEtsTest0002
      */
-    it('testunitsMinWidth0002', 0, async function (done) {
+    it('testunitsMinWidth0002', 0, async (done: Function) => {
       console.info('unitsModuleName testunitsMinWidth0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('minWidthText');
+      let strJson: string = getInspectorByKey('minWidthText');
       console.info("[testunitsMinWidth0002] component constraintSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      let constraintSize = JSON.parse(obj.$attrs.constraintSize);
-      console.info("[testunitsMinWidth0002] constraintSize is : " + constraintSize);
-      expect(obj.$attrs.constraintSize.minWidth).assertEqual(undefined);
-      console.info("[testunitsMinWidth0002] constraintSize value :" + obj.$attrs.constraintSize);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testunitsMinWidth0002] constraintSize is : " + JSON.parse(JSON.parse(strJson).$attrs.constraintSize));
+      expect(JSON.parse(strJson).$attrs.constraintSize.minWidth).assertEqual(undefined);
+      console.info("[testunitsMinWidth0002] constraintSize value :" + JSON.parse(strJson).$attrs.constraintSize);
       done();
     });
   })

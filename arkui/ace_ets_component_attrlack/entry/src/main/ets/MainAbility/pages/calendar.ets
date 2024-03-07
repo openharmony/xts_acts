@@ -32,60 +32,60 @@ struct calendar {
   private lunarMonthNames: string[] = ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '冬月', '腊月']
 
   build() {
-      Calendar({
-        date: { year: 2021, month: 8, day: 35 },
-        currentData: this.curMonth,
-        preData: this.preMonth,
-        nextData: this.nextMonth,
-        controller: this.Controller
+    Calendar({
+      date: { year: 2021, month: 8, day: 35 },
+      currentData: this.curMonth,
+      preData: this.preMonth,
+      nextData: this.nextMonth,
+      controller: this.Controller
+    })
+      .showLunar(true)
+      .showHoliday(true)
+      .needSlide(true)
+      .offDays(Week.Fri | Week.Sat | Week.Mon | Week.Thur)
+      .startOfWeek(Week.Sun)
+      .direction(Axis.Horizontal)
+      .currentDayStyle({
+        dayColor: Color.Black,
+        lunarColor: Color.Gray,
+        markLunarColor: Color.Black,
+        dayFontSize: 15,
+        lunarDayFontSize: 10,
+        boundaryColOffset: 10,
       })
-        .showLunar(true)
-        .showHoliday(true)
-        .needSlide(true)
-        .offDays(Week.Fri | Week.Sat | Week.Mon | Week.Thur)
-        .startOfWeek(Week.Sun)
-        .direction(Axis.Horizontal)
-        .currentDayStyle({
-          dayColor: Color.Black,
-          lunarColor: Color.Gray,
-          markLunarColor: Color.Black,
-          dayFontSize: 15,
-          lunarDayFontSize: 10,
-          boundaryColOffset: 10,
-        })
-        .nonCurrentDayStyle({
-          nonCurrentMonthDayColor: Color.Black,
-          nonCurrentMonthLunarColor: Color.Gray,
-          nonCurrentMonthWorkDayMarkColor: Color.Green,
-          nonCurrentMonthOffDayMarkColor: Color.Brown,
-        })
-        .todayStyle({
-          focusedDayColor: Color.Red,
-          focusedLunarColor: Color.Orange,
-          focusedAreaBackgroundColor: Color.Blue,
-          focusedAreaRadius: 20
-        })
-        .weekStyle({
-          weekColor: Color.Black,
-          weekendDayColor: Color.Orange,
-          weekendLunarColor: Color.Blue,
-          weekFontSize: 20,
-          weekHeight: 5,
-          weekWidth: 48,
-        })
-        .workStateStyle({
-          workDayMarkColor: Color.Red,
-          offDayMarkColor: Color.Orange,
-          workDayMarkSize: 10,
-          offDayMarkSize: 2,
-          workStateWidth: 12,
-          workStateHorizontalMovingDistance: 0,
-          workStateVerticalMovingDistance: 12,
-        })
-        .onSelectChange((request) => {
-          this.year = request.year;
-          this.month = request.month;
-          console.info('On Select change: ' + this.year + '/' + this.month)
-        })
+      .nonCurrentDayStyle({
+        nonCurrentMonthDayColor: Color.Black,
+        nonCurrentMonthLunarColor: Color.Gray,
+        nonCurrentMonthWorkDayMarkColor: Color.Green,
+        nonCurrentMonthOffDayMarkColor: Color.Brown,
+      })
+      .todayStyle({
+        focusedDayColor: Color.Red,
+        focusedLunarColor: Color.Orange,
+        focusedAreaBackgroundColor: Color.Blue,
+        focusedAreaRadius: 20
+      })
+      .weekStyle({
+        weekColor: Color.Black,
+        weekendDayColor: Color.Orange,
+        weekendLunarColor: Color.Blue,
+        weekFontSize: 20,
+        weekHeight: 5,
+        weekWidth: 48,
+      })
+      .workStateStyle({
+        workDayMarkColor: Color.Red,
+        offDayMarkColor: Color.Orange,
+        workDayMarkSize: 10,
+        offDayMarkSize: 2,
+        workStateWidth: 12,
+        workStateHorizontalMovingDistance: 0,
+        workStateVerticalMovingDistance: 12,
+      })
+      .onSelectChange((request: ESObject) => {
+        this.year = request.year;
+        this.month = request.month;
+        console.info('On Select change: ' + this.year + '/' + this.month)
+      })
   }
 }

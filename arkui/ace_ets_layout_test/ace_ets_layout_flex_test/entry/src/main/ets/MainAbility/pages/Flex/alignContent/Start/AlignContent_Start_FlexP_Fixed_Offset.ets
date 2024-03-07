@@ -16,11 +16,11 @@
 @Entry
 @Component
 struct AlignContent_Start_FlexP_Fixed_Offset {
-  alignContent: number
+  alignContent: number = 0;
 
   build() {
     Column() {
-      
+
       Text('AlignContent_Start_FlexP_Fixed_Offset').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Flex({
         direction: FlexDirection.Row,
@@ -28,7 +28,11 @@ struct AlignContent_Start_FlexP_Fixed_Offset {
         alignContent: FlexAlign.Start,
         alignItems: ItemAlign.Start
       }) {
-        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignContent_Start_FlexP_Fixed_Offset_1')
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .key('AlignContent_Start_FlexP_Fixed_Offset_1')
           .offset({ x: 15, y: 30 })
         Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignContent_Start_FlexP_Fixed_Offset_2')
         Text('3').width(150).height(150).backgroundColor(0xD2B48C).key('AlignContent_Start_FlexP_Fixed_Offset_3')
@@ -38,7 +42,6 @@ struct AlignContent_Start_FlexP_Fixed_Offset {
       .width(500)
       .height(400)
       .backgroundColor(0xAFEEEE)
-
 
     }.width('100%')
   }

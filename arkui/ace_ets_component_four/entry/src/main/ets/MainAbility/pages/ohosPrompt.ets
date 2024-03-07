@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
-import prompt from '@ohos.prompt'
+import events_emitter from '@ohos.events.emitter';
+import prompt from '@ohos.prompt';
 
 @Entry
 @Component
 struct OhosPrompt {
+  @State onClickValue: boolean = false;
+
   build() {
     Column() {
       Button("get Point").padding(40)
@@ -26,13 +27,13 @@ struct OhosPrompt {
           prompt.showToast({ message: "sucessful", duration: 200 })
           this.onClickValue = true;
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "matrix1": "[100, 10]",
                 "ACTION": this.onClickValue
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 142,
               priority: events_emitter.EventPriority.LOW
             }
@@ -48,13 +49,7 @@ struct OhosPrompt {
                 text: 'item1',
                 color: '#666666',
               }
-            ],
-            success: function(data) {
-              console.info('dialog success callback，click button : ' + data.tapIndex);
-            },
-            fail: function(data) {
-              console.info('dialog fail callback' + data.errMsg);
-            },
+            ]
           })
           prompt.showDialog({
             title: 'Title Info',
@@ -64,13 +59,7 @@ struct OhosPrompt {
                 text: 'showDialog',
                 color: '#666666',
               },
-            ],
-            success: function(data) {
-              console.info('dialog success callback，click button : ' + data.index);
-            },
-            cancel: function() {
-              console.info('dialog cancel callback');
-            },
+            ]
           });
         }).backgroundColor(0x2788D9).key('rotate5')
     }

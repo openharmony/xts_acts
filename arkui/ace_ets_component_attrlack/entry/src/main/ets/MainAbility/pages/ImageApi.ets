@@ -16,7 +16,6 @@
 @Entry
 @Component
 struct ImageApi {
-
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller }
 
@@ -28,12 +27,17 @@ struct ImageApi {
   }
 
   build() {
-    Column({ space: 5 }){
-      Image($r('app.media.icon')).width(100).enableAnalyzer(true)
+    Column({ space: 5 }) {
+      Image($r('app.media.icon'))
+        .width(100)
+        .enableAnalyzer(true)
         .id('ImageApi_Image')
 
 
-      QRCode('hello').width(100).height(100).contentOpacity(1)
+      QRCode('hello')
+        .width(100)
+        .height(100)
+        .contentOpacity(1)
 
       RichEditor(this.options)
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.LONG_PRESS)
@@ -44,24 +48,25 @@ struct ImageApi {
         .width('60%')
 
 
-      Tabs({ barPosition: BarPosition.Start}) {
+      Tabs({ barPosition: BarPosition.Start }) {
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Red)
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor(Color.Red)
         }.tabBar(new SubTabBarStyle("red"))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor(Color.Blue)
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor(Color.Blue)
         }.tabBar(new SubTabBarStyle("blue"))
 
       }
       .width(300)
       .height(200)
       .backgroundColor('#F1F3F5')
-      // .customContentTransition( (from: number, to: number) => {
-      //   return {timeout: 1000, transition:(proxy: TabContentTransitionProxy) => {}}
-      // })
-
-
     }.width('100%')
   }
 }

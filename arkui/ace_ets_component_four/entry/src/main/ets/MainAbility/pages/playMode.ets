@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,35 +12,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct PlayModeExample {
-  @State playMode:PlayMode = PlayMode.Normal
+  @State playMode: PlayMode = PlayMode.Normal;
+  @State show: string = 'show';
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,}) {
-      Button(this.show).width(80).height(30).backgroundColor(0x317aff).margin({bottom:20})
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, }) {
+      Button(this.show)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 20 })
         .key('button')
         .onClick(() => {
           this.playMode = PlayMode.AlternateReverse
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "playMode": this.playMode,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 161,
               priority: events_emitter.EventPriority.LOW
             }
-            console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            console.info("button start to emit action state");
+            events_emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("button emit action state err: " + JSON.stringify(err.message))
+            console.info("button emit action state err: " + JSON.stringify(err.message));
           }
         })
-    }.height(400).width("100%").padding({top:100})
+    }
+    .height(400)
+    .width("100%")
+    .padding({ top: 100 })
   }
 }

@@ -16,6 +16,7 @@ import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
 
 MEDIA_DRM_DIR = "//foundation/multimedia/drm_framework/"
+
 config("config") {
   visibility = [ ":*" ]
   cflags = [

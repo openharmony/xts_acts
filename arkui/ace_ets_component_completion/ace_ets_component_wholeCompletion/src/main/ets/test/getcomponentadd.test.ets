@@ -16,20 +16,20 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import Utils from './common/Utils'
-import router from '@system.router';
+import router from '@ohos.router';
 import componentUtils from '@ohos.arkui.componentUtils';
 
 export default function ActsgetcomponentaddTest() {
-  describe('ActsgetcomponentaddTest', function () {
+  describe('ActsgetcomponentaddTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/getcomponentadd',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/getcomponentadd',
       }
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function ActsgetcomponentaddTest() {
         console.info("get getcomponentadd state success " + JSON.stringify(pages));
         if (!("getcomponentadd" == pages.name)) {
           console.info("get getcomponentadd state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push getcomponentadd page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -45,244 +45,243 @@ export default function ActsgetcomponentaddTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Get_component_add_0010', 0, async function (done) {
+    it('ArkUX_Get_component_add_0010', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0010 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0010');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0010 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0010 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0010 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0020', 0, async function (done) {
+    it('ArkUX_Get_component_add_0020', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0020 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0020');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0020 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0020 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0020 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0030', 0, async function (done) {
+    it('ArkUX_Get_component_add_0030', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0030 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0030');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0030 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0030 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0030 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0040', 0, async function (done) {
+    it('ArkUX_Get_component_add_0040', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0040 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0040');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0040 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0040 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0040 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0050', 0, async function (done) {
+    it('ArkUX_Get_component_add_0050', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0050 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0050');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0050 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0050 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0050 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0060', 0, async function (done) {
+    it('ArkUX_Get_component_add_0060', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0060 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0060');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0060 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0060 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0060 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0070', 0, async function (done) {
+    it('ArkUX_Get_component_add_0070', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0070 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0070');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0070 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0070 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0070 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0080', 0, async function (done) {
+    it('ArkUX_Get_component_add_0080', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0080 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0080');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0080 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0080 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0080 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0090', 0, async function (done) {
+    it('ArkUX_Get_component_add_0090', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0090 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0090');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0090 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0090 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0090 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0100', 0, async function (done) {
+    it('ArkUX_Get_component_add_0100', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0100 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = Utils.getComponentRect('ArkUX_Get_component_add_0100');
-          expect(typeof(strJson.width)).assertEqual("number");
-          expect(typeof(strJson.height)).assertEqual("number");
-          expect(typeof(strJson.localOffsetX)).assertEqual("number");
-          expect(typeof(strJson.localOffsetY)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetX)).assertEqual("number");
-          expect(typeof(strJson.windowOffsetY)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetX)).assertEqual("number");
-          expect(typeof(strJson.screenOffsetY)).assertEqual("number");
+          expect(typeof (strJson.width)).assertEqual("number");
+          expect(typeof (strJson.height)).assertEqual("number");
+          expect(typeof (strJson.localOffsetX)).assertEqual("number");
+          expect(typeof (strJson.localOffsetY)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetX)).assertEqual("number");
+          expect(typeof (strJson.windowOffsetY)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetX)).assertEqual("number");
+          expect(typeof (strJson.screenOffsetY)).assertEqual("number");
           console.info('ArkUX_Get_component_add_0100 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0100 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0100 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('ArkUX_Get_component_add_0110', 0, async function (done) {
+    it('ArkUX_Get_component_add_0110', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_add_0110 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_Get_component_add_0110');
-          console.info('ArkUX_Get_component_add_0110 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("ArkUX_Get_component_add_0110 obj is: " + JSON.stringify(obj));
+          console.info('ArkUX_Get_component_add_0110 START  :' + JSON.stringify(strJson));
+          console.info("ArkUX_Get_component_add_0110 obj is: " + JSON.stringify(JSON.parse(strJson)));
           let getRectangleById = componentUtils.getRectangleById('');
           let Matrix4_1 = getRectangleById.transform[0];
           let Matrix4_2 = getRectangleById.transform[1];
@@ -306,8 +305,8 @@ export default function ActsgetcomponentaddTest() {
           let windowOffsetY = getRectangleById.windowOffset.y;
           let screenOffsetX = getRectangleById.screenOffset.x;
           let screenOffsetY = getRectangleById.screenOffset.y;
-          console.info('ArkUX_Get_component_add_0110 START  :'+ getRectangleById);
-          console.info('ArkUX_Get_component_add_0110 START  :'+ typeof getRectangleById);
+          console.info('ArkUX_Get_component_add_0110 START  :' + getRectangleById);
+          console.info('ArkUX_Get_component_add_0110 START  :' + typeof getRectangleById);
           expect(typeof getRectangleById).assertEqual("object")
           expect(Matrix4_1).assertEqual(1)
           expect(Matrix4_2).assertEqual(0)
@@ -332,12 +331,12 @@ export default function ActsgetcomponentaddTest() {
           expect(screenOffsetX).assertEqual(0)
           expect(screenOffsetY).assertEqual(0)
           console.info('ArkUX_Get_component_add_0110 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Get_component_add_0110 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Get_component_add_0110 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
   })

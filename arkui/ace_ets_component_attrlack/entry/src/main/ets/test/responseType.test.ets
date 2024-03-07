@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function responseTypeJsunit() {
-  describe('responseTypeTest', function () {
-    beforeEach(async function (done) {
+  describe('responseTypeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/responseType',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/responseType',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function responseTypeJsunit() {
         console.info("get responseType state success " + JSON.stringify(pages));
         if (!("responseType" == pages.name)) {
           console.info("get responseType state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push responseType page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function responseTypeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("responseType after each called");
     });
@@ -51,15 +51,14 @@ export default function responseTypeJsunit() {
      * @tc.name         testresponseType0002
      * @tc.desic        acehoverEffectEtsTest0002
      */
-    it('testresponseType0002', 0, async function (done) {
+    it('testresponseType0002', 0, async (done: Function) => {
       console.info('responseType testresponseType0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('RightClickText');
+      let strJson: string = getInspectorByKey('RightClickText');
       console.info("[testresponseType0002] component bindContextMenu strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.bindContextMenu).assertEqual(undefined);
-      console.info("[testresponseType0002] bindContextMenu value :" + obj.$attrs.bindContextMenu);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.bindContextMenu).assertEqual(undefined);
+      console.info("[testresponseType0002] bindContextMenu value :" + JSON.parse(strJson).$attrs.bindContextMenu);
       done();
     });
 
@@ -68,15 +67,14 @@ export default function responseTypeJsunit() {
      * @tc.name         testhoverEffect0003
      * @tc.desic        acehoverEffectEtsTest0003
      */
-    it('testresponseType0003', 0, async function (done) {
+    it('testresponseType0003', 0, async (done: Function) => {
       console.info('responseType testresponseType0003 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('LongPressText');
+      let strJson: string = getInspectorByKey('LongPressText');
       console.info("[testresponseType0003] component bindContextMenu strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.bindContextMenu).assertEqual(undefined);
-      console.info("[testresponseType0003] bindContextMenu value :" + obj.$attrs.bindContextMenu);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.bindContextMenu).assertEqual(undefined);
+      console.info("[testresponseType0003] bindContextMenu value :" + JSON.parse(strJson).$attrs.bindContextMenu);
       done();
     });
   })

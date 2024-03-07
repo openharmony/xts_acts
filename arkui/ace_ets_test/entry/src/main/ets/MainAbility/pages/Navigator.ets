@@ -12,37 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct navigator_testcase {
-  @State active:boolean =false
-  @State params:Object ={ text: 'news' }
+  @State active: boolean = false
+  @State params: Object = { text: 'news' }
 
   build() {
-    Column(){
-      Navigator({target:"pages/index",type:NavigationType.Back}){
+    Column() {
+      Navigator({ target: "pages/index", type: NavigationType.Back }) {
         Text('Navigator test  go to Navigator， back called')
       }.active(this.active)
       .key('navigator')
       .params({
-        data:24
+        data: 24
       })
 
-      Navigator({target:"pages/index",type:NavigationType.Push}){
+      Navigator({ target: "pages/index", type: NavigationType.Push }) {
         Text('Navigator test  go to Navigator, router called')
       }.active(this.active)
       .key('navigator2')
       .params({
-        data:24
+        data: 24
       })
 
-      Navigator({target:"pages/index",type:NavigationType.Replace}){
+      Navigator({ target: "pages/index", type: NavigationType.Replace }) {
         Text('Navigator test  go to Navigator，changed called')
       }.active(this.active)
       .key('navigator3')
       .params({
-        data:24
+        data: 24
       })
     }.width(300)
     .height(300)

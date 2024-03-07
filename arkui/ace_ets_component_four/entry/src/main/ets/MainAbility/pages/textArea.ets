@@ -18,45 +18,44 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct TextAreaExample2 {
-  @State text: string = 'TextArea'
+  @State text: string = 'TextArea';
   @State fontColor: string = "#FF182432";
   @State fontSize: number = 30;
   @State textAlign: TextAlign = TextAlign.Center;
-  @State text: String  = 'test text';
-  @State caretIndex : number = 9999
-  @State text2: string = ''
-  @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
-  controller: TextAreaController = new TextAreaController()
+  @State caretIndex: number = 9999;
+  @State text2: string = '';
+  @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 };
+  controller: TextAreaController = new TextAreaController();
 
   onPageShow() {
     console.info('swiper page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 215,
       priority: events_emitter.EventPriority.LOW
     }
     console.log("fang--->B");
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 216,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 217,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 218,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("fang--->A");
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
@@ -80,7 +79,7 @@ struct TextAreaExample2 {
 
   build() {
     Column() {
-      TextArea({ placeholder: 'input your word', text: this.text})
+      TextArea({ placeholder: 'input your word', text: this.text })
         .key('textArea')
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
@@ -92,14 +91,16 @@ struct TextAreaExample2 {
         .fontFamily("sans-serif")
         .fontStyle(FontStyle.Normal)
         .fontColor(this.fontColor)
-        .inputFilter('^[\u4E00-\u9FA5A-Za-z0-9_]+$',(value: string) => {
+        .inputFilter('^[\u4E00-\u9FA5A-Za-z0-9_]+$', (value: string) => {
         })
         .onChange((value: string) => {
           this.text = value
         })
-      Text(this.text).width('90%').key('text')
+      Text(this.text)
+        .width('90%')
+        .key('text')
 
-      TextArea({ placeholder: 'input your word', text: this.text2, controller: this.controller})
+      TextArea({ placeholder: 'input your word', text: this.text2, controller: this.controller })
         .key('textArea2')
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
@@ -125,7 +126,8 @@ struct TextAreaExample2 {
         })
         .key('caretOffsetBtn1')
 
-      Text("Index" + this.caretIndex).key('caretOffsetText1')
+      Text("Index" + this.caretIndex)
+        .key('caretOffsetText1')
     }
   }
 }

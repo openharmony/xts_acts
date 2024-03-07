@@ -21,11 +21,11 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct StateManagementDARK {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear StateManagementDARK start`)
+    Log.showInfo(TAG, `aboutToAppear StateManagementDARK start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear StateManagementDARK end`)
+    Log.showInfo(TAG, `aboutToDisAppear StateManagementDARK end`);
   }
 
   build() {
@@ -45,8 +45,9 @@ struct StateManagementDARK {
         .textOverflow({ overflow: TextOverflow.None })
         .backgroundColor(ColorMode.DARK)
         .key("DARKText")
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

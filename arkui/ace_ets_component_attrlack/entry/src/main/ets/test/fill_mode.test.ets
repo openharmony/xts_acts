@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function fillModeForwardJsunit() {
-  describe('fillModeForwardTest', function () {
-    beforeEach(async function (done) {
+  describe('fillModeForwardTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/fill_mode',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/fill_mode',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function fillModeForwardJsunit() {
         console.info("get fill_mode state success " + JSON.stringify(pages));
         if (!("fill_mode" == pages.name)) {
           console.info("get fill_mode state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push fill_mode page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function fillModeForwardJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("fillModeForward after each called");
     });
@@ -50,15 +50,14 @@ export default function fillModeForwardJsunit() {
      * @tc.name         testfillModeForward0001
      * @tc.desic         acefillModeForwardEtsTest0001
      */
-    it('testfillModeForward0001', 0, async function (done) {
+    it('testfillModeForward0001', 0, async (done: Function) => {
       console.info('fillModeForward testfillModeForward0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ImageAnimator');
+      let strJson: string = getInspectorByKey('ImageAnimator');
       console.info("[testfillModeForward0001] component fillMode strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('ImageAnimator');
-      expect(obj.$attrs.fillMode).assertEqual("FillMode.Forwards");
-      console.info("[testfillModeForward0001] fillMode value :" + obj.$attrs.fillMode);
+      expect(JSON.parse(strJson).$type).assertEqual('ImageAnimator');
+      expect(JSON.parse(strJson).$attrs.fillMode).assertEqual("FillMode.Forwards");
+      console.info("[testfillModeForward0001] fillMode value :" + JSON.parse(strJson).$attrs.fillMode);
       done();
     });
   })

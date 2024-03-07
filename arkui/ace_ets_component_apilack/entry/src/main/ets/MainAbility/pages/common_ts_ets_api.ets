@@ -88,14 +88,14 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("EnvPropText")
         .onClick(() => {
-          var enable = AppStorage.Get("accessibilityEnabled");
+          let enable = AppStorage.Get("accessibilityEnabled");
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Result": (enable != null)
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60231,
               priority: events_emitter.EventPriority.LOW
             }
@@ -123,12 +123,12 @@ struct Common_ts_ets_apiStaticClear {
         .onClick(() => {
           this.highScore = this.highScore + 1
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Score": "Score"
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60230,
               priority: events_emitter.EventPriority.LOW
             }
@@ -154,8 +154,6 @@ struct Common_ts_ets_apiStaticClear {
         .onClick(() => {
           AppStorage.Clear()
         })
-
-
     }.width("100%").height("100%")
   }
 }

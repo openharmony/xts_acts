@@ -16,6 +16,14 @@
 import animator from '@ohos.animator';
 import prompt from '@system.prompt';
 
+class Options {
+  duration: number;
+  iterations: number;
+  direction?: string;
+  begin: number;
+  end: number
+}
+
 @Entry
 @Component
 struct ColumnExample {
@@ -26,12 +34,15 @@ struct ColumnExample {
     fill: 'forwards',
     direction: "normal",
     begin: 200,
-    end: 270
+    end: 270,
+    easing: 'linear',
+    iterations: 0,
+    delay: 0
   });
 
   onPageShow() {
     this.animation.onrepeat(() => {
-      var repeatoptions = {
+      let repeatoptions: Options = {
         duration: 2000,
         iterations: 1,
         direction: 'alternate',
@@ -54,14 +65,14 @@ struct ColumnExample {
       Column() {
         Row() {
           Button('play').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            this.animation.onframe((value) => {
+            this.animation.onframe((value: ESObject) => {
               this.divWidth = value
               this.divHeight = value
             });
             this.animation.play();
           });
           Button('update').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
-            var newoptions = {
+            let newoptions: Options = {
               duration: 5000,
               iterations: 2,
               begin: 120,

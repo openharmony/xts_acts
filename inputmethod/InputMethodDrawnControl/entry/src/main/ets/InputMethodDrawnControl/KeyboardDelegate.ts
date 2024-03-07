@@ -218,6 +218,10 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 event:' + data.event);
                     that.SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700();
                     break;
+                case 450:
+                    console.debug(TAG + '====>SUB_inputMethod_IMF_InputMethodSettings_1000 event:' + data.event);
+                    that.SUB_inputMethod_IMF_InputMethodSettings_1000();
+                    break
             }
         }
 
@@ -1163,5 +1167,29 @@ export class KeyboardDelegate {
         }
     }
 
+    private SUB_inputMethod_IMF_InputMethodSettings_1000(): void {
+        console.info(TAG + '====>receive SUB_inputMethod_IMF_InputMethodSettings_1000 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_inputMethod_IMF_InputMethodSettings_1000 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_inputMethod_IMF_InputMethodSettings_1000 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteForward(1);
+                            console.info(TAG + '====>SUB_inputMethod_IMF_InputMethodSettings_1000 InputClient.deleteForward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_inputMethod_IMF_InputMethodSettings_1000 deleteForward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_inputMethod_IMF_InputMethodSettings_1000 catch error: ' + JSON.stringify(error));
+        }
+    }
 
 }

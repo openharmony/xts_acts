@@ -16,7 +16,6 @@
 @Entry
 @Component
 struct RelativeContainer_AnchorPoint_NoId {
-
   onPageShow() {
     console.info('RelativeContainer_AnchorPoint_NoId onPageShow');
   }

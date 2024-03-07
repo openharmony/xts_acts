@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,6 @@
 @Entry
 @Component
 struct SlelectExample {
-
   onPageShow() {
     console.info('select page show called');
   }
@@ -28,22 +26,22 @@ struct SlelectExample {
 
   build() {
     Column() {
-      Select([{value:'aaa',icon: "/common/1.png"},
-              {value:'bbb',icon: "/common/2.png"},
-              {value:'ccc',icon: "/common/3.png"},
-              {value:'ddd',icon: "/common/4.png"}])
+      Select([{ value: 'aaa', icon: "/common/1.png" },
+        { value: 'bbb', icon: "/common/2.png" },
+        { value: 'ccc', icon: "/common/3.png" },
+        { value: 'ddd', icon: "/common/4.png" }])
         .selected(2)
         .value('TTT')
-        .font({size: 30, weight:400, family: 'serif', style: FontStyle.Normal })
-        .selectedOptionFont({size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
-        .optionFont({size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
+        .font({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
+        .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
+        .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
         .fontColor(0x317aff)
         .optionBgColor(0xFFFFFF)
         .optionFontColor(0x000000)
         .selectedOptionBgColor(0xCCCCCC)
         .selectedOptionFontColor(0x000000)
         .key('select')
-        .onSelected((index:number)=>{
+        .onSelect((index: number) => {
           console.info("Select:" + index)
         })
     }
