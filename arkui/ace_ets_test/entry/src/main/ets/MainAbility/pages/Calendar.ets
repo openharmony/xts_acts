@@ -99,7 +99,7 @@ struct calendar {
               this.curMonth.year = request.year;
               this.curMonth.month = request.month;
               this.curMonth.data = [];
-              for (var i = 0; i < 35; ++i) {
+              for (let i = 0; i < 35; ++i) {
                 this.curMonth.data.push({
                   index: i,
                   lunarMonth: this.lunarMonthNames[i%12],
@@ -125,7 +125,7 @@ struct calendar {
               this.preMonth.year = request.year;
               this.preMonth.month = request.month
               this.preMonth.data = [];
-              for (var i = 0; i < 35; ++i) {
+              for (let i = 0; i < 35; ++i) {
                 this.preMonth.data.push({
                   index: i,
                   lunarMonth: this.lunarMonthNames[i%12],
@@ -150,7 +150,7 @@ struct calendar {
               this.nextMonth.year = request.year;
               this.nextMonth.month = request.month;
               this.nextMonth.data = [];
-              for (var i = 0; i < 35; ++i) {
+              for (let i = 0; i < 35; ++i) {
                 this.nextMonth.data.push({
                   index: i,
                   lunarMonth: this.lunarMonthNames[i%12],

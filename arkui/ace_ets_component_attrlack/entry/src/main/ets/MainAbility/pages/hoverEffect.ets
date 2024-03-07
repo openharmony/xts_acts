@@ -21,17 +21,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct HoverEffect {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear HoverEffect start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear HoverEffect end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text("ScaleText")
         .width(100)
         .height(70)
@@ -48,7 +47,7 @@ struct HoverEffect {
         .key("ScaleText")
         .minFontSize('50px')
         .onClick(() => {
-          })
+        })
 
       Text("HighlightText")
         .width(100)
@@ -65,7 +64,8 @@ struct HoverEffect {
         .hoverEffect(HoverEffect.Highlight)
         .key("HighlightText")
         .copyOption(0)
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }

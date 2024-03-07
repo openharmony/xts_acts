@@ -23,6 +23,7 @@ group("ets_utils") {
       "containerRelation_lib_standard:containerRelation_js_test",
       "convertxml_lib_standard:convertxml_js_test",
       "intl_lib_standard:intl_js_test",
+      "json_lib_standard:json_js_test",
       "process_lib_standard:process_js_test",
       "taskpool_lib_standard:taskPool_js_test",
       "threadWorker_lib_standard:threadWorker_js_hap",

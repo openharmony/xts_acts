@@ -12,24 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function RelativeContainer_Vertical() {
-  describe('RelativeContainer_Vertical', function () {
-    beforeEach(async function (done) {
+  describe('RelativeContainer_Vertical', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeContainer_Vertical beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/RelativeContainer/RelativeContainer_Vertical/RelativeContainer_Vertical",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get RelativeContainer_Vertical state pages:" + JSON.stringify(pages));
         if (!("RelativeContainer_Vertical" == pages.name)) {
           console.info("get RelativeContainer_Vertical pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push RelativeContainer_Vertical page result:" + JSON.stringify(result));
         }
@@ -39,23 +41,25 @@ export default function RelativeContainer_Vertical() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("RelativeContainer_Vertical after each called")
     });
     /**
-     * @tc.number    SUB_ACE_RelativeContainer_Vertical_TEST_0100
-     * @tc.name      testRelativeContainer
-     * @tc.desc      text set align:VerticalAlign.Top
+     * @tc.number SUB_ACE_RelativeContainer_Vertical_TEST_0100
+     * @tc.name testRelativeContainer
+     * @tc.desc text set align:VerticalAlign.Top
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0100] START');
-      globalThis.value.message.notify({name:'addalign', value:VerticalAlign.Top});
+      globalThis.value.message.notify({
+        name: 'addalign', value: VerticalAlign.Top
+      });
 
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let RelativeContainer_Vertical_bt1 = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
-      let RelativeContainer_Vertical_tx2 = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
+      let RelativeContainer_Vertical_bt1: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
+      let RelativeContainer_Vertical_tx2: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
 
 
       console.log('assert position')
@@ -67,22 +71,25 @@ export default function RelativeContainer_Vertical() {
     });
 
     /**
-     * @tc.number    SUB_ACE_RelativeContainer_Vertical_TEST_0200
-     * @tc.name      testRelativeContainer
-     * @tc.desc      text set align:VerticalAlign.Center
+     * @tc.number SUB_ACE_RelativeContainer_Vertical_TEST_0200
+     * @tc.name testRelativeContainer
+     * @tc.desc text set align:VerticalAlign.Center
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0200] START');
-      globalThis.value.message.notify({name:'addalign', value:VerticalAlign.Center});
+      globalThis.value.message.notify({
+        name: 'addalign', value: VerticalAlign.Center
+      });
 
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let RelativeContainer_Vertical_bt1 = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
-      let RelativeContainer_Vertical_tx2 = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
+      let RelativeContainer_Vertical_bt1: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
+      let RelativeContainer_Vertical_tx2: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
 
 
       console.log('assert position')
-      expect(Math.abs(RelativeContainer_Vertical_tx2.top - ((RelativeContainer_Vertical_bt1.bottom - RelativeContainer_Vertical_bt1.top)/2 + RelativeContainer_Vertical_bt1.top)) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_Vertical_tx2.top - ((RelativeContainer_Vertical_bt1.bottom - RelativeContainer_Vertical_bt1.top) / 2 + RelativeContainer_Vertical_bt1.top)) <= 1)
+        .assertTrue();
       expect(Math.abs(RelativeContainer_Vertical_tx2.left - RelativeContainer_Vertical_bt1.right) <= 1).assertTrue();
 
 
@@ -92,18 +99,20 @@ export default function RelativeContainer_Vertical() {
     });
 
     /**
-     * @tc.number    SUB_ACE_RelativeContainer_Vertical_TEST_0300
-     * @tc.name      testRelativeContainer
-     * @tc.desc      text set align:VerticalAlign.Bottom
+     * @tc.number SUB_ACE_RelativeContainer_Vertical_TEST_0300
+     * @tc.name testRelativeContainer
+     * @tc.desc text set align:VerticalAlign.Bottom
      */
-    it('SUB_ACE_RelativeContainer_Vertical_TEST_0300', 0, async function (done) {
+    it('SUB_ACE_RelativeContainer_Vertical_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Vertical_TEST_0300] START');
-      globalThis.value.message.notify({name:'addalign', value:VerticalAlign.Bottom});
+      globalThis.value.message.notify({
+        name: 'addalign', value: VerticalAlign.Bottom
+      });
 
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let RelativeContainer_Vertical_bt1 = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
-      let RelativeContainer_Vertical_tx2 = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
+      let RelativeContainer_Vertical_bt1: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_bt1');
+      let RelativeContainer_Vertical_tx2: RectValue = CommonFunc.getComponentRect('RelativeContainer_Vertical_tx2');
 
 
       console.log('assert position')

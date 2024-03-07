@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import CheckboxTest from './Checkbox.test'
+import CheckboxTest from './Checkbox.test';
 
 export default function testsuite() {
-  CheckboxTest()
+  CheckboxTest();
 }

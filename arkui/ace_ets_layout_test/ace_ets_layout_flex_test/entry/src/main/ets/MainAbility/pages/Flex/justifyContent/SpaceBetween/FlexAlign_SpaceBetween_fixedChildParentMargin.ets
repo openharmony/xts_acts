@@ -12,26 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct FlexAlign_SpaceBetween_fixedChildParentMargin {
-  @State testMargin: number = 0
-  messageManager:MessageManager = new MessageManager() 
-  private content: string = "FlexAlign_SpaceBetween_fixedChildParentMargin Page"
-  
+  @State testMargin: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+  private content: string = "FlexAlign_SpaceBetween_fixedChildParentMargin Page";
+
   onPageShow() {
     console.info('FlexAlign_SpaceBetween_fixedChildParentMargin page show called');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'margin') {
         this.testMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -41,17 +46,17 @@ struct FlexAlign_SpaceBetween_fixedChildParentMargin {
 
   build() {
     Column() {
-        Text('justifyContent:Align_SpaceBetween5').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row, wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.SpaceBetween }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignSpaceBetween13')
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignSpaceBetween14')
-          Text('3').width(150).height(150).backgroundColor(0xffa500).key('AlignSpaceBetween15')
-        }
-        .key('FlexAlignSpaceBetween5')
-        .height(200)
-        .width(500)
-        .margin(this.testMargin)
-        .backgroundColor(0xAFEEEE)
+      Text('justifyContent:Align_SpaceBetween5').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Flex({ direction: FlexDirection.Row, wrap: FlexWrap.NoWrap, justifyContent: FlexAlign.SpaceBetween }) {
+        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignSpaceBetween13')
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignSpaceBetween14')
+        Text('3').width(150).height(150).backgroundColor(0xffa500).key('AlignSpaceBetween15')
+      }
+      .key('FlexAlignSpaceBetween5')
+      .height(200)
+      .width(500)
+      .margin(this.testMargin)
+      .backgroundColor(0xAFEEEE)
     }.width('100%')
   }
 }

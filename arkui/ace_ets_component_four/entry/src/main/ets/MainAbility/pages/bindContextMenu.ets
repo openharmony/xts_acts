@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +16,10 @@
 @Entry
 @Component
 struct MenuExample {
-  @State responseType: ResponseType = RightClick;
-  @Builder ContextMenuBuilder() {
+  @State responseType: ResponseType = ResponseType.RightClick;
+
+  @Builder
+  ContextMenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('text3')
         .fontSize(20)
@@ -35,6 +36,6 @@ struct MenuExample {
     }
     .width('100%')
     .margin({ top: 5 })
-    .bindContextMenu(this.ContextMenuBuilder(),this.responseType)
+    .bindContextMenu(this.ContextMenuBuilder(), this.responseType)
   }
 }

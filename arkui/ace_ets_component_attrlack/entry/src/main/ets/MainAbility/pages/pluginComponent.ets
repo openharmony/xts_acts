@@ -15,10 +15,15 @@
 
 import plugin from "../common/plugin_component.js"
 
+class PluginCount {
+  source: string;
+  bundleName: string;
+}
+
 @Entry
 @Component
 struct PluginUserExample {
-  @StorageLink("plugincount") plugincount: Object[] = [
+  @StorageLink("plugincount") plugincount: PluginCount[] = [
     { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
     { source: 'plugintemplate', bundleName: 'com.example.myapplication' },
     { source: 'plugintemplate', bundleName: 'com.example.myapplication' }]
@@ -32,8 +37,8 @@ struct PluginUserExample {
         .fontSize(30)
         .width(400)
         .height(100)
-        .margin({top:20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           plugin.onListener()
           console.log("Button('Register Request Listener')")
         })
@@ -46,7 +51,7 @@ struct PluginUserExample {
           plugin.Request()
           console.log("Button('Request')")
         })
-      ForEach(this.plugincount, item => {
+      ForEach(this.plugincount, (item: PluginCount) => {
         PluginComponent({
           template: { source: 'plugincomponent1', bundleName: 'com.example.plugin' },
           data: { 'countDownStartValue': 'new countDownStartValue' }

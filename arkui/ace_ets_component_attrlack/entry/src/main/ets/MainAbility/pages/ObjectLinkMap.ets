@@ -15,6 +15,7 @@
 @Observed
 class MapClassA {
   public a: MyMap<number, string>;
+
   constructor(a: MyMap<number, string>) {
     this.a = a;
   }
@@ -23,12 +24,11 @@ class MapClassA {
 
 @Observed
 export class MyMap<K, V> extends Map<K, V> {
-
   public name: string;
 
   constructor(name?: string, args?: [K, V][]) {
     super(args);
-    this.name = name ? name: "My Map";
+    this.name = name ? name : "My Map";
   }
 
   getName() {
@@ -45,11 +45,11 @@ struct ObjectLinkMapNested {
     Row() {
       Column() {
         Button('init map').id("ObtLinkMap_init")
-          .onClick(() =>{
+          .onClick(() => {
             this.message.a = new MyMap("myMap", [[0, "a"], [1, "b"], [3, "c"]])
           })
 
-        ObjectLinkMapNestedChild({myMap: this.message.a})
+        ObjectLinkMapNestedChild({ myMap: this.message.a })
       }
       .width('100%')
     }
@@ -69,27 +69,27 @@ struct ObjectLinkMapNestedChild {
           Divider()
         })
         Button('set new one').id("ObtLinkMap_set")
-          .onClick(() =>{
+          .onClick(() => {
             this.myMap.set(4, "d")
-        }).margin(10)
+          }).margin(10)
 
         Button('clear').id("ObtLinkMap_clear")
-          .onClick(() =>{
+          .onClick(() => {
             this.myMap.clear()
-            if (Array.from(this.myMap.entries())){
-               this.myMap.set(0, "K")
+            if (Array.from(this.myMap.entries())) {
+              this.myMap.set(0, "K")
             }
-        }).margin(10)
+          }).margin(10)
 
         Button('replace the first one').id("ObtLinkMap_replace")
-          .onClick(() =>{
+          .onClick(() => {
             this.myMap.set(0, "aa")
-        }).margin(10)
+          }).margin(10)
 
         Button('delete the first one').id("ObtLinkMap_delete")
-          .onClick(() =>{
+          .onClick(() => {
             this.myMap.delete(0)
-        })
+          })
       }
       .width('100%')
     }

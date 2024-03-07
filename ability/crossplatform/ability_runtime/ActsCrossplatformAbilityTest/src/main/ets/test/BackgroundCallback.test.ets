@@ -14,30 +14,24 @@
  */
 
 //@ts-nocheck
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
 
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 
 export default function BackgroundCallback() {
-  describe("BackgroundCallback", function () {
-    beforeEach(function () {
-      let want = {
+  describe("BackgroundCallback", () => {
+    beforeEach(() => {
+      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.delegatortest",
         moduleName: "entry",
-      };
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      abilityDelegator.startAbility(want);
+      });
     });
 
     /**
@@ -48,44 +42,41 @@ export default function BackgroundCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001", 0, async function (done) {
-      let wantMain = {
-        abilityName: "Main3Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
-
-      let wantMain2 = {
-        abilityName: "Main4Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
+    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001", 0, async (done: Function) => {
 
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001 start"
       );
       setTimeout(() => {
-        abilityDelegator.startAbility(wantMain2, () => {
+        abilityDelegator.startAbility({
+          abilityName: "Main4Ability",
+          bundleName: "com.example.delegatortest",
+          moduleName: "entry",
+        }, () => {
           setTimeout(() => {
-            abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
               abilityDelegator.printSync(
                 "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001 Main4Ability: " +
-                  ability1.context.abilityInfo.name
+                ability1.context.abilityInfo.name
               );
-              abilityDelegator.startAbility(wantMain, () => {
+              abilityDelegator.startAbility({
+                abilityName: "Main3Ability",
+                bundleName: "com.example.delegatortest",
+                moduleName: "entry",
+              }, () => {
                 setTimeout(() => {
                   abilityDelegator.getCurrentTopAbility(
-                    (err: any, ability2: any) => {
+                    (err: BusinessError, ability2: UIAbility) => {
                       abilityDelegator.printSync(
                         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001 Main3Ability: " +
-                          ability2.context.abilityInfo.name
+                        ability2.context.abilityInfo.name
                       );
                       abilityDelegator.doAbilityBackground(
                         ability2,
-                        (err: any) => {
+                        (err: BusinessError) => {
                           setTimeout(() => {
                             try {
-                              var stateNum =
+                              let stateNum =
                                 abilityDelegator.getAbilityState(ability2);
                               abilityDelegator.printSync(
                                 "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0001 getAbilityState stateNum :" +
@@ -126,32 +117,31 @@ export default function BackgroundCallback() {
     it(
       "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002",
       0,
-      async function (done) {
-        let wantMain = {
-          abilityName: "Main3Ability",
-          bundleName: "com.example.delegatortest",
-          moduleName: "entry",
-        };
+      async (done: Function) => {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 start"
         );
         setTimeout(() => {
-          abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+          abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
             abilityDelegator.printSync(
               "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 Main4Ability: " +
-                ability1.context.abilityInfo.name
+              ability1.context.abilityInfo.name
             );
-            abilityDelegator.startAbility(wantMain, () => {
+            abilityDelegator.startAbility({
+              abilityName: "Main3Ability",
+              bundleName: "com.example.delegatortest",
+              moduleName: "entry",
+            }, () => {
               abilityDelegator.printSync(
                 "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 startAbility"
               );
               setTimeout(() => {
                 abilityDelegator.getCurrentTopAbility(
-                  (err: any, ability2: any) => {
+                  (err: BusinessError, ability2: UIAbility) => {
                     try {
                       abilityDelegator.doAbilityBackground(
                         ability2 + "error",
-                        (err: any) => {
+                        (err: BusinessError) => {
                           abilityDelegator.printSync(
                             "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 fail"
                           );
@@ -164,12 +154,12 @@ export default function BackgroundCallback() {
                         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 doAbilityForeground meet an error: ability is wrong"
                       );
                       abilityDelegator.getCurrentTopAbility(
-                        (err: any, ability2: any) => {
+                        (err: BusinessError, ability2: UIAbility) => {
                           abilityDelegator.printSync(
                             "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 Main3Ability : " +
-                              ability2.context.abilityInfo.name
+                            ability2.context.abilityInfo.name
                           );
-                          var stateNum =
+                          let stateNum =
                             abilityDelegator.getAbilityState(ability1);
                           abilityDelegator.printSync(
                             "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 getAbilityState: " +
@@ -203,27 +193,26 @@ export default function BackgroundCallback() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("actsDoAbilityBackgroundCallbackError0003", 0, async function (done) {
-      let wantMain2 = {
-        abilityName: "Main4Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
+    it("actsDoAbilityBackgroundCallbackError0003", 0, async (done: Function) => {
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 start"
       );
-      abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+      abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 Main3Ability: " +
-            ability1.context.abilityInfo.name
+          ability1.context.abilityInfo.name
         );
-        abilityDelegator.startAbility(wantMain2, () => {
+        abilityDelegator.startAbility({
+          abilityName: "Main4Ability",
+          bundleName: "com.example.delegatortest",
+          moduleName: "entry",
+        }, () => {
           abilityDelegator.printSync(
             "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 startAbility"
           );
           setTimeout(() => {
             try {
-              abilityDelegator.doAbilityBackground("", (err: any) => {
+              abilityDelegator.doAbilityBackground("", (err: BusinessError) => {
                 abilityDelegator.printSync(
                   "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 fail"
                 );
@@ -235,12 +224,12 @@ export default function BackgroundCallback() {
                 "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 doAbilityForeground meet an error: ability is null"
               );
               abilityDelegator.getCurrentTopAbility(
-                (err: any, ability2: any) => {
+                (err: BusinessError, ability2: UIAbility) => {
                   abilityDelegator.printSync(
                     "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 Main4Ability : " +
-                      ability2.context.abilityInfo.name
+                    ability2.context.abilityInfo.name
                   );
-                  var stateNum = abilityDelegator.getAbilityState(ability1);
+                  let stateNum = abilityDelegator.getAbilityState(ability1);
                   abilityDelegator.printSync(
                     "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0003 getAbilityState: " +
                       stateNum
@@ -270,48 +259,46 @@ export default function BackgroundCallback() {
      * @tc.level Level 2
      */
 
-    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004", 0, async function (done) {
-      let wantMain2 = {
-        abilityName: "Main4Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
+    it("ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004", 0, async (done: Function) => {
 
-      let wantMain = {
-        abilityName: "Main3Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
       abilityDelegator.printSync(
         "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 start"
       );
-      abilityDelegator.startAbility(wantMain2, () => {
+      abilityDelegator.startAbility({
+        abilityName: "Main4Ability",
+        bundleName: "com.example.delegatortest",
+        moduleName: "entry",
+      }, () => {
         setTimeout(() => {
-          abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+          abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
             abilityDelegator.printSync(
               "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 Main4Ability: " +
-                ability1.context.abilityInfo.name
+              ability1.context.abilityInfo.name
             );
-            abilityDelegator.startAbility(wantMain, () => {
+            abilityDelegator.startAbility({
+              abilityName: "Main3Ability",
+              bundleName: "com.example.delegatortest",
+              moduleName: "entry",
+            }, () => {
               setTimeout(() => {
                 abilityDelegator.getCurrentTopAbility(
-                  (err: any, ability2: any) => {
+                  (err: BusinessError, ability2: UIAbility) => {
                     abilityDelegator.printSync(
                       "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 Main3Ability: " +
-                        ability2.context.abilityInfo.name
+                      ability2.context.abilityInfo.name
                     );
                     abilityDelegator.doAbilityBackground(
                       ability1,
-                      (err: any) => {
+                      (err: BusinessError) => {
                         setTimeout(() => {
                           abilityDelegator.getCurrentTopAbility(
-                            (err: any, ability3: any) => {
+                            (err: BusinessError, ability3: UIAbility) => {
                               try {
                                 abilityDelegator.printSync(
                                   "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 Main3Ability: " +
-                                    ability3.context.abilityInfo.name
+                                  ability3.context.abilityInfo.name
                                 );
-                                var stateNum =
+                                let stateNum =
                                   abilityDelegator.getAbilityState(ability3);
                                 abilityDelegator.printSync(
                                   "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_0004 getAbilityState stateNum :" +
@@ -355,33 +342,33 @@ export default function BackgroundCallback() {
     it(
       "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0005",
       0,
-      async function (done) {
-        let wantMain = {
-          abilityName: "Main3Ability",
-          bundleName: "com.example.delegatortest",
-          moduleName: "entry",
-        };
+      async (done: Function) => {
         abilityDelegator.printSync(
           "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 start"
         );
-        abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+        abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
           abilityDelegator.printSync(
             "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 Main4Ability: " +
-              ability1.context.abilityInfo.name
+            ability1.context.abilityInfo.name
           );
-          abilityDelegator.startAbility(wantMain, () => {
+          abilityDelegator.startAbility({
+            abilityName: "Main3Ability",
+            bundleName: "com.example.delegatortest",
+            moduleName: "entry",
+          }, () => {
             abilityDelegator.printSync(
               "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 startAbility"
             );
             setTimeout(() => {
               abilityDelegator.getCurrentTopAbility(
-                (err: any, ability2: any) => {
+                (err: BusinessError, ability2: UIAbility) => {
                   ability2.context.terminateSelf(() => {
                     setTimeout(() => {
                       try {
                         abilityDelegator.doAbilityBackground(
                           ability2,
-                          (err: any) => {}
+                          (err: BusinessError) => {
+                          }
                         );
                       } catch (error) {
                         expect(error.message).assertEqual(

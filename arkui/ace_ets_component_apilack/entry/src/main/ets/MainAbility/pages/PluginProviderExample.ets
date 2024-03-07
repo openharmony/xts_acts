@@ -26,8 +26,8 @@ struct PluginProviderExample {
         .fontSize(30)
         .width(400)
         .height(100)
-        .margin({top:20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           plugin.onListener()
           console.log("Button('Register Push Listener')")
         })
@@ -35,8 +35,8 @@ struct PluginProviderExample {
         .fontSize(30)
         .width(400)
         .height(100)
-        .margin({top:20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           plugin.Push()
           this.message = "Button('Push')"
           console.log("Button('Push')")

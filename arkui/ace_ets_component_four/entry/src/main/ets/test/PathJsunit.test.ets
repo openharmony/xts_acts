@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function enableJsunit() {
-  describe('appInfoTest_four_4', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_4', () => {
+    beforeEach(async (done: Function) => {
       console.info("path beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/path',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/path',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function enableJsunit() {
         console.info("get path state pages: " + JSON.stringify(pages));
         if (!("path" == pages.name)) {
           console.info("get overlay state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push path page result:" + JSON.stringify(result));
         }
@@ -41,34 +40,33 @@ export default function enableJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("path after each called");
     });
 
-    it('testPath01', 0, async function (done) {
+    it('testPath01', 0, async (done: Function) => {
       console.info('[testPath01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('path1');
-      let obj = JSON.parse(strJson);
-      console.info("[testPath01] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('300.00px');
-      expect(obj.$attrs.height).assertEqual('10.00px');
+      let strJson: string = getInspectorByKey('path1');
+      console.info("[testPath01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('300.00px');
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('10.00px');
       console.info('[testPath01] END');
       done();
     });
 
-    it('testPath02', 0, async function (done) {
+    it('testPath02', 0, async (done: Function) => {
       console.info('[testPath02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "height": '200.00px',
             "commands": "M0 110 L900 0",
             "width": '200.00px',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 151,
           priority: events_emitter.EventPriority.LOW
         }
@@ -78,11 +76,10 @@ export default function enableJsunit() {
         console.log("[testPath02] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('path1');
-      let obj = JSON.parse(strJson);
-      console.info("[testPath02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('200.00px');
-      expect(obj.$attrs.height).assertEqual('200.00px');
+      let strJson: string = getInspectorByKey('path1');
+      console.info("[testPath02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('200.00px');
+      expect(JSON.parse(strJson).$attrs.height).assertEqual('200.00px');
       console.info('testPath02 END');
       done();
     });

@@ -13,31 +13,30 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
 export default function linkJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-
-  describe('linkTest', function () {
-    beforeEach(async function (done) {
+  describe('linkTest', () => {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Link',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Link state success " + JSON.stringify(pages));
         if (!("Link" == pages.name)) {
@@ -46,51 +45,48 @@ export default function linkJsunit() {
           console.info("push Link page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Link page error " + JSON.stringify(result));
+        console.error("push Link page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Link after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0370
-     * @tc.name      linkTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0370
+     * @tc.name linkTest001
+     * @tc.desc aceEtsTest
      */
-    it('linkTest001', 0, async function (done) {
+    it('linkTest001', 0, async () => {
       console.info('linkTest001 START');
       await sleep(1)
       let strJson = getInspectorByKey('Button');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Button');
       console.log(JSON.stringify(obj.$type))
       console.info("yr link0 type: " + JSON.stringify(obj.$type));
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link0 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
+      expect(JSON.parse(strJson).$attrs.stateEffect).assertEqual('false');
+      console.log("yr link0 stateEffect-'false'" + JSON.stringify(JSON.parse(strJson).$attrs.stateEffect))
       console.info('linkTest001 END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0380
-     * @tc.name      linkTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0380
+     * @tc.name linkTest001
+     * @tc.desc aceEtsTest
      */
-    it('linkTest002', 0, async function (done) {
+    it('linkTest002', 0, async () => {
       console.info('linkTest002 START');
       let strJson = getInspectorByKey('Button1');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.stateEffect).assertEqual('false');
-      console.log("yr link1 stateEffect-'false'" + JSON.stringify(obj.$attrs.stateEffect))
+      expect(JSON.parse(strJson).$attrs.stateEffect).assertEqual('false');
+      console.log("yr link1 stateEffect-'false'" + JSON.stringify(JSON.parse(strJson).$attrs.stateEffect))
       console.info('linkTest002 END');
-      done();
     });
   })
 }

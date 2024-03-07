@@ -15,22 +15,22 @@
 
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct AlertDialogCenterStart {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear AlertDialogCenterStart start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear AlertDialogCenterStart end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("alertDialog-CenterStart")
         .width(100)
@@ -76,16 +76,16 @@ struct AlertDialogCenterStart {
               cancel: () => {
                 console.info('Closed callbacks')
               },
-              alignment:DialogAlignment.CenterStart
+              alignment: DialogAlignment.CenterStart
             }
           )
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Result": true
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 81601,
               priority: events_emitter.EventPriority.LOW
             }
@@ -119,16 +119,16 @@ struct AlertDialogCenterStart {
               cancel: () => {
                 console.info('Closed callbacks')
               },
-              alignment:DialogAlignment.CenterEnd
+              alignment: DialogAlignment.CenterEnd
             }
           )
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Result": true
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 81602,
               priority: events_emitter.EventPriority.LOW
             }

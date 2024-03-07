@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct AlignContent_FlexAlign_Center_Margin {
-
   build() {
     Column() {
       Flex({

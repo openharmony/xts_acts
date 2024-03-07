@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,14 +27,14 @@ struct VideoCreateComponent {
 
   onPageShow() {
     console.info('[list] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 235,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] video stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));

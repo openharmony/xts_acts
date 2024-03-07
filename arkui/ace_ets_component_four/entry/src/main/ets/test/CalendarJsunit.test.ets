@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,28 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function calendarJsunit() {
-  describe('appInfoTest_four_1', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_1', () => {
+    beforeEach(async (done: Function) => {
       console.info("calendar beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/calendar',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/calendar',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get calendar state pages: " + JSON.stringify(pages));
         if (!("calendar" == pages.name)) {
           console.info("get calendar state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push calendar page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push calendar page error: " + err);
@@ -42,21 +39,21 @@ export default function calendarJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("calendar after each called");
     })
 
-    it('ACE_calendar_CurrentDayStyle_colSpace', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_colSpace', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_colSpace] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "colSpace": 10,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -68,16 +65,16 @@ export default function calendarJsunit() {
       done();
     });
 
-    it('ACE_calendar_CurrentDayStyle_dailyFiveRowSpace', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_dailyFiveRowSpace', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_dailyFiveRowSpace] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "dailyFiveRowSpace": 11,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -90,16 +87,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_dailySixRowSpace', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_dailySixRowSpace', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_dailySixRowSpace] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "dailySixRowSpace": 12,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -112,16 +109,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_lunarHeight', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_lunarHeight', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_lunarHeight] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "lunarHeight": 13,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -134,16 +131,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_underscoreWidth', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_underscoreWidth', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_underscoreWidth] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "underscoreWidth": 14,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -156,16 +153,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_underscoreLength', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_underscoreLength', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_underscoreLength] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "underscoreLength": 15,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -178,16 +175,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_scheduleMarkerRadius', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_scheduleMarkerRadius', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_scheduleMarkerRadius] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scheduleMarkerRadius": 16,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -200,16 +197,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CurrentDayStyle_boundaryRowOffset', 0, async function (done) {
+    it('ACE_calendar_CurrentDayStyle_boundaryRowOffset', 0, async (done: Function) => {
       console.info('[ACE_calendar_CurrentDayStyle_boundaryRowOffset] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "boundaryRowOffset": 17,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -221,16 +218,16 @@ export default function calendarJsunit() {
       done();
     });
 
-    it('ACE_calendar_WeekStyle_weekAndDayRowSpace', 0, async function (done) {
+    it('ACE_calendar_WeekStyle_weekAndDayRowSpace', 0, async (done: Function) => {
       console.info('[ACE_calendar_WeekStyle_weekAndDayRowSpace] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "weekAndDayRowSpace": 18,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }
@@ -243,16 +240,16 @@ export default function calendarJsunit() {
     });
 
 
-    it('ACE_calendar_CalendarAttribute_direction', 0, async function (done) {
+    it('ACE_calendar_CalendarAttribute_direction', 0, async (done: Function) => {
       console.info('[ACE_calendar_CalendarAttribute_direction] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": Axis.Vertical,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 74,
           priority: events_emitter.EventPriority.LOW
         }

@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gaugeColorsJsunit() {
-  describe('gaugeColorsTest', function () {
-    beforeAll(async function (done) {
+  describe('gaugeColorsTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/gauge',
@@ -37,10 +37,9 @@ export default function gaugeColorsJsunit() {
       } catch (err) {
         console.error("push gauge page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gaugeColors after each called");
     });
@@ -50,16 +49,16 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0001
      * @tc.desic         acegaugeColorsEtsTest0001
      */
-    it('testgaugeColors0001', 0, async function (done) {
+    it('testgaugeColors0001', 0, async () => {
       console.info('gaugeColors testgaugeColors0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.width).assertEqual("200.00vp");
-      console.info("[testgaugeColors0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("200.00vp");
+      console.info("[testgaugeColors0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0002
      * @tc.desic         acegaugeColorsEtsTest0002
      */
-    it('testgaugeColors0002', 0, async function (done) {
+    it('testgaugeColors0002', 0, async () => {
       console.info('gaugeColors testgaugeColors0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.height).assertEqual("200.00vp");
-      console.info("[testgaugeColors0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("200.00vp");
+      console.info("[testgaugeColors0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0003
      * @tc.desic         acegaugeColorsEtsTest0003
      */
-    it('testgaugeColors0003', 0, async function (done) {
+    it('testgaugeColors0003', 0, async () => {
       console.info('gaugeColors testgaugeColors0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0003] component startAngle strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.startAngle).assertEqual("210.00");
-      console.info("[testgaugeColors0003] startAngle value :" + obj.$attrs.startAngle);
-      done();
+      expect(JSON.parse(strJson).$attrs.startAngle).assertEqual("210.00");
+      console.info("[testgaugeColors0003] startAngle value :" + JSON.parse(strJson).$attrs.startAngle);
+
     });
 
     /*
@@ -101,16 +100,16 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0004
      * @tc.desic         acegaugeColorsEtsTest0004
      */
-    it('testgaugeColors0004', 0, async function (done) {
+    it('testgaugeColors0004', 0, async () => {
       console.info('gaugeColors testgaugeColors0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0004] component endAngle strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.endAngle).assertEqual("150.00");
-      console.info("[testgaugeColors0004] endAngle value :" + obj.$attrs.endAngle);
-      done();
+      expect(JSON.parse(strJson).$attrs.endAngle).assertEqual("150.00");
+      console.info("[testgaugeColors0004] endAngle value :" + JSON.parse(strJson).$attrs.endAngle);
+
     });
 
     /*
@@ -118,16 +117,16 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0005
      * @tc.desic         acegaugeColorsEtsTest0005
      */
-    it('testgaugeColors0005', 0, async function (done) {
+    it('testgaugeColors0005', 0, async () => {
       console.info('gaugeColors testgaugeColors0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0005] component strokeWidth strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.strokeWidth).assertEqual("20.00vp");
-      console.info("[testgaugeColors0005] strokeWidth value :" + obj.$attrs.strokeWidth);
-      done();
+      expect(JSON.parse(strJson).$attrs.strokeWidth).assertEqual("20.00vp");
+      console.info("[testgaugeColors0005] strokeWidth value :" + JSON.parse(strJson).$attrs.strokeWidth);
+
     });
 
     /*
@@ -135,16 +134,17 @@ export default function gaugeColorsJsunit() {
      * @tc.name         testgaugeColors0006
      * @tc.desic         acegaugeColorsEtsTest0006
      */
-    it('testgaugeColors0006', 0, async function (done) {
+    it('testgaugeColors0006', 0, async () => {
       console.info('gaugeColors testgaugeColors0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Gauge');
       console.info("[testgaugeColors0006] component colors strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Gauge');
-      expect(obj.$attrs.colors).assertEqual('[["#FF317AF7",1],["#FF5BA854",1],["#FFE08C3A",1],["#FF9C554B",1],["#FFD94838",1]]');
-      console.info("[testgaugeColors0006] colors value :" + obj.$attrs.colors);
-      done();
+      expect(JSON.parse(strJson).$attrs.colors)
+        .assertEqual('[["#FF317AF7",1],["#FF5BA854",1],["#FFE08C3A",1],["#FF9C554B",1],["#FFD94838",1]]');
+      console.info("[testgaugeColors0006] colors value :" + JSON.parse(strJson).$attrs.colors);
+
     });
   })
 }

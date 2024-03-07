@@ -15,5 +15,5 @@
 import effectKitTest from './effectKit.test'
 
 export default function testsuite(context, windowStage, abilityStorage) {
-  effectKitTest()
+  effectKitTest();
 }

@@ -44,6 +44,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[3].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
         expect(data.hapModulesInfo[0].abilitiesInfo[4].type).assertEqual(bundle.AbilityType.PAGE);
         expect(data.hapModulesInfo[0].abilitiesInfo[4].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
+        expect(data.hapModulesInfo[0].codePath).assertEqual("/data/storage/el1/bundle/entry.hap");
         console.info("AbilityPro11" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0]));
         done();
       }).catch(err => {
