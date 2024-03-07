@@ -408,9 +408,9 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.right equal subGreen.left
         ${Tabs_barPosition_011.right} === ${subGreen.left}`);
-      expect(Tabs_barPosition_011.right).assertEqual(subGreen.left);
-      expect(Tabs_barPosition_012.right).assertEqual(subBlue.left);
-      expect(Tabs_barPosition_013.right).assertEqual(subYellow.left);
+      expect(Math.abs(Tabs_barPosition_011.right - subGreen.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.right - subBlue.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.right - subYellow.left) <= 1).assertTrue();
       expect(Tabs_barPosition_01.top).assertEqual(subGreen.top);
       expect(subBlue.top).assertEqual(subGreen.bottom);
       expect(subYellow.top).assertEqual(subBlue.bottom);

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,14 +21,15 @@ import events_emitter from '@ohos.events.emitter';
 struct promptExample {
   @State text: string = 'item1'
   @State color: string = '#000000'
-  build(){
-    Column(){
+
+  build() {
+    Column() {
       Button('showActionMenu')
         .key('button1')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           prompt.showActionMenu({
             title: 'Title Info',
             buttons: [
@@ -38,11 +38,11 @@ struct promptExample {
                 color: this.color,
               },
             ],
-            success: function(data) {
+            success: function (data) {
               console.log('dialog success callback，click button : ' + data.tapIndex);
-              Utils.emitEvent(this.text,404)
+              Utils.emitEvent(this.text, 404)
             },
-            fail: function(data) {
+            fail: function (data) {
               console.log('dialog fail callback' + data.errMsg);
             },
           });
@@ -51,8 +51,8 @@ struct promptExample {
         .key('button2')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=> {
+        .margin({ top: 20 })
+        .onClick(() => {
           prompt.showDialog({
             title: 'Title Info',
             message: 'Message Info',
@@ -62,11 +62,11 @@ struct promptExample {
                 color: this.color,
               },
             ],
-            success: function(data) {
+            success: function (data) {
               console.log('dialog success callback，click button : ' + data.index);
-              Utils.emitEvent(this.text,404)
+              Utils.emitEvent(this.text, 404)
             },
-            cancel: function() {
+            cancel: function () {
               console.log('dialog cancel callback');
             },
           });
@@ -75,76 +75,76 @@ struct promptExample {
         .key('button3')
         .backgroundColor('#ffe20b48')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=>{
-            prompt.showDialog({
-                title: 'Title Info',
-                message: 'Message Info',
-                buttons: [
-                  {
-                    text: 'button1',
-                    color: '#000000',
-                  },
-                  {
-                    text: 'button2',
-                    color: '#000000',
-                  }
-                ],
-              })
-                .then(data => {
-                  Utils.emitEvent('sucessful',422)
-                  console.info('showDialog success, click button: ' + data.index);
-                })
-                .catch(err => {
-                  console.info('showDialog error: ' + err);
-                })
+        .margin({ top: 20 })
+        .onClick(() => {
+          prompt.showDialog({
+            title: 'Title Info',
+            message: 'Message Info',
+            buttons: [
+              {
+                text: 'button1',
+                color: '#000000',
+              },
+              {
+                text: 'button2',
+                color: '#000000',
+              }
+            ],
+          })
+            .then(data => {
+              Utils.emitEvent('sucessful', 422)
+              console.info('showDialog success, click button: ' + data.index);
+            })
+            .catch(err => {
+              console.info('showDialog error: ' + err);
+            })
         })
       Button('showActionMenu2')
         .key('button6')
         .backgroundColor('#ffe20b48')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=>{
-            prompt.showActionMenu({
-			  title: 'showActionMenu Title Info',
-			  buttons: [
-				{
-				  text: 'item1',
-				  color: '#666666',
-				},
-				{
-				  text: 'item2',
-				  color: '#000000',
-				},
-			  ]
-			})
-			  .then(data => {
-        Utils.emitEvent(this.text,404)
-				console.info('showActionMenu success, click button: ' + data.index);
-			  })
-			  .catch(err => {
-				console.info('showActionMenu error: ' + err);
-			  })
+        .margin({ top: 20 })
+        .onClick(() => {
+          prompt.showActionMenu({
+            title: 'showActionMenu Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666',
+              },
+              {
+                text: 'item2',
+                color: '#000000',
+              },
+            ]
+          })
+            .then(data => {
+              Utils.emitEvent(this.text, 404)
+              console.info('showActionMenu success, click button: ' + data.index);
+            })
+            .catch(err => {
+              console.info('showActionMenu error: ' + err);
+            })
         })
       Button('showDialog2')
         .key('button5')
         .backgroundColor('#ffe20b56')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=> {
+        .margin({ top: 20 })
+        .onClick(() => {
           promptAction.showDialog({
             title: 'Title Info',
             message: 'Message Info',
             buttons: [
               {
-                text:  this.text,
+                text: this.text,
                 color: this.color,
               },
             ],
           })
             .then(data => {
               console.info('showDialog success, click button: ' + data.tapIndex);
-              Utils.emitEvent('sucessful',422)
+              Utils.emitEvent('sucessful', 422)
             })
             .catch(data => {
               console.info('showDialog error: ' + data.errMsg);
@@ -154,8 +154,8 @@ struct promptExample {
         .key('button5')
         .backgroundColor('#ffe20b56')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=> {
+        .margin({ top: 20 })
+        .onClick(() => {
           try {
             promptAction.showDialog({
               title: 'showDialog Title Info',
@@ -179,14 +179,15 @@ struct promptExample {
             });
           } catch (error) {
             console.error(`showDialog args error code is ${error.code}, message is ${error.message}`);
-          };
+          }
+          ;
         })
       Button('showDialog2')
         .key('button5')
         .backgroundColor('#ffe20b56')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=> {
+        .margin({ top: 20 })
+        .onClick(() => {
           try {
             promptAction.showActionMenu({
               title: 'showActionMenu Title Info',
@@ -209,7 +210,8 @@ struct promptExample {
               })
           } catch (error) {
             console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-          };
+          }
+          ;
 
         })
 
@@ -217,8 +219,8 @@ struct promptExample {
         .key('button5')
         .backgroundColor('#ffe20b56')
         .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=> {
+        .margin({ top: 20 })
+        .onClick(() => {
           try {
             promptAction.showActionMenu({
               title: 'showActionMenu Title Info',
@@ -241,7 +243,8 @@ struct promptExample {
               })
           } catch (error) {
             console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-          };
+          }
+          ;
         })
     }
   }

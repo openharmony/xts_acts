@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function webViewPageattrLackJsunit() {
-  describe('webViewPageattrLackJsunit', function () {
-    beforeAll(async function (done) {
+  describe('webViewPageattrLackJsunit', () => {
+    beforeAll(async (done: Function) => {
       console.info("webviewpageLackattr beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/webviewpageLackattr',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webviewpageLackattr',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function webViewPageattrLackJsunit() {
         console.info("get webviewpageLackattr state success " + JSON.stringify(pages));
         if (!("webviewpageLackattr" == pages.name)) {
           console.info("get webviewpageLackattr state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webviewpageLackattr page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function webViewPageattrLackJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("webviewpageLackattr after each called");
     });
@@ -52,21 +52,21 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr01
      * @tc.desic        test headerv9
      */
-    it('testWebviewpageLackattr01', 0, async function (done) {
+    it('testWebviewpageLackattr01', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr01 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr01 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertTrue();
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90201,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('loadUrl', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr01 events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr01 END');
@@ -78,21 +78,21 @@ export default function webViewPageattrLackJsunit() {
     * @tc.name         testWebviewpageLackattr02
     * @tc.desic        test HitTestType
     */
-    it('testWebviewpageLackattr02', 0, async function (done) {
+    it('testWebviewpageLackattr02', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr02 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr02 get state result is: " + JSON.stringify(indexEvent));
           expect(!!indexEvent.data.STATUS).assertTrue();
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90202,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('getHitTest', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr02events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr02 END');
@@ -104,21 +104,21 @@ export default function webViewPageattrLackJsunit() {
     * @tc.name         testWebviewpageLackattr04
     * @tc.desic        test getOrigins
     */
-    it('testWebviewpageLackattr04', 0, async function (done) {
+    it('testWebviewpageLackattr04', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr04 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr04 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertEqual('prign');
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90204,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('getOriginsPromise', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr04events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr04 END');
@@ -130,21 +130,21 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr03
      * @tc.desic        test HitTestValue
      */
-    it('testWebviewpageLackattr03', 0, async function (done) {
+    it('testWebviewpageLackattr03', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr03 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr03 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS.extra).assertEqual('hello');
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90203,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('getHitTestValue', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr03events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr03 END');
@@ -156,13 +156,12 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testgetOriginQuota005
      * @tc.desic        getOriginQuota
      */
-    it('testgetOriginQuota005', 0, async function (done) {
+    it('testgetOriginQuota005', 0, async (done: Function) => {
       console.info('testgetOriginQuota005 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('getOriginQuotakey');
+      let strJson: string = getInspectorByKey('getOriginQuotakey');
       console.info("[testgetOriginQuota005] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Button');
+      expect(JSON.parse(strJson).$type).assertEqual('Button');
       done();
     });
 
@@ -171,21 +170,21 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr06
     * @tc.desic        test getOriginUsage
     */
-    it('testWebviewpageLackattr6', 0, async function (done) {
+    it('testWebviewpageLackattr6', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr06 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr06 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS.usage).assertEqual(0);
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90206,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('getOriginUsage', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr06events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr06 END');
@@ -197,21 +196,21 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr07
     * @tc.desic        test saveCookieAsync
     */
-    it('testWebviewpageLackattr7', 0, async function (done) {
+    it('testWebviewpageLackattr7', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr07 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr07 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.STATUS).assertTrue();
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90207,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('saveCookieAsync', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr07events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr07END');
@@ -223,21 +222,21 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr08
     * @tc.desic        test saveCookieAsync
     */
-    it('testWebviewpageLackattr8', 0, async function (done) {
+    it('testWebviewpageLackattr8', 0, async (done: Function) => {
       console.info('testWebviewpageLackattr08 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr08 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS !=null).assertTrue();
+          expect(indexEvent.data.STATUS != null).assertTrue();
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90208,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('saveWebArchive', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr8events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr08END');
@@ -249,27 +248,26 @@ export default function webViewPageattrLackJsunit() {
      * @tc.name         testWebviewpageLackattr08
     * @tc.desic        test runJavaScript
     */
-    it('testWebviewpageLackattr9', 0, async function (done) {
+    it('testWebviewpageLackattr9', 0, async (done: Function) => {
       console.info('testrunJavaScript09 START');
       await Utils.sleep(2000);
-      try{
-        let callback = (indexEvent) => {
+      try {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("testWebviewpageLackattr09 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.STATUS !=null).assertTrue();
+          expect(indexEvent.data.STATUS != null).assertTrue();
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 90209,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('runJavaScript', 10, "")
         events_emitter.on(indexEvent, callback);
-      }catch(err){
+      } catch (err) {
         console.info("testWebviewpageLackattr9events_emitter err : " + JSON.stringify(err));
       }
       console.info('testWebviewpageLackattr09END');
       done();
     });
-
 
 
   })

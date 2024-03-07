@@ -12,51 +12,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
-import {Driver, ON, Component} from "@ohos.UiTest";
+import { Driver, ON, Component } from "@ohos.UiTest";
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-export default function StartAbilityTest() {
-  let TAG = '';
-  describe("StartAbilityTest", function () {
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
-    }
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
 
-    beforeEach(async  function(done) {
+export default function StartAbilityTest() {
+  let TAG: string = '';
+  describe("StartAbilityTest", () => {
+
+
+    beforeEach(async (done: Function) => {
       await sleep(500);
       done();
     })
-    
-    afterAll(async  function(done){
+
+    afterAll(async (done: Function) => {
       let driver = Driver.create();
       let componentCounter = await driver.findComponent(ON.text("知道了"));
-      if(componentCounter){
+      if (componentCounter) {
         componentCounter.click();
       }
       await sleep(500);
       done();
     })
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.log(TAG, ' afterEach start');
-      let intervalId;
-      let count = 0;
+      let intervalId: number;
+      let count: number = 0;
       if (globalThis.main3Context) {
         console.log(TAG, ' terminateSelf main3 start');
         globalThis.main3Context.terminateSelf();
-        intervalId = setInterval(()=>{
-          count ++;
+        intervalId = setInterval(() => {
+          count++;
           if (count > 10 || !globalThis.main3Context) {
             console.log(TAG, ' terminateSelf main3 end');
             clearInterval(intervalId);
@@ -66,8 +68,8 @@ export default function StartAbilityTest() {
       } else if (globalThis.main4AbilityContext) {
         console.log(TAG, ' terminateSelf main4 start');
         globalThis.main4AbilityContext.terminateSelf()
-        intervalId = setInterval(()=>{
-          count ++;
+        intervalId = setInterval(() => {
+          count++;
           if (count > 10 || !globalThis.main4AbilityContext) {
             console.log(TAG, ' terminateSelf main4 end');
             clearInterval(intervalId);
@@ -88,17 +90,16 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_START_ABILITY_CALLBACK_0001", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_0001", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_0001';
       console.log(TAG, ' start');
-      const want = {
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-        abilityName: "Main4Ability",
-      };
       setTimeout(() => {
         console.log(TAG, ' timeout1 start');
-        abilityDelegator.startAbility(want, () => {
+        abilityDelegator.startAbility({
+          bundleName: "com.example.delegatortest",
+          moduleName: "entry",
+          abilityName: "Main4Ability",
+        }, () => {
           console.log(TAG, ' startAbility callback');
           abilityDelegator.printSync(
             "ACTS_STARTABILITY_CALLBACK_0001 startAbility callback"
@@ -107,7 +108,7 @@ export default function StartAbilityTest() {
             console.log(TAG, ' timeout2 start');
             try {
               abilityDelegator.getCurrentTopAbility(
-                (err: any, ability: any) => {
+                (err: BusinessError, ability: UIAbility) => {
                   console.log(TAG, ' getCurrentTopAbility callback, ability != null' + (ability != null));
                   if (ability != null) {
                     abilityDelegator.printSync(
@@ -130,7 +131,7 @@ export default function StartAbilityTest() {
                   }
                 }
               );
-            } catch(e) {
+            } catch (e) {
               console.log(TAG, ' getCurrentTopAbility fail, e=' + JSON.stringify(e));
               expect().assertFail();
               done();
@@ -148,10 +149,10 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_PARAMETER_0002", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_PARAMETER_0002", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_PARAMETER_0002';
       console.log(TAG, ' start');
-      const want = {
+      abilityDelegator.startAbility({
         moduleName: "entry",
         bundleName: "com.example.delegatortest",
         abilityName: "Main3Ability",
@@ -161,8 +162,7 @@ export default function StartAbilityTest() {
           keyForDouble: 99.99,
           keyForBoolean: true,
         },
-      };
-      abilityDelegator.startAbility(want, () => {
+      }, () => {
         console.log(TAG, ' startAbility callback');
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_PARAMETER_0002 startAbility callback"
@@ -170,9 +170,7 @@ export default function StartAbilityTest() {
         setTimeout(() => {
           console.log(TAG, ' timeout callback');
           try {
-            abilityDelegator.getCurrentTopAbility((err: any, ability: any) => {
-              console.log(TAG, ' getCurrentTopAbility success, err=', + JSON.stringify(err));
-              console.log(TAG, ' getCurrentTopAbility success, ability=', + JSON.stringify(ability));
+            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability: UIAbility) => {
               abilityDelegator.printSync(
                 "ACTS_START_ABILITY_CALLBACK_PARAMETER_0002 getCurrentTopAbility: " +
                 ability.context.abilityInfo.name
@@ -180,7 +178,6 @@ export default function StartAbilityTest() {
               expect(ability.context.abilityInfo.name).assertEqual(
                 "Main3Ability"
               );
-              console.log(TAG, ' globalThis.want=', + JSON.stringify(globalThis.want));
               expect(globalThis.want.parameters["keyForString"]).assertEqual(
                 "test start"
               );
@@ -211,19 +208,18 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it("ACTS_START_ABILITY_PROMISE_0001", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_0001", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_0001';
       console.log(TAG, ' start');
-      const want = {
+      console.log(TAG, ' startAbility start');
+      abilityDelegator.startAbility({
         moduleName: "entry",
         bundleName: "com.example.delegatortest",
         abilityName: "Main4Ability",
-      };
-      console.log(TAG, ' startAbility start');
-      abilityDelegator.startAbility(want).then((data)=>{
+      }).then((data) => {
         console.log(TAG, ' startAbility promise success');
-        setTimeout(()=>{
-          abilityDelegator.getCurrentTopAbility((err: any, ability: any) => {
+        setTimeout(() => {
+          abilityDelegator.getCurrentTopAbility((err: BusinessError, ability: UIAbility) => {
             console.log(TAG, ' getCurrentTopAbility callback, err=' + JSON.stringify(err));
             console.log(TAG, ' getCurrentTopAbility callback, ability=' + JSON.stringify(ability));
             expect(ability.context.abilityInfo.name).assertEqual("Main4Ability");
@@ -231,7 +227,7 @@ export default function StartAbilityTest() {
             done();
           });
         }, 3000)
-      }).catch((e)=>{
+      }).catch((e:BusinessError) => {
         console.log(TAG, " startAbility promise pass");
         console.log(TAG, ' catch error, e=' + JSON.stringify(e));
         expect().assertFail();
@@ -247,10 +243,10 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_PARAMETER_0002", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_PARAMETER_0002", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_PARAMETER_0002';
       console.log(TAG, ' start');
-      const want = {
+      await abilityDelegator.startAbility({
         moduleName: "entry",
         bundleName: "com.example.delegatortest",
         abilityName: "Main3Ability",
@@ -260,12 +256,11 @@ export default function StartAbilityTest() {
           keyForDouble: 99.99,
           keyForBoolean: true,
         },
-      };
-      await abilityDelegator.startAbility(want).then((data) => {
+      }).then((data) => {
         console.log(TAG, ' startAbility promise, data=', JSON.stringify(data));
         setTimeout(() => {
           try {
-            abilityDelegator.getCurrentTopAbility((err: any, ability: any) => {
+            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability: UIAbility) => {
               console.log(TAG, ' getCurrentTopAbility callback, err=', JSON.stringify(err));
               console.log(TAG, ' getCurrentTopAbility callback, ability=', JSON.stringify(ability));
               abilityDelegator.printSync(
@@ -310,17 +305,16 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0001", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0001", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0001';
       console.log(TAG, ' start');
-      const want = {
-        moduleName: "entry",
-        bundleName: "com.example.error",
-        abilityName: "Main4Ability",
-      };
       try {
         await abilityDelegator
-          .startAbility(want)
+          .startAbility({
+            moduleName: "entry",
+            bundleName: "com.example.error",
+            abilityName: "Main4Ability",
+          })
           .then((data) => {
             console.log(TAG, ' startAbility promise, data=', JSON.stringify(data));
             abilityDelegator.printSync(
@@ -328,7 +322,7 @@ export default function StartAbilityTest() {
             );
             expect().assertFail();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             console.log(TAG, ' startAbility promise, catch error, error=', JSON.stringify(error));
             abilityDelegator.printSync(
               "ACTS_STARTABILITY_PROMISE_ERROR_0001 meet an error: " + error
@@ -362,16 +356,15 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0002", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0002", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0002';
       console.log(TAG, ' start');
-      const want = {
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
       try {
         await abilityDelegator
-          .startAbility(want)
+          .startAbility({
+            bundleName: "com.example.delegatortest",
+            moduleName: "entry",
+          })
           .then((data) => {
             console.log(TAG, ' startAbility promise, data=', JSON.stringify(data))
             abilityDelegator.printSync(
@@ -379,7 +372,7 @@ export default function StartAbilityTest() {
             );
             expect().assertFail();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             console.log(TAG, ' startAbility promise error, error=', JSON.stringify(error))
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0002 meet an error: " + error
@@ -413,16 +406,15 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0003", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0003", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0003';
       console.log(TAG, ' start');
-      const want = {
-        moduleName: "entry",
-        abilityName: "Main4Ability",
-      };
       try {
         await abilityDelegator
-          .startAbility(want)
+          .startAbility({
+            moduleName: "entry",
+            abilityName: "Main4Ability",
+          })
           .then((data) => {
             console.log(TAG, ' startAbility promise, data=', JSON.stringify(data))
             abilityDelegator.printSync(
@@ -430,7 +422,7 @@ export default function StartAbilityTest() {
             );
             expect().assertFail();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             console.log(TAG, ' startAbility promise error, error=', JSON.stringify(error))
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0003 meet an error: " + error
@@ -464,13 +456,12 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0006", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0006", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0006';
       console.log(TAG, ' start');
-      const want = {};
       try {
         await abilityDelegator
-          .startAbility(want)
+          .startAbility({})
           .then((data) => {
             console.log(TAG, ' startAbility promise, data=', JSON.stringify(data))
             abilityDelegator.printSync(
@@ -478,7 +469,7 @@ export default function StartAbilityTest() {
             );
             expect().assertFail();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             console.log(TAG, ' startAbility promise error, error=', JSON.stringify(error))
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0006 meet an error: " + error
@@ -512,7 +503,7 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_PROMISE_ERROR_0007", 0, async function (done) {
+    it("ACTS_START_ABILITY_PROMISE_ERROR_0007", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_PROMISE_ERROR_0007';
       console.log(TAG, ' start');
       const want = undefined;
@@ -526,7 +517,7 @@ export default function StartAbilityTest() {
             );
             expect().assertFail();
           })
-          .catch((error) => {
+          .catch((error:BusinessError) => {
             console.log(TAG, ' startAbility promise error, error=', JSON.stringify(error))
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0007 meet an error: " + error
@@ -559,17 +550,15 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0001", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0001", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0001';
       console.log(TAG, ' start');
-      const want = {
+      abilityDelegator.startAbility({
         moduleName: "entry",
         bundleName: "com.example.error",
         abilityName: "Main4Ability",
-      };
-      abilityDelegator.startAbility(want, (err: any, data: any) => {
+      }, (err: BusinessError) => {
         console.log(TAG, ' startAbility callback, err=' + JSON.stringify(err));
-        console.log(TAG, ' startAbility callback, data=' + JSON.stringify(data));
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_ERROR_0001 startAbility callback"
         );
@@ -614,17 +603,14 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0002", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0002", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0002';
       console.log(TAG, ' start');
-      const want = {
+      abilityDelegator.startAbility({
         bundleName: "com.example.delegatortest",
         moduleName: "entry",
-      };
-
-      abilityDelegator.startAbility(want, (err: any, data: any) => {
+      }, (err: BusinessError) => {
         console.log(TAG, ' startAbility callback, err=' + JSON.stringify(err));
-        console.log(TAG, ' startAbility callback, data=' + JSON.stringify(data));
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_ERROR_0002 startAbility callback"
         );
@@ -669,17 +655,14 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0003", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0003", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0003';
       console.log(TAG, ' start');
-      const want = {
+      abilityDelegator.startAbility({
         moduleName: "entry",
         abilityName: "Main4Ability",
-      };
-
-      abilityDelegator.startAbility(want, (err: any, data: any) => {
+      }, (err: BusinessError) => {
         console.log(TAG, ' startAbility callback, err=' + JSON.stringify(err));
-        console.log(TAG, ' startAbility callback, data=' + JSON.stringify(data));
         abilityDelegator.printSync(
           "ACTS_STARTABILITY_CALLBACK_ERROR_0003 startAbility callback"
         );
@@ -724,13 +707,11 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0006", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0006", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0006';
       console.log(TAG, ' start');
-      const want = {};
-      abilityDelegator.startAbility(want, (err: any, data: any) => {
+      abilityDelegator.startAbility({}, (err: BusinessError) => {
         console.log(TAG, ' startAbility callback, err=' + JSON.stringify(err));
-        console.log(TAG, ' startAbility callback, data=' + JSON.stringify(data));
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_CALLBACK_ERROR_0006 startAbility callback"
         );
@@ -776,14 +757,13 @@ export default function StartAbilityTest() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it("ACTS_START_ABILITY_CALLBACK_ERROR_0007", 0, async function (done) {
+    it("ACTS_START_ABILITY_CALLBACK_ERROR_0007", 0, async (done: Function) => {
       TAG = 'ACTS_START_ABILITY_CALLBACK_ERROR_0007';
       console.log(TAG, ' start');
       const want = undefined;
       try {
-        abilityDelegator.startAbility(want, (err: any, data: any) => {
+        abilityDelegator.startAbility(want, (err: BusinessError) => {
           console.log(TAG, ' startAbility callback, err=' + JSON.stringify(err));
-          console.log(TAG, ' startAbility callback, data=' + JSON.stringify(data));
           abilityDelegator.printSync(
             "ACTS_START_ABILITY_CALLBACK_ERROR_0007 startAbility callback"
           );

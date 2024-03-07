@@ -23,10 +23,8 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct RouterStandard {
-
-
-  async  routePage() {
-    let options = {
+  async routePage() {
+    let options:router.RouterOptions = {
       url: 'pages/page1',
       params: {
         text: '这是第一页的值',
@@ -34,14 +32,14 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options)
+      await router.pushUrl(options)
     } catch (err) {
       console.info(`Standard Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }
   }
 
-  async  routeSinglePage() {
-    let options = {
+  async routeSinglePage() {
+    let options:router.RouterOptions = {
       url: 'pages/page2',
       params: {
         text: '这是第二页的值',
@@ -49,7 +47,7 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options)
+      await router.pushUrl(options)
     } catch (err) {
       console.info(`Single Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }
@@ -59,13 +57,13 @@ struct RouterStandard {
     Log.showInfo(TAG, `aboutToAppear RouterStandard start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear RouterStandard end`)
   }
 
-  build(){
+  build() {
 
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("router-Standard")
         .width(100)
@@ -101,7 +99,7 @@ struct RouterStandard {
           this.routeSinglePage()
         })
 
-         Text('这是第一页')
+      Text('这是第一页')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Button() {
@@ -114,8 +112,9 @@ struct RouterStandard {
       .onClick(() => {
         this.routePage()
       })
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

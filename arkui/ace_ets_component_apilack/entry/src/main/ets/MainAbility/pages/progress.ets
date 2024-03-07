@@ -14,22 +14,22 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct ProgressStyle {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear ProgressStyle start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear ProgressStyle end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("progress-Style")
         .width(100)
@@ -46,9 +46,11 @@ struct ProgressStyle {
         .key("styleText")
       Row({ space: 40 }) {
         Progress({ value: 20, total: 150, type: ProgressType.ScaleRing })
-          .color(Color.Green).value(50).width(100)
+          .color(Color.Green)
+          .value(50)
+          .width(100)
           .style({ strokeWidth: 20, scaleCount: 30, scaleWidth: 20 })
-        .key("Progress")
+          .key("Progress")
       }
     }.width("100%").height("100%")
   }

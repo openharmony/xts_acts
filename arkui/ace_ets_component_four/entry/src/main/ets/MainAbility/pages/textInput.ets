@@ -15,6 +15,12 @@
  */
 import events_emitter from '@ohos.events.emitter';
 
+class CaretOffset {
+  index: number;
+  x: number;
+  y: number;
+}
+
 @Entry
 @Component
 struct TextAreaExample2 {
@@ -23,21 +29,21 @@ struct TextAreaExample2 {
   @State fontSize: number = 16;
   @State fontColor: Color = Color.Black;
   @State textAlign: TextAlign = TextAlign.Start;
-  @State caretIndex : number = 9999
+  @State caretIndex: number = 9999
   @State text2: string = ''
   @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
   controller: TextInputController = new TextInputController()
   controller2: TextInputController = new TextInputController()
 
   onPageShow() {
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 225,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
       if (eventData.data.fontSize != null) {
@@ -75,8 +81,8 @@ struct TextAreaExample2 {
         .fontFamily("sans-serif")
         .fontStyle(FontStyle.Normal)
         .fontColor(this.fontColor)
-        .inputFilter('^[\u4E00-\u9FA5A-Za-z0-9_]+$',(value: string) => {
-          console.info("hyb"+value)
+        .inputFilter('^[\u4E00-\u9FA5A-Za-z0-9_]+$', (value: string) => {
+          console.info("hyb" + value)
         })
         .onChange((value: string) => {
           this.text = value
@@ -87,7 +93,7 @@ struct TextAreaExample2 {
           this.controller.caretPosition(4)
         })
 
-      TextInput({text: this.text2, placeholder: 'input your word', controller: this.controller2 })
+      TextInput({ text: this.text2, placeholder: 'input your word', controller: this.controller2 })
         .key('TextInput2')
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
@@ -114,7 +120,8 @@ struct TextAreaExample2 {
         })
         .key('caretOffsetBtn2')
 
-      Text("Index" + this.caretIndex).key('caretOffsetText2')
+      Text("Index" + this.caretIndex)
+        .key('caretOffsetText2')
     }
   }
 }

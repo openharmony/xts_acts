@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -50,7 +51,7 @@ struct PolyLineNe {
         .key("neText")
 
       Polyline().width("100px").height("100px").points([[0, 0], [0, 100], [100, 100]])
-      .key("Polyline")
+        .key("Polyline")
 
     }.width("100%").height("100%")
   }

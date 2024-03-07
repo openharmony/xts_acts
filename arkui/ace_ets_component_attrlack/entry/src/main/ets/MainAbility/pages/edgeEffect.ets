@@ -28,13 +28,17 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
-                .width('100%').height(100).fontSize(16)
-                .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .key('list')
         .listDirection(Axis.Vertical) // 排列方向
@@ -50,10 +54,14 @@ struct ListExample {
           this.arr.splice(index, 1)
           console.info(JSON.stringify(this.arr))
           return true
-        }).width('90%')
+        })
+        .width('90%')
       }.width('100%')
-
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
   }
 }
 

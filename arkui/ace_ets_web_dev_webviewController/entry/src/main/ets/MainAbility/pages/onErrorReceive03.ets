@@ -15,38 +15,42 @@
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
+
 @Entry
 @Component
 struct onErrorReceive03 {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State str:string= "emitOnErrorReceive03";
-  @State testMultiWindowAccess:boolean = true;
-  @State testAllowWindowOpenMethod:boolean = true;
-  @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-  @State javaScriptAccess:boolean=true;
-  @State fileAccess:boolean=true;
-  @State domStorageAccess:boolean=false;
-  @State imageAccess:boolean=true;
-  @State onlineImageAccess:boolean=true;
-  @State databaseAccess:boolean=true;
-  onPageShow(){
-    let valueChangeEvent={
-      eventId:10,
-      priority:events_emitter.EventPriority.LOW
+  @State str: string = "emitOnErrorReceive03";
+  @State testMultiWindowAccess: boolean = true;
+  @State testAllowWindowOpenMethod: boolean = true;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = false;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
   }
-  private valueChangeCallBack=(eventData)=>{
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("onErrorReceive03 page valueChangeCallBack");
-    if(eventData != null){
-      console.info("valueChangeCallBack:"+ JSON.stringify(eventData));
-      if(eventData.data.ACTION != null){
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
   }
-  build(){
-    Column(){
+
+  build() {
+    Column() {
       Row() {
         Button("web click").key('onErrorReceive03').onClick(async () => {
           console.info("key==>" + this.str)
@@ -62,12 +66,13 @@ struct onErrorReceive03 {
           }
         })
       }
-      Web({ src:$rawfile('onErrorReceive.html'), controller: this.controller })
+
+      Web({ src: $rawfile('onErrorReceive.html'), controller: this.controller })
         .multiWindowAccess(this.testMultiWindowAccess)
         .allowWindowOpenMethod(this.testAllowWindowOpenMethod)
         .onErrorReceive((event) => {
           console.log(`onErrorReceive start`);
-          if(event) {
+          if (event) {
             let errorInfo = event.error.getErrorInfo();
             console.log(`errorInfo is: ${errorInfo}`);
             Utils.emitEvent(errorInfo, 7122)

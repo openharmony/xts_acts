@@ -26,130 +26,132 @@ import fileio from '@ohos.fileio';
 @Entry
 @Component
 struct webViewONHttpErrorReceiveNumber {
-    controller: web_webview.WebviewController = new web_webview.WebviewController();
-    responseweb: WebResourceResponse = new WebResourceResponse()
-    heads:Header[] = new Array()
-    @State str:string="emitOnHttpErrorReceiveByNumber";
-    @State javaScriptAccess:boolean=true;
-    @State fileAccess:boolean=true;
-    @State domStorageAccess:boolean=false;
-    @State imageAccess:boolean=true;
-    @State onlineImageAccess:boolean=true;
-    @State databaseAccess:boolean=true;
-    @State userAgent:string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
-    @State title:string = "test";
-    @State webFilename:string=' ';
-    @State cachedir:string ='/data/storage/el2/base/cache'
+  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  responseweb: WebResourceResponse = new WebResourceResponse()
+  heads: Header[] = new Array()
+  @State str: string = "emitOnHttpErrorReceiveByNumber";
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = false;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+  @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
+  @State title: string = "test";
+  @State webFilename: string = ' ';
+  @State cachedir: string = '/data/storage/el2/base/cache'
 
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webViewONHttpErrorReceiveNumber page valueChangeCallBack");
-        if(eventData != null){
-                console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-                if(eventData.data.ACTION != null){
-                    this.str = eventData.data.ACTION;
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info("webViewONHttpErrorReceiveNumber page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("onHttpErrorTest").key('webViewONHttpErrorReceiveNumber').onClick(async () => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitOnHttpErrorReceiveByNumber": {
+              try {
+                this.controller.storeWebArchive("/data/storage/el2/base/test.html", false, (error, filename) => {
+                  if (error) {
+                    console.info(`save web archive error: ` + JSON.stringify(error))
+                    return;
+                  }
+                  if (filename != null) {
+                    console.info(`save web archive success: ${filename}`)
+                    this.webFilename = filename
+                  }
+                });
+                if (fs.accessSync(this.cachedir + "test.html")) {
+                  try {
+                    let fd = fileio.openSync(this.cachedir + 'test.html', 0o102, 0o666)
+                    this.responseweb.setResponseData(fd)
+                    this.responseweb.setResponseIsReady(true)
+                  } catch (error) {
+                    console.error('failed')
+                  }
                 }
-        }
-    }
+                this.controller.refresh();
+                await Utils.sleep(1000);
+                this.title = this.controller.getTitle();
+                console.log("title of this page: " + this.title);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              this.controller.runJavaScript("test()", (res) => {
+                Utils.emitEvent(this.title, 402)
+              })
+              break;
+            }
+          }
+        })
+      }
 
-    build() {
-        Column() {
-            Row() {
-                Button("onHttpErrorTest").key('webViewONHttpErrorReceiveNumber').onClick(async () => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitOnHttpErrorReceiveByNumber": {
-                            try {
-                                this.controller.storeWebArchive("/data/storage/el2/base/test.html", false, (error, filename) => {
-                                if (error) {
-                                    console.info(`save web archive error: ` + JSON.stringify(error))
-                                    return;
-                                }
-                                if (filename != null) {
-                                    console.info(`save web archive success: ${filename}`)
-                                    this.webFilename = filename
-                                }
-                                });
-                                if(fs.accessSync(this.cachedir + "test.html")){
-                                    try {
-                                        let fd = fileio.openSync(this.cachedir + 'test.html', 0o102, 0o666)
-                                        this.responseweb.setResponseData(fd)
-                                        this.responseweb.setResponseIsReady(true)
-                                    } catch(error) {
-                                        console.error('failed')
-                                    }
-                                }
-                                this.controller.refresh();
-                                await Utils.sleep(1000);
-                                this.title = this.controller.getTitle();
-                                console.log("title of this page: " + this.title);
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            this.controller.runJavaScript("test()",(res) => {
-                                Utils.emitEvent(this.title, 402)
-                            })
-                            break;
-                        }
-                    }
-                })
-            }
-            Web({ src:'http://1.1.1.123/index.html', controller: this.controller })
-                .javaScriptAccess(this.javaScriptAccess)
-                .fileAccess(this.fileAccess)
-                .imageAccess(this.imageAccess)
-                .domStorageAccess(this.domStorageAccess)
-                .onlineImageAccess(this.onlineImageAccess)
-                .databaseAccess(this.databaseAccess)
-                .userAgent(this.userAgent)
-                .onInterceptRequest((event) => {
-                    console.log('url:' + event.request.getRequestUrl())
-                    var head1:Header = {
-                        headerKey:"Connection",
-                        headerValue:"keep-alive"
-                    }
-                    var head2:Header = {
-                        headerKey:"Cache-Control",
-                        headerValue:"no-cache"
-                    }
-                    var length = this.heads.push(head1)
-                    length = this.heads.push(head2)
-                    this.responseweb.setResponseHeader(this.heads)
-                    this.responseweb.setResponseEncoding('utf-8')
-                    this.responseweb.setResponseMimeType('text/html')
-                    this.responseweb.setResponseCode(200)
-                    this.responseweb.setReasonMessage('OK')
-                    return this.responseweb
-                })
-                .onHttpErrorReceive((event) => {
-                    console.log('url:' + event.request.getRequestUrl());
-                    console.log('isMainFrame:' + event.request.isMainFrame());
-                    console.log('isRedirect:' + event.request.isRedirect());
-                    console.log('isRequestGesture:' + event.request.isRequestGesture());
-                    console.log('getRequestMethod:' + event.request.getRequestMethod());
-                    console.log('getResponseData:' + JSON.stringify(event.response.getResponseData()));
-                    console.log('getResponseEncoding:' + event.response.getResponseEncoding());
-                    console.log('getResponseMimeType:' + event.response.getResponseMimeType());
-                    console.log('getResponseCode:' + event.response.getResponseCode());
-                    Utils.emitEvent(event.response.getResponseCode(), 401);
-                    console.log('getReasonMessage:' + event.response.getReasonMessage());
-                    let result = event.request.getRequestHeader()
-                    console.log('The request header result size is ' + result.length)
-                    for (let i of result) {
-                        console.log('The request header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
-                    }
-                    let resph = event.response.getResponseHeader()
-                    console.log('The response header result size is ' + resph.length)
-                    for (let i of resph) {
-                        console.log('The response header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
-                    }
-                })
-            }
+      Web({ src: 'http://1.1.1.123/index.html', controller: this.controller })
+        .javaScriptAccess(this.javaScriptAccess)
+        .fileAccess(this.fileAccess)
+        .imageAccess(this.imageAccess)
+        .domStorageAccess(this.domStorageAccess)
+        .onlineImageAccess(this.onlineImageAccess)
+        .databaseAccess(this.databaseAccess)
+        .userAgent(this.userAgent)
+        .onInterceptRequest((event) => {
+          console.log('url:' + event.request.getRequestUrl())
+          let head1: Header = {
+            headerKey: "Connection",
+            headerValue: "keep-alive"
+          }
+          let head2: Header = {
+            headerKey: "Cache-Control",
+            headerValue: "no-cache"
+          }
+          let length = this.heads.push(head1)
+          length = this.heads.push(head2)
+          this.responseweb.setResponseHeader(this.heads)
+          this.responseweb.setResponseEncoding('utf-8')
+          this.responseweb.setResponseMimeType('text/html')
+          this.responseweb.setResponseCode(200)
+          this.responseweb.setReasonMessage('OK')
+          return this.responseweb
+        })
+        .onHttpErrorReceive((event) => {
+          console.log('url:' + event.request.getRequestUrl());
+          console.log('isMainFrame:' + event.request.isMainFrame());
+          console.log('isRedirect:' + event.request.isRedirect());
+          console.log('isRequestGesture:' + event.request.isRequestGesture());
+          console.log('getRequestMethod:' + event.request.getRequestMethod());
+          console.log('getResponseData:' + JSON.stringify(event.response.getResponseData()));
+          console.log('getResponseEncoding:' + event.response.getResponseEncoding());
+          console.log('getResponseMimeType:' + event.response.getResponseMimeType());
+          console.log('getResponseCode:' + event.response.getResponseCode());
+          Utils.emitEvent(event.response.getResponseCode(), 401);
+          console.log('getReasonMessage:' + event.response.getReasonMessage());
+          let result = event.request.getRequestHeader()
+          console.log('The request header result size is ' + result.length)
+          for (let i of result) {
+            console.log('The request header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
+          }
+          let resph = event.response.getResponseHeader()
+          console.log('The response header result size is ' + resph.length)
+          for (let i of resph) {
+            console.log('The response header key is : ' + i.headerKey + ' , value is : ' + i.headerValue);
+          }
+        })
     }
+  }
 }

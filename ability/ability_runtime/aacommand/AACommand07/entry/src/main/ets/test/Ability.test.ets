@@ -13,64 +13,72 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import commonEvent from "@ohos.commonEvent"
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import commonEvent from "@ohos.commonEvent";
+import common from '@ohos.app.ability.common';
+import CommonEventManager from '@ohos.commonEventManager';
+import emitter from '@ohos.events.emitter';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import { BusinessError } from '@ohos.base';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
-var subscriberInfo_startdebugapp = {
-    events: ["AACommand_Debugapp"],
+let subscriberInfo_startdebugapp: CommonEventManager.CommonEventSubscribeInfo = {
+  events: ["AACommand_Debugapp"],
 };
 const START_ABILITY_TIMEOUT = 4000;
+let Subscriber: CommonEventManager.CommonEventSubscriber;
+let flag = true;
+
+function SubscribeCallBack(err: BusinessError, data: CommonEventManager.CommonEventData) {
+  console.debug("====>ACTS_AACommand_package_0700 startAbility start====>");
+  let Delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+  Delegator.getCurrentTopAbility().then((data: UIAbility) => {
+    console.debug("====>ACTS_AACommand_package_0700 thisTopAbility====>" + JSON.stringify(data.lastRequestWant));
+    console.debug("====>thisTopAbility 0700 ====>" + JSON.stringify(data.launchWant));
+    let i = JSON.stringify(data.launchWant).indexOf('debugApp":true');
+    console.debug("ACTS_AACommand_package_0700 i = " + i);
+    expect(i == -1).assertEqual(false);
+  }).catch((err: BusinessError) => {
+    console.debug("====>ACTS_AACommand_package_0700 err thisTopAbility====>" + JSON.stringify(err));
+  })
+  commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+}
+
+function UnSubscribeCallback() {
+  flag = false;
+  console.debug("ACTS_AACommand_package_0700====>UnSubscribe CallBack====>");
+  AppStorage.get<common.UIAbilityContext>("ability2Context").terminateSelf();
+  AppStorage.get<common.UIAbilityContext>("ability3Context").terminateSelf();
+  emitter.emit({ eventId: 1 });
+}
 
 export default function abilityTest() {
-    describe('ACTS_AACommand_01_3', function () {
-
-        it('ACTS_AACommand_package_0700', 0, async function (done) {
-
-            var Subscriber;
-            var flag = true;
-
-            commonEvent.createSubscriber(subscriberInfo_startdebugapp).then(async (data) => {
-                console.debug("ACTS_AACommand_package_0700====>Create Subscriber====>");
-                Subscriber = data;
-                await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-                await globalThis.abilityContext.startAbility(
-                    {
-                        bundleName: 'com.example.aacommand07',
-                        abilityName: 'MainAbility3'
-                    })
-            })
-            function SubscribeCallBack(err, data) {
-                console.debug("====>ACTS_AACommand_package_0700 startAbility start====>");
-                var Delegator = AbilityDelegatorRegistry.getAbilityDelegator()
-                Delegator.getCurrentTopAbility().then((data) => {
-                    console.debug("====>ACTS_AACommand_package_0700 thisTopAbility====>" + JSON.stringify(data.lastRequestWant));
-                    console.debug("====>thisTopAbility 0700 ====>" + JSON.stringify(data.launchWant))
-                    var i = JSON.stringify(data.launchWant).indexOf('debugApp":true');
-                    console.debug("ACTS_AACommand_package_0700 i = " + i)
-                    expect(i == -1).assertEqual(false);
-                }).catch((err) => {
-                    console.debug("====>ACTS_AACommand_package_0700 err thisTopAbility====>" + JSON.stringify(err))
-                })
-                commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-            }
-            function UnSubscribeCallback() {
-                flag = false;
-                console.debug("ACTS_AACommand_package_0700====>UnSubscribe CallBack====>");
-                globalThis.ability2Context.terminateSelf();
-                globalThis.ability3Context.terminateSelf();
-                done();
-            }
-
-            setTimeout(() => {
-                if (flag == true) {
-                    console.debug("====>0700====>end====>flag" + flag);
-                    console.debug("in ACTS_AACommand_package_0700 - timeout");
-                    commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                    expect().assertFail();
-                }
-                console.debug("ACTS_AACommand_package_0700 - timeout");
-            }, START_ABILITY_TIMEOUT);
-        })
+  describe('ACTS_AACommand_01_3', () => {
+    it('ACTS_AACommand_package_0700', 0, async (done: Function) => {
+      emitter.on({
+        eventId: 1
+      }, () => {
+        done();
+      })
+      commonEvent.createSubscriber(subscriberInfo_startdebugapp).then(async (data: CommonEventManager.CommonEventSubscriber) => {
+        console.debug("ACTS_AACommand_package_0700====>Create Subscriber====>");
+        Subscriber = data;
+        commonEvent.subscribe(Subscriber, SubscribeCallBack);
+        await AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility(
+          {
+            bundleName: 'com.example.aacommand07',
+            abilityName: 'MainAbility3'
+          })
+      })
+      setTimeout(() => {
+        if (flag == true) {
+          console.debug("====>0700====>end====>flag" + flag);
+          console.debug("in ACTS_AACommand_package_0700 - timeout");
+          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+          expect().assertFail();
+        }
+        console.debug("ACTS_AACommand_package_0700 - timeout");
+      }, START_ABILITY_TIMEOUT);
     })
-};
+  })
+}

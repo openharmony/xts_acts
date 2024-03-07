@@ -40,8 +40,7 @@ struct ScrollExample {
             .fontSize(20)
             .height(200)
             .margin({ top: 50, bottom: 20 })
-            .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
+            .backgroundColor(Color.Green)// 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
             .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number) => {
               console.info("Test Text isVisible: " + isVisible + ", currentRatio:" + currentRatio)
               if (isVisible && currentRatio >= 1.0) {
@@ -76,7 +75,7 @@ struct ScrollExample {
             }
           })
 
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -85,7 +84,7 @@ struct ScrollExample {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, item => item)
+          }, (item: string) => item)
 
         }.width('100%')
       }

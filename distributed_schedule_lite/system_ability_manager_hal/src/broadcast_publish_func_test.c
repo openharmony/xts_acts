@@ -339,8 +339,9 @@ LITE_TEST_CASE(Broadcast02TestSuite, testPublish0070, Function | MediumTest | Le
         BOOL result = provider->Publish((IUnknown *)fapi, &topic0, (uint8 *) "==>111<==", TEST_LEN);
         TEST_ASSERT_EQUAL_INT(result, TRUE);
     }
-
+    subscriber->Unsubscribe((IUnknown *)fapi, &topic0, &c1);
+    subscriber->Unsubscribe((IUnknown *)fapi, &topic0, &c2);
     CASE_ReleaseIUnknown(fapi);
 }
-
+  
 RUN_TEST_SUITE(Broadcast02TestSuite);

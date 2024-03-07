@@ -15,30 +15,32 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
+
 let emitKey = "emitPostMessageInitErr";
+
 export default function webViewContMessageError() {
-  describe('ActsAceWebDevWebViewContMessageErrorTest', function () {
-    beforeEach(async function (done) {
+  describe('ActsAceWebDevWebViewContMessageErrorTest', () => {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webViewContMessageError beforeEach start");
       done();
     })
-    afterEach(async function (done) {
-      console.info("webViewContMessageError afterEach start:"+emitKey);
+    afterEach(async (done: Function) => {
+      console.info("webViewContMessageError afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -48,22 +50,22 @@ export default function webViewContMessageError() {
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
-    it('testPostMessageInitErr',0,async function(done){
-      emitKey="emitPostMessageEventUnPortErr";
-      Utils.registerEvent("testPostMessageInitErr","17100001",600,done);
-      Utils.registerEvent("testPostMessageInitErr","Init error. The WebviewController must be associated with a Web component",601,done);
-      sendEventByKey('webViewContMessageError',10,'');
+    it('testPostMessageInitErr', 0, async (done: Function) => {
+      emitKey = "emitPostMessageEventUnPortErr";
+      Utils.registerEvent("testPostMessageInitErr", "17100001", 600, done);
+      Utils.registerEvent("testPostMessageInitErr", "Init error. The WebviewController must be associated with a Web component", 601, done);
+      sendEventByKey('webViewContMessageError', 10, '');
     })
     /*
      *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTMESSAGEERROR_0200
      *tc.name testPostMessageEventPortClose
      *tc.desc test interface of postMessageEvent with WebMessagePort been closed by ets
      */
-    it('testPostMessageEventPortClose',0,async function(done){
-      emitKey="emitPostMessageEventUnPortErr";
-      Utils.registerEvent("testPostMessageEventPortClose","17100010",602,done);
-      Utils.registerEvent("testPostMessageEventPortClose","Can not post message using this port",603,done);
-      sendEventByKey('webViewContMessageError',10,'');
+    it('testPostMessageEventPortClose', 0, async (done: Function) => {
+      emitKey = "emitPostMessageEventUnPortErr";
+      Utils.registerEvent("testPostMessageEventPortClose", "17100010", 602, done);
+      Utils.registerEvent("testPostMessageEventPortClose", "Can not post message using this port", 603, done);
+      sendEventByKey('webViewContMessageError', 10, '');
     })
   })
 }
