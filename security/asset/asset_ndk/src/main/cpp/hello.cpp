@@ -19,7 +19,7 @@
 
 static const int MAGIC_RET = MAGIC_RET;
 static const int BUFF_MAX = 2048;
-static const char *demo_label = "demo_label";
+static const char *DEMO_LABEL = "demo_label";
 
 static napi_value Asset_Add(napi_env env, napi_callback_info info)
 {
@@ -77,7 +77,7 @@ static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info)
     
     Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
-    Asset_Blob label = {(uint32_t)(strlen(demo_label)), (uint8_t *)demo_label};
+    Asset_Blob label = {(uint32_t)(strlen(DEMO_LABEL)), (uint8_t *)DEMO_LABEL};
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_POWERED_ON},
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
@@ -91,6 +91,7 @@ static napi_value Asset_Add_Auth(napi_env env, napi_callback_info info)
 
     return result;
 }
+
 
 static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info info)
 {
@@ -111,7 +112,6 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
 
     napi_get_value_string_utf8(env, args[1], aliasBuffer2, bufferSize, &copied);
 
-    Asset_Blob alias2 = {(uint32_t)(strlen(aliasBuffer2)), (uint8_t *)aliasBuffer2};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
 
     uint8_t challengeBuffer[32] = "";
@@ -123,7 +123,7 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
 
     int32_t ret = OH_Asset_PreQuery(attr, sizeof(attr) / sizeof(attr[0]), &challenge);
 
-    int32_t result;
+    int32_t result ;
     napi_value tmp;
     if (ret == ASSET_SUCCESS) {
         napi_create_string_utf8(env, (char *)challenge.data, challenge.size, &tmp);
@@ -143,46 +143,7 @@ static napi_value Asset_PreAndPostQueryNormal(napi_env env, napi_callback_info i
     } else {
         result = -1;
     }
-
-    uint8_t challengeBuffer2[32] = "";
-    Asset_Blob challenge2 = {(uint32_t)32, (uint8_t *)challengeBuffer2};
-    Asset_Attr attr2[] = {
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias2},
-    };
-
-    ret = OH_Asset_PreQuery(attr2, sizeof(attr2) / sizeof(attr2[0]), &challenge2);
-    if (ret == ASSET_NOT_FOUND && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
-
-    uint8_t challengeBuffer3[32] = "";
-    Asset_Blob challenge3 = {(uint32_t)32, (uint8_t *)challengeBuffer3};
-    Asset_Attr attr3[] = {};
-
-    ret = OH_Asset_PreQuery(attr3, sizeof(attr3) / sizeof(attr3[0]), &challenge3);
-
-    napi_value tmp3;
-    if (ret == ASSET_SUCCESS) {
-        napi_create_string_utf8(env, (char *)challenge3.data, challenge3.size, &tmp3);
-        if (tmp3 != NULL) {
-            Asset_Attr attr[] = {
-                {.tag = ASSET_TAG_AUTH_CHALLENGE, .value.blob = challenge3},
-            };
-            int32_t ret = OH_Asset_PostQuery(attr, sizeof(attr) / sizeof(attr[0]));
-            if (ret == ASSET_SUCCESS && result == MAGIC_RET) {
-                result = MAGIC_RET;
-            } else {
-                result = -1;
-            }
-        } else {
-            result = -1;
-        }
-    } else {
-        result = -1;
-    }
-
+    
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -432,7 +393,7 @@ static napi_value Asset_RemoveError(napi_env env, napi_callback_info info)
     Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
     
-    Asset_Blob label = {(uint32_t)(strlen(demo_label)), (uint8_t *)demo_label};
+    Asset_Blob label = {(uint32_t)(strlen(DEMO_LABEL)), (uint8_t *)DEMO_LABEL};
 
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
@@ -469,19 +430,7 @@ static napi_value Asset_RemoveError(napi_env env, napi_callback_info info)
     } else {
         result = -1;
     }
-
-    Asset_Attr attr4[] = {
-        {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 0},
-        {.tag = ASSET_TAG_RETURN_OFFSET, .value.u32 = 10},
-        {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = 0},
-    };
-
-    ret = OH_Asset_Remove(attr4, sizeof(attr4) / sizeof(attr4[0]));
-    if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
+    
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -543,8 +492,7 @@ static napi_value Asset_QueryOption(napi_env env, napi_callback_info info)
 
     uint32_t value0;
     napi_get_value_uint32(env, args[3], &value0); // 3 is index
-
-
+    
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = return_limit},
         {.tag = ASSET_TAG_RETURN_OFFSET, .value.u32 = return_offset},
@@ -585,9 +533,6 @@ static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
     Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
 
-    
-    Asset_Blob label = {(uint32_t)(strlen(demo_label)), (uint8_t *)demo_label};
-
     Asset_Attr attr[] = {
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
@@ -608,32 +553,6 @@ static napi_value Asset_QueryError(napi_env env, napi_callback_info info)
     };
     resultSet = {0};
     ret = OH_Asset_Query(attr2, sizeof(attr2) / sizeof(attr2[0]), &resultSet);
-    if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
-    OH_Asset_FreeResultSet(&resultSet);
-
-    Asset_Attr attr3[] = {
-        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
-        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
-    };
-    resultSet = {0};
-    ret = OH_Asset_Query(attr3, sizeof(attr3) / sizeof(attr3[0]), &resultSet);
-    if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
-    OH_Asset_FreeResultSet(&resultSet);
-    Asset_Attr attr4[] = {
-        {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 0},
-        {.tag = ASSET_TAG_RETURN_OFFSET, .value.u32 = 10},
-        {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = 0},
-    };
-    resultSet = {0};
-    ret = OH_Asset_Query(attr4, sizeof(attr4) / sizeof(attr4[0]), &resultSet);
     if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
         result = MAGIC_RET;
     } else {
@@ -778,8 +697,6 @@ static napi_value Asset_UpdateLabel(napi_env env, napi_callback_info info)
 
     int32_t ret = OH_Asset_Update(query, sizeof(query) / sizeof(query[0]), attributesToUpdate,
                                   sizeof(attributesToUpdate) / sizeof(attributesToUpdate[0]));
-
-
     napi_value result;
     napi_create_uint32(env, ret, &result);
     return result;
@@ -805,7 +722,6 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
 
     napi_get_value_string_utf8(env, args[1], secretBuffer, bufferSize, &copied);
 
-    Asset_Blob secret = {(uint32_t)(strlen(secretBuffer)), (uint8_t *)secretBuffer};
     Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
 
     int32_t result;
@@ -835,30 +751,6 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
         result = -1;
     }
 
-    Asset_Attr query2[] = {};
-    Asset_Attr attributesToUpdate3[] = {
-        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
-    };
-    ret = OH_Asset_Update(query2, sizeof(query2) / sizeof(query2[0]), attributesToUpdate3,
-                          sizeof(attributesToUpdate3) / sizeof(attributesToUpdate3[0]));
-    if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
-    Asset_Attr query3[] = {
-        {.tag = ASSET_TAG_RETURN_LIMIT, .value.u32 = 0},
-        {.tag = ASSET_TAG_RETURN_OFFSET, .value.u32 = 10},
-        {.tag = ASSET_TAG_RETURN_ORDERED_BY, .value.u32 = 0},
-    };
-    ret = OH_Asset_Update(query3, sizeof(query3) / sizeof(query3[0]), attributesToUpdate3,
-                          sizeof(attributesToUpdate3) / sizeof(attributesToUpdate3[0]));
-    if (ret == ASSET_INVALID_ARGUMENT && result == MAGIC_RET) {
-        result = MAGIC_RET;
-    } else {
-        result = -1;
-    }
-
     napi_value result_real;
     napi_create_uint32(env, result, &result_real);
     return result_real;
@@ -867,8 +759,7 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
-    napi_property_descriptor desc[] =
-    {
+    napi_property_descriptor desc[] ={
         {"asset_add", nullptr, Asset_Add, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryNum", nullptr, Asset_QueryNum, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"asset_queryAll", nullptr, Asset_QueryAll, nullptr, nullptr, nullptr, napi_default, nullptr},
