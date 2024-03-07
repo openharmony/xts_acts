@@ -1075,6 +1075,24 @@ describe("ListTest", function () {
   });
 
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01003
+   * @tc.name: testInsert067
+   * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", "a").
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testInsert067", 0, function () {
+    let list = new List();
+    list.add(0);
+    list.add(1);
+    list.add(2);
+    let num = Math.trunc(3.33);
+    list.insert(3, num);
+    expect(list.has(3)).assertEqual(true);
+  });
+
+  /**
    * @tc.name: testRemoveByIndex067
    * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex("a").
    */
@@ -1088,6 +1106,24 @@ describe("ListTest", function () {
       expect(err.code).assertEqual(401);
       expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01002
+   * @tc.name: testRemoveByIndex068
+   * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex("a").
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testRemoveByIndex068", 0, function () {
+    let list = new List();
+    list.add(0);
+    list.add(1);
+    list.add(2);
+    let num = Math.trunc(1.33);
+    let res = list.removeByIndex(num);
+    expect(res).assertEqual(1);
   });
 
   /**
@@ -1126,6 +1162,24 @@ describe("ListTest", function () {
       expect(err.code).assertEqual(401);
       expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01001
+   * @tc.name: testSet070
+   * @tc.desc: Modify the element corresponding to the specified index. For example: list.set("a", "d").
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testSet070", 0, function () {
+    let list = new List();
+    list.add(0);
+    list.add(1);
+    list.add(2);
+    let num = Math.trunc(1.33);
+    let res = list.set(num, 3);
+    expect(res).assertEqual(3);
   });
 
   /**
@@ -1246,6 +1300,33 @@ describe("ListTest", function () {
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
     }
+    });
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LIST_01010
+     * @tc.name: testGetSubList077
+     * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty.bind({}, "a")().
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it("testGetSubList077", 0, function () {
+      let list = new List();
+      list.add(4);
+      list.add(0);
+      list.add(1);
+      list.add(2);
+      let left = Math.trunc(1.33);
+      let right = Math.trunc(4.33);
+      let res = list.getSubList(left, right);
+      let arr = [];
+      res.forEach((item, index) => {
+        arr.push(item);
+      });
+      let a = [0, 1, 2];
+      for (let i = 0; i < a.length; i++) {
+        expect(arr[i]).assertEqual(a[i]);
+      }
     });
   });
 }

@@ -741,6 +741,37 @@ describe("HashMapTest", function () {
   });
 
   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_HASHMAP_01002
+   * @tc.name: testSetAll049
+   * @tc.desc: Copy key value pairs from one HashMap to another.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testSetAll049", 0, function () {
+    let hashMap = new HashMap();
+    hashMap.set(1, 1);
+    hashMap.set(2, 2);
+    let newHashmap = new HashMap();
+    newHashmap.setAll(hashMap);
+    expect(newHashmap.length).assertEqual(2);
+    let vals = [];
+    let keys = [];
+    newHashmap.forEach((value, key) => {
+    keys.push(key);
+    vals.push(value);
+    });
+    for (let i = 0; i < keys.length; i++) {
+      let has = newHashmap.hasKey(i+1);
+      expect(has).assertEqual(true);
+    }
+    for (let i = 0; i < vals.length; i++) {
+      let has = newHashmap.hasKey(i+1);
+      expect(has).assertEqual(true);
+    }
+  })
+
+  /**
    * @tc.name: testSet049
    * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set.bind({}, "a", "b")().
    */
