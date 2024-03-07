@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import sliderTest from './SliderTest'
-import SliderTestSec from './SliderTestSec'
+import sliderTest from './SliderTest';
+import SliderTestSec from './SliderTestSec';
 
 export default function testsuite() {
-       sliderTest()
-       SliderTestSec()
+  sliderTest();
+  SliderTestSec();
 }
