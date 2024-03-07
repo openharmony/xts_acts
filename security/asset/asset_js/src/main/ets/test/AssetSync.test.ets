@@ -16,7 +16,6 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import * as aw from './aw/AssetAwSync';
-//import { asset } from '@kit.AssetStoreKit';
 
 import asset from '@ohos.security.asset'
 import taskpool from '@ohos.taskpool';
@@ -91,7 +90,7 @@ export default function AssetSynctest() {
         .assertEqual(0);
       attr2.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[3]));
       attr2.set(asset.Tag.IS_PERSISTENT, false);
-      //attr2.set(asset.Tag.REQUIRE_PASSWORD_SET, true);
+      attr2.set(asset.Tag.REQUIRE_PASSWORD_SET, false);
       attr2.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_UNLOCKED);
       expect(aw.assetAddAttr(attr2))
         .assertEqual(0);
@@ -160,7 +159,7 @@ export default function AssetSynctest() {
       let attr: asset.AssetMap = new Map();
 
       let times = 50;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secLong));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_1, aw.StringToArray(aw.labelLong));
       attr.set(asset.Tag.DATA_LABEL_NORMAL_2, aw.StringToArray(aw.labelLong));

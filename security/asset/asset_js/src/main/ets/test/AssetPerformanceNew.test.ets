@@ -57,7 +57,7 @@ export default function AssetPerformanceNewtest() {
       let attr: asset.AssetMap = new Map();
 
       let times = 100;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
 
       let beginTime = new Date().getTime();
       await aw.assetAddFullAll(testAlias1,times);
@@ -78,7 +78,7 @@ export default function AssetPerformanceNewtest() {
     it('SUB_Security_DataSecurity_Asset_Performance_0400', 0, async (done:Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       await aw.assetAddFullAll(testAlias1,times);
 
       let attr2: asset.AssetMap = new Map();
@@ -105,7 +105,7 @@ export default function AssetPerformanceNewtest() {
     it('SUB_Security_DataSecurity_Asset_Performance_0700', 0, async (done:Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       await aw.assetAddFullAll(testAlias1,times);
 
       let attr2: asset.AssetMap = new Map();
@@ -133,7 +133,7 @@ export default function AssetPerformanceNewtest() {
     it('SUB_Security_DataSecurity_Asset_Performance_0800', 0, async (done:Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 100;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       await aw.assetAddFullAll(testAlias1,times);
 
       let attr2: asset.AssetMap = new Map();
@@ -160,7 +160,7 @@ export default function AssetPerformanceNewtest() {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 10;
       let limit = 100;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       await aw.assetAddFullAll(testAlias1,limit+20);
 
       let attr2: asset.AssetMap = new Map();
@@ -187,7 +187,7 @@ export default function AssetPerformanceNewtest() {
       let testAlias1 = "0123456789123456".repeat(15);
       let times = 10;
       let limit = 500;
-      //attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasLong));
+
       await aw.assetAddFullAll(testAlias1,limit+20);
 
       let attr2: asset.AssetMap = new Map();

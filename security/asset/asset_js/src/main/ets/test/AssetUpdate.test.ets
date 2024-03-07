@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset'
-//import { asset } from '@kit.AssetStoreKit';
+
 
 export default function abilityTest() {
     describe('AssetUpdateTest', () => {
@@ -58,9 +58,6 @@ export default function abilityTest() {
 
             expect(Number(await aw.assetUpdateEasy(aw.aliasNameList[1],aw.valueEmpty)))
                 .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
-
-            // expect(Number(await aw.assetUpdateEasy(aw.aliasNameList[2],null)))
-            //     .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
 
         })
 

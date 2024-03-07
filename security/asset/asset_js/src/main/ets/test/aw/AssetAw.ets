@@ -16,7 +16,7 @@
 
 import hilog from '@ohos.hilog';
 import asset from '@ohos.security.asset';
-//import { asset } from '@kit.AssetStoreKit';
+
 import util from '@ohos.util';
 
 
@@ -26,7 +26,6 @@ export const secTooLong = "0123456789123456".repeat(64) + '1';
 export const secShort = "1";
 export const valueEmpty = "";
 
-//export const valueNull = null;
 
 export const aliasLong = "0123456789123456".repeat(16);
 
@@ -73,6 +72,7 @@ export const labelList = [
   'tag0',
   'a'
 ]
+
 
 export const updateSecret = 'ihadbeenupdated';
 

@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset'
-//import { asset } from '@kit.AssetStoreKit';
+
 
 export default function abilityTest() {
   describe('AssetAuthQueryTest', () => {
