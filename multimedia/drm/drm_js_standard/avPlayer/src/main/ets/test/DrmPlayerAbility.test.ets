@@ -623,19 +623,19 @@ export default function abilityTest() {
                 let drmsys = drm.createMediaKeySystem(uuid);
                 drmsys.generateKeySystemRequest().then((drmRequest) => {
                     console.log("XX DRM_AVPLAYER_0100 generateKeySystemRequest success", drmRequest.data ,drmRequest.defaultURL);
+                    let arry = new Uint8Array([1, 2, 3, 4, 5]);
+                    drmsys.processKeySystemResponse(arry).then(() => {
+                        let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
+                        expect(session).not();
+                        session.destroy();
+                        drmsys.destroy();
+                        console.log("XX DRM_AVPLAYER_0100 processKeySystemResponse success");
+                        done();
+                    }).catch((err) =>{
+                        console.log("XX DRM_AVPLAYER_0100 processKeySystemResponse err end", err.code);
+                    });
                 }).catch((err) =>{
                     console.log("XX DRM_AVPLAYER_0100 generateKeySystemRequest err end", err.code);
-                });
-                let arry = new Uint8Array([1, 2, 3, 4, 5]);
-                drmsys.processKeySystemResponse(arry).then(() => {
-                    let session = drmsys.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_HW_CRYPTO);
-                    expect(session).not();
-                    session.destroy();
-                    drmsys.destroy();
-                    console.log("XX DRM_AVPLAYER_0100 processKeySystemResponse success");
-                    done();
-                }).catch((err) =>{
-                    console.log("XX DRM_AVPLAYER_0100 processKeySystemResponse err end", err.code);
                 });
             } else {
                 done();
@@ -1150,26 +1150,26 @@ export default function abilityTest() {
                 }];
                 session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData).then((DrmRequest) => {
                     console.log("XX DRM_AVPLAYER_1800 generateMediaKeyRequest success", DrmRequest.mediaKeyRequestType,DrmRequest.data, DrmRequest.defaultURL);
+                    let responseArray = new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+                    session.processMediaKeyResponse(responseArray).then((keyId) => {
+                        let keyIds = drmsys.getOfflineMediaKeyIds();
+                        let arry = new Uint8Array(keyIds[0]);
+                        let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+                        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
+                        drmsys.clearOfflineMediaKeys(arry);
+                        OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
+                        expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
+                        drmsys.clearOfflineMediaKeys(arry);
+                        console.log("XX DRM_AVPLAYER_1800 processMediaKeyResponse success");
+                    }).catch((err) =>{
+                        console.log("XX DRM_AVPLAYER_1800 processMediaKeyResponse err end", err.code);
+                        expect(err.code).assertEqual(drm.DrmErrorCode.SERVICE_FATAL_ERROR);
+                        session.destroy();
+                        drmsys.destroy();
+                        done();
+                    });
                 }).catch((err) =>{
                     console.log("XX DRM_AVPLAYER_1800 generateMediaKeyRequest err end", err.code);
-                });
-                let responseArray = new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-                session.processMediaKeyResponse(responseArray).then((keyId) => {
-                    let keyIds = drmsys.getOfflineMediaKeyIds();
-                    let arry = new Uint8Array(keyIds[0]);
-                    let OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
-                    expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_USABLE);
-                    drmsys.clearOfflineMediaKeys(arry);
-                    OfflineKeyState = drmsys.getOfflineMediaKeyStatus(arry);
-                    expect(OfflineKeyState).assertEqual(drm.OfflineMediaKeyStatus.OFFLINE_MEDIA_KEY_STATUS_UNKNOWN);
-                    drmsys.clearOfflineMediaKeys(arry);
-                    console.log("XX DRM_AVPLAYER_1800 processMediaKeyResponse success");
-                }).catch((err) =>{
-                    console.log("XX DRM_AVPLAYER_1800 processMediaKeyResponse err end", err.code);
-                    expect(err.code).assertEqual(drm.DrmErrorCode.SERVICE_FATAL_ERROR);
-                    session.destroy();
-                    drmsys.destroy();
-                    done();
                 });
             } else {
                 done();
@@ -1492,29 +1492,29 @@ export default function abilityTest() {
                 }];
                 session.generateMediaKeyRequest("video/mp4", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_OFFLINE, optionalData).then((DrmRequest) => {
                     console.log("XX DRM_AVPLAYER_2500 generateMediaKeyRequest success", DrmRequest.mediaKeyRequestType,DrmRequest.data, DrmRequest.defaultURL);
-                }).catch((err) =>{
-                    console.log("XX DRM_AVPLAYER_2500 generateMediaKeyRequest err end", err.code);
-                });
-                let responseArray = new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
-                session.processMediaKeyResponse(responseArray).then((keyId) => {
-                    let keyIds = drmsys.getOfflineMediaKeyIds();
-                    let keyArray = new Uint8Array(keyIds[0]);
-                    session.generateOfflineReleaseRequest(keyArray).then((OfflineReleaseRequest) => {
-                        console.log("XX DRM_AVPLAYER_2500 generateOfflineReleaseRequest success", OfflineReleaseRequest);
-                        session.processOfflineReleaseResponse(keyArray, null).then(() => {
-                            console.log("XX DRM_AVPLAYER_2500 processOfflineReleaseResponse success");
+                    let responseArray = new Uint8Array([0x31, 0x56, 0x55, 0x52, 0x53, 0x54, 0x56, 0x39, 0x55, 0x52, 0x56, 0x4E, 0x55, 0x58, 0x30, 0x4E, 0x4A, 0x52, 0x46, 0x38, 0x77, 0x4E, 0x41, 0x3D, 0x3D, 0x3A, 0x42, 0x4E, 0x4F, 0x71, 0x2B, 0x4F, 0x68, 0x6D, 0x65, 0x6B, 0x42, 0x41, 0x30, 0x36, 0x72, 0x34, 0x36, 0x47, 0x5A, 0x36, 0x42, 0x41, 0x3D, 0x3D]);
+                    session.processMediaKeyResponse(responseArray).then((keyId) => {
+                        let keyIds = drmsys.getOfflineMediaKeyIds();
+                        let keyArray = new Uint8Array(keyIds[0]);
+                        session.generateOfflineReleaseRequest(keyArray).then((OfflineReleaseRequest) => {
+                            console.log("XX DRM_AVPLAYER_2500 generateOfflineReleaseRequest success", OfflineReleaseRequest);
+                            session.processOfflineReleaseResponse(keyArray, null).then(() => {
+                                console.log("XX DRM_AVPLAYER_2500 processOfflineReleaseResponse success");
+                            }).catch((err) =>{
+                                console.log("XX DRM_AVPLAYER_2500 processOfflineReleaseResponse err end", err.code);
+                                expect(err.code).assertEqual(401);
+                                session.destroy();
+                                drmsys.destroy();
+                                done();
+                            });
                         }).catch((err) =>{
-                            console.log("XX DRM_AVPLAYER_2500 processOfflineReleaseResponse err end", err.code);
-                            expect(err.code).assertEqual(401);
-                            session.destroy();
-                            drmsys.destroy();
-                            done();
+                            console.log("XX DRM_AVPLAYER_2500 generateOfflineReleaseRequest err end", err.code);
                         });
                     }).catch((err) =>{
-                        console.log("XX DRM_AVPLAYER_2500 generateOfflineReleaseRequest err end", err.code);
+                        console.log("XX DRM_AVPLAYER_2500 processMediaKeyResponse err end", err.code);
                     });
                 }).catch((err) =>{
-                    console.log("XX DRM_AVPLAYER_2500 processMediaKeyResponse err end", err.code);
+                    console.log("XX DRM_AVPLAYER_2500 generateMediaKeyRequest err end", err.code);
                 });
             } else {
                 done();
