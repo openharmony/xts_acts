@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function PanGestureJsunit() {
-  describe('PanGestureTest', function () {
-    var x_value;
-    var y_value;
+  describe('PanGestureTest', () => {
+    let x_value: number;
+    let y_value: number;
 
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("PanGesture beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/PanGesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PanGesture',
       }
       try {
         router.clear();
@@ -34,7 +33,7 @@ export default function PanGestureJsunit() {
         console.info("get PanGesture state pages:" + JSON.stringify(pages));
         if (!("PanGesture" == pages.name)) {
           console.info("get PanGesture state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push PanGesture page result:" + JSON.stringify(result));
         }
@@ -44,20 +43,20 @@ export default function PanGestureJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("PanGesture after each called");
     });
 
-    it('testPanGesture01', 0, async function (done) {
+    it('testPanGesture01', 0, async (done: Function) => {
       console.info('[testPanGesture01] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "touchable": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 23,
           priority: events_emitter.EventPriority.LOW
         }
@@ -71,8 +70,8 @@ export default function PanGestureJsunit() {
       done();
     });
 
-    it('testPanGesture02', 0, async function (done) {
-      let rect = await Utils.getComponentRect('PanGesture')
+    it('testPanGesture02', 0, async (done: Function) => {
+      let rect = Utils.getComponentRect('PanGesture')
       console.info("[testPanGesture02] rectInfo is " + JSON.stringify(rect));
       x_value = rect.left + (rect.right - rect.left) / 10
       y_value = rect.top + (rect.bottom - rect.top) / 10
@@ -82,13 +81,19 @@ export default function PanGestureJsunit() {
         x: x_value,
         y: y_value,
         type: TouchType.Move,
+        displayX: 0,
+        displayY: 0,
+        windowX: 0,
+        windowY: 0,
+        screenX: 0,
+        screenY: 0
       }
-      var callbackTwo = (eventDataOne) => {
+      let callbackTwo = (eventDataOne: events_emitter.EventData) => {
         console.info("[testPanGesture02] get event state result is: " + JSON.stringify(eventDataOne));
         expect(eventDataOne.data.ACTION).assertEqual(true)
         expect(eventDataOne.data.EVENT_TYPE).assertEqual('Move')
       }
-      var innerEventTwo = {
+      let innerEventTwo: events_emitter.InnerEvent = {
         eventId: 24,
         priority: events_emitter.EventPriority.LOW
       }

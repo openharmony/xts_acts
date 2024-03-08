@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function qrCodeJsunit() {
-  describe('qrCodeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/QrCode',
+  describe('qrCodeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/QrCode',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function qrCodeJsunit() {
         console.info("get QrCode state success " + JSON.stringify(pages));
         if (!("QrCode" == pages.name)) {
           console.info("get QrCode pages success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push QrCode page success " + JSON.stringify(result));
         }
@@ -41,33 +40,33 @@ export default function qrCodeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("QrCode after each called");
     });
 
-    it('test_qrCode_001', 0, async function (done) {
+    it('test_qrCode_001', 0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('QrCodeColor');
-      let obj = JSON.parse(strJson);
-      console.info("[test_qrCode_001] component obj is: " + JSON.stringify(obj));
+
+      console.info("[test_qrCode_001] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await Utils.sleep(1000);
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');
-      expect(obj.$attrs.color).assertEqual('#FF0000FF');
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FF008000');
+      expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF0000FF');
       done();
     });
 
-    it('test_qrCode_002', 0, async function (done) {
+    it('test_qrCode_002', 0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color": "#FFB6C1"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 170,
           priority: events_emitter.EventPriority.LOW
         }
@@ -77,23 +76,25 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_002] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeColor');
-      var obj = JSON.parse(strJson);
-      console.info("[test_qrCode_002] component obj is: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual('#FFFFB6C1');
+      let strJson = getInspectorByKey('QrCodeColor');
+
+      console.info("[test_qrCode_002] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .color));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual('#FFFFB6C1');
       done();
     });
 
-    it('test_qrCode_003', 0, async function (done) {
+    it('test_qrCode_003', 0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "backgroundColor": "#FFB6C1"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 171,
           priority: events_emitter.EventPriority.LOW
         }
@@ -103,23 +104,25 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_003] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeBackgroundColor');
-      var obj = JSON.parse(strJson);
-      console.info("[test_qrCode_003] component obj is: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFB6C1');
+      let strJson = getInspectorByKey('QrCodeBackgroundColor');
+
+      console.info("[test_qrCode_003] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .backgroundColor));
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FFFFB6C1');
       done();
     });
 
-    it('test_qrCode_004', 0, async function (done) {
+    it('test_qrCode_004', 0, async (done: Function) => {
       console.info('[test_qrCode_004] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color": 'a'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1023,
           priority: events_emitter.EventPriority.LOW
         }
@@ -129,31 +132,29 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_004] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeColor');
-      var strJsonDefault = getInspectorByKey('QrCodeDefault');
-      var obj = JSON.parse(strJson);
-      var objDefault = JSON.parse(strJsonDefault);
-      console.info("[test_qrCode_004] component obj is: " + JSON.stringify(obj));
-      console.info("[test_qrCode_004] component objDefault is: " + JSON.stringify(objDefault));
+      let strJson = getInspectorByKey('QrCodeColor');
+      let strJsonDefault = getInspectorByKey('QrCodeDefault');
+      console.info("[test_qrCode_004] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[test_qrCode_004] component objDefault is: " + JSON.stringify(JSON.parse(strJsonDefault)));
       let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
       if (targetVersion < 11) {
-        expect(obj.$attrs.color).assertEqual('#FF000000');
+        expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF000000');
       } else {
-        expect(obj.$attrs.color).assertEqual(objDefault.$attrs.color);
+        expect(JSON.parse(strJson).$attrs.color).assertEqual(JSON.parse(strJsonDefault).$attrs.color);
       }
       done();
     });
 
-    it('test_qrCode_005', 0, async function (done) {
+    it('test_qrCode_005', 0, async (done: Function) => {
       console.info('[test_qrCode_005] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color": 332
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1024,
           priority: events_emitter.EventPriority.LOW
         }
@@ -163,23 +164,22 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_005] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeColor');
-      var obj = JSON.parse(strJson);
-      console.info("[test_qrCode_005] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#FF00014C');
+      let strJson = getInspectorByKey('QrCodeColor');
+      console.info("[test_qrCode_005] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF00014C');
       done();
     });
 
-    it('test_qrCode_006', 0, async function (done) {
+    it('test_qrCode_006', 0, async (done: Function) => {
       console.info('[test_qrCode_006] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "backgroundColor": 'b'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1025,
           priority: events_emitter.EventPriority.LOW
         }
@@ -189,32 +189,32 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_006] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeColor');
-      var strJsonDefault = getInspectorByKey('QrCodeDefault');
-      var obj = JSON.parse(strJson);
-      var objDefault = JSON.parse(strJsonDefault);
-      console.info("[test_qrCode_006] component obj is: " + JSON.stringify(obj));
-      console.info("[test_qrCode_006] component objDefault is: " + JSON.stringify(objDefault));
+      let strJson = getInspectorByKey('QrCodeColor');
+      let strJsonDefault = getInspectorByKey('QrCodeDefault');
+
+      console.info("[test_qrCode_006] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[test_qrCode_006] component objDefault is: " + JSON.stringify(JSON.parse(strJsonDefault)));
       // 非法入参默认初始值
       let targetVersion = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT).targetVersion;
       if (targetVersion < 11) {
-        expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+        expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FFFFFFFF');
       } else {
-        expect(obj.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
+        expect(JSON.parse(strJson).$attrs.backgroundColor)
+          .assertEqual(JSON.parse(strJsonDefault).$attrs.backgroundColor);
       }
       done();
     });
 
-    it('test_qrCode_007', 0, async function (done) {
+    it('test_qrCode_007', 0, async (done: Function) => {
       console.info('[test_qrCode_007] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "backgroundColor": 333
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1026,
           priority: events_emitter.EventPriority.LOW
         }
@@ -224,10 +224,10 @@ export default function qrCodeJsunit() {
         console.log("[test_qrCode_007] change component color error: " + err.message);
       }
       await Utils.sleep(2000);
-      var strJson = getInspectorByKey('QrCodeColor');
-      var obj = JSON.parse(strJson);
-      console.info("[test_qrCode_007] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF00014D');
+      let strJson = getInspectorByKey('QrCodeColor');
+
+      console.info("[test_qrCode_007] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#FF00014D');
       done();
     });
   })
