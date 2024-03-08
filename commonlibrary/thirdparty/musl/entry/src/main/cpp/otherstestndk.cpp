@@ -85,6 +85,7 @@
 #define PORT_2 2289
 #ifndef tls_mod_off_t
 #define tls_mod_off_t size_t
+#define PARAM_72 72
 #endif
 
 extern "C" mode_t __umask_chk(mode_t);
@@ -707,17 +708,15 @@ static napi_value Overflow(napi_env env, napi_callback_info info)
 
 static napi_value Uflow(napi_env env, napi_callback_info info)
 {
-    size_t argc = PARAM_1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = PARAM_256;
-    size_t strResult = PARAM_0;
-    char ptr[length];
-    napi_get_value_string_utf8(env, args[0], ptr, length, &strResult);
-    FILE *files = fopen(ptr, "w");
-    __overflow(files, PARAM_0);
-    int backInfo = __uflow(files);
-    fclose(files);
+    FILE *file = fopen("/data/storage/el2/base/files/example.txt", "w");
+    fprintf(file, "Hello, world!\nThis is a test file.\n");
+    fclose(file);
+    file = fopen("/data/storage/el2/base/files/example.txt", "r");
+    int backInfo = __uflow(file);
+    fclose(file);
+    if (backInfo == PARAM_72) {
+        backInfo = SUCCESS;
+    }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
     return result;
