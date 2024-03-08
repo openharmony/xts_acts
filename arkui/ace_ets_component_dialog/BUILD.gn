@@ -13,7 +13,7 @@
 
 group("ActsAceEtsComponentDialogTest") {
   testonly = true
-    deps = [
-      "ace_ets_component_dialog_Menu_api12:ActsAceEtsComponentDialogMenuTest",
-    ]
+  deps = [
+    "ace_ets_component_dialog_Menu_api12:ActsAceEtsComponentDialogMenuTest",
+  ]
 }
