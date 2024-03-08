@@ -380,6 +380,8 @@
         "MainAbility/pages/supplementRouter/pushPageA",
         "MainAbility/pages/supplementRouter/pushPageB",
         "MainAbility/pages/supplementRouter/pushPageC",
-        "MainAbility/pages/supplementRouter/pushPageInit"
+        "MainAbility/pages/supplementRouter/pushPageInit",
+        "MainAbility/pages/detail/deReplace",
+        "MainAbility/pages/router/routerReplace"
     ]
 }

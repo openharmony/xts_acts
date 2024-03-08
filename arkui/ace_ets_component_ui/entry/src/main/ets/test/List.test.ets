@@ -313,6 +313,7 @@ import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
 import pushPageInit from './supplementRouterTest/pushPageInit.test.ets'
+import routerReplaceJsunit from './routerReplaceJsunit.test.ets';
 export default function testsuite() {
   pushPageInit()
   comSizeAbilityTest_01();
@@ -611,4 +612,5 @@ export default function testsuite() {
   ScrollToIndexForGridJsunit01();
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
+  routerReplaceJsunit();
 }
