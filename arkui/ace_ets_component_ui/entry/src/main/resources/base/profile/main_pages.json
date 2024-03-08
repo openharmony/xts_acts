@@ -378,6 +378,21 @@
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid02",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03",
         "MainAbility/pages/detail/deReplace",
-        "MainAbility/pages/router/routerReplace"
+        "MainAbility/pages/router/routerReplace",
+      "MainAbility/pages/Router/Router1",
+      "MainAbility/pages/Router/Router2",
+      "MainAbility/pages/Router/Router3",
+      "MainAbility/pages/Router/Router4",
+      "MainAbility/pages/Router/pageA",
+      "MainAbility/pages/Router/pageB",
+      "MainAbility/pages/Router/pageC",
+      "MainAbility/pages/Router/pageOne",
+      "MainAbility/pages/Router/pageTwo",
+      "MainAbility/pages/back_router/A_page",
+      "MainAbility/pages/back_router/B_page",
+      "MainAbility/pages/back_router/init_page",
+      "MainAbility/pages/back_router/pageA",
+      "MainAbility/pages/back_router/pageB",
+      "MainAbility/pages/back_router/pageC"
     ]
 }
