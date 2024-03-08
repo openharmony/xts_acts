@@ -376,6 +376,10 @@
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForWaterFlow02",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid01",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid02",
-        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03"
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03",
+        "MainAbility/pages/supplementRouter/pushPageA",
+        "MainAbility/pages/supplementRouter/pushPageB",
+        "MainAbility/pages/supplementRouter/pushPageC",
+        "MainAbility/pages/supplementRouter/pushPageInit"
     ]
 }

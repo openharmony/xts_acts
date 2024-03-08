@@ -312,8 +312,10 @@ import ChipAction from './Chip/ChipAction.test';
 import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
+import pushPageInit from './supplementRouterTest/pushPageInit.test.ets'
 export default function testsuite() {
- comSizeAbilityTest_01();
+  pushPageInit()
+  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
   comSizeAbilityTest_03();
   comSizeAbilityTest_04();
