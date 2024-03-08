@@ -12,43 +12,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export interface Callback {
-  (message:any):void
-}
+import { Callback } from '@ohos.base'
 
 export class MessageManager {
-    callback:Callback
-    callbacks:Map<string,Callback> = new Map()
+  callback: Callback<ESObject>;
+  callbacks: Map<string, Callback<ESObject>> = new Map();
 
-    constructor() {
+  constructor() {
 
-    }
-
-   registerCallback(callback:Callback , type?:string) {
-    if (type == undefined) {
-      console.error('registerCallback callback set')
-      this.callback = callback
-      return
-    }
-    this.callbacks.set(type,callback)
   }
 
-   notify(message:any, type?:string) {
+  registerCallback(callback: Callback<ESObject>, type?: string) {
     if (type == undefined) {
-      this.callback(message)
-      return
+      console.error('registerCallback callback set');
+      this.callback = callback;
+      return;
+    }
+    this.callbacks.set(type, callback);
+  }
+
+  notify(message: ESObject, type?: string) {
+    if (type == undefined) {
+      this.callback(message);
+      return;
     }
 
-    let tmpCallback:Callback = this.callbacks.get(type)
+    let tmpCallback: Callback<ESObject> = this.callbacks.get(type);
     if (tmpCallback === undefined) {
-      console.error('callbacks has no callback for type ' + type)
+      console.error('callbacks has no callback for type ' + type);
       return
     }
-    tmpCallback(message)
+    tmpCallback(message);
   }
 
-   clear() {
-    this.callbacks.clear()
-    this.callback = null
+  clear() {
+    this.callbacks.clear();
+    this.callback = null;
   }
 }
