@@ -376,6 +376,14 @@
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForWaterFlow02",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid01",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid02",
-        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03"
+        "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03",
+        "MainAbility/pages/NavRouter/NavRouter_onStateChange1",
+        "MainAbility/pages/NavRouter/NavRouter_onStateChange2",
+        "MainAbility/pages/NavRouter/NavDestination_onBackPressed",
+        "MainAbility/pages/router10/router_push1",
+        "MainAbility/pages/router10/router_back1",
+        "MainAbility/pages/router10/pageOne",
+        "MainAbility/pages/router10/pageTwo",
+        "MainAbility/pages/router10/pageThree"
     ]
 }

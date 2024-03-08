@@ -312,6 +312,11 @@ import ChipAction from './Chip/ChipAction.test';
 import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
+import NavRouter_onStateChange1 from './NavRouter/NavRouter_onStateChange1.test'
+import NavRouter_onStateChange2 from './NavRouter/NavRouter_onStateChange2.test'
+import NavDestination_onBackPressed from './NavRouter/NavDestination_onBackPressed.test'
+import router_back1 from './router10/router_back1.test'
+import router_push1 from './router10/router_push1.test'
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -609,4 +614,9 @@ export default function testsuite() {
   ScrollToIndexForGridJsunit01();
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
+  NavRouter_onStateChange1();
+  NavRouter_onStateChange2();
+  NavDestination_onBackPressed();
+  router_back1();
+  router_push1();
 }
