@@ -44,7 +44,7 @@ export default function pushPageInit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_pushPageInit_0100
+     * @tc.number    SUB_ACE_BASICABILITY_ROUTERPAGE_002
      * @tc.name      pushPageInit_0100
      * @tc.desc      set api
      * @tc.level:    Level 2
