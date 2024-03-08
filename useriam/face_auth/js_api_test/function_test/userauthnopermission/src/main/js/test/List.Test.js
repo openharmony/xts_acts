@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import userAuthTestNopermission from './nopermisson.js'
+import userauthTest_Nopermission_API12 from './Security_IAM_FUNC_API12_Nopermission_Jsunit.test.js'
 export default function testsuite() {
     userAuthTestNopermission()
+    userauthTest_Nopermission_API12()
 }
 
