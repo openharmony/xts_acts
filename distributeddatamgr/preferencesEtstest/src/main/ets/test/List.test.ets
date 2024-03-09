@@ -18,20 +18,16 @@ import preferencesFlushTest from './PreferencesFlushJsunit.test';
 import preferencesHelperTest from './PreferencesHelperJsunit.test';
 import preferencesPromiseTest from './PreferencesPromiseJsunit.test';
 import PreferencesSyncTest from './PreferencesSyncJsunit.test';
-import storageCallBackTest from './StorageCallBackJsunit.test';
-import storageHelperTest from './StorageHelperJsunit.test';
-import storagePromiseTest from './StoragePromiseJsunit.test';
-import storageSyncTest from './StorageSyncJsunit.test';
+import preferencesV9CallbackTest from './PreferencesV9CallBackJsunit.test';
+import preferencesV9PromiseTest from './PreferencesV9PromiseJsunit.test';
 
 export default function testsuite() {
-  storageCallBackTest()
-  storageHelperTest()
-  storagePromiseTest()
-  storageSyncTest()
   preferencesCallBackTest()
   preferencesFlushTest()
   preferencesHelperTest()
   preferencesPromiseTest()
   PreferencesSyncTest()
+  preferencesV9CallbackTest()
+  preferencesV9PromiseTest()
 }
 
