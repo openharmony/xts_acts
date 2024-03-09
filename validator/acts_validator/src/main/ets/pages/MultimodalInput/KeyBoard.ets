@@ -31,7 +31,8 @@ struct KeyEvent {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
 
-  @Builder specificNoParam() {
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
@@ -48,7 +49,7 @@ struct KeyEvent {
               .fontSize(14)
               .fontColor(Color.Black)
               .inputFilter('[a-z]', (e) => {
-                console.log(JSON.stringify(e))
+                console.log(JSON.stringify(e));
               })
               .onChange((value: string) => {
                 this.text = value
