@@ -314,7 +314,7 @@ struct AccelerometerUncalibrated {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
@@ -351,7 +351,7 @@ struct AccelerometerUncalibrated {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }

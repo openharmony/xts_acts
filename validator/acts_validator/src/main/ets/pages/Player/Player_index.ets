@@ -366,9 +366,10 @@ struct IndexPage {
       let array = new Uint8Array(arrayBuffer);
       let serializerStr = that.decode(array);
       console.info(xmlPath);
+      let xmlfd: fs.File
       try {
         console.error(TAG, "write xmlPath =" + xmlPath);
-        let xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fs.writeSync(xmlfd.fd, serializerStr);
       } catch (err) {
         console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);

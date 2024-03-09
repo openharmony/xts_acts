@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Orientation]';
@@ -354,7 +355,7 @@ struct Orientation {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
