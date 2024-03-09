@@ -611,4 +611,7 @@ export default function testsuite() {
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
   routerReplaceJsunit();
+  RouterPushUrlJsunit();
+  RouterWithParamJsunit();
+  RouterUrlErrorJsunit();
 }

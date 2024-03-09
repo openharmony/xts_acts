@@ -378,6 +378,8 @@
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid02",
         "MainAbility/pages/ScrollToIndex/ScrollToIndexForGrid03",
         "MainAbility/pages/detail/deReplace",
-        "MainAbility/pages/router/routerReplace"
+        "MainAbility/pages/router/routerReplace",
+	"MainAbility/pages/State/RouterPushThree",
+        "MainAbility/pages/State/RouterUrlError"
     ]
 }
