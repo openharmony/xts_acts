@@ -24,6 +24,8 @@ import FirstDialog from '../model/FirstDialog';
 import Want from '@ohos.app.ability.Want';
 import common from '@ohos.app.ability.common';
 import image from '@ohos.multimedia.image';
+import { Info } from './InfoObj';
+import { BusinessError } from '@ohos.base';
 
 let path = globalThis.dir;
 let LENGTH = 1;
@@ -35,7 +37,7 @@ struct ImageCrop {
   @State FillColor: string = '#FF000000';
   @State name: string = 'ImageCrop';
   @State StepTips: string = '操作步骤：1、点击选择图片按钮，在图库选择一张图片\n' +
-  '2、分别点击1：1、4：3、3：2按钮进行图片裁剪' + '\n' + '预期结果：图片裁剪成功';
+    '2、分别点击1：1、4：3、3：2按钮进行图片裁剪' + '\n' + '预期结果：图片裁剪成功';
   @State Vue: boolean = false;
   @State active: boolean = false;
   @State intervalNum: number = 0;
@@ -78,7 +80,8 @@ struct ImageCrop {
       .onClick(() => {
         router.back({
           url: 'pages/ArkUI/ArkUI_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -102,7 +105,8 @@ struct ImageCrop {
     .onClick(() => {
       router.back({
         url: 'pages/ArkUI/ArkUI_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -309,8 +313,8 @@ struct ImageCrop {
                 try {
                   await this.cropImage(1)
                   this.is1_1 = true
-                }catch (err){
-                  Logger.info(TAG,'err'+ JSON.stringify(err.message))
+                } catch (err) {
+                  Logger.info(TAG, 'err' + JSON.stringify(err.message))
                 }
                 setTimeout(() => {
                   this.isClick = true
@@ -327,8 +331,8 @@ struct ImageCrop {
                 try {
                   await this.cropImage(4 / 3)
                   this.is4_3 = true
-                }catch (err){
-                  Logger.info(TAG,'err'+ JSON.stringify(err.message))
+                } catch (err) {
+                  Logger.info(TAG, 'err' + JSON.stringify(err.message))
                 }
                 setTimeout(() => {
                   this.isClick = true
@@ -345,8 +349,8 @@ struct ImageCrop {
                 try {
                   await this.cropImage(3 / 2)
                   this.is16_9 = true
-                }catch (err){
-                  Logger.info(TAG,'err'+ JSON.stringify(err.message))
+                } catch (err) {
+                  Logger.info(TAG, 'err' + JSON.stringify(err.message))
                 }
                 setTimeout(() => {
                   this.isClick = true
@@ -403,7 +407,7 @@ struct ImageCrop {
     let packOpts: images.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -435,12 +439,12 @@ struct ImageCrop {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: images.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: images.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);
