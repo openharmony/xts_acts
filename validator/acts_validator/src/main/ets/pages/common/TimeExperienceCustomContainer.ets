@@ -29,6 +29,7 @@ export struct CustomContainer {
   @Link appName : string;
   @Link appAbilityName : string;
   @Link appBundleName : string;
+  @Link time1 : string;
   title : string = '';
   StepTips: string = '';
   Url : string = '';
