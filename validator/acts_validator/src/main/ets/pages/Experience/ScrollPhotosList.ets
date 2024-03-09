@@ -148,7 +148,8 @@ struct CustomContainerUser {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
                       let head = report.indexOf(":");
-                      this.time = report.substring(head+1);
+                      let scrollTime = report.substring(head + 1);
+                      this.time = parseFloat(scrollTime);
                       let time = this.time;
                       if( 0 < time && time < 150 ) {
                         this.Vue = true;
