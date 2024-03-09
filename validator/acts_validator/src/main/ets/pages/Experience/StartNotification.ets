@@ -150,7 +150,7 @@ struct CustomContainerUser {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
                       let head = report.indexOf(":");
-                      let this.time1 = report.substring(head + 1);
+                      this.time1 = report.substring(head + 1);
                       this.time = parseFloat(this.time1);
                       let time = this.time;
                       if( 0 < time && time < 150 ) {
