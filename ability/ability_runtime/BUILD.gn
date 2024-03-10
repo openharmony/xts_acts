@@ -48,6 +48,7 @@ group("ability_runtime") {
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
       "actsstartabilityforresulttest:actsstartabilityforresulttest",
       "actsstartabilitygetdisplayidtest:actsstartabilitygetdisplayidtest",
+      "actsstartabilityinnewprocesstest:actsstartabilityinnewprocesstest",
       "actsstartabilitywantparamtest:ActsStartAbilityWantParamTest",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
