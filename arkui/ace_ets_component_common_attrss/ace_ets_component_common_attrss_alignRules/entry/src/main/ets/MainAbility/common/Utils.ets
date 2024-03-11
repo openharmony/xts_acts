@@ -18,10 +18,10 @@ import { AttrsManager } from './AttrsManager';
 
 
 export class RectValue {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
 }
 
 export default class Utils {
