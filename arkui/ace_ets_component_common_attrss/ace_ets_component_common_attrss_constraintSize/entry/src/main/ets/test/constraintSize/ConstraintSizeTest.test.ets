@@ -17,6 +17,27 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  childHeight: number;
+  childWidth: number;
+  referenceComponentKey: string;
+}
+
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: Size;
+}
+
+class Size {
+  constraintSize: ConstraintSizeOptions
+  width: number;
+  height: number;
+}
+
 export default function constraintSizeTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -92,7 +113,7 @@ export default function constraintSizeTest() {
   let childWidth = 200;
   let childHeight = 200;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testConstraintSize',
     pageName: 'ConstraintSizePage',
     pageUrl: 'MainAbility/pages/constraintSize/ConstraintSizePage',
@@ -101,7 +122,7 @@ export default function constraintSizeTest() {
     referenceComponentKey: 'referenceComponentKey'
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       minWidth: 0,
@@ -239,7 +260,7 @@ export default function constraintSizeTest() {
   }]
 
   describe('ConstraintSizeTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //Component width and height calculation
       let height = rect.bottom - rect.top;
