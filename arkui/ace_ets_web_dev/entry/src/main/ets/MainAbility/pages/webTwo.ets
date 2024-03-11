@@ -20,11 +20,11 @@ import web_webview from '@ohos.web.webview';
 @Entry
 @Component
 struct Second {
-    controller:WebController = new WebController()
+    controller:WebController = new WebController();
     controller1: web_webview.WebviewController = new web_webview.WebviewController();
-    @State str:string="emitOverviewModeAccessTrue"
-    @State overviewModeAccess:boolean=true
-    @State overviewScale:string=""
+    @State str:string="emitOverviewModeAccessTrue";
+    @State overviewModeAccess:boolean=true;
+    @State overviewScale:string="";
     @State userAgentPC:string = "";
     onPageShow(){
         let valueChangeEvent={

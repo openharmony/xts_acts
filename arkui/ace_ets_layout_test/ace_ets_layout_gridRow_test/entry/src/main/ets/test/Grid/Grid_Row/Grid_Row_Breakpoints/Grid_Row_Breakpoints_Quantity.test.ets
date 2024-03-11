@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Breakpoints_Quantity() {
-  describe('Grid_Row_Breakpoints_Quantity', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Breakpoints_Quantity', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Breakpoints_Quantity beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Quantity",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Breakpoints_Quantity() {
         console.info("get Grid_Row_Breakpoints_Quantity state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Breakpoints_Quantity" == pages.name)) {
           console.info("get Grid_Row_Breakpoints_Quantity pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Breakpoints_Quantity page result:" + JSON.stringify(result));
         }
@@ -40,30 +41,34 @@ export default function Grid_Row_Breakpoints_Quantity() {
       console.info("Grid_Row_Breakpoints_Quantity beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Breakpoints_Quantity after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_0100
-     * @tc.name      testBreakpoints
-     * @tc.desc      The number of breakpoint ranges cannot exceed the number of values that can be taken
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_0100
+     * @tc.name testBreakpoints
+     * @tc.desc The number of breakpoint ranges cannot exceed the number of values that can be taken
      */
-    it('SUB_ACE_GridRowBreakpoints_Quantity_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowBreakpoints_Quantity_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowBreakpoints_Quantity_0100 START');
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity2');
-      let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity3');
-      let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity4');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity2');
+      let fourthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity3');
+      let fifthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Quantity4');
 
-      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(fourthBreakpoints.top - thirdBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(fifthBreakpoints.top - fourthBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.top - secondBreakpoints.bottom) - Math.round(vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(fourthBreakpoints.top - thirdBreakpoints.bottom) - Math.round(vp2px(5))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(fifthBreakpoints.top - fourthBreakpoints.bottom) - Math.round(vp2px(5))) <= 1)
+        .assertTrue();
       console.info('SUB_ACE_GridRowBreakpoints_Quantity_0100 END');
       done();
     });

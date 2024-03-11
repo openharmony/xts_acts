@@ -19,7 +19,7 @@ group("stage") {
     deps = [
       "actscontextdirareamodetest:ActsContextDirAreaModeTest",
       "actsdebuggabletest:actsdebuggabletest",
-      "actsflagstartwithouttipstest:ActsFlagStartWithoutTipsTest",
+      "actsflagstartwithouttips:ActsFlagStartWithoutTips",
       "actsgetgroupdirtest:actsgetgroupdirtest",
       "actslifecyclemultihap2:ActsLifecycleMultiHap2",
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",

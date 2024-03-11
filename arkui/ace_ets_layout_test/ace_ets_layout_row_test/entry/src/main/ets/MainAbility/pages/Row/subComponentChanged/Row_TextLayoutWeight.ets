@@ -12,21 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct Row_TextLayoutWeight{
+struct Row_TextLayoutWeight {
   @State firstTextLayoutWeight: number = 0;
   @State secondTextLayoutWeight: number = 0;
   @State thirdTextLayoutWeight: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Row_TextLayoutWeight onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'firstTextLayoutWeight') {
         this.firstTextLayoutWeight = message.value;
@@ -37,18 +40,31 @@ struct Row_TextLayoutWeight{
       if (message.name == 'thirdTextLayoutWeight') {
         this.thirdTextLayoutWeight = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Row({space:10}){
-        Text('1').width(100).height(50)
-          .layoutWeight(this.firstTextLayoutWeight).backgroundColor(0xD2B48C).key('Row_TextLayoutWeight1')
-        Text('2').width(200).height(100)
-          .layoutWeight(this.secondTextLayoutWeight).backgroundColor(0xF5DEB3).key('Row_TextLayoutWeight2')
-        Text('3').width(150).height(150)
-          .layoutWeight(this.thirdTextLayoutWeight).backgroundColor(0xD2B48C).key('Row_TextLayoutWeight3')
+
+  build() {
+    Column({ space: 30 }) {
+      Row({ space: 10 }) {
+        Text('1')
+          .width(100)
+          .height(50)
+          .layoutWeight(this.firstTextLayoutWeight)
+          .backgroundColor(0xD2B48C)
+          .key('Row_TextLayoutWeight1')
+        Text('2')
+          .width(200)
+          .height(100)
+          .layoutWeight(this.secondTextLayoutWeight)
+          .backgroundColor(0xF5DEB3)
+          .key('Row_TextLayoutWeight2')
+        Text('3')
+          .width(150)
+          .height(150)
+          .layoutWeight(this.thirdTextLayoutWeight)
+          .backgroundColor(0xD2B48C)
+          .key('Row_TextLayoutWeight3')
       }
       .width(350)
       .height(200)

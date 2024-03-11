@@ -12,24 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function rowNesting_justifyContent() {
-  describe('rowNesting_justifyContent', function () {
-    beforeEach(async function (done) {
+  describe('rowNesting_justifyContent', () => {
+    beforeEach(async (done: Function) => {
       console.info("rowNesting_justifyContent beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Row/RowNesting/rowNesting_justifyContent",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get rowNesting_justifyContent state pages:" + JSON.stringify(pages));
         if (!("rowNesting_justifyContent" == pages.name)) {
           console.info("get rowNesting_justifyContent pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push rowNesting_justifyContent page result:" + JSON.stringify(result));
         }
@@ -39,45 +41,56 @@ export default function rowNesting_justifyContent() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("rowNesting_justifyContent after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_rowNesting_justifyContent_TEST_0100
-     * @tc.name      testColumnSpace
-     * @tc.desc      The value of space is set to '10vp'
+     * @tc.number SUB_ACE_rowNesting_justifyContent_TEST_0100
+     * @tc.name testColumnSpace
+     * @tc.desc The value of space is set to '10vp'
      */
-    it('SUB_ACE_rowNesting_justifyContent_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_rowNesting_justifyContent_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_rowNesting_justifyContent_TEST_0100] START');
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let rowNesting_justifyContent_011 = CommonFunc.getComponentRect('rowNesting_justifyContent_011');
-      let rowNesting_justifyContent_012 = CommonFunc.getComponentRect('rowNesting_justifyContent_012');
-      let rowNesting_justifyContent_013 = CommonFunc.getComponentRect('rowNesting_justifyContent_013');
-      let rowNesting_justifyContent_01 = CommonFunc.getComponentRect('rowNesting_justifyContent_01');
+      let rowNesting_justifyContent_011: RectValue = CommonFunc.getComponentRect('rowNesting_justifyContent_011');
+      let rowNesting_justifyContent_012: RectValue = CommonFunc.getComponentRect('rowNesting_justifyContent_012');
+      let rowNesting_justifyContent_013: RectValue = CommonFunc.getComponentRect('rowNesting_justifyContent_013');
+      let rowNesting_justifyContent_01: RectValue = CommonFunc.getComponentRect('rowNesting_justifyContent_01');
 
       console.log('assert position')
-      expect(Math.abs(Math.round(rowNesting_justifyContent_011.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_011.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(rowNesting_justifyContent_012.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_012.bottom)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(rowNesting_justifyContent_013.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_013.bottom)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(rowNesting_justifyContent_011.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_011.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(rowNesting_justifyContent_012.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_012.bottom)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(rowNesting_justifyContent_013.top - rowNesting_justifyContent_01.top) - Math.round(rowNesting_justifyContent_01.bottom - rowNesting_justifyContent_013.bottom)) <= 1)
+        .assertTrue();
 
       console.log('assert space')
-      expect(Math.abs((Math.round(rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      console.log('rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right', + rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right)
-      console.log('rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right', + rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right)
+      expect(Math.abs((Math.round(rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right)) - (Math.round(vp2px(10)))) <= 1)
+        .assertTrue();
+      console.log('rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right', rowNesting_justifyContent_012.left - rowNesting_justifyContent_011.right)
+      console.log('rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right', rowNesting_justifyContent_013.left - rowNesting_justifyContent_012.right)
 
 
       console.log('assert height')
-      expect(Math.abs((Math.round(rowNesting_justifyContent_011.bottom - rowNesting_justifyContent_011.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(rowNesting_justifyContent_012.bottom - rowNesting_justifyContent_012.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(rowNesting_justifyContent_013.bottom - rowNesting_justifyContent_013.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_011.bottom - rowNesting_justifyContent_011.top)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_012.bottom - rowNesting_justifyContent_012.top)) - (Math.round(vp2px(100)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_013.bottom - rowNesting_justifyContent_013.top)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
       console.log('assert weight')
-      expect(Math.abs((Math.round(rowNesting_justifyContent_011.right - rowNesting_justifyContent_011.left)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(rowNesting_justifyContent_012.right - rowNesting_justifyContent_012.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(rowNesting_justifyContent_013.right - rowNesting_justifyContent_013.left)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_011.right - rowNesting_justifyContent_011.left)) - (Math.round(vp2px(50)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_012.right - rowNesting_justifyContent_012.left)) - (Math.round(vp2px(100)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(rowNesting_justifyContent_013.right - rowNesting_justifyContent_013.left)) - (Math.round(vp2px(150)))) <= 1)
+        .assertTrue();
       console.info('[SUB_ACE_rowNesting_justifyContent_TEST_0100] END');
       done();
     });
