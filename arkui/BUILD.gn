@@ -28,6 +28,7 @@ group("arkui") {
     "ace_ets_component_basic:ActsAceEtsComponentBasicTest",
     "ace_ets_component_common_attrss:componentAttrssTest",
     "ace_ets_component_completion:componentCompletionTest",
+    "ace_ets_component_dialog:ActsAceEtsComponentDialogTest",
     "ace_ets_component_five:ActsAceEtsComponentFiveTest",
     "ace_ets_component_four:ActsAceEtsComponentFourTest",
     "ace_ets_component_nine/ace_ets_component_nine_gridcol:NineStyleActsAceEtsComponentGridColTest",
