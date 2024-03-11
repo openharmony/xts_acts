@@ -41,16 +41,12 @@ export default function inputMethodAbility() {
       extra:{}
     }
 
-    let dis = display.getDefaultDisplaySync();
+    let rectInfo;
+    let textArea: Component;
     let driver = Driver.create();
+    let dis = display.getDefaultDisplaySync();
     let inputDemoService: subtype;
     let inputMethodController = inputMethod.getController();
-    async function runCmd() {
-      let cursor_x = 30 + Math.floor(Math.random()*dis.width*0.8);
-      let cursor_y = 150 + Math.floor(Math.random() * Math.round(dis.height * 0.4));
-      console.info(`====>start click x:${cursor_x}  y:${cursor_y}`)
-      await driver.click(cursor_x, cursor_y)
-    }
 
     beforeAll(async (done)=>{
       let inputM = inputMethod.getCurrentInputMethod()
@@ -73,6 +69,9 @@ export default function inputMethodAbility() {
       }
       try{
         await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
+        textArea = await driver.findComponent(ON.type('TextArea'));
+        rectInfo = await textArea.getBounds();
+        console.info('====>beforeAll inputMethodSwitch textArea rectInfo: ' + JSON.stringify(rectInfo));
         setTimeout(()=>{
           runCmd()
           console.info("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype success");
@@ -83,11 +82,16 @@ export default function inputMethodAbility() {
       }
     })
 
-
     afterAll(async (done) => {
-
       done();
     })
+
+    async function runCmd(){
+      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
+      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
+      await driver.click(cursor_x, cursor_y)
+    }
 
     /*
     * @tc.number  inputMethodEngine_test_001
