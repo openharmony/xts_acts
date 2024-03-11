@@ -12,47 +12,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct List_SpaceChange{
+struct List_SpaceChange {
   @State testSpace: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemContentSize onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'Space') {
         this.testSpace = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({ space:30 }){
-      List({ space:this.testSpace }){
+
+  build() {
+    Column({ space: 30 }) {
+      List({ space: this.testSpace }) {
         ListItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .width(300)
         .height(100)
         .key('List_SpaceChange01')
+
         ListItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .width(300)
         .height(100)
         .key('List_SpaceChange02')
+
         ListItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .width(300)
         .height(100)
         .key('List_SpaceChange03')
+
         ListItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xD2B48C);
         }

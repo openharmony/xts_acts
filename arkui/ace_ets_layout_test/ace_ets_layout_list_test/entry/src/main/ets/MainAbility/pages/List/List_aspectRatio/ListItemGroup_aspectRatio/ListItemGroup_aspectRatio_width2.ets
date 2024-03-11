@@ -12,13 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct ListItemGroup_aspectRatio_width2{
-  @State aspectRatio1 : number = 1
+struct ListItemGroup_aspectRatio_width2 {
+  @State aspectRatio1: number = 1;
 
-  @Builder itemHead(text:string){
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
@@ -26,7 +29,9 @@ struct ListItemGroup_aspectRatio_width2{
       .height(50)
       .padding(10)
   }
-  @Builder itemFoot(text:string){
+
+  @Builder
+  itemFoot(text: string) {
     Text(text)
       .fontSize(16)
       .backgroundColor(0xAABBCC)
@@ -35,27 +40,27 @@ struct ListItemGroup_aspectRatio_width2{
       .padding(5)
   }
 
-
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemContentSize onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'aspectRatio1') {
         this.aspectRatio1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column(){
-      List({ space:10 }){
-        ListItemGroup({header:this.itemHead('001'),footer:this.itemFoot('共3个'),space:10}){
-          ListItem(){
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ListItemGroup({ header: this.itemHead('001'), footer: this.itemFoot('共3个'), space: 10 }) {
+          ListItem() {
             Text('1')
               .width('100%')
               .height('100%')
@@ -64,7 +69,8 @@ struct ListItemGroup_aspectRatio_width2{
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
           }.width('100%').height(100)
-          ListItem(){
+
+          ListItem() {
             Text('2')
               .width('100%')
               .height('100%')
@@ -73,7 +79,8 @@ struct ListItemGroup_aspectRatio_width2{
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
           }.width('100%').height(100)
-          ListItem(){
+
+          ListItem() {
             Text('3')
               .width('100%')
               .height('100%')
