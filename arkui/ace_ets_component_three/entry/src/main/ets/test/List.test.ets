@@ -12,36 +12,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gridJsunit from './GridJsunit.test.ets';
-import canvasJsunit from './CanvasJsunit.test.ets';
-import textJsunit from './TextJsunit.test.ets';
-import badgeJsunit from './BadgeJsunit.test.ets';
-import longPressGestureJsUnit from './LongPressGesture.test.ets';
-import buttonJsunit from './ButtonJsunit.test.ets';
-import responseRegionJsunit from './ResponseRegionJsunit.test.ets';
-import panGestureJsunit from './PanGestureJsunit.test.ets';
-import tabsJsunit from './TabsJsunit.test.ets';
-import qrCodeJsunit from './QrCodeJsunit.test.ets';
-import tapGesture from './TapGesture.test.ets';
-import progressJsunit from './ProgressJsunit.test.ets';
-import animateJsunit from './AnimateJsunit.test.ets';
-import commonJsunit from './CommonJsunit.test.ets';
-import spanJsunit from './SpanJsunit.test.ets';
-import ratingJsunit from './RatingJsunit.test.ets';
-import canvas2Jsunit from './Canvas2Jsunit.test.ets';
-import toggleJsunit from './ToggleJsunit.test.ets';
-import shapeJsunit from './ShapeJsunit.test.ets';
-import motionPathJsunit from './MotionPathJsunit.test.ets';
-import scrollCodeJsunit from './ScrollCodeJsunit.test.ets';
-import transitionJsunit from './TransitionJsunit.test.ets';
-import priorityGestureJsunit from './PriorityGestureJsunit.test.ets';
-import parallelGestureJsunit from './ParallelGestureJsunit.test.ets';
-import blankJsunit from './BlankJsunit.test.ets';
-import sharedTransitionJsunit from './SharedTransitionJsunit.test.ets';
-import lineJsunit from './LineJsunit.test.ets';
-import circleJsunit from './CircleJsunit.test.ets';
-import aboutToDisappearJsunit from './AboutToDisappearJsunit.test.ets';
-import timeStampJsunit from './TimeStampJsunit.test.ets';
+import gridJsunit from './GridJsunit.test';
+import canvasJsunit from './CanvasJsunit.test';
+import textJsunit from './TextJsunit.test';
+import badgeJsunit from './BadgeJsunit.test';
+import longPressGestureJsUnit from './LongPressGesture.test';
+import buttonJsunit from './ButtonJsunit.test';
+import responseRegionJsunit from './ResponseRegionJsunit.test';
+import panGestureJsunit from './PanGestureJsunit.test';
+import tabsJsunit from './TabsJsunit.test';
+import qrCodeJsunit from './QrCodeJsunit.test';
+import tapGesture from './TapGesture.test';
+import progressJsunit from './ProgressJsunit.test';
+import animateJsunit from './AnimateJsunit.test';
+import commonJsunit from './CommonJsunit.test';
+import spanJsunit from './SpanJsunit.test';
+import ratingJsunit from './RatingJsunit.test';
+import canvas2Jsunit from './Canvas2Jsunit.test';
+import toggleJsunit from './ToggleJsunit.test';
+import shapeJsunit from './ShapeJsunit.test';
+import motionPathJsunit from './MotionPathJsunit.test';
+import scrollCodeJsunit from './ScrollCodeJsunit.test';
+import transitionJsunit from './TransitionJsunit.test';
+import priorityGestureJsunit from './PriorityGestureJsunit.test';
+import parallelGestureJsunit from './ParallelGestureJsunit.test';
+import blankJsunit from './BlankJsunit.test';
+import sharedTransitionJsunit from './SharedTransitionJsunit.test';
+import lineJsunit from './LineJsunit.test';
+import circleJsunit from './CircleJsunit.test';
+import aboutToDisappearJsunit from './AboutToDisappearJsunit.test';
+import timeStampJsunit from './TimeStampJsunit.test';
 
 export default function testsuite() {
   badgeJsunit();

@@ -317,6 +317,7 @@ import NavRouter_onStateChange2 from './NavRouter/NavRouter_onStateChange2.test'
 import NavDestination_onBackPressed from './NavRouter/NavDestination_onBackPressed.test'
 import router_back1 from './router10/router_back1.test'
 import router_push1 from './router10/router_push1.test'
+import routerReplaceJsunit from './routerReplaceJsunit.test.ets';
 export default function testsuite() {
  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
@@ -619,4 +620,5 @@ export default function testsuite() {
   NavDestination_onBackPressed();
   router_back1();
   router_push1();
+  routerReplaceJsunit();
 }

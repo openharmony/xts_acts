@@ -12,20 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 import CommonFunc from '../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
-const waitUiReadyMs = 1000;
 
 export default function animateJsunit() {
-  describe('animateTest', function () {
-    beforeEach(async function (done) {
+  describe('animateTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("animate beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/animate',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/animate',
       }
       try {
         router.clear();
@@ -33,7 +31,7 @@ export default function animateJsunit() {
         console.info("get animate state pages:" + JSON.stringify(pages));
         if (!("animate" == pages.name)) {
           console.info("get animate state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push animate page result:" + JSON.stringify(result));
         }
@@ -43,24 +41,24 @@ export default function animateJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("animate after each called");
     });
 
-    it('animateTest_0100', 0, async function (done) {
+    it('animateTest_0100', 0, async (done: Function) => {
       console.info('animateTest_0100 START');
       await Utils.sleep(1500);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 51,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0100 get state result is: " + JSON.stringify(indexEvent))
         try {
-              expect(indexEvent.data.duration == 100).assertTrue();
+          expect(indexEvent.data.duration == 100).assertTrue();
         } catch (err) {
-            console.info("animateTest_0100 get state result is errr: " + JSON.stringify(err));
+          console.info("animateTest_0100 get state result is errr: " + JSON.stringify(err));
         }
       }
       try {
@@ -74,14 +72,14 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0200', 0, async function (done) {
+    it('animateTest_0200', 0, async (done: Function) => {
       console.info('animateTest_0200 START');
       await Utils.sleep(1500);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 52,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0200 get state result is: " + JSON.stringify(indexEvent))
         expect(indexEvent.data.curve).assertEqual('Ease')
       }
@@ -96,21 +94,21 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0300', 0, async function (done) {
+    it('animateTest_0300', 0, async (done: Function) => {
       console.info('animateTest_0300 START');
       await Utils.sleep(1500);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 53,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0300 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.iterations == 1).assertTrue();
+          expect(indexEvent.data.iterations == 1).assertTrue();
         } catch (err) {
-            console.info("animateTest_0300 get state result err is: " + JSON.stringify(err))
+          console.info("animateTest_0300 get state result err is: " + JSON.stringify(err))
         }
-       
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -123,14 +121,14 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0400', 0, async function (done) {
+    it('animateTest_0400', 0, async (done: Function) => {
       console.info('animateTest_0400 START');
       await Utils.sleep(1500);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 54,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0400 get state result is: " + JSON.stringify(indexEvent))
         expect(indexEvent.data.tempo).assertEqual(1000)
       }
@@ -145,14 +143,14 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0500', 0, async function (done) {
+    it('animateTest_0500', 0, async (done: Function) => {
       console.info('animateTest_0500 START');
       await Utils.sleep(1500);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 55,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0500 get state result is: " + JSON.stringify(indexEvent))
         expect(indexEvent.data.playmode).assertEqual('normal')
       }
@@ -167,21 +165,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0600', 0, async function (done) {
-       await CommonFunc.sleep(1000);
-       globalThis.value.message.notify({name:'duration', value:2000});
-       await CommonFunc.sleep(200);
-       let indexEvent = {
-          eventId: 151,
-          priority: events_emitter.EventPriority.LOW
-       }
-      let callback = (indexEvent) => {
+    it('animateTest_0600', 0, async (done: Function) => {
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({
+        name: 'duration', value: 2000
+      });
+      await CommonFunc.sleep(200);
+      let indexEvent: events_emitter.InnerEvent = {
+        eventId: 151,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0600 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.duration == 2000).assertTrue();
+          expect(indexEvent.data.duration == 2000).assertTrue();
         } catch (err) {
-            console.info("animateTest_0600 get state result err is: " + JSON.stringify(err));
-        }     
+          console.info("animateTest_0600 get state result err is: " + JSON.stringify(err));
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -194,21 +194,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0700', 0, async function (done) {
-       console.info('animateTest_0700 START');
-       globalThis.value.message.notify({name:'curve', value:'Linear'});
-       await CommonFunc.sleep(200);
-      let indexEvent = {
+    it('animateTest_0700', 0, async (done: Function) => {
+      console.info('animateTest_0700 START');
+      globalThis.value.message.notify({
+        name: 'curve', value: 'Linear'
+      });
+      await CommonFunc.sleep(200);
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 152,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0700 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.curve).assertEqual('Linear');
+          expect(indexEvent.data.curve).assertEqual('Linear');
         } catch (err) {
-            console.info("animateTest_0700 get state result err is: " + JSON.stringify(err))
-        }     
+          console.info("animateTest_0700 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -221,22 +223,24 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0800', 0, async function (done) {
-       console.info('animateTest_0800 START');
-       globalThis.value.message.notify({name:'iteration', value:2});
-       await CommonFunc.sleep(200);
-       let indexEvent = {
+    it('animateTest_0800', 0, async (done: Function) => {
+      console.info('animateTest_0800 START');
+      globalThis.value.message.notify({
+        name: 'iteration', value: 2
+      });
+      await CommonFunc.sleep(200);
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 153,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0800 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.iterations).assertEqual(2)
+          expect(indexEvent.data.iterations).assertEqual(2)
         } catch (err) {
-            console.info("animateTest_0800 get state result err is: " + JSON.stringify(err))
-        }     
-        
+          console.info("animateTest_0800 get state result err is: " + JSON.stringify(err))
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -249,22 +253,24 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_0900', 0, async function (done) {
+    it('animateTest_0900', 0, async (done: Function) => {
       console.info('animateTest_0900 START');
-      globalThis.value.message.notify({name:'tempo', value:"20000"});
+      globalThis.value.message.notify({
+        name: 'tempo', value: "20000"
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 154,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_0900 get state result is: " + JSON.stringify(indexEvent))
-         try {
-             expect(indexEvent.data.tempo).assertEqual('20000');
-         } catch (err) {
-            console.info("animateTest_0900 get state result err is: " + JSON.stringify(err))
-         }   
-        
+        try {
+          expect(indexEvent.data.tempo).assertEqual('20000');
+        } catch (err) {
+          console.info("animateTest_0900 get state result err is: " + JSON.stringify(err))
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -277,21 +283,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1000', 0, async function (done) {
+    it('animateTest_1000', 0, async (done: Function) => {
       console.info('animateTest_1000 START');
-      globalThis.value.message.notify({name:'playmode', value:PlayMode.Alternate});
+      globalThis.value.message.notify({
+        name: 'playmode', value: PlayMode.Alternate
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 155,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1000 get state result is: " + JSON.stringify(indexEvent))
-         try {
-              expect(indexEvent.data.playmode).assertEqual('alternate');
+        try {
+          expect(indexEvent.data.playmode).assertEqual('alternate');
         } catch (err) {
-            console.info("animateTest_1000 get state result err is: " + JSON.stringify(err))
-        }   
+          console.info("animateTest_1000 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -304,22 +312,24 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1100', 0, async function (done) {
+    it('animateTest_1100', 0, async (done: Function) => {
       console.info('animateTest_1100 START');
-      globalThis.value.message.notify({name:'duration', value:-1000});
+      globalThis.value.message.notify({
+        name: 'duration', value: -1000
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1001,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1100 get state result is: " + JSON.stringify(indexEvent))
         try {
-               expect(indexEvent.data.duration).assertEqual(-1000);
+          expect(indexEvent.data.duration).assertEqual(-1000);
         } catch (err) {
-            console.info("animateTest_1100 get state result err is: " + JSON.stringify(err))
-        } 
-       
+          console.info("animateTest_1100 get state result err is: " + JSON.stringify(err))
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -332,21 +342,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1200', 0, async function (done) {
+    it('animateTest_1200', 0, async (done: Function) => {
       console.info('animateTest_1200 START');
-      globalThis.value.message.notify({name:'duration', value:100000000});
+      globalThis.value.message.notify({
+        name: 'duration', value: 100000000
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1002,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1200 get state result is: " + JSON.stringify(indexEvent))
         try {
-               expect(indexEvent.data.duration).assertEqual(100000000);
+          expect(indexEvent.data.duration).assertEqual(100000000);
         } catch (err) {
-            console.info("animateTest_1200 get state result err is: " + JSON.stringify(err))
-        }  
+          console.info("animateTest_1200 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -359,22 +371,24 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1300', 0, async function (done) {
+    it('animateTest_1300', 0, async (done: Function) => {
       console.info('animateTest_1300 START');
-      globalThis.value.message.notify({name:'curve', value:'123'});
+      globalThis.value.message.notify({
+        name: 'curve', value: '123'
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1003,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1300 get state result is: " + JSON.stringify(indexEvent))
         try {
-              expect(indexEvent.data.curve).assertEqual('123');
+          expect(indexEvent.data.curve).assertEqual('123');
         } catch (err) {
-            console.info("animateTest_1300 get state result err is: " + JSON.stringify(err))
-        }  
-       
+          console.info("animateTest_1300 get state result err is: " + JSON.stringify(err))
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -387,21 +401,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1400', 0, async function (done) {
+    it('animateTest_1400', 0, async (done: Function) => {
       console.info('animateTest_1400 START');
-      globalThis.value.message.notify({name:'curve', value:'abc'});
+      globalThis.value.message.notify({
+        name: 'curve', value: 'abc'
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1004,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1400 get state result is: " + JSON.stringify(indexEvent))
         try {
-            expect(indexEvent.data.curve).assertEqual('abc')
+          expect(indexEvent.data.curve).assertEqual('abc')
         } catch (err) {
-            console.info("animateTest_1400 get state result err is: " + JSON.stringify(err))
-        }    
+          console.info("animateTest_1400 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -414,21 +430,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1500', 0, async function (done) {
+    it('animateTest_1500', 0, async (done: Function) => {
       console.info('animateTest_1500 START');
-      globalThis.value.message.notify({name:'iteration', value:121});
+      globalThis.value.message.notify({
+        name: 'iteration', value: 121
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1005,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1500 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.iteration).assertEqual(121);
+          expect(indexEvent.data.iteration).assertEqual(121);
         } catch (err) {
-            console.info("animateTest_1500 get state result err is: " + JSON.stringify(err))
-        } 
+          console.info("animateTest_1500 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -441,21 +459,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1600', 0, async function (done) {
+    it('animateTest_1600', 0, async (done: Function) => {
       console.info('animateTest_1600 START');
-      globalThis.value.message.notify({name:'iteration', value:-5});
+      globalThis.value.message.notify({
+        name: 'iteration', value: -5
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1006,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1600 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.iteration).assertEqual(-5);
+          expect(indexEvent.data.iteration).assertEqual(-5);
         } catch (err) {
-            console.info("animateTest_1600 get state result err is: " + JSON.stringify(err))
-        } 
+          console.info("animateTest_1600 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -468,22 +488,24 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1700', 0, async function (done) {
+    it('animateTest_1700', 0, async (done: Function) => {
       console.info('animateTest_1700 START');
-      globalThis.value.message.notify({name:'tempo', value:"12121212121212"});
+      globalThis.value.message.notify({
+        name: 'tempo', value: "12121212121212"
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1007,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1700 get state result is: " + JSON.stringify(indexEvent))
         try {
-             expect(indexEvent.data.tempo).assertEqual('12121212121212');
+          expect(indexEvent.data.tempo).assertEqual('12121212121212');
         } catch (err) {
-            console.info("animateTest_1700 get state result err is: " + JSON.stringify(err))
-        } 
-        
+          console.info("animateTest_1700 get state result err is: " + JSON.stringify(err))
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -496,21 +518,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1800', 0, async function (done) {
+    it('animateTest_1800', 0, async (done: Function) => {
       console.info('animateTest_1800 START');
-      globalThis.value.message.notify({name:'tempo', value:"-5"});
+      globalThis.value.message.notify({
+        name: 'tempo', value: "-5"
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1008,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1800 get state result is: " + JSON.stringify(indexEvent))
         try {
-              expect(indexEvent.data.tempo).assertEqual('-5')
+          expect(indexEvent.data.tempo).assertEqual('-5')
         } catch (err) {
-            console.info("animateTest_1800 get state result err is: " + JSON.stringify(err))
-        } 
+          console.info("animateTest_1800 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -523,21 +547,23 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_1900', 0, async function (done) {
+    it('animateTest_1900', 0, async (done: Function) => {
       console.info('animateTest_1900 START');
-      globalThis.value.message.notify({name:'playmode', value:-6});
+      globalThis.value.message.notify({
+        name: 'playmode', value: -6
+      });
       await CommonFunc.sleep(200);
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1009,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_1900 get state result is: " + JSON.stringify(indexEvent))
-         try {
-              expect(indexEvent.data.playmode).assertEqual(-6);
+        try {
+          expect(indexEvent.data.playmode).assertEqual(-6);
         } catch (err) {
-            console.info("animateTest_1900 get state result err is: " + JSON.stringify(err))
-        } 
+          console.info("animateTest_1900 get state result err is: " + JSON.stringify(err))
+        }
       }
       try {
         events_emitter.on(indexEvent, callback);
@@ -550,23 +576,25 @@ export default function animateJsunit() {
       done();
     });
 
-    it('animateTest_2000', 0, async function (done) {
+    it('animateTest_2000', 0, async (done: Function) => {
       console.info('animateTest_2000 START');
-      globalThis.value.message.notify({name:'playmode', value:123456});
+      globalThis.value.message.notify({
+        name: 'playmode', value: 123456
+      });
       await CommonFunc.sleep(200);
-      
-      let indexEvent = {
+
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 1010,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("animateTest_2000 get state result is: " + JSON.stringify(indexEvent))
         try {
-              expect(indexEvent.data.playmode).assertEqual(123456);
+          expect(indexEvent.data.playmode).assertEqual(123456);
         } catch (err) {
-            console.info("animateTest_2000 get state result err is: " + JSON.stringify(err));
-        } 
-        
+          console.info("animateTest_2000 get state result err is: " + JSON.stringify(err));
+        }
+
       }
       try {
         events_emitter.on(indexEvent, callback);

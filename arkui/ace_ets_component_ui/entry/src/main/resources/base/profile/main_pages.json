@@ -384,6 +384,8 @@
         "MainAbility/pages/router10/router_back1",
         "MainAbility/pages/router10/pageOne",
         "MainAbility/pages/router10/pageTwo",
-        "MainAbility/pages/router10/pageThree"
+        "MainAbility/pages/router10/pageThree",
+        "MainAbility/pages/detail/deReplace",
+        "MainAbility/pages/router/routerReplace"
     ]
 }
