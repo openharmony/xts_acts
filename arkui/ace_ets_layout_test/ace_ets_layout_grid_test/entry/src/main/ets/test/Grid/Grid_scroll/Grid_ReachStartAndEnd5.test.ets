@@ -12,17 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Grid_ReachStartAndEnd5() {
-  describe('Grid_ReachStartAndEnd5', function () {
-    beforeEach(async function (done) {
+  describe('Grid_ReachStartAndEnd5', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_ReachStartAndEnd5 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_scroll/Grid_ReachStartAndEnd",
       }
       try {
@@ -31,7 +32,7 @@ export default function Grid_ReachStartAndEnd5() {
         console.info("get Grid_ReachStartAndEnd5 state pages:" + JSON.stringify(pages));
         if (!("Grid_ReachStartAndEnd" == pages.name)) {
           console.info("get Grid_ReachStartAndEnd5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_ReachStartAndEnd5 page result:" + JSON.stringify(result));
         }
@@ -41,7 +42,7 @@ export default function Grid_ReachStartAndEnd5() {
       console.info("Grid_ReachStartAndEnd5 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       //router.back()
       // init the state
@@ -55,30 +56,30 @@ export default function Grid_ReachStartAndEnd5() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_ReachStartAndEnd5_0300
-     * @tc.name      testGrid
-     * @tc.desc      Scroll to the end position to trigger the onReachEnd event, and slide to the start position to trigger the onReachStart event
+     * @tc.number SUB_ACE_Grid_ReachStartAndEnd5_0300
+     * @tc.name testGrid
+     * @tc.desc Scroll to the end position to trigger the onReachEnd event, and slide to the start position to trigger the onReachStart event
      */
-    it('Grid_ReachStartAndEnd5_0300', 0, async function (done) {
+    it('Grid_ReachStartAndEnd5_0300', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd5_0300] START');
       let driver = Driver.create()
-      let button1= await driver.findComponent(ON.id('Grid_ReachStartAndEnd_toBottom'))
+      let button1 = await driver.findComponent(ON.id('Grid_ReachStartAndEnd_toBottom'))
       await button1.click()
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('Grid_ReachStartAndEnd_tex2')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ReachStartAndEnd5_0300] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onReachEnd');
 
-      let button2= await driver.findComponent(ON.id('Grid_ReachStartAndEnd_toTop'))
+      console.info("[Grid_ReachStartAndEnd5_0300] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)))
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('onReachEnd');
+
+      let button2 = await driver.findComponent(ON.id('Grid_ReachStartAndEnd_toTop'))
       await button2.click()
       await CommonFunc.sleep(2000);
 
       let strJson2 = getInspectorByKey('Grid_ReachStartAndEnd_tex1')
-      let obj2 = JSON.parse(strJson2)
-      console.info("[Grid_ReachStartAndEnd5_0300] component obj2 is: " + JSON.stringify(obj2))
-      expect(obj2.$attrs.content).assertEqual('onReachStart2');
+
+      console.info("[Grid_ReachStartAndEnd5_0300] component obj2 is: " + JSON.stringify(JSON.parse(strJson2)))
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onReachStart2');
 
       console.info('[Grid_ReachStartAndEnd5_0300] END');
       done();

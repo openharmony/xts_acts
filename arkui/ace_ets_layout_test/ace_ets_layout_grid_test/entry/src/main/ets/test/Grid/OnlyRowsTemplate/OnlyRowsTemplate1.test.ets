@@ -12,16 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
+
 export default function OnlyRowsTemplate1() {
-  describe('OnlyRowsTemplate1', function () {
-    beforeEach(async function (done) {
+  describe('OnlyRowsTemplate1', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/OnlyRowsTemplate/OnlyRowsTemplate1',
       }
       try {
@@ -30,7 +32,7 @@ export default function OnlyRowsTemplate1() {
         console.info("get OnlyRowsTemplate1 state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get OnlyRowsTemplate1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push OnlyRowsTemplate1 page result:" + JSON.stringify(result));
         }
@@ -40,23 +42,23 @@ export default function OnlyRowsTemplate1() {
       console.info("OnlyRowsTemplate1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       console.info("OnlyRowsTemplate1 after each called");
     });
 
 
     /**
-     * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0100
-     * @tc.name      testGrid
-     * @tc.desc      GridItem1 and GridItem2 have the same rowStart and rowEnd settings
+     * @tc.number SUB_ACE_GRID_OnlyRowsTemplate1_0100
+     * @tc.name testGrid
+     * @tc.desc GridItem1 and GridItem2 have the same rowStart and rowEnd settings
      */
-    it('SUB_ACE_GRID_OnlyRowsTemplate1_0100', 0, async function (done) {
+    it('SUB_ACE_GRID_OnlyRowsTemplate1_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0100] START');
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
-      let GridItem_02 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_02');
+      let GridItem_01: RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
+      let GridItem_02: RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_02');
 
       console.log('assert position')
       expect(GridItem_01.top).assertEqual(GridItem_02.top);
@@ -83,20 +85,28 @@ export default function OnlyRowsTemplate1() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_OnlyRowsTemplate1_0200
-     * @tc.name      testGrid
-     * @tc.desc      GridItem set rowStart to 0
+     * @tc.number SUB_ACE_GRID_OnlyRowsTemplate1_0200
+     * @tc.name testGrid
+     * @tc.desc GridItem set rowStart to 0
      */
-    it('SUB_ACE_GRID_OnlyRowsTemplate1_0200', 0, async function (done) {
+    it('SUB_ACE_GRID_OnlyRowsTemplate1_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0200] START');
-      globalThis.value.message.notify({name:'rowStart1', value:0})
-      globalThis.value.message.notify({name:'rowEnd1', value:1})
-      globalThis.value.message.notify({name:'rowStart2', value:2})
-      globalThis.value.message.notify({name:'rowEnd2', value:3})
+      globalThis.value.message.notify({
+        name: 'rowStart1', value: 0
+      })
+      globalThis.value.message.notify({
+        name: 'rowEnd1', value: 1
+      })
+      globalThis.value.message.notify({
+        name: 'rowStart2', value: 2
+      })
+      globalThis.value.message.notify({
+        name: 'rowEnd2', value: 3
+      })
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
+      let GridItem_01: RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
 
       console.log('assert size')
       expect(Math.round(GridItem_01.right - GridItem_01.left)).assertEqual(Math.round(vp2px(100)));
@@ -113,8 +123,6 @@ export default function OnlyRowsTemplate1() {
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate1_0200] END');
       done();
     });
-
-
 
 
   })
