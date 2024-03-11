@@ -78,6 +78,10 @@ export default function menuBlurStyleJsunit() {
       console.info("[menuBlurStyleJsunit_0100] obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info("[menuBlurStyleJsunit_0100] menuText is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
       expect(JSON.parse(strJson).$attrs.content).assertEqual("menuBlurStyle");
+
+      await CommonFunc.sleep(1000);
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       console.info('[menuBlurStyleJsunit_0100] END');
       done();
     });

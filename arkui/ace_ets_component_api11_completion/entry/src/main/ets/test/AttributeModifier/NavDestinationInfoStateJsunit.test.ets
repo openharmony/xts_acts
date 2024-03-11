@@ -49,6 +49,7 @@ export default function NavDestinationInfoStateJsunit() {
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavDestinationInfoStateText01'));
       await btn1.click();
+      await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('NavDestinationInfoStateText02');
       await CommonFunc.sleep(1000);
       console.info('NavDestinationInfoStateJsunit_0100 component obj is: ' + JSON.parse(strcontent).$attrs.content);
@@ -56,6 +57,7 @@ export default function NavDestinationInfoStateJsunit() {
       console.info('NavDestinationInfoStateJsunit_0100 END')
       done();
     });
+
     
     it('NavDestinationInfoStateJsunit_0200', 0, async (done: Function) =>{
       await CommonFunc.sleep(1000);
