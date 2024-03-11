@@ -35,7 +35,7 @@
 static napi_value Malloc(napi_env env, napi_callback_info info)
 {
     int ret = NO_ERR;
-    int *memory = static_cast<int*>(malloc(PARAM_UNNORMAL));
+    int *memory = static_cast<int *>(malloc(PARAM_UNNORMAL));
     if (!memory) {
         ret = FAIL;
     } else {

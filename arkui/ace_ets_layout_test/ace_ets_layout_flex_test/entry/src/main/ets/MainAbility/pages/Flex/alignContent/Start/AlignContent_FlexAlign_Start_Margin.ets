@@ -16,11 +16,11 @@
 @Entry
 @Component
 struct AlignContent_FlexAlign_Start_Margin {
-  alignContent: number
+  alignContent: number = 0;
 
   build() {
     Column() {
-      
+
       Flex({
         direction: FlexDirection.Row,
         wrap: FlexWrap.Wrap,

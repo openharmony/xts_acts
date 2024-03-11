@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve()
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
 
 export default function columnJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('columnTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column',
+  describe('columnTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column',
       }
       try {
         router.clear();
@@ -44,60 +45,60 @@ export default function columnJsunit() {
           console.info("push Column page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Column page error " + JSON.stringify(result));
+        console.error("push Column page error " + JSON.stringify(err));
       }
       await sleep(2)
       done()
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Column after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0670
-     * @tc.name      testColumn010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0670
+     * @tc.name testColumn010
+     * @tc.desc aceEtsTest
      */
-    it('testColumn010', 0, async function (done) {
+    it('testColumn010', 0, async (done: Function) => {
       console.info('new Column0 START');
       let strJson = getInspectorByKey('column');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Column');
-      console.info("yr new Column0-Column: " + JSON.stringify(obj.$type))
-      expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Center')
+      console.info("yr new Column0-Column: " + JSON.stringify(obj.$type));
+      expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Center');
       console.log("yr new Column0 alignItems-'HorizontalAlign.Center':" + JSON.stringify(obj.$attrs.alignItems));
       console.info('new Column0 END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0680
-     * @tc.name      testColumn020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0680
+     * @tc.name testColumn020
+     * @tc.desc aceEtsTest
      */
-    it('testColumn020', 0, async function (done) {
+    it('testColumn020', 0, async (done: Function) => {
       console.info('new Column1 START');
       let strJson = getInspectorByKey('column1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Start')
+      expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Start');
       console.log("yr new Column1 alignItems-'HorizontalAlign.Start':" + JSON.stringify(obj.$attrs.alignItems));
       console.info('new Column1 END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0690
-     * @tc.name      testColumn030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0690
+     * @tc.name testColumn030
+     * @tc.desc aceEtsTest
      */
-    it('testColumn030', 0, async function (done) {
+    it('testColumn030', 0, async (done: Function) => {
       console.info('new Column2 START');
       let strJson = getInspectorByKey('column2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.End');
       console.log("yr new Column2 alignItems-'HorizontalAlign.End':" + JSON.stringify(obj.$attrs.alignItems));

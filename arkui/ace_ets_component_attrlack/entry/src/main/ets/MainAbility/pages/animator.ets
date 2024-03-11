@@ -20,17 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct AnimatorOnframe {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear AnimatorOnframe start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear AnimatorOnframe end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("animator-Onframe")
         .width(100)
@@ -45,7 +44,7 @@ struct AnimatorOnframe {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("onframeText")
-    
+
     }.width("100%").height("100%")
   }
 }

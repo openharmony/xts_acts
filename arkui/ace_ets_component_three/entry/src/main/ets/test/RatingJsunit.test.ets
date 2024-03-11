@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function ratingJsunit() {
-  describe('ratingTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/rating',
+  describe('ratingTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rating',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function ratingJsunit() {
         console.info("get rating state success " + JSON.stringify(pages));
         if (!("rating" == pages.name)) {
           console.info("get rating state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(4000);
           console.info("push rating page success " + JSON.stringify(result));
         }
@@ -40,21 +39,21 @@ export default function ratingJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("rating after each called");
     });
 
-    it('testRating_100', 0, async function (done) {
+    it('testRating_100', 0, async (done: Function) => {
       console.info('testRating_100 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 2
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 173,
           priority: events_emitter.EventPriority.LOW
         }
@@ -65,34 +64,34 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("2.000000");
+
+      console.info("testRating_100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("2.000000");
       console.info('testRating_100 END');
       done();
     });
 
-    it('testRating_200', 0, async function (done) {
+    it('testRating_200', 0, async (done: Function) => {
       console.info('[testRating_200] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.stepSize).assertEqual("0.500000");
+
+      console.info("testRating_200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.stepSize).assertEqual("0.500000");
       console.info('testRating_200 END');
       done();
     });
 
-    it('testRating_300', 0, async function (done) {
+    it('testRating_300', 0, async (done: Function) => {
       console.info('testRating_300 START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 3
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 174,
           priority: events_emitter.EventPriority.LOW
         }
@@ -104,23 +103,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("3.000000");
+
+      console.info("testRating_300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("3.000000");
       console.info('testRating_300 END');
       done();
     });
 
-    it('testRating_400', 0, async function (done) {
+    it('testRating_400', 0, async (done: Function) => {
       console.info('testRating_400 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 4
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 175,
           priority: events_emitter.EventPriority.LOW
         }
@@ -131,23 +130,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("4.000000");
+
+      console.info("testRating_400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("4.000000");
       console.info('testRating_400 END');
       done();
     });
 
-    it('testRating_500', 0, async function (done) {
+    it('testRating_500', 0, async (done: Function) => {
       console.info('testRating_500 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 5
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 176,
           priority: events_emitter.EventPriority.LOW
         }
@@ -158,23 +157,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_500 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("5.000000");
+
+      console.info("testRating_500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("5.000000");
       console.info('testRating_500 END');
       done();
     });
 
-    it('testRating_600', 0, async function (done) {
+    it('testRating_600', 0, async (done: Function) => {
       console.info('testRating_600 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 0
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 177,
           priority: events_emitter.EventPriority.LOW
         }
@@ -185,23 +184,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("0.000000");
+
+      console.info("testRating_600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("0.000000");
       console.info('testRating_600 END');
       done();
     });
 
-    it('testRating_700', 0, async function (done) {
+    it('testRating_700', 0, async (done: Function) => {
       console.info('testRating_700 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 178,
           priority: events_emitter.EventPriority.LOW
         }
@@ -212,23 +211,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_700 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("1.000000");
+
+      console.info("testRating_700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("1.000000");
       console.info('testRating_700 END');
       done();
     });
 
-    it('testRating_800', 0, async function (done) {
+    it('testRating_800', 0, async (done: Function) => {
       console.info('testRating_800 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1027,
           priority: events_emitter.EventPriority.LOW
         }
@@ -239,23 +238,23 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_800 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("0.000000");
+
+      console.info("testRating_800 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("0.000000");
       console.info('testRating_800 END');
       done();
     });
 
-    it('testRating_900', 0, async function (done) {
+    it('testRating_900', 0, async (done: Function) => {
       console.info('testRating_900 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rating": 'a'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1028,
           priority: events_emitter.EventPriority.LOW
         }
@@ -266,9 +265,9 @@ export default function ratingJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rating');
-      let obj = JSON.parse(strJson);
-      console.info("testRating_900 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.rating).assertEqual("0.000000");
+
+      console.info("testRating_900 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.rating).assertEqual("0.000000");
       console.info('testRating_900 END');
       done();
     });

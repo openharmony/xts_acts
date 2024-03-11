@@ -165,6 +165,11 @@ static napi_value OHAVDemuxerSelectTrackByID(napi_env env, napi_callback_info in
     int returnValue = FAIL;
     backInfo = OH_AVDemuxer_SelectTrackByID(demuxer, audioTrackIndex);
     backInfoo = OH_AVDemuxer_SelectTrackByID(demuxer, videoTrackIndex);
+
+    int32_t isHDRVivid = 0;
+    OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(GetSource(), videoTrackIndex);
+    OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_VIDEO_IS_HDR_VIVID, &isHDRVivid);
+
     if (backInfo == AV_ERR_OK) {
         returnValue = SUCCESS;
     }

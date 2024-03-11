@@ -15,6 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 group("thirdparty") {
   testonly = true
   if (is_standard_system) {
-    #deps = [ "musl:ActsThirdPartyMuslTest" ]
+    deps = [ "musl:ActsThirdPartyMuslTest" ]
   }
 }

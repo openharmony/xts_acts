@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct flex {
@@ -28,13 +28,13 @@ struct flex {
 
   build() {
     Column() {
-      Column({ space : 2 }) {
+      Column({ space: 2 }) {
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
         Flex({
           direction: FlexDirection.Column,
           wrap: FlexWrap.NoWrap,
           justifyContent: FlexAlign.Center,
-          alignItems:ItemAlign.Start,
+          alignItems: ItemAlign.Start,
           alignContent: FlexAlign.Start,
         }) {
           Text('1').width('100%').height(20).backgroundColor(0xF5DEB3)
@@ -52,7 +52,7 @@ struct flex {
           direction: FlexDirection.Row,
           wrap: FlexWrap.Wrap,
           justifyContent: FlexAlign.Start,
-          alignItems:ItemAlign.Start,
+          alignItems: ItemAlign.Start,
           alignContent: FlexAlign.Center,
         }) {
           Text('1').width('20%').height(20).backgroundColor(0xF5DEB3)
@@ -70,7 +70,7 @@ struct flex {
           direction: FlexDirection.RowReverse,
           wrap: FlexWrap.Wrap,
           justifyContent: FlexAlign.End,
-          alignItems:ItemAlign.End,
+          alignItems: ItemAlign.End,
           alignContent: FlexAlign.End,
         }) {
           Text('1').width('50%').height(20).backgroundColor(0xF5DEB3)

@@ -23,70 +23,73 @@ import web_webview from '@ohos.web.webview';
 @Entry
 @Component
 struct webViewOnFirstContThree {
-    controller: web_webview.WebviewController = new web_webview.WebviewController();
-    @State str:string="emitLoadUrlOnfirstcontentfulpaint";
-    @State firstId:number=326;
-    @State firstcontentfulpaint:boolean=false;
-    @State javaScriptAccess:boolean=true;
-    @State fileAccess:boolean=true;
-    @State domStorageAccess:boolean=false;
-    @State imageAccess:boolean=true;
-    @State onlineImageAccess:boolean=true;
-    @State databaseAccess:boolean=true;
-    @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
+  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  @State str: string = "emitLoadUrlOnfirstcontentfulpaint";
+  @State firstId: number = 326;
+  @State firstcontentfulpaint: boolean = false;
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = false;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
     " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
-    }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webViewOnFirstContThree page valueChangeCallBack");
-        if(eventData != null){
-                console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-                if(eventData.data.ACTION != null){
-                    this.str = eventData.data.ACTION;
-                }
-        }
-    }
 
-    build() {
-        Column() {
-            Row() {
-                Button("web click").key('webViewOnFirstContThree').onClick(() => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitLoadUrlOnfirstcontentfulpaint": {
-                            try {
-                                this.controller.loadUrl($rawfile('onfirstcontentfulpaint.html'))
-                                console.log("action of emitLoadUrlOnfirstcontentfulpaint is loadUrl");
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                            }
-                            Utils.emitEvent(this.firstcontentfulpaint, this.firstId)
-                            break;
-                        }
-                    }
-                })
-            }
-            Web({ src:'www.baidu.com', controller: this.controller })
-                .javaScriptAccess(this.javaScriptAccess)
-                .fileAccess(this.fileAccess)
-                .imageAccess(this.imageAccess)
-                .domStorageAccess(this.domStorageAccess)
-                .onlineImageAccess(this.onlineImageAccess)
-                .databaseAccess(this.databaseAccess)
-                .userAgent(this.userAgent)
-                .onFirstContentfulPaint(event => {
-                    console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" + 
-                        event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
-                    if (event.firstContentfulPaintMs > 0 && event.firstContentfulPaintMs < 5000) {
-                        this.firstcontentfulpaint = true;
-                        console.error("result of onFirstContentfulPaint is: "+ this.firstcontentfulpaint + this.firstId);
-                    }
-                })
-            }
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info("webViewOnFirstContThree page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("web click").key('webViewOnFirstContThree').onClick(() => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitLoadUrlOnfirstcontentfulpaint": {
+              try {
+                this.controller.loadUrl($rawfile('onfirstcontentfulpaint.html'))
+                console.log("action of emitLoadUrlOnfirstcontentfulpaint is loadUrl");
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              Utils.emitEvent(this.firstcontentfulpaint, this.firstId)
+              break;
+            }
+          }
+        })
+      }
+
+      Web({ src: 'www.baidu.com', controller: this.controller })
+        .javaScriptAccess(this.javaScriptAccess)
+        .fileAccess(this.fileAccess)
+        .imageAccess(this.imageAccess)
+        .domStorageAccess(this.domStorageAccess)
+        .onlineImageAccess(this.onlineImageAccess)
+        .databaseAccess(this.databaseAccess)
+        .userAgent(this.userAgent)
+        .onFirstContentfulPaint(event => {
+          console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" +
+          event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
+          if (event.firstContentfulPaintMs > 0 && event.firstContentfulPaintMs < 5000) {
+            this.firstcontentfulpaint = true;
+            console.error("result of onFirstContentfulPaint is: " + this.firstcontentfulpaint + this.firstId);
+          }
+        })
+    }
+  }
 }

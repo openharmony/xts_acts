@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -262,7 +261,7 @@ struct WebComponent {
           .onClick(() => {
             this.controller.loadData({
               data: "<html><body bgcolor=\"white\">Source : <pre> source:</pre></body></html>",
-              mimetype: "text/html",
+              mimeType: "text/html",
               encoding: "UTF-8",
               baseUrl: "https://www.baidu.com",
               historyUrl: "https://www.gitee.com"
@@ -326,6 +325,7 @@ struct WebComponent {
             })
           })
       }
+
       Row() {
         Button('onNewRequest')
           .margin({ right: 10 })
@@ -363,12 +363,12 @@ struct WebComponent {
             this.controller.onCompleteContinuation()
           })
         Button('onConfigurationUpdated')
-        .margin({ right: 10 })
-        .fontSize(15)
-        .width(150)
-        .onClick(() => {
-          this.controller.onConfigurationUpdated()
-        })
+          .margin({ right: 10 })
+          .fontSize(15)
+          .width(150)
+          .onClick(() => {
+            this.controller.onConfigurationUpdated()
+          })
         Button('extendViewModel')
           .margin({ right: 10 })
           .fontSize(15)

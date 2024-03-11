@@ -14,19 +14,33 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function List_divider() {
 
-  describe('List_divider', function () {
-    beforeEach(async function (done) {
+  describe('List_divider', () => {
+    beforeEach(async (done: Function) => {
       console.info("List_divider beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/List_Space/ListChange/List_divider',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_Space/ListChange/List_divider',
       }
       try {
         router.clear();
@@ -35,7 +49,7 @@ export default function List_divider() {
         console.info("get List_divider state pages:" + JSON.stringify(pages));
         if (!("List_divider" == pages.name)) {
           console.info("get List_divider state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push List_divider page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -46,28 +60,30 @@ export default function List_divider() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("List_divider after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_LIST_LIST_DIVIDER_TEST_0100
-     * @tc.name      testListDividerStrokeWidthToTen
-     * @tc.desc      List parent component binding divider property and strokeWidth set to 10
+     * @tc.number SUB_ACE_LIST_LIST_DIVIDER_TEST_0100
+     * @tc.name testListDividerStrokeWidthToTen
+     * @tc.desc List parent component binding divider property and strokeWidth set to 10
      */
-    it('testListDividerStrokeWidthToTen', 0, async function (done) {
+    it('testListDividerStrokeWidthToTen', 0, async (done: Function) => {
       console.info('testListDividerStrokeWidthToTen START');
-      globalThis.value.message.notify({name:'strokeWidth', value:10})
+      globalThis.value.message.notify({
+        name: 'strokeWidth', value: 10
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('List_divider_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let List_divider_011 = CommonFunc.getComponentRect('List_divider_011');
-      let List_divider_012 = CommonFunc.getComponentRect('List_divider_012');
-      let List_divider_013 = CommonFunc.getComponentRect('List_divider_013');
-      let List_divider_014 = CommonFunc.getComponentRect('List_divider_014');
-      let List_divider_01 = CommonFunc.getComponentRect('List_divider_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      let List_divider_011: RectValue = CommonFunc.getComponentRect('List_divider_011');
+      let List_divider_012: RectValue = CommonFunc.getComponentRect('List_divider_012');
+      let List_divider_013: RectValue = CommonFunc.getComponentRect('List_divider_013');
+      let List_divider_014: RectValue = CommonFunc.getComponentRect('List_divider_014');
+      let List_divider_01: RectValue = CommonFunc.getComponentRect('List_divider_01');
       expect(Math.round(List_divider_011.right - List_divider_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_012.right - List_divider_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_013.right - List_divider_013.left)).assertEqual(Math.round(vp2px(300)));
@@ -89,32 +105,34 @@ export default function List_divider() {
       expect(Math.round(List_divider_01.bottom - List_divider_014.bottom)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(List_divider_01.bottom - List_divider_01.top)).assertEqual(Math.round(vp2px(500)));
       expect(Math.round(List_divider_01.right - List_divider_01.left)).assertEqual(Math.round(vp2px(350)));
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       await CommonFunc.sleep(3000);
-      let List_divider_014Again = CommonFunc.getComponentRect('List_divider_014');
+      let List_divider_014Again: RectValue = CommonFunc.getComponentRect('List_divider_014');
       expect(List_divider_014.top).assertEqual(List_divider_014Again.top);
       console.info('testListDividerStrokeWidthToTen END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_LIST_LIST_DIVIDER_TEST_0200
-     * @tc.name      testListDividerStrokeWidthToForty
-     * @tc.desc      List parent component binding divider property and strokeWidth set to 40
+     * @tc.number SUB_ACE_LIST_LIST_DIVIDER_TEST_0200
+     * @tc.name testListDividerStrokeWidthToForty
+     * @tc.desc List parent component binding divider property and strokeWidth set to 40
      */
-    it('testListDividerStrokeWidthToForty', 0, async function (done) {
+    it('testListDividerStrokeWidthToForty', 0, async (done: Function) => {
       console.info('testListDividerStrokeWidthToForty START');
-      globalThis.value.message.notify({name:'strokeWidth', value:40})
+      globalThis.value.message.notify({
+        name: 'strokeWidth', value: 40
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('List_divider_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let List_divider_011 = CommonFunc.getComponentRect('List_divider_011');
-      let List_divider_012 = CommonFunc.getComponentRect('List_divider_012');
-      let List_divider_013 = CommonFunc.getComponentRect('List_divider_013');
-      let List_divider_014 = CommonFunc.getComponentRect('List_divider_014');
-      let List_divider_01 = CommonFunc.getComponentRect('List_divider_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      let List_divider_011: RectValue = CommonFunc.getComponentRect('List_divider_011');
+      let List_divider_012: RectValue = CommonFunc.getComponentRect('List_divider_012');
+      let List_divider_013: RectValue = CommonFunc.getComponentRect('List_divider_013');
+      let List_divider_014: RectValue = CommonFunc.getComponentRect('List_divider_014');
+      let List_divider_01: RectValue = CommonFunc.getComponentRect('List_divider_01');
       expect(Math.round(List_divider_011.right - List_divider_011.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_012.right - List_divider_012.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(List_divider_013.right - List_divider_013.left)).assertEqual(Math.round(vp2px(300)));
@@ -136,10 +154,10 @@ export default function List_divider() {
       expect(Math.round(List_divider_014.top - List_divider_013.bottom)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(List_divider_01.bottom - List_divider_01.top)).assertEqual(Math.round(vp2px(500)));
       expect(Math.round(List_divider_01.right - List_divider_01.left)).assertEqual(Math.round(vp2px(350)));
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
       await CommonFunc.sleep(3000);
-      let List_divider_014Again = CommonFunc.getComponentRect('List_divider_014');
+      let List_divider_014Again: RectValue = CommonFunc.getComponentRect('List_divider_014');
       expect(List_divider_01.bottom).assertEqual(List_divider_014Again.bottom);
       console.info('testListDividerStrokeWidthToForty END');
       done();

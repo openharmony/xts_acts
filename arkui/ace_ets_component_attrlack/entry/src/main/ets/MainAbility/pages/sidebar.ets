@@ -23,11 +23,11 @@ struct SidebarIcons {
   @State arr: number[] = [1, 2]
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear SidebarIcons start`)
+    Log.showInfo(TAG, `aboutToAppear SidebarIcons start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear SidebarIcons end`)
+    Log.showInfo(TAG, `aboutToDisAppear SidebarIcons end`);
   }
 
   build() {
@@ -49,12 +49,12 @@ struct SidebarIcons {
 
       SideBarContainer(SideBarContainerType.Embed) {
         Column() {
-          ForEach(this.arr, (item, index) => {
+          ForEach(this.arr, (item: string, index: number) => {
             Column({ space: 5 }) {
               Text("Index0" + item)
                 .fontSize(20)
             }
-          }, item => item)
+          }, (item: string) => item)
         }.width('100%')
         .justifyContent(FlexAlign.SpaceEvenly)
         .backgroundColor('#19000000')
@@ -75,8 +75,9 @@ struct SidebarIcons {
           hidden: $r("app.media.icon")
         }
       })
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

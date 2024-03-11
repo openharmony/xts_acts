@@ -17,11 +17,8 @@
 import secureElement from '@ohos.secureElement';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 async function getSEService() {
@@ -67,10 +64,11 @@ export default function newSEServicetest() {
             console.info('afterEach called');
         })
 
-        afterAll(function () {
-            Service.shutdown();
+        afterAll(async function (done) {
+            nfcSEService.shutdown();
             sleep(5000);
             console.info('[nfc_test] afterAll newService shutdown success');
+            done();
         })
 
         /**
@@ -144,7 +142,7 @@ export default function newSEServicetest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0400', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0400', 0, async function (done)  {
             try {
                 let nfcOmaReaderList2 = [];
                 nfcOmaReaderList2 = Service.getReaders();
@@ -177,6 +175,7 @@ export default function newSEServicetest() {
                 console.info("[NFC_test]4 isSecureElementPresent occurs exception:" + error);
                 expect().assertFail();
             }
+            done();
         })
         
         /**

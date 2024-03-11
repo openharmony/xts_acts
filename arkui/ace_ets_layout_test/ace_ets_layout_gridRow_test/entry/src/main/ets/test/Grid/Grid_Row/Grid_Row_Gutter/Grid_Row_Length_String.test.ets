@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function Grid_Row_Length_String() {
-  describe('Grid_Row_Length_String', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Length_String', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Length_String beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Gutter/Grid_Row_Length_String",
       }
       try {
@@ -30,7 +31,7 @@ export default function Grid_Row_Length_String() {
         console.info("get Grid_Row_Length_String state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Length_String" == pages.name)) {
           console.info("get Grid_Row_Length_String pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Length_String page result:" + JSON.stringify(result));
         }
@@ -40,39 +41,47 @@ export default function Grid_Row_Length_String() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Length_String after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Row_GutterStr_TEST_0100
-     * @tc.name      testGridColOffset
-     * @tc.desc      GridCol set offset to -2
+     * @tc.number SUB_ACE_Grid_Row_GutterStr_TEST_0100
+     * @tc.name testGridColOffset
+     * @tc.desc GridCol set offset to -2
      */
-    it('SUB_ACE_Grid_Row_GutterStr_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_Grid_Row_GutterStr_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_GutterStr_TEST_0100] START');
-      globalThis.value.message.notify({name:'addLength', value:'30%'});
+      globalThis.value.message.notify({
+        name: 'addLength', value: '30%'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Length_String_00 = CommonFunc.getComponentRect('Length_String_00');
-      let Length_String_01 = CommonFunc.getComponentRect('Length_String_01');
-      let Length_String_02 = CommonFunc.getComponentRect('Length_String_02');
-      let Length_String_03 = CommonFunc.getComponentRect('Length_String_03');
-      let Length_String_04 = CommonFunc.getComponentRect('Length_String_04');
-      let Length_String_05 = CommonFunc.getComponentRect('Length_String_05');
-      let Length_String_06 = CommonFunc.getComponentRect('Length_String_06');
-      let Length_String_07 = CommonFunc.getComponentRect('Length_String_07');
+      let Length_String_00: RectValue = CommonFunc.getComponentRect('Length_String_00');
+      let Length_String_01: RectValue = CommonFunc.getComponentRect('Length_String_01');
+      let Length_String_02: RectValue = CommonFunc.getComponentRect('Length_String_02');
+      let Length_String_03: RectValue = CommonFunc.getComponentRect('Length_String_03');
+      let Length_String_04: RectValue = CommonFunc.getComponentRect('Length_String_04');
+      let Length_String_05: RectValue = CommonFunc.getComponentRect('Length_String_05');
+      let Length_String_06: RectValue = CommonFunc.getComponentRect('Length_String_06');
+      let Length_String_07: RectValue = CommonFunc.getComponentRect('Length_String_07');
 
       console.log('assert space')
-      expect(Math.abs(Math.round(Length_String_01.left - Length_String_00.right) - Math.round(vp2px(0))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_02.left - Length_String_01.right) - Math.round(vp2px(0))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_03.left - Length_String_02.right) - Math.round(vp2px(0))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_04.left - Length_String_03.right) - Math.round(vp2px(0))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_05.left - Length_String_04.right) - Math.round(vp2px(0))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(vp2px(0))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_01.left - Length_String_00.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_02.left - Length_String_01.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_03.left - Length_String_02.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_04.left - Length_String_03.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_05.left - Length_String_04.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(vp2px(0))) <= 1)
+        .assertTrue();
 
       expect(Math.round(Length_String_06.top - Length_String_00.bottom)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(Length_String_07.top - Length_String_01.bottom)).assertEqual(Math.round(vp2px(10)));
@@ -84,25 +93,27 @@ export default function Grid_Row_Length_String() {
 
 
     /**
-     * @tc.number    SUB_ACE_Grid_Row_GutterStr_TEST_0200
-     * @tc.name      testGridColOffset
-     * @tc.desc      GridCol set offset to 0
+     * @tc.number SUB_ACE_Grid_Row_GutterStr_TEST_0200
+     * @tc.name testGridColOffset
+     * @tc.desc GridCol set offset to 0
      */
-    it('SUB_ACE_Grid_Row_GutterStr_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_Grid_Row_GutterStr_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Row_GutterStr_TEST_0200] START');
-      globalThis.value.message.notify({name:'addLength', value:'50px'});
+      globalThis.value.message.notify({
+        name: 'addLength', value: '50px'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Length_String_00 = CommonFunc.getComponentRect('Length_String_00');
-      let Length_String_01 = CommonFunc.getComponentRect('Length_String_01');
-      let Length_String_02 = CommonFunc.getComponentRect('Length_String_02');
-      let Length_String_03 = CommonFunc.getComponentRect('Length_String_03');
-      let Length_String_04 = CommonFunc.getComponentRect('Length_String_04');
-      let Length_String_05 = CommonFunc.getComponentRect('Length_String_05');
-      let Length_String_06 = CommonFunc.getComponentRect('Length_String_06');
-      let Length_String_07 = CommonFunc.getComponentRect('Length_String_07');
+      let Length_String_00: RectValue = CommonFunc.getComponentRect('Length_String_00');
+      let Length_String_01: RectValue = CommonFunc.getComponentRect('Length_String_01');
+      let Length_String_02: RectValue = CommonFunc.getComponentRect('Length_String_02');
+      let Length_String_03: RectValue = CommonFunc.getComponentRect('Length_String_03');
+      let Length_String_04: RectValue = CommonFunc.getComponentRect('Length_String_04');
+      let Length_String_05: RectValue = CommonFunc.getComponentRect('Length_String_05');
+      let Length_String_06: RectValue = CommonFunc.getComponentRect('Length_String_06');
+      let Length_String_07: RectValue = CommonFunc.getComponentRect('Length_String_07');
 
       console.log('assert space')
       expect(Math.abs(Math.round(Length_String_01.left - Length_String_00.right) - Math.round(50)) <= 1).assertTrue();
@@ -112,8 +123,10 @@ export default function Grid_Row_Length_String() {
       expect(Math.abs(Math.round(Length_String_05.left - Length_String_04.right) - Math.round(50)) <= 1).assertTrue();
       expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(50)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(Length_String_06.top - Length_String_00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Length_String_07.top - Length_String_01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_06.top - Length_String_00.bottom) - Math.round(vp2px(10))) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.top - Length_String_01.bottom) - Math.round(vp2px(10))) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Row_GutterStr_TEST_0200] END');
       done();

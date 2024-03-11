@@ -15,19 +15,19 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function stageFontTest() {
-  describe('TestAbility', function () {
+  describe('TestAbility', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/stageFont',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/stageFont',
       }
       try {
         router.clear();
@@ -35,7 +35,7 @@ export default function stageFontTest() {
         console.info("get stageFont state success " + JSON.stringify(pages));
         if (!("stageFont" == pages.name)) {
           console.info("get stageFont state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push stageFont page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -43,119 +43,117 @@ export default function stageFontTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
-    it('Stage_Font_0100', 0, async function (done) {
+    it('Stage_Font_0100', 0, async (done: Function) => {
       console.info('Stage_Font_0100 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('button');
-          console.info('Stage_Font_0100 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("Stage_Font_0100 obj.$attrs.labelStyle is: " +
-          JSON.stringify(obj.$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          console.info('Stage_Font_0100 START  :' + JSON.stringify(strJson));
+          
+          console.info("Stage_Font_0100 JSON.parse(strJson).$attrs.labelStyle is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
           console.info("Stage_Font_0100 fontFamily is: " +
-          JSON.stringify(labelStyle));
-          let font = JSON.parse(labelStyle.font)
-          expect(font.family).assertEqual("fontCustom");
+          JSON.stringify(JSON.parse(JSON.parse(strJson).$attrs.labelStyle)));
+          expect(JSON.parse(JSON.parse(JSON.parse(strJson).$attrs.labelStyle).font).family).assertEqual("fontCustom");
           console.info('Stage_Font_0100 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('Stage_Font_0100 ERR  '+ JSON.stringify(err));
+          console.info('Stage_Font_0100 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
-    it('Stage_Font_0200', 0, async function (done) {
+    it('Stage_Font_0200', 0, async (done: Function) => {
       console.info('Stage_Font_0200 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('text');
-          console.info('Stage_Font_0200 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("Stage_Font_0200 obj.$attrs.fontFamily is: " +
-          JSON.stringify(obj.$attrs.fontFamily));
-          expect(obj.$attrs.fontFamily).assertEqual("fontCustom");
+          console.info('Stage_Font_0200 START  :' + JSON.stringify(strJson));
+          
+          console.info("Stage_Font_0200 JSON.parse(strJson).$attrs.fontFamily is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.fontFamily));
+          expect(JSON.parse(strJson).$attrs.fontFamily).assertEqual("fontCustom");
           console.info('Stage_Font_0200 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('Stage_Font_0200 ERR  '+ JSON.stringify(err));
+          console.info('Stage_Font_0200 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('Stage_Font_0300', 0, async function (done) {
+    it('Stage_Font_0300', 0, async (done: Function) => {
       console.info('Stage_Font_0300 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('textArea');
-          console.info('Stage_Font_0300 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("Stage_Font_0300 obj.$attrs.fontFamily is: " +
-          JSON.stringify(obj.$attrs.fontFamily));
-          expect(obj.$attrs.fontFamily).assertEqual("fontCustom");
+          console.info('Stage_Font_0300 START  :' + JSON.stringify(strJson));
+          
+          console.info("Stage_Font_0300 JSON.parse(strJson).$attrs.fontFamily is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.fontFamily));
+          expect(JSON.parse(strJson).$attrs.fontFamily).assertEqual("fontCustom");
           console.info('Stage_Font_0300 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('Stage_Font_0300 ERR  '+ JSON.stringify(err));
+          console.info('Stage_Font_0300 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('Stage_Font_0400', 0, async function (done) {
+    it('Stage_Font_0400', 0, async (done: Function) => {
       console.info('Stage_Font_0400 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('textInput');
-          console.info('Stage_Font_0400 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("Stage_Font_0400 obj.$attrs.fontFamily is: " +
-          JSON.stringify(obj.$attrs.fontFamily));
-          expect(obj.$attrs.fontFamily).assertEqual("fontCustom");
+          console.info('Stage_Font_0400 START  :' + JSON.stringify(strJson));
+          
+          console.info("Stage_Font_0400 JSON.parse(strJson).$attrs.fontFamily is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.fontFamily));
+          expect(JSON.parse(strJson).$attrs.fontFamily).assertEqual("fontCustom");
           console.info('Stage_Font_0400 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('Stage_Font_0400 ERR  '+ JSON.stringify(err));
+          console.info('Stage_Font_0400 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('Stage_Font_0500', 0, async function (done) {
+    it('Stage_Font_0500', 0, async (done: Function) => {
       console.info('Stage_Font_0500 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('textSpan');
-          console.info('Stage_Font_0500 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          console.info("Stage_Font_0500 obj.$attrs.fontFamily is: " +
-          JSON.stringify(obj.$attrs.fontFamily));
-          expect(obj.$attrs.fontFamily).assertEqual("fontCustom");
+          console.info('Stage_Font_0500 START  :' + JSON.stringify(strJson));
+          
+          console.info("Stage_Font_0500 JSON.parse(strJson).$attrs.fontFamily is: " +
+          JSON.stringify(JSON.parse(strJson).$attrs.fontFamily));
+          expect(JSON.parse(strJson).$attrs.fontFamily).assertEqual("fontCustom");
           console.info('Stage_Font_0500 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('Stage_Font_0500 ERR  '+ JSON.stringify(err));
+          console.info('Stage_Font_0500 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
-    it('Stage_Font_0600', 0, async function (done) {
-      let fontRegister = globalThis.uiContent.getFont();
+    it('Stage_Font_0600', 0, async (done: Function) => {
+      let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0600 START');
       try {
-        let font = fontRegister.registerFont(undefined)
+        let font:ESObject = fontRegister.registerFont(undefined)
         expect(font).assertUndefined();
       } catch (err) {
         console.error("push button page error " + JSON.stringify(err));
@@ -164,11 +162,11 @@ export default function stageFontTest() {
       done();
     });
 
-    it('Stage_Font_0700', 0, async function (done) {
-      let fontRegister = globalThis.uiContent.getFont();
+    it('Stage_Font_0700', 0, async (done: Function) => {
+      let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0700 START');
       try {
-        let font = fontRegister.registerFont()
+        let font:ESObject = fontRegister.registerFont()
         expect(font).assertUndefined();
       } catch (err) {
         console.error("push button page error " + JSON.stringify(err));
@@ -177,11 +175,11 @@ export default function stageFontTest() {
       done();
     });
 
-    it('Stage_Font_0800', 0, async function (done) {
-      let fontRegister = globalThis.uiContent.getFont();
+    it('Stage_Font_0800', 0, async (done: Function) => {
+      let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info('Stage_Font_0800 START');
       try {
-        let font = fontRegister.registerFont(null)
+        let font:ESObject = fontRegister.registerFont(null)
         expect(font).assertUndefined();
       } catch (err) {
         console.error("push button page error " + JSON.stringify(err));
@@ -189,7 +187,5 @@ export default function stageFontTest() {
       console.info('Stage_Font_0800 END');
       done();
     });
-
-
   })
 }

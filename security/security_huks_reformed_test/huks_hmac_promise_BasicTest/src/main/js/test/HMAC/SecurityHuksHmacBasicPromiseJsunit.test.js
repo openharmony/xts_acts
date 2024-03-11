@@ -260,7 +260,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmac104", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_104", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias104";
       let HuksOptions = {
         properties: new Array(

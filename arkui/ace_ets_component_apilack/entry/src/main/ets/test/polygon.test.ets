@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function polygonNewJsunit() {
-  describe('polygonNewJsunit', function () {
-    beforeAll(async function (done) {
+  describe('polygonNewJsunit', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/polygon',
@@ -37,10 +37,9 @@ export default function polygonNewJsunit() {
       } catch (err) {
         console.error("push polygon page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("polygonNe after each called");
     });
@@ -50,16 +49,16 @@ export default function polygonNewJsunit() {
      * @tc.name         testpolygonNe0001
      * @tc.desic         acepolygonNeEtsTest0001
      */
-    it('testpolygonNe0001', 0, async function (done) {
+    it('testpolygonNe0001', 0, async () => {
       console.info('polygonNe testpolygonNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polygon');
       console.info("[testpolygonNe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Polygon');
-      expect(obj.$attrs.width).assertEqual("100.00px");
-      console.info("[testpolygonNe0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00px");
+      console.info("[testpolygonNe0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function polygonNewJsunit() {
      * @tc.name         testpolygonNe0002
      * @tc.desic         acepolygonNeEtsTest0002
      */
-    it('testpolygonNe0002', 0, async function (done) {
+    it('testpolygonNe0002', 0, async () => {
       console.info('polygonNe testpolygonNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Polygon');
       console.info("[testpolygonNe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Polygon');
-      expect(obj.$attrs.height).assertEqual("100.00px");
-      console.info("[testpolygonNe0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00px");
+      console.info("[testpolygonNe0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
   })
 }

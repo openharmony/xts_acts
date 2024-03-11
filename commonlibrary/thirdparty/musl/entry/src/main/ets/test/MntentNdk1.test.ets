@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import mntent from 'libmntentndk1.so'
 
 export default function mntentNdk1Test() {
   describe('MuslMntent1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_MNTENT_GETMNTENT_0100

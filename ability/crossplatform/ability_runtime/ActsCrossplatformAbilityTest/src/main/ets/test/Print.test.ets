@@ -13,31 +13,25 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+import { BusinessError } from '@ohos.base';
+
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 export default function PrintTest() {
-  describe("PrintTest", function () {
+  describe("PrintTest", () => {
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_0001
-     * @tc.name      actsPrintCallback0001
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.number ACTS_PRINT_CALLBACK_0001
+     * @tc.name actsPrintCallback0001
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0001", 0, async function (done) {
+    it("ACTS_PRINT_CALLBACK_0001", 0, async (done: Function) => {
       let msg = "print_Callback normal message: hello print callback.";
-      abilityDelegator.print(msg, (err: any) => {
+      abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync(
           "ACTS_PRINT_CALLBACK_0001 print callback err" + err
         );
@@ -46,18 +40,18 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_ERROR_0002
-     * @tc.name      actsPrintCallbackError0002
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.number ACTS_PRINT_CALLBACK_ERROR_0002
+     * @tc.name actsPrintCallbackError0002
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
      *               The print information includes number（unsupport).
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
-    it("ACTS_PRINT_CALLBACK_ERROR_0002", 0, async function (done) {
+    it("ACTS_PRINT_CALLBACK_ERROR_0002", 0, async (done: Function) => {
       var msg = 123;
       try {
-        abilityDelegator.print(msg, (err: any) => {
+        abilityDelegator.print(msg, (err: BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_PRINT_CALLBACK_ERROR_0002 print callback err" + err
           );
@@ -84,83 +78,83 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_0003
-     * @tc.name      actsPrintCallback0003
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.number ACTS_PRINT_CALLBACK_0003
+     * @tc.name actsPrintCallback0003
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
      *               The print information includes escape character.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0003", 0, async function (done) {
+    it("ACTS_PRINT_CALLBACK_0003", 0, async (done: Function) => {
       let msg = "print_Callback escape character: \n";
 
-      abilityDelegator.print(msg, (err: any) => {
+      abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync("ACTS_PRINT_CALLBACK_0003 print callback");
         done();
       });
     });
 
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_0004
-     * @tc.name      actsPrintCallback0004
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.number ACTS_PRINT_CALLBACK_0004
+     * @tc.name actsPrintCallback0004
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
      *               The print information includes special characters, etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0004", 0, async function (done) {
-      let msg = "print_Callback special character: © ® ℃ ℉ ™ ↵";
+    it("ACTS_PRINT_CALLBACK_0004", 0, async (done: Function) => {
+      let msg: string = "print_Callback special character: © ® ℃ ℉ ™ ↵";
 
-      abilityDelegator.print(msg, (err: any) => {
+      abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync("ACTS_PRINT_CALLBACK_0004 print callback");
         done();
       });
     });
 
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_0005
-     * @tc.name      actsPrintCallback0005
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.number ACTS_PRINT_CALLBACK_0005
+     * @tc.name actsPrintCallback0005
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
      *               The print information includes Chinese etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0005", 0, async function (done) {
-      let msg = "print_Callback language: 中文 English  Русский язык Français";
+    it("ACTS_PRINT_CALLBACK_0005", 0, async (done: Function) => {
+      let msg: string = "print_Callback language: 中文 English  Русский язык Français";
 
-      abilityDelegator.print(msg, (err: any) => {
+      abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync("ACTS_PRINT_CALLBACK_0005 print callback");
         done();
       });
     });
 
     /**
-     * @tc.number    ACTS_PRINT_CALLBACK_0006
-     * @tc.name      actsPrintCallback0006
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with callback function.
+     * @tc.number ACTS_PRINT_CALLBACK_0006
+     * @tc.name actsPrintCallback0006
+     * @tc.desc Test the api "abilityDelegator.print", return the result with callback function.
      *               the length of the printSync message is greater than 1000 characters.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_CALLBACK_0006", 0, async function (done) {
-      var msg =
+    it("ACTS_PRINT_CALLBACK_0006", 0, async (done: Function) => {
+      let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "aaaaaaaaaa" +
-        "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
-        "fffffffffff";
-      abilityDelegator.print(msg, (err: any) => {
+          "aaaaaaaaaa" +
+          "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
+          "fffffffffff";
+      abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync(
           "ACTS_PRINT_CALLBACK_0006 print callback err" + JSON.stringify(err)
         );
@@ -170,14 +164,14 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_0001
-     * @tc.name      actsPrintPromise0001
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.number ACTS_PRINT_PROMISE_0001
+     * @tc.name actsPrintPromise0001
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0001", 0, async function (done) {
+    it("ACTS_PRINT_PROMISE_0001", 0, async (done: Function) => {
       let msg = "print_Promise normal message: hello print promise.";
       abilityDelegator
         .print(msg)
@@ -185,7 +179,7 @@ export default function PrintTest() {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0001 print promise");
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0001 catch error: " + error
           );
@@ -195,16 +189,16 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_ERROR_0002
-     * @tc.name      actsPrintPromiseError0002
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.number ACTS_PRINT_PROMISE_ERROR_0002
+     * @tc.name actsPrintPromiseError0002
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
      *               The print information includes number（unsupport).
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 3
      */
-    it("ACTS_PRINT_PROMISE_ERROR_0002", 0, async function (done) {
-      var msg = 123;
+    it("ACTS_PRINT_PROMISE_ERROR_0002", 0, async (done: Function) => {
+      let msg: number = 123;
       try {
         abilityDelegator
           .print(msg)
@@ -215,7 +209,7 @@ export default function PrintTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             abilityDelegator.printSync(
               "ACTS_PRINT_PROMISE_ERROR_0002 catch error: " + error
             );
@@ -239,15 +233,15 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_0003
-     * @tc.name      actsPrintPromise0003
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.number ACTS_PRINT_PROMISE_0003
+     * @tc.name actsPrintPromise0003
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
      *               The print information includes escape character.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0003", 0, async function (done) {
+    it("ACTS_PRINT_PROMISE_0003", 0, async (done: Function) => {
       let msg = "print_Promise escape character: \n";
       abilityDelegator
         .print(msg)
@@ -255,7 +249,7 @@ export default function PrintTest() {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0003 print promise");
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0003 catch error: " + error
           );
@@ -265,15 +259,15 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_0004
-     * @tc.name      actsPrintPromise0004
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.number ACTS_PRINT_PROMISE_0004
+     * @tc.name actsPrintPromise0004
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
      *               The print information includes special characters, etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0004", 0, async function (done) {
+    it("ACTS_PRINT_PROMISE_0004", 0, async (done: Function) => {
       let msg = "print_Promise special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator
         .print(msg)
@@ -281,7 +275,7 @@ export default function PrintTest() {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0004 print promise");
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0004 catch error: " + error
           );
@@ -291,15 +285,15 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_0005
-     * @tc.name      actsPrintPromise0005
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.number ACTS_PRINT_PROMISE_0005
+     * @tc.name actsPrintPromise0005
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
      *               The print information includes Chinese etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0005", 0, async function (done) {
+    it("ACTS_PRINT_PROMISE_0005", 0, async (done: Function) => {
       let msg = "print_Promise language: 中文 English  Русский язык Français";
       abilityDelegator
         .print(msg)
@@ -307,7 +301,7 @@ export default function PrintTest() {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0005 print promise");
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0005 catch error: " + error
           );
@@ -317,35 +311,35 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_PROMISE_0006
-     * @tc.name      actsPrintPromise0006
-     * @tc.desc      Test the api "abilityDelegator.print", return the result with promise function.
+     * @tc.number ACTS_PRINT_PROMISE_0006
+     * @tc.name actsPrintPromise0006
+     * @tc.desc Test the api "abilityDelegator.print", return the result with promise function.
      *               the length of the printSync message is greater than 1000 characters.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_PROMISE_0006", 0, async function (done) {
-      let msg =
+    it("ACTS_PRINT_PROMISE_0006", 0, async (done: Function) => {
+      let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "aaaaaaaaaa" +
-        "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
-        "fffffffffff";
+          "aaaaaaaaaa" +
+          "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
+          "fffffffffff";
       abilityDelegator
         .print(msg)
         .then(() => {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0006 print promise");
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0006 error:" + error);
           expect().assertFail();
           done();
@@ -353,15 +347,15 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_0001
-     * @tc.name      actsPrintSync0001
-     * @tc.desc      Test the api "abilityDelegator.printSync", return the result.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.number ACTS_PRINT_SYNC_0001
+     * @tc.name actsPrintSync0001
+     * @tc.desc Test the api "abilityDelegator.printSync", return the result.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0001", 0, async function (done) {
-      let abilityDelegator;
+    it("ACTS_PRINT_SYNC_0001", 0, async (done: Function) => {
+      let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       let msg = "printSync msg";
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.printSync(msg);
@@ -370,16 +364,16 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_ERROR_0002
-     * @tc.name      actsPrintSyncError0002
-     * @tc.desc      Test the api "abilityDelegator.printSync", return the result with.
+     * @tc.number ACTS_PRINT_SYNC_ERROR_0002
+     * @tc.name actsPrintSyncError0002
+     * @tc.desc Test the api "abilityDelegator.printSync", return the result with.
      *               The printSync information includes number（unsupport).
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_ERROR_0002", 0, async function (done) {
-      var msg = 123;
+    it("ACTS_PRINT_SYNC_ERROR_0002", 0, async (done: Function) => {
+      let msg: number = 123;
       try {
         abilityDelegator.printSync(msg);
         abilityDelegator.printSync("ACTS_PRINTSYNC_0002 printSync");
@@ -395,76 +389,76 @@ export default function PrintTest() {
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_0003
-     * @tc.name      actsPrintSync0003
-     * @tc.desc      Test the api "abilityDelegator.print", return the result.
+     * @tc.number ACTS_PRINT_SYNC_0003
+     * @tc.name actsPrintSync0003
+     * @tc.desc Test the api "abilityDelegator.print", return the result.
      *               The printSync information includes escape character.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0003", 0, async function (done) {
-      let msg = "printSync escape character: \n";
+    it("ACTS_PRINT_SYNC_0003", 0, async (done: Function) => {
+      let msg: string = "printSync escape character: \n";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0003 printSync");
       done();
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_0004
-     * @tc.name      actsPrintSync0004
-     * @tc.desc      Test the api "abilityDelegator.print", return the result.
+     * @tc.number ACTS_PRINT_SYNC_0004
+     * @tc.name actsPrintSync0004
+     * @tc.desc Test the api "abilityDelegator.print", return the result.
      *               The printSync information includes special characters, etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0004", 0, async function (done) {
-      let msg = "printSync special character: © ® ℃ ℉ ™ ↵";
+    it("ACTS_PRINT_SYNC_0004", 0, async (done: Function) => {
+      let msg: string = "printSync special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0004 printSync");
       done();
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_0005
-     * @tc.name      actsPrintSync0005
-     * @tc.desc      Test the api "abilityDelegator.print", return the result.
+     * @tc.number ACTS_PRINT_SYNC_0005
+     * @tc.name actsPrintSync0005
+     * @tc.desc Test the api "abilityDelegator.print", return the result.
      *               The printSync information includes Chinese etc.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0005", 0, async function (done) {
-      let msg = "printSync language: 中文 English  Русский язык Français";
+    it("ACTS_PRINT_SYNC_0005", 0, async (done: Function) => {
+      let msg: string = "printSync language: 中文 English  Русский язык Français";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0005 printSync");
       done();
     });
 
     /**
-     * @tc.number    ACTS_PRINT_SYNC_0006
-     * @tc.name      actsPrintSync0006
-     * @tc.desc      Test the api "abilityDelegator.print", return the result.
+     * @tc.number ACTS_PRINT_SYNC_0006
+     * @tc.name actsPrintSync0006
+     * @tc.desc Test the api "abilityDelegator.print", return the result.
      *               the length of the printSync message is greater than 1000 characters.
-     * @tc.size      MediumTest
-     * @tc.type      Function
-     * @tc.level     Level 2
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      */
-    it("ACTS_PRINT_SYNC_0006", 0, async function (done) {
-      let msg =
+    it("ACTS_PRINT_SYNC_0006", 0, async (done: Function) => {
+      let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "aaaaaaaaaa" +
-        "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-        "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
-        "fffffffffff";
+          "aaaaaaaaaa" +
+          "1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+          "9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae" +
+          "fffffffffff";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0006 printSync");
       done();

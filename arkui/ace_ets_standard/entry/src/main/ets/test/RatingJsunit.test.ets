@@ -13,86 +13,88 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
+
 
 export default function ratingJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('ratingTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Rating',
-      }
+  describe('ratingTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Rating'
+      };
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Rating state success " + JSON.stringify(pages));
         if (!("Rating" == pages.name)) {
           console.info("get Rating state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push Rating page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Rating page error " + JSON.stringify(result));
+        console.error("push Rating page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Rating after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0990
-     * @tc.name      testGetRatingAttr010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0990
+     * @tc.name testGetRatingAttr010
+     * @tc.desc aceEtsTest
      */
-    it('testGetRatingAttr010', 0, async function (done) {
+    it('testGetRatingAttr010', 0, async (done: Function) => {
       console.info('testGetRatingAttr1 START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.info("rating1 rating" + JSON.stringify(obj.$attrs.rating))
-      console.info("rating1 indicator" + JSON.stringify(obj.$attrs.indicator))
-      console.info("rating1 stepSize" + JSON.stringify(obj.$attrs.stepSize))
-      console.info("rating1 stars" + JSON.stringify(obj.$attrs.stars))
-      console.info("rating1 starStyle" + JSON.stringify(obj.$attrs.starStyle))
-      expect(obj.$attrs.rating).assertEqual("2.000000")
-      expect(obj.$attrs.indicator).assertEqual("false")
-      expect(obj.$attrs.stepSize).assertEqual("0.500000")
-      expect(obj.$attrs.stars).assertEqual("5")
+      console.info("rating1 rating" + JSON.stringify(obj.$attrs.rating));
+      console.info("rating1 indicator" + JSON.stringify(obj.$attrs.indicator));
+      console.info("rating1 stepSize" + JSON.stringify(obj.$attrs.stepSize));
+      console.info("rating1 stars" + JSON.stringify(obj.$attrs.stars));
+      console.info("rating1 starStyle" + JSON.stringify(obj.$attrs.starStyle));
+      expect(obj.$attrs.rating).assertEqual("2.000000");
+      expect(obj.$attrs.indicator).assertEqual("false");
+      expect(obj.$attrs.stepSize).assertEqual("0.500000");
+      expect(obj.$attrs.stars).assertEqual("5");
       expect(obj.$attrs.starStyle)
-        .assertEqual('{"backgroundUri":"/resources/rawfile/star-1-1.png","foregroundUri":"/resources/rawfile/star-1-3.png","secondaryUri":"/resources/rawfile/star-1-2.png"}')
+        .assertEqual('{"backgroundUri":"/resources/rawfile/star-1-1.png","foregroundUri":"/resources/rawfile/star-1-3.png","secondaryUri":"/resources/rawfile/star-1-2.png"}');
       console.info('testGetRatingAttr1 END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1000
-     * @tc.name      testGetRatingAttr020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1000
+     * @tc.name testGetRatingAttr020
+     * @tc.desc aceEtsTest
      */
-    it('testGetRatingAttr020', 0, async function (done) {
+    it('testGetRatingAttr020', 0, async (done: Function) => {
       console.info('testGetRatingAttr2 START');
       let strJson = getInspectorByKey('rating2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.info("rating2 indicator" + JSON.stringify(obj.$attrs.indicator))
-      expect(obj.$attrs.indicator).assertEqual("true")
+      console.info("rating2 indicator" + JSON.stringify(obj.$attrs.indicator));
+      expect(obj.$attrs.indicator).assertEqual("true");
       console.info('testGetRatingAttr2 END');
       done();
     });

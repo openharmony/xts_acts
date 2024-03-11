@@ -35,6 +35,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_0777 0777
 #define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
 #define FAILD (-1)
@@ -136,7 +137,7 @@ static napi_value Readahead(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT | O_RDWR);
+        int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
         write(fd, text, strlen(text));
         ret = readahead(fd, PARAM_0, strlen(text));
         close(fd);
@@ -161,7 +162,7 @@ static napi_value PosixFallocate(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT | O_RDWR);
+        int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
         ret = posix_fallocate(fd, SIZE_8, SIZE_1024);
         close(fd);
         remove(path);
@@ -219,9 +220,9 @@ static napi_value Open(napi_env env, napi_callback_info info)
 
     int fd;
     if (param == PARAM_0) {
-        fd = open(path, O_CREAT | O_RDWR);
+        fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
     } else {
-        fd = open("/", O_CREAT | O_RDWR);
+        fd = open("/", O_CREAT | O_RDWR, PARAM_0777);
     }
     int ret;
     if (fd != FAILD) {
@@ -248,9 +249,9 @@ static napi_value Open64(napi_env env, napi_callback_info info)
 
     int fd;
     if (param == PARAM_0) {
-        fd = open64(path, O_CREAT | O_RDWR);
+        fd = open64(path, O_CREAT | O_RDWR, PARAM_0777);
     } else {
-        fd = open64("/", O_CREAT | O_RDWR);
+        fd = open64("/", O_CREAT | O_RDWR, PARAM_0777);
     }
     int ret;
     if (fd != FAILD) {
@@ -309,7 +310,7 @@ static napi_value PosixFadvise(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT | O_RDWR);
+        int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
         ret = posix_fadvise(fd, SIZE_8, SIZE_1024, POSIX_FADV_NORMAL);
         close(fd);
         remove(path);
@@ -337,7 +338,7 @@ static napi_value FalLocate(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT | O_RDWR);
+        int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
         write(fd, text, sizeof(text));
         ret = fallocate(fd, FALLOC_FL_KEEP_SIZE, SIZE_4096, SIZE_4096 * THREE);
         close(fd);
@@ -362,7 +363,7 @@ static napi_value FalLocate64(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT | O_RDWR);
+        int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
         ret = fallocate64(fd, FALLOC_FL_KEEP_SIZE, SIZE_4096, SIZE_4096 * THREE);
         close(fd);
         remove(path);
@@ -386,7 +387,7 @@ static napi_value FcnTl(napi_env env, napi_callback_info info)
 
     int ret;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT);
+        int fd = open(path, O_CREAT, PARAM_0777);
         ret = fcntl(fd, F_GETFL);
         if (ret != FAILD) {
             ret = PARAM_0;

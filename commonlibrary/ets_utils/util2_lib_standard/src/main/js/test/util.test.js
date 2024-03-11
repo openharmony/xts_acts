@@ -6222,7 +6222,7 @@ describe('Base64HelperTest', function () {
             let array = new Uint8Array([2,192,254,253,5,132,69]);
             let result = that.encodeToStringSync(array, util.Type.MIME);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The parameter length does not meet the MIME encoding format")
+            expect(e.toString()).assertEqual("Error: The parameter length does not meet this encoding format.")
         }
     })
 
@@ -6243,7 +6243,339 @@ describe('Base64HelperTest', function () {
               expect(val).assertEqual('AsD+/QWERQ==');
             })
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The parameter length does not meet the MIME encoding format")
+            expect(e.toString()).assertEqual("Error: The parameter length does not meet this encoding format.")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRINGSYNC_BASE64URL_001
+     * @tc.name: test_encodeToStringSync_base64url_001
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64url_001', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        let result = that.encodeToStringSync(array);
+        let resBas = that.encodeToStringSync(array, util.Type.BASIC);
+        let resUrl = that.encodeToStringSync(array, util.Type.BASIC_URL_SAFE);
+        expect(result).assertEqual('AsD+/QWERQ==');
+        expect(resBas).assertEqual('AsD+/QWERQ==');
+        expect(resUrl).assertEqual('AsD-_QWERQ');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64URL_001
+     * @tc.name: test_encodeSync_base64url_001
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64url_001', 0, function () {
+        let that = new util.Base64Helper()
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        let result = that.encodeSync(array);
+        let resBas = that.encodeSync(array, util.Type.BASIC);
+        let resUrl = that.encodeSync(array, util.Type.BASIC_URL_SAFE);
+        let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
+        let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRING_BASE64URL_001
+     * @tc.name: test_encodeToString_base64url_001
+     * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 and
+     * Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToString_base64url_001', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2, 192, 254, 253, 5, 132, 69]);
+        that.encodeToString(array).then(result => {
+            expect(result).assertEqual('AsD+/QWERQ==');
+        })
+        that.encodeToString(array, util.Type.BASIC).then(resBas => {
+            expect(resBas).assertEqual('AsD+/QWERQ==');
+        })
+        that.encodeToString(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl).assertEqual('AsD-_QWERQ');
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_BASE64URL_001
+     * @tc.name: test_encode_base64url_001
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated
+     * u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_base64url_001', 0, function () {
+        let that = new util.Base64Helper();
+        let array = new Uint8Array([2, 192, 254, 253, 5, 132, 69]);
+        let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
+        let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        that.encode(array).then(result => {
+            expect(result.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === arrBas[index])).assertEqual(true);
+        })
+        that.encode(array, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === arrUrl[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_001
+     * @tc.name: test_decodeSync_base64url_001
+     * @tc.desc: Decodes String into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_001', 0, function () {
+        let that = new util.Base64Helper();
+        let str = "AsD+/QWERQ==";
+        let strUrl = "AsD-_QWERQ";
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        let result = that.decodeSync(str);
+        let resBas = that.decodeSync(str, util.Type.BASIC);
+        let resUrl = that.decodeSync(strUrl, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYNC_BASE64URL_002
+     * @tc.name: test_decodeSync_base64url_002
+     * @tc.desc: Decodes input u8 array into a newly-allocated u8 array using the Base64 and Base64URL encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64url_002', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
+        let arrURL = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        let result = that.decodeSync(arrBas);
+        let resBas = that.decodeSync(arrBas, util.Type.BASIC);
+        let resUrl = that.decodeSync(arrURL, util.Type.BASIC_URL_SAFE);
+        expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_001
+     * @tc.name: test_decode_base64url_001
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a string into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_001', 0, function () {
+        let that = new util.Base64Helper();
+        let str = "AsD+/QWERQ==";
+        let strUrl = "AsD-_QWERQ";
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        that.decode(str).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(str, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.decode(strUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODE_BASE64URL_002
+     * @tc.name: test_decode_base64url_002
+     * @tc.desc: Use the Base64 and Base64URL encoding scheme to asynchronously decode a input u8 array into
+     * a newly allocated u8 array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decode_base64url_002', 0, function () {
+        let that = new util.Base64Helper();
+        let arrBas = new Uint8Array([65,115,68,43,47,81,87,69,82,81,61,61]);
+        let arrUrl = new Uint8Array([65,115,68,45,95,81,87,69,82,81]);
+        let array = new Uint8Array([2,192,254,253,5,132,69]);
+        that.decode(arrBas).then(result => {
+            expect(result.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrBas, util.Type.BASIC).then(resBas => {
+            expect(resBas.every((value, index) => value === array[index])).assertEqual(true);
+        })
+        that.encode(arrUrl, util.Type.BASIC_URL_SAFE).then(resUrl => {
+            expect(resUrl.every((value, index) => value === array[index])).assertEqual(true);
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_THROWERROR_001
+     * @tc.name: test_encodesync_throwError_001
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodesync_throwError_001', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encodeSync(array, 5);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_THROWERROR_002
+     * @tc.name: test_encodesync_throwError_002
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodesync_throwError_002', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encodeSync(array, util.Type.MIME);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_THROWERROR_003
+     * @tc.name: test_encodesync_throwError_003
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodesync_throwError_003', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encodeSync(array, util.Type.MIME_URL_SAFE);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRINGSYNC_THROWERROR_001
+     * @tc.name: test_encodeToStringSync_throwError_001
+     * @tc.desc: An error is thrown when the argument is out of enumeration range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_throwError_001', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encodeToStringSync(array, 4);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be one of the Type enumerations.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_THROWERROR_001
+     * @tc.name: test_encode_throwError_001
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_throwError_001', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encode(array, 6);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_THROWERROR_002
+     * @tc.name: test_encode_throwError_002
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_throwError_002', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encode(array, util.Type.MIME);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_THROWERROR_003
+     * @tc.name: test_encode_throwError_003
+     * @tc.desc: An error is thrown when the parameter does not meet the interface requirements.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encode_throwError_003', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encode(array, util.Type.MIME_URL_SAFE);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODETOSTRING_THROWERROR_001
+     * @tc.name: test_encodeToString_throwError_001
+     * @tc.desc: An error is thrown when the argument is out of enumeration range.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToString_throwError_001', 0, function () {
+        try {
+            let that = new util.Base64Helper();
+            let array = new Uint8Array([115,49,51]);
+            that.encodeToString(array, 5);
+        } catch (e) {
+            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
+                'The target encoding type option nust be one of the Type enumerations.');
         }
     })
 })
@@ -6925,6 +7257,332 @@ describe('DecodeEncodeTest', function () {
         } catch (e) {
             expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array.")
         }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_001
+     * @tc.name: testEncoding_001
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_001', 0, function () {
+        var that = new util.TextEncoder('big5')
+        var str = that.encoding
+        expect(str).assertEqual('big5')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_002
+     * @tc.name: testEncoding_002
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_002', 0, function () {
+        var that = new util.TextEncoder('iso-8859-2')
+        var str = that.encoding
+        expect(str).assertEqual('iso-8859-2')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_003
+     * @tc.name: testEncoding_003
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_003', 0, function () {
+        var that = new util.TextEncoder('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_004
+     * @tc.name: testEncoding_004
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_004', 0, function () {
+        var that = new util.TextEncoder('ibm866')
+        var str = that.encoding
+        expect(str).assertEqual('ibm866')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_005
+     * @tc.name: testEncoding_005
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_005', 0, function () {
+        var that = new util.TextEncoder('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+	
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_001
+     * @tc.name: testEncoding_create_001
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_001', 0, function () {
+        var that = util.TextEncoder.create()
+        var str = that.encoding
+        expect(str).assertEqual('utf-8')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_002
+     * @tc.name: testEncoding_create_002
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_002', 0, function () {
+        var that = util.TextEncoder.create('iso-8859-2')
+        var str = that.encoding
+        expect(str).assertEqual('iso-8859-2')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_003
+     * @tc.name: testEncoding_create_003
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_003', 0, function () {
+        var that = util.TextEncoder.create('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_004
+     * @tc.name: testEncoding_create_004
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_004', 0, function () {
+        var that = util.TextEncoder.create('ibm866')
+        var str = that.encoding
+        expect(str).assertEqual('ibm866')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODING_CREATE_005
+     * @tc.name: testEncoding_create_005
+     * @tc.desc: Returns the result of encoder.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncoding_create_005', 0, function () {
+        var that = util.TextEncoder.create('euc-kr')
+        var str = that.encoding
+        expect(str).assertEqual('euc-kr')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_011
+     * @tc.name: testEncodeInto011
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto011', 0, function () {
+        let that = new util.TextEncoder('big5')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(171)
+        expect(result[4]).assertEqual(162)
+        expect(result[7]).assertEqual(230)
+        expect(result[8]).assertEqual(102)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_012
+     * @tc.name: testEncodeInto012
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto012', 0, function () {
+        let that = new util.TextEncoder('shift_jis')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(153)
+        expect(result[4]).assertEqual(251)
+        expect(result[7]).assertEqual(252)
+        expect(result[8]).assertEqual(252)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_013
+     * @tc.name: testEncodeInto013
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto013', 0, function () {
+        let that = new util.TextEncoder('iso-2022-jp')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(27)
+        expect(result[4]).assertEqual(36)
+        expect(result[7]).assertEqual(125)
+        expect(result[8]).assertEqual(82)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_014
+     * @tc.name: testEncodeInto014
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto014', 0, function () {
+        let that = new util.TextEncoder('ibm866')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(127)
+        expect(result[4]).assertEqual(127)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_015
+     * @tc.name: testEncodeInto015
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testEncodeInto015', 0, function () {
+        let that = new util.TextEncoder('macintosh')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encodeInto('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(63)
+        expect(result[4]).assertEqual(63)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_009
+     * @tc.name: testencodeIntoUint8Array009
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array009', 0, function () {
+        var that = new util.TextEncoder('big5')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 10)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(8)
+        expect(result.written).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_010
+     * @tc.name: testencodeIntoUint8Array010
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array010', 0, function () {
+        var that = new util.TextEncoder('shift_jis')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 5)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(3)
+        expect(result.written).assertEqual(5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_011
+     * @tc.name: testencodeIntoUint8Array011
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array011', 0, function () {
+        var that = new util.TextEncoder('iso-2022-jp')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 7)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_012
+     * @tc.name: testencodeIntoUint8Array012
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array012', 0, function () {
+        var that = new util.TextEncoder('ibm866')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 4)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(4)
+        expect(result.written).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_INTO_UINT8ARRAY_013
+     * @tc.name: testencodeIntoUint8Array013
+     * @tc.desc: encode string, write the result to dest array.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testencodeIntoUint8Array013', 0, function () {
+        var that = new util.TextEncoder('macintosh')
+        var buffer = new ArrayBuffer(20)
+        var dest = new Uint8Array(buffer, 0, 10)
+        var result = new Uint32Array(20)
+        result = that.encodeIntoUint8Array('\uD800A\uDF06A楼HiA', dest)
+        expect(result.read).assertEqual(8)
+        expect(result.written).assertEqual(8)
     })
 })
 }

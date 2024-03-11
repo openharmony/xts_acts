@@ -12,23 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
- import Row_Space_String from './Row/spaceChanged/Row_Space_String.test.ets';
- import Row_Space_Default from './Row/spaceChanged/Row_Space_Default.test.ets';
- import Row_layoutWeight_All from './Row/layoutWeight/Row_layoutWeight_All.test.ets';
- import Row_layoutWeight_Default from './Row/layoutWeight/Row_layoutWeight_Default.test.ets';
- import Row_layoutWeight_flexGrow from './Row/layoutWeight/Row_layoutWeight_flexGrow.test.ets';
- import Row_layoutWeight_flexShrink from './Row/layoutWeight/Row_layoutWeight_flexShrink.test.ets';
- import Row_layoutWeight_Part from './Row/layoutWeight/Row_layoutWeight_Part.test.ets';
- import Row_flexGrow_Default from './Row/flexGrow/Row_flexGrow_Default.test.ets';
- import Row_flexGrow_Part from './Row/flexGrow/Row_flexGrow_Part.test.ets';
- import Row_flexShrink_Default from './Row/flexShrink/Row_flexShrink_Default.test.ets';
- import Row_flexShrink_Part from './Row/flexShrink/Row_flexShrink_Part.test.ets';
- import Row_flexBasis_Default from './Row/flexBasis/Row_flexBasis_Default.test.ets';
- import Row_flexBasis_Type from './Row/flexBasis/Row_flexBasis_Type.test.ets';
- import rowNesting_Space from './Row/RowNesting/rowNesting_Space.test.ets';
- import rowNesting_alignItems from './Row/RowNesting/rowNesting_alignItems.test.ets';
- import rowNesting_justifyContent from './Row/RowNesting/rowNesting_justifyContent.test.ets';
+
+import Row_Space from './Row/spaceChanged/Row_Space.test.ets';
+import Row_Space_String from './Row/spaceChanged/Row_Space_String.test.ets';
+import Row_Space_Default from './Row/spaceChanged/Row_Space_Default.test.ets';
+import Row_layoutWeight_All from './Row/layoutWeight/Row_layoutWeight_All.test.ets';
+import Row_layoutWeight_Default from './Row/layoutWeight/Row_layoutWeight_Default.test.ets';
+import Row_layoutWeight_flexGrow from './Row/layoutWeight/Row_layoutWeight_flexGrow.test.ets';
+import Row_layoutWeight_flexShrink from './Row/layoutWeight/Row_layoutWeight_flexShrink.test.ets';
+import Row_layoutWeight_Part from './Row/layoutWeight/Row_layoutWeight_Part.test.ets';
+import Row_flexGrow_Default from './Row/flexGrow/Row_flexGrow_Default.test.ets';
+import Row_flexGrow_Part from './Row/flexGrow/Row_flexGrow_Part.test.ets';
+import Row_flexShrink_Default from './Row/flexShrink/Row_flexShrink_Default.test.ets';
+import Row_flexShrink_Part from './Row/flexShrink/Row_flexShrink_Part.test.ets';
+import Row_flexBasis_Default from './Row/flexBasis/Row_flexBasis_Default.test.ets';
+import Row_flexBasis_Type from './Row/flexBasis/Row_flexBasis_Type.test.ets';
+import rowNesting_Space from './Row/RowNesting/rowNesting_Space.test.ets';
+import rowNesting_alignItems from './Row/RowNesting/rowNesting_alignItems.test.ets';
+import rowNesting_justifyContent from './Row/RowNesting/rowNesting_justifyContent.test.ets';
 import row_TextSizeTest from './Row/subComponentChanged/Row_TextSize.test';
 import rowPad_TextMarPadTest from './Row/subComponentChanged/RowPad_TextMarPad.test';
 import rowMar_TextMarPadTest from './Row/subComponentChanged/RowMar_TextMarPad.test';
@@ -47,8 +48,8 @@ import Row_Size from './Row/parentComponentChanged/Row_Size.test';
 import Row_VerticalAlign from './Row/parentComponentChanged/Row_VerticalAlign.test';
 
 export default function testsuite() {
- 
- Row_Space()
+
+  Row_Space()
   Row_Space_String()
   Row_Space_Default()
   Row_layoutWeight_All()

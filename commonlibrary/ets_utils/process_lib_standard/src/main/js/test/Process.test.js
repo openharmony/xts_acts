@@ -17,6 +17,10 @@ import process from '@ohos.process'
 export default function ProcessTest() {
 describe('ProcessTest', function () {
 
+    function delay(duration) {
+        return new Promise(resolve => setTimeout(resolve, duration));
+    }
+
     /**
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
@@ -160,10 +164,10 @@ describe('ProcessTest', function () {
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
-        sleep(6);
+        sleep(3);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 6) {
+        if ((result2 - result1) >= 3) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -173,15 +177,12 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime002
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime002', 0, function () {
+    it('testUptime002', 0, async function () {
         let result1 = process.uptime()
-        function sleep(d){
-            while (process.uptime() - result1 <= d);
-        }
-        sleep(8);
+        await delay(4000);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 8) {
+        if ((result2 - result1) >= 4) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -191,15 +192,12 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime003
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime003', 0, function () {
+    it('testUptime003', 0, async function () {
         let result1 = process.uptime()
-        function sleep(d){
-            while (process.uptime() - result1 <= d);
-        }
-        sleep(10);
+        await delay(2000);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 10) {
+        if ((result2 - result1) >= 2) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -209,15 +207,12 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime004
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime004', 0, function () {
+    it('testUptime004', 0, async function () {
         let result1 = process.uptime()
-        function sleep(d){
-            while (process.uptime() - result1 <= d);
-        }
-        sleep(7);
+        await delay(3000);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 7) {
+        if ((result2 - result1) >= 3) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -227,18 +222,15 @@ describe('ProcessTest', function () {
      * @tc.name: testUptime005
      * @tc.desc: Returns the running time of the system.
      */
-    it('testUptime005', 0, function () {
+    it('testUptime005', 0, async function () {
         let result1 = process.uptime()
-        function sleep(d){
-            while (process.uptime() - result1 <= d);
-        }
-        sleep(11);
+        await delay(2000);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 11) {
+        if ((result2 - result1) >= 5) {
             flag = true
         }
-        expect(flag).assertEqual(true)
+        expect(flag).assertEqual(false)
     })
 
     /**

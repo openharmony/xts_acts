@@ -114,17 +114,19 @@ static napi_value SchedSetparam(napi_env env, napi_callback_info info)
     pid_t pid = getpid();
     int first = PARAM_0;
     napi_get_value_int32(env, args[0], &first);
-    int maxpri = sched_get_priority_max(SCHED_OTHER);
-    int minpri = sched_get_priority_min(SCHED_OTHER);
+    int maxpri = sched_get_priority_max(SCHED_RR);
+    int minpri = sched_get_priority_min(SCHED_RR);
     if (maxpri == FAIL || minpri == FAIL) {
         napi_create_int32(env, FAIL, &result);
     }
-    if (first == NO_ERR) {
-        param.sched_priority = TWENTYTHREE;
-        int ret = sched_setparam(pid, &param);
+    errno = 0;
+    if (first == PARAM_0) {
+        int ret = sched_getparam(pid, &param);
+        if (ret == NO_ERR) {
+            ret = sched_setparam(pid, &param);
+        }
         napi_create_int32(env, ret, &result);
     } else if (first == FAIL) {
-        param.sched_priority = TWENTYTHREE;
         int schval = sched_setparam(pid, nullptr);
         napi_create_int32(env, schval, &result);
     } else {
@@ -222,7 +224,10 @@ static napi_value Setns(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     pid_t pid = getpid();
     int fd = syscall(SYS_pidfd_open, pid, PARAM_0);
-    int setval = setns(fd, PARAM_0);
+    int setval = PARAM_1;
+    if (fd >= PARAM_0) {
+        setval = setns(fd, PARAM_0);
+    }
     napi_value result;
     napi_create_int32(env, setval, &result);
     return result;

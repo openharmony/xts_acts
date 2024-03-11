@@ -24,6 +24,7 @@ struct WebViewControllerZoom {
   @State str: string = ""
   @State zoom: number = 0
   @State zoomState: string = ''
+  @State userAgentPC:string = "";
   controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
@@ -167,6 +168,14 @@ struct WebViewControllerZoom {
               break
             }
             case 'maxZoom': {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                let zoomCount = this.zoom * 100 > 400 ? 400 : this.zoom
+                if (zoomCount == event.newScale) {
+                  Utils.emitEvent(true, 7702)
+                }
+                break
+              }
               let zoomCount = this.zoom * 100 > 500 ? 500 : this.zoom
               if (zoomCount == event.newScale) {
                 Utils.emitEvent(true, 7702)

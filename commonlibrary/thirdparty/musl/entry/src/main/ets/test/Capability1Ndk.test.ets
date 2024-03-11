@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import capability from 'libcapability1ndk.so'
 
 export default function CapabilityNdk1Test() {
   describe('MuslCapability1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CAPABILITY_CAPGET_0100
      * @tc.name       : testMuslCapabilityCapget001

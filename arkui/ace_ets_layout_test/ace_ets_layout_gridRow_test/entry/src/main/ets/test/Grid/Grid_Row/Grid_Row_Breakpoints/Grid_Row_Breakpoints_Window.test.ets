@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Breakpoints_Window() {
-  describe('Grid_Row_Breakpoints_Window', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Breakpoints_Window', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Breakpoints_Window beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Window",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Breakpoints_Window() {
         console.info("get Grid_Row_Breakpoints_Window state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Breakpoints_Window" == pages.name)) {
           console.info("get Grid_Row_Breakpoints_Window pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Breakpoints_Window page result:" + JSON.stringify(result));
         }
@@ -40,29 +41,32 @@ export default function Grid_Row_Breakpoints_Window() {
       console.info("Grid_Row_Breakpoints_Window beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Breakpoints_Window after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_Window_0100
-     * @tc.name      testBreakpoints
-     * @tc.desc      Set the reference to ComponentSize
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_Window_0100
+     * @tc.name testBreakpoints
+     * @tc.desc Set the reference to ComponentSize
      */
-    it('SUB_ACE_GRIDROWBREAKPOTINS_Window_0100', 0, async function (done) {
+    it('SUB_ACE_GRIDROWBREAKPOTINS_Window_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GRIDROWBREAKPOTINS_Window_0100 START');
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window2');
-      let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window3');
-      let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window4');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window2');
+      let fourthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window3');
+      let fifthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window4');
 
-      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
-      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(Math.round(fourthBreakpoints.left - thirdBreakpoints.right));
-      expect(Math.round(fourthBreakpoints.left - thirdBreakpoints.right)).assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
+      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right))
+        .assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
+      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right))
+        .assertEqual(Math.round(fourthBreakpoints.left - thirdBreakpoints.right));
+      expect(Math.round(fourthBreakpoints.left - thirdBreakpoints.right))
+        .assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
 
       console.info('SUB_ACE_GRIDROWBREAKPOTINS_Window_0100 END');
       done();

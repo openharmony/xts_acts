@@ -14,13 +14,13 @@
  */
 
 #include "napi/native_api.h"
-#include <csignal>
-#include <cstring>
 #include <cerrno>
 #include <climits>
+#include <csignal>
+#include <cstdlib>
+#include <cstring>
 #include <pthread.h>
 #include <semaphore.h>
-#include <cstdlib>
 #include <unistd.h>
 
 #define PARAM_0 0
@@ -743,7 +743,7 @@ static napi_value PThreadCondAttrSetPShared(napi_env env, napi_callback_info inf
 
 static void *PThreadCreateThread(void *arg)
 {
-    int *pret = static_cast<int*>(arg);
+    int *pret = static_cast<int *>(arg);
     (*pret)++;
     return pret;
 }
@@ -762,7 +762,7 @@ static napi_value PThreadCreate(napi_env env, napi_callback_info info)
 
 static void *PThreadDetachThread(void *arg)
 {
-    int *pret = static_cast<int*>(arg);
+    int *pret = static_cast<int *>(arg);
     (*pret)++;
     pthread_exit(PARAM_0);
     return pret;
@@ -802,7 +802,7 @@ static napi_value PThreadEqual(napi_env env, napi_callback_info info)
 
 static void *PThreadExitThread(void *arg)
 {
-    int ret = *static_cast<int*>(arg);
+    int ret = *static_cast<int *>(arg);
     pthread_exit((void *)ret);
     return (void *)ret;
 }
@@ -861,7 +861,7 @@ static napi_value PThreadGetSpecific(napi_env env, napi_callback_info info)
     pthread_key_t key;
     pthread_key_create(&key, nullptr);
     pthread_setspecific(key, static_cast<void *>(&value));
-    int keyRet =*static_cast<int*>(pthread_getspecific(key));
+    int keyRet = *static_cast<int *>(pthread_getspecific(key));
     pthread_key_delete(key);
     int ret = value != keyRet;
     napi_value result = nullptr;
@@ -1388,7 +1388,7 @@ static napi_value PThreadSetSpecific(napi_env env, napi_callback_info info)
     pthread_key_t key;
     pthread_key_create(&key, nullptr);
     int ret = pthread_setspecific(key, static_cast<void *>(&value));
-    int keyRet =*static_cast<int*>(pthread_getspecific(key));
+    int keyRet = *static_cast<int *>(pthread_getspecific(key));
     pthread_key_delete(key);
     ret |= value != keyRet;
     napi_value result = nullptr;
@@ -1400,7 +1400,7 @@ static void *PThreadSigMaskThread(void *arg)
 {
     sigset_t set;
     sigaddset(&set, SIGUSR1);
-    int ret =pthread_sigmask(SIG_BLOCK, &set, nullptr);
+    int ret = pthread_sigmask(SIG_BLOCK, &set, nullptr);
     return (void *)ret;
 }
 

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gridColXlJsunit() {
-  describe('gridColXlTest', function () {
-    beforeEach(async function (done) {
+  describe('gridColXlTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gridCol',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridCol',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function gridColXlJsunit() {
         console.info("get gridCol state success " + JSON.stringify(pages));
         if (!("gridCol" == pages.name)) {
           console.info("get gridCol state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push gridCol page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function gridColXlJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gridColXl after each called");
     });
@@ -50,15 +50,14 @@ export default function gridColXlJsunit() {
      * @tc.name         testgridColXl0001
      * @tc.desic         acegridColXlEtsTest0001
      */
-    it('testgridColXl0001', 0, async function (done) {
+    it('testgridColXl0001', 0, async (done: Function) => {
       console.info('gridColXl testgridColXl0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('GridCol');
+      let strJson: string = getInspectorByKey('GridCol');
       console.info("[testgridColXl0001] component order strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('GridCol');
-      expect(obj.$attrs.order).assertEqual("{xl: 10}");
-      console.info("[testgridColXl0001] order value :" + obj.$attrs.order);
+      expect(JSON.parse(strJson).$type).assertEqual('GridCol');
+      expect(JSON.parse(strJson).$attrs.order).assertEqual("{xl: 10}");
+      console.info("[testgridColXl0001] order value :" + JSON.parse(strJson).$attrs.order);
       done();
     });
 
@@ -67,15 +66,14 @@ export default function gridColXlJsunit() {
      * @tc.name         testgridColXl0002
      * @tc.desic         acegridColXlEtsTest0002
      */
-    it('testgridColXl0002', 0, async function (done) {
+    it('testgridColXl0002', 0, async (done: Function) => {
       console.info('gridColXl testgridColXl0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('GridCol');
+      let strJson: string = getInspectorByKey('GridCol');
       console.info("[testgridColXl0002] component backgroundColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Color.Green');
-      expect(obj.$attrs.backgroundColor).assertEqual("Color.Green");
-      console.info("[testgridColXl0002] backgroundColor value :" + obj.$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$type).assertEqual('Color.Green');
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("Color.Green");
+      console.info("[testgridColXl0002] backgroundColor value :" + JSON.parse(strJson).$attrs.backgroundColor);
       done();
     });
   })

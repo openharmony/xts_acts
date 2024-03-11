@@ -16,16 +16,16 @@
 
 import router from '@ohos.router';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import { Driver, ON, On } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function listSwipe06Jsunit() {
-  describe('listSwipe06Test', ()=> {
-    beforeAll(async (done:Function)=> {
+  describe('listSwipe06Test', () => {
+    beforeAll(async (done: Function) => {
       console.info("listSwipe06Test beforeEach start");
-      let options : router.RouterOptions = {
-          url : "MainAbility/pages/List/ListItem_SwipeActionItem/listTest06"
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/List/ListItem_SwipeActionItem/listTest06"
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function listSwipe06Jsunit() {
       done();
     });
 
-    afterEach(async function(done) {
+    afterEach(async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info("listSwipe06Test after each called");
       // reset the init state
@@ -57,15 +57,15 @@ export default function listSwipe06Jsunit() {
      * @tc.name   : when swipe,then return the init position
      * @tc.desc   : test the onStateChange function parameter state
      */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060', 0, async (done:Function)=> {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060 START');
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeActionNoBuilder0');
-      let obj = JSON.parse(strJson);
-      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060] current component obj is: " + JSON.stringify(obj));
+
+      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
         Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(100)), Math.round(vp2px(108))
@@ -73,9 +73,10 @@ export default function listSwipe06Jsunit() {
       await CommonFunc.sleep(4500);
       // judge the swipeActionState
       let textSwipeState = getInspectorByKey('swipeStateNoBuilder');
-      let textString = JSON.parse(textSwipeState);
-      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060 json is ' + JSON.stringify(textString.$attrs));
-      expect(textString.$attrs.content).assertEqual('-1');
+
+      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0060 json is ' + JSON.stringify(JSON.parse(textSwipeState)
+        .$attrs));
+      expect(JSON.parse(textSwipeState).$attrs.content).assertEqual('-1');
       done();
     });
 

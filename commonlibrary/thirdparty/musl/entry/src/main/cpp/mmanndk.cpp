@@ -33,6 +33,7 @@
 
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_0777 0777
 #define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
 #define FAILD (-1)
@@ -82,17 +83,17 @@ static napi_value MemfdCreate(napi_env env, napi_callback_info info)
 }
 static napi_value Mincore(napi_env env, napi_callback_info info)
 {
-    struct stat st;
+    size_t stSize = PARAM_1;
     int retVal = PARAM_0;
     napi_value result = nullptr;
     char tmpfile[] = "/data/storage/el2/base/files/memfd_create_0100.txt";
-    int fd = open(tmpfile, O_CREAT | O_RDWR);
+    int fd = open(tmpfile, O_CREAT | O_RDWR, PARAM_0777);
     if (fd == PARAM_UNNORMAL) {
         perror("open failed");
         napi_create_int32(env, OPENERROR, &result);
         return result;
     }
-    void *start = mmap(nullptr, st.st_size, PROT_READ, MAP_PRIVATE, fd, PARAM_0);
+    void *start = mmap(nullptr, stSize, PROT_READ, MAP_PRIVATE, fd, PARAM_0);
     close(fd);
     if (!start) {
         napi_create_int32(env, MMAPERROR, &result);
@@ -101,7 +102,7 @@ static napi_value Mincore(napi_env env, napi_callback_info info)
     unsigned char vec[TEST_SIZE];
     memset(vec, SIZE_0x0, sizeof(vec));
     retVal = mincore(start, TEST_SIZE, vec);
-    munmap(start, st.st_size);
+    munmap(start, stSize);
     remove(tmpfile);
     napi_create_int32(env, retVal, &result);
     return result;
@@ -151,7 +152,7 @@ static napi_value MreMap(napi_env env, napi_callback_info info)
 {
     int retVal = FAIL;
     char tmpfile[] = "/data/storage/el2/base/files/memfd_create_0100.txt";
-    int fd = open(tmpfile, O_CREAT | O_RDWR);
+    int fd = open(tmpfile, O_CREAT | O_RDWR, PARAM_0777);
     void *map = mmap(nullptr, TEST_M_SIZE, PROT_READ, MAP_SHARED, fd, PARAM_0);
     void *map_new = mremap(map, TEST_M_SIZE, TEST_M_NEW_SIZE, MREMAP_MAYMOVE);
 
@@ -170,7 +171,7 @@ static napi_value MSync(napi_env env, napi_callback_info info)
 {
     int retVal = FAIL;
     char tmpfile[] = "/data/storage/el2/base/files/memfd_creat0100.txt";
-    int fd = open(tmpfile, O_CREAT | O_RDWR);
+    int fd = open(tmpfile, O_CREAT | O_RDWR, PARAM_0777);
     void *map = mmap(nullptr, TEST_MS_SIZE, PROT_READ, MAP_SHARED, fd, PARAM_0);
     int ret = msync(map, TEST_MS_SIZE, MS_ASYNC);
     munmap(map, TEST_MS_SIZE);
@@ -292,7 +293,7 @@ static napi_value MLockAll(napi_env env, napi_callback_info info)
 
 static napi_value Mmap64(napi_env env, napi_callback_info info)
 {
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT | O_RDWR);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT | O_RDWR, PARAM_0777);
     void *pMap = (unsigned char *)mmap64(PARAM_0, PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, PARAM_0);
     napi_value result;
     if (pMap == MAP_FAILED) {
@@ -310,7 +311,7 @@ static napi_value Munmap(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     double value;
     napi_get_value_double(env, args[0], &value);
-    int fd = open("/data/storage/el2/base/files/test.txt", O_CREAT);
+    int fd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
     void *p = mmap(PARAM_0, value, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, fd, PARAM_0);
     napi_value result = nullptr;
     napi_create_double(env, munmap(p, value), &result);
@@ -329,7 +330,7 @@ static napi_value RemapFilePages(napi_env env, napi_callback_info info)
     napi_get_value_int32(env, args[0], &param);
 
     int ret;
-    int fd = open(path, O_CREAT | O_RDWR);
+    int fd = open(path, O_CREAT | O_RDWR, PARAM_0777);
     write(fd, text, len);
     lseek(fd, PARAM_0, SEEK_SET);
     char *start = static_cast<char *>(mmap(nullptr, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, PARAM_0));

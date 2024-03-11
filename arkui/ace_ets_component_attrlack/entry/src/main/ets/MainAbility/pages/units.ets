@@ -21,14 +21,14 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct UnitsModuleName {
-  @State textHeight: number = 50
+  @State textHeight: number = 50;
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear UnitsModuleName start`)
+    Log.showInfo(TAG, `aboutToAppear UnitsModuleName start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear UnitsModuleName end`)
+    Log.showInfo(TAG, `aboutToDisAppear UnitsModuleName end`);
   }
 
   build() {
@@ -50,12 +50,12 @@ struct UnitsModuleName {
         .onClick(() => {
           console.log($r('app.string.MainAbility_label').bundleName)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ModuleName": ($r('app.string.MainAbility_label').bundleName != null)
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60310,
               priority: events_emitter.EventPriority.LOW
             }
@@ -86,12 +86,12 @@ struct UnitsModuleName {
           console.info(`oldValue.globalPosition: ${JSON.stringify(oldValue.globalPosition)}`)
           console.info(`newValue.globalPosition: ${JSON.stringify(newValue.globalPosition)}`)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Result": true
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60311,
               priority: events_emitter.EventPriority.LOW
             }
@@ -150,7 +150,6 @@ struct UnitsModuleName {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("minHeightText")
-
         .constraintSize({
           minHeight: 100
         })
@@ -171,8 +170,9 @@ struct UnitsModuleName {
         .constraintSize({
           maxHeight: 100
         })
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

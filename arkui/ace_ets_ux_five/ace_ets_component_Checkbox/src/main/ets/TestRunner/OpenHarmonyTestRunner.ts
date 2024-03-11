@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import TestRunner from '@ohos.application.testRunner';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+var abilityDelegator = undefined;
+var abilityDelegatorArguments = undefined;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([
@@ -56,8 +56,8 @@ export default class OpenHarmonyTestRunner implements TestRunner {
   async onRun() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+    abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
     let testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility';
     let lMonitor = {
       abilityName: testAbilityName,

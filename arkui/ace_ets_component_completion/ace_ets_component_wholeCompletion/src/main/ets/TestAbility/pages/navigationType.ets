@@ -16,18 +16,15 @@
 @Entry
 @Component
 struct navigationType {
-  @State strokeWidthStr: string = '10px'
-  @State dividerColorStr: string  = '#000000'
-  @State startMarginStr: string = '5px'
-  @State endMarginStr: string = '5px'
-
-  @State nullFlag: boolean = false
-
-  @State dividerColor: Color = Color.Red
-
+  @State strokeWidthStr: string = '10px';
+  @State dividerColorStr: string = '#000000';
+  @State startMarginStr: string = '5px';
+  @State endMarginStr: string = '5px';
+  @State nullFlag: boolean = false;
+  @State dividerColor: Color = Color.Red;
   private arr: number[] = [1, 2, 3];
-  normalIcon : Resource = $r("app.media.icon")
-  selectedIcon: Resource = $r("app.media.icon")
+  normalIcon: Resource = $r("app.media.icon");
+  selectedIcon: Resource = $r("app.media.icon");
 
   build() {
     Column() {
@@ -38,7 +35,7 @@ struct navigationType {
           .backgroundColor('#FFFFFF')
 
         List({ space: 12 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               NavRouter() {
                 Text("NavRouter" + item)
@@ -56,11 +53,12 @@ struct navigationType {
               }
 
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_1600")
+      }
+      .key("ArkUX_Navigation_1600")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .mode(NavigationMode.Auto)
@@ -68,17 +66,43 @@ struct navigationType {
       .navBarWidth(100)
       .navBarWidthRange([50, 300])
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
 
       Navigation() {
         TextInput({ placeholder: 'search...' })
@@ -109,7 +133,8 @@ struct navigationType {
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_1700")
+      }
+      .key("ArkUX_Navigation_1700")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .mode(NavigationMode.Stack)
@@ -117,17 +142,43 @@ struct navigationType {
       .navBarWidth(15000)
       .navBarWidthRange([10000, 30000])
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
 
 
       Navigation() {
@@ -159,7 +210,8 @@ struct navigationType {
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_1800")
+      }
+      .key("ArkUX_Navigation_1800")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .mode(NavigationMode.Split)
@@ -167,17 +219,43 @@ struct navigationType {
       .navBarWidth(100)
       .navBarWidthRange([10, 20])
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
 
 
       Navigation() {
@@ -209,22 +287,49 @@ struct navigationType {
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_1900")
+      }
+      .key("ArkUX_Navigation_1900")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .navBarWidth(100)
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
 
 
       Navigation() {
@@ -256,7 +361,8 @@ struct navigationType {
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_2000")
+      }
+      .key("ArkUX_Navigation_2000")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .mode(NavigationMode.Split)
@@ -264,17 +370,43 @@ struct navigationType {
       .navBarWidth(100)
       .navBarWidthRange([100, 100])
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
 
       Navigation() {
         TextInput({ placeholder: 'search...' })
@@ -305,7 +437,8 @@ struct navigationType {
         }
         .width("90%")
         .margin({ top: 12 })
-      }.key("ArkUX_Navigation_2100")
+      }
+      .key("ArkUX_Navigation_2100")
       .title("������������")
       .titleMode(NavigationTitleMode.Mini)
       .mode(NavigationMode.Split)
@@ -313,17 +446,43 @@ struct navigationType {
       .navBarWidth("30%")
       .navBarWidthRange(["20%", "50%"])
       .menus([
-        {value: "", icon: "./image/ic_public_search.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}},
-        {value: "", icon: "./image/ic_public_add.svg", action: ()=> {}}
+        {
+          value: "", icon: "./image/ic_public_search.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        },
+        {
+          value: "", icon: "./image/ic_public_add.svg", action: () => {
+        }
+        }
       ])
-      .toolBar({items: [
-        {value: "aas", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: ()=> {}},
-        {value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: ()=> {}}
-      ]})
+      .toolBar({
+        items: [
+          {
+            value: "aas", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "bbbsdsdsdsdbb", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          },
+          {
+            value: "ccccassdsddcccc", icon: "./image/ic_public_highlights.svg", action: () => {
+          }
+          }
+        ]
+      })
     }
     .height('100%')
     .width('100%')

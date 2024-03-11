@@ -21,7 +21,7 @@ import media from '@ohos.multimedia.media';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import featureAbility from '@ohos.ability.featureAbility';
-const TAG = "CameraModuleTest: ";
+const TAG = "CameraSessionExposureTest: ";
 
 // Define global letiables
 let mCameraManager;
@@ -56,7 +56,7 @@ let mVideoProfileCfg = {
     durationTime: 1000,
     fileFormat: 'mp4',
     videoBitrate: 2000000,
-    videoCodec: 'video/mp4v-es',
+    videoCodec: 'video/avc',
     videoFrameWidth: 640,
     videoFrameHeight: 480,
     videoFrameRate: 30
@@ -220,9 +220,8 @@ export default function cameraSessionExposureTest() {
 
     async function releaseVideoReceiveSurface() {
         console.log(TAG + 'Entering releaseVideoReceiveSurface')
-        mVideoRecorder.release((err) => {
-            console.info(TAG + 'Entering release video receiver')
-        })
+      await mVideoRecorder.release()
+        mVideoRecorder = null
         await closeFd();
         console.log(TAG + 'Exit releaseVideoReceiveSurface')
     }
@@ -551,8 +550,8 @@ export default function cameraSessionExposureTest() {
             console.info('afterEach case');
         })
 
-        afterAll(function () {
-            releaseVideoReceiveSurface();
+        afterAll(async function () {
+            await releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
             sleep(1000);
             console.info('afterAll case');

@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import plugin from "../common/plugin_component.js"
+import plugin from "../common/plugin_component.js";
 
 @Entry
 @Component
 struct PluginProviderExample {
-  @State message: string = 'no click!'
+  @State message: string = 'no click!';
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -26,8 +26,8 @@ struct PluginProviderExample {
         .fontSize(30)
         .width(400)
         .height(100)
-        .margin({top:20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           plugin.onListener()
           console.log("Button('Register Push Listener')")
         })
@@ -35,8 +35,8 @@ struct PluginProviderExample {
         .fontSize(30)
         .width(400)
         .height(100)
-        .margin({top:20})
-        .onClick(()=>{
+        .margin({ top: 20 })
+        .onClick(() => {
           plugin.Push()
           this.message = "Button('Push')"
           console.log("Button('Push')")
@@ -46,6 +46,10 @@ struct PluginProviderExample {
         .fontSize(30)
         .padding(5)
         .margin(5)
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
   }
 }

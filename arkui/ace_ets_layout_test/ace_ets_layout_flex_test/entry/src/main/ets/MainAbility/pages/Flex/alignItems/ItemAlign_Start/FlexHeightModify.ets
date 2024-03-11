@@ -12,24 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct FlexHeightModify_Start {
-  @State testHeight: number = 50
-  messageManager:MessageManager = new MessageManager()
+  @State testHeight: number = 50;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "FlexHeightModify_Start Page";
+
   onPageShow() {
     console.info('FlexHeightModify_Start onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -37,7 +43,7 @@ struct FlexHeightModify_Start {
     console.info('FlexHeightModify_Start page build done called');
   }
 
-  build() { 
+  build() {
     Column() {
       Column() {
         Text('FlexHeightModify').fontSize(9).fontColor(0xCCCCCC).width('90%')
@@ -49,7 +55,7 @@ struct FlexHeightModify_Start {
           Text('1').width(150).height(this.testHeight).backgroundColor(0xF5DEB3).key('textHeightModify01')
           Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('textHeightModify02')
           Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('textHeightModify03')
-        } 
+        }
         .key('flexHeightModify')
         .height(150)
         .width(500)

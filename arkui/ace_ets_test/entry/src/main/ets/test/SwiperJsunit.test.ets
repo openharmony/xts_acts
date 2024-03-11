@@ -13,48 +13,49 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
+
+function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, time * 1000)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
+//返回首页
+async function backToIndex() {
+  let backToIndexPromise = new Promise((resolve: (value: string) => void) => {
+    console.info('afterEach backToIndexPromise ...');
+    setTimeout(() => {
+      router.back({
+        uri: 'MainAbility/pages/index'
+      });
+      resolve("ok")
+    }, 500);
+  });
+
+  let clearPromise = new Promise((resolve: (value: string) => void) => {
+    console.info('afterEach clearPromise ...');
+    setTimeout(() => {
+      router.clear();
+      resolve("ok")
+    }, 500);
+  });
+  await backToIndexPromise.then(() => {
+    return clearPromise;
+  });
+}
 
 export default function swiperJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-  //返回首页
-  async function backToIndex() {
-    let backToIndexPromise = new Promise((resolve, reject) => {
-      console.info('afterEach backToIndexPromise ...');
-      setTimeout(() => {
-        router.back({
-          uri: 'MainAbility/pages/index'
-        });
-        resolve();
-      }, 500);
-    });
 
-    let clearPromise = new Promise((resolve, reject) => {
-      console.info('afterEach clearPromise ...');
-      setTimeout(() => {
-        router.clear();
-        resolve();
-      }, 500);
-    });
-    await backToIndexPromise.then(() => {
-      return clearPromise;
-    });
-  }
+  describe('swiperTest', () => {
 
-  describe('swiperTest', function () {
-
-    beforeEach(async function (done) {
+    beforeEach(async () => {
       let options = {
         uri: 'MainAbility/pages/Swiper',
       }
@@ -68,48 +69,46 @@ export default function swiperJsunit() {
           console.info("push Swiper page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Swiper page error " + JSON.stringify(result));
+        console.error("push Swiper page error " + JSON.stringify(err));
       }
       await sleep(2)
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await sleep(1)
       console.info("Swiper after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0500
-     * @tc.name      swiperTest001
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0500
+     * @tc.name swiperTest001
+     * @tc.desc aceEtsTest
      */
-    it('swiperTest001', 0, async function (done) {
+    it('swiperTest001', 0, async () => {
       console.info('++++++++++++++++ Swiper TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('swiper');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Swiper')
-      console.log('Swiper‘s index is ' + JSON.stringify(obj.$attrs.index))
-      console.log('Swiper‘s autoPlay is ' + JSON.stringify(obj.$attrs.autoPlay))
-      console.log('Swiper‘s interval is ' + JSON.stringify(obj.$attrs.interval))
-      console.log('Swiper‘s indicator is ' + JSON.stringify(obj.$attrs.indicator))
-      console.log('Swiper‘s loop is ' + JSON.stringify(obj.$attrs.loop))
-      console.log('Swiper‘s duration is ' + JSON.stringify(obj.$attrs.duration))
-      console.log('Swiper‘s vertical is ' + JSON.stringify(obj.$attrs.vertical))
-      console.log('Swiper‘s itemSpace is ' + JSON.stringify(obj.$attrs.itemSpace))
-      console.log('Swiper‘s disableSwipe is ' + JSON.stringify(obj.$attrs.disableSwipe))
-      expect(obj.$attrs.index).assertEqual('1')
-      expect(obj.$attrs.autoPlay).assertEqual('true')
-      expect(obj.$attrs.interval).assertEqual('4000')
-      expect(obj.$attrs.indicator).assertEqual('true')
-      expect(obj.$attrs.loop).assertEqual('false')
-      expect(obj.$attrs.vertical).assertEqual('false')
-      expect(obj.$attrs.duration).assertEqual("1000")
+      console.log('Swiper‘s index is ' + JSON.stringify(JSON.parse(strJson).$attrs.index))
+      console.log('Swiper‘s autoPlay is ' + JSON.stringify(JSON.parse(strJson).$attrs.autoPlay))
+      console.log('Swiper‘s interval is ' + JSON.stringify(JSON.parse(strJson).$attrs.interval))
+      console.log('Swiper‘s indicator is ' + JSON.stringify(JSON.parse(strJson).$attrs.indicator))
+      console.log('Swiper‘s loop is ' + JSON.stringify(JSON.parse(strJson).$attrs.loop))
+      console.log('Swiper‘s duration is ' + JSON.stringify(JSON.parse(strJson).$attrs.duration))
+      console.log('Swiper‘s vertical is ' + JSON.stringify(JSON.parse(strJson).$attrs.vertical))
+      console.log('Swiper‘s itemSpace is ' + JSON.stringify(JSON.parse(strJson).$attrs.itemSpace))
+      console.log('Swiper‘s disableSwipe is ' + JSON.stringify(JSON.parse(strJson).$attrs.disableSwipe))
+      expect(JSON.parse(strJson).$attrs.index).assertEqual('1')
+      expect(JSON.parse(strJson).$attrs.autoPlay).assertEqual('true')
+      expect(JSON.parse(strJson).$attrs.interval).assertEqual('4000')
+      expect(JSON.parse(strJson).$attrs.indicator).assertEqual('true')
+      expect(JSON.parse(strJson).$attrs.loop).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.vertical).assertEqual('false')
+      expect(JSON.parse(strJson).$attrs.duration).assertEqual("1000")
       console.info('++++++++++++++++ Swiper TestCase 1 End +++++++++++++++++');
-      done();
     });
   })
 }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +19,12 @@ struct PolylineExample {
   build() {
     Column({ space: 5 }) {
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Polyline({ width: 100, height: 100 }).points([[0, 0], [20, 60], [100, 100]]).key('polyline')
-        Polyline().width(100).height(100).points([[0, 0], [0, 100], [100, 100]])
+        Polyline({ width: 100, height: 100 })
+          .points([[0, 0], [20, 60], [100, 100]]).key('polyline')
+        Polyline()
+          .width(100)
+          .height(100)
+          .points([[0, 0], [0, 100], [100, 100]])
       }.width('100%')
     }.margin({ top: 5 })
   }

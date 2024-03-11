@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-let ItemDragInfo: {
+interface  ItemDragInfo {
   x: 5,
   y: 5
 }
@@ -31,7 +31,7 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          ForEach(this.arr1, (item) => {
+          ForEach(this.arr1, (item:string) => {
             ListItem() {
               Text('' + item)
                 .width('100%')
@@ -41,7 +41,7 @@ struct ListExample {
                 .borderRadius(10)
                 .backgroundColor(0xFFFFFF)
             }.editable(true)
-          }, item => item)
+          }, (item:string) => item)
         }
         .key('list')
         .listDirection(Axis.Vertical)

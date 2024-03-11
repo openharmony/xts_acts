@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function customDialogControllerJsunit() {
-  describe('customDialogControllerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/customDialogController',
+  describe('customDialogControllerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/customDialogController',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function customDialogControllerJsunit() {
         console.info("get customDialogController state success " + JSON.stringify(pages));
         if (!("customDialogController" == pages.name)) {
           console.info("get customDialogController state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(4000);
           console.info("push customDialogController page success " + JSON.stringify(result));
         }
@@ -40,19 +39,19 @@ export default function customDialogControllerJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("customDialogControllers after each called");
     });
 
-    it('testCustomDialogControllers_100', 0, async function (done) {
+    it('testCustomDialogControllers_100', 0, async (done: Function) => {
       console.info('[testCustomDialogControllers_100] START');
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[testClickEvent001] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
         done();
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 236,
         priority: events_emitter.EventPriority.LOW
       }

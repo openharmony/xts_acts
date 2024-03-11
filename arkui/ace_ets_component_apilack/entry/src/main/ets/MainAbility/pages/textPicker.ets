@@ -14,32 +14,33 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct TextPickerDefaultPickerItemHeight {
   private select: number = 1
-  private fruits: string[] = ['1.apple', '2.orange','3.peach', '4.grape']
+  private fruits: string[] = ['1.apple', '2.orange', '3.peach', '4.grape']
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear TextPickerDefaultPickerItemHeight start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear TextPickerDefaultPickerItemHeight end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      TextPicker({range: this.fruits, selected: this.select})
+      TextPicker({ range: this.fruits, selected: this.select })
         .onChange((value: string, index: number) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
         .defaultPickerItemHeight('80px')
         .key("defaultPickerItemHeightText")
-    
+
     }.width("100%").height("100%")
   }
 }

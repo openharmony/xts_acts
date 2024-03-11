@@ -15,18 +15,24 @@
 
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct CommonColorMode {
-
   // popup构造器定义弹框内容
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
-      Text('Custom Popup').fontSize(10)
-    }.width(100).height(50).padding(5)
+      Text('Custom Popup')
+        .fontSize(10)
+    }
+    .width(100)
+    .height(50)
+    .padding(5)
   }
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CommonColorMode start`)
   }
@@ -34,46 +40,47 @@ struct CommonColorMode {
   aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CommonColorMode end`)
   }
-  onLayout(children, constraint) {
+
+  onLayout(children: Array<LayoutChild>, constraint: ConstraintSizeOptions) {
     Log.showInfo(TAG, `onLayout start` + JSON.stringify(children));
-    if (children.length != 0)  {
-        children[0].borderInfo = {
-          borderWidth: 20,
-          margin: 30,
-          padding: 20
-       }
-       children[0].constraint = {
-          maxWidth: 200
+    if (children.length != 0) {
+      children[0].borderInfo = {
+        borderWidth: { top: 20, right: 20, bottom: 20, left: 20 },
+        margin: { top: 30, right: 30, bottom: 30, left: 30 },
+        padding: { top: 20, right: 20, bottom: 20, left: 20 }
+      }
+      children[0].constraint = {
+        maxWidth: 200
       }
       children[0].layout({
-         position: {
-            x:20,
-            y:20
-      },
+        position: {
+          x: 20,
+          y: 20
+        },
         constraint: {
           maxWidth: 200
         }
       })
     }
   }
-  onMeasure(children, constraint) {
+
+  onMeasure(children: Array<LayoutChild>, constraint: ConstraintSizeOptions) {
     Log.showInfo(TAG, `onMeasurestart`)
-
-
   }
 
-  @Styles normalStyles() {
+  @Styles
+  normalStyles() {
     .backgroundColor("#0A59F7")
 
   }
+
   // add
-  configuration : Configuration = {
+  configuration: Configuration = {
 
     colorMode: "$000",
 
     fontScale: 23
   }
-
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -91,9 +98,9 @@ struct CommonColorMode {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("fontScaleText")
-        .bindPopup(true,{
-             message:"23",
-             showInSubWindow:true
+        .bindPopup(true, {
+          message: "23",
+          showInSubWindow: true
         })
 
       Text("common-OnFinish")
@@ -113,10 +120,11 @@ struct CommonColorMode {
           onFinish: () => {
             Log.showInfo(TAG, 'animation onFinish success')
           }
-        }).bindPopup(true,{
-          builder:this.popupBuilder,
-          showInSubWindow:true
-      })
+        })
+        .bindPopup(true, {
+          builder: this.popupBuilder,
+          showInSubWindow: true
+        })
 
       Text("common-MotionPath")
         .width(320)
@@ -172,14 +180,13 @@ struct CommonColorMode {
           const area = JSON.stringify(event.target.area)
           console.info("area value1 is: " + area)
           console.info("area value3 is: " + JSON.parse(JSON.stringify(event.target.area))["width"])
-          let value = JSON.parse(JSON.stringify(event.target.area))["width"]
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
-                "STATUS": value
+                "STATUS": JSON.parse(JSON.stringify(event.target.area))["width"]
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60312,
               priority: events_emitter.EventPriority.LOW
             }
@@ -203,7 +210,8 @@ struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("RepeatText")
         .borderImage({
-          source: { angle: 90,
+          source: {
+            angle: 90,
             direction: GradientDirection.Left,
             colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
           },
@@ -227,7 +235,8 @@ struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("SpaceText")
         .borderImage({
-          source: { angle: 90,
+          source: {
+            angle: 90,
             direction: GradientDirection.Left,
             colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
           },
@@ -281,7 +290,8 @@ struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("sliceText")
         .borderImage({
-          source: { angle: 90,
+          source: {
+            angle: 90,
             direction: GradientDirection.Left,
             colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
           },
@@ -305,7 +315,8 @@ struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("outsetText")
         .borderImage({
-          source: { angle: 90,
+          source: {
+            angle: 90,
             direction: GradientDirection.Left,
             colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
           },
@@ -335,14 +346,13 @@ struct CommonColorMode {
           const touchesValue = JSON.stringify(event.touches)
           console.info("touches value1 is: " + touchesValue)
           console.info("touches value3 is: " + JSON.stringify(event.touches)[0]["type"])
-          let value = JSON.stringify(event.touches)[0]["type"]
           try {
-            var backData1 = {
+            let backData1: events_emitter.EventData = {
               data: {
-                "STATUS": value
+                "STATUS": JSON.stringify(event.touches)[0]["type"]
               }
             }
-            let backEvent1 = {
+            let backEvent1: events_emitter.InnerEvent = {
               eventId: 60313,
               priority: events_emitter.EventPriority.LOW
             }
@@ -371,14 +381,13 @@ struct CommonColorMode {
           const changedTouchesValue = JSON.stringify(event.changedTouches)
           console.info("changedTouchesValue value1 is: " + changedTouchesValue)
           console.info("changedTouchesValue value3 is: " + changedTouchesValue[0]["type"])
-          let value = changedTouchesValue[0]["type"]
           try {
-            var backData2 = {
+            let backData2: events_emitter.EventData = {
               data: {
-                "STATUS": value
+                "STATUS": changedTouchesValue[0]["type"]
               }
             }
-            let backEvent2 = {
+            let backEvent2: events_emitter.InnerEvent = {
               eventId: 60314,
               priority: events_emitter.EventPriority.LOW
             }

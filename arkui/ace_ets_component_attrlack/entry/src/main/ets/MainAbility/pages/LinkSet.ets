@@ -15,7 +15,7 @@
 
 @Component
 struct LinkSetChild {
-  @Link message: Set<number>
+  @Link message: Set<number>;
 
   build() {
     Column() {
@@ -24,27 +24,27 @@ struct LinkSetChild {
         Divider()
       })
       Button('init set').id("LinkSet_init")
-        .onClick(() =>{
-          this.message = new Set([1, 2 ,3 ])
-      }).margin(10)
+        .onClick(() => {
+          this.message = new Set([1, 2, 3])
+        }).margin(10)
 
       Button('set new one').id("LinkSet_set")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.add(5)
-      }).margin(10)
+        }).margin(10)
 
       Button('clear').id("LinkSet_clear")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.clear()
-          if (Array.from(this.message.entries())){
+          if (Array.from(this.message.entries())) {
             this.message.add(0)
           }
-      }).margin(10)
+        }).margin(10)
 
       Button('delete the first one').id("LinkSet_delete")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.delete(0)
-      })
+        })
     }
     .width('100%')
   }
@@ -54,12 +54,12 @@ struct LinkSetChild {
 @Entry
 @Component
 struct LinkSetSample1 {
-  @State message: Set<number> = new Set([1, 2 ,3 ])
+  @State message: Set<number> = new Set([1, 2, 3])
 
   build() {
     Row() {
       Column() {
-        LinkSetChild({message:this.message})
+        LinkSetChild({ message: this.message })
       }
       .width('100%')
     }

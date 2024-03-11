@@ -18,21 +18,24 @@
 #include <js_native_api.h>
 #include <js_native_api_types.h>
 #include <node_api.h>
+#include <unistd.h>
 
 #define SUCCESS 1
 #define FAIL (-1)
+#define PARAM_0777 0777
 
 static napi_value Basename(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     char *returnValue;
-    open("/data/storage/el2/base/files/fff.txt", O_CREAT);
+    int fp = open("/data/storage/el2/base/files/fff.txt", O_CREAT, PARAM_0777);
     char path[] = "/data/storage/el2/base/files/fff.txt";
     returnValue = basename(path);
     int retrunInfo = FAIL;
     if (returnValue != nullptr) {
         retrunInfo = SUCCESS;
     }
+    close(fp);
     napi_create_int32(env, retrunInfo, &result);
     return result;
 }

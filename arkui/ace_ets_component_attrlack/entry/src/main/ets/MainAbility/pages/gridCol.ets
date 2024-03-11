@@ -20,27 +20,27 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct GridColXl {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear GridColXl start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear GridColXl end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      GridRow(){
-        GridCol({ span: { xl: 2 } }){
+      GridRow() {
+        GridCol({ span: { xl: 2 } }) {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol({ span: { xl: 2 } }){
+
+        GridCol({ span: { xl: 2 } }) {
           Text('World')
             .width(100)
             .height(70)
@@ -50,15 +50,16 @@ struct GridColXl {
       }.backgroundColor(Color.Red)
       .key("xlText")
 
-      GridRow(){
-        GridCol({ span: { xxl: 2 } }){
+      GridRow() {
+        GridCol({ span: { xxl: 2 } }) {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .backgroundColor(Color.Green)
-        GridCol({ span: { xxl: 2 } }){
+
+        GridCol({ span: { xxl: 2 } }) {
           Text('World')
             .width(100)
             .height(70)
@@ -68,17 +69,18 @@ struct GridColXl {
       }.backgroundColor(Color.Red)
       .key("xxlText")
 
-      GridRow(){
-        GridCol({ span: { xl: 2 } }){
+      GridRow() {
+        GridCol({ span: { xl: 2 } }) {
           Text('Hello')
             .width(100)
             .height(70)
             .align(Alignment.Center)
         }
         .key("GridCol")
-        .order({xl: 10})
+        .order({ xl: 10 })
         .backgroundColor(Color.Green)
-        GridCol({ span: { xl: 2 } }){
+
+        GridCol({ span: { xl: 2 } }) {
           Text('World')
             .width(100)
             .height(70)
@@ -88,8 +90,9 @@ struct GridColXl {
         .backgroundColor(Color.Blue)
       }.backgroundColor(Color.Red)
       .key("orderText")
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

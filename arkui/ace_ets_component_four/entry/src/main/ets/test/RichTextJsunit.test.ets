@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function richTextJsunit() {
-  describe('richTextTest', function () {
-    beforeEach(async function (done) {
+  describe('richTextTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("richText beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/richText',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/richText',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function richTextJsunit() {
         console.info("get richText state pages:" + JSON.stringify(pages));
         if (!("richText" == pages.name)) {
           console.info("get richText state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push richText page result:" + JSON.stringify(result));
         }
@@ -40,14 +39,14 @@ export default function richTextJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("richText after each called");
     });
 
-    it('testRichText01', 0, async function (done) {
+    it('testRichText01', 0, async (done: Function) => {
       console.info('[testRichText01] START');
-      let strJson = getInspectorByKey('richText');
+      let strJson: string = getInspectorByKey('richText');
       console.info('[testRichText01]' + strJson);
       console.info('[testRichText01] END');
       done();

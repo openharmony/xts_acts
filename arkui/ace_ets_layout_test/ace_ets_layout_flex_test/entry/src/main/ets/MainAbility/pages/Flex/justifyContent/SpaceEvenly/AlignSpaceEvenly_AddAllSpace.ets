@@ -13,42 +13,49 @@
  * limitations under the License.
  */
 
-import { MessageManager, Callback } from './../../../../common/MessageManager';
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct AlignSpaceEvenly_AddAllSpace {
   @State DadAllSpace: number = 10;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('AlignSpaceEvenly_AddAllSpace onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'DadAllSpace') {
         this.DadAllSpace = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   @State justifyContent: FlexAlign = FlexAlign.SpaceEvenly;
+
   build() {
-      Column() {
-        Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
-          Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddAllSpace_011");
-          Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("SpaceEvenly_AddAllSpace_012");
-          Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddAllSpace_013");
-        }
-        .key("SpaceEvenly_AddAllSpace_01")
-        .width(500)
-        .height(200)
-        .padding(this.DadAllSpace)
-        .margin(10)
-        .backgroundColor(0xAFEEEE)
+    Column() {
+      Flex({ justifyContent: this.justifyContent, direction: FlexDirection.Row }) {
+        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddAllSpace_011");
+        Text('2').width(150).height(100).backgroundColor(0xD2B48C).key("SpaceEvenly_AddAllSpace_012");
+        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key("SpaceEvenly_AddAllSpace_013");
       }
-      .key("SpaceEvenly_AddAllSpace_01_Box")
-      .width("100%")
-      .alignItems(HorizontalAlign.Start)
+      .key("SpaceEvenly_AddAllSpace_01")
+      .width(500)
+      .height(200)
+      .padding(this.DadAllSpace)
+      .margin(10)
+      .backgroundColor(0xAFEEEE)
     }
+    .key("SpaceEvenly_AddAllSpace_01_Box")
+    .width("100%")
+    .alignItems(HorizontalAlign.Start)
+  }
 }

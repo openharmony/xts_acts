@@ -69,6 +69,7 @@
 #define PARAM_10 10
 #define PARAM_100 100
 #define PARAM_256 256
+#define PARAM_0777 0777
 #define PARAM_64 64
 #define PARAM_1024 1024
 #define PARAM_8192 8192
@@ -81,8 +82,10 @@
 #define TEST_MODE 0666
 #define BUF_SIZE (100)
 #define PORT 2288
+#define PORT_2 2289
 #ifndef tls_mod_off_t
 #define tls_mod_off_t size_t
+#define PARAM_72 72
 #endif
 
 extern "C" mode_t __umask_chk(mode_t);
@@ -110,9 +113,10 @@ static napi_value DlaDdr(napi_env env, napi_callback_info info)
     int backParam = PARAM_0;
     Dl_info *dlInfo = nullptr;
     errno = SUCCESS;
-    const char *path = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    const char *path = "libotherstestndk.so";
     void *ptr = dlopen(path, RTLD_LAZY);
     backParam = dladdr(ptr, dlInfo);
+    dlclose(ptr);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -121,7 +125,7 @@ static napi_value DlaDdr(napi_env env, napi_callback_info info)
 static napi_value DlOpen(napi_env env, napi_callback_info info)
 {
     errno = SUCCESS;
-    const char path[] = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    const char path[] = "libotherstestndk.so";
     int backParam = PARAM_0;
     void *ptr = dlopen(path, RTLD_LAZY);
     backParam = dlclose(ptr);
@@ -132,7 +136,7 @@ static napi_value DlOpen(napi_env env, napi_callback_info info)
 
 static napi_value DlClose(napi_env env, napi_callback_info info)
 {
-    const char path[] = "/system/lib/extensionability/libstatic_subscriber_extension_module.z.so";
+    const char path[] = "libotherstestndk.so";
     int backParam = PARAM_0;
     void *ptr = dlopen(path, RTLD_LAZY);
     backParam = dlclose(ptr);
@@ -146,11 +150,12 @@ static napi_value DlError(napi_env env, napi_callback_info info)
     char *errorInfo = nullptr;
     int backParam = INIT;
     const char path[] = "/system/lib/extensionability/libstatic_subscriber_extension_modu_le.z.so";
-    dlopen(path, RTLD_NOW);
+    void *ptr = dlopen(path, RTLD_NOW);
     errorInfo = dlerror();
     if (errorInfo != nullptr) {
         backParam = SUCCESS;
     }
+    dlclose(ptr);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -174,9 +179,10 @@ static napi_value DirName(napi_env env, napi_callback_info info)
     const char pathname[] = "/data/storage/el2/base/files/Fzl.txt";
     int flags = O_CREAT;
     mode_t mode = S_IRWXU;
-    open(pathname, flags, mode);
+    int fd = open(pathname, flags, mode);
     char path[] = "/data/storage/el2/base/files/Fzl.txt";
     backParam = dirname(path);
+    close(fd);
     napi_value result = nullptr;
     napi_create_string_utf8(env, backParam, NAPI_AUTO_LENGTH, &result);
     return result;
@@ -185,8 +191,9 @@ static napi_value DirName(napi_env env, napi_callback_info info)
 static napi_value Flock(napi_env env, napi_callback_info info)
 {
     int backParam = PARAM_0;
-    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT), secondParam = LOCK_UN;
+    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777), secondParam = LOCK_UN;
     backParam = flock(firstParam, secondParam);
+    close(firstParam);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -289,8 +296,8 @@ void *test(void *p) { return nullptr; }
 static napi_value Clone(napi_env env, napi_callback_info info)
 {
     void *stack = malloc(STACK_SIZE);
-    int backParam =
-        clone((int (*)(void *))test, static_cast<char *>(stack )+ STACK_SIZE, CLONE_VM | CLONE_FS | CLONE_FILES, nullptr);
+    int backParam = clone((int (*)(void *))test, static_cast<char *>(stack) + STACK_SIZE,
+                          CLONE_VM | CLONE_FS | CLONE_FILES, nullptr);
     if (backParam > PARAM_0) {
         backParam = SUCCESS;
     }
@@ -311,36 +318,39 @@ static napi_value EndUTent(napi_env env, napi_callback_info info)
 
 static napi_value Epoll_create(napi_env env, napi_callback_info info)
 {
-    int fileDescribe = open("/data/storage/el2/base/files/FZL.txt", O_CREAT);
-    int backParam = PARAM_0;
-    backParam = epoll_create(fileDescribe);
-    if (backParam > PARAM_0) {
-        backParam = SUCCESS;
-    }
+    int backParam = PARAM_1;
+    backParam = epoll_create1(EPOLL_CLOEXEC);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
+    close(backParam);
     return result;
 }
 
 static napi_value Epoll_create1(napi_env env, napi_callback_info info)
 {
-    int fileDescribe = open("/data/storage/el2/base/files/FZL.txt", O_CREAT);
-    int backParam = PARAM_0;
-    backParam = epoll_create1(fileDescribe);
-    if (backParam > PARAM_0) {
-        backParam = SUCCESS;
-    }
+    int backParam = PARAM_1;
+    backParam = epoll_create1(EPOLL_CLOEXEC);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
+    close(backParam);
     return result;
 }
 
 static napi_value Epoll_ctl(napi_env env, napi_callback_info info)
 {
-    int fileDescribe = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    int backParam = PARAM_0, secondParam = SPNUM, size = SPNUM;
-    struct epoll_event *event = nullptr;
-    backParam = epoll_ctl(fileDescribe, secondParam, size, event);
+    int backParam = PARAM_1;
+    int epollFd = epoll_create1(EPOLL_CLOEXEC);
+    if (epollFd != MINUSONE) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd != MINUSONE) {
+            struct epoll_event g_event;
+            g_event.events = EPOLLIN | EPOLLET;
+            g_event.data.fd = sockfd;
+            backParam = epoll_ctl(epollFd, EPOLL_CTL_ADD, sockfd, &g_event);
+        }
+        close(sockfd);
+    }
+    close(epollFd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -348,11 +358,13 @@ static napi_value Epoll_ctl(napi_env env, napi_callback_info info)
 
 static napi_value Epoll_PWait(napi_env env, napi_callback_info info)
 {
-    int backParam = PARAM_0, size = SPNUM, mode = SPNUM,
-        fileDescribe = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    struct epoll_event *secondParam = nullptr;
-    const sigset_t *sigset = nullptr;
-    backParam = epoll_pwait(fileDescribe, secondParam, size, mode, sigset);
+    int backParam = PARAM_1;
+    int epollFd = epoll_create1(EPOLL_CLOEXEC);
+    if (epollFd != MINUSONE) {
+        struct epoll_event g_events[PARAM_10];
+        backParam = epoll_pwait(epollFd, g_events, PARAM_10, PARAM_10, nullptr);
+    }
+    close(epollFd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -360,10 +372,13 @@ static napi_value Epoll_PWait(napi_env env, napi_callback_info info)
 
 static napi_value Epoll_Wait(napi_env env, napi_callback_info info)
 {
-    int backParam = PARAM_0, size = SPNUM, mode = SPNUM,
-        fileDescribe = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    struct epoll_event *secondParam = nullptr;
-    backParam = epoll_wait(fileDescribe, secondParam, size, mode);
+    int backParam = PARAM_1;
+    int epollFd = epoll_create1(EPOLL_CLOEXEC);
+    if (epollFd != MINUSONE) {
+        struct epoll_event g_events[PARAM_10];
+        backParam = epoll_wait(epollFd, g_events, PARAM_10, PARAM_0);
+    }
+    close(epollFd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -430,19 +445,21 @@ static napi_value Ether_aTon_r(napi_env env, napi_callback_info info)
 
 static napi_value EventFd(napi_env env, napi_callback_info info)
 {
-    int backParam = PARAM_0, secondParam = FD_CLOEXEC;
-    unsigned int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    backParam = eventfd(firstParam, secondParam);
+    int backParam = PARAM_0, secondParam = O_NONBLOCK;
+    backParam = eventfd(PARAM_2, secondParam);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
+    close(backParam);
     return result;
 }
 
 static napi_value EventFd_read(napi_env env, napi_callback_info info)
 {
-    int backParam = PARAM_0, firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    eventfd_t *secondParam = nullptr;
-    backParam = eventfd_read(firstParam, secondParam);
+    int backParam = PARAM_0, secondParam = O_NONBLOCK;
+    int fd = eventfd(PARAM_2, secondParam);
+    eventfd_t value = PARAM_1;
+    backParam = eventfd_read(fd, &value);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -450,9 +467,11 @@ static napi_value EventFd_read(napi_env env, napi_callback_info info)
 
 static napi_value EventFd_write(napi_env env, napi_callback_info info)
 {
-    int backParam = PARAM_0, firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    eventfd_t secondParam = EFD_CLOEXEC;
-    backParam = eventfd_write(firstParam, secondParam);
+    int backParam = PARAM_0, secondParam = O_NONBLOCK;
+    int fd = eventfd(PARAM_2, secondParam);
+    eventfd_t value = PARAM_1;
+    backParam = eventfd_write(fd, value);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -460,27 +479,29 @@ static napi_value EventFd_write(napi_env env, napi_callback_info info)
 
 static napi_value FGetXAttr(napi_env env, napi_callback_info info)
 {
-    ssize_t size_t = PARAM_0;
-    ssize_t len = PARAM_64;
-    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
-    const char *secondParam = "/data/storage/el2/base/files";
-    void *value = nullptr;
-    size_t = fgetxattr(firstParam, secondParam, value, len);
-    napi_value result = nullptr;
-    napi_create_int32(env, size_t, &result);
-    return result;
+    const char *path = "/data/storage/el2/base/files/Fzl.txt";
+    char buf[10];
+    int fd = open(path, O_CREAT | O_WRONLY, PARAM_0777);
+    int result = fsetxattr(fd, "user.foo", "bar", strlen("bar"), PARAM_0);
+    result = fgetxattr(fd, "user.foo", buf, sizeof(buf));
+    fremovexattr(fd, "user.foo");
+    close(fd);
+    napi_value ret = nullptr;
+    napi_create_int32(env, result, &ret);
+    return ret;
 }
 
 static napi_value UMask_chk(napi_env env, napi_callback_info info)
 {
     errno = INIT;
-    mode_t checkParam ;
-    mode_t mode = S_IRUSR;
-    checkParam = __umask_chk(mode);
-    if (checkParam != MINUSONE) {
+    mode_t checkParam;
+    mode_t mode = S_IRWXU | S_IRWXG | S_IRWXO;
+    mode_t modeValue = __umask_chk(mode);
+    checkParam = __umask_chk(modeValue);
+    if (checkParam != (mode_t)MINUSONE) {
         errno = SUCCESS;
     }
-    napi_value result = nullptr;
+    napi_value result;
     napi_create_int32(env, errno, &result);
     return result;
 }
@@ -499,6 +520,7 @@ static napi_value FStatAt_time64(napi_env env, napi_callback_info info)
     int fd = open(ptr, O_RDWR | O_CREAT, TEST_MODE);
     lseek(fd, PARAM_0, SEEK_SET);
     backParam = __fstatat_time64(AT_FDCWD, ptr, &st, PARAM_0);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -570,7 +592,7 @@ int do_plain_tests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), voi
         return FAILD;
     }
     if (pid == PARAM_0) {
-        _exit(fn1(arg1));
+        _exit(PARAM_0);
     }
     if (fn2) {
         ret = fn2(arg2);
@@ -686,17 +708,15 @@ static napi_value Overflow(napi_env env, napi_callback_info info)
 
 static napi_value Uflow(napi_env env, napi_callback_info info)
 {
-    size_t argc = PARAM_1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = PARAM_256;
-    size_t strResult = PARAM_0;
-    char ptr[length];
-    napi_get_value_string_utf8(env, args[0], ptr, length, &strResult);
-    FILE *files = fopen(ptr, "w");
-    __overflow(files, PARAM_0);
-    int backInfo = __uflow(files);
-    fclose(files);
+    FILE *file = fopen("/data/storage/el2/base/files/example.txt", "w");
+    fprintf(file, "Hello, world!\nThis is a test file.\n");
+    fclose(file);
+    file = fopen("/data/storage/el2/base/files/example.txt", "r");
+    int backInfo = __uflow(file);
+    fclose(file);
+    if (backInfo == PARAM_72) {
+        backInfo = SUCCESS;
+    }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
     return result;
@@ -708,6 +728,7 @@ static napi_value Tlsgetaddr(napi_env env, napi_callback_info infoS)
     pid_t pid = fork();
     if (pid == PARAM_0) {
         __tls_get_addr((tls_mod_off_t[]){});
+        exit(PARAM_0);
     }
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
@@ -735,103 +756,102 @@ static napi_value Pthreadcleanuppush(napi_env env, napi_callback_info info)
     return result;
 }
 
-void *ThreadTaskClient(void *arg)
-{
-    const char *gLocalHost = "127.0.0.1";
-    int *ret = static_cast<int*>(malloc(sizeof(int)));
-    int rets = FAILD;
-    int sListen = socket(AF_INET, SOCK_STREAM, PARAM_0);
-    if (sListen == PARAM_UNNORMAL) {
-        *ret = FAILD;
-    }
-    int flag = PARAM_1;
-    rets = setsockopt(sListen, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
-    if (rets != PARAM_0) {
-        printf("[server] setsockopt fail, rets: %d!\n", rets);
-    }
-    struct sockaddr_in srvAddr = {0};
-    srvAddr.sin_family = AF_INET;
-    srvAddr.sin_addr.s_addr = inet_addr(gLocalHost);
-    srvAddr.sin_port = htons(PORT);
-    rets = bind(sListen, (struct sockaddr *)&srvAddr, sizeof(srvAddr));
-    if (rets != PARAM_0) {
-        close(sListen);
-        *ret = FAILD;
-        return ret;
-    }
-    rets = listen(sListen, PARAM_2);
-    if (rets != PARAM_0) {
-        close(sListen);
-        *ret = FAILD;
-        return ret;
-    }
-    int sClient = MINUSONE;
-    sClient = accept(sListen, nullptr, nullptr);
-    ret = &sClient;
-    close(sClient);
-    close(sListen);
-    return ret;
-}
-
 static napi_value Accept(napi_env env, napi_callback_info info)
 {
-    pthread_t srv;
-    int ret = pthread_create(&srv, nullptr, ThreadTaskClient, nullptr);
-    pthread_join(srv, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-
-void *ServerTaskOne(void *arg)
-{
-    const char *gLocalHost = "127.0.0.1";
-    int *ret = static_cast<int*>(malloc(sizeof(int)));
-    int rets = MINUSONE;
-    int sListen = socket(AF_INET, SOCK_STREAM, PARAM_0);
-    if (sListen == MINUSONE) {
-        *ret = MINUSONE;
-        return ret;
+    if (fork() == PARAM_0) {
+        int sockfd = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sockfd < PARAM_0) {
+            close(sockfd);
+        } else {
+            struct sockaddr_in local = {PARAM_0};
+            local.sin_family = AF_INET;
+            local.sin_port = htons(PORT);
+            local.sin_addr.s_addr = inet_addr("127.0.0.1");
+            bind(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&local)), sizeof(local));
+            listen(sockfd, PARAM_5);
+            struct sockaddr_in clnAddr = {PARAM_0};
+            socklen_t clnAddrLen = sizeof(clnAddr);
+            int sClient =
+                accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+            close(sockfd);
+            close(sClient);
+        }
+        _exit(PARAM_0);
+    } else {
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        int ret = PARAM_1;
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PORT);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            while (ret) {
+                ret = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                              sizeof(server));
+            }
+        }
+        close(sock);
+        napi_create_int32(env, ret, &result);
+        return result;
     }
-    int flag = PARAM_1;
-    rets = setsockopt(sListen, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
-    if (rets != PARAM_0) {
-        printf("[server] setsockopt fail, rets: %d!\n", rets);
-    }
-    struct sockaddr_in srvAddr = {0};
-    srvAddr.sin_family = AF_INET;
-    srvAddr.sin_addr.s_addr = inet_addr(gLocalHost);
-    srvAddr.sin_port = htons(PORT);
-    rets = bind(sListen, (struct sockaddr *)&srvAddr, sizeof(srvAddr));
-    if (rets != PARAM_0) {
-        close(sListen);
-        *ret = MINUSONE;
-        return ret;
-    }
-    rets = listen(sListen, PARAM_2);
-    if (rets != PARAM_0) {
-        close(sListen);
-        *ret = MINUSONE;
-        return ret;
-    }
-    struct sockaddr_in clnAddr = {0};
-    socklen_t clnAddrLen = sizeof(clnAddr);
-    int sClient = -PARAM_1;
-    sClient = accept4(sListen, (struct sockaddr *)&clnAddr, &clnAddrLen, PARAM_0);
-    ret = &sClient;
-    close(sClient);
-    close(sListen);
-    return ret;
 }
 
 static napi_value Accept4(napi_env env, napi_callback_info info)
 {
-    pthread_t srv;
-    int ret = pthread_create(&srv, nullptr, ServerTaskOne, nullptr);
-    pthread_join(srv, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, ret, &result);
-    return result;
+    if (fork() == PARAM_0) {
+        const char *gLocalHost = "127.0.0.1";
+        int rets = MINUSONE;
+        int sListen = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        if (sListen != MINUSONE) {
+            int flag = PARAM_1;
+            rets = setsockopt(sListen, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(int));
+            if (rets != PARAM_0) {
+                printf("[server] setsockopt fail, rets: %d!\n", rets);
+            }
+            struct sockaddr_in srvAddr = {0};
+            srvAddr.sin_family = AF_INET;
+            srvAddr.sin_addr.s_addr = inet_addr(gLocalHost);
+            srvAddr.sin_port = htons(PORT_2);
+            rets = bind(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&srvAddr)),
+                        sizeof(srvAddr));
+            if (rets != PARAM_0) {
+                close(sListen);
+            } else {
+                rets = listen(sListen, PARAM_2);
+                if (rets != PARAM_0) {
+                    close(sListen);
+                } else {
+                    struct sockaddr_in clnAddr = {0};
+                    socklen_t clnAddrLen = sizeof(clnAddr);
+                    int sClient = -PARAM_1;
+                    sClient =
+                        accept4(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),
+                                &clnAddrLen, PARAM_0);
+                    close(sClient);
+                    close(sListen);
+                }
+            }
+        }
+        _exit(PARAM_0);
+    } else {
+        int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
+        int ret = PARAM_1;
+        if (sock >= PARAM_0) {
+            struct sockaddr_in server = {PARAM_0};
+            server.sin_family = AF_INET;
+            server.sin_port = htons(PORT_2);
+            server.sin_addr.s_addr = inet_addr("127.0.0.1");
+            while (ret) {
+                ret = connect(sock, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&server)),
+                              sizeof(server));
+            }
+        }
+        close(sock);
+        napi_create_int32(env, ret, &result);
+        return result;
+    }
 }
 
 static napi_value Deletemodule(napi_env env, napi_callback_info info)
@@ -842,6 +862,7 @@ static napi_value Deletemodule(napi_env env, napi_callback_info info)
     if (pid == NO_ERROR) {
         const char *put_old = "0";
         delete_module(put_old, PARAM_5);
+        exit(PARAM_0);
     }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
@@ -856,6 +877,7 @@ static napi_value Pivotroot(napi_env env, napi_callback_info info)
         const char *put_old = nullptr;
         const char *newRoot = nullptr;
         backInfo = pivot_root(newRoot, put_old);
+        exit(PARAM_0);
     }
     napi_value result = nullptr;
     napi_create_int32(env, backInfo, &result);
