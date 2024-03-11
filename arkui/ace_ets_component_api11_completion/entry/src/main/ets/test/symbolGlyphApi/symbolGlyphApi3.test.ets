@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function symbolGlyphApi3() {
-  describe('symbolGlyphApi3', function () {
-    beforeEach(async function (done) {
+  describe('symbolGlyphApi3', () => {
+    beforeEach(async (done: Function) => {
       console.info("symbolGlyphApi3 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/symbolGlyphApi/symbolGlyphApi3',
       }
       try {
@@ -40,19 +53,19 @@ export default function symbolGlyphApi3() {
       console.info("symbolGlyphApi3 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("symbolGlyphApi3 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_symbolGlyphApi3_0100
-     * @tc.name      testSymbolGlyph
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_symbolGlyphApi3_0100
+     * @tc.name testSymbolGlyph
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('symbolGlyphApi3_0100', 0, async function (done) {
+    it('symbolGlyphApi3_0100', 0, async (done: Function) => {
       console.info('[symbolGlyphApi3_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -60,8 +73,7 @@ export default function symbolGlyphApi3() {
       // await CommonFunc.sleep(300);
 
       let symbolGlyphApi3 = getInspectorByKey('symbolGlyphApi3');
-      let Obj1 = JSON.parse(symbolGlyphApi3);
-      expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_OPACITY');
+      expect(JSON.parse(symbolGlyphApi3).$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_OPACITY');
       console.info('[testRichEditor_0100] END');
       done();
     });

@@ -14,15 +14,15 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../Utils'
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function TextStyle() {
-  describe('TextStyle', function () {
-    beforeEach(async function (done) {
+  describe('TextStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextStyle beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/TextApi/TextStyle',
       }
       try {
@@ -41,68 +41,63 @@ export default function TextStyle() {
       console.info("TextStyle beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("TextStyle after each called");
     });
 
 
-
     /**
-     * @tc.number    TextStyle_0001
-     * @tc.name      TextStyle_0001
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0001
+     * @tc.name TextStyle_0001
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0001', 0, async function (done) {
+    it('TextStyle_0001', 0, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('buttonStyle');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
+      expect(JSON.parse(text1).$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
 
       console.info('[TextStyle_0001] END');
       done();
     });
 
     /**
-     * @tc.number    TextStyle_0002
-     * @tc.name      TextStyle_0002
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0002
+     * @tc.name TextStyle_0002
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0002', 0, async function (done) {
+    it('TextStyle_0002', 0, async (done: Function) => {
 
       console.info('[TextStyle_0002] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
-
+      expect(JSON.parse(text1).$attrs.type).assertEqual('InputType.Email');
       console.info('[TextStyle_0002] END');
       done();
     });
 
     /**
-     * @tc.number    TextStyle_0003
-     * @tc.name      TextStyle_0003
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0003
+     * @tc.name TextStyle_0003
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0003', 0, async function (done) {
+    it('TextStyle_0003', 0, async (done: Function) => {
 
       console.info('[TextStyle_0003] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeEMAIL333333333');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
+      expect(JSON.parse(text1).$attrs.type).assertEqual('InputType.Email');
 
       console.info('[TextStyle_0003] END');
       done();
@@ -110,20 +105,19 @@ export default function TextStyle() {
 
 
     /**
-     * @tc.number    TextStyle_0004
-     * @tc.name      TextStyle_0004
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0004
+     * @tc.name TextStyle_0004
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0004', 0, async function (done) {
+    it('TextStyle_0004', 0, async (done: Function) => {
 
       console.info('[TextStyle_0004] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeNUMBER44444444');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Normal');
+      expect(JSON.parse(text1).$attrs.type).assertEqual('InputType.Normal');
 
       console.info('[TextStyle_0004] END');
       done();
@@ -131,20 +125,19 @@ export default function TextStyle() {
 
 
     /**
-     * @tc.number    TextStyle_0005
-     * @tc.name      TextStyle_0005
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0005
+     * @tc.name TextStyle_0005
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0005', 0, async function (done) {
+    it('TextStyle_0005', 0, async (done: Function) => {
 
       console.info('[TextStyle_0005] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextKeyAllNUMBER8898888888');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.ellipsisMode).assertEqual('head');
+      expect(JSON.parse(text1).$attrs.ellipsisMode).assertEqual('head');
 
       console.info('[TextStyle_0005] END');
       done();
@@ -152,20 +145,19 @@ export default function TextStyle() {
 
 
     /**
-     * @tc.number    TextStyle_0006
-     * @tc.name      TextStyle_0006
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0006
+     * @tc.name TextStyle_0006
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0006', 0, async function (done) {
+    it('TextStyle_0006', 0, async (done: Function) => {
 
       console.info('[TextStyle_0006] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchType777777');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Normal');
+      expect(JSON.parse(text1).$attrs.type).assertEqual('InputType.Normal');
 
       console.info('[TextStyle_0006] END');
       done();
@@ -173,20 +165,19 @@ export default function TextStyle() {
 
 
     /**
-     * @tc.number    TextStyle_0007
-     * @tc.name      TextStyle_0007
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0007
+     * @tc.name TextStyle_0007
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0007', 0, async function (done) {
+    it('TextStyle_0007', 0, async (done: Function) => {
 
       console.info('[TextStyle_0007] START');
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
+      expect(JSON.parse(text1).$attrs.type).assertEqual('InputType.Email');
 
       console.info('[TextStyle_0007] END');
       done();
@@ -194,28 +185,24 @@ export default function TextStyle() {
 
 
     /**
-     * @tc.number    TextStyle_0008
-     * @tc.name      TextStyle_0008
-     * @tc.desc      set api
-     * @tc.level       Level 1
+     * @tc.number TextStyle_0008
+     * @tc.name TextStyle_0008
+     * @tc.desc set api
+     * @tc.level Level 1
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('TextStyle_0008', 0, async function (done) {
+    it('TextStyle_0008', 0, async (done: Function) => {
       console.info('[TextStyle_0008] START');
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn = await driver.findComponent(ON.id('buttonSelect'));
       await btn.click()
       await Utils.sleep(4000);
       let text1 = getInspectorByKey('selectionStart');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('10');
-
+      expect(JSON.parse(text1).$attrs.content).assertEqual('10');
       let text2 = getInspectorByKey('selectionEnd');
-      let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('30');
-
+      expect(JSON.parse(text2).$attrs.content).assertEqual('30');
       console.info('[TextStyle_0008] END');
       done();
     });

@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function RichEditorTest() {
-  describe('RichEditorTest', function () {
-    beforeEach(async function (done) {
+  describe('RichEditorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RichEditor/RichEditor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RichEditor/RichEditor',
       }
       try {
         router.clear();
@@ -47,7 +60,7 @@ export default function RichEditorTest() {
        * @tc.desc  : set TextAlign to Start
        * @tc.level : Level 2
        */
-    it('RichEditorTest_001', 0, async function (done) {
+    it('RichEditorTest_001', 0, async (done: Function) => {
 
       console.info('[RichEditorTest_001] START');
       await CommonFunc.sleep(1000);
@@ -61,10 +74,9 @@ export default function RichEditorTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[RichEditorTest_001] component obj is: " + JSON.stringify(obj));
+      console.info("[RichEditorTest_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.content).assertEqual('Start');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Start');
 
       console.info('[RichEditorTest_001] END');
       done();
@@ -76,7 +88,7 @@ export default function RichEditorTest() {
       * @tc.desc  : set TextAlign to End
       * @tc.level : Level 2
       */
-    it('RichEditorTest_002', 0, async function (done) {
+    it('RichEditorTest_002', 0, async (done: Function) => {
 
       console.info('[RichEditorTest_002] START');
       await CommonFunc.sleep(1000);
@@ -90,10 +102,9 @@ export default function RichEditorTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[RichEditorTest_002] component obj is: " + JSON.stringify(obj));
+      console.info("[RichEditorTest_002] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.content).assertEqual('End');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('End');
 
       console.info('[RichEditorTest_002] END');
       done();
@@ -105,7 +116,7 @@ export default function RichEditorTest() {
      * @tc.desc  : set TextAlign to Center
      * @tc.level : Level 2
      */
-    it('RichEditorTest_003', 0, async function (done) {
+    it('RichEditorTest_003', 0, async (done: Function) => {
 
       console.info('[RichEditorTest_003] START');
       await CommonFunc.sleep(1000);
@@ -119,17 +130,11 @@ export default function RichEditorTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('RichEditor_text');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[RichEditorTest_003] component obj is: " + JSON.stringify(obj));
+      console.info("[RichEditorTest_003] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.content).assertEqual('Center');
-
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Center');
       console.info('[RichEditorTest_003] END');
       done();
     });
-
-
-
-
   })
 }

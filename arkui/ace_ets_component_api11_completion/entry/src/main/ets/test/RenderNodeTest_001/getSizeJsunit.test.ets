@@ -15,12 +15,30 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton,
+  UIElementInfo,
+  UIEventObserver
+} from '@ohos.UiTest';
+
 export default function getSizeJsunit() {
-  describe('getSizeJsunit', function () {
-    beforeEach(async function (done) {
+  describe('getSizeJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("getSizeJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/renderNode001/getSize",
       }
       try {
@@ -40,27 +58,25 @@ export default function getSizeJsunit() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_getSizeJsunit_001
-     * @tc.name      getSizeJsunit
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_getSizeJsunit_001
+     * @tc.name getSizeJsunit
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('getSizeJsunit_001', 0, async function (done) {
+    it('getSizeJsunit_001', 0, async (done: Function) => {
       console.info('[getSizeJsunit_001] START');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('getWidth');
       let strJson2 = getInspectorByKey('getHeight');
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      console.info("[getSizeJsunit_001] component obj1 is: " + JSON.stringify(obj1));
-      console.info("[getSizeJsunit_001] component obj2 is: " + JSON.stringify(obj2));
-      console.info("[getSizeJsunit_001] component content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[getSizeJsunit_001] component content2 is: " + JSON.stringify(obj2.$attrs.content));
-      expect(obj1.$attrs.content).assertEqual("getSize_WidthStatus:300");
-      expect(obj2.$attrs.content).assertEqual("getSize_HeightStatus:300");
+      console.info("[getSizeJsunit_001] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)));
+      console.info("[getSizeJsunit_001] component obj2 is: " + JSON.stringify(JSON.parse(strJson2)));
+      console.info("[getSizeJsunit_001] component content1 is: " + JSON.stringify(JSON.parse(strJson1).$attrs.content));
+      console.info("[getSizeJsunit_001] component content2 is: " + JSON.stringify(JSON.parse(strJson2).$attrs.content));
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual("getSize_WidthStatus:300");
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual("getSize_HeightStatus:300");
       console.info('[getSizeJsunit_001] END');
       await CommonFunc.sleep(1000);
       done();

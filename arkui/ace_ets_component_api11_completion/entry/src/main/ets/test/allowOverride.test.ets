@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 export default function allowOverride() {
-  describe('allowOverride', function () {
-    beforeEach(async function (done) {
+  describe('allowOverride', () =>{
+    beforeEach(async (done: Function) =>{
       console.info("allowOverride beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/allowOverride',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/allowOverride',
       }
       try {
         router.clear();
@@ -50,14 +50,13 @@ export default function allowOverride() {
     * @tc.type :
     * @tc.size :
     */
-    it('allowOverride_0100', 0, async function (done) {
+    it('allowOverride_0100', 0, async (done: Function) =>{
       console.info('allowOverride_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('allowOverride_Consume');
-      let obj = JSON.parse(strJson);
-      console.info("[allowOverride_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[allowOverride_0100] value: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('reviewVotes(10)');
+      console.info("[allowOverride_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[allowOverride_0100] value: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('reviewVotes(10)');
       console.info('[allowOverride_0100] END');
       done();
     });
