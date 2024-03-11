@@ -15,5 +15,5 @@
 import buttonTest from './button'
 
 export default function testsuite() {
-       buttonTest()
+  buttonTest()
 }

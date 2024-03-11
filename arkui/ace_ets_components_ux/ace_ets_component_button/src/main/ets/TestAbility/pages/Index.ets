@@ -18,18 +18,20 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
+
 @Entry
 @Component
 struct textInputTest {
-  aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+  aboutToAppear() {
+    // var abilityDelegator: any
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    // var abilityDelegatorArguments: any
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
+
   @State txtA: string = 'overflowTextOverlengthTextOverflow.Clip';
   @State txtB: string = 'overflowTextOverlengthTextOverflow.Ellipsis';
   @State txtC: string = 'overflowTextOverlengthTextOverflow.None';
@@ -64,295 +66,334 @@ struct textInputTest {
   @State widthShortSize: number = 200;
   @State colorInfo: string = "#f2eada";
   private scroller: Scroller = new Scroller()
+
   build() {
     Column() {
       Stack({ alignContent: Alignment.End }) {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
 
-            Text('ArkUX_Stage_Button_LabelStyle_0100').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0100').fontSize(15).margin({ top: 20 })
             Button(this.txtA)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 1, minFontSize: 5,
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 1,
+                minFontSize: 5,
                 heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
               })
               .key("ArkUX_Stage_Button_LabelStyle_0100")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0200').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0200').fontSize(15).margin({ top: 20 })
             Button(this.txtB)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0200")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0300').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0300').fontSize(15).margin({ top: 20 })
             Button(this.txtC)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0300")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0400').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0400').fontSize(15).margin({ top: 20 })
             Button(this.txtD)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0400")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0500').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0500').fontSize(15).margin({ top: 20 })
             Button(this.txtE)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.LayoutConstraint,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0500")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0600').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0600').fontSize(15).margin({ top: 20 })
             Button(this.txtF)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0600")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0700').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0700').fontSize(15).margin({ top: 20 })
             Button(this.txtG)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0700")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0800').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0800').fontSize(15).margin({ top: 20 })
             Button(this.txtH)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0800")
 
-            Text('ArkUX_Stage_Button_LabelStyle_0900').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_0900').fontSize(15).margin({ top: 20 })
             Button(this.txtI)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_0900")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1000').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1000').fontSize(15).margin({ top: 20 })
             Button(this.txtJ)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.LayoutConstraint,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1000")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1100').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1100').fontSize(15).margin({ top: 20 })
             Button(this.txtK)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1100")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1200').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1200').fontSize(15).margin({ top: 20 })
             Button(this.txtL)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1200")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1300').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1300').fontSize(15).margin({ top: 20 })
             Button(this.txtM)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1300")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1400').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1400').fontSize(15).margin({ top: 20 })
             Button(this.txtN)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MinFontSize,
-                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MinFontSize,
+                font: { weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Normal }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1400")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1500').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1500').fontSize(15).margin({ top: 20 })
             Button(this.txtO)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 3, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.LayoutConstraint,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 3,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.LayoutConstraint,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_1500")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1600').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1600').fontSize(15).margin({ top: 20 })
             Button(this.txtP)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ overflow: TextOverflow.Ellipsis,
                 maxLines: 1 })
               .key("ArkUX_Stage_Button_LabelStyle_1600")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1700').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1700').fontSize(15).margin({ top: 20 })
             Button(this.txtQ)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ overflow: TextOverflow.Ellipsis,
                 minFontSize: 5 })
               .key("ArkUX_Stage_Button_LabelStyle_1700")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1800').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1800').fontSize(15).margin({ top: 20 })
             Button(this.txtR)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ overflow: TextOverflow.Ellipsis,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines
               })
               .key("ArkUX_Stage_Button_LabelStyle_1800")
 
-            Text('ArkUX_Stage_Button_LabelStyle_1900').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_1900').fontSize(15).margin({ top: 20 })
             Button(this.txtS)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ overflow: TextOverflow.Ellipsis,
                 font: { size: 15, weight: FontWeight.Medium, family: 'cursive', style: FontStyle.Italic } })
               .key("ArkUX_Stage_Button_LabelStyle_1900")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2000').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2000').fontSize(15).margin({ top: 20 })
             Button(this.txtT)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ overflow: TextOverflow.Ellipsis })
               .key("ArkUX_Stage_Button_LabelStyle_2000")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2100').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2100').fontSize(15).margin({ top: 20 })
             Button(this.txtU)
               .width(this.widthShortSize)
-                // @ts-ignore
               .labelStyle({ maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
                 font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
               .key("ArkUX_Stage_Button_LabelStyle_2100")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2200').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2200').fontSize(15).margin({ top: 20 })
             Button(this.txtV)
               .width(this.widthShortSize)
               .key("ArkUX_Stage_Button_LabelStyle_2200")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2300').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2300').fontSize(15).margin({ top: 20 })
             Button(this.txtW)
               .width(this.widthLongSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2300")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2400').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2400').fontSize(15).margin({ top: 20 })
             Button(this.txtX)
               .width(this.widthLongSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Ellipsis,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Ellipsis,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2400")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2500').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2500').fontSize(15).margin({ top: 20 })
             Button(this.txtY)
               .width(this.widthLongSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.None,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.None,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2500")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2600').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2600').fontSize(15).margin({ top: 20 })
             Button(this.txtZ)
               .width(this.widthLongSize)
               .key("ArkUX_Stage_Button_LabelStyle_2600")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2700').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2700').fontSize(15).margin({ top: 20 })
             Button(this.txta)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: null,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: null,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2700")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2800').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_2800').fontSize(15).margin({ top: 20 })
             Button(this.txtb)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: 0,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: 0,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2800")
 
-            Text('ArkUX_Stage_Button_LabelStyle_2900').fontSize(15).margin({top:20})
-            Button(this.txtc,{ type: ButtonType.Capsule, stateEffect: false }).opacity(0.4)
+            Text('ArkUX_Stage_Button_LabelStyle_2900').fontSize(15).margin({ top: 20 })
+            Button(this.txtc, { type: ButtonType.Capsule, stateEffect: false }).opacity(0.4)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Clip,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Clip,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_2900")
 
-            Text('ArkUX_Stage_Button_LabelStyle_3000').fontSize(15).margin({top:20})
+            Text('ArkUX_Stage_Button_LabelStyle_3000').fontSize(15).margin({ top: 20 })
             Button(this.txtd)
               .width(this.widthShortSize)
-                // @ts-ignore
-              .labelStyle({ overflow: TextOverflow.Race,
-                maxLines: 1, minFontSize: 5,
-                heightAdaptivePolicy:TextHeightAdaptivePolicy.MaxLines,
-                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic } })
+              .labelStyle({
+                overflow: TextOverflow.Race,
+                maxLines: 1,
+                minFontSize: 5,
+                heightAdaptivePolicy: TextHeightAdaptivePolicy.MaxLines,
+                font: { size: 15, weight: FontWeight.Bolder, family: 'cursive', style: FontStyle.Italic }
+              })
               .key("ArkUX_Stage_Button_LabelStyle_3000")
           }
         }
         .scrollBar(BarState.Off)
         .scrollable(ScrollDirection.Vertical)
+
         ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto })
       }
     }
