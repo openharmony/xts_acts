@@ -16,6 +16,21 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  exceptView?: string[];
+  expectValue: ESObject;
+}
+
 export default function defaultFlexTest() {
 
   let containerView = ['Row', 'Column', 'FlexRow', 'FlexRowReverse', 'FlexColumn', 'FlexColumnReverse']
@@ -89,7 +104,7 @@ export default function defaultFlexTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'test',
     pageName: 'DefaultFlexPage',
     pageUrl: 'MainAbility/pages/default/DefaultFlexPage',
@@ -99,7 +114,7 @@ export default function defaultFlexTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'FlexBasis',
     exceptView: ['Blank'],
     expectValue: {
@@ -129,7 +144,7 @@ export default function defaultFlexTest() {
     }]
 
   describe('DefaultFlexTest', () => {
-    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async data => {
+    CommonTest.initTestByContainerView(pageConfig, containerView, supportView, testValues, async (data: ESObject) => {
       if (data.testValue.describe == 'FlexBasis') {
         // Test flexBasis defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.flexBasis:' + data.viewObj.$attrs.flexBasis);
@@ -145,7 +160,7 @@ export default function defaultFlexTest() {
           console.info('[' + data.caseTag + ']data.pageConfig.containerView:' + data.pageConfig.containerView);
           expect(data.viewObj.$attrs.flexShrink).assertEqual(data.testValue.expectValue.flexShrinkRowColumn);
         } else if ((data.pageConfig.containerView == 'FlexRow') || (data.pageConfig.containerView == 'FlexRowReverse')
-        || (data.pageConfig.containerView == 'FlexColumn') || (data.pageConfig.containerView == 'FlexColumnReverse')) {
+          || (data.pageConfig.containerView == 'FlexColumn') || (data.pageConfig.containerView == 'FlexColumnReverse')) {
           console.info('[' + data.caseTag + ']data.pageConfig.containerView:' + data.pageConfig.containerView);
           expect(data.viewObj.$attrs.flexShrink).assertEqual(data.testValue.expectValue.flexShrinkFlex);
         }
@@ -160,7 +175,7 @@ export default function defaultFlexTest() {
         }
       } else {
         console.info('[' + data.caseTag + ']data.testValue.describe is error:' + data.testValue.describe
-        + data.pageConfig.componentKey);
+          + data.pageConfig.componentKey);
       }
     });
   })

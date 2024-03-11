@@ -16,6 +16,20 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  expectValue: ESObject;
+}
+
 export default function defaultFlexByGridRowTest() {
 
   //Component to be tested
@@ -25,7 +39,7 @@ export default function defaultFlexByGridRowTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'test',
     pageName: 'DefaultFlexByGridRowPage',
     pageUrl: 'MainAbility/pages/default/DefaultFlexByGridRowPage',
@@ -35,7 +49,7 @@ export default function defaultFlexByGridRowTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'FlexBasis',
     expectValue: {
       flexBasis: 'auto'
@@ -54,7 +68,7 @@ export default function defaultFlexByGridRowTest() {
 
 
   describe('DefaultFlexByGridRowTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       if (data.testValue.describe == 'FlexBasis') {
         // Test flexBasis defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.flexBasis:' + data.viewObj.$attrs.flexBasis);
@@ -69,7 +83,7 @@ export default function defaultFlexByGridRowTest() {
         expect(data.viewObj.$attrs.alignSelf).assertEqual(data.testValue.expectValue.alignSelf);
       } else {
         console.info('[' + data.caseTag + ']data.testValue.describe is error:' + data.testValue.describe
-        + data.pageConfig.componentKey);
+          + data.pageConfig.componentKey);
       }
     });
   })

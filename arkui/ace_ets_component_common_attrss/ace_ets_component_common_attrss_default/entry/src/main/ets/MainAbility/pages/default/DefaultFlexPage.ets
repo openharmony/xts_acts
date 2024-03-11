@@ -18,12 +18,12 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct DefaultFlexPage {
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G']; //Use by AlphabetIndexer TextPicker
   private Marquee_src: string = 'Running Marquee starts rolling A B C D E F G H I J K L'; //Use by Marquee QRCode
   textTimerController: TextTimerController = new TextTimerController() //Use by TextTimer

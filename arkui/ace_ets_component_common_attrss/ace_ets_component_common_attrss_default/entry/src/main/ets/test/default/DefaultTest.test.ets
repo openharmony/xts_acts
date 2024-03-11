@@ -16,6 +16,34 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentWidth: number;
+  parentHeight: number;
+}
+
+class TestValue {
+  describe: string;
+  exceptView?: string[];
+  expectValue: Size;
+}
+
+class Size {
+  margin?: string
+  padding?: string
+  hitTestBehavior?: string
+  constraintSize?: ConstraintSizeOptions
+  markAnchor?: Position
+  offset?: Position
+  layoutWeight?: number
+  visibility?: string
+  enabled?: boolean
+  touchable?: boolean
+}
+
 export default function defaultTest() {
 
   //Component to be tested
@@ -98,7 +126,7 @@ export default function defaultTest() {
   let parentWidth = 300;
   let parentHeight = 600;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testDefault',
     pageName: 'DefaultPage',
     pageUrl: 'MainAbility/pages/default/DefaultPage',
@@ -108,7 +136,7 @@ export default function defaultTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'Padding',
     exceptView: ['AlphabetIndexer', 'Button', 'TextArea', 'TextInput', 'Menu', 'RichText'],
     expectValue: {
@@ -188,7 +216,7 @@ export default function defaultTest() {
   ]
 
   describe('DefaultTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       if (data.testValue.describe == 'Padding') {
         // Test padding defaults
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.padding:' + data.viewObj.$attrs.padding);
@@ -243,7 +271,7 @@ export default function defaultTest() {
         expect(data.viewObj.$attrs.hitTestBehavior).assertEqual(data.testValue.expectValue.hitTestBehavior);
       } else {
         console.info('[' + data.caseTag + ']data.testValue.describe is error:' + data.testValue.describe
-        + data.pageConfig.componentKey);
+          + data.pageConfig.componentKey);
       }
     });
   })
