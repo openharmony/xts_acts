@@ -11,12 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsComponentBasicTest") {
+group("ActsAceEtsArkTSApiRouterTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "ace_ets_component_basic_navigation:ActsAceEtsComponentBasicNavigationTest",
-      "ace_ets_component_basic_richEditor:ActsAceEtsComponentBasicRichEditorTest",
-    ]
+    deps =
+        [ "ace_ets_arkts_api_router_api12:ActsAceEtsArkTSApiRouterApi12Test" ]
   }
 }
