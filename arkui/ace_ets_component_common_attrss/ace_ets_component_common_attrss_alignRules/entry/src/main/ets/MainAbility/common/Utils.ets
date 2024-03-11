@@ -36,21 +36,6 @@ export default class Utils {
     });
   }
 
-  static getStringFromFile(fileName: string): Promise<string> {
-    return globalThis.abilityContext
-      .resourceManager
-      .getRawFileContent(fileName)
-      .then((data: ESObject) => {
-        return new Promise<string>((resolve, reject) => {
-          if (data) {
-            resolve(String.fromCharCode.apply(null, data))
-          } else {
-            reject('')
-          }
-        })
-      })
-  }
-
   static async pushPage(obj: ESObject) {
     try {
       let pages = router.getState();
