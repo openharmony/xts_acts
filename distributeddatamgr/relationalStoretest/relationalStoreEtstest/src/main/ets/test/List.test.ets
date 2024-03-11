@@ -21,6 +21,9 @@ import relationalStoreExecuteSqlTest from './RelationalStoreExecuteSqlJsunit.tes
 import relationalStoreInsertTest from './RelationalStoreInsertJsunit.test';
 import relationalStoreTest from './RelationalStoreJsunit.test';
 import relationalStoreUpdateTest from './RelationalStoreUpdateJsunit.test';
+import relationalStorePredicatesComplexFiledTest from './RelationalStorePredicatesComplexFiledJsunit.test';
+import relationalStorePredicatesJoinTest from './RelationalStorePredicatesJoinJsunit.test';
+import relationalStoreTransactionTest from './RelationalStoreTransactionJsunit.test';
 
 
 export default function testsuite() {
@@ -33,5 +36,8 @@ export default function testsuite() {
   relationalStoreCustomDirTest()
   relationalStoreBackupRestorePromiseTest()
   relationalStoreAssetResultSetTest()
+  relationalStoreTransactionTest()
+  relationalStorePredicatesComplexFiledTest()
+  relationalStorePredicatesJoinTest()
 }
 
