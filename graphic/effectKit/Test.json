@@ -1,10 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "package": "com.example.ActsEffectKitTest",
-        "shell-timeout": "600000"
+        "bundle-name": "com.example.myapplication",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": 70000
     },
     "kits": [{
         "test-file-name": [
@@ -12,9 +14,5 @@
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
-    },
-    {
-        "type": "ShellKit",
-        "run-command": []
     }]
 }

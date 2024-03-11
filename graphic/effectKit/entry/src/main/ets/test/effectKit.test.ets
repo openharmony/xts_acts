@@ -12,15 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import image from '@ohos.multimedia.image';
 import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
 import { BusinessError } from '@ohos.base';
 
-export default function effectKitTest() {
+export default function effectKitTest(context, windowStage, abilityStorage) {
   describe('effectKitTest', () => {
     console.log('describe effectKitTest start!!!');
 
