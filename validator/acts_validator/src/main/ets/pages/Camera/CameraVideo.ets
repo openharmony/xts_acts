@@ -97,7 +97,7 @@ struct cameraOrientation {
   }
 
   // 对分辨率数据处理 获取到需要的格式
-  dealWithResolutionFn(arr: SelectOption[]) {
+  dealWithResolutionFn(arr) {
     let newResolution = []
     arr.forEach((item) => {
       let indexOf: number = item.value.indexOf("x")

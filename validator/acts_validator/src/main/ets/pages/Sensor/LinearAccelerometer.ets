@@ -352,7 +352,7 @@ struct LinearAccelerometer {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
