@@ -16,8 +16,8 @@
 @Entry
 @Component
 struct TextInputExampleKy {
-  @State text: string = ''
-  @State textNew: string = ''
+  @State text: string = '';
+  @State textNew: string = '';
 
   onPageShow() {
     console.info('testInputExampleKey show called');
@@ -56,7 +56,6 @@ struct TextInputExampleKy {
           })
           .key('textInputkeyN')
       }
-
 
     }
     .width('100%')

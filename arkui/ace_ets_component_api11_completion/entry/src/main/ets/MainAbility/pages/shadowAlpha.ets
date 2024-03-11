@@ -42,7 +42,7 @@ struct getShadowAlpha {
   @State getShadowAlpha: number = 1.0;
 
   build() {
-    Column(){
+    Column() {
       Column() {
         NodeContainer(this.MyNodeController)
         Text('shadowAlpha:' + this.getShadowAlpha).key('getAlpha')
