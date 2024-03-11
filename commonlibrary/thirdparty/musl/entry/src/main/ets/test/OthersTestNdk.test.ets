@@ -995,5 +995,18 @@ export default function otherstestNdkTest() {
       expect(result).assertEqual(0);
       done();
     });
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_OTHER_UFLOW_0100
+     * @tc.name       : testUflow001
+     * @tc.desc       : test __uflow
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testUflow001', 0, async (done: Function) => {
+      let result: number = otherstestndk.uflow();
+      expect(result).assertEqual(0);
+      done();
+    });
   });
 }
