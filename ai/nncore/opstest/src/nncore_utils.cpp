@@ -224,7 +224,8 @@ void Free(OH_NNModel *model, OH_NNCompilation *compilation, OH_NNExecutor *execu
     }
 }
 
-void FreeTensorDescVec(std::vector<NN_TensorDesc*> tensorDescVec) {
+void FreeTensorDescVec(std::vector<NN_TensorDesc*> tensorDescVec)
+{
     if (!tensorDescVec.empty()) {
         for (auto tensorDesc : tensorDescVec) {
             OH_NNTensorDesc_Destroy(&tensorDesc);
