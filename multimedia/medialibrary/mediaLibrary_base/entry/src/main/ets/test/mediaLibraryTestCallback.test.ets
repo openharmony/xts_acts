@@ -25,7 +25,6 @@ import {
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
-    getPermission,
     isNum,
 } from "../../../../../../common";
 
@@ -34,7 +33,6 @@ export default function mediaLibraryTestCallback(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryBaseTest");
         });
         beforeEach(function () {

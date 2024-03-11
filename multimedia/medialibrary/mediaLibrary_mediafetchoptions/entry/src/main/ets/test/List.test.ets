@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import provisionResourcesTest from './provisionResources.test.ets'
 import mediafetchoptionsCallback from './mediafetchoptionsCallback.test.ets'
 import mediafetchoptionsPromise from './mediafetchoptionsPromise.test.ets'
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   mediafetchoptionsCallback(globalThis.abilityContext)
   mediafetchoptionsPromise(globalThis.abilityContext)
 }

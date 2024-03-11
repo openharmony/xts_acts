@@ -21,7 +21,6 @@ import {
     allFetchOp,
     checkPresetsAssets,
     checkAlbumsCount,
-    getPermission,
     fileFetchOption,
 } from '../../../../../../common';
 
@@ -30,7 +29,6 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {

@@ -12,12 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import provisionResourcesTest from './provisionResources.test.ets'
 import mediaLibraryTestCallback from './mediaLibraryTestCallback.test.ets'
 import mediaLibraryTestPromise from './mediaLibraryTestPromise.test.ets'
 import mediaLibraryTestPromiseOnOffTest from './mediaLibraryTestPromiseOnOff.test.ets'
 
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   mediaLibraryTestCallback(globalThis.abilityContext)
   mediaLibraryTestPromise(globalThis.abilityContext)
   mediaLibraryTestPromiseOnOffTest(globalThis.abilityContext)

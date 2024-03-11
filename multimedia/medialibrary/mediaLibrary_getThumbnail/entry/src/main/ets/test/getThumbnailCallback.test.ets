@@ -26,7 +26,6 @@ import {
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
-    getPermission,
 } from "../../../../../../common";
 export default function getThumbnailCallback(abilityContext) {
     describe("getThumbnailCallback", function () {
@@ -38,7 +37,6 @@ export default function getThumbnailCallback(abilityContext) {
 
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryGetThumbnailTest");
         });
         beforeEach(function () {

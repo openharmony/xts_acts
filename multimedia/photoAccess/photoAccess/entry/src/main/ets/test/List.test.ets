@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import provisionResourcesTest from './provisionResources'
 import checkAlbumAttrTest from './AbsAlbum/checkAttr'
 import albumGetAssetsTest from './AbsAlbum/getAssets'
 import addAssetsTest from './Album/addAssets'
@@ -65,6 +65,7 @@ import requestImageTest from './MediaAssetManager/requestImage'
 import requestImageDataTest from './MediaAssetManager/requestImageData'
 
 export default function testsuite () {
+  provisionResourcesTest()
   getPhotoAccessHelperTest()
   checkAlbumAttrTest()
   albumGetAssetsTest()

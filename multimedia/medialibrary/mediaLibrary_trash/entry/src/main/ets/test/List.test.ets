@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import provisionResourcesTest from './provisionResources.test.ets'
 import trashPromise from './trashPromise.test.ets'
 import trashCallback from './trashCallback.test.ets'
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   trashCallback(globalThis.abilityContext)
   trashPromise(globalThis.abilityContext)
 }

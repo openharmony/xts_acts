@@ -17,42 +17,12 @@ import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
 import uitest from "@ohos.UiTest";
-import { sleep, } from "../../../../../../common";
+import { sleep } from "../../../../../../common";
 
 export default function getExifNoLocation(abilityContext) {
     describe("getExifNoLocation", function () {
         beforeAll(async function () {
             console.info("beforeAll case");
-            try {
-                let permissions = ["ohos.permission.READ_MEDIA"];
-                let atManager = abilityAccessCtrl.createAtManager();
-                let permissionCheck = false;
-                atManager.requestPermissionsFromUser(abilityContext, permissions, (err, result) => {
-                    if (err) {
-                        console.info('getPermission failed: ' + JSON.stringify(err));
-                    } else {
-                        console.info('getPermission suc: ' + JSON.stringify(result));
-                        permissionCheck = true;
-                    }
-                });
-            
-                let driver = uitest.Driver.create();
-                await sleep(500);
-            
-                for (let i = 0; i < 10; i++) {
-                    if (permissionCheck) {
-                        break;
-                    }
-                    await sleep(500);
-                    let button = await driver.findComponent(uitest.ON.text('允许'));
-                    if (button != undefined) {
-                        await button.click();
-                    }
-                }
-                console.info("getPermission end");
-            } catch (error) {
-                console.info(`getPermission failed, error: ${error}`);
-            }
         });
         beforeEach(function () {
             console.info("beforeEach case");

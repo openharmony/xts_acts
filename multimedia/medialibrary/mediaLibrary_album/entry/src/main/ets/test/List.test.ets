@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import provisionResourcesTest from './provisionResources.test.ets'
 import albumGetFileAssetsCallbackTest from './albumGetFileAssetsCallback.test.ets'
 import albumGetFileAssetsPromiseTest from './albumGetFileAssetsPromise.test.ets'
 import albumTestCallBackTest from './albumTestCallBack.test.ets'
 import albumTestPromiseTest from './albumTestPromise.test.ets'
 export default function testsuite() {
+    provisionResourcesTest(globalThis.abilityContext)
     albumGetFileAssetsCallbackTest(globalThis.abilityContext)
     albumGetFileAssetsPromiseTest(globalThis.abilityContext)
     albumTestPromiseTest(globalThis.abilityContext)

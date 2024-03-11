@@ -24,7 +24,6 @@ import {
     checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
-    getPermission,
 } from "../../../../../../common";
 
 export default function favoriteTestCallbackTest(abilityContext) {
@@ -32,7 +31,6 @@ export default function favoriteTestCallbackTest(abilityContext) {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryFavoriteTest");
         });
         beforeEach(function () {

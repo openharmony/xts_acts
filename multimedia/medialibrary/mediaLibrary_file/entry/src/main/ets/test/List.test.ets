@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import provisionResourcesTest from './provisionResources.test.ets'
 import fileTestCallback from './fileTestCallback.test.ets'
 import fileTestPromise from './fileTestPromise.test.ets'
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   fileTestCallback(globalThis.abilityContext)
   fileTestPromise(globalThis.abilityContext)
 }

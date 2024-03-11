@@ -24,7 +24,6 @@ import {
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
-    getPermission,
     fileFetchOption,
 } from "../../../../../../common";
 
@@ -34,7 +33,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
 
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryFileKeyTest");
         });
         beforeEach(function () {

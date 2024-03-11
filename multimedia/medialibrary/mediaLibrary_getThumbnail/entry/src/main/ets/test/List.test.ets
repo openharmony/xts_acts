@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import provisionResourcesTest from './provisionResources.test.ets'
 import getThumbnailPromise from './getThumbnailPromise.test.ets'
 import getThumbnailCallback from './getThumbnailCallback.test.ets'
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   getThumbnailCallback(globalThis.abilityContext)
   getThumbnailPromise(globalThis.abilityContext)
 }

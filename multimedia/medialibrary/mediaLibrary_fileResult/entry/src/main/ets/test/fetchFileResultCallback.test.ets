@@ -24,7 +24,6 @@ import {
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
-    getPermission,
 } from "../../../../../../common";
 
 export default function fetchFileResultCallbackTest(abilityContext) {
@@ -32,7 +31,6 @@ export default function fetchFileResultCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryFileResultTest");
         });
         beforeEach(function () {

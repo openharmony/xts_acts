@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import provisionResourcesTest from './provisionResources.test.ets'
 import favoriteTestPromise from './favoriteTestPromise.test.ets'
 import favoriteTestCallback from './favoriteTestCallback.test.ets'
 export default function testsuite() {
+  provisionResourcesTest(globalThis.abilityContext)
   favoriteTestCallback(globalThis.abilityContext)
   favoriteTestPromise(globalThis.abilityContext)
 }

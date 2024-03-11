@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import provisionResourcesTest from './provisionResources.test.ets'
 import getExifNoLocationTest from "./getExifNoLocation.test.ets";
 export default function testsuite() {
-    getExifNoLocationTest(globalThis.abilityContext);
+    provisionResourcesTest(globalThis.abilityContext)
+    getExifNoLocationTest(globalThis.abilityContext)
 }

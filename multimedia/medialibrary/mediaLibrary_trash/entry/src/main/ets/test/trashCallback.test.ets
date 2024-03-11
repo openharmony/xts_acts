@@ -22,7 +22,6 @@ import {
     VIDEO_TYPE,
     FILE_TYPE,
     fetchOps,
-    getPermission,
     albumFetchOps,
     checkPresetsAssets,
 } from "../../../../../../common";
@@ -31,7 +30,6 @@ export default function trashCallback(abilityContext) {
     describe("trashCallback", function () {
         beforeAll(async function () {
             console.info("beforeAll case");
-            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryTrashJsTest");
         });
         beforeEach(function () {
