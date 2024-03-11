@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct Row_TextFlexShrink{
+struct Row_TextFlexShrink {
   @State secondTextFlexShrink: number = 0;
   @State thirdTextFlexShrink: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Row_TextFlexShrink onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'secondTextFlexShrink') {
         this.secondTextFlexShrink = message.value;
@@ -33,17 +36,26 @@ struct Row_TextFlexShrink{
       if (message.name == 'thirdTextFlexShrink') {
         this.thirdTextFlexShrink = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Row({space:10}){
+
+  build() {
+    Column({ space: 30 }) {
+      Row({ space: 10 }) {
         Text('1').width(150).height(50).backgroundColor(0xD2B48C).key('Row_TextFlexShrink1')
-        Text('2').width(200).height(100)
-          .flexShrink(this.secondTextFlexShrink).backgroundColor(0xF5DEB3).key('Row_TextFlexShrink2')
-        Text('3').width(200).height(150)
-          .flexShrink(this.thirdTextFlexShrink).backgroundColor(0xD2B48C).key('Row_TextFlexShrink3')
+        Text('2')
+          .width(200)
+          .height(100)
+          .flexShrink(this.secondTextFlexShrink)
+          .backgroundColor(0xF5DEB3)
+          .key('Row_TextFlexShrink2')
+        Text('3')
+          .width(200)
+          .height(150)
+          .flexShrink(this.thirdTextFlexShrink)
+          .backgroundColor(0xD2B48C)
+          .key('Row_TextFlexShrink3')
       }
       .width(350)
       .height(200)

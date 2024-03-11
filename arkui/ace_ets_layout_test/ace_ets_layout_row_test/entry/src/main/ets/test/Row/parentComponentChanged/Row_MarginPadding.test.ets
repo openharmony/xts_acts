@@ -15,17 +15,18 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_MarginPadding() {
 
-  describe('Row_MarginPadding', function () {
-    beforeEach(async function (done) {
+  describe('Row_MarginPadding', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_MarginPadding beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_MarginPadding',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_MarginPadding',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -33,7 +34,7 @@ export default function Row_MarginPadding() {
         console.info("get Row_MarginPadding state success " + JSON.stringify(pages));
         if (!("Row_MarginPadding" == pages.name)) {
           console.info("get Row_MarginPadding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await CommonFunc.sleep(2000);
           console.info("push Row_MarginPadding page success " + JSON.stringify(result));
         }
@@ -45,27 +46,29 @@ export default function Row_MarginPadding() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_MarginPadding after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0700
-     * @tc.name      testRowMarginPaddingSatisfy
-     * @tc.desc      When margin and padding are set for the Row component, the width of the Row component meets the 
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0700
+     * @tc.name testRowMarginPaddingSatisfy
+     * @tc.desc When margin and padding are set for the Row component, the width of the Row component meets the
      *               requirements
      */
 
-    it('testRowMarginPaddingSatisfy', 0, async function (done) {
+    it('testRowMarginPaddingSatisfy', 0, async (done: Function) => {
       console.info('testRowMarginPaddingSatisfy START');
-      globalThis.value.message.notify({ name: 'padding', value: 15 });
+      globalThis.value.message.notify({
+        name: 'padding', value: 15
+      });
       await CommonFunc.sleep(3000);
-      let Column = CommonFunc.getComponentRect('Column_Row_MarginPadding');
-      let Row = CommonFunc.getComponentRect('Row_MarginPadding');
-      let Text1 = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
+      let Column: RectValue = CommonFunc.getComponentRect('Column_Row_MarginPadding');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_MarginPadding');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
 
       console.log('Column rect_value is:' + JSON.stringify(Column));
       console.log('Row rect_value is:' + JSON.stringify(Row));
@@ -80,39 +83,45 @@ export default function Row_MarginPadding() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(Text1.left - Column.left)) - (Math.round(vp2px(20)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text1.top - Column.top)) - (Math.round(vp2px(80)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text1.left - Row.left) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Row.left) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1)
+        .assertTrue();
       expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();
       expect(Math.abs(Text2.top - Row.top - (Row.bottom - Text2.bottom)) <= 1).assertTrue();
       expect(Math.abs(Text3.top - Row.top - (Row.bottom - Text3.bottom)) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Row.right - Text3.right) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.right - Text3.right) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1)
+        .assertTrue();
 
       console.info('testRowMarginPaddingSatisfy END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0800
-     * @tc.name      testRowMarginPaddingNoSatisfy
-     * @tc.desc      The width of the Row component does not meet the requirements when margin and padding are set for 
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0800
+     * @tc.name testRowMarginPaddingNoSatisfy
+     * @tc.desc The width of the Row component does not meet the requirements when margin and padding are set for
      *               the Row component
      */
 
-    it('testRowMarginPaddingNoSatisfy', 0, async function (done) {
+    it('testRowMarginPaddingNoSatisfy', 0, async (done: Function) => {
       console.info('testRowMarginPaddingNoSatisfy START');
-      globalThis.value.message.notify({ name: 'padding', value: 40 });
+      globalThis.value.message.notify({
+        name: 'padding', value: 40
+      });
       await CommonFunc.sleep(3000)
-      let Column = CommonFunc.getComponentRect('Column_Row_MarginPadding');
-      let Row = CommonFunc.getComponentRect('Row_MarginPadding');
-      let Text1 = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
+      let Column: RectValue = CommonFunc.getComponentRect('Column_Row_MarginPadding');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_MarginPadding');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_MarginPadding_Text3');
 
       console.log('Column rect_value is:' + JSON.stringify(Column));
 
@@ -129,10 +138,14 @@ export default function Row_MarginPadding() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text1.left - Column.left) * 10) / 10)) - (Math.round(vp2px(45)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text1.top - Column.top) * 10) / 10)) - (Math.round(vp2px(80)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Column.left) * 10) / 10)) - (Math.round(vp2px(45)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.top - Column.top) * 10) / 10)) - (Math.round(vp2px(80)))) <= 1)
+        .assertTrue();
 
       expect(Math.abs((Math.round(Text1.left - Row.left)) - (Math.round(vp2px(40)))) <= 1).assertTrue();
       expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();
