@@ -16,14 +16,15 @@
 @Entry
 @Component
 struct SelectAttrExample {
-  @State text: string = "TTTTT"
-  @State index: number = 2
-  @State space: number = 8
-  @State arrowPosition: ArrowPosition = ArrowPosition.END
+  @State text: string = "TTTTT";
+  @State index: number = 2;
+  @State space: number = 8;
+  @State arrowPosition: ArrowPosition = ArrowPosition.END;
+
   build() {
     Column() {
       Select([{ value: 'aaa' },
-        { value: 'bbb'}])
+        { value: 'bbb' }])
         .id('SelectAttr_Select')
         .width('200vp')
         .selected(this.index)
@@ -34,13 +35,13 @@ struct SelectAttrExample {
         .optionFont({ size: 16, weight: 400 })
         .space(this.space)
         .arrowPosition(this.arrowPosition)
-        .menuAlign(MenuAlignType.START, {dx:0, dy:0})
+        .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(OptionWidthMode.FIT_TRIGGER)
         .optionHeight('100vp')
-        .onSelect((index:number, text?: string | undefined)=>{
+        .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index)
           this.index = index;
-          if(text){
+          if (text) {
             this.text = text;
           }
         })
