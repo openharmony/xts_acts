@@ -15,12 +15,30 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton,
+  UIElementInfo,
+  UIEventObserver
+} from '@ohos.UiTest';
+
 export default function parentX_parentY_strategy_Test() {
-  describe('parentX_parentY_strategy_Test', function () {
-    beforeEach(async function (done) {
+  describe('parentX_parentY_strategy_Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("parentX_parentY_strategy_Test beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Com_Attr/parentX',
       }
       try {
@@ -39,19 +57,19 @@ export default function parentX_parentY_strategy_Test() {
       console.info("parentX_parentY_strategy_Test beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("parentX_parentY_strategy_Test after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0100
-     * @tc.name      parentX_parentY_strategy_Test
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0100
+     * @tc.name parentX_parentY_strategy_Test
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('parentX_parentY_strategy_Test_0100', 0, async function (done) {
+    it('parentX_parentY_strategy_Test_0100', 0, async (done: Function) => {
       console.info('[parentX_parentY_strategy_Test_0100] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -61,23 +79,22 @@ export default function parentX_parentY_strategy_Test() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('parentX');
-      let obj = JSON.parse(strJson);
-      console.info("[parentX_parentY_strategy_Test_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[parentX_parentY_strategy_Test_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('200');
+      console.info("[parentX_parentY_strategy_Test_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[parentX_parentY_strategy_Test_0100] content JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('200');
       console.info('[parentX_parentY_strategy_Test_0100] END');
       await CommonFunc.sleep(1000);
       done();
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0200
-     * @tc.name      parentX_parentY_strategy_Test
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0200
+     * @tc.name parentX_parentY_strategy_Test
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('parentX_parentY_strategy_Test_0200', 0, async function (done) {
+    it('parentX_parentY_strategy_Test_0200', 0, async (done: Function) => {
       console.info('[parentX_parentY_strategy_Test_0200] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -87,22 +104,21 @@ export default function parentX_parentY_strategy_Test() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('parentY');
-      let obj = JSON.parse(strJson);
-      console.info("[parentX_parentY_strategy_Test_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[parentX_parentY_strategy_Test_0200] contentY is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('200');
+      console.info("[parentX_parentY_strategy_Test_0200] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[parentX_parentY_strategy_Test_0200] contentY is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('200');
       await CommonFunc.sleep(1000);
       done();
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0300
-     * @tc.name      parentX_parentY_strategy_Test
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0300
+     * @tc.name parentX_parentY_strategy_Test
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('parentX_parentY_strategy_Test_0300', 0, async function (done) {
+    it('parentX_parentY_strategy_Test_0300', 0, async (done: Function) => {
       console.info('[parentX_parentY_strategy_Test_0300] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -112,23 +128,22 @@ export default function parentX_parentY_strategy_Test() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_DEFAULT');
-      let obj = JSON.parse(strJson);
-      console.info("[parentX_parentY_strategy_Test_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[parentX_parentY_strategy_Test_0300] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("0");
+      console.info("[parentX_parentY_strategy_Test_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[parentX_parentY_strategy_Test_0300] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("0");
       console.info('[parentX_parentY_strategy_Test_0300] END');
       await CommonFunc.sleep(1000);
       done();
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0400
-     * @tc.name      parentX_parentY_strategy_Test
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0400
+     * @tc.name parentX_parentY_strategy_Test
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('parentX_parentY_strategy_Test_0400', 0, async function (done) {
+    it('parentX_parentY_strategy_Test_0400', 0, async (done: Function) => {
       console.info('[parentX_parentY_strategy_Test_0400] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -138,23 +153,22 @@ export default function parentX_parentY_strategy_Test() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_FORWARD_COMPETITION');
-      let obj = JSON.parse(strJson);
-      console.info("[parentX_parentY_strategy_Test_0400] component obj is: " + JSON.stringify(obj));
-      console.info("[parentX_parentY_strategy_Test_0400] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("1");
+      console.info("[parentX_parentY_strategy_Test_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[parentX_parentY_strategy_Test_0400] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("1");
       console.info('[parentX_parentY_strategy_Test_0400] END');
       await CommonFunc.sleep(1000);
       done();
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0500
-     * @tc.name      parentX_parentY_strategy_Test
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_parentX_parentY_strategy_Test_0500
+     * @tc.name parentX_parentY_strategy_Test
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('parentX_parentY_strategy_Test_0500', 0, async function (done) {
+    it('parentX_parentY_strategy_Test_0500', 0, async (done: Function) => {
       console.info('[parentX_parentY_strategy_Test_0500] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -164,10 +178,9 @@ export default function parentX_parentY_strategy_Test() {
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_FORWARD');
-      let obj = JSON.parse(strJson);
-      console.info("[parentX_parentY_strategy_Test_0500] component obj is: " + JSON.stringify(obj));
-      console.info("[parentX_parentY_strategy_Test_0500] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("2");
+      console.info("[parentX_parentY_strategy_Test_0500] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[parentX_parentY_strategy_Test_0500] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("2");
       console.info('[parentX_parentY_strategy_Test_0500] END');
       await CommonFunc.sleep(1000);
       done();

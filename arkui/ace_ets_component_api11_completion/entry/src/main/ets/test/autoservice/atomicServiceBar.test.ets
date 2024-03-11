@@ -15,7 +15,7 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import { UIContext, AtomicServiceBar, KeyboardAvoidMode } from '@ohos.arkui.UIContext';
 
 import window from "@ohos.window";
@@ -24,9 +24,9 @@ export default function atomicServiceBarTest() {
 
   let windowStage: window.WindowStage = globalThis.windowStage;
   let uiContext: UIContext = null;
-  describe('atomicServiceBarTest', function () {
+  describe('atomicServiceBarTest', () => {
 
-    beforeAll(function () {
+    beforeAll(() => {
       console.info("atomicServiceBar beforeEach start");
       windowStage.loadContent('MainAbility/pages/arkuinode/arkui_node', (err, data) => {
         uiContext = windowStage.getMainWindowSync().getUIContext();
@@ -42,47 +42,47 @@ export default function atomicServiceBarTest() {
       });
 
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("atomicServiceBar beforeEach start");
       done();
     });
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_001
-     * @tc.name      ArkuiContext_0100
-     * @tc.desc      test setVisible interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_001
+     * @tc.name ArkuiContext_0100
+     * @tc.desc test setVisible interface
      */
-    it('ArkuiContext_0100', 0, async function (done) {
+    it('ArkuiContext_0100', 0, async (done: Function) => {
       console.info('ArkuiContext_0100 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
-              // support service 
-              hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
-              atomicServiceBar.setVisible(false);
-              expect(true).assertTrue();
+            // support service
+            hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+            atomicServiceBar.setVisible(false);
+            expect(true).assertTrue();
           } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0100  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0100  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_002
-     * @tc.name      ArkuiContext_0200
-     * @tc.desc      test setBackgroundColor interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_002
+     * @tc.name ArkuiContext_0200
+     * @tc.desc test setBackgroundColor interface
      */
-    it('ArkuiContext_0200', 0, async function (done) {
+    it('ArkuiContext_0200', 0, async (done: Function) => {
       console.info('ArkuiContext_0200 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
@@ -90,25 +90,25 @@ export default function atomicServiceBarTest() {
             expect(true).assertTrue();
           } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0200  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0200  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_003
-     * @tc.name      ArkuiContext_0300
-     * @tc.desc      test setTitleContent interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_003
+     * @tc.name ArkuiContext_0300
+     * @tc.desc test setTitleContent interface
      */
-    it('ArkuiContext_0300', 0, async function (done) {
+    it('ArkuiContext_0300', 0, async (done: Function) => {
       console.info('ArkuiContext_0300 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
@@ -116,26 +116,26 @@ export default function atomicServiceBarTest() {
             expect(true).assertTrue();
           } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0300  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0300  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_005
-     * @tc.name      ArkuiContext_0500
-     * @tc.desc      test setTitleFontStyle interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_005
+     * @tc.name ArkuiContext_0500
+     * @tc.desc test setTitleFontStyle interface
      */
-    it('ArkuiContext_0500', 0, async function (done) {
+    it('ArkuiContext_0500', 0, async (done: Function) => {
       console.info('ArkuiContext_0500 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
@@ -143,72 +143,72 @@ export default function atomicServiceBarTest() {
             expect(true).assertTrue();
           } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
 
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0500  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0500  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_006
-     * @tc.name      ArkuiContext_0600
-     * @tc.desc      test setIconColor interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_006
+     * @tc.name ArkuiContext_0600
+     * @tc.desc test setIconColor interface
      */
-    it('ArkuiContext_0600', 0, async function (done) {
+    it('ArkuiContext_0600', 0, async (done: Function) => {
       console.info('ArkuiContext_0600 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             atomicServiceBar.setIconColor(0x12345678);
             expect(true).assertTrue();
-          }  else {
+          } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0600  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0600  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
 
     /**
-     * @tc.number    SUB_ARKUI_ARKUICONTEXT_007
-     * @tc.name      ArkuiContext_0700
-     * @tc.desc      test getKeyboardAvoidMode interface
+     * @tc.number SUB_ARKUI_ARKUICONTEXT_007
+     * @tc.name ArkuiContext_0700
+     * @tc.desc test getKeyboardAvoidMode interface
      */
-    it('ArkuiContext_0700', 0, async function (done) {
+    it('ArkuiContext_0700', 0, async (done: Function) => {
       console.info('ArkuiContext_0700 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
           if (atomicServiceBar != undefined) {
             hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
             uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-            let keyboardAvoidMode:KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+            let keyboardAvoidMode: KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
             expect(keyboardAvoidMode != null).assertTrue();
             uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-            let keyboardAvoidMode2:KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
+            let keyboardAvoidMode2: KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
             expect(keyboardAvoidMode2 != null).assertTrue();
-          }  else {
+          } else {
             // no support AtomServiceBar
-            expect(atomicServiceBar ==undefined).assertTrue();
+            expect(atomicServiceBar == undefined).assertTrue();
           }
 
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkuiContext_0700  '+ JSON.stringify(err));
+          console.info('ArkuiContext_0700  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     })
   })
 }

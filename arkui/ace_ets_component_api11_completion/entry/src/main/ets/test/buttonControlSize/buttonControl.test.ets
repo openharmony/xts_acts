@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function buttonControlTest() {
-  describe('buttonControlTest', function () {
-    beforeEach(async function (done) {
+  describe('buttonControlTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("buttonControlTest beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function buttonControlTest() {
         console.info("get buttonControlTest state pages:" + JSON.stringify(pages));
         if (!("buttonControlSize" == pages.name)) {
           console.info("get buttonControlSize pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/button/buttonControlSize"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/button/buttonControlSize"
+          })
           await CommonFunc.sleep(2000);
           console.info("push buttonControlSize page result:" + JSON.stringify(result));
         }
@@ -37,29 +52,27 @@ export default function buttonControlTest() {
       console.info("buttonControlSize beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("buttonControlSize after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ButtonControlSize_0100
-     * @tc.desc      test buttonControlSize
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_ButtonControlSize_0100
+     * @tc.desc test buttonControlSize
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
 
-    it('buttonControlSize_0100', 0, async function (done) {
+    it('buttonControlSize_0100', 0, async (done: Function) => {
       console.info('[buttonControlSize_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('controlSizeBt');
-      let Obj1 = JSON.parse(json);
       console.info("buttonControlSize_0100 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.controlSize).assertEqual('ControlSize.SMALL');
+      expect(JSON.parse(json).$attrs.controlSize).assertEqual('ControlSize.SMALL');
       console.info('[buttonControlSize_0100] END');
       done();
     });
-
   })
 }
