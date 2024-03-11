@@ -34,6 +34,7 @@ struct CustomContainerUser {
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: number = 0;
+  @State time1: string = '';
   @State select: number = 2;
   @State appName: string = '状态栏';
   @State appBundleName: string = "com.ohos.launcher";
@@ -161,8 +162,9 @@ struct CustomContainerUser {
                   .onClick(() => {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
-                    let head = report.indexOf(":");
-                    this.time = report.substring(head + 1);
+                    let head: number = report.indexOf(":");
+                    this.time1 = report.substring(head + 1);
+                    this.time = parseFloat(this.time1);
                     let time = this.time;
                     if (0 < time && time < 150) {
                       this.Vue = true;
@@ -200,6 +202,7 @@ struct CustomContainerUser {
         content: this.specificNoParam,
         name: $name,
         Vue: $Vue,
+        time1: $time1,
         StartEnable: $StartEnable,
         time: $time,
         appName: $appName,

@@ -33,6 +33,7 @@ struct CustomContainerUser {
   @State StartEnable: boolean = true;
   @State time: number = 0;
   @State select: number = 2;
+  @State time1: string ='';
   @State appName: string = '信息';
   @State appBundleName: string = 'com.ohos.mms';
   @State appAbilityName: string = 'com.ohos.mms.MainAbility';
@@ -161,7 +162,8 @@ struct CustomContainerUser {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
                     let head = report.indexOf(":");
-                    this.time = report.substring(head + 1);
+                    this.time1 = report.substring(head+1);
+                    this.time = parseFloat(this.time1);
                     let time = this.time;
                     if (0 < time && time < 1000) {
                       this.Vue = true;
@@ -198,6 +200,7 @@ struct CustomContainerUser {
         content: this.specificNoParam,
         name: $name,
         Vue: $Vue,
+        time1: $time1,
         StartEnable: $StartEnable,
         time: $time,
         appName: $appName,

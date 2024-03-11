@@ -35,6 +35,7 @@ export struct CustomContainer {
   @Link StartEnable: boolean;
   @Link Vue: boolean;
   @Link time: string;
+  @Link time1: string;
   @BuilderParam content: () => void;
 
   title: string = '';
