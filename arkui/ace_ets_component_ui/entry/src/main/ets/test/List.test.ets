@@ -310,6 +310,13 @@ import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
 import routerReplaceJsunit from './routerReplaceJsunit.test.ets';
+import Router1 from './Router/Router1.test'
+import Router2 from './Router/Router2.test'
+import Router3 from './Router/Router3.test'
+import Router4 from './Router/Router4.test'
+import aboutToAppearRouterTest from './back_router/init_page.test';
+import aboutToAppearRouterTest2 from './back_router/init_page2.test';
+import goWithParams from './back_router/A_page.test'
 import RouterPushUrlJsunit from './State/RouterPushUrlJsunit.test';
 import RouterWithParamJsunit from './State/RouterWithParamJsunit.test';
 import RouterUrlErrorJsunit from './State/RouterUrlErrorJsunit.test';
@@ -612,6 +619,13 @@ export default function testsuite() {
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
   routerReplaceJsunit();
+ Router1();
+ Router2();
+ Router3();
+ Router4();
+ aboutToAppearRouterTest();
+ aboutToAppearRouterTest2();
+ goWithParams();
   RouterPushUrlJsunit();
   RouterWithParamJsunit();
   RouterUrlErrorJsunit();
