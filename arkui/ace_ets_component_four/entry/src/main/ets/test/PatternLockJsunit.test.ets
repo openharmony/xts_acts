@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,28 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function patternLockJsunit() {
-  describe('appInfoTest_four_5', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_5', () => {
+    beforeEach(async (done: Function) => {
       console.info("patternLock beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/patternLock',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/patternLock',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get patternLock state pages: " + JSON.stringify(pages));
         if (!("button" == pages.name)) {
           console.info("get patternLock state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push patternLock page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push patternLock page error: " + err);
@@ -42,19 +39,19 @@ export default function patternLockJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("patternLock after each called");
     })
 
-    it('testPatternLock_01', 0, async function (done) {
+    it('testPatternLock_01', 0, async (done: Function) => {
       console.info('testPatternLock_01 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testPatternLock_01 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 153,
         priority: events_emitter.EventPriority.LOW
       }
@@ -63,7 +60,7 @@ export default function patternLockJsunit() {
       } catch (err) {
         console.info("testPatternLock_01 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testPatternLock_01 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
+      console.info("testPatternLock_01 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
       console.info('testPatternLock_01 END');
       done();

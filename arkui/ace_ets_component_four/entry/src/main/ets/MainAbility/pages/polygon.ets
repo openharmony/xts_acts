@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +19,16 @@ struct PolygonExample {
   build() {
     Column({ space: 5 }) {
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Polygon({ width: 100, height: 100 }).points([[0, 0], [50, 100], [100, 0]]).key('polygon')
-        Polygon().width(100).height(100).points([[0, 0], [0, 100], [100, 100], [100, 0]])
-        Polygon().width(100).height(100).points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
+        Polygon({ width: 100, height: 100 })
+          .points([[0, 0], [50, 100], [100, 0]]).key('polygon')
+        Polygon()
+          .width(100)
+          .height(100)
+          .points([[0, 0], [0, 100], [100, 100], [100, 0]])
+        Polygon()
+          .width(100)
+          .height(100)
+          .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
       }.width('100%')
     }.margin({ top: 5 })
   }

@@ -17,11 +17,11 @@
 #include "common/native_common.h"
 #include "napi/native_api.h"
 #include <cerrno>
+#include <climits>
 #include <clocale>
 #include <ctime>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
-#include <climits>
 #include <net/if.h>
 
 #define MAX_NAMBER 80

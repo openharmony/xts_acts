@@ -42,7 +42,7 @@ static napi_value Malloc(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     int ret = PARAM_UNNORMAL;
     size_t memsize = PARAM_64;
-    int *memory = static_cast<int*>(malloc(memsize));
+    int *memory = static_cast<int *>(malloc(memsize));
     if (memory == nullptr) {
         ret = PARAM_UNNORMAL;
     } else {

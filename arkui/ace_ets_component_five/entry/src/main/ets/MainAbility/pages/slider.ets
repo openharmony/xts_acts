@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct SliderExample {
-  @State outSetValue: number = 40
-  @State inSetValue: number = 40
-  @State outVerticalSetValue: number = 40
-  @State inVerticalSetValue: number = 40
-  @State stepValue: number = 1
-  @State decorationValue: Axis = Axis.Vertical
-  @State value: number = 40
-
-  private stateChangCallBack = (eventData) => {
+  @State outSetValue: number = 40;
+  @State inSetValue: number = 40;
+  @State outVerticalSetValue: number = 40;
+  @State inVerticalSetValue: number = 40;
+  @State stepValue: number = 1;
+  @State decorationValue: Axis = Axis.Vertical;
+  @State value: number = 40;
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("slider page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data.decorationValue != null) {
@@ -43,7 +41,7 @@ struct SliderExample {
 
   onPageShow() {
     console.info('slider page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 196,
       priority: events_emitter.EventPriority.LOW
     }

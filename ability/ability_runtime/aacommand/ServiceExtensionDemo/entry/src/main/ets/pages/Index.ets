@@ -42,7 +42,7 @@ struct Index {
         .width('90%')
         .height('6%')
         .onClick(() => {
-          globalThis.StartServiceAbility()
+          AppStorage.get<Function>("StartServiceAbility")!();
         })
 
         Button() {
@@ -57,7 +57,7 @@ struct Index {
         .width('90%')
         .height('6%')
         .onClick(() => {
-          globalThis.StartServiceAbilityAbnormally()
+          AppStorage.get<Function>("StartServiceAbilityAbnormally")!();
         })
 
         Button() {
@@ -72,7 +72,7 @@ struct Index {
         .width('90%')
         .height('6%')
         .onClick(() => {
-          globalThis.StopServiceAbility()
+          AppStorage.get<Function>("StopServiceAbility")!();
         })
 
         Button() {
@@ -87,7 +87,7 @@ struct Index {
         .width('90%')
         .height('6%')
         .onClick(() => {
-          globalThis.StartAbility()
+          AppStorage.get<Function>("StartAbility")!();
         })
       }
       .width('100%')

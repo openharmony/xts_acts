@@ -14,22 +14,22 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct StackAlignContent {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear StackAlignContent start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear StackAlignContent end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("stack-AlignContent")
         .width(100)
@@ -60,7 +60,7 @@ struct StackAlignContent {
           .align(Alignment.Top)
       }.key("Stack")
       .width('100%').height(150).margin({ top: 5 })
-    
+
     }.width("100%").height("100%")
   }
 }

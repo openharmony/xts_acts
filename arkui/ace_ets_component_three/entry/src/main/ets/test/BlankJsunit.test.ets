@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,28 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function blankJsunit() {
-  describe('blankTest', function () {
-    beforeEach(async function (done) {
+  describe('blankTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("blank beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/blank',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/blank',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get blank state pages: " + JSON.stringify(pages));
         if (!("blank" == pages.name)) {
           console.info("get blank state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push blank page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push blank page error: " + err);
@@ -42,33 +39,32 @@ export default function blankJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("blank after each called");
     })
 
-    it('testBlank01', 0, async function (done) {
+    it('testBlank01', 0, async (done: Function) => {
       console.info('[testBlank01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
-      console.info("[testBlank01] component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Blank');
-      expect(obj.$attrs.color).assertEqual('#FF0000FF');
-      expect(obj.$attrs.min).assertEqual('0.00vp');
+      console.info("[testBlank01] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Blank');
+      expect(JSON.parse(strJson).$attrs.color).assertEqual('#FF0000FF');
+      expect(JSON.parse(strJson).$attrs.min).assertEqual('0.00vp');
       done();
     });
 
-    it('testBlank02', 0, async function (done) {
+    it('testBlank02', 0, async (done: Function) => {
       console.info('[testBlank02] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "colorValue": Color.Red,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 69,
           priority: events_emitter.EventPriority.LOW
         }
@@ -79,10 +75,9 @@ export default function blankJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testBlank02] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.color).assertEqual('#FFFF0000');
-      expect(objNew.$type).assertEqual('Blank');
+      console.info("[testBlank02] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.color).assertEqual('#FFFF0000');
+      expect(JSON.parse(strJsonNew).$type).assertEqual('Blank');
       done();
     });
   })

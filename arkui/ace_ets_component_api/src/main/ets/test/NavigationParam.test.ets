@@ -16,6 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
+import Utils from '../TestAbility/common/MyUtils';
 
 export default function NavigationParamTest() {
 
@@ -72,14 +73,4 @@ export default function NavigationParamTest() {
     });
 
   })
-}
-
-function sleep(time: number) {
-  let date: Date = new Date()
-  let start: number = date.getSeconds()
-  let end: number = start
-  while ((end - start) < time) {
-    let endDate = new Date()
-    end = endDate.getSeconds()
-  }
 }

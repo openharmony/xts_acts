@@ -19,43 +19,43 @@ struct RelativeContainer_AnchorPoint_Margin {
   onPageShow() {
     console.info('RelativeContainer_AnchorPoint_Margin onPageShow');
   }
-    build() {
-      Row() {
-        RelativeContainer() {
-          Button("Button1")
-            .width(120)
-            .height(30)
-            .alignRules({
-              top: { anchor: "__container__", align: VerticalAlign.Top },
-              middle: { anchor: "__container__", align: HorizontalAlign.Center }
-            })
-            .key("RelativeContainer_AnchorPoint_Margin_bt1")
-            .id("RelativeContainer_AnchorPoint_Margin_bt1")
-            .borderWidth(5)
-            .borderColor(Color.Black)
 
-          Text("This is text")
-            .fontSize(20)
-            .padding(10)
-            .alignRules({
-              right: { anchor: "RelativeContainer_AnchorPoint_Margin_bt1", align: HorizontalAlign.Center },
-              top: { anchor: "RelativeContainer_AnchorPoint_Margin_bt1", align: VerticalAlign.Bottom },
-              bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
-            })
-            .key("RelativeContainer_AnchorPoint_Margin_tx2")
-            .id("RelativeContainer_AnchorPoint_Margin_tx2")
-            .borderWidth(2)
-            .borderColor(Color.Green)
-            .height(30)
-            .width(150)
-        }
-        .key("RelativeContainer_AnchorPoint_Margin_r1")
-        .width(300).height(300)
+  build() {
+    Row() {
+      RelativeContainer() {
+        Button("Button1")
+          .width(120)
+          .height(30)
+          .alignRules({
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            middle: { anchor: "__container__", align: HorizontalAlign.Center }
+          })
+          .key("RelativeContainer_AnchorPoint_Margin_bt1")
+          .id("RelativeContainer_AnchorPoint_Margin_bt1")
+          .borderWidth(5)
+          .borderColor(Color.Black)
 
+        Text("This is text")
+          .fontSize(20)
+          .padding(10)
+          .alignRules({
+            right: { anchor: "RelativeContainer_AnchorPoint_Margin_bt1", align: HorizontalAlign.Center },
+            top: { anchor: "RelativeContainer_AnchorPoint_Margin_bt1", align: VerticalAlign.Bottom },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+          })
+          .key("RelativeContainer_AnchorPoint_Margin_tx2")
+          .id("RelativeContainer_AnchorPoint_Margin_tx2")
+          .borderWidth(2)
+          .borderColor(Color.Green)
+          .height(30)
+          .width(150)
       }
-      .key("RelativeContainer_AnchorPoint_Margin_row1")
-      .margin({ left: 100 })
-      .height('100%')
-    }
+      .key("RelativeContainer_AnchorPoint_Margin_r1")
+      .width(300).height(300)
 
+    }
+    .key("RelativeContainer_AnchorPoint_Margin_row1")
+    .margin({ left: 100 })
+    .height('100%')
+  }
 }

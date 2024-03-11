@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function list_itemOnSelectJsunit() {
-  describe('list_itemOnSelectTest', function () {
-    beforeAll(async function (done) {
+  describe('list_itemOnSelectTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/list_item',
@@ -38,10 +38,9 @@ export default function list_itemOnSelectJsunit() {
       } catch (err) {
         console.error("push list_item page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("list_itemOnSelect after each called");
     });
@@ -51,16 +50,16 @@ export default function list_itemOnSelectJsunit() {
      * @tc.name         testlist_itemOnSelect0001
      * @tc.desic         acelist_itemOnSelectEtsTest0001
      */
-    it('testlist_itemOnSelect0001', 0, async function (done) {
+    it('testlist_itemOnSelect0001', 0, async () => {
       console.info('selectOnSelect testlist_itemOnSelect0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ListItem');
       console.info("[testlist_itemOnSelect0001] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.editable).assertTrue();
-      console.info("[testlist_itemOnSelect0001] editable value :" + obj.$attrs.editable);
-      done();
+      expect(JSON.parse(strJson).$attrs.editable).assertTrue();
+      console.info("[testlist_itemOnSelect0001] editable value :" + JSON.parse(strJson).$attrs.editable);
+
     });
 
     /*
@@ -68,16 +67,16 @@ export default function list_itemOnSelectJsunit() {
      * @tc.name         testlist_itemOnSelect0002
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_itemOnSelect0002', 0, async function (done) {
+    it('testlist_itemOnSelect0002', 0, async () => {
       console.info('selectOnSelect testlist_itemOnSelect0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ListItem');
       console.info("[testlist_itemOnSelect0002] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.selectable).assertFalse();
-      console.info("[testlist_itemOnSelect0002] selectable value :" + obj.$attrs.selectable);
-      done();
+      expect(JSON.parse(strJson).$attrs.selectable).assertFalse();
+      console.info("[testlist_itemOnSelect0002] selectable value :" + JSON.parse(strJson).$attrs.selectable);
+
     });
 
     /*
@@ -85,16 +84,16 @@ export default function list_itemOnSelectJsunit() {
      * @tc.name         testlist_itemOnSelect0003
      * @tc.desic         acelist_itemOnSelectEtsTest0002
      */
-    it('testlist_itemOnSelect0003', 0, async function (done) {
+    it('testlist_itemOnSelect0003', 0, async () => {
       console.info('selectOnSelect testlist_itemOnSelect0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('ListItem');
       console.info("[testlist_itemOnSelect0003] component border strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('ListItem');
-      expect(obj.$attrs.sticky).assertEqual("Sticky.None");
-      console.info("[testlist_itemOnSelect0003] sticky value :" + obj.$attrs.sticky);
-      done();
+      expect(JSON.parse(strJson).$attrs.sticky).assertEqual("Sticky.None");
+      console.info("[testlist_itemOnSelect0003] sticky value :" + JSON.parse(strJson).$attrs.sticky);
+
     });
 
     /*
@@ -102,12 +101,12 @@ export default function list_itemOnSelectJsunit() {
      * @tc.name         testlist_itemSwipeAction0004
      * @tc.desic         acelist_itemSwipeActionEtsTest0004
      */
-    it('testlist_itemSwipeAction0004', 0, async function (done) {
+    it('testlist_itemSwipeAction0004', 0, async () => {
       console.info('selectOnSelect testlist_itemSwipeAction0004 START');
       await Utils.sleep(2000);
       let obj = JSON.stringify(sendEventByKey('Del', 10, ""))
       expect(obj).assertEqual('true');
-      done();
+
     });
   })
 }

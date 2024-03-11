@@ -16,6 +16,15 @@
 import events_emitter from '@ohos.events.emitter';
 
 export default class Utils {
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
+  }
   static sendEvent(message: string, eventId: number) {
     let eventData: events_emitter.EventData = {
       data: {

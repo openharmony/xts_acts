@@ -540,7 +540,7 @@ static napi_value SigMainInterrupt(napi_env env, napi_callback_info info)
 
 void *Sigset(void *pro)
 {
-    if (*(static_cast<int*>(pro)) == PARAM_0) {
+    if (*(static_cast<int *>(pro)) == PARAM_0) {
         sigset(SIGALRM, SIG_DFL);
     } else {
         sigset(PARAM_99999, SIG_DFL);

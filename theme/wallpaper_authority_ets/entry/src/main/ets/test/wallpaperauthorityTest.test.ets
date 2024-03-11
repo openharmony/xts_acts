@@ -16,6 +16,7 @@ import wallpaper from '@ohos.wallpaper';
 import image from '@ohos.multimedia.image';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
+import fileio from '@ohos.fileio';
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
@@ -24,6 +25,25 @@ let imageSourceLockscreen = '/data/storage/el2/base/haps/wp.png';
 
 export default function wallpaperAuthorityJSUnit() {
     describe('wallpaperAuthorityJSUnit', () => {
+
+        beforeAll(async (done: Function) => {
+        const color = new ArrayBuffer(96);
+        let opts:image.InitializationOptions={editable:true,pixelFormat:3,size:{height:6,width:6}};
+        let pixelMap: image.PixelMap= await image.createPixelMap(color,opts);
+        const imagePackerApi=image.createImagePacker();
+        let packOpts:image.PackingOption={format:"image/png",quality:98};
+        await imagePackerApi.packing(pixelMap,packOpts,async(err:BusinessError,data)=>{
+            if (err){
+            console.info(`====>packing error:${JSON.stringify(err)}`)
+            }else{
+            let fd =await fileio.openSync(imageSourceSystem,0o2|0o100,0o666);
+            let ret =await fileio.writeSync(fd,data);
+            await fileio.close(fd)
+            console.log(`====>file write ret:${ret}`)
+            done();
+            }
+        })
+        });
 
         /*
          * @tc.number    testGetColorsCallbackSystem101

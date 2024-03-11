@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import strings from 'libstringsndk.so'
 
 export default function stringsNdkTest() {
   describe('MuslStringsTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMP_0100
      * @tc.name       : testMuslStringsStrcasecmp001

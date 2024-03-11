@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 export default function CheckboxTest() {
-  describe('CheckboxTest', function () {
-    beforeEach(async function (done) {
+  describe('CheckboxTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/Index',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/Index',
       }
       try {
         router.clear();
@@ -29,13 +29,13 @@ export default function CheckboxTest() {
         console.info("get Index state success " + JSON.stringify(pages));
         if (!("Index" == pages.name)) {
           console.info("get Index state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push Index page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Index page error: " + err);
       }
-      done()
+      done();
     });
 
     /*
@@ -43,23 +43,23 @@ export default function CheckboxTest() {
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to 0
      */
-    it('ArkUX_CheckBox_Visual_0110', 0, async function (done) {
+    it('ArkUX_CheckBox_Visual_0110', 0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0110 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_CheckBox_Visual_0110');
-          console.info('ArkUX_CheckBox_Visual_0110 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          console.info('ArkUX_CheckBox_Visual_0110 START  :' + JSON.stringify(strJson));
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_CheckBox_Visual_0110 obj is: " + JSON.stringify(obj));
-          let shape = obj.$attrs.shape
+          let shape: ESObject = obj.$attrs.shape;
           expect(shape).assertEqual("0");
           console.info('ArkUX_CheckBox_Visual_0110 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('ArkUX_CheckBox_Visual_0110 ERR  '+ JSON.stringify(err));
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_CheckBox_Visual_0110 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500);
     });
 
     /*
@@ -67,23 +67,23 @@ export default function CheckboxTest() {
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to 1
      */
-    it('ArkUX_CheckBox_Visual_0120', 0, async function (done) {
+    it('ArkUX_CheckBox_Visual_0120', 0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0120 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_CheckBox_Visual_0120');
-          console.info('ArkUX_CheckBox_Visual_0120 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          console.info('ArkUX_CheckBox_Visual_0120 START  :' + JSON.stringify(strJson));
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_CheckBox_Visual_0120 obj is: " + JSON.stringify(obj));
-          let shape = obj.$attrs.shape
+          let shape: ESObject = obj.$attrs.shape;
           expect(shape).assertEqual("1");
           console.info('ArkUX_CheckBox_Visual_0120 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('ArkUX_CheckBox_Visual_0120 ERR  '+ JSON.stringify(err));
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_CheckBox_Visual_0120 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500);
     });
 
     /*
@@ -91,23 +91,23 @@ export default function CheckboxTest() {
      *@tc.name   Support modifying the checkBox style change of Checkbox component
      *@tc.desc   Sets the shape property parameter to default value
      */
-    it('ArkUX_CheckBox_Visual_0130', 0, async function (done) {
+    it('ArkUX_CheckBox_Visual_0130', 0, async (done: Function) => {
       console.info('ArkUX_CheckBox_Visual_0130 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_CheckBox_Visual_0130');
-          console.info('ArkUX_CheckBox_Visual_0130 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          console.info('ArkUX_CheckBox_Visual_0130 START  :' + JSON.stringify(strJson));
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_CheckBox_Visual_0130 obj is: " + JSON.stringify(obj));
-          let shape = obj.$attrs.shape
+          let shape: ESObject = obj.$attrs.shape;
           expect(shape).assertEqual("0");
           console.info('ArkUX_CheckBox_Visual_0130 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('ArkUX_CheckBox_Visual_0130 ERR  '+ JSON.stringify(err));
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_CheckBox_Visual_0130 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500);
     });
 
   })

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function colorEnumJsunit() {
-  describe('colorEnumJsunit', function () {
-    beforeEach(async function (done) {
+  describe('colorEnumJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("color beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/color',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/color',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function colorEnumJsunit() {
         console.info("get color state success " + JSON.stringify(pages));
         if (!("color" == pages.name)) {
           console.info("get color state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push color page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function colorEnumJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("colorEnumTest after each called");
     });
@@ -50,15 +50,14 @@ export default function colorEnumJsunit() {
      * @tc.name         testcolorTransparent0001
      * @tc.desic        acecolorTransparentEtsTest0001
      */
-    it('testcolorTransparent0001', 0, async function (done) {
+    it('testcolorTransparent0001', 0, async (done: Function) => {
       console.info('colorEnumTest testcolorTransparent0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Transparent');
+      let strJson: string = getInspectorByKey('Transparent');
       console.info("[testcolorTransparent0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      console.info("[testcolorTransparent0001] fontColor value :" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual("#00000000");
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      console.info("[testcolorTransparent0001] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#00000000");
       done();
     });
   })

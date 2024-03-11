@@ -18,33 +18,33 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import commonEventManager from '@ohos.commonEventManager';
 
-const TEST_SUITE_NAME: string = 'StartAbilityGetStartParameterTest'
-const CALLER_PID = 'ohos.aafwk.param.callerPid'
-const CALLER_TOKEN = 'ohos.aafwk.param.callerToken'
-const CALLER_UID = 'ohos.aafwk.param.callerUid'
+const TEST_SUITE_NAME: string = 'StartAbilityGetStartParameterTest';
+const CALLER_PID = 'ohos.aafwk.param.callerPid';
+const CALLER_TOKEN = 'ohos.aafwk.param.callerToken';
+const CALLER_UID = 'ohos.aafwk.param.callerUid';
 
-const EVENT_CASE_700 = 'ABILITY_StartAbility_GetStartParameters_0700'
+const EVENT_CASE_700 = 'ABILITY_StartAbility_GetStartParameters_0700';
 let paramWant: Want;
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    paramWant = want
+    paramWant = want;
     hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME} - paramWant: ${JSON.stringify(paramWant)}`);
 
-    let parameters = {
-      pid: paramWant.parameters[CALLER_PID],
-      tokenId: paramWant.parameters[CALLER_TOKEN],
-      uid: paramWant.parameters[CALLER_UID]
+    let parameters: commonEventManager.CommonEventPublishData = {
+      parameters: {
+        pid: paramWant.parameters[CALLER_PID],
+        tokenId: paramWant.parameters[CALLER_TOKEN],
+        uid: paramWant.parameters[CALLER_UID]
+      }
     }
-    commonEvent.publish(EVENT_CASE_700,
-      {
-        parameters: parameters
-      },
-      (err, data) => {
-        hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} event 700 publish success`);
-      })
+    commonEvent.publish(EVENT_CASE_700, parameters, (err, data) => {
+      hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} event 700 publish success`);
+    })
   }
 
   onDestroy() {
@@ -61,7 +61,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
+    })
   }
 
   onWindowStageDestroy() {

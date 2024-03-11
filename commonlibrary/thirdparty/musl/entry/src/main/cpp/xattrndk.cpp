@@ -36,6 +36,7 @@
 #define PARAM_3 3
 #define PARAM_4 4
 #define PARAM_0667 0667
+#define PARAM_0777 0777
 #define PARAM_64 64
 
 #define PARAM_UNNORMAL (-1)
@@ -182,9 +183,10 @@ static napi_value LListxattr(napi_env env, napi_callback_info info)
 static napi_value FListXAttr(napi_env env, napi_callback_info info)
 {
     ssize_t size_t = PARAM_0, len = PARAM_64;
-    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
     char secondParam[] = "/data/storage/el2/base/files";
     size_t = flistxattr(firstParam, secondParam, len);
+    close(firstParam);
     napi_value result = nullptr;
     napi_create_int32(env, size_t, &result);
     return result;
@@ -244,7 +246,7 @@ static napi_value Fremovexattr(napi_env env, napi_callback_info info)
     int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
     result = fgetxattr(fd, "user.foo", buf, sizeof(buf));
     result = fremovexattr(fd, "user.foo");
-
+    close(fd);
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;
@@ -257,7 +259,7 @@ static napi_value Fsetxattr(napi_env env, napi_callback_info info)
     int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
 
     int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
-
+    close(fd);
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;

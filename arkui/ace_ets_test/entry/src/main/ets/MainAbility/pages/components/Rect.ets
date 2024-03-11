@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +23,7 @@ struct RectExample {
   onBuildDone() {
     console.info('rect page build done called');
   }
+
   build() {
     Column({ space: 5 }) {
       Text('normal').fontSize(9).fontColor(0xCCCCCC).width('90%')

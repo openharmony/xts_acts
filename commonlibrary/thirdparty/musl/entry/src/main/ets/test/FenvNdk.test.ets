@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import fenvndk from 'libfenvndk.so'
 
 export default function fenvNdkTest() {
   describe('FenvNdkTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FETESTEXCEPT_0100

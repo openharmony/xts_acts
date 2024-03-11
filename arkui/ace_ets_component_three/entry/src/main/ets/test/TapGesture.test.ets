@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function longPressGestureJsunit() {
-  describe('tapGestureTest', function () {
-    beforeEach(async function (done) {
+  describe('tapGestureTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tapGesture beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tapGesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/tapGesture',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function longPressGestureJsunit() {
         console.info("get tapGesture state pages:" + JSON.stringify(pages));
         if (!("longPressGesture" == pages.name)) {
           console.info("get tapGesture state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push tapGesture page result:" + JSON.stringify(result));
         }
@@ -41,31 +41,31 @@ export default function longPressGestureJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("tapGesture after each called");
     });
 
-    it('testTapGesture01', 0, async function (done) {
+    it('testTapGesture01', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      let rect = await Utils.getComponentRect('tapGesture')
+      let rect = Utils.getComponentRect('tapGesture')
       console.info("[testTapGesture01] rectInfo is " + JSON.stringify(rect));
-      let x_value = rect.left + (rect.right - rect.left) / 2;
-      let y_value = rect.top + (rect.bottom - rect.top) / 2;
-      let x_value_two = rect.left + (rect.right - rect.left) / 20;
-      let y_value_two = rect.top + (rect.bottom - rect.top) / 20;
+      let x_value: string = rect.left + (rect.right - rect.left) / 2;
+      let y_value: string = rect.top + (rect.bottom - rect.top) / 2;
+      let x_value_two: string = rect.left + (rect.right - rect.left) / 20;
+      let y_value_two: string = rect.top + (rect.bottom - rect.top) / 20;
       console.info("[testTapGesture01] onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
-        id: 1, x: x_value, y: y_value, type: TouchType.Move, 
+        id: 1, x: x_value, y: y_value, type: TouchType.Move,
       }
       let point2: TouchObject = {
         id: 2, x: x_value_two, y: y_value_two, type: TouchType.Move,
       }
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("[testTapGesture01] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 214,
         priority: events_emitter.EventPriority.LOW
       }

@@ -59,6 +59,9 @@ static napi_value SigTimedWait_time641(napi_env env, napi_callback_info info)
         sigaddset(&set2, SIGCHLD);
         ret = __sigtimedwait_time64(&set2, &siginfo, &timeout);
     }
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
     napi_value result = nullptr;
     if (ret != FAIL) {
         napi_create_int32(env, NO_ERR, &result);

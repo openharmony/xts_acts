@@ -17,6 +17,7 @@
 #include <js_native_api.h>
 #include <node_api.h>
 #include <stropts.h>
+#include <unistd.h>
 
 #define PARAM_0 0
 #define PARAM_UNNORMAL (-1)
@@ -30,6 +31,7 @@ static napi_value Ioctl(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
+    close(fd);
     return result;
 }
 

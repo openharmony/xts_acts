@@ -13,16 +13,15 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 
-
 export default function ImageApi() {
-  describe('ImageApi', function () {
-    beforeEach(async function (done) {
+  describe('ImageApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("ImageApi beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/ImageApi',
       }
       try {
@@ -41,32 +40,28 @@ export default function ImageApi() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ImageApi after each called");
     });
 
     /**
-     * @tc.number      ImageApi_001
-     * @tc.name        ImageApi_001
-     * @tc.desc        Image test
-     * @tc.level       Level 2
+     * @tc.number ImageApi_001
+     * @tc.name ImageApi_001
+     * @tc.desc Image test
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
-    it('ImageApi_001', 0, async function (done) {
+    it('ImageApi_001', 0, async (done: Function) => {
       console.info('[ImageApi_001] START');
       await Utils.sleep(2000);
-
-      let strJson = getInspectorByKey('ImageApi_Image');
-      let obj = JSON.parse(strJson);
+      let strJson: string = getInspectorByKey('ImageApi_Image');
       await Utils.sleep(1000);
-      console.info("[ImageApi_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Image');
-
+      console.info("[ImageApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Image');
       console.info('[ImageApi_001] END');
       done();
-
     });
   })
 }

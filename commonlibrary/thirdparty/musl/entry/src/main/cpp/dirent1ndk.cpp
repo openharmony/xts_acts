@@ -14,6 +14,7 @@
  */
 
 #include "napi/native_api.h"
+#include <climits>
 #include <csignal>
 #include <cstdio>
 #include <cstdlib>
@@ -21,7 +22,6 @@
 #include <dirent.h>
 #include <fcntl.h>
 #include <js_native_api.h>
-#include <climits>
 #include <node_api.h>
 #include <unistd.h>
 
@@ -39,6 +39,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_0777 0777
 #define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
 #define FAILD (-1)
@@ -330,7 +331,7 @@ static napi_value Alphasort(napi_env env, napi_callback_info info)
     int total;
     struct dirent **namelist;
     if (param == PARAM_0) {
-        int fd = open(FILE_PATH, O_CREAT);
+        int fd = open(FILE_PATH, O_CREAT, PARAM_0777);
         close(fd);
         total = scandir(PATH, &namelist, PARAM_0, alphasort);
         remove(FILE_PATH);
@@ -360,7 +361,7 @@ static napi_value Alphasort64(napi_env env, napi_callback_info info)
     int total;
     struct dirent **namelist;
     if (param == PARAM_0) {
-        int fd = open(FILE_PATH, O_CREAT);
+        int fd = open(FILE_PATH, O_CREAT, PARAM_0777);
         close(fd);
         total = scandir(PATH, &namelist, PARAM_0, alphasort64);
         remove(FILE_PATH);

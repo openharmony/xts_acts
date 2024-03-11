@@ -13,29 +13,29 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import { beforeEach, describe, expect, it } from '@ohos/hypium';
 
 export default function TextfieldSingleTest() {
   describe('TextfieldSingleTest', () => {
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/Index',
-      }
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/Index',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Index state success " + JSON.stringify(pages));
         if (!("Index" == pages.name)) {
           console.info("get Index state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push Index page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Index page error: " + err);
       }
-      done()
+      done();
     });
 
     /*
@@ -43,23 +43,23 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to true
      */
-    it('ArkUX_Text_Visual_0040', 0, async function (done) {
+    it('ArkUX_Text_Visual_0040', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0040 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0040');
           console.info('ArkUX_Text_Visual_0040 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0040 obj is: " + JSON.stringify(obj));
-          let selectAll = obj.$attrs.selectAll
+          let selectAll: ESObject = obj.$attrs.selectAll;
           expect(selectAll).assertEqual(true);
           console.info('ArkUX_Text_Visual_0040 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0040 ERR  ' + JSON.stringify(err));
         }
         done();
-      }, 500)
+      }, 500);
     });
 
     /*
@@ -67,23 +67,23 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to false
      */
-    it('ArkUX_Text_Visual_0050', 0, async function (done) {
+    it('ArkUX_Text_Visual_0050', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0050 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0050');
           console.info('ArkUX_Text_Visual_0050 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0050 obj is: " + JSON.stringify(obj));
-          let selectAll = obj.$attrs.selectAll
+          let selectAll: ESObject = obj.$attrs.selectAll;
           expect(selectAll).assertEqual(false);
           console.info('ArkUX_Text_Visual_0050 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0050 ERR  ' + JSON.stringify(err));
         }
         done();
-      }, 500)
+      }, 500);
     });
 
     /*
@@ -91,23 +91,23 @@ export default function TextfieldSingleTest() {
      *@tc.name   Support modifying sets selection change of Textfield component
      *@tc.desc   Sets the selectAll property parameter to default value
      */
-    it('ArkUX_Text_Visual_0060', 0, async function (done) {
+    it('ArkUX_Text_Visual_0060', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0060 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0060');
           console.info('ArkUX_Text_Visual_0060 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0060 obj is: " + JSON.stringify(obj));
-          let selectAll = obj.$attrs.selectAll
+          let selectAll: ESObject = obj.$attrs.selectAll;
           expect(selectAll).assertEqual(false);
           console.info('ArkUX_Text_Visual_0060 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0060 ERR  ' + JSON.stringify(err));
         }
         done();
-      }, 500)
+      }, 500);
     });
   })
 }

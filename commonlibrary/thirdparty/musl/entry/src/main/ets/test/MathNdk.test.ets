@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import math from 'libmathndk.so'
 
 export default function mathNdkTest() {
   describe('MuslMathTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0100
@@ -12297,9 +12302,9 @@ export default function mathNdkTest() {
      */
     it('testMuslMathCosF003', 0, async (done: Function) => {
       let firstParam = 90;
-      let result = -0.00;
+      let result = "-0.00";
       let data: number = math.cosf(firstParam);
-      expect(Number(data).toFixed(2)).assertEqual(Number(result).toFixed(2));
+      expect(Number(data).toFixed(2)).assertEqual(result);
       done()
     });
 

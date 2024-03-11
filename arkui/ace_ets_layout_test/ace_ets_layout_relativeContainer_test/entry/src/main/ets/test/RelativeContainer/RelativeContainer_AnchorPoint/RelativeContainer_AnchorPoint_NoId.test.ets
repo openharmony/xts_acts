@@ -12,24 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function RelativeContainer_AnchorPoint_NoId() {
-  describe('RelativeContainer_AnchorPoint_NoId', function () {
-    beforeEach(async function (done) {
+  describe('RelativeContainer_AnchorPoint_NoId', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeContainer_AnchorPoint_NoId beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_NoId",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get RelativeContainer_AnchorPoint_NoId state pages:" + JSON.stringify(pages));
         if (!("RelativeContainer_AnchorPoint_NoId" == pages.name)) {
           console.info("get RelativeContainer_AnchorPoint_NoId pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push RelativeContainer_AnchorPoint_NoId page result:" + JSON.stringify(result));
         }
@@ -39,33 +41,35 @@ export default function RelativeContainer_AnchorPoint_NoId() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("RelativeContainer_AnchorPoint_NoId after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100
-     * @tc.name      testRelativeContainer
-     * @tc.desc      Set ID for one subcomponent, do not set ID for one subcomponent
+     * @tc.number SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100
+     * @tc.name testRelativeContainer
+     * @tc.desc Set ID for one subcomponent, do not set ID for one subcomponent
      */
-    it('SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100] START');
 
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let RelativeContainer_AnchorPoint_NoId_row1 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_row1');
+      let RelativeContainer_AnchorPoint_NoId_row1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_row1');
 
-//      let RelativeContainer_AnchorPoint_NoId_row2 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_row2');
-      let RelativeContainer_AnchorPoint_NoId_r1 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_r1');
+      //      let RelativeContainer_AnchorPoint_NoId_row2:RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_row2');
+      let RelativeContainer_AnchorPoint_NoId_r1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_NoId_r1');
 
       console.log('assert position')
 
-      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.left - RelativeContainer_AnchorPoint_NoId_r1.left) <= 1).assertTrue();
-      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.top - RelativeContainer_AnchorPoint_NoId_r1.top) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.left - RelativeContainer_AnchorPoint_NoId_r1.left) <= 1)
+        .assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_NoId_row1.top - RelativeContainer_AnchorPoint_NoId_r1.top) <= 1)
+        .assertTrue();
 
-//      expect(RelativeContainer_AnchorPoint_NoId_row2.right).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.right);
-//      expect(RelativeContainer_AnchorPoint_NoId_row2.top).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.top);
+      //      expect(RelativeContainer_AnchorPoint_NoId_row2.right).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.right);
+      //      expect(RelativeContainer_AnchorPoint_NoId_row2.top).assertEqual(RelativeContainer_AnchorPoint_NoId_r1.top);
 
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_NoId_TEST_0100] END');

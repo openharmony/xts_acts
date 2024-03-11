@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function progressStyleJsunit() {
-  describe('progressStyleTest', function () {
-    beforeAll(async function (done) {
+  describe('progressStyleTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/progress',
@@ -37,10 +37,9 @@ export default function progressStyleJsunit() {
       } catch (err) {
         console.error("push progress page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("progressStyle after each called");
     });
@@ -50,16 +49,16 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0001
      * @tc.desic         aceprogressStyleEtsTest0001
      */
-    it('testprogressStyle0001', 0, async function (done) {
+    it('testprogressStyle0001', 0, async () => {
       console.info('progressStyle testprogressStyle0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testprogressStyle0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testprogressStyle0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0002
      * @tc.desic         aceprogressStyleEtsTest0002
      */
-    it('testprogressStyle0002', 0, async function (done) {
+    it('testprogressStyle0002', 0, async () => {
       console.info('progressStyle testprogressStyle0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0002] component color strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.color).assertEqual("#FF008000");
-      console.info("[testprogressStyle0002] color value :" + obj.$attrs.color);
-      done();
+      expect(JSON.parse(strJson).$attrs.color).assertEqual("#FF008000");
+      console.info("[testprogressStyle0002] color value :" + JSON.parse(strJson).$attrs.color);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0003
      * @tc.desic         aceprogressStyleEtsTest0003
      */
-    it('testprogressStyle0003', 0, async function (done) {
+    it('testprogressStyle0003', 0, async () => {
       console.info('progressStyle testprogressStyle0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0003] component value strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.value).assertEqual("50.000000");
-      console.info("[testprogressStyle0003] value value :" + obj.$attrs.value);
-      done();
+      expect(JSON.parse(strJson).$attrs.value).assertEqual("50.000000");
+      console.info("[testprogressStyle0003] value value :" + JSON.parse(strJson).$attrs.value);
+
     });
 
     /*
@@ -101,17 +100,17 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0004
      * @tc.desic         aceprogressStyleEtsTest0004
      */
-    it('testprogressStyle0004', 0, async function (done) {
+    it('testprogressStyle0004', 0, async () => {
       console.info('progressStyle testprogressStyle0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0004] component style strokeWidth strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      console.info("[testprogressStyle0004] component style strokeWidth strJson:" + obj.$attrs.style);
-      let jsonObject = JSON.parse(obj.$attrs.style);
+      console.info("[testprogressStyle0004] component style strokeWidth strJson:" + JSON.parse(strJson).$attrs.style);
+      let jsonObject: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
       expect(jsonObject.strokeWidth).assertEqual("20.00vp");
-      done();
+
     });
 
     /*
@@ -119,16 +118,16 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0005
      * @tc.desic         aceprogressStyleEtsTest0005
      */
-    it('testprogressStyle0005', 0, async function (done) {
+    it('testprogressStyle0005', 0, async () => {
       console.info('progressStyle testprogressStyle0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0005] component style scaleCount strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      let jsonObject = JSON.parse(obj.$attrs.style);
+      let jsonObject: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
       expect(jsonObject.scaleCount).assertEqual("30");
-      done();
+
     });
 
     /*
@@ -136,16 +135,16 @@ export default function progressStyleJsunit() {
      * @tc.name         testprogressStyle0006
      * @tc.desic         aceprogressStyleEtsTest0006
      */
-    it('testprogressStyle0006', 0, async function (done) {
+    it('testprogressStyle0006', 0, async () => {
       console.info('progressStyle testprogressStyle0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Progress');
       console.info("[testprogressStyle0006] component style scaleWidth strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      let jsonObject = JSON.parse(obj.$attrs.style);
+      let jsonObject: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
       expect(jsonObject.scaleWidth).assertEqual("20.00vp");
-      done();
+
     });
   })
 }

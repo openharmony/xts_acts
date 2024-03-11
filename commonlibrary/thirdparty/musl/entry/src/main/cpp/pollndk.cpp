@@ -36,6 +36,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_0777 0777
 #define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 #define PARAM_100000000 100000000
@@ -53,7 +54,7 @@ static napi_value Poll(napi_env env, napi_callback_info info)
 static napi_value Ppoll(napi_env env, napi_callback_info info)
 {
     int ret = PARAM_0;
-    int fd = open("ppoll_function_file", O_RDWR | O_CREAT, S_IRWXU);
+    int fd = open("ppoll_function_file", O_RDWR | O_CREAT, PARAM_0777);
     struct pollfd pollfds[] = {{.fd = fd, .events = POLLIN, .revents = PARAM_0}};
     struct timespec timeout = {PARAM_0};
     timeout.tv_sec = TVSEC;
@@ -81,6 +82,7 @@ static napi_value PollChk(napi_env env, napi_callback_info info)
         const char *message = "";
         write(fd[1], message, strlen(message) + 1);
         close(fd[1]);
+        _exit(PARAM_0);
     } else {
         close(fd[1]);
         struct pollfd buf[2] = {{fd[0], POLLIN, PARAM_0}, {fd[0], POLLIN, PARAM_0}};
@@ -110,6 +112,7 @@ static napi_value PpollChk(napi_env env, napi_callback_info info)
         const char *message = "";
         write(fd[1], message, strlen(message) + 1);
         close(fd[1]);
+        _exit(PARAM_0);
     } else {
         close(fd[1]);
         struct pollfd buf[2] = {{fd[0], POLLIN, PARAM_0}, {fd[0], POLLIN, PARAM_0}};

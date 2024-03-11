@@ -23,17 +23,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct AppVersionCode {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear AppVersionCode start：`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear AppVersionCode end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("app-VersionCode")
         .width(100)
@@ -48,15 +47,15 @@ struct AppVersionCode {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("versionCodeText")
-        .onClick(()=>{
+        .onClick(() => {
           try {
             let versionCode = appS.getInfo().versionCode;
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "Code": appS.getInfo().versionCode
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60302,
               priority: events_emitter.EventPriority.LOW
             }
@@ -66,7 +65,7 @@ struct AppVersionCode {
             console.info("versionCode emit action state err: " + JSON.stringify(err.message))
           }
         })
-    
+
     }.width("100%").height("100%")
   }
 }

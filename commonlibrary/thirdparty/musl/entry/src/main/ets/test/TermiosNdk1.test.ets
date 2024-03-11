@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import termios from 'libtermiosndk1.so'
 
 export default function termiosNdk1Test() {
   describe('MuslTermios1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFGETOSPEDD_0100
      * @tc.name       : testMuslTermiosCfgetospeed001

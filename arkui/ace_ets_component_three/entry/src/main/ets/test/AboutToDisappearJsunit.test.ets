@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach,  it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function aboutToDisappearJsunit() {
-  describe('aboutToDisappearTest', function () {
-    beforeEach(async function (done) {
+  describe('aboutToDisappearTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("aboutToDisappear beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/aboutToDisappear',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/aboutToDisappear',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function aboutToDisappearJsunit() {
         console.info("get aboutToDisappear state pages:" + JSON.stringify(pages));
         if (!("aboutToDisappear" == pages.name)) {
           console.info("get aboutToDisappear state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push aboutToDisappear page result:" + JSON.stringify(result));
         }
@@ -41,20 +40,20 @@ export default function aboutToDisappearJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("aboutToDisappear after each called");
     });
 
-    it('aboutToDisappearTest_0100', 0, async function (done) {
+    it('aboutToDisappearTest_0100', 0, async (done: Function) => {
       console.info('aboutToDisappearTest_0100 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("aboutToDisappearTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(false);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 49,
         priority: events_emitter.EventPriority.LOW
       }

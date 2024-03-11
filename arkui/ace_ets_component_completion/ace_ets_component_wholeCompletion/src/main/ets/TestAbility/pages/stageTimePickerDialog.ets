@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct stageTimePickerDialog {
-  private selectTime: Date = new Date('2020-12-25T08:30:00')
+  private selectTime: Date = new Date('2020-12-25T08:30:00');
+
   build() {
     Row() {
       Column() {
@@ -48,12 +50,12 @@ struct stageTimePickerDialog {
                   console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60220,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -61,7 +63,8 @@ struct stageTimePickerDialog {
               events_emitter.emit(backEvent, backData)
             } catch (error) {
               console.error("showToast emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
 
         Text("TimePickerDialog2")
@@ -92,12 +95,12 @@ struct stageTimePickerDialog {
                   console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData1 = {
+              let backData1: events_emitter.EventData = {
                 data: {
                   "STATUS": 10
                 }
               }
-              let backEvent1 = {
+              let backEvent1: events_emitter.InnerEvent = {
                 eventId: 60221,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -105,7 +108,8 @@ struct stageTimePickerDialog {
               events_emitter.emit(backEvent1, backData1)
             } catch (error) {
 
-            };
+            }
+            ;
           })
 
         Text("TimePickerDialog3")
@@ -136,12 +140,12 @@ struct stageTimePickerDialog {
                   console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData2 = {
+              let backData2: events_emitter.EventData = {
                 data: {
                   "STATUS": "STATUS"
                 }
               }
-              let backEvent2 = {
+              let backEvent2: events_emitter.InnerEvent = {
                 eventId: 60222,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -149,9 +153,8 @@ struct stageTimePickerDialog {
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
               console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-            };
+            }
           })
-
       }
       .height('100%')
     }

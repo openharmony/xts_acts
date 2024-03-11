@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +16,14 @@
 @Entry
 @Component
 struct TextPickerDialogExample {
-  @State select: number = 1
-  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4']
+  @State select: number | number[] = 1;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center }) {
+    Flex({
+      direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+      justifyContent: FlexAlign.Center
+    }) {
       Button("TextPickerDialog").key('textPickerDialog').onClick(() => {
         TextPickerDialog.show({
           range: this.fruits,

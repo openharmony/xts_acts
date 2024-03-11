@@ -16,7 +16,7 @@
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
         "abilities": [{
-            "name": "com.example.ActsEffectKitTest.MainAbility",
+            "name": "com.example.myapplication.MainAbility",
             "srcEntrance": "./ets/MainAbility/MainAbility.ts",
             "description": "$string:phone_entry_main",
             "icon": "$media:icon",
@@ -32,5 +32,6 @@
                 ]
             }]
         }]
+       
     }
 }

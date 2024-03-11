@@ -12,29 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct FlexAlign_SpaceBetween_TextOffset{
-  @State testOffset: object = {x:0, y:0}
-  messageManager:MessageManager = new MessageManager()
+struct FlexAlign_SpaceBetween_TextOffset {
+  @State testOffset: Position = { x: 0, y: 0 }
+  messageManager: MessageManager<Position> = new MessageManager()
 
   onPageShow() {
     console.info('FlexAlign_SpaceBetween_TextOffset onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<Position> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<Position> = (message: Message<Position>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'offset') {
         this.testOffset = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({ space:30 }){
-      Flex({ wrap:FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }){
+
+  build() {
+    Column({ space: 30 }) {
+      Flex({ wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
         Text('1')
           .width(150)
           .height(50)

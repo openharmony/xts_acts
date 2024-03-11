@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import uchar from 'libucharndk.so'
 
 export default function ucharNdkTest() {
   describe('MuslUcharTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UCHAR_C16RTOMB_0100
      * @tc.name       : testMuslUcharC16rtomb001
@@ -51,7 +57,7 @@ export default function ucharNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_UCHAR_MBRTOC16_0100
      * @tc.name     : testMuslUcharMbrtoc16001
      * @tc.desc     : test mbrtoc16
-     * @tc.size     : MEDIUMF
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -65,7 +71,7 @@ export default function ucharNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_UCHAR_MBRTOC32_0100
      * @tc.name     : testMuslUcharMbrtoc32001
      * @tc.desc     : test mbrtoc32
-     * @tc.size     : MEDIUMF
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

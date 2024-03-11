@@ -14,7 +14,7 @@
  */
 @Component
 struct ConsumeSetChild {
-  @Consume message: Set<number>
+  @Consume message: Set<number>;
 
   build() {
     Column() {
@@ -23,46 +23,45 @@ struct ConsumeSetChild {
         Divider()
       })
       Button('Consume init set').id("consumeSet_init")
-        .onClick(() =>{
-          this.message = new Set([1, 2 ,3 ])
-      }).margin(10)
+        .onClick(() => {
+          this.message = new Set([1, 2, 3])
+        }).margin(10)
 
       Button('Consume set new one').id("consumeSet_set")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.add(5)
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume clear').id("consumeSet_clear")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.clear()
-          if (Array.from(this.message.entries())){
+          if (Array.from(this.message.entries())) {
             this.message.add(0)
           }
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume delete').id("consumeSet_delete")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.delete(0)
-      })
+        })
     }
     .width('100%')
   }
 }
 
 
-
 @Entry
 @Component
 struct ProvideSetSample {
-  @Provide message: Set<number> = new Set([1, 2 ,3 ])
+  @Provide message: Set<number> = new Set([1, 2, 3])
 
   build() {
     Row() {
       Column() {
         Button('Provide init set').id("provideSet_add")
-          .onClick(() =>{
-            this.message = new Set([1, 2 ,3, 4 ])
-        }).margin(10)
+          .onClick(() => {
+            this.message = new Set([1, 2, 3, 4])
+          }).margin(10)
 
         ConsumeSetChild()
       }

@@ -135,19 +135,19 @@ static int g_count = PARAM_0;
 void SignalHandler(int signo)
 {
     switch (signo) {
-        case SIGALRM:
-            struct itimerval val;
-            g_count++;
-            if (g_count > PARAM_1) {
-                __getitimer_time64(signo, &val);
-                val.it_value.tv_sec = PARAM_0;
-                val.it_value.tv_usec = PARAM_0;
-                __setitimer_time64(signo, &val, nullptr);
-                g_count = PARAM_0;
-            }
-            break;
-        default:
-            break;
+    case SIGALRM:
+        struct itimerval val;
+        g_count++;
+        if (g_count > PARAM_1) {
+            __getitimer_time64(signo, &val);
+            val.it_value.tv_sec = PARAM_0;
+            val.it_value.tv_usec = PARAM_0;
+            __setitimer_time64(signo, &val, nullptr);
+            g_count = PARAM_0;
+        }
+        break;
+    default:
+        break;
     }
 }
 static napi_value SetITimer_time64(napi_env env, napi_callback_info info)

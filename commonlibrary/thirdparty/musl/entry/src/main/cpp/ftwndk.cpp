@@ -24,6 +24,7 @@
 #define TEST_FLAG_SIZE 4
 #define TEST_FD_LIMIT 128
 #define PARAM_0666 0666
+#define PARAM_0777 0777
 #define R_OK 4
 
 int copytoU_device(const char *file, const struct stat *sb, int flag) { return 0; }
@@ -31,18 +32,20 @@ int copytoU_device(const char *file, const struct stat *sb, int flag) { return 0
 static napi_value Ftw(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     int returnValue = ftw("/data/storage/el2/base/files/", copytoU_device, fileDescribe);
     napi_create_int32(env, returnValue, &result);
+    close(fileDescribe);
     return result;
 }
 
 static napi_value Ftw64(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     int returnValue = ftw64("/data/storage/el2/base/files/", copytoU_device, fileDescribe);
     napi_create_int32(env, returnValue, &result);
+    close(fileDescribe);
     return result;
 }
 static int nftw_callback(const char *pathname, const struct stat *sb, int flag, struct FTW *ftw) { return 0; }

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function hitTestModeJsunit() {
-  describe('hitTestModeJsunit', function () {
-    beforeEach(async function (done) {
+  describe('hitTestModeJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("hitTestMode beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/hitTestMode',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/hitTestMode',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function hitTestModeJsunit() {
         console.info("get hitTestMode state success " + JSON.stringify(pages));
         if (!("hitTestMode" == pages.name)) {
           console.info("get hitTestMode state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push hitTestMode page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function hitTestModeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("hitTestModeTest after each called");
     });
@@ -50,15 +50,13 @@ export default function hitTestModeJsunit() {
      * @tc.name         testhitTestMode0002
      * @tc.desic         acehitTestModelEtsTest0002
      */
-    it('testhitTestMode0002', 0, async function (done) {
+    it('testhitTestMode0002', 0, async (done: Function) => {
       console.info('hitTestMode testhitTestMode0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Block');
+      let strJson: string = getInspectorByKey('Block');
       console.info("[testhitTestMode0002] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      console.info("[testhitTestMode0002] hitTestBehavior value :" + obj.$attrs.hitTestBehavior);
-//      expect(obj.$attrs.hitTestBehavior).assertEqual(undefined);
+      expect(JSON.parse(strJson).$type).assertEqual('Stack');
+      console.info("[testhitTestMode0002] hitTestBehavior value :" + JSON.parse(strJson).$attrs.hitTestBehavior);
       done();
     });
   })

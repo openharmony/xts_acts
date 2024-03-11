@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import wchar from 'libwcharndk.so'
 
 export default function wcharNdkTest() {
   describe('MuslWcharTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_WCHAR_GETWC_0100

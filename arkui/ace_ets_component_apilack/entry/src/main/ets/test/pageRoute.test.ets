@@ -19,42 +19,41 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils'
 
 export default function pageRouteTest() {
-  describe('pageRouteTest', function () {
-    beforeEach(async function (done) {
+  describe('pageRouteTest', () => {
+    beforeEach(async () => {
       console.info("pageRouteTest beforeEach start");
       let options = {
         uri: 'MainAbility/pages/pageRoute',
-        }
-      let result;
+      }
+      // let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get pageRouteTest pages: " + JSON.stringify(pages));
         if (!("pageRoute" == pages.name)) {
-        console.info("get pageRouteTest pages.name: " + JSON.stringify(pages.name));
-        result = await router.push(options);
-        await Utils.sleep(2000);
-        console.info("pageRouteTest page result: " + JSON.stringify(result));
+          console.info("get pageRouteTest pages.name: " + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          await Utils.sleep(2000);
+          console.info("pageRouteTest page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("pageRouteTest page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("pageRouteTest after each called");
     })
 
-    it('testOnPageHide01', 0, async function (done) {
+    it('testOnPageHide01', 0, async () => {
       console.info('[testOnPageHide01] START');
-      var callback = (eventData) => {
+      let callback = (eventData) => {
         console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.value).assertEqual('onPageHide')
-        done();
+
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 10,
         priority: events_emitter.EventPriority.LOW
       }
@@ -65,7 +64,7 @@ export default function pageRouteTest() {
         console.info("[testOnPageHide01] on events_emitter err : " + JSON.stringify(err));
       }
       console.info('[testOnPageHide01] testSendTouchEvent END');
-      done();
+
     });
   })
 }

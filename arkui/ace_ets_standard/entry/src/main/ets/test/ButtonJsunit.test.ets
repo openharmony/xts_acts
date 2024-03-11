@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  });
+}
 
 export default function buttonJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('buttonTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Button',
+  describe('buttonTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Button',
       }
       try {
         router.clear();
@@ -41,65 +41,65 @@ export default function buttonJsunit() {
         console.info("get Button state success " + JSON.stringify(pages));
         if (!("Button" == pages.name)) {
           console.info("get Button state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push Button page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Button page error " + JSON.stringify(result));
+        console.error("push Button page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Button after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0640
-     * @tc.name      testButtonGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0640
+     * @tc.name testButtonGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('buttonGetInspectorByKey010', 0, async function (done) {
+    it('buttonGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('button');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("buttonGetInspectorByKey010 obj is: " + JSON.stringify(obj));
       console.info("buttonGetInspectorByKey010 obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$type).assertEqual('Button')
-      expect(obj.$attrs.type).assertEqual('ButtonType.Circle')
-      expect(obj.$attrs.stateEffect).assertEqual('true')
-      expect(obj.$attrs.label).assertEqual('1.value')
-      expect(obj.$attrs.fontSize).assertEqual('12.00px')
+      expect(obj.$type).assertEqual('Button');
+      expect(obj.$attrs.type).assertEqual('ButtonType.Circle');
+      expect(obj.$attrs.stateEffect).assertEqual('true');
+      expect(obj.$attrs.label).assertEqual('1.value');
+      expect(obj.$attrs.fontSize).assertEqual('12.00px');
       console.info('cd buttonInspectorByKey END');
       done();
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0650
-     * @tc.name      testButtonGetInspectorByKey020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0650
+     * @tc.name testButtonGetInspectorByKey020
+     * @tc.desc aceEtsTest
      */
-    it('ButtonGetInspectorByKey020', 0, async function (done) {
+    it('ButtonGetInspectorByKey020', 0, async (done: Function) => {
       let strJson = getInspectorByKey('button1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd button1 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule')
-      expect(obj.$attrs.stateEffect).assertEqual('false')
+      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.stateEffect).assertEqual('false');
       console.info('cd button1InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0660
-     * @tc.name      testButtonGetInspectorByKey030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0660
+     * @tc.name testButtonGetInspectorByKey030
+     * @tc.desc aceEtsTest
      */
-    it('ButtonGetInspectorByKey030', 0, async function (done) {
+    it('ButtonGetInspectorByKey030', 0, async (done: Function) => {
       let strJson = getInspectorByKey('button2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd button2 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.type).assertEqual('ButtonType.Normal')
+      expect(obj.$attrs.type).assertEqual('ButtonType.Normal');
       console.info('cd button2InspectorByKey END');
       done();
     });

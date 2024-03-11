@@ -18,11 +18,8 @@ import tag from '@ohos.nfc.tag';
 import cardEmulation from '@ohos.nfc.cardEmulation';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 let NdefRecord = {
@@ -143,7 +140,6 @@ export default function nfcNDEFTagTest() {
                 console.info("[NFC_test]NdefTag1 = null & = undefined: ");
                 expect().assertFail();
             }
-            sleep(3000);
         })
 
         /**
@@ -180,7 +176,6 @@ export default function nfcNDEFTagTest() {
                 console.info("[NFC_test]NdefTag2 = null & = undefined: ");
                 expect().assertFail();
             }
-            sleep(3000);
         })
 
         /**
@@ -218,7 +213,6 @@ export default function nfcNDEFTagTest() {
                 console.info("[NFC_test]NdefTag3 = null & = undefined: ");
                 expect().assertFail();
             }
-            sleep(3000);
         })
 
         /**

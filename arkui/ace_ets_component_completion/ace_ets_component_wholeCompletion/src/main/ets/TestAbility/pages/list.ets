@@ -14,10 +14,10 @@
  */
 
 class MyDataSourceList implements IDataSource {
-  private list: number[] = []
+  private list: string[] = []
   private listener: DataChangeListener
 
-  constructor(list: number[]) {
+  constructor(list: string[]) {
     this.list = list
   }
 
@@ -25,7 +25,7 @@ class MyDataSourceList implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): ESObject {
     return this.list[index]
   }
 
@@ -50,8 +50,8 @@ struct list {
   ]
 
   aboutToAppear(): void {
-    let list = []
-    for (var i = 1; i <= 10; i++) {
+    let list: string[] = []
+    for (let i = 1; i <= 10; i++) {
       list.push(i.toString());
     }
     this.data = new MyDataSourceList(list)
@@ -60,7 +60,7 @@ struct list {
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -71,7 +71,7 @@ struct list {
               .backgroundColor(0xFFFFFF)
           }
           .border({ color: 0xAAAAAA, width: 2 })
-        }, item => item)
+        }, (item: string) => item)
       }
       .padding(10)
       .border({ color: 0xAAAAAA, width: 2 })
@@ -85,10 +85,11 @@ struct list {
       .key("ArkUX_Grid_List_Swiper_0250")
       .lanes({ minLength: 100, maxLength: 150 }, 20)
       .width('100%')
+
       //      .padding()
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -99,7 +100,7 @@ struct list {
               .backgroundColor(0xFFFFFF)
           }
           .border({ color: 0xAAAAAA, width: 2 })
-        }, item => item)
+        }, (item: string) => item)
       }
       .padding(10)
       .border({ color: 0xAAAAAA, width: 2 })
@@ -113,10 +114,11 @@ struct list {
       .key("ArkUX_Grid_List_Swiper_0260")
       .lanes({ minLength: 100, maxLength: 150 }, 100)
       .width('100%')
+
       //      .padding()
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -127,7 +129,7 @@ struct list {
               .backgroundColor(0xFFFFFF)
           }
           .border({ color: 0xAAAAAA, width: 2 })
-        }, item => item)
+        }, (item: string) => item)
       }
       .padding(10)
       .border({ color: 0xAAAAAA, width: 2 })
@@ -141,10 +143,11 @@ struct list {
       .key("ArkUX_Grid_List_Swiper_0270")
       .lanes(null)
       .width('100%')
+
       //      .padding()
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -155,7 +158,7 @@ struct list {
               .backgroundColor(0xFFFFFF)
           }
           .border({ color: 0xAAAAAA, width: 2 })
-        }, item => item)
+        }, (item: string) => item)
       }
       .padding(10)
       .border({ color: 0xAAAAAA, width: 2 })
@@ -169,10 +172,11 @@ struct list {
       .key("ArkUX_Grid_List_Swiper_0280")
       .lanes({ minLength: 100, maxLength: 150 }, 500)
       .width('100%')
+
       //      .padding()
 
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -183,7 +187,7 @@ struct list {
               .backgroundColor(0xFFFFFF)
           }
           .border({ color: 0xAAAAAA, width: 2 })
-        }, item => item)
+        }, (item: string) => item)
       }
       .padding(10)
       .border({ color: 0xAAAAAA, width: 2 })
@@ -197,7 +201,6 @@ struct list {
       .key("ArkUX_Grid_List_Swiper_0290")
       .lanes({ minLength: 100, maxLength: 150 }, 250)
       .width('100%')
-      //      .padding()
     }
     .width(this.mywidth)
     .backgroundColor(0xEEEEEE)

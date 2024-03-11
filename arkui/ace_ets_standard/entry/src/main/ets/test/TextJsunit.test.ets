@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function textJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('textTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Text',
+  describe('textTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Text',
       }
       try {
         router.clear();
@@ -40,42 +41,42 @@ export default function textJsunit() {
         console.info("get Text state success " + JSON.stringify(pages));
         if (!("Text" == pages.name)) {
           console.info("get Text state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push Text page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Text page error " + JSON.stringify(result));
+        console.error("push Text page error " + JSON.stringify(err));
       }
       await sleep(2)
       done()
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Text after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1200
-     * @tc.name      textGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1200
+     * @tc.name textGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey010', 0, async function (done) {
+    it('textGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       await sleep(3)
       let strJson = getInspectorByKey('Text');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Text')
-      expect(obj.$attrs.width).assertEqual('200.00vp')
-      expect(obj.$attrs.padding).assertEqual('5.00vp')
-      expect(obj.$attrs.margin).assertEqual('10.00px')
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.width).assertEqual('200.00vp');
+      expect(obj.$attrs.padding).assertEqual('5.00vp');
+      expect(obj.$attrs.margin).assertEqual('10.00px');
       expect(obj.$attrs.opacity).assertEqual(1)
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
       expect(JSON.stringify(obj.$attrs.markAnchor)).assertEqual(JSON.stringify({
-        "x": "50.00vp", "y": "50.00vp"
+        x: "50.00vp", y: "50.00vp"
       }))
       expect(JSON.stringify(obj.$attrs.offset)).assertEqual(JSON.stringify({
-        "x": "50.00vp", "y": "50.00vp"
+        x: "50.00vp", y: "50.00vp"
       }))
       expect(obj.$attrs.flexGrow).assertEqual(5)
       expect(obj.$attrs.flexShrink).assertEqual(2)
@@ -110,168 +111,168 @@ export default function textJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1210
-     * @tc.name      textGetInspectorByKey020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1210
+     * @tc.name textGetInspectorByKey020
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey020', 0, async function (done) {
+    it('textGetInspectorByKey020', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text1 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.direction).assertEqual("Direction.Ltr")
-      expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Start")
-      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Dotted")
-      expect(obj.$attrs.enabled).assertEqual(true)
-      expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Normal")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start")
-      expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip")
+      expect(obj.$attrs.direction).assertEqual("Direction.Ltr");
+      expect(obj.$attrs.align).assertEqual("Alignment.Start");
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Start");
+      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Dotted");
+      expect(obj.$attrs.enabled).assertEqual(true);
+      expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden");
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Normal");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start");
+      expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip");
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.LineThrough", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
-      }))
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF")
+      }));
+      expect(obj.$attrs.fontColor).assertEqual("#FFFFFFFF");
       console.info('cd text1InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1220
-     * @tc.name      textGetInspectorByKey030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1220
+     * @tc.name textGetInspectorByKey030
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey030', 0, async function (done) {
+    it('textGetInspectorByKey030', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text2 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.direction).assertEqual("Direction.Rtl")
-      expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Center")
-      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid")
-      expect(obj.$attrs.visibility).assertEqual("Visibility.None")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bolder")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
-      expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase")
+      expect(obj.$attrs.direction).assertEqual("Direction.Rtl");
+      expect(obj.$attrs.align).assertEqual("Alignment.TopEnd");
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Center");
+      expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid");
+      expect(obj.$attrs.visibility).assertEqual("Visibility.None");
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bolder");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
+      expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase");
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.None", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
-      }))
-      expect(obj.$attrs.fontColor).assertEqual("#FF0000FF")
+      }));
+      expect(obj.$attrs.fontColor).assertEqual("#FF0000FF");
       console.info('cd text2InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1230
-     * @tc.name      textGetInspectorByKey040
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1230
+     * @tc.name textGetInspectorByKey040
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey040', 0, async function (done) {
+    it('textGetInspectorByKey040', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text3 component obj is: " + JSON.stringify(obj));
       console.log("cd text3 align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text3 alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
       console.log("cd text3 fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text3 decoration" + JSON.stringify(obj.$attrs.decoration));
       console.log("cd text3 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.End")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Lighter")
+      expect(obj.$attrs.align).assertEqual("Alignment.Top");
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.End");
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Lighter");
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.Overline", color: "#FFFF0000", style: "TextDecorationStyle.SOLID"
-      }))
-      expect(obj.$attrs.fontColor).assertEqual("#FF808080")
+      }));
+      expect(obj.$attrs.fontColor).assertEqual("#FF808080");
       console.info('cd text3InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1240
-     * @tc.name      textGetInspectorByKey050
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1240
+     * @tc.name textGetInspectorByKey050
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey050', 0, async function (done) {
+    it('textGetInspectorByKey050', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text4 component obj is: " + JSON.stringify(obj));
       console.log("cd text4 align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text4 alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
       console.log("cd text4 fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text4 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Baseline")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Medium")
-      expect(obj.$attrs.fontColor).assertEqual("#FFA52A2A")
+      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Baseline");
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Medium");
+      expect(obj.$attrs.fontColor).assertEqual("#FFA52A2A");
       console.info('cd text4InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1250
-     * @tc.name      textGetInspectorByKey060
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1250
+     * @tc.name textGetInspectorByKey060
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey060', 0, async function (done) {
+    it('textGetInspectorByKey060', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text5 component obj is: " + JSON.stringify(obj));
       console.log("cd text5 align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text5 alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
       console.log("cd text5 fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text5 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Stretch")
-      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Regular")
-      expect(obj.$attrs.fontColor).assertEqual("#FF808080")
+      expect(obj.$attrs.align).assertEqual("Alignment.End");
+      expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Stretch");
+      expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Regular");
+      expect(obj.$attrs.fontColor).assertEqual("#FF808080");
       console.info('cd text5InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1260
-     * @tc.name      textGetInspectorByKey070
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1260
+     * @tc.name textGetInspectorByKey070
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey070', 0, async function (done) {
+    it('textGetInspectorByKey070', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text6 component obj is: " + JSON.stringify(obj));
       console.log("cd text6 align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text6 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFA500")
+      expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd");
+      expect(obj.$attrs.fontColor).assertEqual("#FFFFA500");
       console.info('cd text6InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1270
-     * @tc.name      textGetInspectorByKey080
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1270
+     * @tc.name textGetInspectorByKey080
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey080', 0, async function (done) {
+    it('textGetInspectorByKey080', 0, async (done: ESObject) => {
       let strJson = getInspectorByKey('Text7');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text7 component obj is: " + JSON.stringify(obj));
       console.log("cd text7 align" + JSON.stringify(obj.$attrs.align));
       console.log("cd text7 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.fontColor).assertEqual("#FFFFFF00")
+      expect(obj.$attrs.align).assertEqual("Alignment.Bottom");
+      expect(obj.$attrs.fontColor).assertEqual("#FFFFFF00");
       console.info('cd text7InspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1280
-     * @tc.name      textGetInspectorByKey090
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1280
+     * @tc.name textGetInspectorByKey090
+     * @tc.desc aceEtsTest
      */
-    it('textGetInspectorByKey090', 0, async function (done) {
+    it('textGetInspectorByKey090', 0, async (done: Function) => {
       let strJson = getInspectorByKey('Text8');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd text8 component obj is: " + JSON.stringify(obj));
       console.log("cd text8 align" + JSON.stringify(obj.$attrs.align));
-      expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
+      expect(obj.$attrs.align).assertEqual("Alignment.BottomStart");
       console.info('cd text8InspectorByKey END');
       done();
     });
