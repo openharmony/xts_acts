@@ -1,6 +1,6 @@
 {
   "stratified-image":{
 	"background":"$media:icon",
-	"foreground":"$media:wp",
+	"foreground":"$media:wp"
   }
 }
