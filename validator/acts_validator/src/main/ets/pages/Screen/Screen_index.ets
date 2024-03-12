@@ -42,10 +42,8 @@ struct IndexPage {
   @State TEST: number = 0;
   private TestCaseList = [
     { title: 'VirtualScreen', uri: 'pages/Screen/VirtualScreen' },
-    {title: 'ScreenShot', uri: 'pages/Screen/ScreenShot'},
     {title: 'Brightness', uri: 'pages/Screen/Brightness'},
     {title: 'ScreenLock', uri: 'pages/Screen/ScreenLock'},
-    {title: 'ScreenOrientation', uri: 'pages/Screen/ScreenOrientation'},
     {title: 'ScreenDensityDpi', uri: 'pages/Screen/ScreenDensityDpi'}
   ]
   @State ColorObject: Object[] = VarColor;
