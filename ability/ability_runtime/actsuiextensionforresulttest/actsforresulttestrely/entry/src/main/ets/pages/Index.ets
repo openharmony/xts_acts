@@ -12,17 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import Want from '@ohos.app.ability.Want';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Second application'
+  @State message: string = 'Second application';
   @StorageLink('want') want: Want = {
     action: "AsyncCallback_0200",
     bundleName: 'com.example.forresulttestsecond',
     abilityName: 'UIExtAbility'
-  }
+  };
+
   build() {
     Row() {
       Column() {
@@ -30,46 +32,38 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({width:'100%',height:'100'})
+          .size({ width: '100%', height: '100' })
           .backgroundColor(Color.Blue)
-          .border({width:5,color:Color.Red})
+          .border({ width: 5, color: Color.Red })
         Button('StartAbilityForResult')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.StartAbilityForResult()
+            globalThis.StartAbilityForResult();
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
         Button('StartUI')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.startUIExtension()
+            globalThis.startUIExtension();
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
         Button('StartCalledAbilitybyUIExtension')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             console.info('=======>button======>');
-            globalThis.StartAbilityForResult_AsyncCallback_0100()
+            globalThis.StartAbilityForResult_AsyncCallback_0100();
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
         Button('terminal')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.terminal()
+            globalThis.terminal();
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
       }
       .width('100%')
     }
