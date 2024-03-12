@@ -21,25 +21,25 @@ import router from '@ohos.router';
 struct DisplayPriorityPage {
   @State _displayPriority: number = 1.0;
   @State _compareOneButtonDisplayPriority: number = 2.0;
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State targetGroupView: string = router.getParams() ? router.getParams()['view']['targetGroupView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State targetWidth: number = router.getParams() ? router.getParams()['view']['targetWidth'] : 0
-  @State targetHeight: number = router.getParams() ? router.getParams()['view']['targetHeight'] : 0
-  @State compareOneButtonWidth: number = router.getParams() ? router.getParams()['view']['compareOneButtonWidth'] : 0
-  @State compareOneButtonHeight: number = router.getParams() ? router.getParams()['view']['compareOneButtonHeight'] : 0
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State targetGroupView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetGroupView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State targetWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetWidth'] : 0
+  @State targetHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['targetHeight'] : 0
+  @State compareOneButtonWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareOneButtonWidth'] : 0
+  @State compareOneButtonHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareOneButtonHeight'] : 0
   @State compareOneButtonDisplayPriority: number =
-    router.getParams() ? router.getParams()['view']['compareOneButtonDisplayPriority'] : 0
-  @State compareOneButtonKey: string = router.getParams() ? router.getParams()['view']['compareOneButtonKey'] : ''
-  @State compareTwoButtonWidth: number = router.getParams() ? router.getParams()['view']['compareTwoButtonWidth'] : 0
-  @State compareTwoButtonHeight: number = router.getParams() ? router.getParams()['view']['compareTwoButtonHeight'] : 0
+    router.getParams() ? (router.getParams() as ESObject)['view']['compareOneButtonDisplayPriority'] : 0
+  @State compareOneButtonKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareOneButtonKey'] : ''
+  @State compareTwoButtonWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareTwoButtonWidth'] : 0
+  @State compareTwoButtonHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['compareTwoButtonHeight'] : 0
   @State compareTwoButtonDisplayPriority: number =
-    router.getParams() ? router.getParams()['view']['compareTwoButtonDisplayPriority'] : 0
-  @State compareTwoButtonKey: string = router.getParams() ? router.getParams()['view']['compareTwoButtonKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State parentKey: string = router.getParams() ? router.getParams()['view']['parentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['compareTwoButtonDisplayPriority'] : 0
+  @State compareTwoButtonKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['compareTwoButtonKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State parentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentKey'] : ''
   textTimerController: TextTimerController = new TextTimerController()
   private scroller: Scroller = new Scroller()
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
@@ -47,7 +47,7 @@ struct DisplayPriorityPage {
 
   onPageShow() {
     console.info('DisplayPriorityPage page show called')
-    AttrsManager.registerDataChange(value => {
+    AttrsManager.registerDataChange((value: ESObject) => {
       if (value.displayPriority != undefined) {
         this._displayPriority = value.displayPriority
       }
@@ -60,14 +60,16 @@ struct DisplayPriorityPage {
   /*
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .width(this.targetWidth)
     .height(this.targetHeight)
     .displayPriority(this._displayPriority)
     .key(this.componentKey)
   }
 
-  @Builder buildTargetView() {
+  @Builder
+  buildTargetView() {
     Button('compareOneButton')
       .displayPriority(this._compareOneButtonDisplayPriority)
       .width(this.compareOneButtonWidth)
@@ -302,9 +304,9 @@ struct DisplayPriorityPage {
         .commonStyle()
     } else if (this.targetView == 'Swiper') {
       Swiper() {
-        ForEach([1, 2, 3], (item: string) => {
+        ForEach([1, 2, 3], (item: number) => {
           Text('Swiper' + item)
-        }, item => item)
+        }, (item: number) => item.toString())
       }
       .indicator(true)
       .backgroundColor(Color.Pink)
