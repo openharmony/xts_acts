@@ -22,7 +22,8 @@ export struct TabsView {
   @Link _position: Position;
   private componentKey: string;
 
-  @Builder TabBuilder(index: number, name: string) {
+  @Builder
+  TabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
