@@ -96,6 +96,66 @@ export default function audioManagerTest() {
         done();
       }
     })
+    /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200
+         * @tc.name      : getSystemVolumeInDbSync - Null_Parameter - 401
+         * @tc.desc      : getSystemVolumeInDbSync - Null_Parameter - 401
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0200', 0, async function (done) {
+      try {
+        let data = audioVolumeGroupManager.getSystemVolumeInDbSync();
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300
+         * @tc.name      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 6800101
+         * @tc.desc      : getSystemVolumeInDbSync - Invaild_Number_Parameter - 6800101
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0300', 0, async function (done) {
+      try {
+        let data = audioVolumeGroupManager.getSystemVolumeInDbSync(123, 3, audio.DeviceType.SPEAKER);
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+        done();
+      }
+    })
+    /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0400
+         * @tc.name      : getSystemVolumeInDbSync - String_Parameter - 401 - Promise
+         * @tc.desc      : getSystemVolumeInDbSync - String_Parameter - 401 - Promise
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0400', 0, async function (done) {
+      try {
+        let data = audioVolumeGroupManager.getSystemVolumeInDbSync('123');
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(Number(error.code)).assertEqual(401);
+        done();
+      }
+    })
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100
