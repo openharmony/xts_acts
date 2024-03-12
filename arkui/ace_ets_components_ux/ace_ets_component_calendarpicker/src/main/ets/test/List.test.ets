@@ -15,6 +15,6 @@
 import calendarpicker from './calendarpicker'
 
 export default function testsuite() {
-       calendarpicker()
+  calendarpicker()
 
 }
