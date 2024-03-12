@@ -1105,7 +1105,6 @@ export class KeyboardController {
                             data: 'SUCCESS'
                         };
                     }
-
                 }
             } else {
                 console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 this.softKeyboardPanel is null');
