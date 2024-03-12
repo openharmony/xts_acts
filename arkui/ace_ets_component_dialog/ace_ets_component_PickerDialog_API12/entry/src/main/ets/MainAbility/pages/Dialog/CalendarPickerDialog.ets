@@ -16,30 +16,15 @@
 @Component
 struct CalendarPickerDialogExample {
   private selectedDate: Date = new Date()
-  @State onDidAppearText: string = ''
-  @State onDidDisappear: string = ''
-  @State onWillAppear: string = ''
-  @State onWillDisappear: string = ''
+  @State AppearText: string = ''
 
   build() {
     Row() {
       Column() {
-        Text(this.onDidAppearText)
+        Text(this.AppearText)
           .fontSize(20)
           .margin(10)
-          .id('onDidAppearText')
-        Text(this.onDidDisappear)
-          .fontSize(20)
-          .margin(10)
-          .id('onDidDisappear')
-        Text(this.onWillAppear)
-          .fontSize(20)
-          .margin(10)
-          .id('onWillAppear')
-        Text(this.onWillDisappear)
-          .fontSize(20)
-          .margin(10)
-          .id('onWillDisappear')
+          .id('AppearText')
         Button("Show CalendarPicker Dialog")
           .margin(20)
           .id('CalendarPicker')
@@ -57,16 +42,16 @@ struct CalendarPickerDialogExample {
                 console.info("calendar onChange:" + JSON.stringify(value))
               },
               onDidAppear: () => {
-                this.onDidAppearText = 'onDidAppearTrigger!'
+                this.AppearText = this.AppearText + "onDidAppear_"
               },
               onDidDisappear: () => {
-                this.onDidDisappear = 'onDidDisappearTrigger!'
+                this.AppearText = this.AppearText + "onDidDisappear"
               },
               onWillAppear: () => {
-                this.onWillAppear = 'onWillAppearTrigger!'
+                this.AppearText = this.AppearText + "onWillAppear_"
               },
               onWillDisappear: () => {
-                this.onWillDisappear = 'onWillDisappearTrigger!'
+                this.AppearText = this.AppearText + "onWillDisappear_"
               }
             })
           })

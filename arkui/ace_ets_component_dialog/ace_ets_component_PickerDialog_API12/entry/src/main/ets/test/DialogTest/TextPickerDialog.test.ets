@@ -65,14 +65,8 @@ export default function TextPickerDialog() {
       await CommonFunc.sleep(1000);
       await driver.click(point.x, point.y)
       await CommonFunc.sleep(2000);
-      let text1 = getInspectorByKey('onDidAppearText');
-      expect(JSON.parse(text1).$attrs.content).assertEqual('onDidAppearTrigger!');
-      let text2 = getInspectorByKey('onDidDisappear');
-      expect(JSON.parse(text2).$attrs.content).assertEqual('onDidDisappearTrigger!');
-      let text3 = getInspectorByKey('onWillAppear');
-      expect(JSON.parse(text3).$attrs.content).assertEqual('onWillAppearTrigger!');
-      let text4 = getInspectorByKey('onWillDisappear');
-      expect(JSON.parse(text4).$attrs.content).assertEqual('onWillDisappearTrigger!');
+      let text = getInspectorByKey('AppearText');
+      expect(JSON.parse(text).$attrs.content).assertEqual('onWillAppear_onDidAppear_onWillDisappear_onDidDisappear');
       console.info('[TextPickerDialog_001] END');
       done();
     });

@@ -1,47 +1,19 @@
-/**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// xxx.ets
 @Entry
 @Component
 struct TextPickerDialogExample {
   private select: number | number[] = 0
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5']
   @State v:string = '';
-  @State onDidAppearText: string = ''
-  @State onDidDisappear: string = ''
-  @State onWillAppear: string = ''
-  @State onWillDisappear: string = ''
+  @State AppearText: string = ''
 
   build() {
     Row() {
       Column() {
-        Text(this.onDidAppearText)
+        Text(this.AppearText)
           .fontSize(20)
           .margin(10)
-          .id('onDidAppearText')
-        Text(this.onDidDisappear)
-          .fontSize(20)
-          .margin(10)
-          .id('onDidDisappear')
-        Text(this.onWillAppear)
-          .fontSize(20)
-          .margin(10)
-          .id('onWillAppear')
-        Text(this.onWillDisappear)
-          .fontSize(20)
-          .margin(10)
-          .id('onWillDisappear')
+          .id('AppearText')
         Button("TextPickerDialog:" + this.v)
           .id('TextPickerDialog')
           .margin(20)
@@ -67,16 +39,16 @@ struct TextPickerDialogExample {
                 console.info("TextPickerDialog:onChange()" + JSON.stringify(value))
               },
               onDidAppear: () => {
-                this.onDidAppearText = 'onDidAppearTrigger!'
+                this.AppearText = this.AppearText + "onDidAppear_"
               },
               onDidDisappear: () => {
-                this.onDidDisappear = 'onDidDisappearTrigger!'
+                this.AppearText = this.AppearText + "onDidDisappear"
               },
               onWillAppear: () => {
-                this.onWillAppear = 'onWillAppearTrigger!'
+                this.AppearText = this.AppearText + "onWillAppear_"
               },
               onWillDisappear: () => {
-                this.onWillDisappear = 'onWillDisappearTrigger!'
+                this.AppearText = this.AppearText + "onWillDisappear_"
               }
             })
           })
