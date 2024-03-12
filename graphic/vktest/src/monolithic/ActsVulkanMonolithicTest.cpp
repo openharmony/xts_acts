@@ -14,7 +14,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <cstdlib.h>
+#include <stdlib.h>
 #include "ActsVulkanMonolithicTest.h"
 
 namespace OHOS {
