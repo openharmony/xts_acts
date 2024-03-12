@@ -73,6 +73,11 @@ Note:If the text contains special characters, please escape them according to th
              <filefilter name="defaultFilter" desc="files not to check">
                 <filteritem type="filename" name="hvigor-wrapper.js" desc="hvigor配置文件，DevEco Studio自动生成"/>
                 <filteritem type="filename" name="hvigorfile.js" desc="hvigor配置文件，DevEco Studio自动生成"/>
+            <filefilter name="defaultFilter" desc="Filters for default" >
+                <filteritem type="filename" name="*.mp4" desc="mp4 files do not to be added "/>
+                <filteritem type="filename" name="*.mov" desc="mov files do not to be added "/>
+                <filteritem type="filename" name="*.xml" desc="xml files do not to be added "/>
+                <filteritem type="filename" name="*.py" desc="py files do not to be added "/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
