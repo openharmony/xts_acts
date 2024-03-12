@@ -90,7 +90,7 @@ export default class MainAbility extends Ability {
         console.log("actsspecifytesthap onWindowStageCreate")
         //       callBackSeq += "onWindowStageCreate";
         globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "pages/index", null)
+        windowStage.setUIContent(this.context, "pages/index/index", null)
         console.log("actsspecifytesthap onWindowStageCreate finish")
     }
 
