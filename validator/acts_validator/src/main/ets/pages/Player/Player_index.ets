@@ -52,9 +52,8 @@ struct IndexPage {
     { title: 'PlayerNetWork', uri: 'pages/Player/PlayNetWorkList' }
   ]
   @State ColorObject: Object[] = VarColor;
-  @State ColorTrue: Object[] = [];
-  @State ColorTrue2: Object[] = [];
-  @State ColorTrue3: Object[] = [];
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
   async onPageShow() {
     let Test = null;

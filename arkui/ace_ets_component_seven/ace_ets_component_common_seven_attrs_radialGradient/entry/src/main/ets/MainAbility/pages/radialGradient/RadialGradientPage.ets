@@ -17,7 +17,7 @@ import attrsManager from '../../common/AttrsManager'
 import router from '@ohos.router'
 
 class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -30,7 +30,7 @@ class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttrib
 }
 
 class BadgeModifier implements AttributeModifier<BadgeAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -43,7 +43,7 @@ class BadgeModifier implements AttributeModifier<BadgeAttribute> {
 }
 
 class ButtonModifier implements AttributeModifier<ButtonAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -56,7 +56,7 @@ class ButtonModifier implements AttributeModifier<ButtonAttribute> {
 }
 
 class BlankModifier implements AttributeModifier<BlankAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -69,7 +69,7 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 }
 
 class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -82,7 +82,7 @@ class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribut
 }
 
 class CanvasModifier implements AttributeModifier<CanvasAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -95,7 +95,7 @@ class CanvasModifier implements AttributeModifier<CanvasAttribute> {
 }
 
 class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -108,7 +108,7 @@ class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
 }
 
 class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -121,7 +121,7 @@ class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute>
 }
 
 class CircleModifier implements AttributeModifier<CircleAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -134,7 +134,7 @@ class CircleModifier implements AttributeModifier<CircleAttribute> {
 }
 
 class ColumnModifier implements AttributeModifier<ColumnAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -147,7 +147,7 @@ class ColumnModifier implements AttributeModifier<ColumnAttribute> {
 }
 
 class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -160,7 +160,7 @@ class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
 }
 
 class CounterModifier implements AttributeModifier<CounterAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -173,7 +173,7 @@ class CounterModifier implements AttributeModifier<CounterAttribute> {
 }
 
 class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -186,7 +186,7 @@ class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
 }
 
 class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -199,7 +199,7 @@ class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
 }
 
 class DividerModifier implements AttributeModifier<DividerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -212,7 +212,7 @@ class DividerModifier implements AttributeModifier<DividerAttribute> {
 }
 
 class EllipseModifier implements AttributeModifier<EllipseAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -225,7 +225,7 @@ class EllipseModifier implements AttributeModifier<EllipseAttribute> {
 }
 
 class FlexModifier implements AttributeModifier<FlexAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -238,7 +238,7 @@ class FlexModifier implements AttributeModifier<FlexAttribute> {
 }
 
 class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -251,7 +251,7 @@ class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
 }
 
 class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -264,7 +264,7 @@ class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
 }
 
 class GaugeModifier implements AttributeModifier<GaugeAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -277,7 +277,7 @@ class GaugeModifier implements AttributeModifier<GaugeAttribute> {
 }
 
 class GridModifier implements AttributeModifier<GridAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -290,7 +290,7 @@ class GridModifier implements AttributeModifier<GridAttribute> {
 }
 
 class GridColModifier implements AttributeModifier<GridColAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -303,7 +303,7 @@ class GridColModifier implements AttributeModifier<GridColAttribute> {
 }
 
 class GridItemModifier implements AttributeModifier<GridItemAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -316,7 +316,7 @@ class GridItemModifier implements AttributeModifier<GridItemAttribute> {
 }
 
 class GridRowModifier implements AttributeModifier<GridRowAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -329,7 +329,7 @@ class GridRowModifier implements AttributeModifier<GridRowAttribute> {
 }
 
 class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -342,7 +342,7 @@ class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
 }
 
 class ImageModifier implements AttributeModifier<ImageAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -355,7 +355,7 @@ class ImageModifier implements AttributeModifier<ImageAttribute> {
 }
 
 class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -368,7 +368,7 @@ class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute>
 }
 
 class LineModifier implements AttributeModifier<LineAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -381,7 +381,7 @@ class LineModifier implements AttributeModifier<LineAttribute> {
 }
 
 class ListModifier implements AttributeModifier<ListAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -394,7 +394,7 @@ class ListModifier implements AttributeModifier<ListAttribute> {
 }
 
 class ListItemModifier implements AttributeModifier<ListItemAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -407,7 +407,7 @@ class ListItemModifier implements AttributeModifier<ListItemAttribute> {
 }
 
 class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -420,7 +420,7 @@ class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute>
 }
 
 class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -433,7 +433,7 @@ class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttrib
 }
 
 class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -446,7 +446,7 @@ class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
 }
 
 class MenuModifier implements AttributeModifier<MenuAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -459,7 +459,7 @@ class MenuModifier implements AttributeModifier<MenuAttribute> {
 }
 
 class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -472,7 +472,7 @@ class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
 }
 
 class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -485,7 +485,7 @@ class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute>
 }
 
 class NavDestinationModifier implements AttributeModifier<NavDestinationAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -498,7 +498,7 @@ class NavDestinationModifier implements AttributeModifier<NavDestinationAttribut
 }
 
 class NavigationModifier implements AttributeModifier<NavigationAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -511,7 +511,7 @@ class NavigationModifier implements AttributeModifier<NavigationAttribute> {
 }
 
 class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -524,7 +524,7 @@ class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
 }
 
 class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -537,7 +537,7 @@ class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
 }
 
 class PanelModifier implements AttributeModifier<PanelAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -550,7 +550,7 @@ class PanelModifier implements AttributeModifier<PanelAttribute> {
 }
 
 class PathModifier implements AttributeModifier<PathAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -563,7 +563,7 @@ class PathModifier implements AttributeModifier<PathAttribute> {
 }
 
 class PolygonModifier implements AttributeModifier<PolygonAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -576,7 +576,7 @@ class PolygonModifier implements AttributeModifier<PolygonAttribute> {
 }
 
 class PolylineModifier implements AttributeModifier<PolylineAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -589,7 +589,7 @@ class PolylineModifier implements AttributeModifier<PolylineAttribute> {
 }
 
 class ProgressModifier implements AttributeModifier<ProgressAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -602,7 +602,7 @@ class ProgressModifier implements AttributeModifier<ProgressAttribute> {
 }
 
 class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -615,7 +615,7 @@ class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
 }
 
 class RadioModifier implements AttributeModifier<RadioAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -628,7 +628,7 @@ class RadioModifier implements AttributeModifier<RadioAttribute> {
 }
 
 class RatingModifier implements AttributeModifier<RatingAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -641,7 +641,7 @@ class RatingModifier implements AttributeModifier<RatingAttribute> {
 }
 
 class RectModifier implements AttributeModifier<RectAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -654,7 +654,7 @@ class RectModifier implements AttributeModifier<RectAttribute> {
 }
 
 class RefreshModifier implements AttributeModifier<RefreshAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -667,7 +667,7 @@ class RefreshModifier implements AttributeModifier<RefreshAttribute> {
 }
 
 class RelativeContainerModifier implements AttributeModifier<RelativeContainerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -680,7 +680,7 @@ class RelativeContainerModifier implements AttributeModifier<RelativeContainerAt
 }
 
 class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -693,7 +693,7 @@ class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
 }
 
 class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -706,7 +706,7 @@ class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
 }
 
 class RichTextModifier implements AttributeModifier<RichTextAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -719,7 +719,7 @@ class RichTextModifier implements AttributeModifier<RichTextAttribute> {
 }
 
 class RowModifier implements AttributeModifier<RowAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -732,7 +732,7 @@ class RowModifier implements AttributeModifier<RowAttribute> {
 }
 
 class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -745,7 +745,7 @@ class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
 }
 
 class ScrollModifier implements AttributeModifier<ScrollAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -758,7 +758,7 @@ class ScrollModifier implements AttributeModifier<ScrollAttribute> {
 }
 
 class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -771,7 +771,7 @@ class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
 }
 
 class SearchModifier implements AttributeModifier<SearchAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -784,7 +784,7 @@ class SearchModifier implements AttributeModifier<SearchAttribute> {
 }
 
 class SelectModifier implements AttributeModifier<SelectAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -797,7 +797,7 @@ class SelectModifier implements AttributeModifier<SelectAttribute> {
 }
 
 class ShapeModifier implements AttributeModifier<ShapeAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -810,7 +810,7 @@ class ShapeModifier implements AttributeModifier<ShapeAttribute> {
 }
 
 class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -823,7 +823,7 @@ class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttr
 }
 
 class SliderModifier implements AttributeModifier<SliderAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -836,7 +836,7 @@ class SliderModifier implements AttributeModifier<SliderAttribute> {
 }
 
 class SpanModifier implements AttributeModifier<SpanAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -849,7 +849,7 @@ class SpanModifier implements AttributeModifier<SpanAttribute> {
 }
 
 class StackModifier implements AttributeModifier<StackAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -862,7 +862,7 @@ class StackModifier implements AttributeModifier<StackAttribute> {
 }
 
 class StepperModifier implements AttributeModifier<StepperAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -875,7 +875,7 @@ class StepperModifier implements AttributeModifier<StepperAttribute> {
 }
 
 class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -888,7 +888,7 @@ class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
 }
 
 class SwiperModifier implements AttributeModifier<SwiperAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -901,7 +901,7 @@ class SwiperModifier implements AttributeModifier<SwiperAttribute> {
 }
 
 class TabContentModifier implements AttributeModifier<TabContentAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -914,7 +914,7 @@ class TabContentModifier implements AttributeModifier<TabContentAttribute> {
 }
 
 class TabsModifier implements AttributeModifier<TabsAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -927,7 +927,7 @@ class TabsModifier implements AttributeModifier<TabsAttribute> {
 }
 
 class TextModifier implements AttributeModifier<TextAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -940,7 +940,7 @@ class TextModifier implements AttributeModifier<TextAttribute> {
 }
 
 class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -953,7 +953,7 @@ class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
 }
 
 class TextClockModifier implements AttributeModifier<TextClockAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -966,7 +966,7 @@ class TextClockModifier implements AttributeModifier<TextClockAttribute> {
 }
 
 class TextInputModifier implements AttributeModifier<TextInputAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -979,7 +979,7 @@ class TextInputModifier implements AttributeModifier<TextInputAttribute> {
 }
 
 class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -992,7 +992,7 @@ class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
 }
 
 class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1005,7 +1005,7 @@ class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
 }
 
 class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1018,7 +1018,7 @@ class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
 }
 
 class ToggleModifier implements AttributeModifier<ToggleAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1031,7 +1031,7 @@ class ToggleModifier implements AttributeModifier<ToggleAttribute> {
 }
 
 class VideoModifier implements AttributeModifier<VideoAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1044,7 +1044,7 @@ class VideoModifier implements AttributeModifier<VideoAttribute> {
 }
 
 class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1057,7 +1057,7 @@ class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
 }
 
 class WebModifier implements AttributeModifier<WebAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1070,7 +1070,7 @@ class WebModifier implements AttributeModifier<WebAttribute> {
 }
 
 class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,
@@ -1083,7 +1083,7 @@ class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
 }
 
 class XComponentModifier implements AttributeModifier<XComponentAttribute> {
-	mRadialGradient: { center: Array<any>; radius: number | string; colors: Array<any>; repeating?: boolean } = {
+	mRadialGradient: { center: [number, number]; radius: number | string; colors: Array<[ResourceColor, number]>; repeating?: boolean } = {
 			center: [50, 50],
 			radius: 60,
 			repeating: true,

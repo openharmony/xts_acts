@@ -63,8 +63,8 @@ struct IndexPage {
     { title: 'KeyboardInput', uri: 'pages/Experience/KeyboardInputTest' },
   ]
   @State ColorObject: Object[] = VarColor;
-  @State ColorTrue: Object[] = [];
-  @State ColorTrue2: Object[] = [];
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
   aboutToAppear() {
     globalThis.CreateFloatingWindow();
