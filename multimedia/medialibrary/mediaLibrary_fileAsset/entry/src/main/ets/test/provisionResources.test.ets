@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,8 +44,16 @@ export default function provisionResourcesTest(abilityContext) {
         const checkResourceAsset = async function (done, testNum, fileNames) {
             try {
                 let allFetchOp = {
-                    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? ',
-                    selectionArgs: [mediaLibrary.MediaType.IMAGE.toString(), mediaLibrary.MediaType.VIDEO.toString(), mediaLibrary.MediaType.AUDIO.toString(), mediaLibrary.MediaType.FILE.toString()],
+                    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? ',
+                    selectionArgs: [
+                        mediaLibrary.MediaType.IMAGE.toString(), 
+                        mediaLibrary.MediaType.VIDEO.toString(), 
+                        mediaLibrary.MediaType.AUDIO.toString(), 
+                        mediaLibrary.MediaType.FILE.toString()
+                    ],
                 };
                 media.getFileAssets(allFetchOp).then((fetchFileResult) => {
                     const count = fetchFileResult.getCount();
@@ -74,7 +82,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0100', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_001', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0100';
             const fileNames = [
                 "01.jpg", "02.jpg", "01.jpg", "02.jpg", "01.jpg", "02.jpg", "01.jpg"
@@ -97,7 +105,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0200', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_002', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0200';
             const fileNames = [
                 "02.jpg", "01.jpg", "02.jpg", "01.jpg", "02.jpg", "01.jpg", "02.jpg"
@@ -120,7 +128,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0300', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_003', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0300';
             const fileNames = [ 
                 "01.mp3", "02.mp3", "01.mp3", "02.mp3", "01.mp3", "02.mp3", "01.mp3"
@@ -143,7 +151,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0400', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_004', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0400';
             const fileNames = [ 
                 "02.mp3", "01.mp3", "02.mp3", "01.mp3", "02.mp3", "01.mp3", "02.mp3"
@@ -166,7 +174,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0500', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_005', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0500';
             const fileNames = [ 
                 "01.mp4", "02.mp4", "01.mp4", "02.mp4", "01.mp4", "02.mp4", "01.mp4"
@@ -189,7 +197,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0600', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_006', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0600';
             const fileNames = [
                 "02.mp4", "01.mp4", "02.mp4", "01.mp4", "02.mp4", "01.mp4", "02.mp4"
@@ -212,7 +220,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0700', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_007', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0700';
             const fileNames = [ 
                 "01.dat", "02.dat", "01.dat", "02.dat", "01.dat", "02.dat", "01.dat"
@@ -235,7 +243,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0800', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_008', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0800';
             const fileNames = [
                 "02.dat", "01.dat", "02.dat", "01.dat", "02.dat", "01.dat", "02.dat"
@@ -258,7 +266,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0900', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_009', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_0900';
             const fileNames = [ 
                 "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg"
@@ -281,7 +289,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1000', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_010', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1000';
             const fileNames = [
                 "09.jpg", "010.jpg", "011.jpg", "012.jpg", "013.jpg",  "014.jpg",  "015.jpg"
@@ -304,7 +312,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1100', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_011', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1100';
             const fileNames = [ 
                 "01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg", "06.jpg", "07.jpg", "08.jpg"
@@ -327,7 +335,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1200', 0, async function (done) {
+        it('sub_media_medialibrary_fileasset_provision_check_assets_012', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1200';
             const fileNames = [
                 "09.jpg", "010.jpg", "011.jpg", "012.jpg", "013.jpg",  "014.jpg",  "015.jpg"
@@ -343,15 +351,15 @@ export default function provisionResourcesTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1600
-         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_016
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1300
+         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_013
          * @tc.desc      : Provision mediaAssets and check mediaAssets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1600', 0, async function (done) {
-            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1600';
+        it('sub_media_medialibrary_fileasset_provision_check_assets_013', 0, async function (done) {
+            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1300';
             const fileNames = [
                 "01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3", 
                 "01.mp3", "02.mp3", "03.mp3", "04.mp3", "05.mp3"
@@ -369,15 +377,15 @@ export default function provisionResourcesTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1700
-         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_017
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1400
+         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_014
          * @tc.desc      : Provision mediaAssets and check mediaAssets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1700', 0, async function (done) {
-            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1700';
+        it('sub_media_medialibrary_fileasset_provision_check_assets_014', 0, async function (done) {
+            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1400';
             const fileNames = [
                 "01.mp4", "02.mp4", "03.mp4", "04.mp4", "05.mp4", 
                 "01.mp4", "02.mp4", "03.mp4", "04.mp4", "05.mp4"
@@ -395,15 +403,15 @@ export default function provisionResourcesTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1800
-         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_018
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1500
+         * @tc.name      : sub_media_medialibrary_fileasset_provision_check_assets_015
          * @tc.desc      : Provision mediaAssets and check mediaAssets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1800', 0, async function (done) {
-            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1800';
+        it('sub_media_medialibrary_fileasset_provision_check_assets_015', 0, async function (done) {
+            const testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_PROVISION_CHECK_ASSETS_1500';
             const fileNames = [ 
                 "01.dat", "02.dat", "03.dat", "04.dat", "05.dat", 
                 "01.dat", "02.dat", "03.dat", "04.dat", "05.dat"

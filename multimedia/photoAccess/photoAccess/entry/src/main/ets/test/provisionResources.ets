@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -73,7 +73,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0100', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_001', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0100';
             const fileNames = [
                 "01.jpg", "addRemoveAssetsChangeReq01.jpg", "addRemoveAssetsChangeReq02.jpg", "request_image.jpg", 
@@ -91,7 +91,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0200', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_002', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0200';
             const fileNames = [
                 "addCb01.jpg", "addCb02.jpg", "addCb03.jpg", "addCb04.jpg", 
@@ -109,7 +109,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0300', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_003', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0300';
             const fileNames = [
                 "removeCb01.jpg", "removeCb02.jpg", "removeCb03.jpg", "removeCb04.jpg", 
@@ -127,7 +127,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0400', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_004', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0400';
             const fileNames = [
                 "off01.jpg", "off02.jpg", "off03.jpg", "off04.jpg", "off10.jpg", "off11.jpg", 
@@ -145,7 +145,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0500', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_005', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0500';
             const fileNames = [
                 "on01.jpg", "on02.jpg", "on03.jpg", "on04.jpg", "on10.jpg", "on11.jpg", 
@@ -163,7 +163,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0600', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_006', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0600';
             const fileNames = [
                 "modifyCb01.jpg", "modifyCb02.jpg", "modifyCb03.jpg", "modifyCb04.jpg", 
@@ -181,7 +181,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0700', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_007', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0700';
             const fileNames = [
                 "modifyPro01.jpg", "modifyPro02.jpg", "modifyPro03.jpg", "modifyPro04.jpg", 
@@ -199,7 +199,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0800', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_008', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0800';
             const fileNames = [
                 "01.mp4", "albumImageVideoCount01.mp4", "albumGetAssetsCb01.mp4", "albumGetAssetsPro01.mp4"
@@ -216,7 +216,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0900', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_009', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_0900';
             const fileNames = [
                 "addCb01.mp4", "addPro01.mp4", "removeCb01.mp4", "removePro01.mp4"
@@ -233,7 +233,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1000', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_010', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1000';
             const fileNames = [
                 "modifyCb01.mp4", "modifyCb02.mp4", "modifyCb03.mp4", "modifyCb04.mp4", "modifyCb05.mp4"
@@ -250,7 +250,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1100', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_011', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1100';
             const fileNames = [
                 "modifyPro01.mp4", "modifyPro02.mp4", "modifyPro03.mp4", "modifyPro04.mp4", "modifyPro05.mp4"
@@ -267,7 +267,7 @@ export default function provisionResourcesTest() {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1200', 0, async function (done) {
+        it('sub_media_photoAccess_provision_check_assets_012', 0, async function (done) {
             const testNum = 'SUB_MEDIA_PHOTOACCESS_PROVISION_CHECK_ASSETS_1200';
             const fileNames = [
                 "modifyCb06.mp4", "modifyCb07.mp4",  "modifyPro06.mp4", "modifyPro07.mp4"

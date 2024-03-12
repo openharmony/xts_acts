@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,8 +44,16 @@ export default function provisionResourcesTest(abilityContext) {
         const checkResourceAsset = async function (done, testNum, fileNames) {
             try {
                 let allFetchOp = {
-                    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ? ',
-                    selectionArgs: [mediaLibrary.MediaType.IMAGE.toString(), mediaLibrary.MediaType.VIDEO.toString(), mediaLibrary.MediaType.AUDIO.toString(), mediaLibrary.MediaType.FILE.toString()],
+                    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? OR ' 
+                    + mediaLibrary.FileKey.MEDIA_TYPE + '= ? ',
+                    selectionArgs: [
+                        mediaLibrary.MediaType.IMAGE.toString(), 
+                        mediaLibrary.MediaType.VIDEO.toString(), 
+                        mediaLibrary.MediaType.AUDIO.toString(), 
+                        mediaLibrary.MediaType.FILE.toString()
+                    ],
                 };
                 media.getFileAssets(allFetchOp).then((fetchFileResult) => {
                     const count = fetchFileResult.getCount();
@@ -74,7 +82,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_TRASH_PROVISION_CHECK_ASSETS_0100', 0, async function (done) {
+        it('sub_media_medialibrary_trash_provision_check_assets_001', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_TRASH_PROVISION_CHECK_ASSETS_0100';
             const fileNames = [
                 "01.jpg", "02.jpg", "03.jpg", 
@@ -100,7 +108,7 @@ export default function provisionResourcesTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_TRASH_PROVISION_CHECK_ASSETS_0200', 0, async function (done) {
+        it('sub_media_medialibrary_trash_provision_check_assets_002', 0, async function (done) {
             const testNum = 'SUB_MEDIA_MEDIALIBRARY_TRASH_PROVISION_CHECK_ASSETS_0200';
             const fileNames = [
                 "01.mp4", "02.mp4", "03.mp4", 
