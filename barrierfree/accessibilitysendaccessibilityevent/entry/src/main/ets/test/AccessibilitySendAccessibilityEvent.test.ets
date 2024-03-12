@@ -2492,5 +2492,145 @@ export default function abilityTest() {
                 done();
             });
         })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700
+        * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+        *             The result of sendEvent() should be equal to a Callback of undefined
+        * @tc.size    SmallTest
+        * @tc.type    User
+        * @tc.level   Level 1
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700');
+            let typy = 'requestFocusForAccessibility';
+            let ttriggerAction = 'click';
+            let elementId = 16;
+            let jsonObj = {
+                type : eventType,
+                bundleName : bundleName,
+                triggerAction : triggerAction,
+                elementId : elementId
+            }
+
+            let event = new accessibility.EventInfo(jsonObj);
+
+            accessibility.sendAccessibilityEvent(event, (err, data) => {
+                console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700 err : " + JSON.stringify(err));
+                if (err && err.code != 0) {
+                    console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8700: has error: ${err.code}`);
+                    expect(null).assertFail();
+                } else {
+                    expect(data).assertEqual(undefined);
+                }
+                done();
+            })
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800
+        * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+        *             The result of sendEvent() should be equal to a promise of undefined
+        * @tc.size    SmallTest
+        * @tc.type    User
+        * @tc.level   Level 1
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800');
+            let typy = 'requestFocusForAccessibility';
+            let ttriggerAction = 'click';
+            let elementId = 16;
+            let jsonObj = {
+                type : eventType,
+                bundleName : bundleName,
+                triggerAction : triggerAction,
+                elementId : elementId
+            }
+
+            let event = new accessibility.EventInfo(jsonObj);
+
+            accessibility.sendAccessibilityEvent(event).then((result) => {
+                console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800 result ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8800 has error: ${err}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900
+       * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+       *             The result of sendEvent() should be equal to a Callback of undefined
+       * @tc.size    SmallTest
+       * @tc.type    User
+       * @tc.level   Level 1
+       */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900');
+            let typy = 'announceForAccessibility';
+            let ttriggerAction = 'click';
+            let textAnnouncedForAccessibility = "test123";
+            let jsonObj = {
+                type : eventType,
+                bundleName : bundleName,
+                triggerAction : triggerAction,
+                textAnnouncedForAccessibility : textAnnouncedForAccessibility
+            }
+
+            let event = new accessibility.EventInfo(jsonObj);
+
+            accessibility.sendAccessibilityEvent(event, (err, data) => {
+                console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900 err : " + JSON.stringify(err));
+                if (err && err.code != 0) {
+                    console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_8900: has error: ${err.code}`);
+                    expect(null).assertFail();
+                } else {
+                    expect(data).assertEqual(undefined);
+                }
+                done();
+            })
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000
+        * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+        *             The result of sendEvent() should be equal to a promise of undefined
+        * @tc.size    SmallTest
+        * @tc.type    User
+        * @tc.level   Level 1
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000');
+            let typy = 'announceForAccessibility';
+            let ttriggerAction = 'click';
+            let textAnnouncedForAccessibility = "test123";
+            let jsonObj = {
+                type : eventType,
+                bundleName : bundleName,
+                triggerAction : triggerAction,
+                textAnnouncedForAccessibility : textAnnouncedForAccessibility
+            }
+
+            let event = new accessibility.EventInfo(jsonObj);
+
+            accessibility.sendAccessibilityEvent(event).then((result) => {
+                console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000 result ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_9000 has error: ${err}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+
     })
 }

@@ -2311,5 +2311,151 @@ describe('AccessibleSendEvent', function () {
       done();
     });
   })
+  /*
+  * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300
+  * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300
+  * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+  *             The result of sendEvent() should be equal to a promise of undefined
+  *             Another test point is to test whether the modified constructor (EventInfo)
+  *             works correctly.
+  * @tc.size    SmallTest
+  * @tc.type    User
+  */
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300 starts`);
+
+    let typy = 'requestFocusForAccessibility';
+    let ttriggerAction = 'click';
+    let elementId = 16;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      elementId : elementId
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+ * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400
+ * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400
+ * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+ *             The result of sendEvent() should be equal to a promise of undefined
+ *             Another test point is to test whether the modified constructor (EventInfo)
+ *             works correctly.
+ * @tc.size    SmallTest
+ * @tc.type    User
+ */
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400 starts`);
+
+    let typy = 'announceForAccessibility';
+    let ttriggerAction = 'click';
+    let textAnnouncedForAccessibility = "test123";
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textAnnouncedForAccessibility : textAnnouncedForAccessibility
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+
+
+  /*
+  * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500
+  * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500
+  * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+  *             The result of sendEvent() should be equal to a Callback of undefined
+  *             Another test point is to test whether the modified constructor (EventInfo)
+  *             works correctly.
+  * @tc.size    SmallTest
+  * @tc.type    User
+  */
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500 starts`);
+
+    let typy = 'requestFocusForAccessibility';
+    let ttriggerAction = 'click';
+    let elementId = 16;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      elementId : elementId
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event, (err, data) => {
+      console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500 err : " + JSON.stringify(err));
+      if (err && err.code != 0) {
+        console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500: has error: ${err.code}`);
+        expect(null).assertFail();
+      } else {
+        expect(data).assertEqual(undefined);
+      }
+      done();
+    })
+
+  })
+
+  /*
+ * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600
+ * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600
+ * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+ *             The result of sendEvent() should be equal to a Callback of undefined
+ *             Another test point is to test whether the modified constructor (EventInfo)
+ *             works correctly.
+ * @tc.size    SmallTest
+ * @tc.type    User
+ */
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600 starts`);
+
+    let typy = 'announceForAccessibility';
+    let ttriggerAction = 'click';
+    let textAnnouncedForAccessibility = "test123";
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textAnnouncedForAccessibility : textAnnouncedForAccessibility
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event, (err, data) => {
+      console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600 err : " + JSON.stringify(err));
+      if (err && err.code != 0) {
+        console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600: has error: ${err.code}`);
+        expect(null).assertFail();
+      } else {
+        expect(data).assertEqual(undefined);
+      }
+      done();
+    });
+  })
 })
 }

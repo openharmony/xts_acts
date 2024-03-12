@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-
+import { BusinessError } from '@ohos.base';
 import accessibility from '@ohos.accessibility'
 const abilityType = 'all';
 const abilityState = 'install';
@@ -536,5 +536,308 @@ export default function AccessibleAbilityList() {
                 done();
             });
         })
+
+        /*
+         * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500
+         * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500
+         * @tc.desc    The parameters input are 'audible' and 'install', test the getAbilityLists() function,
+         *             and the output is the list of AccessibilityAbilityInfo
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500');
+            let abilityType = 'audible';
+            let abilityState = 'install';
+            try {
+                console.info(`AccessibilityExtensionListSync: 1 SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500 result: `);
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: 2 SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('3 SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2500 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception.message));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+
+        /*
+          * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600
+          * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600
+          * @tc.desc    The parameters input are 'generic' and 'install', test the getAbilityLists() function,
+          *             and the output is the list of AccessibilityAbilityInfo
+          * @tc.size    SmallTest
+          * @tc.type    User
+          */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600');
+            try {
+                let abilityType = 'generic';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2600 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700
+       * @tc.desc    The parameters input are 'haptic' and 'install', test the getAbilityLists() function,
+       *             and the output is the list of AccessibilityAbilityInfo
+       * @tc.size    SmallTest
+       * @tc.type    User
+       */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700');
+            try {
+                let abilityType = 'haptic';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2700 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800
+        * @tc.desc    The parameters input are 'spoken' and 'install', test the getAbilityLists() function,
+        *             and the output is the list of AccessibilityAbilityInfo
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800');
+            try {
+                let abilityType = 'spoken';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2800 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900
+       * @tc.desc    The parameters input are 'visual' and 'install', test the getAbilityLists() function,
+       *             and the output is the list of AccessibilityAbilityInfo
+       * @tc.size    SmallTest
+       * @tc.type    User
+       */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900');
+            try {
+                let abilityType = 'visual';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2900 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+      * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000
+      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000
+      * @tc.desc    The parameters input are 'all' and 'install', test the getAbilityLists() function,
+      *             and the output is the list of AccessibilityAbilityInfo
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000');
+            try {
+                let abilityType = 'all';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3000 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100
+       * @tc.desc    The parameters input are '' and 'install', test the getAbilityLists() function,
+       *             and the output is the list of AccessibilityAbilityInfo
+       * @tc.size    SmallTest
+       * @tc.type    User
+       */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100');
+            try {
+                let abilityType = '';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3100 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            }
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200
+        * @tc.desc    The parameters input are null and 'install', test the getAbilityLists() function,
+        *             and the output is the list of AccessibilityAbilityInfo
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200');
+            try {
+                let abilityType = null;
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3200 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            }
+        })
+
+        /*
+         * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300
+         * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300
+         * @tc.desc    The parameters input are all and 'enable', test the getAbilityLists() function,
+         *             and the output is the list of AccessibilityAbilityInfo
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300');
+            try {
+                let abilityState = 'enable';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3300 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+             * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400
+             * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400
+             * @tc.desc    The parameters input are all and 'disable', test the getAbilityLists() function,
+             *             and the output is the list of AccessibilityAbilityInfo
+             * @tc.size    SmallTest
+             * @tc.type    User
+             */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400');
+            try {
+                let abilityState = 'disable';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3400 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+            * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500
+            * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500
+            * @tc.desc    The parameters input are all and 'install', test the getAbilityLists() function,
+            *             and the output is the list of AccessibilityAbilityInfo
+            * @tc.size    SmallTest
+            * @tc.type    User
+            */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500');
+            try {
+                let abilityState = 'install';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3500 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600
+        * @tc.desc    The parameters input are all and '', test the getAbilityLists() function,
+        *             and the output is the list of AccessibilityAbilityInfo
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600');
+            try {
+                let abilityState = '';
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3600 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            }
+        })
+
+        /*
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700
+        * @tc.desc    The parameters input are all and null, test the getAbilityLists() function,
+        *             and the output is the list of AccessibilityAbilityInfo
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700');
+            try {
+                let abilityState = null;
+                let list = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+                console.info(`AccessibilityExtensionListSync: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700 result: ${list}`);
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            } catch (exception) {
+                console.error('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_3700 failed to AccessibilityExtensionListSync because ' + JSON.stringify(exception));
+                expect(Array.isArray(list)).assertEqual(true);
+                done();
+            }
+        })
+
     })
 }
