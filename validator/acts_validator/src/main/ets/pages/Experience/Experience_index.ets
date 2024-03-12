@@ -53,7 +53,6 @@ struct IndexPage {
     {title:'ViewPhoto',uri:'pages/Experience/ViewPhotoTest'},
     {title:'KeyboardDisplay',uri:'pages/Experience/KeyboardDisplayTest'},
     {title:'StartTaskManager',uri:'pages/Experience/StartTaskManager'},
-    {title:'StartBackgroundTask',uri:'pages/Experience/StartBackgroundTask'},
     {title:'StartNotification',uri:'pages/Experience/StartNotification'},
     {title:'ScrollPhotosList',uri:'pages/Experience/ScrollPhotosList'},
     {title:'KeyboardInput',uri:'pages/Experience/KeyboardInputTest'},
