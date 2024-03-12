@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct IndexTwo {
-  @State message: string = 'Other Ability!'
+  @State message: string = 'Other Ability!';
 
   build() {
     Row() {
@@ -27,11 +28,9 @@ struct IndexTwo {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            globalThis.StartAbilityForResult_CallBack()
+            globalThis.StartAbilityForResult_CallBack();
           })
-          .margin({
-            top: 5
-          })
+          .margin({ top: 5 })
       }
       .width('100%')
     }
