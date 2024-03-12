@@ -1,0 +1,67 @@
+@Entry
+@Component
+struct RelativeChain2 {
+  @State RelativeChain: ChainStyle = ChainStyle.SPREAD
+  @State RelativeHeight: number = 100
+
+  build() {
+    Column() {
+      RelativeContainer() {
+        Row().width(100).height(this.RelativeHeight)
+          .backgroundColor("#FF3333")
+          .alignRules({
+            top: {anchor: "__container__", align: VerticalAlign.Top},
+            left: {anchor: "__container__", align: HorizontalAlign.Start},
+            bottom: {anchor: "RelativeChainRow2_2", align: VerticalAlign.Top}
+          })
+          .id("RelativeChainRow2_1")
+          .chainMode(Axis.Vertical, this.RelativeChain)
+
+        Row().width(100).height(this.RelativeHeight)
+          .backgroundColor("#FFCC00")
+          .alignRules({
+            top: {anchor: "RelativeChainRow2_1", align: VerticalAlign.Bottom},
+            left: {anchor: "__container__", align: HorizontalAlign.Start},
+            bottom: {anchor: "RelativeChainRow2_3", align: VerticalAlign.Top}
+          })
+          .id("RelativeChainRow2_2")
+
+        Row().width(100).height(this.RelativeHeight)
+          .backgroundColor("#FF6633")
+          .alignRules({
+            top: {anchor: "RelativeChainRow2_2", align: VerticalAlign.Bottom},
+            left: {anchor: "__container__", align : HorizontalAlign.Start},
+            bottom: {anchor: "__container__", align: VerticalAlign.Bottom}
+          })
+          .id("RelativeChainRow2_3")
+      }
+      .id('RelativeChain2')
+      .width(400).height(400)
+      .margin({left: 50, top: 50})
+      .backgroundColor(Color.Grey)
+
+      Row() {
+        Button('SPREAD_INSIDE')
+          .key('RelativeChain2Bt_1')
+          .onClick(() => {
+            this.RelativeChain = ChainStyle.SPREAD_INSIDE
+          })
+        Button('PACKED')
+          .key('RelativeChain2Bt_2')
+          .onClick(() => {
+            this.RelativeChain = ChainStyle.PACKED
+          })
+      }
+      Row() {
+        Button('改变高度')
+          .key('Relative2Height')
+          .onClick(() => {
+            this.RelativeChain = ChainStyle.SPREAD
+            this.RelativeHeight = 70
+          })
+      }
+
+    }
+    .height('100%')
+  }
+}
