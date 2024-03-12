@@ -13,8 +13,10 @@
 * limitations under the License.
 */
 
-import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStageTest'
+import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStageTest';
+import deviceKvStorePromiseTest from './DeviceKvStorePromiseStageTest';
 
 export default function testsuite() {
-  deviceKvStoreCallbackTest()
+  deviceKvStoreCallbackTest();
+  deviceKvStorePromiseTest()
 }
