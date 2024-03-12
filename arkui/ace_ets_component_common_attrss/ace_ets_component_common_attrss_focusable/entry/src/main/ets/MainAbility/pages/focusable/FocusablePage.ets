@@ -27,16 +27,16 @@ struct FocusablePage {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] //For Scroll
   @State _focusable: boolean = false;
   @State callback: string = '';
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State referenceComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[FocusablePage] page show called ');
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: ESObject) => {
       this._focusable = value;
       this.callback = '';
     })
@@ -45,7 +45,8 @@ struct FocusablePage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .focusable(this._focusable)
     .key(this.componentKey)
     .onFocus(() => {
@@ -244,7 +245,7 @@ struct FocusablePage {
           direction: GridRowDirection.Row
         }) {
           ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue,],
-            (color) => {
+            (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                 Row() {
                   Button('Button')
@@ -317,7 +318,7 @@ struct FocusablePage {
       } else if (this.targetView == 'Scroll') {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width(80)
@@ -329,13 +330,13 @@ struct FocusablePage {
                   .margin({ top: 5 })
                   .focusable(true)
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ right: 15 })
         }.width(200).height(300).commonStyle()
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: number) => {
               Column({ space: 5 }) {
                 Image($r('app.media.icon')).width(64).height(64).focusable(true)
                 Text('Index0' + item).fontSize(25).focusable(true)
@@ -356,9 +357,9 @@ struct FocusablePage {
         .backgroundColor(Color.Blue).width(200).height(300).commonStyle()
       } else if (this.targetView == 'Swiper') {
         Swiper() {
-          ForEach([1, 2, 3], (item: string) => {
+          ForEach([1, 2, 3], (item: number) => {
             Text('Swiper' + item).width('90%').height(160).focusable(true)
-          }, item => item)
+          }, (item: number) => item.toString())
         }
         .indicator(true)
         .backgroundColor(Color.White)
