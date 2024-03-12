@@ -5509,6 +5509,7 @@ export default function audioFramework() {
                 done();
             }
         })
+        
         /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0300
          *@tc.name      : on_DeviceChange - ErrorCode - String-Parameters - 401
