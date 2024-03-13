@@ -232,7 +232,7 @@ describe('JsonTest', function () {
     };
 
     let obj = {1: "John", 2: 30, 3: "New York"};
-    let rst = JSON.stringify(obj, replacer, null);
+    let rst = JSON.stringify(obj, replacer, undefined);
     expect(rst).assertEqual('{"1":"JOHN","2":30,"3":"NEW YORK"}');
   });
 
