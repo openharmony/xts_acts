@@ -56,8 +56,7 @@ Note:If the text contains special characters, please escape them according to th
         <licensefile></licensefile>
         <policylist>
             <policy name="projectPolicy" desc="">
-                <policyitem type="copyright" name="Hunan OpenValley Digital Industry Development Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By OpenValley Digital Co., Ltd."/>
-                <policyitem type="copyright" name="Shenzhen Kaihong Digital" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
+                <policyitem type="copyright" name="Copyright (c) 2022 Shenzhen Kaihong Digital" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
                 <policyitem type="copyright" name="Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
             </policy>
         </policylist>
@@ -70,15 +69,8 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.input" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.ms" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.out" desc="all bin file have check"/>
-                <filteritem type="filename" name="*.abc" desc="all bin file have check"/>
-				<filteritem type="filename" name="*.ogg" desc="all bin file have check"/>
-				<filteritem type="filename" name="*.json" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
-                <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
-                <filteritem type="filepath" name="global/crossplatform/resourcemanageretstest/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
-                <filteritem type="filepath" name="global/global_napi_test/entry/src/main/resources/rawfile/test/aa.xml" desc="resource files do not to be added"/>
-                <filteritem type="filepath" name="global/resmgr_standard/resmgrjs/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
                 <filteritem type="filename" name="*.mp4" desc="mp4 files do not to be added "/>
                 <filteritem type="filename" name="*.mov" desc="mov files do not to be added "/>
                 <filteritem type="filename" name="*.xml" desc="xml files do not to be added "/>
