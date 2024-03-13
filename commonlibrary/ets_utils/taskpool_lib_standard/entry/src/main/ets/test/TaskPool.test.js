@@ -1876,7 +1876,7 @@ describe('ActsAbilityTest', function () {
             taskpool.execute(task1);
             taskpool.cancel(task1);
         } catch(e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         expect(taskpool.Task.isCanceled() == false);
         done();
@@ -1912,7 +1912,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task1);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -1941,7 +1941,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task3);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -1977,7 +1977,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task3);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -2022,7 +2022,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task2);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -2121,7 +2121,7 @@ describe('ActsAbilityTest', function () {
 
             taskpool.cancel(taskGroup);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
         }
         done();
     })
@@ -2161,7 +2161,7 @@ describe('ActsAbilityTest', function () {
           try {
             taskpool.cancel(taskGroup1);
           } catch (e) {
-              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
           }
         }, 3000);
         done();
