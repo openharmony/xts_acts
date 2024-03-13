@@ -44,7 +44,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(JSON.parse(strJson).$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_0100 END ');
           done();
@@ -72,8 +72,8 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Badge_FontWeight_0200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0200 component obj.$attrs.style is: " +
-          JSON.stringify(obj.$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          JSON.stringify(JSON.parse(strJson).$attrs.style));
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("400");
           console.info('ArkUX_Stage_Badge_FontWeight_0200 END ');
           done();
@@ -102,7 +102,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0300 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0300 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("100");
           console.info('ArkUX_Stage_Badge_FontWeight_0300 END ');
           done();
@@ -130,7 +130,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0400 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0400 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("800");
           console.info('ArkUX_Stage_Badge_FontWeight_0400 END ');
           done();
@@ -158,7 +158,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0500 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0500 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("200");
           console.info('ArkUX_Stage_Badge_FontWeight_0500 END ');
           done();
@@ -186,7 +186,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0600 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0600 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("900");
           console.info('ArkUX_Stage_Badge_FontWeight_0600 END ');
           done();
@@ -214,7 +214,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0700 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0700 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Bolder");
           console.info('ArkUX_Stage_Badge_FontWeight_0700 END ');
           done();
@@ -242,7 +242,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0800 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0800 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_0800 END ');
           done();
@@ -270,7 +270,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_0900 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_0900 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_0900 END ');
           done();
@@ -298,7 +298,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1000 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1000 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_1000 END ');
           done();
@@ -326,7 +326,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_1100 END ');
           done();
@@ -354,7 +354,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1200 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_1200 END ');
           done();
@@ -382,7 +382,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1300 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1300 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_1300 END ');
           done();
@@ -410,7 +410,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1400 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1400 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("500");
           console.info('ArkUX_Stage_Badge_FontWeight_1400 END ');
           done();
@@ -438,7 +438,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1500 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1500 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Badge_FontWeight_1500 END ');
           done();
@@ -467,7 +467,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_FontWeight_1600 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_FontWeight_1600 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("600");
           console.info('ArkUX_Stage_Badge_FontWeight_1600 END ');
           done();
@@ -495,7 +495,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FF00FF00");
           console.info('ArkUX_Stage_Badge_BorderColor_0100 END ');
           done();
@@ -523,7 +523,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0200 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FFFD0000");
           console.info('ArkUX_Stage_Badge_BorderColor_0200 END ');
           done();
@@ -551,7 +551,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0300 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0300 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FF8A2BE2");
           console.info('ArkUX_Stage_Badge_BorderColor_0300 END ');
           done();
@@ -579,7 +579,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0400 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0400 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FFFFC0CB");
           console.info('ArkUX_Stage_Badge_BorderColor_0400 END ');
           done();
@@ -607,7 +607,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0500 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0500 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FFFD0000");
           console.info('ArkUX_Stage_Badge_BorderColor_0500 END ');
           done();
@@ -635,8 +635,8 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0600 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0600 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
-          expect(style.borderColor).assertEqual(obj.$attrs.backgroundColor);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
+          expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
           console.info('ArkUX_Stage_Badge_BorderColor_0600 END ');
           done();
         } catch (err) {
@@ -663,7 +663,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0700 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0700 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
           console.info('ArkUX_Stage_Badge_BorderColor_0700 END ');
           done();
@@ -691,7 +691,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0800 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0800 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
           console.info('ArkUX_Stage_Badge_BorderColor_0800 END ');
           done();
@@ -720,7 +720,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_0900 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0900 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FFFFC0CB");
           console.info('ArkUX_Stage_Badge_BorderColor_0900 END ');
           done();
@@ -749,7 +749,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_1000 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_0900 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
           console.info('ArkUX_Stage_Badge_BorderColor_1000 END ');
           done();
@@ -777,7 +777,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_1100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_1100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
           console.info('ArkUX_Stage_Badge_BorderColor_1100 END ');
           done();
@@ -806,7 +806,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderColor_1200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderColor_1200 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderColor).assertEqual("#FF00FF00");
           console.info('ArkUX_Stage_Badge_BorderColor_1200 END ');
           done();
@@ -834,7 +834,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("5.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0100 END ');
           done();
@@ -862,7 +862,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0200 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("5.00px");
           console.info('ArkUX_Stage_Badge_BorderWidth_0200 END ');
           done();
@@ -890,7 +890,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0300 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0300 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("7.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0300 END ');
           done();
@@ -918,7 +918,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0400 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0400 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("0.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0400 END ');
           done();
@@ -946,7 +946,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0500 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0500 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("1.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0500 END ');
           done();
@@ -974,7 +974,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0600 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0600 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("1.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0600 END ');
           done();
@@ -1003,7 +1003,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0700 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0700 component style.borderWidth is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("7.00fp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0700 END ');
           done();
@@ -1032,7 +1032,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0800 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0800 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("1.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0800 END ');
           done();
@@ -1060,7 +1060,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_0900 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_0900 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("0.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_0900 END ');
           done();
@@ -1089,7 +1089,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_1000 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_1000 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("5.00lpx");
           console.info('ArkUX_Stage_Badge_BorderWidth_1000 END ');
           done();
@@ -1117,7 +1117,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_1100 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_1100 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("0.00vp");
           console.info('ArkUX_Stage_Badge_BorderWidth_1100 END ');
           done();
@@ -1145,7 +1145,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_1200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_1200 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("5.00vp");
           expect(style.fontWeight.replace(/[^\d]/g, "")).assertEqual("600");
           expect(style.borderColor).assertEqual("#FFFD0000");
@@ -1175,7 +1175,7 @@ export default function badgeTest() {
           console.info("ArkUX_Stage_Badge_BorderWidth_1300 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Badge_BorderWidth_1300 component obj.$attrs.style is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.style));
-          let style = JSON.parse(obj.$attrs.style);
+          let style: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.style);
           expect(style.borderWidth).assertEqual("1.00vp");
           expect(style.fontWeight).assertEqual("FontWeight.Normal");
           expect(style.borderColor).assertEqual(JSON.parse(strJson).$attrs.backgroundColor);
