@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-@Styles function itemStyle() {
+@Styles
+function itemStyle() {
   .width(336)
   .height(621)
   .margin({ top: 48, left: 12 })
@@ -21,7 +22,8 @@
   .backgroundColor('#FFFFFF')
 }
 
-@Extend(Text) function itemTextStyle() {
+@Extend(Text)
+function itemTextStyle() {
   .fontColor('#182431')
   .fontSize(36)
   .fontWeight(500)
@@ -57,6 +59,7 @@ export struct StepperView {
       }
       .nextLabel('Next')
       .status(this.firstState)
+
       StepperItem() {
         Column() {
           Text('Page Two')
@@ -71,6 +74,7 @@ export struct StepperView {
       .nextLabel('Next')
       .prevLabel('Previous')
       .status(this.secondState)
+
       StepperItem() {
         Column() {
           Text('Page Three')
@@ -83,6 +87,7 @@ export struct StepperView {
         }.itemStyle()
       }
       .status(this.thirdState)
+
       StepperItem() {
         Column() {
           Text('Page Four')
