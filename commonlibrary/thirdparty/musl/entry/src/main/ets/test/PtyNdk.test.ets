@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import pty from 'libptyndk.so'
 
 export default function ptyNdkTest() {
   describe('MuslPtyTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTY_FORKPTY_0100
      * @tc.name       : testMuslTimeForkpty001
      * @tc.desc       : test forkpty
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -36,7 +42,7 @@ export default function ptyNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTY_OPENPTY_0100
      * @tc.name       : testMuslPtyOpenpty001
      * @tc.desc       : openpty
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

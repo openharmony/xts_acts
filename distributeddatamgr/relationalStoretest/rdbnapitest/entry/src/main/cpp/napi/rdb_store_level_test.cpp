@@ -166,7 +166,7 @@ static napi_value SUB_DDM_RDB_LEVEL_0100(napi_env env, napi_callback_info info) 
     storeLevelTestRdbStore_ = OH_Rdb_GetOrOpen(&config1_, &errCode);
     NAPI_ASSERT(env, errCode == 0, "getRdbStore is fail.");
         
-    char createTableSql[] = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
+    char createTableSql[] = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 TEXT, data2 INTEGER, "
                                 "data3 FLOAT, data4 BLOB, data5 TEXT);";
         
     errCode = OH_Rdb_Execute(storeLevelTestRdbStore_, createTableSql);

@@ -34,7 +34,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Download_Progress_0030
      * @tc.name    SUB_Misc_REQUEST_On_Download_Progress_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -94,7 +94,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Download_Progress_0010
      * @tc.name    SUB_Misc_REQUEST_On_Download_Progress_0010
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -152,7 +152,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Progress_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Progress_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -217,7 +217,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Progress_0020
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Progress_0020
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -283,7 +283,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Progress_0010
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Progress_0010
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -344,7 +344,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Download_Completed_0030
      * @tc.name    SUB_Misc_REQUEST_On_Download_Completed_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -405,7 +405,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_Misc_REQUEST_On_Download_Completed_0010
      * @tc.name SUB_Misc_REQUEST_On_Download_Completed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -458,7 +458,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Completed_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Completed_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -523,7 +523,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Completed_0020
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Completed_0020
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -589,7 +589,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_Misc_REQUEST_Off_Download_Completed_0010
      * @tc.name SUB_Misc_REQUEST_Off_Download_Completed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -650,7 +650,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_On_Download_Failed_0030
      * @tc.name    SUB_Misc_REQUEST_On_Download_Failed_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -711,7 +711,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_Misc_REQUEST_On_Download_Failed_0010
      * @tc.name SUB_Misc_REQUEST_On_Download_Failed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -764,7 +764,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Failed_0030
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Failed_0030
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -829,7 +829,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Off_Download_Failed_0020
      * @tc.name    SUB_Misc_REQUEST_Off_Download_Failed_0020
      * @tc.desc      download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -895,7 +895,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_Misc_REQUEST_Off_Download_Failed_0010
      * @tc.name SUB_Misc_REQUEST_Off_Download_Failed_0010
      * @tc.desc  download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -956,7 +956,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0070
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0070
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -975,7 +975,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0070 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0070 onCompletedCallback start');
         let filter ={
           action: request.agent.Action.DOWNLOAD,
         };
@@ -985,7 +985,7 @@ export default function requestDownloadTwoUnitTest() {
           expect(a).assertEqual(true);
           done();
         }).catch((err) => {
-          console.debug('====>SUB_Misc_REQUEST_Search_Promise_0070 search throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0070 search throw_err:' + JSON.stringify(err));
           done();
         });
       };
@@ -995,7 +995,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0070 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0070 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1005,7 +1005,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0080
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0080
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1024,21 +1024,21 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0080 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0080 onCompletedCallback start');
         let filter ={
           mode:request.agent.Mode.FOREGROUND,
         }
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0080 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0080 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             };
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0080 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0080 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1049,7 +1049,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0080 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0080 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1059,7 +1059,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0080
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0080
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1078,7 +1078,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0080 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0080 onCompletedCallback start');
         let filter ={
           action: request.agent.Action.DOWNLOAD,
           mode: request.agent.Mode.FOREGROUND,
@@ -1087,7 +1087,7 @@ export default function requestDownloadTwoUnitTest() {
           expect(data.includes(task.tid)).assertEqual(true);
           done();
         }).catch((err) => {
-          console.debug('====>SUB_Misc_REQUEST_Search_Promise_0080 search throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0080 search throw_err:' + JSON.stringify(err));
           done();
         });
       };
@@ -1097,7 +1097,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0080 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0080 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1107,7 +1107,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0090
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0090
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1126,7 +1126,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onFailedCallback(progress){
         task.off('failed', onFailedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0090 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0090 onCompletedCallback start');
         let filter ={
           mode: request.agent.Mode.FOREGROUND,
           state:request.agent.State.FAILED,
@@ -1134,14 +1134,14 @@ export default function requestDownloadTwoUnitTest() {
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0090 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0090 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             };
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0090 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0090 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1152,7 +1152,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('failed', onFailedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0090 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0090 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1162,7 +1162,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0090
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0090
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1181,7 +1181,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0090 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0090 onCompletedCallback start');
         let filter ={
           action: request.agent.Action.DOWNLOAD,
           mode: request.agent.Mode.FOREGROUND,
@@ -1191,7 +1191,7 @@ export default function requestDownloadTwoUnitTest() {
           expect(data.includes(task.tid)).assertEqual(true);
           done();
         }).catch((err) => {
-          console.debug('====>SUB_Misc_REQUEST_Search_Promise_0090 search throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0090 search throw_err:' + JSON.stringify(err));
           done();
         });
       };
@@ -1201,7 +1201,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0090 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0090 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1211,7 +1211,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Show_Callback_0010
      * @tc.name    SUB_Misc_REQUEST_Show_Callback_0010
      * @tc.desc      show the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1225,16 +1225,17 @@ export default function requestDownloadTwoUnitTest() {
         network: request.agent.Network.WIFI,
         overwrite: true,
         mode:request.agent.Mode.FOREGROUND,
+        priority:0,
       };
       let task:request.agent.Task;
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Show_Callback_0010 onCompletedCallback start');
         request.agent.show(task.tid, (err, taskInfo)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Show_Callback_0010 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             }
@@ -1251,6 +1252,8 @@ export default function requestDownloadTwoUnitTest() {
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.gauge: ' + taskInfo.gauge);
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.mtime: ' + taskInfo.mtime);
             console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.extras: ' + taskInfo.extras);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.priority: ' + taskInfo.priority);
+
             expect(typeof(taskInfo.saveas) === 'string').assertTrue();
             expect(typeof(taskInfo.tid) === 'string').assertTrue();
             expect(taskInfo.description).assertEqual("");
@@ -1259,9 +1262,10 @@ export default function requestDownloadTwoUnitTest() {
             expect(taskInfo.gauge === false).assertTrue();
             expect(typeof(taskInfo.mtime) === 'number').assertTrue();
             expect(typeof(taskInfo.extras) === 'object').assertTrue();
+            expect(typeof(taskInfo.priority) === 'number').assertTrue();
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 show throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Show_Callback_0010 show throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1272,7 +1276,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Show_Callback_0010 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1282,7 +1286,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Show_Promise_0010
      * @tc.name    SUB_Misc_REQUEST_Show_Promise_0010
      * @tc.desc      show the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1301,7 +1305,7 @@ export default function requestDownloadTwoUnitTest() {
 
       async function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Show_Promise_0010 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 onCompletedCallback start');
         try{
           let taskInfo = await request.agent.show(task.tid);
           expect(taskInfo.uid).assertEqual(undefined);
@@ -1324,7 +1328,7 @@ export default function requestDownloadTwoUnitTest() {
           expect(typeof(taskInfo.retry) === 'boolean').assertTrue();
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Show_Promise_0010 show throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 show throw_err:' + JSON.stringify(err));
           done();
         };
       };
@@ -1334,7 +1338,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Show_Promise_0010 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1345,7 +1349,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Show_Callback_0020
      * @tc.name    SUB_Misc_REQUEST_Show_Callback_0020
      * @tc.desc      show the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1364,7 +1368,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Show_Callback_0020 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Show_Callback_0020 onCompletedCallback start');
         try{
           // @ts-ignore
           request.agent.show(true,(err, taskInfo)=>{
@@ -1372,7 +1376,7 @@ export default function requestDownloadTwoUnitTest() {
             done();
           });
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Show_Callback_0020 show throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Show_Callback_0020 show throw_err:' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         };
@@ -1383,7 +1387,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Show_Callback_0020 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Show_Callback_0020 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1394,7 +1398,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Show_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Show_Promise_0020
      * @tc.desc      show the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1413,14 +1417,14 @@ export default function requestDownloadTwoUnitTest() {
 
       async function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Show_Promise_0020 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Show_Promise_0020 onCompletedCallback start');
         try{
           // @ts-ignore
           await request.agent.show(true);
           expect().assertFail();
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Show_Promise_0020 show throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0020 show throw_err:' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         };
@@ -1431,7 +1435,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Show_Promise_0020 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Show_Promise_0020 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1442,7 +1446,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0010
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0010
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1461,19 +1465,19 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0010 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0010 onCompletedCallback start');
         let filter ={ };
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0010 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0010 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             }
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0010 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0010 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1484,7 +1488,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0010 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0010 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1494,7 +1498,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0020
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0020
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1513,7 +1517,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0020 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0020 onCompletedCallback start');
         let filter ={
           bundle:undefined,
           state: undefined,
@@ -1526,7 +1530,7 @@ export default function requestDownloadTwoUnitTest() {
           expect(data.includes(task.tid)).assertEqual(true);
           done();
         }).catch((err) => {
-          console.debug('====>SUB_Misc_REQUEST_Search_Promise_0020 search throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Search_Promise_0020 search throw_err:' + JSON.stringify(err));
           done();
         });
       };
@@ -1536,7 +1540,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0020 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0020 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1546,7 +1550,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0030
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0030
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1565,21 +1569,21 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0030 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0030 onCompletedCallback start');
         let filter ={
           bundle:"com.acts.newRequestAuthority.test",
         }
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0030 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0030 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             };
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0030 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0030 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1590,7 +1594,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0030 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0030 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1600,7 +1604,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0060
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0060
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1619,7 +1623,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0060 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0060 onCompletedCallback start');
         let time = new Date().getTime();
         let filter ={
           after:time-60000,
@@ -1627,14 +1631,14 @@ export default function requestDownloadTwoUnitTest() {
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0060 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0060 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             }
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0060 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0060 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1645,7 +1649,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0060 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0060 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1655,7 +1659,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0060
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0060
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1674,7 +1678,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0060 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0060 onCompletedCallback start');
         let time = new Date().getTime();
         let filter ={
           before:time-4000,
@@ -1682,14 +1686,14 @@ export default function requestDownloadTwoUnitTest() {
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Promise_0060 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Promise_0060 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             }
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Promise_0060 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Promise_0060 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1701,7 +1705,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start()
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0060 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0060 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1711,7 +1715,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0070
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0070
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1730,21 +1734,21 @@ export default function requestDownloadTwoUnitTest() {
 
       function onProgressCallback(progress){
         task.off('progress', onProgressCallback)
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0070 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0070 onCompletedCallback start');
         let filter ={
           state:request.agent.State.RUNNING
         };
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0070 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0070 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             };
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0070 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0070 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1755,7 +1759,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('progress', onProgressCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0070 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0070 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1765,7 +1769,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0100
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0100
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1784,7 +1788,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed', onCompletedCallback);
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0100 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0100 onCompletedCallback start');
         let time = new Date().getTime();
         let filter ={
           action: request.agent.Action.DOWNLOAD,
@@ -1794,14 +1798,14 @@ export default function requestDownloadTwoUnitTest() {
         request.agent.search(filter, (err, data)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Callback_0100 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Callback_0100 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             };
             expect(data.includes(task.tid)).assertEqual(true);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Search_Callback_0100 search throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Search_Callback_0100 search throw_err:' + JSON.stringify(err));
             done();
           };
         });
@@ -1813,7 +1817,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Callback_0100 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Callback_0100 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1823,7 +1827,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Promise_0110
      * @tc.name    SUB_Misc_REQUEST_Search_Promise_0110
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1850,7 +1854,7 @@ export default function requestDownloadTwoUnitTest() {
           request.agent.search(filter, (err, data)=>{
             try{
               if(err){
-                console.debug('====>SUB_Misc_REQUEST_Search_Promise_0110 err:' + JSON.stringify(err));
+                console.info('====>SUB_Misc_REQUEST_Search_Promise_0110 err:' + JSON.stringify(err));
                 expect().assertFail();
                 done();
               }
@@ -1858,14 +1862,14 @@ export default function requestDownloadTwoUnitTest() {
               expect(data.includes(task.tid)).assertEqual(true);
               done();
             }catch(err){
-              console.debug('====>SUB_Misc_REQUEST_Search_Promise_0110 search throw_err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Search_Promise_0110 search throw_err:' + JSON.stringify(err));
               done();
             };
           });
         }
         )
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Search_Promise_0110 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Search_Promise_0110 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       };
@@ -1875,7 +1879,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Search_Callback_0110
      * @tc.name    SUB_Misc_REQUEST_Search_Callback_0110
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1931,7 +1935,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Touch_Callback_0010
      * @tc.name    SUB_Misc_REQUEST_Touch_Callback_0010
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1951,11 +1955,11 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed');
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0010 onCompletedCallback start');
         request.agent.touch(task.tid, config.token,(err, taskInfo)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 err:' + JSON.stringify(err));
+              console.info('====>SUB_Misc_REQUEST_Touch_Callback_0010 err:' + JSON.stringify(err));
               expect().assertFail();
               done();
             }
@@ -1964,7 +1968,7 @@ export default function requestDownloadTwoUnitTest() {
             expect(taskInfo.title).assertEqual(config.title);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 touch throw_err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Touch_Callback_0010 touch throw_err:' + JSON.stringify(err));
             done();
           }
         })
@@ -1975,7 +1979,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0010 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -1986,7 +1990,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Touch_Promise_0010
      * @tc.name    SUB_Misc_REQUEST_Touch_Promise_0010
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2006,13 +2010,13 @@ export default function requestDownloadTwoUnitTest() {
 
       async function onCompletedCallback(progress){
         task.off('completed');
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Touch_Promise_0010 onCompletedCallback start');
         try{
           let taskInfo = await request.agent.touch(task.tid, config.token);
           expect(taskInfo.title).assertEqual(config.title);
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 touch throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Touch_Promise_0010 touch throw_err:' + JSON.stringify(err));
           done();
         }
       }
@@ -2022,7 +2026,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Touch_Promise_0010 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -2033,7 +2037,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Touch_Callback_0020
      * @tc.name    SUB_Misc_REQUEST_Touch_Callback_0020
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2053,7 +2057,7 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed');
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0020 onCompletedCallback start');
         try{
           // @ts-ignore
           request.agent.touch({}, config.token,(err, taskInfo)=>{
@@ -2061,7 +2065,7 @@ export default function requestDownloadTwoUnitTest() {
             done();
           })
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 touch throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Touch_Callback_0020 touch throw_err:' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         }
@@ -2072,7 +2076,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0020 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -2083,7 +2087,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Touch_Promise_0030
      * @tc.name    SUB_Misc_REQUEST_Touch_Promise_0030
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2103,14 +2107,14 @@ export default function requestDownloadTwoUnitTest() {
 
       async function onCompletedCallback(progress){
         task.off('completed');
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Touch_Promise_0030 onCompletedCallback start');
         try{
           // @ts-ignore
           let taskInfo = await request.agent.touch(task.tid, {});
           expect().assertFail();
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 touch throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Touch_Promise_0030 touch throw_err:' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
         }
@@ -2121,7 +2125,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Touch_Promise_0030 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -2132,7 +2136,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number    SUB_Misc_REQUEST_Touch_Callback_0040
      * @tc.name    SUB_Misc_REQUEST_Touch_Callback_0040
      * @tc.desc      search the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2152,15 +2156,15 @@ export default function requestDownloadTwoUnitTest() {
 
       function onCompletedCallback(progress){
         task.off('completed');
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 onCompletedCallback start');
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0040 onCompletedCallback start');
         try{
           request.agent.touch(task.tid, config.token+'1',(err, taskInfo)=>{
-            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch err:' + JSON.stringify(err));
+            console.info('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch err:' + JSON.stringify(err));
             expect(err.code).assertEqual(21900006);
             done();
           })
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch throw_err:' + JSON.stringify(err));
+          console.info('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch throw_err:' + JSON.stringify(err));
           done();
         }
       }
@@ -2170,7 +2174,7 @@ export default function requestDownloadTwoUnitTest() {
         task.on('completed', onCompletedCallback);
         await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 create throw_err:' + JSON.stringify(err));
+        console.info('====>SUB_Misc_REQUEST_Touch_Callback_0040 create throw_err:' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -2180,7 +2184,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Progress_0500
      * @tc.name SUB_REQUEST_On_Download_Progress_0500
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2235,7 +2239,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Progress_0600
      * @tc.name SUB_REQUEST_On_Download_Progress_0600
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2292,7 +2296,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Progress_0500
      * @tc.name SUB_REQUEST_Off_Download_Progress_0500
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2343,7 +2347,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Progress_0600
      * @tc.name SUB_REQUEST_Off_Download_Progress_0600
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2415,7 +2419,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Progress_0700
      * @tc.name SUB_REQUEST_Off_Download_Progress_0700
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2485,7 +2489,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Completed_0500
      * @tc.name SUB_REQUEST_On_Download_Completed_0500
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2539,7 +2543,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Completed_0600
      * @tc.name SUB_REQUEST_On_Download_Completed_0600
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2594,7 +2598,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Completed_0500
      * @tc.name SUB_REQUEST_Off_Download_Completed_0500
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2665,7 +2669,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Completed_0600
      * @tc.name SUB_REQUEST_Off_Download_Completed_0600
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2729,7 +2733,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Resume_0100
      * @tc.name SUB_REQUEST_On_Download_Resume_0100
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2737,7 +2741,7 @@ export default function requestDownloadTwoUnitTest() {
       console.info('====>-----------------------SUB_REQUEST_On_Download_Resume_0100 is starting-----------------------');
       let config = {
         action: request.agent.Action.DOWNLOAD,
-        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/6d6bc5/Feishu-win32_ia32-5.10.6-signed.exe',
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         title: 'createTest',
         description: 'XTS download test!',
         saveas: './SUB_REQUEST_On_Download_Resume_0100.txt',
@@ -2795,7 +2799,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_On_Download_Resume_0200
      * @tc.name SUB_REQUEST_On_Download_Resume_0200
      * @tc.desc download task
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2862,7 +2866,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Resume_0100
      * @tc.name SUB_REQUEST_Off_Download_Resume_0100
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -2945,7 +2949,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Off_Download_Resume_0200
      * @tc.name SUB_REQUEST_Off_Download_Resume_0200
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -3026,7 +3030,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Download_broadcastEvent_0100
      * @tc.name SUB_REQUEST_Download_broadcastEvent_0100
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -3100,7 +3104,7 @@ export default function requestDownloadTwoUnitTest() {
      * @tc.number SUB_REQUEST_Download_broadcastEvent_0200
      * @tc.name SUB_REQUEST_Download_broadcastEvent_0200
      * @tc.desc Starts a upload session.
-     * @tc.size      : MEDIUM
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */

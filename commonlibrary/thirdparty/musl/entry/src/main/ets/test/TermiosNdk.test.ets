@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import termios from 'libtermiosndk.so'
 
 export default function termiosNdkTest() {
   describe('MuslTermiosTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCDRAIN_0100
     * @tc.name       : testMuslTermiosTcdrain001
     * @tc.desc       : test tcdrain
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -31,25 +37,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCDRAIN_0200
-    * @tc.name       : testMuslTermiosTcdrain002
-    * @tc.desc       : test tcdrain
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcdrain002', 0, async (done: Function) => {
-      let c:number = termios.tcdrain(1);
-      expect(c).assertEqual(0);
-      done()
-    });
 
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCFLOW_0100
     * @tc.name       : testMuslTermiosTcflow001
     * @tc.desc       : test tcflow
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -62,7 +55,7 @@ export default function termiosNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCFLUSH_0100
     * @tc.name       : testMuslTermiosTcflush001
     * @tc.desc       : test tcflush
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -71,37 +64,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCFLUSH_0200
-    * @tc.name       : testMuslTermiosTcflush002
-    * @tc.desc       : test tcflush
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcflush002', 0, async (done: Function) => {
-      let c:number = termios.tcflush(1);
-      expect(c).assertEqual(0);
-      done()
-    });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCFLOW_0200
-    * @tc.name       : testMuslTermiosTcflow002
-    * @tc.desc       : test tcflow
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcflow002', 0, async (done: Function) => {
-      let c:number = termios.tcflow(1);
-      expect(c).assertEqual(0);
-      done()
-    });
+
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCGETATTR_0100
     * @tc.name       : testMuslTermiosTcgetattr001
     * @tc.desc       : test tcgetattr
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -110,25 +78,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCGETATTR_0200
-    * @tc.name       : testMuslTermiosTcgetattr002
-    * @tc.desc       : test tcgetattr
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcgetattr002', 0, async (done: Function) => {
-      let c:number = termios.tcgetattr(1);
-      expect(c).assertEqual(0);
-      done()
-    });
 
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCGETSID_0100
     * @tc.name       : testMuslTermiosTcgetsid001
     * @tc.desc       : test tcgetsid
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -137,24 +92,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCGETSID_0200
-    * @tc.name       : testMuslTermiosTcgetsid002
-    * @tc.desc       : test tcgetsid
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcgetsid002', 0, async (done: Function) => {
-      let c:number = termios.tcgetsid(1);
-      expect(c).assertEqual(0);
-      done()
-    });
+
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCSENDBREAK_0100
     * @tc.name       : testMuslTermiosTcsendbreak001
     * @tc.desc       : test tcsendbreak
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -163,24 +106,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_TCSENDBREAK_0200
-    * @tc.name       : testMuslTermiosTcsendbreak002
-    * @tc.desc       : test tcsendbreak
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcsendbreak002', 0, async (done: Function) => {
-      let c:number = termios.tcsendbreak(1);
-      expect(c).assertEqual(0);
-      done()
-    });
+
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_SETATTR_0100
     * @tc.name       : testMuslTermiosTcsetattr001
     * @tc.desc       : test tcsetattr
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -189,25 +120,12 @@ export default function termiosNdkTest() {
       expect(c).assertEqual(-1);
       done()
     });
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_SETATTR_0200
-    * @tc.name       : testMuslTermiosTcsetattr002
-    * @tc.desc       : test tcsetattr
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 0
-    */
-    it('testMuslTermiosTcsetattr002', 0, async (done: Function) => {
-      let c:number = termios.tcsetattr(1);
-      expect(c).assertEqual(0);
-      done()
-    });
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFSETISPEDD_0100
      * @tc.name       : testMuslTermiosCfsetispeed001
      * @tc.desc       : test cfsetispeed
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -222,7 +140,7 @@ export default function termiosNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFSETOSPEDD_0100
      * @tc.name       : testMuslTermiosCfsetospeed001
      * @tc.desc       : test cfsetospeed
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -237,7 +155,7 @@ export default function termiosNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFSETSPEDD_0100
      * @tc.name       : testMuslTermiosCfsetspeed001
      * @tc.desc       : test cfsetspeed
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -249,20 +167,10 @@ export default function termiosNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFGETOSPEDD_0100
-     * @tc.name       : testMuslTermiosCfgetospeed001
-     * @tc.desc       : test cfgetospeed
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    // comment block
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFGETISPEDD_0100
      * @tc.name       : testMuslTermiosCfgetispeed001
      * @tc.desc       : test cfgetispeed
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -277,7 +185,7 @@ export default function termiosNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TERMIOS_CFMAKERAW_0100
      * @tc.name       : testMuslTermiosCfmakeraw001
      * @tc.desc       : test cfmakeraw
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

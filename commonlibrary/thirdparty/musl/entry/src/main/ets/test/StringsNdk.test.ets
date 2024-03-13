@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import strings from 'libstringsndk.so'
 
 export default function stringsNdkTest() {
   describe('MuslStringsTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMP_0100
      * @tc.name       : testMuslStringsStrcasecmp001
      * @tc.desc       : test strcasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +44,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMP_0200
      * @tc.name       : testMuslStringsStrcasecmp002
      * @tc.desc       : test strcasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -54,7 +60,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMP_0300
      * @tc.name       : testMuslStringsStrcasecmp003
      * @tc.desc       : test strcasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -70,7 +76,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMPL_0100
      * @tc.name       : testMuslStringsStrcasecmpL001
      * @tc.desc       : test strcasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -86,7 +92,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMPL_0200
      * @tc.name       : testMuslStringsStrcasecmpL002
      * @tc.desc       : test strcasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -102,7 +108,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRCASECMPL_0300
      * @tc.name       : testMuslStringsStrcasecmpL003
      * @tc.desc       : test strcasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -118,7 +124,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_0100
      * @tc.name       : testMuslStringsStrncasecmp001
      * @tc.desc       : test strncasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -134,7 +140,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_0200
      * @tc.name       : testMuslStringsStrncasecmp002
      * @tc.desc       : test strncasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -150,7 +156,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_0300
      * @tc.name       : testMuslStringsStrncasecmp003
      * @tc.desc       : test strncasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -166,7 +172,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_0400
      * @tc.name       : testMuslStringsStrncasecmp004
      * @tc.desc       : test strncasecmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -182,7 +188,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_L_0100
      * @tc.name       : testMuslStringsStrncasecmpL001
      * @tc.desc       : test strncasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -198,7 +204,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_L_0200
      * @tc.name       : testMuslStringsStrncasecmpL002
      * @tc.desc       : test strncasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -214,7 +220,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_L_0300
      * @tc.name       : testMuslStringsStrncasecmpL003
      * @tc.desc       : test strncasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -230,7 +236,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_L_0400
      * @tc.name       : testMuslStringsStrncasecmpL004
      * @tc.desc       : test strncasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -246,7 +252,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_STRNCASECMP_L_0500
      * @tc.name       : testMuslStringsStrncasecmpL005
      * @tc.desc       : test strncasecmp_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -263,7 +269,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_INDEX_0100
      * @tc.name       : testMuslStringsIndex001
      * @tc.desc       : test index
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -280,7 +286,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_INDEX_0200
      * @tc.name       : testMuslStringsIndex002
      * @tc.desc       : test index
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -297,7 +303,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFS_0100
      * @tc.name       : testMuslStringsFfs001
      * @tc.desc       : test ffs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -312,7 +318,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFSL_0100
      * @tc.name       : testMuslStringsFfsL001
      * @tc.desc       : test ffsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -327,7 +333,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_FFSLL_0100
      * @tc.name       : testMuslStringsFfsLL001
      * @tc.desc       : test ffsll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -342,7 +348,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BCMP_0100
      * @tc.name       : testMuslStringsBcmp001
      * @tc.desc       : test bcmp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -357,7 +363,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BCOPY_0100
      * @tc.name       : testMuslStringsBcopy001
      * @tc.desc       : test bcopy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -371,7 +377,7 @@ export default function stringsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STRINGS_BZERO_0100
      * @tc.name       : testMuslStringsBzero001
      * @tc.desc       : test bzero
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

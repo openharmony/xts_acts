@@ -18,15 +18,15 @@
 #include "napi/native_api.h"
 #include <cerrno>
 #include <clocale>
+#include <csignal>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <js_native_api.h>
 #include <node_api.h>
-#include <signal.h>
 #include <string>
 
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define ONE 1
 #define TWO 2
@@ -43,9 +43,9 @@
 #define PARAM_1 1
 #define PARAM_2 2
 #define PARAM_3 3
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_15 15
@@ -58,11 +58,16 @@
 #define SIZE_10 10
 #define EQ_0 '0'
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define TEST_MODE 0666
 #define SIZE_15 15
 #define SIZE_100 100
 #define STRLEN_10 "0123456789"
+#define PARAM_5 5
+#define PARAM_0x0 0x0
+#define PARAM_4 4
+#define PARAM_50 50
+#define PARAM_CHAR 95
 extern "C" void *__memmove_chk(void *dest, const void *src, size_t len, size_t dst_len);
 extern "C" void *__memset_chk(void *dest, int byte, size_t count, size_t dst_len);
 extern "C" char *__stpncpy_chk(char *dest, const char *src, size_t len, size_t dst_len);
@@ -78,91 +83,100 @@ extern "C" char *__stpcpy_chk(char *dest, const char *src, size_t dst_len);
 
 static napi_value Strerror(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
-    char *error_value;
+    char *errorValue;
     if (valueFirst == PARAM_0) {
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
-            error_value = strerror(errno);
+            errorValue = strerror(errno);
+        } else {
+            fclose(file);
         }
+
     } else if (valueFirst == ONE) {
-        error_value = strerror(FAIL);
+        errorValue = strerror(FAIL);
 
     } else if (valueFirst == TWO) {
         int valueSecond = rand();
-        error_value = strerror(valueSecond);
+        errorValue = strerror(valueSecond);
     }
     napi_value result = nullptr;
-    napi_create_string_utf8(env, error_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, errorValue, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 static napi_value Strerror_l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
-    char *error_value;
+    char *errorValue;
     locale_t locale = newlocale(LC_ALL_MASK, "en_US", nullptr);
     if (valueFirst == PARAM_0) {
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
-            error_value = strerror_l(errno, locale);
+            errorValue = strerror_l(errno, locale);
+        } else {
+            fclose(file);
         }
     } else if (valueFirst == ONE) {
-        error_value = strerror_l(FAIL, locale);
+        errorValue = strerror_l(FAIL, locale);
     } else if (valueFirst == TWO) {
         int valueSecond = rand();
-        error_value = strerror_l(valueSecond, locale);
+        errorValue = strerror_l(valueSecond, locale);
     }
     napi_value result = nullptr;
-    napi_create_string_utf8(env, error_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, errorValue, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 static napi_value Strerror_r(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
     napi_get_value_int32(env, args[0], &valueFirst);
-    int error_value = PARAM_0;
+    int errorValue = PARAM_0;
     if (valueFirst == PARAM_0) {
         char src[MAX_NUMBER] = "error_message";
-        error_value = strerror_r(PARAM_UNNORMAL, src, MAX_NUMBER);
+        errorValue = strerror_r(PARAM_UNNORMAL, src, MAX_NUMBER);
     } else if (valueFirst == ONE) {
         char src[MAX_NUMBER] = "";
-        error_value = strerror_r(PARAM_UNNORMAL, src, MAX_NUMBER);
+        errorValue = strerror_r(PARAM_UNNORMAL, src, MAX_NUMBER);
     } else if (valueFirst == TWO) {
         int valueSecond = rand();
         char src[MAX_NUMBER] = "";
-        error_value = strerror_r(valueSecond, src, MAX_NUMBER);
+        errorValue = strerror_r(valueSecond, src, MAX_NUMBER);
     } else if (valueFirst == THREE) {
         char src[MAX_NUMBER] = "error_message";
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
-            error_value = strerror_r(errno, src, MAX_NUMBER);
+            errorValue = strerror_r(errno, src, MAX_NUMBER);
+        } else {
+            fclose(file);
         }
     } else if (valueFirst == FOURVALUE) {
         char src[MAX_NUMBER] = "error_message";
         FILE *file = fopen("non_existent_file.txt", "r");
         if (file == nullptr) {
-            error_value = strerror_r(errno, src, MIM_NUMBER);
+            errorValue = strerror_r(errno, src, MIM_NUMBER);
+        } else {
+            fclose(file);
         }
     }
     napi_value result = nullptr;
-    napi_create_int32(env, error_value, &result);
+    napi_create_int32(env, errorValue, &result);
     return result;
 }
 
 static napi_value Strdup(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -175,7 +189,7 @@ static napi_value Strdup(napi_env env, napi_callback_info info)
 
 static napi_value Strcat(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -189,7 +203,7 @@ static napi_value Strcat(napi_env env, napi_callback_info info)
 
 static napi_value Strchr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -203,59 +217,59 @@ static napi_value Strchr(napi_env env, napi_callback_info info)
 
 static napi_value Strcmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
-    int sin_value = strcmp(valueFirst, valueSecond);
+    int sinValue = strcmp(valueFirst, valueSecond);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strcoll(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
-    int sin_value = strcoll(valueFirst, valueSecond);
+    int sinValue = strcoll(valueFirst, valueSecond);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strcoll_l(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
     locale_t locale = newlocale(LC_ALL_MASK, "en_US", nullptr);
-    int sin_value = strcoll_l(valueFirst, valueSecond, locale);
+    int sinValue = strcoll_l(valueFirst, valueSecond, locale);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strlen(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
-    int sin_value = strlen(valueFirst);
+    int sinValue = strlen(valueFirst);
     napi_value result = nullptr;
-    napi_create_int32(env, sin_value, &result);
+    napi_create_int32(env, sinValue, &result);
     return result;
 }
 
 static napi_value Strncat(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -268,7 +282,7 @@ static napi_value Strncat(napi_env env, napi_callback_info info)
 }
 static napi_value Strncmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -284,7 +298,7 @@ static napi_value Strncmp(napi_env env, napi_callback_info info)
 
 static napi_value Strncpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -301,7 +315,7 @@ static napi_value Strncpy(napi_env env, napi_callback_info info)
 
 static napi_value Strndup(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -317,7 +331,7 @@ static napi_value Strndup(napi_env env, napi_callback_info info)
 
 static napi_value Strnlen(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -333,7 +347,7 @@ static napi_value Strnlen(napi_env env, napi_callback_info info)
 
 static napi_value Strpbrk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -348,7 +362,7 @@ static napi_value Strpbrk(napi_env env, napi_callback_info info)
 
 static napi_value Strrchr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *param = NapiHelper::GetString(env, args[0]);
@@ -363,7 +377,7 @@ static napi_value Strrchr(napi_env env, napi_callback_info info)
 
 static napi_value Strsep(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -378,7 +392,7 @@ static napi_value Strsep(napi_env env, napi_callback_info info)
 
 static napi_value Strspn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -393,7 +407,7 @@ static napi_value Strspn(napi_env env, napi_callback_info info)
 
 static napi_value Strstr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -408,7 +422,7 @@ static napi_value Strstr(napi_env env, napi_callback_info info)
 
 static napi_value Strtok(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -423,7 +437,7 @@ static napi_value Strtok(napi_env env, napi_callback_info info)
 
 static napi_value StrtokR(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -439,7 +453,7 @@ static napi_value StrtokR(napi_env env, napi_callback_info info)
 
 static napi_value Strxfrm(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -463,7 +477,7 @@ static napi_value Strxfrm(napi_env env, napi_callback_info info)
 }
 static napi_value MemCpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -475,7 +489,7 @@ static napi_value MemCpy(napi_env env, napi_callback_info info)
 }
 static napi_value MemMem(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -492,7 +506,7 @@ static napi_value MemMem(napi_env env, napi_callback_info info)
 }
 static napi_value MemMove(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -504,7 +518,7 @@ static napi_value MemMove(napi_env env, napi_callback_info info)
 }
 static napi_value MemPCpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -517,7 +531,7 @@ static napi_value MemPCpy(napi_env env, napi_callback_info info)
 }
 static napi_value MemPCpy2(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -530,7 +544,7 @@ static napi_value MemPCpy2(napi_env env, napi_callback_info info)
 }
 static napi_value MemPCpy3(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -543,7 +557,7 @@ static napi_value MemPCpy3(napi_env env, napi_callback_info info)
 }
 static napi_value MemPCpy4(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -556,18 +570,17 @@ static napi_value MemPCpy4(napi_env env, napi_callback_info info)
 }
 static napi_value MemrChr(napi_env env, napi_callback_info info)
 {
-
     const char *src = "this is memrchr_0100 test.";
-    char *ret = (char *)memrchr(src, 'r', strlen(src));
+    char *ret = static_cast<char *>(memrchr(src, 'r', strlen(src)));
     napi_value result = nullptr;
-    napi_create_string_utf8(env, (char *)ret, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, static_cast<char *>(ret), NAPI_AUTO_LENGTH, &result);
     return result;
 }
 static napi_value MemrChr2(napi_env env, napi_callback_info info)
 {
     const char *src = "this is memrchr_0100 test.";
     char *ret = nullptr;
-    ret = (char *)memrchr(src, 'w', strlen(src));
+    ret = static_cast<char *>(memrchr(src, 'w', strlen(src)));
     napi_value result = nullptr;
     if (ret == nullptr) {
         napi_create_int32(env, PARAM_0, &result);
@@ -579,8 +592,8 @@ static napi_value MemrChr2(napi_env env, napi_callback_info info)
 static napi_value MemSet(napi_env env, napi_callback_info info)
 {
     char *ret = nullptr;
-    ret = (char *)malloc(sizeof(char) * ONE);
-    ret = (char *)memset(ret, '2', sizeof(char) * ONE);
+    ret = static_cast<char *>(malloc(sizeof(char) * ONE));
+    ret = static_cast<char *>(memset(ret, '2', sizeof(char) * ONE));
     napi_value result = nullptr;
     if (ret != nullptr) {
         napi_create_int32(env, PARAM_0, &result);
@@ -595,7 +608,7 @@ static napi_value MemCcpy(napi_env env, napi_callback_info info)
     char dest[TEST_BUFFER_SIZE] = "";
     void *rev = memccpy(dest, src, ' ', TEST_DATA_LEN);
 
-    memset(dest, 0x0, sizeof(dest));
+    memset(dest, PARAM_0x0, sizeof(dest));
     rev = memccpy(dest, src, ' ', sizeof(src));
     int ret = FAIL;
     napi_value result = nullptr;
@@ -638,14 +651,15 @@ static napi_value MemCmp(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Strlcat(napi_env env, napi_callback_info info) {
-    size_t argc = 1;
+static napi_value Strlcat(napi_env env, napi_callback_info info)
+{
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
     valueFirst[0] = '\0';
     char *valueSecond = NapiHelper::GetString(env, args[0]);
-    int strlcat_value = strlcat(valueFirst, valueSecond, 4);
+    int strlcat_value = strlcat(valueFirst, valueSecond, PARAM_4);
     napi_value result = nullptr;
     napi_create_int32(env, strlcat_value, &result);
     return result;
@@ -653,14 +667,15 @@ static napi_value Strlcat(napi_env env, napi_callback_info info) {
 
 static napi_value Strlcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
     char *valueSecond = NapiHelper::GetString(env, args[0]);
-    int strlcpy_value = strlcpy(valueFirst, valueSecond, strlen(valueSecond));
+    int len = strlen(valueSecond);
+    int strlcpyValue = strlcpy(valueFirst, valueSecond, len);
     napi_value result = nullptr;
-    napi_create_int32(env, strlcpy_value, &result);
+    napi_create_int32(env, strlcpyValue, &result);
     return result;
 }
 
@@ -671,7 +686,7 @@ static napi_value Strchrnul(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
     int valueSecond = napi_get_value_int32(env, args[1], &valueSecond);
-    char *strchrnul_value;
+    char *strchrnulValue;
     int int_value = PARAM_0;
 
     if (valueSecond == ONE) {
@@ -681,9 +696,9 @@ static napi_value Strchrnul(napi_env env, napi_callback_info info)
     } else if (valueSecond == THREE) {
         int_value = 'a';
     }
-    strchrnul_value = strchrnul(valueFirst, int_value);
+    strchrnulValue = strchrnul(valueFirst, int_value);
     napi_value result = nullptr;
-    napi_create_string_utf8(env, strchrnul_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, strchrnulValue, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 
@@ -720,7 +735,7 @@ static napi_value Strsignal(napi_env env, napi_callback_info info)
 
 static napi_value StrxfrmL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 3;
+    size_t argc = PARAM_3;
     napi_value args[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -728,26 +743,26 @@ static napi_value StrxfrmL(napi_env env, napi_callback_info info)
     char *param_char = NapiHelper::GetString(env, args[1]);
     int param_int;
     napi_get_value_int32(env, args[2], &param_int);
-    int result_value;
+    int resultValue;
     if (param == PARAM_0) {
         char value[SIZE_10];
         locale_t locale = nullptr;
-        result_value = strxfrm_l(value, param_char, param_int, locale);
+        resultValue = strxfrm_l(value, param_char, param_int, locale);
     } else {
         char value[SIZE_30];
         locale_t locale = nullptr;
-        result_value = strxfrm_l(value, param_char, param_int, locale);
+        resultValue = strxfrm_l(value, param_char, param_int, locale);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Stpcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
@@ -760,7 +775,7 @@ static napi_value Stpcpy(napi_env env, napi_callback_info info)
 
 static napi_value Stpncpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[SIZE_5] = "abcd";
@@ -774,7 +789,7 @@ static napi_value Stpncpy(napi_env env, napi_callback_info info)
 
 static napi_value Strcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char valueFirst[4];
@@ -787,7 +802,7 @@ static napi_value Strcpy(napi_env env, napi_callback_info info)
 
 static napi_value Strcspn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -817,9 +832,9 @@ static napi_value StpncpyChk(napi_env env, napi_callback_info info)
     char valueFirst[SIZE_5] = "abcd";
     valueFirst[0] = '\0';
     char valueSecond[] = "ef";
-    char *strncpy_value = __stpncpy_chk(valueFirst, valueSecond, strlen(valueSecond), strlen(valueSecond));
+    char *strncpyValue = __stpncpy_chk(valueFirst, valueSecond, strlen(valueSecond), strlen(valueSecond));
     napi_value result = nullptr;
-    napi_create_string_utf8(env, strncpy_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, strncpyValue, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 static napi_value MempcpyChk(napi_env env, napi_callback_info info)
@@ -833,19 +848,19 @@ static napi_value MempcpyChk(napi_env env, napi_callback_info info)
 static napi_value StrlenChk(napi_env env, napi_callback_info info)
 {
     char valueFirst[] = "ABCD";
-    int strlen_chk_value = __strlen_chk(valueFirst, MAX_NUMBER);
+    int strlenChkValue = __strlen_chk(valueFirst, MAX_NUMBER);
     napi_value result = nullptr;
-    napi_create_int32(env, strlen_chk_value, &result);
+    napi_create_int32(env, strlenChkValue, &result);
     return result;
 }
 static napi_value StrncpyChk(napi_env env, napi_callback_info info)
 {
     char valueFirst[SIZE_5] = "abcd";
     valueFirst[0] = '\0';
-    char valueSecond []= "ef";
-    char *strncpy_value = __strncpy_chk(valueFirst, valueSecond, strlen(valueSecond), strlen(valueSecond));
+    char valueSecond[] = "ef";
+    char *strncpyValue = __strncpy_chk(valueFirst, valueSecond, strlen(valueSecond), strlen(valueSecond));
     napi_value result = nullptr;
-    napi_create_string_utf8(env, strncpy_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, strncpyValue, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 
@@ -855,16 +870,16 @@ static napi_value StrncatChk(napi_env env, napi_callback_info info)
     char src[] = "ABCD";
     size_t src_len = strlen(src) + strlen(dst);
     errno = ERRON_0;
-    char *result_value = __strncat_chk(dst, src, src_len, 50);
+    char *resultValue = __strncat_chk(dst, src, src_len, PARAM_50);
     napi_value result = nullptr;
-    napi_create_string_utf8(env, result_value, NAPI_AUTO_LENGTH, &result);
+    napi_create_string_utf8(env, resultValue, NAPI_AUTO_LENGTH, &result);
 
     return result;
 }
 
 static napi_value StrcatChk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     char *valueFirst = NapiHelper::GetString(env, args[0]);
@@ -891,25 +906,26 @@ static napi_value MemcpyChk(napi_env env, napi_callback_info info)
 
 static napi_value MemrchrChk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string valueFirst = NapiHelper::GetString(env, args[0]);
     std::string valueSecond = NapiHelper::GetString(env, args[1]);
-    void *voidResult = __memrchr_chk(valueFirst.data(), *(valueSecond.data()), strlen(valueFirst.data()) ,strlen(valueFirst.data()));
+    void *voidResult =
+        __memrchr_chk(valueFirst.data(), *(valueSecond.data()), strlen(valueFirst.data()), strlen(valueFirst.data()));
     napi_value result = nullptr;
-    char * valueResult = (char *)voidResult;
+    char *valueResult = static_cast<char *>(voidResult);
     napi_create_string_utf8(env, valueResult, NAPI_AUTO_LENGTH, &result);
     return result;
 }
 
 static napi_value StrcpyChk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string valueFirst = NapiHelper::GetString(env, args[0]);
-    char copyTo[strlen(valueFirst.data()) + PARAM_1] ;
+    char copyTo[strlen(valueFirst.data()) + PARAM_1];
     __strcpy_chk(copyTo, valueFirst.data(), strlen(valueFirst.data()) + PARAM_1);
     napi_value result = nullptr;
     napi_create_string_utf8(env, copyTo, NAPI_AUTO_LENGTH, &result);
@@ -918,11 +934,11 @@ static napi_value StrcpyChk(napi_env env, napi_callback_info info)
 
 static napi_value StpcpyChk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string valueFirst = NapiHelper::GetString(env, args[0]);
-    char copyTo[strlen(valueFirst.data())+PARAM_1] ;
+    char copyTo[strlen(valueFirst.data()) + PARAM_1];
     __stpcpy_chk(copyTo, valueFirst.data(), strlen(valueFirst.data()));
     napi_value result = nullptr;
     napi_create_string_utf8(env, copyTo, NAPI_AUTO_LENGTH, &result);
@@ -931,15 +947,61 @@ static napi_value StpcpyChk(napi_env env, napi_callback_info info)
 
 static napi_value StrchrChk(napi_env env, napi_callback_info info)
 {
-    size_t argc = 2;
+    size_t argc = PARAM_2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     std::string valueFirst = NapiHelper::GetString(env, args[0]);
     std::string valueSecond = NapiHelper::GetString(env, args[1]);
-    char tmp =valueSecond[PARAM_0];
-    std::string resultValue = __strchr_chk(valueFirst.data(), tmp, strlen(valueFirst.data())+PARAM_1);
+    char tmp = valueSecond[PARAM_0];
+    std::string resultValue = __strchr_chk(valueFirst.data(), tmp, strlen(valueFirst.data()) + PARAM_1);
     napi_value result = nullptr;
     napi_create_string_utf8(env, resultValue.data(), NAPI_AUTO_LENGTH, &result);
+    return result;
+}
+
+static napi_value Strrchr_Chk(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    int character = PARAM_CHAR;
+    size_t size = PARAM_5;
+    const char *path = "/data/storage/el2/base/files/Fzl.txt";
+    char *checkParam = nullptr;
+    checkParam = __strrchr_chk(path, character, size);
+    if (checkParam != nullptr) {
+        errno = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+
+static napi_value MemChr_chk(napi_env env, napi_callback_info info)
+{
+    errno = ERRON_0;
+    const char *srcstring = "this is a unittest";
+    char fitch = 'u';
+    __memchr_chk(srcstring, fitch, strlen(srcstring), MINUSONE);
+    napi_value result = nullptr;
+    napi_create_int32(env, errno, &result);
+    return result;
+}
+static napi_value Strlcpy_chk(napi_env env, napi_callback_info info)
+{
+    char valueFirst[] = {"stringCopy"};
+    char valueSecond[] = {"string"};
+    int strlcpyValue = __strlcpy_chk(valueFirst, valueSecond, strlen(valueSecond), MINUSONE);
+    napi_value result = nullptr;
+    napi_create_int32(env, strlcpyValue, &result);
+    return result;
+}
+static napi_value Strlcat_chk(napi_env env, napi_callback_info info)
+{
+    char valueFirst[4];
+    valueFirst[0] = '\0';
+    char valueSecond[MAX_NUMBER] = "123456";
+    int strlcat_chk_value = __strlcat_chk(valueFirst, valueSecond, PARAM_3, MINUSONE);
+    napi_value result = nullptr;
+    napi_create_int32(env, strlcat_chk_value, &result);
     return result;
 }
 EXTERN_C_START
@@ -1005,6 +1067,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"strcpyChk", nullptr, StrcpyChk, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"stpcpyChk", nullptr, StpcpyChk, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"strchrChk", nullptr, StrchrChk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"__strrchr_chk", nullptr, Strrchr_Chk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"__memchr_chk", nullptr, MemChr_chk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"__strlcpy_chk", nullptr, Strlcpy_chk, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"__strlcat_chk", nullptr, Strlcat_chk, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

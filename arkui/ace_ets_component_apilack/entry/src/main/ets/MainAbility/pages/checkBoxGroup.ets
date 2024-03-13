@@ -26,7 +26,7 @@ struct CheckBoxGroupSelectAll {
 
   onPageShow() {
     console.info('[CheckBoxGroup] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 60203,
       priority: events_emitter.EventPriority.LOW
     }
@@ -47,7 +47,7 @@ struct CheckBoxGroupSelectAll {
     Log.showInfo(TAG, `aboutToAppear CheckBoxGroupSelectAll start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CheckBoxGroupSelectAll end`)
   }
 
@@ -58,8 +58,8 @@ struct CheckBoxGroupSelectAll {
     });
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("checkBoxGroup-SelectAll")
         .width(100)
@@ -77,11 +77,11 @@ struct CheckBoxGroupSelectAll {
 
       Scroll() {
         Column() {
-          CheckboxGroup({group : 'checkboxGroup'})
+          CheckboxGroup({ group: 'checkboxGroup' })
             .selectedColor(0xed6f21)
             .key('CheckboxGroup')
             .selectAll(this.isSelect)
-            .onChange((itemName:CheckboxGroupResult) => {
+            .onChange((itemName: CheckboxGroupResult) => {
               console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
               this.showToast(itemName.status.valueOf() == 0 ? "selectAll true" : "selectAll false");
             })

@@ -27,6 +27,14 @@
                 "mkdir /data/tests",
                 "mkdir /data/tests/libc-test",
                 "mkdir /data/tests/libc-test/src",
+                "mkdir -p /data/tests/libc-test/src/rpath_lib/rpath_support_A",
+                "mkdir -p /data/tests/libc-test/src/rpath_lib/rpath_support_B",
+                "mkdir -p /data/tests/libc-test/src/rpath_support_C",
+                "mv /data/local/tmp/libc-test-lib/libprimary_absolute.so /data/tests/libc-test/src/rpath_lib",
+                "mv /data/local/tmp/libc-test-lib/libprimary_origin.so /data/tests/libc-test/src/rpath_lib",
+                "mv /data/local/tmp/libc-test-lib/libprimary_multiple.so /data/tests/libc-test/src/rpath_lib",
+                "mv /data/local/tmp/libc-test-lib/libsupport_001.so /data/tests/libc-test/src/rpath_lib/rpath_support_A",
+                "mv /data/local/tmp/libc-test-lib/libsupport_002.so /data/tests/libc-test/src/rpath_support_C",
                 "mv /data/local/tmp/libc-test-lib/libatexit_dlclose_dso.so /data/tests/libc-test/src",
                 "mv /data/local/tmp/libc-test-lib/libldso_cfi_test_lib.so /data/tests/libc-test/src",
                 "param set debug.hitrace.tags.enableflags 1",
@@ -100,7 +108,9 @@
                 "rm -rf /data/local/tmp/libc-test/unittest_ldso_ns_config",
                 "rm -rf /data/local/tmp/libc-test/unittest_ldso_dynlink",
                 "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_right_test",
-                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_left_test"
+                "rm -rf /data/local/tmp/libc-test/gwp_asan_invalid_free_left_test",
+                "rm -rf /data/local/tmp/libc-test/unittest_hilog_vsnprint",
+                "rm -rf /data/local/tmp/libc-test/signal"
             ],
             "cleanup-apps": true
         }

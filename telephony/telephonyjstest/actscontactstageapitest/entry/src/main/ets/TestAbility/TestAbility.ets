@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
 import window from '@ohos.window';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 
 export default class TestAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -42,6 +43,15 @@ export default class TestAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
     windowStage.loadContent('TestAbility/pages/Index', (err, data) => {
+	let permissions = ["ohos.permission.WRITE_CONTACTS", "ohos.permission.READ_CONTACTS"];
+        let atManager = abilityAccessCtrl.createAtManager();
+        atManager.requestPermissionsFromUser(globalThis.context, permissions, (err, result) => {
+          if (err) {
+            console.info('getPermission failed: ' + JSON.stringify(err));
+          } else {
+            console.info('getPermission suc: ' + JSON.stringify(result));
+          }
+        });
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;

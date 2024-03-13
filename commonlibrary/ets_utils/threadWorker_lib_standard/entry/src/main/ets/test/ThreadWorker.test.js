@@ -161,7 +161,7 @@ describe('threadWorkerTest', function () {
             let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js", {type:"other", name:"worker"})
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
-            expect(error.message == "the type must be classic, unsupport others now.").assertTrue()
+            expect(error.message == "The input parameters are invalid, the type must be classic, unsupport others now.").assertTrue()
             done()
         }
     })
@@ -176,7 +176,7 @@ describe('threadWorkerTest', function () {
                                              {type:1, name:"new worker", shared: true})
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
-            expect(error.message == "the type of type must be string.").assertTrue()
+            expect(error.message == "The input parameters are invalid, the type of type must be string.").assertTrue()
             done()
         }
     })
@@ -190,7 +190,7 @@ describe('threadWorkerTest', function () {
             let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js", {type:"classic", name:1, shared: true})
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
-            expect(error.message == "the type of name in worker must be string.").assertTrue()
+            expect(error.message == "The input parameters are invalid, the type of name in worker must be string.").assertTrue()
             done()
         }
     })
@@ -204,7 +204,7 @@ describe('threadWorkerTest', function () {
             let ss = new worker.ThreadWorker()
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
-            expect(error.message == "the number of create worker param must be more than 1 with new").assertTrue()
+            expect(error.message == "The input parameters are invalid, the number of create worker param must be more than 1 with new").assertTrue()
             done()
         }
     })
@@ -477,7 +477,7 @@ describe('threadWorkerTest', function () {
                 await promiseCase();
             }
             expect(error.name).assertEqual("BusinessError");
-            expect(error.message).assertEqual("Worker messageObject must be not null with postMessage");
+            expect(error.message).assertEqual("The input parameters are invalid, Worker messageObject must be not null with postMessage");
         }
         done();
     })
@@ -501,7 +501,7 @@ describe('threadWorkerTest', function () {
                 await promiseCase();
             }
             expect(error.name).assertEqual("BusinessError");
-            expect(error.message).assertEqual("transfer list must be an Array");
+            expect(error.message).assertEqual("The input parameters are invalid, transfer list must be an Array");
         }
         done();
     })
@@ -724,7 +724,7 @@ describe('threadWorkerTest', function () {
             ss.on(1, ()=>{})
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 1st param must be string")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 1st param must be string")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -749,7 +749,7 @@ describe('threadWorkerTest', function () {
             ss.on("zhangSan", "error")
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 2st param must be callable")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 2st param must be callable")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -774,7 +774,7 @@ describe('threadWorkerTest', function () {
             ss.on()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("worker add listener param count must be not less than 2.")
+            expect(error.message).assertEqual("The input parameters are invalid, worker add listener param count must be not less than 2.")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -933,7 +933,7 @@ describe('threadWorkerTest', function () {
             })
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 1st param must be string")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 1st param must be string")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -959,7 +959,7 @@ describe('threadWorkerTest', function () {
             ss.once("zhangsan", "error")
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 2st param must be callable")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 2st param must be callable")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -985,7 +985,7 @@ describe('threadWorkerTest', function () {
             ss.once()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("worker add listener param count must be not less than 2.")
+            expect(error.message).assertEqual("The input parameters are invalid, worker add listener param count must be not less than 2.")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -1143,7 +1143,7 @@ describe('threadWorkerTest', function () {
             })
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 1st param must be string")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 1st param must be string")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -1170,7 +1170,7 @@ describe('threadWorkerTest', function () {
             ss.addEventListener("zhangsan", "error")
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker add listener 2st param must be callable")
+            expect(error.message).assertEqual("The input parameters are invalid, Worker add listener 2st param must be callable")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -1197,7 +1197,7 @@ describe('threadWorkerTest', function () {
             ss.addEventListener()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("worker add listener param count must be not less than 2.")
+            expect(error.message).assertEqual("The input parameters are invalid, worker add listener param count must be not less than 2.")
             ss.onexit = function () {
                 isTerminate = true
             }
@@ -1404,7 +1404,7 @@ describe('threadWorkerTest', function () {
             ss.off()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("the remove listener param must be not less than 1")
+            expect(error.message).assertEqual("The input parameters are invalid, the remove listener param must be not less than 1")
             ss.terminate()
             while (!isTerminate) {
                 await promiseCase()
@@ -1434,7 +1434,7 @@ describe('threadWorkerTest', function () {
             ss.off(1)
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("the type of remove listener 1st param must be string")
+            expect(error.message).assertEqual("The input parameters are invalid, the type of remove listener 1st param must be string")
             ss.terminate()
             while (!isTerminate) {
                 await promiseCase()
@@ -1645,7 +1645,7 @@ describe('threadWorkerTest', function () {
             ss.removeEventListener()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("the remove listener param must be not less than 1")
+            expect(error.message).assertEqual("The input parameters are invalid, the remove listener param must be not less than 1")
             ss.terminate()
             while (!isTerminate) {
                 await promiseCase()
@@ -1675,7 +1675,7 @@ describe('threadWorkerTest', function () {
             ss.removeEventListener(1)
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("the type of remove listener 1st param must be string")
+            expect(error.message).assertEqual("The input parameters are invalid, the type of remove listener 1st param must be string")
             ss.terminate()
             while (!isTerminate) {
                 await promiseCase()
@@ -2461,7 +2461,7 @@ describe('threadWorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual("Worker param count must be more than 1 with new");
+        expect(res).assertEqual("The input parameters are invalid, Worker param count must be more than 1 with new");
         done();
     })
 
@@ -2491,7 +2491,7 @@ describe('threadWorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual("Transfer list must be an Array");
+        expect(res).assertEqual("The input parameters are invalid, Transfer list must be an Array");
         done();
     })
 
@@ -2762,6 +2762,271 @@ describe('threadWorkerTest', function () {
           await promiseCase();
         }
         expect(res).assertEqual(3)
+        done();
+    })
+
+    // Check the RestrictedWorker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0001
+     * @tc.name: restrictedWorker_test_001
+     * @tc.desc: Check the listener of worker is ok.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level : Level 2
+     */
+    it('restrictedWorker_test_001', 0, async function (done) {
+        let ss = new worker.RestrictedWorker("entry/ets/workers/newworker_002.js");
+        let res = 0;
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res += 1;
+            ss.terminate();
+        };
+
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual(1);
+        done();
+    })
+
+    // Check the RestrictedWorker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0002
+     * @tc.name: restrictedWorker_test_002
+     * @tc.desc: Check the listener of worker is ok.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('restrictedWorker_test_002', 0, async function (done) {
+        let ss = new worker.RestrictedWorker("entry/ets/workers/restrictedWorker_001.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        };
+
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("Cannot read property tid of undefined");
+        done();
+    })
+
+    function resolveAfterSeconds() {
+        return new Promise((resolve, reject) => {
+            resolve('resolved');
+        })
+    }
+
+    class TestObj {
+        message = "TestObj"
+        getMessage() {
+          return this.message;
+        }
+        getMessageWithInput(str) {
+          return this.message + str;
+        }
+        executeForThreeSeconds() {
+            let now = Date.now()
+            while (now + 3000 > Date.now()) {
+                let number = 2;
+            }
+            return "done";
+        }
+        async asyncGetMessage() {
+            let res = await resolveAfterSeconds()
+            console.log("asyncGetMessage log: " + res)
+            return res
+        }
+    }
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0003
+     * @tc.name: threadWorker_worker_callObject_test_001
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_001', 0, async function (done) {       
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_031.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data
+            ss.terminate()
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("success")
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0004
+     * @tc.name: threadWorker_worker_callObject_test_002
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_002', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_032.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data
+            ss.terminate()
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("failed")
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0005
+     * @tc.name: threadWorker_worker_callObject_test_003
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_003', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_033.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        let err =
+             "The method to be called is not callable or is an async method or a generator.";
+        expect(res).assertEqual(err);
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0006
+     * @tc.name: threadWorker_worker_callObject_test_004
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_004', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_033.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.unregisterGlobalCallObject("obj1");
+        ss.unregisterGlobalCallObject("obj2");
+        ss.unregisterGlobalCallObject("obj3");
+        ss.postMessage("1");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("The globalCallObject is not registered");
+        done();
+    })
+
+    // Check the CallObject of worker.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_THREADWORKER_0007
+     * @tc.name: threadWorker_worker_callObject_test_005
+     * @tc.desc: Check whether the method call on the object is successful.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('threadWorker_worker_callObject_test_005', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_034.js");
+        let res = "";
+        let isTerminate = false;
+
+        ss.onmessage = function (d) {
+            res = d.data.message;
+            ss.terminate();
+        }
+        ss.onexit = function () {
+            isTerminate = true;
+        }
+
+        let obj = new TestObj();
+        ss.registerGlobalCallObject("obj1", obj);
+        ss.registerGlobalCallObject("obj2", obj);
+        ss.registerGlobalCallObject("obj3", obj);
+        ss.registerGlobalCallObject("obj4", obj);
+        ss.unregisterGlobalCallObject();
+        ss.postMessage("1");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("The globalCallObject is not registered");
         done();
     })
 })

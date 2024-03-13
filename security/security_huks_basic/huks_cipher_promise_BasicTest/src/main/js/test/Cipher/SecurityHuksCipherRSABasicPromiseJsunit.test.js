@@ -231,7 +231,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherRSABasicPromiseJsunit() {
 describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
-  it('security_HUKS_Cipher_API8_RSA_101', 0, async function (done) {
+  it('Security_HUKS_Cipher_API8_RSA_101', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias101';
     const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
     genHuksOptions.properties.splice(3, 1, HuksCipherRSA.HuksKeyRSABLOCKMODEECB);
@@ -265,7 +265,7 @@ describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
     done();
   });
 
-  it('security_HUKS_Cipher_API8_RSA_102', 0, async function (done) {
+  it('Security_HUKS_Cipher_API8_RSA_102', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias102';
     const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias101';
     let HuksOptions = {
@@ -283,7 +283,7 @@ describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
     done();
   });
 
-  it('security_HUKS_Cipher_API8_RSA_103', 0, async function (done) {
+  it('Security_HUKS_Cipher_API8_RSA_103', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256KeyAlias103';
     const newSrcKeyAlies = 'testCipherRSASize4096PADDINGNONESHA256NewKeyAlias103';
     let HuksOptions = {

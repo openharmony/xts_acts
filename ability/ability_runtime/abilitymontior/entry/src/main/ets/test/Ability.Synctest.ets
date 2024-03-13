@@ -18,7 +18,25 @@ import Subscriber from '@ohos.commonEvent'
 var commonEventSubscribeInfo = { events: ["MainAbility5_onWindowStageDestroy"] };
 
 export default function abilityTestSync() {
+
+  let monitor = undefined;
   describe('ActsAbilityMonitorSync', function () {
+
+    function sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    afterEach(async function (done) {
+      console.info("afterEach each called");
+      if (monitor) {
+        console.info("afterEach removeAbilityMonitor monitor");
+        globalThis.abilitydelegator.removeAbilityMonitor(monitor, () => {
+          monitor = undefined;
+        });
+        await sleep(100);
+      }
+      done();
+    });
 
     /**
      * @tc.number: ACTS_AddAbilityMonitorSync_0100
@@ -27,7 +45,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0100', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -37,12 +55,12 @@ export default function abilityTestSync() {
       })
 
       function onAbilityCreate() {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0100--onAbilityCreate====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0100--onAbilityCreate====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--start====>");
-      let monitor = {
+      console.log("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--start====>");
+      monitor = {
         abilityName: 'MainAbility5',
         onAbilityCreate: onAbilityCreate
       }
@@ -50,17 +68,17 @@ export default function abilityTestSync() {
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor);
       } catch (err) {
         expect().assertFail()
-        console.debug("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--fail====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--fail====>" + JSON.stringify(err));
         done()
       }
-      console.debug("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--end====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--end====>");
 
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0100--startAbility success====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0100--startAbility success====>");
       });
     })
 
@@ -72,7 +90,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0200', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -82,32 +100,33 @@ export default function abilityTestSync() {
       })
 
       function onAbilityForeground() {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0200--onAbilityCreate====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0200--onAbilityCreate====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--start====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--start====>");
+      monitor = {
+        abilityName: 'MainAbility5',
+        onAbilityForeground: onAbilityForeground,
+        onWindowStageRestore: (Ability) => {
+          console.info("===>ACTS_AddAbilityMonitorSync_0200 onWindowStageRestore");
+        }
+      }
       try {
-        globalThis.abilitydelegator.addAbilityMonitorSync({
-          abilityName: 'MainAbility5',
-          onAbilityForeground: onAbilityForeground,
-          onWindowStageRestore: (Ability) => {
-            console.info("===>ACTS_AddAbilityMonitorSync_0200 onWindowStageRestore");
-          }
-        })
+        globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
       } catch (err) {
         expect().assertFail()
-        console.debug("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--fail====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--fail====>" + JSON.stringify(err));
         done()
       }
-      console.debug("====>ACTS_AddAbilityMonitorSync_0200--end addAbilityMonitorSync====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0200--end addAbilityMonitorSync====>");
 
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0200--startAbility success====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0200--startAbility success====>");
       })
     })
 
@@ -119,7 +138,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0300', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -129,30 +148,30 @@ export default function abilityTestSync() {
       })
 
       function onAbilityBackgroundPromise() {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0300 onAbilityBackgroundPromise ====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0300 onAbilityBackgroundPromise ====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--start====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--start====>");
+      monitor = {
+        abilityName: 'MainAbility5',
+        onAbilityBackground: onAbilityBackgroundPromise
+      }
       try {
-        globalThis.abilitydelegator.addAbilityMonitorSync(
-          {
-            abilityName: 'MainAbility5',
-            onAbilityBackground: onAbilityBackgroundPromise
-          })
+        globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0300--error addAbilityMonitorSync====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0300--error addAbilityMonitorSync====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
-      console.debug("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--end====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--end====>");
 
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0300--startAbility success====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0300--startAbility success====>");
       })
     })
 
@@ -164,7 +183,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0400', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -174,11 +193,11 @@ export default function abilityTestSync() {
       })
 
       function onAbilityDestroy() {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0400 onAbilityDestroy ====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0400 onAbilityDestroy ====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--start====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--start====>");
       try {
         globalThis.abilitydelegator.addAbilityMonitorSync(
           {
@@ -186,18 +205,17 @@ export default function abilityTestSync() {
             onAbilityDestroy: onAbilityDestroy
           })
       } catch (err) {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--error====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--error====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
-      console.debug("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--end====>");
-
-      globalThis.abilitydelegator.startAbility(
-        {
-          bundleName: 'com.example.abilitymonitortest',
-          abilityName: 'MainAbility5'
-        }).then(async () => {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0400--startAbility success====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--end====>");
+      monitor = {
+        bundleName: 'com.example.abilitymonitortest',
+        abilityName: 'MainAbility5'
+      }
+      globalThis.abilitydelegator.startAbility(monitor).then(async () => {
+        console.log("====>ACTS_AddAbilityMonitorSync_0400--startAbility success====>");
       })
     })
 
@@ -209,7 +227,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0500', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -219,30 +237,30 @@ export default function abilityTestSync() {
       })
 
       function onWindowStageCreate() {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0500 onWindowStageCreate ====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0500 onWindowStageCreate ====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--start====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--start====>");
+      monitor = {
+        abilityName: 'MainAbility5',
+        onWindowStageCreate: onWindowStageCreate
+      }
       try {
-        globalThis.abilitydelegator.addAbilityMonitorSync(
-          {
-            abilityName: 'MainAbility5',
-            onWindowStageCreate: onWindowStageCreate
-          })
+        globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--error====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--error====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
-      console.debug("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--end====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--end====>");
 
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0500--startAbility success====>");
+        console.log("====>ACTS_AddAbilityMonitorSync_0500--startAbility success====>");
       })
     })
 
@@ -254,7 +272,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_AddAbilityMonitorSync_0600', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -264,30 +282,30 @@ export default function abilityTestSync() {
       })
 
       function onWindowStageDestroy() {
-        console.debug("====>ACTS_AddAbilityMonitor_0600 onWindowStageDestroy ====>");
+        console.log("====>ACTS_AddAbilityMonitor_0600 onWindowStageDestroy ====>");
         CallbackFlag = 1;
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--start====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--start====>");
+      monitor = {
+        abilityName: 'MainAbility5',
+        onWindowStageDestroy: onWindowStageDestroy
+      }
       try {
-        globalThis.abilitydelegator.addAbilityMonitorSync(
-          {
-            abilityName: 'MainAbility5',
-            onWindowStageDestroy: onWindowStageDestroy
-          })
+        globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--error====>" + JSON.stringify(err));
+        console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--error====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--end====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--end====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>0600startAbility success====>");
+        console.log("====>0600startAbility success====>");
       })
     })
 
@@ -301,7 +319,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0100', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -312,7 +330,7 @@ export default function abilityTestSync() {
 
       function onAbilityCreate() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 onAbilityCreate ====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 onAbilityCreate ====>");
       }
 
       var monitor = {
@@ -321,23 +339,23 @@ export default function abilityTestSync() {
       }
 
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0100 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 startAbility end====>");
       })
     })
 
@@ -350,7 +368,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0200', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -361,7 +379,7 @@ export default function abilityTestSync() {
 
       function onAbilityForeground() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 onAbilityForeground ====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0200 onAbilityForeground ====>");
       }
 
       var monitor = {
@@ -369,23 +387,23 @@ export default function abilityTestSync() {
         onAbilityForeground: onAbilityForeground
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0200 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0200 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0200 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0200 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0200 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0200 startAbility end====>");
       })
     })
 
@@ -398,7 +416,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0300', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -409,7 +427,7 @@ export default function abilityTestSync() {
 
       function onAbilityBackground() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0300 onAbilityBackground ====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0300 onAbilityBackground ====>");
       }
 
       var monitor = {
@@ -417,23 +435,23 @@ export default function abilityTestSync() {
         onAbilityBackground: onAbilityBackground
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0300 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0300 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0100 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0100 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0300 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0300 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0300 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0300 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0300 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0300 startAbility end====>");
       })
     })
 
@@ -446,7 +464,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitor_0400', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -457,7 +475,7 @@ export default function abilityTestSync() {
 
       function onAbilityDestroy() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitor_0400 onAbilityDestroy ====>");
+        console.log("====>ACTS_RemoveAbilityMonitor_0400 onAbilityDestroy ====>");
       }
 
       var monitor = {
@@ -465,23 +483,23 @@ export default function abilityTestSync() {
         onAbilityDestroy: onAbilityDestroy
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0400 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0400 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0400 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0400 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0400 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0400 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0400 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0400 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0400 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0400 startAbility end====>");
       })
     })
 
@@ -494,7 +512,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0500', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -505,7 +523,7 @@ export default function abilityTestSync() {
 
       function onWindowStageCreate() {
         CallbackFlag = -1
-        console.debug("====>onWindowStageCreate ====>");
+        console.log("====>onWindowStageCreate ====>");
       }
 
       var monitor = {
@@ -513,23 +531,23 @@ export default function abilityTestSync() {
         onWindowStageCreate: onWindowStageCreate
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0500 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0500 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0500 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0500 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0500 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0500 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0500 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0500 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0500 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0500 startAbility end====>");
       })
     })
 
@@ -542,7 +560,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0600', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -553,7 +571,7 @@ export default function abilityTestSync() {
 
       function onWindowStageDestroy() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 onWindowStageDestroy ====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0600 onWindowStageDestroy ====>");
       }
 
       var monitor = {
@@ -561,23 +579,23 @@ export default function abilityTestSync() {
         onWindowStageDestroy: onWindowStageDestroy
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0600 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0600 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0600 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0600 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0600 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0600 startAbility end====>");
       })
     })
 
@@ -591,7 +609,7 @@ export default function abilityTestSync() {
     it('ACTS_RemoveAbilityMonitorSync_0700', 0, async function (done) {
 
       function onAbilityCreate() {
-        console.debug("====>onAbilityCreate====>");
+        console.log("====>onAbilityCreate====>");
       }
 
       try {
@@ -599,11 +617,11 @@ export default function abilityTestSync() {
           abilityName: 'WrongName',
           onAbilityCreate: onAbilityCreate
         })
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0700 success====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0700 success====>");
         expect(true).assertTrue()
         done();
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0700 fail====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0700 fail====>");
         expect().assertFail()
         done();
       }
@@ -618,7 +636,7 @@ export default function abilityTestSync() {
      */
     it('ACTS_RemoveAbilityMonitorSync_0800', 0, async function (done) {
       var CallbackFlag = 0
-      console.debug("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
+      console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
           Subscriber.unsubscribe(sub);
@@ -629,7 +647,7 @@ export default function abilityTestSync() {
 
       function onAbilityCreate() {
         CallbackFlag = -1
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 onAbilityCreate ====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0800 onAbilityCreate ====>");
       }
 
       var monitor = {
@@ -637,23 +655,23 @@ export default function abilityTestSync() {
         onAbilityCreate: onAbilityCreate
       }
       try {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 addAbilityMonitorSync start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0800 addAbilityMonitorSync start====>");
         globalThis.abilitydelegator.addAbilityMonitorSync(monitor)
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 ACTS_RemoveAbilityMonitorSync_0100 start====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0800 ACTS_RemoveAbilityMonitorSync_0100 start====>");
         globalThis.abilitydelegator.removeAbilityMonitorSync(monitor)
       } catch (err) {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 catch error ====>" + JSON.stringify(err));
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0800 catch error ====>" + JSON.stringify(err));
         expect().assertFail()
         done()
       }
 
-      console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 startAbility ====>");
+      console.log("====>ACTS_RemoveAbilityMonitorSync_0800 startAbility ====>");
       globalThis.abilitydelegator.startAbility(
         {
           bundleName: 'com.example.abilitymonitortest',
           abilityName: 'MainAbility5'
         }).then(async () => {
-        console.debug("====>ACTS_RemoveAbilityMonitorSync_0800 startAbility end====>");
+        console.log("====>ACTS_RemoveAbilityMonitorSync_0800 startAbility end====>");
       })
     })
   })

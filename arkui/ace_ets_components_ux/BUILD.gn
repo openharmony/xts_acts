@@ -17,7 +17,6 @@ group("componentUxTest") {
     deps = [
       "ace_ets_component_advancedcounter:ActsAceAdvancedCounterTest",
       "ace_ets_component_badge:ActsAcebadgeTest",
-      "ace_ets_component_breadcrumb:ActsAceBreadcrumbTest",
       "ace_ets_component_button:ActsAceButtonTest",
       "ace_ets_component_calendarpicker:ActsAceCalendarPickerTest",
       "ace_ets_component_checkbox:ActsAceCheckboxTest",
@@ -43,6 +42,7 @@ group("componentUxTest") {
       "ace_ets_component_swiper:ActsAceSwiperTest",
       "ace_ets_component_tabs:ActsAceTabsTest",
       "ace_ets_component_text:ActsAceTextTest",
+      "ace_ets_component_text_test:ActsAceArkUIUXTextTest",
       "ace_ets_component_textarea:ActsAceTextAreaTest",
       "ace_ets_component_textinput:ActsAceTextInputTest",
       "ace_ets_component_textpicker:ActsAceTextPickerTest",

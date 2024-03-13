@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import mman from 'libmmanndk.so'
 
 export default function mmanNdkTest() {
   describe('MuslMmanTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
     * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_REMAPFILEPAGES_0200
     * @tc.name       : testMuslMmanRemapFilePages002
     * @tc.desc       : test remap_file_pages
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 0
     */
@@ -37,7 +43,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_REMAPFILEPAGES_0100
      * @tc.name       : testMuslMmanRemapFilePages001
      * @tc.desc       : test remap_file_pages
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -52,7 +58,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MEMFDCREATE_0100
      * @tc.name       : testMuslMmanmemfdCreate001
      * @tc.desc       : test memfd_create
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -66,7 +72,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MINCORE_0100
      * @tc.name       : testMuslMmanMinCore001
      * @tc.desc       : test mincore
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -76,22 +82,12 @@ export default function mmanNdkTest() {
       expect(data).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MMAP_0100
-     * @tc.name       : testMuslMmanMmap001
-     * @tc.desc       : test mmap
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    //Block comment
 
-    
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MUNMAP_0100
      * @tc.name       : testMuslMmanMunmap001
      * @tc.desc       : test munmap
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -106,7 +102,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MPROTECT_0100
      * @tc.name       : testMuslMmanMProtect001
      * @tc.desc       : test mprotect
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -120,7 +116,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MREMAP_0100
      * @tc.name       : testMuslMmanMreMap001
      * @tc.desc       : test mremap
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -134,7 +130,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MSYNC_0100
      * @tc.name       : testMuslMmanMSync001
      * @tc.desc       : test mremap
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -148,7 +144,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MUNLOCK_0100
      * @tc.name       : testMuslMmanMunlock001
      * @tc.desc       : test munlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -162,7 +158,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MUNLOCKALL_0100
      * @tc.name       : testMuslMmanMunlockAll001
      * @tc.desc       : test munlockall
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -176,7 +172,7 @@ export default function mmanNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MADVISE_0100
      * @tc.name       : testMuslMmanMadvise001
      * @tc.desc       : test madvise
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -190,7 +186,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MLOCK_0100
      * @tc.name     : testMuslMmanMLock001
      * @tc.desc     : test mlock
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -204,7 +200,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MLOCK_0200
      * @tc.name     : testMuslMmanMLock002
      * @tc.desc     : test mlock
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -218,7 +214,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MLOCK2_0100
      * @tc.name     : testMuslMmanMLock2001
      * @tc.desc     : test mlock2
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -232,7 +228,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MLOCK2_0200
      * @tc.name     : testMuslMmanMLock2002
      * @tc.desc     : test mlock2
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -246,7 +242,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MLOCKALL_0100
      * @tc.name     : testMuslMmanMLockAll001
      * @tc.desc     : test mlockall
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -260,7 +256,7 @@ export default function mmanNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MMAN_MMAP64_0100
      * @tc.name     : testMuslMmanMmap64001
      * @tc.desc     : test mmap64
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

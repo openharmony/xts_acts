@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import SetOverlayEnabled from './SetOverlayEnabled.test.ets';
-import GetOverlayModuleInfo from './GetOverlayModuleInfo.test.ets';
-import GetTargetOverlayModuleInfos from './GetTargetOverlayModuleInfos.test.ets';
+import SetOverlayEnabled from './SetOverlayEnabled.test';
+import GetOverlayModuleInfo from './GetOverlayModuleInfo.test';
+import GetTargetOverlayModuleInfos from './GetTargetOverlayModuleInfos.test';
 
 export default function testsuite() {
   SetOverlayEnabled();

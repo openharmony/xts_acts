@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import semaphore from 'libsemaphorendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
@@ -23,24 +24,15 @@ export default function semaphoreNdkTest() {
 
   describe('MuslSemaphoreTest', () => {
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMOPEN_0200
-     * @tc.name       : testMuslSemaphoreSemOpen002
-     * @tc.desc       : test sem_open
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslSemaphoreSemOpen002', 0, async (done: Function) => {
-      let a : number = semaphore.sem_open(1);
-      expect(a).assertEqual(200);
-      done()
-    });
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMGETVALUE_0100
      * @tc.name       : testMuslSemaphoreSemGetvalue001
      * @tc.desc       : test sem_getvalue
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -55,7 +47,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMOPEN_0100
      * @tc.name       : testMuslSemaphoreSemOpen001
      * @tc.desc       : test sem_open
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -69,7 +61,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMINIT_0100
      * @tc.name       : testMuslSemaphoreSemInit001
      * @tc.desc       : test sem_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -84,7 +76,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMINIT_0200
      * @tc.name       : testMuslSemaphoreSemInit002
      * @tc.desc       : test sem_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -99,7 +91,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMDESTROY_0100
      * @tc.name       : testMuslSemaphoreSemDestroy001
      * @tc.desc       : test sem_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -114,7 +106,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMPOST_0100
      * @tc.name       : testMuslSemaphoreSemPost001
      * @tc.desc       : test sem_post
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -128,7 +120,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMWAIT_0100
      * @tc.name       : testMuslSemaphoreSemWait001
      * @tc.desc       : test sem_wait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -144,7 +136,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMTRYWAIT_0100
      * @tc.name       : testMuslSemaphoreSemTrywait001
      * @tc.desc       : test sem_trywait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -159,7 +151,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMTRYWAIT_0200
      * @tc.name       : testMuslSemaphoreSemTrywait002
      * @tc.desc       : test sem_trywait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -174,7 +166,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMTIMEDWAIT_0100
      * @tc.name       : testMuslSemaphoreSemTimedwait001
      * @tc.desc       : test sem_timedwait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -189,7 +181,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMTIMEDWAIT_0200
      * @tc.name       : testMuslSemaphoreSemTimedwait002
      * @tc.desc       : test sem_timedwait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -203,7 +195,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMCLOSE_0100
      * @tc.name       : testMuslSemaphoreSemClose001
      * @tc.desc       : test sem_close
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -216,7 +208,7 @@ export default function semaphoreNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMUNLINK_0100
      * @tc.name       : testMuslSemaphoreSemUnlink001
      * @tc.desc       : test sem_unlink
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

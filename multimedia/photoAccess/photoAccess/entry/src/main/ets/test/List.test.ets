@@ -49,6 +49,20 @@ import getTest from './PhotoAsset/get'
 import getReadOnlyFdTest from './PhotoAsset/getReadOnlyFd'
 import getThumbnailTest from './PhotoAsset/getThumbnail'
 import photoPickerTest from './PhotoAccessHelper/photoPicker'
+import PhotoAccessHelperTest from  './PhotoAccessHelperCases/PhotoAccessHelperTest.test.ets'
+import setAlbumNameChangeRequestTest from './MediaAlbumChangeRequest/setAlbumName'
+import getAlbumChangeRequestTest from './MediaAlbumChangeRequest/getAlbum'
+import addRemoveAssetsChangeRequestTest from './MediaAlbumChangeRequest/addRemoveAssets'
+import createAssetRequestTest from './MediaAssetChangeRequest/createAssetRequest'
+import createImageAssetRequestTest from './MediaAssetChangeRequest/createImageAssetRequest'
+import createVideoAssetRequestTest from './MediaAssetChangeRequest/createVideoAssetRequest'
+import deleteAssetsChangeRequestTest from './MediaAssetChangeRequest/deleteAssets'
+import getAssetChangeRequestTest from './MediaAssetChangeRequest/getAsset'
+import setTitleChangeRequestTest from './MediaAssetChangeRequest/setTitle'
+import addResourceChangeRequestTest from './MediaAssetChangeRequest/addResource'
+import getWriteCacheHandlerTest from './MediaAssetChangeRequest/getWriteCacheHandler'
+import requestImageTest from './MediaAssetManager/requestImage'
+import requestImageDataTest from './MediaAssetManager/requestImageData'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -87,4 +101,18 @@ export default function testsuite () {
   getReadOnlyFdTest()
   getThumbnailTest()
   photoPickerTest()
+  PhotoAccessHelperTest()
+  setAlbumNameChangeRequestTest()
+  getAlbumChangeRequestTest()
+  addRemoveAssetsChangeRequestTest()
+  createAssetRequestTest()
+  createImageAssetRequestTest()
+  createVideoAssetRequestTest()
+  deleteAssetsChangeRequestTest()
+  getAssetChangeRequestTest()
+  setTitleChangeRequestTest()
+  addResourceChangeRequestTest()
+  getWriteCacheHandlerTest()
+  requestImageTest()
+  requestImageDataTest()
 }

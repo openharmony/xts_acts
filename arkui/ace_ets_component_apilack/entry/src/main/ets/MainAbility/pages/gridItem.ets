@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
@@ -27,12 +28,12 @@ struct GridItemOnSelect {
     Log.showInfo(TAG, `aboutToAppear GridItemOnSelect start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear GridItemOnSelect end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("gridItem-OnSelect")
         .width(100)
@@ -60,17 +61,17 @@ struct GridItemOnSelect {
                   .height('100%')
                   .textAlign(TextAlign.Center)
                   .key("onSelected")
-              }.onSelect((isSelect)=>{
+              }.onSelect((isSelect) => {
                 console.info("Select:" + isSelect)
                 //this.showToast("onSelect() " + index)
                 this.isSelect = true;
                 try {
-                  var backData = {
+                  let backData: events_emitter.EventData = {
                     data: {
                       "STATUS": this.isSelect
                     }
                   }
-                  let backEvent = {
+                  let backEvent: events_emitter.InnerEvent = {
                     eventId: 60207,
                     priority: events_emitter.EventPriority.LOW
                   }
@@ -80,8 +81,8 @@ struct GridItemOnSelect {
                   console.info("onSelect emit action state err: " + JSON.stringify(err))
                 }
               })
-            }, day => day)
-          }, day => day)
+            }, (day: string) => day)
+          }, (day: string) => day)
         }
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .rowsTemplate('1fr 1fr 1fr 1fr 1fr')

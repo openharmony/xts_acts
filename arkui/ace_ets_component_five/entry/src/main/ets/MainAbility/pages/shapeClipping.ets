@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,23 +19,21 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ClipAndMaskExample {
   @State isMaskRect: boolean = true;
-  @State isClipCircle:boolean = true;
-  @State maskType: CommonShapeMethod= new Rect({ width: 280, height: 280 });
-  @State clipType: CommonShapeMethod= new Circle({ width: 280, height: 280 });
-
-  private stateChangCallBack = (eventData) => {
+  @State isClipCircle: boolean = true;
+  @State maskType: CircleAttribute = new Rect({ width: 280, height: 280 });
+  @State clipType: CircleAttribute = new Circle({ width: 280, height: 280 });
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("shapeClipping page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.maskValue != null) {
+      if (eventData.data.maskValue != null) {
         this.maskType = new Circle({ width: 280, height: 280 });
       }
     }
   }
-
-  private shapeChangCallBack = (eventData) => {
+  private shapeChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("shapeClipping page shape change called:" + JSON.stringify(eventData));
-      if(eventData.data.clipValue != null) {
+      if (eventData.data.clipValue != null) {
         this.clipType = new Rect({ width: 280, height: 280 });
       }
     }
@@ -44,13 +41,13 @@ struct ClipAndMaskExample {
 
   onPageShow() {
     console.info('shapeClipping page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 32,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var shapeChangeEvent = {
+    let shapeChangeEvent: events_emitter.InnerEvent = {
       eventId: 33,
       priority: events_emitter.EventPriority.LOW
     }

@@ -30,6 +30,7 @@ export default function avRecorderTest() {
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
 
+        const SETONCALLBACK_EVENT = 'setAvRecorderCallback'
         const CREATE_EVENT = 'create';
         const PREPARE_EVENT = 'prepare';
         const STARTRECORDER_EVENT = 'start';
@@ -108,6 +109,37 @@ export default function avRecorderTest() {
                 eventEmitter.emit(steps[0], avRecorder, avConfig, recorderTime, steps, done);
             }
         }
+
+        function setAVRecorderCallback(avRecorder, done) {
+            // 状态机变化回调函数
+            avRecorder.on('stateChange', (state, reason) => {
+                console.info(TAG + 'current state is: ' + state);
+            })
+            // 录制监听回调函数
+            avRecorder.on('audioCapturerChange', (AudioCapturerChangeInfo) => {
+                console.info(TAG + 'audioCapturerChange');
+            });
+            // 错误上报回调函数
+            avRecorder.on('error', async (err) => {
+                try {
+                    console.error(TAG + 'error ocConstantSourceNode, error message is ' + err);
+                    await releaseRecorderPromise(avRecorder, done);
+                } catch (error) {
+                    // 处理错误
+                    console.error(TAG + 'when error on execute releaseRecorderPromise error message is ' + error);
+                }
+            });
+        }
+
+        eventEmitter.on(SETONCALLBACK_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            try{
+                setAVRecorderCallback(avRecorder, done)
+                toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+            }catch(error){
+                console.info('setAVRecorderCallback failed and catch error is ' + error.message);
+            }
+        });
 
         eventEmitter.on(CREATE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
             steps.shift();
@@ -1716,6 +1748,170 @@ export default function avRecorderTest() {
             avConfig.url = fdPath;
             avRecorderTestBase.releaseTimeTestPromise(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_PROMISE_01_0900 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001
+            * @tc.name      : 001.test create->getAVRecorderConfig
+            * @tc.desc      : Recorder audio create->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest39(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_001 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002
+            * @tc.name      : 001.test  prepare->getAVRecorderConfig
+            * @tc.desc      : Recorder audio  prepare->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest40(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_002 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003
+            * @tc.name      : 001.test  start->getAVRecorderConfig
+            * @tc.desc      : Recorder audio  start->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest41(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_003 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004
+            * @tc.name      : 001.test pause->getAVRecorderConfig
+            * @tc.desc      : Recorder audio pause->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest42(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_004 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005
+            * @tc.name      : 001.test resume->getAVRecorderConfig
+            * @tc.desc      : Recorder audio resume->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest43(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_005 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006
+            * @tc.name      : 001.test stop->getAVRecorderConfig
+            * @tc.desc      : Recorder audio stop->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest36(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_006 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007
+            * @tc.name      : 001.test reset->getAVRecorderConfig
+            * @tc.desc      : Recorder audio reset->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+            avRecorderTestBase.avRecorderReliabilitTest45(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_GETAVRECORDERCONFIG_API_007 end')
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001
+            * @tc.name      : 001.test reset->getAVRecorderConfig
+            * @tc.desc      : Recorder audio reset->getAVRecorderConfig
+            * @tc.size      : MediumTest
+            * @tc.type      : Reliabilit test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001 start')
+            let fileName = avRecorderTestBase.resourceName()
+            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            fdPath = "fd://" + fdObject.fdNumber;
+            avConfig.url = fdPath;
+
+            let mySteps = new Array(
+                // create
+                CREATE_EVENT,
+                // prepare
+                PREPARE_EVENT,
+                // start recorder
+                STARTRECORDER_EVENT,
+                // pause recorder
+                PAUSERECORDER_EVENT,
+                // resume recorder
+                RESUMERECORDER_EVENT,
+                // stop recorder
+                STOPRECORDER_EVENT,
+                // release recorder
+                RELEASECORDER_EVENT,
+                // end
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001 end')
         })
     })
 }

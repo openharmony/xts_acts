@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-#include <cerrno>
 #include <cstring>
 #include <fcntl.h>
 #include <js_native_api.h>
@@ -24,24 +23,24 @@
 #include <semaphore.h>
 #include <sys/stat.h>
 
-
 #define ONEHUNDRED 100
 #define TWOHUNDRED 200
 #define THOUSAND 1000
 #define ONE 1
 #define FLAG (0644)
 #define PARAM_0 0
+#define PARAM_1 1
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define VALUE100 100
 #define VALUE200 200
-#define MINUSVALUE1000 -1000
-#define TEST_MODE 0700
+#define MINUSVALUE1000 (-1000)
+#define TEST_MODE 0777
 #define FLAGS (0600)
 
 static napi_value SemGetvalue(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -55,27 +54,41 @@ static napi_value SemGetvalue(napi_env env, napi_callback_info info)
 
 static napi_value SemOpen(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    char name[] = "/testsemopen";
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int first = PARAM_0;
-    napi_get_value_int32(env, args[0], &first);
-    int a = ONEHUNDRED;
-    sem_t *semFirst = sem_open("./test", O_CREAT, FLAG, ONE);
-    if (semFirst == SEM_FAILED || semFirst == nullptr) {
-        a = -THOUSAND;
+    int param;
+    napi_get_value_int32(env, args[0], &param);
+
+    int ret;
+    sem_t *semFirst = sem_open(name, O_CREAT, TEST_MODE, ONE);
+    if (semFirst == nullptr || semFirst == SEM_FAILED) {
+        ret = -THOUSAND;
     } else {
-        a = TWOHUNDRED;
+        ret = TWOHUNDRED;
     }
+    if (param == PARAM_0) {
+        sem_t *semSecond = sem_open(name, O_CREAT | O_EXCL, TEST_MODE, ONE);
+        if (semSecond == nullptr || semSecond == SEM_FAILED) {
+            ret = -THOUSAND;
+        } else {
+            ret = TWOHUNDRED;
+        }
+        sem_close(semSecond);
+    }
+    sem_close(semFirst);
+    sem_unlink(name);
+
     napi_value result = nullptr;
-    napi_create_int32(env, a, &result);
+    napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value SemUnlink(napi_env env, napi_callback_info info)
 {
     char buf[] = "mysemXXXXXX";
-    sem_open(buf, O_CREAT|O_EXCL, FLAGS, PARAM_0);
-    sem_open(buf, 0);
+    sem_open(buf, O_CREAT | O_EXCL, FLAGS, PARAM_0);
+    sem_open(buf, PARAM_0);
     int semval = sem_unlink(buf);
     napi_value result = nullptr;
     napi_create_int32(env, semval, &result);
@@ -83,7 +96,7 @@ static napi_value SemUnlink(napi_env env, napi_callback_info info)
 }
 static napi_value SemInit(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -114,7 +127,7 @@ static napi_value SemDestroy(napi_env env, napi_callback_info info)
 
 static napi_value SemPost(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -133,7 +146,7 @@ static napi_value SemPost(napi_env env, napi_callback_info info)
 
 static napi_value SemWait(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -148,7 +161,7 @@ static napi_value SemWait(napi_env env, napi_callback_info info)
 
 static napi_value SemTrywait(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -163,7 +176,7 @@ static napi_value SemTrywait(napi_env env, napi_callback_info info)
 
 static napi_value SemTimedwait(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int first = PARAM_0;
@@ -179,8 +192,8 @@ static napi_value SemTimedwait(napi_env env, napi_callback_info info)
 static napi_value SemClose(napi_env env, napi_callback_info info)
 {
     char buf[] = "mysemXXXXXX";
-    sem_t *sem = sem_open(buf, O_CREAT|O_EXCL, FLAGS, PARAM_0);
-    sem_open(buf, 0);
+    sem_t *sem = sem_open(buf, O_CREAT | O_EXCL, FLAGS, PARAM_0);
+    sem_open(buf, PARAM_0);
     sem_unlink(buf);
     int semval = sem_close(sem);
     napi_value result = nullptr;

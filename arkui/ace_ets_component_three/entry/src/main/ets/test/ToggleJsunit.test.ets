@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ToggleJsunit() {
-  describe('toggleTest', function () {
-    beforeEach(async function (done) {
+  describe('toggleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("toggle beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/toggle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/toggle',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function ToggleJsunit() {
         console.info("get toggle state pages:" + JSON.stringify(pages));
         if (!("toggle" == pages.name)) {
           console.info("get toggle state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push toggle page result:" + JSON.stringify(result));
         }
@@ -41,54 +40,51 @@ export default function ToggleJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("toggle after each called");
     });
 
-    it('testToggle01', 0, async function (done) {
+    it('testToggle01', 0, async (done: Function) => {
       console.info('[testToggle01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
-      let obj = JSON.parse(strJson);
-      console.info("[testToggle01] obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Toggle');
-      expect(obj.$attrs.selectedColor).assertEqual('#330A59F7');
+      console.info("[testToggle01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Toggle');
+      expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual('#330A59F7');
       console.info('[testToggle01] END');
       done();
     });
 
-    it('testToggle02', 0, async function (done) {
+    it('testToggle02', 0, async (done: Function) => {
       console.info('[testToggle02] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
-      let obj = JSON.parse(strJson);
-      console.info("[testToggle02] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.type).assertEqual('ToggleType.Button');
+      console.info("[testToggle02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('ToggleType.Button');
       console.info('[testToggle02] END');
       done();
     });
 
-    it('testToggle03', 0, async function (done) {
+    it('testToggle03', 0, async (done: Function) => {
       console.info('[testToggle03] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('toggle');
-      let obj = JSON.parse(strJson);
-      console.info("[testToggle03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.isOn).assertEqual('false');
+      console.info("[testToggle03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.isOn).assertEqual('false');
       console.info('[testToggle03] END');
       done();
     });
 
-    it('testToggle04', 0, async function (done) {
+    it('testToggle04', 0, async (done: Function) => {
       console.info('testToggle04 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "isOn": true,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 231,
           priority: events_emitter.EventPriority.LOW
         }
@@ -99,22 +95,21 @@ export default function ToggleJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.isOn).assertEqual('true');
+      console.info("testToggle04 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.isOn).assertEqual('true');
       console.info('testToggle04 END');
       done();
     });
 
-    it('testToggle05', 0, async function (done) {
+    it('testToggle05', 0, async (done: Function) => {
       console.info('testToggle05 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selectedColor": '#330A59F8',
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 232,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,22 +120,21 @@ export default function ToggleJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testToggle05 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.selectedColor).assertEqual('#330A59F8');
+      console.info("testToggle05 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.selectedColor).assertEqual('#330A59F8');
       console.info('testToggle05 END');
       done();
     });
 
-    it('testToggle08', 0, async function (done) {
+    it('testToggle08', 0, async (done: Function) => {
       console.info('testToggle04 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "isOn": 'aaa',
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1035,
           priority: events_emitter.EventPriority.LOW
         }
@@ -151,22 +145,21 @@ export default function ToggleJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.isOn).assertEqual('false');
+      console.info("testToggle04 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.isOn).assertEqual('false');
       console.info('testToggle04 END');
       done();
     });
 
-    it('testToggle09', 0, async function (done) {
+    it('testToggle09', 0, async (done: Function) => {
       console.info('testToggle04 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "isOn": -1,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1036,
           priority: events_emitter.EventPriority.LOW
         }
@@ -177,9 +170,8 @@ export default function ToggleJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('toggle');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.isOn).assertEqual('false');
+      console.info("testToggle04 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.isOn).assertEqual('false');
       console.info('testToggle04 END');
       done();
     });

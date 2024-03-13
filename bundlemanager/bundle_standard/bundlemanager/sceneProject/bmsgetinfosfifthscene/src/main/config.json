@@ -19,7 +19,8 @@
     "mainAbility": "com.example.third5.AMainAbility",
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,

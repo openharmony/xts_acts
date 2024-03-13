@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +16,9 @@
 @Entry
 @Component
 struct PanGestureExample {
-  @State offsetX: number = 0
-  @State offsetY: number = 0
-  @State direction: PanDirection = PanDirection.All
+  @State offsetX: number = 0;
+  @State offsetY: number = 0;
+  @State direction1: PanDirection = PanDirection.All;
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
@@ -28,11 +27,11 @@ struct PanGestureExample {
     .key('panDirection').height(100).width(200).padding(20).border({ width: 1 }).margin(80)
     .translate({ x: this.offsetX, y: this.offsetY, z: 5 })
     .gesture(
-    PanGesture({direction:this.direction})
-      .onActionStart((event: PanGestureEvent) => {
+    PanGesture({direction:this.direction1})
+      .onActionStart((event: GestureEvent) => {
         console.info('Pan start')
       })
-      .onActionUpdate((event: PanGestureEvent) => {
+      .onActionUpdate((event: GestureEvent) => {
         this.offsetX = event.offsetX
         this.offsetY = event.offsetY
       })

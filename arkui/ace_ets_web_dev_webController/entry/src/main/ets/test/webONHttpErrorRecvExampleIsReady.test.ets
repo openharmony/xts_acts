@@ -65,7 +65,7 @@ export default function webONHttpErrorRecvExampleIsReady() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_WEBERRORRECV_API_0300
+     *tc.number SUB_ACE_BASIC_ETS_WEBERRORRECV_API_0400
      *tc.name testOnHttpErrorRecvExampleIsReadyFalseWebc
      *tc.desc test interface of onHttpErrorReceive with parameter used by example but setResponseIsReady false
      */

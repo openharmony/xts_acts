@@ -23,16 +23,15 @@ struct Index {
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
   @State text: string = ''
+  @State input: number = 40
   controller: TextAreaController = new TextAreaController()
   inputCounterOptions: InputCounterOptions = {
     thresholdPercentage: 50
@@ -48,7 +47,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(true, this.inputCounterOptions)
+        .showCounter(true, { thresholdPercentage: this.input, highlightBorder: true })
         .maxLength(5)
 
       TextArea({
@@ -59,7 +58,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(false, this.inputCounterOptions)
+        .showCounter(false, { thresholdPercentage: this.input, highlightBorder: false })
         .maxLength(5)
 
       TextArea({
@@ -70,7 +69,7 @@ struct Index {
         .placeholderFont({ size: 16, weight: 400 })
         .width(336)
         .height(56)
-        .showCounter(true, this.inputCounterOptions)
+        .showCounter(true, { thresholdPercentage: this.input, highlightBorder: false })
         .maxLength(5)
 
       TextArea({

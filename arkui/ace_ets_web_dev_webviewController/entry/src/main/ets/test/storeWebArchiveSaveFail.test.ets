@@ -66,7 +66,7 @@ export default function storeWebArchiveSaveFail() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_007
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVESAVEFAIL_API_007
      *tc.name testStoreWebArchiveCallback
      *tc.desic test storeWebArchiveCallback interface when save file failed.
      */
@@ -77,7 +77,7 @@ export default function storeWebArchiveSaveFail() {
     })
 
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_008
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVESAVEFAIL_API_008
      *tc.name testStoreWebArchivePromise
      *tc.desic test storeWebArchivePromise interface when save file failed.
      */

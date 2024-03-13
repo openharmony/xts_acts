@@ -7,13 +7,15 @@
         "mainElement": "ohos.acts.bundle.stage.test.MainAbility",
         "deviceTypes": [
             "default",
-            "tablet"
+            "tablet",
+            "2in1"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
         "fileContextMenu" : "$profile:main_pages",
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
+        "routerMap": "$profile:router_map",
         "abilities": [
             {
                 "name": "ohos.acts.bundle.stage.test.MainAbility",
@@ -408,6 +410,17 @@
                 "name": "adsService",
                 "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "type": "adsService",
+                "visible": true
+            },
+            {
+                "description": "$string:form_description",
+                "descriptionId": 16777219,
+                "icon": "$media:icon",
+                "iconId": 16777225,
+                "label": "$string:entry_label",
+                "name": "embeddedUI",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "type": "embeddedUI",
                 "visible": true
             }
         ],

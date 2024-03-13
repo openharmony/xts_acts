@@ -5,6 +5,7 @@
         "test-timeout": "300000",
         "bundle-name": "ohos.faultloggerjs.test",
         "package-name": "ohos.faultloggerjs.test",
+        "testcase-timeout": "30000",
         "shell-timeout": "300000"
     },
     "kits": [

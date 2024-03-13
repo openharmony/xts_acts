@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import iconv from 'libiconvndk.so'
 
 export default function muslIconvNdkTest() {
   describe('MuslIconvTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_0100
      * @tc.name     : testMuslIconvIconv001
      * @tc.desc     : test iconv
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -37,7 +42,7 @@ export default function muslIconvNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_OPEN_0100
      * @tc.name     : testMuslIconvIconvOpen001
      * @tc.desc     : test iconv_open
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -51,7 +56,7 @@ export default function muslIconvNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_CLOSE_0100
      * @tc.name     : testMuslIconvIconvClose001
      * @tc.desc     : test iconv_close
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

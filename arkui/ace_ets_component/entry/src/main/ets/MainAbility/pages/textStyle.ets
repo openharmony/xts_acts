@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct TextStyle {
   @State fontColor: Color = Color.Red;
-  @State fontSize: number= 20;
+  @State fontSize: number = 20;
   @State fontStyle: FontStyle = FontStyle.Italic;
   @State fontWeight: number = 700;
   @State fontFamily: string = 'sans-serif';
@@ -68,38 +67,40 @@ struct TextStyle {
         .fontStyle(FontStyle.Normal)
         .fontWeight(400)
         .fontFamily('source-sans-pro,cursive,sans-serif')
-    }.width('100%').margin({ top: 20 })
+    }
+    .width('100%')
+    .margin({ top: 20 })
   }
 
   onPageShow() {
-    let fontColorChangeEvent = {
+    let fontColorChangeEvent: events_emitter.InnerEvent = {
       eventId: 37,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(fontColorChangeEvent, this.textStyleChangCallBack);
-    let fontSizeChangeEvent = {
+    let fontSizeChangeEvent: events_emitter.InnerEvent = {
       eventId: 38,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(fontSizeChangeEvent, this.textStyleChangCallBack);
-    let fontStyleChangeEvent = {
+    let fontStyleChangeEvent: events_emitter.InnerEvent = {
       eventId: 39,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(fontStyleChangeEvent, this.textStyleChangCallBack);
-    let fontWeightChangeEvent = {
+    let fontWeightChangeEvent: events_emitter.InnerEvent = {
       eventId: 40,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(fontWeightChangeEvent, this.textStyleChangCallBack);
-    let fontFamilyChangeEvent = {
+    let fontFamilyChangeEvent: events_emitter.InnerEvent = {
       eventId: 41,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(fontFamilyChangeEvent, this.textStyleChangCallBack);
   }
 
-  textStyleChangCallBack = (eventData) => {
+  textStyleChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("textStyle page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {
       if (eventData.data.fontColor) {

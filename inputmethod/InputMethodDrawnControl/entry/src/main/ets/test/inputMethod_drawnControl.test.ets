@@ -18,49 +18,108 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-
+import deviceinfo from '@ohos.deviceInfo';
+import {Driver, ON, MatchPattern, Component, UiWindow } from '@ohos.UiTest'
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodDrawnControlJSUnit() {
   describe('inputMethodDrawnControlTest', function () {
-    var inputSever = {
-      packageName: '',
-      methodId: '',
-      name: '',
-      id: '',
-      extra: {}
-    }
+    let driver = Driver.create();
+    let textArea: Component;
+    let rectInfo;
+    beforeAll(async (done)=>{
+      console.info('====>beforeAll inputMethod_enable start!')
+      try{
+        if(deviceinfo.deviceType != 'default'){
+          let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+          let cmd = 'aa start -a com.huawei.hmos.settings.MainAbility -b com.huawei.hmos.settings';
+          abilityDelegator.executeShellCommand(cmd);
+          await sleep(2000)
+          console.info(`====>inputMethod_enable deviceinfo.deviceType: ${deviceinfo.deviceType}`);
+          let settingList = await driver.waitForComponent(ON.type('List').isBefore(ON.text('蓝牙')), 3000);
+          console.info(`====>inputMethod_enable settingList: ${settingList}`);
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1');
+            let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
+            console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
+            await systemAndUpdate.click();
+          }else{
+            console.info('====> other');
+            await driver.swipe(600, 2500, 600, 1000, 15000);
+            let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
+            console.info(`====>inputMethod_enable common_text: ${common_text}`);
+            await common_text.click();
+          }
+          await driver.delayMs(500);
+          let inputMethod_Setting: Component = await driver.waitForComponent(ON.text('输入法', MatchPattern.CONTAINS), 3000);
+          console.info(`====>inputMethod_enable inputMethod_Setting: ${inputMethod_Setting}`);
+          await inputMethod_Setting.click();
+          await driver.delayMs(500);
+          let checkList: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
+          console.info(`====>inputMethod_enable checkList: ${checkList}`);
+          for(let index=0; index<checkList.length; index++){
+            let checkStatus = await checkList[index].isChecked();
+            console.info(`====>inputMethod_enable checkStatus: ${checkStatus}`);
+            if(JSON.stringify(checkStatus) === 'false'){
+              await checkList[index].click();
+              await driver.delayMs(500);
+            }
+          }
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1 start close settings window');
+            let window: UiWindow = await driver.findWindow({bundleName: "com.huawei.hmos.settings"});
+            console.info(`====>inputMethod_enable window: ${window}`);
+            await window.close();
+          }else{
+            console.info('====> other start close settings window and start test window');
+            abilityDelegator.executeShellCommand("aa force-stop com.huawei.hmos.settings");
+            abilityDelegator.executeShellCommand("aa start -d 0 -a com.acts.inputmethoddrawncontrol.test.MainAbility -b com.acts.inputmethoddrawncontrol.test");
+          }
+          await driver.delayMs(5000);
+        }
 
-    /**
-     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
-     */
-    beforeAll(async (done) => {
-      let inputM = inputMethod.getCurrentInputMethod();
-      console.info("====>beforeAll: getCurrentInputMethod inputMethodEngineJSUnit to: " + JSON.stringify(inputM));
-      inputSever.packageName = inputM.packageName;
-      inputSever.methodId = inputM.methodId;
-      inputSever.name = inputM.packageName;
-      inputSever.id = inputM.methodId;
-
-      let inputDemoService: subtype = {
-        id: "inputMethodWindService",
-        label: "",
-        name: "com.acts.inputmethoddrawncontrol.test",
-        mode: "lower",
-        locale: "",
-        language: "",
-        icon: "",
-        iconId: 0,
-        extra: {}
-      }
-      try {
-        console.info("====>beforeAll: inputMethodEngineJSUnit switchCurrentInputMethodSubtype success" + JSON.stringify(inputDemoService));
-        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
-        setTimeout(() => {
-          console.info("====>beforeAll: inputMethodEngineJSUnit switchCurrentInputMethodSubtype success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>beforeAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
+        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+        let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+        console.info('====>beforeAll inputMethodSwitch showOptionalInputMethods result: ' + JSON.stringify(result));
+        let inputMethodList = await driver.waitForComponent(ON.type('List'), 3000);
+        console.info('====>beforeAll inputMethodSwitch inputMethodList: ' + JSON.stringify(inputMethodList));
+        if (JSON.stringify(inputMethodList) === 'null') {
+          await driver.delayMs(200);
+          inputMethodList = await driver.findComponent(ON.type('List'));
+          console.info('====>beforeAll inputMethodSwitch inputMethodList second: ' + JSON.stringify(inputMethodList));
+        }
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('drawn', MatchPattern.CONTAINS), 2000);
+          await inputMethod_name.click();
+          await driver.delayMs(500);
+        }else{
+          let inputMethod_name: Component = await inputMethodList.scrollSearch(ON.text('drawn', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch inputMethod_name: ' + JSON.stringify(inputMethod_name));
+          if (JSON.stringify(inputMethod_name) === 'null') {
+            await driver.delayMs(200);
+            inputMethod_name = await inputMethodList.scrollSearch(ON.text('drawn', MatchPattern.CONTAINS));
+            console.info('====>beforeAll inputMethodSwitch inputMethod_name second: ' + JSON.stringify(inputMethod_name));
+          }
+          await inputMethod_name.click();
+        }
+        console.info('====>beforeAll inputMethodSwitch done');
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodengine.test"});
+          console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
+          await testWindow.focus();
+          await driver.delayMs(1000);
+        }
+        textArea = await driver.findComponent(ON.type('TextArea'));
+        rectInfo = await textArea.getBounds();
+        await driver.delayMs(1000);
+        await runCmd();
+        await driver.delayMs(1000);
+        done();
+      }catch(err){
+        console.info('====>beforeAll throw err:' + JSON.stringify(err.message))
+        done();
       }
     })
 
@@ -68,26 +127,17 @@ export default function inputMethodDrawnControlJSUnit() {
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputSever);
-        setTimeout(() => {
-          console.info("====>afterAll: inputMethodEngineJSUnit switchInputMethod success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>afterAll: inputMethodEngineJSUnit fail" + JSON.stringify(err));
-      }
+      done();
     });
 
-    afterEach(
-      async function (){
-        try{
-          let data = await inputMethod.getController().detach();
-          console.info(`attach inputMethod success, data: ${JSON.stringify(data)}`);
-        }catch(error){
-          console.info(`attach inputMethod fail, error: [${error.code}, ${error.message}]`);
-        };
-      }
+    afterEach(async function (){
+      try{
+        let data = await inputMethod.getController().detach();
+        console.info(`attach inputMethod success, data: ${JSON.stringify(data)}`);
+      }catch(error){
+        console.info(`attach inputMethod fail, error: [${error.code}, ${error.message}]`);
+      };
+    }
     );
 
     let sleep = function (timeout) {
@@ -99,6 +149,21 @@ export default function inputMethodDrawnControlJSUnit() {
       });
     };
 
+    async function runCmd(){
+      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
+      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
+      await driver.click(cursor_x, cursor_y)
+    }
+
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onHandleExtendAction_0010
+    * @tc.name   SUB_Misc_inputMethod_onHandleExtendAction_0010
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onHandleExtendAction_0010',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -108,6 +173,8 @@ export default function inputMethodDrawnControlJSUnit() {
           console.info("====>SUB_Misc_inputMethod_onHandleExtendAction_0010 publishCallback failed:" + JSON.stringify(err));
         } else {
             try {
+              let data = await inputMethod.getController().detach();
+              console.info(`====>SUB_Misc_inputMethod_onHandleExtendAction_0010 data: ${JSON.stringify(data)}`);
               await inputMethod.getController().attach(true, ATTRIBUTE);
               console.info("====>SUB_Misc_inputMethod_onHandleExtendAction_0010 onHandleExtendAction start");
               inputMethod.getController().on("handleExtendAction",async (action) => {
@@ -129,6 +196,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offHandleExtendAction_0020
+    * @tc.name   SUB_Misc_inputMethod_offHandleExtendAction_0020
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offHandleExtendAction_0020',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -174,6 +249,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onSendFunctionKey_0030
+    * @tc.name   SUB_Misc_inputMethod_onSendFunctionKey_0030
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onSendFunctionKey_0030',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -204,6 +287,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offSendFunctionKey_0040
+    * @tc.name   SUB_Misc_inputMethod_offSendFunctionKey_0040
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offSendFunctionKey_0040',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -249,6 +340,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050
+    * @tc.name   SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 unSubscriberCallback start");
@@ -312,6 +411,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetLeftTextOfCursor_0060
+    * @tc.name   SUB_Misc_InputMethod_onGetLeftTextOfCursor_0060
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetLeftTextOfCursor_0060', 0, async function (done) {
       try {
         inputMethod.getController().on('getLeftTextOfCursor', (length) => {
@@ -326,6 +433,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070
+    * @tc.name   SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 unSubscriberCallback start");
@@ -391,6 +506,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetRightTextOfCursor_0080
+    * @tc.name   SUB_Misc_InputMethod_onGetRightTextOfCursor_0080
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0080', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 unSubscriberCallback start");
@@ -454,6 +577,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetRightTextOfCursor_0090
+    * @tc.name   SUB_Misc_InputMethod_onGetRightTextOfCursor_0090
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetRightTextOfCursor_0090', 0, async function (done) {
       try {
         inputMethod.getController().on('getRightTextOfCursor', (length) => {
@@ -468,6 +599,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_offGetRightTextOfCursor_0100
+    * @tc.name   SUB_Misc_InputMethod_offGetRightTextOfCursor_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_offGetRightTextOfCursor_0100', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 unSubscriberCallback start");
@@ -533,6 +672,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110
+    * @tc.name   SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 unSubscriberCallback start");
@@ -595,6 +742,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_onGetTextIndexAtCursor_0120
+    * @tc.name   SUB_Misc_InputMethod_onGetTextIndexAtCursor_0120
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_onGetTextIndexAtCursor_0120', 0, async function (done) {
       try {
         inputMethod.getController().on('getTextIndexAtCursor', () => {
@@ -609,6 +764,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130
+    * @tc.name   SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130', 0, async function (done) {
       function unSubscriberCallback (err){
         console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 unSubscriberCallback start");
@@ -673,6 +836,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onEditorAttributeChanged_0140
+    * @tc.name   SUB_Misc_inputMethod_onEditorAttributeChanged_0140
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onEditorAttributeChanged_0140',0, async function (done) {
       let inputAttribute = {textInputType:0,enterKeyType:3}
       let inputAttribute1 = {textInputType:0,enterKeyType:0}
@@ -746,6 +917,14 @@ export default function inputMethodDrawnControlJSUnit() {
 
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onEditorAttributeChanged_0150
+    * @tc.name   SUB_Misc_inputMethod_onEditorAttributeChanged_0150
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onEditorAttributeChanged_0150',0, async function (done) {
       let inputAttribute = {textInputType:0,enterKeyType:0}
       try {
@@ -759,6 +938,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offEditorAttributeChanged_0160
+    * @tc.name   SUB_Misc_inputMethod_offEditorAttributeChanged_0160
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offEditorAttributeChanged_0160',0, async function (done) {
       let inputAttribute = {textInputType:0,enterKeyType:0}
       let selection = {start: 2, end: 1000}
@@ -828,6 +1015,14 @@ export default function inputMethodDrawnControlJSUnit() {
       })
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onInsertText_0170
+    * @tc.name   SUB_Misc_inputMethod_onInsertText_0170
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onInsertText_0170', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -864,6 +1059,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offInsertText_0180
+    * @tc.name   SUB_Misc_inputMethod_offInsertText_0180
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offInsertText_0180', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -910,6 +1113,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onDeleteLeft_0190
+    * @tc.name   SUB_Misc_inputMethod_onDeleteLeft_0190
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onDeleteLeft_0190', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -945,6 +1156,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offDeleteLeft_0200
+    * @tc.name   SUB_Misc_inputMethod_offDeleteLeft_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offDeleteLeft_0200', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -991,6 +1210,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onDeleteRight_0210
+    * @tc.name   SUB_Misc_inputMethod_onDeleteRight_0210
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onDeleteRight_0210', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1027,6 +1254,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offDeleteRight_0220
+    * @tc.name   SUB_Misc_inputMethod_offDeleteRight_0220
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offDeleteRight_0220', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -1074,6 +1309,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onSendKeyboardStatus_0230
+    * @tc.name   SUB_Misc_inputMethod_onSendKeyboardStatus_0230
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onSendKeyboardStatus_0230', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       console.info("====>SUB_Misc_inputMethod_onSendKeyboardStatus_0230 publishCallback start");
@@ -1100,6 +1343,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offSendKeyboardStatus_0240
+    * @tc.name   SUB_Misc_inputMethod_offSendKeyboardStatus_0240
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offSendKeyboardStatus_0240', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -1129,6 +1380,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_onMoveCursor_0250
+    * @tc.name   SUB_Misc_inputMethod_onMoveCursor_0250
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_onMoveCursor_0250', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1165,6 +1424,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_offMoveCursor_0260
+    * @tc.name   SUB_Misc_inputMethod_offMoveCursor_0260
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_offMoveCursor_0260', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       let flag = true;
@@ -1212,6 +1479,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1250,6 +1525,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1304,6 +1587,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1323,6 +1614,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0700',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1349,6 +1648,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1364,6 +1671,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_0900
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_0900
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_0900', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1401,6 +1716,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_insertText_Async_1000
+    * @tc.name   SUB_Misc_inputMethod_on_off_insertText_Async_1000
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_insertText_Async_1000',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1419,6 +1742,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1457,6 +1788,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1511,6 +1850,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1530,6 +1877,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1567,6 +1922,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1585,6 +1948,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteRight_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteRight_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1623,6 +1994,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteRight_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteRight_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1677,6 +2056,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteRight_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteRight_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1696,6 +2083,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteRight_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteRight_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1733,6 +2128,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_deleteRight_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_deleteRight_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1751,6 +2154,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1777,6 +2188,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1819,6 +2238,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1838,6 +2265,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1877,6 +2312,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -1895,6 +2338,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1933,6 +2384,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -1987,6 +2446,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2006,6 +2473,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2043,6 +2518,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2061,6 +2544,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_moveCursor_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_moveCursor_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2099,6 +2590,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_moveCursor_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_moveCursor_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2153,6 +2652,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_moveCursor_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_moveCursor_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2172,6 +2679,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_moveCursor_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_moveCursor_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2209,6 +2724,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_moveCursor_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_moveCursor_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2227,6 +2750,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100
+    * @tc.name   SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2265,6 +2796,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200
+    * @tc.name   SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2319,6 +2858,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300
+    * @tc.name   SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2338,6 +2885,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700
+    * @tc.name   SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700', 0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       async function publishCallback(err){
@@ -2375,6 +2930,14 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800
+    * @tc.name   SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800',0, async function (done) {
       const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
       try {
@@ -2393,6 +2956,14 @@ export default function inputMethodDrawnControlJSUnit() {
       }
     });
 
+    /*
+    * @tc.number  SUB_Misc_inputMethod_updateAttribute_Async_0600
+    * @tc.name   SUB_Misc_inputMethod_updateAttribute_Async_0600
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
     it('SUB_Misc_inputMethod_updateAttribute_Async_0600',0, async function (done) {
       let inputAttribute = {textInputType:0,enterKeyType:0}
       try {
@@ -2417,6 +2988,49 @@ export default function inputMethodDrawnControlJSUnit() {
         expect().assertFail();
         done();
       }
+    });
+
+    /*
+    * @tc.number  SUB_inputMethod_IMF_InputMethodSettings_1000
+    * @tc.name   SUB_inputMethod_IMF_InputMethodSettings_1000
+    * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
+    * @tc.level   Level2
+    */
+    it('SUB_inputMethod_IMF_InputMethodSettings_1000', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        await sleep(10);
+        console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 publishCallback start");
+        if (err){
+          console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft start");
+            inputMethod.getController().on("deleteLeft",async (num) => {
+              try {
+                console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft success: " + num);
+                inputMethod.getController().off("deleteLeft");
+                await inputMethod.getController().detach();
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft fail: " + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info("====>SUB_inputMethod_IMF_InputMethodSettings_1000 onDeleteLeft catch err: " + JSON.stringify(err));
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:450
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
   })

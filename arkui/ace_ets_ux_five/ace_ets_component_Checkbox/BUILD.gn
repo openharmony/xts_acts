@@ -22,7 +22,7 @@ ohos_js_hap_suite("CheckboxTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "CheckboxTest"
+  hap_name = "ActsCheckboxTest"
   part_name = "ace_engine"
   subsystem_name = "arkui"
 }

@@ -19,7 +19,9 @@ import subtype from '@ohos.InputMethodSubtype';
 import commonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
-import {Driver} from '@ohos.UiTest'
+import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import deviceinfo from '@ohos.deviceInfo';
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodAbility() {
   describe('inputMethodAbility', function () {
@@ -39,16 +41,13 @@ export default function inputMethodAbility() {
       extra:{}
     }
 
-    let dis = display.getDefaultDisplaySync();
+    let rectInfo;
+    let textArea: Component;
     let driver = Driver.create();
+    let dis = display.getDefaultDisplaySync();
     let inputDemoService: subtype;
     let inputMethodController = inputMethod.getController();
-    async function runCmd() {
-      let cursor_x = 30 + Math.floor(Math.random()*dis.width*0.8);
-      let cursor_y = 150 + Math.floor(Math.random() * Math.round(dis.height * 0.4));
-      console.info(`====>start click x:${cursor_x}  y:${cursor_y}`)
-      await driver.click(cursor_x, cursor_y)
-    }
+
     beforeAll(async (done)=>{
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
@@ -70,6 +69,9 @@ export default function inputMethodAbility() {
       }
       try{
         await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
+        textArea = await driver.findComponent(ON.type('TextArea'));
+        rectInfo = await textArea.getBounds();
+        console.info('====>beforeAll inputMethodSwitch textArea rectInfo: ' + JSON.stringify(rectInfo));
         setTimeout(()=>{
           runCmd()
           console.info("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype success");
@@ -78,26 +80,18 @@ export default function inputMethodAbility() {
       }catch(err){
         console.info("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype failed");
       }
-      let inputCurrent = inputMethod.getCurrentInputMethod();
-      inputServerCopy.packageName = inputCurrent.packageName;
-      inputServerCopy.methodId = inputCurrent.methodId;
-      inputServerCopy.name = inputCurrent.packageName;
-      inputServerCopy.id = inputCurrent.methodId;
-      console.info("====>Sub_Misc_inputMethod_onImeChange_0010 restore to: " +  JSON.stringify(inputServerCopy));
     })
 
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputServer);
-        console.info("====>afterAll: inputMethodStageJSUnit switchInputMethod success" + JSON.stringify(inputServer));
-        setTimeout(() => {
-          console.info("====>afterAll: inputMethodStageJSUnit switchInputMethod success");
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info("====>afterAll: inputMethodStageJSUnit fail" + JSON.stringify(err));
-      }
+      done();
     })
+
+    async function runCmd(){
+      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
+      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
+      await driver.click(cursor_x, cursor_y)
+    }
 
     /*
     * @tc.number  inputMethodEngine_test_001
@@ -2069,7 +2063,7 @@ export default function inputMethodAbility() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 300)
         } 
       }
 
@@ -2201,7 +2195,7 @@ export default function inputMethodAbility() {
           let t = setTimeout(()=>{
             runCmd();
             clearTimeout(t)
-          }, 100)
+          }, 300)
         }
       }
 
@@ -2829,7 +2823,7 @@ export default function inputMethodAbility() {
           console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange err: ' + JSON.stringify(err));
           done();
         }
-      },500);
+      },1000);
 
       var commonEventPublishData = {
         code:130
@@ -2891,9 +2885,31 @@ export default function inputMethodAbility() {
     */
     it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
       let inputMethodSetting = inputMethod.getSetting();
+      let inputStageService: subtype = {
+        id: 'inputStageService',
+        label: '',
+        name: 'com.acts.inputmethodengine.test',
+        mode: 'lower',
+        locale: '',
+        language: '',
+        icon: '',
+        iconId: 0,
+        extra: {},
+      }
+      let inputDemoService: subtype = {
+        id: "InputDemoService",
+        label: "",
+        name: "com.acts.inputmethodengine.test",
+        mode: "lower",
+        locale: "",
+        language: "",
+        icon: "",
+        iconId: 0,
+        extra: {}
+      }
       inputMethodSetting.on("imeChange", async (inputMethodProperty, inputMethodSubtype) => {
         inputMethodSetting.off("imeChange");
-        await inputMethod.switchInputMethod(inputServerCopy);
+        await inputMethod.switchCurrentInputMethodSubtype(inputStageService);
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodProperty:" + JSON.stringify(inputMethodProperty));
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodSubtype:" + JSON.stringify(inputMethodSubtype));
         expect(typeof(inputMethodProperty) !== null).assertTrue();
@@ -2901,7 +2917,7 @@ export default function inputMethodAbility() {
         done();
       })
       try {
-        await inputMethod.switchInputMethod(inputServer);
+        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  switchInputMethod success" + JSON.stringify(inputServer));
       } catch (err) {
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150 switchInputMethod fail" + JSON.stringify(err));
@@ -2919,6 +2935,28 @@ export default function inputMethodAbility() {
     it('Sub_Misc_inputMethod_offImeChange_0160', 0, async function (done) {
       let count = 0;
       let inputMethodSetting = inputMethod.getSetting();
+      let inputStageService: subtype = {
+        id: 'inputStageService',
+        label: '',
+        name: 'com.acts.inputmethodengine.test',
+        mode: 'lower',
+        locale: '',
+        language: '',
+        icon: '',
+        iconId: 0,
+        extra: {},
+      }
+      let inputDemoService: subtype = {
+        id: "InputDemoService",
+        label: "",
+        name: "com.acts.inputmethodengine.test",
+        mode: "lower",
+        locale: "",
+        language: "",
+        icon: "",
+        iconId: 0,
+        extra: {}
+      }
       inputMethodSetting.on("imeChange", (inputMethodProperty, inputMethodSubtype) => {
         inputMethodSetting.off("imeChange");
         count += 1;
@@ -2926,11 +2964,11 @@ export default function inputMethodAbility() {
       })
 
       try {
-        await inputMethod.switchInputMethod(inputServer);
+        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
         console.info('====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod');
         let t = setTimeout(async () => {
           clearTimeout(t);
-          await inputMethod.switchInputMethod(inputServerCopy);
+          await inputMethod.switchCurrentInputMethodSubtype(inputStageService);
         },100);
       } catch (err) {
         console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));

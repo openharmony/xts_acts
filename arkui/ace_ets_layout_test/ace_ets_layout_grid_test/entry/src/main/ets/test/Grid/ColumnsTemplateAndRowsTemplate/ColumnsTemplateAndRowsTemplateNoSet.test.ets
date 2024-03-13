@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnsTemplateAndRowsTemplateNoSet() {
-  describe('ColumnsTemplateAndRowsTemplateNoSet', function () {
-    beforeEach(async function (done) {
+  describe('ColumnsTemplateAndRowsTemplateNoSet', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet',
       }
       try {
@@ -29,7 +31,7 @@ export default function ColumnsTemplateAndRowsTemplateNoSet() {
         console.info("get ColumnsTemplateAndRowsTemplateNoSet state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get ColumnsTemplateAndRowsTemplateNoSet pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ColumnsTemplateAndRowsTemplateNoSet page result:" + JSON.stringify(result));
         }
@@ -39,24 +41,24 @@ export default function ColumnsTemplateAndRowsTemplateNoSet() {
       console.info("ColumnsTemplateAndRowsTemplateNoSet beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("ColumnsTemplateAndRowsTemplateNoSet after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100
-     * @tc.name      testGrid
-     * @tc.desc      GridItem set columnStart、columnEnd、rowStart、rowEnd
+     * @tc.number SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100
+     * @tc.name testGrid
+     * @tc.desc GridItem set columnStart、columnEnd、rowStart、rowEnd
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100', 0, async function (done) {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100] START');
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplateNoSet_GridItem_01');
-      let Grid_1 = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplateNoSet_Grid_1');
+      let GridItem_01: RectValue = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplateNoSet_GridItem_01');
+      let Grid_1: RectValue = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplateNoSet_Grid_1');
 
       console.log('assert position')
       expect(GridItem_01.left).assertEqual(Grid_1.left);
@@ -78,7 +80,6 @@ export default function ColumnsTemplateAndRowsTemplateNoSet() {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplateNoSet_0100] END');
       done();
     });
-
 
 
   })

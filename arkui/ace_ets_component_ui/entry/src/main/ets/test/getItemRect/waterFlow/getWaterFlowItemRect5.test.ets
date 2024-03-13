@@ -94,12 +94,12 @@ export default function getWaterFlowItemRect5() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(x)).assertEqual(Math.round(20));
+      expect(Math.round(y)).assertEqual(Math.round(20));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(170)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(width)).assertEqual(Math.round(170));
+      expect(Math.round(height)).assertEqual(Math.round(100));
 
       done();
     });
@@ -183,12 +183,12 @@ export default function getWaterFlowItemRect5() {
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(y)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(x)).assertEqual(Math.round(20));
+      expect(Math.round(y)).assertEqual(Math.round(20));
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(vp2px(170)));
-      expect(Math.round(height)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(width)).assertEqual(Math.round(170));
+      expect(Math.round(height)).assertEqual(Math.round(100));
 
       done();
     });

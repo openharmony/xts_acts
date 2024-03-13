@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import sendfile from 'libsendfilendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
@@ -21,11 +22,15 @@ import fs from '@ohos.file.fs'
 export default function sendfileNdkTest() {
   describe('MuslSendfileTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE_0100
      * @tc.name       : testMuslSendfileSendfile001
      * @tc.desc       : test sendfile
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -53,7 +58,7 @@ export default function sendfileNdkTest() {
        * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE_0200
        * @tc.name       : testMuslSendfileSendfile002
        * @tc.desc       : test sendfile
-       * @tc.size       : MEDIUM
+       * @tc.size       : MediumTest
        * @tc.type       : Function
        * @tc.level      : Level 2
        */
@@ -67,7 +72,7 @@ export default function sendfileNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE64_0100
      * @tc.name       : testMuslSendfileSendfile64001
      * @tc.desc       : test sendfile64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -81,7 +86,7 @@ export default function sendfileNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SENDFILE_SENDFILE64_0200
      * @tc.name       : testMuslSendfileSendfile64002
      * @tc.desc       : test sendfile64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */

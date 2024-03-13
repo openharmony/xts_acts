@@ -18,17 +18,12 @@ import { describe, beforeAll, it, expect } from 'hypium/index';
 
 const PATH = "/data/test/"
 const ERROR = "error.hap"
-const BMSJSTEST1 = "bmsJstest1.hap"
-const BMSJSTEST2 = "bmsJstest2.hap"
-const BMSJSTEST3 = "bmsJstest3.hap"
-const BMSJSTEST4 = "bmsJstest4.hap"
-const BMSJSTEST5 = "bmsJstest5.hap"
-const BMSJSTEST6 = "bmsJstest6.hap"
+const BMSJSTEST1 = "/data/app/el1/bundle/public/com.example.myapplication1/entry.hap"
+const BMSJSTEST2 = "/data/app/el1/bundle/public/com.example.myapplication2/entry.hap"
+const BMSJSTEST4 = "/data/app/el1/bundle/public/com.example.myapplication4/entry.hap"
 const NAME1 = "com.example.myapplication1"
 const NAME2 = "com.example.myapplication2"
 const NAME3 = "com.example.myapplication4"
-const NAME4 = "com.example.myapplication5"
-const NAME5 = "com.example.myapplication6"
 const DESCRIPTION = "$string:mainability_description"
 const APPLICATION_DESCRIPTION = "$string:entry_description"
 
@@ -42,7 +37,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with one hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1280', 0, async function (done) {
-      let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+      let datainfo = await bundle.getBundleArchiveInfo(BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME1)
       expect(datainfo.vendor).assertEqual("example")
       expect(datainfo.versionCode).assertEqual(1)
@@ -64,7 +59,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with two haps.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1300', 0, async function (done) {
-      let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+      let datainfo = await bundle.getBundleArchiveInfo(BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME2)
       expect(datainfo.vendor).assertEqual("example")
       expect(datainfo.versionCode).assertEqual(1)
@@ -86,7 +81,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with three haps.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1320', 0, async function (done) {
-      let datainfo = await bundle.getBundleArchiveInfo(PATH + BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+      let datainfo = await bundle.getBundleArchiveInfo(BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
       expect(datainfo.name).assertEqual(NAME3)
       expect(datainfo.vendor).assertEqual("example")
       expect(datainfo.versionCode).assertEqual(1)
@@ -142,7 +137,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1380', 0, async function (done) {
-      await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
+      await bundle.getBundleArchiveInfo(BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)
         expect(datainfo.vendor).assertEqual("example")
@@ -180,7 +175,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with two hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1400', 0, async function (done) {
-      await bundle.getBundleArchiveInfo(PATH + BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
+      await bundle.getBundleArchiveInfo(BMSJSTEST2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME2)
         expect(datainfo.vendor).assertEqual("example")
@@ -204,7 +199,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with one hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1420', 0, async function (done) {
-      await bundle.getBundleArchiveInfo(PATH + BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
+      await bundle.getBundleArchiveInfo(BMSJSTEST4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME3)
         expect(datainfo.vendor).assertEqual("example")
@@ -268,7 +263,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1480', 0, async function (done) {
-      await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
+      await bundle.getBundleArchiveInfo(BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)
         expect(datainfo.vendor).assertEqual("example")
@@ -306,7 +301,7 @@ export default function getBundleArchiveInfo() {
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
     it('Sub_Bms_Framework_Query_AppInfo_1500', 0, async function (done) {
-      await bundle.getBundleArchiveInfo(PATH + BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
+      await bundle.getBundleArchiveInfo(BMSJSTEST1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
       function OnReceiveEvent(err, datainfo) {
         expect(datainfo.name).assertEqual(NAME1)
         expect(datainfo.vendor).assertEqual("example")

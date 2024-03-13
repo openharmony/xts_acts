@@ -14,43 +14,43 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import app from '@system.app';
+import { describe, it, expect } from "@ohos/hypium"
+import app, { ScreenOnVisibleOptions } from '@system.app';
 
 export default function systemAppJsunit() {
-  describe('appInfoTest_four_9', function () {
+  describe('appInfoTest_four_9', () => {
 
-    it('systemAppTest_0100', 0, async function (done) {
+    it('systemAppTest_0100', 0, async (done: Function) => {
       console.info('systemAppTest_0100 START');
-      var a = app.getInfo();
+      let a = app.getInfo();
       console.log('systemAppTest_0100 END' + JSON.stringify(a));
-      if(a != null) {
-         expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
-         console.info('systemAppTest_0100 END');
+      if (a != null) {
+        expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
+        console.info('systemAppTest_0100 END');
       } else {
-         expect(a == null).assertTrue(true);
+        expect(a == null).assertTrue(true);
       }
       done();
     });
 
-    it('systemAppTest_0200', 0, async function (done) {
+    it('systemAppTest_0200', 0, async (done: Function) => {
       console.info('systemAppTest_0200 START');
-      var a = app.getInfo();
+      let a = app.getInfo();
       console.log('systemAppTest_0200 END' + JSON.stringify(a));
       if (a != null) {
-          expect(a.appName == "$string:entry_MainAbility").assertTrue();
+        expect(a.appName == "$string:entry_MainAbility").assertTrue();
       } else {
-          expect(a == null).assertTrue(true);
+        expect(a == null).assertTrue(true);
       }
       console.info('systemAppTest_0200 END');
       done();
     });
 
-    it('systemAppTest_0300', 0, async function (done) {
+    it('systemAppTest_0300', 0, async (done: Function) => {
       console.info('systemAppTest_0300 START');
-      var a = app.getInfo();
+      let a = app.getInfo();
       console.log('systemAppTest_0300 END' + JSON.stringify(a));
-      if(a != null) {
+      if (a != null) {
         expect(a.versionName == "1.0.0").assertTrue();
       } else {
         expect(a == null).assertTrue(true);
@@ -59,10 +59,10 @@ export default function systemAppJsunit() {
       done();
     });
 
-    it('systemAppTest_0400', 0, async function (done) {
+    it('systemAppTest_0400', 0, async (done: Function) => {
       console.info('systemAppTest_0400 START');
       try {
-        var a = 2000;
+        let a = 2000;
         app.requestFullWindow(a);
       } catch (err) {
         console.log("systemAppTest_0400 error: " + err);
@@ -71,10 +71,12 @@ export default function systemAppJsunit() {
       done();
     });
 
-    it('systemAppTest_0500', 0, async function (done) {
+    it('systemAppTest_0500', 0, async (done: Function) => {
       console.info('systemAppTest_0500 START');
       try {
-        var visible = true;
+        let visible: ScreenOnVisibleOptions = {
+          visible: true
+        };
         app.screenOnVisible(visible);
       } catch (err) {
         console.log("systemAppTest_0500 error: " + err);
@@ -83,31 +85,31 @@ export default function systemAppJsunit() {
       done();
     });
 
-    it('systemAppTest_0600', 0, async function (done) {
+    it('systemAppTest_0600', 0, async (done: Function) => {
       console.info('systemAppTest_0600 START');
-      var a = 100;
+      let a = 100;
       app.setImageCacheCount(a);
       console.info('systemAppTest_0600 END');
       done();
     });
 
-    it('systemAppTest_0700', 0, async function (done) {
+    it('systemAppTest_0700', 0, async (done: Function) => {
       console.info('systemAppTest_0700 START');
-      var a = 104857600;
+      let a = 104857600;
       app.setImageRawDataCacheSize(a);
       console.info('systemAppTest_0700 END');
       done();
     });
 
-    it('systemAppTest_0800', 0, async function (done) {
+    it('systemAppTest_0800', 0, async (done: Function) => {
       console.info('systemAppTest_0800 START');
-      var a = 1048;
+      let a = 1048;
       app.setImageFileCacheSize(a);
       console.info('systemAppTest_0800 END');
       done();
     });
 
-    it('systemAppTest_0900', 0, async function (done) {
+    it('systemAppTest_0900', 0, async (done: Function) => {
       console.info('systemAppTest_0900 START');
       app.terminate();
       console.info('systemAppTest_0900 END');

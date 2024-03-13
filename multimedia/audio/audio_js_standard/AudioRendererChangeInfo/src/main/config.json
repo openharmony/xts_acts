@@ -3,7 +3,7 @@
         "apiVersion": {
             "compatible": 6,
             "releaseType": "Beta1",
-            "target": 7
+            "target": 11
         },
         "vendor": "acts",
         "bundleName": "ohos.acts.multimedia.audio.audiorendererchangeInfo",
@@ -49,7 +49,8 @@
             "phone",
             "tablet",
             "tv",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "mainAbility": "ohos.acts.multimedia.audio.audiorendererchangeInfo.MainAbility",
         "distro": {

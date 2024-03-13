@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import locale from 'liblocalendk.so'
 
 export default function localeNdkTest() {
   describe('MuslLocaleTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_SETLOCALE_0100
      * @tc.name       : testMuslLocaleSetlocale001
      * @tc.desc       : test setlocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +43,7 @@ export default function localeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_USELOCALE_0100
      * @tc.name       : testMuslLocaleUselocale001
      * @tc.desc       : test uselocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -54,7 +59,7 @@ export default function localeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_USELOCALE_0200
      * @tc.name       : testMuslLocaleUselocale002
      * @tc.desc       : test uselocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -70,7 +75,7 @@ export default function localeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_DUPLOCALE_0100
      * @tc.name       : testMuslLocaleDupLocale001
      * @tc.desc       : test duplocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -82,7 +87,7 @@ export default function localeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_LOCALECONV_0100
      * @tc.name       : testMuslLocaleLocaleconv001
      * @tc.desc       ：testMuslLocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -96,7 +101,7 @@ export default function localeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_NEWLOCALE_0100
      * @tc.name       : testMuslLocaleNewlocale001
      * @tc.desc       : test newlocale
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -109,7 +114,7 @@ export default function localeNdkTest() {
     * @tc.number     : SUB_THIRDPARTY_MUSL_LOCALE_FREELOCALE_0100
     * @tc.name       : testMuslLocaleFreelocale001
     * @tc.desc       : test freelocale
-    * @tc.size       : MEDIUM
+    * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */

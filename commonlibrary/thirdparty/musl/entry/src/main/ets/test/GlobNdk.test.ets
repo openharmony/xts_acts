@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import glob from 'libglobndk.so'
 import fs from '@ohos.file.fs';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -21,11 +22,15 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 export default function muslGlobdNdkTest() {
   describe('MuslGlobdTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**getopt
      * @tc.number   : SUB_THIRDPARTY_MUSL_GLOB_GLOB_0100
      * @tc.name     : testMuslGlobGlob001
      * @tc.desc     : test glob
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -39,7 +44,7 @@ export default function muslGlobdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GLOB_GLOBFREE_0100
      * @tc.name     : testMuslGlobGlobfree001
      * @tc.desc     : test globfree
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

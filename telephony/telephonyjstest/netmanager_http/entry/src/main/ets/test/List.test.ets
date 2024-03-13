@@ -20,6 +20,11 @@ import httpResponseJsunit from './HttpResponseJsunit.test';
 import HttpRequestOptionsJsunit from './HttpRequestOptionsJsunit.test';
 import httpRequestJsunit from './HttpRequestJsunit.test';
 import StatisticsTest from './StatisticsTest.test';
+import NetworkManagerHttpEnhanceTest from './NetworkManagerHttpEnhance.test';
+import NetworkManagerMulticastHTTP1Test from './NetworkManagerMulticastHTTP1.test';
+import NetworkManagerMulticastHTTP2Test from './NetworkManagerMulticastHTTP2.test';
+import NetworkManagerHTTP_Multicast1Test from './NetworkManagerHTTP_Multicast1.test';
+import NetworkManagerHTTP_Multicast2Test from './NetworkManagerHTTP_Multicast2.test';
 
 export default function testsuite() {
   httpJsunit();
@@ -29,4 +34,9 @@ export default function testsuite() {
   HttpRequestOptionsJsunit();
   httpRequestJsunit();
   StatisticsTest();
+  NetworkManagerHttpEnhanceTest();
+  NetworkManagerMulticastHTTP1Test();
+  NetworkManagerMulticastHTTP2Test();
+  NetworkManagerHTTP_Multicast1Test();
+  NetworkManagerHTTP_Multicast2Test();
 }

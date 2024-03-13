@@ -14,35 +14,29 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
-#include <cstdio>
 #include <cstring>
-#include <fcntl.h>
 #include <js_native_api_types.h>
-#include <sys/mman.h>
-#include <sys/mount.h>
 #include <sys/msg.h>
-#include <sys/stat.h>
-#include <unistd.h>
 
 #define PARAM_1 1
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TEN 10
 #define PARAM_3 3
-#define STATERROR -100
-#define OPENERROR -99
-#define MMAPERROR -98
+#define PARAM_5 5
+#define STATERROR (-100)
+#define OPENERROR (-99)
+#define MMAPERROR (-98)
 #define TEST_SIZE 4096
-#define flag 0666
+#define FLAG 0666
 static napi_value Msgget(napi_env env, napi_callback_info info)
 {
     int msqid;
-    msqid = msgget(IPC_PRIVATE, flag);
+    msqid = msgget(IPC_PRIVATE, FLAG);
     int retVal = FAIL;
-    if (msqid < 0) {
+    if (msqid < PARAM_0) {
         retVal = FAIL;
     } else {
         retVal = SUCCESS;
@@ -51,23 +45,19 @@ static napi_value Msgget(napi_env env, napi_callback_info info)
     napi_create_int32(env, retVal, &result);
     return result;
 }
-struct msgbuf {
-    long mtype;
-    char mtext[TEXT_SIZE];
-};
 
 static napi_value Msgsnd(napi_env env, napi_callback_info info)
 {
     int msqid;
     struct msgbuf buf;
     int sendlength;
-    msqid = msgget(IPC_PRIVATE, flag);
+    msqid = msgget(IPC_PRIVATE, FLAG);
     buf.mtype = PARAM_1;
-    strcpy(buf.mtext, "happy new year!");
+    strcpy(buf.mtext, "AA");
     sendlength = sizeof(struct msgbuf) - sizeof(long);
-    int ret = msgsnd(msqid, &buf, sendlength, 0);
+    int ret = msgsnd(msqid, &buf, sendlength, PARAM_0);
     int retVal = FAIL;
-    if (ret < 0) {
+    if (ret < PARAM_0) {
         retVal = FAIL;
     } else {
         retVal = SUCCESS;
@@ -84,12 +74,12 @@ typedef struct {
 static napi_value Msgrcv(napi_env env, napi_callback_info info)
 {
     int msqid;
-    msqid = msgget(IPC_PRIVATE, flag);
+    msqid = msgget(IPC_PRIVATE, FLAG);
     MSG_DATA msginfo;
     bzero(&msginfo, sizeof(msginfo));
-    int ret = msgrcv(msqid, &msginfo, sizeof(msginfo.message), 5, IPC_NOWAIT);
+    int ret = msgrcv(msqid, &msginfo, sizeof(msginfo.message), PARAM_5, IPC_NOWAIT);
     int retVal = FAIL;
-    if (ret == -1) {
+    if (ret == FAIL) {
         retVal = FAIL;
     } else {
         retVal = SUCCESS;
@@ -105,20 +95,20 @@ static napi_value Msgctl(napi_env env, napi_callback_info info)
     struct msqid_ds msgidInfo;
     struct msgbuf buf;
     int ret;
-    int sendlength, recvlength;
-    msqid = msgget(IPC_PRIVATE, flag);
+    int sendlength;
+    msqid = msgget(IPC_PRIVATE, FLAG);
 
     buf.mtype = PARAM_1;
-    strcpy(buf.mtext, "happy new year!");
+    strcpy(buf.mtext, "AS");
     sendlength = sizeof(struct msgbuf) - sizeof(long);
     ret = msgsnd(msqid, &buf, sendlength, PARAM_0);
     buf.mtype = PARAM_3;
-    strcpy(buf.mtext, "good bye!");
+    strcpy(buf.mtext, "SS");
     sendlength = sizeof(struct msgbuf) - sizeof(long);
     ret = msgsnd(msqid, &buf, sendlength, PARAM_0);
     ret = msgctl(msqid, IPC_STAT, &msgidInfo);
     int retVal = FAIL;
-    if (ret < 0) {
+    if (ret < PARAM_0) {
         retVal = FAIL;
     } else {
         retVal = SUCCESS;
@@ -148,7 +138,7 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "mman",
+    .nm_modname = "msgndk",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };

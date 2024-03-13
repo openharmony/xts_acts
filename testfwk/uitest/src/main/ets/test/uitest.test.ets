@@ -16,15 +16,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import { BusinessError } from '@ohos.base';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-const delegator = abilityDelegatorRegistry.getAbilityDelegator();
-const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-const waitUiReadyMs = 1000;
+const delegator : AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+const bundleName : string = abilityDelegatorRegistry.getArguments().bundleName;
+const waitUiReadyMs : number = 1000;
 
 async function startAbility(bundleName: string, abilityName: string) {
     await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
         console.info(`UiTestCase, start abilityFinished: ${result}`)
-    }).catch(err => {
+    }).catch((err : BusinessError) => {
         console.error(`UiTestCase, start abilityFailed: ${err}`)
     })
 }
@@ -32,14 +34,14 @@ async function startAbility(bundleName: string, abilityName: string) {
 async function stopApplication(bundleName: string) {
     await delegator.executeShellCommand(`aa force-stop ${bundleName} `).then(result => {
         console.info(`UiTestCase, stop application finished: ${result}`)
-    }).catch(err => {
+    }).catch((err : BusinessError) => {
         console.error(`UiTestCase,stop application failed: ${err}`)
     })
 }
 
 export default function UiTest() {
-    describe('UiTest_API11', function () {        
-        beforeEach(async function () {
+    describe('UiTest_API11', () => {
+        beforeEach(async () => {
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -48,9 +50,9 @@ export default function UiTest() {
         * @tc.name: testMouseDoubleClick
         * @tc.desc: doubleClick in the specified location on the screen by mouse.
         */
-        it('testMouseDoubleClick', 0, async function () {
+        it('testMouseDoubleClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
+            let driver : Driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let Button = await driver.findComponent(ON.text('Click twice'))
             let center = await Button.getBoundsCenter()
@@ -66,7 +68,7 @@ export default function UiTest() {
         * @tc.name: testMouseLongClick
         * @tc.desc: longClick in the specified location on the screen by mouse.
         */
-        it('testMouseLongClick', 0, async function () {
+        it('testMouseLongClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -84,7 +86,7 @@ export default function UiTest() {
         * @tc.name: testMouseDrag
         * @tc.desc: drag on the screen between the specified points by mouse.
         */
-        it('testMouseDrag', 0, async function () {
+        it('testMouseDrag', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -107,7 +109,7 @@ export default function UiTest() {
          * @tc.name: testMouseMoveWithTrack
          * @tc.desc: swipe on the screen between the specified points with mouse.
          */
-        it('testMouseMoveWithTrack', 0, async function () {
+        it('testMouseMoveWithTrack', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -128,7 +130,7 @@ export default function UiTest() {
          * @tc.name: testDriverInputText
          * @tc.desc: inject text on the specified location.
          */
-        it('testDriverInputText', 0, async function () {
+        it('testDriverInputText', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -145,30 +147,70 @@ export default function UiTest() {
         })
 
         /*
-         * @tc.number: uiTest_10006
+         * @tc.number: uiTest_11006
          * @tc.name: testMouseScroll
          * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
          */
-        it('testMouseScroll', 0, async function () {
+        it('testMouseScroll', 0, async () => {
+	        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+		    let driver = Driver.create()
+		    await driver.delayMs(waitUiReadyMs)
+		    let btn = await driver.findComponent(ON.text('jump'))
+		    await btn.click()
+		    await driver.delayMs(waitUiReadyMs)
+		    let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds1 = await img1.getBounds()
+		    let center1 = await img1.getBoundsCenter()
+		    await driver.mouseScroll(center1,false,5,2072,0,20)
+		    await driver.delayMs(waitUiReadyMs)
+		    let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds2 = await img2.getBounds()
+		    expect(bounds1 != bounds2).assertTrue()
+
+		    await driver.pressBack()
+		    await driver.delayMs(waitUiReadyMs)
+		    let Scroll = await driver.findComponent(ON.type('Scroll'))
+		    let center = await Scroll.getBoundsCenter()
+		    await driver.mouseScroll(center,true,30)
+		    await driver.delayMs(waitUiReadyMs)
+		    let button1 = await driver.findComponent(ON.text('next page'))
+		    expect(button1 == null).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_11007
+         * @tc.name: testWindowAttr
+         * @tc.desc: find window by WindowFilter and get it's active status.
+         */
+        it('testWindowAttr', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let Scroll = await driver.findComponent(ON.type('Scroll'))
-            let center = await Scroll.getBoundsCenter()
-            await driver.mouseScroll(center,true,30)
+            let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,active:true,title:''})
+            await window.focus()
+            let isActive = await window.isActive()
+            expect(isActive == true).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+
+        /*
+         * @tc.number: uiTest_11008
+         * @tc.name: testDescription
+         * @tc.desc: find UiComponent by description attribute and get it's description attribute.
+         */
+        it('testDescription', 0, async () => {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            let button1 = await driver.findComponent(ON.text('next page'))
-            expect(button1 == null).assertTrue()
-            await driver.mouseScroll(center,false,30,2072,2048,20)
-            await driver.delayMs(waitUiReadyMs)
-            let button2 = await driver.findComponent(ON.text('next page'))
-            expect(button2 != null).assertTrue()
+            let text = await driver.findComponent(ON.type('Text').description(''))
+            let description = await text.getDescription()
+            expect(description == '').assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
     })
 
-    describe('UiTest_API10', function () {        
-        afterEach(async function () {
+    describe('UiTest_API10', () =>  {
+        afterEach(async () => {
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -177,8 +219,8 @@ export default function UiTest() {
          * @tc.name: testWithIn
          * @tc.desc: find UiComponent inside of the given UiComponent.
          */
-        it('testWithIn', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        it('testWithIn', 0, async () => {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             let scroll = await driver.findComponent(ON.type('Scroll'))
@@ -196,7 +238,7 @@ export default function UiTest() {
          * @tc.name: testFling
          * @tc.desc: inject fling on the device display.
          */
-        it('testFling', 0, async function () {
+        it('testFling', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -230,7 +272,7 @@ export default function UiTest() {
          * @tc.name: testScreenCapture
          * @tc.desc: capture the specified area of current screen.
          */
-        it('testScreenCapture', 0, async function () {
+        it('testScreenCapture', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -245,7 +287,7 @@ export default function UiTest() {
          * @tc.name: testMouseClick
          * @tc.desc: click in the specified location on the screen by mouse.
          */
-        it('testMouseClick', 0, async function () {
+        it('testMouseClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -272,7 +314,7 @@ export default function UiTest() {
          * @tc.name: testMouseMoveTo
          * @tc.desc: move the mouse cursor to the specified location.
          */
-        it('testMouseMoveTo', 0, async function () {
+        it('testMouseMoveTo', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -290,21 +332,32 @@ export default function UiTest() {
          * @tc.name: testMouseScroll
          * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
          */
-        it('testMouseScroll', 0, async function () {
+        it('testMouseScroll', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-            let driver = Driver.create()
-            await driver.delayMs(waitUiReadyMs)
-            let Scroll = await driver.findComponent(ON.type('Scroll'))
-            let center = await Scroll.getBoundsCenter()
-            await driver.mouseScroll(center,true,30)
-            await driver.delayMs(waitUiReadyMs)
-            let button1 = await driver.findComponent(ON.text('next page'))
-            expect(button1 == null).assertTrue()
-            await driver.mouseScroll(center,false,30,2072,2048)
-            await driver.delayMs(waitUiReadyMs)
-            let button2 = await driver.findComponent(ON.text('next page'))
-            expect(button2 != null).assertTrue()
-            await stopApplication('com.uitestScene.acts')
+		    let driver = Driver.create()
+		    await driver.delayMs(waitUiReadyMs)
+		    let btn = await driver.findComponent(ON.text('jump'))
+		    await btn.click()
+		    await driver.delayMs(waitUiReadyMs)
+		    let img1 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds1 = await img1.getBounds()
+		    let center1 = await img1.getBoundsCenter()
+		    await driver.click(center1.x, center1.y)
+		    await driver.delayMs(waitUiReadyMs)
+		    await driver.mouseScroll(center1,false,5,2072,0)
+		    await driver.delayMs(waitUiReadyMs)
+		    let img2 = await driver.findComponent(ON.type('Image').inWindow('com.uitestScene.acts'))
+		    let bounds2 = await img2.getBounds()
+		    expect(bounds1 != bounds2).assertTrue()
+
+		    await driver.pressBack()
+		    await driver.delayMs(waitUiReadyMs)
+		    let Scroll = await driver.findComponent(ON.type('Scroll'))
+		    let center = await Scroll.getBoundsCenter()
+		    await driver.mouseScroll(center,true,30)
+		    await driver.delayMs(waitUiReadyMs)
+		    let button1 = await driver.findComponent(ON.text('next page'))
+		    expect(button1 == null).assertTrue()
         })
 
         /*
@@ -312,7 +365,7 @@ export default function UiTest() {
          * @tc.name: testInWindow
          * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
          */
-        it('testInWindow', 0, async function () {
+        it('testInWindow', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -326,12 +379,12 @@ export default function UiTest() {
         * @tc.name: testMonitor1
         * @tc.desc: monitor toast appearance.
         */
-        it('testMonitor1', 0, async function () {
+        it('testMonitor1', 0, async () => {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         let driver = Driver.create()
         await driver.delayMs(waitUiReadyMs)
         let observer = await driver.createUIEventObserver()
-        let callback = (UiElementInfo) => {
+        let callback = (UiElementInfo : UIElementInfo) => {
             expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
             expect(UiElementInfo.text == 'toastShow').assertTrue()
             expect(UiElementInfo.type == 'Toast').assertTrue()
@@ -349,12 +402,12 @@ export default function UiTest() {
         * @tc.desc: monitor dialog appearance.
         */
 
-        it('testMonitor2', 0, async function () {
+        it('testMonitor2', 0, async () => {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         let driver = Driver.create()
         await driver.delayMs(waitUiReadyMs)
         let observer = await driver.createUIEventObserver()
-        let callback = (UiElementInfo) => {
+        let callback = (UiElementInfo : UIElementInfo) => {
             expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
             expect(UiElementInfo.text == 'dialogShow').assertTrue()
             expect(UiElementInfo.type == 'AlertDialog').assertTrue()
@@ -367,8 +420,8 @@ export default function UiTest() {
         })
     })
 
-    describe('UiTest_API8', function () {
-        afterEach(async function () {
+    describe('UiTest_API8', () => {
+        afterEach(async () => {
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -377,7 +430,7 @@ export default function UiTest() {
          * @tc.name: testInputText
          * @tc.desc: inject text to the target UiComponent
          */
-        it('testInputText', 0, async function () {
+        it('testInputText', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -396,7 +449,7 @@ export default function UiTest() {
          * @tc.name: testMatchPattern
          * @tc.desc: specifies the string value match pattern.
          */
-        it('testMatchPattern', 0, async function () {
+        it('testMatchPattern', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -416,7 +469,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentClick
          * @tc.desc: click this UiComponentClick.
          */
-        it('testUiComponentClick', 0, async function () {
+        it('testUiComponentClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -435,7 +488,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentDoubleClick
          * @tc.desc: doubleClick this UiComponentClick.
          */
-        it('testUiComponentDoubleClick', 0, async function () {
+        it('testUiComponentDoubleClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -454,7 +507,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentLongClick
          * @tc.desc: longClick this UiComponentClick.
          */
-        it('testUiComponentLongClick', 0, async function () {
+        it('testUiComponentLongClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -473,7 +526,7 @@ export default function UiTest() {
          * @tc.name: testKey
          * @tc.desc: find UiComponent by key attribute and get it's key attribute.
          */
-        it('testKey', 0, async function () {
+        it('testKey', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -487,7 +540,7 @@ export default function UiTest() {
          * @tc.name: testId
          * @tc.desc: find UiComponent by id attribute and get it's id attribute.
          */
-        it('testId', 0, async function () {
+        it('testId', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -503,7 +556,7 @@ export default function UiTest() {
          * @tc.name: testType
          * @tc.desc: find UiComponent by type attribute and get it's type attribute.
          */
-        it('testType', 0, async function () {
+        it('testType', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -518,7 +571,7 @@ export default function UiTest() {
          * @tc.name: testClickable
          * @tc.desc: find UiComponent by clickable attribute and get it's clickable attribute.
          */
-        it('testClickable', 0, async function () {
+        it('testClickable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -533,7 +586,7 @@ export default function UiTest() {
          * @tc.name: testScrollable
          * @tc.desc: find UiComponent by scrollable attribute and get it's scrollable attribute.
          */
-        it('testScrollable', 0, async function () {
+        it('testScrollable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -548,7 +601,7 @@ export default function UiTest() {
          * @tc.name: testEnabled
          * @tc.desc: find UiComponent by enabled attribute and get it's enabled attribute.
          */
-        it('testEnabled', 0, async function () {
+        it('testEnabled', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -563,7 +616,7 @@ export default function UiTest() {
          * @tc.name: testFocused
          * @tc.desc: find UiComponent by focused attribute and get it's focused attribute.
          */
-        it('testFocused', 0, async function () {
+        it('testFocused', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -578,7 +631,7 @@ export default function UiTest() {
          * @tc.name: testSelected
          * @tc.desc: find UiComponent by selected attribute and get it's selected attribute.
          */
-        it('testSelected', 0, async function () {
+        it('testSelected', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -593,7 +646,7 @@ export default function UiTest() {
          * @tc.name: testPressBack
          * @tc.desc: Press the BACK key.
          */
-        it('testPressBack', 0, async function () {
+        it('testPressBack', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -612,7 +665,7 @@ export default function UiTest() {
          * @tc.name: testFindComponents
          * @tc.desc: find all the matched UiComponents on current UI
          */
-        it('testFindComponents', 0, async function () {
+        it('testFindComponents', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -626,7 +679,7 @@ export default function UiTest() {
          * @tc.name: testTriggerKey
          * @tc.desc: press the specified key.
          */
-        it('testTriggerKey', 0, async function () {
+        it('testTriggerKey', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -646,7 +699,7 @@ export default function UiTest() {
          * @tc.name: testScreenCap
          * @tc.desc: capture current screen.
          */
-        it('testScreenCap', 0, async function () {
+        it('testScreenCap', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -661,7 +714,7 @@ export default function UiTest() {
          * @tc.name: testAssertComponentExist
          * @tc.desc:  Assert whether the matched UiComponent exists on current UI;.
          */
-        it('testAssertComponentExist', 0, async function () {
+        it('testAssertComponentExist', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -674,7 +727,7 @@ export default function UiTest() {
          * @tc.name: testIsBefore
          * @tc.desc: find uiComponent which is before another UiComponent that specified by given.
          */
-        it('testIsBefore', 0, async function () {
+        it('testIsBefore', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -688,7 +741,7 @@ export default function UiTest() {
          * @tc.name: testIsAfter
          * @tc.desc: find uiComponent which is after another UiComponent that specified by given.
          */
-        it('testIsAfter', 0, async function () {
+        it('testIsAfter', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -702,8 +755,8 @@ export default function UiTest() {
          * @tc.name: testSwipe
          * @tc.desc: swipe on the screen between the specified points.
          */
-        it('testSwipe', 0, async function () {
-            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+        it('testSwipe', 0, async () => {
+        await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
             await driver.swipe(300, 1100, 300, 300)
@@ -717,7 +770,7 @@ export default function UiTest() {
          * @tc.name: testScrollSearch
          * @tc.desc: scroll on this UiComponent to find matched UiComponent.
          */
-        it('testScrollSearch', 0, async function () {
+        it('testScrollSearch', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -728,8 +781,8 @@ export default function UiTest() {
         })
     })
 
-    describe('UiTest_API9', function () {
-        afterEach(async function () {
+    describe('UiTest_API9', () => {
+        afterEach(async () => {
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -738,7 +791,7 @@ export default function UiTest() {
          * @tc.name: testInputText
          * @tc.desc: inject text to the target UiComponent
          */
-        it('testInputText', 0, async function () {
+        it('testInputText', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -757,7 +810,7 @@ export default function UiTest() {
          * @tc.name: testClearText
          * @tc.desc: clear text of the target UiComponent
          */
-        it('testClearText', 0, async function () {
+        it('testClearText', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -778,7 +831,7 @@ export default function UiTest() {
          * @tc.name: testCheckable
          * @tc.desc: find UiComponent by checkable attribute and get it's checkable attribute.
          */
-        it('testCheckable', 0, async function () {
+        it('testCheckable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -793,7 +846,7 @@ export default function UiTest() {
          * @tc.name: testChecked
          * @tc.desc: find UiComponent by checked attribute and get it's checked attribute.
          */
-        it('testChecked', 0, async function () {
+        it('testChecked', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -808,7 +861,7 @@ export default function UiTest() {
          * @tc.name: testMatchPattern
          * @tc.desc: specifies the string value match pattern.
          */
-        it('testMatchPattern', 0, async function () {
+        it('testMatchPattern', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -828,7 +881,7 @@ export default function UiTest() {
          * @tc.name: testDriverClick
          * @tc.desc: click in the specified location on the screen.
          */
-        it('testDriverClick', 0, async function () {
+        it('testDriverClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -848,7 +901,7 @@ export default function UiTest() {
          * @tc.name: testDriverDoubleClick
          * @tc.desc: doubleClick in the specified location on the screen.
          */
-        it('testDriverDoubleClick', 0, async function () {
+        it('testDriverDoubleClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -868,7 +921,7 @@ export default function UiTest() {
          * @tc.name: testDriverLongClick
          * @tc.desc: longClick in the specified location on the screen.
          */
-        it('testDriverLongClick', 0, async function () {
+        it('testDriverLongClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -888,7 +941,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentClick
          * @tc.desc: click this UiComponentClick.
          */
-        it('testUiComponentClick', 0, async function () {
+        it('testUiComponentClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -907,7 +960,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentDoubleClick
          * @tc.desc: doubleClick this UiComponentClick.
          */
-        it('testUiComponentDoubleClick', 0, async function () {
+        it('testUiComponentDoubleClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -926,7 +979,7 @@ export default function UiTest() {
          * @tc.name: testUiComponentLongClick
          * @tc.desc: longClick this UiComponentClick.
          */
-        it('testUiComponentLongClick', 0, async function () {
+        it('testUiComponentLongClick', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -945,7 +998,7 @@ export default function UiTest() {
          * @tc.name: testKey
          * @tc.desc: find UiComponent by key attribute and get it's key attribute.
          */
-        it('testKey', 0, async function () {
+        it('testKey', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -959,7 +1012,7 @@ export default function UiTest() {
          * @tc.name: testType
          * @tc.desc: find UiComponent by type attribute and get it's type attribute.
          */
-        it('testType', 0, async function () {
+        it('testType', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -974,7 +1027,7 @@ export default function UiTest() {
          * @tc.name: testClickable
          * @tc.desc: find UiComponent by clickable attribute and get it's clickable attribute.
          */
-        it('testClickable', 0, async function () {
+        it('testClickable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -989,7 +1042,7 @@ export default function UiTest() {
          * @tc.name: testLongClickable
          * @tc.desc: find UiComponent by longClickable attribute and get it's longClickable attribute.
          */
-        it('testLongClickable', 0, async function () {
+        it('testLongClickable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1004,7 +1057,7 @@ export default function UiTest() {
          * @tc.name: testScrollable
          * @tc.desc: find UiComponent by scrollable attribute and get it's scrollable attribute.
          */
-        it('testScrollable', 0, async function () {
+        it('testScrollable', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1019,7 +1072,7 @@ export default function UiTest() {
          * @tc.name: testEnabled
          * @tc.desc: find UiComponent by enabled attribute and get it's enabled attribute.
          */
-        it('testEnabled', 0, async function () {
+        it('testEnabled', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1034,7 +1087,7 @@ export default function UiTest() {
          * @tc.name: testFocused
          * @tc.desc: find UiComponent by focused attribute and get it's focused attribute.
          */
-        it('testFocused', 0, async function () {
+        it('testFocused', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1049,7 +1102,7 @@ export default function UiTest() {
          * @tc.name: testSelected
          * @tc.desc: find UiComponent by selected attribute and get it's selected attribute.
          */
-        it('testSelected', 0, async function () {
+        it('testSelected', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1064,7 +1117,7 @@ export default function UiTest() {
          * @tc.name: testPressBack
          * @tc.desc: Press the BACK key.
          */
-        it('testPressBack', 0, async function () {
+        it('testPressBack', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1083,7 +1136,7 @@ export default function UiTest() {
          * @tc.name: testFindComponents
          * @tc.desc: find all the matched UiComponents on current UI
          */
-        it('testFindComponents', 0, async function () {
+        it('testFindComponents', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1097,7 +1150,7 @@ export default function UiTest() {
          * @tc.name: testTriggerKey
          * @tc.desc: press the specified key.
          */
-        it('testTriggerKey', 0, async function () {
+        it('testTriggerKey', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1117,22 +1170,28 @@ export default function UiTest() {
          * @tc.name: testTriggerCombineKeys
          * @tc.desc: press two or three key combinations
          */
-        it('testTriggerCombineKeys', 0, async function () {
+        it('testTriggerCombineKeys', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(2000)
             let text = await driver.findComponent(ON.type('TextInput'))
             let center = await text.getBoundsCenter()
+            // set pasteBoard data
             await text.inputText('123')
             await driver.click(center.x, center.y)
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2017)
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2019)
-            await driver.triggerCombineKeys(2072, 2038)
+            await driver.delayMs(waitUiReadyMs)
+            // clear and paste
             let text2 = await driver.findComponent(ON.type('TextInput'))
-            console.info("testTriggerCombineKeys result :" + text2)
-            expect(await text2.getText() == '123123').assertTrue()
+            await text2.clearText()
+            await driver.delayMs(waitUiReadyMs)
+            await driver.triggerCombineKeys(2072, 2038)
+            await driver.delayMs(waitUiReadyMs)
+            let text3 = await driver.findComponent(ON.type('TextInput'))
+            expect(await text3.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -1141,7 +1200,7 @@ export default function UiTest() {
          * @tc.name: testGetUiComponentBounds
          * @tc.desc: get the bounds of this UiComponent.
          */
-        it('testGetUiComponentBounds', 0, async function () {
+        it('testGetUiComponentBounds', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1159,7 +1218,7 @@ export default function UiTest() {
          * @tc.name: testGetUiComponentBoundsCenter
          * @tc.desc: get the boundsCenter of this @link UiComponent.
          */
-        it('testGetUiComponentBoundsCenter', 0, async function () {
+        it('testGetUiComponentBoundsCenter', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1174,7 +1233,7 @@ export default function UiTest() {
          * @tc.name: testWaitForComponent
          * @tc.desc: Find the first matched UiComponent on current UI during the time given.
          */
-        it('testWaitForComponent', 0, async function () {
+        it('testWaitForComponent', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1188,7 +1247,7 @@ export default function UiTest() {
          * @tc.name: testScreenCap
          * @tc.desc: capture current screen.
          */
-        it('testScreenCap', 0, async function () {
+        it('testScreenCap', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1203,7 +1262,7 @@ export default function UiTest() {
          * @tc.name: testAssertComponentExist
          * @tc.desc:  Assert whether the matched UiComponent exists on current UI;.
          */
-        it('testAssertComponentExist', 0, async function () {
+        it('testAssertComponentExist', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1216,7 +1275,7 @@ export default function UiTest() {
          * @tc.name: testIsBefore
          * @tc.desc: find uiComponent which is before another UiComponent that specified by given.
          */
-        it('testIsBefore', 0, async function () {
+        it('testIsBefore', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1230,7 +1289,7 @@ export default function UiTest() {
          * @tc.name: testIsAfter
          * @tc.desc: find uiComponent which is after another UiComponent that specified by given.
          */
-        it('testIsAfter', 0, async function () {
+        it('testIsAfter', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1244,7 +1303,7 @@ export default function UiTest() {
          * @tc.name: testSwipe
          * @tc.desc: swipe on the screen between the specified points.
          */
-        it('testSwipe', 0, async function () {
+        it('testSwipe', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1261,7 +1320,7 @@ export default function UiTest() {
          * @tc.name: testFling
          * @tc.desc: inject fling on the device display.
          */
-        it('testFling', 0, async function () {
+        it('testFling', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1279,7 +1338,7 @@ export default function UiTest() {
          * @tc.name: testScrollSearch
          * @tc.desc: scroll on this UiComponent to find matched UiComponent.
          */
-        it('testScrollSearch', 0, async function () {
+        it('testScrollSearch', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1294,7 +1353,7 @@ export default function UiTest() {
          * @tc.name: testScrollToBottom
          * @tc.desc: scroll on this UiComponent to the bottom.
          */
-        it('testScrollToBottom', 0, async function () {
+        it('testScrollToBottom', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1312,7 +1371,7 @@ export default function UiTest() {
          * @tc.name: testScrollToTop
          * @tc.desc: scroll on this UiComponent to the top.
          */
-        it('testScrollToTop', 0, async function () {
+        it('testScrollToTop', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1330,7 +1389,7 @@ export default function UiTest() {
          * @tc.name: testPinch
          * @tc.desc: pinch enlarge this UiComponent to the target scale.
          */
-        it('testPinch', 0, async function () {
+        it('testPinch', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1357,7 +1416,7 @@ export default function UiTest() {
          * @tc.name: testInjectMultiPointerAction
          * @tc.desc: inject multi-pointer action on the device display.
          */
-        it('testInjectMultiPointerAction', 0, async function () {
+        it('testInjectMultiPointerAction', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1403,7 +1462,7 @@ export default function UiTest() {
          * @tc.name: testGetWindowMode
          * @tc.desc: get the window mode of this UiWindow.
          */
-        it('testGetWindowMode', 0, async function () {
+        it('testGetWindowMode', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1436,7 +1495,7 @@ export default function UiTest() {
          * @tc.name: testGetBundleName
          * @tc.desc: get the bundleName of this UiWindow.
          */
-        it('testGetBundleName', 0, async function () {
+        it('testGetBundleName', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1451,7 +1510,7 @@ export default function UiTest() {
          * @tc.name: testGetTitle
          * @tc.desc: get the title of this UiWindow.
          */
-        it('testGetTitle', 0, async function () {
+        it('testGetTitle', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1466,7 +1525,7 @@ export default function UiTest() {
          * @tc.name: testWindowMoveTo
          * @tc.desc: move this UiWindow to the specified points.
          */
-        it('testWindowMoveTo', 0, async function () {
+        it('testWindowMoveTo', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1500,7 +1559,7 @@ export default function UiTest() {
          * @tc.name: testWindowResize
          * @tc.desc: resize this UiWindow to the specified size for the specified direction.
          */
-        it('testWindowResizeA', 0, async function () {
+        it('testWindowResizeA', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1544,7 +1603,7 @@ export default function UiTest() {
             }
         })
 
-        it('testWindowResizeB', 0, async function () {
+        it('testWindowResizeB', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1594,7 +1653,7 @@ export default function UiTest() {
          * @tc.name: testWindowAttr
          * @tc.desc: set the focused status of this UiWindow.
          */
-        it('testWindowAttr', 0, async function () {
+        it('testWindowAttr', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1612,7 +1671,7 @@ export default function UiTest() {
          * @tc.name: testWindowMaximize
          * @tc.desc: maximize this UiWindow.
          */
-        it('testWindowMaximize', 0, async function () {
+        it('testWindowMaximize', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1644,7 +1703,7 @@ export default function UiTest() {
          * @tc.name: testWindowMinimize
          * @tc.desc: minimize this UiWindow.
          */
-        it('testWindowMinimize', 0, async function () {
+        it('testWindowMinimize', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1670,7 +1729,7 @@ export default function UiTest() {
          * @tc.name: testWindowClose
          * @tc.desc: close this UiWindow.
          */
-        it('testWindowClose', 0, async function () {
+        it('testWindowClose', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1695,7 +1754,7 @@ export default function UiTest() {
          * @tc.name: testGetDisplaySize
          * @tc.desc: get the size of the device display.
          */
-        it('testGetDisplaySize', 0, async function () {
+        it('testGetDisplaySize', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1710,7 +1769,7 @@ export default function UiTest() {
          * @tc.name: testGetDisplayDensity
          * @tc.desc: get the density of the device display.
          */
-        it('testGetDisplayDensity', 0, async function () {
+        it('testGetDisplayDensity', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1725,7 +1784,7 @@ export default function UiTest() {
          * @tc.name: testDisplayRotation
          * @tc.desc: get the rotation of the device display and set it.
          */
-        it('testDisplayRotation', 0, async function () {
+        it('testDisplayRotation', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1780,7 +1839,7 @@ export default function UiTest() {
          * @tc.name: testSetDisplayRotationEnabled
          * @tc.desc: enable/disable the rotation of device display.
          */
-        it('testSetDisplayRotationEnabled', 0, async function () {
+        it('testSetDisplayRotationEnabled', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
@@ -1805,7 +1864,7 @@ export default function UiTest() {
          * @tc.name: testWakeUpDisplay
          * @tc.desc: wake up the device display.
          */
-        it('testWakeUpDisplay', 0, async function () {
+        it('testWakeUpDisplay', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1818,7 +1877,7 @@ export default function UiTest() {
          * @tc.name: testPressHome
          * @tc.desc: press the home key.
          */
-        it('testPressHome', 0, async function () {
+        it('testPressHome', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1834,7 +1893,7 @@ export default function UiTest() {
          * @tc.name: testWaitForIdle
          * @tc.desc: wait for the UI become idle.
          */
-        it('testWaitForIdle', 0, async function () {
+        it('testWaitForIdle', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(2000)
@@ -1848,7 +1907,7 @@ export default function UiTest() {
          * @tc.name: testDrag
          * @tc.desc: drag on the screen between the specified points.
          */
-        it('testDrag', 0, async function () {
+        it('testDrag', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1871,7 +1930,7 @@ export default function UiTest() {
          * @tc.name: testDragTos
          * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
          */
-        it('testDragTo', 0, async function () {
+        it('testDragTo', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
@@ -1892,7 +1951,7 @@ export default function UiTest() {
          * @tc.name: testSplit
          * @tc.desc: change this UiWindow into split screen mode.
          */
-        it('testSplit', 0, async function () {
+        it('testSplit', 0, async () => {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)

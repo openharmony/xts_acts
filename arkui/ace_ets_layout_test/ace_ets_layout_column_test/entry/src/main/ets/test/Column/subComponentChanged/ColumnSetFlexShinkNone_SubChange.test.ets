@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnSetFlexShinkNone_SubChange() {
-  describe('ColumnSetFlexShinkTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetFlexShinkNone_SubChange',
+  describe('ColumnSetFlexShinkTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetFlexShinkNone_SubChange',
       }
       try {
         router.clear();
@@ -37,25 +39,24 @@ export default function ColumnSetFlexShinkNone_SubChange() {
         console.error("push SetFlexShink page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SetFlexShink after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1900
-     * @tc.name      testColumnSetFlexShinkNone
-     * @tc.desc      Subcomponents set flexshink (0-0-1) attribute.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_1900
+     * @tc.name testColumnSetFlexShinkNone
+     * @tc.desc Subcomponents set flexshink (0-0-1) attribute.
      */
-    it('testColumnSetFlexShinkNone', 0, async function (done) {
+    it('testColumnSetFlexShinkNone', 0, async () => {
       console.info('new testColumnSetFlexShinkNone START');
       await CommonFunc.sleep(2000);
-      let columnSetFlexShinkNone_1 = CommonFunc.getComponentRect('columnSetFlexShinkNone_1');
-      let columnSetFlexShinkNone_2 = CommonFunc.getComponentRect('columnSetFlexShinkNone_2');
-      let columnSetFlexShinkNone_3 = CommonFunc.getComponentRect('columnSetFlexShinkNone_3');
-      let columnSetFlexShinkNone = CommonFunc.getComponentRect('columnSetFlexShinkNone');
+      let columnSetFlexShinkNone_1: RectValue = CommonFunc.getComponentRect('columnSetFlexShinkNone_1');
+      let columnSetFlexShinkNone_2: RectValue = CommonFunc.getComponentRect('columnSetFlexShinkNone_2');
+      let columnSetFlexShinkNone_3: RectValue = CommonFunc.getComponentRect('columnSetFlexShinkNone_3');
+      let columnSetFlexShinkNone: RectValue = CommonFunc.getComponentRect('columnSetFlexShinkNone');
 
       expect(Math.abs(columnSetFlexShinkNone.top - columnSetFlexShinkNone_1.top) <= 1).assertTrue()
       expect(Math.abs(columnSetFlexShinkNone.bottom - columnSetFlexShinkNone_3.bottom) <= 1).assertTrue()
@@ -63,7 +64,6 @@ export default function ColumnSetFlexShinkNone_SubChange() {
       expect(Math.abs(columnSetFlexShinkNone_3.top - columnSetFlexShinkNone_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(columnSetFlexShinkNone_3.bottom - columnSetFlexShinkNone_3.top - Math.round(vp2px(190))) <= 1).assertTrue()
       console.info('new testColumnSetFlexShinkNone END');
-      done();
     });
   })
 }

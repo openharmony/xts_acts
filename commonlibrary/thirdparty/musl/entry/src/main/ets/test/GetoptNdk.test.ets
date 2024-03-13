@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import getopt from 'libgetoptndk.so'
 import fs from '@ohos.file.fs';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -21,11 +22,15 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 export default function muslGetoptNdkTest() {
   describe('MuslGetoptTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**getopt
      * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPT_GETOPT_LONG_0100
      * @tc.name     : testMuslGetoptGetoptLong001
      * @tc.desc     : test getopt_long
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -39,7 +44,7 @@ export default function muslGetoptNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_GETOPY_GETOPTLONG_ONLY_0100
      * @tc.name     : testMuslGetoptGetoptLongOnly001
      * @tc.desc     : test getopt_long_only
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

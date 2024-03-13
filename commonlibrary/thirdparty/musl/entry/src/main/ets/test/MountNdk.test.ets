@@ -13,31 +13,27 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import mount from 'libmountndk.so'
 
 export default function mountNdkTest() {
   describe('MuslMountTest', () => {
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_MOUNT_MOUNT_0100
-     * @tc.name       : testMuslMountMount001
-     * @tc.desc       : test mount
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    //block content
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MOUNT_UMOUNT_0100
      * @tc.name       : testMuslMountUmount001
      * @tc.desc       : test umount
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslMountUmount001', 0, async (done: Function) => {
-      let path = "/mymount";
-      let result: number = mount.umount(path);
+      let result: number = mount.umount();
       console.info("Test result= " + result);
       expect(result).assertEqual(0);
       done();
@@ -47,13 +43,12 @@ export default function mountNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MOUNT_UMOUNT2_0100
      * @tc.name       : testMuslMountUmount2001
      * @tc.desc       : test umount2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslMountUmount2001', 0, async (done: Function) => {
-      let path = "/mymount";
-      let result: number = mount.umount2(path);
+      let result: number = mount.umount2();
       console.info("Test result= " + result);
       expect(result).assertEqual(0);
       done();

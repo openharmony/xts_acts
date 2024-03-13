@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function list_ListFrictionTest() {
 
-  describe('list_ListFrictionTest', function () {
-    beforeEach(async function (done) {
+  describe('list_ListFrictionTest',  ()=> {
+    beforeEach(async  (done:Function)=> {
       console.info("ListFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/List_attribute/ListFrictionPage',
       }
       try {
@@ -30,7 +31,7 @@ export default function list_ListFrictionTest() {
         console.info("get ListFrictionPage state pages:" + JSON.stringify(pages));
         if (!("ListFrictionPage" == pages.name)) {
           console.info("get ListFrictionPage pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ListFrictionPage page result:" + JSON.stringify(result));
         }
@@ -40,7 +41,7 @@ export default function list_ListFrictionTest() {
       console.info("ListFrictionPage beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async  ()=> {
       await CommonFunc.sleep(1000);
       console.info("ListFrictionPage after each called");
     });
@@ -49,14 +50,13 @@ export default function list_ListFrictionTest() {
      * @tc.name      testListFriction
      * @tc.desc      set friction to -1
      */
-    it('testListFriction', 0, async function (done) {
+    it('testListFriction', 0, async  (done: Function)=> {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
       await CommonFunc.sleep(2000);
       let listContainerStrJson = getInspectorByKey('List_ListFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
-      expect(listContainerObj.$attrs.friction).assertEqual(0.6);
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
+      expect(JSON.parse(listContainerStrJson).$attrs.friction).assertEqual(0.6);
       console.info('[testListFriction] END');
       done();
     });
@@ -66,14 +66,13 @@ export default function list_ListFrictionTest() {
      * @tc.name      testListFriction
      * @tc.desc      set friction to 10
      */
-    it('testListFriction', 0, async function (done) {
+    it('testListFriction', 0, async  (done: Function)=> {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
       await CommonFunc.sleep(2000);
       let listContainerStrJson = getInspectorByKey('List_ListFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
-      expect(listContainerObj.$attrs.friction).assertEqual(10);
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
+      expect(JSON.parse(listContainerStrJson).$attrs.friction).assertEqual(10);
       console.info('[testListFriction] END');
       done();
     });

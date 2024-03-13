@@ -11,10 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import("//foundation/multimedia/media_foundation/config.gni")
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsAvcodecNdkTest"
 MEDIA_ROOT_DIR = "//foundation/multimedia/av_codec/"
+MEDIA_FOUNDATION_ROOT_DIR = histreamer_root_dir
 
 ohos_moduletest_suite("ActsAvcodecNdkTest") {
   module_out_path = module_output_path
@@ -30,7 +32,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "audioDecEncNdk/include",
     "videoDecEncNdk/include",
     "../../../../../../foundation/multimedia/audio_framework/interfaces/inner_api/native/audiocommon/include",
-    "../../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
     "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/surface",
     "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/common",
     "../../../../../../foundation/window/window_manager/interfaces/innerkits/wm",
@@ -60,20 +61,21 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
   ]
 
   deps = [
+    "$MEDIA_FOUNDATION_ROOT_DIR/src:media_foundation",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_adec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_aenc",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
-    "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_core",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_vdec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_venc",
     "../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
-    "../../../../../../foundation/graphic/graphic_2d:libsurface",
-    "../../../../../../foundation/graphic/graphic_2d/frameworks/surface:surface",
     "../../../../../../foundation/graphic/graphic_2d/rosen/modules/render_service_client:librender_service_client",
+    "../../../../../../foundation/multimedia/media_foundation/src/capi:native_media_core",
     "../../../../../../foundation/window/window_manager/wm:libwm",
   ]
+
   external_deps = [
     "c_utils:utils",
+    "graphic_surface:surface",
     "hilog:libhilog",
   ]
 

@@ -14,41 +14,25 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {Driver, Component, ON} from '@ohos.UiTest'
+import { Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function ListDeleteTest() {
 
-  const SUITE = 'ListDelete'
-  function getRectCenter(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
-    return [
-    parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2,
-    parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2,
-    ]
-  }
-  function getRectCenterVp(rect: string) {
-    let rtn = rect.replace(/\[/g, '').replace(/\]/g, ',').split(',')
-    return [
-      px2vp(parseFloat(rtn[0].trim()) + (parseFloat(rtn[2].trim()) - parseFloat(rtn[0].trim())) / 2),
-      px2vp(parseFloat(rtn[1].trim()) + (parseFloat(rtn[3].trim()) - parseFloat(rtn[1].trim())) / 2),
-    ]
-  }
+  const SUITE: string = 'ListDelete'
 
-  describe('ListDeleteTest', function () {
+  describe('ListDeleteTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/ListDelete",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("ListDelete" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -62,26 +46,27 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.end by CustomBuilder
      *tc.desc   Set swipeAction.end by CustomBuilder and edgeEffect is SwipeEdgeEffect.None
      */
-    it('ArkUI_List_Delete_0100', 0, async function (done) {
-      let CASE = 'ArkUI_List_Delete_0100'
+    it('ArkUI_List_Delete_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Delete_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let baseKey = 'MyList1_ListItem0'
-      let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+      let baseKey: string = 'MyList1_ListItem0'
+      let strJson: string = getInspectorByKey(baseKey);
+      console.info("the rect json is " + strJson);
 
-      let rectCenter = getRectCenter(obj.$rect)
-      let driver = Driver.create()
-      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
+      expect(JSON.parse(strJson).$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(JSON.parse(strJson).$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
 
-      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-      let objButtonDel = JSON.parse(strJsonButtonDel);
-      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-      let objButtonSet = JSON.parse(strJsonButtonSet);
-      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
+      let driver: Driver = Driver.create()
+      await driver.swipe(Math.round(rectCenter[0]), Math.round(rectCenter[1]), 0, Math.round(rectCenter[1]))
+      await sleep(3000);
+      let strJsonButtonDel: string = getInspectorByKey(baseKey + '_Button_Del');
+
+      expect(JSON.parse(strJsonButtonDel).$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet: string = getInspectorByKey(baseKey + '_Button_Set');
+
+      expect(JSON.parse(strJsonButtonSet).$attrs.visibility).assertEqual("Visibility.Visible");
 
       console.info(`${SUITE} ${CASE} END`);
       done();
@@ -92,29 +77,27 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.start by CustomBuilder
      *tc.desc   Set swipeAction.start by CustomBuilder and edgeEffect is SwipeEdgeEffect.None
      */
-    it('ArkUI_List_Delete_0200', 0, async function (done) {
-      let CASE = 'ArkUI_List_Delete_0200'
+    it('ArkUI_List_Delete_0200', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Delete_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-      let baseKey = 'MyList2_ListItem0'
-      let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+      let baseKey: string = 'MyList2_ListItem0'
+      let strJson: string = getInspectorByKey(baseKey);
+      expect(JSON.parse(strJson).$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(JSON.parse(strJson).$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
 
-      let rectCenter = getRectCenter(obj.$rect)
-      let driver = Driver.create()
-      await driver.swipe(Math.round(rectCenter[0] - 200), 
-        Math.round(rectCenter[1]), 
-        Math.round(rectCenter[0] + 200), 
+      let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
+      let driver: Driver = Driver.create()
+      await driver.swipe(Math.round(rectCenter[0] - 200),
+        Math.round(rectCenter[1]),
+        Math.round(rectCenter[0] + 200),
         Math.round(rectCenter[1]))
+      await sleep(3000);
+      let strJsonButtonDel: string = getInspectorByKey(baseKey + '_Button_Del');
+      expect(JSON.parse(strJsonButtonDel).$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet: string = getInspectorByKey(baseKey + '_Button_Set');
 
-      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-      let objButtonDel = JSON.parse(strJsonButtonDel);
-      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-      let objButtonSet = JSON.parse(strJsonButtonSet);
-      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      expect(JSON.parse(strJsonButtonSet).$attrs.visibility).assertEqual("Visibility.Visible");
 
       console.info(`${SUITE} ${CASE} END`);
       done();
@@ -125,33 +108,54 @@ export default function ListDeleteTest() {
      *tc.name   Set swipeAction.end by SwipeActionItem
      *tc.desc   Set swipeAction.end by SwipeActionItem and edgeEffect is SwipeEdgeEffect.Spring
      */
-    it('ArkUI_List_Delete_0500', 0, async function (done) {
-      let CASE = 'ArkUI_List_Delete_0500'
+    it('ArkUI_List_Delete_0500', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_List_Delete_0500'
       console.info(`${SUITE} ${CASE} START`);
 
-      let driver = Driver.create()
+      let driver: Driver = Driver.create()
       await driver.delayMs(1000)
-      let baseKey = 'MyList5_ListItem0'
-      let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("5.00vp");
+      let baseKey: string = 'MyList5_ListItem0'
+      let strJson: string = getInspectorByKey(baseKey);
 
-      let callback = (event) => {
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg)
-        expect(event.data.msg).assertEqual('MyList5_ListItem0onDelete')
-        done()
-      }
-      let event = {
-        eventId: 72000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
-      let rectCenter = getRectCenter(obj.$rect)
+      expect(JSON.parse(strJson).$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(JSON.parse(strJson).$attrs.endDeleteAreaDistance).assertEqual("5.00vp");
+
+      let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
       await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
         0, Math.round(rectCenter[1]))
+      await sleep(3000);
+      let strJson2: string = getInspectorByKey('MyList5ListItemOnDeleteH');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual("action trigger");
       console.info(`${SUITE} ${CASE} END`);
+      done();
     });
-
   })
+}
+
+async function sleep(time: number) {
+  return new Promise((resolve: (value: string) => void, reject) => {
+    setTimeout(() => {
+      resolve("sleep")
+    }, time)
+  }).then(() => {
+    console.info(`sleep ${time} over...`)
+  })
+}
+
+function getRectCenter(rect: string) {
+  let regexp: RegExp = new RegExp('\\[', 'g');
+  let rtn: string[] = rect.replace(regexp, '').replace(regexp, '').split(',')
+  return [
+    Number.parseFloat(rtn[0].trim()) + (Number.parseFloat(rtn[2].trim()) - Number.parseFloat(rtn[0].trim())) / 2,
+    Number.parseFloat(rtn[1].trim()) + (Number.parseFloat(rtn[3].trim()) - Number.parseFloat(rtn[1].trim())) / 2,
+  ]
+}
+
+function getRectCenterVp(rect: string) {
+  let regexp: RegExp = new RegExp('\\[', 'g');
+  let rtn = rect.replace(regexp, '').replace(regexp, '').split(',')
+  return [
+    px2vp(Number.parseFloat(rtn[0].trim()) + (Number.parseFloat(rtn[2].trim()) - Number.parseFloat(rtn[0].trim())) / 2),
+    px2vp(Number.parseFloat(rtn[1].trim()) + (Number.parseFloat(rtn[3].trim()) - Number.parseFloat(rtn[1].trim())) / 2),
+  ]
 }

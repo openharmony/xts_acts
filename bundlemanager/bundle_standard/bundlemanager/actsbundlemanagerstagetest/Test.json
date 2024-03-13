@@ -16,30 +16,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command":[
-                "remount",
-                "mkdir -p /data/app/el2/100/base/ohos.acts.bundle.stage.test/haps/entry/files/",
-                "chmod 777 -R /data/app/el2/100/base/ohos.acts.bundle.stage.test/haps/entry/files/",
-                "mkdir /data/test/"
-            ]
-        },
-        {
-            "type": "PushKit",
-            "push":[
-                "bmsJstest1.hap -> /data/test/bmsJstest1.hap",
-                "ActsBundleMgrStageEtsTest.hap -> /data/app/el2/100/base/ohos.acts.bundle.stage.test/haps/entry/files/bad.abc",
-                "testAbc.abc -> /data/app/el2/100/base/ohos.acts.bundle.stage.test/haps/entry/files/"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "teardown-command":[
-                "bm uninstall -n ohos.acts.bundle.stage.test",
-                "rm -rf /data/test/"
-            ]
         }
     ] 
 }

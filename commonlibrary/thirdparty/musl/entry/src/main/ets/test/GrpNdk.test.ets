@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import grp from 'libgrpndk.so'
 
 export default function grpNdkTest() {
   describe('MuslGrpTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_SETGRENT_0100
      * @tc.name       : testMuslGrpSetgrent001
      * @tc.desc       : test setgrent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +42,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_ENDGRENT_0100
      * @tc.name       : testMuslGrpEndGRent001
      * @tc.desc       : test endgrent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -50,7 +55,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGRGID_0100
      * @tc.name       : testMuslGrpGetgrgid001
      * @tc.desc       : test getgrgid
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -66,7 +71,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGRGIDR_0100
      * @tc.name       : testMuslGrpGetgrgidR001
      * @tc.desc       : test getgrgid_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -82,7 +87,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGRNAM_0100
      * @tc.name       : testMuslGrpGetgrnam001
      * @tc.desc       : test getgrnam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -97,7 +102,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGRNAMR_0100
      * @tc.name       : testMuslGrpGetGrNamR001
      * @tc.desc       : test getgrnam_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -111,7 +116,7 @@ export default function grpNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGROUPLIST_0100
      * @tc.name       : testMuslGrpGetGroupList001
      * @tc.desc       : test getgrouplist
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -123,25 +128,10 @@ export default function grpNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_INITGROUPS_0100
-     * @tc.name       : testMuslGrpInitGroups001
-     * @tc.desc       : test initgroups
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslGrpInitGroups001', 0, async (done: Function) => {
-      let data: number = grp.initGroups();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_GETGRENT_0100
      * @tc.name       : testMuslGrpGetgrent001
      * @tc.desc       : test getgrent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

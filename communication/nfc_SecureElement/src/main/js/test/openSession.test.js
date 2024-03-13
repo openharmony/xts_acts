@@ -17,11 +17,8 @@
 import secureElement from '@ohos.secureElement';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 let Service = null;
@@ -76,10 +73,11 @@ export default function openSessionTest() {
         afterEach(function () {
             console.info('afterEach called');
         })
-        afterAll(function () {
+        afterAll(async function (done) {
             nfcSEService.shutdown();
             sleep(5000);
             console.info('[nfc_test] afterAll Se_session shutdown success');
+            done();
         })
 
         /**
@@ -134,7 +132,7 @@ export default function openSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_secureElement_js_0800', 0, function ()  {
+        it('SUB_Communication_NFC_secureElement_js_0800', 0, async function (done) {
             try {
                 if (getReader == undefined) {
                     console.info("[NFC_test]8 This function is not supported because the phone NFC chip is ST chip.");
@@ -153,6 +151,7 @@ export default function openSessionTest() {
                 console.info("[NFC_test]8 0800 occurs exception:" + error);
                 expect().assertFail();
             }
+            done();
         })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");

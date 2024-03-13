@@ -17,18 +17,21 @@
 #include <js_native_api.h>
 #include <node_api.h>
 #include <stropts.h>
+#include <unistd.h>
+
 #define PARAM_0 0
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 static napi_value Ioctl(napi_env env, napi_callback_info info)
 {
     int fd = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR);
     int ret = ioctl(fd, I_SWROPT);
     napi_value result = nullptr;
     if (ret == PARAM_UNNORMAL) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
+    close(fd);
     return result;
 }
 

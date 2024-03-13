@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import err from 'liberrndk.so'
 
 export default function errNdkTest() {
   describe('MuslErrTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_ERR_WARN_0100
      * @tc.name       : testMuslErrWarn001
      * @tc.desc       : test warn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +43,7 @@ export default function errNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_ERR_WARNX_0100
      * @tc.name       : testMuslErrWarnx001
      * @tc.desc       : test warnx
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

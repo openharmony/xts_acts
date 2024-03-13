@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
-import libgen from 'liblibgenndk.so'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
+import libgen from 'libgenndk.so'
 
 export default function libgenNdkTest() {
   describe('MuslLibgenTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_LIBGEN_BASENAME_0100
      * @tc.name       : testMuslLibgenBasename001
      * @tc.desc       : test basename
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

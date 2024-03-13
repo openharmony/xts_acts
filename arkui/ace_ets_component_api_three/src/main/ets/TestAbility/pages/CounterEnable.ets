@@ -34,6 +34,7 @@ struct CounterEnable {
       .enableInc(this.enable_inc)
       .enableDec(this.enable_dec)
       .key('CounterEnable_Counter_1')
+
       Button("enable_inc_true")
         .onClick(() => {
           this.enable_inc = true;

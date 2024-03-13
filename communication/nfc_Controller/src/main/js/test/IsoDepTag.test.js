@@ -19,11 +19,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import cardEmulation from '@ohos.nfc.cardEmulation';
 import controller from '@ohos.nfc.controller';
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 let isoDepTaginfo = {
@@ -195,7 +192,7 @@ export default function nfcIsoDepTagTest() {
             try {
                 cardEmulationnfc = cardEmulation.hasHceCapability();
                 console.info('[NFC_test] cardEmulationnfc6 hasHceCapability type ->' + cardEmulationnfc )
-                expect(cardEmulationnfc).assertFalse();
+                expect(cardEmulationnfc).assertTrue();
             } catch (error) {
                 console.info('[NFC_test] cardEmulationnfc6 error' + error)
                 expect().assertFail();

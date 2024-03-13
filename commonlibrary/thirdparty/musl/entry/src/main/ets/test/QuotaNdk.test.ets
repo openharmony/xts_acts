@@ -13,16 +13,21 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import quota from 'libquotandk.so'
 export default function muslQuotaNdkTest() {
   describe('MuslQuotaTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**quotactl
      * @tc.number     : SUB_THIRDPARTY_MUSL_QUOTA_QUOTACTL_0100
      * @tc.name       : testMuslQuotaQuotactl001
      * @tc.desc       : quotactl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

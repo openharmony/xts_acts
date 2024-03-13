@@ -23,7 +23,8 @@
                 "mount -o rw,remount /"
             ],
             "push": [
-                "./resource/advertising/xts/ad_service_config.json ->/etc/advertising/ads_framework/ad_service_config.json"
+                "./resource/advertising/xts/ad_service_config.json ->/etc/advertising/ads_framework/ad_service_config.json",
+                "./resource/advertising/xts/ad_service_config.json ->/system/variant/phone/base/etc/advertising/ads_framework/ad_service_config.json"
             ]
         },
         {

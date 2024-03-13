@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct alphabetIndexer {
@@ -43,7 +43,7 @@ struct alphabetIndexer {
         .selectedBackgroundColor('#FF0000E6')
         .popupBackground('#FF00DDDD')
         .usingPopup(true)
-        .popupPosition({x:90.0, y:50.0})
+        .popupPosition({ x: 90.0, y: 50.0 })
         .selectedFont({ size: 16, weight: FontWeight.Regular })
         .popupFont({ size: 30, weight: FontWeight.Bolder, style: FontStyle.Normal })
         .itemSize(28)
@@ -59,7 +59,7 @@ struct alphabetIndexer {
         .selectedBackgroundColor('#FF0000E6')
         .popupBackground('#FF00DDDD')
         .usingPopup(false)
-        .popupPosition({x:90.0, y:50.0})
+        .popupPosition({ x: 90.0, y: 50.0 })
         .selectedFont({ size: 16, weight: FontWeight.Lighter })
         .popupFont({ size: 30, weight: FontWeight.Bold, style: FontStyle.Italic })
         .itemSize(28)

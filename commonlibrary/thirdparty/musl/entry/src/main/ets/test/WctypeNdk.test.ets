@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import wctype from 'libwctypendk.so'
 
 export default function wctypeNdkTest() {
   describe('MuslWctypeTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_0100
      * @tc.name       : testMuslWctypeIswalnum001
      * @tc.desc       : test iswalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +43,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_0200
      * @tc.name       : testMuslWctypeIswalnum002
      * @tc.desc       : test iswalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -52,7 +57,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_0300
      * @tc.name       : testMuslWctypeIswalnum003
      * @tc.desc       : test iswalnum
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -67,7 +72,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_L_0100
      * @tc.name       : testMuslWctypeIswalnumL001
      * @tc.desc       : test iswalnumL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -82,7 +87,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_L_0200
      * @tc.name       : testMuslWctypeIswalnumL002
      * @tc.desc       : test iswalnumL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -96,7 +101,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALNUM_L_0300
      * @tc.name       : testMuslWctypeIswalnumL003
      * @tc.desc       : test iswalnumL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -112,7 +117,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_0100
      * @tc.name       : testMuslWctypeIswalpha001
      * @tc.desc       : test iswalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -126,7 +131,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_0200
      * @tc.name       : testMuslWctypeIswalpha002
      * @tc.desc       : test iswalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -140,7 +145,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_0300
      * @tc.name       : testMuslWctypeIswalpha003
      * @tc.desc       : test iswalpha
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -155,7 +160,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_L_0100
      * @tc.name       : testMuslWctypeIswalphaL001
      * @tc.desc       : test iswalphal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -169,7 +174,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_L_0200
      * @tc.name       : testMuslWctypeIswalphaL002
      * @tc.desc       : test iswalphal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -183,7 +188,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWALPHA_L_0300
      * @tc.name       : testMuslWctypeIswalphaL003
      * @tc.desc       : test iswalphal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -199,7 +204,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWBLANK_0100
      * @tc.name       : testMuslWctypeIswblank001
      * @tc.desc       : test iswblank
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -213,7 +218,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWBLANK_0200
      * @tc.name       : testMuslWctypeIswblank002
      * @tc.desc       : test iswblank
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -228,7 +233,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWBLANK_L_0100
      * @tc.name       : testMuslWctypeIswblankL001
      * @tc.desc       : test iswblankl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -242,7 +247,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWBLANK_L_0200
      * @tc.name       : testMuslWctypeIswblankL002
      * @tc.desc       : test iswblankl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -257,7 +262,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_0100
      * @tc.name       : testMuslWctypeIswcntrl001
      * @tc.desc       : test iswcntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -271,7 +276,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_0200
      * @tc.name       : testMuslWctypeIswcntrl002
      * @tc.desc       : test iswcntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -285,7 +290,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_0300
      * @tc.name       : testMuslWctypeIswcntrl003
      * @tc.desc       : test iswcntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -299,7 +304,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_0400
      * @tc.name       : testMuslWctypeIswcntrl004
      * @tc.desc       : test iswcntrl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -315,7 +320,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_L_0100
      * @tc.name       : testMuslWctypeIswcntrlL001
      * @tc.desc       : test iswcntrll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -329,7 +334,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_L_0200
      * @tc.name       : testMuslWctypeIswcntrlL002
      * @tc.desc       : test iswcntrll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -343,7 +348,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_L_0300
      * @tc.name       : testMuslWctypeIswcntrlL003
      * @tc.desc       : test iswcntrll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -357,7 +362,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCNTRL_L_0400
      * @tc.name       : testMuslWctypeIswcntrlL004
      * @tc.desc       : test iswcntrll
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -373,7 +378,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWDIGIT_0100
      * @tc.name       : testMuslWctypeIswdigit001
      * @tc.desc       : test iswdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -387,7 +392,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWDIGIT_0200
      * @tc.name       : testMuslWctypeIswdigit002
      * @tc.desc       : test iswdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -402,7 +407,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWDIGIT_L_0100
      * @tc.name       : testMuslWctypeIswdigitL001
      * @tc.desc       : test iswdigitl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -416,7 +421,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWDIGIT_L_0200
      * @tc.name       : testMuslWctypeIswdigitL002
      * @tc.desc       : test iswdigitl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -432,7 +437,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_L_0100
      * @tc.name       : testMuslWctypeIswgraphL001
      * @tc.desc       : test iswgraphl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -446,7 +451,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_L_0200
      * @tc.name       : testMuslWctypeIswgraphL002
      * @tc.desc       : test iswgraphl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -460,7 +465,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_L_0300
      * @tc.name       : testMuslWctypeIswgraphL003
      * @tc.desc       : test iswgraphl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -474,7 +479,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_0100
      * @tc.name       : testMuslWctypeIswgraph001
      * @tc.desc       : test iswgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -488,7 +493,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_0200
      * @tc.name       : testMuslWctypeIswgraph002
      * @tc.desc       : test iswgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -502,7 +507,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWGRAPH_0300
      * @tc.name       : testMuslWctypeIswgraph003
      * @tc.desc       : test iswgraph
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -517,7 +522,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWLOWER_0100
      * @tc.name       : testMuslWctypeIswlower001
      * @tc.desc       : test iswlower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -531,7 +536,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWLOWER_0200
      * @tc.name       : testMuslWctypeIswlower002
      * @tc.desc       : test iswlower
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -546,7 +551,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWLOWER_L_0100
      * @tc.name       : testMuslWctypeIswlowerL001
      * @tc.desc       : test iswlowerl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -560,7 +565,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWLOWER_L_0200
      * @tc.name       : testMuslWctypeIswlowerL002
      * @tc.desc       : test iswlowerl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -575,7 +580,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_0100
      * @tc.name       : testMuslWctypeIswprint001
      * @tc.desc       : test iswprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -589,7 +594,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_0200
      * @tc.name       : testMuslWctypeIswprint002
      * @tc.desc       : test iswprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -603,7 +608,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_0300
      * @tc.name       : testMuslWctypeIswprint003
      * @tc.desc       : test iswprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -617,7 +622,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_0400
      * @tc.name       : testMuslWctypeIswprint004
      * @tc.desc       : test iswprint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -632,7 +637,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_L_0100
      * @tc.name       : testMuslWctypeIswprintL001
      * @tc.desc       : test iswprintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -646,7 +651,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_L_0200
      * @tc.name       : testMuslWctypeIswprintL002
      * @tc.desc       : test iswprintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -660,7 +665,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_L_0300
      * @tc.name       : testMuslWctypeIswprintL003
      * @tc.desc       : test iswprintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -674,7 +679,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPRINT_L_0400
      * @tc.name       : testMuslWctypeIswprintL004
      * @tc.desc       : test iswprintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -690,7 +695,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPUNCT_0100
      * @tc.name       : testMuslWctypeIswpunct001
      * @tc.desc       : test iswpunct
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -704,7 +709,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPUNCT_0200
      * @tc.name       : testMuslWctypeIswpunct002
      * @tc.desc       : test iswpunct
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -718,7 +723,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPUNCT_L_0100
      * @tc.name       : testMuslWctypeIswpunctL001
      * @tc.desc       : test iswpunctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -732,7 +737,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWPUNCT_L_0200
      * @tc.name       : testMuslWctypeIswpunctL002
      * @tc.desc       : test iswpunctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -746,7 +751,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWSPACE_0100
      * @tc.name       : testMuslWctypeIswspace001
      * @tc.desc       : test iswspace
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -760,7 +765,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWSPACE_0200
      * @tc.name       : testMuslWctypeIswspace002
      * @tc.desc       : test iswspace
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -774,7 +779,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWSPACE_L_0100
      * @tc.name       : testMuslWctypeIswspaceL001
      * @tc.desc       : test iswspacel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -788,7 +793,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWSPACE_L_0200
      * @tc.name       : testMuslWctypeIswspaceL002
      * @tc.desc       : test iswspacel
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -804,7 +809,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWUPPER_L_0100
      * @tc.name       : testMuslWctypeIswupperL001
      * @tc.desc       : test iswupperl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -818,7 +823,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWUPPER_L_0200
      * @tc.name       : testMuslWctypeIswupperL002
      * @tc.desc       : test iswupperl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -833,7 +838,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWUPPER_0100
      * @tc.name       : testMuslWctypeIswupper001
      * @tc.desc       : test iswupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -847,7 +852,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWUPPER_0200
      * @tc.name       : testMuslWctypeIswupper002
      * @tc.desc       : test iswupper
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -862,7 +867,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCTYPE_0100
      * @tc.name       : testMuslWctypeIswctype001
      * @tc.desc       : test iswctype
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -877,7 +882,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCTYPE_0200
      * @tc.name       : testMuslWctypeIswctype002
      * @tc.desc       : test iswctype
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -892,7 +897,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCTYPE_L_0100
      * @tc.name       : testMuslWctypeIswctypeL001
      * @tc.desc       : test iswctype_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -907,7 +912,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWCTYPE_L_0200
      * @tc.name       : testMuslWctypeIswctypeL002
      * @tc.desc       : test iswctype_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -923,7 +928,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWXDIGIT_0100
      * @tc.name       : testMuslWctypeIswxdigit001
      * @tc.desc       : test iswxdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -937,7 +942,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWXDIGIT_0200
      * @tc.name       : testMuslWctypeIswxdigit002
      * @tc.desc       : test iswxdigit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -952,7 +957,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWXDIGIT_L_0100
      * @tc.name       : testMuslWctypeIswxdigitL001
      * @tc.desc       : test iswxdigitl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -966,7 +971,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_ISWXDIGIT_L_0200
      * @tc.name       : testMuslWctypeIswxdigitL002
      * @tc.desc       : test iswxdigitl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -981,7 +986,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANS_0100
      * @tc.name       : testMuslWctypeTowctrans001
      * @tc.desc       : test towctrans
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -997,7 +1002,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANS_0200
      * @tc.name       : testMuslWctypeTowctrans002
      * @tc.desc       : test towctrans
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1013,7 +1018,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANS_0300
      * @tc.name       : testMuslWctypeTowctrans003
      * @tc.desc       : test towctrans
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1029,7 +1034,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANSL_0100
      * @tc.name       : testMuslWctypeTowctransL001
      * @tc.desc       : test towctrans_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1045,7 +1050,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANSL_0200
      * @tc.name       : testMuslWctypeTowctransL002
      * @tc.desc       : test towctrans_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1061,7 +1066,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWCTRANSL_0300
      * @tc.name       : testMuslWctypeTowctransL003
      * @tc.desc       : test towctrans_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1078,7 +1083,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWLOWERL_0100
      * @tc.name       : testMuslWctypeTowlowerL001
      * @tc.desc       : test towlower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1094,7 +1099,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWLOWERL_0200
      * @tc.name       : testMuslWctypeTowlowerL002
      * @tc.desc       : test towlower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1110,7 +1115,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWLOWERL_0300
      * @tc.name       : testMuslWctypeTowlowerL003
      * @tc.desc       : test towlower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1126,7 +1131,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWLOWERL_0400
      * @tc.name       : testMuslWctypeTowlowerL004
      * @tc.desc       : test towlower_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1142,7 +1147,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWUPPERL_0100
      * @tc.name       : testMuslWctypeTowupperL001
      * @tc.desc       : test towupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1158,7 +1163,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWUPPERL_0200
      * @tc.name       : testMuslWctypeTowupperL002
      * @tc.desc       : test towupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1174,7 +1179,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWUPPERL_0300
      * @tc.name       : testMuslWctypeTowupperL003
      * @tc.desc       : test towupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1190,7 +1195,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_TOWUPPERL_0400
      * @tc.name       : testMuslWctypeTowupperL004
      * @tc.desc       : test towupper_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1206,7 +1211,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTRANS_0100
      * @tc.name       : testMuslWctypeWctrans001
      * @tc.desc       : test wctrans
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1222,7 +1227,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTRANS_0200
      * @tc.name       : testMuslWctypeWctrans002
      * @tc.desc       : test wctrans
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1238,7 +1243,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTRANSL_0100
      * @tc.name       : testMuslWctypeWctransL001
      * @tc.desc       : test wctrans_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1254,7 +1259,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTRANSL_0200
      * @tc.name       : testMuslWctypeWctransL002
      * @tc.desc       : test wctrans_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1270,7 +1275,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTYPE_0100
      * @tc.name       : testMuslWctypeWctype001
      * @tc.desc       : test wctype
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1286,7 +1291,7 @@ export default function wctypeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_WCTYPE_WCTYPEL_0100
      * @tc.name       : testMuslWctypeWctypeL001
      * @tc.desc       : test wctype_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

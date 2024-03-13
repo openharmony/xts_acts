@@ -31,7 +31,36 @@ describe("TreeSetTest", function () {
       expect(err.message).assertEqual("The TreeSet's constructor cannot be directly invoked");
     }
   });
-                              
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TREESET_01000
+   * @tc.name: testConstructor002
+   * @tc.desc: Create an TreeSet instance and use Compare. For example: TreeSet((a, b) => {return a > b}).
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testConstructor002", 0, function () {
+    try {
+      let treeSet = new TreeSet((a, b) => {return a > b});
+      expect(treeSet != undefined).assertEqual(true);
+      treeSet.add("a");
+      treeSet.add("c");
+      treeSet.add("d");
+      treeSet.add("b");
+      expect(treeSet.length).assertEqual(4);
+      let numbers = Array.from(treeSet.values())
+      for (let item of numbers) {
+        let res = treeSet.remove(item)
+        expect(res).assertEqual(true);
+      }
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The TreeMap's constructor cannot be directly invoked");
+    }
+  });
+
   /**
    * @tc.name: testAdd002
    * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").

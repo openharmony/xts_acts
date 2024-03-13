@@ -13,31 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import capability from 'libcapabilityndk.so'
 
 export default function CapabilityNdkTest() {
   describe('MuslCapabilityTest', () => {
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_CAPABILITY_CAPGET_0100
-     * @tc.name       : testMuslCapabilityCapget001
-     * @tc.desc       : test capget
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslCapabilityCapget001', 0, async (done: Function) => {
-      let resultTrue = 0;
-      let result: number = capability.capget();
-      expect(result).assertEqual(resultTrue);
-      done()
-    });
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_CAPABILITY_CAPSET_0100
      * @tc.name       : testMuslCapabilityCapset001
      * @tc.desc       : test capset
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

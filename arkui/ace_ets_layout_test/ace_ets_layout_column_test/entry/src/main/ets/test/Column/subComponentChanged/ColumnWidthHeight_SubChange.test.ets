@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
+import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnWidthHeight_SubChange() {
-  describe('ColumnSetWidthHeightTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnWidthHeight_SubChange',
+  describe('ColumnSetWidthHeightTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Column/subcomponentChanged/ColumnWidthHeight_SubChange',
       }
       try {
         router.clear();
@@ -37,57 +39,66 @@ export default function ColumnWidthHeight_SubChange() {
         console.error("push FlexBase page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'height', value:50});
-      globalThis.value.message.notify({name:'width', value:300});
+      globalThis.value.message.notify({
+        name: 'height', value: 50
+      });
+      globalThis.value.message.notify({
+        name: 'width', value: 300
+      });
       console.info("FlexBase after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_0100
-     * @tc.name      testColumnSubcomponentModifyHeight
-     * @tc.desc      Modify the first subcomponent's height.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_0100
+     * @tc.name testColumnSubcomponentModifyHeight
+     * @tc.desc Modify the first subcomponent's height.
      */
-    it('testColumnSubcomponentModifyHeight', 0, async function (done) {
+    it('testColumnSubcomponentModifyHeight', 0, async () => {
       console.info('new testColumnSubcomponentModifyHeight START');
-      globalThis.value.message.notify({name:'height', value:80});
-      globalThis.value.message.notify({name:'width', value:300});
+      globalThis.value.message.notify({
+        name: 'height', value: 80
+      });
+      globalThis.value.message.notify({
+        name: 'width', value: 300
+      });
       await CommonFunc.sleep(2000);
-      let columnWidthHeight_1 = CommonFunc.getComponentRect('columnWidthHeight_1');
-      let columnWidthHeight_2 = CommonFunc.getComponentRect('columnWidthHeight_2');
-      let columnWidthHeight_3 = CommonFunc.getComponentRect('columnWidthHeight_3');
-      let columnWidthHeight = CommonFunc.getComponentRect('columnWidthHeight');
+      let columnWidthHeight_1: RectValue = CommonFunc.getComponentRect('columnWidthHeight_1');
+      let columnWidthHeight_2: RectValue = CommonFunc.getComponentRect('columnWidthHeight_2');
+      let columnWidthHeight_3: RectValue = CommonFunc.getComponentRect('columnWidthHeight_3');
+      let columnWidthHeight: RectValue = CommonFunc.getComponentRect('columnWidthHeight');
       expect(Math.abs(columnWidthHeight.top - columnWidthHeight_1.top) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight_2.top - columnWidthHeight_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight_3.top - columnWidthHeight_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight.bottom - columnWidthHeight_3.bottom - Math.round(vp2px(10))) <= 1).assertTrue()
       console.info('new testColumnSubcomponentModifyHeight END');
-      done();
     });
 
     /**
-     * @tc.number    SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_0200
-     * @tc.name      testColumnSubcomponentModifyWidth
-     * @tc.desc      Modify the first subcomponent's width.
+     * @tc.number SUB_ACE_COLUMN_SUBCOMPONENTCHANGED_0200
+     * @tc.name testColumnSubcomponentModifyWidth
+     * @tc.desc Modify the first subcomponent's width.
      */
-    it('testColumnSubcomponentModifyWidth', 0, async function (done) {
+    it('testColumnSubcomponentModifyWidth', 0, async () => {
       console.info('new testColumnSubcomponentModifyWidth START');
-      globalThis.value.message.notify({name:'height', value:50});
-      globalThis.value.message.notify({name:'width', value:200});
+      globalThis.value.message.notify({
+        name: 'height', value: 50
+      });
+      globalThis.value.message.notify({
+        name: 'width', value: 200
+      });
       await CommonFunc.sleep(2000);
-      let columnWidthHeight_1 = CommonFunc.getComponentRect('columnWidthHeight_1');
-      let columnWidthHeight_2 = CommonFunc.getComponentRect('columnWidthHeight_2');
-      let columnWidthHeight_3 = CommonFunc.getComponentRect('columnWidthHeight_3');
-      let columnWidthHeight = CommonFunc.getComponentRect('columnWidthHeight');
+      let columnWidthHeight_1: RectValue = CommonFunc.getComponentRect('columnWidthHeight_1');
+      let columnWidthHeight_2: RectValue = CommonFunc.getComponentRect('columnWidthHeight_2');
+      let columnWidthHeight_3: RectValue = CommonFunc.getComponentRect('columnWidthHeight_3');
+      let columnWidthHeight: RectValue = CommonFunc.getComponentRect('columnWidthHeight');
       expect(Math.abs(columnWidthHeight.top - columnWidthHeight_1.top) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight_2.top - columnWidthHeight_1.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight_3.top - columnWidthHeight_2.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
       expect(Math.abs(columnWidthHeight.bottom - columnWidthHeight_3.bottom - Math.round(vp2px(40))) <= 1).assertTrue()
       console.info('new testColumnSubcomponentModifyWidth END');
-      done();
     });
   })
 }

@@ -19,13 +19,16 @@ export default function requestMethodJsunit() {
   describe("requestMethodJsunit", function () {
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_options_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_options_0100
      * @tc.name HttpRequestMethod::options
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_options_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_options_0100';
+    it("SUB_Telephony_http_HttpRequestMethod_options_0100", 0, async function (done) {
+      var casename = 'SUB_Telephony_http_HttpRequestMethod_options_0100';
       console.log("-----------------------HttpRequestMethod_options Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -44,7 +47,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_options_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_options_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -53,13 +56,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_options_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_options_0200
      * @tc.name HttpRequestMethod::options
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_options_0200", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_options_0200';
+    it("SUB_Telephony_http_HttpRequestMethod_options_0200", 0, async function (done) {
+      var casename = 'SUB_Telephony_http_HttpRequestMethod_options_0200';
       console.log("-----------------------HttpRequestMethod_options_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -82,7 +88,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_options_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_options_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -91,13 +97,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_GET_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0100
      * @tc.name HttpRequestMethod::GET
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_GET_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_GET_0100"
+    it("SUB_Telephony_http_HttpRequestMethod_GET_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_GET_0100"
       console.log("-----------------------HttpRequestMethod_GET Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -116,7 +125,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_GET_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_GET_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -125,13 +134,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_GET_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0200
      * @tc.name HttpRequestMethod::GET
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_GET_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_GET_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_GET_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_GET_0200"
       console.log("-----------------------HttpRequestMethod_GET_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -153,20 +165,23 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_GET_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_GET_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_POST_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0100
      * @tc.name HttpRequestMethod::POST
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_POST_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0300"
+    it("SUB_Telephony_http_HttpRequestMethod_POST_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_0300"
       console.log("-----------------------HttpRequestMethod_POST Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -193,7 +208,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_POST_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_POST_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -202,13 +217,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_POST_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0200
      * @tc.name HttpRequestMethod::POST
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_POST_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_POST_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_POST_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_POST_0200"
       console.log("-----------------------HttpRequestMethod_POST_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -239,7 +257,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_POST_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_POST_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -248,13 +266,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_TRACE_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0100
      * @tc.name HttpRequestMethod::TRACE
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_TRACE_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_TRACE_0100"
+    it("SUB_Telephony_http_HttpRequestMethod_TRACE_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_TRACE_0100"
       console.log("-----------------------HttpRequestMethod_TRACE Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -273,7 +294,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_TRACE_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_TRACE_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -281,13 +302,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_TRACE_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0200
      * @tc.name HttpRequestMethod::TRACE
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_TRACE_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_TRACE_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_TRACE_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_TRACE_0200"
       console.log("-----------------------HttpRequestMethod_TRACE_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -310,7 +334,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_TRACE_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_TRACE_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -321,13 +345,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_PUT_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0100
      * @tc.name HttpRequestMethod::PUT
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_PUT_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_PUT_0100"
+    it("SUB_Telephony_http_HttpRequestMethod_PUT_0100", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_PUT_0100"
       console.log("-----------------------HttpRequestMethod_PUT Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -350,7 +377,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_PUT_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_PUT_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -359,13 +386,16 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_PUT_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0200
      * @tc.name HttpRequestMethod::PUT
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_PUT_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_PUT_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_PUT_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_PUT_0200"
       console.log("-----------------------HttpRequestMethod_PUT_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -392,20 +422,23 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_PUT_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_PUT_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_head_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_head_0100
      * @tc.name HttpRequestMethod::HEAD
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_head_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_head_0100';
+    it("SUB_Telephony_http_HttpRequestMethod_head_0100", 0, async function (done) {
+      var casename = 'SUB_Telephony_http_HttpRequestMethod_head_0100';
       console.log("-----------------------HttpRequestMethod_head Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -424,19 +457,22 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_head_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_head_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_HEAD_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_HEAD_0200
      * @tc.name HttpRequestMethod::HEAD
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequestMethod_HEAD_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_HEAD_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_HEAD_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_HEAD_0200"
       console.log("-----------------------HttpRequestMethod_HEAD_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -459,20 +495,23 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_HEAD_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_HEAD_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_DELETE_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0100
      * @tc.name HttpRequestMethod::DELETE
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_DELETE_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_DELETE_0100';
+    it("SUB_Telephony_http_HttpRequestMethod_DELETE_0100", 0, async function (done) {
+      var casename = 'SUB_Telephony_http_HttpRequestMethod_DELETE_0100';
       console.log("-----------------------HttpRequestMethod_DELETE Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -491,19 +530,22 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_DELETE_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_DELETE_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_DELETE_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0200
      * @tc.name HttpRequestMethod::DELETE
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequestMethod_DELETE_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_DELETE_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_DELETE_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_DELETE_0200"
       console.log("-----------------------HttpRequestMethod_DELETE_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -526,20 +568,23 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_DELETE_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_DELETE_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_CONNECT_0100
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0100
      * @tc.name HttpRequestMethod::CONNECT
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
 
-    it("Telephony_http_HttpRequestMethod_CONNECT_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_CONNECT_0100';
+    it("SUB_Telephony_http_HttpRequestMethod_CONNECT_0100", 0, async function (done) {
+      var casename = 'SUB_Telephony_http_HttpRequestMethod_CONNECT_0100';
       console.log("-----------------------HttpRequestMethod_CONNECT Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -558,19 +603,22 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_Http_HttpRequestMethod_CONNECT_0100 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_CONNECT_0100 : error = " + error);
         expect(false).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_CONNECT_0200
+     * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0200
      * @tc.name HttpRequestMethod::CONNECT
      * @tc.desc Test Test HttpRequestMethod property.
+     * @tc.level 1
+     * @tc.type: Function
+     * @tc.size: SmallTest
      */
-    it("Telephony_http_HttpRequestMethod_CONNECT_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_CONNECT_0200"
+    it("SUB_Telephony_http_HttpRequestMethod_CONNECT_0200", 0, async function (done) {
+      var casename = "SUB_Telephony_http_HttpRequestMethod_CONNECT_0200"
       console.log("-----------------------HttpRequestMethod_CONNECT_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -593,7 +641,7 @@ export default function requestMethodJsunit() {
           done();
         });
       } catch (error) {
-        console.log("Telephony_http_HttpRequestMethod_CONNECT_0200 : error = " + error);
+        console.log("SUB_Telephony_http_HttpRequestMethod_CONNECT_0200 : error = " + error);
         expect(false).assertTrue();
         done();
       }

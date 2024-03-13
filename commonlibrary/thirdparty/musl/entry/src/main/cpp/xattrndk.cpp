@@ -16,32 +16,38 @@
 #include "napi/native_api.h"
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <fcntl.h>
 #include <js_native_api.h>
 #include <malloc.h>
 #include <node_api.h>
 #include <sys/xattr.h>
 #include <unistd.h>
-#include <cstring>
 
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define NO_ERR 0
 #define SIZE_THREE 3
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
 #define PARAM_3 3
-#define PARAM_UNNORMAL -1
+#define PARAM_4 4
+#define PARAM_0667 0667
+#define PARAM_0777 0777
+#define PARAM_64 64
+
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_10 10
 #define SIZE_100 100
 #define SIZE_4096 4096
 #define SIZE_8192 8192
+
 static napi_value Lgetxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
@@ -68,6 +74,7 @@ static napi_value Lgetxattr(napi_env env, napi_callback_info info)
     }
     return result;
 }
+
 static napi_value Setxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
@@ -88,6 +95,7 @@ static napi_value Setxattr(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
+
 static napi_value Getxattr(napi_env env, napi_callback_info info)
 {
     mode_t perms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
@@ -174,10 +182,11 @@ static napi_value LListxattr(napi_env env, napi_callback_info info)
 
 static napi_value FListXAttr(napi_env env, napi_callback_info info)
 {
-    ssize_t size_t = PARAM_0, len = 64;
-    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    ssize_t size_t = PARAM_0, len = PARAM_64;
+    int firstParam = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
     char secondParam[] = "/data/storage/el2/base/files";
     size_t = flistxattr(firstParam, secondParam, len);
+    close(firstParam);
     napi_value result = nullptr;
     napi_create_int32(env, size_t, &result);
     return result;
@@ -190,8 +199,7 @@ static napi_value Lsetxattr(napi_env env, napi_callback_info info)
     char str[] = "dat";
     write(fd, str, sizeof(str));
     close(fd);
-    int ret = lsetxattr("/data/storage/el2/base/files/test.txt", "user.txt", "dat",
-                        PARAM_3, XATTR_CREATE);
+    int ret = lsetxattr("/data/storage/el2/base/files/test.txt", "user.txt", "dat", PARAM_3, XATTR_CREATE);
     napi_value result = nullptr;
     if (ret == NO_ERR) {
         napi_create_int32(env, SUCCESS, &result);
@@ -202,10 +210,11 @@ static napi_value Lsetxattr(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value Removexattr(napi_env env, napi_callback_info info) {
+static napi_value Removexattr(napi_env env, napi_callback_info info)
+{
     char path[] = "/data/storage/el2/base/files/Fzl.txt";
-    int fd = open(path, O_CREAT | O_WRONLY, 0667);
-    setxattr(path, "user.foo", "bar", 4, XATTR_CREATE);
+    int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
+    setxattr(path, "user.foo", "bar", PARAM_4, XATTR_CREATE);
     int result = removexattr(path, "user.foo");
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
@@ -213,10 +222,11 @@ static napi_value Removexattr(napi_env env, napi_callback_info info) {
     return ret;
 }
 
-static napi_value Lremovexattr(napi_env env, napi_callback_info info) {
+static napi_value Lremovexattr(napi_env env, napi_callback_info info)
+{
     char path[] = "/data/storage/el2/base/files/Fzl.txt";
-    int fd = open(path, O_CREAT | O_WRONLY, 0667);
-    lsetxattr(path, "user.foo", "bar", 4, XATTR_CREATE);
+    int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
+    lsetxattr(path, "user.foo", "bar", PARAM_4, XATTR_CREATE);
     int result = lremovexattr(path, "user.foo");
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
@@ -231,12 +241,12 @@ static napi_value Fremovexattr(napi_env env, napi_callback_info info)
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
     char buf[10];
 
-    int fd = open(path, O_CREAT | O_WRONLY, 0667);
+    int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
 
-    int result = fsetxattr(fd, "user.foo", "bar", 4, 0);
+    int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
     result = fgetxattr(fd, "user.foo", buf, sizeof(buf));
     result = fremovexattr(fd, "user.foo");
-
+    close(fd);
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;
@@ -246,10 +256,10 @@ static napi_value Fsetxattr(napi_env env, napi_callback_info info)
 {
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
 
-    int fd = open(path, O_CREAT | O_WRONLY, 0667);
+    int fd = open(path, O_CREAT | O_WRONLY, PARAM_0667);
 
-    int result = fsetxattr(fd, "user.foo", "bar", 4, 0);
-
+    int result = fsetxattr(fd, "user.foo", "bar", PARAM_4, PARAM_0);
+    close(fd);
     napi_value ret = nullptr;
     napi_create_int32(env, result, &ret);
     return ret;
@@ -270,8 +280,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"lremovexattr", nullptr, Lremovexattr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"removexattr", nullptr, Removexattr, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"lsetxattr", nullptr, Lsetxattr, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"flistxattr", nullptr, FListXAttr, nullptr, nullptr, nullptr, napi_default, nullptr}
-    };
+        {"flistxattr", nullptr, FListXAttr, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }

@@ -13,16 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import pthread from 'libpthreadndk.so'
 
 export default function muslPThreadNdkTest() {
   describe('MuslPThreadTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATFORK_0100
      * @tc.name       : testMuslPThreadPThreadAtFork001
      * @tc.desc       : test pthread_atfork
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -36,7 +42,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadAttrDestroy001
      * @tc.desc       : test pthread_attr_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -50,7 +56,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETDETACHSTATE_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetDetachState001
      * @tc.desc       : test pthread_attr_getdetachstate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -64,7 +70,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETGUARDSIZE_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetGuardSize001
      * @tc.desc       : test pthread_attr_getguardsize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -78,7 +84,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETINHERITSCHED_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetInheritSched001
      * @tc.desc       : test pthread_attr_getinheritsched
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -92,7 +98,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETSCHEDPARAM_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetSchedParam001
      * @tc.desc       : test pthread_attr_getschedparam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -106,7 +112,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETSCHEDPOLICY_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetSchedPolicy001
      * @tc.desc       : test pthread_attr_getschedpolicy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -120,7 +126,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETSCOPE_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetScope001
      * @tc.desc       : test pthread_attr_getscope
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -134,7 +140,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETSTACK_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetStack001
      * @tc.desc       : test pthread_attr_getstack
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -148,7 +154,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_GETSTACKSIZE_0100
      * @tc.name       : testMuslPThreadPThreadAttrGetStackSize001
      * @tc.desc       : test pthread_attr_getstacksize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -162,7 +168,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_INIT_0100
      * @tc.name       : testMuslPThreadPThreadAttrInit001
      * @tc.desc       : test pthread_attr_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -176,7 +182,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETDETACHSTATE_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetDetachState001
      * @tc.desc       : test pthread_attr_setdetachstate
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -190,7 +196,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETGUARDSIZE_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetGuardSize001
      * @tc.desc       : test pthread_attr_setguardsize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -205,7 +211,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETINHERITSCHED_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetInheritSched001
      * @tc.desc       : test pthread_attr_setinheritsched
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -219,7 +225,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETSCHEDPARAM_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetSchedParam001
      * @tc.desc       : test pthread_attr_setschedparam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -233,7 +239,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETSCHEDPOLICY_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetSchedPolicy001
      * @tc.desc       : test pthread_attr_setschedpolicy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -247,7 +253,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETSCOPE_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetScope001
      * @tc.desc       : test pthread_attr_setscope
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -261,7 +267,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETSTACK_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetStack001
      * @tc.desc       : test pthread_attr_setstack
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -275,7 +281,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ATTR_SETSTACKSIZE_0100
      * @tc.name       : testMuslPThreadPThreadAttrSetStackSize001
      * @tc.desc       : test pthread_attr_setstacksize
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -289,7 +295,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIER_INIT_0100
      * @tc.name       : testMuslPThreadPThreadBarrierInit001
      * @tc.desc       : test pthread_barrier_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -303,7 +309,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIER_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadBarrierDestroy001
      * @tc.desc       : test pthread_barrier_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -317,7 +323,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIER_WAIT_0100
      * @tc.name       : testMuslPThreadPThreadBarrierWait001
      * @tc.desc       : test pthread_barrier_wait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -331,7 +337,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIERATTR_INIT_0100
      * @tc.name       : testMuslPThreadPThreadBarrierAttrInit001
      * @tc.desc       : test pthread_barrierattr_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -345,7 +351,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIERATTR_GETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadBarrierAttrGetPShared001
      * @tc.desc       : test pthread_barrierattr_getpshared.
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -359,7 +365,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIERATTR_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadBarrierAttrDestroy001
      * @tc.desc       : test pthread_barrierattr_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -373,7 +379,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_BARRIERATTR_SETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadBarrierAttrSetPShared001
      * @tc.desc       : test pthread_barrierattr_setpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -387,7 +393,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_INIT_0100
      * @tc.name       : testMuslPThreadPThreadCondInit001
      * @tc.desc       : test pthread_cond_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -402,7 +408,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadCondDestroy001
      * @tc.desc       : test pthread_cond_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -416,7 +422,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_TIMEDWAIT_0100
      * @tc.name       : testMuslPThreadPThreadCondTimedWait001
      * @tc.desc       : test pthread_cond_timedwait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -430,7 +436,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_WAIT_0100
      * @tc.name       : testMuslPThreadPThreadCondWait001
      * @tc.desc       : test pthread_cond_timedwait
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -444,7 +450,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_BROADCAST_0100
      * @tc.name       : testMuslPThreadPThreadCondBroadcast001
      * @tc.desc       : test pthread_cond_broadcast
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -458,7 +464,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_COND_SIGNAL_0100
      * @tc.name       : testMuslPThreadPThreadCondSignal001
      * @tc.desc       : test pthread_cond_signal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -473,7 +479,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_INIT_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrInit001
      * @tc.desc       : test pthread_condattr_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -487,7 +493,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrDestroy001
      * @tc.desc       : test pthread_condattr_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -501,7 +507,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_GETCLOCK_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrGetClock001
      * @tc.desc       : test pthread_condattr_getclock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -515,7 +521,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_GETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrGetPShared001
      * @tc.desc       : test pthread_condattr_getpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -529,7 +535,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_SETCLOCK_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrSetClock001
      * @tc.desc       : test pthread_condattr_setclock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -543,7 +549,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CONDATTR_SETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadCondAttrSetPShared001
      * @tc.desc       : test pthread_condattr_setpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -557,7 +563,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_CREATE_0100
      * @tc.name       : testMuslPThreadPThreadCreate001
      * @tc.desc       : test pthread_create
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -571,7 +577,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_DETACH_0100
      * @tc.name       : testMuslPThreadPThreadDetach001
      * @tc.desc       : test pthread_detach
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -585,7 +591,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_EQUAL_0100
      * @tc.name       : testMuslPThreadPThreadEqual001
      * @tc.desc       : test pthread_equal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -599,7 +605,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_EQUAL_0200
      * @tc.name       : testMuslPThreadPThreadEqual002
      * @tc.desc       : test pthread_equal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -613,7 +619,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_EXIT_0100
      * @tc.name       : testMuslPThreadPThreadExit001
      * @tc.desc       : test pthread_exit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -627,7 +633,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_GETATTR_NP_0100
      * @tc.name       : testMuslPThreadPThreadGetAttrNp001
      * @tc.desc       : test pthread_getattr_np
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -641,7 +647,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_GETCPUCLOCKID_0100
      * @tc.name       : testMuslPThreadPThreadGetCpuClockId001
      * @tc.desc       : test pthread_getcpuclockid
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -655,7 +661,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_GETSCHEDPARAM_0100
      * @tc.name       : testMuslPThreadPThreadGetSchedParam001
      * @tc.desc       : test pthread_getschedparam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -669,7 +675,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_GETSPECIFIC_0100
      * @tc.name       : testMuslPThreadPThreadGetSpecific001
      * @tc.desc       : test pthread_getspecific
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -683,7 +689,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_JOIN_0100
      * @tc.name       : testMuslPThreadPThreadJoin001
      * @tc.desc       : test pthread_join
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -697,7 +703,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_KEY_CREATE_0100
      * @tc.name       : testMuslPThreadPThreadKeyCreate001
      * @tc.desc       : test pthread_key_create
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -711,7 +717,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_KEY_DELETE_0100
      * @tc.name       : testMuslPThreadPThreadKeyDelete001
      * @tc.desc       : test pthread_key_delete
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -725,7 +731,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_KILL_0100
      * @tc.name       : testMuslPThreadPThreadKill001
      * @tc.desc       : test pthread_kill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -739,7 +745,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_INIT_0100
      * @tc.name       : testMuslPThreadPThreadMutexInit001
      * @tc.desc       : test pthread_mutex_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -753,7 +759,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadMutexDestroy001
      * @tc.desc       : test pthread_mutex_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -767,7 +773,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_LOCK_0100
      * @tc.name       : testMuslPThreadPThreadMutexLock001
      * @tc.desc       : test pthread_mutex_lock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -781,7 +787,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_TIMEDLOCK_0100
      * @tc.name       : testMuslPThreadPThreadMutexTimedLock001
      * @tc.desc       : test pthread_mutex_timedlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -795,7 +801,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_TRYLOCK_0100
      * @tc.name       : testMuslPThreadPThreadTryLock001
      * @tc.desc       : test pthread_mutex_trylock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -809,7 +815,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEX_UNLOCK_0100
      * @tc.name       : testMuslPThreadPThreadMutexUnLock001
      * @tc.desc       : test pthread_mutex_unlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -823,7 +829,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrDestroy001
      * @tc.desc       : test pthread_mutexattr_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -837,7 +843,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_GETPROTOCOL_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrGetProtocol001
      * @tc.desc       : test pthread_mutexattr_getprotocol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -851,7 +857,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_GETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrGetPShared001
      * @tc.desc       : test pthread_mutexattr_getpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -865,7 +871,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_GETTYPE_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrGetType001
      * @tc.desc       : test pthread_mutexattr_gettype
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -879,7 +885,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_INIT_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrInit001
      * @tc.desc       : test pthread_mutexattr_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -893,7 +899,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_SETPROTOCOL_0100
      * @tc.name       : testMuslPThreadPThreadMutexSetProtocol001
      * @tc.desc       : test pthread_mutexattr_setprotocol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -907,7 +913,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_SETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrSetPShared001
      * @tc.desc       : test pthread_mutexattr_setpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -921,7 +927,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_MUTEXATTR_SETTYPE_0100
      * @tc.name       : testMuslPThreadPThreadMutexAttrSetType001
      * @tc.desc       : test pthread_mutexattr_settype
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -935,7 +941,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_ONCE_0100
      * @tc.name       : testMuslPThreadPThreadOnce001
      * @tc.desc       : test pthread_once
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -949,7 +955,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_INIT_0100
      * @tc.name       : testMuslPThreadPThreadRwLockInit001
      * @tc.desc       : test pthread_rwlock_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -963,7 +969,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadRwLockDestroy001
      * @tc.desc       : test pthread_rwlock_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -977,7 +983,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_RDLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockRdLock001
      * @tc.desc       : test pthread_rwlock_rdlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -992,7 +998,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_TIMEDRDLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockTimedRdLock001
      * @tc.desc       : test pthread_rwlock_timedrdlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1006,7 +1012,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_TIMEDWRLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockTimedWrLock001
      * @tc.desc       : test pthread_rwlock_timedwrlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1020,7 +1026,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_TRYRDLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockTryRdLock001
      * @tc.desc       : test pthread_rwlock_tryrdlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1034,7 +1040,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_TRYWRLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockTryWrLock001
      * @tc.desc       : test pthread_rwlock_trywrlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1048,7 +1054,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_UNLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockUnLock001
      * @tc.desc       : test pthread_rwlock_unlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1062,7 +1068,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCK_WRLOCK_0100
      * @tc.name       : testMuslPThreadPThreadRwLockWrLock001
      * @tc.desc       : test pthread_rwlock_wrlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1076,7 +1082,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCKATTR_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadRwLockAttrDestroy001
      * @tc.desc       : test pthread_rwlockattr_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1090,7 +1096,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCKATTR_GETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadRwLockAttrGetPShared001
      * @tc.desc       : test pthread_rwlockattr_getpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1104,7 +1110,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCKATTR_INIT_0100
      * @tc.name       : testMuslPThreadPThreadRwLockAttrInit001
      * @tc.desc       : test pthread_rwlockattr_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1118,7 +1124,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_RWLOCKATTR_SETPSHARED_0100
      * @tc.name       : testMuslPThreadPThreadRwLockAttrSetPShared001
      * @tc.desc       : test pthread_rwlockattr_setpshared
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1132,7 +1138,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SELF_0100
      * @tc.name       : testMuslPThreadPThreadSelf001
      * @tc.desc       : test pthread_self
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -1146,7 +1152,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SETNAME_NP_0100
      * @tc.name       : testMuslPThreadPThreadSetNameNp001
      * @tc.desc       : test pthread_setname_np
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1160,7 +1166,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SETSCHEDPARAM_0100
      * @tc.name       : testMuslPThreadPThreadSetSchedParam001
      * @tc.desc       : test pthread_setschedparam
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1174,7 +1180,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SETSCHEDPRIO_0100
      * @tc.name       : testMuslPThreadPThreadSetSchedPrio001
      * @tc.desc       : test pthread_setschedprio
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1188,7 +1194,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SETSPECIFIC_0100
      * @tc.name       : testMuslPThreadPThreadSetSpecific001
      * @tc.desc       : test pthread_setspecific
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
@@ -1202,7 +1208,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SIG_MASK_0100
      * @tc.name       : testMuslPThreadPThreadSigMask001
      * @tc.desc       : test pthread_sigmask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1216,7 +1222,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SPIN_INIT_0100
      * @tc.name       : testMuslPThreadPThreadSpinInit001
      * @tc.desc       : test pthread_spin_init
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1229,7 +1235,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SPIN_DESTROY_0100
      * @tc.name       : testMuslPThreadPThreadSpinDestroy001
      * @tc.desc       : test pthread_spin_destroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1243,7 +1249,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SPIN_LOCK_0100
      * @tc.name       : testMuslPThreadPThreadSpinLock001
      * @tc.desc       : test pthread_spin_lock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1256,7 +1262,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SPIN_TRY_LOCK_0100
      * @tc.name       : testMuslPThreadPThreadSpinTryLock001
      * @tc.desc       : test pthread_spin_trylock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1269,7 +1275,7 @@ export default function muslPThreadNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PTHREAD_PTHREAD_SPIN_UNLOCK_0100
      * @tc.name       : testMuslPThreadPThreadSpinUnLock001
      * @tc.desc       : test pthread_spin_unlock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

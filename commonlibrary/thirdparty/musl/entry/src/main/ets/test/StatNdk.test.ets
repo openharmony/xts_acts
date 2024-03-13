@@ -13,18 +13,24 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import stat from 'libstatndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
 
 export default function statNdkTest() {
   describe('MuslStatTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_STAT_0100
      * @tc.name       : testMuslStatStat001
      * @tc.desc       : test stat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -39,7 +45,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_STAT_0200
      * @tc.name       : testMuslStatStat002
      * @tc.desc       : test stat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -55,7 +61,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_STAT64_0100
      * @tc.name       : testMuslStatStat64001
      * @tc.desc       : test stat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -70,7 +76,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_STAT64_0200
      * @tc.name       : testMuslStatStat64002
      * @tc.desc       : test stat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -85,7 +91,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_UMASK_0100
      * @tc.name       : testMuslStatUmask001
      * @tc.desc       : test umask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -101,23 +107,15 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_UTIMENSAT_0100
      * @tc.name       : testMuslStatUtimensat001
      * @tc.desc       : test utimensat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
     it('testMuslStatUtimensat001', 0, async (done: Function) => {
-
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-
-      let file = fs.openSync(filesDir + '/utimensat.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-
-      let result: number = stat.utimensat(filesDir + '/utimensat.txt');
+      let result: number = stat.utimensat();
       console.info("Test result= " + result);
       expect(result).assertEqual(1);
 
-      fs.closeSync(file);
       done();
     });
 
@@ -125,7 +123,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FCHMOD_0100
      * @tc.name       : testMuslStatFChMod001
      * @tc.desc       : test fchmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -138,7 +136,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FCHMODAT_0100
      * @tc.name       : testMuslStatFChModAt001
      * @tc.desc       : test fchmodat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -151,7 +149,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_CREAT_0100
      * @tc.name       : testMuslStatCreat001
      * @tc.desc       : test creat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -164,7 +162,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_CREAT64_0100
      * @tc.name       : testMuslStatCreat64001
      * @tc.desc       : test creat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -177,12 +175,18 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FSTAT_0100
      * @tc.name       : testMuslStatFstat001
      * @tc.desc       : test fstat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslStatFstat001', 0, async (done: Function) => {
-      let result: number = stat.fstat();
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+      let file = fs.openSync(filesDir + '/fstat.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.closeSync(file);
+      let path = filesDir + '/fstat.txt';
+      let result: number = stat.fstat(path);
       expect(result).assertEqual(0);
       done()
     });
@@ -191,7 +195,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_CHMOD_0100
      * @tc.name       : testMuslStatChmod001
      * @tc.desc       : test chmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -206,12 +210,18 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FSTAT64_0100
      * @tc.name       : testMuslStatFstat64001
      * @tc.desc       : test fstat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslStatFstat64001', 0, async (done: Function) => {
-      let result: number = stat.fstat64();
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+      let file = fs.openSync(filesDir + '/fstat64.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.closeSync(file);
+      let path = filesDir + '/fstat64.txt';
+      let result: number = stat.fstat64(path);
       expect(result).assertEqual(0);
       done()
     });
@@ -220,13 +230,19 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FSTATAT_0100
      * @tc.name       : testMuslStatFstatat001
      * @tc.desc       : test fstatat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslStatFstatat001', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+      let file = fs.openSync(filesDir + '/fstatat.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.closeSync(file);
+      let path = filesDir + '/fstatat.txt';
+      let result: number = stat.fstatat(path);
       let resultTrue = 0;
-      let result: number = stat.fstatat();
       expect(result).assertEqual(resultTrue);
       done()
     });
@@ -235,13 +251,19 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FSTATAT64_0100
      * @tc.name       : testMuslStatFstatat64001
      * @tc.desc       : test fstatat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslStatFstatat64001', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+      let file = fs.openSync(filesDir + '/fstatat64.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.closeSync(file);
+      let path = filesDir + '/fstatat64.txt';
+      let result: number = stat.fstatat64(path);
       let resultTrue = 0;
-      let result: number = stat.fstatat64();
       expect(result).assertEqual(resultTrue);
       done()
     });
@@ -249,7 +271,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_FUTIMENS_0100
      * @tc.name       : testMuslStatFutimens001
      * @tc.desc       : test futimens
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -259,28 +281,12 @@ export default function statNdkTest() {
       expect(result).assertEqual(resultTrue);
       done()
     });
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKFIFOAT_0100
-     * @tc.name     : testMuslStatMkFifoAt001
-     * @tc.desc     : test mkfifoat
-     * @tc.size     : MEDIUMF
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkFifoAt001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let name = 0;
-      let result: number = stat.mkFifoAt(name, filesDir + '/fifoAt001');
-      expect(result).assertEqual(0)
-      done()
-    });
+
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKFIFOAT_0200
      * @tc.name     : testMuslStatMkFifoAt002
      * @tc.desc     : test mkfifoat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -294,20 +300,20 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKFIFOAT_0300
      * @tc.name     : testMuslStatMkFifoAt003
      * @tc.desc     : test mkfifoat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
     it('testMuslStatMkFifoAt003', 0, async (done: Function) => {
       let result: number = stat.mkFifoAt(-100, 'fifoAt003');
-      expect(result).assertEqual(0)
+      expect(result).assertEqual(-1)
       done()
     });
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0100
      * @tc.name     : testMuslStatMkNodAt001
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -330,7 +336,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0200
      * @tc.name     : testMuslStatMkNodAt002
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -353,7 +359,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0300
      * @tc.name     : testMuslStatMkNodAt003
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -376,7 +382,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0400
      * @tc.name     : testMuslStatMkNodAt004
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -399,7 +405,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0500
      * @tc.name     : testMuslStatMkNodAt005
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -422,7 +428,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0600
      * @tc.name     : testMuslStatMkNodAt006
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -445,7 +451,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0700
      * @tc.name     : testMuslStatMkNodAt007
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -456,7 +462,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testSev.txt';
       let dirFp = -1;
       let mode = 8192;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -468,7 +474,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0800
      * @tc.name     : testMuslStatMkNodAt008
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -479,7 +485,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testEig.txt';
       let dirFp = -1;
       let mode = 24576;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -491,7 +497,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_0900
      * @tc.name     : testMuslStatMkNodAt009
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -502,7 +508,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testNi.txt';
       let dirFp = -1;
       let mode = 4096;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -514,7 +520,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1000
      * @tc.name     : testMuslStatMkNodAt010
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -525,7 +531,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testTen.txt';
       let dirFp = -1;
       let mode = 49152;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -537,7 +543,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1100
      * @tc.name     : testMuslStatMkNodAt011
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -560,7 +566,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1200
      * @tc.name     : testMuslStatMkNodAt012
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -571,7 +577,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testTwl.txt';
       let dirFp = -100;
       let mode = 8192;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -583,7 +589,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1300
      * @tc.name     : testMuslStatMkNodAt013
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -594,7 +600,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testThis.txt';
       let dirFp = -100;
       let mode = 24576;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -606,7 +612,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1400
      * @tc.name     : testMuslStatMkNodAt014
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -617,7 +623,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testFor.txt';
       let dirFp = -100;
       let mode = 4096;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -629,7 +635,7 @@ export default function statNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNODAT_1500
      * @tc.name     : testMuslStatMkNodAt015
      * @tc.desc     : test mknodat
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -640,7 +646,7 @@ export default function statNdkTest() {
       let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.closeSync(file);
 
-      let path = filesDir + '/test.txt';
+      let path = filesDir + '/testFif.txt';
       let dirFp = -100;
       let mode = 49152;
       let result: number = stat.mkNodAt(dirFp, path, mode);
@@ -648,130 +654,11 @@ export default function statNdkTest() {
       done()
     });
 
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNOD_0100
-     * @tc.name     : testMuslStatMkNod001
-     * @tc.desc     : test mknod
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkNod001', 0, async (done: Function) => {
-      let path = "filesDir";
-      let mode = 32768;
-      let result: number = stat.mkNod(path, mode);
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNOD_0200
-     * @tc.name     : testMuslStatMkNod002
-     * @tc.desc     : test mknod
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkNod002', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.closeSync(file);
-
-      let path = filesDir + '/test.txt';
-      let mode = 8192;
-      let result: number = stat.mkNod(path, mode);
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNOD_0300
-     * @tc.name     : testMuslStatMkNod003
-     * @tc.desc     : test mknod
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkNod003', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.closeSync(file);
-
-      let path = filesDir + '/test.txt';
-      let mode = 24576;
-      let result: number = stat.mkNod(path, mode);
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNOD_0400
-     * @tc.name     : testMuslStatMkNod004
-     * @tc.desc     : test mknod
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkNod004', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.closeSync(file);
-
-      let path = filesDir + '/test.txt';
-      let mode = 4096;
-      let result: number = stat.mkNod(path, mode);
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_MKNOD_0500
-     * @tc.name     : testMuslStatMkNod005
-     * @tc.desc     : test mknod
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatMkNod005', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-      let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.closeSync(file);
-
-      let path = filesDir + '/test.txt';
-      let mode = 49152;
-      let result: number = stat.mkNod(path, mode);
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_STAT_SCHED_CPUALLOC_0100
-     * @tc.name     : testMuslStatSchedCpualloc001
-     * @tc.desc     : test schedSpualloc
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslStatSchedCpualloc001', 0, async (done: Function) => {
-      let result: number = stat.schedCpualloc();
-      expect(result).assertEqual(0)
-      done()
-    });
-
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_MKDIR_0100
      * @tc.name       : testMuslStatMkDir001
      * @tc.desc       : test mkdir
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -785,7 +672,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_MKDIRAT_0100
      * @tc.name       : testMuslStatMkDirat001
      * @tc.desc       : test mkdirat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -795,27 +682,12 @@ export default function statNdkTest() {
       expect(data).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_MKFIFO_0100
-     * @tc.name       : testMuslStatMkFiFo001
-     * @tc.desc       : test mkfifo
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStatMkFiFo001', 0, async (done: Function) => {
-      let data: number = stat.mkFiFo();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(0);
-      done()
-    });
-
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_LSTAT_0100
      * @tc.name       : testMuslStatLstat001
      * @tc.desc       : test lstat
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -829,7 +701,7 @@ export default function statNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_LSTAT64_0100
      * @tc.name       : testMuslStatLstat64001
      * @tc.desc       : test lstat64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

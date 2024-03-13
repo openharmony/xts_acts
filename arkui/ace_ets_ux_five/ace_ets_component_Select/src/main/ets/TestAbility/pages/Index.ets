@@ -20,19 +20,17 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 @Entry
 @Component
 struct Index {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
 
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
   build() {
@@ -48,8 +46,8 @@ struct Index {
         ])
           .value('TTTT')
           .key("ArkUX_Select_Visual_0030")
-          .optionWidth(200)
-          .optionHeight(200)
+          .optionWidth(px2vp(300))
+          .optionHeight(px2vp(300))
 
         Select([{ value: 'aaa' },
           { value: 'bbb' },
@@ -64,8 +62,8 @@ struct Index {
           .backgroundColor(Color.Blue)
           .value('TTTT')
           .optionBgColor(Color.Blue)
-          .optionWidth(400)
-          .optionHeight(400)
+          .optionWidth(px2vp(600))
+          .optionHeight(px2vp(600))
 
         Select([{ value: 'aaa' },
           { value: 'bbb' },
@@ -77,8 +75,8 @@ struct Index {
         ])
           .key("ArkUX_Select_Visual_0050")
           .value('TTTT')
-          .optionWidth(600)
-          .optionHeight(600)
+          .optionWidth(px2vp(900))
+          .optionHeight(px2vp(900))
 
         Select([{ value: 'aaa' },
           { value: 'bbb' },
@@ -90,8 +88,8 @@ struct Index {
         ])
           .key("ArkUX_Select_Visual_0060")
           .value('TTTT')
-          .optionWidth(800)
-          .optionHeight(800)
+          .optionWidth(px2vp(1200))
+          .optionHeight(px2vp(1200))
 
         Select([{ value: 'aaa' },
           { value: 'bbb' },
@@ -103,8 +101,8 @@ struct Index {
         ])
           .key("ArkUX_Select_Visual_0070")
           .value('TTTT')
-          .optionWidth(1000)
-          .optionHeight(1000)
+          .optionWidth(px2vp(1500))
+          .optionHeight(px2vp(1500))
 
       }.width('100%')
     }.height('100%')

@@ -14,7 +14,7 @@
  */
 
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.Ability';
+import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
 
 export default class EntryAbility extends Ability {

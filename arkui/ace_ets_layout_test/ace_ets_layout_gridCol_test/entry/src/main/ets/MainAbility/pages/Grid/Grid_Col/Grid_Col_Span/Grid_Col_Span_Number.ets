@@ -12,38 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct Grid_Col_Span_Number {
-  @State addSpan: number = 0
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State currentBp: string = 'unknown'
-  messageManager:MessageManager = new MessageManager()
+  @State addSpan: number = 0;
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Grid_Col_Span_Number onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpan') {
         this.addSpan = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
       GridRow({
         columns: 6,
         gutter: { x: 10, y: 10 },
-        breakpoints: { value: ["50vp", "100vp", "150vp","200vp","300vp"],
+        breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index: number) => {
-          GridCol({span: this.addSpan}) {
+        ForEach(this.bgColors, (color: Color, index: number) => {
+          GridCol({ span: this.addSpan }) {
 
           }.borderColor(color).borderWidth(2).key("Grid_Col_Span_Number_0" + index).height(50)
         })

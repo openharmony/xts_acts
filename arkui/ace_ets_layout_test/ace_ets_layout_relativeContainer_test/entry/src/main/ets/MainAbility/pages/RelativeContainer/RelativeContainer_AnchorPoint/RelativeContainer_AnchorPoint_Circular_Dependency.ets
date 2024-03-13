@@ -20,42 +20,51 @@ struct RelativeContainer_AnchorPoint_Circular_Dependency {
     console.info('RelativeContainer_AnchorPoint_Absent onPageShow');
 
   }
+
   build() {
     Row() {
       RelativeContainer() {
-        Row().width(100).height(100)
+        Row()
+          .width(100)
+          .height(100)
           .backgroundColor("#FF3333")
           .alignRules({
-            middle: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row3", align: HorizontalAlign.End},
-            bottom: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row3", align:VerticalAlign.Top}
+            middle: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row3", align: HorizontalAlign.End },
+            bottom: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row3", align: VerticalAlign.Top }
           })
           .key("RelativeContainer_AnchorPoint_Circular_Dependency_row1")
           .id("RelativeContainer_AnchorPoint_Circular_Dependency_row1")
 
-        Row().width(100).height(100)
+        Row()
+          .width(100)
+          .height(100)
           .backgroundColor("#FFCC00")
           .alignRules({
-            top: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row1", align: VerticalAlign.Bottom},
-            left: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row1", align: HorizontalAlign.End}
+            top: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row1", align: VerticalAlign.Bottom },
+            left: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row1", align: HorizontalAlign.End }
           })
           .key("RelativeContainer_AnchorPoint_Circular_Dependency_row2")
           .id("RelativeContainer_AnchorPoint_Circular_Dependency_row2")
 
-        Row().width(100).height(100)
+        Row()
+          .width(100)
+          .height(100)
           .backgroundColor("#FF6633")
           .alignRules({
-            top: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row2", align: VerticalAlign.Top},
-            right: {anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row2", align: HorizontalAlign.Start},
+            top: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row2", align: VerticalAlign.Top },
+            right: { anchor: "RelativeContainer_AnchorPoint_Circular_Dependency_row2", align: HorizontalAlign.Start },
           })
           .key("RelativeContainer_AnchorPoint_Circular_Dependency_row3")
           .id("RelativeContainer_AnchorPoint_Circular_Dependency_row3")
 
-        Row().width(100).height(100)
+        Row()
+          .width(100)
+          .height(100)
           .backgroundColor("#FF9966")
           .alignRules({
-            top: {anchor: "__container__", align: VerticalAlign.Top},
-            bottom: {anchor: "__container__", align: VerticalAlign.Bottom},
-            left: {anchor: "__container__", align: HorizontalAlign.Start},
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+            left: { anchor: "__container__", align: HorizontalAlign.Start },
           })
           .key("RelativeContainer_AnchorPoint_Circular_Dependency_row4")
           .id("RelativeContainer_AnchorPoint_Circular_Dependency_row4")

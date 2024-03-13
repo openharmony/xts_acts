@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gridRowXlJsunit() {
-  describe('gridRowXlTest', function () {
-    beforeEach(async function (done) {
+  describe('gridRowXlTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gridRow',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridRow',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function gridRowXlJsunit() {
         console.info("get gridRow state success " + JSON.stringify(pages));
         if (!("gridRow" == pages.name)) {
           console.info("get gridRow state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push gridRow page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function gridRowXlJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gridRowXl after each called");
     });
@@ -50,15 +50,14 @@ export default function gridRowXlJsunit() {
      * @tc.name         testgridRowXl0001
      * @tc.desic         acegridRowXlEtsTest0001
      */
-    it('testgridRowXl0001', 0, async function (done) {
+    it('testgridRowXl0001', 0, async (done: Function) => {
       console.info('gridRowXl testgridRowXl0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('GridRowColumnOption——xl');
+      let strJson: string = getInspectorByKey('GridRowColumnOption——xl');
       console.info("[testgridRowXl0001] component backgroundColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('GridRow');
-      expect(obj.$attrs.backgroundColor).assertEqual("Color.Red");
-      console.info("[testgridRowXl0001] backgroundColor value :" + obj.$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$type).assertEqual('GridRow');
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("Color.Red");
+      console.info("[testgridRowXl0001] backgroundColor value :" + JSON.parse(strJson).$attrs.backgroundColor);
       done();
     });
   })

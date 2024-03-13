@@ -15,11 +15,11 @@
 @Entry
 @Component
 struct StartAndEnd {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State index : number = 0
-  @State text2 : string = ''
-  @State pad : number = 0
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State index: number = 0;
+  @State text2: string = '';
+  @State pad: number = 0;
 
   build() {
     Column({ space: 5 }) {
@@ -40,7 +40,7 @@ struct StartAndEnd {
         }
         .id('StartAndEnd')
         .padding(this.pad)
-        .margin({right:25})
+        .margin({ right: 25 })
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsGap(10)
         .rowsGap(10)
@@ -48,10 +48,10 @@ struct StartAndEnd {
         .backgroundColor(0xFAEEE0)
         .height(300)
         .scrollBar(BarState.Off)
-        .onReachStart(()=>{
+        .onReachStart(() => {
           this.index++
         })
-        .onReachEnd(()=>{
+        .onReachEnd(() => {
           this.text2 = 'onReachEnd'
         })
 

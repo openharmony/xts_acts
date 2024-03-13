@@ -26,6 +26,7 @@
 #define FAIL 0
 #define SUCCESS 1
 #define PARAM_0 0
+#define PARAM_0777 0777
 
 static napi_value PosixSpawnAttrGetflags(napi_env env, napi_callback_info info)
 {
@@ -52,16 +53,16 @@ static napi_value PosixSpawn(napi_env env, napi_callback_info info)
 {
     pid_t Pid = PARAM_0;
     Pid = getpid();
-    posix_spawnattr_t SpawnAttributes;
-    posix_spawnattr_init(&SpawnAttributes);
+    posix_spawnattr_t spawnAttributes;
+    posix_spawnattr_init(&spawnAttributes);
     errno = FAIL;
     int backInfo = FAIL;
     char **Environ = environ;
     const char *CommandCStr = "posix delete -i 1024";
-    const char *Argv[] = {"sh", "-c", CommandCStr, nullptr};
+    const char *argv[] = {"sh", "-c", CommandCStr, nullptr};
     char filepath[] = "/data/storage/el2/base/files/fzl.txt";
-    int fileDescribe = open(filepath, O_CREAT);
-    posix_spawn(&Pid, filepath, nullptr, &SpawnAttributes, (char *const *)Argv, Environ);
+    int fileDescribe = open(filepath, O_CREAT, PARAM_0777);
+    posix_spawn(&Pid, filepath, nullptr, &spawnAttributes, (char *const *)argv, Environ);
     close(fileDescribe);
     napi_value result = nullptr;
     if (errno == FAIL) {
@@ -75,16 +76,16 @@ static napi_value PosixSpawnP(napi_env env, napi_callback_info info)
 {
     pid_t Pid = PARAM_0;
     Pid = getpid();
-    posix_spawnattr_t SpawnAttributes = {PARAM_0};
-    posix_spawnattr_init(&SpawnAttributes);
+    posix_spawnattr_t spawnAttributes = {PARAM_0};
+    posix_spawnattr_init(&spawnAttributes);
     errno = FAIL;
     int backInfo = FAIL;
     char **Environ = environ;
     const char *CommandCStr = nullptr;
-    const char *Argv[] = {"sh", "-c", CommandCStr, nullptr};
+    const char *argv[] = {"sh", "-c", CommandCStr, nullptr};
     char filepath[] = "/data/storage/el2/base/files/fzl.txt";
-    int fileDescribe = open(filepath, O_CREAT);
-    posix_spawnp(&Pid, filepath, nullptr, &SpawnAttributes, (char *const *)Argv, Environ);
+    int fileDescribe = open(filepath, O_CREAT, PARAM_0777);
+    posix_spawnp(&Pid, filepath, nullptr, &spawnAttributes, (char *const *)argv, Environ);
     napi_value result = nullptr;
     close(fileDescribe);
     if (errno == FAIL) {
@@ -110,12 +111,13 @@ static napi_value PosixSpawnFileActionsAddOpen(napi_env env, napi_callback_info 
     int returnValue = FAIL;
     posix_spawn_file_actions_t param;
     posix_spawn_file_actions_init(&param);
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     posix_spawn_file_actions_addopen(&param, fileDescribe, "/data/storage/el2/base/files/fzl.txt", O_CREAT, S_IXGRP);
     napi_value result = nullptr;
     if (errno == FAIL) {
         returnValue = SUCCESS;
     }
+    close(fileDescribe);
     napi_create_int32(env, returnValue, &result);
     return result;
 }

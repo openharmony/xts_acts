@@ -23,11 +23,11 @@ struct FormComponentFormDimension {
   @State target: WindowAnimationTarget = undefined // 通过windowAnimationManager获取
 
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear Dimension start`)
+    Log.showInfo(TAG, `aboutToAppear Dimension start`);
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear Dimension end`)
+    Log.showInfo(TAG, `aboutToDisAppear Dimension end`);
   }
 
   build() {

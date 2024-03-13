@@ -15,7 +15,6 @@
 
 #include "napi/native_api.h"
 #include "pthread.h"
-#include <cerrno>
 #include <cstdio>
 #include <js_native_api_types.h>
 #include <poll.h>
@@ -23,33 +22,32 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-
 #define TEST_AT_FDCWD (-100)
 #define TEST_ERROR_AT_FDCWD 100
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
 #define TEN 10
 #define BUFSIZE 32
 #define TEST_FIFO_MODE 0666
 
-int prctlRet = FAIL;
-void *thread(void *)
+int g_prctlRet = FAIL;
+void *Thread(void *)
 {
     char name[BUFSIZE] = "wenhao";
-    prctlRet = prctl(PR_SET_NAME, (unsigned long)name);
-    pthread_exit(&prctlRet);
+    g_prctlRet = prctl(PR_SET_NAME, (unsigned long)name);
+    pthread_exit(&g_prctlRet);
 }
 
 static napi_value Prctl(napi_env env, napi_callback_info info)
 {
     void *pThreadResult = nullptr;
     pthread_t tid = PARAM_0;
-    pthread_create(&tid, nullptr, thread, nullptr);
+    pthread_create(&tid, nullptr, Thread, nullptr);
     pthread_join(tid, &pThreadResult);
     napi_value result = nullptr;
-    napi_create_int32(env, *(int *)pThreadResult, &result);
+    napi_create_int32(env, *static_cast<int *>(pThreadResult), &result);
     return result;
 }
 

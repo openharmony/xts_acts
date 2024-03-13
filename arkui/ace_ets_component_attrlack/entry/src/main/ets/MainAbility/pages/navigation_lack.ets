@@ -28,17 +28,15 @@ struct NavigationExample {
   @State titleMode: NavigationTitleMode = NavigationTitleMode.Free
   @State navagationmode: NavigationMode = NavigationMode.Stack
   @State navagationmode2: NavigationMode = NavigationMode.Split
-
-  @state commonTile :NavigationCommonTitle = {
-      main:"main",
-      sub: "sub"
+  @state commonTile: NavigationCommonTitle = {
+    main: "main",
+    sub: "sub"
   }
-  @State navTile:NavDestinationCommonTitle = {
-    main:"main_nav",
+  @State navTile: NavDestinationCommonTitle = {
+    main: "main_nav",
     sub: "sub_nav"
   }
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("tabs page state change called:" + JSON.stringify(eventData));
       if (eventData.data.vertical != null) {
@@ -58,16 +56,15 @@ struct NavigationExample {
 
   onPageShow() {
     console.info('progress page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 135,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-
-
-  @Builder NavigationTitle() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Text('title')
         .width(80)
@@ -80,7 +77,8 @@ struct NavigationExample {
     })
   }
 
-  @Builder NavigationMenus() {
+  @Builder
+  NavigationMenus() {
     Row() {
       Image('images/add.png')
         .width(25)
@@ -97,7 +95,7 @@ struct NavigationExample {
       Navigation() {
         Search({ value: '', placeholder: "" }).width('85%').margin(26)
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -107,7 +105,7 @@ struct NavigationExample {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .key('Navigation')
@@ -116,18 +114,21 @@ struct NavigationExample {
         .width('100%')
 
         Button(this.hideBar ? "tool bar" : "hide bar")
-          .backgroundColor(0x2788D9).width(200).height(100).fontSize(20)
+          .backgroundColor(0x2788D9)
+          .width(200)
+          .height(100)
+          .fontSize(20)
           .key('NavigationContent1')
           .onClick(() => {
             this.hideBar = !this.hideBar;
             console.info('navigationContent1 current action state is: ' + this.hideBar);
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "ACTION": this.hideBar,
                 }
               }
-              var backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 1366,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -150,23 +151,30 @@ struct NavigationExample {
       .backButtonIcon('images/grid.svg')
       .hideNavBar(true)
       .onNavBarStateChange((isVisible: boolean) => {
-          console.info("isvisible")
+        console.info("isvisible")
       })
       .onTitleModeChange((titleModel: NavigationTitleMode) => {
         console.log('titleMode')
       })
-      .toolBar({ items: [
-        { value: 'app', icon: 'images/grid.svg', action: () => {
-          console.log("app")
-        } },
-        { value: 'add', icon: 'images/add.svg', action: () => {
-          console.log("add")
-        } },
-        { value: 'collect', icon: 'images/collect.svg', action: () => {
-          console.log("collect")
-        } }] })
+      .toolBar({
+        items: [
+          {
+            value: 'app', icon: 'images/grid.svg', action: () => {
+            console.log("app")
+          }
+          },
+          {
+            value: 'add', icon: 'images/add.svg', action: () => {
+            console.log("add")
+          }
+          },
+          {
+            value: 'collect', icon: 'images/collect.svg', action: () => {
+            console.log("collect")
+          }
+          }]
+      })
       .hideToolBar(this.hideBar)
-
     }
   }
 }

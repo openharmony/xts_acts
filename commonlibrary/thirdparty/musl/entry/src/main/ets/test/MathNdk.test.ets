@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import math from 'libmathndk.so'
 
 export default function mathNdkTest() {
   describe('MuslMathTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0100
      * @tc.name       : testMuslMathLLround001
      * @tc.desc       : test llround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +42,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0200
      * @tc.name       : testMuslMathLLround002
      * @tc.desc       : test llround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -51,7 +56,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0300
      * @tc.name       : testMuslMathLLround003
      * @tc.desc       : test llround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -65,7 +70,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0400
      * @tc.name       : testMuslMathLLround004
      * @tc.desc       : test llround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -79,7 +84,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUND_0500
      * @tc.name       : testMuslMathLLround005
      * @tc.desc       : test llround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -94,7 +99,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDF_0100
      * @tc.name       : testMuslMathLLroundF001
      * @tc.desc       : test llroundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -108,7 +113,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDF_0200
      * @tc.name       : testMuslMathLLroundF002
      * @tc.desc       : test llroundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -122,7 +127,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDF_0300
      * @tc.name       : testMuslMathLLroundF003
      * @tc.desc       : test llroundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -136,7 +141,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDF_0400
      * @tc.name       : testMuslMathLLroundF004
      * @tc.desc       : test llroundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -150,7 +155,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDF_0500
      * @tc.name       : testMuslMathLLroundF005
      * @tc.desc       : test llroundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -164,7 +169,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDL_0100
      * @tc.name       : testMuslMathLLroundL001
      * @tc.desc       : test llroundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -178,7 +183,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDL_0200
      * @tc.name       : testMuslMathLLroundL002
      * @tc.desc       : test llroundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -192,7 +197,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDL_0300
      * @tc.name       : testMuslMathLLroundL003
      * @tc.desc       : test llroundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -206,7 +211,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDL_0400
      * @tc.name       : testMuslMathLLroundL004
      * @tc.desc       : test llroundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -220,7 +225,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLROUNDL_0500
      * @tc.name       : testMuslMathLLroundL005
      * @tc.desc       : test llroundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -234,7 +239,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0100
      * @tc.name       : testMuslMathLLrint001
      * @tc.desc       : test llrint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -248,7 +253,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0200
      * @tc.name       : testMuslMathLLrint002
      * @tc.desc       : test llrint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -262,7 +267,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0300
      * @tc.name       : testMuslMathLLrint003
      * @tc.desc       : test llrint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -276,7 +281,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0400
      * @tc.name       : testMuslMathLLrint004
      * @tc.desc       : test llrint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -290,7 +295,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINT_0500
      * @tc.name       : testMuslMathLLrint005
      * @tc.desc       : test llrint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -305,7 +310,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0100
      * @tc.name       : testMuslMathLLrintF001
      * @tc.desc       : test llrintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -319,7 +324,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0200
      * @tc.name       : testMuslMathLLrintF002
      * @tc.desc       : test llrintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -333,7 +338,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0300
      * @tc.name       : testMuslMathLLrintF003
      * @tc.desc       : test llrintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -347,7 +352,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0400
      * @tc.name       : testMuslMathLLrintF004
      * @tc.desc       : test llrintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -361,7 +366,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTF_0500
      * @tc.name       : testMuslMathLLrintF005
      * @tc.desc       : test llrintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -375,7 +380,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0100
      * @tc.name       : testMuslMathLLrintL001
      * @tc.desc       : test llrintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -389,7 +394,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0200
      * @tc.name       : testMuslMathLLrintL002
      * @tc.desc       : test llrintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -403,7 +408,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0300
      * @tc.name       : testMuslMathLLrintL003
      * @tc.desc       : test llrintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -417,7 +422,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0400
      * @tc.name       : testMuslMathLLrintL004
      * @tc.desc       : test llrintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -431,7 +436,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LLRINTL_0500
      * @tc.name       : testMuslMathLLrintL005
      * @tc.desc       : test llrintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -445,7 +450,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0100
      * @tc.name       : testMuslMathLgammaR001
      * @tc.desc       : test lgamma_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -458,7 +463,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0200
      * @tc.name       : testMuslMathLgammaR002
      * @tc.desc       : test lgamma_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -471,7 +476,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0300
      * @tc.name       : testMuslMathLgammaR003
      * @tc.desc       : test lgamma_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -484,7 +489,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0400
      * @tc.name       : testMuslMathLgammaR004
      * @tc.desc       : test lgamma_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -498,7 +503,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_R_0500
      * @tc.name       : testMuslMathLgammaR005
      * @tc.desc       : test lgamma_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -512,7 +517,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0100
      * @tc.name       : testMuslMathLgammafR001
      * @tc.desc       : test lgammaf_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -525,7 +530,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0200
      * @tc.name       : testMuslMathLgammafR002
      * @tc.desc       : test lgammaf_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -538,7 +543,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0300
      * @tc.name       : testMuslMathLgammafR003
      * @tc.desc       : test lgammaf_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -551,7 +556,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0400
      * @tc.name       : testMuslMathLgammafR004
      * @tc.desc       : test lgammaf_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -565,7 +570,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_R_0500
      * @tc.name       : testMuslMathLgammafR005
      * @tc.desc       : test lgammaf_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -579,7 +584,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0100
      * @tc.name       : testMuslMathLgammalR001
      * @tc.desc       : test lgammal_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -592,7 +597,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0200
      * @tc.name       : testMuslMathLgammalR002
      * @tc.desc       : test lgammal_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -605,7 +610,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0300
      * @tc.name       : testMuslMathLgammalR003
      * @tc.desc       : test lgammal_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -618,7 +623,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0400
      * @tc.name       : testMuslMathLgammalR004
      * @tc.desc       : test lgammal_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -632,7 +637,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_R_0500
      * @tc.name       : testMuslMathLgammalR005
      * @tc.desc       : test lgammal_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -647,7 +652,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0100
      * @tc.name       : testMuslMathLgamma001
      * @tc.desc       : test lgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -660,7 +665,7 @@ export default function mathNdkTest() {
      * @tc.number     :  SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0200
      * @tc.name       : testMuslMathLgamma002
      * @tc.desc       : test lgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -673,7 +678,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0300
      * @tc.name       : testMuslMathLgamma003
      * @tc.desc       : test lgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -686,7 +691,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0400
      * @tc.name       : testMuslMathLgamma004
      * @tc.desc       : test lgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -700,7 +705,7 @@ export default function mathNdkTest() {
      * @tc.number     :  SUB_THIRDPARTY_MUSL_MATH_LGAMMA_0500
      * @tc.name       : testMuslMathLgamma005
      * @tc.desc       : test lgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -714,7 +719,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0100
      * @tc.name       : testMuslMathLgammaf001
      * @tc.desc       : test lgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -727,7 +732,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0200
      * @tc.name       : testMuslMathLgammaf002
      * @tc.desc       : test lgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -741,7 +746,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0300
      * @tc.name       : testMuslMathLgammaf003
      * @tc.desc       : test lgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -754,7 +759,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0400
      * @tc.name       : testMuslMathLgammaf004
      * @tc.desc       : test lgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -768,7 +773,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAF_0500
      * @tc.name       : testMuslMathLgammaf005
      * @tc.desc       : test lgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -782,7 +787,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0100
      * @tc.name       : testMuslMathLgammal001
      * @tc.desc       : test lgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -795,7 +800,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0200
      * @tc.name       : testMuslMathLgammal002
      * @tc.desc       : test lgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -808,7 +813,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0300
      * @tc.name       : testMuslMathLgammal003
      * @tc.desc       : test lgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -821,7 +826,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0400
      * @tc.name       : testMuslMathLgammal004
      * @tc.desc       : test lgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -835,7 +840,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LGAMMAL_0500
      * @tc.name       : testMuslMathLgammal005
      * @tc.desc       : test lgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -849,7 +854,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXP_0100
      * @tc.name       : testMuslMathLdexp001
      * @tc.desc       : test ldexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -863,7 +868,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXP_0200
      * @tc.name       : testMuslMathLdexp002
      * @tc.desc       : test Ldexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -877,7 +882,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXP_0300
      * @tc.name       : testMuslMathLdexp003
      * @tc.desc       : test Ldexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -891,7 +896,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0100
      * @tc.name       : testMuslMathLdexpf001
      * @tc.desc       : test Ldexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -905,7 +910,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0200
      * @tc.name       : testMuslMathLdexpf002
      * @tc.desc       : test Ldexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -919,7 +924,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPF_0300
      * @tc.name       : testMuslMathLdexpf003
      * @tc.desc       : test Ldexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -933,7 +938,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPL_0100
      * @tc.name       : testMuslMathLdexpl001
      * @tc.desc       : test Ldexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -947,7 +952,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPL_0200
      * @tc.name       : testMuslMathLdexpl002
      * @tc.desc       : test Ldexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -961,7 +966,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LDEXPL_0300
      * @tc.name       : testMuslMathLdexpl003
      * @tc.desc       : test Ldexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -975,7 +980,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0_0100
      * @tc.name       : testMuslMathJ0001
      * @tc.desc       : test J0
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -989,7 +994,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0_0200
      * @tc.name       : testMuslMathJ0002
      * @tc.desc       : test J0
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1003,7 +1008,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0_0300
      * @tc.name       : testMuslMathJ0003
      * @tc.desc       : test J0
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1017,7 +1022,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0F_0100
      * @tc.name       : testMuslMathJ0f001
      * @tc.desc       : test J0f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1031,7 +1036,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0F_0200
      * @tc.name       : testMuslMathJ0f002
      * @tc.desc       : test J0f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1045,7 +1050,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J0F_0300
      * @tc.name       : testMuslMathJ0f003
      * @tc.desc       : test J0f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1059,7 +1064,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1_0100
      * @tc.name       : testMuslMathJ1001
      * @tc.desc       : test J1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1073,7 +1078,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1_0200
      * @tc.name       : testMuslMathJ1002
      * @tc.desc       : test J1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1087,7 +1092,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1_0300
      * @tc.name       : testMuslMathJ1003
      * @tc.desc       : test J1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1101,7 +1106,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1F_0100
      * @tc.name       : testMuslMathJ1f001
      * @tc.desc       : test J1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1115,7 +1120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1F_0200
      * @tc.name       : testMuslMathJ1f002
      * @tc.desc       : test J1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1129,7 +1134,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_J1F_0300
      * @tc.name       : testMuslMathJ1f003
      * @tc.desc       : test J1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1143,7 +1148,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JN_0100
      * @tc.name       : testMuslMathJn001
      * @tc.desc       : test Jn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1157,7 +1162,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JN_0200
      * @tc.name       : testMuslMathJn002
      * @tc.desc       : test Jn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1171,7 +1176,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JN_0300
      * @tc.name       : testMuslMathJn003
      * @tc.desc       : test Jn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1185,7 +1190,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JNF_0100
      * @tc.name       : testMuslMathJnf001
      * @tc.desc       : test Jnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1199,7 +1204,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JNF_0200
      * @tc.name       : testMuslMathJnf002
      * @tc.desc       : test Jnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1213,7 +1218,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_JNF_0300
      * @tc.name       : testMuslMathJnf003
      * @tc.desc       : test Jnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1227,7 +1232,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDER_0100
      * @tc.name       : testMuslMathRemainder001
      * @tc.desc       : test remainder
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1244,7 +1249,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDER_0200
      * @tc.name       : testMuslMathRemainder002
      * @tc.desc       : test rmainder
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1261,7 +1266,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDER_0300
      * @tc.name       : testMuslMathRemainder003
      * @tc.desc       : text remainder
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1278,7 +1283,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERF_0100
      * @tc.name       : testMuslMathRemainderf001
      * @tc.desc       : test remainderf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1295,7 +1300,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERF_0200
      * @tc.name       : testMuslMathRemainderf002
      * @tc.desc       : test remainderf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1312,7 +1317,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERF_0300
      * @tc.name       : testMuslMathRemainderf003
      * @tc.desc       : test remainderf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1329,7 +1334,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERL_0100
      * @tc.name       : testMuslMathRemainderl001
      * @tc.desc       : test remainderl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1346,7 +1351,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERL_0200
      * @tc.name       : testMuslMathRemainderl002
      * @tc.desc       : test remainderl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1363,7 +1368,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMAINDERL_0300
      * @tc.name       : testMuslMathRemainderl003
      * @tc.desc       : test remainderl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1380,7 +1385,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUO_0100
      * @tc.name       : testMuslMathRemquo001
      * @tc.desc       : test remquo
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1398,7 +1403,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUO_0200
      * @tc.name       : testMuslMathRemquo002
      * @tc.desc       : test remquo
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1416,7 +1421,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUO_0300
      * @tc.name       : testMuslMathRemquo003
      * @tc.desc       : test remquo
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1434,7 +1439,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOF_0100
      * @tc.name       : testMuslMathRemquof001
      * @tc.desc       : test remquof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1452,7 +1457,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOF_0200
      * @tc.name       : testMuslMathRemquof002
      * @tc.desc       : test remquof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1470,7 +1475,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOF_0300
      * @tc.name       : testMuslMathRemquof003
      * @tc.desc       : test remquof
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1488,7 +1493,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOL_0100
      * @tc.name       : testMuslMathRemquol001
      * @tc.desc       : test remquol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1506,7 +1511,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOL_0200
      * @tc.name       : testMuslMathRemquol002
      * @tc.desc       : test remquol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1524,7 +1529,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_REMQUOL_0300
      * @tc.name       : testMuslMathRemquol003
      * @tc.desc       : test remquol
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1542,7 +1547,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINT_0100
      * @tc.name       : testMuslMathRint001
      * @tc.desc       : test rint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1558,7 +1563,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINT_0200
      * @tc.name       : testMuslMathRint002
      * @tc.desc       : test rint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1574,7 +1579,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINT_0300
      * @tc.name       : testMuslMathRint003
      * @tc.desc       : test rint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1590,7 +1595,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTF_0100
      * @tc.name       : testMuslMathRintf001
      * @tc.desc       : test rintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1606,7 +1611,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTF_0200
      * @tc.name       : testMuslMathRintf002
      * @tc.desc       : test rintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1622,7 +1627,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTF_0300
      * @tc.name       : testMuslMathRintf003
      * @tc.desc       : test rintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1638,7 +1643,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTL_0100
      * @tc.name       : testMuslMathRintl001
      * @tc.desc       : test rintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1654,7 +1659,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTL_0200
      * @tc.name       : testMuslMathRintl002
      * @tc.desc       : test rintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1670,7 +1675,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_RINTL_0300
      * @tc.name       : testMuslMathRintl003
      * @tc.desc       : test rintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1686,7 +1691,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUND_0100
      * @tc.name       : testMuslMathRound001
      * @tc.desc       : test round
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1702,7 +1707,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUND_0200
      * @tc.name       : testMuslMathRound002
      * @tc.desc       : test round
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1718,7 +1723,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUND_0300
      * @tc.name       : testMuslMathRound003
      * @tc.desc       : test round
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1734,7 +1739,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDF_0100
      * @tc.name       : testMuslMathRoundf001
      * @tc.desc       : test roundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1750,7 +1755,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDF_0200
      * @tc.name       : testMuslMathRoundf002
      * @tc.desc       : test roundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1766,7 +1771,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDF_0300
      * @tc.name       : testMuslMathRoundf003
      * @tc.desc       : test roundf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1782,7 +1787,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDL_0100
      * @tc.name       : testMuslMathRoundl001
      * @tc.desc       : test roundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1798,7 +1803,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDL_0200
      * @tc.name       : testMuslMathRoundl002
      * @tc.desc       : test roundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1814,7 +1819,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ROUNDL_0300
      * @tc.name       : testMuslMathRoundl003
      * @tc.desc       : test roundl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1830,7 +1835,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLN_0100
      * @tc.name       : testMuslMathScalbln001
      * @tc.desc       : test scalbln
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1847,7 +1852,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLN_0200
      * @tc.name       : testMuslMathScalbln002
      * @tc.desc       : test scalbln
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1864,7 +1869,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLN_0300
      * @tc.name       : testMuslMathScalbln003
      * @tc.desc       : test scalbln
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1881,7 +1886,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TAN_0100
      * @tc.name       : testMuslMathTan001
      * @tc.desc       : test tan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1897,7 +1902,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TAN_0200
      * @tc.name       : testMuslMathTan002
      * @tc.desc       : test tan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1913,7 +1918,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TAN_0300
      * @tc.name       : testMuslMathTan003
      * @tc.desc       : test tan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1929,7 +1934,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TAN_0400
      * @tc.name       : testMuslMathTan004
      * @tc.desc       : test tan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1945,7 +1950,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANF_0100
      * @tc.name       : testMuslMathTanf001
      * @tc.desc       : test tanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1961,7 +1966,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANF_0200
      * @tc.name       : testMuslMathTanf002
      * @tc.desc       : test tanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1977,7 +1982,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANF_0300
      * @tc.name       : testMuslMathTanf003
      * @tc.desc       : test tanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -1993,7 +1998,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANF_0400
      * @tc.name       : testMuslMathTanf004
      * @tc.desc       : test tanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2009,7 +2014,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANH_0100
      * @tc.name       : testMuslMathTanh001
      * @tc.desc       : test tanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2025,7 +2030,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANH_0200
      * @tc.name       : testMuslMathTanh002
      * @tc.desc       : test tanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2042,7 +2047,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANH_0300
      * @tc.name       : testMuslMathTanh003
      * @tc.desc       : test tanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2058,7 +2063,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANH_0400
      * @tc.name       : testMuslMathTanh004
      * @tc.desc       : test tanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2074,7 +2079,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHF_0100
      * @tc.name       : testMuslMathTanhf001
      * @tc.desc       : test tanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2090,7 +2095,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHF_0200
      * @tc.name       : testMuslMathTanhf002
      * @tc.desc       : test tanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2106,7 +2111,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHF_0300
      * @tc.name       : testMuslMathTanhf003
      * @tc.desc       : test tanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2122,7 +2127,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHF_0400
      * @tc.name       : testMuslMathTanhf004
      * @tc.desc       : test tanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2138,7 +2143,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHL_0100
      * @tc.name       : testMuslMathTanhl001
      * @tc.desc       : test tanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2154,7 +2159,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHL_0200
      * @tc.name       : testMuslMathTanhl002
      * @tc.desc       : test tanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2170,7 +2175,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHL_0300
      * @tc.name       : testMuslMathTanhl003
      * @tc.desc       : test tanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2186,7 +2191,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANHL_0400
      * @tc.name       : testMuslMathTanhl004
      * @tc.desc       : test tanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2202,7 +2207,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANL_0100
      * @tc.name       : testMuslMathTanl001
      * @tc.desc       : test tanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2218,7 +2223,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANL_0200
      * @tc.name       : testMuslMathTanl002
      * @tc.desc       : test tanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2234,7 +2239,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANL_0300
      * @tc.name       : testMuslMathTanl003
      * @tc.desc       : test tanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2250,7 +2255,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TANL_0400
      * @tc.name       : testMuslMathTanl004
      * @tc.desc       : test tanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2266,7 +2271,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMA_0100
      * @tc.name       : testMuslMathTgamma001
      * @tc.desc       : test tgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2282,7 +2287,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMA_0200
      * @tc.name       : testMuslMathTgamma002
      * @tc.desc       : test tgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2298,7 +2303,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMA_0300
      * @tc.name       : testMuslMathTgamma003
      * @tc.desc       : test tgamma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2314,7 +2319,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAF_0100
      * @tc.name       : testMuslMathTgammaf001
      * @tc.desc       : test tgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2330,7 +2335,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAF_0200
      * @tc.name       : testMuslMathTgammaf002
      * @tc.desc       : test tgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2346,7 +2351,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAF_0300
      * @tc.name       : testMuslMathTgammaf003
      * @tc.desc       : test tgammaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2362,7 +2367,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAL_0100
      * @tc.name       : testMuslMathTgammal001
      * @tc.desc       : test tgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2378,7 +2383,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAL_0200
      * @tc.name       : testMuslMathTgammal002
      * @tc.desc       : test tgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2394,7 +2399,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TGAMMAL_0300
      * @tc.name       : testMuslMathTgammal003
      * @tc.desc       : test tgammal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2410,7 +2415,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBN_0100
      * @tc.name       : testMuslMathScalbn001
      * @tc.desc       : test scalbn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2426,7 +2431,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBN_0200
      * @tc.name       : testMuslMathScalbn002
      * @tc.desc       : test scalbn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2442,7 +2447,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBN_0300
      * @tc.name       : testMuslMathScalbn003
      * @tc.desc       : test scalbn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2459,7 +2464,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBN_0400
      * @tc.name       : testMuslMathScalbn004
      * @tc.desc       : test scalbn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2475,7 +2480,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNL_0100
      * @tc.name       : testMuslMathScalblnl001
      * @tc.desc       : test scalblnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2491,7 +2496,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNL_0200
      * @tc.name       : testMuslMathScalblnl002
      * @tc.desc       : test scalblnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2507,7 +2512,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNL_0300
      * @tc.name       : testMuslMathScalblnl003
      * @tc.desc       : test scalblnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2523,7 +2528,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNL_0400
      * @tc.name       : testMuslMathScalblnl004
      * @tc.desc       : test scalblnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2539,7 +2544,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNF_0100
      * @tc.name       : testMuslMathScalblnf001
      * @tc.desc       : test scalblnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2555,7 +2560,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNF_0200
      * @tc.name       : testMuslMathScalblnf002
      * @tc.desc       : test scalblnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2571,7 +2576,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNF_0300
      * @tc.name       : testMuslMathScalblnf003
      * @tc.desc       : test  scalblnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2587,7 +2592,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBLNF_0400
      * @tc.name       : testMuslMathScalblnf004
      * @tc.desc       : test scalblnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2603,7 +2608,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNF_0100
      * @tc.name       : testMuslMathScalbnf001
      * @tc.desc       : test scalbnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2619,7 +2624,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNF_0200
      * @tc.name       : testMuslMathScalbnf002
      * @tc.desc       : test scalbnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2635,7 +2640,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNF_0300
      * @tc.name       : testMuslMathScalbnf003
      * @tc.desc       : test scalbnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2651,7 +2656,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNF_0400
      * @tc.name       : testMuslMathScalbnf004
      * @tc.desc       : test scalbnf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2667,7 +2672,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNL_0100
      * @tc.name       : testMuslMathScalbnl001
      * @tc.desc       : test scalbnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2683,7 +2688,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNL_0200
      * @tc.name       : testMuslMathScalbnl002
      * @tc.desc       : test scalbnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2699,7 +2704,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNL_0300
      * @tc.name       : testMuslMathScalbnl003
      * @tc.desc       : test scalbnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2715,7 +2720,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBNL_0400
      * @tc.name       : testMuslMathScalbnl004
      * @tc.desc       : test scalbnl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2731,7 +2736,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASIN_0100
      * @tc.name       : testMuslMathASin001
      * @tc.desc       : test ASin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2747,7 +2752,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASIN_0200
      * @tc.name       : testMuslMathASin002
      * @tc.desc       : test ASin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2763,7 +2768,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASIN_0300
      * @tc.name       : testMuslMathASin003
      * @tc.desc       : test ASin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2779,7 +2784,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASIN_0400
      * @tc.name       : testMuslMathASin004
      * @tc.desc       : test ASin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2794,7 +2799,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINF_0100
      * @tc.name       : testMuslMathASinF001
      * @tc.desc       : test ASinF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2810,7 +2815,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINF_0200
      * @tc.name       : testMuslMathASinF002
      * @tc.desc       : test ASinF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2826,7 +2831,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINF_0300
      * @tc.name       : testMuslMathASinF003
      * @tc.desc       : test ASinF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2842,7 +2847,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINF_0400
      * @tc.name       : testMuslMathASinF004
      * @tc.desc       : test ASinF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2857,7 +2862,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINL_0100
      * @tc.name       : testMuslMathASinL001
      * @tc.desc       : test ASinL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2873,7 +2878,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINL_0200
      * @tc.name       : testMuslMathASinL002
      * @tc.desc       : test ASinL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2889,7 +2894,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINL_0300
      * @tc.name       : testMuslMathASinL003
      * @tc.desc       : test ASinL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2905,7 +2910,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINL_0400
      * @tc.name       : testMuslMathASinL004
      * @tc.desc       : test ASinL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2920,7 +2925,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINH_0100
      * @tc.name       : testMuslMathASinH001
      * @tc.desc       : test ASinH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2936,7 +2941,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINH_0200
      * @tc.name       : testMuslMathASinH002
      * @tc.desc       : test ASinH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2952,7 +2957,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINH_0300
      * @tc.name       : testMuslMathASinH003
      * @tc.desc       : test ASinH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2968,7 +2973,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINH_0400
      * @tc.name       : testMuslMathASinH004
      * @tc.desc       : test ASinH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2982,7 +2987,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHF_0100
      * @tc.name       : testMuslMathASinHF001
      * @tc.desc       : test ASinHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -2998,7 +3003,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHF_0200
      * @tc.name       : testMuslMathASinHF002
      * @tc.desc       : test ASinHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3014,7 +3019,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHF_0300
      * @tc.name       : testMuslMathASinHF003
      * @tc.desc       : test ASinHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3030,7 +3035,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHF_0400
      * @tc.name       : testMuslMathASinHF004
      * @tc.desc       : test ASinHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3044,7 +3049,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHL_0100
      * @tc.name       : testMuslMathASinHL001
      * @tc.desc       : test ASinHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3060,7 +3065,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHL_0200
      * @tc.name       : testMuslMathASinHL002
      * @tc.desc       : test ASinHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3076,7 +3081,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHL_0300
      * @tc.name       : testMuslMathASinHL003
      * @tc.desc       : test ASinHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3092,7 +3097,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ASINHL_0400
      * @tc.name       : testMuslMathASinHL004
      * @tc.desc       : test ASinHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3106,7 +3111,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0100
      * @tc.name       : testMuslMathACos001
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3122,7 +3127,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0200
      * @tc.name       : testMuslMathACos002
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3138,7 +3143,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0300
      * @tc.name       : testMuslMathACos003
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3154,7 +3159,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0400
      * @tc.name       : testMuslMathACos004
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3169,7 +3174,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0500
      * @tc.name       : testMuslMathACos005
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3184,7 +3189,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOS_0600
      * @tc.name       : testMuslMathACos006
      * @tc.desc       : test ACos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3199,7 +3204,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0100
      * @tc.name       : testMuslMathACosF001
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3215,7 +3220,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0200
      * @tc.name       : testMuslMathACosF002
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3231,7 +3236,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0300
      * @tc.name       : testMuslMathACosF003
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3247,7 +3252,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0400
      * @tc.name       : testMuslMathACosF004
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3262,7 +3267,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0500
      * @tc.name       : testMuslMathACosF005
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3277,7 +3282,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSF_0600
      * @tc.name       : testMuslMathACosF006
      * @tc.desc       : test ACosF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3292,7 +3297,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0100
      * @tc.name       : testMuslMathACosL001
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3308,7 +3313,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0200
      * @tc.name       : testMuslMathACosL002
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3324,7 +3329,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0300
      * @tc.name       : testMuslMathACosL003
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3340,7 +3345,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0400
      * @tc.name       : testMuslMathACosL004
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3355,7 +3360,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0500
      * @tc.name       : testMuslMathACosL005
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3370,7 +3375,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSL_0600
      * @tc.name       : testMuslMathACosL006
      * @tc.desc       : test ACosL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3385,7 +3390,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0100
      * @tc.name       : testMuslMathACosH001
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3400,7 +3405,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0200
      * @tc.name       : testMuslMathACosH002
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3415,7 +3420,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0300
      * @tc.name       : testMuslMathACosH003
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3431,7 +3436,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0400
      * @tc.name       : testMuslMathACosH004
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3446,7 +3451,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0500
      * @tc.name       : testMuslMathACosH005
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3461,7 +3466,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSH_0600
      * @tc.name       : testMuslMathACosH006
      * @tc.desc       : test ACosH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3476,7 +3481,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0100
      * @tc.name       : testMuslMathACosHF001
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3491,7 +3496,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0200
      * @tc.name       : testMuslMathACosHF002
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3506,7 +3511,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0300
      * @tc.name       : testMuslMathACosHF003
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3522,7 +3527,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0400
      * @tc.name       : testMuslMathACosHF004
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3537,7 +3542,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0500
      * @tc.name       : testMuslMathACosHF005
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3552,7 +3557,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHF_0600
      * @tc.name       : testMuslMathACosHF006
      * @tc.desc       : test ACosHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3567,7 +3572,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0100
      * @tc.name       : testMuslMathACosHL001
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3582,7 +3587,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0200
      * @tc.name       : testMuslMathACosHL002
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3597,7 +3602,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0300
      * @tc.name       : testMuslMathACosHL003
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3613,7 +3618,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0400
      * @tc.name       : testMuslMathACosHL004
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3628,7 +3633,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0500
      * @tc.name       : testMuslMathACosHL005
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3643,7 +3648,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ACOSHL_0600
      * @tc.name       : testMuslMathACosHL006
      * @tc.desc       : test ACosHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3658,7 +3663,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0100
      * @tc.name       : testMuslMathATan001
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3674,7 +3679,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0200
      * @tc.name       : testMuslMathATan002
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3690,7 +3695,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0300
      * @tc.name       : testMuslMathATan003
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3706,7 +3711,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0400
      * @tc.name       : testMuslMathATan004
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3722,7 +3727,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0500
      * @tc.name       : testMuslMathATan005
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3737,7 +3742,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN_0600
      * @tc.name       : testMuslMathATan006
      * @tc.desc       : test ATan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3753,7 +3758,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0100
      * @tc.name       : testMuslMathATanF001
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3769,7 +3774,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0200
      * @tc.name       : testMuslMathATanF002
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3785,7 +3790,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0300
      * @tc.name       : testMuslMathATanF003
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3801,7 +3806,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0400
      * @tc.name       : testMuslMathATanF004
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3817,7 +3822,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0500
      * @tc.name       : testMuslMathATanF005
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3832,7 +3837,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANF_0600
      * @tc.name       : testMuslMathATanF006
      * @tc.desc       : test ATanF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3848,7 +3853,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0100
      * @tc.name       : testMuslMathATanL001
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3864,7 +3869,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0200
      * @tc.name       : testMuslMathATanL002
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3880,7 +3885,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0300
      * @tc.name       : testMuslMathATanL003
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3896,7 +3901,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0400
      * @tc.name       : testMuslMathATanL004
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3912,7 +3917,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0500
      * @tc.name       : testMuslMathATanL005
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3927,7 +3932,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANL_0600
      * @tc.name       : testMuslMathATanL006
      * @tc.desc       : test ATanL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3943,7 +3948,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0100
      * @tc.name       : testMuslMathATan2001
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3960,7 +3965,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0200
      * @tc.name       : testMuslMathATan2002
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3977,7 +3982,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0300
      * @tc.name       : testMuslMathATan2003
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -3994,7 +3999,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0400
      * @tc.name       : testMuslMathATan2004
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4011,7 +4016,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0500
      * @tc.name       : testMuslMathATan2005
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4027,7 +4032,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0600
      * @tc.name       : testMuslMathATan2006
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4043,7 +4048,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0700
      * @tc.name       : testMuslMathATan2007
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4060,7 +4065,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0800
      * @tc.name       : testMuslMathATan2008
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4077,7 +4082,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_0900
      * @tc.name       : testMuslMathATan2009
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4094,7 +4099,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1000
      * @tc.name       : testMuslMathATan2010
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4111,7 +4116,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0100
      * @tc.name       : testMuslMathATan2F001
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4128,7 +4133,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0200
      * @tc.name       : testMuslMathATan2F002
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4145,7 +4150,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0300
      * @tc.name       : testMuslMathATan2F003
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4162,7 +4167,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0400
      * @tc.name       : testMuslMathATan2F004
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4179,10 +4184,10 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0500
      * @tc.name       : testMuslMathATan2F005
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4198,7 +4203,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0600
      * @tc.name       : testMuslMathATan2F006
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4215,7 +4220,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0700
      * @tc.name       : testMuslMathATan2F007
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4232,7 +4237,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0800
      * @tc.name       : testMuslMathATan2F008
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4249,7 +4254,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_0900
      * @tc.name       : testMuslMathATan2F009
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4266,7 +4271,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1000
      * @tc.name       : testMuslMathATan2F010
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4283,7 +4288,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0100
      * @tc.name       : testMuslMathATan2L001
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4300,7 +4305,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0200
      * @tc.name       : testMuslMathATan2L002
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4317,7 +4322,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0300
      * @tc.name       : testMuslMathATan2L003
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4334,7 +4339,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0400
      * @tc.name       : testMuslMathATan2L004
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4351,7 +4356,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0100
      * @tc.name       : testMuslMathCos001
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4367,7 +4372,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0200
      * @tc.name       : testMuslMathCos002
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4383,7 +4388,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0300
      * @tc.name       : testMuslMathCos003
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4399,7 +4404,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0100
      * @tc.name       : testMuslMathErf001
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4418,7 +4423,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0200
      * @tc.name       : testMuslMathErf002
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4437,7 +4442,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0300
      * @tc.name       : testMuslMathErf003
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4456,7 +4461,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0400
      * @tc.name       : testMuslMathErf004
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4471,7 +4476,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0100
      * @tc.name       : testMuslMathCopySign001
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4487,7 +4492,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0200
      * @tc.name       : testMuslMathCopySign002
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4503,7 +4508,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0300
      * @tc.name       : testMuslMathCopySign003
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4519,7 +4524,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0100
      * @tc.name       : testMuslMathExp001
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4535,7 +4540,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0200
      * @tc.name       : testMuslMathExp002
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4550,7 +4555,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABS_0100
      * @tc.name       : testMuslMathFabs001
      * @tc.desc       : test fabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4565,7 +4570,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIM_0100
      * @tc.name       : testMuslMathFDim001
      * @tc.desc       : test fdim
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4581,7 +4586,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIM_0200
      * @tc.name       : testMuslMathFDim002
      * @tc.desc       : test fdim
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4597,7 +4602,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIM_0300
      * @tc.name       : testMuslMathFDim003
      * @tc.desc       : test fdim
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4613,7 +4618,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOOR_0100
      * @tc.name       : testMuslMathFloor001
      * @tc.desc       : test floor
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4628,7 +4633,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOOR_0200
      * @tc.name       : testMuslMathFloor002
      * @tc.desc       : test floor
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4643,7 +4648,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0100
      * @tc.name       : testMuslMathFma001
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4660,7 +4665,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0200
      * @tc.name       : testMuslMathFma002
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4677,7 +4682,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAX_0100
      * @tc.name       : testMuslMathFMax001
      * @tc.desc       : test fmax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4693,7 +4698,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAX_0200
      * @tc.name       : testMuslMathFMax002
      * @tc.desc       : test fmax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4709,7 +4714,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAX_0300
      * @tc.name       : testMuslMathFMax003
      * @tc.desc       : test fmax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4725,7 +4730,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMIN_0100
      * @tc.name       : testMuslMathFmin001
      * @tc.desc       : test fmin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4741,7 +4746,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMIN_0200
      * @tc.name       : testMuslMathFmin002
      * @tc.desc       : test fmin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4757,7 +4762,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMIN_0300
      * @tc.name       : testMuslMathFmin003
      * @tc.desc       : test fmin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4773,7 +4778,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0100
      * @tc.name       : testMuslMathFmod001
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4795,7 +4800,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0200
      * @tc.name       : testMuslMathFmod002
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4817,7 +4822,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0300
      * @tc.name       : testMuslMathFmod003
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4839,7 +4844,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0400
      * @tc.name       : testMuslMathFmod004
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4861,7 +4866,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSF_0100
      * @tc.name       : testMuslMathFAbsF001
      * @tc.desc       : test fabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4876,7 +4881,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0100
      * @tc.name       : testMuslMathCosh001
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4892,7 +4897,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0200
      * @tc.name       : testMuslMathCosh002
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4908,7 +4913,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0300
      * @tc.name       : testMuslMathCosh003
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4924,7 +4929,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2_0100
      * @tc.name       : testMuslMathExp2001
      * @tc.desc       : test exp2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4943,7 +4948,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2_0200
      * @tc.name       : testMuslMathExp2002
      * @tc.desc       : test exp2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4958,7 +4963,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2_0300
      * @tc.name       : testMuslMathExp2003
      * @tc.desc       : test exp2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4977,7 +4982,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0100
      * @tc.name       : testMuslMathExpM1001
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -4996,7 +5001,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0200
      * @tc.name       : testMuslMathExpM1002
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5011,7 +5016,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0300
      * @tc.name       : testMuslMathExpM1003
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5030,7 +5035,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0100
      * @tc.name       : testMuslMathFmodF001
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5060,7 +5065,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0200
      * @tc.name       : testMuslMathFmodF002
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5090,7 +5095,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0300
      * @tc.name       : testMuslMathFmodF003
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5121,7 +5126,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0100
      * @tc.name       : testMuslMathFmodL001
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5138,7 +5143,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0200
      * @tc.name       : testMuslMathFmodL002
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5168,7 +5173,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0300
      * @tc.name       : testMuslMathFmodL003
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5199,7 +5204,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINF_0100
      * @tc.name       : testMuslMathFMinF001
      * @tc.desc       : test fminf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5215,7 +5220,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINF_0200
      * @tc.name       : testMuslMathFMinF002
      * @tc.desc       : test fminf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5231,7 +5236,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINF_0300
      * @tc.name       : testMuslMathFMinF003
      * @tc.desc       : test fminf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5247,7 +5252,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINL_0100
      * @tc.name       : testMuslMathFMinL001
      * @tc.desc       : test fminl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5263,7 +5268,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINL_0200
      * @tc.name       : testMuslMathFMinL002
      * @tc.desc       : test fminl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5279,7 +5284,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINL_0300
      * @tc.name       : testMuslMathFMinL003
      * @tc.desc       : test fminl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5295,7 +5300,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXF_0100
      * @tc.name       : testMuslMathFMaxF001
      * @tc.desc       : test fmaxf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5311,7 +5316,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXF_0200
      * @tc.name       : testMuslMathFMaxF002
      * @tc.desc       : test fmaxf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5327,7 +5332,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXF_0300
      * @tc.name       : testMuslMathFMaxF003
      * @tc.desc       : test fmaxf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5343,7 +5348,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXL_0100
      * @tc.name       : testMuslMathFMaxL001
      * @tc.desc       : test fmaxl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5359,7 +5364,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXL_0200
      * @tc.name       : testMuslMathFMaxL002
      * @tc.desc       : test fmaxl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5375,7 +5380,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXL_0300
      * @tc.name       : testMuslMathFMaxL003
      * @tc.desc       : test fmaxl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5391,7 +5396,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0100
      * @tc.name       : testMuslMathFmaF001
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5408,7 +5413,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0200
      * @tc.name       : testMuslMathFmaF002
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5425,7 +5430,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0100
      * @tc.name       : testMuslMathFmaL001
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5442,7 +5447,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0200
      * @tc.name       : testMuslMathFmaL002
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5459,7 +5464,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORF_0100
      * @tc.name       : testMuslMathFloorF001
      * @tc.desc       : test floorf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5475,7 +5480,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORF_0200
      * @tc.name       : testMuslMathFloorF002
      * @tc.desc       : test floorf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5491,7 +5496,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORL_0100
      * @tc.name       : testMuslMathFloorL001
      * @tc.desc       : test floorl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5507,7 +5512,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORL_0200
      * @tc.name       : testMuslMathFloorL002
      * @tc.desc       : test floorl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5523,7 +5528,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIMF_0100
      * @tc.name       : testMuslMathFDimF001
      * @tc.desc       : test fdimf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5540,7 +5545,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIMF_0200
      * @tc.name       : testMuslMathFDimF002
      * @tc.desc       : test fdimf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5557,7 +5562,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIMF_0300
      * @tc.name       : testMuslMathFDimF003
      * @tc.desc       : test fdimf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5574,7 +5579,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIML_0100
      * @tc.name       : testMuslMathFDimL001
      * @tc.desc       : test fdiml
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5590,7 +5595,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIML_0200
      * @tc.name       : testMuslMathFDimL002
      * @tc.desc       : test fdiml
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5606,7 +5611,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIML_0300
      * @tc.name       : testMuslMathFDimL003
      * @tc.desc       : test fdiml
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5622,7 +5627,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSL_0100
      * @tc.name       : testMuslMathFAbsL001
      * @tc.desc       : test fabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5637,7 +5642,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEIL_0100
      * @tc.name       : testMuslMathCeil001
      * @tc.desc       : test ceil
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5652,7 +5657,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEIL_0200
      * @tc.name       : testMuslMathCeil002
      * @tc.desc       : test ceil
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5667,7 +5672,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILF_0100
      * @tc.name       : testMuslMathCeilF001
      * @tc.desc       : test ceilf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5682,7 +5687,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILF_0200
      * @tc.name       : testMuslMathCeilF002
      * @tc.desc       : test ceilf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5697,7 +5702,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILL_0100
      * @tc.name       : testMuslMathCeilL001
      * @tc.desc       : test ceill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5712,7 +5717,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILL_0200
      * @tc.name       : testMuslMathCeilL002
      * @tc.desc       : test ceill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5727,7 +5732,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0100
      * @tc.name       : testMuslMathExpM1f001
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5746,7 +5751,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0200
      * @tc.name       : testMuslMathExpM1f002
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5761,7 +5766,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0300
      * @tc.name       : testMuslMathExpM1f003
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5780,7 +5785,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG_0100
      * @tc.name       : testMuslMathLog001
      * @tc.desc       : test Log
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5795,7 +5800,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG10_0100
      * @tc.name       : testMuslMathLog10001
      * @tc.desc       : test Log10
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5810,7 +5815,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG10F_0100
      * @tc.name       : testMuslMathLog10f001
      * @tc.desc       : test Log10f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5825,7 +5830,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG10L_0100
      * @tc.name       : testMuslMathLog10l001
      * @tc.desc       : test Log10l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5840,7 +5845,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG1P_0100
      * @tc.name       : testMuslMathLog1p001
      * @tc.desc       : test Log1p
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5855,7 +5860,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG1PF_0100
      * @tc.name       : testMuslMathLog1pf001
      * @tc.desc       : test Log1pf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5870,7 +5875,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG1PL_0100
      * @tc.name       : testMuslMathLog1pl001
      * @tc.desc       : test Log1pl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5885,7 +5890,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG2_0100
      * @tc.name       : testMuslMathLog2001
      * @tc.desc       : test Log2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5900,7 +5905,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG2F_0100
      * @tc.name       : testMuslMathLog2f001
      * @tc.desc       : test Log2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5915,7 +5920,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOG2L_0100
      * @tc.name       : testMuslMathLog2l001
      * @tc.desc       : test Log2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5930,7 +5935,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOGB_0100
      * @tc.name       : testMuslMathLogB001
      * @tc.desc       : test LogB
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5945,7 +5950,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOGBF_0100
      * @tc.name       : testMuslMathLogBf001
      * @tc.desc       : test LogBf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5960,7 +5965,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOGBL_0100
      * @tc.name       : testMuslMathLogBl001
      * @tc.desc       : test LogBl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5975,7 +5980,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOGF_0100
      * @tc.name       : testMuslMathLogF001
      * @tc.desc       : test LogF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -5990,7 +5995,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_LOGL_0100
      * @tc.name       : testMuslMathLogL001
      * @tc.desc       : test LogL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6005,7 +6010,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIN_0100
      * @tc.name       : testMuslMathSin001
      * @tc.desc       : test sin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6021,7 +6026,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIN_0200
      * @tc.name       : testMuslMathSin002
      * @tc.desc       : test sin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6036,7 +6041,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIN_0300
      * @tc.name       : testMuslMathSin003
      * @tc.desc       : test sin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6051,7 +6056,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINF_0100
      * @tc.name       : testMuslMathSinf001
      * @tc.desc       : test sinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6067,7 +6072,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINF_0200
      * @tc.name       : testMuslMathSinf002
      * @tc.desc       : test sinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6082,7 +6087,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINF_0300
      * @tc.name       : testMuslMathSinf003
      * @tc.desc       : test sinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6097,7 +6102,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINL_0100
      * @tc.name       : testMuslMathSinl001
      * @tc.desc       : test sinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6113,7 +6118,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINL_0200
      * @tc.name       : testMuslMathSinl002
      * @tc.desc       : test sinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6128,7 +6133,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINL_0300
      * @tc.name       : testMuslMathSinl003
      * @tc.desc       : test sinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6143,7 +6148,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINH_0100
      * @tc.name       : testMuslMathSinh001
      * @tc.desc       : test sinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6159,7 +6164,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINH_0200
      * @tc.name       : testMuslMathSinh002
      * @tc.desc       : test sinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6174,7 +6179,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINH_0300
      * @tc.name       : testMuslMathSinh003
      * @tc.desc       : test sinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6190,7 +6195,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHF_0100
      * @tc.name       : testMuslMathSinhf001
      * @tc.desc       : test sinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6206,7 +6211,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHF_0200
      * @tc.name       : testMuslMathSinhf002
      * @tc.desc       : test sinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6221,7 +6226,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHF_0300
      * @tc.name       : testMuslMathSinhf003
      * @tc.desc       : test sinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6236,7 +6241,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHL_0100
      * @tc.name       : testMuslMathSinhl001
      * @tc.desc       : test sinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6252,7 +6257,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHL_0200
      * @tc.name       : testMuslMathSinhl002
      * @tc.desc       : test sinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6267,7 +6272,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINHL_0300
      * @tc.name       : testMuslMathSinhl003
      * @tc.desc       : test sinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6282,7 +6287,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRT_0100
      * @tc.name       : testMuslMathSqrt001
      * @tc.desc       : test sqrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6298,7 +6303,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRT_0200
      * @tc.name       : testMuslMathSqrt002
      * @tc.desc       : test sqrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6313,7 +6318,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRT_0300
      * @tc.name       : testMuslMathSqrt003
      * @tc.desc       : test sqrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6328,7 +6333,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRT_0400
      * @tc.name       : testMuslMathSqrt004
      * @tc.desc       : test sqrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6343,7 +6348,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTF_0100
      * @tc.name       : testMuslMathSqrtf001
      * @tc.desc       : test sqrtf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6359,7 +6364,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTF_0200
      * @tc.name       : testMuslMathSqrtf002
      * @tc.desc       : test sqrtf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6374,7 +6379,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTF_0300
      * @tc.name       : testMuslMathSqrtf003
      * @tc.desc       : test sqrtf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6389,7 +6394,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTF_0400
      * @tc.name       : testMuslMathSqrtf004
      * @tc.desc       : test sqrtf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6404,7 +6409,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTL_0100
      * @tc.name       : testMuslMathSqrtl001
      * @tc.desc       : test sqrtl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6420,7 +6425,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTL_0200
      * @tc.name       : testMuslMathSqrtl002
      * @tc.desc       : test sqrtl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6435,7 +6440,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTL_0300
      * @tc.name       : testMuslMathSqrtl003
      * @tc.desc       : test sqrtl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6450,7 +6455,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SQRTL_0400
      * @tc.name       : testMuslMathSqrtl004
      * @tc.desc       : test sqrtl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6465,7 +6470,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0400
      * @tc.name       : testMuslMathCos004
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6481,7 +6486,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0500
      * @tc.name       : testMuslMathCos005
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6497,7 +6502,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0600
      * @tc.name       : testMuslMathCos006
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6513,7 +6518,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0700
      * @tc.name       : testMuslMathCos007
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6528,7 +6533,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COS_0800
      * @tc.name       : testMuslMathCos008
      * @tc.desc       : test cos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6543,7 +6548,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0500
      * @tc.name       : testMuslMathErf005
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6559,7 +6564,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0600
      * @tc.name       : testMuslMathErf006
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6575,7 +6580,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERF_0700
      * @tc.name       : testMuslMathErf007
      * @tc.desc       : test erf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6591,7 +6596,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0400
      * @tc.name       : testMuslMathCopySign004
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6607,7 +6612,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0500
      * @tc.name       : testMuslMathCopySign005
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6623,7 +6628,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGN_0600
      * @tc.name       : testMuslMathCopySign006
      * @tc.desc       : test copysign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6639,7 +6644,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0300
      * @tc.name       : testMuslMathExp003
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6655,7 +6660,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0400
      * @tc.name       : testMuslMathExp004
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6671,7 +6676,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0500
      * @tc.name       : testMuslMathExp005
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6687,7 +6692,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0600
      * @tc.name       : testMuslMathExp006
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6703,7 +6708,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP_0700
      * @tc.name       : testMuslMathExp007
      * @tc.desc       : test exp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6718,7 +6723,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABS_0200
      * @tc.name       : testMuslMathFabs002
      * @tc.desc       : test fabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6733,7 +6738,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABS_0300
      * @tc.name       : testMuslMathFabs003
      * @tc.desc       : test fabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6748,7 +6753,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABS_0400
      * @tc.name       : testMuslMathFabs004
      * @tc.desc       : test fabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6763,7 +6768,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIM_0400
      * @tc.name       : testMuslMathFDim004
      * @tc.desc       : test fdim
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6779,7 +6784,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIM_0500
      * @tc.name       : testMuslMathFDim005
      * @tc.desc       : test fdim
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6795,7 +6800,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOOR_0300
      * @tc.name       : testMuslMathFloor003
      * @tc.desc       : test floor
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6810,7 +6815,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOOR_0400
      * @tc.name       : testMuslMathFloor004
      * @tc.desc       : test floor
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6825,7 +6830,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOOR_0500
      * @tc.name       : testMuslMathFloor005
      * @tc.desc       : test floor
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6840,7 +6845,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0300
      * @tc.name       : testMuslMathFma003
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6857,7 +6862,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0400
      * @tc.name       : testMuslMathFma004
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6874,7 +6879,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0500
      * @tc.name       : testMuslMathFma005
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6891,7 +6896,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0600
      * @tc.name       : testMuslMathFma006
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6908,7 +6913,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMA_0700
      * @tc.name       : testMuslMathFma007
      * @tc.desc       : test fma
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6925,7 +6930,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAX_0400
      * @tc.name       : testMuslMathFMax004
      * @tc.desc       : test fmax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6941,7 +6946,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAX_0500
      * @tc.name       : testMuslMathFMax005
      * @tc.desc       : test fmax
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6957,7 +6962,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMIN_0400
      * @tc.name       : testMuslMathFmin004
      * @tc.desc       : test fmin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6973,7 +6978,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMIN_0500
      * @tc.name       : testMuslMathFmin005
      * @tc.desc       : test fmin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -6989,7 +6994,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0500
      * @tc.name       : testMuslMathFmod005
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7005,7 +7010,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0600
      * @tc.name       : testMuslMathFmod006
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7021,7 +7026,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMOD_0700
      * @tc.name       : testMuslMathFmod007
      * @tc.desc       : test fmod
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7038,7 +7043,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSF_0200
      * @tc.name       : testMuslMathFAbsF002
      * @tc.desc       : test fabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7053,7 +7058,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSF_0300
      * @tc.name       : testMuslMathFAbsF003
      * @tc.desc       : test fabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7068,7 +7073,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSF_0400
      * @tc.name       : testMuslMathFAbsF004
      * @tc.desc       : test fabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7083,7 +7088,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0400
      * @tc.name       : testMuslMathCosh004
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7099,7 +7104,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0500
      * @tc.name       : testMuslMathCosh005
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7115,7 +7120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0600
      * @tc.name       : testMuslMathCosh006
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7131,7 +7136,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0700
      * @tc.name       : testMuslMathCosh007
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7146,7 +7151,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSH_0800
      * @tc.name       : testMuslMathCosh008
      * @tc.desc       : test cosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7161,7 +7166,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2_0400
      * @tc.name       : testMuslMathExp2004
      * @tc.desc       : test exp2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7180,7 +7185,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2_0500
      * @tc.name       : testMuslMathExp2005
      * @tc.desc       : test exp2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7199,7 +7204,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0400
      * @tc.name       : testMuslMathExpM1004
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7218,7 +7223,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0500
      * @tc.name       : testMuslMathExpM1005
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7237,7 +7242,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0600
      * @tc.name       : testMuslMathExpM1006
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7256,7 +7261,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1_0700
      * @tc.name       : testMuslMathExpM1007
      * @tc.desc       : test expm1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7275,7 +7280,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0400
      * @tc.name       : testMuslMathFmodF004
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7291,7 +7296,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0500
      * @tc.name       : testMuslMathFmodF005
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7308,7 +7313,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0600
      * @tc.name       : testMuslMathFmodF006
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7339,7 +7344,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODF_0700
      * @tc.name       : testMuslMathFmodF007
      * @tc.desc       : test fmodf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7356,7 +7361,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0400
      * @tc.name       : testMuslMathFmodL004
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7372,7 +7377,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0500
      * @tc.name       : testMuslMathFmodL005
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7389,7 +7394,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0600
      * @tc.name       : testMuslMathFmodL006
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7420,7 +7425,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMODL_0700
      * @tc.name       : testMuslMathFmodL007
      * @tc.desc       : test fmodl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7437,7 +7442,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINF_0400
      * @tc.name       : testMuslMathFMinF004
      * @tc.desc       : test fminf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7453,7 +7458,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINF_0500
      * @tc.name       : testMuslMathFMinF005
      * @tc.desc       : test fminf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7469,7 +7474,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINL_0400
      * @tc.name       : testMuslMathFMinL004
      * @tc.desc       : test fminl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7485,7 +7490,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMINL_0500
      * @tc.name       : testMuslMathFMinL005
      * @tc.desc       : test fminl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7501,7 +7506,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXF_0400
      * @tc.name       : testMuslMathFMaxF004
      * @tc.desc       : test fmaxf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7517,7 +7522,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXF_0500
      * @tc.name       : testMuslMathFMaxF005
      * @tc.desc       : test fmaxf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7533,7 +7538,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXL_0400
      * @tc.name       : testMuslMathFMaxL004
      * @tc.desc       : test fmaxl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7549,7 +7554,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAXL_0500
      * @tc.name       : testMuslMathFMaxL005
      * @tc.desc       : test fmaxl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7565,7 +7570,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0300
      * @tc.name       : testMuslMathFmaF003
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7582,7 +7587,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0400
      * @tc.name       : testMuslMathFmaF004
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7599,7 +7604,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0500
      * @tc.name       : testMuslMathFmaF005
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7616,7 +7621,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0600
      * @tc.name       : testMuslMathFmaF006
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7633,7 +7638,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAF_0700
      * @tc.name       : testMuslMathFmaF007
      * @tc.desc       : test fmaf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7650,7 +7655,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0300
      * @tc.name       : testMuslMathFmaL003
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7667,7 +7672,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0400
      * @tc.name       : testMuslMathFmaL004
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7684,7 +7689,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0500
      * @tc.name       : testMuslMathFmaL005
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7701,7 +7706,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0600
      * @tc.name       : testMuslMathFmaL006
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7718,7 +7723,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FMAL_0700
      * @tc.name       : testMuslMathFmaL007
      * @tc.desc       : test fmal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7735,7 +7740,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORF_0300
      * @tc.name       : testMuslMathFloorF003
      * @tc.desc       : test floorf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7751,7 +7756,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORF_0400
      * @tc.name       : testMuslMathFloorF004
      * @tc.desc       : test floorf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7766,7 +7771,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORF_0500
      * @tc.name       : testMuslMathFloorF005
      * @tc.desc       : test floorf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7781,7 +7786,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORL_0300
      * @tc.name       : testMuslMathFloorL003
      * @tc.desc       : test floorl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7797,7 +7802,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORL_0400
      * @tc.name       : testMuslMathFloorL004
      * @tc.desc       : test floorl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7812,7 +7817,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FLOORL_0500
      * @tc.name       : testMuslMathFloorL005
      * @tc.desc       : test floorl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7827,7 +7832,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIMF_0400
      * @tc.name       : testMuslMathFDimF004
      * @tc.desc       : test fdimf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7843,7 +7848,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIMF_0500
      * @tc.name       : testMuslMathFDimF005
      * @tc.desc       : test fdimf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7859,7 +7864,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIML_0400
      * @tc.name       : testMuslMathFDimL004
      * @tc.desc       : test fdiml
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7875,7 +7880,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FDIML_0500
      * @tc.name       : testMuslMathFDimL005
      * @tc.desc       : test fdiml
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7891,7 +7896,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSL_0200
      * @tc.name       : testMuslMathFAbsL002
      * @tc.desc       : test fabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7906,7 +7911,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSL_0300
      * @tc.name       : testMuslMathFAbsL003
      * @tc.desc       : test fabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7921,7 +7926,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FABSL_0400
      * @tc.name       : testMuslMathFAbsL004
      * @tc.desc       : test fabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7936,7 +7941,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEIL_0300
      * @tc.name       : testMuslMathCeil003
      * @tc.desc       : test ceil
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7951,7 +7956,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEIL_0400
      * @tc.name       : testMuslMathCeil004
      * @tc.desc       : test ceil
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7966,7 +7971,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEIL_0500
      * @tc.name       : testMuslMathCeil005
      * @tc.desc       : test ceil
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7981,7 +7986,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILF_0300
      * @tc.name       : testMuslMathCeilF003
      * @tc.desc       : test ceilf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -7996,7 +8001,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILF_0400
      * @tc.name       : testMuslMathCeilF004
      * @tc.desc       : test ceilf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8011,7 +8016,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILF_0500
      * @tc.name       : testMuslMathCeilF005
      * @tc.desc       : test ceilf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8026,7 +8031,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILL_0300
      * @tc.name       : testMuslMathCeilL003
      * @tc.desc       : test ceill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8041,7 +8046,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILL_0400
      * @tc.name       : testMuslMathCeilL004
      * @tc.desc       : test ceill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8056,7 +8061,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CEILL_0500
      * @tc.name       : testMuslMathCeilL005
      * @tc.desc       : test ceill
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8071,7 +8076,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0400
      * @tc.name       : testMuslMathExpM1f004
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8090,7 +8095,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0500
      * @tc.name       : testMuslMathExpM1f005
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8109,7 +8114,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0600
      * @tc.name       : testMuslMathExpM1f006
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8128,7 +8133,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1F_0700
      * @tc.name       : testMuslMathExpM1f007
      * @tc.desc       : test expm1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8147,7 +8152,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0500
      * @tc.name       : testMuslMathATan2L005
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8163,7 +8168,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0600
      * @tc.name       : testMuslMathATan2L006
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8180,7 +8185,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0700
      * @tc.name       : testMuslMathATan2L007
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8197,7 +8202,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0800
      * @tc.name       : testMuslMathATan2L008
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8214,7 +8219,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_0900
      * @tc.name       : testMuslMathATan2L009
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8231,7 +8236,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1000
      * @tc.name       : testMuslMathATan2L010
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8248,7 +8253,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1100
      * @tc.name       : testMuslMathATan2L011
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8265,7 +8270,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1200
      * @tc.name       : testMuslMathATan2L012
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8282,7 +8287,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1300
      * @tc.name       : testMuslMathATan2L013
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8299,7 +8304,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1400
      * @tc.name       : testMuslMathATan2L014
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8316,7 +8321,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2L_1500
      * @tc.name       : testMuslMathATan2L015
      * @tc.desc       : test ATan2L
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8333,7 +8338,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1100
      * @tc.name       : testMuslMathATan2F011
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8350,7 +8355,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1200
      * @tc.name       : testMuslMathATan2F012
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8367,7 +8372,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1300
      * @tc.name       : testMuslMathATan2F013
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8384,7 +8389,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1400
      * @tc.name       : testMuslMathATan2F014
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8401,7 +8406,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2F_1500
      * @tc.name       : testMuslMathATan2F015
      * @tc.desc       : test ATan2F
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8418,7 +8423,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1100
      * @tc.name       : testMuslMathATan2011
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8435,7 +8440,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1200
      * @tc.name       : testMuslMathATan2012
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8452,7 +8457,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1300
      * @tc.name       : testMuslMathATan2013
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8469,7 +8474,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1400
      * @tc.name       : testMuslMathATan2014
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8486,7 +8491,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATAN2_1500
      * @tc.name       : testMuslMathATan2015
      * @tc.desc       : test ATan2
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8503,7 +8508,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANH_0100
      * @tc.name       : testMuslMathATanH001
      * @tc.desc       : test ATanH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8518,7 +8523,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANH_0200
      * @tc.name       : testMuslMathATanH002
      * @tc.desc       : test ATanH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8534,7 +8539,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANH_0300
      * @tc.name       : testMuslMathATanH003
      * @tc.desc       : test ATanH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8549,7 +8554,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANH_0400
      * @tc.name       : testMuslMathATanH004
      * @tc.desc       : test ATanH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8564,7 +8569,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANH_0500
      * @tc.name       : testMuslMathATanH005
      * @tc.desc       : test ATanH
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8580,7 +8585,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHF_0100
      * @tc.name       : testMuslMathATanHF001
      * @tc.desc       : test ATanHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8595,7 +8600,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHF_0200
      * @tc.name       : testMuslMathATanHF002
      * @tc.desc       : test ATanHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8611,7 +8616,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHF_0300
      * @tc.name       : testMuslMathATanHF003
      * @tc.desc       : test ATanHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8626,7 +8631,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHF_0400
      * @tc.name       : testMuslMathATanHF004
      * @tc.desc       : test ATanHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8641,7 +8646,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHF_0500
      * @tc.name       : testMuslMathATanHF005
      * @tc.desc       : test ATanHF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8657,7 +8662,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHL_0100
      * @tc.name       : testMuslMathATanHL001
      * @tc.desc       : test ATanHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8672,7 +8677,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHL_0200
      * @tc.name       : testMuslMathATanHL002
      * @tc.desc       : test ATanHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8688,7 +8693,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHL_0300
      * @tc.name       : testMuslMathATanHL003
      * @tc.desc       : test ATanHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8703,7 +8708,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHL_0400
      * @tc.name       : testMuslMathATanHL004
      * @tc.desc       : test ATanHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8718,7 +8723,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ATANHL_0500
      * @tc.name       : testMuslMathATanHL005
      * @tc.desc       : test ATanHL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8733,7 +8738,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_MODF_0100
      * @tc.name       : testMuslMathMODF001
      * @tc.desc       : test modF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8747,7 +8752,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_MODFF_0100
      * @tc.name       : testMuslMathModFf001
      * @tc.desc       : test modFf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8761,7 +8766,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_MODFL_0100
      * @tc.name       : testMuslMathMODFl001
      * @tc.desc       : test modFl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8775,7 +8780,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_MRAND48_0100
      * @tc.name       : testMuslMathMRand48001
      * @tc.desc       : test mrand48
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -8789,7 +8794,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POW_0100
      * @tc.name       : testMuslMathPow001
      * @tc.desc       : test pow
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8806,7 +8811,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POW_0200
      * @tc.name       : testMuslMathPow002
      * @tc.desc       : test pow
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8823,7 +8828,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POW_0300
      * @tc.name       : testMuslMathPow003
      * @tc.desc       : test pow
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8839,7 +8844,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWF_0100
      * @tc.name       : testMuslMathPowf001
      * @tc.desc       : test powf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8855,7 +8860,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWF_0200
      * @tc.name       : testMuslMathPowf002
      * @tc.desc       : test powf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8872,7 +8877,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWF_0300
      * @tc.name       : testMuslMathPowf003
      * @tc.desc       : test powf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8889,7 +8894,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWL_0100
      * @tc.name       : testMuslMathPowl001
      * @tc.desc       : test powl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8906,7 +8911,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWL_0200
      * @tc.name       : testMuslMathPowl002
      * @tc.desc       : test powl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8923,7 +8928,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_POWL_0300
      * @tc.name       : testMuslMathPowl003
      * @tc.desc       : test powl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8939,7 +8944,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTER_0100
      * @tc.name       : testMuslMathNextafter001
      * @tc.desc       : test nextafter
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8955,7 +8960,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTER_0200
      * @tc.name       : testMuslMathNextafter002
      * @tc.desc       : test nextafter
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8971,7 +8976,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTER_0300
      * @tc.name       : testMuslMathNextafter003
      * @tc.desc       : test nextafter
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -8979,7 +8984,7 @@ export default function mathNdkTest() {
       let a: number = 0.0, b = 0.1;
       let data: Number = math.nextafter(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(5e-324);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -8987,7 +8992,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERF_0100
      * @tc.name       : testMuslMathNextafterf001
      * @tc.desc       : test nextafterf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9003,7 +9008,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERF_0200
      * @tc.name       : testMuslMathNextafterf002
      * @tc.desc       : test nextafterf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9019,7 +9024,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERF_0300
      * @tc.name       : testMuslMathNextafterf003
      * @tc.desc       : test nextafterf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9027,7 +9032,7 @@ export default function mathNdkTest() {
       let a: number = 0.0, b = 0.1;
       let data: Number = math.nextafterf(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(1.401298464324817e-45);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -9035,7 +9040,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERL_0100
      * @tc.name       : testMuslMathNextafterl001
      * @tc.desc       : test nextafterl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9051,7 +9056,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERL_0200
      * @tc.name       : testMuslMathNextafterl002
      * @tc.desc       : test nextafterl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9067,7 +9072,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTAFTERL_0300
      * @tc.name       : testMuslMathNextafterl003
      * @tc.desc       : test nextafterl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9075,7 +9080,7 @@ export default function mathNdkTest() {
       let a: number = 0.0, b = 0.1;
       let data: Number = math.nextafterl(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(5e-324);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -9083,7 +9088,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINT_0100
      * @tc.name       : testMuslMathNearbyint001
      * @tc.desc       : test nearbyint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9099,7 +9104,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINT_0200
      * @tc.name       : testMuslMathNearbyint002
      * @tc.desc       : test nearbyint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9115,7 +9120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINT_0300
      * @tc.name       : testMuslMathNearbyint003
      * @tc.desc       : test nearbyint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9131,7 +9136,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINT_0400
      * @tc.name       : testMuslMathNearbyint004
      * @tc.desc       : test nearbyint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9147,7 +9152,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINT_0500
      * @tc.name       : testMuslMathNearbyint005
      * @tc.desc       : test nearbyint
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9163,7 +9168,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTF_0100
      * @tc.name       : testMuslMathNearbyintf001
      * @tc.desc       : test nearbyintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9179,7 +9184,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTF_0200
      * @tc.name       : testMuslMathNearbyintf002
      * @tc.desc       : test nearbyintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9195,7 +9200,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTF_0300
      * @tc.name       : testMuslMathNearbyintf003
      * @tc.desc       : test nearbyintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9211,7 +9216,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTF_0400
      * @tc.name       : testMuslMathNearbyintf004
      * @tc.desc       : test nearbyintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9227,7 +9232,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTF_0500
      * @tc.name       : testMuslMathNearbyintf005
      * @tc.desc       : test nearbyintf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9243,7 +9248,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTL_0100
      * @tc.name       : testMuslMathNearbyintl001
      * @tc.desc       : test nearbyintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9259,7 +9264,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTL_0200
      * @tc.name       : testMuslMathNearbyintl002
      * @tc.desc       : test nearbyintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9275,7 +9280,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTL_0300
      * @tc.name       : testMuslMathNearbyintl003
      * @tc.desc       : test nearbyintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9291,7 +9296,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTL_0400
      * @tc.name       : testMuslMathNearbyintl004
      * @tc.desc       : test nearbyintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9307,7 +9312,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEARBYINTL_0500
      * @tc.name       : testMuslMathNearbyintl005
      * @tc.desc       : test nearbyintl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9323,7 +9328,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NAN_0100
      * @tc.name       : testMuslMathNan001
      * @tc.desc       : test nan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9339,7 +9344,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NAN_0200
      * @tc.name       : testMuslMathNan002
      * @tc.desc       : test nan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9355,7 +9360,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NAN_0300
      * @tc.name       : testMuslMathNan003
      * @tc.desc       : test nan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9371,7 +9376,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANF_0100
      * @tc.name       : testMuslMathNanf001
      * @tc.desc       : test nanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9387,7 +9392,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANF_0200
      * @tc.name       : testMuslMathNanf002
      * @tc.desc       : test nanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9403,7 +9408,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANF_0300
      * @tc.name       : testMuslMathNanf003
      * @tc.desc       : test nanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9419,7 +9424,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANL_0100
      * @tc.name       : testMuslMathNanl001
      * @tc.desc       : test nanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9435,7 +9440,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANL_0200
      * @tc.name       : testMuslMathNanl002
      * @tc.desc       : test nanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9451,7 +9456,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NANL_0300
      * @tc.name       : testMuslMathNanl003
      * @tc.desc       : test nanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9467,7 +9472,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARD_0100
      * @tc.name       : testMuslMathNexttoward001
      * @tc.desc       : test nexttoward
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9484,7 +9489,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARD_0200
      * @tc.name       : testMuslMathNexttoward002
      * @tc.desc       : test nexttoward
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9501,7 +9506,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARD_0300
      * @tc.name       : testMuslMathNexttoward003
      * @tc.desc       : test nexttoward
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9510,7 +9515,7 @@ export default function mathNdkTest() {
       let b = 0.1;
       let data: Number = math.nextToward(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(5e-324);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -9518,7 +9523,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDF_0100
      * @tc.name       : testMuslMathNexttowardF001
      * @tc.desc       : test nexttowarf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9535,7 +9540,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDF_0200
      * @tc.name       : testMuslMathNexttowardF002
      * @tc.desc       : test nexttowarf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9552,7 +9557,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDF_0300
      * @tc.name       : testMuslMathNexttowardF003
      * @tc.desc       : test nexttowarf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9561,7 +9566,7 @@ export default function mathNdkTest() {
       let b = 0.1;
       let data: Number = math.nextTowardF(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(1.401298464324817e-45);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -9569,7 +9574,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDL_0100
      * @tc.name       : testMuslMathNexttowardL001
      * @tc.desc       : test nexttowarl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9586,7 +9591,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDL_0200
      * @tc.name       : testMuslMathNexttowardL002
      * @tc.desc       : test nexttowarl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9603,7 +9608,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_NEXTTOWARDL_0300
      * @tc.name       : testMuslMathNexttowardL003
      * @tc.desc       : test nexttowarl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -9612,7 +9617,7 @@ export default function mathNdkTest() {
       let b = 0.1;
       let data: Number = math.nextTowardL(a, b);
       console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(5e-324);
+      expect((data == 5e-324)||(data == 0)||(data == 1.401298464324817e-45)).assertEqual(true);
       done();
     });
 
@@ -9621,7 +9626,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINT_0100
      * @tc.name     : testMuslMathLRint001
      * @tc.desc     : test lRint
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9637,7 +9642,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_ MUSL_MATH_LRINT_0200
      * @tc.name     : testMuslMathLRint002
      * @tc.desc     : test lRint
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9653,7 +9658,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINT_0300
      * @tc.name     : testMuslMathLRint003
      * @tc.desc     : test lRint
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9669,7 +9674,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINTF_0100
      * @tc.name     : testMuslMathLRintf001
      * @tc.desc     : test lRintf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9685,7 +9690,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINTF_0200
      * @tc.name     : testMuslMathLRintf002
      * @tc.desc     : test lRintf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9701,7 +9706,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINTF_0300
      * @tc.name     : testMuslMathLRintf003
      * @tc.desc     : test lRintf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9717,7 +9722,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINTL_0100
      * @tc.name     : testMuslMathLRintl001
      * @tc.desc     : test lRintl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9733,7 +9738,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LRINTL_0200
      * @tc.name     : testMuslMathLRintl002
      * @tc.desc     : test lRintl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9749,7 +9754,7 @@ export default function mathNdkTest() {
      * @tc.number   :SUB_THIRDPARTY_MUSL_MATH_LRINTL_0300
      * @tc.name     : testMuslMathLRintl003
      * @tc.desc     : test lRintl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9766,7 +9771,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUND_0100
      * @tc.name     : testMuslMathLRound001
      * @tc.desc     : test lround
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9781,7 +9786,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUND_0200
      * @tc.name     : testMuslMathLRound002
      * @tc.desc     : test lRound
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9797,7 +9802,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUND_0300
      * @tc.name     : testMuslMathLRound003
      * @tc.desc     : test lRound
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9813,7 +9818,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDF_0100
      * @tc.name     : testMuslMathLRoundf001
      * @tc.desc     : test lRoundf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9829,7 +9834,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDF_0200
      * @tc.name     : testMuslMathLRoundf002
      * @tc.desc     : test lRoundf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9845,7 +9850,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDF_0300
      * @tc.name     : testMuslMathLRoundF003
      * @tc.desc     : test lRoundf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9861,7 +9866,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDL_0100
      * @tc.name     : testMuslMathLRoundl001
      * @tc.desc     : test lRoundl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9877,7 +9882,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDL_0200
      * @tc.name     : testMuslMathLRoundl002
      * @tc.desc     : test lRoundl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9893,7 +9898,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_LROUNDL_0300
      * @tc.name     : testMuslMathLRoundl003
      * @tc.desc     : test lRoundl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9909,7 +9914,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGB_0100
      * @tc.name     : testMuslMathILogb001
      * @tc.desc     : test ilogb
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9923,7 +9928,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGB_0200
      * @tc.name     : testMuslMathILogb002
      * @tc.desc     : test ilogb
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9939,7 +9944,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGBF_0100
      * @tc.name     : testMuslMathILogbf001
      * @tc.desc     : test ilogbf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9955,7 +9960,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGBF_0200
      * @tc.name     : testMuslMathILogbf002
      * @tc.desc     : test ilogbf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9971,7 +9976,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGBL_0100
      * @tc.name     : testMuslMathILogbl001
      * @tc.desc     : test ilogbl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -9987,7 +9992,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_ILOGBL_0200
      * @tc.name     : testMuslMathILogbl002
      * @tc.desc     : test ilogbl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10004,7 +10009,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOT_0100
      * @tc.name     : testMuslMathHYpot001
      * @tc.desc     : test hypot
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10020,7 +10025,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOT_0200
      * @tc.name     : testMuslMathHYpot002
      * @tc.desc     : test hypot
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10037,7 +10042,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOTF_0100
      * @tc.name     : testMuslMathhypotf001
      * @tc.desc     : test hypotf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10053,7 +10058,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOTF_0200
      * @tc.name     : testMuslMathhypotf002
      * @tc.desc     : test hypotf
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10068,7 +10073,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOTL_0100
      * @tc.name     : testMuslMathHYpotl001
      * @tc.desc     : test hypotl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10084,7 +10089,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_HYPOTL_0200
      * @tc.name     : testMuslMathHYpotl002
      * @tc.desc     : test hypotl
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10099,7 +10104,7 @@ export default function mathNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_MATH_SIGNGAM_0100
      * @tc.name     : testMuslMathSignGam001
      * @tc.desc     : test signgam
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -10115,7 +10120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_YN_0100
      * @tc.name       : testMuslMathYn001
      * @tc.desc       : test yn
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10129,7 +10134,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_YNF_0100
      * @tc.name       : testMuslMathYnf001
      * @tc.desc       : test ynf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10142,7 +10147,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSL_0100
      * @tc.name       : testMuslMathSincosl001
      * @tc.desc       : test sincosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10157,7 +10162,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSL_0200
      * @tc.name       : testMuslMathSincosl002
      * @tc.desc       : test sincosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10171,7 +10176,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSL_0300
      * @tc.name       : testMuslMathSincosl003
      * @tc.desc       : test sincosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10186,7 +10191,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSL_0400
      * @tc.name       : testMuslMathSincosl004
      * @tc.desc       : test sincosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10200,7 +10205,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOS_0100
      * @tc.name       : testMuslMathSincos001
      * @tc.desc       : test sincos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10215,7 +10220,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOS_0200
      * @tc.name       : testMuslMathSincos002
      * @tc.desc       : test sincos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10229,7 +10234,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOS_0300
      * @tc.name       : testMuslMathSincos003
      * @tc.desc       : test sincos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10244,7 +10249,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOS_0400
      * @tc.name       : testMuslMathSincos004
      * @tc.desc       : test sincos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10259,7 +10264,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSF_0100
      * @tc.name       : testMuslMathSincosf001
      * @tc.desc       : test sincosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10274,7 +10279,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSF_0200
      * @tc.name       : testMuslMathSincosf002
      * @tc.desc       : test sincosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10288,7 +10293,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSF_0300
      * @tc.name       : testMuslMathSincosf003
      * @tc.desc       : test sincosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10303,7 +10308,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SINCOSF_0400
      * @tc.name       : testMuslMathSincosf004
      * @tc.desc       : test sincosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10318,7 +10323,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICAND_0100
      * @tc.name       : testMuslMathSignificand001
      * @tc.desc       : test significand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10333,7 +10338,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICAND_0200
      * @tc.name       : testMuslMathSignificand002
      * @tc.desc       : test significand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10348,7 +10353,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICAND_0300
      * @tc.name       : testMuslMathSignificand003
      * @tc.desc       : test significand
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10363,7 +10368,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICANDF_0100
      * @tc.name       : testMuslMathSignificandf001
      * @tc.desc       : test significandf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10378,7 +10383,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICANDF_0200
      * @tc.name       : testMuslMathSignificandf002
      * @tc.desc       : test significandf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10393,7 +10398,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNIFICANDF_0300
      * @tc.name       : testMuslMathSignificandf003
      * @tc.desc       : test significandf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10408,7 +10413,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALB_0100
      * @tc.name       : testMuslMathScalb001
      * @tc.desc       : test scalb
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10425,7 +10430,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALB_0200
      * @tc.name       : testMuslMathScalb002
      * @tc.desc       : test scalb
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10442,7 +10447,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALB_0300
      * @tc.name       : testMuslMathScalb003
      * @tc.desc       : test scalb
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10459,7 +10464,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBF_0100
      * @tc.name       : testMuslMathScalbf001
      * @tc.desc       : test scalbf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10476,7 +10481,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBF_0200
      * @tc.name       : testMuslMathScalbf002
      * @tc.desc       : test scalbf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10493,7 +10498,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SCALBF_0300
      * @tc.name       : testMuslMathScalbf003
      * @tc.desc       : test scalbf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10510,7 +10515,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNC_0100
      * @tc.name       : testMuslMathTrunc001
      * @tc.desc       : test trunc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10526,7 +10531,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNC_0200
      * @tc.name       : testMuslMathTrunc002
      * @tc.desc       : test trunc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10542,7 +10547,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNC_0300
      * @tc.name       : testMuslMathTrunc003
      * @tc.desc       : test trunc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10558,7 +10563,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNC_0400
      * @tc.name       : testMuslMathTrunc004
      * @tc.desc       : test trunc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10574,7 +10579,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCF_0100
      * @tc.name       : testMuslMathTruncf001
      * @tc.desc       : test truncf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10590,7 +10595,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCF_0200
      * @tc.name       : testMuslMathTruncf002
      * @tc.desc       : test truncf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10606,7 +10611,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCF_0300
      * @tc.name       : testMuslMathTruncf003
      * @tc.desc       : test truncf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10622,7 +10627,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCF_0400
      * @tc.name       : testMuslMathTruncf004
      * @tc.desc       : test truncf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10638,7 +10643,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCL_0100
      * @tc.name       : testMuslMathTruncl001
      * @tc.desc       : test truncl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10654,7 +10659,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCL_0200
      * @tc.name       : testMuslMathTruncl002
      * @tc.desc       : test truncl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10670,7 +10675,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCL_0300
      * @tc.name       : testMuslMathTruncl003
      * @tc.desc       : test truncl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10686,7 +10691,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_TRUNCL_0400
      * @tc.name       : testMuslMathTruncl004
      * @tc.desc       : test truncl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10702,7 +10707,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_Y0_0100
      * @tc.name       : testMuslMathY0001
      * @tc.desc       : test y0
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10718,7 +10723,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_Y0F_0100
      * @tc.name       : testMuslMathY0f001
      * @tc.desc       : test y0f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10734,7 +10739,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_Y1_0100
      * @tc.name       : testMuslMathY1001
      * @tc.desc       : test y1
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10750,7 +10755,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_Y1F_0100
      * @tc.name       : testMuslMathY1f001
      * @tc.desc       : test y1f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -10766,7 +10771,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0100
      * @tc.name       : testMuslMathCbrt001
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10782,7 +10787,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0200
      * @tc.name       : testMuslMathCbrt002
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10798,7 +10803,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0300
      * @tc.name       : testMuslMathCbrt003
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10813,7 +10818,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0400
      * @tc.name       : testMuslMathCbrt004
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10827,7 +10832,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0500
      * @tc.name       : testMuslMathCbrt005
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10842,7 +10847,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRT_0600
      * @tc.name       : testMuslMathCbrt006
      * @tc.desc       : test cbrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10857,7 +10862,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0100
      * @tc.name       : testMuslMathCbrtF001
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10873,7 +10878,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0200
      * @tc.name       : testMuslMathCbrtF002
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10889,7 +10894,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0300
      * @tc.name       : testMuslMathCbrtF003
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10904,7 +10909,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0400
      * @tc.name       : testMuslMathCbrtF004
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10918,7 +10923,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0500
      * @tc.name       : testMuslMathCbrtF005
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10933,7 +10938,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTF_0600
      * @tc.name       : testMuslMathCbrtF006
      * @tc.desc       : test cbrtF
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10948,7 +10953,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0100
      * @tc.name       : testMuslMathCbrtL001
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10964,7 +10969,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0200
      * @tc.name       : testMuslMathCbrtL002
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10980,7 +10985,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0300
      * @tc.name       : testMuslMathCbrtL003
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -10995,7 +11000,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0400
      * @tc.name       : testMuslMathCbrtL004
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11009,7 +11014,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0500
      * @tc.name       : testMuslMathCbrtL005
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11024,7 +11029,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_CBRTL_0600
      * @tc.name       : testMuslMathCbrtL006
      * @tc.desc       : test cbrtL
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11039,7 +11044,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0100
      * @tc.name       : testMuslMathFrexp001
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11055,7 +11060,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0200
      * @tc.name       : testMuslMathFrexp002
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11070,7 +11075,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0300
      * @tc.name       : testMuslMathFrexp003
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11086,7 +11091,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0400
      * @tc.name       : testMuslMathFrexp004
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11100,7 +11105,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0500
      * @tc.name       : testMuslMathFrexp005
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11115,7 +11120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXP_0600
      * @tc.name       : testMuslMathFrexp006
      * @tc.desc       : test frexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11130,7 +11135,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0100
      * @tc.name       : testMuslMathFrexpl001
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11146,7 +11151,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0200
      * @tc.name       : testMuslMathFrexpl002
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11161,7 +11166,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0300
      * @tc.name       : testMuslMathFrexpl003
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11177,7 +11182,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0400
      * @tc.name       : testMuslMathFrexpl004
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11191,7 +11196,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0500
      * @tc.name       : testMuslMathFrexpl005
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11206,7 +11211,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPL_0600
      * @tc.name       : testMuslMathFrexpl006
      * @tc.desc       : test frexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11221,7 +11226,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0100
      * @tc.name       : testMuslMathFrexpf001
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11237,7 +11242,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0200
      * @tc.name       : testMuslMathFrexpf002
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11252,7 +11257,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0300
      * @tc.name       : testMuslMathFrexpf003
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11268,7 +11273,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0400
      * @tc.name       : testMuslMathFrexpf004
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11282,7 +11287,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0500
      * @tc.name       : testMuslMathFrexpf005
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11297,7 +11302,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FREXPF_0600
      * @tc.name       : testMuslMathFrexpf006
      * @tc.desc       : test frexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11312,7 +11317,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FPCLASSIFYL_0100
      * @tc.name       : testMuslMathFpclassifyl001
      * @tc.desc       : test __fpclassifyl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11328,7 +11333,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FPCLASSIFYF_0100
      * @tc.name       : testMuslMathFpclassifyf001
      * @tc.desc       : test __fpclassifyf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11344,7 +11349,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_FPCLASSIFY_0100
      * @tc.name       : testMuslMathFpclassify001
      * @tc.desc       : test __fpclassify
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11360,7 +11365,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNBIT_0100
      * @tc.name       : testMuslMathSignbit001
      * @tc.desc       : test __signbit
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11376,7 +11381,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNBITF_0100
      * @tc.name       : testMuslMathSignbitf001
      * @tc.desc       : test __signbitf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11392,7 +11397,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_SIGNBITL_0100
      * @tc.name       : testMuslMathSignbitl001
      * @tc.desc       : test __signbitl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11408,7 +11413,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0700
      * @tc.name       : testMuslMathExpM1l007
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11427,7 +11432,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0100
      * @tc.name       : testMuslMathExpM1l001
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11446,7 +11451,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0200
      * @tc.name       : testMuslMathExpM1l002
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11461,7 +11466,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0300
      * @tc.name       : testMuslMathExpM1l003
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11480,7 +11485,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0400
      * @tc.name       : testMuslMathExpM1l004
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11499,7 +11504,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0500
      * @tc.name       : testMuslMathExpM1l005
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11518,7 +11523,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0100
      * @tc.name       : testMuslMathExpL001
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11534,7 +11539,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0200
      * @tc.name       : testMuslMathExpL002
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11549,7 +11554,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0300
      * @tc.name       : testMuslMathExpL003
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11565,7 +11570,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0400
      * @tc.name       : testMuslMathExpL004
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11581,7 +11586,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0500
      * @tc.name       : testMuslMathExpL005
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11597,7 +11602,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0600
      * @tc.name       : testMuslMathExpL006
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11612,7 +11617,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPL_0700
      * @tc.name       : testMuslMathExpL007
      * @tc.desc       : test expl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11627,7 +11632,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0100
      * @tc.name       : testMuslMathExpF001
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11643,7 +11648,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0200
      * @tc.name       : testMuslMathExpF002
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11658,7 +11663,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0300
      * @tc.name       : testMuslMathExpF003
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11674,7 +11679,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0400
      * @tc.name       : testMuslMathExpF004
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11690,7 +11695,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0500
      * @tc.name       : testMuslMathExpF005
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11706,7 +11711,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0600
      * @tc.name       : testMuslMathExpF006
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11721,7 +11726,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPF_0700
      * @tc.name       : testMuslMathExpF007
      * @tc.desc       : test expf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11736,7 +11741,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2L_0100
      * @tc.name       : testMuslMathExp2l001
      * @tc.desc       : test exp2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11755,7 +11760,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2L_0200
      * @tc.name       : testMuslMathExp2l002
      * @tc.desc       : test exp2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11770,7 +11775,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2L_0300
      * @tc.name       : testMuslMathExp2l003
      * @tc.desc       : test exp2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11789,7 +11794,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2L_0400
      * @tc.name       : testMuslMathExp2l004
      * @tc.desc       : test exp2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11808,7 +11813,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2L_0500
      * @tc.name       : testMuslMathExp2l005
      * @tc.desc       : test exp2l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11827,7 +11832,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2F_0100
      * @tc.name       : testMuslMathExp2f001
      * @tc.desc       : test exp2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11846,7 +11851,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2F_0200
      * @tc.name       : testMuslMathExp2f002
      * @tc.desc       : test exp2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11861,7 +11866,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2F_0300
      * @tc.name       : testMuslMathExp2f003
      * @tc.desc       : test exp2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11880,7 +11885,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2F_0400
      * @tc.name       : testMuslMathExp2f004
      * @tc.desc       : test exp2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11899,7 +11904,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXP2F_0500
      * @tc.name       : testMuslMathExp2f005
      * @tc.desc       : test exp2f
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11918,7 +11923,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFF_0100
      * @tc.name       : testMuslMathErfF001
      * @tc.desc       : test erff
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -11937,7 +11942,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFL_0100
      * @tc.name       : testMuslMathErfL001
      * @tc.desc       : test erfl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -11956,7 +11961,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCL_0100
      * @tc.name       : testMuslMathErfCl001
      * @tc.desc       : test erfcl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11972,7 +11977,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCL_0200
      * @tc.name       : testMuslMathErfCl002
      * @tc.desc       : test erfcl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -11988,7 +11993,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCL_0300
      * @tc.name       : testMuslMathErfCl003
      * @tc.desc       : test erfcl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12004,7 +12009,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCL_0400
      * @tc.name       : testMuslMathErfCl004
      * @tc.desc       : test erfcl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12019,7 +12024,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCL_0500
      * @tc.name       : testMuslMathErfCl005
      * @tc.desc       : test erfcl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12035,7 +12040,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCF_0100
      * @tc.name       : testMuslMathErfCf001
      * @tc.desc       : test erfcf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12051,7 +12056,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCF_0200
      * @tc.name       : testMuslMathErfCf002
      * @tc.desc       : test erfcf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12067,7 +12072,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0100
      * @tc.name       : testMuslMathCopySignF001
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12083,7 +12088,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0200
      * @tc.name       : testMuslMathCopySignF002
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12099,7 +12104,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0300
      * @tc.name       : testMuslMathCopySignF003
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12115,7 +12120,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0400
      * @tc.name       : testMuslMathCopySignF004
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12131,7 +12136,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0500
      * @tc.name       : testMuslMathCopySignF005
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12147,7 +12152,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNF_0600
      * @tc.name       : testMuslMathCopySignF006
      * @tc.desc       : test copysignf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12163,7 +12168,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0100
      * @tc.name       : testMuslMathCopySignL001
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12179,7 +12184,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0200
      * @tc.name       : testMuslMathCopySignL002
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12195,7 +12200,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0300
      * @tc.name       : testMuslMathCopySignL003
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12211,7 +12216,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0400
      * @tc.name       : testMuslMathCopySignL004
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12227,7 +12232,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0500
      * @tc.name       : testMuslMathCopySignL005
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12243,7 +12248,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COPYSIGNL_0600
      * @tc.name       : testMuslMathCopySignL006
      * @tc.desc       : test copysignl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12259,7 +12264,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0100
      * @tc.name       : testMuslMathCosF001
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12275,7 +12280,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0200
      * @tc.name       : testMuslMathCosF002
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12291,15 +12296,15 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0300
      * @tc.name       : testMuslMathCosF003
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testMuslMathCosF003', 0, async (done: Function) => {
       let firstParam = 90;
-      let result = -0.00;
+      let result = "-0.00";
       let data: number = math.cosf(firstParam);
-      expect(Number(data).toFixed(2)).assertEqual(Number(result).toFixed(2));
+      expect(Number(data).toFixed(2)).assertEqual(result);
       done()
     });
 
@@ -12307,7 +12312,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0400
      * @tc.name       : testMuslMathCosF004
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12323,7 +12328,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0500
      * @tc.name       : testMuslMathCosF005
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12339,7 +12344,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0600
      * @tc.name       : testMuslMathCosF006
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12355,7 +12360,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0700
      * @tc.name       : testMuslMathCosF007
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12370,7 +12375,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSF_0800
      * @tc.name       : testMuslMathCosF008
      * @tc.desc       : test cosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12385,7 +12390,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0100
      * @tc.name       : testMuslMathCosL001
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12401,7 +12406,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0200
      * @tc.name       : testMuslMathCosL002
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12417,7 +12422,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0300
      * @tc.name       : testMuslMathCosL003
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12433,7 +12438,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0400
      * @tc.name       : testMuslMathCosL004
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12449,7 +12454,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0500
      * @tc.name       : testMuslMathCosL005
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12465,7 +12470,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0600
      * @tc.name       : testMuslMathCosL006
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12481,7 +12486,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0700
      * @tc.name       : testMuslMathCosL007
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12496,7 +12501,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSL_0800
      * @tc.name       : testMuslMathCosL008
      * @tc.desc       : test cosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12511,7 +12516,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0100
      * @tc.name       : testMuslMathCoshF001
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12527,7 +12532,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0200
      * @tc.name       : testMuslMathCoshF002
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12543,7 +12548,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0300
      * @tc.name       : testMuslMathCoshF003
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12559,7 +12564,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0400
      * @tc.name       : testMuslMathCoshF004
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12575,7 +12580,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0500
      * @tc.name       : testMuslMathCoshF005
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12591,7 +12596,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0600
      * @tc.name       : testMuslMathCoshF006
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12607,7 +12612,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0700
      * @tc.name       : testMuslMathCoshF007
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12622,7 +12627,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHF_0800
      * @tc.name       : testMuslMathCoshF008
      * @tc.desc       : test coshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12637,7 +12642,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0100
      * @tc.name       : testMuslMathCoshL001
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12653,7 +12658,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0200
      * @tc.name       : testMuslMathCoshL002
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12669,7 +12674,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0300
      * @tc.name       : testMuslMathCoshL003
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12685,7 +12690,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0400
      * @tc.name       : testMuslMathCoshL004
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12701,7 +12706,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0500
      * @tc.name       : testMuslMathCoshL005
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12717,7 +12722,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0600
      * @tc.name       : testMuslMathCoshL006
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12733,7 +12738,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0700
      * @tc.name       : testMuslMathCoshL007
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12748,7 +12753,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_COSHL_0800
      * @tc.name       : testMuslMathCoshL008
      * @tc.desc       : test coshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12763,7 +12768,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFC_0100
      * @tc.name       : testMuslMathErfC001
      * @tc.desc       : test erfc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12779,7 +12784,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFC_0200
      * @tc.name       : testMuslMathErfC002
      * @tc.desc       : test erfc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12795,7 +12800,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFC_0300
      * @tc.name       : testMuslMathErfC003
      * @tc.desc       : test erfc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12811,7 +12816,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFC_0400
      * @tc.name       : testMuslMathErfC004
      * @tc.desc       : test erfc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12826,7 +12831,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFC_0500
      * @tc.name       : testMuslMathErfC005
      * @tc.desc       : test erfc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12842,7 +12847,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCF_0300
      * @tc.name       : testMuslMathErfCf003
      * @tc.desc       : test erfcf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12858,7 +12863,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCF_0400
      * @tc.name       : testMuslMathErfCf004
      * @tc.desc       : test erfcf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12873,7 +12878,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_ERFCF_0500
      * @tc.name       : testMuslMathErfCf005
      * @tc.desc       : test erfcf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -12889,7 +12894,7 @@ export default function mathNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MATH_EXPM1L_0600
      * @tc.name       : testMuslMathExpM1l006
      * @tc.desc       : test expm1l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

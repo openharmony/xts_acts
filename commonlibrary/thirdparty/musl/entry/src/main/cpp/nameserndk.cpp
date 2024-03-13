@@ -15,21 +15,24 @@
 #include "napi/native_api.h"
 #include <arpa/nameser.h>
 #include <cerrno>
-#include <js_native_api_types.h>
-#include <stddef.h>
-#include <stdint.h>
+#include <cstddef>
 #include <cstring>
+#include <js_native_api_types.h>
+#include <stdint.h>
 #include <sys/inotify.h>
 #include <unistd.h>
+
 #define PARAM_0 0
 #define PARAM_1 1
+#define PARAM_3 3
+#define PARAM_0x0 0x0
 #define RETURN_0 0
-#define FAILD -1
+#define FAILD (-1)
 #define NO_ERR 0
 #define TEST_DNS_HEAD 12
 #define TEST_SKIP_SIZE 4
 #define SKIPRR_RESULT 17
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 static unsigned char msg[] = "\x71\x79\x81\x80\x00\x01"
                              "\x00\x02\x00\x04\x00\x04\x03\x77\x77\x77\x03\x61\x62\x63\x03\x63"
@@ -55,7 +58,6 @@ extern int ns_parserr(ns_msg *, ns_sect, int, ns_rr *);
 extern int ns_skiprr(const unsigned char *, const unsigned char *, ns_sect, int);
 extern int ns_name_uncompress(const unsigned char *, const unsigned char *, const unsigned char *, char *, size_t);
 
-
 static napi_value NsGet16(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
@@ -65,7 +67,7 @@ static napi_value NsGet16(napi_env env, napi_callback_info info)
     if (errno == ERRON_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -79,7 +81,7 @@ static napi_value NsGet32(napi_env env, napi_callback_info info)
     if (errno == ERRON_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -93,7 +95,7 @@ static napi_value NsPut16(napi_env env, napi_callback_info info)
     if (errno == ERRON_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -107,7 +109,7 @@ static napi_value NsPut32(napi_env env, napi_callback_info info)
     if (errno == ERRON_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -118,12 +120,12 @@ static napi_value NsNameUnCompress(napi_env env, napi_callback_info info)
     unsigned char com[] = "com";
     unsigned char comp[10] = {0};
     char exp[10] = {0};
-    ns_name_uncompress(com, com + 3, comp, exp, MAXDNAME);
+    ns_name_uncompress(com, com + PARAM_3, comp, exp, MAXDNAME);
     napi_value result;
     if (errno == ERRON_0) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -134,8 +136,8 @@ static napi_value NsParsErr(napi_env env, napi_callback_info info)
     ns_msg handle = {nullptr};
     ns_rr rr;
     ns_initparse(msg, sizeof(msg) - PARAM_1, &handle);
-    memset(&rr, 0x0, sizeof(ns_rr));
-    int ret = ns_parserr(&handle, ns_s_qd, 0, &rr);
+    memset(&rr, PARAM_0x0, sizeof(ns_rr));
+    int ret = ns_parserr(&handle, ns_s_qd, PARAM_0, &rr);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -153,16 +155,15 @@ static napi_value NsSkiPrr(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     unsigned char *ptr = msg + TEST_DNS_HEAD;
-    unsigned char *eom = msg + sizeof(msg) - 1;
+    unsigned char *eom = msg + sizeof(msg) - PARAM_1;
     int ret;
     ns_sect sec = ns_s_qd;
-    ret = ns_skiprr(ptr, eom, sec, 1);
+    ret = ns_skiprr(ptr, eom, sec, PARAM_1);
     if (ret == SKIPRR_RESULT) {
         napi_create_int32(env, NO_ERR, &result);
     } else {
         napi_create_int32(env, FAILD, &result);
     }
-    napi_create_int32(env, ret, &result);
     return result;
 }
 

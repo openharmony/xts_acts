@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function grid_colSpanJsunit() {
-  describe('grid_colSpanTest', function () {
-    beforeAll(async function (done) {
+  describe('grid_colSpanTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/grid_col',
@@ -37,10 +37,9 @@ export default function grid_colSpanJsunit() {
       } catch (err) {
         console.error("push grid_col page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("grid_colSpan after each called");
     });
@@ -50,16 +49,16 @@ export default function grid_colSpanJsunit() {
      * @tc.name         testgrid_colSpan0001
      * @tc.desic        acegrid_colSpanEtsTest0001
      */
-    it('testgrid_colSpan0001', 0, async function (done) {
+    it('testgrid_colSpan0001', 0, async () => {
       console.info('grid_rowOnBreakpointChange testgrid_colSpan0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('gridContainer');
       console.info("[testgrid_colSpan0001] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridCol');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testgrid_colSpan0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testgrid_colSpan0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
   })
 }

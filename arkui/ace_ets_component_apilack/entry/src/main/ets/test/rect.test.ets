@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function rectNeJsunit() {
-  describe('rectNeTest', function () {
-    beforeAll(async function (done) {
+  describe('rectNeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/rect',
@@ -37,10 +37,9 @@ export default function rectNeJsunit() {
       } catch (err) {
         console.error("push rect page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("rectNe after each called");
     });
@@ -50,16 +49,16 @@ export default function rectNeJsunit() {
      * @tc.name         testrectNe0001
      * @tc.desic         acerectNeEtsTest0001
      */
-    it('testrectNe0001', 0, async function (done) {
+    it('testrectNe0001', 0, async () => {
       console.info('rectNe testrectNe0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Rect');
-      expect(obj.$attrs.width).assertEqual("90.00%");
-      console.info("[testrectNe0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("90.00%");
+      console.info("[testrectNe0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function rectNeJsunit() {
      * @tc.name         testrectNe0002
      * @tc.desic         acerectNeEtsTest0002
      */
-    it('testrectNe0002', 0, async function (done) {
+    it('testrectNe0002', 0, async () => {
       console.info('rectNe testrectNe0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('Rect');
       console.info("[testrectNe0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Rect');
-      expect(obj.$attrs.height).assertEqual("50.00px");
-      console.info("[testrectNe0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("50.00px");
+      console.info("[testrectNe0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
   })
 }

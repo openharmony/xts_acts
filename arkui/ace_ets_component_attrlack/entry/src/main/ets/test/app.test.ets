@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets'
 
 export default function appVersionCodeJsunit() {
-  describe('appVersionCodeTest', function () {
-    beforeEach(async function (done) {
+  describe('appVersionCodeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/app',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/app',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function appVersionCodeJsunit() {
         console.info("get app state success " + JSON.stringify(pages));
         if (!("app" == pages.name)) {
           console.info("get app state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push app page success " + JSON.stringify(result));
         }
@@ -41,20 +41,20 @@ export default function appVersionCodeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("appVersionCode after each called");
     });
 
-    it('testappVersionCode0011', 0, async function (done) {
+    it('testappVersionCode0011', 0, async (done: Function) => {
       console.info('appVersionCode testappVersionCode0011 START');
       await Utils.sleep(1000);
       try {
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 60302,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testappVersionCode_0011 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Code).assertEqual(1000000);
         }

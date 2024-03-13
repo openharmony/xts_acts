@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import pwd from 'libpwdndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
@@ -21,11 +22,15 @@ import fs from '@ohos.file.fs'
 export default function pwdNdkTest() {
   describe('MuslPwdTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PWD_SETPWENT_0100
      * @tc.name       : testMuslPwdSetpwent001
      * @tc.desc       : test setpwent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -39,7 +44,7 @@ export default function pwdNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PWD_ENDPWENT_0100
      * @tc.name       : testMuslPwdEndPWent001
      * @tc.desc       : test endpwent
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +56,7 @@ export default function pwdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_PWD_GETPWENT_0100
      * @tc.name     : testMuslPwdGetpwent001
      * @tc.desc     : test getpwent
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -65,7 +70,7 @@ export default function pwdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_PWD_GETPWNAM_0100
      * @tc.name     : testMuslPwdGetpwnam001
      * @tc.desc     : test getpwnam
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -79,7 +84,7 @@ export default function pwdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_PWD_GETPWNAM_R_0100
      * @tc.name     : testMuslPwdGetpwnamR001
      * @tc.desc     : test getpwnam_r
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -94,7 +99,7 @@ export default function pwdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_PWD_GETPWUID_0100
      * @tc.name     : testMuslPwdGetpwuid001
      * @tc.desc     : test getpwuid
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -108,7 +113,7 @@ export default function pwdNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_PWD_GETPWUID_R_0100
      * @tc.name     : testMuslPwdGetpwuidR001
      * @tc.desc     : test getpwuid_r
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

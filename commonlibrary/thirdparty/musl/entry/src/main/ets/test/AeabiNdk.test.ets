@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import aeabi from 'libaeabindk.so'
 
 export default function aeabiNdkTest() {
   describe('MuslAeabiTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCLR_0100
      * @tc.name       : testMuslAeabiMemclr001
      * @tc.desc       : test __aeabi_memclr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -38,7 +43,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCLR4_0100
      * @tc.name       : testMuslAeabiMemclr4001
      * @tc.desc       : test __aeabi_memclr4
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -53,7 +58,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCLR8_0100
      * @tc.name       : testMuslAeabiMemclr8001
      * @tc.desc       : test __aeabi_memclr8
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -68,7 +73,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCPY_0100
      * @tc.name       : testMuslAeabiMemcpy001
      * @tc.desc       : test __aeabi_memcpy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -83,7 +88,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCPY4_0100
      * @tc.name       : testMuslAeabiMemcpy4001
      * @tc.desc       : test __aeabi_memcpy4
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -98,7 +103,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMCPY8_0100
      * @tc.name       : testMuslAeabiMemcpy8001
      * @tc.desc       : test __aeabi_memcpy8
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -113,7 +118,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMMOVE_0100
      * @tc.name       : testMuslAeabiMemmove001
      * @tc.desc       : test __aeabi_memmove
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -128,7 +133,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMMOVE4_0100
      * @tc.name       : testMuslAeabiMemmove4001
      * @tc.desc       : test __aeabi_memmove4
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -143,7 +148,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMMOVE8_0100
      * @tc.name       : testMuslAeabiMemmove8001
      * @tc.desc       : test __aeabi_memmove8
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -158,7 +163,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMSET_0100
      * @tc.name       : testMuslAeabiMemset001
      * @tc.desc       : test __aeabi_memset
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -173,7 +178,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMSET4_0100
      * @tc.name       : testMuslAeabiMemset4001
      * @tc.desc       : test __aeabi_memset4
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -188,7 +193,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_MEMSET8_0100
      * @tc.name       : testMuslAeabiMemset8001
      * @tc.desc       : test __aeabi_memset8
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -203,7 +208,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_AEABI_READ_TP_0100
      * @tc.name       : testMuslAeabiReadTp001
      * @tc.desc       : test __aeabi_read_tp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -218,7 +223,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_PROGNAME_0100
      * @tc.name       : testMuslProgname001
      * @tc.desc       : test __progname
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -233,7 +238,7 @@ export default function aeabiNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STACK_CHK_GUARD_0100
      * @tc.name       : testMuslStackChkGuard001
      * @tc.desc       : test __stack_chk_guard
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

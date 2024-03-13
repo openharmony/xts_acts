@@ -13,44 +13,50 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import abilityAccessCtrl, { PermissionRequestResult, Permissions } from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import bundleManager from '@ohos.bundle.bundleManager';
 import osAccount from '@ohos.account.osAccount'
 import deviceInfo from '@ohos.deviceInfo'
-
-const GrantStatus = abilityAccessCtrl.GrantStatus;
+import { BusinessError } from '@ohos.base';
+import globalContext from './GlobalContext';
 
 const TIMEOUT = 5000;
 const ERR_PARAM_INVALID = 12100001;
 
-var permissionNameUser = "ohos.permission.DISTRIBUTED_DATASYNC";
-var permissionNameSystem = "ohos.permission.GET_BUNDLE_INFO";
-var tokenID = 11;
+let permissionNameUser: Permissions = "ohos.permission.DISTRIBUTED_DATASYNC";
+let permissionNameSystem: Permissions = "ohos.permission.GET_BUNDLE_INFO";
+let tokenID: number = 11;
+
+function sleep(delay: number) {
+  let start: number = (new Date()).getTime();
+  let next: number = (new Date()).getTime();
+  while (next - start < delay) {
+    next = (new Date()).getTime();
+  }
+}
 
 export default function AccessTokenTest() {
-  describe('AccessTokenTest', function () {
-    beforeAll(async function (done) {
-      var accountManager = osAccount.getAccountManager();
-      var userId = await accountManager.getOsAccountLocalIdFromProcess();
+  describe('AccessTokenTest', () => {
+    beforeAll(async (done: Function) => {
       try {
         let productModelInfo = deviceInfo.productModel;
         if (productModelInfo == "ohos") {
-          let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
-          var buddleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags);
+          let bundleFlags: bundleManager.BundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+          let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags);
           console.log('getBundleInfoForSelf ok')
-          var appInfo = buddleInfo.appInfo;
+          let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
           console.log('getBundleInfoForSelf ok2')
           tokenID = appInfo.accessTokenId;
-          console.log('getBundleInfoForSelf ok3'+tokenID)
+          console.log('getBundleInfoForSelf ok3' + tokenID)
           console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
-          + ", bundleName:" + 'com.example.myapplication')
+            + ", bundleName:" + 'com.example.myapplication')
 
           console.info("sleep begin");
           sleep(TIMEOUT);
           console.info("sleep end");
           done();
-        }else{
+        } else {
           tokenID = 11;
         }
       } catch (err) {
@@ -59,202 +65,200 @@ export default function AccessTokenTest() {
       }
 
     })
-    beforeEach(function () {
+    beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
     })
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    function sleep(delay) {
-      var start = (new Date()).getTime();
-      var next = (new Date()).getTime();
-      while (next - start < delay) {
-        next = (new Date()).getTime();
-      }
-    }
+
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_001
-     *@tc.name      : testCheckAccessToken001
-     *@tc.desc      : After the installation, user_grant permission is not granted by default(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_001
+     * @tc.name      : testCheckAccessToken001
+     * @tc.desc      : After the installation, user_grant permission is not granted by default(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessToken001', 0, async function(done){
+    it('testCheckAccessToken001', 0, async (done: Function) => {
       console.info("Test_checkAccessToken_001 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessToken(tokenID,permissionNameUser);
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessToken(tokenID, permissionNameUser);
         console.info("Test_checkAccessToken_001 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+        expect(result).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
         done();
-      } catch(error) {
+      } catch (error) {
         console.info("Test_checkAccessToken_001 tokenID" + JSON.stringify(error))
       }
       done();
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_002
-     *@tc.name      : testCheckAccessToken002
-     *@tc.desc      : After the installation, system_grant permission is granted by default(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_002
+     * @tc.name      : testCheckAccessToken002
+     * @tc.desc      : After the installation, system_grant permission is granted by default(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessToken002', 0, async function(done){
+    it('testCheckAccessToken002', 0, async (done: Function) => {
       console.info("Test_checkAccessToken_002 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessToken(tokenID,permissionNameSystem);
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessToken(tokenID, permissionNameSystem);
         console.info("Test_checkAccessToken_002 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+        expect(result).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
         done();
-      } catch(error) {
+      } catch (error) {
         console.info("Test_checkAccessToken_002 error code" + error.code + "error message" + error.message);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_003
-     *@tc.name      : testCheckAccessToken003
-     *@tc.desc      : Test invalid permission(empty)(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_003
+     * @tc.name      : testCheckAccessToken003
+     * @tc.desc      : Test invalid permission(empty)(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessToken003', 0, async function(done){
+    it('testCheckAccessToken003', 0, async (done: Function) => {
       console.info("Test_checkAccessToken_003 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
+        //@ts-ignore
         atManager.checkAccessToken(tokenID, "").then((data) => {
           console.log(`Test_checkAccessToken_003 , data->${JSON.stringify(data)}`);
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.log(`Test_checkAccessToken_003 err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(ERR_PARAM_INVALID)
           done();
         });
-      }catch(err) {
+      } catch (err) {
         console.log(`catch err->${JSON.stringify(err)}`);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_004
-     *@tc.name      : testCheckAccessToken004
-     *@tc.desc      : Test invalid tokenId(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_004
+     * @tc.name      : testCheckAccessToken004
+     * @tc.desc      : Test invalid tokenId(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessToken004', 0, async function(done){
+    it('testCheckAccessToken004', 0, async (done: Function) => {
       console.info("Test_checkAccessToken_004 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
         atManager.checkAccessToken(11, permissionNameUser).then((data) => {
           console.log(`Test_checkAccessToken_004 data->${JSON.stringify(data)}`);
-          expect(data).assertEqual(GrantStatus.PERMISSION_DENIED);
+          expect(data).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.log(`Test_checkAccessToken_004 err->${JSON.stringify(err)}`);
         });
-      }catch(err) {
+      } catch (err) {
         console.log(`catch err->${JSON.stringify(err)}`);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_005
-     *@tc.name      : testCheckAccessToken005
-     *@tc.desc      : Test invalid permission(length exceeds 256)(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_005
+     * @tc.name      : testCheckAccessToken005
+     * @tc.desc      : Test invalid permission(length exceeds 256)(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessToken005', 0, async function(done){
+    it('testCheckAccessToken005', 0, async (done: Function) => {
       console.info("Test_checkAccessToken_005 start");
-      var atManager = abilityAccessCtrl.createAtManager();
-      var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
-      + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
-      + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        atManager.checkAccessToken(tokenID, permissionName).then((data) => {
-          console.log(`Test_checkAccessToken_005 success, data->${JSON.stringify(data)}`);
-        }).catch((err) => {
-          console.log(`Test_checkAccessToken_005 err->${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(ERR_PARAM_INVALID)
-          done();
-        });
-      }catch(err) {
+        //@ts-ignore
+        atManager.checkAccessToken(tokenID, "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+          + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+          + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest")
+          .then((data) => {
+            console.log(`Test_checkAccessToken_005 success, data->${JSON.stringify(data)}`);
+          })
+          .catch((err: BusinessError) => {
+            console.log(`Test_checkAccessToken_005 err->${JSON.stringify(err)}`);
+            expect(err.code).assertEqual(ERR_PARAM_INVALID)
+            done();
+          });
+      } catch (err) {
         console.log(`catch err->${JSON.stringify(err)}`);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_001
-     *@tc.name      : testCheckAccessTokenSync001
-     *@tc.desc      : After the installation, user_grant permission is not granted by default(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_001
+     * @tc.name      : testCheckAccessTokenSync001
+     * @tc.desc      : After the installation, user_grant permission is not granted by default(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessTokenSync001', 0, async function(done){
+    it('testCheckAccessTokenSync001', 0, async (done: Function) => {
       console.info("Test_checkAccessTokenSync_001 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessTokenSync(tokenID,permissionNameUser);
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessTokenSync(tokenID, permissionNameUser);
         console.info("Test_checkAccessTokenSync_001 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+        expect(result).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
         done();
-      } catch(error) {
+      } catch (error) {
         console.info("Test_checkAccessTokenSync_001 tokenID" + JSON.stringify(error))
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_002
-     *@tc.name      : testCheckAccessTokenSync002
-     *@tc.desc      : After the installation, system_grant permission is granted by default(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_002
+     * @tc.name      : testCheckAccessTokenSync002
+     * @tc.desc      : After the installation, system_grant permission is granted by default(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessTokenSync002', 0, async function(done){
+    it('testCheckAccessTokenSync002', 0, async (done: Function) => {
       console.info("Test_checkAccessTokenSync_002 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessTokenSync(tokenID,permissionNameSystem);
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessTokenSync(tokenID, permissionNameSystem);
         console.info("Test_checkAccessTokenSync_002 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+        expect(result).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
         done();
-      } catch(error) {
+      } catch (error) {
         console.info("Test_checkAccessTokenSync_002 error code" + error.code + "error message" + error.message);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_003
-     *@tc.name      : testCheckAccessTokenSync003
-     *@tc.desc      : Test invalid permission(empty)(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_003
+     * @tc.name      : testCheckAccessTokenSync003
+     * @tc.desc      : Test invalid permission(empty)(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessTokenSync003', 0, async function(done){
+    it('testCheckAccessTokenSync003', 0, async (done: Function) => {
       console.info("Test_checkAccessTokenSync_003 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessTokenSync(tokenID,"");
-      } catch(error) {
+        //@ts-ignore
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessTokenSync(tokenID, "");
+      } catch (error) {
         console.info("Test_checkAccessTokenSync_003 error code" + error.code + "error message" + error.message);
         expect(error.code).assertEqual(ERR_PARAM_INVALID);
         done();
@@ -262,43 +266,43 @@ export default function AccessTokenTest() {
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_004
-     *@tc.name      : testCheckAccessTokenSync004
-     *@tc.desc      : Test invalid tokenId(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_004
+     * @tc.name      : testCheckAccessTokenSync004
+     * @tc.desc      : Test invalid tokenId(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessTokenSync004', 0, async function(done){
+    it('testCheckAccessTokenSync004', 0, async (done: Function) => {
       console.info("Test_checkAccessTokenSync_004 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessTokenSync(11,permissionNameSystem);
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessTokenSync(11, permissionNameSystem);
         console.info("Test_checkAccessTokenSync_004 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
+        expect(result).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED);
         done();
-      } catch(error) {
+      } catch (error) {
         console.info("Test_checkAccessTokenSync_004 error code" + error.code + "error message" + error.message);
       }
     })
 
     /**
-     *@tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_005
-     *@tc.name      : testCheckAccessTokenSync005
-     *@tc.desc      : Test invalid permission(length exceeds 256)(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_CHECK_ACCESS_TOKEN_SYNC_005
+     * @tc.name      : testCheckAccessTokenSync005
+     * @tc.desc      : Test invalid permission(length exceeds 256)(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it('testCheckAccessTokenSync005', 0, async function(done){
+    it('testCheckAccessTokenSync005', 0, async (done: Function) => {
       console.info("Test_checkAccessTokenSync_005 start");
-      var atManager = abilityAccessCtrl.createAtManager();
-      var permissionName = "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
-      + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
-      + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        var result = await atManager.checkAccessTokenSync(tokenID,permissionName);
-      } catch(error) {
+        //@ts-ignore
+        let result: abilityAccessCtrl.GrantStatus = await atManager.checkAccessTokenSync(tokenID, "ohos.permission.testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+          + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
+          + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest");
+      } catch (error) {
         console.info("Test_checkAccessTokenSync_005 error code" + error.code + "error message" + error.message);
         expect(error.code).assertEqual(ERR_PARAM_INVALID);
         done();
@@ -306,19 +310,19 @@ export default function AccessTokenTest() {
     })
 
     /**
-     *@tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_001
-     *@tc.name      : testRequestPermissionFromUser001
-     *@tc.desc      : Exception scenario use case(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_001
+     * @tc.name      : testRequestPermissionFromUser001
+     * @tc.desc      : Exception scenario use case(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testRequestPermissionFromUser001", 0, async function (done) {
+    it("testRequestPermissionFromUser001", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_001 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
         atManager
-          .requestPermissionsFromUser(globalThis.abilityContext, ["ohos.permission.CAMERA"])
+          .requestPermissionsFromUser(globalContext.getContext().getAbility(), ["ohos.permission.CAMERA"])
           .then((data) => {
             try {
               console.info("Test_requestPermissionsFromUser_001 data:" + JSON.stringify(data));
@@ -332,7 +336,7 @@ export default function AccessTokenTest() {
               done();
             }
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.info("data:" + JSON.stringify(err));
             done();
           });
@@ -343,27 +347,29 @@ export default function AccessTokenTest() {
     });
 
     /**
-     *@tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_002
-     *@tc.name      : testRequestPermissionFromUser002
-     *@tc.desc      : Exception scenario use case(Promise).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_002
+     * @tc.name      : testRequestPermissionFromUser002
+     * @tc.desc      : Exception scenario use case(Promise).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testRequestPermissionFromUser002", 0, async function (done) {
+    it("testRequestPermissionFromUser002", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_002 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       console.info("Test_requestPermissionsFromUser_002 start");
+      let result: Promise<void> = new Promise((): void => {});
       try {
-        var result = atManager
-          .requestPermissionsFromUser(globalThis.abilityContext, ["abc"])
+
+        //@ts-ignore
+        result = atManager.requestPermissionsFromUser(globalContext.getContext().getAbility(), ["abc"])
           .then((data) => {
             console.info("Test_requestPermissionsFromUser_002 data:" + JSON.stringify(data));
             console.info("Test_requestPermissionsFromUser_002 data permissions:" + data.permissions);
             console.info("Test_requestPermissionsFromUser_002 data authResults:" + data.authResults);
             done();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.info("Test_requestPermissionsFromUser_002 data:" + JSON.stringify(err));
             done();
           });
@@ -375,18 +381,19 @@ export default function AccessTokenTest() {
     });
 
     /**
-     *@tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_003
-     *@tc.name      : testRequestPermissionFromUser003
-     *@tc.desc      : RequestPermissionsFromUser normal scenario(callback).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_003
+     * @tc.name      : testRequestPermissionFromUser003
+     * @tc.desc      : RequestPermissionsFromUser normal scenario(callback).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testRequestPermissionFromUser003", 0, async function (done) {
+    it("testRequestPermissionFromUser003", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_003 start");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       try {
-        atManager.requestPermissionsFromUser(globalThis.abilityContext, ["ohos.permission.CAMERA"], (err, data) => {
+        atManager.requestPermissionsFromUser(globalContext.getContext()
+          .getAbility(), ["ohos.permission.CAMERA"], (err, data) => {
           console.info("Test_requestPermissionsFromUser_003 data:" + JSON.stringify(data));
           console.info("Test_requestPermissionsFromUser_003 data permissions:" + data.permissions);
           console.info("Test_requestPermissionsFromUser_003 data authResults:" + data.authResults);
@@ -401,18 +408,21 @@ export default function AccessTokenTest() {
     });
 
     /**
-     *@tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_004
-     *@tc.name      : testRequestPermissionFromUser004
-     *@tc.desc      : Exception scenario use case(callback).
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_REQUEST_PERMISSION_FROM_USER_004
+     * @tc.name      : testRequestPermissionFromUser004
+     * @tc.desc      : Exception scenario use case(callback).
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testRequestPermissionFromUser004", 0, async function (done) {
+    it("testRequestPermissionFromUser004", 0, async (done: Function) => {
       console.info("Test_requestPermissionsFromUser_004 start ");
-      var atManager = abilityAccessCtrl.createAtManager();
+      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+      let result: Promise<PermissionRequestResult> = undefined;
       try {
-        var result = atManager.requestPermissionsFromUser(globalThis.abilityContext, ["a"], (err, data) => {
+
+        //@ts-ignore
+        result =atManager.requestPermissionsFromUser(globalContext.getContext().getAbility(), ["a"], (err, data) => {
           console.info("Test_requestPermissionsFromUser_004 data:" + JSON.stringify(data));
           console.info("Test_requestPermissionsFromUser_004 data permissions:" + data.permissions);
           console.info("Test_requestPermissionsFromUser_004 data authResults:" + data.authResults);
@@ -426,14 +436,14 @@ export default function AccessTokenTest() {
     });
 
     /**
-     *@tc.number    : TEST_GRANT_STATUS_001
-     *@tc.name      : testGrantStatus001
-     *@tc.desc      : Test enum.
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_GRANT_STATUS_001
+     * @tc.name      : testGrantStatus001
+     * @tc.desc      : Test enum.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testGrantStatus001", 0, function () {
+    it("testGrantStatus001", 0, () => {
       try {
         expect(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED).assertEqual(-1);
       } catch (err) {
@@ -442,14 +452,14 @@ export default function AccessTokenTest() {
     });
 
     /**
-     *@tc.number    : TEST_GRANT_STATUS_002
-     *@tc.name      : testGrantStatus002
-     *@tc.desc      : Test enum.
-     *@tc.size      : MediumTest
-     *@tc.type      : Function
-     *@tc.level     : Level 2
+     * @tc.number    : TEST_GRANT_STATUS_002
+     * @tc.name      : testGrantStatus002
+     * @tc.desc      : Test enum.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
      */
-    it("testGrantStatus002", 0, function () {
+    it("testGrantStatus002", 0, () => {
       try {
         expect(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED).assertEqual(0);
       } catch (err) {

@@ -14,14 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+
 export default function flexAlignSelf_CenterJsunit() {
-  describe('flexItemAlignCenterTest7', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexAlignSelf',
+  describe('flexItemAlignCenterTest7', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexAlignSelf',
       }
       try {
         router.clear();
@@ -30,36 +31,36 @@ export default function flexAlignSelf_CenterJsunit() {
         console.info("get FlexSecond state success " + JSON.stringify(pages));
         if (!("FlexSecond" == pages.name)) {
           console.info("get FlexSecond state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexSecond page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexSecond page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexSecond after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_1300
-     * @tc.name      testFlexItemAlignCenterSetAlignSelf
-     * @tc.desc      The first subcomponent set ItemAlign.End attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_CENTER_1300
+     * @tc.name testFlexItemAlignCenterSetAlignSelf
+     * @tc.desc The first subcomponent set ItemAlign.End attribute.
      */
-    it('testFlexItemAlignCenterSetAlignSelf', 0, async function (done) {
+    it('testFlexItemAlignCenterSetAlignSelf', 0, async () => {
       console.info('new testFlexItemAlignCenterSetAlignSelf START');
       let strJson1 = getInspectorByKey('flexAlignSelf');
-      let obj1 = JSON.parse(strJson1);
+
       let strJson2 = getInspectorByKey('textAlignSelf01');
-      let obj2 = JSON.parse(strJson2);
-      let alignSelf01 = CommonFunc.getComponentRect('textAlignSelf01');
-      let alignSelf02 = CommonFunc.getComponentRect('textAlignSelf02');
-      let alignSelf03 = CommonFunc.getComponentRect('textAlignSelf03');
-      let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
+
+      let alignSelf01: RectValue = CommonFunc.getComponentRect('textAlignSelf01');
+      let alignSelf02: RectValue = CommonFunc.getComponentRect('textAlignSelf02');
+      let alignSelf03: RectValue = CommonFunc.getComponentRect('textAlignSelf03');
+      let flexAlignSelf01: RectValue = CommonFunc.getComponentRect('flexAlignSelf');
       expect(Math.abs(alignSelf01.bottom - flexAlignSelf01.bottom) <= 1).assertTrue()
       expect(Math.abs(alignSelf01.bottom - alignSelf01.top - Math.round(vp2px(50))) <= 1).assertTrue()
       expect(Math.abs(alignSelf01.right - alignSelf01.left - Math.round(vp2px(150))) <= 1).assertTrue()
@@ -67,16 +68,18 @@ export default function flexAlignSelf_CenterJsunit() {
       expect(Math.abs(alignSelf02.right - alignSelf02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(alignSelf03.bottom - alignSelf03.top - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(alignSelf03.right - alignSelf03.left - Math.round(vp2px(150))) <= 1).assertTrue()
-      expect(Math.abs(alignSelf02.top - flexAlignSelf01.top - (flexAlignSelf01.bottom - alignSelf02.bottom)) <= 1).assertTrue()
-      expect(Math.abs(alignSelf03.top - flexAlignSelf01.top - (flexAlignSelf01.bottom - alignSelf03.bottom)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
-      expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End");
+      expect(Math.abs(alignSelf02.top - flexAlignSelf01.top - (flexAlignSelf01.bottom - alignSelf02.bottom)) <= 1)
+        .assertTrue()
+      expect(Math.abs(alignSelf03.top - flexAlignSelf01.top - (flexAlignSelf01.bottom - alignSelf03.bottom)) <= 1)
+        .assertTrue()
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
+      expect(JSON.parse(strJson2).$attrs.alignSelf).assertEqual("ItemAlign.End");
       expect(Math.abs(alignSelf03.right - alignSelf03.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(alignSelf02.right - alignSelf02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(flexAlignSelf01.right - alignSelf03.right - Math.round(vp2px(50))) <= 1).assertTrue()
       console.info('new testFlexItemAlignCenterSetAlignSelf END');
-      done();
+
     });
   })
 }

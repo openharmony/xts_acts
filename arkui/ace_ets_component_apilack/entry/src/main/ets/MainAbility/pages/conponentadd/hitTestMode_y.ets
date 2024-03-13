@@ -39,24 +39,23 @@ struct HitTestMode {
         .key("Block")
         .width("100%")
         .height("100%")
-//        .hitTestBehavior(HitTestMode.Block)
+        //        .hitTestBehavior(HitTestMode.Block)
         .onTouch((event) => {
           console.info('HitTestMode inner stack touched type: ' + event.type)
         })
 
         Text('Transparent')
-          .key("Transparent")
-//          .hitTestBehavior(HitTestMode.Transparent)
+          .key("Transparent")//          .hitTestBehavior(HitTestMode.Transparent)
           .width("100%")
           .height("50%")
           .onTouch((event) => {
             console.info('HitTestMode text touched type: ' + event.type)
             let strJson = getInspectorByKey('Transparent');
-            let obj = JSON.parse(strJson);
-            console.info("HitTestMode hitTestBehavior is " + obj.$attrs.hitTestBehavior);
+            let obj: Record<string, Object> = JSON.parse(strJson);
+            console.info("HitTestMode hitTestBehavior is " + JSON.parse(strJson).$attrs.hitTestBehavior);
             let strJson2 = getInspectorByKey('Block');
-            let obj2 = JSON.parse(strJson2);
-            console.info("HitTestMode hitTestBehavior is " + obj2.$attrs.hitTestBehavior);
+            let obj2: Record<string, Object> = JSON.parse(strJson2);
+            console.info("HitTestMode hitTestBehavior is " + JSON.parse(strJson2).$attrs.hitTestBehavior);
           })
       }.width(300).height(300).backgroundColor(Color.Gray)
     }.width('100%').height('100%')

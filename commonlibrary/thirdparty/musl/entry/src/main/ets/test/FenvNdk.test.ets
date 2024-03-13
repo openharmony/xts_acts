@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import fenvndk from 'libfenvndk.so'
 
 export default function fenvNdkTest() {
   describe('FenvNdkTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FETESTEXCEPT_0100
      * @tc.name       : testMuslFEnvFeTestExcept001
      * @tc.desc       : test fetestexcept
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +43,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FEUPDATEENV_0100
      * @tc.name       : testMuslFEnvFeUpdateEnv001
      * @tc.desc       : test feupdateenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -52,7 +57,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FESETROUND_0100
      * @tc.name       : testMuslFEnvFeSetRound001
      * @tc.desc       : test fesetround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -67,7 +72,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FESETEXCEPTFLAG_0100
      * @tc.name       : testMuslFEnvFeSetExceptFlag001
      * @tc.desc       : test fesetexceptflag
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -82,7 +87,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FESETENV_0100
      * @tc.name       : testMuslFEnvFeSetEnv001
      * @tc.desc       : test fesetenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -96,7 +101,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FERAISEEXCEPT_0100
      * @tc.name       : testMuslFEnvFeRaiseExcept001
      * @tc.desc       : test feraiseexcept
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -111,7 +116,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FEHOLDEXCEPT_0100
      * @tc.name       : testMuslFEnvFeHoldExcept001
      * @tc.desc       : test feholdexcept
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -125,7 +130,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FEGETROUND_0100
      * @tc.name       : testMuslFEnvFeGetRound001
      * @tc.desc       : test fegetround
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -135,26 +140,11 @@ export default function fenvNdkTest() {
       done()
     });
 
-    // /**
-    //  * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FEGETEXCEPTFLAG_0100
-    //  * @tc.name       : testMuslFEnvFeGetExceptFlag001
-    //  * @tc.desc       : test fegetexceptflag
-    //  * @tc.size       : MEDIUM
-    //  * @tc.type       : Function
-    //  * @tc.level      : Level 0
-    //  */
-    // it('testMuslFEnvFeGetExceptFlag001', 0, async (done: Function) => {
-    //   let a = 1;
-    //   let data : number = fenvndk.fegetexceptflag(a);
-    //   expect(data).assertEqual(0);
-    //   done()
-    // });
-
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FEGETEENV_0100
      * @tc.name       : testMuslFEnvFeGetEnv001
      * @tc.desc       : test fegetenv
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -168,7 +158,7 @@ export default function fenvNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_FENV_FECLEAREXCEPT_0100
      * @tc.name       : testMuslFEnvFeClearExcept001
      * @tc.desc       : test feclearexcept
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

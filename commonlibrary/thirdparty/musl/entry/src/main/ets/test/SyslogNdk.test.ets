@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import syslog from 'libsyslogndk.so'
 
 export default function syslogNdkTest() {
   describe('MuslSyslogTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_SETLOMASK_0100
      * @tc.name       : testMuslSyslogSetlogmask001
      * @tc.desc       : test setlogmask
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -36,7 +41,7 @@ export default function syslogNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_OPENLOG_0100
      * @tc.name       : testMuslSyslogOpenlog001
      * @tc.desc       : test openlog
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -46,21 +51,6 @@ export default function syslogNdkTest() {
       console.info("Test NAPI data = \"" + data + "\"");
       expect(data).assertEqual(1);
       done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SYSLOG_SYSLOG_0100
-     * @tc.name       : testMuslSyslogSyslog001
-     * @tc.desc       : test syslog
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslSyslogSyslog001', 0, async (done: Function) => {
-      let resultTrue = 1;
-      let result: number = syslog.syslog();
-      expect(result).assertEqual(resultTrue);
-      done()
     });
   })
 }

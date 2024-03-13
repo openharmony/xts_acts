@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function Grid_Col_Order_GridColColumnOption() {
-  describe('Grid_Col_Order_GridColColumnOption', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Col_Order_GridColColumnOption', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Col_Order_GridColColumnOption beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Col/Grid_Col_Order/Grid_Col_Order_GridColColumnOption",
       }
       try {
@@ -30,7 +31,7 @@ export default function Grid_Col_Order_GridColColumnOption() {
         console.info("get Grid_Col_Order_GridColColumnOption state pages:" + JSON.stringify(pages));
         if (!("Grid_Col_Order_GridColColumnOption" == pages.name)) {
           console.info("get Grid_Col_Order_GridColColumnOption pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Col_Order_GridColColumnOption page result:" + JSON.stringify(result));
         }
@@ -40,163 +41,193 @@ export default function Grid_Col_Order_GridColColumnOption() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Col_Order_GridColColumnOption after each called")
     });
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 40vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 40vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100] START');
-      globalThis.value.message.notify({name:'addOrder', value:"40vp"});
+      globalThis.value.message.notify({
+        name: 'addOrder', value: "40vp"
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0100] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 80vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 80vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200] START');
-      globalThis.value.message.notify({name:'addWidth', value:'80vp'});
+      globalThis.value.message.notify({
+        name: 'addWidth', value: '80vp'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0200] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 120vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 120vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300] START');
-      globalThis.value.message.notify({name:'addWidth', value:'130vp'});
+      globalThis.value.message.notify({
+        name: 'addWidth', value: '130vp'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0300] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 180vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 180vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400] START');
-      globalThis.value.message.notify({name:'addWidth', value:'180vp'});
+      globalThis.value.message.notify({
+        name: 'addWidth', value: '180vp'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_02.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0400] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 220vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 220vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500] START');
-      globalThis.value.message.notify({name:'addWidth', value:'230vp'});
+      globalThis.value.message.notify({
+        name: 'addWidth', value: '230vp'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_01.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0500] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600
-     * @tc.name      testGridColOrder
-     * @tc.desc      Set the width of Column to 320vp
+     * @tc.number SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600
+     * @tc.name testGridColOrder
+     * @tc.desc Set the width of Column to 320vp
      */
-    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600] START');
-      globalThis.value.message.notify({name:'addWidth', value:'330vp'});
+      globalThis.value.message.notify({
+        name: 'addWidth', value: '330vp'
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_GridColColumnOption_01 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
-      let Grid_Col_Order_GridColColumnOption_02 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
-      let Grid_Col_Order_GridColColumnOption_03 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
-      let Grid_Col_Order_GridColColumnOption_04 = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
+      let Grid_Col_Order_GridColColumnOption_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_01');
+      let Grid_Col_Order_GridColColumnOption_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_02');
+      let Grid_Col_Order_GridColColumnOption_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_03');
+      let Grid_Col_Order_GridColColumnOption_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_GridColColumnOption_04');
 
       console.log('assert space')
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1).assertTrue();
-      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1).assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_03.top - Grid_Col_Order_GridColColumnOption_02.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_04.top - Grid_Col_Order_GridColColumnOption_03.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
+      expect(Math.abs((Grid_Col_Order_GridColColumnOption_01.top - Grid_Col_Order_GridColColumnOption_04.bottom) - vp2px(10)) <= 1)
+        .assertTrue();
 
       console.info('[SUB_ACE_Grid_Col_Order_GridColColumnOption_TEST_0600] END');
       done();

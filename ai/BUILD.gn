@@ -16,12 +16,14 @@ group("ai") {
   deps = [
     "neural_network_runtime/v1_0:neural_network_runtime",
     "neural_network_runtime/v2_0:neural_network_runtime",
+    "nncore:ActsHdfNncoreTest",
   ]
   if (is_standard_system) {
     deps += [
       "mindspore/mindsporectest:ActsMindSporeTest",
       "mindspore/mindsporejstest:ActsMindsporeJSTest",
       "mindspore/mindsporendktest:ActsMindSporeNdkTest",
+      "nnrtndk:ActsAInnrtNdkTest",
     ]
   }
 }

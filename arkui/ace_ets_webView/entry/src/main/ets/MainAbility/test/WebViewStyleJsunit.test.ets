@@ -56,7 +56,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+     * @tc.number    SUB_ACE_BASIC_ETS_API_0615
      * @tc.name      testWebViewWidthPer
      * @tc.desc      aceEtsTest
      */
@@ -77,7 +77,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0616
     * @tc.name      testWebViewWidthPx
     * @tc.desc      aceEtsTest
     */
@@ -98,7 +98,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0617
     * @tc.name      testWebViewHeightPer
     * @tc.desc      aceEtsTest
     */
@@ -119,7 +119,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0618
     * @tc.name      testWebViewHeightPx
     * @tc.desc      aceEtsTest
     */
@@ -140,7 +140,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0619
     * @tc.name      testWebViewPaddingAll
     * @tc.desc      aceEtsTest
     */
@@ -165,7 +165,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0620
     * @tc.name      testWebViewPadding
     * @tc.desc      aceEtsTest
     */
@@ -190,7 +190,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0621
     * @tc.name      testWebViewMarginAll
     * @tc.desc      aceEtsTest
     */
@@ -215,7 +215,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-   * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+   * @tc.number    SUB_ACE_BASIC_ETS_API_0622
    * @tc.name      testWebViewMargin
    * @tc.desc      aceEtsTest
    */
@@ -240,7 +240,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-  * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+  * @tc.number    SUB_ACE_BASIC_ETS_API_0623
   * @tc.name      testWebViewBorderAll
   * @tc.desc      aceEtsTest
   */
@@ -265,7 +265,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0624
     * @tc.name      testWebViewBorderWidth
     * @tc.desc      aceEtsTest
     */
@@ -290,7 +290,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0625
     * @tc.name      testWebViewBorderColor
     * @tc.desc      aceEtsTest
     */
@@ -315,7 +315,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0626
     * @tc.name      testWebViewBorderRadius
     * @tc.desc      aceEtsTest
     */
@@ -340,7 +340,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0627
     * @tc.name      testWebViewBorderStyleDashed
     * @tc.desc      aceEtsTest
     */
@@ -365,7 +365,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0628
     * @tc.name      testWebViewBorderStyleSolid
     * @tc.desc      aceEtsTest
     */
@@ -390,7 +390,7 @@ export default function webViewStyleJsunit() {
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_API_0600
+    * @tc.number    SUB_ACE_BASIC_ETS_API_0629
     * @tc.name      testWebViewBorderStyleDotted
     * @tc.desc      aceEtsTest
     */

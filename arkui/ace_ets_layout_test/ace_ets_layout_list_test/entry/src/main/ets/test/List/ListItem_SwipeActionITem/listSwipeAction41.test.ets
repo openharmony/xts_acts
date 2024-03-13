@@ -16,16 +16,16 @@
 
 import router from '@ohos.router';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import { Driver, ON, On } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function listSwipeAction41Jsunit() {
-  describe('listSwipeAction41Test', ()=> {
-    beforeAll(async (done:Function)=> {
+  describe('listSwipeAction41Test', () => {
+    beforeAll(async (done: Function) => {
       console.info("listSwipeAction41Test beforeEach start");
-      let options : router.RouterOptions = {
-          url : "MainAbility/pages/List/ListItem_SwipeActionItem/listTest41"
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/List/ListItem_SwipeActionItem/listTest41"
       }
       try {
         router.clear();
@@ -39,7 +39,7 @@ export default function listSwipeAction41Jsunit() {
       done();
     });
 
-    afterEach(async function(done) {
+    afterEach(async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info("listSwipeAction41Test after each called");
       // reset the init state
@@ -50,7 +50,7 @@ export default function listSwipeAction41Jsunit() {
       buttonReset.click();
       await CommonFunc.sleep(2000);
       done();
-     
+
     });
 
 
@@ -59,14 +59,14 @@ export default function listSwipeAction41Jsunit() {
     * @tc.name   : when swipe,then return the init position
     * @tc.desc   : test the onStateChange function parameter state
     */
-    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410', 0, async (done:Function)=> {
+    it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410', 0, async (done: Function) => {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 START');
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('lSwipe41Action0');
-      let obj = JSON.parse(strJson);
-      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410] current component obj is: " + JSON.stringify(obj));
+
+      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
 
       // swipe the listItem to bottom
 
@@ -76,10 +76,10 @@ export default function listSwipeAction41Jsunit() {
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset
       let textSwipeOffset = getInspectorByKey('swipe41Offset');
-      let textString = JSON.parse(textSwipeOffset);
-      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(textString.$attrs));
+      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(JSON.parse(textSwipeOffset)
+        .$attrs));
       // [15.00, 87.00][360.00,387.00]
-      expect(textString.$attrs.content).assertEqual('50')
+      expect(JSON.parse(textSwipeOffset).$attrs.content).assertEqual('50')
       // reset
       await driver.swipe(
         Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-600))
@@ -95,11 +95,11 @@ export default function listSwipeAction41Jsunit() {
       );
       await CommonFunc.sleep(5000);
       let textSwipeOffset2 = getInspectorByKey('swipe41Offset');
-      let textString2 = JSON.parse(textSwipeOffset2);
-      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(textString.$attrs));
-      expect(textString2.$attrs.content).assertEqual('-50')
+      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0410 json is ' + JSON.stringify(JSON.parse(textSwipeOffset2)
+        .$attrs));
+      expect(JSON.parse(textSwipeOffset2).$attrs.content).assertEqual('-50');
       //init the state
-       // swipe to up
+      // swipe to up
       await driver.swipe(
         Math.round(vp2px(115)), Math.round(vp2px(200)), Math.round(vp2px(115)), Math.round(vp2px(-1000))
       );
@@ -108,7 +108,6 @@ export default function listSwipeAction41Jsunit() {
 
     });
 
-    
 
   })
 }

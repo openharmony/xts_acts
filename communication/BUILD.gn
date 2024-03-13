@@ -16,7 +16,12 @@ group("communication") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "bluetooth_202:ActsBluetooth202JsTest",
+      "bluetooth_ble:ActsBluetoothBleJsTest",
+      "bluetooth_bp:ActsBluetoothBpJsTest",
+      "bluetooth_br:ActsBluetoothBrJsTest",
       "bluetooth_gatt:ActsBluetoothGattJsTest",
+      "bluetooth_location:ActsBluetoothLocationJsTest",
       "bluetooth_profile:ActsBluetoothProFileJsTest",
       "bluetooth_scanpairing:ActsBluetoothScanPairingJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
@@ -25,12 +30,14 @@ group("communication") {
       "btmanager_switchoff:ActsBtManagerSwitchOff003JsTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
+      "netstack_websocket:ActsWebSocketNdkTest",
       "nfc_Controller:ActsNFCJSTest",
       "nfc_ErrorCode:ActsNFCErrorJSTest",
       "nfc_SecureElement:ActsnfcSEServiceTest",
       "wifi_ErrorCode201:ActsErrorcode201Test",
       "wifi_ErrorCode202:ActsErrorcode202Test",
       "wifi_ErrorCode401:ActsErrorcode401Test",
+      "wifi_ets_standard:ActsEtsWifiTest",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
     ]

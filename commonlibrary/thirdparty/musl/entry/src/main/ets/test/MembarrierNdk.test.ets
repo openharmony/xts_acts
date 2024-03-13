@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import membarrier from 'libmembarrierndk.so'
 
 export default function membarrierNdkTest() {
   describe('MuslMembarrierTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MEMBARRIER_MEMBARRIER_0100
      * @tc.name       : testMuslMembarrierMembarrier001
      * @tc.desc       : test membarrier
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

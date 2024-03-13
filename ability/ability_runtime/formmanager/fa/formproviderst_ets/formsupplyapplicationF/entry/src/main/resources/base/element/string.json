@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "entry_MainAbility",
-      "value": "提供方F"
+      "value": "A提供方"
     },
     {
       "name": "description_mainability",
@@ -11,6 +11,14 @@
     {
       "name": "description_serviceability",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "form_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_label",
+      "value": "form_label"
     }
   ]
 }

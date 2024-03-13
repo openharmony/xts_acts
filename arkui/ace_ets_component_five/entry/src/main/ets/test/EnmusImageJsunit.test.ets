@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsImageJsunit() {
-  describe('enumsImage', function () {
-    beforeEach(async function (done) {
+  describe('enumsImage', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================enumsImage test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsImage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enumsImage',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsImageJsunit() {
         console.info('beforeEach get enumsImage state pages:' + JSON.stringify(pages));
         if (!('enumsFlexItem' == pages.name)) {
           console.info('beforeEach get enumsItemAlign state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsImageTest page result:' + JSON.stringify(result));
         }
@@ -40,31 +39,28 @@ export default function enumsImageJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsImageTest test after each called===================');
     });
 
-    it('enumsImageTest_0100', 0, async function (done) {
+    it('enumsImageTest_0100', 0, async (done: Function) => {
       console.info('enumsImageTest_0100 START');
-      let strJson = getInspectorByKey('Image');
+      let strJson: string = getInspectorByKey('Image');
       console.info("enumsImageTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsImageTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundImageSize).assertEqual('ImageSize.Auto');
+      console.info("enumsImageTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.backgroundImageSize).assertEqual('ImageSize.Auto');
       console.info('enumsImageTest_0100 END');
       done();
     });
 
-    it('enumsImageTest_0200', 0, async function (done) {
+    it('enumsImageTest_0200', 0, async (done: Function) => {
       console.info('enumsImageTest_0200 START');
-      let strJson = getInspectorByKey('Image');
+      let strJson: string = getInspectorByKey('Image');
       console.info("enumsImageTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsImageTest_0200 component obj is: " + JSON.stringify(obj));
-      let obj1 = obj.$attrs.backgroundImage.split(', ')
-      console.info("enumsImageTest_0200 component obj1 is: " + obj1[1]);
-      expect(obj1[1]).assertEqual('ImageRepeat.Y');
+      console.info("enumsImageTest_0200 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("enumsImageTest_0200 component obj1 is: " + JSON.parse(strJson).$attrs.backgroundImage.split(', ')[1]);
+      expect(JSON.parse(strJson).$attrs.backgroundImage.split(', ')[1]).assertEqual('ImageRepeat.Y');
       console.info('enumsImageTest_0200 END');
       done();
     });

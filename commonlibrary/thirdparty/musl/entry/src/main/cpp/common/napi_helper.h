@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+#ifndef NAPI_HELPER_H
+#define NAPI_HELPER_H
 #include "napi/native_api.h"
 
 class NapiHelper {
@@ -47,3 +49,4 @@ public:
     static uint32_t GetUint32Value(napi_env env, napi_value value);
     static bool IsExceptionPending(napi_env env);
 };
+#endif // NAPI_HELPER_H

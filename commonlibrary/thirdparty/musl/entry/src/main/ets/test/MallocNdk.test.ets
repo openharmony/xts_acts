@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import malloc from 'libmallocndk.so'
 
 export default function mallocNdkTest() {
   describe('MuslMallocTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MALLOC_MALLOC_0100
      * @tc.name       : testMuslMallocMalloc001
      * @tc.desc       : test malloc
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +42,7 @@ export default function mallocNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MALLOC_MEMALIGN_0100
      * @tc.name       : testMuslMallocMemalign001
      * @tc.desc       : test memalign
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +56,7 @@ export default function mallocNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MALLOC_MALLOCUSABLESIZE_0100
      * @tc.name       : testMuslMallocMallocUsableSize001
      * @tc.desc       : test malloc_usable_size
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -64,7 +69,7 @@ export default function mallocNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_MALLOC_MALLOPT_0100
      * @tc.name       : testMuslMallocMallopt001
      * @tc.desc       : test mallopt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

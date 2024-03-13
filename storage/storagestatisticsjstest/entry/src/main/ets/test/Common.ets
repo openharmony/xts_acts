@@ -12,20 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function isIntNum(val) {
+
+function isIntNum(val: number) {
   return typeof val === "number" && val % 1 === 0;
 }
 
-function isNegativeNum(val) {
+function isNegativeNum(val: number) {
   return val < 0;
 }
 
-function isInclude(error, message) {
-  return error.toString().indexOf(message) != -1;
-}
-
 export {
-  isIntNum,
-  isNegativeNum,
-  isInclude
+  isIntNum, isNegativeNum
 };

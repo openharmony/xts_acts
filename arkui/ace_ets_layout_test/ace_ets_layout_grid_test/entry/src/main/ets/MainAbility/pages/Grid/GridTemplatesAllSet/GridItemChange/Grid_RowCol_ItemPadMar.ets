@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Grid_RowCol_ItemPadMar{
+struct Grid_RowCol_ItemPadMar {
   @State secondGridItemPadding: number = 0;
   @State secondGridItemMargin: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemPadMar onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'secondGridItemPadding') {
         this.secondGridItemPadding = message.value;
@@ -33,16 +36,18 @@ struct Grid_RowCol_ItemPadMar{
       if (message.name == 'secondGridItemMargin') {
         this.secondGridItemMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Grid(){
+
+  build() {
+    Column({ space: 30 }) {
+      Grid() {
         GridItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .key('Grid_RowCol_ItemPadMar01')
+
         GridItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C).key('Grid_RowCol_ItemPadMar_Text02');
         }
@@ -50,10 +55,12 @@ struct Grid_RowCol_ItemPadMar{
         .margin(this.secondGridItemMargin)
         .backgroundColor(0xF5DEB3)
         .key('Grid_RowCol_ItemPadMar02')
+
         GridItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .key('Grid_RowCol_ItemPadMar03')
+
         GridItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }

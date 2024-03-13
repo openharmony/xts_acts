@@ -15,21 +15,22 @@
 
 #include "napi/native_api.h"
 #include <cerrno>
+#include <csignal>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <ifaddrs.h>
 #include <js_native_api_types.h>
-#include <signal.h>
-#include <cstdlib>
 #include <threads.h>
+#include <unistd.h>
 
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define TSS_SET_VALUE (void *)0xFF
 #define hs (100.0)
 #define ms (1000.0)
@@ -37,7 +38,7 @@
 #define ns (1000000000L)
 
 static tss_t key;
-static int count = PARAM_0;
+static int g_count = PARAM_0;
 volatile int t_status = PARAM_0;
 static thrd_t thr;
 
@@ -46,7 +47,7 @@ void exception_handler(int sig) { exit(t_status); }
 int threadfun_create(void *arg)
 {
     signal(SIGSEGV, exception_handler);
-    count++;
+    g_count++;
     thrd_exit(thrd_success);
 }
 static napi_value Thrd_create(napi_env env, napi_callback_info info)
@@ -56,14 +57,14 @@ static napi_value Thrd_create(napi_env env, napi_callback_info info)
     result = thrd_create(&id, threadfun_create, nullptr);
     struct timespec;
     thrd_join(id, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value results = nullptr;
     napi_create_int32(env, result, &results);
     return results;
 }
 int threadfunc_current(void *arg)
 {
-    count++;
+    g_count++;
     thrd_current();
     thrd_exit(thrd_success);
 }
@@ -73,7 +74,7 @@ static napi_value Thrd_current(napi_env env, napi_callback_info info)
     int result;
     result = thrd_create(&thr, threadfunc_current, nullptr);
     thrd_join(thr, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value napi_value = nullptr;
     napi_create_int32(env, result, &napi_value);
     return napi_value;
@@ -81,13 +82,13 @@ static napi_value Thrd_current(napi_env env, napi_callback_info info)
 
 int threadfunc_detach(void *arg)
 {
-    count++;
+    g_count++;
     thrd_detach(thrd_current());
     thrd_exit(thrd_success);
 }
 static napi_value Thrd_detach(napi_env env, napi_callback_info info)
 {
-    count = PARAM_0;
+    g_count = PARAM_0;
     thrd_t id;
     int result;
     result = thrd_create(&id, threadfunc_detach, nullptr);
@@ -98,7 +99,7 @@ static napi_value Thrd_detach(napi_env env, napi_callback_info info)
 
 int threadfunc_equal(void *arg)
 {
-    count++;
+    g_count++;
     thrd_t id = thrd_current();
     if (!(thrd_equal(id, thr))) {
     }
@@ -107,11 +108,11 @@ int threadfunc_equal(void *arg)
 
 static napi_value Thrd_equal(napi_env env, napi_callback_info info)
 {
-    count = PARAM_0;
+    g_count = PARAM_0;
     int result;
     thrd_create(&thr, threadfunc_equal, nullptr);
     result = thrd_join(thr, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value napi_value = nullptr;
     napi_create_int32(env, result, &napi_value);
     return napi_value;
@@ -119,7 +120,7 @@ static napi_value Thrd_equal(napi_env env, napi_callback_info info)
 int threadfun_exit(void *arg)
 {
     signal(SIGSEGV, exception_handler);
-    count++;
+    g_count++;
     thrd_exit(thrd_success);
 }
 static napi_value Thrd_exit(napi_env env, napi_callback_info info)
@@ -129,14 +130,14 @@ static napi_value Thrd_exit(napi_env env, napi_callback_info info)
     result = thrd_create(&id, threadfun_exit, nullptr);
     struct timespec;
     thrd_join(id, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value results = nullptr;
     napi_create_int32(env, result, &results);
     return results;
 }
 int threadfun_join(void *arg)
 {
-    count++;
+    g_count++;
     return PARAM_0;
 }
 static napi_value Thrd_join(napi_env env, napi_callback_info info)
@@ -145,14 +146,14 @@ static napi_value Thrd_join(napi_env env, napi_callback_info info)
     int result;
     thrd_create(&id, threadfun_join, nullptr);
     result = thrd_join(id, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value napi_value = nullptr;
     napi_create_int32(env, result, &napi_value);
     return napi_value;
 }
 int threadfun_sleep(void *arg)
 {
-    count++;
+    g_count++;
     struct timespec const *tl = (struct timespec const *)arg;
     if (thrd_sleep(tl, nullptr) != PARAM_0) {
     }
@@ -162,10 +163,10 @@ static napi_value Thrd_sleep(napi_env env, napi_callback_info info)
 {
     int result;
     thrd_t id;
-    struct timespec ts = {.tv_sec = 1};
+    struct timespec ts = {.tv_sec = PARAM_1};
     result = thrd_create(&id, threadfun_sleep, (void *)(&ts));
     thrd_join(id, nullptr);
-    count = PARAM_0;
+    g_count = PARAM_0;
     napi_value napi_value = nullptr;
     napi_create_int32(env, result, &napi_value);
     return napi_value;
@@ -176,13 +177,13 @@ double ustimer(struct timespec tss, struct timespec tse)
     double sd = difftime(tse.tv_sec, tss.tv_sec);
     long nsd = tse.tv_nsec - tss.tv_nsec;
     if (nsd < PARAM_0) {
-        return us * (sd - 1) + (ns + nsd) / ms;
+        return us * (sd - PARAM_1) + (ns + nsd) / ms;
     } else {
         return us * (sd) + nsd / ms;
     }
 }
 
-void yieldfunc(void)
+void Yieldfunc(void)
 {
     struct timespec tss, tse;
     timespec_get(&tss, TIME_UTC);
@@ -194,11 +195,11 @@ void yieldfunc(void)
 
 static napi_value Thrd_yield(napi_env env, napi_callback_info info)
 {
-    count = PARAM_0;
+    g_count = PARAM_0;
     int result = PARAM_0;
     struct timespec tss, tse;
     timespec_get(&tss, TIME_UTC);
-    yieldfunc();
+    Yieldfunc();
     timespec_get(&tse, TIME_UTC);
     ustimer(tss, tse);
     napi_value napi_value = nullptr;
@@ -208,7 +209,7 @@ static napi_value Thrd_yield(napi_env env, napi_callback_info info)
 
 static napi_value Tss_create(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int isSuccessCase;
@@ -232,7 +233,7 @@ static napi_value Tss_create(napi_env env, napi_callback_info info)
 
 static napi_value Tss_set(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int isSuccessCase;
@@ -259,7 +260,7 @@ static napi_value Tss_set(napi_env env, napi_callback_info info)
 
 static napi_value Tss_get(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int isSuccessCase;
@@ -287,7 +288,7 @@ static napi_value Tss_get(napi_env env, napi_callback_info info)
 
 static napi_value Tss_delete(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int isSuccessCase;
@@ -321,22 +322,48 @@ static napi_value Cnd_wait(napi_env env, napi_callback_info info)
     mtx_lock(&mutex);
     int backParam = cnd_wait(&cond, &mutex);
     mtx_unlock(&mutex);
+    cnd_destroy(&cond);
+    mtx_destroy(&mutex);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
 }
-
-static napi_value Cnd_timedWait(napi_env env, napi_callback_info info)
+int DoPlainTests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), void *arg2)
 {
-    const struct timespec *time_point;
+    int ret = PARAM_0;
+    int pid = PARAM_0;
+    pid = fork();
+    if (pid == FAIL) {
+        return FAIL;
+    }
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
+    if (fn2) {
+        ret = fn2(arg2);
+    }
+    return ret;
+}
+int Cndtimewaittest(void *testarg)
+{
+    const struct timespec time_point = {0};
     mtx_t mutex;
     cnd_t cond;
     cnd_init(&cond);
     mtx_lock(&mutex);
-    int backParam = cnd_timedwait(&cond, &mutex, time_point);
+    int backParam = cnd_timedwait(&cond, &mutex, &time_point);
     mtx_unlock(&mutex);
+    cnd_destroy(&cond);
+    mtx_destroy(&mutex);
+    return backParam;
+}
+static napi_value Cnd_timedWait(napi_env env, napi_callback_info info)
+{
+    void *test = nullptr;
+    DoPlainTests(Cndtimewaittest, test, nullptr, nullptr);
+
     napi_value result = nullptr;
-    napi_create_int32(env, backParam, &result);
+    napi_create_int32(env, SUCCESS, &result);
     return result;
 }
 
@@ -379,7 +406,7 @@ static napi_value Cnd_init(napi_env env, napi_callback_info info)
     return result;
 }
 
-void do_once(void)
+void DoOnce(void)
 {
     static char list[100];
     static char buf[12] = "called once";
@@ -392,18 +419,17 @@ void do_once(void)
 }
 static once_flag flag = ONCE_FLAG_INIT;
 
-void func(void *data) { call_once(&flag, do_once); }
+void Func(void *data) { call_once(&flag, DoOnce); }
 
 static napi_value CallOnce(napi_env env, napi_callback_info info)
 {
-
     napi_value result = nullptr;
     int returnValue = FAIL;
     thrd_t firstParam, secondParam, thirdParam, fourthParam;
-    thrd_create(&firstParam, (thrd_start_t)func, nullptr);
-    thrd_create(&secondParam, (thrd_start_t)func, nullptr);
-    thrd_create(&thirdParam, (thrd_start_t)func, nullptr);
-    thrd_create(&fourthParam, (thrd_start_t)func, nullptr);
+    thrd_create(&firstParam, (thrd_start_t)Func, nullptr);
+    thrd_create(&secondParam, (thrd_start_t)Func, nullptr);
+    thrd_create(&thirdParam, (thrd_start_t)Func, nullptr);
+    thrd_create(&fourthParam, (thrd_start_t)Func, nullptr);
     thrd_join(firstParam, nullptr);
     thrd_join(secondParam, nullptr);
     thrd_join(thirdParam, nullptr);
@@ -423,7 +449,7 @@ static napi_value MtxDestroy(napi_env env, napi_callback_info info)
     mtx_destroy(&mtx);
     napi_value result;
     if (errno != PARAM_0) {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
@@ -492,7 +518,7 @@ static napi_value MtxUnLock(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     mtx_t mtx;
     struct timespec restrict;
-    memset(&restrict,PARAM_0, sizeof(restrict));
+    memset(&restrict, PARAM_0, sizeof(restrict));
     mtx_init(&mtx, mtx_plain);
     mtx_timedlock(&mtx, &restrict);
     mtx_trylock(&mtx);

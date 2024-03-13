@@ -17,6 +17,8 @@ import webViewOnWindowNewJsunit from './WebViewOnWindowNewJsunit.test'
 import webViewOnErrorReceive02Jsunit from './WebViewOnErrorReceive02Jsunit.test'
 import webViewOnErrorReceive03Jsunit from './WebViewOnErrorReceive03Jsunit.test'
 import webViewHasImageJsunit from './webViewHasImageJsunit.test'
+import webViewSrollableJsunit from './webViewSrollableJsunit.test'
+import webViewSetPrintBackgroundJsunit from './webViewSetPrintBackgroundJsunit.test'
 import webViewSrollToJsunit from './webViewSrollToJsunit.test'
 import webViewSrollByJsunit from './webViewSrollByJsunit.test'
 import WebViewWebStorageJsunit from './WebViewWebStorageJsunit.test'
@@ -60,13 +62,16 @@ export default function testsuite() {
        webViewOnErrorReceive02Jsunit()
        webViewOnErrorReceive03Jsunit()
        webViewHasImageJsunit()
+       webViewSetPrintBackgroundJsunit()
        webViewSrollToJsunit()
        webViewSrollByJsunit()
+       webViewSrollableJsunit()
        WebViewWebStorageJsunit()
        runJavaScript()
        storeWebArchive()
        storeWebArchiveSaveFail()
        //webViewOnBeforeUnload()
+	   webViewSetHttpDns()
        webViewOnInterceptReqOne()
        webViewOnInterceptReqTwo()
        webViewOnInterceptReqThree()
@@ -86,7 +91,6 @@ export default function testsuite() {
        webViewDeleteEntireCookie()
        webViewInVokeFalse()
        webViewInVoke()
-       webViewSetHttpDns()
        webViewONHttpErrorReceive()
        webViewONHttpErrorReceiveExample()
        webViewONHttpErrorRecvExampleIsReady()

@@ -30,7 +30,7 @@ ohos_shared_library("screenCaptureNdkTest") {
   sources = [ "./screenCaptureTest.cpp" ]
   include_dirs = [ "$MEDIA_ROOT_DIR/interfaces/kits/c/" ]
   external_deps = [
-    "graphic_2d:surface",
+    "graphic_surface:surface",
     "napi:ace_napi",
   ]
   deps = [

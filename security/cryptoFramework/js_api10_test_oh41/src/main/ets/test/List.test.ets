@@ -20,6 +20,11 @@ import SecurityCryptoFwSignVerifyECCBrainPoolTestUnit from './SecurityCryptoFwSi
 import SecurityCryptoFwAgreementECCBrainPoolTestUnit from './SecurityCryptoFwAgreementECCBrainPool.test'
 import SecurityCryptoFwKeyGenerateSM2TestUnit from './SecurityCryptoFwKeyGenerateSM2.test'
 import SecurityCryptoFwKeyGenerateECCBrainPoolTestUnit from './SecurityCryptoFwKeyGenerateECCBrainPool.test'
+import SecurityCryptoFwAgreementDHTestUnit from './SecurityCryptoFwAgreementDH.test'
+import SecurityCryptoFwKeyGenerateDHTestUnit from './SecurityCryptoFwKeyGenerateDH.test'
+import SecurityCryptoFwKeyGenerateECCTestUnit from './SecurityCryptoFwKeyGenerateECC.test'
+import SecurityCryptoFwSignVerifyECCTestUnit from './SecurityCryptoFwSignVerifyECC.test'
+import SecurityCryptoFwAgreementECCTestUnit from './SecurityCryptoFwAgreementECC.test'
 
 export default function testsuite() {
   SecurityCryptoFwCipherSM2TestUnit();
@@ -29,4 +34,9 @@ export default function testsuite() {
   SecurityCryptoFwAgreementECCBrainPoolTestUnit();
   SecurityCryptoFwKeyGenerateSM2TestUnit();
   SecurityCryptoFwKeyGenerateECCBrainPoolTestUnit();
+  SecurityCryptoFwAgreementDHTestUnit();
+  SecurityCryptoFwKeyGenerateDHTestUnit();
+  SecurityCryptoFwKeyGenerateECCTestUnit();
+  SecurityCryptoFwSignVerifyECCTestUnit();
+  SecurityCryptoFwAgreementECCTestUnit();
 }

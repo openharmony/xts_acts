@@ -18,8 +18,10 @@
 #include "cstdio"
 #include "cstdlib"
 #include "napi/native_api.h"
+#include <cerrno>
 #include <clocale>
 #include <cstdarg>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -27,28 +29,27 @@
 #include <js_native_api.h>
 #include <linux/elf-fdpic.h>
 #include <node_api.h>
+#include <unistd.h>
 
-#define FAIL -1
+#define FAIL (-1)
 #define NORMAL 1
 #define MAX (20)
-#include "napi/native_api.h"
-#include <cerrno>
-#include <clocale>
-#include <cstdio>
-#include <cwchar>
-#include <unistd.h>
 #define ONEVAL 1
-#define MINUSONE -1
+#define MINUSONE (-1)
 #define NUMBER 5
 #define MAX_NUMBER 60
 
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
-#define PARAM_UNNORMAL -1
+#define PARAM_10 10
+#define PARAM_20 20
+#define PARAM_0x0 0x0
+#define PARAM_0x00ad 0x00ad
+#define PARAM_UNNORMAL (-1)
 #define RETURN_0 0
 #define RETURN_ONE 1
-#define FAILD -1
+#define FAILD (-1)
 #define ERRON_0 0
 #define SIZE_3 3
 #define SIZE_5 5
@@ -68,6 +69,8 @@
 #define ASCII_LA 97
 #define SUCCESS 1
 #define ARRY_MAX 128
+#define ZEROVAL 0
+#define ZERO 0
 
 int vfwprintfTest(FILE *stream, wchar_t *fmt, ...)
 {
@@ -90,6 +93,7 @@ static napi_value Vfwprintf(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
+    fclose(file);
     return result;
 }
 
@@ -225,9 +229,9 @@ static napi_value Wcscmp(napi_env env, napi_callback_info info)
 {
     wchar_t deSt[50] = L"12345";
     wchar_t src[50] = L"12345";
-    int wcscmp_value = wcscmp(deSt, src);
+    int wcscmpValue = wcscmp(deSt, src);
     napi_value result = nullptr;
-    napi_create_int32(env, wcscmp_value, &result);
+    napi_create_int32(env, wcscmpValue, &result);
 
     return result;
 }
@@ -236,9 +240,9 @@ static napi_value Wcscoll(napi_env env, napi_callback_info info)
 {
     wchar_t deSt[50] = L"12345";
     wchar_t src[50] = L"12345";
-    int wcscmp_value = wcscoll(deSt, src);
+    int wcscmpValue = wcscoll(deSt, src);
     napi_value result = nullptr;
-    napi_create_int32(env, wcscmp_value, &result);
+    napi_create_int32(env, wcscmpValue, &result);
 
     return result;
 }
@@ -305,7 +309,7 @@ static napi_value Wcsncat(napi_env env, napi_callback_info info)
 
 static napi_value Wcsncmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -321,7 +325,7 @@ static napi_value Wcsncmp(napi_env env, napi_callback_info info)
 
 static napi_value Wcsnlen(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueFirst;
@@ -358,9 +362,9 @@ static napi_value Mbrtowc(napi_env env, napi_callback_info info)
     wchar_t dest;
     size_t length;
     mbstate_t mbs;
-    mbrlen(nullptr, 0, &mbs);
+    mbrlen(nullptr, PARAM_0, &mbs);
     length = mbrtowc(&dest, pt, max, &mbs);
-    if (length > 0) {
+    if (length > PARAM_0) {
         ret = SUCCESS;
     } else {
         ret = FAIL;
@@ -378,7 +382,7 @@ static napi_value Fputwc(napi_env env, napi_callback_info info)
     wint_t wc;
     FILE *fp = fopen(path, "w+");
 
-    for (unsigned int i = 0; i < wcslen(str); i++) {
+    for (unsigned int i = PARAM_0; i < wcslen(str); i++) {
         wc = fputwc(str[i], fp);
         if (wc == str[i]) {
             ret = PARAM_0;
@@ -416,7 +420,7 @@ static napi_value Putwc(napi_env env, napi_callback_info info)
     if (wret == wc) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     fclose(fptr);
     return result;
@@ -430,7 +434,7 @@ static napi_value PutWChar(napi_env env, napi_callback_info info)
     if (ret == wc) {
         napi_create_int32(env, PARAM_0, &result);
     } else {
-        napi_create_int32(env,PARAM_UNNORMAL , &result);
+        napi_create_int32(env, PARAM_UNNORMAL, &result);
     }
     return result;
 }
@@ -472,7 +476,7 @@ static napi_value Mbsnrtowcs(napi_env env, napi_callback_info info)
     wchar_t wc[ARRY_MAX];
     memset(wc, PARAM_0, sizeof(wc));
     size_t ret = mbsnrtowcs(wc, &test, PARAM_2, ARRY_MAX, nullptr);
-    if (ret != -1) {
+    if (ret != PARAM_UNNORMAL) {
         ret = SUCCESS;
     } else {
         ret = FAIL;
@@ -488,9 +492,9 @@ static napi_value Mbsrtowcs(napi_env env, napi_callback_info info)
     const char *src = "\u0763\u0757";
     wchar_t dest[20];
     mbstate_t ps = mbstate_t();
-    int max = 10;
+    int max = PARAM_10;
     int ret = mbsrtowcs(dest, &src, max, &ps);
-    if (ret != -1) {
+    if (ret != PARAM_UNNORMAL) {
         ret = SUCCESS;
     } else {
         ret = FAIL;
@@ -503,7 +507,7 @@ static napi_value Mbstowcs(napi_env env, napi_callback_info info)
 {
     const char *src = "mbstowcs_0100";
     wchar_t dst[ARRY_MAX];
-    memset(dst, 0x0, sizeof(wchar_t) * ARRY_MAX);
+    memset(dst, PARAM_0x0, sizeof(wchar_t) * ARRY_MAX);
     size_t ret = mbstowcs(dst, src, strlen(src));
     if (ret > PARAM_0) {
         ret = SUCCESS;
@@ -572,7 +576,7 @@ static napi_value Vwscanf(napi_env env, napi_callback_info info)
 
 static napi_value Towlower(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -613,7 +617,7 @@ static napi_value Towlower(napi_env env, napi_callback_info info)
 
 static napi_value Towupper(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -655,23 +659,23 @@ static napi_value Towupper(napi_env env, napi_callback_info info)
 
 static napi_value Wcpncpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
     wchar_t src[] = L"Source string";
     wchar_t dest[SIZE_18];
 
-    int result_value = RETURN_0;
-    wchar_t *wcpncpy_value = wcpncpy(dest, src, size_param);
+    int resultValue = RETURN_0;
+    wchar_t *wcpncpyValue = wcpncpy(dest, src, sizeParam);
 
-    if (wcscmp(wcpncpy_value, dest + size_param) != PARAM_0) {
-        result_value = FAILD;
+    if (wcscmp(wcpncpyValue, dest + sizeParam) != PARAM_0) {
+        resultValue = FAILD;
     }
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
@@ -692,7 +696,7 @@ static napi_value Wcrtomb(napi_env env, napi_callback_info info)
 
 static napi_value Wcscasecmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -715,48 +719,48 @@ static napi_value Wcscasecmp(napi_env env, napi_callback_info info)
 
 static napi_value WcscasecmpL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
 
     locale_t locale = nullptr;
-    int wcscasecmp_l_value;
+    int wcscasecmpLValue;
     if (param == PARAM_0) {
-        wcscasecmp_l_value = wcscasecmp_l(L"hello", L"HELLO", locale);
+        wcscasecmpLValue = wcscasecmp_l(L"hello", L"HELLO", locale);
     } else if (param > PARAM_0) {
-        wcscasecmp_l_value = wcscasecmp_l(L"helloA", L"HELLO", locale);
+        wcscasecmpLValue = wcscasecmp_l(L"helloA", L"HELLO", locale);
     } else {
-        wcscasecmp_l_value = wcscasecmp_l(L"hello", L"HELLOA", locale);
+        wcscasecmpLValue = wcscasecmp_l(L"hello", L"HELLOA", locale);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcscasecmp_l_value, &result);
+    napi_create_int32(env, wcscasecmpLValue, &result);
 
     return result;
 }
 
 static napi_value WcscollL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
 
     locale_t locale = nullptr;
-    int wcscmp_value;
+    int wcscmpValue;
     if (param == PARAM_0) {
-        wcscmp_value = wcscoll_l(L"12345", L"12345", locale);
+        wcscmpValue = wcscoll_l(L"12345", L"12345", locale);
     } else if (param > PARAM_0) {
-        wcscmp_value = wcscoll_l(L"12345A", L"12345", locale);
+        wcscmpValue = wcscoll_l(L"12345A", L"12345", locale);
     } else {
-        wcscmp_value = wcscoll_l(L"12345", L"12345A", locale);
+        wcscmpValue = wcscoll_l(L"12345", L"12345A", locale);
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcscmp_value, &result);
+    napi_create_int32(env, wcscmpValue, &result);
 
     return result;
 }
@@ -768,7 +772,7 @@ static napi_value Wcsftime(napi_env env, napi_callback_info info)
     wchar_t buffer[80];
     time(&rtime);
     timeinfo = localtime(&rtime);
-    int wcsftime_value = wcsftime(buffer, 80, L"%Y", timeinfo);
+    int wcsftime_value = wcsftime(buffer, SIZE_80, L"%Y", timeinfo);
 
     napi_value result = nullptr;
     napi_create_double(env, wcsftime_value, &result);
@@ -794,16 +798,16 @@ static napi_value WcsftimeL(napi_env env, napi_callback_info info)
 
 static napi_value Wcsncasecmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
     int wcsncasecmp_value;
-    if (size_param == PARAM_0) {
+    if (sizeParam == PARAM_0) {
         wcsncasecmp_value = wcsncasecmp(L"hello", L"HELLO", SIZE_6);
-    } else if (size_param > PARAM_0) {
+    } else if (sizeParam > PARAM_0) {
         wcsncasecmp_value = wcsncasecmp(L"hello2", L"HELLO1", SIZE_6);
     } else {
         wcsncasecmp_value = wcsncasecmp(L"hello1", L"HELLO2", SIZE_6);
@@ -817,17 +821,17 @@ static napi_value Wcsncasecmp(napi_env env, napi_callback_info info)
 
 static napi_value WcsncasecmpL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
     locale_t locale = nullptr;
     int wcsncasecmp_l_value;
-    if (size_param == PARAM_0) {
+    if (sizeParam == PARAM_0) {
         wcsncasecmp_l_value = wcsncasecmp_l(L"hello", L"HELLO", SIZE_6, locale);
-    } else if (size_param > PARAM_0) {
+    } else if (sizeParam > PARAM_0) {
         wcsncasecmp_l_value = wcsncasecmp_l(L"hello2", L"HELLO1", SIZE_6, locale);
     } else {
         wcsncasecmp_l_value = wcsncasecmp_l(L"hello1", L"HELLO2", SIZE_6, locale);
@@ -841,40 +845,40 @@ static napi_value WcsncasecmpL(napi_env env, napi_callback_info info)
 
 static napi_value Wcsncpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
-    int result_value = RETURN_0;
-    if (size_param == PARAM_1) {
+    int resultValue = RETURN_0;
+    if (sizeParam == PARAM_1) {
         const wchar_t src[] = L"Hello";
         wchar_t buf[SIZE_6];
         wmemset(buf, L'A', SIZE_6);
-        wchar_t *dest = (wchar_t *)buf;
+        wchar_t *dest = static_cast<wchar_t *>(buf);
 
         if (dest == wcsncpy(dest, src, SIZE_6)) {
-            result_value = RETURN_ONE;
+            resultValue = RETURN_ONE;
         }
 
     } else {
         wchar_t src[] = L"Hello";
         wchar_t *result = wcsncpy(nullptr, src, PARAM_0);
         if (result == nullptr) {
-            result_value = RETURN_ONE;
+            resultValue = RETURN_ONE;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wcsrchr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -882,52 +886,52 @@ static napi_value Wcsrchr(napi_env env, napi_callback_info info)
 
     wchar_t dest[] = L"abcdefg";
     wchar_t *p;
-    int result_value;
+    int resultValue;
     if (param == PARAM_0) {
         p = wcsrchr(dest, L'a');
         if (p) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         } else {
-            result_value = FAILD;
+            resultValue = FAILD;
         }
     } else {
         p = wcsrchr(dest, L'1');
         if (p) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         } else {
-            result_value = FAILD;
+            resultValue = FAILD;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wcsrtombs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
     const wchar_t *src = L"abcdefg";
     char dest[SIZE_20];
     mbstate_t ps = mbstate_t();
 
-    size_t wcsrtombs_value = wcsrtombs(dest, &src, size_param, &ps);
+    size_t wcsrtombsValue = wcsrtombs(dest, &src, sizeParam, &ps);
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcsrtombs_value, &result);
+    napi_create_int32(env, wcsrtombsValue, &result);
 
     return result;
 }
 
 static napi_value Wcsspn(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -953,7 +957,7 @@ static napi_value Wcsspn(napi_env env, napi_callback_info info)
 
 static napi_value Wcsstr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -961,35 +965,35 @@ static napi_value Wcsstr(napi_env env, napi_callback_info info)
 
     wchar_t dest[] = L"ab cd efg";
 
-    int wcsstr_value;
+    int wcsstrValue;
     if (param == PARAM_0) {
         wchar_t src[] = L"cd";
         wchar_t *p = wcsstr(dest, src);
         if (p) {
-            wcsstr_value = RETURN_0;
+            wcsstrValue = RETURN_0;
         } else {
-            wcsstr_value = FAILD;
+            wcsstrValue = FAILD;
         }
 
     } else {
         wchar_t src[] = L"1";
         wchar_t *p = wcsstr(dest, src);
         if (p) {
-            wcsstr_value = RETURN_0;
+            wcsstrValue = RETURN_0;
         } else {
-            wcsstr_value = FAILD;
+            wcsstrValue = FAILD;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcsstr_value, &result);
+    napi_create_int32(env, wcsstrValue, &result);
 
     return result;
 }
 
 static napi_value Wcstod(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -1014,7 +1018,7 @@ static napi_value Wcstod(napi_env env, napi_callback_info info)
 
 static napi_value Wcstof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -1039,39 +1043,39 @@ static napi_value Wcstof(napi_env env, napi_callback_info info)
 
 static napi_value Wcstok(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
 
     wchar_t *ptr;
-    int wcstok_value = FAILD;
+    int wcstokValue = FAILD;
     if (param == PARAM_0) {
         wchar_t str[] = L"123,456";
         wchar_t delim[] = L",";
         wchar_t *want = wcstok(str, delim, &ptr);
         if (wcscmp(want, L"123") == PARAM_0) {
-            wcstok_value = RETURN_0;
+            wcstokValue = RETURN_0;
         }
     } else {
         wchar_t str[] = L"123,456";
         wchar_t delim[] = L"/";
         wchar_t *want = wcstok(str, delim, &ptr);
         if (wcscmp(want, str) == PARAM_0) {
-            wcstok_value = RETURN_0;
+            wcstokValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcstok_value, &result);
+    napi_create_int32(env, wcstokValue, &result);
 
     return result;
 }
 
 static napi_value Wcstol(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -1094,56 +1098,56 @@ static napi_value Wcstol(napi_env env, napi_callback_info info)
 
 static napi_value Wcstold(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int param;
     napi_get_value_int32(env, args[0], &param);
 
-    double wcstold_value;
+    double wcstoldValue;
     if (param == PARAM_0) {
         wchar_t str[] = L"123AB-20";
         wchar_t *end = nullptr;
-        wcstold_value = wcstold(str, &end);
+        wcstoldValue = wcstold(str, &end);
     } else {
         wchar_t str[] = L"123xyz";
         wchar_t *end = nullptr;
-        wcstold_value = wcstold(str, &end);
+        wcstoldValue = wcstold(str, &end);
     }
 
     napi_value result = nullptr;
-    napi_create_double(env, wcstold_value, &result);
+    napi_create_double(env, wcstoldValue, &result);
 
     return result;
 }
 
 static napi_value Wcstoll(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int param;
     napi_get_value_int32(env, args[0], &param);
 
-    double wcstoll_value;
+    double wcstollValue;
     if (param == PARAM_0) {
-        wcstoll_value = wcstoll(L"123AB-20", nullptr, SIZE_10);
+        wcstollValue = wcstoll(L"123AB-20", nullptr, SIZE_10);
     } else {
         wchar_t *endString = nullptr;
-        wcstoll_value = wcstoll(L"123xyz", &endString, SIZE_10);
+        wcstollValue = wcstoll(L"123xyz", &endString, SIZE_10);
     }
 
     napi_value result = nullptr;
-    napi_create_double(env, wcstoll_value, &result);
+    napi_create_double(env, wcstollValue, &result);
 
     return result;
 }
 
 static napi_value Wcstombs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -1152,17 +1156,17 @@ static napi_value Wcstombs(napi_env env, napi_callback_info info)
 
     wchar_t src[] = L"HelloWorld";
     char dest[SIZE_100];
-    int wcstombs_value = wcstombs(dest, src, param);
+    int wcstombsValue = wcstombs(dest, src, param);
 
     napi_value result = nullptr;
-    napi_create_double(env, wcstombs_value, &result);
+    napi_create_double(env, wcstombsValue, &result);
 
     return result;
 }
 
 static napi_value Wcstoul(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -1185,30 +1189,30 @@ static napi_value Wcstoul(napi_env env, napi_callback_info info)
 
 static napi_value Wcstoull(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int param;
     napi_get_value_int32(env, args[0], &param);
 
-    double wcstoull_value;
+    double wcstoullValue;
     if (param == PARAM_0) {
-        wcstoull_value = wcstoull(L"123AB-20", nullptr, SIZE_10);
+        wcstoullValue = wcstoull(L"123AB-20", nullptr, SIZE_10);
     } else {
         wchar_t *endString = nullptr;
-        wcstoull_value = wcstoll(L"123xyz", &endString, SIZE_10);
+        wcstoullValue = wcstoll(L"123xyz", &endString, SIZE_10);
     }
 
     napi_value result = nullptr;
-    napi_create_double(env, wcstoull_value, &result);
+    napi_create_double(env, wcstoullValue, &result);
 
     return result;
 }
 
 static napi_value Wcswidth(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -1230,44 +1234,44 @@ static napi_value Wcswidth(napi_env env, napi_callback_info info)
 
 static napi_value Wcsxfrm(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
 
     wchar_t src[SIZE_10];
-    int wcsxfrm_value = wcsxfrm(src, L"abcdefg", param);
+    int wcsxfrmValue = wcsxfrm(src, L"abcdefg", param);
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcsxfrm_value, &result);
+    napi_create_int32(env, wcsxfrmValue, &result);
 
     return result;
 }
 
 static napi_value Wcsnrtombs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    int size_param;
-    napi_get_value_int32(env, args[0], &size_param);
+    int sizeParam;
+    napi_get_value_int32(env, args[0], &sizeParam);
 
     const wchar_t *src = L"abcdefg";
     char dest[SIZE_20];
     mbstate_t ps = mbstate_t();
 
-    size_t wcsrtombs_value = wcsnrtombs(dest, &src, size_param, size_param, &ps);
+    size_t wcsrtombsValue = wcsnrtombs(dest, &src, sizeParam, sizeParam, &ps);
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcsrtombs_value, &result);
+    napi_create_int32(env, wcsrtombsValue, &result);
 
     return result;
 }
 
 static napi_value WcsxfrmL(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
@@ -1275,125 +1279,125 @@ static napi_value WcsxfrmL(napi_env env, napi_callback_info info)
 
     wchar_t src[SIZE_10];
     locale_t locale = nullptr;
-    int wcsxfrm_value = wcsxfrm_l(src, L"abcdefg", param, locale);
+    int wcsxfrmValue = wcsxfrm_l(src, L"abcdefg", param, locale);
 
     napi_value result = nullptr;
-    napi_create_int32(env, wcsxfrm_value, &result);
+    napi_create_int32(env, wcsxfrmValue, &result);
 
     return result;
 }
 
 static napi_value Wctob(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t c = L'A';
         int result = wctob(c);
         if (result == 'A') {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t c = L'\u00df';
         int result = wctob(c);
         if (result == EOF) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wctomb(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t c = L'h';
         char byte[SIZE_256] = {PARAM_0};
         int result = wctomb(byte, c);
         if (result == PARAM_1) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == PARAM_1) {
         wchar_t c = L'\0';
         char byte[SIZE_256] = {PARAM_0};
         int result = wctomb(byte, c);
         if (result == PARAM_1) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == PARAM_2) {
         wchar_t c = L'h';
         int result = wctomb(nullptr, c);
         if (result == PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t c = L'\0';
         int result = wctomb(nullptr, c);
         if (result == PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wcwidth(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         int result = wcwidth(PARAM_0);
         if (result == PARAM_0) {
-            result_value = PARAM_0;
+            resultValue = PARAM_0;
         }
     } else {
-        int result = wcwidth(0x00ad);
+        int result = wcwidth(PARAM_0x00ad);
         if (result == PARAM_1) {
-            result_value = RETURN_ONE;
+            resultValue = RETURN_ONE;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wmemchr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t str[] = L"ABCDEFG";
         wchar_t target = L'C';
         size_t sz = sizeof(str) / sizeof(*str);
         wchar_t *result = wmemchr(str, target, sz);
         if (result) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == PARAM_1) {
         wchar_t str[] = L"ABCDEFG";
@@ -1401,7 +1405,7 @@ static napi_value Wmemchr(napi_env env, napi_callback_info info)
         size_t sz = sizeof(str) / sizeof(*str);
         wchar_t *result = wmemchr(str, target, sz);
         if (!result) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t str[] = L"ABCDEFG";
@@ -1409,44 +1413,44 @@ static napi_value Wmemchr(napi_env env, napi_callback_info info)
         size_t sz = PARAM_0;
         wchar_t *result = wmemchr(str, target, sz);
         if (!result) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wmemcmp(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t l[] = L"ABCD";
         wchar_t r[] = L"ABCD";
         int result = wmemcmp(l, r, sizeof(l) / sizeof(*l));
         if (result == PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == 1) {
         wchar_t l[] = L"ABCD";
         wchar_t r[] = L"ABCE";
         int result = wmemcmp(l, r, sizeof(l) / sizeof(*l));
         if (result < PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == PARAM_2) {
         wchar_t l[] = L"ABCD";
         wchar_t r[] = L"ABCC";
         int result = wmemcmp(l, r, sizeof(l) / sizeof(*l));
         if (result > PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t l[] = L"ABCD";
@@ -1454,31 +1458,31 @@ static napi_value Wmemcmp(napi_env env, napi_callback_info info)
         int n = PARAM_0;
         int result = wmemcmp(l, r, n);
         if (result == PARAM_0) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wmemcpy(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t des[SIZE_30];
         wchar_t src[] = L"This is a c test for wmemcpy";
         int n = SIZE_13;
         wmemcpy(des, src, n);
         if (!wcsncmp(des, src, n)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else if (param == PARAM_1) {
         wchar_t des[SIZE_3];
@@ -1486,7 +1490,7 @@ static napi_value Wmemcpy(napi_env env, napi_callback_info info)
         int n = SIZE_3;
         wmemcpy(des, src, n);
         if (!wcsncmp(des, src, n)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t des[SIZE_3];
@@ -1494,24 +1498,24 @@ static napi_value Wmemcpy(napi_env env, napi_callback_info info)
         int n = PARAM_0;
         wmemcpy(des, src, n);
         if (!wcsncmp(des, src, n)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wmemmove(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t des[] = L"This is a c test for wmemmove function";
         const wchar_t src[] = L"src content";
@@ -1520,7 +1524,7 @@ static napi_value Wmemmove(napi_env env, napi_callback_info info)
         wcsncpy(tmp, src, count);
         wmemmove(des, src, count);
         if (!wcsncmp(des, tmp, count)) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t src[] = L"This is a c test for wmemmove function";
@@ -1528,71 +1532,71 @@ static napi_value Wmemmove(napi_env env, napi_callback_info info)
         int count = SIZE_5;
         wchar_t *result = wmemmove(des, src, count);
         if (result == des) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wmemset(napi_env env, napi_callback_info info)
 {
-    int result_value = PARAM_0;
+    int resultValue = PARAM_0;
     wchar_t ch = L'G';
     wchar_t des[SIZE_20];
     int count = SIZE_5;
     wmemset(des, ch, count);
-    for (int i = 0; i < count; i++) {
+    for (int i = PARAM_0; i < count; i++) {
         if (des[i] != ch) {
-            result_value = FAIL;
+            resultValue = FAIL;
         }
     }
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
     return result;
 }
 
 static napi_value Wprintf(napi_env env, napi_callback_info info)
 {
-    int result_value = wprintf(L"%lc\n", L'a');
+    int resultValue = wprintf(L"%lc\n", L'a');
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Wcswcs(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int param;
     napi_get_value_int32(env, args[0], &param);
-    int result_value = FAILD;
+    int resultValue = FAILD;
     if (param == PARAM_0) {
         wchar_t *ret = wcswcs(L"abcd", L"a");
         if (ret != nullptr) {
-            result_value = RETURN_0;
+            resultValue = RETURN_0;
         }
     } else {
         wchar_t *ret = wcswcs(L"", L"");
         if (ret == nullptr) {
-            result_value = FAILD;
+            resultValue = FAILD;
         }
     }
 
     napi_value result = nullptr;
-    napi_create_int32(env, result_value, &result);
+    napi_create_int32(env, resultValue, &result);
 
     return result;
 }
 
 static napi_value Ungetwc(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -1612,7 +1616,7 @@ static napi_value Ungetwc(napi_env env, napi_callback_info info)
 
 static napi_value Btowc(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = PARAM_1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int index;
@@ -1665,7 +1669,7 @@ static napi_value Fwide(napi_env env, napi_callback_info info)
 {
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
     FILE *fp = fopen(path, "w+");
-    int param = 20;
+    int param = PARAM_20;
     int value = fwide(fp, param);
     int ret = FAIL;
     if (value > PARAM_0) {
@@ -1673,7 +1677,7 @@ static napi_value Fwide(napi_env env, napi_callback_info info)
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
-
+    fclose(fp);
     return result;
 }
 
@@ -1697,6 +1701,94 @@ static napi_value Fputws(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value FGetWs(napi_env env, napi_callback_info info)
+{
+    errno = ZERO;
+    wchar_t mystring[100];
+    char str[] = "test";
+    FILE *fp = fopen("/data/storage/el2/base/files/Fzl.txt", "w+");
+    fwrite(str, sizeof(char), sizeof(str), fp);
+    fseek(fp, ZEROVAL, SEEK_SET);
+    wchar_t *ret = fgetws(mystring, SIZE_100, fp);
+    napi_value result = nullptr;
+    if (ret == mystring) {
+        napi_create_int32(env, ZEROVAL, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    fclose(fp);
+    return result;
+}
+
+static napi_value FGetWc(napi_env env, napi_callback_info info)
+{
+    setlocale(LC_ALL, "en_US.utf8");
+    FILE *fp = fopen("/data/storage/el2/base/files/Fzl.txt", "w+");
+    fputs("кошка\n", fp);
+    wint_t wc;
+    napi_value result = nullptr;
+    wc = fgetwc(fp);
+    if (wc == WEOF) {
+        napi_create_int32(env, ZEROVAL, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    fclose(fp);
+    return result;
+}
+
+int vswscanfTest(const wchar_t *buffer, const wchar_t *format, ...)
+{
+    int result = ZEROVAL;
+    va_list args;
+    va_start(args, format);
+    vswscanf(buffer, format, args);
+    va_end(args);
+    return result;
+}
+
+static napi_value Vswscanf(napi_env env, napi_callback_info info)
+{
+    setlocale(LC_ALL, "en_US.UTF-8");
+    wchar_t symbol[] = L"\u0fd7\u00c6\u20b9\u2127\u17d8";
+    wchar_t str[20];
+    int vswval = vswscanfTest(symbol, L"%ls", str);
+    napi_value result;
+    if (vswval < PARAM_0) {
+        napi_create_int32(env, MINUSONE, &result);
+    } else {
+        napi_create_int32(env, PARAM_0, &result);
+    }
+    return result;
+}
+
+static napi_value Getwc(napi_env env, napi_callback_info info)
+{
+    const char *ptr = "/data/storage/el2/base/files/test.txt";
+    FILE *fptr = fopen(ptr, "w+");
+    wchar_t wc = L'p';
+    putwc(wc, fptr);
+    rewind(fptr);
+    wint_t wret = getwc(fptr);
+    napi_value result = nullptr;
+    if (wret == wc) {
+        napi_create_int32(env, ZEROVAL, &result);
+    } else {
+        napi_create_int32(env, FAIL, &result);
+    }
+    fclose(fptr);
+    return result;
+}
+
+static napi_value Mbrlen(napi_env env, napi_callback_info info)
+{
+    char test[] = {'m', 'u', 's', 'l'};
+    size_t limitsize = sizeof(test[0]);
+    size_t ret = mbrlen(&test[0], limitsize, nullptr);
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1779,6 +1871,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"mbsrtowcs", nullptr, Mbsrtowcs, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"mbstowcs", nullptr, Mbstowcs, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"mbtowc", nullptr, Mbtowc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"fgetws", nullptr, FGetWs, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"fgetwc", nullptr, FGetWc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"vswscanf", nullptr, Vswscanf, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getwc", nullptr, Getwc, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"mbrlen", nullptr, Mbrlen, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

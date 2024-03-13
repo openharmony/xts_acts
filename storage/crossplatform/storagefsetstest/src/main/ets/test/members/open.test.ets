@@ -15,9 +15,10 @@
 
 import { FILE_CONTENT, nextFileName, prepareFile, isIntNum, describe, it, expect } from "../Common";
 import fileIO from "@ohos.file.fs";
+import { BusinessError } from '@ohos.base';
 
 export default function fileIOOpen() {
-  describe("fileIO_fs_open", function () {
+  describe("fileIO_fs_open", () => {
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_OPEN_ASYNC_0000
      * @tc.name   : fileIO_test_open_async_000
@@ -27,10 +28,10 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_000", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_000");
+    it("fileIO_test_open_async_000", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file = await fileIO.open(fpath, fileIO.OpenMode.READ_ONLY);
+      let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.READ_ONLY);
 
       try {
         expect(isIntNum(file.fd)).assertTrue();
@@ -57,13 +58,13 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_001", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_001");
+    it("fileIO_test_open_async_001", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let length = 20;
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.WRITE_ONLY);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.WRITE_ONLY);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.write(file.fd, new ArrayBuffer(length)).then((bytesWritten) => {
           expect(bytesWritten == length).assertTrue();
@@ -86,8 +87,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_002", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_002");
+    it("fileIO_test_open_async_002", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_002");
 
       try {
         await fileIO.open(fpath, fileIO.OpenMode.READ_WRITE);
@@ -108,11 +109,11 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_003");
+    it("fileIO_test_open_async_003", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_003");
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -132,12 +133,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_004", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_004");
+    it("fileIO_test_open_async_004", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.TRUNC | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.TRUNC | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.read(file.fd, new ArrayBuffer(4096)).then((readLen) => {
           expect(readLen == 0).assertTrue();
@@ -160,16 +161,18 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_005", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_005");
+    it("fileIO_test_open_async_005", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let length = 100;
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.writeSync(file.fd, new ArrayBuffer(length));
-        fileIO.read(file.fd, new ArrayBuffer(4096), { offset: 0 }).then((readLen) => {
+        fileIO.read(file.fd, new ArrayBuffer(4096), {
+          offset: 0
+        }).then((readLen) => {
           expect(readLen == length + FILE_CONTENT.length).assertTrue();
           fileIO.closeSync(file);
           fileIO.unlinkSync(fpath);
@@ -190,12 +193,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_006", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_006");
+    it("fileIO_test_open_async_006", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_006");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.NONBLOCK | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.NONBLOCK | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -215,12 +218,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_007", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_open_async_007");
+    it("fileIO_test_open_async_007", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_open_async_007");
       fileIO.mkdirSync(dpath);
 
       try {
-        let file = await fileIO.open(dpath, fileIO.OpenMode.DIR);
+        let file: fileIO.File = await fileIO.open(dpath, fileIO.OpenMode.DIR);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.rmdirSync(dpath);
         done();
@@ -239,8 +242,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_008", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_008");
+    it("fileIO_test_open_async_008", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_008");
       expect(prepareFile(fpath, "")).assertTrue();
 
       try {
@@ -263,12 +266,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_009", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_009");
+    it("fileIO_test_open_async_009", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_009");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -288,12 +291,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_010", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_010");
+    it("fileIO_test_open_async_010", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_010");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.SYNC | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = await fileIO.open(fpath, fileIO.OpenMode.SYNC | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -313,8 +316,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_011", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_open_async_011");
+    it("fileIO_test_open_async_011", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_open_async_011");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -337,10 +340,10 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_012", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_012");
+    it("fileIO_test_open_async_012", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_012");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file;
+      let file: fileIO.File;
 
       try {
         file = await fileIO.open(fpath);
@@ -367,8 +370,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_013", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_013");
+    it("fileIO_test_open_async_013", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_013");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -378,7 +381,7 @@ export default function fileIOOpen() {
             expect(false).assertTrue();
           }
           expect(isIntNum(file.fd)).assertTrue();
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == FILE_CONTENT.length).assertTrue();
           fileIO
             .write(file.fd, new ArrayBuffer(4096))
@@ -386,7 +389,7 @@ export default function fileIOOpen() {
               console.info("write data to file succeed and size is:" + writeLen);
               expect(false).assertTrue();
             })
-            .catch((err) => {
+            .catch((err: BusinessError) => {
               console.info("write data to file failed with error message: " + err.message + ", error code: " + err.code);
               expect(err.code == 13900008 && err.message == "Bad file descriptor").assertTrue();
               fileIO.unlinkSync(fpath);
@@ -408,8 +411,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_014", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_014");
+    it("fileIO_test_open_async_014", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_014");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let length = 20;
 
@@ -442,8 +445,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_015", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_015");
+    it("fileIO_test_open_async_015", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_015");
 
       try {
         fileIO.open(fpath, fileIO.OpenMode.READ_WRITE, (err) => {
@@ -468,8 +471,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_016", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_016");
+    it("fileIO_test_open_async_016", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_016");
 
       try {
         fileIO.open(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.WRITE_ONLY, (err, file) => {
@@ -497,8 +500,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_017", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_017");
+    it("fileIO_test_open_async_017", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_017");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -530,10 +533,10 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_018", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_018");
+    it("fileIO_test_open_async_018", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_018");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let length = 100;
+      let length: number = 100;
 
       try {
         fileIO.open(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE, (err, file) => {
@@ -543,7 +546,9 @@ export default function fileIOOpen() {
           }
           expect(isIntNum(file.fd)).assertTrue();
           fileIO.writeSync(file.fd, new ArrayBuffer(length));
-          fileIO.read(file.fd, new ArrayBuffer(4096), { offset: 0 }).then((readLen) => {
+          fileIO.read(file.fd, new ArrayBuffer(4096), {
+            offset: 0
+          }).then((readLen) => {
             expect(readLen == length + FILE_CONTENT.length).assertTrue();
             fileIO.closeSync(file);
             fileIO.unlinkSync(fpath);
@@ -565,8 +570,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_019", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_019");
+    it("fileIO_test_open_async_019", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_019");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -595,8 +600,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_020", 2, async function (done) {
-      let dpath = await nextFileName("fileIO_test_open_async_020");
+    it("fileIO_test_open_async_020", 2, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_open_async_020");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -624,8 +629,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_021", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_021");
+    it("fileIO_test_open_async_021", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_021");
       expect(prepareFile(fpath, "")).assertTrue();
 
       try {
@@ -652,8 +657,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_022", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_022");
+    it("fileIO_test_open_async_022", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_022");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -682,8 +687,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_async_023", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_023");
+    it("fileIO_test_open_async_023", 2, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_023");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -712,8 +717,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_024", 3, async function (done) {
-      let dpath = await nextFileName("fileIO_test_open_async_024");
+    it("fileIO_test_open_async_024", 3, async (done: Function) => {
+      let dpath: string = await nextFileName("fileIO_test_open_async_024");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -740,8 +745,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_async_025", 3, async function (done) {
-      let fpath = await nextFileName("fileIO_test_open_async_025");
+    it("fileIO_test_open_async_025", 3, async (done: Function) => {
+      let fpath: string = await nextFileName("fileIO_test_open_async_025");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
@@ -751,7 +756,7 @@ export default function fileIOOpen() {
             expect(false).assertTrue();
           }
           expect(isIntNum(file.fd)).assertTrue();
-          let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+          let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
           expect(readLen == FILE_CONTENT.length).assertTrue();
           fileIO.write(file.fd, new ArrayBuffer(4096), (err, bytesWritten) => {
             if (err) {
@@ -780,14 +785,14 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_000", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_000");
+    it("fileIO_test_open_sync_000", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_ONLY);
         expect(isIntNum(file.fd)).assertTrue();
-        let readlen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readlen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readlen == FILE_CONTENT.length).assertTrue();
         fileIO.writeSync(file.fd, new ArrayBuffer(4096));
         expect(false).assertTrue();
@@ -807,14 +812,14 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_001", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_001");
+    it("fileIO_test_open_sync_001", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_001");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.WRITE_ONLY);
         expect(isIntNum(file.fd)).assertTrue();
-        let bytesWritten = fileIO.writeSync(file.fd, FILE_CONTENT);
+        let bytesWritten: number = fileIO.writeSync(file.fd, FILE_CONTENT);
         expect(bytesWritten == FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -833,17 +838,19 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_002", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_002");
+    it("fileIO_test_open_sync_002", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readlen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readlen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readlen == FILE_CONTENT.length).assertTrue();
-        let length = 20;
-        let bytesWritten = fileIO.writeSync(file.fd, new ArrayBuffer(length), { offset: 0 });
+        let length: number = 20;
+        let bytesWritten: number = fileIO.writeSync(file.fd, new ArrayBuffer(length), {
+          offset: 0
+        });
         expect(bytesWritten == length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -862,11 +869,11 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_003", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_003");
+    it("fileIO_test_open_sync_003", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_003");
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -885,14 +892,14 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_004", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_004");
+    it("fileIO_test_open_sync_004", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.TRUNC | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.TRUNC | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readLen == 0).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -911,17 +918,19 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_005", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_005");
+    it("fileIO_test_open_sync_005", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_005");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.APPEND | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
-        let length = 100;
-        let bytesWritten = fileIO.writeSync(file.fd, new ArrayBuffer(length));
+        let length: number = 100;
+        let bytesWritten: number = fileIO.writeSync(file.fd, new ArrayBuffer(length));
         expect(bytesWritten == length).assertTrue();
-        let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096), { offset: 0 });
+        let readLen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096), {
+          offset: 0
+        });
         expect(readLen == length + FILE_CONTENT.length).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -940,12 +949,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_006", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_006");
+    it("fileIO_test_open_sync_006", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_006");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.NONBLOCK | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.NONBLOCK | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -964,12 +973,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_007", 2, async function () {
-      let dpath = await nextFileName("fileIO_test_open_sync_007");
+    it("fileIO_test_open_sync_007", 2, async () => {
+      let dpath: string = await nextFileName("fileIO_test_open_sync_007");
       fileIO.mkdirSync(dpath);
 
       try {
-        let file = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
+        let file: fileIO.File = fileIO.openSync(dpath, fileIO.OpenMode.DIR);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.rmdirSync(dpath);
       } catch (e) {
@@ -987,8 +996,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_sync_008", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_008");
+    it("fileIO_test_open_sync_008", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_008");
       expect(prepareFile(fpath, "")).assertTrue();
 
       try {
@@ -1010,12 +1019,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_009", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_009");
+    it("fileIO_test_open_sync_009", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_009");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1034,12 +1043,12 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_open_sync_010", 2, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_010");
+    it("fileIO_test_open_sync_010", 2, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_010");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        let file = fileIO.openSync(fpath, fileIO.OpenMode.SYNC | fileIO.OpenMode.READ_WRITE);
+        let file: fileIO.File = fileIO.openSync(fpath, fileIO.OpenMode.SYNC | fileIO.OpenMode.READ_WRITE);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
@@ -1058,8 +1067,8 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_sync_011", 3, async function () {
-      let dpath = await nextFileName("fileIO_test_open_sync_011");
+    it("fileIO_test_open_sync_011", 3, async () => {
+      let dpath: string = await nextFileName("fileIO_test_open_sync_011");
       fileIO.mkdirSync(dpath);
 
       try {
@@ -1081,15 +1090,15 @@ export default function fileIOOpen() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it("fileIO_test_open_sync_012", 3, async function () {
-      let fpath = await nextFileName("fileIO_test_open_sync_012");
+    it("fileIO_test_open_sync_012", 3, async () => {
+      let fpath: string = await nextFileName("fileIO_test_open_sync_012");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let file;
+      let file: fileIO.File;
 
       try {
         file = fileIO.openSync(fpath, undefined);
         expect(isIntNum(file.fd)).assertTrue();
-        let readlen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+        let readlen: number = fileIO.readSync(file.fd, new ArrayBuffer(4096));
         expect(readlen == FILE_CONTENT.length).assertTrue();
         fileIO.writeSync(file.fd, new ArrayBuffer(4096));
         expect(false).assertTrue();

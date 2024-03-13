@@ -172,6 +172,10 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 event:' + data.event);
                     that.Sub_InputMethod_IMF_SecurityKeyboard_0800();
                     break;
+                case 215:
+                    console.debug(TAG + '====>Sub_InputMethod_IMF_getSecurityMode_0100 event:' + data.event);
+                    that.Sub_InputMethod_IMF_getSecurityMode_0100();
+                    break;
             }
         }
 
@@ -371,7 +375,7 @@ export class KeyboardController {
         console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 success');
         try {
             if (this.softKeyboardPanel !== null) {
-                this.softKeyboardPanel.setUiContent('pages/Index', async (err, data) => {
+                this.softKeyboardPanel.setUiContent('pages/second/second', async (err, data) => {
                     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 setUiContent');
                     if (err) {
                         commonEventPublishData = {
@@ -408,7 +412,7 @@ export class KeyboardController {
         console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 success');
         try {
             if (this.softKeyboardPanel !== null) {
-                this.softKeyboardPanel.setUiContent('pages/Index').then(async (data) => {
+                this.softKeyboardPanel.setUiContent('pages/second/second').then(async (data) => {
                     commonEventPublishData = {
                         data: 'SUCCESS'
                     };
@@ -442,7 +446,7 @@ export class KeyboardController {
         console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 success');
         try {
             if (this.softKeyboardPanel !== null) {
-                this.softKeyboardPanel.setUiContent('pages/Index', this.storage, async (err, data) => {
+                this.softKeyboardPanel.setUiContent('pages/second/second', this.storage, async (err, data) => {
                     console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 setUiContent');
                     if (err) {
                         commonEventPublishData = {
@@ -479,7 +483,7 @@ export class KeyboardController {
         console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 success');
         try {
             if (this.softKeyboardPanel !== null) {
-                this.softKeyboardPanel.setUiContent('pages/Index', this.storage).then(async (data) => {
+                this.softKeyboardPanel.setUiContent('pages/second/second', this.storage).then(async (data) => {
                     commonEventPublishData = {
                         data: 'SUCCESS'
                     };
@@ -1024,7 +1028,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0600(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0600 success');
         try {
@@ -1054,7 +1058,7 @@ export class KeyboardController {
 
         private Sub_InputMethod_IMF_SecurityKeyboard_0700(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0700 success');
         try {
@@ -1084,7 +1088,7 @@ export class KeyboardController {
 
     private Sub_InputMethod_IMF_SecurityKeyboard_0800(): void {
         let commonEventPublishData = {
-            data: 'SUCCESS'
+            data: 'FAILED'
         };
         console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 success');
         try {
@@ -1101,7 +1105,6 @@ export class KeyboardController {
                             data: 'SUCCESS'
                         };
                     }
-
                 }
             } else {
                 console.info(TAG + '====>Sub_InputMethod_IMF_SecurityKeyboard_0800 this.softKeyboardPanel is null');
@@ -1113,6 +1116,32 @@ export class KeyboardController {
         }
     }
 
-
+    private Sub_InputMethod_IMF_getSecurityMode_0100(): void {
+        let commonEventPublishData = {
+            data: 'FAILED'
+        };
+        console.info(TAG + '====>receive Sub_InputMethod_IMF_getSecurityMode_0100 success');
+        try {
+            let mode1: inputmethodengine.SecurityMode = inputMethodAbility.getSecurityMode();
+            if (mode1 === inputmethodengine.SecurityMode.BASIC || mode1 === inputmethodengine.SecurityMode.FULL) {
+                console.info('====>getSecurityMode, securityMode is : ${mode1}');
+                commonEventPublishData = {
+                    data: 'SUCCESS'
+                };
+                commoneventmanager.publish('Sub_InputMethod_IMF_getSecurityMode_0100', commonEventPublishData, this.publishCallback);
+            } else {
+                commonEventPublishData = {
+                    data: 'FAILED'
+                };
+                console.info('====>Failed to getSecurityMode: ${JSON.stringify(err)}');
+            }
+        } catch (error) {
+            commonEventPublishData = {
+                data: 'FAILED'
+            };
+            console.info(TAG + '====>receive Sub_InputMethod_IMF_getSecurityMode_0100 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish('Sub_InputMethod_IMF_getSecurityMode_0100', commonEventPublishData, this.publishCallback);
+        }
+    }
 
 }

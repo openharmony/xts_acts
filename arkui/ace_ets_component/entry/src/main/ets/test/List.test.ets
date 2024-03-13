@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-import appearJsunit from './AppearJsunit.test.ets';
-import areaChangeJsunit from './AreaChangeJsunit.test.ets';
-import ellipseJsunit from './EllipseJsunit.test.ets';
-import enableJsunit from './EnableJsunit.test.ets';
-import gaugeJsunit from './GaugeJsunit.test.ets';
-import globalJsunit from './GlobalJsunit.test.ets';
-import girdContainerJsunit from './GridContainerJsunit.test.ets';
-import gridSettingsJsunit from './GridSettingsJsunit.test.ets';
-import imageEffectsJsunit from './ImageEffectsJsunit.test.ets';
-import layoutConstraintsJsunit from './LayoutConstraintsJsunit.test.ets';
-import listJsunit from './ListJsunit.test.ets';
-import marqueeJsunit from './MarqueeJsunit.test.ets';
-import overLayJsunit from './OverlayJsunit.test.ets';
-import stepperJsunit from './StepperJsunit.test.ets';
-import swiperJsunit from './SwiperJsunit.test.ets';
-import textStyleJsunit from './TextStyleJsunit.test.ets';
-import touchAbleJsunit from './TouchAbleJsunit.test.ets';
-import touchJsunit from './TouchJsunit.test.ets';
-import visibilityJsunit from './VisibilityJsunit.test.ets';
-import zIndexJsunit from './ZIndexJsunit.test.ets';
+import appearJsunit from './AppearJsunit.test';
+import areaChangeJsunit from './AreaChangeJsunit.test';
+import ellipseJsunit from './EllipseJsunit.test';
+import enableJsunit from './EnableJsunit.test';
+import gaugeJsunit from './GaugeJsunit.test';
+import globalJsunit from './GlobalJsunit.test';
+import girdContainerJsunit from './GridContainerJsunit.test';
+import gridSettingsJsunit from './GridSettingsJsunit.test';
+import imageEffectsJsunit from './ImageEffectsJsunit.test';
+import layoutConstraintsJsunit from './LayoutConstraintsJsunit.test';
+import listJsunit from './ListJsunit.test';
+import marqueeJsunit from './MarqueeJsunit.test';
+import overLayJsunit from './OverlayJsunit.test';
+import stepperJsunit from './StepperJsunit.test';
+import swiperJsunit from './SwiperJsunit.test';
+import textStyleJsunit from './TextStyleJsunit.test';
+import touchAbleJsunit from './TouchAbleJsunit.test';
+import touchJsunit from './TouchJsunit.test';
+import visibilityJsunit from './VisibilityJsunit.test';
+import zIndexJsunit from './ZIndexJsunit.test';
 
 export default function testsuite() {
   touchAbleJsunit();

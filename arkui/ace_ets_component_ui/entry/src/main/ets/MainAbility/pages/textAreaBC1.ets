@@ -104,6 +104,7 @@ struct TextAreaExampleBC1 {
         controller: this.controller1,
         text: this.text
       })
+        .focusable(true)
         .placeholderFont({ size: this.sizeT, weight: this.weightT })
         .placeholderColor(this.placeholderColor)
         .width(336)

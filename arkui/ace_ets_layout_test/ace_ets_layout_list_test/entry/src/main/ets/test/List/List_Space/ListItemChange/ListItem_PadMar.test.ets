@@ -14,19 +14,33 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-         WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function listItem_PadMar() {
-  
-  describe('ListItem_PadMarTest', function () {
-    beforeEach(async function (done) {
+
+  describe('ListItem_PadMarTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListItem_PadMar beforeEach called");
-      let options = {
-        uri: 'MainAbility/pages/List/List_Space/ListItemChange/ListItem_PadMar',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_Space/ListItemChange/ListItem_PadMar',
       }
       try {
         router.clear();
@@ -35,7 +49,7 @@ export default function listItem_PadMar() {
         console.info("get ListItem_PadMar state pages:" + JSON.stringify(pages));
         if (!("ListItem_PadMar" == pages.name)) {
           console.info("get ListItem_PadMar state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push ListItem_PadMar page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -45,33 +59,37 @@ export default function listItem_PadMar() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ListItem_PadMar afterEach called");
     });
 
     /**
-     * @tc.number    SUB_ACE_LIST_LISTITEM_PADMAR_TEST_0100
-     * @tc.name      testListItemPadMar
-     * @tc.desc      ListItem subcomponent binding padding and margin properties
+     * @tc.number SUB_ACE_LIST_LISTITEM_PADMAR_TEST_0100
+     * @tc.name testListItemPadMar
+     * @tc.desc ListItem subcomponent binding padding and margin properties
      */
-    it('testListItemPadMar', 0, async function (done) {
+    it('testListItemPadMar', 0, async (done: Function) => {
       console.info('new testListItemPadMar START');
-      globalThis.value.message.notify({name:'margin', value:10})
-      globalThis.value.message.notify({name:'padding', value:10})
+      globalThis.value.message.notify({
+        name: 'margin', value: 10
+      })
+      globalThis.value.message.notify({
+        name: 'padding', value: 10
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ListItemPadMar1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let locationText1 = CommonFunc.getComponentRect('ListItemTest31');
-      let locationText2 = CommonFunc.getComponentRect('ListItemTest32');
-      let locationText3 = CommonFunc.getComponentRect('ListItemTest33');
-      let locationText4 = CommonFunc.getComponentRect('ListItemTest34');
-      let locationList = CommonFunc.getComponentRect('ListItemPadMar1');
-      let TextTest1 = CommonFunc.getComponentRect('PadMarText1');
-      let TextTest2 = CommonFunc.getComponentRect('PadMarText2');
-      let TextTest3 = CommonFunc.getComponentRect('PadMarText3');
-      let TextTest4 = CommonFunc.getComponentRect('PadMarText4');
+
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      let locationText1: RectValue = CommonFunc.getComponentRect('ListItemTest31');
+      let locationText2: RectValue = CommonFunc.getComponentRect('ListItemTest32');
+      let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest33');
+      let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest34');
+      let locationList: RectValue = CommonFunc.getComponentRect('ListItemPadMar1');
+      let TextTest1: RectValue = CommonFunc.getComponentRect('PadMarText1');
+      let TextTest2: RectValue = CommonFunc.getComponentRect('PadMarText2');
+      let TextTest3: RectValue = CommonFunc.getComponentRect('PadMarText3');
+      let TextTest4: RectValue = CommonFunc.getComponentRect('PadMarText4');
       expect(Math.round(locationText1.left - locationList.left)).assertEqual(Math.round(vp2px(10)));
       expect(Math.abs(locationText2.left - locationText3.left) <= 1).assertTrue();
       expect(Math.abs(locationText3.left - locationText4.left) <= 1).assertTrue();
@@ -98,9 +116,9 @@ export default function listItem_PadMar() {
       expect(Math.round(TextTest1.top - locationText1.top)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(locationText1.right - TextTest1.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(locationText1.bottom - TextTest1.bottom)).assertEqual(Math.round(vp2px(10)));
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
-      let locationText4Again = CommonFunc.getComponentRect('ListItemTest34');
+      let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest34');
       expect(Math.abs(locationText4.top - locationText4Again.top) <= 1).assertTrue();
       console.info('new testListItemPadMar END');
       done();

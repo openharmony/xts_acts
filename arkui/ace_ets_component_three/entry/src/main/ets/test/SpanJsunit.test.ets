@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function spanJsunit() {
-  describe('spanTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/span',
+  describe('spanTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/span',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function spanJsunit() {
         console.info("get span state success " + JSON.stringify(pages));
         if (!("span" == pages.name)) {
           console.info("get span success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push span page success " + JSON.stringify(result));
         }
@@ -40,43 +40,42 @@ export default function spanJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(2000);
       console.info("span after each called");
     });
 
-    it('testSpan001', 0, async function (done) {
+    it('testSpan001', 0, async (done: Function) => {
       console.info('[testSpan001] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      let decoration = JSON.parse(obj.$attrs.decoration);
-      expect(decoration.type).assertEqual('TextDecorationType.None');
-      expect(decoration.color).assertEqual('#FFFF0000');
+
+      expect(JSON.parse(JSON.parse(strJson).$attrs.decoration).type).assertEqual('TextDecorationType.None');
+      expect(JSON.parse(JSON.parse(strJson).$attrs.decoration).color).assertEqual('#FFFF0000');
       done();
     });
 
-    it('testSpan002', 0, async function (done) {
+    it('testSpan002', 0, async (done: Function) => {
       console.info('[testSpan002] START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan002] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan002] textCase:" + obj.$attrs.textCase);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.Normal');
+
+      console.info("[testSpan002] textCase:" + JSON.parse(strJson).$attrs.textCase);
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual('TextCase.Normal');
       done();
     });
 
-    it('testSpan003', 0, async function (done) {
+    it('testSpan003', 0, async (done: Function) => {
       console.info('[testSpan003] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCaseValue": TextCase.UpperCase
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 200,
           priority: events_emitter.EventPriority.LOW
         }
@@ -88,32 +87,32 @@ export default function spanJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan003] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan003] textCase:" + obj.$attrs.textCase);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
+
+      console.info("[testSpan003] textCase:" + JSON.parse(strJson).$attrs.textCase);
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual('TextCase.UpperCase');
       done();
     });
 
-    it('testSpan004', 0, async function (done) {
+    it('testSpan004', 0, async (done: Function) => {
       console.info('[testSpan004] START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('fontColor');
       console.info("[testSpan004] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan004] fontColor:" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#FFCCCCCC');
+
+      console.info("[testSpan004] fontColor:" + JSON.parse(strJson).$attrs.fontColor);
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#FFCCCCCC');
       done();
     });
 
-    it('testSpan005', 0, async function (done) {
+    it('testSpan005', 0, async (done: Function) => {
       console.info('[testSpan005] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColorValue": '#FF000990'
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 201,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,21 +124,21 @@ export default function spanJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
       console.info("[testSpan005] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan005] fontColor:" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
+
+      console.info("[testSpan005] fontColor:" + JSON.parse(strJson).$attrs.fontColor);
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#FF000990');
       done();
     });
 
-    it('testSpan006', 0, async function (done) {
+    it('testSpan006', 0, async (done: Function) => {
       console.info('[testSpan006] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCaseValue": a
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1029,
           priority: events_emitter.EventPriority.LOW
         }
@@ -151,21 +150,21 @@ export default function spanJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan006] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan006] textCase:" + obj);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
+
+      console.info("[testSpan006] textCase:" + JSON.parse(strJson));
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual('TextCase.UpperCase');
       done();
     });
 
-    it('testSpan007', 0, async function (done) {
+    it('testSpan007', 0, async (done: Function) => {
       console.info('[testSpan007] START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textCaseValue": -1
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1030,
           priority: events_emitter.EventPriority.LOW
         }
@@ -177,9 +176,9 @@ export default function spanJsunit() {
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan007] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan007] textCase:" + obj);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
+
+      console.info("[testSpan007] textCase:" + JSON.parse(strJson));
+      expect(JSON.parse(strJson).$attrs.textCase).assertEqual('TextCase.UpperCase');
       done();
     });
 

@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flex_Wrap_DisplayPriorityTest() {
-  describe('Flex_Wrap_DisplayPriorityTest', function () {
-    beforeEach(async function (done) {
+  describe('Flex_Wrap_DisplayPriorityTest', () => {
+    beforeEach(async () => {
       console.info("Flex_Wrap_DisplayPriority beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Flex/Wrap/Wrap/Flex_Wrap_DisplayPriority',
       }
       try {
@@ -29,7 +31,7 @@ export default function flex_Wrap_DisplayPriorityTest() {
         console.info("get Flex_Wrap_DisplayPriority state pages:" + JSON.stringify(pages));
         if (!("Flex_Wrap_DisplayPriority" == pages.name)) {
           console.info("get Flex_Wrap_DisplayPriority state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Flex_Wrap_DisplayPriority page result:" + JSON.stringify(result));
         }
@@ -37,32 +39,38 @@ export default function flex_Wrap_DisplayPriorityTest() {
         console.error("push Flex_Wrap_DisplayPriority page error:" + err);
       }
       console.info("Flex_Wrap_DisplayPriority beforeEach end");
-      done();
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Flex_Wrap_DisplayPriority after each called");
     });
     /**
-     * @tc.number    SUB_ACE_FLEXWRAP_WRAP_0100
-     * @tc.name      testWrapWrapTextDisplayPriority
-     * @tc.desc      The size of the parent component in the main axis direction meets the layout
+     * @tc.number SUB_ACE_FLEXWRAP_WRAP_0100
+     * @tc.name testWrapWrapTextDisplayPriority
+     * @tc.desc The size of the parent component in the main axis direction meets the layout
      *               of the child components,and displaypriority of the child components set different values
      */
-    it('testWrapWrapTextDisplayPriority', 0, async function (done) {
+    it('testWrapWrapTextDisplayPriority', 0, async () => {
       console.info('[testWrapWrapTextDisplayPriority] START');
-      globalThis.value.message.notify({ name: 'firstTextPriority', value: 3 });
-      globalThis.value.message.notify({ name: 'secondTextPriority', value: 2 });
-      globalThis.value.message.notify({ name: 'thirdTextPriority', value: 1 });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'firstTextPriority', value: 3
+      });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'secondTextPriority', value: 2
+      });
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'thirdTextPriority', value: 1
+      });
       await CommonFunc.sleep(3000);
-      let firstText = CommonFunc.getComponentRect('Wrap_DisplayPriority01');
-      let secondText = CommonFunc.getComponentRect('Wrap_DisplayPriority02');
-      let thirdText = CommonFunc.getComponentRect('Wrap_DisplayPriority03');
-      let flexContainer = CommonFunc.getComponentRect('FlexWrap_DisplayPriority_Container01');
+      let firstText: RectValue = CommonFunc.getComponentRect('Wrap_DisplayPriority01');
+      let secondText: RectValue = CommonFunc.getComponentRect('Wrap_DisplayPriority02');
+      let thirdText: RectValue = CommonFunc.getComponentRect('Wrap_DisplayPriority03');
+      let flexContainer: RectValue = CommonFunc.getComponentRect('FlexWrap_DisplayPriority_Container01');
       let flexContainerStrJson = getInspectorByKey('FlexWrap_DisplayPriority_Container01');
-      let flexContainerObj = JSON.parse(flexContainerStrJson);
-      expect(flexContainerObj.$type).assertEqual('Flex');
-      expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
+
+      expect(JSON.parse(flexContainerStrJson).$type).assertEqual('Flex');
+      expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
 
       expect(Math.abs(firstText.left - flexContainer.left) <= 1).assertTrue();
       expect(Math.abs(firstText.right - secondText.left) <= 1).assertTrue();
@@ -81,7 +89,7 @@ export default function flex_Wrap_DisplayPriorityTest() {
       expect(Math.abs(thirdText.top - secondText.bottom) <= 1).assertTrue()
       expect(Math.abs((flexContainer.bottom - thirdText.bottom) - vp2px(50)) <= 1).assertTrue();
       console.info('[testWrapWrapTextDisplayPriority] END');
-      done();
+
     });
   })
 }

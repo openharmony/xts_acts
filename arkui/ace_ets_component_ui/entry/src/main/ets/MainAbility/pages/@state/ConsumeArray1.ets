@@ -71,6 +71,9 @@ struct Ancestors_CA1 {
       Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + JSON.stringify(this.Array1))
         .fontSize(20).margin(30).key('ConsumeArray1')
 
+      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array1)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(30).key('ConsumeArray1New')
+
       Child_CA1()
     }.width('100%').margin({top:10})
   }

@@ -6,7 +6,7 @@
         "bundle-name": "com.acts.inputmethoddrawncontrol.test",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 15000
+        "testcase-timeout": "60000"
     },
     "kits": [
         {

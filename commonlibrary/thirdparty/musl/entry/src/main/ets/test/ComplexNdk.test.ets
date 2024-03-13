@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import complexndk from 'libcomplexndk.so'
 
 export default function complexNdkTest() {
   describe('ComplexNdkTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CREAL_0100
      * @tc.name       : testMuslComplexCReal001
      * @tc.desc       : test creal
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -40,7 +45,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CREALF_0100
      * @tc.name       : testMuslComplexCRealF001
      * @tc.desc       : test crealf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -57,7 +62,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CREALL_0100
      * @tc.name       : testMuslComplexCRealL001
      * @tc.desc       : test creall
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -74,7 +79,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CONJ_0100
      * @tc.name       : testMuslComplexConj001
      * @tc.desc       : test conj
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -91,7 +96,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CONJF_0100
      * @tc.name       : testMuslComplexConjF001
      * @tc.desc       : test conjf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -108,7 +113,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CONJL_0100
      * @tc.name       : testMuslComplexConjL001
      * @tc.desc       : test conjl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -125,7 +130,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPOW_0100
      * @tc.name       : testMuslComplexCPow001
      * @tc.desc       : test cpow
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -144,7 +149,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPOWF_0100
      * @tc.name       : testMuslComplexCPowF001
      * @tc.desc       : test cpowf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -163,7 +168,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPOWL_0100
      * @tc.name       : testMuslComplexCPowL001
      * @tc.desc       : test cpowl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -182,7 +187,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPROJ_0100
      * @tc.name       : testMuslComplexCProj001
      * @tc.desc       : test cproj
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -199,7 +204,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPROJF_0100
      * @tc.name       : testMuslComplexCProjF001
      * @tc.desc       : test cprojf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -216,7 +221,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CPROJL_0100
      * @tc.name       : testMuslComplexCProjL001
      * @tc.desc       : test cprojl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -233,7 +238,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSIN_0100
      * @tc.name       : testMuslComplexCSin001
      * @tc.desc       : test csin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -250,7 +255,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSINF_0100
      * @tc.name       : testMuslComplexCSinF001
      * @tc.desc       : test csinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -267,7 +272,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSINL_0100
      * @tc.name       : testMuslComplexCSinL001
      * @tc.desc       : test csinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -284,7 +289,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSINH_0100
      * @tc.name       : testMuslComplexCSinH001
      * @tc.desc       : test csinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -301,7 +306,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSINHF_0100
      * @tc.name       : testMuslComplexCSinHf001
      * @tc.desc       : test csinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -318,7 +323,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSINHL_0100
      * @tc.name       : testMuslComplexCSinHl001
      * @tc.desc       : test csinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -335,7 +340,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSQRT_0100
      * @tc.name       : testMuslComplexCSqrt001
      * @tc.desc       : test csqrt
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -352,7 +357,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSQRTF_0100
      * @tc.name       : testMuslComplexCSqrtF001
      * @tc.desc       : test csqrtf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -369,7 +374,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CSQRTL_0100
      * @tc.name       : testMuslComplexCSqrtL001
      * @tc.desc       : test csqrtl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -386,7 +391,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTAN_0100
      * @tc.name       : testMuslComplexCTan001
      * @tc.desc       : test ctan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -403,7 +408,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTANF_0100
      * @tc.name       : testMuslComplexCTanF001
      * @tc.desc       : test ctanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -420,7 +425,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTANL_0100
      * @tc.name       : testMuslComplexCTanL001
      * @tc.desc       : test ctanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -437,7 +442,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTANH_0100
      * @tc.name       : testMuslComplexCTanH001
      * @tc.desc       : test ctanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -454,7 +459,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTANHF_0100
      * @tc.name       : testMuslComplexCTanHf001
      * @tc.desc       : test ctanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -471,7 +476,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CTANHL_0100
      * @tc.name       : testMuslComplexCTanHl001
      * @tc.desc       : test ctanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -488,7 +493,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABS_0100
      * @tc.name       : testMuslComplexCabs001
      * @tc.desc       : test cabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -506,7 +511,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABS_0200
      * @tc.name       : testMuslComplexCabs002
      * @tc.desc       : test cabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -524,7 +529,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABS_0300
      * @tc.name       : testMuslComplexCabs003
      * @tc.desc       : test cabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -542,7 +547,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABS_0400
      * @tc.name       : testMuslComplexCabs004
      * @tc.desc       : test cabs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -560,7 +565,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSF_0100
      * @tc.name       : testMuslComplexCabsf001
      * @tc.desc       : test cabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -578,7 +583,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSF_0200
      * @tc.name       : testMuslComplexCabsf002
      * @tc.desc       : test cabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -596,7 +601,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSF_0300
      * @tc.name       : testMuslComplexCabsf003
      * @tc.desc       : test cabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -614,7 +619,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSF_0400
      * @tc.name       : testMuslComplexCabsf004
      * @tc.desc       : test cabsf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -632,7 +637,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSL_0100
      * @tc.name       : testMuslComplexCabsl001
      * @tc.desc       : test cabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -650,7 +655,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSL_0200
      * @tc.name       : testMuslComplexCabsl002
      * @tc.desc       : test cabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -668,7 +673,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSL_0300
      * @tc.name       : testMuslComplexCabsl003
      * @tc.desc       : test cabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -686,7 +691,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CABSL_0400
      * @tc.name       : testMuslComplexCabsl004
      * @tc.desc       : test cabsl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      * @
@@ -704,7 +709,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOS_0100
      * @tc.name       : testMuslComplexCacos001
      * @tc.desc       : test cacos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -722,7 +727,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOS_0200
      * @tc.name       : testMuslComplexCacos002
      * @tc.desc       : test cacos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -740,7 +745,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSF_0100
      * @tc.name       : testMuslComplexCacosf001
      * @tc.desc       : test cacosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -758,7 +763,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSF_0200
      * @tc.name       : testMuslComplexCacosf002
      * @tc.desc       : test cacosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -776,7 +781,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSL_0100
      * @tc.name       : testMuslComplexCacosl001
      * @tc.desc       : test cacosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -794,7 +799,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSL_0200
      * @tc.name       : testMuslComplexCacosl002
      * @tc.desc       : test cacosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -813,7 +818,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSH_0100
      * @tc.name       : testMuslComplexCacosh001
      * @tc.desc       : test cacosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -831,7 +836,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSH_0200
      * @tc.name       : testMuslComplexCacosh002
      * @tc.desc       : test cacosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -849,7 +854,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSHF_0100
      * @tc.name       : testMuslComplexCacoshf001
      * @tc.desc       : test cacoshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -867,7 +872,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSHF_0200
      * @tc.name       : testMuslComplexCacoshf002
      * @tc.desc       : test cacoshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -885,7 +890,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSHL_0100
      * @tc.name       : testMuslComplexCacoshl001
      * @tc.desc       : test cacoshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -903,7 +908,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CACOSHL_0200
      * @tc.name       : testMuslComplexCacoshl002
      * @tc.desc       : test cacoshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -921,7 +926,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARG_0100
      * @tc.name       : testMuslComplexCarg001
      * @tc.desc       : test carg
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -939,7 +944,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARG_0200
      * @tc.name       : testMuslComplexCarg002
      * @tc.desc       : test carg
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -957,7 +962,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARGL_0100
      * @tc.name       : testMuslComplexCargl001
      * @tc.desc       : test cargl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -975,7 +980,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARGL_0200
      * @tc.name       : testMuslComplexCargl002
      * @tc.desc       : test cargl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -993,7 +998,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARGF_0100
      * @tc.name       : testMuslComplexCargf001
      * @tc.desc       : test cargf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1011,7 +1016,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CARGF_0200
      * @tc.name       : testMuslComplexCargf002
      * @tc.desc       : test cargf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1029,7 +1034,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASIN_0100
      * @tc.name       : testMuslComplexCasin001
      * @tc.desc       : test casin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1047,7 +1052,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASIN_0200
      * @tc.name       : testMuslComplexCasin002
      * @tc.desc       : test casin
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1065,7 +1070,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINF_0100
      * @tc.name       : testMuslComplexCasinf001
      * @tc.desc       : test casinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1083,7 +1088,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINF_0200
      * @tc.name       : testMuslComplexCasinf002
      * @tc.desc       : test casinf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1101,7 +1106,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINL_0100
      * @tc.name       : testMuslComplexCasinl001
      * @tc.desc       : test casinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1119,7 +1124,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINL_0200
      * @tc.name       : testMuslComplexCasinl002
      * @tc.desc       : test casinl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1138,7 +1143,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINH_0100
      * @tc.name       : testMuslComplexCasinh001
      * @tc.desc       : test casinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1156,7 +1161,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINH_0200
      * @tc.name       : testMuslComplexCasinh002
      * @tc.desc       : test casinh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1174,7 +1179,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINHF_0100
      * @tc.name       : testMuslComplexCasinhf001
      * @tc.desc       : test casinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1192,7 +1197,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINHF_0200
      * @tc.name       : testMuslComplexCasinhf002
      * @tc.desc       : test casinhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1210,7 +1215,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINHL_0100
      * @tc.name       : testMuslComplexCasinhl001
      * @tc.desc       : test casinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1228,7 +1233,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CASINHL_0200
      * @tc.name       : testMuslComplexCasinhl002
      * @tc.desc       : test casinhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1246,7 +1251,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATAN_0100
      * @tc.name       : testMuslComplexCatan001
      * @tc.desc       : test catan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1264,7 +1269,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATAN_0200
      * @tc.name       : testMuslComplexCatan002
      * @tc.desc       : test catan
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1282,7 +1287,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANF_0100
      * @tc.name       : testMuslComplexCatanf001
      * @tc.desc       : test catanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1300,7 +1305,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANF_0200
      * @tc.name       : testMuslComplexCatanf002
      * @tc.desc       : test catanf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1318,7 +1323,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANL_0100
      * @tc.name       : testMuslComplexCatanl001
      * @tc.desc       : test catanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1336,7 +1341,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANL_0200
      * @tc.name       : testMuslComplexCatanl002
      * @tc.desc       : test catanl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1355,7 +1360,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANH_0100
      * @tc.name       : testMuslComplexCatanh001
      * @tc.desc       : test catanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1373,7 +1378,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANH_0200
      * @tc.name       : testMuslComplexCatanh002
      * @tc.desc       : test catanh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1391,7 +1396,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANHF_0100
      * @tc.name       : testMuslComplexCatanhf001
      * @tc.desc       : test catanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1409,7 +1414,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANHF_0200
      * @tc.name       : testMuslComplexCatanhf002
      * @tc.desc       : test catanhf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1427,7 +1432,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANHL_0100
      * @tc.name       : testMuslComplexCatanhl001
      * @tc.desc       : test catanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1445,7 +1450,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CATANHL_0200
      * @tc.name       : testMuslComplexCatanhl002
      * @tc.desc       : test catanhl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1463,7 +1468,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOS_0100
      * @tc.name       : testMuslComplexCcos001
      * @tc.desc       : test ccos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1481,7 +1486,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOS_0200
      * @tc.name       : testMuslComplexCcos002
      * @tc.desc       : test ccos
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1499,7 +1504,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSF_0100
      * @tc.name       : testMuslComplexCcosf001
      * @tc.desc       : test ccosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1517,7 +1522,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSF_0200
      * @tc.name       : testMuslComplexCcosf002
      * @tc.desc       : test ccosf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1535,7 +1540,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSL_0100
      * @tc.name       : testMuslComplexCcosl001
      * @tc.desc       : test ccosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1553,7 +1558,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSL_0200
      * @tc.name       : testMuslComplexCcosl002
      * @tc.desc       : test ccosl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1572,7 +1577,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSH_0100
      * @tc.name       : testMuslComplexCcosh001
      * @tc.desc       : test ccosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1590,7 +1595,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSH_0200
      * @tc.name       : testMuslComplexCcosh002
      * @tc.desc       : test ccosh
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1608,7 +1613,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSHF_0100
      * @tc.name       : testMuslComplexCcoshf001
      * @tc.desc       : test ccoshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1626,7 +1631,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSHF_0200
      * @tc.name       : testMuslComplexCcoshf002
      * @tc.desc       : test ccoshf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1644,7 +1649,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSHL_0100
      * @tc.name       : testMuslComplexCcoshl001
      * @tc.desc       : test ccoshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1662,7 +1667,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CCOSHL_0200
      * @tc.name       : testMuslComplexCcoshl002
      * @tc.desc       : test ccoshl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1680,7 +1685,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXP_0100
      * @tc.name       : testMuslComplexCexp001
      * @tc.desc       : test cexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1698,7 +1703,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXP_0200
      * @tc.name       : testMuslComplexCexp002
      * @tc.desc       : test cexp
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1716,7 +1721,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXPF_0100
      * @tc.name       : testMuslComplexCexpf001
      * @tc.desc       : test cexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1734,7 +1739,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXPF_0200
      * @tc.name       : testMuslComplexCexpf002
      * @tc.desc       : test cexpf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1752,7 +1757,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXPL_0100
      * @tc.name       : testMuslComplexCexpl001
      * @tc.desc       : test cexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1770,7 +1775,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CEXPL_0200
      * @tc.name       : testMuslComplexCexpl002
      * @tc.desc       : test cexpl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1788,7 +1793,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CLOG_0100
      * @tc.name       : testMuslComplexClog001
      * @tc.desc       : test clog
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1806,7 +1811,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CLOGL_0100
      * @tc.name       : testMuslComplexClogl001
      * @tc.desc       : test clogl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1824,7 +1829,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CLOGF_0100
      * @tc.name       : testMuslComplexClogf001
      * @tc.desc       : test clogf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1842,7 +1847,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CIMAG_0100
      * @tc.name       : testMuslComplexCimag001
      * @tc.desc       : test cimag
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1860,7 +1865,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CIMAGL_0100
      * @tc.name       : testMuslComplexCimagl001
      * @tc.desc       : test cimagl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @
@@ -1878,7 +1883,7 @@ export default function complexNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_COMPLEX_CIMAGF_0100
      * @tc.name       : testMuslComplexCimagf001
      * @tc.desc       : test cimagf
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      * @

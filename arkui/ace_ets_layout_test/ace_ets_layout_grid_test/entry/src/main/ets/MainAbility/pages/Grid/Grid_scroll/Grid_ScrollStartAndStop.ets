@@ -15,10 +15,10 @@
 @Entry
 @Component
 struct Grid_ScorllStartAndStop {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State text1 : string = ''
-  @State text2 : string = ''
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State text1: string = '';
+  @State text2: string = '';
 
   build() {
     Column({ space: 5 }) {
@@ -37,7 +37,7 @@ struct Grid_ScorllStartAndStop {
             }, (day: string) => day)
           }, (day: string) => day)
         }
-        .margin({right:25})
+        .margin({ right: 25 })
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsGap(10)
         .rowsGap(10)
@@ -66,7 +66,7 @@ struct Grid_ScorllStartAndStop {
 
       Button('animation')
         .id('button_grid_scroller_animation')
-        .onClick(()=>{
+        .onClick(() => {
           this.scroller.scrollTo({
             xOffset: 0,
             yOffset: 20,
@@ -79,7 +79,7 @@ struct Grid_ScorllStartAndStop {
 
       Button('no animation')
         .id('button_grid_scroller_noanimation')
-        .onClick(()=>{
+        .onClick(() => {
           this.scroller.scrollTo({
             xOffset: 0,
             yOffset: 40,
@@ -88,6 +88,16 @@ struct Grid_ScorllStartAndStop {
 
       Text(this.text1).id('Grid_ScrollStartandStop_tex1')
       Text(this.text2).id('Grid_ScrollStartandStop_tex2')
+
+      Button('scrollStartAndStop_Reset_bt')
+        .id('scrollStartAndStop_Reset_bt')
+        .onClick(() => { // reset the init state
+          this.text1 = ""
+          this.text2 = ""
+          this.scroller.scrollEdge(Edge.Top);
+
+        })
+
 
     }.width('100%').margin({ top: 5 })
   }

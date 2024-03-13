@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import nameser from 'libnameserndk.so'
 
 export default function muslNameserNdkTest() {
   describe('MuslNameserTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSGET16_0100
      * @tc.name       : testMuslNameserNsGet16001
      * @tc.desc       : ns_get16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -37,7 +42,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSGET32_0100
      * @tc.name       : testMuslNameserNsGet32001
      * @tc.desc       : ns_get32
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -51,7 +56,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSPUT16_0100
      * @tc.name       : testMuslNameserNsPut16001
      * @tc.desc       : ns_put16
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -65,7 +70,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSPUT32_0100
      * @tc.name       : testMuslNameserNsPut32001
      * @tc.desc       : ns_put32
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -79,7 +84,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSINITPARSE_0100
      * @tc.name       : testMuslNameserNsInitParse001
      * @tc.desc       : ns_initparse
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -93,7 +98,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSNAMEUNCOMPRESS_0100
      * @tc.name       : testMuslNameserNsNameUnCompress001
      * @tc.desc       : ns_nameuncompress
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -107,7 +112,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSPARSERR_0100
      * @tc.name       : testMuslNameserNsParsErr001
      * @tc.desc       : ns_parserr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -121,7 +126,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NAMESER_NSSKIPPR_0100
      * @tc.name       : testMuslNameserNsSkiPrr001
      * @tc.desc       : ns_parserr
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -135,7 +140,7 @@ export default function muslNameserNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_NSFLAGDATA_0100
      * @tc.name       : testMuslNsFlagdata001
      * @tc.desc       : test _ns_flagdata
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */

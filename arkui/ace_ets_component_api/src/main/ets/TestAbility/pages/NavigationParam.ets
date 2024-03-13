@@ -17,7 +17,8 @@
 struct NavigationParam {
   private arr: number[] = [0, 1, 2]
 
-  @Builder NavigationTitle() {
+  @Builder
+  NavigationTitle() {
     Column() {
       Text('CustomBuilder_Title')
         .fontColor('#182431')
@@ -27,10 +28,12 @@ struct NavigationParam {
     }
   }
 
-  @Builder NavigationCustomTitle() {
+  @Builder
+  NavigationCustomTitle() {
     Column() {
       Text('NavigationCustomTitle')
-        .onClick(() => {})
+        .onClick(() => {
+        })
         .fontColor('#182431')
         .fontSize(30)
         .lineHeight(100)
@@ -38,12 +41,11 @@ struct NavigationParam {
     }.alignItems(HorizontalAlign.Start)
   }
 
-
   build() {
     Column() {
       Navigation() {
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -53,7 +55,7 @@ struct NavigationParam {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .height(90)
@@ -66,7 +68,7 @@ struct NavigationParam {
 
       Navigation() {
         List({ space: 5, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -76,7 +78,7 @@ struct NavigationParam {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .listDirection(Axis.Vertical)
         .height(90)
@@ -86,8 +88,6 @@ struct NavigationParam {
       .title("test_string_title")
       .titleMode(NavigationTitleMode.Free)
       .key('NavigationParam_Navigation2')
-
-
     }
   }
 }

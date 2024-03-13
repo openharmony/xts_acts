@@ -22,6 +22,8 @@ struct MyComponent_AE {
     Column({ space: 20 }) {
       Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + JSON.stringify(this.Array))
         .fontSize(20).margin(30).key('StateArray')
+      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.Array)) + " number is " + getContext().resourceManager.getStringSync($r('app.string.number').id))
+        .fontSize(20).margin(30).key('StateArrayNew')
       Text("设置变量Array<Number>类型[1]-->[10]")
       Button('change')
         .onClick(() => {

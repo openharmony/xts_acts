@@ -13,57 +13,55 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function flexJsunit() {
-
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  describe('flexTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex',
+  describe('flexTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex',
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Flex state success " + JSON.stringify(pages));
         if (!("Flex" == pages.name)) {
           console.info("get Flex state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.push(options);
           console.info("push Flex page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Flex page error " + JSON.stringify(result));
+        console.error("push Flex page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Flex after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0770
-     * @tc.name      testFlex010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0770
+     * @tc.name testFlex010
+     * @tc.desc aceEtsTest
      */
-    it('testFlex010', 0, async function (done) {
+    it('testFlex010', 0, async (done: Function) => {
       console.info('new Flex0 START');
       let strJson = getInspectorByKey('flex');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Flex');
       console.info("yr Flex0 type: " + JSON.stringify(obj.$type));
@@ -81,18 +79,18 @@ export default function flexJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0780
-     * @tc.name      testFlex020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0780
+     * @tc.name testFlex020
+     * @tc.desc aceEtsTest
      */
-    it('testFlex020', 0, async function (done) {
+    it('testFlex020', 0, async (done: Function) => {
       console.info('new Flex1 START');
       let strJson = getInspectorByKey('flex1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       console.log("yr flex1 direction-'FlexDirection.Row':" + JSON.stringify(obj.$attrs.constructor.direction));
-      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap')
+      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       console.log("yr flex1 wrap-'FlexWrap.Wrap':" + JSON.stringify(obj.$attrs.constructor.wrap));
       console.log("yr flex1 alignItems-'ItemAlign.Start':" + JSON.stringify(obj.$attrs.constructor.alignItems));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Start');
@@ -104,14 +102,14 @@ export default function flexJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0790
-     * @tc.name      testFlex030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0790
+     * @tc.name testFlex030
+     * @tc.desc aceEtsTest
      */
-    it('testFlex030', 0, async function (done) {
+    it('testFlex030', 0, async (done: Function) => {
       console.info('new Flex2 START');
       let strJson = getInspectorByKey('flex2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.RowReverse');
       console.log("yr flex2 direction-'FlexDirection.RowReverse':" + JSON.stringify(obj.$attrs.constructor.direction));
@@ -125,14 +123,14 @@ export default function flexJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0800
-     * @tc.name      testFlex040
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0800
+     * @tc.name testFlex040
+     * @tc.desc aceEtsTest
      */
-    it('testFlex040', 0, async function (done) {
+    it('testFlex040', 0, async (done: Function) => {
       console.info('new Flex3 START');
       let strJson = getInspectorByKey('flex3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("yr flex3 direction-'FlexDirection.ColumnReverse':" + JSON.stringify(obj.$attrs.constructor.direction));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceBetween');
@@ -142,14 +140,14 @@ export default function flexJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0810
-     * @tc.name      testFlex050
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0810
+     * @tc.name testFlex050
+     * @tc.desc aceEtsTest
      */
-    it('testFlex050', 0, async function (done) {
+    it('testFlex050', 0, async (done: Function) => {
       console.info('new Flex4 START');
       let strJson = getInspectorByKey('flex4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceEvenly');
       console.log("yr flex4 obj.$attrs.justifyContent-'FlexAlign.SpaceEvenly':" + JSON.stringify(obj.$attrs.constructor.justifyContent));
@@ -160,14 +158,14 @@ export default function flexJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0820
-     * @tc.name      testFlex060
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0820
+     * @tc.name testFlex060
+     * @tc.desc aceEtsTest
      */
-    it('testFlex060', 0, async function (done) {
+    it('testFlex060', 0, async (done: Function) => {
       console.info('new Flex5 START');
       let strJson = getInspectorByKey('flex5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
       console.log("yr flex5 obj.$attrs.constructor.justifyContent-'FlexAlign.SpaceAround':" + JSON.stringify(obj.$attrs.constructor.justifyContent));

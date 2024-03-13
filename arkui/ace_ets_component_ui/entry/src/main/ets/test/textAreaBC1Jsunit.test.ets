@@ -32,6 +32,7 @@ export default function textAreaBC1Jsunit() {
         if (!("textAreaBC1" == pages.name)) {
           console.info("get textAreaBC1Jsunit state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
+          await CommonFunc.sleep(2000);
           console.info("push textAreaBC1Jsunit success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +41,6 @@ export default function textAreaBC1Jsunit() {
       }
       done();
     });
-
 
     /* *
     * @tc.number: SUB_ACE_TS_COMPONENT_SR000HTP2G_011
@@ -51,6 +51,9 @@ export default function textAreaBC1Jsunit() {
     it('textAreaBC1Jsunit_0100', 0, async function (done) {
       console.info('textAreaBC1Jsunit_0100 START');
       let driver = await UiDriver.create()
+      await CommonFunc.sleep(1000);
+      let Storage11Button1 = await driver.findComponent(BY.key('textArea1'));
+      await Storage11Button1.click();
       await CommonFunc.sleep(1000);
       let Storage12Button1 = await driver.findComponent(BY.key('textArea2'));
       await Storage12Button1.click();

@@ -13,20 +13,26 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import klog from 'libklogndk.so'
 
 
 export default function muslKlogNdkTest() {
   describe('MuslKlogTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_KLOG_KLOGCTL_0100
      * @tc.name       : testMuslKlogKlogctl001
      * @tc.desc       : test klogctl
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    //block
+
   })
 }

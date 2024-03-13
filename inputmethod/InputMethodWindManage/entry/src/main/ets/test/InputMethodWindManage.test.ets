@@ -20,73 +20,138 @@ import commonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import display from '@ohos.display';
 import { PanelInfo, PanelFlag, PanelType } from '@ohos.inputMethod.Panel';
+import deviceinfo from '@ohos.deviceInfo';
+import {Driver, ON, MatchPattern, Component, UiWindow } from '@ohos.UiTest'
+import { BusinessError} from '@ohos.base'
 
 export default function inputMethodWindManageAbility() {
   describe('inputMethodWindManageTest', function () {
-    var inputServer = {
-      packageName: '',
-      methodId: '',
-      name:'',
-      id:'',
-      extra:{}
-    }
-
-    let display_info;
-    let getFocusCmd = '';
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    async function runCmd(cmd){
-      console.debug('====>runCmd info:' + cmd);
-      await abilityDelegator.executeShellCommand(cmd);
-    }
+    let driver = Driver.create();
+    let textArea: Component;
+    let rectInfo;
 
     beforeAll(async (done)=>{
-      display_info = display.getDefaultDisplaySync()
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`
-      let inputM = inputMethod.getCurrentInputMethod()
-      console.info('====>beforeAll: switchInputMethod to: ' +  JSON.stringify(inputM));
-      inputServer.packageName = inputM.packageName;
-      inputServer.methodId = inputM.methodId;
-      inputServer.name = inputM.packageName;
-      inputServer.id = inputM.methodId;
-      console.info('====>beforeAll inputMethodStageJSUnit start');
-      let inputDemoService: subtype ={
-        id: 'inputMethodWindService',
-        label: '',
-        name: 'com.acts.inputmethodwidmanage.test',
-        mode: 'lower',
-        locale: '',
-        language: '',
-        icon: '',
-        iconId: 0,
-        extra: {},
-      }
+      console.info('====>beforeAll inputMethod_enable start!')
       try{
-        await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
-        setTimeout(()=>{
-          console.debug('====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype success: ' + JSON.stringify(inputDemoService));
-          done();
-        },2000)
+        if(deviceinfo.deviceType != 'default'){
+          let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+          let cmd = 'aa start -a com.huawei.hmos.settings.MainAbility -b com.huawei.hmos.settings';
+          abilityDelegator.executeShellCommand(cmd);
+          await sleep(2000)
+          console.info(`====>inputMethod_enable deviceinfo.deviceType: ${deviceinfo.deviceType}`);
+          let settingList = await driver.waitForComponent(ON.type('List').isBefore(ON.text('蓝牙')), 3000);
+          console.info(`====>inputMethod_enable settingList: ${settingList}`);
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1');
+            let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
+            console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
+            await systemAndUpdate.click();
+          }else{
+            console.info('====> other');
+            await driver.swipe(600, 2500, 600, 1000, 15000);
+            let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
+            console.info(`====>inputMethod_enable common_text: ${common_text}`);
+            await common_text.click();
+          }
+          await driver.delayMs(500);
+          let inputMethod_Setting: Component = await driver.waitForComponent(ON.text('输入法', MatchPattern.CONTAINS), 3000);
+          console.info(`====>inputMethod_enable inputMethod_Setting: ${inputMethod_Setting}`);
+          await inputMethod_Setting.click();
+          await driver.delayMs(500);
+          let checkList: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
+          console.info(`====>inputMethod_enable checkList: ${checkList}`);
+          for(let index=0; index<checkList.length; index++){
+            let checkStatus = await checkList[index].isChecked();
+            console.info(`====>inputMethod_enable checkStatus: ${checkStatus}`);
+            if(JSON.stringify(checkStatus) === 'false'){
+              await checkList[index].click();
+              await driver.delayMs(500);
+            }
+          }
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1 start close settings window');
+            let window: UiWindow = await driver.findWindow({bundleName: "com.huawei.hmos.settings"});
+            console.info(`====>inputMethod_enable window: ${window}`);
+            await window.close();
+          }else{
+            console.info('====> other start close settings window and start test window');
+            abilityDelegator.executeShellCommand("aa force-stop com.huawei.hmos.settings");
+            abilityDelegator.executeShellCommand("aa start -d 0 -a com.acts.inputmethodwidmanage.test.MainAbility -b com.acts.inputmethodwidmanage.test");
+          }
+          await driver.delayMs(5000);
+        }
+
+        let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+        let result: boolean = await inputMethodSetting.showOptionalInputMethods();
+        console.info('====>beforeAll inputMethodSwitch showOptionalInputMethods result: ' + JSON.stringify(result));
+        let inputMethodList = await driver.waitForComponent(ON.type('List'), 3000);
+        console.info('====>beforeAll inputMethodSwitch inputMethodList: ' + JSON.stringify(inputMethodList));
+        if (JSON.stringify(inputMethodList) === 'null') {
+          await driver.delayMs(200);
+          inputMethodList = await driver.findComponent(ON.type('List'));
+          console.info('====>beforeAll inputMethodSwitch inputMethodList second: ' + JSON.stringify(inputMethodList));
+        }
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmange', MatchPattern.CONTAINS), 2000);
+          await inputMethod_name.click();
+          await driver.delayMs(500);
+        }else{
+          let inputMethod_name: Component = await inputMethodList.scrollSearch(ON.text('widmanage', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch inputMethod_name: ' + JSON.stringify(inputMethod_name));
+          if (JSON.stringify(inputMethod_name) === 'null') {
+            await driver.delayMs(200);
+            inputMethod_name = await inputMethodList.scrollSearch(ON.text('widmangae', MatchPattern.CONTAINS));
+            console.info('====>beforeAll inputMethodSwitch inputMethod_name second: ' + JSON.stringify(inputMethod_name));
+          }
+          await inputMethod_name.click();
+        }
+        console.info('====>beforeAll inputMethodSwitch done');
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodengine.test"});
+          console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
+          await testWindow.focus();
+          await driver.delayMs(1000);
+        }
+        textArea = await driver.findComponent(ON.type('TextArea'));
+        rectInfo = await textArea.getBounds();
+        await driver.delayMs(1000);
+        await runCmd();
+        await driver.delayMs(1000);
+        done();
       }catch(err){
-        console.debug('====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype failed');
+        console.info('====>beforeAll throw err:' + JSON.stringify(err.message))
+        done();
       }
     })
 
     afterAll(async (done) => {
-      try {
-        await inputMethod.switchInputMethod(inputServer);
-        setTimeout(() => {
-          console.info('====>afterAll: inputMethodEngineJSUnit switchInputMethod success: ' + JSON.stringify(inputServer));
-          done();
-        }, 2000)
-      } catch (err) {
-        console.info('====>afterAll: inputMethodEngineJSUnit fail' + JSON.stringify(err));
-      }
+      done();
     })
+
+    let sleep = function (timeout) {
+      return new Promise(resolve => {
+        const st = setTimeout(() => {
+          resolve(null);
+          clearTimeout(st);
+        }, timeout);
+      });
+    };
+
+    async function runCmd(){
+      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
+      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
+      await driver.click(cursor_x, cursor_y)
+    }
 
     /*
     * @tc.number  Sub_Misc_inputMethod_Panel_createPanelCallback_0010
     * @tc.name   Sub_Misc_inputMethod_Panel_createPanelCallback_0010
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_createPanelCallback_0010', 0, async function (done) {
@@ -145,6 +210,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_createPanelPromise_0020
     * @tc.name   Sub_Misc_inputMethod_Panel_createPanelPromise_0020
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async function (done) {
@@ -203,6 +270,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030
     * @tc.name   Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async function (done) {
@@ -261,6 +330,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040
     * @tc.name   Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async function (done) {
@@ -319,6 +390,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentCallback_0050
     * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentCallback_0050
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async function (done) {
@@ -377,6 +450,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentPromise_0060
     * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentPromise_0060
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async function (done) {
@@ -435,6 +510,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentCallback_0070
     * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentCallback_0070
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async function (done) {
@@ -493,6 +570,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_setUiContentPromise_0080
     * @tc.name   Sub_Misc_inputMethod_Panel_setUiContentPromise_0080
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async function (done) {
@@ -551,6 +630,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_resizeCallback_0090
     * @tc.name   Sub_Misc_inputMethod_Panel_resizeCallback_0090
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async function (done) {
@@ -609,6 +690,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_resizePromise_0100
     * @tc.name   Sub_Misc_inputMethod_Panel_resizePromise_0100
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async function (done) {
@@ -667,6 +750,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_moveToCallback_0110
     * @tc.name   Sub_Misc_inputMethod_Panel_moveToCallback_0110
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async function (done) {
@@ -725,6 +810,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_moveToPromise_0120
     * @tc.name   Sub_Misc_inputMethod_Panel_moveToPromise_0120
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async function (done) {
@@ -783,6 +870,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_showCallback_0130
     * @tc.name   Sub_Misc_inputMethod_Panel_showCallback_0130
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async function (done) {
@@ -841,6 +930,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_hideCallback_0150
     * @tc.name   Sub_Misc_inputMethod_Panel_hideCallback_0150
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async function (done) {
@@ -899,6 +990,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_showPromise_0140
     * @tc.name   Sub_Misc_inputMethod_Panel_showPromise_0140
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async function (done) {
@@ -957,6 +1050,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_hidePromise_0160
     * @tc.name   Sub_Misc_inputMethod_Panel_hidePromise_0160
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async function (done) {
@@ -1015,6 +1110,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_onShow_0170
     * @tc.name  Sub_Misc_inputMethod_Panel_onShow_0170
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async function (done) {
@@ -1073,6 +1170,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_onHide_0180
     * @tc.name  Sub_Misc_inputMethod_Panel_onHide_0180
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async function (done) {
@@ -1131,6 +1230,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_offShow_0190
     * @tc.name  Sub_Misc_inputMethod_Panel_offShow_0190
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async function (done) {
@@ -1189,6 +1290,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_offHide_0200
     * @tc.name  Sub_Misc_inputMethod_Panel_offHide_0200
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async function (done) {
@@ -1247,6 +1350,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_inputWindowInfo_0201
     * @tc.name  Sub_Misc_inputMethod_inputWindowInfo_0201
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_inputWindowInfo_0201', 0, async function (done) {
@@ -1275,6 +1380,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_changeFlag_0210
     * @tc.name  Sub_Misc_inputMethod_Panel_changeFlag_0210
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_changeFlag_0210', 0, async function (done) {
@@ -1333,6 +1440,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  Sub_Misc_inputMethod_Panel_changeFlag_0211
     * @tc.name  Sub_Misc_inputMethod_Panel_changeFlag_0211
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('Sub_Misc_inputMethod_Panel_changeFlag_0211', 0, async function (done) {
@@ -1391,6 +1500,8 @@ export default function inputMethodWindManageAbility() {
     * @tc.number  SUB_InputMethod_IMF_panelInfo_0400
     * @tc.name  SUB_InputMethod_IMF_panelInfo_0400
     * @tc.desc    Function test
+    * @tc.size    MediumTest
+    * @tc.type    Function
     * @tc.level   2
     */
     it('SUB_InputMethod_IMF_panelInfo_0400', 0,  async function (done) {
@@ -1425,7 +1536,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0600
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0600
      * @tc.desc     setPrivacyMode(),parameter is true
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1485,7 +1596,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0700
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0700
      * @tc.desc     setPrivacyMode(),parameter is false
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1545,7 +1656,7 @@ export default function inputMethodWindManageAbility() {
      * @tc.number   Sub_InputMethod_IMF_SecurityKeyboard_0800
      * @tc.name     Sub_InputMethod_IMF_SecurityKeyboard_0800
      * @tc.desc     setPrivacyMode(),parameter is undefined
-     * @tc.size     MEDIUM
+     * @tc.size     MediumTest
      * @tc.type     Function
      * @tc.level    Level 0
      */
@@ -1596,6 +1707,66 @@ export default function inputMethodWindManageAbility() {
 
         var commonEventPublishData = {
           code: 214
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    /**
+     * @tc.number   Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.name     Sub_InputMethod_IMF_getSecurityMode_0100
+     * @tc.desc     getSecurityMode()
+     * @tc.size     MediumTest
+     * @tc.type     Function
+     * @tc.level    Level 0
+     */
+    it('Sub_InputMethod_IMF_getSecurityMode_0100', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback start');
+        if (err) {
+          console.error('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback failed: ' + JSON.stringify(err));
+        } else {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 unSubscriberCallback finish');
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscriberCallback data: ' + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual('SUCCESS');
+            console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success end<====');
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 catch end<====' + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        if (err) {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 end<====' + JSON.stringify(err));
+        } else {
+          console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 success ====' );
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ['Sub_InputMethod_IMF_getSecurityMode_0100']
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        subscriber = data;
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe data: ' + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info('====>Sub_InputMethod_IMF_getSecurityMode_0100 subscribe finish====');
+
+        var commonEventPublishData = {
+          code: 215
         }
         commonEventManager.publish('test', commonEventPublishData, publishCallback);
       })

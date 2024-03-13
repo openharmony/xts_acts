@@ -3166,7 +3166,6 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + strColor);
 
       let finalResult = "#08" + strColor.substr(4, 6);
-
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100] end");
@@ -4419,7 +4418,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4464,7 +4462,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4673,7 +4670,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4718,7 +4714,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4928,7 +4923,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -4973,7 +4967,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5178,7 +5171,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
@@ -5223,7 +5215,6 @@ export default function progressSecTest() {
       let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
       let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
       let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
-      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
 
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
       expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);

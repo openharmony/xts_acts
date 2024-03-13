@@ -227,7 +227,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_0600
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_0600
      *tc.name testPageDownAgain
      *tc.desc Go PageDown Again
      */
@@ -253,7 +253,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetFavicon',0,async function(done){
       emitKey="emitGetFaviconAgain";    
-      Utils.registerEvent("testGetFavicon",undefined,114,done);
+      Utils.registerEvent("testGetFavicon",null,114,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -263,7 +263,7 @@ export default function webViewControllerJsunit() {
      */
     it('testGetFaviconAgain',0,async function(done){
       emitKey="emitGetOriginalUrl";    
-      Utils.registerEvent("testGetFaviconAgain",5,116,done);
+      Utils.registerEvent("testGetFaviconAgain",true,116,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
@@ -278,7 +278,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_1100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_1100
      *tc.name testGetOriginalUrlTwo
      *tc.desc test for getOriginalUrl again
      */
@@ -289,7 +289,7 @@ export default function webViewControllerJsunit() {
       sendEventByKey('webcomponent',10,'');
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_1100
+     *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCONTROLLERJSUNIT_API_1101
      *tc.name testSetNetworkAvailable
      *tc.desc test for setNetworkAvailable
      */

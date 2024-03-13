@@ -71,7 +71,7 @@ struct webOnFirstContThree {
                     }
                 })
             }
-            Web({ src:'www.example.com', controller: this.controller })
+            Web({ src:'www.baidu.com', controller: this.controller })
                 .javaScriptAccess(this.javaScriptAccess)
                 .fileAccess(this.fileAccess)
                 .imageAccess(this.imageAccess)

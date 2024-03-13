@@ -23,48 +23,67 @@
 #include <netdb.h>
 #include <sys/inotify.h>
 #include <utmp.h>
+
 #define STRLENGTH 64
 #define FALSE 0
 #define TRUE 1
-#define ERROR -1
+#define ERROR (-1)
 #define PORT 9000
 #define DEFAULT_VALUE 0
-
+#define ONE 1
+#define PARAM_0 0
+#define PARAM_1 1
+#define PARAM_2 2
 static napi_value InetAddr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
-
-    in_addr_t ret = inet_addr(cp);
+    int valueZero;
+    napi_get_value_int32(env, args[0], &valueZero);
+    in_addr_t ret = PARAM_0;
+    if (valueZero == PARAM_0) {
+        ret = inet_addr("10.1.59.80");
+    }
+    if (valueZero == PARAM_1) {
+        ret = inet_addr("192.168.1.100");
+    }
+    if (valueZero == PARAM_2) {
+        ret = inet_addr("192.168.100.1");
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value InetAton(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
+    int valueZero;
+    napi_get_value_int32(env, args[0], &valueZero);
+    int ret = FALSE;
     struct sockaddr_in adr_inet;
     memset(&adr_inet, FALSE, sizeof(adr_inet));
     adr_inet.sin_family = AF_INET;
     uint16_t port = PORT;
     adr_inet.sin_port = htons(port);
-    int ret = inet_aton(cp, &adr_inet.sin_addr);
+    if (valueZero == PARAM_0) {
+        ret = inet_aton("192.168.100.1", &adr_inet.sin_addr);
+    }
+    if (valueZero == PARAM_1) {
+        ret = inet_aton("192.168.1.100", &adr_inet.sin_addr);
+    }
+    if (valueZero == PARAM_2) {
+        ret = inet_aton("10.1.59.80", &adr_inet.sin_addr);
+    }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
 }
 static napi_value InetLnaof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
@@ -80,7 +99,7 @@ static napi_value InetLnaof(napi_env env, napi_callback_info info)
 }
 static napi_value InetMakeaddr(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -95,7 +114,7 @@ static napi_value InetMakeaddr(napi_env env, napi_callback_info info)
 
 static napi_value InetNetof(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -109,20 +128,28 @@ static napi_value InetNetof(napi_env env, napi_callback_info info)
 }
 static napi_value InetNetwork(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    size_t length = STRLENGTH, strResult = FALSE;
-    char *cp = (char *)malloc(sizeof(char) * length);
-    napi_get_value_string_utf8(env, args[0], cp, length, &strResult);
-    in_addr_t addr = inet_network(cp);
+    int valueZero;
+    napi_get_value_int32(env, args[0], &valueZero);
+    in_addr_t addr = FALSE;
+    if (valueZero == PARAM_0) {
+        addr = inet_network("10.1.59.80");
+    }
+    if (valueZero == PARAM_1) {
+        addr = inet_network("192.168.100.1");
+    }
+    if (valueZero == PARAM_2) {
+        addr = inet_network("192.168.1.100");
+    }
     napi_value result = nullptr;
     napi_create_int32(env, addr, &result);
     return result;
 }
 static napi_value InetNtoa(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -137,7 +164,7 @@ static napi_value InetNtoa(napi_env env, napi_callback_info info)
 
 static napi_value InetNtop(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;
@@ -157,7 +184,7 @@ static napi_value InetNtop(napi_env env, napi_callback_info info)
 
 static napi_value InetPton(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int valueZero;

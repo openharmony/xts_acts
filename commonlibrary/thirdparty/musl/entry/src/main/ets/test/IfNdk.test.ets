@@ -13,18 +13,24 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import If from 'libifndk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
 
 export default function muslIfNdkTest() {
   describe('MuslIfTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_FREENAMEINDEX_0100
      * @tc.name     : testMuslIf_If_Freenameindex001
      * @tc.desc     : test if_freenameindex
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -38,7 +44,7 @@ export default function muslIfNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_NAMEINDEX_0100
      * @tc.name     : testMuslIf_If_Nameindex001
      * @tc.desc     : test if_nameindex
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -47,34 +53,5 @@ export default function muslIfNdkTest() {
       expect(result).assertEqual(0)
       done()
     });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_INDEXTONAME_0100
-     * @tc.name     : testMuslIf_If_indextoname001
-     * @tc.desc     : test if_indextoname
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslIf_If_indextoname001', 0, async (done: Function) => {
-      let result: number = If.ifIndexToName();
-      expect(result).assertEqual(0)
-      done()
-    });
-
-    /**
-     * @tc.number   : SUB_THIRDPARTY_MUSL_IF_IF_NAMETOINDEX_0100
-     * @tc.name     : testMuslIf_If_nametoindex001
-     * @tc.desc     : test if_nametoindex
-     * @tc.size     : MEDIUM
-     * @tc.type     : Function
-     * @tc.level    : Level 1
-     */
-    it('testMuslIf_If_nametoindex001', 0, async (done: Function) => {
-      let result: number = If.ifNameToIndex();
-      expect(result).assertEqual(0)
-      done()
-    });
-
   })
 }

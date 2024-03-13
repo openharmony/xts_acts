@@ -14,25 +14,23 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
-import events_emitter from '@ohos.events.emitter';
+
+
 export default function CanvasAPITest() {
 
-  const SUITE = 'CanvasAPI'
-  describe('CanvasAPITest', function () {
+  const SUITE: string = 'CanvasAPI'
+  describe('CanvasAPITest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "TestAbility/pages/CanvasAPI",
       }
       try {
         router.clear();
-        let pages = router.getState();
+        let pages: router.RouterState = router.getState();
         if (pages == null || !("CanvasAPI" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
-            console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
       } catch (err) {
@@ -46,15 +44,13 @@ export default function CanvasAPITest() {
      *tc.name   Path2D.addPath and CanvasPattern.setTransform support Matrix2D
      *tc.desc   Path2D.addPath and CanvasPattern.setTransform support Matrix2D
      */
-    it('ArkUI_Canvas_API_0100', 0, async function (done) {
-      let CASE = 'ArkUI_Canvas_API_0100'
+    it('ArkUI_Canvas_API_0100', 0, async (done: Function) => {
+      let CASE: string = 'ArkUI_Canvas_API_0100'
       console.info(`${SUITE} ${CASE} START`)
-      let strJson = getInspectorByKey('CanvasAPI_Canvas1')
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Canvas')
+      let strJson: string = getInspectorByKey('CanvasAPI_Canvas1')
+      expect(JSON.parse(strJson).$type).assertEqual('Canvas')
       console.info(`${SUITE} ${CASE} END`)
       done()
     });
-
   })
 }

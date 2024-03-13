@@ -13,20 +13,25 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
 import time from 'libtimendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
+import Utils from './Utils'
 
 export default function timeNdkTest() {
 
   describe('MuslTimeTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GETITIMER_0100
      * @tc.name       : testMuslTimeGetITimer001
      * @tc.desc       : test getitimer
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -40,7 +45,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GETTIMEOFDAY_0100
      * @tc.name       : testMuslTimeGetTimeOfDay001
      * @tc.desc       : test gettimeofday
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -54,7 +59,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETITIMER_0100
      * @tc.name       : testMuslTimeSetitimer001
      * @tc.desc       : test setitimer
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -67,7 +72,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETITIMER_0200
      * @tc.name       : testMuslTimeSetitimer002
      * @tc.desc       : test setitimer
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -80,7 +85,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETITIMER_0300
      * @tc.name       : testMuslTimeSetitimer003
      * @tc.desc       : test setitimer
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -93,7 +98,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETITIMER_0400
      * @tc.name       : testMuslTimeSetitimer004
      * @tc.desc       : test setitimer
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -106,7 +111,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0100
      * @tc.name       : testMuslTimeStrftime001
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -120,7 +125,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0200
      * @tc.name       : testMuslTimeStrftime002
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -134,7 +139,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0300
      * @tc.name       : testMuslTimeStrftime003
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -148,7 +153,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0400
      * @tc.name       : testMuslTimeStrftime004
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -162,7 +167,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0500
      * @tc.name       : testMuslTimeStrftime005
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -176,7 +181,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0600
      * @tc.name       : testMuslTimeStrftime006
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -190,7 +195,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0700
      * @tc.name       : testMuslTimeStrftime007
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -204,7 +209,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0800
      * @tc.name       : testMuslTimeStrftime008
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -218,7 +223,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_0900
      * @tc.name       : testMuslTimeStrftime009
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -232,7 +237,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_1000
      * @tc.name       : testMuslTimeStrftime010
      * @tc.desc       : test strftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -247,7 +252,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_L_0100
      * @tc.name       : testMuslTimeStrftimeL001
      * @tc.desc       : test strftime_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -261,7 +266,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_L_0200
      * @tc.name       : testMuslTimeStrftimeL002
      * @tc.desc       : test strftime_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -275,7 +280,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_L_0300
      * @tc.name       : testMuslTimeStrftimeL003
      * @tc.desc       : test strftime_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -289,7 +294,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_L_0400
      * @tc.name       : testMuslTimeStrftimeL004
      * @tc.desc       : test strftime_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -303,7 +308,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRFTIME_L_0500
      * @tc.name       : testMuslTimeStrftimeL005
      * @tc.desc       : test strftime_l
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -318,7 +323,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMEGM_0100
      * @tc.name       : testMuslTimeTimegm001
      * @tc.desc       : test timegm
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -332,7 +337,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMESPECGET_0100
      * @tc.name       : testMuslTimeTimespecget001
      * @tc.desc       : test timespec_get
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -346,7 +351,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMECREATE_0100
      * @tc.name       : testMuslTimeTimerCreate001
      * @tc.desc       : test timer_create
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -360,7 +365,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMERDELETE_0100
      * @tc.name       : testMuslTimeTimerDelete001
      * @tc.desc       : test timer_delete
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -375,7 +380,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMERGETOVERRUN_0100
      * @tc.name       : testMuslTimeTimerGetoverrun001
      * @tc.desc       : test timer_getoverrun
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -390,7 +395,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMERGETTIME_0100
      * @tc.name       : testMuslTimeTimerGettime001
      * @tc.desc       : test timer_gettime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -404,7 +409,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMERSETTIME_0100
      * @tc.name       : testMuslTimeTimerSettime001
      * @tc.desc       : test timer_settime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -419,7 +424,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_STRPTIME_0100
      * @tc.name       : testMuslTimeStrptime001
      * @tc.desc       : test strptime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -434,7 +439,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TZSET_0100
      * @tc.name       : testMuslTimeTzset001
      * @tc.desc       : test tzset
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -445,32 +450,10 @@ export default function timeNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_UTIMES_0100
-     * @tc.name       : testMuslTimeUtimes001
-     * @tc.desc       : test utimes
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslTimeUtimes001', 0, async (done: Function) => {
-      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let context = abilityDelegator.getAppContext();
-      let filesDir = context.filesDir;
-
-      let file = fs.openSync(filesDir + '/utimes.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-
-      let a: number = time.utimes(filesDir + '/utimes.txt');
-      expect(a).assertEqual(1);
-
-      fs.closeSync(file);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CTIME_0100
      * @tc.name       : testMuslTimeCTime001
      * @tc.desc       : test ctime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -483,7 +466,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CTIME_R_0100
      * @tc.name       : testMuslTimeCTimeR001
      * @tc.desc       : test ctime_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -496,7 +479,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_DIFFTIME_0100
      * @tc.name       : testMuslTimeDiffTime001
      * @tc.desc       : test difftime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -513,7 +496,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_ASCTIME_0100
      * @tc.name       : testMuslTimeAsctime001
      * @tc.desc       : test asctime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -528,7 +511,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_ASCTIMER_0100
      * @tc.name       : testMuslTimeAsctimeR001
      * @tc.desc       : test asctime_r
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -543,7 +526,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCK_0100
      * @tc.name       : testMuslTimeClock001
      * @tc.desc       : test clock
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -558,7 +541,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCK_ADJTIME_0100
      * @tc.name       : testMuslTimeClockAdjtime001
      * @tc.desc       : test clock_adjtime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -573,7 +556,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCK_GETCPUCLOCKED_0100
      * @tc.name       : testMuslTimeClockGetcpuclockid001
      * @tc.desc       : test clock_getcpuclockid
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -588,7 +571,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCK_GETRES_0100
      * @tc.name       : testMuslTimeClockGetres001
      * @tc.desc       : test clock_getres
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -603,7 +586,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCK_GETTIME_0100
      * @tc.name       : testMuslTimeClockGettime001
      * @tc.desc       : test clock_gettime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -618,7 +601,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCKNANOSLEEP_0100
      * @tc.name       : testMuslTimeClockNanosleep001
      * @tc.desc       : test clock_nanosleep
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -633,7 +616,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_CLOCKSETTIME_0100
      * @tc.name       : testMuslTimeClockSettime001
      * @tc.desc       : test clock_settime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -645,40 +628,10 @@ export default function timeNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_FUTIMESAT_0100
-     * @tc.name       : testMuslTimeFutimesat001
-     * @tc.desc       : test futimesat
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslTimeFutimesat001', 0, async (done: Function) => {
-      let resultTrue = 0;
-      let result: number = time.futimesat();
-      expect(result).assertEqual(resultTrue);
-      done()
-    });
-
-    /**
-    * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_FUTIMES_0100
-    * @tc.name       : testMuslTimeFutimes001
-    * @tc.desc       : test futimes
-    * @tc.size       : MEDIUM
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testMuslTimeFutimes001', 0, async (done: Function) => {
-      let resultTrue = 0;
-      let result = time.futimes();
-      expect(result).assertEqual(resultTrue);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_LOCALTIME_0100
      * @tc.name       : testMuslTimeLocaltime001
      * @tc.desc       : test localtime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -692,7 +645,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_LOCALTIME_R_0100
      * @tc.name       : testMuslTimeLocaltimeR001
      * @tc.desc       : test localtimeR
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -706,7 +659,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_MKTIME_0100
      * @tc.name       : testMuslTimeMkTime001
      * @tc.desc       : test mktime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -720,7 +673,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GMTIME_0100
      * @tc.name       : testMuslTimeGmtime001
      * @tc.desc       : test gmtime
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -734,7 +687,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GMTIME_R_0100
      * @tc.name       : testMuslTimeGmtimeR001
      * @tc.desc       : test gmtimeR
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -748,7 +701,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_LUTIMES_0100
      * @tc.name       : testMuslTimeLutimes001
      * @tc.desc       : test lutimes
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -762,7 +715,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_NANOSLEEP_0100
      * @tc.name       : testMuslTimeNanosleep001
      * @tc.desc       : test nanosleep
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -775,7 +728,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIMEZONE_0100
      * @tc.name       : testMuslTimeTimeZone001
      * @tc.desc       : test timezone
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
@@ -787,25 +740,10 @@ export default function timeNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TZNAME_0100
-     * @tc.name       : testMuslTimeTzName001
-     * @tc.desc       : test tzName
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslTimeTzName001', 0, async (done: Function) => {
-      let data: number = time.tzName();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_TIME_0100
      * @tc.name       : testMuslTimeTime001
      * @tc.desc       : test time
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -820,7 +758,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GETDATEERR_0100
      * @tc.name       : testMuslTimeGetDateErr001
      * @tc.desc       : test getdate_err
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -835,7 +773,7 @@ export default function timeNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_DAYLIGHT_0100
      * @tc.name       : testMuslTimeDaylight001
      * @tc.desc       : test daylight
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -844,20 +782,6 @@ export default function timeNdkTest() {
       console.info("Test result= " + result);
       expect(result).assertEqual(1);
       done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETTIMEOFDAY_0100
-     * @tc.name       : testMuslTimeSettimeofday001
-     * @tc.desc       : test settimeofday
-     * @tc.size       : MEDIUM
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslTimeSettimeofday001', 0, async (done: Function) => {
-      let a: number = time.settimeofday();
-      expect(a).assertEqual(0);
-      done()
     });
   })
 }

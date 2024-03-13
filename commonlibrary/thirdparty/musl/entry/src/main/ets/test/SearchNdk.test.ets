@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import search from 'libsearchndk.so'
 
 export default function SearchNdkTest() {
   describe('MuslSearchTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEARCH_TDESTROY_0100
      * @tc.name       : testMuslSearchTdestroy001
      * @tc.desc       : test tdestroy
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -37,7 +42,7 @@ export default function SearchNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEARCH_TDELETE_0100
      * @tc.name       : testMuslSearchTdelete001
      * @tc.desc       : test tdelete
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -51,7 +56,7 @@ export default function SearchNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEARCH_TFIND_0100
      * @tc.name       : testMuslSearchTfind001
      * @tc.desc       : test tfind
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -64,7 +69,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HCREATE_0100
      * @tc.name     : testMuslSearchHcreate001
      * @tc.desc     : test hcreate
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -78,7 +83,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HCREATE_R_0100
      * @tc.name     : testMuslSearchHcreateR001
      * @tc.desc     : test hcreate_r
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -92,7 +97,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HDESTROY_0100
      * @tc.name     : testMuslSearchHdestroy001
      * @tc.desc     : test hdestroy
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -106,7 +111,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HDESTROY_R_0100
      * @tc.name     : testMuslSearchHdestroyR001
      * @tc.desc     : test hdestroy_r
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -120,7 +125,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HEARCH_0100
      * @tc.name     : testMuslSearchHsearch001
      * @tc.desc     : test hsearch
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -134,7 +139,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_HEARCH_R_0100
      * @tc.name     : testMuslSearchHsearchR001
      * @tc.desc     : test hsearch_r
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -148,7 +153,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_INSQUE_0100
      * @tc.name     : testMuslSearchInsque001
      * @tc.desc     : test insque
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -161,7 +166,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_LSEARCH_0100
      * @tc.name     : testMuslSearchSearch001
      * @tc.desc     : test lsearch
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : level 1
      */
@@ -175,7 +180,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SAERCH_REMQUE_0100
      * @tc.name     : testMuslSearchRemque001
      * @tc.desc     : test remque
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -189,7 +194,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_LFIND_0100
      * @tc.name     : testMuslSearchLfind001
      * @tc.desc     : test lfind
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -203,7 +208,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_LFIND_0200
      * @tc.name     : testMuslSearchLfind002
      * @tc.desc     : test lfind
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 2
      */
@@ -217,7 +222,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_TSEARCH_0100
      * @tc.name     : testMuslSearchTsearch001
      * @tc.desc     : test tsearch
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */
@@ -231,7 +236,7 @@ export default function SearchNdkTest() {
      * @tc.number   : SUB_THIRDPARTY_MUSL_SEARCH_TWALK_0100
      * @tc.name     : testMuslSearchTwalk001
      * @tc.desc     : test twalk
-     * @tc.size     : MEDIUM
+     * @tc.size     : MediumTest
      * @tc.type     : Function
      * @tc.level    : Level 1
      */

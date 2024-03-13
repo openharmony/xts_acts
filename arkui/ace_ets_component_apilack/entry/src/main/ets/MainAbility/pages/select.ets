@@ -14,45 +14,46 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct SelectOnSelect {
-  @State selectIndex:number = 1
+  @State selectIndex: number = 1
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear SelectOnSelect start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear SelectOnSelect end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
-        Select([{value:'aaa',icon: "/common/1.png"},
-                {value:'bbb',icon: "/common/2.png"},
-                {value:'ccc',icon: "/common/3.png"},
-                {value:'ddd',icon: "/common/4.png"}])
+        Select([{ value: 'aaa', icon: "/common/1.png" },
+          { value: 'bbb', icon: "/common/2.png" },
+          { value: 'ccc', icon: "/common/3.png" },
+          { value: 'ddd', icon: "/common/4.png" }])
           .key("Select")
           .selected(2)
           .value('TTT')
-          .font({size: 30, weight:400, family: 'serif', style: FontStyle.Normal })
-          .selectedOptionFont({size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
-          .optionFont({size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
-          .onSelect((index:number)=>{
+          .font({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
+          .selectedOptionFont({ size: 40, weight: 500, family: 'serif', style: FontStyle.Normal })
+          .optionFont({ size: 30, weight: 400, family: 'serif', style: FontStyle.Normal })
+          .onSelect((index: number) => {
             console.info("Select:" + index)
             this.selectIndex = index
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "selectIndex": this.selectIndex
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60222,
                 priority: events_emitter.EventPriority.LOW
               }

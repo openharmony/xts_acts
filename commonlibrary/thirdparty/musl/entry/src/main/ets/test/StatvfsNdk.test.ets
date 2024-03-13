@@ -13,17 +13,22 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import statvfs from 'libstatvfsndk.so'
 
 export default function statvfsNdkTest() {
   describe('MuslStatvfsTest', () => {
 
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATVFS_STATVFS_0100
      * @tc.name       : testMuslStatvfsStatvfs001
      * @tc.desc       : test statvfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -38,7 +43,7 @@ export default function statvfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATVFS_STATVFS_0200
      * @tc.name       : testMuslStatvfsStatvfs002
      * @tc.desc       : test statvfs
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -54,7 +59,7 @@ export default function statvfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATVFS_STATVFS64_0100
      * @tc.name       : testMuslStatvfsStatvfs64001
      * @tc.desc       : test statvfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
@@ -69,7 +74,7 @@ export default function statvfsNdkTest() {
      * @tc.number     : SUB_THIRDPARTY_MUSL_STATVFS_STATVFS64_0200
      * @tc.name       : testMuslStatvfsStatvfs64002
      * @tc.desc       : test statvfs64
-     * @tc.size       : MEDIUM
+     * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 0
      */

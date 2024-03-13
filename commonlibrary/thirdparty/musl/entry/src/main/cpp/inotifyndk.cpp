@@ -18,13 +18,15 @@
 #include <js_native_api_types.h>
 #include <net/if.h>
 #include <sys/inotify.h>
+#include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
 
 #define FALSE 0
 #define TRUE 1
-#define ERROR -1
+#define ERROR (-1)
 #define TWO 2
+#define ONE 1
 #define NO_ERRORS 0
 #define CHMOD 777
 
@@ -41,19 +43,19 @@ static napi_value InotifyInit(napi_env env, napi_callback_info info)
 
 static napi_value InotifyInit1(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
+    size_t argc = ONE;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int valueZero;
     int in_cloexec = TRUE;
-    int in_nonblock = TWO;
+    int inNonblock = TWO;
     napi_get_value_int32(env, args[0], &valueZero);
 
     if (valueZero == in_cloexec) {
         valueZero = IN_CLOEXEC;
     }
-    if (valueZero == in_nonblock) {
+    if (valueZero == inNonblock) {
         valueZero = IN_NONBLOCK;
     }
     int fd = inotify_init1(valueZero);
@@ -67,11 +69,16 @@ static napi_value InotifyInit1(napi_env env, napi_callback_info info)
 
 static napi_value InotifyAddWatch(napi_env env, napi_callback_info info)
 {
+    char path[] = "/data/storage/el2/base/files/testWatch";
+    if (access(path, NO_ERRORS) != NO_ERRORS) {
+        mkdir(path, CHMOD);
+    } else {
+        remove(path);
+        mkdir(path, CHMOD);
+    }
     errno = FALSE;
     int fd = inotify_init();
-    char path[] = "/data/storage/el2/base/files/";
     int wd = ERROR;
-    chmod(path,CHMOD);
     if (fd != ERROR) {
         wd = inotify_add_watch(fd, path, IN_ALL_EVENTS);
         inotify_rm_watch(fd, wd);
@@ -86,11 +93,16 @@ static napi_value InotifyAddWatch(napi_env env, napi_callback_info info)
 
 static napi_value InotifyRmWatch(napi_env env, napi_callback_info info)
 {
+    char path[] = "/data/storage/el2/base/files/testWatch";
+    if (access(path, NO_ERRORS) != NO_ERRORS) {
+        mkdir(path, CHMOD);
+    } else {
+        remove(path);
+        mkdir(path, CHMOD);
+    }
     errno = FALSE;
     int fd = inotify_init();
-    char path[] = "/data/storage/el2/base/files/";
     int wd = ERROR;
-    chmod(path,CHMOD);
     if (fd != ERROR) {
         wd = inotify_add_watch(fd, path, IN_ALL_EVENTS);
         wd = inotify_rm_watch(fd, wd);

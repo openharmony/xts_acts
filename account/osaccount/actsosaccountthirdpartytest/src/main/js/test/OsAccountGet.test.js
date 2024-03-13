@@ -375,6 +375,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 expect(data.type).assertEqual(1);
                 expect(data.constraints.length > 0).assertEqual(true);
                 expect(data.isVerified).assertEqual(false);
+                expect(data.isUnlocked).assertEqual(false);
                 expect(data.distributedInfo.name != null).assertEqual(true);
                 expect(data.domainInfo.domain == "").assertEqual(true);
                 expect(data.photo == "").assertEqual(true);
@@ -382,6 +383,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 expect(data.lastLoginTime >= 0).assertEqual(true);
                 expect(data.serialNumber.toString().length == 16).assertEqual(true);
                 expect(data.isActived).assertEqual(false);
+                expect(data.isActivated).assertEqual(false);
                 expect(data.isCreateCompleted).assertEqual(true)
                 localId = data.localId;
                 osAccountManager.getSerialNumberByOsAccountLocalId(localId, (err, serialNumber) => {
@@ -699,7 +701,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             AccountManager.isOsAccountConstraintEnable(100, "constraint.bluetooth", (err, result) => {
                 console.info("====>isOsAccountConstraintEnable err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                expect(result).assertTrue();
+                expect(result).assertEqual(true);
                 console.info("====>ActsOsAccountConstraints_3300 end====");
                 done();
             })
@@ -715,10 +717,11 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             var AccountManager = osaccount.getAccountManager();
             console.info("====>get os AccountManager finish====");
             try {
-                await AccountManager.isOsAccountConstraintEnable(100, "constraint.bluetooth");
+                let data = await AccountManager.isOsAccountConstraintEnable(100, "constraint.bluetooth");
+                console.info("====>isOsAccountConstraintEnable data:" + JSON.stringify(data));
+                expect(data).assertEqual(true);
                 done();
-            }
-            catch (err) {
+            } catch (err) {
                 console.info("====>isOsAccountConstraintEnable err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 console.info("====>ActsOsAccountConstraints_3400 end====");

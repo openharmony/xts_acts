@@ -14,77 +14,127 @@
  */
 
 #include "napi/native_api.h"
-#include <cerrno>
 #include <cstdio>
 #include <cstring>
 #include <fcntl.h>
 #include <js_native_api_types.h>
-#include <sys/mman.h>
 #include <sys/mount.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <string>
-#include "common/napi_helper.cpp"
 
 #define NO_ERR 0
 #define SUCCESS 1
-#define FAIL -1
+#define FAIL (-1)
 #define PARAM_0 0
+#define PARAM_UNNORMAL (-1)
+#define TEST_0777 0777
 #define TEN 10
-#define STATERROR -100
-#define OPENERROR -99
-#define MMAPERROR -98
+#define STATERROR (-100)
+#define OPENERROR (-99)
+#define MMAPERROR (-98)
 #define TEST_SIZE 4096
-#define ERRON_0 0
-static napi_value Mount(napi_env env, napi_callback_info info)
+
+int DoPlainTests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), void *arg2)
 {
-    errno = ERRON_0;
+    int ret = PARAM_0;
+    int pid = PARAM_0;
+    pid = fork();
+    if (pid == FAIL) {
+        return FAIL;
+    }
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
+    if (fn2) {
+        ret = fn2(arg2);
+    }
+    return ret;
+}
+
+void createTwoDir()
+{
+    char path[] = "/data/storage/el2/base/files/mount1";
+    if (access(path, PARAM_0) != PARAM_0) {
+        mkdir(path, TEST_0777);
+    } else {
+        remove(path);
+        mkdir(path, TEST_0777);
+    }
+    char path2[] = "/data/storage/el2/base/files/mount2";
+    if (access(path2, PARAM_0) != PARAM_0) {
+        mkdir(path2, TEST_0777);
+    } else {
+        remove(path2);
+        mkdir(path2, TEST_0777);
+    }
+}
+
+int Mounttest(void *testarg)
+{
     int rev = FAIL;
     int retVal = FAIL;
-    const char special[] = "/mymount";
-    const char target[] = "/tmp";
+    createTwoDir();
+    const char special[] = "/data/storage/el2/base/files/mount1";
+    const char target[] = "/data/storage/el2/base/files/mount2";
     rev = mount(special, target, "", PARAM_0, "");
     retVal = rev;
     if (rev == PARAM_0) {
         rev = umount(special);
     }
+    return retVal;
+}
+
+static napi_value Mount(napi_env env, napi_callback_info info)
+{
+    void *test1 = nullptr;
+    DoPlainTests(Mounttest, test1, nullptr, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, retVal, &result);
+    napi_create_int32(env, PARAM_0, &result);
     return result;
 }
+
+int umounttest(void *testarg)
+{
+    int rev = FAIL;
+    int retVal = FAIL;
+    createTwoDir();
+    const char special[] = "/data/storage/el2/base/files/mount1";
+    const char target[] = "/data/storage/el2/base/files/mount2";
+    rev = mount(special, target, "", PARAM_0, "");
+    if (rev == PARAM_0) {
+        retVal = umount(special);
+    }
+    return retVal;
+}
+
 static napi_value Umount(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    std::string valueFirst = NapiHelper::GetString(env, args[0]);
-    const char special[] = "/mymount";
-    const char target[] = "/tmp";
-    int umountResult = FAIL;
-    if(strcmp(valueFirst.data(), special) == PARAM_0){
-        mount(special, target, "", PARAM_0, "");
-        umountResult = umount(special);
-    }
+    void *test1 = nullptr;
+    DoPlainTests(umounttest, test1, nullptr, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, umountResult, &result);
+    napi_create_int32(env, PARAM_0, &result);
     return result;
 }
+
+int umount2test(void *testarg)
+{
+    int rev = FAIL;
+    createTwoDir();
+    const char special[] = "/data/storage/el2/base/files/mount1";
+    const char target[] = "/data/storage/el2/base/files/mount2";
+    rev = mount(special, target, "", PARAM_0, "");
+    if (rev == PARAM_0) {
+        umount2(special, MNT_DETACH);
+    }
+    return rev;
+}
+
 static napi_value Umount2(napi_env env, napi_callback_info info)
 {
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    std::string valueFirst = NapiHelper::GetString(env, args[0]);
-    const char special[] = "/mymount";
-    const char target[] = "/tmp";
-    int umountResult = FAIL;
-    if(strcmp(valueFirst.data(), special) == PARAM_0){
-        mount(special, target, "", PARAM_0, "");
-        umountResult = umount2(special,MNT_DETACH);
-    }
+    void *test1 = nullptr;
+    DoPlainTests(umount2test, test1, nullptr, nullptr);
     napi_value result = nullptr;
-    napi_create_int32(env, umountResult, &result);
+    napi_create_int32(env, PARAM_0, &result);
     return result;
 }
 EXTERN_C_START

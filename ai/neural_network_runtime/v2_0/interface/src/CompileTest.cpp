@@ -101,7 +101,9 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Create_0200, Function |
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_EQ(nullptr, compilation);
+    ASSERT_NE(nullptr, compilation);
+    ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -137,7 +139,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Create_0300, Function |
     }
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
-    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_SetDevice(compilation, targetDevice));
+    ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
+    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
     device->SetOperationsSupported({true});
 }
@@ -169,7 +172,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetDevice_0200, Functio
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_SetDevice(compilation, 100000));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetDevice(compilation, 100000));
+    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -234,7 +238,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetCache_0300, Function
     device->SetModelCacheSupported(false);
 
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_SetCache(compilation, "./cache", 10));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetCache(compilation, "./cache", 10));
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
     device->SetModelCacheSupported(true);
 }
@@ -474,9 +479,10 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetPerformanceMode_0800
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER,
+    ASSERT_EQ(OH_NN_SUCCESS,
               OH_NNCompilation_SetPerformanceMode(compilation,
                                                   static_cast<OH_NN_PerformanceMode>(OH_NN_PERFORMANCE_NONE - 1)));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -493,9 +499,10 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetPerformanceMode_0900
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER,
+    ASSERT_EQ(OH_NN_SUCCESS,
               OH_NNCompilation_SetPerformanceMode(compilation,
                                                   static_cast<OH_NN_PerformanceMode>(OH_NN_PERFORMANCE_EXTREME + 1)));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -525,7 +532,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetPriority_0200, Funct
     OHOS::sptr<V2_0::MockIDevice> device = V2_0::MockIDevice::GetInstance();
     device->SetPrioritySupported(false);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_SetPriority(compilation, OH_NN_PRIORITY_NONE));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_SetPriority(compilation, OH_NN_PRIORITY_LOW));
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
     device->SetPrioritySupported(true);
 }
@@ -611,8 +619,9 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetPriority_0700, Funct
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER,
+    ASSERT_EQ(OH_NN_SUCCESS,
               OH_NNCompilation_SetPriority(compilation, static_cast<OH_NN_Priority>(OH_NN_PRIORITY_NONE - 1)));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -630,8 +639,9 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetPriority_0800, Funct
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER,
+    ASSERT_EQ(OH_NN_SUCCESS,
               OH_NNCompilation_SetPriority(compilation, static_cast<OH_NN_Priority>(OH_NN_PRIORITY_HIGH + 1)));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -679,7 +689,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_EnableFloat16_0300, Fun
     device->SetFP16Supported(false);
 
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_EnableFloat16(compilation, false));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_EnableFloat16(compilation, true));
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
     device->SetFP16Supported(true);
 }
@@ -701,7 +712,8 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_EnableFloat16_0400, Fun
     device->SetFP16Supported(false);
 
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_EnableFloat16(compilation, true));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_EnableFloat16(compilation, true));
+    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
     device->SetFP16Supported(true);
 }
@@ -718,7 +730,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0100, Function | 
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Compilation_Build_0200
- * @tc.name   : 编译模型，未设置device
+ * @tc.name   : 编译模型，未设置device，默认设备，返回成功
  * @tc.desc   : [C- SOFTWARE -0200]
  */
 HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0200, Function | MediumTest | Level2)
@@ -728,7 +740,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Build_0200, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
+    ASSERT_EQ(OH_NN_SUCCESS, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
@@ -857,6 +869,6 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Combine_0200, Function 
     ASSERT_NE(nullptr, compilation);
     OHNNCompileParam compileParam;
     ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, OH_NNCompilation_Build(compilation));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }

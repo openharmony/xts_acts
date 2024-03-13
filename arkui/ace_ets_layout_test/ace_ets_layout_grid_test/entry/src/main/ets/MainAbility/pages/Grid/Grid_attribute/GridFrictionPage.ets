@@ -12,29 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct GridFrictionPage {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State friction:number = 1000
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State friction: number = 1000;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('Grid_lanes page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'friction') {
         this.friction = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column({ space: 5 }) {
       Grid(this.scroller) {
@@ -48,8 +50,8 @@ struct GridFrictionPage {
                 .height(80)
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)
@@ -59,15 +61,15 @@ struct GridFrictionPage {
         console.info(first.toString())
       })
       .onScrollBarUpdate((index: number, offset: number) => {
-        return {totalOffset: (index / 5) * (80 + 10) - 10 + offset, totalLength: 80 * 5 + 10 * 4}
+        return { totalOffset: (index / 5) * (80 + 10) - 10 + offset, totalLength: 80 * 5 + 10 * 4 }
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height(300)
       .scrollBar(BarState.Off)
-        .onClick(() => { // 点击后滑到下一页
-          this.scroller.scrollPage({ next: true })
-        })
+      .onClick(() => { // 点击后滑到下一页
+        this.scroller.scrollPage({ next: true })
+      })
       .friction(this.friction)
       .key('Grid_GridFriction')
     }.width('100%').margin({ top: 5 })

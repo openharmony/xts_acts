@@ -19,11 +19,25 @@ import documentPickerCallback from './documentPickerCallback.test.ets'
 import documentPickerPromise from './documentPickerPromise.test.ets'
 import audioPickerCallback from './audioPickerCallback.test.ets'
 import audioPickerPromise from './audioPickerPromise.test.ets'
+import globalContext from '../test/GlobalContext'
+import common from '@ohos.app.ability.common'
+
 export default function testsuite() {
-  photoPickerCallback(globalThis.abilityContext)
-  photoPickerPromise(globalThis.abilityContext)
-  documentPickerCallback(globalThis.abilityContext)
-  documentPickerPromise(globalThis.abilityContext)
-  audioPickerCallback(globalThis.abilityContext)
-  audioPickerPromise(globalThis.abilityContext)
+  photoPickerCallback(globalContext.getContext().getAbility())
+  photoPickerPromise(globalContext.getContext().getAbility())
+  documentPickerCallback(globalContext.getContext().getAbility())
+  documentPickerPromise(globalContext.getContext().getAbility())
+  audioPickerCallback(globalContext.getContext().getAbility())
+  audioPickerPromise(globalContext.getContext().getAbility())
+  /*
+  globalContext.getContext().setObject("ui", a.UIAbilityContext)
+  globalContext.getContext().setObject("ui", common.UIAbilityContext)
+  globalContext.getContext().setObject("con", new common.context)
+  photoPickerCallback(globalContext.getContext().getObject('ui'))
+  photoPickerPromise(globalContext.getContext().getObject('ui'))
+  documentPickerCallback(globalContext.getContext().getObject('con'))
+  documentPickerPromise(globalContext.getContext().getObject('con'))
+  audioPickerCallback(globalContext.getContext().getObject('con'))
+  audioPickerPromise(globalContext.getContext().getObject('con'))
+  */
 }
