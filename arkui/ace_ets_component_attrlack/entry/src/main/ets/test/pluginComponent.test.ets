@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function pluginComponentKVObjectJsunit() {
-  describe('pluginComponentKVObjectTest', function () {
-    beforeEach(async function (done) {
+  describe('pluginComponentKVObjectTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/pluginComponent',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/pluginComponent',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function pluginComponentKVObjectJsunit() {
         console.info("get pluginComponent state success " + JSON.stringify(pages));
         if (!("pluginComponent" == pages.name)) {
           console.info("get pluginComponent state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push pluginComponent page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function pluginComponentKVObjectJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("pluginComponentKVObject after each called");
     });
@@ -50,15 +50,14 @@ export default function pluginComponentKVObjectJsunit() {
      * @tc.name         testpluginComponentKVObject0001
      * @tc.desic         acepluginComponentKVObjectEtsTest0001
      */
-    it('testpluginComponentKVObject0001', 0, async function (done) {
+    it('testpluginComponentKVObject0001', 0, async (done: Function) => {
       console.info('pluginComponentKVObject testpluginComponentKVObject0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('pluginComponent');
+      let strJson: string = getInspectorByKey('pluginComponent');
       console.info("[testpluginComponentKVObject0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('PluginComponent');
-      expect(obj.$attrs.size.width).assertEqual('500.00vp');
-      console.info("[testpluginComponentKVObject0001] size.width value :" + obj.$attrs.size.width);
+      expect(JSON.parse(strJson).$type).assertEqual('PluginComponent');
+      expect(JSON.parse(strJson).$attrs.size.width).assertEqual('500.00vp');
+      console.info("[testpluginComponentKVObject0001] size.width value :" + JSON.parse(strJson).$attrs.size.width);
       done();
     });
   })

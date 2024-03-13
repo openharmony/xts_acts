@@ -154,6 +154,8 @@ ohos_js_hap_suite("ActsThirdPartyMuslTest") {
     "./entry/src/main/cpp:timendk1",
     "./entry/src/main/cpp:timexndk1",
     "./entry/src/main/cpp:unistdndk1",
+    "./entry/src/main/cpp:errndk",
+    "./entry/src/main/cpp:utsnamendk",
     ":libcppsharedso",
   ]
 }

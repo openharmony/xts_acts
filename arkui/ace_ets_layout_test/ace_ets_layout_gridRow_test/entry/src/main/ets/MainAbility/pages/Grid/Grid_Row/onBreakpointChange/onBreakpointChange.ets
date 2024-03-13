@@ -15,24 +15,45 @@
 @Entry
 @Component
 struct GridRow_onBreakpoint {
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State currentBp: string = 'unknown'
-  @State textBreakpoint: string = 'xs'
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+  @State textBreakpoint: string = 'xs';
 
   build() {
     Column() {
       Text(this.textBreakpoint).fontSize(9).fontColor(0xCCCCCC).key('GridRowText')
       GridRow({
-        columns: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6},
+        columns: {
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+          xl: 5,
+          xxl: 6
+        },
         gutter: {
-          x: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30},
-          y: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30}
+          x: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          },
+          y: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          }
         },
         breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index) => {
+        ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('GridRow_onBreakpoint_' + index)

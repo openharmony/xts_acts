@@ -12,34 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct Grid_Col_Offset_Default {
-  @State addSpan: number = 0
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State currentBp: string = 'unknown'
-  messageManager:MessageManager = new MessageManager()
+  @State addSpan: number = 0;
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+
   onPageShow() {
     console.info('Grid_Col_Offset_Default onPageShow');
   }
+
   build() {
     Column() {
       GridRow({
         columns: 6,
         gutter: { x: 10, y: 10 },
-        breakpoints: { value: ["50vp", "100vp", "150vp","200vp","300vp"],
+        breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index: number) => {
-          GridCol({span: 2}) {
+        ForEach(this.bgColors, (color: Color, index: number) => {
+          GridCol({ span: 2 }) {
 
           }.borderColor(color).borderWidth(2).key("Grid_Col_Offset_Default_0" + index).height(50)
         })
       }.width("100%").height("100%")
       .onBreakpointChange((breakpoint) => {
-        this.currentBp = breakpoint
+        this.currentBp = breakpoint;
       })
     }.width('300vp').height(500)
     .border({ color: '#880606', width: 2 })

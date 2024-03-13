@@ -15,24 +15,25 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_VerticalAlign() {
 
-  describe('Row_VerticalAlign', function () {
-    beforeEach(async function (done) {
+  describe('Row_VerticalAlign', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_VerticalAlign beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_VerticalAlign',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_VerticalAlign',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Row_VerticalAlign state success " + JSON.stringify(pages));
         if (!("Row_VerticalAlign" == pages.name)) {
           console.info("get Row_VerticalAlign state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await CommonFunc.sleep(2000);
           console.info("push Row_VerticalAlign page success " + JSON.stringify(result));
         }
@@ -43,28 +44,30 @@ export default function Row_VerticalAlign() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_VerticalAlign after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0900
-     * @tc.name      testRowAlignItemsVerticalAlignTop
-     * @tc.desc      Set the AlignItems property of the Row component to VerticalAlign.Top
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0900
+     * @tc.name testRowAlignItemsVerticalAlignTop
+     * @tc.desc Set the AlignItems property of the Row component to VerticalAlign.Top
      */
 
-    it('testRowAlignItemsVerticalAlignTop', 0, async function (done) {
+    it('testRowAlignItemsVerticalAlignTop', 0, async (done: Function) => {
       console.info('testRowAlignItemsVerticalAlignTop START');
-      globalThis.value.message.notify({ name: 'alignItems', value: VerticalAlign.Top });
+      globalThis.value.message.notify({
+        name: 'alignItems', value: VerticalAlign.Top
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_VerticalAlign_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -78,7 +81,7 @@ export default function Row_VerticalAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.alignItems).assertEqual("VerticalAlign.Top");
+      expect(JSON.parse(strJson).$attrs.alignItems).assertEqual("VerticalAlign.Top");
 
       expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
       expect(Math.abs(Text1.top - Row.top) <= 1).assertTrue();
@@ -93,22 +96,24 @@ export default function Row_VerticalAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1000
-     * @tc.name      testRowAlignItemsVerticalAlignBottom
-     * @tc.desc      Set the AlignItems property of the Row component to VerticalAlign.Bottom
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1000
+     * @tc.name testRowAlignItemsVerticalAlignBottom
+     * @tc.desc Set the AlignItems property of the Row component to VerticalAlign.Bottom
      */
 
-    it('testRowAlignItemsVerticalAlignBottom', 0, async function (done) {
+    it('testRowAlignItemsVerticalAlignBottom', 0, async (done: Function) => {
       console.info('testRowAlignItemsVerticalAlignBottom START');
-      globalThis.value.message.notify({ name: 'alignItems', value: VerticalAlign.Bottom });
+      globalThis.value.message.notify({
+        name: 'alignItems', value: VerticalAlign.Bottom
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_VerticalAlign_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_VerticalAlign_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
 
@@ -123,7 +128,7 @@ export default function Row_VerticalAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.alignItems).assertEqual("VerticalAlign.Bottom");
+      expect(JSON.parse(strJson).$attrs.alignItems).assertEqual("VerticalAlign.Bottom");
 
       expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
       expect(Math.abs(Text1.bottom - Row.bottom) <= 1).assertTrue();

@@ -15,12 +15,12 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function stateManagementGetSharedJsunit() {
-  describe('stateManagementGetSharedTest', function () {
-    beforeAll(async function (done) {
+  describe('stateManagementGetSharedTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/stateManagement',
@@ -38,10 +38,9 @@ export default function stateManagementGetSharedJsunit() {
       } catch (err) {
         console.error("push stateManagement page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("stateManagementGetShared after each called");
     });
@@ -51,18 +50,18 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementGetShared0001
      * @tc.desic         acestateManagementGetSharedEtsTest0001
      */
-    it('teststateManagementGetShared0001', 0, async function (done) {
+    it('teststateManagementGetShared0001', 0, async () => {
       console.info('stateManagementGetShared teststateManagementGetShared0001 START');
       await Utils.sleep(2000);
       try {
-        var EventOne = {
+        let EventOne: events_emitter.InnerEvent = {
           eventId: 60223,
           priority: events_emitter.EventPriority.LOW
         }
-        var callbackOne = (eventData) => {
+        let callbackOne = (eventData) => {
           console.info("teststateManagementGetShared_0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(false);
-          done();
+
         }
         console.info("GetShared_0001 click result is: " + JSON.stringify(sendEventByKey('GetSharedText', 10, "")));
         events_emitter.on(EventOne, callbackOne);
@@ -77,18 +76,18 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetAndLink0001
      * @tc.desic         acestateManagementsetAndLinkEtsTest0001
      */
-    it('teststateManagementsetAndLink0001', 0, async function (done) {
+    it('teststateManagementsetAndLink0001', 0, async () => {
       console.info('stateManagementsetAndLink teststateManagementsetAndLink0001 START');
       await Utils.sleep(1000);
       try {
-        var EventTwo = {
+        let EventTwo: events_emitter.InnerEvent = {
           eventId: 60224,
           priority: events_emitter.EventPriority.LOW
         }
-        var callbackTwo = (eventData) => {
+        let callbackTwo = (eventData) => {
           console.info("teststateManagementsetAndLink_0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual("callback2");
-          done();
+
         }
         console.info("setAndLink_0001 click result is: " + JSON.stringify(sendEventByKey('setAndLinkText', 10, "")));
         events_emitter.on(EventTwo, callbackTwo);
@@ -103,18 +102,18 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetOrCreate0001
      * @tc.desic         acestateManagementsetOrCreateEtsTest0001
      */
-    it('teststateManagementsetOrCreate0001', 0, async function (done) {
+    it('teststateManagementsetOrCreate0001', 0, async () => {
       console.info('stateManagementsetOrCreate teststateManagementsetOrCreate0001 START');
       await Utils.sleep(1000);
       try {
-        var EventThree = {
+        let EventThree: events_emitter.InnerEvent = {
           eventId: 60225,
           priority: events_emitter.EventPriority.LOW
         }
-        var callbackThree = (eventData) => {
+        let callbackThree = (eventData) => {
           console.info("teststateManagementsetOrCreate_0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual("callback3");
-          done();
+
         }
         console.info("setOrCreate_0001 click result is: " + JSON.stringify(sendEventByKey('setOrCreateText', 10, "")));
         events_emitter.on(EventThree, callbackThree);
@@ -130,18 +129,18 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         teststateManagementsetAndProp0001
      * @tc.desic         acestateManagementsetAndPropEtsTest0001
      */
-    it('teststateManagementsetAndProp0001', 0, async function (done) {
+    it('teststateManagementsetAndProp0001', 0, async () => {
       console.info('stateManagementsetAndProp teststateManagementsetAndProp0001 START');
       await Utils.sleep(1000);
       try {
-        var EventFour = {
+        let EventFour: events_emitter.InnerEvent = {
           eventId: 60226,
           priority: events_emitter.EventPriority.LOW
         }
-        var callbackFour = (eventData) => {
+        let callbackFour = (eventData) => {
           console.info("teststateManagementsetAndProp_0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual("callback4");
-          done();
+
         }
         console.info("setAndProp_0001 click result is: " + JSON.stringify(sendEventByKey('setAndPropText', 10, "")));
         events_emitter.on(EventFour, callbackFour);
@@ -156,17 +155,17 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_staticClear_0001
      * @tc.desc         delete the property
      */
-    it('test_staticClear_0001', 0, async function (done) {
+    it('test_staticClear_0001', 0, async () => {
       console.info('test_staticClear_0001 Register a customized font in the FontManagerSTART');
       await Utils.sleep(2000);
       try {
         let simple = AppStorage.staticClear();
         expect(simple).assertFalse();
-        done();
+
       } catch (err) {
         console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
         expect(true).assertTrue();
-        done();
+
       }
     });
 
@@ -175,7 +174,7 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_setAndLink_0001
      * @tc.desc         bind localStorage
     */
-    it('test_setAndLink_0001', 0, async function (done) {
+    it('test_setAndLink_0001', 0, async () => {
       console.info('test_setAndLink_0001 START');
       await Utils.sleep(2000);
       try {
@@ -183,11 +182,11 @@ export default function stateManagementGetSharedJsunit() {
         storage.setAndLink<string>('storageSimpleProp', '121');
         let size = storage.size()
         expect(size == 1).assertTrue();
-        done();
+
       } catch (err) {
         console.info("test_font_registerFont_0001  err : " + JSON.stringify(err));
         expect().assertFail();
-        done();
+
       }
     });
 
@@ -196,25 +195,21 @@ export default function stateManagementGetSharedJsunit() {
      * @tc.name         test_setAndProp_0002
      * @tc.desc         bind localStorage
      */
-    it('test_setAndProp_0002', 0, async function (done) {
+    it('test_setAndProp_0002', 0, async () => {
       console.info('test_setAndProp_0002 START');
       await Utils.sleep(2000);
       try {
         let storage = new LocalStorage()
-        storage.setAndProp<string>("setAndProp",'12');
+        storage.setAndProp<string>("setAndProp", '12');
         let size = storage.size();
         expect(size == 1).assertTrue();
-        done();
+
       } catch (err) {
         console.info("test_setAndProp_0002  err : " + JSON.stringify(err));
         expect().assertFail();
-        done();
+
       }
     });
-
-
-
-
 
 
   })

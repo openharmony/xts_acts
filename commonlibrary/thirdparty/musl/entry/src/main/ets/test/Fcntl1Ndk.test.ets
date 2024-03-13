@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import fcntl from 'libfcntl1ndk.so'
 
 export default function fcntl1NdkTest() {
   describe('MuslFcntl1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_TEE_0200
      * @tc.name       : testMuslFcntlTee002

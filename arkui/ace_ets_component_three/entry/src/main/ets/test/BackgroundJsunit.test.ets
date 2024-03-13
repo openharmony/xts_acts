@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach,  it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from './Utils.ets';
+import Utils from './Utils';
 
 export default function backgroundJsunit() {
-  describe('backgroundTest', function () {
-    beforeEach(async function (done) {
+  describe('backgroundTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("background beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/general-properties/background',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/general-properties/background',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function backgroundJsunit() {
         console.info("get background state success " + JSON.stringify(pages));
         if (!("background" == pages.name)) {
           console.info("get background state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push background page success " + JSON.stringify(result));
         }
@@ -41,33 +40,33 @@ export default function backgroundJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("background after each called");
     });
 
-    it('testBackground_0100', 0, async function (done) {
+    it('testBackground_0100', 0, async (done: Function) => {
       console.info('testBackground_0100 START');
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
       console.info("testBackground_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testBackground_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontColor).assertEqual("#FFFF0000");
+
+      console.info("testBackground_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFFF0000");
       console.info('testBackground_0100 END');
       done();
     });
 
-    it('testBackground_0200', 0, async function (done) {
+    it('testBackground_0200', 0, async (done: Function) => {
       console.info('testBackground_0200 START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color": '0xFF0000'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 2,
           priority: events_emitter.EventPriority.LOW
         }
@@ -79,20 +78,18 @@ export default function backgroundJsunit() {
       await Utils.sleep(3000);
       let strJson = getInspectorByKey('backgroundColor');
       console.info("testBackground_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testBackground_0200 rowDirection: " + obj.$attrs.direction);
-      expect(obj.$attrs.backgroundColor).assertEqual("#FFEEEE00");
+      console.info("testBackground_0200 rowDirection: " + JSON.parse(strJson).$attrs.direction);
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual("#FFEEEE00");
       done();
     });
 
-    it('testBackground_0300', 0, async function (done) {
+    it('testBackground_0300', 0, async (done: Function) => {
       console.info('testBackground_0300 START');
       await Utils.sleep(4000);
       let strJson = getInspectorByKey('backgroundColor');
       console.info("testBackground_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testBackground_0300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.borderWidth).assertEqual("1.00vp");
+      console.info("testBackground_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.borderWidth).assertEqual("1.00vp");
       console.info('testBackground_0300 END');
       done();
     });

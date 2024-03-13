@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import auxv from 'libauxv1ndk.so'
 
 export default function auxv1NdkTest() {
   describe('MuslAuxv1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_AUXV_GETAUXVAL_0100
      * @tc.name       : testMuslAuxvGetauxval001

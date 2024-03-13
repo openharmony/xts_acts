@@ -15,17 +15,18 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_Padding() {
 
-  describe('Row_Padding', function () {
-    beforeEach(async function (done) {
+  describe('Row_Padding', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_Padding beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_Padding',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_Padding',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -33,7 +34,7 @@ export default function Row_Padding() {
         console.info("get Row_Padding state success " + JSON.stringify(pages));
         if (!("Row_Padding" == pages.name)) {
           console.info("get Row_Padding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Row_Padding page success " + JSON.stringify(result));
         }
@@ -45,25 +46,27 @@ export default function Row_Padding() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_Padding after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0400
-     * @tc.name      testRowPaddingSatisfy
-     * @tc.desc      Set padding for the row component. The width of the row component meets the requirements
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0400
+     * @tc.name testRowPaddingSatisfy
+     * @tc.desc Set padding for the row component. The width of the row component meets the requirements
      */
 
-    it('testRowPaddingSatisfy', 0, async function (done) {
+    it('testRowPaddingSatisfy', 0, async (done: Function) => {
       console.info('testRowPaddingSatisfy START');
-      globalThis.value.message.notify({ name: 'padding', value: 15 });
+      globalThis.value.message.notify({
+        name: 'padding', value: 15
+      });
       await CommonFunc.sleep(3000);
-      let Row = CommonFunc.getComponentRect('Row_Padding_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Padding_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Padding_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Padding_Text3');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Padding_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Padding_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Padding_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Padding_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
 
@@ -78,7 +81,8 @@ export default function Row_Padding() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(Math.round((Text1.left - Row.left) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Row.left) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1)
+        .assertTrue();
 
       expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();
       expect(Math.abs(Text2.top - Row.top - (Row.bottom - Text2.bottom)) <= 1).assertTrue();
@@ -87,26 +91,29 @@ export default function Row_Padding() {
       expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(Math.round((Row.right - Text3.right) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.right - Text3.right) * 10) / 10)) - (Math.round(vp2px(15)))) <= 1)
+        .assertTrue();
       console.info('testRowPaddingSatisfy END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0500
-     * @tc.name      testRowPaddingNOSatisfy
-     * @tc.desc      Padding is configured for the row component. The width of the row component does not meet the 
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0500
+     * @tc.name testRowPaddingNOSatisfy
+     * @tc.desc Padding is configured for the row component. The width of the row component does not meet the
      *               requirements
      */
 
-    it('testRowPaddingNOSatisfy', 0, async function (done) {
+    it('testRowPaddingNOSatisfy', 0, async (done: Function) => {
       console.info('testRowPaddingNOSatisfy START');
-      globalThis.value.message.notify({ name: 'padding', value: 40 });
+      globalThis.value.message.notify({
+        name: 'padding', value: 40
+      });
       await CommonFunc.sleep(3000)
-      let Row = CommonFunc.getComponentRect('Row_Padding_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Padding_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Padding_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Padding_Text3');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Padding_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Padding_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Padding_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Padding_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));

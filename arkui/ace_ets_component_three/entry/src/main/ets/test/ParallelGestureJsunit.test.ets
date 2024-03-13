@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function parallelGestureJsunit() {
-  describe('parallelGestureTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/parallelGesture',
+  describe('parallelGestureTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/parallelGesture',
       }
       try {
         router.clear();
@@ -31,36 +31,36 @@ export default function parallelGestureJsunit() {
         console.info("get parallelGesture state success " + JSON.stringify(pages));
         if (!("parallelGesture" == pages.name)) {
           console.info("get parallelGesture state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push parallelGesture page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push parallelGesture page error " + JSON.stringify(result));
+        console.error("push parallelGesture page error " + JSON.stringify(err));
       }
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("parallelGesture after each called");
     });
 
-    it('parallelGestureTest_0100', 0, async function (done) {
+    it('parallelGestureTest_0100', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      let rect = await Utils.getComponentRect('tapGesture')
+      let rect = Utils.getComponentRect('tapGesture')
       console.info("parallelGestureTest_0100 rectInfo is " + JSON.stringify(rect));
-      let x_value = rect.left + (rect.right - rect.left) / 2;
-      let y_value = rect.top + (rect.bottom - rect.top) / 2;
+      let x_value: number = rect.left + (rect.right - rect.left) / 2;
+      let y_value: number = rect.top + (rect.bottom - rect.top) / 2;
       console.info("parallelGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
         id: 11, x: x_value, y: y_value, type: TouchType.DOWN,
       }
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("parallelGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.value).assertEqual('gesture onAction')
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 150,
         priority: events_emitter.EventPriority.LOW
       }

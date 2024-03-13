@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import TextfieldOtherTest from './TextfieldOther.test'
+import TextfieldOtherTest from './TextfieldOther.test';
 
 export default function testsuite() {
-  TextfieldOtherTest()
+  TextfieldOtherTest();
 }

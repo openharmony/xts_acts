@@ -193,9 +193,8 @@ static napi_value OpenByHandleAt(napi_env env, napi_callback_info info)
 static napi_value Openat(napi_env env, napi_callback_info info)
 {
     int fd;
-    char *relativePath = nullptr;
     int dirFd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
-    fd = openat(dirFd, relativePath, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
+    fd = openat(dirFd, "/data/storage/el2/base/files/test1.txt", O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
     int ret = FAIL;
     if (fd != FAIL) {
         ret = SUCCESS;
@@ -210,9 +209,8 @@ static napi_value Openat(napi_env env, napi_callback_info info)
 static napi_value Openat64(napi_env env, napi_callback_info info)
 {
     int fd;
-    char *relativePath = nullptr;
     int dirFd = open("/data/storage/el2/base/files/test.txt", O_CREAT, PARAM_0777);
-    fd = openat64(dirFd, relativePath, O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
+    fd = openat64(dirFd, "/data/storage/el2/base/files/test2.txt", O_CREAT | O_RDWR | O_TRUNC, FILEFLAG);
     int ret = FAIL;
     if (fd != FAIL) {
         ret = SUCCESS;

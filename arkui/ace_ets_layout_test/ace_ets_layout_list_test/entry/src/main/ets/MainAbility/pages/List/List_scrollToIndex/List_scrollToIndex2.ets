@@ -15,13 +15,13 @@
 
 @Entry
 @Component
-struct List_scrollToIndex2{
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private scroller: Scroller = new Scroller()
+struct List_scrollToIndex2 {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private scroller: Scroller = new Scroller();
 
-  build(){
-    Column({space:20}) {
-      List({ space: 10, initialIndex: 0 , scroller: this.scroller }) {
+  build() {
+    Column({ space: 20 }) {
+      List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
         ForEach(this.arr, (item: number, index?: number) => {
           ListItem() {
             Text('ListItem' + item)
@@ -30,7 +30,7 @@ struct List_scrollToIndex2{
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
-          }.id('List_scrollToIndex2_ListItem'+ item)
+          }.id('List_scrollToIndex2_ListItem' + item)
         }, (item: string) => item)
       }
       .id('List_scrollToIndex2_List')
@@ -40,7 +40,7 @@ struct List_scrollToIndex2{
       .edgeEffect(EdgeEffect.None)
       .scrollBar(BarState.On)
 
-      Column({space: 5}) {
+      Column({ space: 5 }) {
         Row({ space: 5 }) {
           Button('scrollToIndex 20')
             .fontSize(14)
@@ -74,67 +74,67 @@ struct List_scrollToIndex2{
         }
       }
 
-      Column({space:10}){
-        Column(){
+      Column({ space: 10 }) {
+        Column() {
           Text('ScrollAlign.START')
-          Row({space:5}){
+          Row({ space: 5 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_START5')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(5,false,ScrollAlign.START)
+              .onClick(() => {
+                this.scroller.scrollToIndex(5, false, ScrollAlign.START)
               })
           }
         }
 
-        Column(){
+        Column() {
           Text('ScrollAlign.CENTER')
-          Row({space:5}){
+          Row({ space: 5 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_CENTER5')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(5,false,ScrollAlign.CENTER)
+              .onClick(() => {
+                this.scroller.scrollToIndex(5, false, ScrollAlign.CENTER)
               })
           }
         }
 
-        Column(){
+        Column() {
           Text('ScrollAlign.END')
-          Row({space:5}){
+          Row({ space: 5 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_END5')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(5,false,ScrollAlign.END)
+              .onClick(() => {
+                this.scroller.scrollToIndex(5, false, ScrollAlign.END)
               })
           }
         }
 
-        Column({space:5}){
+        Column({ space: 5 }) {
           Text('ScrollAlign.AUTO')
-          Row({space:5}){
+          Row({ space: 5 }) {
             Button('scrollToIndex 1')
               .id('List_scrollToIndex2_AUTO1')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(1,false,ScrollAlign.AUTO)
+              .onClick(() => {
+                this.scroller.scrollToIndex(1, false, ScrollAlign.AUTO)
               })
 
             Button('scrollToIndex 4')
               .id('List_scrollToIndex2_AUTO4')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(4,false,ScrollAlign.AUTO)
+              .onClick(() => {
+                this.scroller.scrollToIndex(4, false, ScrollAlign.AUTO)
               })
           }
 
-          Row({space:5}){
+          Row({ space: 5 }) {
             Button('scrollToIndex 5')
               .id('List_scrollToIndex2_AUTO5')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(5,false,ScrollAlign.AUTO)
+              .onClick(() => {
+                this.scroller.scrollToIndex(5, false, ScrollAlign.AUTO)
               })
           }
         }

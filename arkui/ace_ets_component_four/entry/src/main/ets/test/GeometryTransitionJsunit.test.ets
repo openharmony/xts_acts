@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function geometryTransitionJsunit() {
-  describe('geometryTransitionTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/geometryTransition',
+  describe('geometryTransitionTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/geometryTransition',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function geometryTransitionJsunit() {
         console.info("get geometryTransition state success " + JSON.stringify(pages));
         if (!("geometryTransition" == pages.name)) {
           console.info("get geometryTransition state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push geometryTransition page success " + JSON.stringify(result));
         }
@@ -40,19 +39,19 @@ export default function geometryTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("geometryTransition after each called");
     });
 
-    it('geometryTransitionTest_0100', 0, async function (done) {
+    it('geometryTransitionTest_0100', 0, async (done: Function) => {
       console.info('geometryTransitionTest_0100 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 104,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("geometryTransitionTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.btn1).assertEqual(false);
       }
@@ -61,7 +60,7 @@ export default function geometryTransitionJsunit() {
       } catch (err) {
         console.info("geometryTransitionTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("geometryTransitionTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("geometryTransitionTest_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       console.info('geometryTransitionTest_0100 END');
       done();

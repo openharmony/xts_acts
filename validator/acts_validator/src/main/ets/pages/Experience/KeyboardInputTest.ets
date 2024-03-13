@@ -201,7 +201,6 @@ struct CustomContainerUser {
         content: this.specificNoParam,
         name: $name,
         Vue: $Vue,
-        time1: $time1,
         StartEnable: $StartEnable,
         time: $time,
         time1: $time1,

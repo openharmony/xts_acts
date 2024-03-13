@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Columns_Default() {
-  describe('Grid_Row_Columns_Default', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Columns_Default', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Columns_Default beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Columns/Grid_Row_Columns_Default",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Columns_Default() {
         console.info("get Grid_Row_Columns_Default state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Columns_Default" == pages.name)) {
           console.info("get Grid_Row_Columns_Default pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Columns_Default page result:" + JSON.stringify(result));
         }
@@ -40,37 +41,36 @@ export default function Grid_Row_Columns_Default() {
       console.info("Grid_Row_Columns_Default beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Columns_Default after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWCOLUMNS_0100
-     * @tc.name      testGutterColumns
-     * @tc.desc      Set the Columns of GridRow to 12
+     * @tc.number SUB_ACE_GRIDROWCOLUMNS_0100
+     * @tc.name testGutterColumns
+     * @tc.desc Set the Columns of GridRow to 12
      */
-    it('SUB_ACE_GridRowColumns_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowColumns_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowColumns_0100 START');
       await CommonFunc.sleep(2000)
 
-      let Columns_1 = CommonFunc.getComponentRect('GridRow_Columns_001');
-      let firstColumns = CommonFunc.getComponentRect('GridRow_Columns_0');
-      let secondColumns = CommonFunc.getComponentRect('GridRow_Columns_1');
-      let thirdColumns = CommonFunc.getComponentRect('GridRow_Columns_2');
-      let fourthColumns = CommonFunc.getComponentRect('GridRow_Columns_3');
-      let fifthColumns = CommonFunc.getComponentRect('GridRow_Columns_4');
-      let sixthColumns = CommonFunc.getComponentRect('GridRow_Columns_5');
-      let seventhColumns = CommonFunc.getComponentRect('GridRow_Columns_6');
-      let eighthColumns = CommonFunc.getComponentRect('GridRow_Columns_7');
-      let ninthColumns = CommonFunc.getComponentRect('GridRow_Columns_8');
-      let tenthColumns = CommonFunc.getComponentRect('GridRow_Columns_9');
-      let eleventhColumns = CommonFunc.getComponentRect('GridRow_Columns_10');
-      let twelfthColumns = CommonFunc.getComponentRect('GridRow_Columns_11');
+      let Columns_1: RectValue = CommonFunc.getComponentRect('GridRow_Columns_001');
+      let firstColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_0');
+      let secondColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_1');
+      let thirdColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_2');
+      let fourthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_3');
+      let fifthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_4');
+      let sixthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_5');
+      let seventhColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_6');
+      let eighthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_7');
+      let ninthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_8');
+      let tenthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_9');
+      let eleventhColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_10');
+      let twelfthColumns: RectValue = CommonFunc.getComponentRect('GridRow_Columns_11');
 
       let gridRowColumnsJson = getInspectorByKey('GridRow_Columns_001');
-      let gridRowColumns = JSON.parse(gridRowColumnsJson);
-      expect(gridRowColumns.$type).assertEqual('GridRow');
+      expect(JSON.parse(gridRowColumnsJson).$type).assertEqual('GridRow');
 
       expect(Math.abs(firstColumns.top - Columns_1.top) <= 1).assertTrue();
       expect(Math.abs(secondColumns.top - Columns_1.top) <= 1).assertTrue();

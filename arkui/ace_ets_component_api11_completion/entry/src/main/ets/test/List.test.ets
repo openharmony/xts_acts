@@ -146,8 +146,88 @@ import Navigation2 from './relativeApi11/Navigation2.test'
 import Navigation3 from './relativeApi11/Navigation3.test'
 import Navigation4 from './relativeApi11/Navigation4.test'
 import RelativeContainer from './relativeApi11/RelativeContainer.test'
+import SwiperLoop from './Swiper/SwiperLoop.test'
+import SwiperVisibility from './Swiper/SwiperVisibility.test'
+import swiper1 from './Swiper/swiper1.test.ets'
+import swiper2 from './Swiper/swiper2.test.ets'
+
+import swiperWidthTest from './swiper2/swiperTwidth.test.ets'
+import swiperGroupTest from './swiper2/swiperGroup.test.ets'
+
+import swiperPageTest from './swiper2/swiperPage.test.ets'
+import swiperNextPreTest from './swiper2/swiperNextPrevious.test.ets'
+import swiperDelAddTest from './swiper2/swiperDeleteAdd.test.ets'
+
+import swiperEdgeTest from './swiper2/swiperEdge.test.ets'
+import swipeleftScrollTest from './swiper2/swiperleftScroll.test.ets'
+import swiperRightScrollTest from './swiper2/swiperightscroll.test.ets'
+
+
+import RelativeGuideLine from './RelativeContainer/RelativeGuideLine.test.ets'
+import RelativeGuideLine2 from './RelativeContainer/RelativeGuideLine2.test.ets'
+import RelativeGuideLine3 from './RelativeContainer/RelativeGuideLine3.test.ets'
+import RelativeGuideLine4 from './RelativeContainer/RelativeGuideLine4.test.ets'
+import RelativeGuideLine5 from './RelativeContainer/RelativeGuideLine5.test.ets'
+import RelativeGuideLine6 from './RelativeContainer/RelativeGuideLine6.test.ets'
+import RelativeGuideLine7 from './RelativeContainer/RelativeGuideLine7.test.ets'
+import RelativeChain from './RelativeContainer/RelativeChain.test.ets'
+import RelativeChain2 from './RelativeContainer/RelativeChain2.test.ets'
+import RelativeChain3 from './RelativeContainer/RelativeChain3.test.ets'
+import RelativeChain4 from './RelativeContainer/RelativeChain4.test.ets'
+import RelativeChain5 from './RelativeContainer/RelativeChain5.test.ets'
+import RelativeChain6 from './RelativeContainer/RelativeChain6.test.ets'
+import RelativeChain7 from './RelativeContainer/RelativeChain7.test.ets'
+import RelativeChain8 from './RelativeContainer/RelativeChain8.test.ets'
+import RelativeChain9 from './RelativeContainer/RelativeChain9.test.ets'
+import RelativeChain10 from './RelativeContainer/RelativeChain10.test.ets'
+import RelativeChain11 from './RelativeContainer/RelativeChain11.test.ets'
+import RelativeChain12 from './RelativeContainer/RelativeChain12.test.ets'
+import RelativeBarrier from './RelativeContainer/RelativeBarrier.test.ets'
+import RelativeBarrier2 from './RelativeContainer/RelativeBarrier2.test.ets'
+import RelativeBarrier3 from './RelativeContainer/RelativeBarrier3.test.ets'
+import RelativeBarrier4 from './RelativeContainer/RelativeBarrier4.test.ets'
+import RelativeBarrier5 from './RelativeContainer/RelativeBarrier5.test.ets'
+import RelativeBarrier6 from './RelativeContainer/RelativeBarrier6.test.ets'
+import RelativeBarrier7 from './RelativeContainer/RelativeBarrier7.test.ets'
+import RelativeBarrier8 from './RelativeContainer/RelativeBarrier8.test.ets'
+import RelativeBorder from './RelativeContainer/RelativeBorder.test.ets'
+import RelativePadding from './RelativeContainer/RelativePadding.test.ets'
 
 export default function testsuite() {
+
+  SwiperLoop()
+  SwiperVisibility()
+  RelativeBarrier()
+  RelativeBarrier2()
+  RelativeBarrier3()
+  RelativeBarrier4()
+  RelativeBarrier5()
+  RelativeBarrier6()
+  RelativeBarrier7()
+  RelativeBarrier8()
+  RelativePadding()
+  RelativeBorder()
+  RelativeGuideLine()
+  RelativeGuideLine2()
+  RelativeGuideLine3()
+  RelativeGuideLine4()
+  RelativeGuideLine5()
+  RelativeGuideLine6()
+  RelativeGuideLine7()
+  RelativeChain()
+  RelativeChain2()
+  RelativeChain3()
+  RelativeChain4()
+  RelativeChain5()
+  RelativeChain6()
+  RelativeChain7()
+  RelativeChain8()
+  RelativeChain9()
+  RelativeChain10()
+  RelativeChain11()
+  RelativeChain12()
+  swiper1()
+  swiper2()
   Navigation1()
   Navigation2()
   Navigation3()
@@ -279,4 +359,14 @@ export default function testsuite() {
   NavPathStackApi2()
   NavPathStackApi3()
   ObserverApi()
+  swiperWidthTest()
+  swiperPageTest()
+  swiperGroupTest()
+  swiperNextPreTest()
+  swiperDelAddTest()
+  swiperEdgeTest()
+  swipeleftScrollTest()
+  swiperRightScrollTest()
+
+  
 }

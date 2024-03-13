@@ -163,7 +163,6 @@ import navigationNavbar01 from './navigationNavbar01.test.ets';
 import GridLayoutDirection from './GridLayoutDirection.test.ets';
 import RichEditor01 from './RichEditor01.test.ets';
 import SwiperMinSize from './SwiperMinSize.test.ets';
-
 import link1 from './Zhuang/link1.test.ets'
 import link2 from './Zhuang/link2.test.ets'
 import ObjectLink1 from './Zhuang/ObjectLink1.test.ets'
@@ -205,8 +204,6 @@ import HoverJsunit11 from './HoverTest/HoverJsunit11.test.ets'
 import HoverJsunit17 from './HoverTest/HoverJsunit17.test.ets'
 import HoverJsunit23 from './HoverTest/HoverJsunit23.test.ets'
 import HoverJsunit25 from './HoverTest/HoverJsunit25.test.ets'
-
-
 import comSizeAbilityTest_01 from './comSizeAbility/comSizeAbilityTest_01.test';
 import comSizeAbilityTest_02 from './comSizeAbility/comSizeAbilityTest_02.test';
 import comSizeAbilityTest_03 from './comSizeAbility/comSizeAbilityTest_03.test';
@@ -312,8 +309,26 @@ import ChipAction from './Chip/ChipAction.test';
 import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
+import pushPageInit from './supplementRouterTest/pushPageInit.test.ets'
+import NavRouter_onStateChange1 from './NavRouter/NavRouter_onStateChange1.test'
+import NavRouter_onStateChange2 from './NavRouter/NavRouter_onStateChange2.test'
+import NavDestination_onBackPressed from './NavRouter/NavDestination_onBackPressed.test'
+import router_back1 from './router10/router_back1.test'
+import router_push1 from './router10/router_push1.test'
+import routerReplaceJsunit from './routerReplaceJsunit.test.ets';
+import Router1 from './Router/Router1.test'
+import Router2 from './Router/Router2.test'
+import Router3 from './Router/Router3.test'
+import Router4 from './Router/Router4.test'
+import aboutToAppearRouterTest from './back_router/init_page.test';
+import aboutToAppearRouterTest2 from './back_router/init_page2.test';
+import goWithParams from './back_router/A_page.test'
+import RouterPushUrlJsunit from './State/RouterPushUrlJsunit.test';
+import RouterWithParamJsunit from './State/RouterWithParamJsunit.test';
+import RouterUrlErrorJsunit from './State/RouterUrlErrorJsunit.test';
+
 export default function testsuite() {
- comSizeAbilityTest_01();
+  comSizeAbilityTest_01();
   comSizeAbilityTest_02();
   comSizeAbilityTest_03();
   comSizeAbilityTest_04();
@@ -609,4 +624,21 @@ export default function testsuite() {
   ScrollToIndexForGridJsunit01();
   ScrollToIndexForGridJsunit02();
   ScrollToIndexForGridJsunit03();
+  NavRouter_onStateChange1();
+  NavRouter_onStateChange2();
+  NavDestination_onBackPressed();
+  router_back1();
+  router_push1();
+  routerReplaceJsunit();
+  pushPageInit();
+ Router1();
+ Router2();
+ Router3();
+ Router4();
+ aboutToAppearRouterTest();
+ aboutToAppearRouterTest2();
+ goWithParams();
+  RouterPushUrlJsunit();
+  RouterWithParamJsunit();
+  RouterUrlErrorJsunit();
 }

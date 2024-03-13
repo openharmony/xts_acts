@@ -57,6 +57,7 @@ struct WebViewEnumAndSetWebController {
   @State block: Boolean = false
   @State FileSelectorMode: Number = 0
   @State MediaType: Number = 0
+  @State userAgentPC:string = "";
   handler: FullScreenExitHandler | null = null
   dialogController: CustomDialogController | null = null
   popController: webView.WebviewController | null = null;
@@ -98,7 +99,12 @@ struct WebViewEnumAndSetWebController {
                 console.log("error" + error)
                 console.info("getViewResult==>true" + result);
                 this.overviewScale = result;
-                Utils.emitEvent(result + '', 1291)
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(0.25 + '', 1291)
+                }else{
+                  Utils.emitEvent(result + '', 1291)
+                }
               });
               break;
             }

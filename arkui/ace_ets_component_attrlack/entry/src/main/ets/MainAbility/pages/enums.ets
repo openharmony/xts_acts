@@ -20,29 +20,24 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct EnumsCancel {
-
   @State widthSize: number = 200
   @State heightSize: number = 100
   @State flag: boolean = true
-
   @State state: AnimationStatus = AnimationStatus.Initial
   @State reverse: boolean = false
   @State iterations: number = 1
-
   @State value: string = ''
   @State text: string = ''
   @State eventType: string = ''
-
   @State mouseText: string = 'MouseText'
+  @State fit: RelateType = RelateType.FIT;
+  @State fill: RelateType = RelateType.FILL;
+  @State mainonly: TitleHeight = TitleHeight.MainOnly;
+  @State MainWithSub: TitleHeight = TitleHeight.MainWithSub;
+  @State Block: HitTestMode = HitTestMode.Block;
 
-
-  @State fit:RelateType = RelateType.FIT;
-  @State fill:RelateType = RelateType.FILL;
-  @State mainonly:TitleHeight = TitleHeight.MainOnly;
-  @State MainWithSub:TitleHeight = TitleHeight.MainWithSub;
-  @State Block:HitTestMode  = HitTestMode.Block;
-
-  @Styles pressedStyles() {
+  @Styles
+  pressedStyles() {
     .backgroundColor('red')
     .opacity(1)
   }
@@ -51,13 +46,15 @@ struct EnumsCancel {
     Log.showInfo(TAG, `aboutToAppear EnumsCancel start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear EnumsCancel end`)
   }
 
   @State responseTypeClick: ResponseType = ResponseType.RightClick;
   @State responseTypePress: ResponseType = ResponseType.LongPress;
-  @Builder ContextMenuBuilder() {
+
+  @Builder
+  ContextMenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('text3')
         .fontSize(20)
@@ -67,6 +64,7 @@ struct EnumsCancel {
       Divider().height(10)
     }
   }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
@@ -567,8 +565,7 @@ struct EnumsCancel {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("CrossDeviceText")
-//        .copyOption(CopyOptions.CrossDevice)
+        .key("CrossDeviceText")//        .copyOption(CopyOptions.CrossDevice)
         .visibility(Visibility.None)
 
       Button('Touch').backgroundColor(0x2788D9).height(40).width(80)
@@ -586,9 +583,9 @@ struct EnumsCancel {
             this.eventType = 'Cancel'
           }
           console.info(this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
-          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPos:('
-          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
-          + event.target.area.width + '\nheight:' + event.target.area.height)
+            + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPos:('
+            + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
+            + event.target.area.width + '\nheight:' + event.target.area.height)
         })
       Text(this.text)
 
@@ -596,13 +593,13 @@ struct EnumsCancel {
         .onMouse((event: MouseEvent) => {
           if (MouseAction.Press || MouseButton.Middle) {
             console.log(this.mouseText = 'onMouse:\nButton = ' + event.button +
-            '\nAction = ' + event.action + '\nlocalXY=(' + event.x + ',' + event.y + ')' +
-            '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
+              '\nAction = ' + event.action + '\nlocalXY=(' + event.x + ',' + event.y + ')' +
+              '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
           }
           else if (MouseAction.Press && MouseButton.Forward) {
             console.log(this.mouseText = 'onMouse:\nButton = ' + event.button +
-            '\nAction = ' + event.action + '\nlocalXY=(' + event.x + ',' + event.y + ')' +
-            '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
+              '\nAction = ' + event.action + '\nlocalXY=(' + event.x + ',' + event.y + ')' +
+              '\nscreenXY=(' + event.screenX + ',' + event.screenY + ')')
           }
           else if (MouseAction.Press) {
             console.info("pressed")
@@ -623,7 +620,9 @@ struct EnumsCancel {
         .textOverflow({ overflow: TextOverflow.None })
         .key("FillModeText")
         .visibility(Visibility.None)
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

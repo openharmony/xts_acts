@@ -26,27 +26,30 @@
 #define NO_ERR 0
 #define SUCCESS 1
 #define FAIL (-1)
+#define PARAM_100 100
+#define PARAM_0 0
 
 static napi_value Iconv(napi_env env, napi_callback_info info)
 {
-    int ret;
-    size_t inLen = sizeof("hello,world!");
-    size_t outLen = sizeof("hello,world!");
-    char *outbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
+    iconv_t cd;
+    char buf[PARAM_100];
     char *inbuf = static_cast<char *>(malloc(sizeof("hello,world!")));
     memcpy(inbuf, "hello,world!", sizeof("hello,world!"));
-    iconv_t there = iconv_open("GBK", "UTF-8");
-    errno = NO_ERR;
-    ret = iconv(there, &inbuf, &inLen, &outbuf, &outLen);
-    iconv_close(there);
-    free(outbuf);
-    free(inbuf);
+    char *outbuf = buf;
+    size_t inlen = strlen(inbuf);
+    size_t outlen;
+    size_t r;
+    const char *bad = "bad-codeset";
+    cd = iconv_open(bad, bad);
+    cd = iconv_open("UTF-8", "UTF-8");
+    errno = PARAM_0;
+    outlen = PARAM_0;
+    r = iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
+    outlen = sizeof buf;
+    r = iconv(cd, &inbuf, &inlen, &outbuf, &outlen);
     napi_value result = nullptr;
-    if (ret == NO_ERR) {
-        napi_create_int32(env, NO_ERR, &result);
-    } else {
-        napi_create_int32(env, FAIL, &result);
-    }
+    iconv_close(cd);
+    napi_create_int32(env, r, &result);
     return result;
 }
 

@@ -16,89 +16,93 @@
 @Entry
 @Component
 struct hover {
- @State message: string = 'Hello World'
-   build() {
-     Column({ space: 5 }) {
-       Flex() {
-         Button("button一")
-           .width(200)
-           .height(100)
-           .backgroundColor(0xAFEEF)
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             console.log('button 一' + isHover + '')
-           })
-         Button("button二")
-           .width(100)
-           .height(50)
-           .backgroundColor(0xAFEE)
-           .margin({ top: 25, left: -150 })
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             event.stopPropagation()
-             console.log('button 二' + isHover + '')
-           }).key("ArkUX_Hover_stoppropagation_0100")
-       }
-       .padding(10)
+  @State message: string = 'Hello World';
 
-       Flex() {
-         Button("button一")
-           .width(100)
-           .height(50)
-           .backgroundColor(0xAFEEF)
-           .margin({ top: 25, left: 40 })
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             console.log('button 一' + isHover + '')
-           })
-         Button("button二")
-           .width(200)
-           .height(100)
-           .backgroundColor(0xAFEE)
-           .margin({ top: 20, left: -140 })
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             event.stopPropagation()
-             console.log('button 二' + isHover + '')
-           })
-       }
-       .padding(10)
-       Flex() {
-         Button("button一")
-           .width(200)
-           .height(100)
-           .backgroundColor(0xAFEEF)
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             console.log('button 一' + isHover + '')
-           })
-         Button("button二")
-           .width(100)
-           .height(50)
-           .backgroundColor(0xAFEE)
-           .margin({ top: 25, left: -100 })
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             event.stopPropagation()
-             console.log('button 二' + isHover + '')
-           })
-       }
-       .padding(10)
-       Flex() {
-         Button("button一")
-           .width(200)
-           .height(100)
-           .backgroundColor(0xAFEEF)
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             console.log('button 一' + isHover + '')
-           })
-         Button("button二")
-           .width(100)
-           .height(50)
-           .backgroundColor(0xAFEE)
-           .margin({ top: 20, left: -80 })
-           .onHover((isHover: boolean, event: HoverEvent) => {
-             event.stopPropagation()
-             console.log('button 二' + isHover + '')
-           })
-       }
-       .padding(10)
-     }
-     .width('100%')
-     .margin({ top: 10 })
-   }
- }
+  build() {
+    Column({ space: 5 }) {
+      Flex() {
+        Button("button一")
+          .width(200)
+          .height(100)
+          .backgroundColor(0xAFEEF)
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            console.log('button 一' + isHover + '')
+          })
+        Button("button二")
+          .width(100)
+          .height(50)
+          .backgroundColor(0xAFEE)
+          .margin({ top: 25, left: -150 })
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            event.stopPropagation()
+            console.log('button 二' + isHover + '')
+          })
+          .key("ArkUX_Hover_stoppropagation_0100")
+      }
+      .padding(10)
+
+      Flex() {
+        Button("button一")
+          .width(100)
+          .height(50)
+          .backgroundColor(0xAFEEF)
+          .margin({ top: 25, left: 40 })
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            console.log('button 一' + isHover + '')
+          })
+        Button("button二")
+          .width(200)
+          .height(100)
+          .backgroundColor(0xAFEE)
+          .margin({ top: 20, left: -140 })
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            event.stopPropagation()
+            console.log('button 二' + isHover + '')
+          })
+      }
+      .padding(10)
+
+      Flex() {
+        Button("button一")
+          .width(200)
+          .height(100)
+          .backgroundColor(0xAFEEF)
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            console.log('button 一' + isHover + '')
+          })
+        Button("button二")
+          .width(100)
+          .height(50)
+          .backgroundColor(0xAFEE)
+          .margin({ top: 25, left: -100 })
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            event.stopPropagation()
+            console.log('button 二' + isHover + '')
+          })
+      }
+      .padding(10)
+
+      Flex() {
+        Button("button一")
+          .width(200)
+          .height(100)
+          .backgroundColor(0xAFEEF)
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            console.log('button 一' + isHover + '')
+          })
+        Button("button二")
+          .width(100)
+          .height(50)
+          .backgroundColor(0xAFEE)
+          .margin({ top: 20, left: -80 })
+          .onHover((isHover: boolean, event: HoverEvent) => {
+            event.stopPropagation()
+            console.log('button 二' + isHover + '')
+          })
+      }
+      .padding(10)
+    }
+    .width('100%')
+    .margin({ top: 10 })
+  }
+}

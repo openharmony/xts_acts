@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Huawei Device Co., Ltd.
+# Copyright (C) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -14,22 +14,28 @@
 group("arkui") {
   testonly = true
   deps = [
+    "ace_ets_arkts_api:ActsAceEtsArkTSApiTest",
     "ace_ets_component:ActsAceEtsComponentTest",
     "ace_ets_component_ArkUI_test:ActsAceAPITest",
     "ace_ets_component_api:ActsAceComponentApi03Test",
     "ace_ets_component_api11_completion:ActsAceEtsComponentApi11CompletionTest",
+    "ace_ets_component_api12:ActsAceEtsComponentApi12Test",
     "ace_ets_component_api_five:ActsAceComponentApi06Test",
     "ace_ets_component_api_four:ActsAceComponentApi05Test",
     "ace_ets_component_api_three:ActsAceComponentApi04Test",
     "ace_ets_component_api_two:ActsAceComponentApi02Test",
     "ace_ets_component_apilack:ActsAceEtsApiLackTest",
     "ace_ets_component_attrlack:ActsAceEtsAttrLackTest",
+    "ace_ets_component_basic:ActsAceEtsComponentBasicTest",
     "ace_ets_component_common_attrss:componentAttrssTest",
     "ace_ets_component_completion:componentCompletionTest",
+    "ace_ets_component_container:ActsAceEtsComponentContainerTest",
+    "ace_ets_component_dialog:ActsAceEtsComponentDialogTest",
     "ace_ets_component_five:ActsAceEtsComponentFiveTest",
     "ace_ets_component_four:ActsAceEtsComponentFourTest",
     "ace_ets_component_nine/ace_ets_component_nine_gridcol:NineStyleActsAceEtsComponentGridColTest",
     "ace_ets_component_seven:componentSevenAttrssTest",
+    "ace_ets_component_statemangagement:ActsAceEtsComponentState",
     "ace_ets_component_three:ActsAceEtsComponentThreeTest",
     "ace_ets_component_two:ActsAceEtsComponentTwoTest",
     "ace_ets_component_ui:ActsAceEtsComponentUITest",

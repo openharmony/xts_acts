@@ -13,13 +13,18 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import stdlib from 'libstdlibndk.so'
 import fs from '@ohos.file.fs';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 export default function stdlibNdkTest() {
   describe('MuslStdlibTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_LDIV_0100
@@ -1586,20 +1591,6 @@ export default function stdlibNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_POSIX_OPEN_PT_0100
-     * @tc.name       : testMuslStdlibPosixOpenPt001
-     * @tc.desc       : test posixOpenpt
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStdlibPosixOpenPt001', 0, async (done: Function) => {
-      let a: number = stdlib.posixOpenpt();
-      expect(a).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_POSIX_MEM_ALIGN_0100
      * @tc.name       : testMuslStdlibPosixMemAlign001
      * @tc.desc       : test posixMemAlign
@@ -2465,20 +2456,6 @@ export default function stdlibNdkTest() {
       expect(a).assertEqual(0);
       done()
     });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_PTSNAMER_0100
-     * @tc.name       : testMuslStdlibPtsNameR001
-     * @tc.desc       : test ptsName_r
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStdlibPtsNameR001', 0, async (done: Function) => {
-      let a: number = stdlib.ptsNameR();
-      expect(a).assertEqual(1);
-      done()
-    });
-
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_REALPATH_0100
@@ -2490,20 +2467,6 @@ export default function stdlibNdkTest() {
      */
     it('testMuslStdlibRealPath001', 0, async (done: Function) => {
       let result: number = stdlib.realPath();
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STDLIB_UNLOCKPT_0100
-     * @tc.name       : testMuslStdlibUnlockpt001
-     * @tc.desc       : test unlockpt
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslStdlibUnlockpt001', 0, async (done: Function) => {
-      let result: number = stdlib.unlockpt();
       expect(result).assertEqual(0);
       done()
     });

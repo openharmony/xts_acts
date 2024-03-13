@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function radioGroupJsunit() {
-  describe('radioGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('radioGroupTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/radio',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/radio',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function radioGroupJsunit() {
         console.info("get radio state success " + JSON.stringify(pages));
         if (!("radio" == pages.name)) {
           console.info("get radio state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push radio page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function radioGroupJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("radioGroup after each called");
     });
@@ -50,17 +50,16 @@ export default function radioGroupJsunit() {
      * @tc.name         testradioGroup001
      * @tc.desic         aceradioGroupEtsTest001
      */
-    it('testradioGroup001', 0, async function (done) {
+    it('testradioGroup001', 0, async (done: Function) => {
       console.info('radioGroup testradioGroup001 START');
       await Utils.sleep(2000);
       try {
         console.info("testradioGroup_0011 click result is: " + JSON.stringify(sendEventByKey('RadioTwo', 10, "")));
-        let strJson = getInspectorByKey('RadioOne');
+        let strJson: string = getInspectorByKey('RadioOne');
         console.info("[testradioGroup001] component checked strJson:" + strJson);
-        let obj = JSON.parse(strJson);
-        expect(obj.$type).assertEqual('Radio');
-        expect(obj.$attrs.checked).assertEqual("true");
-        console.info("[testradioGroup001] checked value :" + obj.$attrs.checked);
+        expect(JSON.parse(strJson).$type).assertEqual('Radio');
+        expect(JSON.parse(strJson).$attrs.checked).assertEqual("true");
+        console.info("[testradioGroup001] checked value :" + JSON.parse(strJson).$attrs.checked);
       } catch (err) {
         console.info("testradioGroup_0011 on click err : " + JSON.stringify(err));
       }

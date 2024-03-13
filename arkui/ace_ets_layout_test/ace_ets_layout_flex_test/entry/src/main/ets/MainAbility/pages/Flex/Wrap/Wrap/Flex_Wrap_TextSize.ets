@@ -12,29 +12,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Flex_Wrap_TextSize{
+struct Flex_Wrap_TextSize {
   @State testWidth: number = 100;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Flex_Wrap_TextSize onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'width') {
         this.testWidth = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({ space:10 }){
-      Flex({ wrap:FlexWrap.Wrap, direction: FlexDirection.Row }){
+
+  build() {
+    Column({ space: 10 }) {
+      Flex({ wrap: FlexWrap.Wrap, direction: FlexDirection.Row }) {
         Text('1').width(this.testWidth).height(50).backgroundColor(0xF5DEB3).key('Wrap_flex_TextSize1');
         Text('2').width(this.testWidth).height(100).backgroundColor(0xD2B48C).key('Wrap_flex_TextSize2');
         Text('3').width(this.testWidth).height(150).backgroundColor(0xF5DEB3).key('Wrap_flex_TextSize3');

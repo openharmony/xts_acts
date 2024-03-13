@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexTextMargin_StretchJsunit() {
-  describe('flexItemAlignStretchTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexTextMargin',
+  describe('flexItemAlignStretchTest', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Stretch/FlexTextMargin',
       }
       try {
         router.clear();
@@ -30,35 +32,37 @@ export default function flexTextMargin_StretchJsunit() {
         console.info("get FlexTextMargin state success " + JSON.stringify(pages));
         if (!("FlexTextMargin" == pages.name)) {
           console.info("get FlexTextMargin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexTextMargin page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexTextMargin page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexTextMargin after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_STRETCH_1400
-     * @tc.name      testFlexItemAlignStretchSubSetMargin
-     * @tc.desc      Subcomponents set margin within the scope of the parent component.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_STRETCH_1400
+     * @tc.name testFlexItemAlignStretchSubSetMargin
+     * @tc.desc Subcomponents set margin within the scope of the parent component.
      */
-    it('testFlexItemAlignStretchSubSetMargin', 0, async function (done) {
+    it('testFlexItemAlignStretchSubSetMargin', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetMargin START');
-      globalThis.value.message.notify({name:'margin', value:10});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'margin', value: 10
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1 = JSON.parse(strJson1);
-      let textMargin01 = CommonFunc.getComponentRect('textMargin01');
-      let textMargin02 = CommonFunc.getComponentRect('textMargin02');
-      let textMargin03 = CommonFunc.getComponentRect('textMargin03');
-      let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
+
+      let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
+      let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
+      let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
+      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('flexTextMargin01');
       expect(Math.abs((textMargin01.left - flexTextMargin01.left) - vp2px(10)) <= 1).assertTrue()
       expect(Math.abs((textMargin02.left - textMargin01.right) - vp2px(10)) <= 1).assertTrue()
       expect(Math.abs(textMargin03.left - textMargin02.right) <= 1).assertTrue()
@@ -76,27 +80,29 @@ export default function flexTextMargin_StretchJsunit() {
       expect(Math.abs((textMargin01.right - textMargin01.left) - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs((textMargin02.right - textMargin02.left) - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs((textMargin03.right - textMargin03.left) - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchSubSetMargin END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_STRETCH_1500
-     * @tc.name      testFlexItemAlignStretchSubSetMarginExceed
-     * @tc.desc      Subcomponents set margin outside the scope of the parent component.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_STRETCH_1500
+     * @tc.name testFlexItemAlignStretchSubSetMarginExceed
+     * @tc.desc Subcomponents set margin outside the scope of the parent component.
      */
-    it('testFlexItemAlignStretchSubSetMarginExceed', 0, async function (done) {
+    it('testFlexItemAlignStretchSubSetMarginExceed', 0, async () => {
       console.info('new testFlexItemAlignStretchSubSetMarginExceed START');
-      globalThis.value.message.notify({name:'margin', value:30});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'margin', value: 30
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexTextMargin01');
-      let obj1 = JSON.parse(strJson1);
-      let textMargin01 = CommonFunc.getComponentRect('textMargin01');
-      let textMargin02 = CommonFunc.getComponentRect('textMargin02');
-      let textMargin03 = CommonFunc.getComponentRect('textMargin03');
-      let flexTextMargin01 = CommonFunc.getComponentRect('flexTextMargin01');
+
+      let textMargin01: RectValue = CommonFunc.getComponentRect('textMargin01');
+      let textMargin02: RectValue = CommonFunc.getComponentRect('textMargin02');
+      let textMargin03: RectValue = CommonFunc.getComponentRect('textMargin03');
+      let flexTextMargin01: RectValue = CommonFunc.getComponentRect('flexTextMargin01');
 
       expect(Math.abs((textMargin01.left - flexTextMargin01.left) - vp2px(30)) <= 1).assertTrue()
       expect(Math.abs((textMargin02.left - textMargin01.right) - vp2px(30)) <= 1).assertTrue()
@@ -111,13 +117,13 @@ export default function flexTextMargin_StretchJsunit() {
       expect(Math.abs((textMargin01.bottom - textMargin01.top) - vp2px(140)) <= 1).assertTrue()
       expect(Math.abs((textMargin02.bottom - textMargin02.top) - vp2px(200)) <= 1).assertTrue()
       expect(Math.abs((textMargin03.bottom - textMargin03.top) - vp2px(200)) <= 1).assertTrue()
-      expect(Math.abs((textMargin01.right - textMargin01.left) - vp2px(440/3)) <= 1).assertTrue()
-      expect(Math.abs((textMargin02.right - textMargin02.left) - vp2px(440/3)) <= 1).assertTrue()
-      expect(Math.abs((textMargin03.right - textMargin03.left) - vp2px(440/3)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
+      expect(Math.abs((textMargin01.right - textMargin01.left) - vp2px(440 / 3)) <= 1).assertTrue()
+      expect(Math.abs((textMargin02.right - textMargin02.left) - vp2px(440 / 3)) <= 1).assertTrue()
+      expect(Math.abs((textMargin03.right - textMargin03.left) - vp2px(440 / 3)) <= 1).assertTrue()
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchSubSetMarginExceed END');
-      done();
+
     });
   })
 }

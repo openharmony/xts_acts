@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function polylineJsunit() {
-  describe('appInfoTest_four_7', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_four_7', () => {
+    beforeEach(async (done: Function) => {
       console.info("polyline beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/polyline',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/polyline',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function polylineJsunit() {
         console.info("get polyline state pages:" + JSON.stringify(pages));
         if (!("polyline" == pages.name)) {
           console.info("get polyline state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push polyline page result:" + JSON.stringify(result));
         }
@@ -40,17 +39,16 @@ export default function polylineJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("polyline after each called");
     });
 
-    it('testPolyline001', 0, async function (done) {
+    it('testPolyline001', 0, async (done: Function) => {
       console.info('[testPolyline001] START');
       await Utils.sleep(4000);
-      let strJson = getInspectorByKey('polyline');
-      let obj = JSON.parse(strJson);
-      console.info("[testPolyline001] obj is: " + JSON.stringify(obj));
+      let strJson: string = getInspectorByKey('polyline');
+      console.info("[testPolyline001] obj is: " + JSON.stringify(JSON.parse(strJson)));
       console.info('[testPolyline001] END');
       done();
     });

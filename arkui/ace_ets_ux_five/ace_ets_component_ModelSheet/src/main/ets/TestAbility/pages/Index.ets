@@ -16,71 +16,70 @@ import hilog from '@ohos.hilog';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct Index {
-  @State isShow: boolean = false
-  @State isShow2: boolean = false
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
   @State showDragBar: boolean = true;
-  @State detents1: Object = [SheetSize.LARGE, SheetSize.MEDIUM, SheetSize.MEDIUM]
-  @State blurStyle1: Object = BlurStyle.Thin
-  @State showClose1: Object = false
-  @State title1: Object = { title: "323", subtitle: "156" }
-  @State preferType1: Object = SheetType.POPUP
-  @State detents2: Object = [SheetSize.MEDIUM, SheetSize.LARGE, 100]
-  @State blurStyle2: Object = BlurStyle.Thick
-  @State showClose2: Object = true
-  @State title2: Object = { title: "title", subtitle: "subtitle" }
-  @State preferType2: Object = SheetType.CENTER
-  @State detents3: Object = [100, 100, SheetSize.LARGE]
-  @State blurStyle3: Object = BlurStyle.Regular
-  @State showClose3: Object = false
-  @State title3: Object = { title: "asdasd", subtitle: "1232561" }
-  @State preferType3: Object = SheetType.POPUP
-  @State detents4: Object = [0, 0, 0]
-  @State blurStyle4: Object = BlurStyle.BACKGROUND_REGULAR
-  @State showClose4: Object = true
-  @State title4: Object = { title: " ", subtitle: " " }
-  @State preferType4: Object = SheetType.CENTER
-  @State detents5: Object = [, ,]
-  @State blurStyle5: Object = " "
-  @State showClose5: Object = " "
-  @State title5: Object = { title: " ", subtitle: " " }
-  @State preferType5: Object = " "
-  @State detents6: Object = [SheetSize.LARGE, 10000, SheetSize.MEDIUM]
-  @State blurStyle6: Object = BlurStyle.BACKGROUND_THIN
-  @State showClose6: Object = false
-  @State title6: Object = { title: "标题", subtitle: "文字" }
-  @State preferType6: Object = SheetType.POPUP
-  @State detents7: Object = [0, 100, 12345]
-  @State blurStyle7: Object = BlurStyle.BACKGROUND_ULTRA_THICK
-  @State showClose7: Object = false
-  @State title7: Object = { title: "@@@", subtitle: "+++" }
-  @State preferType7: Object = SheetType.POPUP
-  @State detents8: Object = [54321, 11111, 123456]
-  @State blurStyle8: Object = BlurStyle.NONE
-  @State showClose8: Object = true
-  @State title8: Object = { title: "。。。", subtitle: "，，，" }
-  @State preferType8: Object = SheetType.CENTER
-  @State shouldDismiss: Object = true
-  @State enableOutsideInteractive: boolean = false
+  @State detents1: Object = [SheetSize.LARGE, SheetSize.MEDIUM, SheetSize.MEDIUM];
+  @State blurStyle1: Object = BlurStyle.Thin;
+  @State showClose1: Object = false;
+  @State title1: Object = { title: "323", subtitle: "156" };
+  @State preferType1: Object = SheetType.POPUP;
+  @State detents2: Object = [SheetSize.MEDIUM, SheetSize.LARGE, 100];
+  @State blurStyle2: Object = BlurStyle.Thick;
+  @State showClose2: Object = true;
+  @State title2: Object = { title: "title", subtitle: "subtitle" };
+  @State preferType2: Object = SheetType.CENTER;
+  @State detents3: Object = [100, 100, SheetSize.LARGE];
+  @State blurStyle3: Object = BlurStyle.Regular;
+  @State showClose3: Object = false;
+  @State title3: Object = { title: "asdasd", subtitle: "1232561" };
+  @State preferType3: Object = SheetType.POPUP;
+  @State detents4: Object = [0, 0, 0];
+  @State blurStyle4: Object = BlurStyle.BACKGROUND_REGULAR;
+  @State showClose4: Object = true;
+  @State title4: Object = { title: " ", subtitle: " " };
+  @State preferType4: Object = SheetType.CENTER;
+  @State detents5: Object = [, ,];
+  @State blurStyle5: Object = " ";
+  @State showClose5: Object = " ";
+  @State title5: Object = { title: " ", subtitle: " " };
+  @State preferType5: Object = " ";
+  @State detents6: Object = [SheetSize.LARGE, 10000, SheetSize.MEDIUM];
+  @State blurStyle6: Object = BlurStyle.BACKGROUND_THIN;
+  @State showClose6: Object = false;
+  @State title6: Object = { title: "标题", subtitle: "文字" };
+  @State preferType6: Object = SheetType.POPUP;
+  @State detents7: Object = [0, 100, 12345];
+  @State blurStyle7: Object = BlurStyle.BACKGROUND_ULTRA_THICK;
+  @State showClose7: Object = false;
+  @State title7: Object = { title: "@@@", subtitle: "+++" };
+  @State preferType7: Object = SheetType.POPUP;
+  @State detents8: Object = [54321, 11111, 123456];
+  @State blurStyle8: Object = BlurStyle.NONE;
+  @State showClose8: Object = true;
+  @State title8: Object = { title: "。。。", subtitle: "，，，" };
+  @State preferType8: Object = SheetType.CENTER;
+  @State shouldDismiss: Object = true;
+  @State enableOutsideInteractive: boolean = false;
   @State enableOutsideInteractive1: boolean = true;
 
   aboutToAppear() {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
 
-  @Builder myBuilder() {
+  @Builder
+  myBuilder() {
     Column() {
       Button("content11111111111111111")
         .margin(10)
@@ -93,7 +92,8 @@ struct Index {
     .width('100%')
   }
 
-  @Builder titleBuilder() {
+  @Builder
+  titleBuilder() {
     Column() {
       Button("title11111111111111111")
         .fontSize(20)
@@ -110,7 +110,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents1,
                 "blurStyle": this.blurStyle1,
@@ -120,15 +120,15 @@ struct Index {
                 "shouldDismiss": this.shouldDismiss,
                 "enableOutsideInteractive": this.enableOutsideInteractive,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10150,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0150 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0150 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0150 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0150 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -140,7 +140,7 @@ struct Index {
           enableOutsideInteractive: false,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
-            console.log("bind sheet shouldDismiss")
+            console.log("bind sheet shouldDismiss");
           })
         })
 
@@ -151,7 +151,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents2,
                 "blurStyle": this.blurStyle2,
@@ -161,15 +161,15 @@ struct Index {
                 "shouldDismiss": this.shouldDismiss,
                 "enableOutsideInteractive": this.enableOutsideInteractive1,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10160,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0160 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0160 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0160 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0160 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -191,7 +191,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents3,
                 "blurStyle": this.blurStyle3,
@@ -201,15 +201,15 @@ struct Index {
                 "shouldDismiss": this.shouldDismiss,
                 "enableOutsideInteractive": this.enableOutsideInteractive,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10170,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0170 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0170 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0170 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0170 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -232,7 +232,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents4,
                 "blurStyle": this.blurStyle4,
@@ -241,15 +241,15 @@ struct Index {
                 "preferType": this.preferType4,
                 "shouldDismiss": this.shouldDismiss,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10180,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0180 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0180 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0180 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0180 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -271,7 +271,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents5,
                 "blurStyle": this.blurStyle5,
@@ -280,15 +280,15 @@ struct Index {
                 "preferType": this.preferType5,
                 "shouldDismiss": this.shouldDismiss,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10190,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0190 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0190 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0190 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0190 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -307,7 +307,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents6,
                 "blurStyle": this.blurStyle6,
@@ -316,15 +316,15 @@ struct Index {
                 "preferType": this.preferType6,
                 "shouldDismiss": this.shouldDismiss,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10200,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0200 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0200 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0200 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0200 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -336,7 +336,7 @@ struct Index {
           preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
-            console.log("bind sheet shouldDismiss")
+            console.log("bind sheet shouldDismiss");
           })
         })
 
@@ -346,7 +346,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents7,
                 "blurStyle": this.blurStyle7,
@@ -355,15 +355,15 @@ struct Index {
                 "preferType": this.preferType7,
                 "shouldDismiss": this.shouldDismiss,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10210,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0210 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0210 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0210 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0210 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -375,9 +375,9 @@ struct Index {
           preferType: SheetType.POPUP,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
-            console.log("bind sheet shouldDismiss")
+            console.log("bind sheet shouldDismiss");
           })
-        })
+        });
 
       Button('ArkUX_Model_Visual_0220')
         .width(200)
@@ -385,7 +385,7 @@ struct Index {
         .margin({ top: 100 })
         .onClick(() => {
           try {
-            var backData = {
+            let backData: emitter.EventData = {
               data: {
                 "detents": this.detents8,
                 "blurStyle": this.blurStyle8,
@@ -394,15 +394,15 @@ struct Index {
                 "preferType": this.preferType8,
                 "shouldDismiss": this.shouldDismiss,
               }
-            }
-            var backEvent = {
+            };
+            let backEvent: emitter.InnerEvent = {
               eventId: 10220,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("ArkUX_Model_Visual_0220 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+              priority: emitter.EventPriority.LOW
+            };
+            console.info("ArkUX_Model_Visual_0220 start to emit action state");
+            emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0220 emit action state err: " + JSON.stringify(err.message))
+            console.info("ArkUX_Model_Visual_0220 emit action state err: " + JSON.stringify(err.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -414,7 +414,7 @@ struct Index {
           preferType: SheetType.CENTER,
           shouldDismiss: ((sheetDismiss) => {
             sheetDismiss.dismiss();
-            console.log("bind sheet shouldDismiss")
+            console.log("bind sheet shouldDismiss");
           })
         })
     }

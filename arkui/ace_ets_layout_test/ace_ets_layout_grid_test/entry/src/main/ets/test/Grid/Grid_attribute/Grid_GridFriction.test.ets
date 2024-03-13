@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function grid_GridFrictionTest() {
-  describe('grid_GridFrictionTest', function () {
-    beforeEach(async function (done) {
+  describe('grid_GridFrictionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/Grid_attribute/GridFrictionPage',
       }
       try {
@@ -29,7 +31,7 @@ export default function grid_GridFrictionTest() {
         console.info("get GridFrictionPage state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get GridFrictionPage pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push GridFrictionPage page result:" + JSON.stringify(result));
         }
@@ -39,40 +41,42 @@ export default function grid_GridFrictionTest() {
       console.info("GridFrictionPage beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("GridFrictionPage after each called");
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDFRICTION_001
-     * @tc.name      testGridFriction
-     * @tc.desc      set friction to -1
+     * @tc.number SUB_ACE_GRID_GRIDFRICTION_001
+     * @tc.name testGridFriction
+     * @tc.desc set friction to -1
      */
-    it('testGridFriction', 0, async function (done) {
+    it('testGridFriction', 0, async (done: Function) => {
       console.info('[testGridFriction] START');
-      globalThis.value.message.notify({name:'friction', value:-1})
+      globalThis.value.message.notify({
+        name: 'friction', value: -1
+      })
       await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      expect(gridContainerObj.$attrs.friction).assertEqual(0.6);
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(0.6);
       console.info('[testGridFriction] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDFRICTION_002
-     * @tc.name      testGridFriction
-     * @tc.desc      set friction to 10
+     * @tc.number SUB_ACE_GRID_GRIDFRICTION_002
+     * @tc.name testGridFriction
+     * @tc.desc set friction to 10
      */
-    it('testGridFriction', 0, async function (done) {
+    it('testGridFriction', 0, async (done: Function) => {
       console.info('[testGridFriction] START');
-      globalThis.value.message.notify({name:'friction', value:10})
+      globalThis.value.message.notify({
+        name: 'friction', value: 10
+      })
       await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      expect(gridContainerObj.$attrs.friction).assertEqual(10);
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(10);
       console.info('[testGridFriction] END');
       done();
     });

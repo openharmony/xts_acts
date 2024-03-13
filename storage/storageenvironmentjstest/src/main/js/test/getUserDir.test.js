@@ -130,7 +130,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
+        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
       }
     }
   });
@@ -153,7 +153,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
+        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
       }
     }
   });
@@ -197,7 +197,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
+        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
       }
     }
   });
@@ -220,7 +220,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 13900020 && e.message == "Invalid argunment").assertTrue();
+        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
       }
     }
   }); 

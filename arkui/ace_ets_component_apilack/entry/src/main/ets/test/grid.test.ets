@@ -15,12 +15,12 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gridMaxCountJsunit() {
-  describe('gridMaxCountTest', function () {
-    beforeAll(async function (done) {
+  describe('gridMaxCountTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/grid',
@@ -38,46 +38,44 @@ export default function gridMaxCountJsunit() {
       } catch (err) {
         console.error("push grid page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gridMaxCount after each called");
     });
 
-    it('testcheckgridMaxCount0001', 0, async function (done) {
+    it('testcheckgridMaxCount0001', 0, async () => {
       console.info('testcheckgridMaxCount testcheckgridMaxCount0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid');
-      console.info("[testcheckgridMaxCount0001] selectedMaxCount value :" + obj.$attrs.maxCount);
-      let maxCount = obj.$attrs.maxCount;
-      expect(maxCount == 5).assertTrue();
-      done();
+      console.info("[testcheckgridMaxCount0001] selectedMaxCount value :" + JSON.parse(strJson).$attrs.maxCount);
+      // let maxCount = obj.$attrs.maxCount;
+      expect(JSON.parse(strJson).$attrs.maxCount == 5).assertTrue();
+
     });
-    
-    it('testEdgeEffectOptions0002', 0, async function (done) {
+
+    it('testEdgeEffectOptions0002', 0, async () => {
       console.info('testEdgeEffectOptions testEdgeEffectOptions0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
-      let obj1 = JSON.parse(strJson);
-      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
-      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
-      done();
+      let obj1: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled).assertTrue();
+      console.info("edgeEffectOptions value :" + JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled);
     });
 
-    it('testEdgeEffectOptions0003', 0, async function (done) {
+    it('testEdgeEffectOptions0003', 0, async () => {
       console.info('testEdgeEffectOptions testEdgeEffectOptions0003 START');
       await Utils.sleep(2000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "alwaysEnabled": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 321,
           priority: events_emitter.EventPriority.LOW
         }
@@ -88,10 +86,10 @@ export default function gridMaxCountJsunit() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
-      let obj1 = JSON.parse(strJson);
-      expect(obj1.$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
-      console.info("edgeEffectOptions value :" +obj1.$attrs.edgeEffectOptions.alwaysEnabled);
-      done();
+      let obj1: Record<string, Object> = JSON.parse(strJson);
+      expect(JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled).assertFalse();
+      console.info("edgeEffectOptions value :" + JSON.parse(strJson).$attrs.edgeEffectOptions.alwaysEnabled);
+
     });
   })
 }

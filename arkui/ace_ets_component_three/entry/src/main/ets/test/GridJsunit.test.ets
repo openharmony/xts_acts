@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function gridJsunit() {
-  describe('gridTest', function () {
-    beforeEach(async function (done) {
+  describe('gridTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================grid test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/gridPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridPage',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function gridJsunit() {
         console.info('beforeEach get prompt state pages:' + JSON.stringify(pages));
         if (!('gridPage' == pages.name)) {
           console.info('beforeEach get prompt state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push prompt page result:' + JSON.stringify(result));
         }
@@ -41,25 +40,27 @@ export default function gridJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================grid test after each called===================');
     });
 
-    it('gridTest01', 0, async function (done) {
+    it('gridTest01', 0, async (done: Function) => {
       console.info('gridTest01==================== start');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('grid');
-      let obj = JSON.parse(strJson);
-      console.info('gridTest01 all attribute before change is: ' + JSON.stringify(obj.$attrs.columnsGap));
-      expect(obj.$attrs.columnsGap).assertEqual('2.00px')
+
+      console.info('gridTest01 all attribute before change is: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .columnsGap));
+      expect(JSON.parse(strJson).$attrs.columnsGap).assertEqual('2.00px')
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "columnsGap": '3px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -70,27 +71,30 @@ export default function gridJsunit() {
       }
       await Utils.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
-      let objAfterChange = JSON.parse(strJsonAfterChange);
-      console.info('gridTest01 columnsGap attribute after change is: ' + JSON.stringify(objAfterChange.$attrs.columnsGap));
-      expect(objAfterChange.$attrs.columnsGap).assertEqual('3.00px')
+      console.info('gridTest01 columnsGap attribute after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
+        .$attrs
+        .columnsGap));
+      expect(JSON.parse(strJsonAfterChange).$attrs.columnsGap).assertEqual('3.00px')
       console.info('[gridTest01] ==================== end');
       done();
     });
 
-    it('gridTest02', 0, async function (done) {
+    it('gridTest02', 0, async (done: Function) => {
       console.info('[ gridTest02 ] ==================== start');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('grid');
-      let obj = JSON.parse(strJson);
-      console.info('[ gridTest02 ] attribute rowsGap before change is: ' + JSON.stringify(obj.$attrs.rowsGap));
-      expect(obj.$attrs.rowsGap).assertEqual('2.00px')
+
+      console.info('[ gridTest02 ] attribute rowsGap before change is: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .rowsGap));
+      expect(JSON.parse(strJson).$attrs.rowsGap).assertEqual('2.00px')
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rowsGap": '3px'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 111,
           priority: events_emitter.EventPriority.LOW
         }
@@ -101,27 +105,30 @@ export default function gridJsunit() {
       }
       await Utils.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
-      let objAfterChange = JSON.parse(strJsonAfterChange);
-      console.info('[ gridTest02 ] attribute rowsGap after change is: ' + JSON.stringify(objAfterChange.$attrs.rowsGap));
-      expect(objAfterChange.$attrs.rowsGap).assertEqual('3.00px')
+      console.info('[ gridTest02 ] attribute rowsGap after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
+        .$attrs
+        .rowsGap));
+      expect(JSON.parse(strJsonAfterChange).$attrs.rowsGap).assertEqual('3.00px')
       console.info('[ gridTest02 ] ==================== end');
       done();
     });
 
-    it('gridTest03', 0, async function (done) {
+    it('gridTest03', 0, async (done: Function) => {
       console.info('[ gridTest03 ] ==================== start');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('grid');
-      let obj = JSON.parse(strJson);
-      console.info('[ gridTest03 ] attribute columnsTemplate before change is: ' + JSON.stringify(obj.$attrs.columnsTemplate));
-      expect(obj.$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+
+      console.info('[ gridTest03 ] attribute columnsTemplate before change is: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .columnsTemplate));
+      expect(JSON.parse(strJson).$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "columnsTemplate": '1fr 1fr 1fr 1fr'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 112,
           priority: events_emitter.EventPriority.LOW
         }
@@ -132,27 +139,30 @@ export default function gridJsunit() {
       }
       await Utils.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
-      let objAfterChange = JSON.parse(strJsonAfterChange);
-      console.info('[ gridTest03 ] attribute columnsTemplate after change is: ' + JSON.stringify(objAfterChange.$attrs.columnsTemplate));
-      expect(objAfterChange.$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr')
+      console.info('[ gridTest03 ] attribute columnsTemplate after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
+        .$attrs
+        .columnsTemplate));
+      expect(JSON.parse(strJsonAfterChange).$attrs.columnsTemplate).assertEqual('1fr 1fr 1fr 1fr')
       console.info('[ gridTest03 ] ==================== end');
       done();
     });
 
-    it('gridTest04', 0, async function (done) {
+    it('gridTest04', 0, async (done: Function) => {
       console.info('[ gridTest04 ] ==================== start');
       await Utils.sleep(1000)
       let strJson = getInspectorByKey('grid');
-      let obj = JSON.parse(strJson);
-      console.info('[ gridTest04 ] attribute rowsTemplate before change is: ' + JSON.stringify(obj.$attrs.rowsTemplate));
-      expect(obj.$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
+
+      console.info('[ gridTest04 ] attribute rowsTemplate before change is: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .rowsTemplate));
+      expect(JSON.parse(strJson).$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr 1fr')
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rowsTemplate": '1fr 1fr 1fr 1fr'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 113,
           priority: events_emitter.EventPriority.LOW
         }
@@ -163,9 +173,10 @@ export default function gridJsunit() {
       }
       await Utils.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
-      let objAfterChange = JSON.parse(strJsonAfterChange);
-      console.info('[ gridTest04 ] attribute rowsTemplate after change is: ' + JSON.stringify(objAfterChange.$attrs.rowsTemplate));
-      expect(objAfterChange.$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr')
+      console.info('[ gridTest04 ] attribute rowsTemplate after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
+        .$attrs
+        .rowsTemplate));
+      expect(JSON.parse(strJsonAfterChange).$attrs.rowsTemplate).assertEqual('1fr 1fr 1fr 1fr')
       console.info('[ gridTest04 ] ==================== end');
       done();
     });

@@ -30,11 +30,10 @@ function onPushListener(source, template, data, extraData) {
     console.log("onPushListener extraData=" + JSON.stringify(extraData))
 }
 
-function onRequestListener(source, name, data)
-{
+function onRequestListener(source, name, data) {
     console.log("onRequestListener name=" + name);
     console.log("onRequestListener data=" + JSON.stringify(data));
-    return {template:"plugintemplate", data:data};
+    return { template: "plugintemplate", data: data };
 }
 
 export default {

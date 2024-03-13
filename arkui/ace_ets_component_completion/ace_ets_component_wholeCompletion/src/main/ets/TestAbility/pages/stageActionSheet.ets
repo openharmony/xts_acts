@@ -14,6 +14,7 @@
  */
 //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct stageActionSheet {
@@ -71,12 +72,12 @@ struct stageActionSheet {
                   }
                 ]
               })
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60220,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -84,7 +85,8 @@ struct stageActionSheet {
               events_emitter.emit(backEvent, backData)
             } catch (error) {
               console.error("showToast emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
 
         Text("showActionSheet2")
@@ -138,12 +140,12 @@ struct stageActionSheet {
                   }
                 ]
               })
-              var backData1 = {
+              let backData1: events_emitter.EventData = {
                 data: {
                   "STATUS": 10
                 }
               }
-              let backEvent1 = {
+              let backEvent1: events_emitter.InnerEvent = {
                 eventId: 60221,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -151,7 +153,8 @@ struct stageActionSheet {
               events_emitter.emit(backEvent1, backData1)
             } catch (error) {
 
-            };
+            }
+            ;
           })
 
         Text("showActionSheet3")
@@ -205,12 +208,12 @@ struct stageActionSheet {
                   }
                 ]
               })
-              var backData2 = {
+              let backData2: events_emitter.EventData = {
                 data: {
                   "STATUS": "STATUS"
                 }
               }
-              let backEvent2 = {
+              let backEvent2: events_emitter.InnerEvent = {
                 eventId: 60222,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -218,9 +221,9 @@ struct stageActionSheet {
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
               console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-            };
+            }
+            ;
           })
-
       }
       .height('100%')
     }

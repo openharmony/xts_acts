@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsFlexItemJsunit() {
-  describe('enumsItemAlign', function () {
-    beforeEach(async function (done) {
+  describe('enumsItemAlign', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================enumsFlexItem test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsItemAlign',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enumsItemAlign',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsFlexItemJsunit() {
         console.info('beforeEach get enumsItemAlign state pages:' + JSON.stringify(pages));
         if (!('enumsFlexItem' == pages.name)) {
           console.info('beforeEach get enumsItemAlign state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsItemAlignTest page result:' + JSON.stringify(result));
         }
@@ -40,19 +39,20 @@ export default function enumsFlexItemJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsFlexItemTest test after each called===================');
     });
 
-    it('enumsItemAlignTest_0100', 0, async function (done) {
+    it('enumsItemAlignTest_0100', 0, async (done: Function) => {
       console.info('enumsItemAlignTest_0100 START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('itemAlign');
+      let strJson: string = getInspectorByKey('itemAlign');
       console.info("enumsItemAlignTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsItemAlignTest_0100 component obj is: " + JSON.stringify(obj.$attrs.constructor));
-      expect(obj.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
+      console.info("enumsItemAlignTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .constructor));
+      expect(JSON.parse(strJson).$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('enumsItemAlignTest_0100 END');
       done();
     });

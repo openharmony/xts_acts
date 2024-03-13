@@ -12,17 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Grid_ReachStartAndEnd() {
-  describe('Grid_ReachStartAndEnd', function () {
-    beforeEach(async function (done) {
+  describe('Grid_ReachStartAndEnd', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_ReachStartAndEnd beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_scroll/Grid_ReachStartAndEnd",
       }
       try {
@@ -31,7 +32,7 @@ export default function Grid_ReachStartAndEnd() {
         console.info("get Grid_ReachStartAndEnd state pages:" + JSON.stringify(pages));
         if (!("Grid_ReachStartAndEnd" == pages.name)) {
           console.info("get Grid_ReachStartAndEnd pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_ReachStartAndEnd page result:" + JSON.stringify(result));
         }
@@ -41,9 +42,9 @@ export default function Grid_ReachStartAndEnd() {
       console.info("Grid_ReachStartAndEnd beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-   
+
       // init the state 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
@@ -56,62 +57,68 @@ export default function Grid_ReachStartAndEnd() {
 
 
     /**
-     * @tc.number    SUB_ACE_Grid_ReachStartAndEnd_0100
-     * @tc.name      testGrid
-     * @tc.desc      Sliding the grid to the end position triggers the onReachEnd event, and sliding to the start position triggers the onReachStart event
+     * @tc.number SUB_ACE_Grid_ReachStartAndEnd_0100
+     * @tc.name testGrid
+     * @tc.desc Sliding the grid to the end position triggers the onReachEnd event, and sliding to the start position triggers the onReachStart event
      */
-    it('Grid_ReachStartAndEnd_0100', 0, async function (done) {
+    it('Grid_ReachStartAndEnd_0100', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0100] START');
-	    let gridRect = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
       await driver.swipe(
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.9+gridRect.top),
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.1+gridRect.top),
-        1000);     
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`),
+        1000);
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('Grid_ReachStartAndEnd_tex2')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ReachStartAndEnd_0100] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onReachEnd');
+
+      console.info("[Grid_ReachStartAndEnd_0100] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)))
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('onReachEnd');
 
       await driver.swipe(
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.1+gridRect.top),
-        parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left),
-        parseInt((gridRect.bottom-gridRect.top)*0.9+gridRect.top),
-        1000);   
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.1 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.9 + gridRect.top}`),
+        1000);
       await CommonFunc.sleep(2000);
 
       let strJson2 = getInspectorByKey('Grid_ReachStartAndEnd_tex1')
-      let obj2 = JSON.parse(strJson2)
-      console.info("[Grid_ReachStartAndEnd_0100] component obj2 is: " + JSON.stringify(obj2))
-      expect(obj2.$attrs.content).assertEqual('onReachStart2');
+
+      console.info("[Grid_ReachStartAndEnd_0100] component obj2 is: " + JSON.stringify(JSON.parse(strJson2)))
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onReachStart2');
 
       console.info('[Grid_ReachStartAndEnd_0100] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_ReachStartAndEnd_0600
-     * @tc.name      testGrid
-     * @tc.desc      Quickly sliding the grid to the end position triggers the onReachEnd event
+     * @tc.number SUB_ACE_Grid_ReachStartAndEnd_0600
+     * @tc.name testGrid
+     * @tc.desc Quickly sliding the grid to the end position triggers the onReachEnd event
      */
-    it('Grid_ReachStartAndEnd_0600', 0, async function (done) {
+    it('Grid_ReachStartAndEnd_0600', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd_0600] START');
-	    let gridRect = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_grid')
       let driver = Driver.create()
-      await driver.fling({x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.5+gridRect.top)},
-	    {x: parseInt((gridRect.right-gridRect.left)*0.5+gridRect.left), y: parseInt((gridRect.bottom-gridRect.top)*0.3+gridRect.top)},5,4000);
+      await driver.fling({
+        x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+        y: Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`)
+      },
+        {
+          x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
+          y: Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.3 + gridRect.top}`)
+        }, 5, 4000);
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('Grid_ReachStartAndEnd_tex2')
-      let obj1 = JSON.parse(strJson1)
-      console.info("[Grid_ReachStartAndEnd_0600] component obj1 is: " + JSON.stringify(obj1))
-      expect(obj1.$attrs.content).assertEqual('onReachEnd');
-  
+
+      console.info("[Grid_ReachStartAndEnd_0600] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)))
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('onReachEnd');
+
       console.info('[Grid_ReachStartAndEnd_0600] END');
       done();
     });

@@ -12,12 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import random from 'librandomndk1.so'
 
 
 export default function muslRandomNdk1Test() {
   describe('MuslRandom1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**getopt
      * @tc.number   : SUB_THIRDPARTY_MUSL_RANDOM_GETRANDOM_0100
      * @tc.name     : testMuslRandomGetrandom001

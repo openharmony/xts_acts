@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +23,7 @@ struct ShapeExample {
   onBuildDone() {
     console.info('shape page build done called');
   }
+
   build() {
     Column({ space: 5 }) {
       Text('basic').fontSize(30).fontColor(0xCCCCCC).width(320)
@@ -33,41 +33,65 @@ struct ShapeExample {
         Path().width(300).height(10).commands('M0 0 L900 0').offset({ x: 0, y: 120 })
       }
       .viewPort({ x: -2, y: -2, width: 304, height: 130 })
-      .fill(0x317Af7).stroke(Color.Black).strokeWidth(4)
-      .strokeDashArray([20]).strokeDashOffset(10).strokeLineCap(LineCapStyle.Round)
-      .strokeLineJoin(LineJoinStyle.Round).antiAlias(true)
+      .fill(0x317Af7)
+      .stroke(Color.Black)
+      .strokeWidth(4)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+      .strokeLineCap(LineCapStyle.Round)
+      .strokeLineJoin(LineJoinStyle.Round)
+      .antiAlias(true)
+
       Shape() {
         Rect().width(300).height(50)
       }.viewPort({ x: -1, y: -1, width: 302, height: 52 }).fill(0x317Af7).stroke(Color.Black).strokeWidth(2)
 
-      Text('border').fontSize(30).fontColor(0xCCCCCC).width(320).margin({top:30})
+      Text('border').fontSize(30).fontColor(0xCCCCCC).width(320).margin({ top: 30 })
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }.viewPort({ x: 0, y: -5, width: 300, height: 20 }).stroke(0xEE8443).strokeWidth(10).strokeDashArray([20])
+
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
       .viewPort({ x: 0, y: -5, width: 300, height: 20 })
-      .stroke(0xEE8443).strokeWidth(10).strokeDashArray([20]).strokeDashOffset(10)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }.viewPort({ x: 0, y: -5, width: 300, height: 20 }).stroke(0xEE8443).strokeWidth(10).strokeOpacity(0.5)
+
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
       .viewPort({ x: 0, y: -5, width: 300, height: 20 })
-      .stroke(0xEE8443).strokeWidth(10).strokeDashArray([20]).strokeLineCap(LineCapStyle.Round)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+      .strokeLineCap(LineCapStyle.Round)
+
       Shape() {
         Rect().width(300).height(100)
       }
       .viewPort({ x: -5, y: -5, width: 310, height: 120 })
-      .fill(0x317Af7).stroke(0xEE8443).strokeWidth(10).strokeLineJoin(LineJoinStyle.Round)
+      .fill(0x317Af7)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeLineJoin(LineJoinStyle.Round)
+
       Shape() {
         Path().width(300).height(60).commands('M0 0 L400 0 L400 200 Z')
       }
       .viewPort({ x: -80, y: -5, width: 310, height: 100 })
-      .fill(0x317Af7).stroke(0xEE8443).strokeWidth(10).fillOpacity(1)
-      .strokeLineJoin(LineJoinStyle.Miter).strokeMiterLimit(5)
+      .fill(0x317Af7)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .fillOpacity(1)
+      .strokeLineJoin(LineJoinStyle.Miter)
+      .strokeMiterLimit(5)
     }.width('100%').margin({ top: 15 })
   }
 }

@@ -16,14 +16,14 @@
 @Entry
 @Component
 struct stageRouter {
-  private TAG: string = '[AnimatorTest]'
-  private backAnimator: any = undefined
-  private flag: boolean = false
-  @State wid: number = 100
-  @State hei: number = 100
+  private TAG: string = '[AnimatorTest]';
+  private backAnimator: ESObject = undefined;
+  private flag: boolean = false;
+  @State wid: number = 100;
+  @State hei: number = 100;
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Button('router-pushUrl')
         .width(100)
@@ -32,17 +32,18 @@ struct stageRouter {
         .fontColor(Color.Black)
         .onClick(() => {
           globalThis.uiContent.getRouter().pushUrl({
-                url: 'pages/Animator',
-                params: {
-                    data1: 'message',
-                    data2: {
-                        data3: [123, 456, 789]
-                    }
-                }
-            })
+            url: 'pages/Animator',
+            params: {
+              data1: 'message',
+              data2: {
+                data3: [123, 456, 789]
+              }
+            }
+          })
         })
         .key("routerPushUrl")
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
- }
+}

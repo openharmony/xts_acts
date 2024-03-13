@@ -15,59 +15,59 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 let abilityName = null;
+
 function recordLife(ownList, abilityName, lifeName) {
-    ownList.push(abilityName + ' ' + lifeName);
+  ownList.push(abilityName + ' ' + lifeName);
 }
 
 export default class MainAbility1 extends Ability {
+  onNewWant(want, launchParam) {
+    console.log("[Demo] MainAbility1 onNewWant")
+    globalThis.onNewWantStr = abilityName + ' ' + 'onNewWant';
+  }
 
-    onNewWant(want, launchParam) {
-        console.log("[Demo] MainAbility1 onNewWant")
-        globalThis.onNewWantStr = abilityName + ' ' + 'onNewWant';
-    }
+  onCreate(want, launchParam) {
+    console.log("[Demo] MainAbility1 onCreate")
+    globalThis.launchParam1 = launchParam;
+    abilityName = want.abilityName
+    globalThis.list1 = [];
+    recordLife(globalThis.list1, abilityName, 'onCreate');
+  }
 
-    onCreate(want, launchParam) {
-        console.log("[Demo] MainAbility1 onCreate")
-        globalThis.launchParam1 = launchParam;
-        abilityName = want.abilityName
-        globalThis.list1 = [];
-        recordLife(globalThis.list1, abilityName, 'onCreate');
-    }
+  onDestroy() {
+    console.log("[Demo] MainAbility1 onDestroy")
+    recordLife(globalThis.list1, abilityName, 'onDestroy');
+  }
 
-    onDestroy() {
-        console.log("[Demo] MainAbility1 onDestroy")
-        recordLife(globalThis.list1, abilityName, 'onDestroy');
-    }
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("[Demo] MainAbility1 onWindowStageCreate")
+    globalThis.ability1context = this.context;
+    recordLife(globalThis.list1, abilityName, 'onWindowStageCreate');
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility1 onWindowStageCreate")
-        globalThis.ability1context = this.context;
-        recordLife(globalThis.list1, abilityName, 'onWindowStageCreate');
+    windowStage.loadContent('TestAbility/pages/Index1', (err, data) => {
+      if (err.code) {
+        console.log('MainAbility1 loadContent error');
+        return;
+      }
+      console.log('MainAbility1 loadContent success');
+    });
+  }
 
-        windowStage.loadContent('TestAbility/pages/Index1', (err, data) => {
-            if (err.code) {
-                console.log('MainAbility1 loadContent error');
-                return;
-            }
-            console.log('MainAbility1 loadContent success');
-        });
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("[Demo] MainAbility1 onWindowStageDestroy")
+    recordLife(globalThis.list1, abilityName, 'onWindowStageDestroy');
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility1 onWindowStageDestroy")
-        recordLife(globalThis.list1, abilityName, 'onWindowStageDestroy');
-    }
+  onForeground() {
+    console.log("[Demo] MainAbility1 onForeground")
+    recordLife(globalThis.list1, abilityName, 'onForeground');
+  }
 
-    onForeground() {
-        console.log("[Demo] MainAbility1 onForeground")
-        recordLife(globalThis.list1, abilityName, 'onForeground');
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.log("[Demo] MainAbility1 onBackground")
-        recordLife(globalThis.list1, abilityName, 'onBackground');
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("[Demo] MainAbility1 onBackground")
+    recordLife(globalThis.list1, abilityName, 'onBackground');
+  }
 };

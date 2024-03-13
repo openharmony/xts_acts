@@ -14,10 +14,10 @@
  */
 
 #include "napi/native_api.h"
+#include <cstdlib>
 #include <ctime>
 #include <pthread.h>
 #include <semaphore.h>
-#include <cstdlib>
 #include <sys/resource.h>
 #include <threads.h>
 #include <unistd.h>
@@ -31,7 +31,7 @@
 #define PARAM_500 500
 #define PARAM_1000 1000
 #define PARAM_UNNORMAL (-1)
-#define ETIMEDOUTS       110
+#define ETIMEDOUTS 110
 
 struct cndTimedWaitTime64Param {
     cnd_t cnd;
@@ -186,7 +186,7 @@ static napi_value PThread_cond_timedWait_time64_One(napi_env env, napi_callback_
     struct pthreadCondTimedwaitTime64Param param;
     pthread_t threadId;
     struct timespec ts {
-        PARAM_0, SLEEP_10_MS * NSEC_PER_MSEC
+        PARAM_0, SLEEP_10_MS *NSEC_PER_MSEC
     };
     int ret = TEST_RESULT_FAILED;
     param.cond = PTHREAD_COND_INITIALIZER;

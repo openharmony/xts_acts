@@ -14,20 +14,20 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 
 
 export default function ActsgetcomponentTest() {
-  describe('ActsgetcomponentTest', function () {
+  describe('ActsgetcomponentTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/getcomponent',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/getcomponent',
       }
       try {
         router.clear();
@@ -35,7 +35,7 @@ export default function ActsgetcomponentTest() {
         console.info("get getcomponent state success " + JSON.stringify(pages));
         if (!("getcomponent" == pages.name)) {
           console.info("get getcomponent state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push getcomponent page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -43,32 +43,37 @@ export default function ActsgetcomponentTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
-    it('ArkUX_Get_component_0010', 0, async function (done) {
+    it('ArkUX_Get_component_0010', 0, async (done: Function) => {
       console.info('ArkUX_Get_component_0010 START');
       let strJson = getInspectorByKey('ArkUX_Get_component_0010');
-      let obj = JSON.parse(strJson);
-      console.info('ArkUX_Get_component_0010 width: '+ JSON.stringify(obj.$attrs.width));
-      console.info('ArkUX_Get_component_0010 height: '+ JSON.stringify(obj.$attrs.height));
-      console.info('ArkUX_Get_component_0010 localOffsetX: '+ JSON.stringify(obj.$attrs.offset.x));
-      console.info('ArkUX_Get_component_0010 localOffsetY: '+ JSON.stringify(obj.$attrs.offset.y));
-      console.info('ArkUX_Get_component_0010 windowOffsetX: '+ JSON.stringify(obj.$attrs.shadow.offsetX));
-      console.info('ArkUX_Get_component_0010 windowOffsetY: '+ JSON.stringify(obj.$attrs.shadow.offsetY));
-      expect(obj.$attrs.width).assertEqual("90.00vp");
-      expect(obj.$attrs.height).assertEqual("90.00vp");
-      expect(obj.$attrs.offset.x).assertEqual("");
-      expect(obj.$attrs.offset.y).assertEqual("");
-      expect(obj.$attrs.shadow.offsetX).assertEqual("0.000000");
-      expect(obj.$attrs.shadow.offsetY).assertEqual("0.000000");
+      console.info('ArkUX_Get_component_0010 width: ' + JSON.stringify(JSON.parse(strJson).$attrs.width));
+      console.info('ArkUX_Get_component_0010 height: ' + JSON.stringify(JSON.parse(strJson).$attrs.height));
+      console.info('ArkUX_Get_component_0010 localOffsetX: ' + JSON.stringify(JSON.parse(strJson).$attrs.offset.x));
+      console.info('ArkUX_Get_component_0010 localOffsetY: ' + JSON.stringify(JSON.parse(strJson).$attrs.offset.y));
+      console.info('ArkUX_Get_component_0010 windowOffsetX: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .shadow
+        .offsetX));
+      console.info('ArkUX_Get_component_0010 windowOffsetY: ' + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .shadow
+        .offsetY));
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("90.00vp");
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("90.00vp");
+      expect(JSON.parse(strJson).$attrs.offset.x).assertEqual("");
+      expect(JSON.parse(strJson).$attrs.offset.y).assertEqual("");
+      expect(JSON.parse(strJson).$attrs.shadow.offsetX).assertEqual("0.000000");
+      expect(JSON.parse(strJson).$attrs.shadow.offsetY).assertEqual("0.000000");
       console.info('ArkUX_Get_component_0010 END ');
       done();
     });

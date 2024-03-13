@@ -16,26 +16,27 @@
 @Entry
 @Component
 struct ListItemExample19 {
-  @State message: string = 'Hello World'
-  @State arr: number[] = [0, 1, 2, 3, 4]
-  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea"
-  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea"
-  @State  swipeActionState:string = '-1'
-  @Builder itemEnd() {
+  @State message: string = 'Hello World';
+  @State arr: number[] = [0, 1, 2, 3, 4];
+  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea";
+  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea";
+  @State swipeActionState: string = '-1';
+
+  @Builder
+  itemEnd() {
     Row() {
       Button("Delete").margin("4vp")
       Button("Set").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
 
-  @Builder itemStart() {
+  @Builder
+  itemStart() {
     Row() {
       Button("StartDelete").margin("4vp")
       Button("StartSet").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly)
   }
-
-
 
   build() {
     Column() {
@@ -52,18 +53,20 @@ struct ListItemExample19 {
           }
           .transition({ type: TransitionType.Delete, opacity: 0 })
           .swipeAction({
-            start : {
-              builder: () => { this.itemStart() },
+            start: {
+              builder: () => {
+                this.itemStart();
+              },
               actionAreaDistance: 56,
               onEnterActionArea: () => {
-                this.enterEndDeleteAreaString = "enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "not exitEndDeleteArea"
+                this.enterEndDeleteAreaString = "enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "not exitEndDeleteArea";
               },
               onExitActionArea: () => {
-                this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "exitEndDeleteArea"
+                this.enterEndDeleteAreaString = "not enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "exitEndDeleteArea";
               },
-              onStateChange:(swipeActionState => {
+              onStateChange: (swipeActionState => {
                 this.swipeActionState = swipeActionState.toString();
               })
 
@@ -73,10 +76,11 @@ struct ListItemExample19 {
           .key('lSwipe19Action' + item)
         }, (item: string) => item)
       }.listDirection(Axis.Horizontal).height('60%')
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
-      Text(this.swipeActionState).fontSize(20).margin({top:20}).key('swipe19State')
-      Button("Delete").margin("4vp").key('btreset19').onClick(()=>{
+      Text(this.swipeActionState).fontSize(20).margin({ top: 20 }).key('swipe19State')
+      Button("Delete").margin("4vp").key('btreset19').onClick(() => {
         this.swipeActionState = "-1";
         this.arr = [0, 1, 2, 3, 4];
       })

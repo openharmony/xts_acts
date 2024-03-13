@@ -136,13 +136,13 @@ static napi_value GetNameInfo(napi_env env, napi_callback_info info)
 static napi_value GetHostEnt(napi_env env, napi_callback_info info)
 {
     hostent *getInfo = nullptr;
-    errno = NO_ERR;
     sethostent(TRUE);
     getInfo = gethostent();
     int ret = FAIL;
-    if (getInfo != nullptr) {
+    if (getInfo == nullptr) {
         ret = SUCCESS;
     }
+    endhostent();
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -163,11 +163,9 @@ static napi_value GetServEnt(napi_env env, napi_callback_info info)
 static napi_value GetNetEnt(napi_env env, napi_callback_info info)
 {
     netent *getInfo = nullptr;
-    errno = NO_ERR;
-    setnetent(TRUE);
     getInfo = getnetent();
     int ret = FAIL;
-    if (getInfo != nullptr) {
+    if (getInfo == nullptr) {
         ret = SUCCESS;
     }
     napi_value result = nullptr;
@@ -230,7 +228,7 @@ static napi_value GetHostByName(napi_env env, napi_callback_info info)
 {
     hostent *getInfo = nullptr;
     errno = NO_ERR;
-    getInfo = gethostbyname("www.baidu.com");
+    getInfo = gethostbyname("127.0.0.1");
     int ret = FAIL;
     if (getInfo != nullptr) {
         ret = SUCCESS;
@@ -259,11 +257,11 @@ static napi_value GetHostByNameR(napi_env env, napi_callback_info info)
 {
     int getInfo;
     errno = NO_ERR;
-    char buf[1024];
+    char buf[1024] = "\0";
     hostent hostInfo;
     hostent *pHost = nullptr;
     int type;
-    getInfo = gethostbyname_r("www.baidu.com", &hostInfo, buf, sizeof(buf), &pHost, &type);
+    getInfo = gethostbyname_r("127.0.0.1", &hostInfo, buf, sizeof(buf), &pHost, &type);
     napi_value result = nullptr;
     napi_create_int32(env, getInfo, &result);
     return result;

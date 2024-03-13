@@ -20,8 +20,8 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct KeyEventExample {
-  @State text: string = ''
-  @State eventType: string = ''
+  @State text: string = '';
+  @State eventType: string = '';
 
   build() {
     Column() {
@@ -34,7 +34,7 @@ struct KeyEventExample {
             this.eventType = 'Up'
           }
           console.info(this.text = 'KeyType:' + this.eventType + '\nkeyCode:' + event.keyCode + '\nkeyText:' + event.keyText +
-          '\nKeyboard:' + event.keySource.Keyboard)
+            '\nKeyboard:' + event.keySource.Keyboard)
         })
       Text(this.text).padding(15)
     }.height(300).width('100%').padding(35)

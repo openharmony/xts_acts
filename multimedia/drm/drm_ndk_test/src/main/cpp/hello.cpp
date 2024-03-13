@@ -21,9 +21,133 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <time.h>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/time.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include "capi_drm_log.h"
 
 #define DATA_BUFF_LEN 10000
-void splitStringToIntArray(char* str,uint8_t *temp) { 
+#define DATA_BLUESPONSE_LEN 139
+#define PROVISION_DEFAULT_URL "http://default.com"
+#define BLUE_AREA "com.clearplay.drm"
+#define YELLOW_AREA "com.wiseplay.drm"
+#define LICENSE_ONLINE 1
+#define LICENSE_OFFLINE 0
+#define REQUESTINFODATA                                                                                        \
+    {                                                                                                          \
+        0x00, 0x00, 0x00, 0x8B, 0x70, 0x73, 0x73, 0x68, 0x00, 0x00, 0x00, 0x00, 0x3D, 0x5E, 0x6D, 0x35,        \
+        0x9B, 0x9A, 0x41, 0xE8, 0xB8, 0x43, 0xDD, 0x3C, 0x6E, 0x72, 0xC4, 0x2C, 0x00, 0x00, 0x00, 0x6B,        \
+        0x7B, 0x22, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6F, 0x6E, 0x22, 0x3A, 0x22, 0x56, 0x31, 0x2E, 0x30,        \
+        0x22, 0x2C, 0x22, 0x63, 0x6F, 0x6E, 0x74, 0x65, 0x6E, 0x74, 0x49, 0x44, 0x22, 0x3A, 0x22, 0x64,        \
+        0x48, 0x4D, 0x74, 0x4D, 0x6A, 0x59, 0x30, 0x4C, 0x54, 0x45, 0x77, 0x4F, 0x44, 0x41, 0x74, 0x59,        \
+        0x57, 0x56, 0x7A, 0x22, 0x2C, 0x22, 0x6B, 0x69, 0x64, 0x73, 0x22, 0x3A, 0x5B, 0x22, 0x47, 0x2B,        \
+        0x45, 0x6B, 0x2F, 0x2B, 0x58, 0x6D, 0x55, 0x6B, 0x70, 0x42, 0x48, 0x51, 0x67, 0x58, 0x59, 0x57,        \
+        0x51, 0x51, 0x49, 0x67, 0x3D, 0x3D, 0x22, 0x5D, 0x2C, 0x22, 0x65, 0x6E, 0x73, 0x63, 0x68, 0x65,        \
+        0x6D, 0x61, 0x22, 0x3A, 0x22, 0x63, 0x62, 0x63, 0x31, 0x22, 0x7D                                       \
+    }
+#define OFFLINERESPONSE                                                                                        \
+    {                                                                                                          \
+        0x31, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42,        \
+        0x30, 0x4D, 0x32, 0x77, 0x33, 0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63, 0x48,        \
+        0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67,        \
+        0x3D, 0x3D                                                                                             \
+    }
+#define ONLINERESPONSE                                                                                         \
+    {                                                                                                          \
+        0x30, 0x64, 0x6E, 0x5A, 0x32, 0x4E, 0x57, 0x74, 0x76, 0x4D, 0x47, 0x34, 0x34, 0x4E, 0x6A, 0x42,        \
+        0x30, 0x4D, 0x32, 0x77, 0x33, 0x4E, 0x67, 0x3D, 0x3D, 0x3A, 0x59, 0x7A, 0x56, 0x78, 0x63, 0x48,        \
+        0x64, 0x70, 0x61, 0x6D, 0x30, 0x34, 0x59, 0x57, 0x45, 0x34, 0x5A, 0x48, 0x6B, 0x79, 0x4D, 0x67,        \
+        0x3D, 0x3D                                                                                             \
+    }
+#define CHECK_RETURN(cond, ret) \
+    do {                                                         \
+        if ((cond)) {                                            \
+            return ret;                                          \
+        }                                                        \
+    } while (0)
+#define UNUSED_PARAMETER(P) (P)	
+	
+static int getHttp(const char *IPAddr, int port, const char *link, const char *inbuf, unsigned int inbufLen,
+                   uint8_t *outbuf, unsigned int *outbufLen) {
+    int sockfd, ret, i, h;
+    struct sockaddr_in servaddr;
+    char str1[DATA_BUFF_LEN], str[8];
+    fd_set t_set1;
+    struct timeval tv;
+    // 创建套接字
+    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        return -1;
+    }
+    bzero(&servaddr, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(port);
+    if (inet_pton(AF_INET, IPAddr, &servaddr.sin_addr) <= 0) {
+        return -1;
+    };
+    if (connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
+        return -1;
+    }
+    sprintf(str, "%d", inbufLen);
+    memset(str1, 0, sizeof(str1));
+    strcat(str1, "POST ");
+    strcat(str1, link);
+    strcat(str1, " HTTP/1.1\n");
+    strcat(str1, "Host: ");
+    strcat(str1, IPAddr);
+    strcat(str1, "\n");
+    strcat(str1, "Content-Type: application/json;charset=UTF-8\n");
+    strcat(str1, "Content-Length: ");
+    strcat(str1, str);
+    strcat(str1, "\n\n");
+    strcat(str1, inbuf);
+    strcat(str1, "\r\n\r\n");
+    ret = write(sockfd, str1, strlen(str1));
+    if (ret < 0) {
+        return -1;
+    } else {
+    }
+    FD_ZERO(&t_set1);
+    FD_SET(sockfd, &t_set1);
+
+    while (1) {
+        sleep(2);
+        tv.tv_sec = 0;
+        tv.tv_usec = 0;
+        h = 0;
+        h = select(sockfd + 1, &t_set1, NULL, NULL, &tv);
+        if (h == 0) {
+            continue;
+        }
+        if (h < 0) {
+            close(sockfd);
+            return -1;
+        }
+        if (h > 0) {
+            memset(outbuf, 0, *outbufLen);
+            i = read(sockfd, outbuf, *outbufLen);
+            if (i == 0) {
+                close(sockfd);
+                return -1;
+            } else {
+                const char *contentLenStr = strstr(reinterpret_cast<const char *>(outbuf), "Content-Length: ");
+                *outbufLen = atoi(contentLenStr + strlen("Content-Length: "));
+                const char *headEndStr = strstr(contentLenStr, "\r\n\r\n");
+                memcpy(outbuf, headEndStr + strlen("\r\n\r\n"), *outbufLen);
+                goto _EXIT;
+            }
+        }
+    }
+_EXIT:
+    close(sockfd);
+    return 0;
+}
+void splitStringToIntArray(char* str,uint8_t *temp) { //,int *num
   int i = 0;
   char *p = str;
   char *q;
@@ -32,16 +156,61 @@ void splitStringToIntArray(char* str,uint8_t *temp) {
     p = q + 1;
   }  
   temp[i] = atoi(p);
+  // *num = i + 1;
+//  return temp;
 }
 static const char* judge_uuid() {
-    const char *blue_area = "com.clearplay.drm";
-    const char *yellow_area = "com.wiseplay.drm";
-    bool isSupport = OH_MediaKeySystem_IsSupported(blue_area); 
+    bool isSupport = OH_MediaKeySystem_IsSupported(BLUE_AREA); 
     if(isSupport == 1) {
-            return blue_area;
+            return BLUE_AREA;
     } else {
-            return yellow_area;
+            return YELLOW_AREA;
     }
+}
+
+int getLicense(MediaKeySession *mediaKeySession, char isOnline, uint8_t *keydata , int32_t *keylen){
+    memset(keydata, 0, *keylen);
+    DRM_MediaKeyRequestInfo requestInfo;
+    memset(&requestInfo, 0, sizeof(DRM_MediaKeyRequestInfo));
+    unsigned char testData[139] = REQUESTINFODATA;
+    if(isOnline){
+     requestInfo.type = MEDIA_KEY_TYPE_ONLINE;  
+    }else{
+     requestInfo.type = MEDIA_KEY_TYPE_OFFLINE; 
+    }   
+    requestInfo.initDataLen = sizeof(testData);    
+    requestInfo.optionsCount = 1;
+    memcpy(requestInfo.mimeType, (char *)"video/mp4", sizeof("video/mp4"));
+    memcpy(requestInfo.initData, testData, sizeof(testData));
+    memcpy(requestInfo.optionName[0], (char *)"optionalDataName", sizeof("optionalDataName"));
+    memcpy(requestInfo.optionData[0], (char *)"optionalDataValue", sizeof("optionalDataValue"));
+    DRM_MediaKeyRequest requestData;
+    memset(&requestData, 0, sizeof(DRM_MediaKeyRequest));
+    Drm_ErrCode ret1 = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession,&requestInfo, &requestData);
+    CHECK_RETURN(ret1==DRM_ERR_INVALID_VAL,-1);
+	Drm_ErrCode ret2 = DRM_ERR_INVALID_VAL;
+    uint8_t keyId[DATA_BUFF_LEN] = {0};
+    int32_t keyIdLen = DATA_BUFF_LEN;
+    if(strcmp(judge_uuid(), BLUE_AREA) == 0){
+        if(isOnline){
+            uint8_t responseData[DATA_BLUESPONSE_LEN] = ONLINERESPONSE;
+            ret2 = OH_MediaKeySession_ProcessMediaKeyResponse(mediaKeySession,responseData, DATA_BLUESPONSE_LEN, keyId, &keyIdLen);
+        }else{
+            uint8_t responseData[DATA_BLUESPONSE_LEN] = OFFLINERESPONSE; 
+            ret2 = OH_MediaKeySession_ProcessMediaKeyResponse(mediaKeySession,responseData, DATA_BLUESPONSE_LEN, keyId, &keyIdLen);
+        }
+    }else{
+        uint8_t responseData[DATA_BUFF_LEN]={0};
+        int32_t responseLen = DATA_BUFF_LEN;
+        int ret3 = getHttp("192.168.50.59", 9528, "/getProvision", reinterpret_cast<const char *>(requestData.data), requestData.dataLen,
+                  responseData, (unsigned int *)&responseLen);  
+		CHECK_RETURN(ret3!=0,-1);			  
+        ret2 = OH_MediaKeySession_ProcessMediaKeyResponse(mediaKeySession,responseData, responseLen, keyId, &keyIdLen);
+    }
+    CHECK_RETURN(ret2==DRM_ERR_INVALID_VAL,-1);	
+    memcpy(keydata, keyId, keyIdLen);
+    memcpy(keylen, &keyIdLen, sizeof(uint32_t));
+	return 0;
 }
 static napi_value Test_KeySystemSupported(napi_env env, napi_callback_info info) {
     bool isSupport;
@@ -648,10 +817,28 @@ static napi_value Test_MediaKeySystem_ProcessKeySystemResponse(napi_env env, nap
         system_ptr = drmKeySystem;
     }
     uint8_t *responseData_ptr = nullptr;
-    if (0 != strncmp(response, " ",responseLen)) {
-        responseData_ptr = (uint8_t *)malloc(responseLen); 
-        splitStringToIntArray(response,responseData_ptr);
-    }  
+    uint8_t requestData[DATA_BUFF_LEN] = {0};
+    int32_t requestLen = DATA_BUFF_LEN;
+    uint8_t responseData[DATA_BUFF_LEN] = {0};
+    int32_t responseDataLen_out = DATA_BUFF_LEN;    
+    char defaultURLData[DATA_BUFF_LEN] = {0};
+    int32_t defaultURLDataLen = DATA_BUFF_LEN; 
+    if (0 == strncmp(response, "genResponse",responseLen)) {
+        Drm_ErrCode ret4 = OH_MediaKeySystem_GenerateKeySystemRequest(drmKeySystem, requestData,&requestLen, defaultURLData, defaultURLDataLen);
+        if(ret4 == DRM_ERR_OK){
+            int getRet = getHttp("192.168.50.59", 9528, "/getProvision", reinterpret_cast<const char *>(requestData), requestLen,
+                                     responseData, (unsigned int *)&responseDataLen_out);   
+            if(getRet == 0){
+                responseData_ptr = responseData;
+                if(responseDataLen > 0){
+                     responseDataLen = responseDataLen_out;
+                }
+            }
+        }
+    }else if(0 != strncmp(response, " ",responseLen)){
+         responseData_ptr = (uint8_t *)malloc(responseLen); 
+         splitStringToIntArray(response,responseData_ptr);
+    }else;
     Drm_ErrCode ret2 = OH_MediaKeySystem_ProcessKeySystemResponse(system_ptr, responseData_ptr, responseDataLen);
     Drm_ErrCode ret3 = OH_MediaKeySystem_Destroy(drmKeySystem);
 
@@ -660,7 +847,7 @@ static napi_value Test_MediaKeySystem_ProcessKeySystemResponse(napi_env env, nap
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(responseData_ptr != nullptr){
+    if((responseData_ptr != nullptr) && (strncmp(response, "genResponse",responseLen) != 0)){
         free(responseData_ptr);
     }
     napi_create_int32(env, ret, &result);
@@ -668,15 +855,19 @@ static napi_value Test_MediaKeySystem_ProcessKeySystemResponse(napi_env env, nap
 }
 static napi_value Test_MediaKeySystem_GetOfflineMediaKeyIds(napi_env env, napi_callback_info info) {
     napi_value result;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
     size_t sysLen = 0;
     char *inSys = nullptr;
     size_t keyIdsLen = 0;
     char *keyIds = nullptr;
+    size_t keySourceLen = 0;
+    char *keySource= nullptr;    
     Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
     MediaKeySystem *drmKeySystem = nullptr;
-   
+    MediaKeySession *drmKeySession = nullptr;  
+    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+    
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &sysLen);
     inSys = new char[sysLen + 1];
@@ -684,8 +875,16 @@ static napi_value Test_MediaKeySystem_GetOfflineMediaKeyIds(napi_env env, napi_c
     napi_get_value_string_utf8(env, args[1], nullptr, 0, &keyIdsLen);
     keyIds = new char[keyIdsLen + 1];
     napi_get_value_string_utf8(env, args[1], keyIds, keyIdsLen + 1, &keyIdsLen);
+    napi_get_value_string_utf8(env, args[2], nullptr, 0, &keySourceLen);
+    keySource = new char[keySourceLen + 1];
+    napi_get_value_string_utf8(env, args[2], keySource, keySourceLen + 1, &keySourceLen);    
     
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
+    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &contentProtectionLevel, &drmKeySession);
+    uint8_t keyData[DATA_BUFF_LEN] = {0};
+    int32_t keyDataLen = DATA_BUFF_LEN;
+    int keyres = getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+ 
     MediaKeySystem *system_ptr = nullptr;
     if((0 != strcmp(inSys, " "))){
       system_ptr = drmKeySystem;
@@ -695,9 +894,13 @@ static napi_value Test_MediaKeySystem_GetOfflineMediaKeyIds(napi_env env, napi_c
     if((0 != strcmp(keyIds, " "))){
       offlineMediaKeyIds_ptr = &mediaKeyIds;
     }  
-    Drm_ErrCode ret2 = OH_MediaKeySystem_GetOfflineMediaKeyIds(system_ptr, offlineMediaKeyIds_ptr);
-    Drm_ErrCode ret3 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK) {
+    Drm_ErrCode ret3 = OH_MediaKeySystem_GetOfflineMediaKeyIds(system_ptr, offlineMediaKeyIds_ptr);
+    Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
+    Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
+    if (ret3 == DRM_ERR_OK && keyres == 0){
+        ret3 = (offlineMediaKeyIds_ptr != nullptr)?DRM_ERR_OK:DRM_ERR_INVALID_VAL;
+    }	
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) {
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
@@ -724,45 +927,63 @@ static napi_value Test_MediaKeySystem_GetOfflineMediaKeyStatus(napi_env env, nap
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &sysLen);
     inSys = new char[sysLen + 1];
     napi_get_value_string_utf8(env, args[0], inSys, sysLen + 1, &sysLen);
-    
     napi_get_value_string_utf8(env, args[1], nullptr, 0, &keyIdStringLen);
     keyIdString = new char[keyIdStringLen + 1];
     napi_get_value_string_utf8(env, args[1], keyIdString, keyIdStringLen + 1, &keyIdStringLen);
-    
     napi_get_value_int32(env, args[2], &offlineMediaKeyIdLen);
-    
     napi_get_value_string_utf8(env, args[3], nullptr, 0, &statusStringLen);
     statusString = new char[statusStringLen + 1];
     napi_get_value_string_utf8(env, args[3], statusString, statusStringLen + 1, &statusStringLen);
     napi_get_value_int32(env, args[4], &expectStatus);  
     
+    DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+    MediaKeySession *mediaKeySession = nullptr;
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
+    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem,&level, &mediaKeySession);
+
+    int32_t keyLen = 0;
+    uint8_t *keyId_ptr = nullptr;
+	uint8_t keyData[DATA_BUFF_LEN] = {0};
+	int32_t keyDataLen = DATA_BUFF_LEN;    
+    if(strncmp(keyIdString, "genKey",keyIdStringLen) == 0){
+        getLicense(mediaKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+        keyId_ptr =  keyData;
+        if((offlineMediaKeyIdLen != -1) && offlineMediaKeyIdLen != 0){
+            keyLen = keyDataLen;
+        } else{
+           keyLen = offlineMediaKeyIdLen; 
+        }
+     }else if(strncmp(keyIdString, " ",keyIdStringLen) != 0){
+        keyId_ptr = (uint8_t *)malloc(keyIdStringLen); 
+        splitStringToIntArray(keyIdString,keyId_ptr);
+        keyLen =  offlineMediaKeyIdLen;
+     }else {
+        keyLen =  offlineMediaKeyIdLen;
+     }
     MediaKeySystem *system_ptr = nullptr;
     if((0 != strncmp(inSys, " ",sysLen))){
         system_ptr = drmKeySystem;
     }
-     uint8_t *keyId_ptr = nullptr;
-     if((0 != strncmp(keyIdString, " ",keyIdStringLen))){
-        keyId_ptr = (uint8_t *)malloc(keyIdStringLen); 
-        splitStringToIntArray(keyIdString,keyId_ptr);
-     } 
     DRM_OfflineMediaKeyStatus status = OFFLINE_MEDIA_KEY_STATUS_UNKNOWN;
     DRM_OfflineMediaKeyStatus *status_ptr = nullptr;
     if((0 != strncmp(statusString, " ",statusStringLen))){
         status_ptr = &status;
     }
-    Drm_ErrCode ret2 = OH_MediaKeySystem_GetOfflineMediaKeyStatus(system_ptr, keyId_ptr,offlineMediaKeyIdLen,status_ptr);
-    Drm_ErrCode ret4 = DRM_ERR_INVALID_VAL;
-    if (status == (DRM_OfflineMediaKeyStatus)expectStatus){
-        ret4 = DRM_ERR_OK;
+   Drm_ErrCode ret4 = OH_MediaKeySystem_GetOfflineMediaKeyStatus(system_ptr, keyId_ptr, keyLen, status_ptr);
+    Drm_ErrCode ret5 = DRM_ERR_INVALID_VAL;
+    if(ret4 == DRM_ERR_OK){
+     if (status == (DRM_OfflineMediaKeyStatus)expectStatus){
+         ret5 = DRM_ERR_OK;
+     }       
     }
-    Drm_ErrCode ret3 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK ) { 
+    Drm_ErrCode ret6 = OH_MediaKeySession_Destroy(mediaKeySession);
+    Drm_ErrCode ret7 = OH_MediaKeySystem_Destroy(drmKeySystem);
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret4 == DRM_ERR_OK  && ret5 == DRM_ERR_OK  && ret6 == DRM_ERR_OK && ret7 == DRM_ERR_OK ) { 
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(keyId_ptr != nullptr){
+    if((keyId_ptr != nullptr) && strncmp(keyIdString, "genKey",keyIdStringLen) != 0){
         free(keyId_ptr);
     }
     napi_create_int32(env, ret, &result);
@@ -790,25 +1011,44 @@ static napi_value Test_MediaKeySystem_ClearOfflineMediaKeys(napi_env env, napi_c
     
     napi_get_value_int32(env, args[2], &offlineMediaKeyIdLen);
     
+    DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+    MediaKeySession *mediaKeySession = nullptr;
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
+    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem,&level, &mediaKeySession);
+    
     MediaKeySystem *system_ptr = nullptr;
     if ((0 != strcmp(inSys, " "))) {
         system_ptr = drmKeySystem;
     }
-    uint8_t *offlineKeyIds_ptr= nullptr;
-    if ((0 != strcmp(keyIdString, " "))) {
-        offlineKeyIds_ptr = (uint8_t *)malloc(keyIdStringLen); 
-        splitStringToIntArray(keyIdString,offlineKeyIds_ptr);
+    int32_t keyLen = 0;
+    uint8_t *keyId_ptr = nullptr;
+	uint8_t keyData[DATA_BUFF_LEN] = {0};
+	int32_t keyDataLen = DATA_BUFF_LEN;	
+    if(strncmp(keyIdString, "genKey",keyIdStringLen) == 0){
+        getLicense(mediaKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+        keyId_ptr =  keyData;
+        if((offlineMediaKeyIdLen != -1) && offlineMediaKeyIdLen != 0){
+            keyLen = keyDataLen;
+        } else{
+           keyLen = offlineMediaKeyIdLen; 
+        }
+     }else if ((0 != strcmp(keyIdString, " "))) {
+        keyId_ptr = (uint8_t *)malloc(keyIdStringLen); 
+        splitStringToIntArray(keyIdString,keyId_ptr);
+        keyLen = offlineMediaKeyIdLen;
+    }else{
+        keyLen =  offlineMediaKeyIdLen;
     }
-    Drm_ErrCode ret3 = OH_MediaKeySystem_ClearOfflineMediaKeys(system_ptr, offlineKeyIds_ptr, offlineMediaKeyIdLen);
+    Drm_ErrCode ret3 = OH_MediaKeySystem_ClearOfflineMediaKeys(system_ptr, keyId_ptr, keyLen);
+	Drm_ErrCode ret5 = OH_MediaKeySession_Destroy(mediaKeySession);
     Drm_ErrCode ret4 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK) {
+    if(ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK){
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(offlineKeyIds_ptr != nullptr){
-        free(offlineKeyIds_ptr);
+    if((keyId_ptr != nullptr) && strncmp(keyIdString, "genKey",keyIdStringLen) != 0){
+        free(keyId_ptr);
     }
     napi_create_int32(env, ret, &result);
     return result;
@@ -1046,12 +1286,44 @@ static napi_value Test_MediaKeySession_ProcessMediaKeyResponse(napi_env env, nap
 
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
     Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);
+    
+    DRM_MediaKeyRequestInfo requestInfo;
+    memset(&requestInfo, 0, sizeof(DRM_MediaKeyRequestInfo));
+    unsigned char testData[139] = REQUESTINFODATA;
+    requestInfo.type = MEDIA_KEY_TYPE_ONLINE;
+    requestInfo.initDataLen = sizeof(testData);    
+    requestInfo.optionsCount = 1;
+    memcpy(requestInfo.mimeType, (char *)"video/mp4", sizeof("video/mp4"));
+    memcpy(requestInfo.initData, testData, sizeof(testData));
+    memcpy(requestInfo.optionName[0], (char *)"optionalDataName", sizeof("optionalDataName"));
+    memcpy(requestInfo.optionData[0], (char *)"optionalDataValue", sizeof("optionalDataValue"));
+    DRM_MediaKeyRequest requestData;
+    memset(&requestData, 0, sizeof(DRM_MediaKeyRequest));
+    Drm_ErrCode ret6 = OH_MediaKeySession_GenerateMediaKeyRequest(drmKeySession,&requestInfo, &requestData); 
+    
     MediaKeySession *session_ptr = nullptr;
     if((0 != strcmp(inSession, " "))){
         session_ptr = drmKeySession;
     }
     uint8_t *response_ptr = nullptr;
-    if ((0 != strcmp(inResponseString, " "))) {
+    if(strcmp(inResponseString, "genResponse") == 0){
+        if(strcmp(judge_uuid(), BLUE_AREA) == 0){
+           uint8_t responseData[DATA_BLUESPONSE_LEN] = ONLINERESPONSE;
+           response_ptr = responseData;
+           if ((responseLen != -1) && (responseLen != 0)) {
+                responseLen = DATA_BLUESPONSE_LEN;
+            }             
+        }else{
+            uint8_t responseData[DATA_BUFF_LEN]={0};
+            int32_t responseLenOut = DATA_BUFF_LEN;            
+            getHttp("192.168.50.59", 9528, "/getProvision", reinterpret_cast<const char *>(requestData.data), requestData.dataLen,
+                      responseData, (unsigned int *)&responseLenOut);
+            response_ptr = responseData;
+            if((responseLen != -1) && (responseLen != 0)){
+                responseLen = responseLenOut;
+            }            
+        }
+    }else if (strcmp(inResponseString, " ") != 0) {
         response_ptr = (uint8_t *)malloc(inResponseStringLen); 
         splitStringToIntArray(inResponseString,response_ptr);
     }
@@ -1068,12 +1340,12 @@ static napi_value Test_MediaKeySession_ProcessMediaKeyResponse(napi_env env, nap
     Drm_ErrCode ret3 = OH_MediaKeySession_ProcessMediaKeyResponse(session_ptr, response_ptr, responseLen, keyIds_ptr, keyIdLen_ptr);
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) {
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK && ret6 == DRM_ERR_OK) {
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(response_ptr != nullptr){
+    if((response_ptr != nullptr) && (strcmp(inResponseString, "genResponse") != 0)){
         free(response_ptr);
     }
     napi_create_int32(env, ret, &result);
@@ -1081,12 +1353,13 @@ static napi_value Test_MediaKeySession_ProcessMediaKeyResponse(napi_env env, nap
 }
 static napi_value Test_MediaKeySession_CheckMediaKeyStatus(napi_env env, napi_callback_info info) {
     napi_value result;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
     size_t inSessionLen = 0;
     char *inSession = nullptr;
     size_t inStatusLen = 0;
     char *inStatus = nullptr;
+    int32_t licenseNum = 0;
     Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
     MediaKeySystem *drmKeySystem = nullptr;
     MediaKeySession *drmKeySession = nullptr;
@@ -1096,25 +1369,33 @@ static napi_value Test_MediaKeySession_CheckMediaKeyStatus(napi_env env, napi_ca
     napi_get_value_string_utf8(env, args[0], nullptr, 0, &inSessionLen);
     inSession = new char[inSessionLen + 1];
     napi_get_value_string_utf8(env, args[0], inSession, inSessionLen + 1, &inSessionLen);
-
     napi_get_value_string_utf8(env, args[1], nullptr, 0, &inStatusLen);
     inStatus = new char[inStatusLen + 1];
     napi_get_value_string_utf8(env, args[1], inStatus, inStatusLen + 1, &inStatusLen);
+    napi_get_value_int32(env, args[2], &licenseNum);
+    
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
-    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);    
-    MediaKeySession *sessoin  = nullptr;
+    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);  
+    uint8_t keyData[DATA_BUFF_LEN] = {0};
+    int32_t keyDataLen = DATA_BUFF_LEN;
+    for(int i=0; i<licenseNum;i++){
+        getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license     
+    }
+    MediaKeySession *sessoin_ptr  = nullptr;
     DRM_MediaKeyStatus mediaKeyStatus;
     DRM_MediaKeyStatus *mediaKeyStatus_ptr = nullptr;
     if(0 !=strcmp(inSession, " ")){
-        sessoin = drmKeySession;
+        sessoin_ptr = drmKeySession;
     }
     if (0 != strcmp(inStatus, " ")) {
         mediaKeyStatus_ptr = &mediaKeyStatus;
     }
-    Drm_ErrCode ret3 = OH_MediaKeySession_CheckMediaKeyStatus(sessoin, mediaKeyStatus_ptr);
-//    if (mediaKeyStatus_ptr == nullptr) {
-//        ret3 = DRM_ERR_INVALID_VAL;
-//    }
+    Drm_ErrCode ret3 = OH_MediaKeySession_CheckMediaKeyStatus(sessoin_ptr, mediaKeyStatus_ptr);
+    if(ret3 == DRM_ERR_OK){
+        if(licenseNum != 0){
+            ret3 = (mediaKeyStatus.statusCount == 0)?DRM_ERR_INVALID_VAL:DRM_ERR_OK;
+        }        
+    }
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
     if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) {
@@ -1143,6 +1424,9 @@ static napi_value Test_MediaKeySession_ClearMediaKeys(napi_env env, napi_callbac
     
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
     Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);
+    uint8_t keyData[DATA_BUFF_LEN] = {0};
+    int32_t keyDataLen = DATA_BUFF_LEN;
+    getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
     MediaKeySession *session = nullptr;
     if (0 != strcmp(inSession, " ")) {
         session = drmKeySession;
@@ -1202,10 +1486,18 @@ static napi_value Test_MediaKeySession_GenerateOfflineReleaseRequest(napi_env en
         session_ptr = drmKeySession;
     }
     uint8_t *KeyId_ptr = nullptr;
-     if (0 != strcmp(KeyIdString, " ")) {
-         KeyId_ptr = (uint8_t *)malloc(KeyIdStringLen);
-         splitStringToIntArray(KeyIdString,KeyId_ptr);
-     }   
+	uint8_t keyData[DATA_BUFF_LEN] = {0};
+	int32_t keyDataLen = DATA_BUFF_LEN;	
+    if(strcmp(KeyIdString, "genKey") == 0){
+        getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+        KeyId_ptr = keyData;
+        if(offlineKeyIdLen > 0){
+            offlineKeyIdLen = keyDataLen;
+        }
+    }else if (0 != strcmp(KeyIdString, " ")) {
+        KeyId_ptr = (uint8_t *)malloc(KeyIdStringLen);
+        splitStringToIntArray(KeyIdString,KeyId_ptr);
+    }   
     uint8_t data[DATA_BUFF_LEN]={0};
     uint8_t *releaseRequest_ptr = nullptr;
     if (0 != strcmp(requestString, " ")){
@@ -1224,10 +1516,10 @@ static napi_value Test_MediaKeySession_GenerateOfflineReleaseRequest(napi_env en
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(KeyId_ptr != nullptr){
+    if((KeyId_ptr != nullptr) && (strcmp(KeyIdString, "genKey") != 0)){
         free(KeyId_ptr);
     }
-    napi_create_int32(env, ret, &result);
+    napi_create_int32(env,ret, &result);
     return result;
 }
 static napi_value Test_MediaKeySession_ProcessOfflineReleaseResponse(napi_env env, napi_callback_info info) {
@@ -1265,8 +1557,16 @@ static napi_value Test_MediaKeySession_ProcessOfflineReleaseResponse(napi_env en
     if (0 != strcmp(inSession, " ")) {
         session_ptr = drmKeySession;
     }
-     uint8_t *keyId_ptr = nullptr;
-     if (0 != strcmp(KeyId, " ")) {
+    uint8_t *keyId_ptr = nullptr;
+	uint8_t keyData[DATA_BUFF_LEN] = {0};
+	int32_t keyDataLen = DATA_BUFF_LEN;	
+    if(strcmp(KeyId, "genKey") == 0){
+        getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+        keyId_ptr = keyData;
+        if(offlineKeyIdLen > 0){
+            offlineKeyIdLen = keyDataLen;
+        }
+    }else if (0 != strcmp(KeyId, " ")) {
          keyId_ptr = (uint8_t *)malloc(KeyIdLen);
          splitStringToIntArray(KeyId,keyId_ptr);
      }  
@@ -1278,12 +1578,12 @@ static napi_value Test_MediaKeySession_ProcessOfflineReleaseResponse(napi_env en
     Drm_ErrCode ret3 = OH_MediaKeySession_ProcessOfflineReleaseResponse(session_ptr, keyId_ptr, offlineKeyIdLen,releaseResponse_ptr,responseLen);
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK ) { //
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK ) { 
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(keyId_ptr != nullptr){
+    if(keyId_ptr != nullptr && strcmp(KeyId, "genKey") != 0){
         free(keyId_ptr);
     }
     if(releaseResponse_ptr != nullptr){
@@ -1316,24 +1616,33 @@ static napi_value Test_MediaKeySession_RestoreOfflineMediaKeys(napi_env env, nap
     napi_get_value_int32(env, args[2], &offlineKeyIdLen);
     Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
     Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);   
+    
+    uint8_t *keyId_ptr = nullptr;
+	uint8_t keyData[DATA_BUFF_LEN] = {0};
+	int32_t keyDataLen = DATA_BUFF_LEN;	
+    if(strcmp(KeyId, "getKey") == 0){
+        getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
+        keyId_ptr = keyData;
+        if(offlineKeyIdLen > 0){
+            offlineKeyIdLen = keyDataLen;
+        }
+   }else if (0 != strcmp(KeyId, " ")) {
+        keyId_ptr = (uint8_t *)malloc(KeyIdLen);
+        splitStringToIntArray(KeyId,keyId_ptr);
+    }else;  
     MediaKeySession *session_ptr = nullptr;
     if (0 != strcmp(inSession, " ")) {
         session_ptr = drmKeySession;
     }
-    uint8_t *keyId_ptr  = nullptr;
-    if (0 != strcmp(KeyId, " ")) {
-        keyId_ptr = (uint8_t *)malloc(KeyIdLen);
-        splitStringToIntArray(KeyId,keyId_ptr);
-    }
     Drm_ErrCode ret3 = OH_MediaKeySession_RestoreOfflineMediaKeys(session_ptr, keyId_ptr, offlineKeyIdLen);
     Drm_ErrCode ret4 = OH_MediaKeySession_Destroy(drmKeySession);
     Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) { //
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK) {
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
     }
-    if(keyId_ptr != nullptr){
+    if(keyId_ptr != nullptr && strcmp(KeyId, "getKey") != 0){
         free(keyId_ptr);
     }
     napi_create_int32(env, ret, &result);
@@ -1493,8 +1802,6 @@ static napi_value Test_MediaKeySession_SetMediaKeySessionCallback(napi_env env, 
     napi_create_int32(env, ret, &result);
     return result;
 }
-
-
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {

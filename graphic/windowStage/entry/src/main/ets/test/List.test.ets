@@ -20,6 +20,7 @@ import parameterVerificationIsOptional from './parameterVerificationIsOptional.t
 import windowRichScene from './windowRichScene.test'
 import pipWindowTest from './pipwindow.test'
 import interfaceSupportSessionManagerTest from './interfaceSupportSessionManager.test'
+import windowAbnormalScenario from './windowAbnormalScenario.test'
 import windowRecoverTest from './windowRecover.test'
 
 export default function testsuite() {
@@ -31,6 +32,6 @@ export default function testsuite() {
   windowRichScene(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   pipWindowTest(globalThis.abilityContext)
   interfaceSupportSessionManagerTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
-  
+  windowAbnormalScenario(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRecoverTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
 }

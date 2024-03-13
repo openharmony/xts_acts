@@ -46,6 +46,7 @@ static napi_value Tcdrain(napi_env env, napi_callback_info info)
         int fileDescribe;
         fileDescribe = open(path, O_RDWR | O_NONBLOCK);
         result = tcdrain(fileDescribe);
+        close(fileDescribe);
     }
     napi_value results = nullptr;
     napi_create_int32(env, result, &results);

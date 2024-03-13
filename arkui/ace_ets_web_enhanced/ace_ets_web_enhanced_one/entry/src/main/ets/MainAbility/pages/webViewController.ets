@@ -39,6 +39,7 @@ struct webViewController {
   @State onOverScrollCallBack: boolean = false
   @State darkMode: WebDarkMode = WebDarkMode.Off
   @State forceDarkAccess: boolean = false
+  @State userAgentPC:string = "";
   no_error: string = "no error happened"
 
   onPageShow() {
@@ -80,6 +81,9 @@ struct webViewController {
       Row() {
         Button("WebViewController click").key('WebViewControllerButton').onClick(async () => {
           console.info("key==>" + this.str)
+          let webRect = Utils.getComponentRect('RowSize');
+          let X = Utils.getRectHorizontalCenterX(webRect)
+          let Y = Utils.getRectVerticalCenterY(webRect)
           switch (this.str) {
 
             case "testOnScroll001": {
@@ -382,7 +386,12 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                await driver.swipe(100, 300, 100, 500, 600);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X, Y - 60, X, Y + 60);
+                }else{
+                  await driver.swipe(100, 300, 100, 500, 600);
+                }
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 31038)
               } catch (error) {
@@ -398,7 +407,12 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                await driver.swipe(100, 900, 100, 200, 600);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X, Y + 60, X, Y - 60);
+                }else{
+                  await driver.swipe(100, 900, 100, 200, 600);
+                }
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100034)
               } catch (error) {
@@ -414,7 +428,12 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                await driver.swipe(400, 300, 100, 300, 600);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X + 60, Y, X - 60, Y);
+                }else{
+                  await driver.swipe(400, 300, 100, 300, 600);
+                }
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100035)
               } catch (error) {
@@ -430,7 +449,12 @@ struct webViewController {
                 await Utils.sleep(2000);
                 this.onOverScrollCallBack = false
                 let driver = Driver.create();
-                await driver.swipe(100, 300, 400, 300, 600);
+                this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  await driver.swipe(X - 60, Y, X + 60, Y);
+                }else{
+                  await driver.swipe(100, 300, 400, 300, 600);
+                }
                 await Utils.sleep(2000);
                 Utils.emitEvent(this.onOverScrollCallBack, 100036)
               } catch (error) {
@@ -566,5 +590,6 @@ struct webViewController {
         .darkMode(this.darkMode)
         .forceDarkAccess(this.forceDarkAccess)
     }
+    .key('RowSize')
   }
 }

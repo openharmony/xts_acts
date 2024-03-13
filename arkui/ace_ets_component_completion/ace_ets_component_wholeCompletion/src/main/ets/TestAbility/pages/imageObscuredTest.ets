@@ -25,48 +25,62 @@ struct imageObscuredTest {
           Flex({ direction: FlexDirection.Column }) {
 
             Row() {
-              Image($r('app.media.icon')).width('400px').height('400px')
-                .obscured([ObscuredReasons.PLACEHOLDER]).borderRadius('20vp')
+              Image($r('app.media.icon'))
+                .width('400px')
+                .height('400px')
+                .obscured([ObscuredReasons.PLACEHOLDER])
+                .borderRadius('20vp')
                 .key('ArkUX_Redacted_Image_0150')
-            }.margin({bottom: 50})
+            }.margin({ bottom: 50 })
 
             Row() {
               Image($r('app.media.icon'))
                 .obscured(null)
                 .key('ArkUX_Redacted_Image_0160')
-            }.margin({bottom: 50})
+            }.margin({ bottom: 50 })
 
 
             Row() {
-              Image($r('app.media.icon')).width('700px').height('200px')
-                .obscured([ObscuredReasons.PLACEHOLDER]).borderRadius(null)
+              Image($r('app.media.icon'))
+                .width('700px')
+                .height('200px')
+                .obscured([ObscuredReasons.PLACEHOLDER])
+                .borderRadius(null)
                 .key('ArkUX_Redacted_Image_0170')
-            }.margin({bottom: 50})
+            }.margin({ bottom: 50 })
 
             Row() {
-              Image($r('app.media.play')).width(30).height(40)
-                .obscured([ObscuredReasons.PLACEHOLDER]).borderRadius(null)
+              Image($r('app.media.play'))
+                .width(30)
+                .height(40)
+                .obscured([ObscuredReasons.PLACEHOLDER])
+                .borderRadius(null)
                 .key('ArkUX_Redacted_Image_0180')
-            }.margin({bottom: 50})
+            }.margin({ bottom: 50 })
 
             Row() {
-              Image($r('app.media.play')).width(30).height(40)
+              Image($r('app.media.play'))
+                .width(30)
+                .height(40)
                 .obscured([ObscuredReasons.PLACEHOLDER])
                 .borderRadius('20vp')
                 .key('ArkUX_Redacted_Image_0190')
-            }.margin({bottom: 50})
+            }.margin({ bottom: 50 })
 
           }.margin({ left: 52 })
         }
         .scrollBar(BarState.Off)
         .scrollable(ScrollDirection.Vertical)
-        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical,state: BarState.Auto }) {
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
           Text()
             .width(30)
             .height(100)
             .borderRadius(10)
             .backgroundColor('#C0C0C0')
-        }.width(30).backgroundColor('#ededed')
+        }
+        .width(30)
+        .backgroundColor('#ededed')
       }
     }
   }

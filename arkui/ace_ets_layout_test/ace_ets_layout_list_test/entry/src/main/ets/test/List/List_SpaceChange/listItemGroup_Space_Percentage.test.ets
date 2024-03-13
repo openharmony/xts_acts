@@ -12,16 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function listItemGroup_Space_Percentage() {
-  describe('listItemGroup_Space_Percentage', function () {
-    beforeEach(async function (done) {
+  describe('listItemGroup_Space_Percentage', () => {
+    beforeEach(async (done: Function) => {
       console.info("listItemGroup_Space_Percentage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/List_SpaceChange/listItemGroup_Space_Percentage',
       }
       try {
@@ -30,7 +46,7 @@ export default function listItemGroup_Space_Percentage() {
         console.info("get List_SpaceChange state pages:" + JSON.stringify(pages));
         if (!("List_SpaceChange" == pages.name)) {
           console.info("get List_SpaceChange pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push List_SpaceChange page result:" + JSON.stringify(result));
         }
@@ -40,7 +56,7 @@ export default function listItemGroup_Space_Percentage() {
       console.info("listItemGroup_Space_Percentage beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       // let driver = await UiDriver.create()
       // await driver.pressBack();
@@ -50,25 +66,29 @@ export default function listItemGroup_Space_Percentage() {
 
 
     /**
-     * @tc.number    SUB_ACE_listItemGroup_Space_Percentage_0100
-     * @tc.name      testListItemGroupSpacePercentage
-     * @tc.desc      set the space of listItemGroup to '10%'
+     * @tc.number SUB_ACE_listItemGroup_Space_Percentage_0100
+     * @tc.name testListItemGroupSpacePercentage
+     * @tc.desc set the space of listItemGroup to '10%'
      */
-    it('SUB_ACE_listItemGroup_Space_Percentage_0100', 0, async function (done) {
+    it('SUB_ACE_listItemGroup_Space_Percentage_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_listItemGroup_Space_Percentage_0100] START');
-      globalThis.value.message.notify({name:'space1', value:'10%'});
-      globalThis.value.message.notify({name:'space2', value:'10%'});
+      globalThis.value.message.notify({
+        name: 'space1', value: '10%'
+      });
+      globalThis.value.message.notify({
+        name: 'space2', value: '10%'
+      });
       await CommonFunc.sleep(1000);
-      let List01 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
-      let ListItemGroup_1 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
-      let ListItem11 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
-      let ListItem12 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
-      let ListItem13 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
+      let List01: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
+      let ListItemGroup_1: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
+      let ListItem11: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
+      let ListItem12: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
+      let ListItem13: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
 
-      let ListItemGroup_2 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
-      let ListItem21 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
-      let ListItem22 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
-      let ListItem23 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
+      let ListItemGroup_2: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
+      let ListItem21: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
+      let ListItem22: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
+      let ListItem23: RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
 
       expect(Math.round(ListItem11.right - ListItem11.left)).assertEqual(vp2px(300));
       expect(Math.round(ListItem11.bottom - ListItem11.top)).assertEqual(Math.round(vp2px(50)));
@@ -94,25 +114,25 @@ export default function listItemGroup_Space_Percentage() {
 
 
     /**
-     * @tc.number    SUB_ACE_listItemGroup_Space_Percentage_0200
-     * @tc.name      testListItemGroupSpacePercentage
-     * @tc.desc      set the space of listItemGroup to '100%'
+     * @tc.number SUB_ACE_listItemGroup_Space_Percentage_0200
+     * @tc.name testListItemGroupSpacePercentage
+     * @tc.desc set the space of listItemGroup to '100%'
      */
-    // it('SUB_ACE_listItemGroup_Space_Percentage_0200', 0, async function (done) {
+    // it('SUB_ACE_listItemGroup_Space_Percentage_0200', 0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_listItemGroup_Space_Percentage_0200] START');
     //   globalThis.value.message.notify({name:'space1', value:'10%'});
     //   globalThis.value.message.notify({name:'space2', value:'100%'});
     //   await CommonFunc.sleep(1000);
-    //   let List01 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
-    //   let ListItemGroup_1 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
-    //   let ListItem11 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
-    //   let ListItem12 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
-    //   let ListItem13 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
+    //   let List01:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
+    //   let ListItemGroup_1:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
+    //   let ListItem11:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
+    //   let ListItem12:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
+    //   let ListItem13:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
     //
-    //   let ListItemGroup_2 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
-    //   let ListItem21 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
-    //   let ListItem22 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
-    //   let ListItem23 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
+    //   let ListItemGroup_2:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
+    //   let ListItem21:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
+    //   let ListItem22:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
+    //   let ListItem23:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
     //
     //   expect(Math.round(ListItem11.right - ListItem11.left)).assertEqual(vp2px(300));
     //   expect(Math.round(ListItem11.bottom - ListItem11.top)).assertEqual(Math.round(vp2px(50)));
@@ -147,25 +167,25 @@ export default function listItemGroup_Space_Percentage() {
     // });
 
     /**
-     * @tc.number    SUB_ACE_listItemGroup_Space_Percentage_0300
-     * @tc.name      testListItemGroupSpacePercentage
-     * @tc.desc      set the space of listItemGroup to '200%'
+     * @tc.number SUB_ACE_listItemGroup_Space_Percentage_0300
+     * @tc.name testListItemGroupSpacePercentage
+     * @tc.desc set the space of listItemGroup to '200%'
      */
-    // it('SUB_ACE_listItemGroup_Space_Percentage_0300', 0, async function (done) {
+    // it('SUB_ACE_listItemGroup_Space_Percentage_0300', 0, async  (done: Function)=> {
     //   console.info('[SUB_ACE_listItemGroup_Space_Percentage_0300] START');
     //   globalThis.value.message.notify({name:'space1', value:'10%'});
     //   globalThis.value.message.notify({name:'space2', value:'200%'});
     //   await CommonFunc.sleep(1000);
-    //   let List01 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
-    //   let ListItemGroup_1 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
-    //   let ListItem11 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
-    //   let ListItem12 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
-    //   let ListItem13 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
+    //   let List01:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_01');
+    //   let ListItemGroup_1:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_1');
+    //   let ListItem11:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_11');
+    //   let ListItem12:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_12');
+    //   let ListItem13:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_13');
     //
-    //   let ListItemGroup_2 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
-    //   let ListItem21 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
-    //   let ListItem22 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
-    //   let ListItem23 = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
+    //   let ListItemGroup_2:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItemGroup_2');
+    //   let ListItem21:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_21');
+    //   let ListItem22:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_22');
+    //   let ListItem23:RectValue = CommonFunc.getComponentRect('listItemGroup_Space_Percentage_ListItem_23');
     //
     //   expect(Math.round(ListItem11.right - ListItem11.left)).assertEqual(vp2px(300));
     //   expect(Math.round(ListItem11.bottom - ListItem11.top)).assertEqual(Math.round(vp2px(50)));

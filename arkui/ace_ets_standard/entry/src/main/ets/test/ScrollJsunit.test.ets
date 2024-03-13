@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
+
 
 export default function ScrollJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  describe('scrollTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Scroll',
+  describe('scrollTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll',
       }
       try {
         router.clear();
@@ -40,29 +40,29 @@ export default function ScrollJsunit() {
         console.info("get Scroll state success " + JSON.stringify(pages));
         if (!("Scroll" == pages.name)) {
           console.info("get Scroll state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push Scroll page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Scroll page error " + JSON.stringify(result));
+        console.error("push Scroll page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Scroll after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1020
-     * @tc.name      testScrollGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1020
+     * @tc.name testScrollGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey010', 0, async function (done) {
+    it('testScrollGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('scroll');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll component obj is: " + JSON.stringify(obj));
       console.log("cd scroll type" + JSON.stringify(obj.$type));
       console.log("cd scroll scrollable" + JSON.stringify(obj.$attrs.scrollable));
@@ -70,59 +70,59 @@ export default function ScrollJsunit() {
       console.log("cd scroll scrollBarColor" + JSON.stringify(obj.$attrs.scrollBarColor));
       console.log("cd scroll scrollBarWidth" + JSON.stringify(obj.$attrs.scrollBarWidth));
       expect(obj.$type).assertEqual('Scroll');
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical')
-      expect(obj.$attrs.scrollBarColor).assertEqual('#FFFFC0CB')
-      expect(obj.$attrs.scrollBarWidth).assertEqual('20.00vp')
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Vertical');
+      expect(obj.$attrs.scrollBarColor).assertEqual('#FFFFC0CB');
+      expect(obj.$attrs.scrollBarWidth).assertEqual('20.00vp');
       console.info('cd ScorllGetInspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1030
-     * @tc.name      testScrollGetInspectorByKey020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1030
+     * @tc.name testScrollGetInspectorByKey020
+     * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey020', 0, async function (done) {
+    it('testScrollGetInspectorByKey020', 0, async (done: Function) => {
       let strJson = getInspectorByKey('scroll1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll1 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll1 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll1 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Horizontal')
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto')
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Horizontal');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       console.info('cd Scorll1GetInspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1040
-     * @tc.name      testScrollGetInspectorByKey030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1040
+     * @tc.name testScrollGetInspectorByKey030
+     * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey030', 0, async function (done) {
-      let strJson = getInspectorByKey('scroll2');
-      let obj = JSON.parse(strJson);
+    it('testScrollGetInspectorByKey030', 0, async (done: Function) => {
+      let strJson: ESObject = getInspectorByKey('scroll2');
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll2 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll2 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll2 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.None')
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
+      expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.None');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
       console.info('cd Scorll2GetInspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1050
-     * @tc.name      testScrollGetInspectorByKey040
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1050
+     * @tc.name testScrollGetInspectorByKey040
+     * @tc.desc aceEtsTest
      */
-    it('testScrollGetInspectorByKey040', 0, async function (done) {
+    it('testScrollGetInspectorByKey040', 0, async (done: Function) => {
       let strJson = getInspectorByKey('scroll3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd scroll3 component obj is: " + JSON.stringify(obj));
       console.log("cd scroll3 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll3 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
       console.info('cd Scorll3GetInspectorByKey END');
       done();
     });

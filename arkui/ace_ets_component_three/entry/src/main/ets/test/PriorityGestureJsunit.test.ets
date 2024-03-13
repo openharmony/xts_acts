@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe,  beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function priorityGestureJsunit() {
-  describe('priorityGestureTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/priorityGesture',
+  describe('priorityGestureTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/priorityGesture',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function priorityGestureJsunit() {
         console.info("get priorityGesture state success " + JSON.stringify(pages));
         if (!("priorityGesture" == pages.name)) {
           console.info("get priorityGesture state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push priorityGesture page success " + JSON.stringify(result));
         }
@@ -40,26 +40,26 @@ export default function priorityGestureJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("priorityGesture after each called");
     });
 
-    it('priorityGestureTest_0100', 0, async function (done) {
+    it('priorityGestureTest_0100', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      let rect = await Utils.getComponentRect('tapGesture')
+      let rect = Utils.getComponentRect('tapGesture')
       console.info("priorityGestureTest_0100 rectInfo is " + JSON.stringify(rect));
-      let x_value = rect.left + (rect.right - rect.left) / 2;
-      let y_value = rect.top + (rect.bottom - rect.top) / 2;
+      let x_value: number = rect.left + (rect.right - rect.left) / 2;
+      let y_value: number = rect.top + (rect.bottom - rect.top) / 2;
       console.info("priorityGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
         id: 11, x: x_value, y: y_value, type: TouchType.Move,
       }
-      var callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("priorityGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.value).assertEqual('gesture onAction')
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 162,
         priority: events_emitter.EventPriority.LOW
       }

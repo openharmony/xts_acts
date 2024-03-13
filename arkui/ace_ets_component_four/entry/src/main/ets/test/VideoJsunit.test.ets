@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function videoJsunit() {
-  describe('videoTest', function () {
-    beforeEach(async function (done) {
+  describe('videoTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("video beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/video',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/video',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function videoJsunit() {
         console.info("get video state pages:" + JSON.stringify(pages));
         if (!("video" == pages.name)) {
           console.info("get video state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push video page result:" + JSON.stringify(result));
         }
@@ -41,30 +40,29 @@ export default function videoJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("video after each called");
     });
 
-    it('testVideo01', 0, async function (done) {
+    it('testVideo01', 0, async (done: Function) => {
       console.info('[testVideo01] START');
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      expect(objNew.$type).assertEqual('Video');
+      expect(JSON.parse(strJsonNew).$type).assertEqual('Video');
       console.info('[testVideo01] END');
       done();
     });
 
-    it('testVideo02', 0, async function (done) {
+    it('testVideo02', 0, async (done: Function) => {
       console.info('[testVideo02] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "progressRates": PlaybackSpeed.Speed_Forward_2_00_X,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -75,21 +73,20 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo02] component objNew is: " + JSON.stringify(objNew));
+      console.info("[testVideo02] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo02] END');
       done();
     });
 
-    it('testVideo03', 0, async function (done) {
+    it('testVideo03', 0, async (done: Function) => {
       console.info('[testVideo03] START ');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "progressRates": PlaybackSpeed.Speed_Forward_1_75_X,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -100,21 +97,20 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo03] component objNew is: " + JSON.stringify(objNew));
+      console.info("[testVideo03] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo03] END');
       done();
     });
 
-    it('testVideo04', 0, async function (done) {
+    it('testVideo04', 0, async (done: Function) => {
       console.info('[testVideo04] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "progressRates": PlaybackSpeed.Speed_Forward_1_25_X,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,21 +121,20 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo04] component objNew is: " + JSON.stringify(objNew));
+      console.info("[testVideo04] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo04] END');
       done();
     });
 
-    it('testVideo05', 0, async function (done) {
+    it('testVideo05', 0, async (done: Function) => {
       console.info('[testVideo05] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "progressRates": PlaybackSpeed.Speed_Forward_1_00_X,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -150,21 +145,21 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo05] component objNew is: " + JSON.stringify(objNew));
+
+      console.info("[testVideo05] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo05] END');
       done();
     });
 
-    it('testVideo06', 0, async function (done) {
+    it('testVideo06', 0, async (done: Function) => {
       console.info('[testVideo06] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "progressRates": PlaybackSpeed.Speed_Forward_0_75_X,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -175,21 +170,21 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo06] component objNew is: " + JSON.stringify(objNew));
+
+      console.info("[testVideo06] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo06] END');
       done();
     });
 
-    it('testVideo07', 0, async function (done) {
+    it('testVideo07', 0, async (done: Function) => {
       console.info('[testVideo07] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "isStopped": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 235,
           priority: events_emitter.EventPriority.LOW
         }
@@ -200,8 +195,8 @@ export default function videoJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('video');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testVideo07] component objNew is: " + JSON.stringify(objNew));
+
+      console.info("[testVideo07] component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info('[testVideo07] END');
       done();
     });

@@ -33,7 +33,7 @@ export const Test_MediaKeySystem_Destroy: (system:string) => number;
 export const Test_MediaKeySystem_SetMediaKeySystemCallback: (system:string) => number;
 export const Test_MediaKeySession_GenerateMediaKeyRequest: (session:string,info:string,request:string) => number;
 export const Test_MediaKeySession_ProcessMediaKeyResponse: (session:string,response: string,responseLen:number,KeyIdOut:string,KeyIdOutLenSting:string) => number;
-export const Test_MediaKeySession_CheckMediaKeyStatus: (session:string,status:string) => number;
+export const Test_MediaKeySession_CheckMediaKeyStatus: (session:string,status:string, licenseNum:number) => number;
 export const Test_MediaKeySession_ClearMediaKeys: (session:string) => number;
 export const Test_MediaKeySession_GenerateOfflineReleaseRequest: (session:string,keyIdIn:string,keyIdLen:number,outRequest: string,outRequestLen: string) => number;
 export const Test_MediaKeySession_ProcessOfflineReleaseResponse: (session:string,keyIdIn:string,keyIdLen:number,key:string,keyLen:number) => number;
@@ -41,4 +41,3 @@ export const Test_MediaKeySession_RestoreOfflineMediaKeys: (session:string,keyId
 export const Test_MediaKeySession_GetContentProtectionLevel: (session:string,levelPtr: string,) => number;
 export const Test_MediaKeySession_RequireSecureDecoderModule: (session:string,mineType:string,statusPtr:string,expectStatus:number) => number;
 export const Test_MediaKeySession_SetMediaKeySessionCallback: (session:string,callback:string) => number;
-

@@ -32,8 +32,11 @@ static napi_value Ptrace(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
     int32_t ret = PARAM_0;
-    fork();
-    ret = ptrace(PTRACE_TRACEME);
+    pid_t pid = fork();
+    if (pid == PARAM_0) {
+        ret = ptrace(PTRACE_TRACEME);
+        _exit(PARAM_0);
+    }
     napi_value result;
     if (MPARAM_1 == ret) {
         napi_create_int32(env, PARAM_UNNORMAL, &result);

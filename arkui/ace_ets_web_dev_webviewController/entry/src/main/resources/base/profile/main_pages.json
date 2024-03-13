@@ -6,6 +6,8 @@
         "MainAbility/pages/onErrorReceive03",
         "MainAbility/pages/webViewHasImage",
         "MainAbility/pages/webViewScrollTo",
+        "MainAbility/pages/webViewScrollable",
+        "MainAbility/pages/webViewSetPrintBackground",
         "MainAbility/pages/webViewScrollBy",
         "MainAbility/pages/webStorage",
         "MainAbility/pages/runJavaScript",

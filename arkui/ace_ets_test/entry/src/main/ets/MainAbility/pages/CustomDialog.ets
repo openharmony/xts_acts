@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @CustomDialog
 struct CustomDialogExample {
   controller: CustomDialogController
@@ -40,7 +40,7 @@ struct CustomDialogExample {
   }
 }
 
-let Offset = { dx: 5, dy: 5 }
+// let Offset = { dx: 5, dy: 5 }
 
 @Entry
 @Component
@@ -49,7 +49,7 @@ struct CustomDialogUser {
     builder: CustomDialogExample({ cancel: this.onCancel, confirm: this.onAccept }),
     cancel: this.existApp,
     autoCancel: true,
-    offset: Offset,
+    offset: { dx: 5, dy: 5 },
     alignment: DialogAlignment.Center,
     customStyle: false,
     gridCount: 5
