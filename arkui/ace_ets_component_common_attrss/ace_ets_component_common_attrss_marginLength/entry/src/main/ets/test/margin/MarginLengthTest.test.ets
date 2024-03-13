@@ -17,6 +17,25 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 import Utils from '../../MainAbility/common/Utils';
 
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+  childWidth: number;
+  childHeight: number;
+  parentWidth: number;
+  parentHeight: number;
+}
+
 export default function marginLengthTest() {
   let childWidth = 100;
   let childHeight = 50;
@@ -95,7 +114,7 @@ export default function marginLengthTest() {
     'TabContent',
     'WaterFlow'
   ]
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testMargin',
     pageName: 'MarginPageLength',
     pageUrl: 'MainAbility/pages/margin/MarginPageLength',
@@ -108,7 +127,7 @@ export default function marginLengthTest() {
     parentHeight: parentHeight
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: {
       margin: 100,
@@ -147,7 +166,7 @@ export default function marginLengthTest() {
   }]
 
   describe('MarginLengthTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       //component
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //parentComponent
@@ -158,7 +177,7 @@ export default function marginLengthTest() {
       let right = 0;
       let bottom = 0;
       if ((data.pageConfig.componentKey == 'ListItem')
-      || (data.pageConfig.componentKey == 'ListItemGroup')) {
+        || (data.pageConfig.componentKey == 'ListItemGroup')) {
         //Reference component
         let rectReference = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
         //Component to reference component and parent component margin calculation
