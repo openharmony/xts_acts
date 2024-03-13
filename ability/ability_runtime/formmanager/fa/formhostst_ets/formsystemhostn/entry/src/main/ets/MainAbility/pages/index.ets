@@ -29,6 +29,8 @@ struct Index {
   @State optType: number = 0;
   private dimension: FormDimension = FormDimension.Dimension_1_2;
 
+  private TAG = `[FormComponent.host.n]`;
+
   private normal = 0;
   private temporary = 0;
   private normaldel = 0;
@@ -59,16 +61,16 @@ struct Index {
   };
 
   private publishOnErrorCallBack() {
-    console.debug("====> [FormComponent] formsystemhostn formOnErrorEvent Publish CallBack ====>");
+    console.debug(`====> ${this.TAG} formsystemhostn formOnErrorEvent Publish CallBack ====>`);
   }
   private publishOnAcquiredCallBack() {
-    console.debug("====> [FormComponent] formsystemhostn formOnAcquiredEvent Publish CallBack ====>");
+    console.debug(`====> ${this.TAG} formsystemhostn formOnAcquiredEvent Publish CallBack ====>`);
   }
   private publishDeleteCallBack() {
-    console.debug("====> [FormComponent] formsystemhostn publishDeleteCallBack Publish CallBack ====>");
+    console.debug(`====> ${this.TAG} formsystemhostn publishDeleteCallBack Publish CallBack ====>`);
   }
   private publishCastCallBack() {
-    console.debug("====>formCastEvent Publish CallBack ====>");
+    console.debug(`====> ${this.TAG} formCastEvent Publish CallBack ====>`);
   }
   private startAbility(bundleName, abilityName, sendMsg) {
     featureAbility.startAbility({
@@ -88,92 +90,92 @@ struct Index {
         }
       }
     }).then((res: any) => {
-      console.info(`[FormComponent] formsystemhostn featureAbility.startAbility res: ${JSON.stringify(res)}`);
+      console.info(`${this.TAG} formsystemhostn featureAbility.startAbility res: ${JSON.stringify(res)}`);
     }).catch((err: any) => {
-      console.info(`[FormComponent] formsystemhostn featureAbility.startAbility error: ${JSON.stringify(err)}`);
+      console.info(`${this.TAG} formsystemhostn featureAbility.startAbility error: ${JSON.stringify(err)}`);
     });
   }
 
   private publishOnSendCastForm(err, data) {
-    console.info("!!!====>[FormComponent] formsystemhostn OnSendCastForm start:====>" + JSON.stringify(data));
+    console.info(`!!!====>${this.TAG} formsystemhostn OnSendCastForm start:====>` + JSON.stringify(data));
     if (data.bundleName && data.bundleName != "com.ohos.st.formsystemhostn") {
       return;
     }
     let formId = data.parameters.castFormId;
     setTimeout(function () {
-      console.info("[FormComponent.host] castTempForm start, formId: " + formId);
+      console.info(`${this.TAG} castTempForm start, formId: ` + formId);
       formHost.castTempForm(formId)
         .then((data) => {
-          console.info('[FormComponent] castTempForm result:' + data);
+          console.info(`${this.TAG} castTempForm result:` + data);
           this.startAbility("com.ohos.st.formsystemhostc", "com.ohos.st.formsystemhostc.MainAbility", data);
         })
         .catch((error) => {
-          console.info('[FormComponent] castTempForm error:' + JSON.stringify(error));
+          console.info(`${this.TAG} castTempForm error:` + JSON.stringify(error));
           this.startAbility("com.ohos.st.formsystemhostc", "com.ohos.st.formsystemhostc.MainAbility", error.code.toString());
         });
-      console.info("[FormComponent.host] castTempForm end");
+      console.info(`${this.TAG} castTempForm end`);
     }, 5000);
-    console.info("!!!====>[FormComponent] formsystemhostn OnSendCastForm end");
+    console.info(`!!!====>${this.TAG} formsystemhostn OnSendCastForm end`);
   }
 
   private deleteCallBack(err, data) {
-    console.info("!!!====>[FormComponent] formsystemhostn deleteCallBack start:====>" + JSON.stringify(data));
+    console.info(`!!!====>${this.TAG} formsystemhostn deleteCallBack start:====>` + JSON.stringify(data));
     const delFormIds = data.parameters.formIds;
-    console.info(`[FormComponent] data size ${delFormIds.length}`);
+    console.info(`${this.TAG} data size ${delFormIds.length}`);
 
-    console.info(`[FormComponent] data.subscriber ${JSON.stringify(this.subscriberDel)}`);
+    console.info(`${this.TAG} data.subscriber ${JSON.stringify(this.subscriberDel)}`);
     commonEvent.unsubscribe(this.subscriberDel, () => {
-      console.info("====> [FormComponent] formsystemhostn optType unSubscribeDeleteCallback CallBack====>");
+      console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeDeleteCallback CallBack====>`);
     });
     commonEvent.unsubscribe(this.subscriberSendCastForm, () => {
-      console.info("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
+      console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeCastFormCallback CallBack====>`);
     });
-    console.info(`[FormComponent] data.bundleName ${JSON.stringify(data.bundleName)}`);
-    console.info(`[FormComponent] tof ${"com.ohos.st.formsystemhostn" != data.bundleName}`);
+    console.info(`${this.TAG} data.bundleName ${JSON.stringify(data.bundleName)}`);
+    console.info(`${this.TAG} tof ${"com.ohos.st.formsystemhostn" != data.bundleName}`);
     if ("com.ohos.st.formsystemhostn" != data.bundleName) {
       return;
     }
     delFormIds.forEach(async (formId, index) => {
-      console.info(`[FormComponent] formsystemhostn deleteForm ${index}`);
+      console.info(`${this.TAG} formsystemhostn deleteForm ${index}`);
       try {
         const res = await formHost.deleteForm(formId);
-        console.info(`[FormComponent] formsystemhostn deleteForm ${index} ${formId} result: ${JSON.stringify(res)}`);
+        console.info(`${this.TAG} formsystemhostn deleteForm ${index} ${formId} result: ${JSON.stringify(res)}`);
       } catch (error) {
-        console.info(`[FormComponent] formsystemhostn deleteForm ${index} ${formId} error: ${JSON.stringify(error)}`);
+        console.info(`${this.TAG} formsystemhostn deleteForm ${index} ${formId} error: ${JSON.stringify(error)}`);
       }
     });
-    console.info("!!!====> [FormComponent] formsystemhostn optType deleteCallBack end ====>");
+    console.info(`!!!====> ${this.TAG} formsystemhostn optType deleteCallBack end ====>`);
   }
 
   private unSubscribeDeleteCallback() {
-    console.debug("====> [FormComponent] formsystemhostn optType unSubscribeDeleteCallback CallBack====>");
+    console.debug(`====> ${this.TAG} formsystemhostn optType unSubscribeDeleteCallback CallBack====>`);
   }
 
   private unSubscribeCastFormCallback() {
-    console.debug("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
+    console.debug(`====> ${this.TAG} formsystemhostn optType unSubscribeCastFormCallback CallBack====>`);
   }
 
   aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
-      console.info("====>[FormComponent] formsystemhostn Subscriber FormDelete data:====>", JSON.stringify(data));
+      console.info(`====>${this.TAG} formsystemhostn Subscriber FormDelete data:====>`, JSON.stringify(data));
       this.subscriberDel = data;
       commonEvent.subscribe(this.subscriberDel, (err, data) => {
         if ("com.ohos.st.formsystemhostn" != data.bundleName) {
           return;
         } else {
-          console.info("!!!====>[FormComponent.hostn] formsystemhostn deleteCallBack start:====>" + JSON.stringify(data));
+          console.info(`!!!====>${this.TAG} formsystemhostn deleteCallBack start:====>` + JSON.stringify(data));
           const delFormIds = data.parameters.formIds;
-          console.info(`[FormComponent] data size ${delFormIds.length}`);
+          console.info(`${this.TAG} data size ${delFormIds.length}`);
           commonEvent.unsubscribe(this.subscriberDel, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeDeleteCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeDeleteCallback CallBack====>`);
           });
           commonEvent.unsubscribe(this.subscriberSendCastForm, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeCastFormCallback CallBack====>`);
           });
           let delCounter = 0;
           delFormIds.forEach((formId) => {
             formHost.deleteForm(formId, (error, data) => {
-              console.info(`[FormComponent] formsystemhostn deleteForm ${++delCounter} ${formId} data: ${JSON.stringify(data)} err: ${JSON.stringify(error)}`);
+              console.info(`${this.TAG} formsystemhostn deleteForm ${++delCounter} ${formId} data: ${JSON.stringify(data)} err: ${JSON.stringify(error)}`);
             });
           });
         }
@@ -181,14 +183,14 @@ struct Index {
     });
 
     commonEvent.createSubscriber(this.subscriberSendCastFormEvent).then(async (data) => {
-      console.info("====>[FormComponent] formsystemhostn Subscriber SendCastForm data:====>", JSON.stringify(data));
+      console.info(`====>${this.TAG} formsystemhostn Subscriber SendCastForm data:====>`, JSON.stringify(data));
       this.subscriberSendCastForm = data;
       await commonEvent.subscribe(this.subscriberSendCastForm, this.publishOnSendCastForm);
     });
 
     featureAbility.getWant()
       .then(async (want: any) => {
-        console.info(" [FormComponent] formsystemhostn getWant:" + JSON.stringify(want));
+        console.info(` ${this.TAG} formsystemhostn getWant:` + JSON.stringify(want));
 
         this.name = want.parameters.name;
         this.bundle = want.parameters.bundle;
@@ -225,16 +227,16 @@ struct Index {
 
         if (want.parameters.releaseFormId) {
           commonEvent.unsubscribe(this.subscriberDel, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeDeleteCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeDeleteCallback CallBack====>`);
           });
           commonEvent.unsubscribe(this.subscriberSendCastForm, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeCastFormCallback CallBack====>`);
           });
 
           const formId = want.parameters.releaseFormId;
           const isReleaseCache = want.parameters.isReleaseCache;
           const res = await formHost.releaseForm(formId, isReleaseCache);
-          console.info(`[FormComponent] releaseForm res: ${JSON.stringify(res)}`);
+          console.info(`${this.TAG} releaseForm res: ${JSON.stringify(res)}`);
           const commonEventPublishData = {
             data: `releaseForm`,
             bundleName: `com.ohos.st.formsystemhostn`,
@@ -251,21 +253,21 @@ struct Index {
 
         setTimeout(() => {
           this.optType = want.parameters.optType;
-          console.info(' [FormComponent] formsystemhostn getWant optType:' + this.optType);
+          console.info(` ${this.TAG} formsystemhostn getWant optType:` + this.optType);
         }, 10);
 
         if (this.castFormId != "-1" && want.parameters.optType == 3) {
-          console.info("[FormComponent.host] castTempForm start");
+          console.info(`${this.TAG} castTempForm start`);
           commonEvent.unsubscribe(this.subscriberDel, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeDeleteCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeDeleteCallback CallBack====>`);
           });
           commonEvent.unsubscribe(this.subscriberSendCastForm, () => {
-            console.info("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
+            console.info(`====> ${this.TAG} formsystemhostn optType unSubscribeCastFormCallback CallBack====>`);
           });
 
           formHost.castTempForm(this.castFormId)
             .then((data) => {
-              console.info('[FormComponent] castTempForm result:' + data);
+              console.info(`${this.TAG} castTempForm result:` + data);
               let commonEventPublishData = {
                 data: (data + "") || `0`,
                 bundleName: "com.ohos.st.formsystemhostn",
@@ -276,7 +278,7 @@ struct Index {
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             })
             .catch((error) => {
-              console.info('[FormComponent] castTempForm error:' + error.code);
+              console.info(`${this.TAG} castTempForm error:` + error.code);
               let commonEventPublishData = {
                 data: error.code.toString(),
                 errMsg: error.msg,
@@ -287,15 +289,15 @@ struct Index {
               };
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             });
-          console.info("[FormComponent.host] castTempForm end");
+          console.info(`${this.TAG} castTempForm end`);
         }
 
         if (want.parameters.optType == 2 && this.deleteIds.length > 0) {
           for (let iIndex = 0; iIndex < this.deleteIds.length; ++iIndex) {
-            console.info("[FormComponent] formsystemhostn deleteForm start");
+            console.info(`${this.TAG} formsystemhostn deleteForm start`);
             formHost.deleteForm(this.deleteIds[iIndex])
               .then((data) => {
-                console.info('[FormComponent] formsystemhostn deleteForm result:' + data);
+                console.info(`${this.TAG} formsystemhostn deleteForm result:` + data);
                 this.delCount++;
 
                 if (this.delCount == this.deleteIds.length) {
@@ -310,7 +312,7 @@ struct Index {
                 }
               })
               .catch((error) => {
-                console.info(' [FormComponent] formsystemhostn deleteForm error:' + error);
+                console.info(` ${this.TAG} formsystemhostn deleteForm error:` + error);
                 let commonEventPublishData = {
                   data: error.code.toString(),
                   bundleName: "com.ohos.st.formsystemhostn",
@@ -320,27 +322,27 @@ struct Index {
                 };
                 commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
               });
-            console.info("[FormComponent] formsystemhostn deleteForm end");
+            console.info(`${this.TAG} formsystemhostn deleteForm end`);
           }
         }
       })
       .catch((error: any) => {
-        console.error(' [FormComponent] formsystemhostn Operation failed. Cause: ' + JSON.stringify(error));
+        console.error(` ${this.TAG} formsystemhostn Operation failed. Cause: ` + JSON.stringify(error));
       })
-    console.info(`[FormComponent.host] aboutToAppear end`);
+    console.info(`${this.TAG} aboutToAppear end`);
   }
 
   private makeCount() {
-    console.info(' [FormComponent] formsystemhostn makeCount start.');
+    console.info(` ${this.TAG} formsystemhostn makeCount start.`);
     for (let nNormal = 0; nNormal < this.normal; nNormal++) {
       this.normalFormCounts.push(nNormal);
     }
-    console.info(' [FormComponent] formsystemhostn this.normalFormCounts.length:' + this.normalFormCounts.length);
+    console.info(` ${this.TAG} formsystemhostn this.normalFormCounts.length:` + this.normalFormCounts.length);
 
     for (let nTemp = 0; nTemp < this.temporary; nTemp++) {
       this.tempFormCounts.push(nTemp);
     }
-    console.info(' [FormComponent] formsystemhostn this.tempFormCounts.length:' + this.tempFormCounts.length);
+    console.info(` ${this.TAG} formsystemhostn this.tempFormCounts.length:` + this.tempFormCounts.length);
   }
 
   build() {
@@ -363,7 +365,7 @@ struct Index {
                   .allowUpdate(this.allowUpate)
                   .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
                   .onAcquired((form) => {
-                    console.info(" [FormComponent] formsystemhostn get normal form, form id:" + form.id);
+                    console.info(` ${this.TAG} formsystemhostn get normal form, form id:` + form.id);
 
                     this.normalFormIds.push(form.id.toString());
                     if (this.normalFormIds.length == this.normal - this.normaldel) {
@@ -378,8 +380,8 @@ struct Index {
                     }
                   })
                   .onError((error) => {
-                    console.info(" [FormComponent] formsystemhostn normal form error code:" + error.errcode);
-                    console.info(" [FormComponent] formsystemhostn normal form error msg:" + error.msg);
+                    console.info(` ${this.TAG} formsystemhostn normal form error code:` + error.errcode);
+                    console.info(` ${this.TAG} formsystemhostn normal form error msg:` + error.msg);
                     let commonEventPublishData = {
                       data: error.msg,
                       bundleName: "com.ohos.st.formsystemhostn"
@@ -412,7 +414,7 @@ struct Index {
                   .allowUpdate(this.allowUpate)
                   .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
                   .onAcquired((form) => {
-                    console.info(" [FormComponent] formsystemhostn get temp form, form id:" + form.id);
+                    console.info(` ${this.TAG} formsystemhostn get temp form, form id:` + form.id);
                     this.tempFormIds.push(form.id.toString());
                     if (this.tempFormIds.length == this.temporary - this.temporarydel) {
                       let commonEventPublishData = {
@@ -426,8 +428,8 @@ struct Index {
                     }
                   })
                   .onError((error) => {
-                    console.info(" [FormComponent] formsystemhostn temp form error code:" + error.errcode);
-                    console.info(" [FormComponent] formsystemhostn temp form error msg:" + error.msg);
+                    console.info(` ${this.TAG} formsystemhostn temp form error code:` + error.errcode);
+                    console.info(` ${this.TAG} formsystemhostn temp form error msg:` + error.msg);
                     let commonEventPublishData = {
                       data: error.msg,
                       bundleName: "com.ohos.st.formsystemhostn"

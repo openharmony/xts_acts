@@ -31,6 +31,8 @@ struct Index {
 
   private dimension: FormDimension = FormDimension.Dimension_1_2;
 
+  private TAG = `[FormComponent.host.g]`;
+
   private stateForm = "visible";
   private doStateForm = false;
   private stateIds = [];
@@ -51,41 +53,41 @@ struct Index {
 
   private publishOnErrorCallBack = () => {
     this.canCreateForm = false;
-    console.debug("====>[FormComponent.host] formOnErrorEventCallBack ====>");
+    console.debug(`====>${this.TAG} formOnErrorEventCallBack ====>`);
   }
   private publishOnDeletedCallBack = () => {
     this.canCreateForm = false;
-    console.debug("====>[FormComponent.host] publishOnDeletedCallBack ====>");
+    console.debug(`====>${this.TAG} publishOnDeletedCallBack ====>`);
   }
   private publishOnStateCallBack = () => {
     this.canCreateForm = false;
-    console.debug("====>[FormComponent.host] publishOnStateCallBack ====>");
+    console.debug(`====>${this.TAG} publishOnStateCallBack ====>`);
   }
   private publishOnAcquiredCallBack = () => {
-    console.debug("====>[FormComponent.host] formOnAcquiredEventCallBack ====>");
+    console.debug(`====>${this.TAG} formOnAcquiredEventCallBack ====>`);
   }
   private deleteCallBack = (err, data) => {
-    console.info("!!!====>[FormComponent.host] deleteCallBack start:====>" + JSON.stringify(data));
+    console.info(`!!!====>${this.TAG} deleteCallBack start:====>` + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostg") {
       return;
     }
     formHost.deleteForm(data.data)
       .then((data2) => {
-        console.info('[FormComponent] deleteForm result:' + data2);
+        console.info(`${this.TAG} deleteForm result:` + data2);
       });
 
     this.canCreateForm = false;
-    console.info("!!!====>[FormComponent.host] deleteCallBack end ====>");
+    console.info(`!!!====>${this.TAG} deleteCallBack end ====>`);
   }
 
   aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
-        console.info("====>[FormComponent.host] Subscriber FormDelete data:====>", JSON.stringify(data)); 
+        console.info(`====>${this.TAG} Subscriber FormDelete data:====>`, JSON.stringify(data)); 
         this.subscriberDel = data;     
         await commonEvent.subscribe(this.subscriberDel, this.deleteCallBack);
     })
 
-    console.error('[FormComponent] getWant');
+    console.error(`${this.TAG} getWant`);
     featureAbility.getWant()
     .then((want: any) => {
       this.formId = parseInt(want.parameters.formId);
@@ -122,15 +124,15 @@ struct Index {
       }
       setTimeout(() => {
         this.canCreateForm = want.parameters.isCreate ? true : false;
-        console.error('[FormComponent] getWant canCreateForm:'+ this.canCreateForm); 
+        console.error(`${this.TAG} getWant canCreateForm:` + this.canCreateForm); 
       }, 10); 
-      console.error('[FormComponent] getWant end'+ JSON.stringify(want));
+      console.error(`${this.TAG} getWant end` + JSON.stringify(want));
 
       if(!want.parameters.isCreate && this.deleteForm) {
-        console.log("[FormComponent.host] deleteForm start");
+        console.log(`${this.TAG} deleteForm start`);
         formHost.deleteForm(this.deleteId)
           .then((data) => {
-          console.info('[FormComponent.host] deleteForm result:' + data);
+          console.info(`${this.TAG} deleteForm result:` + data);
           let commonEventPublishData = {
             data: "0",
             parameters: {
@@ -140,7 +142,7 @@ struct Index {
           commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
         })
         .catch((error) => {
-          console.info('[FormComponent.host] deleteForm error:' + error);
+          console.info(`${this.TAG} deleteForm error:` + error);
           let commonEventPublishData = {
             data: error.code.toString(),
             parameters: {
@@ -150,16 +152,16 @@ struct Index {
           commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
         });
       
-        console.log("[FormComponent.host] deleteForm end");
+        console.log(`${this.TAG} deleteForm end`);
       }
 
       if(!want.parameters.isCreate && this.stateForm) {        
         if(this.stateForm == "visible") {
-          console.log("[FormComponent.host] notifyVisibleForm start");
+          console.log(`${this.TAG} notifyVisibleForm start`);
           formHost.notifyVisibleForms(this.stateIds)
             .then((data) => {
-            console.info('[FormComponent.host] notifyVisibleForm result:' + data);
-            console.info('[FormComponent.host] notifyVisibleForm formId:' + this.stateIds[0]);
+            console.info(`${this.TAG} notifyVisibleForm result:` + data);
+            console.info(`${this.TAG} notifyVisibleForm formId:` + this.stateIds[0]);
             let commonEventPublishData = {
               data: "0",
               parameters: {
@@ -170,7 +172,7 @@ struct Index {
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           })
           .catch((error) => {
-            console.info('[FormComponent.host] notifyVisibleForm error:' + error);
+            console.info(`${this.TAG} notifyVisibleForm error:` + error);
             let commonEventPublishData = {
               data: error.code.toString(),
               parameters: {
@@ -180,13 +182,13 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log("[FormComponent.host] notifyVisibleForm end");
+          console.log(`${this.TAG} notifyVisibleForm end`);
         } else if(this.stateForm == "invisible") {
-          console.log("[FormComponent.host] notifyInvisibleForm start");
+          console.log(`${this.TAG} notifyInvisibleForm start`);
           formHost.notifyInvisibleForms(this.stateIds)
             .then((data) => {
-            console.info('[FormComponent.host] notifyInvisibleForm result:' + data);
-            console.info('[FormComponent.host] notifyInvisibleForm formId:' + this.stateIds[0]);
+            console.info(`${this.TAG} notifyInvisibleForm result:` + data);
+            console.info(`${this.TAG} notifyInvisibleForm formId:` + this.stateIds[0]);
             let commonEventPublishData = {
               data: "0",
               parameters: {
@@ -197,7 +199,7 @@ struct Index {
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           })
           .catch((error) => {
-            console.info('[FormComponent.host] notifyInvisibleForm error:' + error);
+            console.info(`${this.TAG} notifyInvisibleForm error:` + error);
             let commonEventPublishData = {
               data: error.code.toString(),
               parameters: {
@@ -207,12 +209,12 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });
-          console.log("[FormComponent.host] notifyInvisibleForm end");
+          console.log(`${this.TAG} notifyInvisibleForm end`);
         } else if(this.stateForm == "enable") {
-          console.log("[FormComponent.host] enableFormsUpdate start");
+          console.log(`${this.TAG} enableFormsUpdate start`);
           formHost.enableFormsUpdate(this.stateIds)
             .then((data) => {
-            console.info('[FormComponent.host] enableFormsUpdate result:' + data);
+            console.info(`${this.TAG} enableFormsUpdate result:` + data);
             let commonEventPublishData = {
               data: "0",
               parameters: {
@@ -223,7 +225,7 @@ struct Index {
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           })
           .catch((error) => {
-            console.info('[FormComponent.host] enableFormsUpdate error:' + error);
+            console.info(`${this.TAG} enableFormsUpdate error:` + error);
             let commonEventPublishData = {
               data: error.code.toString(),
               parameters: {
@@ -233,12 +235,12 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log("[FormComponent.host] enableFormsUpdate end");
+          console.log(`${this.TAG} enableFormsUpdate end`);
         } else {
-          console.log("[FormComponent.host] disableFormsUpdate start");
+          console.log(`${this.TAG} disableFormsUpdate start`);
           formHost.disableFormsUpdate(this.stateIds)
             .then((data) => {
-            console.info('[FormComponent.host] disableFormsUpdate result:' + data);
+            console.info(`${this.TAG} disableFormsUpdate result:` + data);
             let commonEventPublishData = {
               data: "0",
               parameters: {
@@ -249,7 +251,7 @@ struct Index {
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           })
           .catch((error) => {
-            console.info('[FormComponent.host] disableFormsUpdate error:' + error);
+            console.info(`${this.TAG} disableFormsUpdate error:` + error);
             let commonEventPublishData = {
               data: error.code.toString(),
               parameters: {
@@ -259,15 +261,15 @@ struct Index {
             };
             commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
           });        
-          console.log("[FormComponent.host] disableFormsUpdate end");
+          console.log(`${this.TAG} disableFormsUpdate end`);
         }
       }
 
     })
     .catch((error: any) => {
-      console.error('[FormComponent] Operation failed. Cause: ' + JSON.stringify(error));
+      console.error(`${this.TAG} Operation failed. Cause: ` + JSON.stringify(error));
     })
-    console.log(`[FormComponent.host] aboutToAppear end`);
+    console.log(`${this.TAG} aboutToAppear end`);
   }
 
   build() {
@@ -287,17 +289,17 @@ struct Index {
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form) => {
-              console.log("[FormComponent.host] get form, form id:" + form.id);
+              console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.deleteForm) {
-                console.log("[FormComponent.host] deleteForm start");
+                console.log(`${this.TAG} deleteForm start`);
                 if(this.deleteId == "self") {
                   this.deleteId = this.formId.toString();
                 }
                 setTimeout(() => {
                   formHost.deleteForm(this.deleteId)
                     .then((data) => {
-                    console.info('[FormComponent] deleteForm result:' + data);
+                    console.info(`${this.TAG} deleteForm result:` + data);
                     let commonEventPublishData = {
                       data: "0",
                       parameters: {
@@ -307,7 +309,7 @@ struct Index {
                     commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
                   })
                   .catch((error) => {
-                    console.info('[FormComponent.host] deleteForm error:' + error);
+                    console.info(`${this.TAG} deleteForm error:` + error);
                     let commonEventPublishData = {
                       data: error.code.toString(),
                       parameters: {
@@ -317,21 +319,21 @@ struct Index {
                     commonEvent.publish(this.formOnDeletedEvent, commonEventPublishData, this.publishOnDeletedCallBack);
                   });
                
-                  console.log("[FormComponent.host] deleteForm end");
+                  console.log(`${this.TAG} deleteForm end`);
                 }, 500);
               } else if(this.doStateForm) {
-                console.log("[FormComponent.host] state start");
+                console.log(`${this.TAG} state start`);
                 if((this.stateIds.length != 0) && (this.stateIds[0] == "self")) {
                   this.stateIds = [this.formId.toString()];
                 }
-                console.info('[FormComponent.host] notifyVisibleForm stateIds:' + this.stateIds);
+                console.info(`${this.TAG} notifyVisibleForm stateIds:` + this.stateIds);
                 setTimeout(() => {
                   if(this.stateForm == "visible") {
-                    console.log("[FormComponent.host] notifyVisibleForm start");
+                    console.log(`${this.TAG} notifyVisibleForm start`);
                     formHost.notifyVisibleForms(this.stateIds)
                       .then((data) => {
-                      console.info('[FormComponent.host] notifyVisibleForm result:' + data);
-                      console.info('[FormComponent.host] notifyVisibleForm formId:' + this.stateIds[0]);
+                      console.info(`${this.TAG} notifyVisibleForm result:` + data);
+                      console.info(`${this.TAG} notifyVisibleForm formId:` + this.stateIds[0]);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -345,7 +347,7 @@ struct Index {
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     })
                     .catch((error) => {
-                      console.info('[FormComponent.host] notifyVisibleForm error:' + error);
+                      console.info(`${this.TAG} notifyVisibleForm error:` + error);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -358,16 +360,16 @@ struct Index {
                       };
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     });
-                    console.log("[FormComponent.host] notifyVisibleForm end");
+                    console.log(`${this.TAG} notifyVisibleForm end`);
                   } else if(this.stateForm == "invisible") {
-                    console.log("[FormComponent.host] notifyInvisibleForm start");
+                    console.log(`${this.TAG} notifyInvisibleForm start`);
                     formHost.notifyInvisibleForms(this.stateIds)
                     .then((data) => {
-                      console.info('[FormComponent.host] notifyInvisibleForm result:' + data);
+                      console.info(`${this.TAG} notifyInvisibleForm result:` + data);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
-                      console.info('[FormComponent.host] notifyInvisibleForm formId:' + this.stateIds[0]);
+                      console.info(`${this.TAG} notifyInvisibleForm formId:` + this.stateIds[0]);
                       let commonEventPublishData = {
                         data: "0",
                         parameters: {
@@ -378,7 +380,7 @@ struct Index {
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     })
                     .catch((error) => {
-                      console.info('[FormComponent.host] notifyInvisibleForm error:' + error.code);
+                      console.info(`${this.TAG} notifyInvisibleForm error:` + error.code);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -391,12 +393,12 @@ struct Index {
                       };
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     });
-                    console.log("[FormComponent.host] notifyInvisibleForm end");
+                    console.log(`${this.TAG} notifyInvisibleForm end`);
                   } else if(this.stateForm == "enable") {
-                    console.log("[FormComponent.host] enableFormsUpdate start");
+                    console.log(`${this.TAG} enableFormsUpdate start`);
                     formHost.enableFormsUpdate(this.stateIds)
                       .then((data) => {
-                      console.info('[FormComponent.host] enableFormsUpdate result:' + data);
+                      console.info(`${this.TAG} enableFormsUpdate result:` + data);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -410,7 +412,7 @@ struct Index {
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     })
                     .catch((error) => {
-                      console.info('[FormComponent.host] enableFormsUpdate error:' + error);
+                      console.info(`${this.TAG} enableFormsUpdate error:` + error);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -423,12 +425,12 @@ struct Index {
                       };
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     });        
-                    console.log("[FormComponent.host] enableFormsUpdate end");
+                    console.log(`${this.TAG} enableFormsUpdate end`);
                   } else {
-                    console.log("[FormComponent.host] disableFormsUpdate start");
+                    console.log(`${this.TAG} disableFormsUpdate start`);
                     formHost.disableFormsUpdate(this.stateIds)
                       .then((data) => {
-                      console.info('[FormComponent.host] disableFormsUpdate result:' + data);
+                      console.info(`${this.TAG} disableFormsUpdate result:` + data);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -442,7 +444,7 @@ struct Index {
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     })
                     .catch((error) => {
-                      console.info('[FormComponent.host] disableFormsUpdate error:' + error);
+                      console.info(`${this.TAG} disableFormsUpdate error:` + error);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
@@ -455,7 +457,7 @@ struct Index {
                       };
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
                     });
-                    console.log("[FormComponent.host] disableFormsUpdate end");
+                    console.log(`${this.TAG} disableFormsUpdate end`);
                   }
                 }, 1000);                
               } else {
@@ -469,11 +471,11 @@ struct Index {
               }
             })
             .onUninstall((info) => {
-              console.log("[FormComponent] onUninstall:" + JSON.stringify(info));
+              console.log(`${this.TAG} onUninstall:` + JSON.stringify(info));
             })
             .onError((error) => {
-              console.log("[FormComponent.host] error code:" + error.errcode);
-              console.log("[FormComponent.host] error msg:" + error.msg);
+              console.log(`${this.TAG} error code:` + error.errcode);
+              console.log(`${this.TAG} error msg:` + error.msg);
               if(this.deleteForm && this.deleteId) {
                 let commonEventPublishData = {
                     data: error.msg,
