@@ -17,7 +17,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import * as aw from './aw/AssetAw';
 import asset from '@ohos.security.asset'
 
-
 export default function abilityTest() {
   describe('AssetAuthQueryTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -108,10 +107,16 @@ export default function abilityTest() {
       challenge[1] = challenge[11];
       challenge[2] = challenge[12];
       challenge[3] = challenge[13];
+      let authToken = challenge;
+      attr2.set(asset.Tag.AUTH_TOKEN, authToken);
+      attr2.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      expect(await aw.assetQueryAttr(attr2))
+        .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+      expect(asset.TagType.BOOL).assertEqual(0x01 << 28);
+      expect(asset.TagType.NUMBER).assertEqual(0x02 << 28);
+      expect(asset.TagType.BYTES).assertEqual(0x03 << 28);
       expect(await aw.assetPostQuery(challenge))
         .assertEqual(0);
-
-
     })
 
     /**
