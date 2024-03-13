@@ -32,8 +32,8 @@ struct CustomContainerUser {
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: number = 0;
-  @State select: number = 2;
   @State time1: string ='';
+  @State select: number = 2;
   @State appName: string = '信息';
   @State appBundleName: string = 'com.ohos.mms';
   @State appAbilityName: string = 'com.ohos.mms.MainAbility';
@@ -165,9 +165,9 @@ struct CustomContainerUser {
                     this.time1 = report.substring(head+1);
                     this.time = parseFloat(this.time1);
                     let time = this.time;
-                    if (0 < time && time < 1000) {
+                    if( 0 < time && time < 1000 ) {
                       this.Vue = true;
-                    } else if (isNaN(this.time)) {
+                    } else if ( isNaN(this.time) ){
                       this.time = -1000;
                     }
                     globalThis.HideFloatingWindow();
@@ -200,9 +200,9 @@ struct CustomContainerUser {
         content: this.specificNoParam,
         name: $name,
         Vue: $Vue,
-        time1: $time1,
         StartEnable: $StartEnable,
         time: $time,
+        time1: $time1,
         appName: $appName,
         appBundleName: $appBundleName,
         appAbilityName: $appAbilityName,
