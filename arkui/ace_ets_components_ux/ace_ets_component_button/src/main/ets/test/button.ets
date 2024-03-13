@@ -36,7 +36,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0100 component obj.$attrs.labelStyle is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0100 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -66,7 +66,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0200 component obj.$attrs.fontWeight is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0200 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -96,7 +96,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0300 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0300 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -126,7 +126,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0400 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0400 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -156,7 +156,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0500 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0500 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -186,7 +186,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0600 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0600 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -216,7 +216,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0700 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0700 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -246,7 +246,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0800 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0800 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -276,7 +276,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_0900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_0900 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_0900 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -306,7 +306,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1000 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1000 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -336,7 +336,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1100 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1100 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -366,7 +366,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1200 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1200 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -396,7 +396,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1300 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1300 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -426,7 +426,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1400 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1400 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -456,7 +456,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1500 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1500 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -484,7 +484,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1600 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1600 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -513,7 +513,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1700 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1700 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -542,7 +542,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1800 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1800 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -572,7 +572,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_1900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_1900 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_1900 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -600,7 +600,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2000 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2000 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -630,7 +630,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2100 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2100 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2100 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -658,7 +658,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2200 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2200 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2200 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -689,7 +689,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2300 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2300 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2300 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -720,7 +720,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2400 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2400 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2400 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -751,7 +751,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2500 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2500 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2500 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -779,7 +779,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2600 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2600 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2600 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -809,7 +809,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2700 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2700 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2700 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
@@ -839,7 +839,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2800 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2800 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2800 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.None");
@@ -870,7 +870,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_2900 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_2900 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2900 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
@@ -900,7 +900,7 @@ export default function buttonTest() {
           console.info("ArkUX_Stage_Button_LabelStyle_3000 component obj is: " + JSON.stringify(obj));
           console.info("ArkUX_Stage_Button_LabelStyle_3000 component obj.$attrs.textOverflow is: " +
           JSON.stringify(JSON.parse(strJson).$attrs.labelStyle));
-          let labelStyle = JSON.parse(obj.$attrs.labelStyle)
+          let labelStyle: Record<string, Object> = JSON.parse(JSON.parse(strJson).$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_3000 component obj.$attrs.labelStyle is: " +
           JSON.stringify(labelStyle));
           expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
