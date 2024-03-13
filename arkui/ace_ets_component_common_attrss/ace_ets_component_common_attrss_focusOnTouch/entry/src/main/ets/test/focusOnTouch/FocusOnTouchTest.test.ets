@@ -17,6 +17,19 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: boolean;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  referenceComponentKey: string;
+  sharePage: boolean;
+}
+
 export default function FocusOnTouchTest() {
 
   //A list of components that support the position attribute, which is required.
@@ -67,7 +80,7 @@ export default function FocusOnTouchTest() {
   ]
 
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testFocusOnTouch',
     pageName: 'FocusOnTouchPage',
     pageUrl: 'MainAbility/pages/focusOnTouch/FocusOnTouchPage',
@@ -75,7 +88,7 @@ export default function FocusOnTouchTest() {
     sharePage: false
   }
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetTrue',
     setValue: true
   }, {
@@ -89,7 +102,7 @@ export default function FocusOnTouchTest() {
 
   describe('FocusOnTouchTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Click on the target component
       console.info('[' + data.caseTag + '] verify onClick.');
@@ -100,18 +113,18 @@ export default function FocusOnTouchTest() {
       if ('SetTrue' == data.testValue.describe) {
 
         //Confirm reference component text
-        let referenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
         expect(referenceComponent.$attrs.label).assertContain('onFocus');
 
         //Confirm target component properties
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] focusOnTouch is ' + viewObj.$attrs.focusOnTouch);
         expect(viewObj.$attrs.focusOnTouch).assertEqual(true);
       } else if ('SetFalse' == data.testValue.describe) {
 
         //Confirm reference component text
-        let referenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
+        let referenceComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] referenceComponent.$attrs.label: ' + referenceComponent.$attrs.label);
         if ('Web' ==  data.pageConfig.targetView) {
           expect(referenceComponent.$attrs.label).assertContain('onFocus');
@@ -120,7 +133,7 @@ export default function FocusOnTouchTest() {
           expect(referenceComponent.$attrs.label).assertEqual('');
         }
         //Confirm target component properties
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] focusOnTouch is ' + viewObj.$attrs.focusOnTouch);
         expect(viewObj.$attrs.focusOnTouch).assertEqual(false);
 
