@@ -112,10 +112,10 @@ export default function layoutWeightFlexTest() {
       let rect = Utils.getComponentRect(data.pageConfig.componentKey);
       //Component width and height calculation
       let width = rect.right - rect.left;
-      console.info('[' + data.caseTag + ']' +'rect.right is:' + JSON.stringify(rect.right));
-      console.info('[' + data.caseTag + ']' +'rect.left is:' + JSON.stringify(rect.left));
-      console.info('[' + data.caseTag + ']' +'width is:' + JSON.stringify(width));
-      console.info('[' + data.caseTag + ']' +'layoutWeight is:' + data.viewObj.$attrs.layoutWeight);
+      console.info('[' + data.caseTag + ']' + 'rect.right is:' + JSON.stringify(rect.right));
+      console.info('[' + data.caseTag + ']' + 'rect.left is:' + JSON.stringify(rect.left));
+      console.info('[' + data.caseTag + ']' + 'width is:' + JSON.stringify(width));
+      console.info('[' + data.caseTag + ']' + 'layoutWeight is:' + data.viewObj.$attrs.layoutWeight);
       expect(data.viewObj.$attrs.layoutWeight).assertEqual(data.testValue.expectValue.layoutWeight);
       expect(width).assertEqual(data.testValue.expectValue.width);
     });
