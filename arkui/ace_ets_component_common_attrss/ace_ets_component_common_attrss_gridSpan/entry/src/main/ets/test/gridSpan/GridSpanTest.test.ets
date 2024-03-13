@@ -16,6 +16,22 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: number;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentHeight: number;
+  parentWidth: number;
+  gutter: number;
+  columns: number;
+}
+
 export default function gridSpanTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -95,7 +111,7 @@ export default function gridSpanTest() {
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testGridSpan',
     pageName: 'GridSpanPage',
     pageUrl: 'MainAbility/pages/gridSpan/GridSpanPage',
@@ -105,7 +121,7 @@ export default function gridSpanTest() {
     columns: columns
   }
 
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetNumber',
     setValue: 2,
     expectValue: {
@@ -114,7 +130,7 @@ export default function gridSpanTest() {
   }]
 
   describe('GridSpanTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       console.info('[' + data.caseTag + ']' + 'gridSpan is:' + data.viewObj.$attrs.gridSpan);
       expect(data.viewObj.$attrs.gridSpan)
         .assertEqual(data.testValue.expectValue.gridSpan);
