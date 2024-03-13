@@ -82,7 +82,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
+      expect(Obj1.$attrs.type).assertEqual('SearchType.EMAIL');
 
       console.info('[TextStyle_0002] END');
       done();
@@ -102,7 +102,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeEMAIL333333333');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
+      expect(Obj1.$attrs.type).assertEqual('TextAreaType.EMAIL');
 
       console.info('[TextStyle_0003] END');
       done();
@@ -123,7 +123,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeNUMBER44444444');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Normal');
+      expect(Obj1.$attrs.type).assertEqual('TextAreaType.PHONE_NUMBER');
 
       console.info('[TextStyle_0004] END');
       done();
@@ -144,7 +144,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('TextKeyAllNUMBER8898888888');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.ellipsisMode).assertEqual('head');
+      expect(Obj1.$attrs.ellipsisMode).assertEqual('EllipsisMode.START');
 
       console.info('[TextStyle_0005] END');
       done();
@@ -165,7 +165,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchType777777');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Normal');
+      expect(Obj1.$attrs.type).assertEqual('SearchType.PHONE_NUMBER');
 
       console.info('[TextStyle_0006] END');
       done();
@@ -186,7 +186,7 @@ export default function TextStyle() {
       await Utils.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.type).assertEqual('InputType.Email');
+      expect(Obj1.$attrs.type).assertEqual('SearchType.EMAIL');
 
       console.info('[TextStyle_0007] END');
       done();
