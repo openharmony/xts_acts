@@ -31,27 +31,30 @@ struct Offset {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] //For Scroll
   @State show: boolean = false //For Panel
   @State _offset: Position = { x: 0, y: 0 };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State subassemblyWidth: number = router.getParams() ? router.getParams()['view']['subassemblyWidth'] : 0
-  @State subassemblyHeight: number = router.getParams() ? router.getParams()['view']['subassemblyHeight'] : 0
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State subassemblyWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['subassemblyWidth'] : 0
+  @State subassemblyHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['subassemblyHeight'] : 0
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
   @State referenceComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[Offset] page show called ')
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => this._offset = value)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._offset = value
+    })
   }
 
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .offset(this._offset)
     .key(this.componentKey)
   }
@@ -148,7 +151,8 @@ struct Offset {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' }).commonStyle()
               MenuItem({ startIcon: $r('app.media.icon'), content: 'referenceComponent' })
                 .key(this.referenceComponentKey)
-            }.padding(0)
+            }
+            .padding(0)
             .backgroundColor(Color.Yellow)
             .width(this.parentWidth)
             .height(this.parentHeight)
@@ -163,7 +167,8 @@ struct Offset {
 
               MenuItem({ startIcon: $r('app.media.icon'), content: 'referenceComponent' })
                 .key(this.referenceComponentKey)
-            }.padding(0)
+            }
+            .padding(0)
             .backgroundColor(Color.Yellow)
             .width(this.parentWidth)
             .height(this.parentHeight)
@@ -286,7 +291,7 @@ struct Offset {
                 direction: GridRowDirection.Row
               }) {
                 ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue],
-                  (color) => {
+                  (color: Color) => {
                     GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                       Row().width('100%').height('20vp')
                     }.borderColor(color).borderWidth(2)
@@ -303,7 +308,7 @@ struct Offset {
             } else if (this.targetView == 'Scroll') {
               Scroll(this.scroller) {
                 Flex({ direction: FlexDirection.Column }) {
-                  ForEach(this.arr, (item) => {
+                  ForEach(this.arr, (item: number) => {
                     Row() {
                       Text(item.toString())
                         .width(80)
@@ -314,13 +319,13 @@ struct Offset {
                         .textAlign(TextAlign.Center)
                         .margin({ top: 5 })
                     }
-                  }, item => item)
+                  }, (item: number) => item.toString())
                 }.margin({ right: 15 })
               }.width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
             } else if (this.targetView == 'SideBarContainer') {
               SideBarContainer(SideBarContainerType.Embed) {
                 Column() {
-                  ForEach([1, 2, 3], (item) => {
+                  ForEach([1, 2, 3], (item: number) => {
                     Column({ space: 5 }) {
                       Image($r('app.media.icon')).width(64).height(64)
                       Text('Index0' + item).fontSize(25)
@@ -338,9 +343,9 @@ struct Offset {
                 .commonStyle()
             } else if (this.targetView == 'Swiper') {
               Swiper() {
-                ForEach([1, 2, 3], (item: string) => {
+                ForEach([1, 2, 3], (item: number) => {
                   Text('Swiper' + item).width('90%').height(160)
-                }, item => item)
+                }, (item: number) => item.toString())
               }
               .indicator(true)
               .backgroundColor(Color.White)

@@ -18,6 +18,24 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: ESObject;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentWidth: number;
+  parentHeight: number;
+  subassemblyWidth: number;
+  subassemblyHeight: number;
+  parentComponentKey: string;
+  referenceComponentKey: string;
+}
+
 export default function OffsetTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = ['Text', 'Button', 'Radio', 'Select', 'Blank', 'Checkbox', 'CheckboxGroup', 'DataPanel',
@@ -37,7 +55,7 @@ export default function OffsetTest() {
   let subassemblyHeight = 100;
 
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testOffset',
     pageName: 'OffsetPage',
     pageUrl: 'MainAbility/pages/offset/OffsetPage',
@@ -50,7 +68,7 @@ export default function OffsetTest() {
   }
 
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'Number',
     setValue: {
       x: 50, y: 50
@@ -90,7 +108,7 @@ export default function OffsetTest() {
 
   describe('OffsetTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Restore the target component to its original position
       console.info('[' + data.caseTag + '] restore the target component to its original position');
       AttrsManager.change(data.caseTag, {
@@ -130,18 +148,18 @@ export default function OffsetTest() {
 
       //Obtain the attribute information of the target component.
       //Confirm that the position attribute value has been set successfully.
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       expect(viewObj.$attrs.offset.x).assertEqual(data.testValue.expectValue.x);
       expect(viewObj.$attrs.offset.y).assertEqual(data.testValue.expectValue.y);
 
       if ('TabContent' == data.pageConfig.targetView || 'StepperItem' == data.pageConfig.targetView) {
         //When the target component is TabContent or StepperItem,
         //the parent component is the Swiper on the outer layer of Tabs or Stepper.
-        let parentComponent = JSON.parse(JSON.stringify(getInspectorTree()))
+        let parentComponent: ESObject = JSON.parse(JSON.stringify(getInspectorTree()))
           .$children[0]
           .$children[0]
           .$children[0];
-        parentComponent.$children.forEach(element => {
+        parentComponent.$children.forEach((element: ESObject) => {
           if ('Swiper' == element.$type) {
             rectParent = Utils.getComponentRectByObj(element)
           }
@@ -157,17 +175,23 @@ export default function OffsetTest() {
           let targetWight = targetRectAfter.right - targetRectAfter.left;
           //The height of the target component
           let targetHeight = targetRectAfter.bottom - targetRectAfter.top;
-          expect(Math.abs(Number(targetRectAfter.left - initialPosition.left) - Number((targetWight) * 0.5)) <= 1).assertTrue()
-          expect(Math.abs(Number(targetRectAfter.top - initialPosition.top) - Number((targetHeight) * 0.5)) <= 1).assertTrue()
+          expect(Math.abs(Number(targetRectAfter.left - initialPosition.left) - Number((targetWight) * 0.5)) <= 1)
+            .assertTrue()
+          expect(Math.abs(Number(targetRectAfter.top - initialPosition.top) - Number((targetHeight) * 0.5)) <= 1)
+            .assertTrue()
         } else {
           //When setting the type to percentage, use the width/height of the parent container as the base.
-          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2)).assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
-          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2)).assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
+            .assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
+            .assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
         }
       } else {
         //When set to the basic type, verify the calculated shifting
-        expect(Math.abs(Number((targetRectAfter.left - initialPosition.left).toFixed(2)) - Number(data.testValue.expectValue.left.toFixed(2))) <= 1).assertTrue();
-        expect(Math.abs(Number((targetRectAfter.top - initialPosition.top).toFixed(2)) - Number(data.testValue.expectValue.top.toFixed(2))) <= 1).assertTrue();
+        expect(Math.abs(Number((targetRectAfter.left - initialPosition.left).toFixed(2)) - Number(data.testValue.expectValue.left.toFixed(2))) <= 1)
+          .assertTrue();
+        expect(Math.abs(Number((targetRectAfter.top - initialPosition.top).toFixed(2)) - Number(data.testValue.expectValue.top.toFixed(2))) <= 1)
+          .assertTrue();
       }
 
       //Confirm that the region information of the parent component has not changed.
