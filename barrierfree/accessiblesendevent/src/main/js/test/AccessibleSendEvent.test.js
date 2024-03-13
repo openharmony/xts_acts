@@ -33,13 +33,14 @@ describe('AccessibleSendEvent', function () {
     })
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0100
     * @tc.desc    The beginIndex of EventInfo is 1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0100 starts`);
@@ -66,13 +67,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0200
     * @tc.desc    The beginIndex of EventInfo is 0, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0200 starts`);
@@ -99,13 +101,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0300
     * @tc.desc    The beginIndex of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0300 starts`);
@@ -133,13 +136,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0400
     * @tc.desc    The bundleName of EventInfo is 'com.ixaa.testfora11y', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0400 starts`);
@@ -165,13 +169,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0500
     * @tc.desc    The bundleName of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0500 starts`);
@@ -198,13 +203,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0600
     * @tc.desc    The bundleName of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0600 starts`);
@@ -231,13 +237,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0700
     * @tc.desc    The componentType of EventInfo is 'button', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0700 starts`);
@@ -264,13 +271,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0800
     * @tc.desc    The componentType of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0800 starts`);
@@ -297,13 +305,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_0900
     * @tc.desc    The componentType of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_0900 starts`);
@@ -330,13 +339,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1100
     * @tc.desc    The contents of EventInfo is ['1'], test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1100 starts`);
@@ -363,13 +373,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1200
     * @tc.desc    The contents of EventInfo is [], test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1200 starts`);
@@ -396,13 +407,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300
-      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300
+      * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1300
       * @tc.desc    The currentIndex of EventInfo is 1, test sendEvent() function
       *             The result of sendEvent() should be equal to a promise of undefined
       *             Another test point is to test whether the modified constructor (EventInfo)
       *             works correctly.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1300 starts`);
@@ -429,11 +441,12 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1400
     * @tc.desc    The currentIndex of EventInfo is 0, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1400 starts`);
@@ -460,13 +473,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1500
     * @tc.desc    The currentIndex of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1500 starts`);
@@ -494,13 +508,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1600
     * @tc.desc    The description of EventInfo is '1', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1600 starts`);
@@ -527,13 +542,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1700
     * @tc.desc    The description of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1700 starts`);
@@ -560,13 +576,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1800
     * @tc.desc    The description of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1800 starts`);
@@ -594,13 +611,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900
-      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900
+      * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_1900
       * @tc.desc    The endIndex of EventInfo is 1, test sendEvent() function
       *             The result of sendEvent() should be equal to a promise of undefined
       *             Another test point is to test whether the modified constructor (EventInfo)
       *             works correctly.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_1900 starts`);
@@ -627,13 +645,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2000
     * @tc.desc    The endIndex of EventInfo is 0, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2000 starts`);
@@ -660,13 +679,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2100
     * @tc.desc    The endIndex of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2100 starts`);
@@ -693,13 +713,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200
-      * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200
+      * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2200
       * @tc.desc    The itemCount of EventInfo is 1, test sendEvent() function
       *             The result of sendEvent() should be equal to a promise of undefined
       *             Another test point is to test whether the modified constructor (EventInfo)
       *             works correctly.
       * @tc.size    SmallTest
       * @tc.type    User
+      * @tc.level   Level 1
       */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2200 starts`);
@@ -726,13 +747,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2300
     * @tc.desc    The itemCount of EventInfo is 0, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2300 starts`);
@@ -759,13 +781,14 @@ describe('AccessibleSendEvent', function () {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2400
     * @tc.desc    The itemCount of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400', 0, async function (done) {
       console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2400 starts`);
@@ -791,13 +814,14 @@ describe('AccessibleSendEvent', function () {
     })
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2500
     * @tc.desc    The lastContent of EventInfo is '1', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2500 starts`);
@@ -824,13 +848,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2600
     * @tc.desc    The lastContent of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2600 starts`);
@@ -857,13 +882,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2700
     * @tc.desc    The lastContent of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2700 starts`);
@@ -890,11 +916,12 @@ describe('AccessibleSendEvent', function () {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_2900
     * @tc.desc    The parameter input is null, test the sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900', 0, async function (done) {
         console.info('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_2900');
@@ -913,13 +940,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3000
     * @tc.desc    The pageId of EventInfo is 1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3000 starts`);
@@ -946,13 +974,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3100
     * @tc.desc    The pageId of EventInfo is 0, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3100 starts`);
@@ -979,13 +1008,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3200
     * @tc.desc    The pageId of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3200 starts`);
@@ -1011,13 +1041,14 @@ describe('AccessibleSendEvent', function () {
   })
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3300
     * @tc.desc    The textMoveUnit of EventInfo is 'char', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3300 starts`);
@@ -1044,13 +1075,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3400
     * @tc.desc    The textMoveUnit of EventInfo is 'word', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3400 starts`);
@@ -1077,13 +1109,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3500
     * @tc.desc    The textMoveUnit of EventInfo is 'line', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3500 starts`);
@@ -1110,13 +1143,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3600
     * @tc.desc    The textMoveUnit of EventInfo is 'page', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3600 starts`);
@@ -1143,13 +1177,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3700
     * @tc.desc    The textMoveUnit of EventInfo is 'paragraph', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3700 starts`);
@@ -1176,13 +1211,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3800
     * @tc.desc    The textMoveUnit of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3800 starts`);
@@ -1209,13 +1245,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_3900
     * @tc.desc    The textMoveUnit of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_3900 starts`);
@@ -1241,13 +1278,14 @@ describe('AccessibleSendEvent', function () {
   })
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4000
     * @tc.desc    The triggerAction of EventInfo is 'accessibilityFocus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4000 starts`);
@@ -1273,13 +1311,14 @@ describe('AccessibleSendEvent', function () {
 
     /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4100
     * @tc.desc    The triggerAction of EventInfo is 'clearAccessibilityFocus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100', 0, async function (done) {
       console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4100 starts`);
@@ -1305,11 +1344,12 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4200
     * @tc.desc    The triggerAction of EventInfo is 'focus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4200 starts`);
@@ -1335,13 +1375,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4300
     * @tc.desc    The triggerAction of EventInfo is 'clearFocus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4300 starts`);
@@ -1367,13 +1408,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4400
     * @tc.desc    The triggerAction of EventInfo is 'clearSelection', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4400 starts`);
@@ -1399,13 +1441,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4500
     * @tc.desc    The triggerAction of EventInfo is 'click', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4500 starts`);
@@ -1431,13 +1474,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4600
     * @tc.desc    The triggerAction of EventInfo is 'longClick', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4600 starts`);
@@ -1463,13 +1507,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4700
     * @tc.desc    The triggerAction of EventInfo is 'cut', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4700 starts`);
@@ -1495,13 +1540,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4800
     * @tc.desc    The triggerAction of EventInfo is 'copy', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4800 starts`);
@@ -1527,13 +1573,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_4900
     * @tc.desc    The triggerAction of EventInfo is 'paste', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_4900 starts`);
@@ -1559,13 +1606,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5000
     * @tc.desc    The triggerAction of EventInfo is 'select', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5000 starts`);
@@ -1591,13 +1639,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5100
     * @tc.desc    The triggerAction of EventInfo is 'setText', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5100 starts`);
@@ -1623,13 +1672,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5200
     * @tc.desc    The triggerAction of EventInfo is 'delete', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5200 starts`);
@@ -1655,13 +1705,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5300
     * @tc.desc    The triggerAction of EventInfo is 'scrollForward', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5300 starts`);
@@ -1687,13 +1738,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5400
     * @tc.desc    The triggerAction of EventInfo is 'scrollBackward', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5400 starts`);
@@ -1719,13 +1771,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5500
     * @tc.desc    The triggerAction of EventInfo is 'setSelection', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5500 starts`);
@@ -1751,13 +1804,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5600
     * @tc.desc    The triggerAction of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5600 starts`);
@@ -1784,13 +1838,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5700
     * @tc.desc    The triggerAction of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5700 starts`);
@@ -1817,13 +1872,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5800
     * @tc.desc    The type of EventInfo is 'accessibilityFocus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5800 starts`);
@@ -1850,13 +1906,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900
-    * @tc.name    SendEvent_type_0020
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_5900
     * @tc.desc    The type of EventInfo is 'accessibilityFocusClear', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_5900 starts`);
@@ -1883,13 +1940,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6000
     * @tc.desc    The type of EventInfo is 'click', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6000 starts`);
@@ -1916,13 +1974,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6100
     * @tc.desc    The type of EventInfo is 'longClick', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6100 starts`);
@@ -1949,13 +2008,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6200
     * @tc.desc    The type of EventInfo is 'select', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6200 starts`);
@@ -1982,13 +2042,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6300
     * @tc.desc    The type of EventInfo is 'hoverEnter', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6300 starts`);
@@ -2015,13 +2076,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6400
     * @tc.desc    The type of EventInfo is 'hoverExit', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6400 starts`);
@@ -2048,13 +2110,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6500
     * @tc.desc    The type of EventInfo is 'textUpdate', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6500 starts`);
@@ -2081,13 +2144,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6600
     * @tc.desc    The type of EventInfo is 'textSelectionUpdate', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6600 starts`);
@@ -2114,13 +2178,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6700
     * @tc.desc    The type of EventInfo is 'scroll', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6700 starts`);
@@ -2147,13 +2212,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6800
     * @tc.desc    The type of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6800 starts`);
@@ -2181,13 +2247,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_6900
     * @tc.desc    The type of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_6900 starts`);
@@ -2215,13 +2282,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7000
     * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
    it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7000 starts`);
@@ -2248,13 +2316,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7100
     * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7100 starts`);
@@ -2281,13 +2350,14 @@ describe('AccessibleSendEvent', function () {
 
   /*
     * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200
-    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7200
     * @tc.desc    The windowUpdateType of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     *             Another test point is to test whether the modified constructor (EventInfo)
     *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
+    * @tc.level   Level 1
     */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7200 starts`);
@@ -2311,16 +2381,18 @@ describe('AccessibleSendEvent', function () {
       done();
     });
   })
-  /*
-  * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300
-  * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300
-  * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
-  *             The result of sendEvent() should be equal to a promise of undefined
-  *             Another test point is to test whether the modified constructor (EventInfo)
-  *             works correctly.
-  * @tc.size    SmallTest
-  * @tc.type    User
-  */
+
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7300
+    * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7300 starts`);
 
@@ -2346,16 +2418,17 @@ describe('AccessibleSendEvent', function () {
     });
   })
 
-  /*
- * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400
- * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400
- * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
- *             The result of sendEvent() should be equal to a promise of undefined
- *             Another test point is to test whether the modified constructor (EventInfo)
- *             works correctly.
- * @tc.size    SmallTest
- * @tc.type    User
- */
+   /*
+   * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400
+   * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7400
+   * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+   *             The result of sendEvent() should be equal to a promise of undefined
+   *             Another test point is to test whether the modified constructor (EventInfo)
+   *             works correctly.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 1
+   */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7400 starts`);
 
@@ -2383,16 +2456,17 @@ describe('AccessibleSendEvent', function () {
 
 
 
-  /*
-  * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500
-  * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500
-  * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
-  *             The result of sendEvent() should be equal to a Callback of undefined
-  *             Another test point is to test whether the modified constructor (EventInfo)
-  *             works correctly.
-  * @tc.size    SmallTest
-  * @tc.type    User
-  */
+    /*
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500
+    * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7500
+    * @tc.desc    The typy of EventInfo is requestFocusForAccessibility, The triggerAction of EventInfo is click ,The elementId of EventInfo is 16  test sendEvent() function
+    *             The result of sendEvent() should be equal to a Callback of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 1
+    */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7500 starts`);
 
@@ -2421,16 +2495,17 @@ describe('AccessibleSendEvent', function () {
 
   })
 
-  /*
- * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600
- * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600
- * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
- *             The result of sendEvent() should be equal to a Callback of undefined
- *             Another test point is to test whether the modified constructor (EventInfo)
- *             works correctly.
- * @tc.size    SmallTest
- * @tc.type    User
- */
+   /*
+   * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600
+   * @tc.name    test_sUB_bASIC_bARRIERFREE_aPI_accessibleSendEvent_7600
+   * @tc.desc    The typy of EventInfo is announceForAccessibility, The triggerAction of EventInfo is click ,The textAnnouncedForAccessibility of EventInfo is test123  test sendEvent() function
+   *             The result of sendEvent() should be equal to a Callback of undefined
+   *             Another test point is to test whether the modified constructor (EventInfo)
+   *             works correctly.
+   * @tc.size    SmallTest
+   * @tc.type    User
+   * @tc.level   Level 1
+   */
   it('SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600', 0, async function (done) {
     console.info(`AccessibleSendEvent: SUB_BASIC_BARRIERFREE_API_AccessibleSendEvent_7600 starts`);
 
@@ -2457,5 +2532,6 @@ describe('AccessibleSendEvent', function () {
       done();
     });
   })
+
 })
 }
