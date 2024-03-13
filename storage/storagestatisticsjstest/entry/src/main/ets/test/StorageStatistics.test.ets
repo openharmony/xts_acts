@@ -15,10 +15,18 @@
 
 import storageStatistics from "@ohos.file.storageStatistics";
 import { describe, it, expect } from "@ohos/hypium"
-import {isIntNum, isNegativeNum, isInclude} from "./Common";
+import { isIntNum, isNegativeNum } from "./Common";
+
+function delay() {
+  return new Promise<storageStatistics.BundleStats>((resolve, reject) => {
+    storageStatistics.getCurrentBundleStats((err, result) => {
+      resolve(result);
+    })
+  });
+}
 
 export default function storageStatisticsTest() {
-  describe("storageStatisticsTest", function () {
+  describe("storageStatisticsTest", () => {
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0000
      * @tc.name storage_statistics_test_get_current_bundle_stats_async_000
@@ -28,7 +36,7 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_000", 0, async function (done) {
+    it("storage_statistics_test_get_current_bundle_stats_async_000", 0, async (done: Function) => {
       try {
         let bundleStat = await storageStatistics.getCurrentBundleStats();
         expect(bundleStat != null).assertTrue();
@@ -50,7 +58,7 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_001", 0, async function (done) {
+    it("storage_statistics_test_get_current_bundle_stats_async_001", 0, async (done: Function) => {
       try {
         storageStatistics.getCurrentBundleStats((error, bundleStat) => {
           expect(bundleStat != null).assertTrue();
@@ -73,15 +81,8 @@ export default function storageStatisticsTest() {
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async function (done) {
+    it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async (done: Function) => {
       try {
-        const delay = function delay() {
-          return new Promise((resolve, reject) => {
-            storageStatistics.getCurrentBundleStats((err, result)=>{
-              resolve(result);
-            })
-          });
-        };
         let tasks = [delay(), delay(), delay(), delay()];
         Promise.all(tasks).then(results => {
           let isNotNull = results.every(bundleStat => {
