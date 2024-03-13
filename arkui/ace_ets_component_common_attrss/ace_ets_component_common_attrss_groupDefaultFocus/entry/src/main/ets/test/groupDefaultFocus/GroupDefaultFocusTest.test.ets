@@ -17,6 +17,21 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: boolean;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  textComponentKey: string;
+  referenceOneComponentKey: string;
+  referenceTwoComponentKey: string;
+  sharePage: boolean;
+}
+
 export default function GroupDefaultFocusTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
@@ -31,10 +46,10 @@ export default function GroupDefaultFocusTest() {
     'Checkbox',
     'CheckboxGroup',
     'DatePicker',
-//    'ImageAnimator',
+    //    'ImageAnimator',
     'Menu',
     'MenuItem',
-//    'MenuItemGroup',
+    //    'MenuItemGroup',
     'Radio',
     'Rating',
     'Select',
@@ -47,25 +62,25 @@ export default function GroupDefaultFocusTest() {
     'Web',
     'AlphabetIndexer',
     'Column',
-//    'ColumnSplit',
+    //    'ColumnSplit',
     'Counter',
     'Flex',
-//    'GridCol',
-//    'GridRow',
+    //    'GridCol',
+    //    'GridRow',
     'GridItem',
     'ListItem',
-//    'ListItemGroup',
+    //    'ListItemGroup',
     'Row',
-//    'RowSplit',
+    //    'RowSplit',
     'Scroll',
     'SideBarContainer',
     'Stack',
     'Swiper',
     'Tabs',
-//    'TabContent'
+  //    'TabContent'
   ]
   //Page config, this param is required.
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testGroupDefaultFocus',
     pageName: 'GroupDefaultFocusPage',
     pageUrl: 'MainAbility/pages/groupDefaultFocus/GroupDefaultFocusPage',
@@ -75,7 +90,7 @@ export default function GroupDefaultFocusTest() {
     sharePage: false
   }
   //Test values, looped to create cases, this param is required.
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: 'SetTrue',
     setValue: true,
   }, {
@@ -89,7 +104,7 @@ export default function GroupDefaultFocusTest() {
 
   describe('GroupDefaultFocusTest', () => {
     //Generate test cases (it) through a loop based on the support view * test values.
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
 
       //Place Focus
       let requestFocusText = focusControl.requestFocus(data.pageConfig.referenceOneComponentKey);
@@ -103,12 +118,12 @@ export default function GroupDefaultFocusTest() {
 
       if ('SetTrue' == data.testValue.describe) {
         //First confirmation of target component focus
-        let textComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let textComponent: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] textComponent.$attrs.content is ' + textComponent.$attrs.content);
         expect(textComponent.$attrs.content).assertContain('onFocus');
 
         //Confirm target component properties
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] groupDefaultFocus is ' + viewObj.$attrs.groupDefaultFocus);
         expect(viewObj.$attrs.groupDefaultFocus).assertEqual(true);
 
@@ -123,18 +138,18 @@ export default function GroupDefaultFocusTest() {
         await Utils.sleep(1000);
 
         //Second confirmation of target component focus
-        let textComponentTwo = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let textComponentTwo: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] textComponentTwo.$attrs.content: ' + textComponentTwo.$attrs.content);
         expect(textComponentTwo.$attrs.content).assertEqual('onFocus');
 
       } else if ('SetFalse' == data.testValue.describe) {
         //Confirmation of target component focus
-        let textComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
+        let textComponent: ESObject = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] textComponent.$attrs.content: ' + textComponent.$attrs.content);
         expect(textComponent.$attrs.content).assertEqual('');
 
         //Confirm target component properties
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+        let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] viewObj.$attrs.groupDefaultFocus:' + viewObj.$attrs.groupDefaultFocus);
         expect(viewObj.$attrs.groupDefaultFocus).assertEqual(false);
 

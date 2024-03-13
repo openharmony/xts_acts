@@ -29,20 +29,20 @@ struct GroupDefaultFocusPage {
   @State callback: string = '';
   @State referenceOneCallback: string = '';
   @State referenceTwoCallback: string = '';
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State textComponentKey: string =
-    router.getParams() ? router.getParams()['view']['textComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['textComponentKey'] : ''
   @State referenceOneComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceOneComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceOneComponentKey'] : ''
   @State referenceTwoComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceTwoComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceTwoComponentKey'] : ''
 
   onPageShow() {
     console.info('[GroupDefaultFocusPage] page show called ');
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: ESObject) => {
       this._groupDefaultFocus = value;
     })
   }
@@ -50,7 +50,8 @@ struct GroupDefaultFocusPage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .groupDefaultFocus(this._groupDefaultFocus)
     .key(this.componentKey)
     .onFocus(() => {
@@ -276,7 +277,7 @@ struct GroupDefaultFocusPage {
             direction: GridRowDirection.Row
           }) {
             ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue,],
-              (color) => {
+              (color: Color) => {
                 GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                   Row() {
                     Button('Button')
@@ -349,7 +350,7 @@ struct GroupDefaultFocusPage {
         } else if (this.targetView == 'Scroll') {
           Scroll(this.scroller) {
             Flex({ direction: FlexDirection.Column }) {
-              ForEach(this.arr, (item) => {
+              ForEach(this.arr, (item: number) => {
                 Row() {
                   Text(item.toString())
                     .width(80)
@@ -361,13 +362,13 @@ struct GroupDefaultFocusPage {
                     .margin({ top: 5 })
                     .focusable(true)
                 }
-              }, item => item)
+              }, (item: number) => item.toString())
             }.margin({ right: 15 })
           }.width(200).height(300).commonStyle()
         } else if (this.targetView == 'SideBarContainer') {
           SideBarContainer(SideBarContainerType.Embed) {
             Column() {
-              ForEach([1, 2, 3], (item) => {
+              ForEach([1, 2, 3], (item: number) => {
                 Column({ space: 5 }) {
                   Image($r('app.media.icon')).width(64).height(64).focusable(true)
                   Text('Index0' + item).fontSize(25).focusable(true)
@@ -388,9 +389,9 @@ struct GroupDefaultFocusPage {
           .backgroundColor(Color.Blue).width(200).height(300).commonStyle()
         } else if (this.targetView == 'Swiper') {
           Swiper() {
-            ForEach([1, 2, 3], (item: string) => {
+            ForEach([1, 2, 3], (item: number) => {
               Text('Swiper' + item).width('90%').height(160).focusable(true)
-            }, item => item)
+            }, (item: number) => item.toString())
           }
           .indicator(true)
           .backgroundColor(Color.White)

@@ -17,14 +17,14 @@ import { Constants } from '../../constants/Constants';
 import events_emitter from '@ohos.events.emitter';
 
 export class AttrsManager {
-  callBack;
+  callBack: (value: ESObject) => void;
 
-  static change(caseName, setValue) {
-    let eventData = { data: { src: JSON.stringify({ value: setValue }) } }
-    this.emitEvent(caseName, Constants.EVENT_ID_CHANGE_DATA, eventData);
+  static change(caseName: string, setValue: ESObject) {
+    let eventData: events_emitter.EventData = { data: { src: JSON.stringify({ value: setValue }) } }
+    AttrsManager.emitEvent(caseName, Constants.EVENT_ID_CHANGE_DATA, eventData);
   }
 
-  registerDataChange(callBack) {
+  registerDataChange(callBack: (value: ESObject) => void) {
     this.callBack = callBack
     this.onEvent(Constants.EVENT_ID_CHANGE_DATA);
   }
@@ -34,7 +34,7 @@ export class AttrsManager {
   }
 
   private onEvent(eventId: number) {
-    let stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }
@@ -42,8 +42,8 @@ export class AttrsManager {
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private static emitEvent(tag, eventId, eventData) {
-    let innerEvent = {
+  private static emitEvent(tag: string, eventId: number, eventData: events_emitter.EventData) {
+    let innerEvent: events_emitter.InnerEvent = {
       eventId: eventId,
       priority: events_emitter.EventPriority.LOW
     }
@@ -51,13 +51,12 @@ export class AttrsManager {
     events_emitter.emit(innerEvent, eventData);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info('[stateChangCallBack] stateChangCallBack ');
     if (eventData != null) {
       console.info('[stateChangCallBack] state change called: ' + JSON.stringify(eventData));
       if (eventData.data.src != null) {
-        let src = JSON.parse(eventData.data.src);
-        this.callBack(src.value);
+        this.callBack(JSON.parse(eventData.data.src).value);
       }
     }
   }
