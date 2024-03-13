@@ -23,21 +23,21 @@ import router from '@ohos.router'
 @Component
 struct HitTestBehaviorPage {
   @State _hitTestBehavior: HitTestMode = HitTestMode.Default;
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State TargetEventCallBackStr: string = ''
   @State ChildEventCallBackStr: string = ''
   @State BrotherEventCallBackStr: string = ''
-  @State containerView: string = router.getParams() ? router.getParams()['view']['containerView'] : ''
+  @State containerView: string = router.getParams() ? (router.getParams() as ESObject)['view']['containerView'] : ''
   @State referenceTargetComponentKey: string = router.getParams() ?
-  router.getParams()['view']['referenceTargetComponentKey'] : ''
+  (router.getParams() as ESObject)['view']['referenceTargetComponentKey'] : ''
   @State referenceBrotherComponentKey: string = router.getParams() ?
-  router.getParams()['view']['referenceBrotherComponentKey'] : ''
+  (router.getParams() as ESObject)['view']['referenceBrotherComponentKey'] : ''
   @State referenceChildComponentKey: string = router.getParams() ?
-  router.getParams()['view']['referenceChildComponentKey'] : ''
+  (router.getParams() as ESObject)['view']['referenceChildComponentKey'] : ''
 
   onPageShow() {
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: ESObject) => {
       this._hitTestBehavior = value.HitTestMode
       this.TargetEventCallBackStr = ''
       this.ChildEventCallBackStr = ''
@@ -48,7 +48,8 @@ struct HitTestBehaviorPage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .width(100)
     .height(100)
     .hitTestBehavior(this._hitTestBehavior)
@@ -59,7 +60,8 @@ struct HitTestBehaviorPage {
     })
   }
 
-  @Styles onChildTouchStyle(){
+  @Styles
+  onChildTouchStyle(){
     .width(100)
     .height(100)
     .onTouch((event: TouchEvent) => {
@@ -68,7 +70,8 @@ struct HitTestBehaviorPage {
     })
   }
 
-  @Styles onBrotherTouchStyle(){
+  @Styles
+  onBrotherTouchStyle(){
     .width(100)
     .height(100)
     .onTouch((event: TouchEvent) => {
@@ -77,13 +80,15 @@ struct HitTestBehaviorPage {
     })
   }
 
-  @Builder buttonBrotherView() {
+  @Builder
+  buttonBrotherView() {
     Button()
       .onBrotherTouchStyle()
       .id('button')
   }
 
-  @Builder buildTargetView() {
+  @Builder
+  buildTargetView() {
     if (this.targetView == 'Button') {
       Button() {
         Text().onChildTouchStyle()
@@ -121,7 +126,7 @@ struct HitTestBehaviorPage {
       Marquee({
         start: true,
         step: 50,
-        loop: Infinity,
+        loop: Number.MAX_VALUE,
         fromStart: true,
         src: 'Running Marquee starts rolling'
       }).commonStyle()
@@ -249,19 +254,19 @@ struct HitTestBehaviorPage {
     } else if (this.targetView == 'Scroll') {
       Scroll() {
         Column() {
-          ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+          ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: number) => {
             Text('Scroll' + item.toString())
               .width('90%')
               .height(150)
               .backgroundColor(Color.White)
               .textAlign(TextAlign.Center)
-          }, item => item)
+          }, (item: number) => item.toString())
         }.width('100%').onChildTouchStyle()
       }.scrollBar(BarState.On).commonStyle()
     } else if (this.targetView == 'SideBarContainer') {
       SideBarContainer(SideBarContainerType.Embed) {
         Column() {
-          ForEach([1, 2, 3], (item) => {
+          ForEach([1, 2, 3], (item: number) => {
             Column({ space: 5 }) {
               Image($r('app.media.icon')).width(50).height(50)
               Text('Index0' + item).fontSize(25)
@@ -285,7 +290,7 @@ struct HitTestBehaviorPage {
         ForEach([1, 2, 3], (item: string) => {
           Text('Swiper' + item).width('90%').height(50)
             .onChildTouchStyle()
-        }, item => item)
+        }, (item: number) => item.toString())
       }.indicator(true).backgroundColor(Color.White).commonStyle()
     } else if (this.targetView == 'WaterFlow') {
       WaterFlow() {
@@ -296,7 +301,7 @@ struct HitTestBehaviorPage {
               Image($r('app.media.icon')).width(50).height(50).objectFit(ImageFit.Fill)
             }
           }.onChildTouchStyle()
-        }, item => item)
+        }, (item: number) => item.toString())
       }.commonStyle()
     } else if (this.targetView == 'GridItem') {
       Grid() {
@@ -440,7 +445,7 @@ struct HitTestBehaviorPage {
         gutter: { x: 5, y: 10 },
         direction: GridRowDirection.Row
       }) {
-        ForEach([Color.Red], (color) => {
+        ForEach([Color.Red], (color: Color) => {
           GridCol({ span: 1 }) {
             Row().width('100%').height('20vp')
           }.borderColor(color).borderWidth(2).onChildTouchStyle()
@@ -504,8 +509,8 @@ struct HitTestBehaviorPage {
       if (this.containerView == 'RelativeContainer') {
         RelativeContainer() {
           if (this.targetView == 'TabContent' || this.targetView == 'ListItemGroup' || this.targetView == 'ListItem'
-          || this.targetView == 'GridItem' || this.targetView == 'GridCol' || this.targetView == 'FlowItem'
-          || this.targetView == 'StepperItem' || this.targetView == 'MenuItemGroup' || this.targetView == 'Blank') {
+            || this.targetView == 'GridItem' || this.targetView == 'GridCol' || this.targetView == 'FlowItem'
+            || this.targetView == 'StepperItem' || this.targetView == 'MenuItemGroup' || this.targetView == 'Blank') {
             this.buildTargetView();
           } else {
             this.buttonBrotherView();
@@ -515,8 +520,8 @@ struct HitTestBehaviorPage {
       } else {
         Stack() {
           if (this.targetView == 'TabContent' || this.targetView == 'ListItemGroup' || this.targetView == 'ListItem'
-          || this.targetView == 'GridItem' || this.targetView == 'GridCol' || this.targetView == 'FlowItem'
-          || this.targetView == 'StepperItem' || this.targetView == 'MenuItemGroup' || this.targetView == 'Blank') {
+            || this.targetView == 'GridItem' || this.targetView == 'GridCol' || this.targetView == 'FlowItem'
+            || this.targetView == 'StepperItem' || this.targetView == 'MenuItemGroup' || this.targetView == 'Blank') {
             this.buildTargetView();
           } else {
             this.buttonBrotherView();
