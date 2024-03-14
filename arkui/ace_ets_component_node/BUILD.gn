@@ -13,7 +13,5 @@
 
 group("ActsAceEtsComponentNodeTest") {
   testonly = true
-  deps = [
-    "ace_ets_component_node_frameNode_api12:ActsAceEtsComponentNodeFrameNodeTest",
-  ]
+  deps = [ "ace_ets_component_node_frameNode_api12:ActsAceEtsComponentNodeFrameNodeTest" ]
 }
