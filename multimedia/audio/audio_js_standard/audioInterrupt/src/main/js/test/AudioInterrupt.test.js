@@ -37,6 +37,7 @@ export default function AudioInterrupt() {
             let tag = "createNewSession";
             let type = "audio";
             let context1 = featureAbility.getContext();
+            // @ts-ignore
             let av = await avSession.createAVSession(context1, tag, type);
             console.info('av is ' + JSON.stringify(av));
         }
