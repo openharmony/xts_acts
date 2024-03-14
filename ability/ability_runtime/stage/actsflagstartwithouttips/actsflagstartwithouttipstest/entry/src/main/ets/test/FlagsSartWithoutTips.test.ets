@@ -293,7 +293,7 @@ export default function flagstartwithouttipstest() {
       await sleep(3000);
       try {
         let wantInfo: Want = {
-          action: 'ohos.want.action.viewData',
+          action: 'ohos.want.onlyforwithouttips.onlyforwithouttips',
         }
         await context.startAbility(wantInfo);
       } catch (error) {
@@ -337,7 +337,7 @@ export default function flagstartwithouttipstest() {
       await sleep(3000);
       try {
         let wantInfo: Want = {
-          action: 'ohos.want.action.viewData',
+          action: 'ohos.want.onlyforwithouttips.onlyforwithouttips',
           flags: wantConstant.Flags.FLAG_START_WITHOUT_TIPS,
         }
         await context.startAbility(wantInfo);
