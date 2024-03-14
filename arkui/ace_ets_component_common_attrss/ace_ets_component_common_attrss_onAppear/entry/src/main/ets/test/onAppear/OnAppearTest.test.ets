@@ -17,6 +17,20 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium';
 
+class TestValue {
+  describe: string;
+  expectValue: ESObject;
+}
+
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  targetGroupView: string;
+  compareTextKey: string;
+  targetWidth: number;
+  targetHeight: number;
+}
 
 export default function onAppearTest() {
 
@@ -102,7 +116,7 @@ export default function onAppearTest() {
   let targetWidth = 60;
   let targetHeight = 60;
 
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testOnAppear',
     pageName: 'OnAppearPage',
     pageUrl: 'MainAbility/pages/onAppear/OnAppearPage',
@@ -113,7 +127,7 @@ export default function onAppearTest() {
   }
 
   //Test content and expected results
-  let testValues = [{
+  let testValues: TestValue[] = [{
     describe: '',
     expectValue: {
       changeAppear: 'onAppear'
@@ -121,9 +135,9 @@ export default function onAppearTest() {
   }]
 
   describe('OnAppearTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       //Get text content,check content is onAppear
-      let compareTextObj = Utils.getComponentByKey(data.pageConfig.compareTextKey);
+      let compareTextObj: ESObject = Utils.getComponentByKey(data.pageConfig.compareTextKey);
       console.info('compareTextObj.$attrs.content: ' + compareTextObj.$attrs.content);
       expect(compareTextObj.$attrs.content).assertEqual(data.testValue.expectValue.changeAppear);
     });
