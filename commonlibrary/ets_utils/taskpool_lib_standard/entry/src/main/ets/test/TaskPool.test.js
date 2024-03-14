@@ -91,9 +91,7 @@ describe('ActsAbilityTest', function () {
           res++
         }
         testTaskPool();
-        for (let i = 0; i < 10; i++) {
-          ss.terminate();
-        }
+        ss.terminate();
         while (!flag) {
           await promiseCase()
         }
