@@ -15,8 +15,8 @@
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = undefined;
-let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs = undefined;
+let abilityDelegator: any = undefined;
+let abilityDelegatorArguments: any = undefined;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([

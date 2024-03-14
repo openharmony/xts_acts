@@ -34,10 +34,10 @@ function itemTextStyle() {
 
 @Component
 export struct StepperItemView {
-  @State prevIndex: number = 0;
-  @State currentIndex: number = 0;
-  @State firstState: ItemState = ItemState.Normal;
-  @State secondState: ItemState = ItemState.Normal;
+  @State prevIndex: number = 0
+  @State currentIndex: number = 0
+  @State firstState: ItemState = ItemState.Normal
+  @State secondState: ItemState = ItemState.Normal
   @Link _markAnchor: Position;
   private componentKey: string;
   private parentWidth: number;

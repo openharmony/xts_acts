@@ -25,7 +25,6 @@ export class RectValue {
 }
 
 export default class Utils {
-
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
       setTimeout(() => {
@@ -98,5 +97,4 @@ export default class Utils {
     console.info('[' + componentKey + '] obj is: ' + JSON.stringify(JSON.parse(strJson)));
     return JSON.parse(strJson);
   }
-
 }
