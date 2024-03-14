@@ -1118,9 +1118,12 @@ describe('XmlTest', function () {
                        commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
                        nameKey : "_name", elementsKey : "_elements"}
         let result = conv.convertToJSObject(xml, options);
-        let cdata = result._elements[0]._cdata;
-        let str = ' \\t data\\n< > \" and & \\t ';
-        expect(cdata).assertEqual(str);
+        let cdata0 = result._elements[0]._cdata;
+        let cdata1 = result._elements[1]._cdata;
+        let str0 = ' \\t data\\n';
+        let str1 = '< > \" and & \\t ';
+        expect(cdata0).assertEqual(str0);
+        expect(cdata1).assertEqual(str1);
     })
 
     /**
