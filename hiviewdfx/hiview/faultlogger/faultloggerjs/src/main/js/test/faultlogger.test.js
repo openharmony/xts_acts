@@ -145,8 +145,8 @@ describe("FaultlogJsTest", function () {
             console.info("DFX_DFR_Faultlogger_Interface_0400 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
             expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
             console.info("DFX_DFR_Faultlogger_Interface_0400 fullLog length:" + ret[0].fullLog.length);
-            console.info("DFX_DFR_Faultlogger_Interface_0400 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-            expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+            console.info("DFX_DFR_Faultlogger_Interface_0400 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+            expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
             expect(typeof(ret[0].pid) == "number").assertTrue();
             expect(typeof(ret[0].uid) == "number").assertTrue();
             expect(typeof(ret[0].type) == "number").assertTrue();
@@ -320,8 +320,8 @@ describe("FaultlogJsTest", function () {
                     expect(ret.length).assertLarger(0);
                     console.info("DFX_DFR_Faultlogger_Interface_0100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
                     expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
-                    console.info("DFX_DFR_Faultlogger_Interface_0100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_0100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
                 }
                 done();
             }
@@ -559,8 +559,8 @@ describe("FaultlogJsTest", function () {
                     expect(ret.length).assertLarger(0);
                     console.info("DFX_DFR_Faultlogger_Interface_1100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
                     expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
-                    console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
                 }
                 done();
             }
