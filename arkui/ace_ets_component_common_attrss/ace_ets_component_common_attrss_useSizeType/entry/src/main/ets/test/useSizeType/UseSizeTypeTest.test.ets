@@ -16,6 +16,38 @@
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class PageConfig {
+  testName: string;
+  pageName: string;
+  pageUrl: string;
+  parentHeight: number;
+  parentWidth: number;
+  gutter: number;
+  columns: number;
+}
+
+class TestValues {
+  describe: string;
+  setValue: setValue;
+  expectValue: UseSizeType;
+}
+
+class setValue {
+  xs: SpanOffset;
+  sm: SpanOffset;
+  md: SpanOffset;
+  lg: SpanOffset;
+}
+
+class UseSizeType {
+  useSizeType: setValue;
+}
+
+class SpanOffset {
+  span: number;
+  offset: number;
+}
+
 export default function useSizeTypeTest() {
   let supportView = [
     'AlphabetIndexer',
@@ -90,44 +122,6 @@ export default function useSizeTypeTest() {
     'WaterFlow'
   ]
 
-  class PageConfig {
-    testName: string;
-    pageName: string;
-    pageUrl: string;
-    parentHeight: number;
-    parentWidth: number;
-    gutter: number;
-    columns: number;
-  }
-
-  class UseSize {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-  }
-
-  class TestValues {
-    describe: string;
-    setValue: setValue;
-    expectValue: UseSizeType;
-  }
-
-  class setValue {
-    xs: SpanOffset;
-    sm: SpanOffset;
-    md: SpanOffset;
-    lg: SpanOffset;
-  }
-
-  class UseSizeType {
-    useSizeType: setValue;
-  }
-
-  class SpanOffset {
-    span: number;
-    offset: number;
-  }
 
   //Custom params.
   let parentWidth = 320;

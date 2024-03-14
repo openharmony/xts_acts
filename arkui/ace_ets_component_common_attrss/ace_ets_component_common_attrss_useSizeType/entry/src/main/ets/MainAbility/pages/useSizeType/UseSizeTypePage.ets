@@ -16,7 +16,6 @@
 import AttrsManager from '../../common/AttrsManager';
 import router from '@ohos.router'
 
-let params = router.getParams() as Record<string, string | number>
 
 class UseSize {
   xs: SpanOffset;
@@ -39,12 +38,12 @@ struct UseSizeTypePage {
     md: { span: 0, offset: 0 },
     lg: { span: 0, offset: 0 }
   }
-  @State targetView: string = params ? params.view['targetView'] : '';
-  @State componentKey: string = params ? params.view['componentKey'] : '';
-  @State parentWidth: number = params ? params.view['parentWidth'] : 0;
-  @State parentHeight: number = params ? params.view['parentHeight'] : 0;
-  @State columns: number = params ? params.view['columns'] : 0;
-  @State gutter: number = params ? params.view['gutter'] : 0;
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : '';
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : '';
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0;
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0;
+  @State columns: number = router.getParams() ? (router.getParams() as ESObject)['view']['columns'] : 0;
+  @State gutter: number = router.getParams() ? (router.getParams() as ESObject)['view']['gutter'] : 0;
 
   onPageShow() {
     console.info('useSizeType page show called ')
