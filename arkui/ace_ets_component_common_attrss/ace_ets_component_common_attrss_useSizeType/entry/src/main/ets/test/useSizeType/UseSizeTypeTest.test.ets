@@ -89,12 +89,52 @@ export default function useSizeTypeTest() {
     'Line',
     'WaterFlow'
   ]
+
+  class PageConfig {
+    testName: string;
+    pageName: string;
+    pageUrl: string;
+    parentHeight: number;
+    parentWidth: number;
+    gutter: number;
+    columns: number;
+  }
+
+  class UseSize {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+  }
+
+  class TestValues {
+    describe: string;
+    setValue: setValue;
+    expectValue: UseSizeType;
+  }
+
+  class setValue {
+    xs: SpanOffset;
+    sm: SpanOffset;
+    md: SpanOffset;
+    lg: SpanOffset;
+  }
+
+  class UseSizeType {
+    useSizeType: setValue;
+  }
+
+  class SpanOffset {
+    span: number;
+    offset: number;
+  }
+
   //Custom params.
   let parentWidth = 320;
   let parentHeight = 200;
   let gutter = 10;
   let columns = 3;
-  let pageConfig = {
+  let pageConfig: PageConfig = {
     testName: 'testUseSizeType',
     pageName: 'UseSizeTypePage',
     pageUrl: 'MainAbility/pages/useSizeType/UseSizeTypePage',
@@ -104,7 +144,7 @@ export default function useSizeTypeTest() {
     columns: columns
   }
 
-  let testValues = [{
+  let testValues: TestValues[] = [{
     describe: 'SetNumber',
     setValue: {
       xs: {
@@ -139,44 +179,44 @@ export default function useSizeTypeTest() {
   }]
 
   describe('UseSizeTypeTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, async (data: ESObject) => {
       console.info('[' + data.caseTag + ']' + 'useSizeType.sx.span is:'
-      + data.viewObj.$attrs.useSizeType.sx.span);
+        + data.viewObj.$attrs.useSizeType.sx.span);
       expect(data.viewObj.$attrs.useSizeType.sx.span)
         .assertEqual(data.testValue.expectValue.useSizeType.xs.span);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.sx.offset is:'
-      + data.viewObj.$attrs.useSizeType.sx.offset);
+        + data.viewObj.$attrs.useSizeType.sx.offset);
       expect(data.viewObj.$attrs.useSizeType.sx.offset)
         .assertEqual(data.testValue.expectValue.useSizeType.xs.offset);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.sm.span is:'
-      + data.viewObj.$attrs.useSizeType.sm.span);
+        + data.viewObj.$attrs.useSizeType.sm.span);
       expect(data.viewObj.$attrs.useSizeType.sm.span)
         .assertEqual(data.testValue.expectValue.useSizeType.sm.span);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.sm.offset is:'
-      + data.viewObj.$attrs.useSizeType.sm.offset);
+        + data.viewObj.$attrs.useSizeType.sm.offset);
       expect(data.viewObj.$attrs.useSizeType.sm.offset)
         .assertEqual(data.testValue.expectValue.useSizeType.sm.offset);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.md.span is:'
-      + data.viewObj.$attrs.useSizeType.md.span);
+        + data.viewObj.$attrs.useSizeType.md.span);
       expect(data.viewObj.$attrs.useSizeType.md.span)
         .assertEqual(data.testValue.expectValue.useSizeType.md.span);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.md.offset is:'
-      + data.viewObj.$attrs.useSizeType.md.offset);
+        + data.viewObj.$attrs.useSizeType.md.offset);
       expect(data.viewObj.$attrs.useSizeType.md.offset)
         .assertEqual(data.testValue.expectValue.useSizeType.md.offset);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.lg.span is:'
-      + data.viewObj.$attrs.useSizeType.lg.span);
+        + data.viewObj.$attrs.useSizeType.lg.span);
       expect(data.viewObj.$attrs.useSizeType.lg.span)
         .assertEqual(data.testValue.expectValue.useSizeType.lg.span);
 
       console.info('[' + data.caseTag + ']' + 'useSizeType.lg.offset is:'
-      + data.viewObj.$attrs.useSizeType.lg.offset);
+        + data.viewObj.$attrs.useSizeType.lg.offset);
       expect(data.viewObj.$attrs.useSizeType.lg.offset)
         .assertEqual(data.testValue.expectValue.useSizeType.lg.offset);
     });
