@@ -43,7 +43,7 @@ ohos_shared_library("entry") {
   }
   include_dirs = [ "$MEDIA_ROOT_DIR/interfaces/kits/native/include/camera" ]
   external_deps = [
-    "graphic_2d:surface",
+    "graphic_surface:surface",
     "hilog:hilog_ndk",
     "napi:ace_napi",
   ]
