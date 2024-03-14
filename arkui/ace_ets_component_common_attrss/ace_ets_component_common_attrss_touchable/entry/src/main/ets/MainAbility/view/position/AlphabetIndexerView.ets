@@ -20,7 +20,7 @@ export struct AlphabetIndexerView {
   private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
     'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-    'V', 'W', 'X', 'Y', 'Z']
+    'V', 'W', 'X', 'Y', 'Z'];
 
   build() {
     AlphabetIndexer({ arrayValue: this.value, selected: 0 })
