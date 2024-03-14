@@ -16,6 +16,12 @@ import Utils from '../../MainAbility/common/Utils';
 import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
+class TestValue {
+  describe: string;
+  setValue: ESObject
+  expectValue: ESObject;
+}
+
 class PageConfig {
   testName: string;
   pageName: string;
@@ -25,12 +31,6 @@ class PageConfig {
   parentBackGroundColor: Color;
   BackGroundColor: Color;
   parentComponentKey: string;
-}
-
-class TestValues {
-  describe: string;
-  setValue: ESObject;
-  expectValue: ESObject;
 }
 
 /**
@@ -109,7 +109,6 @@ export default function widthTest() {
     'Navigator',
   ]
 
-
   //The size of the parent component, when set as a percentage, serves as the calculation.
   let parentWidth = 300;
   let parentHeight = 300;
@@ -130,7 +129,7 @@ export default function widthTest() {
   }
 
   //The data type to be tested, this parameter is required.
-  let testValues: TestValues[] = [{
+  let testValues: TestValue[] = [{
     describe: 'ExceedParent',
     setValue: {
       width: 400
