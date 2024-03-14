@@ -14,7 +14,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <cstdlib.h>
+#include <cstdlib>
 #include "ActsVulkanPipelineLibraryTest.h"
 
 namespace OHOS {
