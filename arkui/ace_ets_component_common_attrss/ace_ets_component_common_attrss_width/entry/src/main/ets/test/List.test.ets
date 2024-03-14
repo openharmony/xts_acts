@@ -13,12 +13,8 @@
  * limitations under the License.
  */
 
-
-
 import widthTest from './width/WidthTest.test';
 
 export default function testsuite() {
-
   widthTest();
-
 }
