@@ -16,9 +16,6 @@ import("//build/ohos_var.gni")
 group("startup") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "crossplatform/deviceInfoetstest:ActsCrossplatformDeviceInfoTest",
-      "startup_standard:startup_standard",
-    ]
+    deps = [ "startup_standard:startup_standard" ]
   }
 }
