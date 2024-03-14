@@ -23,26 +23,26 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct TabIndexPage {
-  private scroller: Scroller = new Scroller() //For Scroll and Scroll
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] //For Scroll
+  private scroller: Scroller = new Scroller(); //For Scroll and Scroll
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; //For Scroll
   @State _tabIndex: number = 0;
   @State callback: string = '';
   @State referenceOneCallback: string = '';
   @State referenceTwoCallback: string = '';
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
   @State textComponentKey: string =
-    router.getParams() ? router.getParams()['view']['textComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['textComponentKey'] : ''
   @State referenceOneComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceOneComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceOneComponentKey'] : ''
   @State referenceTwoComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceTwoComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceTwoComponentKey'] : ''
 
   onPageShow() {
     console.info('[TabIndexPage] page show called ');
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => {
+    attrsManager.registerDataChange((value: number) => {
       this._tabIndex = value;
     })
   }
@@ -50,7 +50,8 @@ struct TabIndexPage {
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .tabIndex(this._tabIndex)
     .key(this.componentKey)
     .onFocus(() => {
@@ -87,17 +88,35 @@ struct TabIndexPage {
           console.info('[TabIndexPage] targetComponent onBlur called');
         })
       if (this.targetView == 'Button') {
-        Button('Button').width(200).height(100).commonStyle()
+        Button('Button')
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'TextInput') {
-        TextInput().width(200).height(100).commonStyle()
+        TextInput()
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'TextArea') {
-        TextArea().width(200).height(100).commonStyle()
+        TextArea()
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'Search') {
-        Search().width(200).height(100).commonStyle()
+        Search()
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'Text') {
-        Text('Text').width(200).height(100).commonStyle()
+        Text('Text')
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'Image') {
-        Image($r('app.media.icon')).width(200).height(100).commonStyle()
+        Image($r('app.media.icon'))
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'List') {
         List() {
           ListItem() {
@@ -107,7 +126,11 @@ struct TabIndexPage {
               .textAlign(TextAlign.Center)
               .backgroundColor(Color.White)
           }
-        }.width(200).height(100).backgroundColor(Color.Blue).commonStyle()
+        }
+        .width(200)
+        .height(100)
+        .backgroundColor(Color.Blue)
+        .commonStyle()
       } else if (this.targetView == 'Grid') {
         Grid() {
           GridItem() {
@@ -119,33 +142,59 @@ struct TabIndexPage {
               .textAlign(TextAlign.Center)
           }
         }
-        .width(200).height(100).commonStyle()
+        .width(200)
+        .height(100)
+        .commonStyle()
       } else if (this.targetView == 'Checkbox') {
-        Checkbox({ name: 'checkbox1' }).width(200).height(100).commonStyle()
+        Checkbox({ name: 'checkbox1' })
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'CheckboxGroup') {
-        CheckboxGroup().width(200).height(100).commonStyle()
+        CheckboxGroup()
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'DatePicker') {
-        DatePicker({}).width(200).height(100).commonStyle()
+        DatePicker({})
+          .width(200)
+          .height(100)
+          .commonStyle()
       } else if (this.targetView == 'ImageAnimator') {
         ImageAnimator()
-          .backgroundColor(Color.Blue).width(200).height(300)
+          .backgroundColor(Color.Blue)
+          .width(200)
+          .height(300)
           .commonStyle()
       } else if (this.targetView == 'Menu') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-        }.backgroundColor(Color.Yellow).width(200)
+        }
+        .backgroundColor(Color.Yellow)
+        .width(200)
         .height(300).commonStyle()
       } else if (this.targetView == 'MenuItem') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
-            .width(200).height(300).commonStyle()
-        }.backgroundColor(Color.Yellow).width(200).height(300)
+            .width(200)
+            .height(300)
+            .commonStyle()
+        }
+        .backgroundColor(Color.Yellow)
+        .width(200)
+        .height(300)
       } else if (this.targetView == 'MenuItemGroup') {
         Menu() {
           MenuItemGroup({ header: 'MenuItemGroup' }) {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
-          }.width(200).height(300).commonStyle()
-        }.backgroundColor(Color.Yellow).width(200).height(300)
+          }
+          .width(200)
+          .height(300)
+          .commonStyle()
+        }
+        .backgroundColor(Color.Yellow)
+        .width(200)
+        .height(300)
       } else if (this.targetView == 'Radio') {
         Radio({ value: 'Radio1', group: 'radioGroup' })
           .width(200)
@@ -186,16 +235,24 @@ struct TabIndexPage {
           .backgroundColor(Color.Red)
           .width('100%')
           .height('100%')
-        }.backgroundColor(Color.Yellow).width(200).height(100)
+        }
+        .backgroundColor(Color.Yellow)
+        .width(200)
+        .height(100)
       } else if (this.targetView == 'TextPicker') {
         TextPicker({ range: ['apple1', 'orange2', 'peach3', 'grape4'] })
           .width(200)
           .height(300)
           .commonStyle()
       } else if (this.targetView == 'TimePicker') {
-        TimePicker().width(200).height(300).commonStyle()
+        TimePicker()
+          .width(200)
+          .height(300)
+          .commonStyle()
       } else if (this.targetView == 'Toggle') {
-        Toggle({ type: ToggleType.Switch }).width(200).height(300)
+        Toggle({ type: ToggleType.Switch })
+          .width(200)
+          .height(300)
           .commonStyle()
       } else if (this.targetView == 'Web') {
         Web({ src: '', controller: new WebController() }).commonStyle()
@@ -263,7 +320,7 @@ struct TabIndexPage {
           direction: GridRowDirection.Row
         }) {
           ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue,],
-            (color) => {
+            (color: Color) => {
               GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
                 Row() {
                   Button('Button')
@@ -317,7 +374,10 @@ struct TabIndexPage {
         Row() {
           Button('Button')
         }
-        .backgroundColor(Color.Blue).width(200).height(300).commonStyle()
+        .backgroundColor(Color.Blue)
+        .width(200)
+        .height(300)
+        .commonStyle()
       } else if (this.targetView == 'RowSplit') {
         RowSplit() {
           Text('1')
@@ -336,7 +396,7 @@ struct TabIndexPage {
       } else if (this.targetView == 'Scroll') {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width(80)
@@ -348,16 +408,21 @@ struct TabIndexPage {
                   .margin({ top: 5 })
                   .focusable(true)
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ right: 15 })
         }.width(200).height(300).commonStyle()
       } else if (this.targetView == 'SideBarContainer') {
         SideBarContainer(SideBarContainerType.Embed) {
           Column() {
-            ForEach([1, 2, 3], (item) => {
+            ForEach([1, 2, 3], (item: number) => {
               Column({ space: 5 }) {
-                Image($r('app.media.icon')).width(64).height(64).focusable(true)
-                Text('Index0' + item).fontSize(25).focusable(true)
+                Image($r('app.media.icon'))
+                  .width(64)
+                  .height(64)
+                  .focusable(true)
+                Text('Index0' + item)
+                  .fontSize(25)
+                  .focusable(true)
               }
             })
           }.width('100%')
@@ -365,19 +430,26 @@ struct TabIndexPage {
           .backgroundColor(Color.Green)
 
           Column() {
-            Text('SideBarContainer content').fontSize(25)
+            Text('SideBarContainer content')
+              .fontSize(25)
           }.backgroundColor(Color.Orange)
-        }.width(200).height(300).commonStyle()
+        }
+        .width(200)
+        .height(300)
+        .commonStyle()
       } else if (this.targetView == 'Stack') {
         Stack() {
           Button('Button')
         }
-        .backgroundColor(Color.Blue).width(200).height(300).commonStyle()
+        .backgroundColor(Color.Blue)
+        .width(200)
+        .height(300)
+        .commonStyle()
       } else if (this.targetView == 'Swiper') {
         Swiper() {
           ForEach([1, 2, 3], (item: string) => {
             Text('Swiper' + item).width('90%').height(160).focusable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .indicator(true)
         .backgroundColor(Color.White)
@@ -387,15 +459,31 @@ struct TabIndexPage {
       } else if (this.targetView == 'Tabs') {
         Tabs() {
           TabContent() {
-            Text('TabContent Test').width('100%').height('100%').backgroundColor(Color.White).focusable(true)
+            Text('TabContent Test')
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.White)
+              .focusable(true)
           }.tabBar('Tabs1')
-        }.backgroundColor(Color.Blue).width(200).height(300).commonStyle()
+        }
+        .backgroundColor(Color.Blue)
+        .width(200)
+        .height(300)
+        .commonStyle()
       } else if (this.targetView == 'TabContent') {
         Tabs() {
           TabContent() {
-            Text('TabContent Test').width('100%').height('100%').backgroundColor(Color.White).focusable(true)
-          }.tabBar('Tabs1').commonStyle()
-        }.width(200).height(300)
+            Text('TabContent Test')
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.White)
+              .focusable(true)
+          }
+          .tabBar('Tabs1')
+          .commonStyle()
+        }
+        .width(200)
+        .height(300)
       }
       Button(this.referenceTwoCallback)
         .key(this.referenceTwoComponentKey)
@@ -410,6 +498,8 @@ struct TabIndexPage {
           this.referenceTwoCallback = 'onBlur'
           console.info('[TabIndexPage] targetComponent onBlur called');
         })
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }
