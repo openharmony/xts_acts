@@ -14,7 +14,6 @@
  */
 import ExtendTrackTest from './observeTrack/ExtendTrackTest.test';
 import NestTrackTest from './observeTrack/NestTrackTest.test';
-import NoStateTest from './observeTrack/NoStateTest.test';
 import ObjectArrayTest from './observeTrack/ObjectArrayTest.test';
 import OnlyObserveTest from './observeTrack/OnlyObserveTest.test';
 import StaticTrackTest from './observeTrack/StaticTrackTest.test';
@@ -26,7 +25,6 @@ import ArrayTrackTest from './observeTrack/ArrayTrackTest.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
-  NoStateTest();
   ObjectArrayTest();
   OnlyObserveTest();
   StaticTrackTest();

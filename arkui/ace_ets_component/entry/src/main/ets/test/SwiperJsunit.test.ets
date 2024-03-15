@@ -89,7 +89,7 @@ export default function swiperJsunit() {
       console.info("swiperTest_0400 component strJson:" + strJson);
 
       console.info("swiperTest_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.autoPlay).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.autoPlay).assertEqual('false');
       expect(JSON.parse(strJson).$attrs.interval).assertEqual('4000');
       console.info('swiperTest_0400 END');
       done()
@@ -138,7 +138,7 @@ export default function swiperJsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "autoPlay": "false"
+            "autoPlay": true
           }
         }
         let InnerEvent: events_emitter.InnerEvent = {
@@ -154,7 +154,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
 
       console.info("swiperTest_0700 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
-      expect(JSON.parse(strJsonNew).$attrs.autoPlay).assertEqual('false');
+      expect(JSON.parse(strJsonNew).$attrs.autoPlay).assertEqual('true');
       console.info('swiperTest_0700 END');
       done()
     });

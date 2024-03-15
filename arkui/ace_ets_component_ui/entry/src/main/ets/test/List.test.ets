@@ -309,6 +309,7 @@ import ChipAction from './Chip/ChipAction.test';
 import ChipOnClose from './Chip/ChipOnClose.test';
 import ChipAction2 from './Chip/ChipAction2.test';
 import ChipOnClose2 from './Chip/ChipOnClose2.test';
+import pushPageInit from './supplementRouterTest/pushPageInit.test.ets'
 import NavRouter_onStateChange1 from './NavRouter/NavRouter_onStateChange1.test'
 import NavRouter_onStateChange2 from './NavRouter/NavRouter_onStateChange2.test'
 import NavDestination_onBackPressed from './NavRouter/NavDestination_onBackPressed.test'
@@ -629,6 +630,7 @@ export default function testsuite() {
   router_back1();
   router_push1();
   routerReplaceJsunit();
+  pushPageInit();
  Router1();
  Router2();
  Router3();

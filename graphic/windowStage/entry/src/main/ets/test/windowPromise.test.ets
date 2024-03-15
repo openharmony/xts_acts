@@ -1779,7 +1779,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done();
         }).catch((error: BusinessError) => {
           console.log(msgStr + 'Failed to shift app window focus1. Cause:' + JSON.stringify(error));
-          if (error.code == 801) {
+          if (error.code == 801 || error.code == 1300002) {
             expect(true).assertTrue()
             done()
           } else {

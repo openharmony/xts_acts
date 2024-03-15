@@ -12,41 +12,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct ColumnsTemplateAndRowsTemplate1 {
-  @State columnStart1:number = 0
-  @State columnEnd1:number = 1
-  @State rowStart1:number = 1
-  @State rowEnd1:number = 1
+  @State columnStart1: number = 0;
+  @State columnEnd1: number = 1;
+  @State rowStart1: number = 1;
+  @State rowEnd1: number = 1;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('ColumnsTemplateAndRowsTemplate1 page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'columnStart1') {
         this.columnStart1 = message.value;
-      }else if (message.name == 'columnEnd1') {
+      } else if (message.name == 'columnEnd1') {
         this.columnEnd1 = message.value;
-      }else if (message.name == 'rowStart1') {
+      } else if (message.name == 'rowStart1') {
         this.rowStart1 = message.value;
-      }else if (message.name == 'rowEnd1') {
+      } else if (message.name == 'rowEnd1') {
         this.rowEnd1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
   build() {
     Column({ space: 5 }) {
       Grid() {
-        GridItem(){
+        GridItem() {
           Text('1')
             .fontSize(16)
             .backgroundColor(0xFFFFFF)
@@ -54,7 +55,7 @@ struct ColumnsTemplateAndRowsTemplate1 {
             .width("100%")
             .height("100%")
         }
-        .border({width:1})
+        .border({ width: 1 })
         .borderColor(0x000000)
         // .width("100%")
         // .height("100%")

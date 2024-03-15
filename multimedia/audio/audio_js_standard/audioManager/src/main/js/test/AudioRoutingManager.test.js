@@ -360,15 +360,15 @@ export default function audioRoutingManager() {
       }
     })
 
-/**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000
-     *@tc.name      : Get prefer input device - error code - invalid parameter
-     *@tc.desc      : Get prefer input device - error code - invalid parameter
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000", 0, async function (done) {
+    /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000
+         *@tc.name      : Get prefer input device - error code - invalid parameter
+         *@tc.desc      : Get prefer input device - error code - invalid parameter
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+         */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1000", 0, async function (done) {
       let capturerInfo = {
         source: 9,
         capturerFlags: 0
@@ -400,7 +400,7 @@ export default function audioRoutingManager() {
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_1100", 0, async function (done) {
 
       let audioRoutingManager = audio.getAudioManager().getRoutingManager();
       try {
@@ -485,20 +485,27 @@ export default function audioRoutingManager() {
       */
     it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", 0, async function (done) {
       let routingManager = audio.getAudioManager().getRoutingManager();
-      try {
-        let data = await routingManager.getPreferOutputDeviceForRendererInfo(numberParameter);
-        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETPREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 parameter check ERROR: ` + JSON.stringify(data));
-        expect().assertFail();
-      } catch (e) {
-        if (e.code != 401) {
-          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 ERROR: ${e.message}`);
-          expect().assertFail();
-          done();
-        }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 check number parameter PASS`);
-        expect(true).assertTrue();
+      let rendererInfo = {
+        usage: 123,
+        rendererFlags: 0
       }
-      done();
+      try {
+        await routingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc) => {
+          console.info(`device descriptor: ${desc}`);
+          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETPREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 parameter check ERROR: ` + JSON.stringify(data));
+          expect(false).assertTrue();
+          done();
+        }).catch((err) => {
+          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 Fass: ${err.message},code:${err.code}`);
+          expect(Number(err.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+          done();
+        })
+      } catch (e) {
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 check number parameter Fail:${e.message},code:${e.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+
     })
 
 
@@ -565,26 +572,26 @@ export default function audioRoutingManager() {
       *@tc.level     : Level 0
       */
     it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600", 0, async function (done) {
+      let rendererInfo = {
+        usage: 123,
+        rendererFlags: 0
+      }
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
-        routingManager.getPreferOutputDeviceForRendererInfo(numberParameter, (e, data) => {
-          if (e.code != 401) {
-            console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 ERROR: ${e.message}`);
+        routingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (e, data) => {
+          if (e) {
+            console.log(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 Pass: ${e.message},code:${e.code}`);
+            expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+            done();
+          } else {
+            console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter fail`);
             expect(false).assertTrue();
             done();
           }
-          console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter fail`);
-          expect(false).assertTrue();
-          done();
         });
       } catch (error) {
-        if (error.code != 401) {
-          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 ERROR: ${error.message},${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter PASS,${error.code}`);
-        expect(true).assertTrue();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 fail,${error.code}`);
+        expect(false).assertTrue();
         done();
       }
 
@@ -632,21 +639,19 @@ export default function audioRoutingManager() {
        *@tc.type      : Function
        *@tc.level     : Level 0
        */
-    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0400", 0, async function (done) {
       let rendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 0
+        usage: 123,
       }
 
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
         routingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, (data) => { });
-        expect(true).assertTrue();
+        expect(false).assertTrue();
         done();
       } catch (e) {
-        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100 ERROR: ${e.message}`);
-        expect().assertFail();
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0100 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
         done();
       }
     })
@@ -664,24 +669,19 @@ export default function audioRoutingManager() {
       try {
         routingManager.on('preferOutputDeviceChangeForRendererInfo', stringParameter, (data) => { });
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 with string patameter ERROR: ${e.message}`);
-        expect().assertFail();
+        expect(false).assertTrue();
         done();
       } catch (e) {
-        if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
-          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 check string parameter ERROR: ${e.message}`);
-          expect().assertFail();
-          done();
-        }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 PASS: ${e.message}`);
-        expect(true).assertTrue();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 PASS: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
         done();
       }
     })
 
     /**
     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300
-    *@tc.name      : On prefer output device check number parameter- callback
-    *@tc.desc      : On prefer output device check number parameter- callback
+    *@tc.name      : On prefer output device check null parameter- callback
+    *@tc.desc      : On prefer output device check null parameter- callback
     *@tc.size      : MEDIUM
     *@tc.type      : Function
     *@tc.level     : Level 0
@@ -689,18 +689,13 @@ export default function audioRoutingManager() {
     it("SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300", 0, async function (done) {
       let routingManager = audio.getAudioManager().getRoutingManager();
       try {
-        routingManager.on('preferOutputDeviceChangeForRendererInfo', numberParameter, (data) => { });
+        routingManager.on('preferOutputDeviceChangeForRendererInfo', (data) => { });
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 with number patameter ERROR: ${e.message}`);
-        expect().assertFail();
+        expect(false).assertTrue();
         done();
       } catch (e) {
-        if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
-          console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 check number parameter ERROR: ${e.message}`);
-          expect().assertFail();
-          done();
-        }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 PASS: ${e.message}`);
-        expect(true).assertTrue();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_REFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 PASS: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
         done();
       }
     })
@@ -757,7 +752,80 @@ export default function audioRoutingManager() {
         done();
       }
     })
+    /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200
+       *@tc.name      : Get preferred output device - Sync - Null_Parameters - 401
+       *@tc.desc      : Get preferred output device - Sync - Null_Parameters - 401
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200", 0, async function (done) {
+      let routingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200 SUCCESS` + JSON.stringify(AudioDeviceDescriptors));
+        expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(2);
+        expect(AudioDeviceDescriptors[0].deviceType).assertEqual(2);
+        expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
+        expect(false).assertTrue();
+        done();
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0200 ERROR: ${e.message},ErrorCode:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
 
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300
+     *@tc.name      : Get preferred output device - Sync - Number_Invalid_Parameters - 6800101
+     *@tc.desc      : Get preferred output device - Sync - Number_Invalid_Parameters - 6800101
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300", 0, async function (done) {
+      let rendererInfo = {
+        usage: 123,
+        rendererFlags: 0
+      }
+      let routingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync(rendererInfo);
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300 SUCCESS` + JSON.stringify(AudioDeviceDescriptors));
+        expect(false).assertTrue();
+        done();
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0300 ERROR: ${e.message},ErrorCode:${e.code}`);
+        expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+        done();
+      }
+    })
+    /**
+           *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400
+           *@tc.name      : Get preferred output device - Sync - String_Parameters - 401
+           *@tc.desc      : Get preferred output device - Sync - String_Parameters - 401
+           *@tc.size      : MEDIUM
+           *@tc.type      : Function
+           *@tc.level     : Level 0
+           */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400", 0, async function (done) {
+      let routingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync('123');
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400 SUCCESS` + JSON.stringify(AudioDeviceDescriptors));
+        expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(2);
+        expect(AudioDeviceDescriptors[0].deviceType).assertEqual(2);
+        expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
+        expect(false).assertTrue();
+        done();
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0400 ERROR: ${e.message},ErrorCode:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
     /**
     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0100
     *@tc.name      : Get preferred input device - Sync
@@ -784,6 +852,147 @@ export default function audioRoutingManager() {
       } catch (e) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0100 ERROR: ${e.message}`);
         expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+      *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0200
+      *@tc.name      : Get preferred input device - Null_Parameters - 401
+      *@tc.desc      : Get preferred input device - Null_Parameters - 401
+      *@tc.size      : MEDIUM
+      *@tc.type      : Function
+      *@tc.level     : Level 0
+      */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0200", 0, async function (done) {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync();
+        console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+        expect(false).assertTrue();
+        done();
+
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0200 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0300
+    *@tc.name      : Get preferred input device - Number_Invalid_Parameters - 6800101
+    *@tc.desc      : Get preferred input device - Number_Invalid_Parameters - 6800101
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 0
+    */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0300", 0, async function (done) {
+      let capturerInfo = {
+        source: 123,
+        capturerFlags: 0
+      }
+
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(capturerInfo);
+        console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+        expect(false).assertTrue();
+        done();
+
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0300 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+        done();
+      }
+    })
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400
+    *@tc.name      : Get preferred input device - String_Parameters - 401
+    *@tc.desc      : Get preferred input device - String_Parameters - 401
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 0
+    */
+    it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400", 0, async function (done) {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync('123');
+        console.log(`get device descriptor success: ` + JSON.stringify(AudioDeviceDescriptors));
+        expect(false).assertTrue();
+        done();
+
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0400 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100
+    *@tc.name      : On preferred input devicechangeinfo - Null_Parameters - 401
+    *@tc.desc      : On preferred input devicechangeinfo - Null_Parameters - 401
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 0
+    */
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100", 0, async function (done) {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', (desc) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0100 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
+        done();
+      }
+    })
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200
+    *@tc.name      : On preferred input devicechangeinfo - Number_Invalid_Parameters - 6800101
+    *@tc.desc      : On preferred input devicechangeinfo - Number_Invalid_Parameters - 6800101
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 0
+    */
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200", 0, async function (done) {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      let capturerInfo = {
+        source: 123,
+        capturerFlags: 0
+      }
+      try {
+        audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo, (desc) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0200 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+        done();
+      }
+    })
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0300
+    *@tc.name      : On preferred input devicechangeinfo - String_Parameters - 401
+    *@tc.desc      : On preferred input devicechangeinfo - String_Parameters - 401
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 0
+    */
+    it("SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0300", 0, async function (done) {
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', '123', (desc) => {
+          console.info(`device descriptor: ${desc}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_ON_PREFERREDINPUTDEVICEFORCAPTURERINFO_0300 ERROR: ${e.message},Code:${e.code}`);
+        expect(Number(e.code)).assertEqual(401);
         done();
       }
     })

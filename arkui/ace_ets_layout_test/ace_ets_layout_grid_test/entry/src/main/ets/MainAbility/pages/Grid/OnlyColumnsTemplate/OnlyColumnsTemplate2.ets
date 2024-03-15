@@ -12,34 +12,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct OnlyColumnsTemplate2 {
-  @State columnStart1:number = 1
-  @State columnStart2:number = 1
+  @State columnStart1: number = 1;
+  @State columnStart2: number = 1;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('OnlyColumnsTemplate2 page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'columnStart1') {
         this.columnStart1 = message.value;
-      }else if (message.name == 'columnStart2') {
+      } else if (message.name == 'columnStart2') {
         this.columnStart2 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column({ space: 5 }) {
       Grid() {
-        GridItem(){
+        GridItem() {
           Text('1')
             .fontSize(16)
             .backgroundColor(0xFFFFFF)
@@ -47,13 +50,13 @@ struct OnlyColumnsTemplate2 {
             .width("100%")
             .height("100%")
         }
-        .border({width:1})
+        .border({ width: 1 })
         .borderColor(0x000000)
         .height(50)
         .columnStart(this.columnStart1)
         .key('OnlyColumnsTemplate2_GridItem_01')
 
-        GridItem(){
+        GridItem() {
           Text('2')
             .fontSize(16)
             .backgroundColor(0xFFFFFF)
@@ -61,7 +64,7 @@ struct OnlyColumnsTemplate2 {
             .width("100%")
             .height("100%")
         }
-        .border({width:1})
+        .border({ width: 1 })
         .borderColor(0x000000)
         .height(50)
         .columnStart(this.columnStart2)

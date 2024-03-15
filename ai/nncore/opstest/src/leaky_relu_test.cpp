@@ -102,24 +102,24 @@ struct LeakyReluModel4 {
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_01, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
-    
+    EXPECT_NE(nullptr, executor);
+
     Free(model, compilation, executor);
 }
 
@@ -131,24 +131,24 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_01, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_02, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel2 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
-    
+    EXPECT_NE(nullptr, executor);
+
     Free(model, compilation, executor);
 }
 
@@ -160,24 +160,24 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_02, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_03, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel3 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
-    
+    EXPECT_NE(nullptr, executor);
+
     Free(model, compilation, executor);
 }
 
@@ -189,24 +189,24 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_03, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_04, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel4 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
-    ASSERT_NE(nullptr, compilation);
+    EXPECT_NE(nullptr, compilation);
 
     OHNNCompileParam compileParam{
         .performanceMode = OH_NN_PERFORMANCE_HIGH,
         .priority = OH_NN_PRIORITY_HIGH,
     };
-    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
+    EXPECT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
 
     OH_NNExecutor *executor = OH_NNExecutor_Construct(compilation);
-    ASSERT_NE(nullptr, executor);
-    
+    EXPECT_NE(nullptr, executor);
+
     Free(model, compilation, executor);
 }
 
@@ -218,7 +218,7 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_04, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_05, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
@@ -227,8 +227,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_05, Function | Me
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
     graphArgs.paramIndices = {3};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -240,7 +240,7 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_05, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
@@ -249,8 +249,8 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_06, Function | Me
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
     graphArgs.paramIndices = {3};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -262,17 +262,17 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_06, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    
+
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
     graphArgs.operands = {leakyReluModel.input, leakyReluModel.output, leakyReluModel.negativeSlope, activation};
     graphArgs.paramIndices = {2, 3};
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -284,11 +284,11 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Build_07, Function | Me
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     OHNNGraphArgs graphArgs;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, SingleModelBuildEndStep(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -300,13 +300,13 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_01, Functi
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.specifyIO = false;
-    ASSERT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_OPERATION_FORBIDDEN, BuildSingleOpGraph(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -318,12 +318,12 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_02, Functi
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_03, Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
-    
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -335,27 +335,32 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_Finish_03, Functi
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    
+
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(
                 model, 1000+i, operandTem.data, operandTem.length));
         }
     }
 
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -367,26 +372,31 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
 
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, i, nullptr, operandTem.length));
         }
     }
-    
+
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -398,26 +408,31 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_0
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SetOperandValue_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    
+
     int ret = 0;
+    NN_TensorDesc* tensorDesc = nullptr;
+    std::vector<NN_TensorDesc*> tensorDescVec;
+
     for (size_t i = 0; i < graphArgs.operands.size(); i++) {
         const OHNNOperandTest &operandTem = graphArgs.operands[i];
-        NN_TensorDesc* tensorDesc = createTensorDesc(operandTem.shape.data(),
-                                                     (uint32_t) operandTem.shape.size(),
-                                                     operandTem.dataType, operandTem.format);
-        ASSERT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
-        ASSERT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
+        tensorDesc = createTensorDesc(operandTem.shape.data(),
+                                      (uint32_t) operandTem.shape.size(),
+                                      operandTem.dataType, operandTem.format);
+        tensorDescVec.emplace_back(tensorDesc);
+        EXPECT_EQ(OH_NN_SUCCESS, OH_NNModel_AddTensorToModel(model, tensorDesc));
+        EXPECT_EQ(OH_NN_SUCCESS, ret = OH_NNModel_SetTensorType(model, i, operandTem.type));
 
         if (std::find(graphArgs.paramIndices.begin(), graphArgs.paramIndices.end(), i) !=
             graphArgs.paramIndices.end()) {
-            ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
+            EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SetTensorData(model, 1000+i, operandTem.data, 0));
         }
     }
-    
+
+    FreeTensorDescVec(tensorDescVec);
     Free(model, nullptr, nullptr);
 }
 
@@ -430,20 +445,17 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, nullptr, &outputIndices));
 
     Free(model, nullptr, nullptr);
 }
@@ -457,22 +469,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.data = nullptr;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -485,22 +494,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.inputIndices = {100000};
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -513,22 +519,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.size = 0;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -541,21 +544,18 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, nullptr);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, nullptr));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -568,22 +568,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.data = nullptr;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -596,22 +593,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.outputIndices = {100000};
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -624,22 +618,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
          Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
-    graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
-    auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     outputIndices.size = 0;
-    OH_NNModel_AddOperation(model, graphArgs.operationType, &paramIndices, &inputIndices, &outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
-    
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_SpecifyInputsAndOutputs(model, &inputIndices, &outputIndices));
+
     Free(model, nullptr, nullptr);
 }
 
@@ -651,20 +642,20 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_SpecifyInputsAndO
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_01, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                nullptr, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -676,22 +667,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_01, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_02, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -703,22 +694,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_02, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_03, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.paramIndices = {100000};
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -730,22 +721,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_03, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_04, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     paramIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -757,20 +748,20 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_04, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_05, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, nullptr, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -782,22 +773,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_05, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_06, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.data = nullptr;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -809,22 +800,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_06, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_07, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     graphArgs.inputIndices = {100000};
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -836,22 +827,22 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_07, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
     auto outputIndices = TransformUInt32Array(graphArgs.outputIndices);
     inputIndices.size = 0;
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(model, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, &outputIndices));
-    
+
     Free(model, nullptr, nullptr);
 }
 
@@ -863,19 +854,19 @@ HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_08, 
 HWTEST_F(LeakyReluTest, SUB_AI_NNRt_Func_North_LeakyRelu_Model_AddOperation_09, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    ASSERT_NE(nullptr, model);
+    EXPECT_NE(nullptr, model);
 
     LeakyReluModel1 leakyReluModel;
     OHNNGraphArgs graphArgs = leakyReluModel.graphArgs;
     graphArgs.addOperation = false;
     graphArgs.specifyIO = false;
     graphArgs.build = false;
-    ASSERT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
+    EXPECT_EQ(OH_NN_SUCCESS, BuildSingleOpGraph(model, graphArgs));
 
     auto paramIndices = TransformUInt32Array(graphArgs.paramIndices);
     auto inputIndices = TransformUInt32Array(graphArgs.inputIndices);
-    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
+    EXPECT_EQ(OH_NN_INVALID_PARAMETER, OH_NNModel_AddOperation(nullptr, graphArgs.operationType,
                                                                &paramIndices, &inputIndices, nullptr));
-    
+
     Free(model, nullptr, nullptr);
 }

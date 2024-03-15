@@ -36,7 +36,7 @@ struct Index {
   private subscriberFormDeleteEvent = {
     events: ["FMS_FormDelete_commonEvent"]
   };
-  private TAG = `[FormComponent.hostl]`;
+  private TAG = `[FormComponent.host.l]`;
   private formOnAcquiredEvent = `FMS_FormOnAcquired_commonEvent`;
   private formOnRequestEvent = `FMS_FormOnRequest_commonEvent`;
   private formOnDeletedEvent = "FMS_FormOnDeleted_commonEvent";
