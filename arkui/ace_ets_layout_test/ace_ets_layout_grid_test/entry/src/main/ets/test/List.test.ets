@@ -85,7 +85,12 @@ import scrollTo from "./Grid/Grid_iiregular/scrollTo.test";
 import StartAndEnd from './Grid/Grid_iiregular/StartAndEnd.test';
 import StartAndStop from './Grid/Grid_iiregular/StartAndStop.test';
 
+import GridRows1 from './GridRows/GridRows1.test';
+import GridRows2 from './GridRows/GridRows2.test';
+
 export default function testsuite() {
+  GridRows2();
+  GridRows1();
   OnlyRowsTemplate3();
   OnlyColumnsTemplate4();
   OnlyRowsTemplate4();
