@@ -1667,6 +1667,8 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         let tempWnd: ohosWindow.Window | void = await windowStage.getMainWindow().catch((err: BusinessError) => {
           unexpectedError(TRUE_FLAG, err, caseName, 'windowStage.getMainWindow', done);
         });
+        let wnd: ohosWindow.Window = tempWnd as ohosWindow.Window
+        let height: number = wnd.getWindowDecorHeight()
         console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
         expect(true).assertTrue()
         done()
