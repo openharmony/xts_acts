@@ -229,8 +229,8 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore.backup(STORE_CONFIG.name, async (err) => {
           console.info(TAG + "backup err ttt:  " + err.message + "code:  " + err.code);
-          expect(err.code == 14800011).assertTrue();
-          done();
+		  done();
+          expect(err.code == 14800010).assertTrue();
         });
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup002 error: " + errInfo);
@@ -282,8 +282,8 @@ export default function RdbStoreBackupRestoreCallbackTest() {
           })
           .catch((err) => {
             console.info(TAG + "backup err ttt1:  " + err.message + "code:  " + err.code);
-            expect(err.code == 14800011).assertTrue();
-            done();
+			done();
+            expect(err.code == 14800010).assertTrue();
           });
       } catch (err) {
         console.info(TAG + "testRdbStoreBackup004 error:  " + err.message + "code:  " + err.code);
@@ -313,8 +313,8 @@ export default function RdbStoreBackupRestoreCallbackTest() {
           })
           .catch((err) => {
             console.info(TAG + "backup err ttt1:  " + err.message + "code:  " + err.code);
-            expect(err.code == 14800011).assertTrue();
-            done();
+			done();
+            expect(err.code == 14800010).assertTrue();
           });
       } catch (err) {
         console.info(TAG + "testRdbStoreBackup005 param type error:  " + err.message + "code:  " + err.code);
