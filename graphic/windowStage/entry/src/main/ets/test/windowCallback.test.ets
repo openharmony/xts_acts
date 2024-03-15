@@ -2029,7 +2029,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msg = "test_loadContentByName_callback_withstorage"
 
       try {
-        windowStage.loadContent("Index1", abilityStorage, (err: BusinessError) => {
+        windowStage.loadContentByName("Index1", abilityStorage, (err: BusinessError) => {
           const errCode = err.code;
           if (errCode) {
             console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
@@ -2064,7 +2064,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msg = "test_loadContentByName_callback_withoutstorage"
 
       try {
-        windowStage.loadContent("Index1", (err: BusinessError) => {
+        windowStage.loadContentByName("Index1", (err: BusinessError) => {
           const errCode = err.code;
           if (errCode) {
             console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
@@ -2099,7 +2099,7 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       let msg = "test_loadContentByName_Promise"
 
       try {
-        let promise = windowStage.loadContent("Index1", abilityStorage);
+        let promise = windowStage.loadContentByName("Index1", abilityStorage);
         promise.then(() => {
           console.info(msg + 'Succeeded in loading the content.');
           expect(true).assertTrue()
@@ -2248,6 +2248,110 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         expect().assertFail();
       }
     });
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_3880
+     * @tc.name test_windowClassLoadContentByName_callback_withstorage
+     * @tc.desc Test the function of windowClass windowClassLoadContentByName withstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_windowClassLoadContentByName_callback_withstorage', 0, async (done: Function) => {
+
+      let msg = "test_windowClassLoadContentByName_callback_withstorage"
+      let windowClass: ohosWindow.Window = windowStage.getMainWindowSync()
+      let storage: LocalStorage = new LocalStorage()
+      storage.setOrCreate('storageSimpleProp', 121)
+      console.log(msg + ' begin')
+
+      try {
+          windowClass.loadContentByName("Index1", storage, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          } else {
+            console.info(msg + 'Succeeded in loading the content.');
+            expect(true).assertTrue()
+            done()
+          }
+
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+    });
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_3890
+     * @tc.name test_windowClassLoadContentByName_callback_withoutstorage
+     * @tc.desc Test the function of windowClassLoadContentByName withoutstorage callback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_windowClassLoadContentByName_callback_withoutstorage', 0, async (done: Function) => {
+
+      let msg = "test_windowClassLoadContentByName_callback_withoutstorage"
+      let windowClass: ohosWindow.Window = windowStage.getMainWindowSync()
+      console.log(msg + ' begin')
+
+      try {
+          windowClass.loadContentByName("Index1", (err: BusinessError) => {
+          const errCode = err.code;
+          if (errCode) {
+            console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+            expect().assertFail()
+            done()
+          } else {
+            console.info(msg + 'Succeeded in loading the content.');
+            expect(true).assertTrue()
+            done()
+          }
+        });
+        
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+    });
+
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_LOADCONTENTBYNAME_JS_API_3900
+     * @tc.name test_windowClassLoadContentByName_Promise
+     * @tc.desc Test the function of windowClassLoadContentByName Promise
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('test_windowClassLoadContentByName_Promise', 0, async (done: Function) => {
+
+      let msg = "test_windowClassLoadContentByName_Promise"
+      let windowClass: ohosWindow.Window = windowStage.getMainWindowSync();
+      let storage: LocalStorage = new LocalStorage();
+      console.log(msg + ' begin')
+      try {
+        let promise = windowClass.loadContentByName("Index1", storage);
+        promise.then(() => {
+          console.info(msg + 'Succeeded in loading the content.');
+          expect(true).assertTrue()
+          done()
+        }).catch((err: BusinessError) => {
+          console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(err));
+          expect().assertFail()
+          done()
+        });
+      } catch (exception) {
+        console.error(msg + 'Failed to load the content. Cause:' + JSON.stringify(exception));
+        expect().assertFail()
+        done()
+      }
+    })
 
   })
 }
