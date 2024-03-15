@@ -1159,6 +1159,42 @@ static napi_value OHHuksImportWrappedKeyItemErr(napi_env env, napi_callback_info
     napi_create_int32(env, returnValue, &result);
     return result;
 }
+static struct OH_Huks_Param g_genAnonAttestParams[] = {
+    { .tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA },
+    { .tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048 },
+    { .tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY },
+    { .tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256 },
+    { .tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PSS },
+    { .tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB },
+};
+static napi_value OHHuksAnonAttestKeyItem(napi_env env, napi_callback_info info)
+{
+    char alias[64] = {0};
+    strcpy(alias, ALIAS);
+    static const struct OH_Huks_Blob gkeyAlias = {sizeof(ALIAS),
+                                                  reinterpret_cast<uint8_t *>(static_cast<char *>(alias))};
+    static struct OH_Huks_Param g_anonAttestParams[] = {
+        { .tag = OH_HUKS_TAG_ATTESTATION_CHALLENGE, .blob = g_challenge },
+        { .tag = OH_HUKS_TAG_ATTESTATION_ID_ALIAS, .blob = gkeyAlias },
+    };
+    TestGenerateKey(&gkeyAlias);
+    struct OH_Huks_ParamSet *paramSet = nullptr;
+    struct OH_Huks_ParamSet *anonAttestParamSet = nullptr;
+    GenerateParamSet(&paramSet, g_genAnonAttestParams, sizeof(g_genAnonAttestParams) / sizeof(OH_Huks_Param));
+    GenerateParamSet(&anonAttestParamSet, g_anonAttestParams, sizeof(g_anonAttestParams) / sizeof(OH_Huks_Param));
+    OH_Huks_GenerateKeyItem(&gkeyAlias, paramSet, nullptr);
+    OH_Huks_CertChain *certChain = nullptr;
+    const struct HksTestCertChain certParam = {true, true, true, g_size};
+    (void)ConstructDataToCertChain(&certChain, &certParam);
+    struct OH_Huks_Result resultSt = OH_Huks_AnonAttestKeyItem(&gkeyAlias, anonAttestParamSet, certChain);
+    int returnValue = FAIL;
+    if (resultSt.errorCode == (int32_t)OH_HUKS_SUCCESS) {
+        returnValue = SUCCESS;
+    }
+    napi_value result = nullptr;
+    napi_create_int32(env, returnValue, &result);
+    return result;
+}
 
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -1220,6 +1256,7 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"oHHuksImportWrappedKeyItemErr", nullptr, OHHuksImportWrappedKeyItemErr, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"oHHuksAnonAttestKeyItem", nullptr, OHHuksAnonAttestKeyItem, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
