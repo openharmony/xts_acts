@@ -16,21 +16,21 @@
 @Entry
 @Component
 struct StageFont {
-  @State message: string = 'Hello World'
-  @State text: string = ''
-  controller: TextAreaController = new TextAreaController()
+  @State message: string = 'Hello World';
+  @State text: string = '';
+  controller: TextAreaController = new TextAreaController();
 
-  aboutToAppear(){
-    try{
-      let fontRegister = globalThis.uiContent.getFont();
+  aboutToAppear() {
+    try {
+      let fontRegister:ESObject = globalThis.uiContent.getFont();
       console.info(fontRegister);
-    } catch(err){
+    } catch (err) {
       console.error("Value of globalThis.uiContent.getFont(): " + globalThis.uiContent.getFont());
     }
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Button('按钮Button字体')
         .labelStyle({
@@ -63,6 +63,8 @@ struct StageFont {
           .fontSize(24)
           .key('textSpan')
       }
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
- }
+}

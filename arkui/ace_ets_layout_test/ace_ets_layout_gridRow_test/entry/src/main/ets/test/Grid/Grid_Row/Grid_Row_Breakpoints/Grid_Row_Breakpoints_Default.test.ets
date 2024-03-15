@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Breakpoints_Default() {
-  describe('Grid_Row_Breakpoints_Default', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Breakpoints_Default', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Breakpoints_Default beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Default",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Breakpoints_Default() {
         console.info("get Grid_Row_Breakpoints_Default state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Breakpoints_Default" == pages.name)) {
           console.info("get Grid_Row_Breakpoints_Default pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Breakpoints_Default page result:" + JSON.stringify(result));
         }
@@ -40,44 +41,49 @@ export default function Grid_Row_Breakpoints_Default() {
       console.info("Grid_Row_Breakpoints_Default beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Breakpoints_Default after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_Default_0100
-     * @tc.name      testBreakpoints
-     * @tc.desc      Set the Breakpoints of GridRow to '300vp'
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_Default_0100
+     * @tc.name testBreakpoints
+     * @tc.desc Set the Breakpoints of GridRow to '300vp'
      */
-    it('SUB_ACE_GridRowBreakpoints_Default_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowBreakpoints_Default_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowBreakpoints_Default_0100 START');
-      globalThis.value.message.notify({ name:'width', value:'300vp' })
+      globalThis.value.message.notify({
+        name: 'width', value: '300vp'
+      })
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default2');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default2');
 
-      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondBreakpoints.top - firstBreakpoints.bottom) - Math.round(vp2px(5))) <= 1)
+        .assertTrue();
 
       console.info('SUB_ACE_GridRowBreakpoints_Default_0100 END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_Default_0200
-     * @tc.name      testBreakpoints
-     * @tc.desc      Set the Breakpoints of GridRow to default
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_Default_0200
+     * @tc.name testBreakpoints
+     * @tc.desc Set the Breakpoints of GridRow to default
      */
-    it('SUB_ACE_GridRowBreakpoints_Default_0200', 0, async function (done) {
+    it('SUB_ACE_GridRowBreakpoints_Default_0200', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowBreakpoints_Default_0200 START');
-      globalThis.value.message.notify({ name:'width', value:'350vp' })
+      globalThis.value.message.notify({
+        name: 'width', value: '350vp'
+      })
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default2');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Default2');
 
       expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(thirdBreakpoints.top - firstBreakpoints.bottom)).assertEqual(Math.round(vp2px(10)));

@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textJsunit() {
-  describe('testText', function () {
-    beforeEach(async function (done) {
+  describe('testText', () => {
+    beforeEach(async (done: Function) => {
       console.info("text beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function textJsunit() {
         console.info("get text state pages:" + JSON.stringify(pages));
         if (!("text" == pages.name)) {
           console.info("get text state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push text page result:" + JSON.stringify(result));
         }
@@ -40,43 +40,41 @@ export default function textJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("text after each called");
     });
 
-    it('testText_0100', 0, async function (done) {
+    it('testText_0100', 0, async (done: Function) => {
       console.info('testText_0100 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual('9.00fp');
+      console.info("testText_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual('9.00fp');
       console.info('testText_0100 END');
       done();
     });
 
-    it('testText_0200', 0, async function (done) {
+    it('testText_0200', 0, async (done: Function) => {
       console.info('testText_0200 START');
       let strJson = getInspectorByKey('image');
       console.info("testText_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_0200 component strJson:" + obj.$attrs.src);
-      expect(obj.$attrs.src).assertEqual('resource://rawfile/test.png');
+      console.info("testText_0200 component strJson:" + JSON.parse(strJson).$attrs.src);
+      expect(JSON.parse(strJson).$attrs.src).assertEqual('resource://rawfile/test.png');
       console.info('testText_0200 END');
       done();
     });
 
-    it('testText_0300', 0, async function (done) {
+    it('testText_0300', 0, async (done: Function) => {
       console.info('testText_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": "10",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 226,
           priority: events_emitter.EventPriority.LOW
         }
@@ -87,34 +85,33 @@ export default function textJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('10.00fp');
+
+      console.info("testText_0300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('10.00fp');
       console.info('testText_0300 END');
       done();
     });
 
-    it('testText_0400', 0, async function (done) {
+    it('testText_0400', 0, async (done: Function) => {
       console.info('testText_0400 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0400 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_0400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual('#330A59F8');
+      console.info("testText_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#330A59F8');
       console.info('testText_0400 END');
       done();
     });
 
-    it('testText_0500', 0, async function (done) {
+    it('testText_0500', 0, async (done: Function) => {
       console.info('testText_0500 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": "#330A59F7",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 227,
           priority: events_emitter.EventPriority.LOW
         }
@@ -125,33 +122,33 @@ export default function textJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0500 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontColor).assertEqual('#330A59F7');
+
+      console.info("testText_0500 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.fontColor).assertEqual('#330A59F7');
       console.info('testText_0500 END');
       done();
     });
 
-    it('testText_0600', 0, async function (done) {
+    it('testText_0600', 0, async (done: Function) => {
       console.info('testText_0600 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0600 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_0600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+
+      console.info("testText_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual('TextAlign.Start');
       console.info('testText_0600 END');
       done();
     });
 
-    it('testText_0700', 0, async function (done) {
+    it('testText_0700', 0, async (done: Function) => {
       console.info('testText_0700 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textAlign": TextAlign.Center,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 228,
           priority: events_emitter.EventPriority.LOW
         }
@@ -162,33 +159,32 @@ export default function textJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0700 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.textAlign).assertEqual('TextAlign.Center');
+      console.info("testText_0700 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.textAlign).assertEqual('TextAlign.Center');
       console.info('testText_0700 END');
       done();
     });
 
-    it('testText_0800', 0, async function (done) {
+    it('testText_0800', 0, async (done: Function) => {
       console.info('testText_0800 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_0800 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_0800 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.textOverflow).assertEqual('TextOverflow.Clip');
+
+      console.info("testText_0800 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.textOverflow).assertEqual('TextOverflow.Clip');
       console.info('testText_0800 END');
       done();
     });
 
-    it('testText_0900', 0, async function (done) {
+    it('testText_0900', 0, async (done: Function) => {
       console.info('testText_0900 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "textOverflow": TextOverflow.None,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 229,
           priority: events_emitter.EventPriority.LOW
         }
@@ -199,34 +195,37 @@ export default function textJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_0900 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.textOverflow).assertEqual('TextOverflow.None');
+
+      console.info("testText_0900 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.textOverflow).assertEqual('TextOverflow.None');
       console.info('testText_0900 END');
       done();
     });
 
-    it('testText_1000', 0, async function (done) {
+    it('testText_1000', 0, async (done: Function) => {
       console.info('testText_1000 START');
       let strJson = getInspectorByKey('text');
       console.info("testText_1000 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testText_1000 component obj is: " + JSON.stringify(obj.$attrs.decoration));
-      expect(obj.$attrs.decoration).assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"," +
-      "\"style\":\"TextDecorationStyle.SOLID\"}");
+
+      console.info("testText_1000 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .decoration));
+      expect(JSON.parse(strJson).$attrs.decoration)
+        .assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"," +
+          "\"style\":\"TextDecorationStyle.SOLID\"}");
       console.info('testText_1000 END');
       done();
     });
 
-    it('testText_1200', 0, async function (done) {
+    it('testText_1200', 0, async (done: Function) => {
       console.info('testText_1200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontColor": "#FFBC0229",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 231,
           priority: events_emitter.EventPriority.LOW
         }
@@ -237,22 +236,24 @@ export default function textJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_1200 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
-      expect(objNew.$attrs.fontColor).assertEqual('#FFBC0229');
+
+      console.info("testText_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .fontColor));
+      expect(JSON.parse(strJsonNew).$attrs.fontColor).assertEqual('#FFBC0229');
       console.info('testText_1200 END');
       done();
     });
 
-    it('testText_1300', 0, async function (done) {
+    it('testText_1300', 0, async (done: Function) => {
       console.info('testText_1300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": "-a",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 232,
           priority: events_emitter.EventPriority.LOW
         }
@@ -263,22 +264,24 @@ export default function textJsunit() {
       }
       await Utils.sleep(3000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_1300 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
-      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
+
+      console.info("testText_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .fontSize));
+      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('16.00fp');
       console.info('testText_1300 END');
       done();
     });
 
-    it('testText_1400', 0, async function (done) {
+    it('testText_1400', 0, async (done: Function) => {
       console.info('testText_1400 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "fontSize": "-20",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 233,
           priority: events_emitter.EventPriority.LOW
         }
@@ -289,9 +292,11 @@ export default function textJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_1400 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
-      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
+
+      console.info("testText_1400 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .fontSize));
+      expect(JSON.parse(strJsonNew).$attrs.fontSize).assertEqual('16.00fp');
       console.info('testText_1400 END');
       done();
     });

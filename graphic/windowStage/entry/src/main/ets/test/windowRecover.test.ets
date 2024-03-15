@@ -16,6 +16,8 @@ import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
+import deviceInfo from '@ohos.deviceInfo';
+
 
 export default function windowRecoverTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
@@ -28,7 +30,11 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     let systemWindowTypeDic: Record<string, number> = {
       'TYPE_FLOAT': 8,
     }
+    let currentDeviceIsRk = false;
     beforeAll(() => {
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
@@ -59,7 +65,7 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
             done()
           }).catch((err: BusinessError) => {
             console.error(msgStr + 'Failed to recover the window. Cause: ' + JSON.stringify(err));
-            if (err.code == 1300001 || err.code == 801) {
+            if (err.code == 801) {
               expect(true).assertTrue()
               done()
             } else {
@@ -69,13 +75,8 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
           });
         } catch (exception) {
           console.error(msgStr + ' Failed to recover the window. Cause: ' + JSON.stringify(exception));
-          if (exception.code == 1300001 || exception.code == 801) {
-            expect(true).assertTrue()
-            done()
-          } else {
-            expect().assertFail();
-            done();
-          }
+          expect().assertFail();
+          done();
         }
       })
     })

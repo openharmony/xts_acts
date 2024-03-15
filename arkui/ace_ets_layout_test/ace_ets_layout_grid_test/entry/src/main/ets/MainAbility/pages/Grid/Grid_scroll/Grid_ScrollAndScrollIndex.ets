@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +16,10 @@
 @Entry
 @Component
 struct Grid_ScrollAndScrollIndex {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State index : number = 0
-  @State text2 : string = ''
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State index: number = 0;
+  @State text2: string = '';
 
   build() {
     Column({ space: 5 }) {
@@ -40,7 +39,7 @@ struct Grid_ScrollAndScrollIndex {
           }, (day: string) => day)
         }
         .id('Grid_ScrollAndScrollIndex_grid')
-        .margin({right:25})
+        .margin({ right: 25 })
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsGap(10)
         .rowsGap(10)
@@ -69,12 +68,12 @@ struct Grid_ScrollAndScrollIndex {
       Text(`onScrollIndex${this.index}`).id('Grid_ScrollAndScrollIndex_tex1')
       Text(this.text2).id('Grid_ScrollAndScrollIndex_tex2')
 
-       Button('scroll_Reset_bt')
+      Button('scroll_Reset_bt')
         .id('scroll_Reset_bt')
         .onClick(() => { // reset the init state
-           this.scroller.scrollEdge(Edge.Top);
-           this.index = 0;
-           this.text2 = ""
+          this.scroller.scrollEdge(Edge.Top);
+          this.index = 0;
+          this.text2 = ""
         })
 
 

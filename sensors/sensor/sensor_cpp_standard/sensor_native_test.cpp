@@ -32,51 +32,18 @@ namespace OHOS {
 namespace Sensors {
 using namespace testing::ext;
 using namespace OHOS::HiviewDFX;
-using namespace Security::AccessToken;
-using Security::AccessToken::AccessTokenID;
 
 namespace {
-constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_ACCELEROMETER };
+constexpr Sensor_Type SENSOR_ID { SENSOR_TYPE_GRAVITY };
 constexpr uint32_t SENSOR_NAME_LENGTH_MAX = 64;
 constexpr int64_t SENSOR_SAMPLE_PERIOD = 200000000;
 constexpr int32_t SLEEP_TIME_MS = 1000;
 constexpr int64_t INVALID_VALUE = -1;
 constexpr float INVALID_RESOLUTION = -1.0F;
-constexpr int32_t num = 0;
-constexpr int32_t num1 = 1;
-constexpr int32_t num2 = 2;
-PermissionDef g_infoManagerTestPermDef = {
-    .permissionName = "ohos.permission.ACCELEROMETER",
-    .bundleName = "accesstoken_test",
-    .grantMode = 1,
-    .availableLevel = APL_NORMAL,
-    .label = "label",
-    .labelId = 1,
-    .description = "test sensor agent",
-    .descriptionId = 1
-};
-
-PermissionStateFull g_infoManagerTestState = {
-    .permissionName = "ohos.permission.ACCELEROMETER",
-    .isGeneral = true,
-    .resDeviceID = {"local"},
-    .grantStatus = {PermissionState::PERMISSION_GRANTED},
-    .grantFlags = {1}
-};
-
-HapPolicyParams g_infoManagerTestPolicyPrams = {
-    .apl = APL_NORMAL,
-    .domain = "test.domain",
-    .permList = {g_infoManagerTestPermDef},
-    .permStateList = {g_infoManagerTestState}
-};
-
-HapInfoParams g_infoManagerTestInfoParms = {
-    .userID = 1,
-    .bundleName = "sensoragent_test",
-    .instIndex = 0,
-    .appIDDesc = "sensorAgentTest"
-};
+constexpr int32_t NUM = 0;
+constexpr int32_t NUM1 = 1;
+constexpr int32_t NUM2 = 2;
+std::atomic_bool g_existGravity = false;
 
 Sensor_Subscriber *g_user = nullptr;
 }  // namespace
@@ -87,27 +54,38 @@ public:
     static void TearDownTestCase();
     void SetUp();
     void TearDown();
-private:
-    static AccessTokenID tokenID_;
 };
-
-AccessTokenID SensorAgentTest::tokenID_ = 0;
 
 void SensorAgentTest::SetUpTestCase()
 {
-    AccessTokenIDEx tokenIdEx = {0};
-    tokenIdEx = AccessTokenKit::AllocHapToken(g_infoManagerTestInfoParms, g_infoManagerTestPolicyPrams);
-    tokenID_ = tokenIdEx.tokenIdExStruct.tokenID;
-    ASSERT_NE(0, tokenID_);
-    ASSERT_EQ(0, SetSelfTokenID(tokenID_));
+    SEN_HILOGE("SensorAgentTest SetUpTestCase in");
+    uint32_t count = 0;
+    int32_t ret1 = OH_Sensor_GetInfos(nullptr, &count);
+    ASSERT_EQ(ret1, SENSOR_SUCCESS);
+    Sensor_Info **sensors = OH_Sensor_CreateInfos(count);
+    ASSERT_NE(sensors, nullptr);
+    ret1 = OH_Sensor_GetInfos(sensors, &count);
+    ASSERT_EQ(ret1, SENSOR_SUCCESS);
+    for (uint32_t i = 0; i < count; ++i) {
+        Sensor_Type sensorType;
+        ret1 = OH_SensorInfo_GetType(sensors[i], &sensorType);
+        ASSERT_EQ(ret1, SENSOR_SUCCESS);
+        if (sensorType == SENSOR_TYPE_GRAVITY) {
+            g_existGravity = true;
+            SEN_HILOGE("SensorAgentTest SetUpTestCase ,Exist head gravity sensor");
+            break;
+        }
+    }
+    if (!g_existGravity) {
+        SEN_HILOGE("SensorAgentTest SetUpTestCase ,Not exist gravity sensor");
+    }
+    ret1 = OH_Sensor_DestroyInfos(sensors, count);
+    ASSERT_EQ(ret1, SENSOR_SUCCESS);
+    SEN_HILOGE("SensorAgentTest SetUpTestCase end");
 }
 
 void SensorAgentTest::TearDownTestCase()
 {
-    int32_t ret = AccessTokenKit::DeleteToken(tokenID_);
-    if (tokenID_ != 0) {
-        ASSERT_EQ(RET_SUCCESS, ret);
-    }
 }
 
 void SensorAgentTest::SetUp()
@@ -137,7 +115,7 @@ void SensorDataCallbackImpl(Sensor_Event *event)
     ASSERT_EQ(ret, SENSOR_SUCCESS);
     SEN_HILOGI("sensorType:%{public}d, dataLen:%{public}d, accuracy:%{public}d"
         "x:%{public}f, y:%{public}f, z:%{public}f", sensorType, length, accuracy,
-        data[num], data[num1], data[num2]);
+        data[NUM], data[NUM1], data[NUM2]);
 }
 
 HWTEST_F(SensorAgentTest, OH_Sensor_GetInfos_001, TestSize.Level1)
@@ -191,34 +169,37 @@ HWTEST_F(SensorAgentTest, OH_Sensor_GetInfos_002, TestSize.Level1)
 HWTEST_F(SensorAgentTest, OH_Sensor_Subscribe_001, TestSize.Level1)
 {
     SEN_HILOGI("OH_Sensor_Subscribe_001 in");
-    g_user = OH_Sensor_CreateSubscriber();
-    int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl);
-    ASSERT_EQ(ret, SENSOR_SUCCESS);
+    if (g_existGravity) {
+        g_user = OH_Sensor_CreateSubscriber();
+        int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
 
-    Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId();
-    ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID);
-    ASSERT_EQ(ret, SENSOR_SUCCESS);
+        Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId();
+        ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
 
-    Sensor_SubscriptionAttribute *attr = OH_Sensor_CreateSubscriptionAttribute();
-    ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD);
-    ASSERT_EQ(ret, SENSOR_SUCCESS);
+        Sensor_SubscriptionAttribute *attr = OH_Sensor_CreateSubscriptionAttribute();
+        ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
 
-    ret = OH_Sensor_Subscribe(id, attr, g_user);
-    ASSERT_EQ(ret, SENSOR_SUCCESS);
+        ret = OH_Sensor_Subscribe(id, attr, g_user);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
-    ret = OH_Sensor_Unsubscribe(id, g_user);
-    ASSERT_EQ(ret, SENSOR_SUCCESS);
-    if (id != nullptr) {
-        OH_Sensor_DestroySubscriptionId(id);
+        std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
+        ret = OH_Sensor_Unsubscribe(id, g_user);
+        ASSERT_EQ(ret, SENSOR_SUCCESS);
+        if (id != nullptr) {
+            OH_Sensor_DestroySubscriptionId(id);
+        }
+        if (attr != nullptr) {
+            OH_Sensor_DestroySubscriptionAttribute(attr);
+        }
+        if (g_user != nullptr) {
+            OH_Sensor_DestroySubscriber(g_user);
+            g_user = nullptr;
+        }
     }
-    if (attr != nullptr) {
-        OH_Sensor_DestroySubscriptionAttribute(attr);
-    }
-    if (g_user != nullptr) {
-        OH_Sensor_DestroySubscriber(g_user);
-        g_user = nullptr;
-    }
+    SEN_HILOGI("OH_Sensor_Subscribe_001 end");
 }
 
 HWTEST_F(SensorAgentTest, OH_Sensor_Subscribe_002, TestSize.Level1)

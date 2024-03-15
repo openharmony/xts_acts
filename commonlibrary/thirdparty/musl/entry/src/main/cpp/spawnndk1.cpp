@@ -29,6 +29,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_256 256
+#define PARAM_0777 0777
 #define PARAM_MINUS_1 (-1)
 #define BAD_FD (-1)
 
@@ -128,7 +129,7 @@ static napi_value PosixSpawnFileActionsAddOpen(napi_env env, napi_callback_info 
     int ret;
     posix_spawn_file_actions_t actions;
     if (param == PARAM_0) {
-        int fd = open(path, O_CREAT);
+        int fd = open(path, O_CREAT, PARAM_0777);
         posix_spawn_file_actions_init(&actions);
         ret = posix_spawn_file_actions_addopen(&actions, fd, path, O_CREAT, S_IXGRP);
         posix_spawn_file_actions_destroy(&actions);

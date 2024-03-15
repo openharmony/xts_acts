@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import signal from 'libsignalndk1.so'
 
 export default function signalNdk1Test() {
   describe('MuslSignal1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGTIMEDWAIT_TIME64_0100
      * @tc.name       : testMuslSignalSigTimedWaitTime64001

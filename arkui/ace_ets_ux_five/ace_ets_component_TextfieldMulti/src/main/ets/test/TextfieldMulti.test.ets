@@ -13,29 +13,29 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import { beforeEach, describe, expect, it } from '@ohos/hypium';
 
 export default function TextfieldMultiTest() {
   describe('TextfieldMultiTest', () => {
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/Index',
-      }
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/Index',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Index state success " + JSON.stringify(pages));
         if (!("Index" == pages.name)) {
           console.info("get Index state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push Index page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Index page error: " + err);
       }
-      done()
+      done();
     });
 
     /*
@@ -43,31 +43,31 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0110', 0, async function (done) {
+    it('ArkUX_Text_Visual_0110', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0110 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0110');
           console.info('ArkUX_Text_Visual_0110 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0110 obj is: " + JSON.stringify(obj));
-          let cancelButton = JSON.parse(obj.$attrs.cancelButton)
-          let icon = JSON.parse(cancelButton.icon)
-          let style = cancelButton.style
-          let size = icon.size
-          let color = icon.color
-          let src = icon.src
+          let cancelButton: ESObject = JSON.parse(obj.$attrs.cancelButton);
+          let icon: ESObject = JSON.parse(cancelButton.icon);
+          let style: ESObject = cancelButton.style;
+          let size: ESObject = icon.size;
+          let color: ESObject = icon.color;
+          let src: ESObject = icon.src;
           expect(style).assertEqual(0);
           expect(size).assertEqual("45.00vp");
           expect(typeof src).assertEqual("string");
           expect(color).assertEqual("#FF0000FF");
           console.info('ArkUX_Text_Visual_0110 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0110 ERR  ' + JSON.stringify(err));
         }
         done();
-      }, 500)
+      }, 500);
     });
 
     /*
@@ -75,20 +75,20 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0120', 0, async function (done) {
+    it('ArkUX_Text_Visual_0120', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0120 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0120');
           console.info('ArkUX_Text_Visual_0120 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0120 obj is: " + JSON.stringify(obj));
-          let cancelButton = JSON.parse(obj.$attrs.cancelButton)
-          let icon = JSON.parse(cancelButton.icon)
-          let style = cancelButton.style
-          let size = icon.size
-          let color = icon.color
-          let src = icon.src
+          let cancelButton: ESObject = JSON.parse(obj.$attrs.cancelButton);
+          let icon: ESObject = JSON.parse(cancelButton.icon);
+          let style: ESObject = cancelButton.style;
+          let size: ESObject = icon.size;
+          let color: ESObject = icon.color;
+          let src: ESObject = icon.src;
           expect(style).assertEqual(1);
           expect(size).assertEqual("60.00vp");
           expect(typeof src).assertEqual("string");
@@ -107,27 +107,27 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to different value
      */
-    it('ArkUX_Text_Visual_0130', 0, async function (done) {
+    it('ArkUX_Text_Visual_0130', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0130 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0130');
           console.info('ArkUX_Text_Visual_0130 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0130 obj is: " + JSON.stringify(obj));
-          let cancelButton = JSON.parse(obj.$attrs.cancelButton)
-          let icon = JSON.parse(cancelButton.icon)
-          let style = cancelButton.style
-          let size = icon.size
-          let color = icon.color
-          let src = icon.src
+          let cancelButton: ESObject = JSON.parse(obj.$attrs.cancelButton);
+          let icon: ESObject = JSON.parse(cancelButton.icon);
+          let style: ESObject = cancelButton.style;
+          let size: ESObject = icon.size;
+          let color: ESObject = icon.color;
+          let src: ESObject = icon.src;
           expect(style).assertEqual(2);
           expect(size).assertEqual("70.00vp");
           expect(typeof src).assertEqual("string");
           expect(color).assertEqual("#FFFFFFFF");
           console.info('ArkUX_Text_Visual_0130 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0130 ERR  ' + JSON.stringify(err));
         }
         done();
@@ -139,27 +139,27 @@ export default function TextfieldMultiTest() {
      *@tc.name   Support modifying the textfield cancelButton change of Textfield component
      *@tc.desc   Sets the cancelButton property parameter to default value
      */
-    it('ArkUX_Text_Visual_0140', 0, async function (done) {
+    it('ArkUX_Text_Visual_0140', 0, async (done: Function) => {
       console.info('ArkUX_Text_Visual_0140 START');
       setTimeout(() => {
         try {
           let strJson = getInspectorByKey('ArkUX_Text_Visual_0140');
           console.info('ArkUX_Text_Visual_0140 START  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
+          let obj: ESObject = JSON.parse(strJson);
           console.info("ArkUX_Text_Visual_0140 obj is: " + JSON.stringify(obj));
-          let cancelButton = JSON.parse(obj.$attrs.cancelButton)
-          let icon = JSON.parse(cancelButton.icon)
-          let style = cancelButton.style
-          let size = icon.size
-          let color = icon.color
-          let src = icon.src
+          let cancelButton: ESObject = JSON.parse(obj.$attrs.cancelButton);
+          let icon: ESObject = JSON.parse(cancelButton.icon);
+          let style: ESObject = cancelButton.style;
+          let size: ESObject = icon.size;
+          let color: ESObject = icon.color;
+          let src: ESObject = icon.src;
           expect(style).assertEqual(2);
           expect(size).assertEqual("24.00vp");
           expect(typeof src).assertEqual("string");
           expect(color).assertEqual("#FF000000");
           console.info('ArkUX_Text_Visual_0140 END ');
         } catch (err) {
-          expect().assertFail()
+          expect().assertFail();
           console.info('ArkUX_Text_Visual_0140 ERR  ' + JSON.stringify(err));
         }
         done();

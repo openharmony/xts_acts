@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function ColumnsTemplateAndRowsTemplate2() {
-  describe('ColumnsTemplateAndRowsTemplate2', function () {
-    beforeEach(async function (done) {
+  describe('ColumnsTemplateAndRowsTemplate2', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2',
       }
       try {
@@ -29,7 +31,7 @@ export default function ColumnsTemplateAndRowsTemplate2() {
         console.info("get ColumnsTemplateAndRowsTemplate2 state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get ColumnsTemplateAndRowsTemplate2 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ColumnsTemplateAndRowsTemplate2 page result:" + JSON.stringify(result));
         }
@@ -39,24 +41,24 @@ export default function ColumnsTemplateAndRowsTemplate2() {
       console.info("ColumnsTemplateAndRowsTemplate2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("ColumnsTemplateAndRowsTemplate2 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100
-     * @tc.name      testGrid
-     * @tc.desc      GridItem set columnStart to 0
+     * @tc.number SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100
+     * @tc.name testGrid
+     * @tc.desc GridItem set columnStart to 0
      */
-    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100', 0, async function (done) {
+    it('SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100] START');
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplate2_GridItem_01');
-      let Grid_1 = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplate2_Grid_1');
+      let GridItem_01: RectValue = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplate2_GridItem_01');
+      let Grid_1: RectValue = CommonFunc.getComponentRect('ColumnsTemplateAndRowsTemplate2_Grid_1');
 
       console.log('assert position')
       expect(GridItem_01.left).assertEqual(Grid_1.left);
@@ -78,7 +80,6 @@ export default function ColumnsTemplateAndRowsTemplate2() {
       console.info('[SUB_ACE_GRID_ColumnsTemplateAndRowsTemplate2_0100] END');
       done();
     });
-
 
 
   })

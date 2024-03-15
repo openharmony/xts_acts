@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
+import RectValue from './Rect';
 
-export default function dragEventJsunit(){
-  describe('dragEventTest', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/dragEvent',
+export default function dragEventJsunit() {
+  describe('dragEventTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/dragEvent',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function dragEventJsunit(){
         console.info("get dragEvent state success " + JSON.stringify(pages));
         if (!("dragEvent" == pages.name)) {
           console.info("get dragEvent state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push dragEvent page success " + JSON.stringify(result));
         }
@@ -40,27 +40,27 @@ export default function dragEventJsunit(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("dragEvent after each called");
     });
 
-    it('dragEventTest_0100', 0, async function (done) {
+    it('dragEventTest_0100', 0, async (done: Function) => {
       console.info('dragEventTest_0100 START');
-      let rect = await Utils.getComponentRect('apple')
+      let rect: RectValue = Utils.getComponentRect('apple')
       console.info("dragEventTest_0100 rectInfo is " + JSON.stringify(rect));
-      let downX = rect.left + (rect.right - rect.left) / 2;
+      let downX: number = rect.left + (rect.right - rect.left) / 2;
       let downY = rect.top + (rect.bottom - rect.top) / 2;
-      let rectOne = await Utils.getComponentRect('listItem')
+      let rectOne = Utils.getComponentRect('listItem')
       console.info("dragEventTest_0100 rectOneInfo is " + JSON.stringify(rectOne));
       let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
       let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
       await Utils.drag(downX, downY, upX, upY, 10)
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("dragEventTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual('onDragStart onAction');
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 86,
         priority: events_emitter.EventPriority.LOW
       }
@@ -73,23 +73,23 @@ export default function dragEventJsunit(){
       done();
     });
 
-    it('dragEventTest_0200', 0, async function (done) {
+    it('dragEventTest_0200', 0, async (done: Function) => {
       console.info('dragEventTest_0200 START');
-      let rect = await Utils.getComponentRect('orange')
+      let rect = Utils.getComponentRect('orange')
       console.info("dragEventTest_0200 rectInfo is " + JSON.stringify(rect));
       let downX = rect.left + (rect.right - rect.left) / 2;
       let downY = rect.top + (rect.bottom - rect.top) / 2;
-      let rectOne = await Utils.getComponentRect('listItem')
+      let rectOne = Utils.getComponentRect('listItem')
       console.info("dragEventTest_0200 rectOneInfo is " + JSON.stringify(rectOne));
       let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
       let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
       await Utils.drag(downX, downY, upX, upY, 10)
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("dragEventTest_0200 get state result is: " + JSON.stringify(indexEvent));
         expect(Number.isNaN(indexEvent.data.pointX)).assertFalse();
         expect(Number.isNaN(indexEvent.data.pointY)).assertFalse();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 87,
         priority: events_emitter.EventPriority.LOW
       }
@@ -102,22 +102,22 @@ export default function dragEventJsunit(){
       done();
     });
 
-    it('dragEventTest_0300', 0, async function (done) {
+    it('dragEventTest_0300', 0, async (done: Function) => {
       console.info('dragEventTest_0300 START');
-      let rect = await Utils.getComponentRect('banana')
+      let rect = Utils.getComponentRect('banana')
       console.info("dragEventTest_0300 rectInfo is " + JSON.stringify(rect));
       let downX = rect.left + (rect.right - rect.left) / 2;
       let downY = rect.top + (rect.bottom - rect.top) / 2;
-      let rectOne = await Utils.getComponentRect('listItem')
+      let rectOne = Utils.getComponentRect('listItem')
       console.info("dragEventTest_0300 rectOneInfo is " + JSON.stringify(rectOne));
       let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
       let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
       await Utils.drag(downX, downY, upX, upY, 10)
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("dragEventTest_0300 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual("onDragMove onAction");
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 88,
         priority: events_emitter.EventPriority.LOW
       }
@@ -130,22 +130,22 @@ export default function dragEventJsunit(){
       done();
     });
 
-    it('dragEventTest_0400', 0, async function (done) {
+    it('dragEventTest_0400', 0, async (done: Function) => {
       console.info('dragEventTest_0400 START');
-      let rect = await Utils.getComponentRect('mango')
+      let rect = Utils.getComponentRect('mango')
       console.info("dragEventTest_0400 rectInfo is " + JSON.stringify(rect));
       let downX = rect.left + (rect.right - rect.left) / 2;
       let downY = rect.top + (rect.bottom - rect.top) / 2;
-      let rectOne = await Utils.getComponentRect('listItem')
+      let rectOne = Utils.getComponentRect('listItem')
       console.info("dragEventTest_0400 rectOneInfo is " + JSON.stringify(rectOne));
       let upX = rectOne.right + (rect.right - rect.left);
       let upY = rectOne.bottom + (rect.bottom - rect.top);
       await Utils.drag(downX, downY, upX, upY, 10)
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("dragEventTest_0400 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual("onDragLeave onAction");
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 89,
         priority: events_emitter.EventPriority.LOW
       }
@@ -158,22 +158,22 @@ export default function dragEventJsunit(){
       done();
     });
 
-    it('dragEventTest_0500', 0, async function (done) {
+    it('dragEventTest_0500', 0, async (done: Function) => {
       console.info('dragEventTest_0500 START');
-      let rect = await Utils.getComponentRect('strawberry')
+      let rect = Utils.getComponentRect('strawberry')
       console.info("dragEventTest_0500 rectInfo is " + JSON.stringify(rect));
       let downX = rect.left + (rect.right - rect.left) / 2;
       let downY = rect.top + (rect.bottom - rect.top) / 2;
-      let rectOne = await Utils.getComponentRect('listItem')
+      let rectOne = Utils.getComponentRect('listItem')
       console.info("dragEventTest_0500 rectOneInfo is " + JSON.stringify(rectOne));
       let upX = rectOne.left + (rectOne.right - rectOne.left) / 2;
       let upY = rectOne.top + (rectOne.bottom - rectOne.top) / 2;
       await Utils.drag(downX, downY, upX, upY, 10)
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("dragEventTest_0500 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual("onDrop onAction");
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 90,
         priority: events_emitter.EventPriority.LOW
       }

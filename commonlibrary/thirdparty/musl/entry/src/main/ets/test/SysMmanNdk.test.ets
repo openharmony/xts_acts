@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import sysmman from 'libsysmmanndk.so'
 
 export default function muslSysMmanTest() {
   describe('MuslSysMmanTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SYSMMAN_POSIX_MADVISE_0100
      * @tc.name       : testMuslSysMmanPosixMadvise001

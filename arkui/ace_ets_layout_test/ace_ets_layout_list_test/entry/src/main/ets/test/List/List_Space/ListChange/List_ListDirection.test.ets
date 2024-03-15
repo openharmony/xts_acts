@@ -14,19 +14,33 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function List_ListDirection() {
 
-  describe('List_ListDirection', function () {
-    beforeEach(async function (done) {
+  describe('List_ListDirection', () => {
+    beforeEach(async (done: Function) => {
       console.info("List_ListDirection beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/List_Space/ListChange/List_ListDirection',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_Space/ListChange/List_ListDirection',
       }
       try {
         router.clear();
@@ -35,7 +49,7 @@ export default function List_ListDirection() {
         console.info("get List_ListDirection state pages:" + JSON.stringify(pages));
         if (!("List_ListDirection" == pages.name)) {
           console.info("get List_ListDirection state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push List_ListDirection page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -46,27 +60,27 @@ export default function List_ListDirection() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("List_ListDirection after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_LIST_LIDTDIRECTION_TEST_0100
-     * @tc.name      testListListDirectionAxisVertical
-     * @tc.desc      List parent component binding direction property and value set to Axis.Vertical
+     * @tc.number SUB_ACE_LIST_LIDTDIRECTION_TEST_0100
+     * @tc.name testListListDirectionAxisVertical
+     * @tc.desc List parent component binding direction property and value set to Axis.Vertical
      */
-    it('testListListDirectionAxisVertical', 0, async function (done) {
+    it('testListListDirectionAxisVertical', 0, async (done: Function) => {
       console.info('testListListDirectionAxisVertical START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('List_ListDirection_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let List_ListDirection_011 = CommonFunc.getComponentRect('List_ListDirection_011');
-      let List_ListDirection_012 = CommonFunc.getComponentRect('List_ListDirection_012');
-      let List_ListDirection_013 = CommonFunc.getComponentRect('List_ListDirection_013');
-      let List_ListDirection_014 = CommonFunc.getComponentRect('List_ListDirection_014');
-      let List_ListDirection_01 = CommonFunc.getComponentRect('List_ListDirection_01');
+
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      let List_ListDirection_011: RectValue = CommonFunc.getComponentRect('List_ListDirection_011');
+      let List_ListDirection_012: RectValue = CommonFunc.getComponentRect('List_ListDirection_012');
+      let List_ListDirection_013: RectValue = CommonFunc.getComponentRect('List_ListDirection_013');
+      let List_ListDirection_014: RectValue = CommonFunc.getComponentRect('List_ListDirection_014');
+      let List_ListDirection_01: RectValue = CommonFunc.getComponentRect('List_ListDirection_01');
       expect(List_ListDirection_011.left).assertEqual(List_ListDirection_01.left);
       expect(List_ListDirection_012.left).assertEqual(List_ListDirection_01.left);
       expect(List_ListDirection_013.left).assertEqual(List_ListDirection_01.left);
@@ -76,76 +90,85 @@ export default function List_ListDirection() {
       expect(Math.round(List_ListDirection_012.top - List_ListDirection_011.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(List_ListDirection_013.top - List_ListDirection_012.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(List_ListDirection_014.top - List_ListDirection_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_ListDirection_01.bottom - List_ListDirection_014.bottom)).assertEqual(Math.round(vp2px(60)));
+      expect(Math.round(List_ListDirection_01.bottom - List_ListDirection_014.bottom))
+        .assertEqual(Math.round(vp2px(60)));
 
-      expect(Math.round(List_ListDirection_011.right - List_ListDirection_011.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_012.right - List_ListDirection_012.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_013.right - List_ListDirection_013.left)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_ListDirection_014.right - List_ListDirection_014.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(List_ListDirection_011.right - List_ListDirection_011.left))
+        .assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(List_ListDirection_012.right - List_ListDirection_012.left))
+        .assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(List_ListDirection_013.right - List_ListDirection_013.left))
+        .assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(List_ListDirection_014.right - List_ListDirection_014.left))
+        .assertEqual(Math.round(vp2px(300)));
 
-      expect(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top))
+        .assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top))
+        .assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top))
+        .assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top))
+        .assertEqual(Math.round(vp2px(100)));
 
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(
-      Math.round(List_ListDirection_013.left + ((List_ListDirection_013.right - List_ListDirection_013.left) / 2)),
-      Math.round(List_ListDirection_013.bottom),
-      Math.round(List_ListDirection_012.left + ((List_ListDirection_012.right - List_ListDirection_012.left) / 2)),
-      Math.round(List_ListDirection_012.bottom));
+        Math.round(List_ListDirection_013.left + ((List_ListDirection_013.right - List_ListDirection_013.left) / 2)),
+        Math.round(List_ListDirection_013.bottom),
+        Math.round(List_ListDirection_012.left + ((List_ListDirection_012.right - List_ListDirection_012.left) / 2)),
+        Math.round(List_ListDirection_012.bottom));
       await CommonFunc.sleep(1000);
-      let List_ListDirection_024 = CommonFunc.getComponentRect('List_ListDirection_014');
+      let List_ListDirection_024: RectValue = CommonFunc.getComponentRect('List_ListDirection_014');
       expect(List_ListDirection_01.bottom - List_ListDirection_024.bottom).assertEqual(Math.round(vp2px(60)));
       console.info('testListListDirectionAxisVertical END');
       done();
     });
 
-//    /**
-//     * @tc.number    SUB_ACE_LIST_LIDTDIRECTION_TEST_0200
-//     * @tc.name      testListListDirectionAxisHorizontal
-//     * @tc.desc      List parent component binding direction property and value set to Axis.Horizontal
-//     */
-//    it('testListListDirectionAxisHorizontal', 0, async function (done) {
-//      console.info('testListListDirectionAxisHorizontal START');
-//      globalThis.value.message.notify({name:'addListDirection', value:Axis.Horizontal})
-//      await CommonFunc.sleep(3000);
-//      let strJson = getInspectorByKey('List_ListDirection_01');
-//      let obj = JSON.parse(strJson);
-//      expect(obj.$type).assertEqual('List');
-//      let List_ListDirection_011 = CommonFunc.getComponentRect('List_ListDirection_011');
-//      let List_ListDirection_012 = CommonFunc.getComponentRect('List_ListDirection_012');
-//      let driver = await UiDriver.create();
-//      await driver.swipe(List_ListDirection_012.left,100, List_ListDirection_011.left,100);
-//      await CommonFunc.sleep(2000);
-//      let List_ListDirection_022 = CommonFunc.getComponentRect('List_ListDirection_012');
-//      let List_ListDirection_023 = CommonFunc.getComponentRect('List_ListDirection_013');
-//      await driver.swipe(List_ListDirection_012.left,100, List_ListDirection_011.left,100);
-//      await CommonFunc.sleep(2000);
-//      let List_ListDirection_013 = CommonFunc.getComponentRect('List_ListDirection_013');
-//      let List_ListDirection_014 = CommonFunc.getComponentRect('List_ListDirection_014');
-//      let List_ListDirection_01 = CommonFunc.getComponentRect('List_ListDirection_01');
-//      expect(List_ListDirection_011.top).assertEqual(List_ListDirection_01.top);
-//      expect(List_ListDirection_012.top).assertEqual(List_ListDirection_01.top);
-//      expect(List_ListDirection_013.top).assertEqual(List_ListDirection_01.top);
-//      expect(List_ListDirection_014.top).assertEqual(List_ListDirection_01.top);
-//      expect(List_ListDirection_011.left).assertEqual(List_ListDirection_01.left);
-//
-//      expect(Math.round(List_ListDirection_012.left - List_ListDirection_011.right)).assertEqual(vp2px(20));
-//      expect(Math.round(List_ListDirection_023.left - List_ListDirection_022.right)).assertEqual(vp2px(20));
-//      expect(Math.round(List_ListDirection_014.left - List_ListDirection_013.right)).assertEqual(vp2px(20));
-//
-//      expect(Math.round(List_ListDirection_011.right - List_ListDirection_011.left)).assertEqual(vp2px(300));
-//      expect(Math.round(List_ListDirection_012.right - List_ListDirection_012.left)).assertEqual(vp2px(300));
-//      expect(Math.round(List_ListDirection_013.right - List_ListDirection_013.left)).assertEqual(vp2px(300));
-//      expect(Math.round(List_ListDirection_014.right - List_ListDirection_014.left)).assertEqual(vp2px(300));
-//
-//      expect(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top)).assertEqual(vp2px(100));
-//      expect(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top)).assertEqual(vp2px(100));
-//      expect(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top)).assertEqual(vp2px(100));
-//      expect(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top)).assertEqual(vp2px(100));
-//      console.info('testListListDirectionAxisHorizontal END');
-//      done();
-//    });
+    //    /**
+    //     * @tc.number    SUB_ACE_LIST_LIDTDIRECTION_TEST_0200
+    //     * @tc.name      testListListDirectionAxisHorizontal
+    //     * @tc.desc      List parent component binding direction property and value set to Axis.Horizontal
+    //     */
+    //    it('testListListDirectionAxisHorizontal', 0, async  (done: Function)=> {
+    //      console.info('testListListDirectionAxisHorizontal START');
+    //      globalThis.value.message.notify({name:'addListDirection', value:Axis.Horizontal})
+    //      await CommonFunc.sleep(3000);
+    //      let strJson = getInspectorByKey('List_ListDirection_01');
+    //
+    //      expect(JSON.parse(strJson).$type).assertEqual('List');
+    //      let List_ListDirection_011:RectValue = CommonFunc.getComponentRect('List_ListDirection_011');
+    //      let List_ListDirection_012:RectValue = CommonFunc.getComponentRect('List_ListDirection_012');
+    //      let driver = await UiDriver.create();
+    //      await driver.swipe(List_ListDirection_012.left,100, List_ListDirection_011.left,100);
+    //      await CommonFunc.sleep(2000);
+    //      let List_ListDirection_022:RectValue = CommonFunc.getComponentRect('List_ListDirection_012');
+    //      let List_ListDirection_023:RectValue = CommonFunc.getComponentRect('List_ListDirection_013');
+    //      await driver.swipe(List_ListDirection_012.left,100, List_ListDirection_011.left,100);
+    //      await CommonFunc.sleep(2000);
+    //      let List_ListDirection_013:RectValue = CommonFunc.getComponentRect('List_ListDirection_013');
+    //      let List_ListDirection_014:RectValue = CommonFunc.getComponentRect('List_ListDirection_014');
+    //      let List_ListDirection_01:RectValue = CommonFunc.getComponentRect('List_ListDirection_01');
+    //      expect(List_ListDirection_011.top).assertEqual(List_ListDirection_01.top);
+    //      expect(List_ListDirection_012.top).assertEqual(List_ListDirection_01.top);
+    //      expect(List_ListDirection_013.top).assertEqual(List_ListDirection_01.top);
+    //      expect(List_ListDirection_014.top).assertEqual(List_ListDirection_01.top);
+    //      expect(List_ListDirection_011.left).assertEqual(List_ListDirection_01.left);
+    //
+    //      expect(Math.round(List_ListDirection_012.left - List_ListDirection_011.right)).assertEqual(vp2px(20));
+    //      expect(Math.round(List_ListDirection_023.left - List_ListDirection_022.right)).assertEqual(vp2px(20));
+    //      expect(Math.round(List_ListDirection_014.left - List_ListDirection_013.right)).assertEqual(vp2px(20));
+    //
+    //      expect(Math.round(List_ListDirection_011.right - List_ListDirection_011.left)).assertEqual(vp2px(300));
+    //      expect(Math.round(List_ListDirection_012.right - List_ListDirection_012.left)).assertEqual(vp2px(300));
+    //      expect(Math.round(List_ListDirection_013.right - List_ListDirection_013.left)).assertEqual(vp2px(300));
+    //      expect(Math.round(List_ListDirection_014.right - List_ListDirection_014.left)).assertEqual(vp2px(300));
+    //
+    //      expect(Math.round(List_ListDirection_011.bottom - List_ListDirection_011.top)).assertEqual(vp2px(100));
+    //      expect(Math.round(List_ListDirection_012.bottom - List_ListDirection_012.top)).assertEqual(vp2px(100));
+    //      expect(Math.round(List_ListDirection_013.bottom - List_ListDirection_013.top)).assertEqual(vp2px(100));
+    //      expect(Math.round(List_ListDirection_014.bottom - List_ListDirection_014.top)).assertEqual(vp2px(100));
+    //      console.info('testListListDirectionAxisHorizontal END');
+    //      done();
+    //    });
   })
 }

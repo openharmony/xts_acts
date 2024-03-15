@@ -47,7 +47,7 @@ static napi_value Prctl(napi_env env, napi_callback_info info)
     pthread_create(&tid, nullptr, Thread, nullptr);
     pthread_join(tid, &pThreadResult);
     napi_value result = nullptr;
-    napi_create_int32(env, *static_cast<int*>(pThreadResult), &result);
+    napi_create_int32(env, *static_cast<int *>(pThreadResult), &result);
     return result;
 }
 

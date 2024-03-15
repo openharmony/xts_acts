@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function columnSplitJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('columnSplitTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/ColumnSplit',
+  describe('columnSplitTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ColumnSplit',
       }
       try {
         router.clear();
@@ -40,51 +40,51 @@ export default function columnSplitJsunit() {
         console.info("get ColumnSplit state success " + JSON.stringify(pages));
         if (!("ColumnSplit" == pages.name)) {
           console.info("get ColumnSplit state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push ColumnSplit page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push ColumnSplit page error " + JSON.stringify(result));
+        console.error("push ColumnSplit page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("ColumnSplit after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0700
-     * @tc.name      testColumnSplit010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0700
+     * @tc.name testColumnSplit010
+     * @tc.desc aceEtsTest
      */
-    it('testColumnSplit010', 0, async function (done) {
+    it('testColumnSplit010', 0, async (done: Function) => {
       console.info('new columnSplit0 START');
-      let strJson = getInspectorByKey('columnSplit')
-      let obj = JSON.parse(strJson)
-      console.info("component obj is: " + JSON.stringify(obj))
-      expect(obj.$type).assertEqual('ColumnSplit')
-      console.info("yr ColumnSplit0 type: " + JSON.stringify(obj.$type))
-      console.log("yr columnSplit0 obj.$resizable-'true':" + JSON.stringify(obj.$attrs.resizable))
-      expect(obj.$attrs.resizeable).assertEqual('true')
-      console.info('new columnSplit0 END')
-      done()
+      let strJson = getInspectorByKey('columnSplit');
+      let obj: ESObject = JSON.parse(strJson);
+      console.info("component obj is: " + JSON.stringify(obj));
+      expect(obj.$type).assertEqual('ColumnSplit');
+      console.info("yr ColumnSplit0 type: " + JSON.stringify(obj.$type));
+      console.log("yr columnSplit0 obj.$resizable-'true':" + JSON.stringify(obj.$attrs.resizable));
+      expect(obj.$attrs.resizeable).assertEqual('true');
+      console.info('new columnSplit0 END');
+      done();
     })
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0710
-     * @tc.name      testColumnSplit020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0710
+     * @tc.name testColumnSplit020
+     * @tc.desc aceEtsTest
      */
-    it('testColumnSplit020', 0, async function (done) {
+    it('testColumnSplit020', 0, async (done: Function) => {
       console.info('new columnSplit1 START');
       let strJson = getInspectorByKey('columnSplit1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
       console.log("yr columnSplit obj.$resizable-'false':" + JSON.stringify(obj.$attrs.resizable));
-      expect(obj.$attrs.resizeable).assertEqual('false')
+      expect(obj.$attrs.resizeable).assertEqual('false');
       console.info('new columnSplit1 END');
       done();
     })

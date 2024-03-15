@@ -16,8 +16,8 @@
 @Entry
 @Component
 struct scrollTo {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
 
   build() {
     Column({ space: 5 }) {
@@ -47,7 +47,7 @@ struct scrollTo {
         console.info(first.toString())
       })
       .onScrollBarUpdate((index: number, offset: number) => {
-        return {totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4}
+        return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 }
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)

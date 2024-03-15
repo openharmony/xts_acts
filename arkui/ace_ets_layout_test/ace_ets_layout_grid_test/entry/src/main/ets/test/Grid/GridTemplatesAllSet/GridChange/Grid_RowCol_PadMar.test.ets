@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_RowCol_PadMar() {
-  describe('Grid_RowCol_PadMarTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_PadMarTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_PadMarTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_PadMar",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_RowCol_PadMar() {
         console.info("get Grid_RowCol_PadMar state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_PadMar" == pages.name)) {
           console.info("get Grid_RowCol_PadMar pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_PadMar page result:" + JSON.stringify(result));
         }
@@ -40,26 +41,26 @@ export default function Grid_RowCol_PadMar() {
       console.info("Grid_RowCol_PadMarTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_RowCol_PadMar after each called")
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300
-     * @tc.name      testGridRowColGridPad
-     * @tc.desc      Add padding,Grid is divided into 4 equal parts, 4 components
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0300
+     * @tc.name testGridRowColGridPad
+     * @tc.desc Add padding,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPad', 0, async function (done) {
+    it('testGridRowColGridPad', 0, async (done: Function) => {
       console.info('[testGridRowColGridPad] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let Grid_RowCol_PadMar_011 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
-      let Grid_RowCol_PadMar_012 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
-      let Grid_RowCol_PadMar_013 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
-      let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
-      let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let Grid_RowCol_PadMar_011: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
+      let Grid_RowCol_PadMar_012: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
+      let Grid_RowCol_PadMar_013: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
+      let Grid_RowCol_PadMar_014: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
+      let Grid_RowCol_PadMar_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
 
       expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_011.left) <= 1).assertTrue();
@@ -93,24 +94,28 @@ export default function Grid_RowCol_PadMar() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400
-     * @tc.name      testGridRowColGridMargin
-     * @tc.desc     Add margin,Grid is divided into 4 equal parts, 4 components
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0400
+     * @tc.name testGridRowColGridMargin
+     * @tc.desc Add margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridMargin', 0, async function (done) {
+    it('testGridRowColGridMargin', 0, async (done: Function) => {
       console.info('[testGridRowColGridMargin] START');
-      globalThis.value.message.notify({name:'addPadding', value:0});
-      globalThis.value.message.notify({name:'addMargin', value:10});
+      globalThis.value.message.notify({
+        name: 'addPadding', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'addMargin', value: 10
+      });
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let Grid_RowCol_PadMar_011 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
-      let Grid_RowCol_PadMar_012 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
-      let Grid_RowCol_PadMar_013 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
-      let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
-      let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
-      let Grid_RowCol_PadMar_Box_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let Grid_RowCol_PadMar_011: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
+      let Grid_RowCol_PadMar_012: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
+      let Grid_RowCol_PadMar_013: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
+      let Grid_RowCol_PadMar_014: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
+      let Grid_RowCol_PadMar_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
+      let Grid_RowCol_PadMar_Box_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
       expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left) <= 1).assertTrue();
       expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_01.left) <= 1).assertTrue();
 
@@ -147,24 +152,28 @@ export default function Grid_RowCol_PadMar() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500
-     * @tc.name      testGridRowColGridPadMar
-     * @tc.desc      Add padding and margin,Grid is divided into 4 equal parts, 4 components
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_0500
+     * @tc.name testGridRowColGridPadMar
+     * @tc.desc Add padding and margin,Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColGridPadMar', 0, async function (done) {
+    it('testGridRowColGridPadMar', 0, async (done: Function) => {
       console.info('[testGridRowColGridPadMar] START');
-      globalThis.value.message.notify({name:'addPadding', value:10});
-      globalThis.value.message.notify({name:'addMargin', value:10});
+      globalThis.value.message.notify({
+        name: 'addPadding', value: 10
+      });
+      globalThis.value.message.notify({
+        name: 'addMargin', value: 10
+      });
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_PadMar_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let Grid_RowCol_PadMar_011 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
-      let Grid_RowCol_PadMar_012 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
-      let Grid_RowCol_PadMar_013 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
-      let Grid_RowCol_PadMar_014 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
-      let Grid_RowCol_PadMar_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
-      let Grid_RowCol_PadMar_Box_01 = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let Grid_RowCol_PadMar_011: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_011');
+      let Grid_RowCol_PadMar_012: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_012');
+      let Grid_RowCol_PadMar_013: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_013');
+      let Grid_RowCol_PadMar_014: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_014');
+      let Grid_RowCol_PadMar_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_01');
+      let Grid_RowCol_PadMar_Box_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_PadMar_Box_01');
       expect(Math.abs(Grid_RowCol_PadMar_011.left - Grid_RowCol_PadMar_01.left - vp2px(10)) <= 1).assertTrue();
 
       expect(Math.abs(Grid_RowCol_PadMar_013.left - Grid_RowCol_PadMar_011.left) <= 1).assertTrue();

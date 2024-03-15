@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsFlexItemJsunit() {
-  describe('enumsFlexItem', function () {
-    beforeEach(async function (done) {
+  describe('enumsFlexItem', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================enumsFlexItem test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsFlexAlign',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enumsFlexAlign',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsFlexItemJsunit() {
         console.info('beforeEach get enumsFlexItem state pages:' + JSON.stringify(pages));
         if (!('enumsFlexItem' == pages.name)) {
           console.info('beforeEach get enumsFlexItem state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsFlexItemTest_0100 page result:' + JSON.stringify(result));
         }
@@ -40,18 +39,17 @@ export default function enumsFlexItemJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsFlexItemTest_0100 test after each called===================');
     });
 
-    it('enumsFlexItemTest_0100', 0, async function (done) {
+    it('enumsFlexItemTest_0100', 0, async (done: Function) => {
       console.info('enumsFlexItemTest_0100 START');
-      let strJson = getInspectorByKey('justifyContent');
+      let strJson: string = getInspectorByKey('justifyContent');
       console.info("enumsFlexItemTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsFlexItemTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
+      console.info("enumsFlexItemTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.constructor.justifyContent).assertEqual('FlexAlign.Center');
       console.info('enumsFlexItemTest_0100 END');
       done();
     });

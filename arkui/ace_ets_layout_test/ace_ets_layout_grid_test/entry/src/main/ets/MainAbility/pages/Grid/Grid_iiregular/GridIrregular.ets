@@ -17,18 +17,19 @@
 @Entry
 @Component
 struct GridExample {
-  @State Number: String[] = ['0', '1','2','3','4','5']
-  scroller: Scroller = new Scroller()
+  @State Number: String[] = ['0', '1', '2', '3', '4', '5'];
+  scroller: Scroller = new Scroller();
   layoutOptions2: GridLayoutOptions = {
     regularSize: [1, 1],
     irregularIndexes: [-1],
     onGetIrregularSizeByIndex: (index: number) => {
       if (index === 0) {
-        return [1, 5]
+        return [1, 5];
       }
-      return [1, index % 6 + 1]
+      return [1, index % 6 + 1];
     }
-  }
+  };
+
   build() {
     Column({ space: 5 }) {
       // 不使用scroll，需要undefined占位

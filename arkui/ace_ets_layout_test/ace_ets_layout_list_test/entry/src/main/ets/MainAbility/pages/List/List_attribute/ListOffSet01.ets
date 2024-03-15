@@ -12,30 +12,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct ListOffSet01 {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0,1]
-  @State startText: string = ''
-  @State endText: string = ''
-  @State objtext: string = ''
-  @State startSize: number = 0
-  @State endSize: number = 0
-  @State paddingSize: number = 0
-  @State t:number = 0
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1];
+  @State startText: string = '';
+  @State endText: string = '';
+  @State objtext: string = '';
+  @State startSize: number = 0;
+  @State endSize: number = 0;
+  @State paddingSize: number = 0;
+  @State t: number = 0;
+
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
-      Column(){
-        List({ scroller:this.scroller}) {
+      Column() {
+        List({ scroller: this.scroller }) {
           ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('item' + item)
-                .width('100%').height(100).fontSize(16)
-                .textAlign(TextAlign.Center).borderRadius(40).backgroundColor(0xFFFFFF)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(40)
+                .backgroundColor(0xFFFFFF)
             }
             .onAreaChange((oldValue: Area, newValue: Area) => {
-              if(item == 0) {
+              if (item == 0) {
                 this.startText = JSON.stringify(newValue.position.y)
               } else if (item == 1) {
                 this.endText = JSON.stringify(newValue.position.y)
@@ -122,37 +128,49 @@ struct ListOffSet01 {
         })
         .margin({ top: 360, left: 140 })
 
-      Button('back top').id('ListoffSet01_Top')
+      Button('back top')
+        .id('ListoffSet01_Top')
         .height('6%')
         .onClick(() => { // 点击后回到顶部
           this.scroller.scrollEdge(Edge.Top)
-        }).backgroundColor(Color.Orange)
+        })
+        .backgroundColor(Color.Orange)
         .margin({ top: 420, left: 20 })
 
-      Button('back bottom').id('ListoffSet01_Bottom')
+      Button('back bottom')
+        .id('ListoffSet01_Bottom')
         .height('6%')
         .onClick(() => { // 点击后回到顶部
           this.scroller.scrollEdge(Edge.Bottom)
-        }).backgroundColor(Color.Orange)
+        })
+        .backgroundColor(Color.Orange)
         .margin({ top: 420, left: 160 })
 
-      Button('get').key('ListoffSet01_Get')
+      Button('get')
+        .key('ListoffSet01_Get')
         .height('6%')
         .onClick(() => {
           this.t = this.scroller.currentOffset().yOffset
-        }).backgroundColor(Color.Orange)
+        })
+        .backgroundColor(Color.Orange)
         .margin({ top: 480, left: 160 })
 
 
-      Text(`${Math.abs(Number(this.startText))}`).key('ListoffSet01_Text01')
-        .margin({ top: 550, left: 100 }).fontWeight(700)
-        .fontSize(24).fontColor(Color.Red)
+      Text(`${Math.abs(Number(this.startText))}`)
+        .key('ListoffSet01_Text01')
+        .margin({ top: 550, left: 100 })
+        .fontWeight(700)
+        .fontSize(24)
+        .fontColor(Color.Red)
 
-      Text(`${Math.abs(Number(this.endText))}`).key('ListoffSet01_Textend')
-        .margin({ top: 550, left: 160 }).fontWeight(700)
-        .fontSize(24).fontColor(Color.Blue)
+      Text(`${Math.abs(Number(this.endText))}`)
+        .key('ListoffSet01_Textend')
+        .margin({ top: 550, left: 160 })
+        .fontWeight(700)
+        .fontSize(24)
+        .fontColor(Color.Blue)
 
-      Text(this.objtext).margin({ top: 600, left: 20 }).fontWeight(700).border({width:1})
+      Text(this.objtext).margin({ top: 600, left: 20 }).fontWeight(700).border({ width: 1 })
 
 
       Text(`${this.t}`).margin({ top: 700, left: 160 }).key('ListoffSet01_Text02')

@@ -16,17 +16,17 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <cerrno>
+#include <cfloat>
 #include <clocale>
 #include <cmath>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <ctime>
 #include <cwchar>
-#include <cerrno>
 #include <fcntl.h>
-#include <cfloat>
 #include <memory.h>
-#include <cstdlib>
 #include <unistd.h>
 
 #define PARAM_0 0
@@ -47,6 +47,7 @@
 #define PARAM_17 17
 #define PARAM_5 5
 #define PARAM_80 80
+#define PARAM_0777 0777
 #define PARAM_250068492 250068492
 #define PARAM_2064035584 2064035584
 #define PARAM_208622688 208622688
@@ -107,9 +108,9 @@ static napi_value Mbtowc_One(napi_env env, napi_callback_info info)
 
 static napi_value Mbtowc_Two(napi_env env, napi_callback_info info)
 {
-    const char *test = "musl";
     wchar_t wc[ARRY_MAX];
-    int ret = mbtowc(wc, test, MINUSONE);
+    errno = 0;
+    int ret = mbtowc(wc, nullptr, MINUSONE);
     napi_value result = nullptr;
     napi_create_int32(env, ret == SUCCESS && errno == EBADF, &result);
     return result;
@@ -214,7 +215,7 @@ static napi_value Wprintf_Two(napi_env env, napi_callback_info info)
 
 static napi_value Fwscanf_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(TEMP_FILE, O_CREAT | O_RDWR);
+    int fd = open(TEMP_FILE, O_CREAT | O_RDWR, PARAM_0777);
     int ret = PARAM_0;
     FILE *fp = fdopen(fd, "w+");
     if (fp) {
@@ -226,6 +227,7 @@ static napi_value Fwscanf_One(napi_env env, napi_callback_info info)
         fclose(fp);
         remove(TEMP_FILE);
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret == SUCCESS, &result);
     return result;
@@ -233,7 +235,7 @@ static napi_value Fwscanf_One(napi_env env, napi_callback_info info)
 
 static napi_value Fwscanf_Two(napi_env env, napi_callback_info info)
 {
-    int fd = open(TEMP_FILE, O_CREAT | O_RDWR);
+    int fd = open(TEMP_FILE, O_CREAT | O_RDWR, PARAM_0777);
     int ret = PARAM_0;
     FILE *fp = fdopen(fd, "w+");
     if (fp) {
@@ -244,6 +246,7 @@ static napi_value Fwscanf_Two(napi_env env, napi_callback_info info)
         fclose(fp);
         remove(TEMP_FILE);
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret == SUCCESS, &result);
     return result;
@@ -817,7 +820,8 @@ static napi_value Wcstol_One(napi_env env, napi_callback_info info)
     long int li3 = wcstol(pEnd, &pEnd, PARAM_2);
     long int li4 = wcstol(pEnd, nullptr, PARAM_0);
     napi_value result = nullptr;
-    napi_create_int32(env, li1 == PARAM_2001 && li2 == PARAM_6340800 && li3 == MPARAM_36242240 && li4 == PARAM_7340031, &result);
+    napi_create_int32(env, li1 == PARAM_2001 && li2 == PARAM_6340800 && li3 == MPARAM_36242240 && li4 == PARAM_7340031,
+                      &result);
     return result;
 }
 
@@ -842,7 +846,9 @@ static napi_value Wcstoll_One(napi_env env, napi_callback_info info)
     long long int lli3 = wcstoll(pEnd, &pEnd, PARAM_2);
     long long int lli4 = wcstoll(pEnd, nullptr, PARAM_0);
     napi_value result = nullptr;
-    napi_create_int32(env, lli1 == PARAM_1856892505 && lli2 == PARAM_6358606123 && lli3 == MPARAM_208340076 && lli4 == PARAM_7340031, &result);
+    napi_create_int32(
+        env, lli1 == PARAM_1856892505 && lli2 == PARAM_6358606123 && lli3 == MPARAM_208340076 && lli4 == PARAM_7340031,
+        &result);
     return result;
 }
 
@@ -874,7 +880,9 @@ static napi_value Wcstoull_One(napi_env env, napi_callback_info info)
     unsigned long long int ulli3 = wcstoull(pEnd, &pEnd, PARAM_2);
     unsigned long long int ulli4 = wcstoull(pEnd, nullptr, PARAM_0);
     napi_value result = nullptr;
-    napi_create_int32(env, ulli1 == PARAM_250068492 && ulli2 == PARAM_2064035584 && ulli3 == PARAM_208622688 && ulli4 == PARAM_7340031,
+    napi_create_int32(env,
+                      ulli1 == PARAM_250068492 && ulli2 == PARAM_2064035584 && ulli3 == PARAM_208622688 &&
+                          ulli4 == PARAM_7340031,
                       &result);
     return result;
 }
@@ -941,7 +949,7 @@ static napi_value Wcwidth_One(napi_env env, napi_callback_info info)
 {
     int ret = MINUSONE;
     const int INPUT_VALUE[PARAM_12] = {0x0300, 0x20dd, 0x00ad,  0x200b,  0x4e00, 0x9fff,
-                                 0x3400, 0x4dbf, 0x20000, 0x2a6df, 0xac00, 0xd7a3};
+                                       0x3400, 0x4dbf, 0x20000, 0x2a6df, 0xac00, 0xd7a3};
     ret = wcwidth(INPUT_VALUE[PARAM_0]);
     NAPI_ASSERT(env, ret == ERRON_0, "wcwidth Error");
     ret = wcwidth(INPUT_VALUE[PARAM_1]);

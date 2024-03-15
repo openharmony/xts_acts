@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
 export default function uiAppearanceALWAYS_DARKJsunit() {
-  describe('uiAppearanceALWAYS_DARKTest', function () {
-    beforeEach(async function (done) {
+  describe('uiAppearanceALWAYS_DARKTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/uiAppearance',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/uiAppearance',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function uiAppearanceALWAYS_DARKJsunit() {
         console.info("get uiAppearance state success " + JSON.stringify(pages));
         if (!("uiAppearance" == pages.name)) {
           console.info("get uiAppearance state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push uiAppearance page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function uiAppearanceALWAYS_DARKJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("uiAppearanceALWAYS_DARK after each called");
     });
@@ -51,15 +51,15 @@ export default function uiAppearanceALWAYS_DARKJsunit() {
      * @tc.name         testuiAppearanceALWAYS_DARK0001
      * @tc.desic         aceuiAppearanceALWAYS_DARKEtsTest0001
      */
-    it('testuiAppearanceALWAYS_DARK0001', 0, async function (done) {
+    it('testuiAppearanceALWAYS_DARK0001', 0, async (done: Function) => {
       console.info('uiAppearanceALWAYS_DARK testuiAppearanceALWAYS_DARK0001 START');
       await Utils.sleep(2000);
       try {
-        var event = {
+        let event: events_emitter.InnerEvent = {
           eventId: 60308,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testuiAppearanceALWAYS_DARK0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Mode).assertEqual(0);
           console.info('testuiAppearanceALWAYS_DARK0001 END');
@@ -77,15 +77,15 @@ export default function uiAppearanceALWAYS_DARKJsunit() {
      * @tc.name         testuiAppearanceALWAYS_LIGHT0001
      * @tc.desic         aceuiAppearanceALWAYS_LIGHTEtsTest0001
      */
-    it('testuiAppearanceALWAYS_LIGHT0001', 0, async function (done) {
+    it('testuiAppearanceALWAYS_LIGHT0001', 0, async (done: Function) => {
       console.info('uiAppearanceALWAYS_LIGHT testuiAppearanceALWAYS_LIGHT0001 START');
       await Utils.sleep(2000);
       try {
-        var event = {
+        let event: events_emitter.InnerEvent = {
           eventId: 60309,
           priority: events_emitter.EventPriority.LOW
         }
-        var callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("testuiAppearanceALWAYS_LIGHT0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.Mode).assertEqual(1);
           console.info('testuiAppearanceALWAYS_LIGHT0001 END');

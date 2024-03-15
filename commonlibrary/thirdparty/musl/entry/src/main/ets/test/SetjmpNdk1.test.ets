@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import setjmp from 'libsetjmpndk1.so'
 
 export default function muslSetJmpNdk1Test() {
   describe('MuslSetjmp1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_SETJMP_LONGJMP_0100
      * @tc.name     : testMuslSetjmpLongjmp001

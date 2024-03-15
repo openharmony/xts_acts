@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function text_inputPhoneNumberJsunit() {
-  describe('text_inputPhoneNumberTest', function () {
-    beforeEach(async function (done) {
+  describe('text_inputPhoneNumberTest', () =>{
+    beforeEach(async (done:Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text_input',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/text_input',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function text_inputPhoneNumberJsunit() {
         console.info("get text_input state success " + JSON.stringify(pages));
         if (!("text_input" == pages.name)) {
           console.info("get text_input state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push text_input page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function text_inputPhoneNumberJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("text_inputPhoneNumber after each called");
     });
@@ -50,39 +50,36 @@ export default function text_inputPhoneNumberJsunit() {
      * @tc.name         testtext_inputPhoneNumber0001
      * @tc.desic         acetext_inputPhoneNumberEtsTest0001
      */
-    it('testtext_inputPhoneNumber0001', 0, async function (done) {
+    it('testtext_inputPhoneNumber0001', 0, async (done:Function) => {
       console.info('text_inputPhoneNumber testtext_inputPhoneNumber0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('PhoneNumberText');
+      let strJson: string = getInspectorByKey('PhoneNumberText');
       console.info("[testtext_inputPhoneNumber0001] component type strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      console.info("[testtext_inputPhoneNumber0001] type value :" + obj.$attrs.type);
+      expect(JSON.parse(strJson).$type).assertEqual('TextInput');
+      expect(JSON.parse(strJson).$attrs.type).assertEqual('InputType.Normal');
+      console.info("[testtext_inputPhoneNumber0001] type value :" + JSON.parse(strJson).$attrs.type);
       done();
     });
 
-    it('testtextInputStyle0001', 0, async function (done) {
+    it('testtextInputStyle0001', 0, async (done:Function) => {
       console.info('textInputStyle testtextInputStyle0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('textInput1');
+      let strJson: string = getInspectorByKey('textInput1');
       console.info("[testtextInputStyle0001] strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
-      console.info("[testtextInputStyle0001] textInput1 InputStyle value :" + obj.$attrs.style);
+      expect(JSON.parse(strJson).$type).assertEqual('TextInput');
+      expect(JSON.parse(strJson).$attrs.style).assertEqual('TextInputStyle.Default');
+      console.info("[testtextInputStyle0001] textInput1 InputStyle value :" + JSON.parse(strJson).$attrs.style);
       done();
     });
 
-    it('testtextInputStyle0002', 0, async function (done) {
+    it('testtextInputStyle0002', 0, async (done:Function) => {
       console.info('textInputStyle testtextInputStyle0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('textInput2');
+      let strJson: string = getInspectorByKey('textInput2');
       console.info("[testtextInputStyle0002] strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
-      console.info("[testtextInputStyle0002] textInput2 inputStyle value :" + obj.$attrs.style);
+      expect(JSON.parse(strJson).$type).assertEqual('TextInput');
+      expect(JSON.parse(strJson).$attrs.style).assertEqual('TextInputStyle.Inline');
+      console.info("[testtextInputStyle0002] textInput2 inputStyle value :" + JSON.parse(strJson).$attrs.style);
       done();
     });
   })

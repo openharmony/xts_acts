@@ -46,20 +46,20 @@ struct GestureParallel {
         .key("ParallelText")
         .gesture(
           GestureGroup(GestureMode.Parallel,
-          LongPressGesture({ repeat: true })
-            .onAction((event: GestureEvent) => {
-              Log.showInfo(TAG, `LongPress onAction`)
-            })
-            .onActionEnd(() => {
-              Log.showInfo(TAG, `LongPress end`)
-            }),
-          PanGesture({})
-            .onActionStart(() => {
-              Log.showInfo(TAG, `onActionStart`)
-            })
-            .onActionUpdate((event: GestureEvent) => {
-              Log.showInfo(TAG, `onActionUpdate`)
-            })
+            LongPressGesture({ repeat: true })
+              .onAction((event: GestureEvent) => {
+                Log.showInfo(TAG, `LongPress onAction`)
+              })
+              .onActionEnd(() => {
+                Log.showInfo(TAG, `LongPress end`)
+              }),
+            PanGesture({})
+              .onActionStart(() => {
+                Log.showInfo(TAG, `onActionStart`)
+              })
+              .onActionUpdate((event: GestureEvent) => {
+                Log.showInfo(TAG, `onActionUpdate`)
+              })
           )
         )
 
@@ -78,24 +78,26 @@ struct GestureParallel {
         .key("ExclusiveText")
         .gesture(
           GestureGroup(GestureMode.Exclusive,
-          LongPressGesture({ repeat: true })
-            .onAction((event: GestureEvent) => {
-              Log.showInfo(TAG, `LongPress onAction`)
-            })
-            .onActionEnd(() => {
-              Log.showInfo(TAG, `LongPress end`)
-            }),
-          PanGesture({})
-            .onActionStart(() => {
-              Log.showInfo(TAG, `onActionStart`)
-            })
-            .onActionUpdate((event: GestureEvent) => {
-              Log.showInfo(TAG, `onActionUpdate`)
-            })
+            LongPressGesture({ repeat: true })
+              .onAction((event: GestureEvent) => {
+                Log.showInfo(TAG, `LongPress onAction`)
+              })
+              .onActionEnd(() => {
+                Log.showInfo(TAG, `LongPress end`)
+              }),
+            PanGesture({})
+              .onActionStart(() => {
+                Log.showInfo(TAG, `onActionStart`)
+              })
+              .onActionUpdate((event: GestureEvent) => {
+                Log.showInfo(TAG, `onActionUpdate`)
+              })
           )
         )
 
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

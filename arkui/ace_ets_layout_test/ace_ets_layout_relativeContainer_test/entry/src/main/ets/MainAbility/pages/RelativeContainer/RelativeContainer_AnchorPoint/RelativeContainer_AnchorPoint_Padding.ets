@@ -59,5 +59,4 @@ struct RelativeContainer_AnchorPoint_Padding {
     .padding({ left: 100 })
     .height('100%')
   }
-
 }

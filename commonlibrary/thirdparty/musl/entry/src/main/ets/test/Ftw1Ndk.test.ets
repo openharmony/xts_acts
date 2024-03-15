@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import ftw from 'libftw1ndk.so'
 
 export default function ftwNdk1Test() {
   describe('MuslFtw1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FTW_FTW_0200
      * @tc.name       : testMuslFtwFtw002

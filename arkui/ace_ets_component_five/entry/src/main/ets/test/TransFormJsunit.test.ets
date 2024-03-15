@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
+
+class ScaleValue {
+  x: number;
+  y: number;
+}
+
+class RotateValue {
+  x: number;
+  y: number;
+  z: number;
+  centerX: string;
+  centerY: string;
+  angle: number;
+}
+
 export default function transFormJsunit() {
-  describe('appInfoTest_five_4', function () {
-    beforeEach(async function (done) {
+  describe('appInfoTest_five_4', () => {
+    beforeEach(async (done: Function) => {
       console.info("transForm beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/transForm',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/transForm',
       }
       try {
         router.clear();
@@ -30,7 +44,7 @@ export default function transFormJsunit() {
         console.info("get transForm state pages:" + JSON.stringify(pages));
         if (!("transForm " == pages.name)) {
           console.info("get transForm  state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push transForm  page result:" + JSON.stringify(result));
         }
@@ -40,38 +54,44 @@ export default function transFormJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("transFrom each called");
     });
 
-    it('testTransForm001', 0, async function (done) {
+    it('testTransForm001', 0, async (done: Function) => {
       console.info('[testTransForm001] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('rotate');
-      let obj = JSON.parse(strJson);
-      console.info("[testTransForm001] component strJson:" + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Row');
-      expect(obj.$attrs.rotate.x).assertEqual('1.000000');
-      expect(obj.$attrs.rotate.y).assertEqual('1.000000');
-      expect(obj.$attrs.rotate.z).assertEqual('1.000000');
-      expect(obj.$attrs.rotate.centerX).assertEqual('50.00%');
-      expect(obj.$attrs.rotate.centerY).assertEqual('50.00%');
-      expect(obj.$attrs.rotate.angle).assertEqual('300.000000');
+      let strJson: string = getInspectorByKey('rotate');
+      console.info("[testTransForm001] component strJson:" + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Row');
+      expect(JSON.parse(strJson).$attrs.rotate.x).assertEqual('1.000000');
+      expect(JSON.parse(strJson).$attrs.rotate.y).assertEqual('1.000000');
+      expect(JSON.parse(strJson).$attrs.rotate.z).assertEqual('1.000000');
+      expect(JSON.parse(strJson).$attrs.rotate.centerX).assertEqual('50.00%');
+      expect(JSON.parse(strJson).$attrs.rotate.centerY).assertEqual('50.00%');
+      expect(JSON.parse(strJson).$attrs.rotate.angle).assertEqual('300.000000');
       done();
     });
 
-    it('testTransForm002', 0, async function (done) {
+    it('testTransForm002', 0, async (done: Function) => {
       console.info('[testTransForm002] START');
       await Utils.sleep(1000);
-      let rotateValue = {x: 2, y: 2, z: 2, centerX: '60%', centerY: '60%', angle: 100}
+      let rotateValue: RotateValue = {
+        x: 2,
+        y: 2,
+        z: 2,
+        centerX: '60%',
+        centerY: '60%',
+        angle: 100
+      }
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "rotateValue": JSON.stringify(rotateValue)
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 45,
           priority: events_emitter.EventPriority.LOW
         }
@@ -81,40 +101,41 @@ export default function transFormJsunit() {
         console.log("[testTransForm002] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('rotate');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testTransForm002] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.rotate.x).assertEqual('2.000000');
-      expect(objNew.$attrs.rotate.y).assertEqual('2.000000');
-      expect(objNew.$attrs.rotate.z).assertEqual('2.000000');
-      expect(objNew.$attrs.rotate.centerX).assertEqual('60.00%');
-      expect(objNew.$attrs.rotate.centerY).assertEqual('60.00%');
-      expect(objNew.$attrs.rotate.angle).assertEqual('100.000000');
+      let strJsonNew: string = getInspectorByKey('rotate');
+      console.info("[testTransForm002] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.rotate.x).assertEqual('2.000000');
+      expect(JSON.parse(strJsonNew).$attrs.rotate.y).assertEqual('2.000000');
+      expect(JSON.parse(strJsonNew).$attrs.rotate.z).assertEqual('2.000000');
+      expect(JSON.parse(strJsonNew).$attrs.rotate.centerX).assertEqual('60.00%');
+      expect(JSON.parse(strJsonNew).$attrs.rotate.centerY).assertEqual('60.00%');
+      expect(JSON.parse(strJsonNew).$attrs.rotate.angle).assertEqual('100.000000');
       done();
     });
 
-    it('testTransForm003', 0, async function (done) {
+    it('testTransForm003', 0, async (done: Function) => {
       console.info('[testTransForm003] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('rotate3');
-      let obj = JSON.parse(strJson);
-      console.info("[testTransForm003] component strJson:" + JSON.stringify(obj));
-      expect(obj.$attrs.scale.x).assertEqual('2.000000');
-      expect(obj.$attrs.scale.y).assertEqual('0.500000');
+      let strJson: string = getInspectorByKey('rotate3');
+
+      console.info("[testTransForm003] component strJson:" + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.scale.x).assertEqual('2.000000');
+      expect(JSON.parse(strJson).$attrs.scale.y).assertEqual('0.500000');
       done();
     });
 
-    it('testTransForm004', 0, async function (done) {
+    it('testTransForm004', 0, async (done: Function) => {
       console.info('[testTransForm004] START');
       await Utils.sleep(1000);
-      let scaleValue = { x: 1, y: 1 }
+      let scaleValue: ScaleValue = {
+        x: 1, y: 1
+      }
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scaleValue": JSON.stringify(scaleValue)
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 46,
           priority: events_emitter.EventPriority.LOW
         }
@@ -124,11 +145,10 @@ export default function transFormJsunit() {
         console.log("[testTransForm004] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('rotate3');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testTransForm004] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scale.x).assertEqual('1.000000');
-      expect(objNew.$attrs.scale.y).assertEqual('1.000000');
+      let strJsonNew: string = getInspectorByKey('rotate3');
+      console.info("[testTransForm004] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.scale.x).assertEqual('1.000000');
+      expect(JSON.parse(strJsonNew).$attrs.scale.y).assertEqual('1.000000');
       done();
     });
   })

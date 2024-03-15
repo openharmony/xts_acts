@@ -12,30 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import { MessageManager,Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct AlignContentFlexP_Fixed_Visibility {
   @State textVisibility: number = Visibility.Visible;
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('AlignContentFlex onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'visibility') {
         this.textVisibility = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
   build() {
     Column() {
-      
+
       Text('AlignContentFlexP_Fixed_Visibility').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Flex({
         direction: FlexDirection.Row,
@@ -43,7 +48,11 @@ struct AlignContentFlexP_Fixed_Visibility {
         alignContent: FlexAlign.SpaceEvenly,
         alignItems: ItemAlign.Start
       }) {
-        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).key('AlignContentFlexP_Fixed_Visibility_1')
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .key('AlignContentFlexP_Fixed_Visibility_1')
           .visibility(this.textVisibility)
         Text('2').width(150).height(100).backgroundColor(0xD2B48C).key('AlignContentFlexP_Fixed_Visibility_2')
         Text('3').width(150).height(150).backgroundColor(0xF5DEB3).key('AlignContentFlexP_Fixed_Visibility_3')

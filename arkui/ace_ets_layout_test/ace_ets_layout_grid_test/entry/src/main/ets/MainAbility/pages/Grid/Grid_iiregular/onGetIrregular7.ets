@@ -15,16 +15,17 @@
 // xxx.ets
 @Entry
 @Component
-struct  onGetIrregular7 {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
+struct onGetIrregular7 {
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
   layoutOptions2: GridLayoutOptions = {
     regularSize: [1, 1],
     irregularIndexes: [0, 4],
     onGetIrregularSizeByIndex: (index: number) => {
-      return [1,2]
+      return [1, 2];
     }
-  }
+  };
+
   build() {
     Column({ space: 5 }) {
       // 不使用scroll，需要undefined占位

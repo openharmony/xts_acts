@@ -109,7 +109,7 @@ void signalHandler(int signo)
     case SIGALRM:
         printf("Caught the SIGALRM signal!\n");
         break;
-    default :
+    default:
         printf("Can not catch the SIGALRM signal!\n");
         break;
     }

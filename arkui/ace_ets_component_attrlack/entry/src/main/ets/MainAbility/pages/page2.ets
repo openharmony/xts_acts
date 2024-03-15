@@ -24,9 +24,10 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct Second {
   private content: string = "这是第二页"
-  @State text: string = router.getParams()['text']
-  @State data: number[] = router.getParams()['data']
-  @State secondData : string = ''
+  @State params: Record<string, string | number[]> = router.getParams() as Record<string, string | number[]>;
+  @State text: string = this.params.text as string;
+  @State data: number[] = this.params.data as number[];
+  @State secondData: string = ''
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -36,15 +37,15 @@ struct Second {
       Text(this.text)
         .fontSize(30)
         .key("SingleDataText")
-        .onClick(()=>{
+        .onClick(() => {
           this.secondData = (this.data[1]).toString()
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ArrayData": this.secondData
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 102,
               priority: events_emitter.EventPriority.LOW
             }
@@ -54,10 +55,10 @@ struct Second {
             console.info("page1 emit action state err: " + JSON.stringify(err.message))
           }
         })
-        .margin({top:20})
+        .margin({ top: 20 })
       Text('第一页传来的数值是' + '  ' + this.secondData)
         .fontSize(20)
-        .margin({top:20})
+        .margin({ top: 20 })
         .backgroundColor('red')
     }
     .width('100%')

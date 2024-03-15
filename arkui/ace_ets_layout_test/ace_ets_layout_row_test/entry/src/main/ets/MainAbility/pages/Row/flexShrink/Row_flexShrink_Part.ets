@@ -12,30 +12,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
+
 @Entry
 @Component
 struct Row_flexShrink_Part {
-  @State addflexShrink: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State addflexShrink: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Row_flexShrink_Part onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addflexShrink') {
         this.addflexShrink = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
-    Row({space:10}) {
-        Row(){Text('1')}.width(300).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Part_011')
-        Row(){Text('2')}.width(100).height(100).flexShrink(this.addflexShrink).backgroundColor(0xD2B48C).key('Row_flexShrink_Part_012')
-        Row(){Text('3')}.width(100).height(100).flexShrink(this.addflexShrink).backgroundColor(0xF5DEB3).key('Row_flexShrink_Part_013')
+    Row({ space: 10 }) {
+      Row() {
+        Text('1')
+      }.width(300).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Part_011')
+
+      Row() {
+        Text('2')
+      }
+      .width(100)
+      .height(100)
+      .flexShrink(this.addflexShrink)
+      .backgroundColor(0xD2B48C)
+      .key('Row_flexShrink_Part_012')
+
+      Row() {
+        Text('3')
+      }
+      .width(100)
+      .height(100)
+      .flexShrink(this.addflexShrink)
+      .backgroundColor(0xF5DEB3)
+      .key('Row_flexShrink_Part_013')
     }.key('Row_flexShrink_Part_01').width(450).height(450).backgroundColor(0xAFEEEE)
   }
 }

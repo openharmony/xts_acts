@@ -12,16 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function ListItem_Delete_End_Resource() {
-  describe('ListItem_Delete_End_Resource', function () {
-    beforeEach(async function (done) {
+  describe('ListItem_Delete_End_Resource', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListItem_Delete_End_Resource beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/ListItem_Delete/ListItem_Delete_End_Resource',
       }
       try {
@@ -30,7 +46,7 @@ export default function ListItem_Delete_End_Resource() {
         console.info("get ListItem_Delete_End_Resource state pages:" + JSON.stringify(pages));
         if (!("List_SpaceChange" == pages.name)) {
           console.info("get ListItem_Delete_End_Resource pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ListItem_Delete_End_Resource page result:" + JSON.stringify(result));
         }
@@ -40,7 +56,7 @@ export default function ListItem_Delete_End_Resource() {
       console.info("ListItem_Delete_End_Resource beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       console.log('button click')
@@ -51,19 +67,19 @@ export default function ListItem_Delete_End_Resource() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ListItem_Delete_End_Resource_0100
-     * @tc.name      testListItem
-     * @tc.desc      Do not set actionAreaDistance and slide 70
+     * @tc.number SUB_ACE_ListItem_Delete_End_Resource_0100
+     * @tc.name testListItem
+     * @tc.desc Do not set actionAreaDistance and slide 70
      */
-    it('SUB_ACE_ListItem_Delete_End_Resource_0100', 0, async function (done) {
+    it('SUB_ACE_ListItem_Delete_End_Resource_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_Resource_0100] START');
       await CommonFunc.sleep(1000);
       console.log('get Initial value')
-      let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
-      let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
+      let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
 
       console.log('slide ')
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(
         Math.round(vp2px(300)), Math.round(vp2px(50)), Math.round(vp2px(50)), Math.round(vp2px(50))
@@ -71,26 +87,26 @@ export default function ListItem_Delete_End_Resource() {
       await CommonFunc.sleep(2000);
 
       let text_011 = getInspectorByKey('ListItem_Delete_End_Resource_text_01');
-      let textObj1 = JSON.parse(text_011);
-      expect(textObj1.$attrs.content).assertEqual('enterEndDeleteArea');
+
+      expect(JSON.parse(text_011).$attrs.content).assertEqual('enterEndDeleteArea');
 
       let text_022 = getInspectorByKey('ListItem_Delete_End_Resource_text_02');
-      let textObj2 = JSON.parse(text_022);
-      expect(textObj2.$attrs.content).assertEqual('not exitEndDeleteArea');
+
+      expect(JSON.parse(text_022).$attrs.content).assertEqual('not exitEndDeleteArea');
 
       let text_033 = getInspectorByKey('ListItem_Delete_End_Resource_text_03');
-      let textObj3 = JSON.parse(text_033);
-      expect(textObj3.$attrs.content).assertEqual('4');
+
+      expect(JSON.parse(text_033).$attrs.content).assertEqual('4');
 
       console.info('[SUB_ACE_ListItem_Delete_End_Resource_0100] END');
       done();
     });
     /**
-     * @tc.number    SUB_ACE_ListItem_Delete_End_Resource_0200
-     * @tc.name      testListItem
-     * @tc.desc      Do not set actionAreaDistance and slide 40
+     * @tc.number SUB_ACE_ListItem_Delete_End_Resource_0200
+     * @tc.name testListItem
+     * @tc.desc Do not set actionAreaDistance and slide 40
      */
-    it('SUB_ACE_ListItem_Delete_End_Resource_0200', 0, async function (done) {
+    it('SUB_ACE_ListItem_Delete_End_Resource_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItem_Delete_End_Resource_0200] START');
       await CommonFunc.sleep(1000);
 
@@ -102,8 +118,8 @@ export default function ListItem_Delete_End_Resource() {
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let ListItem_00 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
-      let ListItem_01 = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
+      let ListItem_00: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_00');
+      let ListItem_01: RectValue = CommonFunc.getComponentRect('ListItem_Delete_End_Resource_ListItem_01');
 
       console.log('slide ')
       await driver.swipe(
@@ -112,16 +128,16 @@ export default function ListItem_Delete_End_Resource() {
       await CommonFunc.sleep(2000);
 
       let text_011 = getInspectorByKey('ListItem_Delete_End_Resource_text_01');
-      let textObj1 = JSON.parse(text_011);
-      expect(textObj1.$attrs.content).assertEqual('not enterEndDeleteArea');
+
+      expect(JSON.parse(text_011).$attrs.content).assertEqual('not enterEndDeleteArea');
 
       let text_022 = getInspectorByKey('ListItem_Delete_End_Resource_text_02');
-      let textObj2 = JSON.parse(text_022);
-      expect(textObj2.$attrs.content).assertEqual('not exitEndDeleteArea');
+
+      expect(JSON.parse(text_022).$attrs.content).assertEqual('not exitEndDeleteArea');
 
       let text_033 = getInspectorByKey('ListItem_Delete_End_Resource_text_03');
-      let textObj3 = JSON.parse(text_033);
-      expect(textObj3.$attrs.content).assertEqual('5');
+
+      expect(JSON.parse(text_033).$attrs.content).assertEqual('5');
 
       console.info('[SUB_ACE_ListItem_Delete_End_Resource_0200] END');
       done();

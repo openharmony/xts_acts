@@ -15,20 +15,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type" : "ShellKit",
-            "run-command" : [
-                "mount -o rw,remount /",
-                "mkdir /etc/ssl/certs/test",
-                "mv /etc/ssl/certs/cacert.pem /etc/ssl/certs/test/cacert.pem"
-            ]
-        },
-        {
-            "type" : "ShellKit",
-            "teardown-command" : [
-                "mv /etc/ssl/certs/test/cacert.pem /etc/ssl/certs/cacert.pem"
-            ]
         }
     ]
 }

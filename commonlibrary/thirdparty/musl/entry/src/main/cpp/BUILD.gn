@@ -130,6 +130,20 @@ ohos_shared_library("direntndk") {
 
   output_extension = "so"
 }
+ohos_shared_library("errndk") {
+  testonly = true
+  subsystem_name = "thirdparty"
+  part_name = "musl"
+  sources = [ "./errndk.cpp" ]
+  libs = [ rebase_path(libcxx_ndk_shared_file) ]
+
+  include_dirs = [ "../cpp" ]
+  configs = [ ":config" ]
+
+  external_deps = [ "napi:ace_napi" ]
+
+  output_extension = "so"
+}
 ohos_shared_library("fcntlndk") {
   testonly = true
   subsystem_name = "thirdparty"
@@ -1143,6 +1157,20 @@ ohos_shared_library("utmpndk") {
   subsystem_name = "thirdparty"
   part_name = "musl"
   sources = [ "./utmpndk.cpp" ]
+  libs = [ rebase_path(libcxx_ndk_shared_file) ]
+
+  include_dirs = [ "../cpp" ]
+  configs = [ ":config" ]
+
+  external_deps = [ "napi:ace_napi" ]
+
+  output_extension = "so"
+}
+ohos_shared_library("utsnamendk") {
+  testonly = true
+  subsystem_name = "thirdparty"
+  part_name = "musl"
+  sources = [ "./utsnamendk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
   include_dirs = [ "../cpp" ]

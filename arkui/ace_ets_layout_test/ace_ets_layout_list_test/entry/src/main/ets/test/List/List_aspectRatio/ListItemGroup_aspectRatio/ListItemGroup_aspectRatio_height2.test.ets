@@ -12,18 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function ListItemGroup_aspectRatio_height2() {
-  describe('ListItemGroup_aspectRatio_height2', function () {
-    beforeEach(async function (done) {
+  describe('ListItemGroup_aspectRatio_height2', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListItemGroup_aspectRatio_height2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height2',
       }
       try {
         router.clear();
@@ -31,7 +47,7 @@ export default function ListItemGroup_aspectRatio_height2() {
         console.info("get ListItemGroup_aspectRatio_height2 state pages:" + JSON.stringify(pages));
         if (!("ListItemGroup_aspectRatio_height2" == pages.name)) {
           console.info("get ListItemGroup_aspectRatio_height2 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ListItemGroup_aspectRatio_height2 page result:" + JSON.stringify(result));
         }
@@ -41,7 +57,7 @@ export default function ListItemGroup_aspectRatio_height2() {
       console.info("ListItemGroup_aspectRatio_height2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.clear()
       console.info("ListItemGroup_aspectRatio_height2 after each called");
@@ -49,15 +65,17 @@ export default function ListItemGroup_aspectRatio_height2() {
 
 
     /**
-     * @tc.number    SUB_ACE_ListItemGroup_aspectRatio_height2_0100
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of ListItem to '0'
+     * @tc.number SUB_ACE_ListItemGroup_aspectRatio_height2_0100
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of ListItem to '0'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0100', 0, async function (done) {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0100] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'0'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '0'
+      });
       await CommonFunc.sleep(1000);
-      let ListItemGroup01 = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
 
       expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
@@ -67,15 +85,17 @@ export default function ListItemGroup_aspectRatio_height2() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ListItemGroup_aspectRatio_height2_0200
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of ListItem to '0.5'
+     * @tc.number SUB_ACE_ListItemGroup_aspectRatio_height2_0200
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of ListItem to '0.5'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0200', 0, async function (done) {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0200] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'0.5'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '0.5'
+      });
       await CommonFunc.sleep(1000);
-      let ListItemGroup01 = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
 
       expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
@@ -85,15 +105,17 @@ export default function ListItemGroup_aspectRatio_height2() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ListItemGroup_aspectRatio_height2_0300
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of ListItem to '2'
+     * @tc.number SUB_ACE_ListItemGroup_aspectRatio_height2_0300
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of ListItem to '2'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0300', 0, async function (done) {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0300] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'2'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '2'
+      });
       await CommonFunc.sleep(1000);
-      let ListItemGroup01 = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
 
       expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
@@ -103,15 +125,17 @@ export default function ListItemGroup_aspectRatio_height2() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ListItemGroup_aspectRatio_height2_0400
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of ListItem to '-1'
+     * @tc.number SUB_ACE_ListItemGroup_aspectRatio_height2_0400
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of ListItem to '-1'
      */
-    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0400', 0, async function (done) {
+    it('SUB_ACE_ListItemGroup_aspectRatio_height2_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0400] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'-1'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '-1'
+      });
       await CommonFunc.sleep(1000);
-      let ListItemGroup01 = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
+      let ListItemGroup01: RectValue = CommonFunc.getComponentRect('ListItemGroup_aspectRatio_height2_01');
 
       expect(Math.round(ListItemGroup01.right - ListItemGroup01.left)).assertEqual(Math.round(vp2px(300)));
       expect(Math.round(ListItemGroup01.bottom - ListItemGroup01.top)).assertEqual(Math.round(vp2px(420)));
@@ -119,7 +143,6 @@ export default function ListItemGroup_aspectRatio_height2() {
       console.info('[SUB_ACE_ListItemGroup_aspectRatio_height2_0400] END');
       done();
     });
-
 
 
   })

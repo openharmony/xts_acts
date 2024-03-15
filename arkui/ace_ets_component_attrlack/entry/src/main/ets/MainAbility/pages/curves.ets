@@ -28,12 +28,12 @@ struct CurvesEaseOut {
     Log.showInfo(TAG, `aboutToAppear CurvesEaseOut  start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CurvesEaseOut end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Button('click me')
         .align(Alignment.Center)
@@ -48,7 +48,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("EaseOutText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000, // 动画时长
           curve: Curve.EaseOut, // 动画曲线:以低速结束
@@ -70,7 +72,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("EaseInOutText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.EaseInOut, //以低速开始和结束
@@ -92,7 +96,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("FastOutSlowInText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.FastOutSlowIn, //标准曲线
@@ -114,7 +120,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("LinearOutSlowInText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.LinearOutSlowIn, //减速曲线
@@ -136,7 +144,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("FastOutLinearInText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.FastOutLinearIn, //加速曲线
@@ -158,7 +168,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("ExtremeDecelerationText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.ExtremeDeceleration, //急缓曲线
@@ -180,7 +192,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("SharpText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.Sharp, //锐利曲线
@@ -202,7 +216,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("RhythmText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.Rhythm, //节奏曲线
@@ -224,7 +240,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("SmoothText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.Smooth, //平滑曲线
@@ -246,7 +264,9 @@ struct CurvesEaseOut {
           this.flag = !this.flag
         })
         .key("FrictionText")
-        .width(this.widthSize).height(this.heightSize).backgroundColor(0x317aff)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(0x317aff)
         .animation({
           duration: 1000,
           curve: Curve.Friction, //阻尼曲线
@@ -254,8 +274,9 @@ struct CurvesEaseOut {
           iterations: 1,
           playMode: PlayMode.Normal
         })
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

@@ -13,26 +13,27 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
+
 
 export default function rowSplitJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  describe('RowSplitTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/RowSplit',
+  describe('RowSplitTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RowSplit',
       }
       try {
         router.clear();
@@ -40,50 +41,50 @@ export default function rowSplitJsunit() {
         console.info("get RowSplit state success " + JSON.stringify(pages));
         if (!("RowSplit" == pages.name)) {
           console.info("get RowSplit state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push RowSplit page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push RowSplit page error " + JSON.stringify(result));
+        console.error("push RowSplit page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("RowSplit after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1010
-     * @tc.name      testRowSplitGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1010
+     * @tc.name testRowSplitGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('testRowSplitGetInspectorByKey010', 0, async function (done) {
+    it('testRowSplitGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('rowSplit');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd rowSplit component obj is: " + JSON.stringify(obj));
       console.log("cd rowSplit type" + JSON.stringify(obj.$type));
       console.log("cd rowSplit  resizeable" + JSON.stringify(obj.$attrs.resizeable));
-      expect(obj.$type).assertEqual('RowSplit')
-      expect(obj.$attrs.resizeable).assertEqual('false')
+      expect(obj.$type).assertEqual('RowSplit');
+      expect(obj.$attrs.resizeable).assertEqual('false');
       console.info('cd RowSplitInspectorByKey END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1020
-     * @tc.name      testRowSplitGetInspectorByKey020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_1020
+     * @tc.name testRowSplitGetInspectorByKey020
+     * @tc.desc aceEtsTest
      */
-    it('testRowSplitGetInspectorByKey020', 0, async function (done) {
+    it('testRowSplitGetInspectorByKey020', 0, async (done: Function) => {
       let strJson = getInspectorByKey('rowSplit1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd rowSplit1 component obj is: " + JSON.stringify(obj));
       console.log("cd rowSplit1  resizeable" + JSON.stringify(obj.$attrs.resizeable));
-      expect(obj.$attrs.resizeable).assertEqual('true')
+      expect(obj.$attrs.resizeable).assertEqual('true');
       console.info('cd RowSplit1InspectorByKey END');
       done();
     });

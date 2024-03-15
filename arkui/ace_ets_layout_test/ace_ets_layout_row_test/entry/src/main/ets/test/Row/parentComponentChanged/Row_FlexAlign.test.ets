@@ -15,17 +15,18 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_FlexAlign() {
 
-  describe('Row_FlexAlign', function () {
-    beforeEach(async function (done) {
+  describe('Row_FlexAlign', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_FlexAlign beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_FlexAlign',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_FlexAlign',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -33,7 +34,7 @@ export default function Row_FlexAlign() {
         console.info("get Row_FlexAlign state success " + JSON.stringify(pages));
         if (!("Row_FlexAlign" == pages.name)) {
           console.info("get Row_FlexAlign state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Row_FlexAlign page success " + JSON.stringify(result));
         }
@@ -45,28 +46,30 @@ export default function Row_FlexAlign() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_FlexAlign after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1100
-     * @tc.name      testRowJustifyContentFlexAlignStart
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.Start
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1100
+     * @tc.name testRowJustifyContentFlexAlignStart
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.Start
      */
 
-    it('testRowJustifyContentFlexAlignStart', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignStart', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignStart START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.Start });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.Start
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -80,7 +83,7 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Start");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.Start");
 
       expect(Math.abs((Text1.left) - (Row.left)) <= 1).assertTrue();
       expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
@@ -97,22 +100,24 @@ export default function Row_FlexAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1200
-     * @tc.name      testRowJustifyContentFlexAlignCenter
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.Center
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1200
+     * @tc.name testRowJustifyContentFlexAlignCenter
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.Center
      */
 
-    it('testRowJustifyContentFlexAlignCenter', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignCenter', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignCenter START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.Center });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.Center
+      });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -126,7 +131,7 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Center");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.Center");
 
       expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
       expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
@@ -140,22 +145,24 @@ export default function Row_FlexAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1300
-     * @tc.name      testRowJustifyContentFlexAlignEnd
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.End
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1300
+     * @tc.name testRowJustifyContentFlexAlignEnd
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.End
      */
 
-    it('testRowJustifyContentFlexAlignEnd', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignEnd', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignEnd START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.End });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.End
+      });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -169,7 +176,7 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.End");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.End");
 
       expect(Math.abs(Text3.right - Row.right) <= 1).assertTrue();
       expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
@@ -184,22 +191,24 @@ export default function Row_FlexAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1400
-     * @tc.name      testRowJustifyContentFlexAlignSpaceBetween
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.SpaceBetween
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1400
+     * @tc.name testRowJustifyContentFlexAlignSpaceBetween
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceBetween
      */
 
-    it('testRowJustifyContentFlexAlignSpaceBetween', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignSpaceBetween', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceBetween START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceBetween });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.SpaceBetween
+      });
       await CommonFunc.sleep(3000)
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -213,12 +222,14 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceBetween");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.SpaceBetween");
 
       expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
       expect(Math.abs(Text3.right - Row.right) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text2.left - Text1.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text3.left - Text2.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text2.left - Text1.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text3.left - Text2.right) * 10) / 10)) - (Math.round(vp2px(25)))) <= 1)
+        .assertTrue();
       expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
       expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();
       expect(Math.abs(Math.round(Text3.top - Row.top) - Math.round(Row.bottom - Text3.bottom)) <= 1).assertTrue();
@@ -228,22 +239,24 @@ export default function Row_FlexAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1500
-     * @tc.name      testRowJustifyContentFlexAlignSpaceAround
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.SpaceAround
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1500
+     * @tc.name testRowJustifyContentFlexAlignSpaceAround
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceAround
      */
 
-    it('testRowJustifyContentFlexAlignSpaceAround', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignSpaceAround', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceAround START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceAround });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.SpaceAround
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -258,10 +271,11 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceAround");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.SpaceAround");
 
       expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
-      expect(Math.abs(Math.round((Text1.left - Row.left) * 10) / 10 - Math.round(vp2px(50 / 6) * 10) / 10) <= 1).assertTrue();
+      expect(Math.abs(Math.round((Text1.left - Row.left) * 10) / 10 - Math.round(vp2px(50 / 6) * 10) / 10) <= 1)
+        .assertTrue();
       expect(Math.abs((Math.round(Text2.left - Text1.right)) - (Math.round(vp2px(50 / 3)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.left - Text2.right)) - (Math.round(vp2px(50 / 3)))) <= 1).assertTrue();
 
@@ -274,22 +288,24 @@ export default function Row_FlexAlign() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1600
-     * @tc.name      testRowJustifyContentFlexAlignSpaceEvenly
-     * @tc.desc      The JustifyContent property of the ROW component is set to FlexAlign.SpaceEvenly
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_1600
+     * @tc.name testRowJustifyContentFlexAlignSpaceEvenly
+     * @tc.desc The JustifyContent property of the ROW component is set to FlexAlign.SpaceEvenly
      */
 
-    it('testRowJustifyContentFlexAlignSpaceEvenly', 0, async function (done) {
+    it('testRowJustifyContentFlexAlignSpaceEvenly', 0, async (done: Function) => {
       console.info('testRowJustifyContentFlexAlignSpaceEvenly START');
-      globalThis.value.message.notify({ name: 'justifyContent', value: FlexAlign.SpaceEvenly });
+      globalThis.value.message.notify({
+        name: 'justifyContent', value: FlexAlign.SpaceEvenly
+      });
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('Row_ParentComponentChanged_Row');
-      let obj = JSON.parse(strJson);
-      console.info('Row obj.$attrs is:' + JSON.stringify(obj.$attrs));
-      let Row = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
-      let Text1 = CommonFunc.getComponentRect('Text1');
-      let Text2 = CommonFunc.getComponentRect('Text2');
-      let Text3 = CommonFunc.getComponentRect('Text3');
+
+      console.info('Row obj.$attrs is:' + JSON.stringify(JSON.parse(strJson).$attrs));
+      let Row: RectValue = CommonFunc.getComponentRect('Row_ParentComponentChanged_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
       console.log('Text1 rect_value is:' + JSON.stringify(Text1));
@@ -303,12 +319,15 @@ export default function Row_FlexAlign() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceEvenly");
+      expect(JSON.parse(strJson).$attrs.justifyContent).assertEqual("FlexAlign.SpaceEvenly");
 
       expect(Math.abs(Math.round(Text1.left - Row.left) - Math.round(Row.right - Text3.right)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Math.round((Text1.left - Row.left) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Math.round((Text2.left - Text1.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(Math.round((Text3.left - Text2.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text1.left - Row.left) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text2.left - Text1.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Math.round((Text3.left - Text2.right) * 100) / 100) - Math.round(Math.round(vp2px(50 / 4) * 100) / 100)) <= 1)
+        .assertTrue();
 
       expect(Math.abs(Math.round(Text1.top - Row.top) - Math.round(Row.bottom - Text1.bottom)) <= 1).assertTrue();
       expect(Math.abs(Math.round(Text2.top - Row.top) - Math.round(Row.bottom - Text2.bottom)) <= 1).assertTrue();

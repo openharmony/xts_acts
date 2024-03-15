@@ -12,30 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct Row_FlexAlign {
   @State rowjustifyContent: number = FlexAlign.Start;
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Row_FlexAlign onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'justifyContent') {
         this.rowjustifyContent = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
       Text('Row_FlexAlign').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Row({ space:10 }) {
+      Row({ space: 10 }) {
         Text('1').width(100).height(50).backgroundColor(0xAFEEEE).key('Text1')
         Text('2').width(100).height(100).backgroundColor(0x00FFFF).key('Text2')
         Text('3').width(100).height(150).backgroundColor(0xAFEEEE).key('Text3')

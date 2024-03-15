@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct StepperExample {
-  @State currentIndex: number= 0;
+  @State currentIndex: number = 0;
   @State firstState: ItemState = ItemState.Normal
   @State secondState: ItemState = ItemState.Normal
 
@@ -50,7 +50,7 @@ struct StepperExample {
       .prevLabel('Previous')
       .status(this.firstState)
       .position({ x: '35%,y:0' })
-   }
+    }
     .key('stepper')
     .onFinish(() => {
       console.info('onFinish')

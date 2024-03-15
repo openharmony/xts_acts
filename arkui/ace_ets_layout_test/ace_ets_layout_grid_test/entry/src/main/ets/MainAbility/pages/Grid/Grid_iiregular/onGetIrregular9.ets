@@ -15,16 +15,17 @@
 // xxx.ets
 @Entry
 @Component
-struct  onGetIrregular9 {
-  @State Number: String[] = ['0', '1', '2', '3', '4','5','6','7','8','9']
-  scroller: Scroller = new Scroller()
+struct onGetIrregular9 {
+  @State Number: String[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  scroller: Scroller = new Scroller();
   layoutOptions2: GridLayoutOptions = {
     regularSize: [1, 1],
-    irregularIndexes: [0, 4],   // 索引为0和7的GridItem占用的列数由onGetIrregularSizeByIndex指定
+    irregularIndexes: [0, 4], // 索引为0和7的GridItem占用的列数由onGetIrregularSizeByIndex指定
     onGetIrregularSizeByIndex: (index: number) => {
-      return [3,1]
+      return [3, 1];
     }
-  }
+  };
+
   build() {
     Column({ space: 5 }) {
       // 不使用scroll，需要undefined占位
@@ -51,6 +52,7 @@ struct  onGetIrregular9 {
       .backgroundColor(0xFAEEE0)
       .height(350)
       .key('GridIssue')
+
       // .layoutDirection(GridDirection.Row)
     }.width('100%').margin({ top: 5 })
   }

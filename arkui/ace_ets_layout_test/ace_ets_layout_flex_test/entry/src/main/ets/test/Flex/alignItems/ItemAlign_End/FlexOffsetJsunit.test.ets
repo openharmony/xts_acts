@@ -14,14 +14,15 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+
 export default function flexOffset_EndJsunit() {
-  describe('flexItemAlignEndTest1', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexOffset',
+  describe('flexItemAlignEndTest1', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_End/FlexOffset',
       }
       try {
         router.clear();
@@ -30,50 +31,52 @@ export default function flexOffset_EndJsunit() {
         console.info("get FlexOffset state success " + JSON.stringify(pages));
         if (!("FlexOffset" == pages.name)) {
           console.info("get FlexOffset state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexOffset page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexOffset page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexOffset after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_1000
-     * @tc.name      testFlexItemAlignEndSetOffset
-     * @tc.desc      First subcomponent set offset attribute.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_END_1000
+     * @tc.name testFlexItemAlignEndSetOffset
+     * @tc.desc First subcomponent set offset attribute.
      */
-    it('testFlexItemAlignEndSetOffset', 0, async function (done) {
+    it('testFlexItemAlignEndSetOffset', 0, async () => {
       console.info('new testFlexItemAlignEndSetOffset START');
       let strJson1 = getInspectorByKey('flexOffset');
-      let obj1 = JSON.parse(strJson1);
-      let textOffset01 = CommonFunc.getComponentRect('textOffset01');
-      let textOffset02 = CommonFunc.getComponentRect('textOffset02');
-      let textOffset03 = CommonFunc.getComponentRect('textOffset03');
-      let flexOffset = CommonFunc.getComponentRect('flexOffset');
-      expect(Math.abs(((textOffset01.right - textOffset02.left)*10)/10 - Math.round(vp2px(15)*10)/10) <= 1).assertTrue()
+
+      let textOffset01: RectValue = CommonFunc.getComponentRect('textOffset01');
+      let textOffset02: RectValue = CommonFunc.getComponentRect('textOffset02');
+      let textOffset03: RectValue = CommonFunc.getComponentRect('textOffset03');
+      let flexOffset: RectValue = CommonFunc.getComponentRect('flexOffset');
+      expect(Math.abs(((textOffset01.right - textOffset02.left) * 10) / 10 - Math.round(vp2px(15) * 10) / 10) <= 1)
+        .assertTrue()
       expect(Math.abs(textOffset01.bottom - flexOffset.bottom - Math.round(vp2px(30))) <= 1).assertTrue()
-      expect(Math.abs(((textOffset01.left - flexOffset.left)*10)/10 - Math.round(vp2px(15)*10)/10) <= 1).assertTrue()
+      expect(Math.abs(((textOffset01.left - flexOffset.left) * 10) / 10 - Math.round(vp2px(15) * 10) / 10) <= 1)
+        .assertTrue()
       expect(Math.abs(textOffset03.left - textOffset02.right) <= 1).assertTrue()
       expect(Math.abs(textOffset02.bottom - textOffset03.bottom) <= 1).assertTrue()
       expect(Math.abs(textOffset03.bottom - flexOffset.bottom) <= 1).assertTrue()
 
-      expect(Math.abs(textOffset01.bottom - textOffset01.top  - Math.round(vp2px(50))) <= 1).assertTrue()
+      expect(Math.abs(textOffset01.bottom - textOffset01.top - Math.round(vp2px(50))) <= 1).assertTrue()
       expect(Math.abs(textOffset02.bottom - textOffset02.top - Math.round(vp2px(100))) <= 1).assertTrue()
       expect(Math.abs(textOffset03.bottom - textOffset03.top - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textOffset01.right - textOffset01.left - Math.round(vp2px(150))) <= 1).assertTrue()
       // expect(Math.abs(textOffset02.right - textOffset02.left - Math.round(vp2px(150))) <= 1).assertTrue()
       expect(Math.abs(textOffset03.right - textOffset03.left - Math.round(vp2px(150))) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
       console.info('new testFlexItemAlignEndSetOffset END');
-      done();
+
     });
   })
 }

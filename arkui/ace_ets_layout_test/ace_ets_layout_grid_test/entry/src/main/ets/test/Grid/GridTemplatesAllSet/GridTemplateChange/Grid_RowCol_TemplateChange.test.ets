@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_RowCol_TemplateChange() {
-  describe('Grid_RowCol_TemplateChangeTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_TemplateChangeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_TemplateChangeTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_RowCol_TemplateChange() {
         console.info("get Grid_RowCol_TemplateChange state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_TemplateChange" == pages.name)) {
           console.info("get Grid_RowCol_TemplateChange pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_TemplateChange page result:" + JSON.stringify(result));
         }
@@ -40,26 +41,26 @@ export default function Grid_RowCol_TemplateChange() {
       console.info("Grid_RowCol_TemplateChangeTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_RowCol_TemplateChange after each called")
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100
-     * @tc.name      testGridRowColTemplateChange01
-     * @tc.desc      Grid is divided into 4 equal parts, 4 components
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0100
+     * @tc.name testGridRowColTemplateChange01
+     * @tc.desc Grid is divided into 4 equal parts, 4 components
      */
-    it('testGridRowColTemplateChange01', 0, async function (done) {
+    it('testGridRowColTemplateChange01', 0, async (done: Function) => {
       console.info('[testGridRowColTemplateChange01] START');
       await CommonFunc.sleep(1000);
       let gridContainerStrJson = getInspectorByKey('GridTemplateChange_Grid_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let GridTemplateChange_Grid_011 = CommonFunc.getComponentRect('GridTemplateChange_Grid_011');
-      let GridTemplateChange_Grid_012 = CommonFunc.getComponentRect('GridTemplateChange_Grid_012');
-      let GridTemplateChange_Grid_013 = CommonFunc.getComponentRect('GridTemplateChange_Grid_013');
-      let GridTemplateChange_Grid_014 = CommonFunc.getComponentRect('GridTemplateChange_Grid_014');
-      let GridTemplateChange_Grid_01 = CommonFunc.getComponentRect('GridTemplateChange_Grid_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let GridTemplateChange_Grid_011: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_011');
+      let GridTemplateChange_Grid_012: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_012');
+      let GridTemplateChange_Grid_013: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_013');
+      let GridTemplateChange_Grid_014: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_014');
+      let GridTemplateChange_Grid_01: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_01');
       expect(Math.abs(GridTemplateChange_Grid_011.left - GridTemplateChange_Grid_01.left) <= 1).assertTrue();
       expect(Math.abs(GridTemplateChange_Grid_013.left - GridTemplateChange_Grid_01.left) <= 1).assertTrue();
 
@@ -78,36 +79,48 @@ export default function Grid_RowCol_TemplateChange() {
       expect(Math.abs(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_01.bottom) <= 1).assertTrue();
       expect(Math.abs(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_01.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left - vp2px(150)) <= 1)
+        .assertTrue();
 
-      expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top - vp2px(150)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top - vp2px(150)) <= 1).assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top - vp2px(150)) <= 1)
+        .assertTrue();
       console.info('[testGridRowColTemplateChange01] END');
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200
-     * @tc.name      testGridRowColTemplateChange02
-     * @tc.desc      Grid is divided into 9 equal parts, 4 components
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDTEMPLATECHANGE_0200
+     * @tc.name testGridRowColTemplateChange02
+     * @tc.desc Grid is divided into 9 equal parts, 4 components
      */
-    it('testGridRowColTemplateChange02', 0, async function (done) {
+    it('testGridRowColTemplateChange02', 0, async (done: Function) => {
       console.info('[testGridRowColTemplateChange02] START');
-      globalThis.value.message.notify({name:'testColumnsTemplate', value:"1fr 1fr 1fr"});
-      globalThis.value.message.notify({name:'testRowsTemplate', value:"1fr 1fr 1fr"});
+      globalThis.value.message.notify({
+        name: 'testColumnsTemplate', value: "1fr 1fr 1fr"
+      });
+      globalThis.value.message.notify({
+        name: 'testRowsTemplate', value: "1fr 1fr 1fr"
+      });
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('GridTemplateChange_Grid_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let GridTemplateChange_Grid_011 = CommonFunc.getComponentRect('GridTemplateChange_Grid_011');
-      let GridTemplateChange_Grid_012 = CommonFunc.getComponentRect('GridTemplateChange_Grid_012');
-      let GridTemplateChange_Grid_013 = CommonFunc.getComponentRect('GridTemplateChange_Grid_013');
-      let GridTemplateChange_Grid_014 = CommonFunc.getComponentRect('GridTemplateChange_Grid_014');
-      let GridTemplateChange_Grid_01 = CommonFunc.getComponentRect('GridTemplateChange_Grid_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let GridTemplateChange_Grid_011: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_011');
+      let GridTemplateChange_Grid_012: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_012');
+      let GridTemplateChange_Grid_013: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_013');
+      let GridTemplateChange_Grid_014: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_014');
+      let GridTemplateChange_Grid_01: RectValue = CommonFunc.getComponentRect('GridTemplateChange_Grid_01');
       expect(Math.abs(GridTemplateChange_Grid_011.left - GridTemplateChange_Grid_01.left) <= 1).assertTrue();
       expect(Math.abs(GridTemplateChange_Grid_014.left - GridTemplateChange_Grid_01.left) <= 1).assertTrue();
 
@@ -124,15 +137,23 @@ export default function Grid_RowCol_TemplateChange() {
       expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_012.bottom) <= 1).assertTrue();
       expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_013.bottom) <= 1).assertTrue();
 
-      expect(Math.abs(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left - vp2px(100)) <= 1)
+        .assertTrue();
 
-      expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top - vp2px(100)) <= 1).assertTrue();
-      expect(Math.abs(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top - vp2px(100)) <= 1)
+        .assertTrue();
       console.info('[testGridRowColTemplateChange02] END');
       done();
     });
