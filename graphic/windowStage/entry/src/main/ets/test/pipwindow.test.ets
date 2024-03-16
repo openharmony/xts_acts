@@ -520,14 +520,14 @@ export default function pipWindowTest(context1) {
     })
     /**
      * @tc.number     : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1200
-     * @tc.name       : testPiPTemplateType
-     * @tc.desc       : To test the function of testPiPTemplateType
+     * @tc.name       : testPiPEvent
+     * @tc.desc       : To test the function of testPiPEvent
      * @tc.size      : MediumTestTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testPiPTemplateType', 0, async function (done) {
-      let msg = "testPiPTemplateType"
+    it('testPiPEvent', 0, async function (done) {
+      let msg = "testPiPEvent"
       try {
         let event: pipWindow.PiPActionEventType = "playbackStateChanged";
         let event2: pipWindow.PiPVideoActionEvent = "playbackStateChanged";
