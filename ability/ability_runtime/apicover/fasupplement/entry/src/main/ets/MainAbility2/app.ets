@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var printLog1 = "Fa:MainAbility2:";
-var listPush1 = "Fa_MainAbility2_";
+let printLog1 = "Fa:MainAbility2:";
+let listPush1 = "Fa_MainAbility2_";
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
