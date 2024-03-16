@@ -16,7 +16,7 @@
 @Component
 export struct NavRouterView {
   @State isActive: boolean = false;
-  @State dex: number = 0;
+  @State indexDev: number = 0;
   @Link _offset: Position;
   private componentKey: string;
 
