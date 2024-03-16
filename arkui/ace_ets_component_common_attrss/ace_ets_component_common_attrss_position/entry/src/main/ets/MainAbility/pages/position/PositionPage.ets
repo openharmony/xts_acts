@@ -32,25 +32,28 @@ import router from '@ohos.router'
 @Component
 struct PositionPage {
   @State _position: Position = { x: 0, y: 0 };
-  @State targetView: string = router.getParams() ? router.getParams()['view']['targetView'] : ''
-  @State componentKey: string = router.getParams() ? router.getParams()['view']['componentKey'] : ''
-  @State parentWidth: number = router.getParams() ? router.getParams()['view']['parentWidth'] : 0
-  @State parentHeight: number = router.getParams() ? router.getParams()['view']['parentHeight'] : 0
-  @State parentComponentKey: string = router.getParams() ? router.getParams()['view']['parentComponentKey'] : ''
+  @State targetView: string = router.getParams() ? (router.getParams() as ESObject)['view']['targetView'] : ''
+  @State componentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['componentKey'] : ''
+  @State parentWidth: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentWidth'] : 0
+  @State parentHeight: number = router.getParams() ? (router.getParams() as ESObject)['view']['parentHeight'] : 0
+  @State parentComponentKey: string = router.getParams() ? (router.getParams() as ESObject)['view']['parentComponentKey'] : ''
   @State referenceComponentKey: string =
-    router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
+    router.getParams() ? (router.getParams() as ESObject)['view']['referenceComponentKey'] : ''
 
   onPageShow() {
     console.info('[PositionPage] page show called ')
 
     //Register data change call back.
-    attrsManager.registerDataChange(value => this._position = value)
+    attrsManager.registerDataChange((value: ESObject) => {
+      this._position = value
+    })
   }
 
   /**
    * Set common style.
    */
-  @Styles commonStyle(){
+  @Styles
+  commonStyle(){
     .position(this._position)
     .key(this.componentKey)
   }
@@ -87,7 +90,10 @@ struct PositionPage {
             .height(this.parentHeight)
             .key(this.parentComponentKey)
             .padding(0)
-          }.width('100%').height('100%').backgroundColor(Color.Green)
+          }
+          .width('100%')
+          .height('100%')
+          .backgroundColor(Color.Green)
         } else if (this.targetView == 'ListItem') {
           List({ space: 20, initialIndex: 0 }) {
             ListItem() {
@@ -120,12 +126,22 @@ struct PositionPage {
         } else if (this.targetView == 'TabContent') {
           Tabs() {
             TabContent() {
-              Text('TabContent Test').width('100%').height('100%').backgroundColor(Color.White)
-            }.tabBar('Tabs1').commonStyle()
+              Text('TabContent Test')
+                .width('100%')
+                .height('100%')
+                .backgroundColor(Color.White)
+            }
+            .tabBar('Tabs1')
+            .commonStyle()
 
             TabContent() {
-              Text('referenceComponent').width('100%').height('100%').backgroundColor(Color.Orange)
-            }.tabBar('Tabs2').key(this.referenceComponentKey)
+              Text('referenceComponent')
+                .width('100%')
+                .height('100%')
+                .backgroundColor(Color.Orange)
+            }
+            .tabBar('Tabs2')
+            .key(this.referenceComponentKey)
           }
           .width(this.parentWidth)
           .height(this.parentHeight)
@@ -133,9 +149,15 @@ struct PositionPage {
         } else if (this.targetView == 'ColumnSplit') {
           Column() {
             Text('The secant line can be dragged').fontSize(9)
-              .fontColor(0xCCCCCC).width('90%').key(this.referenceComponentKey)
+              .fontColor(0xCCCCCC)
+              .width('90%')
+              .key(this.referenceComponentKey)
             ColumnSplit() {
-              Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+              Text('1')
+                .width('100%')
+                .height(50)
+                .backgroundColor(0xF5DEB3)
+                .textAlign(TextAlign.Center)
             }
             .commonStyle()
             .borderWidth(1)
@@ -147,15 +169,39 @@ struct PositionPage {
         } else if (this.targetView == 'RowSplit') {
           Column() {
             Text('The second line can be dragged').fontSize(9)
-              .fontColor(0xCCCCCC).width('90%').key(this.referenceComponentKey)
+              .fontColor(0xCCCCCC)
+              .width('90%')
+              .key(this.referenceComponentKey)
             RowSplit() {
-              Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
-              Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
-              Text('3').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
-              Text('4').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
-              Text('5').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+              Text('1')
+                .width('10%')
+                .height(100)
+                .backgroundColor(0xF5DEB3)
+                .textAlign(TextAlign.Center)
+              Text('2')
+                .width('10%')
+                .height(100)
+                .backgroundColor(0xD2B48C)
+                .textAlign(TextAlign.Center)
+              Text('3')
+                .width('10%')
+                .height(100)
+                .backgroundColor(0xF5DEB3)
+                .textAlign(TextAlign.Center)
+              Text('4')
+                .width('10%')
+                .height(100)
+                .backgroundColor(0xD2B48C)
+                .textAlign(TextAlign.Center)
+              Text('5')
+                .width('10%')
+                .height(100)
+                .backgroundColor(0xF5DEB3)
+                .textAlign(TextAlign.Center)
             }
-            .width('90%').height(100).commonStyle()
+            .width('90%')
+            .height(100)
+            .commonStyle()
           }
           .width(this.parentWidth)
           .height(this.parentHeight)
@@ -168,12 +214,22 @@ struct PositionPage {
             direction: GridRowDirection.Row
           }) {
             GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-              Row().width('100%').height('20vp')
-            }.borderColor(Color.Green).borderWidth(2).commonStyle()
+              Row()
+                .width('100%')
+                .height('20vp')
+            }
+            .borderColor(Color.Green)
+            .borderWidth(2)
+            .commonStyle()
 
             GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-              Row().width('100%').height('20vp')
-            }.borderColor(Color.Yellow).borderWidth(2).key(this.referenceComponentKey)
+              Row()
+                .width('100%')
+                .height('20vp')
+            }
+            .borderColor(Color.Yellow)
+            .borderWidth(2)
+            .key(this.referenceComponentKey)
           }
           .width(this.parentWidth)
           .height(this.parentHeight)
@@ -225,11 +281,16 @@ struct PositionPage {
             } else if (this.targetView == 'Button') {
               Button('button1').commonStyle()
             } else if (this.targetView == 'Checkbox') {
-              Checkbox({ name: 'checkbox1', group: 'checkboxGroup' }).commonStyle().margin(0)
+              Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+                .commonStyle()
+                .margin(0)
             } else if (this.targetView == 'CheckboxGroup') {
-              CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().margin(0)
+              CheckboxGroup({ group: 'checkboxGroup' })
+                .commonStyle()
+                .margin(0)
             } else if (this.targetView == 'DataPanel') {
-              DataPanel({ values: [25], max: 100, type: DataPanelType.Circle }).commonStyle()
+              DataPanel({ values: [25], max: 100, type: DataPanelType.Circle })
+                .commonStyle()
             } else if (this.targetView == 'DatePicker') {
               DatePicker({
                 start: new Date('1970-1-1'),
@@ -237,13 +298,20 @@ struct PositionPage {
                 selected: new Date()
               }).commonStyle()
             } else if (this.targetView == 'Divider') {
-              Divider().strokeWidth(8).vertical(true).commonStyle()
+              Divider()
+                .strokeWidth(8)
+                .vertical(true)
+                .commonStyle()
             } else if (this.targetView == 'Gauge') {
-              Gauge({ value: 75 }).colors([[Color.White, 1], [Color.Black, 1]]).commonStyle()
+              Gauge({ value: 75 }).colors([[Color.White, 1], [Color.Black, 1]])
+                .commonStyle()
             } else if (this.targetView == 'Image') {
               Image($r('app.media.icon')).commonStyle()
             } else if (this.targetView == 'ImageAnimator') {
-              ImageAnimator().images([{ src: $r('app.media.icon') }]).width('100%').height('100%').commonStyle()
+              ImageAnimator().images([{ src: $r('app.media.icon') }])
+                .width('100%')
+                .height('100%')
+                .commonStyle()
             } else if (this.targetView == 'LoadingProgress') {
               LoadingProgress().color(Color.Blue).commonStyle()
             } else if (this.targetView == 'Marquee') {
@@ -260,16 +328,30 @@ struct PositionPage {
             } else if (this.targetView == 'Progress') {
               Progress({ value: 50, type: ProgressType.Linear }).commonStyle()
             } else if (this.targetView == 'QRCode') {
-              QRCode('QRCode').color(0xF7CE00).width(200).height(200).commonStyle()
+              QRCode('QRCode')
+                .color(0xF7CE00)
+                .width(200)
+                .height(200)
+                .commonStyle()
             } else if (this.targetView == 'Radio') {
-              Radio({ value: 'Radio1', group: 'radioGroup' }).commonStyle().margin(0)
+              Radio({ value: 'Radio1', group: 'radioGroup' })
+                .commonStyle()
+                .margin(0)
             } else if (this.targetView == 'Rating') {
-              Rating({ rating: 4 }).stars(5).commonStyle()
+              Rating({ rating: 4 })
+                .stars(5)
+                .commonStyle()
             } else if (this.targetView == 'ScrollBar') {
               ScrollBar({ scroller: new Scroller(), state: BarState.On }) {
-                Text().width(20).height(100).borderRadius(10)
+                Text()
+                  .width(20)
+                  .height(100)
+                  .borderRadius(10)
                   .backgroundColor('#C0C0C0')
-              }.width(20).backgroundColor('#ededed').commonStyle()
+              }
+              .width(20)
+              .backgroundColor('#ededed')
+              .commonStyle()
             } else if (this.targetView == 'Stepper') {
               StepperView({ _position: $_position, componentKey: this.componentKey });
             } else if (this.targetView == 'Search') {
@@ -288,13 +370,22 @@ struct PositionPage {
                 .selectedColor('#4169E1')
                 .commonStyle()
             } else if (this.targetView == 'Text') {
-              Text('text').fontColor(Color.White).fontSize(30).commonStyle()
+              Text('text')
+                .fontColor(Color.White)
+                .fontSize(30)
+                .commonStyle()
             } else if (this.targetView == 'TextArea') {
-              TextArea({ placeholder: 'TextArea', }).backgroundColor(Color.White).commonStyle()
+              TextArea({ placeholder: 'TextArea', })
+                .backgroundColor(Color.White)
+                .commonStyle()
             } else if (this.targetView == 'TextClock') {
-              TextClock({ timeZoneOffset: -8 }).format('hms').commonStyle()
+              TextClock({ timeZoneOffset: -8 })
+                .format('hms')
+                .commonStyle()
             } else if (this.targetView == 'TextInput') {
-              TextInput({ placeholder: 'TextInput' }).backgroundColor(Color.White).commonStyle()
+              TextInput({ placeholder: 'TextInput' })
+                .backgroundColor(Color.White)
+                .commonStyle()
             } else if (this.targetView == 'TextPicker') {
               TextPicker({ range: ['apple1', 'orange2', 'peach3'], selected: 1 }).commonStyle()
             } else if (this.targetView == 'TextTimer') {
@@ -311,13 +402,21 @@ struct PositionPage {
                 Button('BadgeContent')
               }.commonStyle()
             } else if (this.targetView == 'Column') {
-              Column().height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+              Column()
+                .height('50%')
+                .width('50%')
+                .backgroundColor(Color.Green)
+                .commonStyle()
             } else if (this.targetView == 'Counter') {
               Counter() {
                 Text('1')
               }.commonStyle()
             } else if (this.targetView == 'Flex') {
-              Flex().height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+              Flex()
+                .height('50%')
+                .width('50%')
+                .backgroundColor(Color.Green)
+                .commonStyle()
             } else if (this.targetView == 'GridRow') {
               GridRow({
                 columns: 5,
@@ -326,19 +425,27 @@ struct PositionPage {
                 direction: GridRowDirection.Row
               }) {
                 ForEach([Color.Red, Color.Orange, Color.Yellow, Color.Green,
-                Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color) => {
+                  Color.Pink, Color.Grey, Color.Blue, Color.Brown], (color: Color) => {
                   GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-                    Row().width('100%').height('20vp')
+                    Row()
+                      .width('100%')
+                      .height('20vp')
                   }.borderColor(color).borderWidth(2)
                 })
-              }.width('100%').height('100%').commonStyle()
+              }
+              .width('100%')
+              .height('100%')
+              .commonStyle()
             } else if (this.targetView == 'Grid') {
               Grid() {
                 ForEach(['0', '1', '2', '3', '4'], () => {
                   ForEach(['0', '1', '2', '3', '4'], (day: string) => {
                     GridItem() {
-                      Text(day).backgroundColor(Color.White)
-                        .width('100%').height('100%').textAlign(TextAlign.Center)
+                      Text(day)
+                        .backgroundColor(Color.White)
+                        .width('100%')
+                        .height('100%')
+                        .textAlign(TextAlign.Center)
                     }
                   })
                 })
@@ -348,14 +455,14 @@ struct PositionPage {
               .commonStyle()
             } else if (this.targetView == 'List') {
               List({ space: 20, initialIndex: 0 }) {
-                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: string) => {
                   ListItem() {
                     Text('' + item)
                       .width('100%')
                       .textAlign(TextAlign.Center)
                       .backgroundColor(Color.White)
                   }
-                }, item => item)
+                }, (item: string) => item)
               }
               .width('100%')
               .height('100%')
@@ -377,9 +484,17 @@ struct PositionPage {
                     left: { anchor: '__container__', align: HorizontalAlign.Start }
                   })
                   .id('PositionPageRow')
-              }.height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+              }
+              .height('50%')
+              .width('50%')
+              .backgroundColor(Color.Green)
+              .commonStyle()
             } else if (this.targetView == 'Row') {
-              Row().height('50%').width('50%').backgroundColor(Color.Green).commonStyle()
+              Row()
+                .height('50%')
+                .width('50%')
+                .backgroundColor(Color.Green)
+                .commonStyle()
             } else if (this.targetView == 'Panel') {
               Panel(true) {
                 Column() {
@@ -396,13 +511,13 @@ struct PositionPage {
             } else if (this.targetView == 'Scroll') {
               Scroll() {
                 Column() {
-                  ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item) => {
+                  ForEach([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (item: string) => {
                     Text('Scroll' + item.toString())
                       .width('90%')
                       .height(150)
                       .backgroundColor(Color.White)
                       .textAlign(TextAlign.Center)
-                  }, item => item)
+                  }, (item: string) => item)
                 }.width('100%')
               }
               .scrollBar(BarState.On)
@@ -410,10 +525,13 @@ struct PositionPage {
             } else if (this.targetView == 'SideBarContainer') {
               SideBarContainer(SideBarContainerType.Embed) {
                 Column() {
-                  ForEach([1, 2, 3], (item) => {
+                  ForEach([1, 2, 3], (item: string) => {
                     Column({ space: 5 }) {
-                      Image($r('app.media.icon')).width(64).height(64)
-                      Text('Index0' + item).fontSize(25)
+                      Image($r('app.media.icon'))
+                        .width(64)
+                        .height(64)
+                      Text('Index0' + item)
+                        .fontSize(25)
                     }
                   })
                 }.width('100%')
@@ -421,18 +539,25 @@ struct PositionPage {
                 .backgroundColor(Color.Green)
 
                 Column() {
-                  Text('SideBarContainer content').fontSize(25)
+                  Text('SideBarContainer content')
+                    .fontSize(25)
                 }.backgroundColor(Color.Orange)
               }.commonStyle()
             } else if (this.targetView == 'Stack') {
               Stack() {
                 Text('Stack').fontColor(Color.White)
-              }.backgroundColor(Color.Orange).width('50%').height('50%').commonStyle()
+              }
+              .backgroundColor(Color.Orange)
+              .width('50%')
+              .height('50%')
+              .commonStyle()
             } else if (this.targetView == 'Swiper') {
               Swiper() {
                 ForEach([1, 2, 3], (item: string) => {
-                  Text('Swiper' + item).width('90%').height(160)
-                }, item => item)
+                  Text('Swiper' + item)
+                    .width('90%')
+                    .height(160)
+                }, (item: string) => item)
               }
               .indicator(true)
               .backgroundColor(Color.White)
@@ -506,7 +631,13 @@ struct PositionPage {
           .key(this.parentComponentKey)
           .backgroundColor(Color.Gray)
         }
-      }.width('100%').height('90%').backgroundColor(Color.Pink)
-    }.width('100%').height('100%').backgroundColor(Color.Yellow)
+      }
+      .width('100%')
+      .height('90%')
+      .backgroundColor(Color.Pink)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Yellow)
   }
 }
