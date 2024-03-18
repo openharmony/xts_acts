@@ -17,105 +17,71 @@
 #include <c/queue.h>
 #include <c/sleep.h>
 #include <c/task.h>
-
+#include <ffrt.h>
 #define FAIL (-1)
 #define SUCCESS 0
-#define PARAM_0 0
-#define SLEEPTIME (20000 * 300)
+#define PARAM_100 100
 
-typedef struct {
+inline void OnePlusForTest(void* arg)
+{
+    *(uint64_t*)arg = ffrt_this_task_get_id();
+}
+
+inline void OnePlusForTestQos(void* arg)
+{
+    *(int*)arg = ffrt_this_task_update_qos(ffrt_qos_background);
+    *(int*)arg += PARAM_100;
+}
+template<class T>
+struct function {
+    template<class CT>
+    function(ffrt_function_header_t h, CT&& c) : header(h), closure(std::forward<CT>(c)) {}
     ffrt_function_header_t header;
-    ffrt_function_t func;
-    ffrt_function_t after_func;
-    void* arg;
-} CFunction;
-
-static void FfrtExecFunctionWrapper(void* t)
+    T closure;
+};
+template<class T>
+void exec_function_wrapper(void* t)
 {
-    CFunction* f = static_cast<CFunction*>(t);
-    if (f->func) {
-        f->func(f->arg);
-    }
+    auto f = (function<std::decay_t<T>>*)t;
+    f->closure();
 }
 
-static void FfrtDestroyFunctionWrapper(void* t)
+template<class T>
+void destroy_function_wrapper(void* t)
 {
-    CFunction* f = static_cast<CFunction*>(t);
-    if (f->after_func) {
-        f->after_func(f->arg);
-    }
+    auto f = (function<std::decay_t<T>>*)t;
+    f->closure = nullptr;
 }
-
-#define FFRT_STATIC_ASSERT(cond, msg) int x(int static_assertion_##msg[(cond) ? 1 : -1])
-static inline ffrt_function_header_t* ffrt_create_function_wrapper(const ffrt_function_t func,
-    const ffrt_function_t after_func, void* arg, ffrt_function_kind_t kind_t = ffrt_function_kind_general)
+template<class T>
+inline ffrt_function_header_t* create_function_wrapper(T&& func)
 {
-    FFRT_STATIC_ASSERT(sizeof(CFunction) <= ffrt_auto_managed_function_storage_size,
-        size_of_function_must_be_less_than_ffrt_auto_managed_function_storage_size);
-    CFunction* f = static_cast<CFunction*>(ffrt_alloc_auto_managed_function_storage_base(kind_t));
-    f->header.exec = FfrtExecFunctionWrapper;
-    f->header.destroy = FfrtDestroyFunctionWrapper;
-    f->func = func;
-    f->after_func = after_func;
-    f->arg = arg;
-    return reinterpret_cast<ffrt_function_header_t*>(f);
-}
+    using function_type = function<std::decay_t<T>>;
+    static_assert(sizeof(function_type) <= ffrt_auto_managed_function_storage_size,
+        "size of function must be less than ffrt_auto_managed_function_storage_size");
 
-void OnePlusForTest(void* arg)
-{
-    ffrt_usleep(SLEEPTIME);
-    uint64_t taskGetId = ffrt_this_task_get_id();
-    (*static_cast<uint64_t*>(arg)) = taskGetId;
+    auto p = ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_general);
+    auto f = new (p) function_type(
+        {exec_function_wrapper<T>, destroy_function_wrapper<T>},
+        std::forward<T>(func));
+    return (ffrt_function_header_t*)f;
 }
-
-void OnePlusForTestQos(void* arg)
-{
-    ffrt_usleep(SLEEPTIME);
-    int qosVal = ffrt_this_task_update_qos(static_cast<ffrt_qos_t>(ffrt_qos_utility));
-    (*static_cast<int*>(arg)) = qosVal;
-}
-
 static napi_value FfrtThisTaskGetId(napi_env env, napi_callback_info info)
 {
-    ffrt_queue_attr_t queue_attr;
-    ffrt_queue_t queue_handle;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_qos(&queue_attr, static_cast<ffrt_qos_t>(ffrt_qos_background));
-    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
-    uint64_t pos;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(
-        queue_handle,
-        ffrt_create_function_wrapper(OnePlusForTest, nullptr,
-                                     &pos, ffrt_function_kind_queue),
-        nullptr);
-    ffrt_queue_wait(handle);
-    int taskId = FAIL;
-    if (pos != (uint64_t)PARAM_0) {
-        taskId = PARAM_0;
-    }
-    ffrt_task_handle_destroy(handle);
-    ffrt_queue_destroy(queue_handle);
+    uint64_t taskId = SUCCESS;
+    std::function<void()>&& GetPidFunc = [&taskId]() { OnePlusForTest((void *)(&taskId)); };
+    ffrt_submit_base(create_function_wrapper(GetPidFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
     napi_value result = nullptr;
-    napi_create_int32(env, taskId, &result);
+    napi_create_int32(env, taskId != SUCCESS, &result);
     return result;
 }
 
 static napi_value FfrtThisTaskUpdateQos(napi_env env, napi_callback_info info)
 {
-    ffrt_queue_attr_t queue_attr;
-    ffrt_queue_t queue_handle;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_qos(&queue_attr, static_cast<ffrt_qos_t>(ffrt_qos_default));
-    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     int pos = FAIL;
-    ffrt_task_handle_t handle = ffrt_queue_submit_h(
-        queue_handle,
-        ffrt_create_function_wrapper(OnePlusForTestQos, nullptr,
-                                     &pos, ffrt_function_kind_queue),
-        nullptr);
-    ffrt_queue_wait(handle);
-    ffrt_task_handle_destroy(handle);
-    ffrt_queue_destroy(queue_handle);
+    std::function<void()>&& UpdateQosFunc = [&pos]() { OnePlusForTestQos((void *)(&pos)); };
+    ffrt_submit_base(create_function_wrapper(UpdateQosFunc), nullptr, nullptr, nullptr);
+    ffrt_wait();
     napi_value result = nullptr;
     napi_create_int32(env, pos, &result);
     return result;
