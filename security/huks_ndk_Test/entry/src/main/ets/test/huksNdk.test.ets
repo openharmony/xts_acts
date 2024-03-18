@@ -655,5 +655,19 @@ export default function huksNdkTest() {
         done();
       });
     });
+
+    /**
+     * @tc.number     : SUB_SECURITY_HUKS_NATIVE_HUKS_API_OH_HUKS_ANONATTESTKEYITEM_0100
+     * @tc.name       : testOHHuksAnonAttestKeyItem001
+     * @tc.desc       : test testOHHuksAnonAttestKeyItem
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testOHHuksAnonAttestKeyItem001', 0, async (done: Function) => {
+      let result: number = huksndk.oHHuksAnonAttestKeyItem();
+      expect(result).assertEqual(0);
+      done();
+    });
   })
 }
