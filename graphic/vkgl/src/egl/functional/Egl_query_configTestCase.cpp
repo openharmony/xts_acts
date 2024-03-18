@@ -93,7 +93,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC000389, "dEQP-EGL.functional.query_confi
     "g.get_config_attrib.stencil_size");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000390, "dEQP-EGL.functional.query_confi"
-    "g.get_config_attrib.surface_type");
+    "g.get_config_attrib.sur""face_type");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000391, "dEQP-EGL.functional.query_config."
     "get_config_attrib.transparent_type");

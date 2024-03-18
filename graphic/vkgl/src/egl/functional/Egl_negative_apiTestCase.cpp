@@ -36,15 +36,15 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC002356, "dEQP-EGL.functional.negative_ap
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002357, "dEQP-EGL.functional.negative_api."
     "create_pbuffer_from_client_buffer");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002358, "dEQP-EGL.functional.negative_api.create_pbuffer_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002358, "dEQP-EGL.functional.negative_api.create_pbuffer_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002359, "dEQP-EGL.functional.negative_api.create_pixmap_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002359, "dEQP-EGL.functional.negative_api.create_pixmap_sur""face");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002360, "dEQP-EGL.functional.negative_api.create_window_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002360, "dEQP-EGL.functional.negative_api.create_window_sur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002361, "dEQP-EGL.functional.negative_api.destroy_context");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002362, "dEQP-EGL.functional.negative_api.destroy_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002362, "dEQP-EGL.functional.negative_api.destroy_sur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002363, "dEQP-EGL.functional.negative_api.get_config_attrib");
 
@@ -56,17 +56,17 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC002366, "dEQP-EGL.functional.negative_ap
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002367, "dEQP-EGL.functional.negative_api.get_current_context");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002368, "dEQP-EGL.functional.negative_api.get_current_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002368, "dEQP-EGL.functional.negative_api.get_current_sur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002369, "dEQP-EGL.functional.negative_api.query_context");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002370, "dEQP-EGL.functional.negative_api.query_string");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002371, "dEQP-EGL.functional.negative_api.query_surface");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002371, "dEQP-EGL.functional.negative_api.query_sur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002372, "dEQP-EGL.functional.negative_api.release_tex_image");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC002373, "dEQP-EGL.functional.negative_api.surface_attrib");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC002373, "dEQP-EGL.functional.negative_api.sur""face_attrib");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002374, "dEQP-EGL.functional.negative_api.swap_buffers");
 

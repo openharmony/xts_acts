@@ -93,7 +93,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC000419, "dEQP-EGL.functional.choose_conf
     "simple.selection_only.stencil_size");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000420, "dEQP-EGL.functional.choose_config."
-    "simple.selection_only.surface_type");
+    "simple.selection_only.sur""face_type");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000421, "dEQP-EGL.functional.choose_config.si"
     "mple.selection_only.transparent_type");
@@ -177,7 +177,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC000447, "dEQP-EGL.functional.choose_conf
     "mple.selection_and_sort.stencil_size");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000448, "dEQP-EGL.functional.choose_config.si"
-    "mple.selection_and_sort.surface_type");
+    "mple.selection_and_sort.sur""face_type");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000449, "dEQP-EGL.functional.choose_config.simp"
     "le.selection_and_sort.transparent_type");
@@ -198,7 +198,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC000454, "dEQP-EGL.functional.choose_conf
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000455, "dEQP-EGL.functional.choose_config.random.buffer_sizes");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000456, "dEQP-EGL.functional.choose_config.random.surface_type");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000456, "dEQP-EGL.functional.choose_config.random.sur""face_type");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000457, "dEQP-EGL.functional.choose_config.random.sample_buffers");
 

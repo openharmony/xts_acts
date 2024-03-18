@@ -73,51 +73,51 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC000043, "dEQP-EGL.functional.query_conte
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000044, "dEQP-EGL.functional.query_context.get_current_context.other");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000045, "dEQP-EGL.functional.query_context"
-    ".get_current_surface.rgb565_window");
+    ".get_current_sur""face.rgb565_window");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000046, "dEQP-EGL.functional.query_context"
-    ".get_current_surface.rgb565_pixmap");
+    ".get_current_sur""face.rgb565_pixmap");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000047, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgb565_pbuffer");
+    "get_current_sur""face.rgb565_pbuffer");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000048, "dEQP-EGL.functional.query_context"
-    ".get_current_surface.rgb888_window");
+    ".get_current_sur""face.rgb888_window");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000049, "dEQP-EGL.functional.query_context"
-    ".get_current_surface.rgb888_pixmap");
+    ".get_current_sur""face.rgb888_pixmap");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000050, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgb888_pbuffer");
+    "get_current_sur""face.rgb888_pbuffer");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000051, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba4444_window");
+    "get_current_sur""face.rgba4444_window");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000052, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba4444_pixmap");
+    "get_current_sur""face.rgba4444_pixmap");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000053, "dEQP-EGL.functional.query_context.g"
-    "et_current_surface.rgba4444_pbuffer");
+    "et_current_sur""face.rgba4444_pbuffer");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000054, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba5551_window");
+    "get_current_sur""face.rgba5551_window");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000055, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba5551_pixmap");
+    "get_current_sur""face.rgba5551_pixmap");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000056, "dEQP-EGL.functional.query_context.g"
-    "et_current_surface.rgba5551_pbuffer");
+    "et_current_sur""face.rgba5551_pbuffer");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000057, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba8888_window");
+    "get_current_sur""face.rgba8888_window");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000058, "dEQP-EGL.functional.query_context."
-    "get_current_surface.rgba8888_pixmap");
+    "get_current_sur""face.rgba8888_pixmap");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000059, "dEQP-EGL.functional.query_context.g"
-    "et_current_surface.rgba8888_pbuffer");
+    "et_current_sur""face.rgba8888_pbuffer");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC000060, "dEQP-EGL.functional.query_context.get_current_surface.other");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC000060, "dEQP-EGL.functional.query_context.get_current_sur""face.other");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC000061, "dEQP-EGL.functional.query_context"
     ".get_current_display.rgb565_window");

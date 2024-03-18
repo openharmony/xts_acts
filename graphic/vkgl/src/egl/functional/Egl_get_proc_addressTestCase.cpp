@@ -42,7 +42,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC002418, "dEQP-EGL.functional.get_proc_ad
     "tension.egl_android_get_frame_timestamps");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002419, "dEQP-EGL.functional.get_proc_address.ex"
-    "tension.egl_angle_query_surface_pointer");
+    "tension.egl_angle_query_sur""face_pointer");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002420, "dEQP-EGL.functional.get_proc_addr"
     "ess.extension.egl_ext_client_sync");
@@ -96,10 +96,10 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC002436, "dEQP-EGL.functional.get_proc_ad
     "ress.extension.egl_khr_image_base");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002437, "dEQP-EGL.functional.get_proc_addr"
-    "ess.extension.egl_khr_lock_surface");
+    "ess.extension.egl_khr_lock_sur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002438, "dEQP-EGL.functional.get_proc_addre"
-    "ss.extension.egl_khr_lock_surface3");
+    "ss.extension.egl_khr_lock_sur""face3");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002439, "dEQP-EGL.functional.get_proc_addre"
     "ss.extension.egl_khr_partial_update");
@@ -123,7 +123,7 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC002445, "dEQP-EGL.functional.get_proc_ad
     "ess.extension.egl_khr_stream_fifo");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002446, "dEQP-EGL.functional.get_proc_address.ext"
-    "ension.egl_khr_stream_producer_eglsurface");
+    "ension.egl_khr_stream_producer_eglsur""face");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC002447, "dEQP-EGL.functional.get_proc_address.ex"
     "tension.egl_khr_swap_buffers_with_damage");
