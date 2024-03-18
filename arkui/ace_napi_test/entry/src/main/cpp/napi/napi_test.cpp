@@ -3325,7 +3325,7 @@ static napi_value CoerceToNativeBindingObject(napi_env env, napi_callback_info i
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     napi_value data = nullptr;
-    napi_serialize(env, object, undefined, undefined, false, true, &data);
+    napi_serialize_inner(env, object, undefined, undefined, false, true, &data);
     NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
     napi_value result = nullptr;
     napi_deserialize(env, data, &result);
