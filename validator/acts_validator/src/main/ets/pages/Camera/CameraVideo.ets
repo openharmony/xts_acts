@@ -22,30 +22,40 @@ import router from '@ohos.router'
 import mediaPlay from '../model/mediaPlay'
 import promptAction from '@ohos.promptAction'
 
+class Obj {
+  format: number;
+  size: SizeObj;
+}
+
+class SizeObj {
+  width: number;
+  height: number;
+}
+
 @Entry
 @Component
 struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraVideo';
   @State StepTips: string = '测试目的：用于测试相机录像分辨率能力\n-对于前置摄像头会有镜像效果\n预期结果：所有分辨率均可以录像，录像与预览一致';
-  private tag: string = 'qlw CameraVideo'
-  private mXComponentController: XComponentController = new XComponentController()
-  private mXComponentController1: XComponentController = new XComponentController()
+  private tag: string = 'qlw CameraVideo';
+  private mXComponentController: XComponentController = new XComponentController();
+  private mXComponentController1: XComponentController = new XComponentController();
   @State surfaceId: number = 0;
-  @State cameraDeviceIndex: number = 0
-  @State assetUri: string = undefined
-  @State Vue: boolean = false
-  @State takeFlag: boolean = true
-  @State isEnabled: boolean = true
-  @State resolution: SelectOption[] = [] // 分辨率
-  @State clickFrequency: number = 0 // 点击次数
-  @State resolutionSelectVal: string = '' // 下拉框默认value
-  @State cameraListLength: number = undefined // 相机数量
-  @State cameraList: SelectOption[] = [] // 相机列表
-  @State testingFrequency: number = undefined // 测试总数
-  @State testEnabled: boolean = true
-  @State nextEnabled: boolean = false
-  @State isVideoPlayback: boolean = false
+  @State cameraDeviceIndex: number = 0;
+  @State assetUri: string = undefined;
+  @State Vue: boolean = false;
+  @State takeFlag: boolean = true;
+  @State isEnabled: boolean = true;
+  @State resolution: SelectOption[] = []; // 分辨率
+  @State clickFrequency: number = 0; // 点击次数
+  @State resolutionSelectVal: string = ''; // 下拉框默认value
+  @State cameraListLength: number = undefined; // 相机数量
+  @State cameraList: SelectOption[] = []; // 相机列表
+  @State testingFrequency: number = undefined; // 测试总数
+  @State testEnabled: boolean = true;
+  @State nextEnabled: boolean = false;
+  @State isVideoPlayback: boolean = false;
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -56,7 +66,7 @@ struct cameraOrientation {
     this.isVideoPlayback = isVideoPlayback
     Logger.info(this.tag, `VideoPlayBack end, isVideoPlayback: ${this.isVideoPlayback}`)
   }
-  
+
   cameraListFn() {
     this.cameraList = []
     this.cameraListLength = CameraService.cameras.length
@@ -85,18 +95,19 @@ struct cameraOrientation {
     this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
 
   }
+
   // 对分辨率数据处理 获取到需要的格式
   dealWithResolutionFn(arr) {
     let newResolution = []
     arr.forEach((item) => {
-      let indexOf = item.value.indexOf("x")
-      let objW = Number(item.value.slice(0, indexOf))
-      let objH = Number(item.value.slice(indexOf + 1))
-      let obj = {
+      let indexOf: number = item.value.indexOf("x")
+      let objW: number = Number(item.value.slice(0, indexOf))
+      let objH: number = Number(item.value.slice(indexOf + 1))
+      let obj: Obj = {
         format: 1003,
         size: {
-          "width": objW,
-          "height": objH
+          width: objW,
+          height: objH
         }
       }
       newResolution.push(obj)
@@ -104,7 +115,7 @@ struct cameraOrientation {
     return newResolution
   }
 
-  async cameraInit(obj?) {
+  async cameraInit(obj?: ESObject) {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
       this.resolution = CameraService.videoResolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
@@ -114,7 +125,7 @@ struct cameraOrientation {
 
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-	// @ts-ignore
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
   }
@@ -159,11 +170,13 @@ struct cameraOrientation {
                   this.cameraInit()
                 })
                 .size({ width: '100%', height: '100%' })
-              Text('视频录制').fontSize('20fp').fontColor(Color.White)
+              Text('视频录制')
+                .fontSize('20fp')
+                .fontColor(Color.White)
             }.size({ width: '45%', height: '100%' })
 
             Column() {
-              if(!this.isVideoPlayback){
+              if (!this.isVideoPlayback) {
                 XComponent({
                   id: '',
                   type: 'surface',
@@ -172,7 +185,9 @@ struct cameraOrientation {
                   .onLoad(() => {
                   })
                   .size({ width: '100%', height: '100%' })
-                Text('视频回放').fontSize('20fp').fontColor(Color.White)
+                Text('视频回放')
+                  .fontSize('20fp')
+                  .fontColor(Color.White)
               }
             }.size({ width: '45%', height: '100%' })
 
@@ -194,11 +209,11 @@ struct cameraOrientation {
                   let indexOf = value.indexOf('x')
                   let objW = Number(value.slice(0, indexOf))
                   let objH = Number(value.slice(indexOf + 1))
-                  let obj = {
+                  let obj: Obj = {
                     format: 1003,
                     size: {
-                      "width": objW,
-                      "height": objH
+                      width: objW,
+                      height: objH
                     }
                   }
                   CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
@@ -273,8 +288,10 @@ struct cameraOrientation {
             }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
           }.size({ width: '100%', height: '30%' })
         }
-      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
+      }
+      .height('80%')
+      .scrollBarColor(Color.White) // 滚动条颜色
+      .scrollBarWidth(10)
 
 
       CustomContainer({
@@ -284,12 +301,18 @@ struct cameraOrientation {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-      }).height('10%').width('100%')
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+      })
+        .height('10%')
+        .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }

@@ -13,12 +13,10 @@
 * limitations under the License.
 */
 
-import { ConnectionState } from './BluetoothViewModel';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 
-@Observed
-export default class BluetoothDevice {
-  deviceId?: string = '';
-  deviceName?: string = '';
-  rssi?: number = -1;
-  connectionState?: number = ConnectionState.STATE_DISCONNECTED;
+export class Info {
+  prefix: string;
+  suffix: string;
+  directory: mediaLibrary.DirectoryType;
 }

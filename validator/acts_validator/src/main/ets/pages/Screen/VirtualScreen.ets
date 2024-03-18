@@ -24,6 +24,10 @@ import display from '@ohos.display'
 
 let TAG = "VirtualScreen";
 
+class ScreenInfo {
+
+}
+
 @CustomDialog
 export struct ShowInfo {
   private defaultOrAllScreen?: boolean
@@ -32,7 +36,8 @@ export struct ShowInfo {
   private dialogController?: CustomDialogController
   scroller: Scroller = new Scroller();
 
-  @Builder infoText(types: string, infos: string) {
+  @Builder
+  infoText(types: string, infos: string) {
     Row() {
       Text(types)
         .margin({ left: '5%', right: '5%' })
@@ -191,7 +196,7 @@ struct VirtualScreen {
   @State FillColor: string = '#FF000000';
   @State name: string = 'VirtualScreen';
   @State StepTips: string = '测试目的：用于测试系统创建虚拟屏功能\n-点击添加虚拟屏按钮,能够添加一块虚拟屏' +
-  '\n-点击新增的绿色虚拟屏可以查看信息\n-点击移除虚拟屏按钮，能成功移除';
+    '\n-点击新增的绿色虚拟屏可以查看信息\n-点击移除虚拟屏按钮，能成功移除';
   @State Vue: boolean = false;
   @State isFlush: boolean = undefined;
   @State isPass: boolean = false;

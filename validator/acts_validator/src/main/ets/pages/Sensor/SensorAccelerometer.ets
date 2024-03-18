@@ -26,7 +26,7 @@ struct SensorAccelerometer {
   @State FillColor: string = '#FF000000';
   @State name: string = 'SensorAccelerometer';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有加速度传感器\n-点击开启按钮打开传感器\n-请各方向移动设备'
-  + '\n-预期结果：观察显示数值,跟随移动变化';
+    + '\n-预期结果：观察显示数值,跟随移动变化';
   private tag: string = 'Sensor Accelerometer';
   @State Vue: boolean = false;
   @State isSensor: boolean = undefined;
@@ -95,8 +95,13 @@ struct SensorAccelerometer {
     Column() {
       Row() {
         Button() {
-          Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
+          Image($r('app.media.ic_public_back'))
+            .width('20vp')
+            .height('18vp')
+            .margin({ left: '20vp' })
+        }
+        .backgroundColor(Color.Black)
+        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Sensor/Sensor_index',
@@ -104,9 +109,18 @@ struct SensorAccelerometer {
           })
         })
 
-        Text(this.name).fontColor(Color.White).fontSize('18fp').margin({ left: '-20vp' })
-        Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
-      }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
+        Text(this.name)
+          .fontColor(Color.White)
+          .fontSize('18fp')
+          .margin({ left: '-20vp' })
+        Text('hello')
+          .fontColor(Color.White)
+          .visibility(Visibility.Hidden)
+      }
+      .backgroundColor(Color.Black)
+      .height('10%')
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
 
       Column() {
         Text('X坐标分量: ' + this.dataX)

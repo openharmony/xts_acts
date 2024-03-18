@@ -44,7 +44,7 @@ struct CommonEvent {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CommonEvent';
-  @State StepTips: string = '操作步骤：\n1、打开监听' + '\n2、将设备灭屏' + '\n3、停止监听' +  '\n预期结果：监听状态和实际一致';
+  @State StepTips: string = '操作步骤：\n1、打开监听' + '\n2、将设备灭屏' + '\n3、停止监听' + '\n预期结果：监听状态和实际一致';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State startTime: number = 0;
@@ -105,7 +105,6 @@ struct CommonEvent {
       console.info('systemEventCallback err==' + err.message)
     }
   }
-
   private handleStart = () => {
     this.btnState = true;
     this.detailState = Visibility.None;
@@ -132,7 +131,6 @@ struct CommonEvent {
       }
     })
   }
-
   private handleStop = () => {
     if (this.totalEvents === this.count) {
       this.Vue = true
@@ -163,7 +161,6 @@ struct CommonEvent {
       });
     })
   }
-
   private executeCallBack = () => {
     if (!this.btnState) {
       this.handleStart();
@@ -201,7 +198,8 @@ struct CommonEvent {
       .onClick(() => {
         router.back({
           url: 'pages/Notification/Notification_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -220,7 +218,8 @@ struct CommonEvent {
     .onClick(() => {
       router.back({
         url: 'pages/Notification/Notification_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

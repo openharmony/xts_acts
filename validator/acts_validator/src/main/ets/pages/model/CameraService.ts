@@ -14,14 +14,14 @@
  */
 // @ts-nocheck
 
-import camera from '@ohos.multimedia.camera'
-import deviceInfo from '@ohos.deviceInfo'
-import fileio from '@ohos.fileio'
-import image from '@ohos.multimedia.image'
-import media from '@ohos.multimedia.media'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import Logger from '../model/Logger'
-import MediaUtils from '../model/MediaUtils'
+import camera from '@ohos.multimedia.camera';
+import deviceInfo from '@ohos.deviceInfo';
+import fileio from '@ohos.fileio';
+import image from '@ohos.multimedia.image';
+import media from '@ohos.multimedia.media';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import Logger from '../model/Logger';
+import MediaUtils from '../model/MediaUtils';
 import prompt from '@ohos.prompt';
 import fs from '@ohos.file.fs';
 import screen from '@ohos.screen';
@@ -32,22 +32,22 @@ const CameraSize = {
 }
 
 class CameraService {
-  private tag: string = 'qlw CameraService'
-  private static instance: CameraService = new CameraService()
-  private mediaUtil = MediaUtils.getInstance()
-  private cameraManager: camera.CameraManager = undefined
-  cameras: Array<camera.CameraDevice> = undefined
-  private cameraInput: camera.CameraInput = undefined
-  private previewOutput: camera.PreviewOutput = undefined
-  private photoOutput: camera.PhotoOutput = undefined
-  private cameraOutputCapability: camera.CameraOutputCapability = undefined
-  private captureSession: camera.CaptureSession = undefined
-  private mReceiver: image.ImageReceiver = undefined
-  private fileAsset: mediaLibrary.FileAsset = undefined
-  private fd: number = -1
-  private videoRecorder: media.VideoRecorder = undefined
-  private videoOutput: camera.VideoOutput = undefined
-  private handleTakePicture: (photoUri: string) => void = undefined
+  private tag: string = 'qlw CameraService';
+  private static instance: CameraService = new CameraService();
+  private mediaUtil = MediaUtils.getInstance();
+  private cameraManager: camera.CameraManager = undefined;
+  cameras: Array<camera.CameraDevice> = undefined;
+  private cameraInput: camera.CameraInput = undefined;
+  private previewOutput: camera.PreviewOutput = undefined;
+  private photoOutput: camera.PhotoOutput = undefined;
+  private cameraOutputCapability: camera.CameraOutputCapability = undefined;
+  private captureSession: camera.CaptureSession = undefined;
+  private mReceiver: image.ImageReceiver = undefined;
+  private fileAsset: mediaLibrary.FileAsset = undefined;
+  private fd: number = -1;
+  private videoRecorder: media.VideoRecorder = undefined;
+  private videoOutput: camera.VideoOutput = undefined;
+  private handleTakePicture: (photoUri: string) => void = undefined;
   private videoConfig: any = {
     audioSourceType: 1,
     videoSourceType: 0,
@@ -71,7 +71,7 @@ class CameraService {
     location: { latitude: 30, longitude: 130 },
     maxSize: 10000,
     maxDuration: 10000
-  }
+  };
   private videoProfileObj: camera.VideoProfile = {
     format: 1,
     size: {
@@ -82,126 +82,126 @@ class CameraService {
       "min": 5,
       "max": 5
     }
-  }
+  };
   private photoProfileObj: camera.Profile = {
     format: 1,
     size: {
       "width": 640,
       "height": 480
     }
-  }
-  private videoOutputStopBol: boolean = true
-  resolution: any = null
-  photoResolution: any = null
-  videoResolution: any = null
-  screensObj: any = null
+  };
+  private videoOutputStopBol: boolean = true;
+  resolution: any = null;
+  photoResolution: any = null;
+  videoResolution: any = null;
+  screensObj: any = null;
 
   async getScreensObj() {
-    let screens = await screen.getAllScreens()
-    this.screensObj = screens[0].supportedModeInfo
-    Logger.info(this.tag, ` this.screensObj success` + JSON.stringify(this.screensObj))
+    let screens = await screen.getAllScreens();
+    this.screensObj = screens[0].supportedModeInfo;
+    Logger.info(this.tag, ` this.screensObj success` + JSON.stringify(this.screensObj));
   }
 
   constructor() {
     try {
-      this.mReceiver = image.createImageReceiver(CameraSize.WIDTH, CameraSize.HEIGHT, image.ImageFormat.JPEG, 8)
-      Logger.info(this.tag, 'createImageReceiver')
+      this.mReceiver = image.createImageReceiver(CameraSize.WIDTH, CameraSize.HEIGHT, image.ImageFormat.JPEG, 8);
+      Logger.info(this.tag, 'createImageReceiver');
       this.mReceiver.on('imageArrival', () => {
-        Logger.info(this.tag, 'imageArrival')
+        Logger.info(this.tag, 'imageArrival');
         this.mReceiver.readNextImage((err, image) => {
-          Logger.info(this.tag, 'readNextImage')
+          Logger.info(this.tag, 'readNextImage');
           if (err || image === undefined) {
-            Logger.error(this.tag, 'failed to get valid image')
+            Logger.error(this.tag, 'failed to get valid image');
             return
           }
           image.getComponent(4, (errMsg, img) => {
-            Logger.info(this.tag, 'getComponent')
+            Logger.info(this.tag, 'getComponent');
             if (errMsg || img === undefined) {
-              Logger.info(this.tag, 'failed to get valid buffer')
+              Logger.info(this.tag, 'failed to get valid buffer');
               return
             }
-            let buffer
+            let buffer;
             if (img.byteBuffer) {
-              buffer = img.byteBuffer
+              buffer = img.byteBuffer;
             } else {
-              Logger.error(this.tag, 'img.byteBuffer is undefined')
+              Logger.error(this.tag, 'img.byteBuffer is undefined');
             }
-            this.savePicture(buffer, image)
+            this.savePicture(buffer, image);
           })
         })
       })
     } catch (err) {
-      Logger.info(this.tag, `image Receiver err ${err.message}`)
+      Logger.info(this.tag, `image Receiver err ${err.message}`);
     }
   }
 
   async savePicture(buffer: ArrayBuffer, img: image.Image) {
     try {
-      Logger.info(this.tag, 'savePicture')
-      let imgFileAsset = await this.mediaUtil.createAndGetUri(mediaLibrary.MediaType.IMAGE)
-      let imgPhotoUri = imgFileAsset.uri
-      Logger.info(this.tag, `photoUri = ${imgPhotoUri}`)
-      let imgFd = await this.mediaUtil.getFdPath(imgFileAsset)
-      Logger.info(this.tag, `fd = ${imgFd}`)
-      await fileio.write(imgFd, buffer)
-      await imgFileAsset.close(imgFd)
-      await img.release()
-      Logger.info(this.tag, 'save image done')
+      Logger.info(this.tag, 'savePicture');
+      let imgFileAsset = await this.mediaUtil.createAndGetUri(mediaLibrary.MediaType.IMAGE);
+      let imgPhotoUri = imgFileAsset.uri;
+      Logger.info(this.tag, `photoUri = ${imgPhotoUri}`);
+      let imgFd = await this.mediaUtil.getFdPath(imgFileAsset);
+      Logger.info(this.tag, `fd = ${imgFd}`);
+      await fileio.write(imgFd, buffer);
+      await imgFileAsset.close(imgFd);
+      await img.release();
+      Logger.info(this.tag, 'save image done');
       if (this.handleTakePicture) {
-        this.handleTakePicture(imgPhotoUri)
+        this.handleTakePicture(imgPhotoUri);
       }
     } catch (err) {
-      Logger.info(this.tag, `save picture err ${err.message}`)
+      Logger.info(this.tag, `save picture err ${err.message}`);
     }
   }
 
   async initCamera(surfaceId: number, cameraDeviceIndex: number, obj?, photoIndex?, previewObj?) {
     try {
       if (deviceInfo.deviceType === 'default') {
-        this.videoConfig.videoSourceType = 1
+        this.videoConfig.videoSourceType = 1;
       } else {
-        this.videoConfig.videoSourceType = 0
+        this.videoConfig.videoSourceType = 0;
       }
-      Logger.info(this.tag, `cameraDeviceIndex success: ${cameraDeviceIndex}`)
-      await this.getScreensObj()
-      await this.releaseCamera()
-      await this.getCameraManagerFn()
-      await this.getSupportedCamerasFn()
-      await this.getSupportedOutputCapabilityFn(cameraDeviceIndex)
+      Logger.info(this.tag, `cameraDeviceIndex success: ${cameraDeviceIndex}`);
+      await this.getScreensObj();
+      await this.releaseCamera();
+      await this.getCameraManagerFn();
+      await this.getSupportedCamerasFn();
+      await this.getSupportedOutputCapabilityFn(cameraDeviceIndex);
       if (previewObj) {
-        previewObj.format = this.cameraOutputCapability.previewProfiles[0].format
-        Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
+        previewObj.format = this.cameraOutputCapability.previewProfiles[0].format;
+        Logger.info(this.tag, `previewObj format: ${previewObj.format}`);
       }
-      await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId)
+      await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId);
       //            await this.createPhotoOutputFn(this.photoProfileObj)
-      await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0])
-      await this.createCameraInputFn(this.cameras[cameraDeviceIndex])
-      await this.cameraInputOpenFn()
-      await this.sessionFlowFn()
+      await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0]);
+      await this.createCameraInputFn(this.cameras[cameraDeviceIndex]);
+      await this.cameraInputOpenFn();
+      await this.sessionFlowFn();
 
     } catch (err) {
-      Logger.info(this.tag, 'initCamera err: ' + JSON.stringify(err.message))
+      Logger.info(this.tag, 'initCamera err: ' + JSON.stringify(err.message));
     }
   }
 
   // 曝光模式
   isExposureModeSupportedFn(ind) {
     try {
-      let status = this.captureSession.isExposureModeSupported(ind)
-      Logger.info(this.tag, `isExposureModeSupported success: ${status}`)
+      let status = this.captureSession.isExposureModeSupported(ind);
+      Logger.info(this.tag, `isExposureModeSupported success: ${status}`);
       prompt.showToast({
         message: status ? '支持此模式' : '不支持此模式',
         duration: 2000,
         bottom: '60%'
       })
       // 设置曝光模式
-      this.captureSession.setExposureMode(ind)
-      Logger.info(this.tag, `setExposureMode success`)
+      this.captureSession.setExposureMode(ind);
+      Logger.info(this.tag, `setExposureMode success`);
       // 获取当前曝光模式
-      let exposureMode = this.captureSession.getExposureMode()
-      Logger.info(this.tag, `getExposureMode success: ${exposureMode}`)
+      let exposureMode = this.captureSession.getExposureMode();
+      Logger.info(this.tag, `getExposureMode success: ${exposureMode}`);
     } catch (err) {
-      Logger.info(this.tag, `isExposureModeSupportedFn fail: ${err} , message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isExposureModeSupportedFn fail: ${err} , message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -209,16 +209,16 @@ class CameraService {
   isMeteringPoint(Point1) {
     try {
       // 获取当前曝光模式
-      let exposureMode = this.captureSession.getExposureMode()
-      Logger.info(this.tag, `getExposureMode success: ${exposureMode}`)
+      let exposureMode = this.captureSession.getExposureMode();
+      Logger.info(this.tag, `getExposureMode success: ${exposureMode}`);
       // 设置曝光区域中心点
-      this.captureSession.setMeteringPoint(Point1)
-      Logger.info(this.tag, `setMeteringPoint success`)
+      this.captureSession.setMeteringPoint(Point1);
+      Logger.info(this.tag, `setMeteringPoint success`);
       // 查询曝光区域中心点
-      let exposurePoint = this.captureSession.getMeteringPoint()
-      Logger.info(this.tag, `getMeteringPoint success: ${exposurePoint}`)
+      let exposurePoint = this.captureSession.getMeteringPoint();
+      Logger.info(this.tag, `getMeteringPoint success: ${exposurePoint}`);
     } catch (err) {
-      Logger.info(this.tag, `isMeteringPoint fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isMeteringPoint fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -226,16 +226,16 @@ class CameraService {
   isExposureBiasRange(ind) {
     try {
       // 查询曝光补偿范围
-      let biasRangeArray = this.captureSession.getExposureBiasRange()
-      Logger.info(this.tag, `getExposureBiasRange success: ${biasRangeArray}`)
+      let biasRangeArray = this.captureSession.getExposureBiasRange();
+      Logger.info(this.tag, `getExposureBiasRange success: ${biasRangeArray}`);
       // 设置曝光补偿
-      this.captureSession.setExposureBias(ind)
-      Logger.info(this.tag, `setExposureBias success: ${ind}`)
+      this.captureSession.setExposureBias(ind);
+      Logger.info(this.tag, `setExposureBias success: ${ind}`);
       // 查询当前曝光值
-      let exposureValue = this.captureSession.getExposureValue()
-      Logger.info(this.tag, `getExposureValue success: ${exposureValue}`)
+      let exposureValue = this.captureSession.getExposureValue();
+      Logger.info(this.tag, `getExposureValue success: ${exposureValue}`);
     } catch (err) {
-      Logger.info(this.tag, `isExposureBiasRange fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isExposureBiasRange fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -243,21 +243,21 @@ class CameraService {
   isFocusMode(ind) {
     try {
       // 检测对焦模式是否支持
-      let status = this.captureSession.isFocusModeSupported(ind)
-      Logger.info(this.tag, `isFocusModeSupported success: ${status}`)
+      let status = this.captureSession.isFocusModeSupported(ind);
+      Logger.info(this.tag, `isFocusModeSupported success: ${status}`);
       prompt.showToast({
         message: status ? '支持此模式' : '不支持此模式',
         duration: 2000,
         bottom: '60%'
       })
       // 设置对焦模式
-      this.captureSession.setFocusMode(ind)
-      Logger.info(this.tag, `setFocusMode success`)
+      this.captureSession.setFocusMode(ind);
+      Logger.info(this.tag, `setFocusMode success`);
       // 获取当前对焦模式
-      let afMode = this.captureSession.getFocusMode()
-      Logger.info(this.tag, `getFocusMode success: ${afMode}`)
+      let afMode = this.captureSession.getFocusMode();
+      Logger.info(this.tag, `getFocusMode success: ${afMode}`);
     } catch (err) {
-      Logger.info(this.tag, `isFocusMode fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isFocusMode fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -265,13 +265,13 @@ class CameraService {
   isFocusPoint(Point) {
     try {
       // 设置对焦点
-      this.captureSession.setFocusPoint(Point)
-      Logger.info(this.tag, `setFocusPoint success`)
+      this.captureSession.setFocusPoint(Point);
+      Logger.info(this.tag, `setFocusPoint success`);
       // 获取当前对焦点
-      let point = this.captureSession.getFocusPoint()
-      Logger.info(this.tag, `getFocusPoint success: ${point}`)
+      let point = this.captureSession.getFocusPoint();
+      Logger.info(this.tag, `getFocusPoint success: ${point}`);
     } catch (err) {
-      Logger.info(this.tag, `isFocusPoint fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isFocusPoint fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -279,24 +279,24 @@ class CameraService {
   hasFlashFn(ind) {
     try {
       // 检测是否有闪光灯
-      let status = this.captureSession.hasFlash()
-      Logger.info(this.tag, `hasFlash success: ${status}`)
+      let status = this.captureSession.hasFlash();
+      Logger.info(this.tag, `hasFlash success: ${status}`);
       // 检测闪光灯模式是否支持
-      let status1 = this.captureSession.isFlashModeSupported(ind)
-      Logger.info(this.tag, `isFlashModeSupported success: ${status1}`)
+      let status1 = this.captureSession.isFlashModeSupported(ind);
+      Logger.info(this.tag, `isFlashModeSupported success: ${status1}`);
       prompt.showToast({
         message: status1 ? '支持此模式' : '不支持此模式',
         duration: 2000,
         bottom: '60%'
       })
       // 设置闪光灯模式
-      this.captureSession.setFlashMode(ind)
-      Logger.info(this.tag, `setFlashMode success`)
+      this.captureSession.setFlashMode(ind);
+      Logger.info(this.tag, `setFlashMode success`);
       // 获取当前设备的闪光灯模式
-      let flashMode = this.captureSession.getFlashMode()
-      Logger.info(this.tag, `getFlashMode success: ${flashMode}`)
+      let flashMode = this.captureSession.getFlashMode();
+      Logger.info(this.tag, `getFlashMode success: ${flashMode}`);
     } catch (err) {
-      Logger.info(this.tag, `hasFlashFn fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `hasFlashFn fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -304,17 +304,17 @@ class CameraService {
   setZoomRatioFn(num) {
     try {
       // 获取当前支持的变焦范围
-      let zoomRatioRange = this.captureSession.getZoomRatioRange()
-      Logger.info(this.tag, `getZoomRatioRange success: ${zoomRatioRange}`)
+      let zoomRatioRange = this.captureSession.getZoomRatioRange();
+      Logger.info(this.tag, `getZoomRatioRange success: ${zoomRatioRange}`);
       // 设置变焦比
-      Logger.info(this.tag, `setZoomRatioFn num: ${num}`)
-      this.captureSession.setZoomRatio(num)
-      Logger.info(this.tag, `setZoomRatio success`)
+      Logger.info(this.tag, `setZoomRatioFn num: ${num}`);
+      this.captureSession.setZoomRatio(num);
+      Logger.info(this.tag, `setZoomRatio success`);
       // 获取当前对焦比
-      let zoomRatio = this.captureSession.getZoomRatio()
-      Logger.info(this.tag, `getZoomRatio success: ${zoomRatio}`)
+      let zoomRatio = this.captureSession.getZoomRatio();
+      Logger.info(this.tag, `getZoomRatio success: ${zoomRatio}`);
     } catch (err) {
-      Logger.info(this.tag, `setZoomRatioFn fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `setZoomRatioFn fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
@@ -322,26 +322,26 @@ class CameraService {
   isVideoStabilizationModeSupportedFn(ind) {
     try {
       // 查询是否支持指定的视频防抖模式
-      let isSupported = this.captureSession.isVideoStabilizationModeSupported(ind)
-      Logger.info(this.tag, `isVideoStabilizationModeSupported success: ${isSupported}`)
+      let isSupported = this.captureSession.isVideoStabilizationModeSupported(ind);
+      Logger.info(this.tag, `isVideoStabilizationModeSupported success: ${isSupported}`);
       prompt.showToast({
         message: isSupported ? '支持此模式' : '不支持此模式',
         duration: 2000,
         bottom: '60%'
       })
       // 设置视频防抖
-      this.captureSession.setVideoStabilizationMode(ind)
-      Logger.info(this.tag, `setVideoStabilizationMode success`)
+      this.captureSession.setVideoStabilizationMode(ind);
+      Logger.info(this.tag, `setVideoStabilizationMode success`);
       // 查询当前正在使用的防抖模式
-      let vsMode = this.captureSession.getActiveVideoStabilizationMode()
-      Logger.info(this.tag, `getActiveVideoStabilizationMode success: ${vsMode}`)
+      let vsMode = this.captureSession.getActiveVideoStabilizationMode();
+      Logger.info(this.tag, `getActiveVideoStabilizationMode success: ${vsMode}`);
     } catch (err) {
-      Logger.info(this.tag, `isVideoStabilizationModeSupportedFn fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+      Logger.info(this.tag, `isVideoStabilizationModeSupportedFn fail err: ${err}, message: ${err.message}, code: ${err.code}`);
     }
   }
 
   setTakePictureCallback(callback) {
-    this.handleTakePicture = callback
+    this.handleTakePicture = callback;
   }
 
   // 照片方向判断
