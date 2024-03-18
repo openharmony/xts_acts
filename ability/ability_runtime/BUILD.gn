@@ -30,7 +30,6 @@ group("ability_runtime") {
       "actsabilitytooltest:actsabilitytooltest",
       "actsabilityusertest:ActsAbilityuserTest",
       "actsactionextensionability:actsactionextensionability",
-      "actsautofilltest:actsautofilltest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
       "actscalltest:actscalltest",
       "actscleantemptest:cleantempfiles",
