@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import ActsNotificationBadgeTest from './ActsNotificationBadgeTest.test'
+import ActsNotificationBadgeTest from './ActsNotificationBadgeTest.test';
 
 export default function List() {
-  ActsNotificationBadgeTest()
+  ActsNotificationBadgeTest();
 }
