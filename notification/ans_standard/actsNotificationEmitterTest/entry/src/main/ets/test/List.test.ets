@@ -16,5 +16,5 @@
 import ActsNotificationBadgeTest from './ActsNotificationBadgeTest.test'
 
 export default function List() {
-  ActsNotificationBadgeTest()
+  ActsNotificationBadgeTest();
 }
