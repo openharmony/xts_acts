@@ -54,6 +54,7 @@ void RegistPackage(void)
 FuncRunResult RunTestKHRGLES(int argc, const char** argv)
 {
     FuncRunResult runResult;
+    bool isExist = true;
     try {
         tcu::CommandLine cmdLine(argc, argv);
         tcu::DirArchive archive(cmdLine.getArchiveDir());
@@ -61,9 +62,9 @@ FuncRunResult RunTestKHRGLES(int argc, const char** argv)
         de::UniquePtr<tcu::Platform> platform(createOhosPlatform());
         de::UniquePtr<tcu::App> app(new tcu::App(*platform, archive, OHOS::Logdefine::tcutestlog, cmdLine));
 
-        for (;;) {
+        for (isExist) {
             if (!app->iterate()) {
-                break;
+                isExist = false;
             };
         };
         runResult.isComplete = app->getResult().isComplete;
