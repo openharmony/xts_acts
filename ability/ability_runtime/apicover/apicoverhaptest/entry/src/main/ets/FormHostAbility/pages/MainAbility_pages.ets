@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct Index {
+struct Index3 {
   @State message: string = 'FormHostAbility';
   @State isShowing: boolean = true;
   @State formId: number = 0;

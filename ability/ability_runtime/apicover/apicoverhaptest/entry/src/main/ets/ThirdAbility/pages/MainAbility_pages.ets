@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct Index {
+struct Index4 {
   @State message: string = 'ThirdAbility';
   @State create: string = 'ThirdAbility';
 
