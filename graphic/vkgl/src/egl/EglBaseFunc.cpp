@@ -32,18 +32,15 @@
 #include "EglBaseFunc.h"
 
 
-static tcu::TestPackage* createTestPackage (tcu::TestContext& testCtx)
+static tcu::TestPackage* createTestPackage(tcu::TestContext& testCtx)
 {
     return new vkt::TestPackage(testCtx);
 }
 
-static tcu::TestPackage* createExperimentalTestPackage (tcu::TestContext& testCtx)
+static tcu::TestPackage* createExperimentalTestPackage(tcu::TestContext& testCtx)
 {
     return new vkt::ExperimentalTestPackage(testCtx);
 }
-
-// tcu::TestPackageDescriptor g_vktPackageDescriptor("dEQP-VK", createTestPackage);
-// tcu::TestPackageDescriptor g_vktExperimentalPackageDescriptor("dEQP-VK-experimental", createExperimentalTestPackage);
 
 void RegistPackage(void)
 {
