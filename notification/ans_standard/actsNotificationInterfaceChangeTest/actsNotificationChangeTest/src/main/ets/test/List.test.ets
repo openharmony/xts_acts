@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import notificationWantAgent from './notificationWantAgent'
-import notificationRequest from './notificationRequest'
-import notificationContent from './notificationContent'
+import notificationWantAgent from './notificationWantAgent';
+import notificationRequest from './notificationRequest';
+import notificationContent from './notificationContent';
 
 export default function testsuite() {
-  notificationRequest()
-  notificationContent()
-  notificationWantAgent()
+  notificationRequest();
+  notificationContent();
+  notificationWantAgent();
 }

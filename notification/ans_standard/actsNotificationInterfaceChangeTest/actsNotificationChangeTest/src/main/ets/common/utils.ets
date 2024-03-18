@@ -18,7 +18,8 @@ export function logGenerator(tag: string): (arg1: string) => void {
   return (msg = '') => {
     console.log(tag, msg);
   };
-};
+}
+;
 
 export function succeedGenerator(tag: string, resolve: () => void, done: () => void): (arg1: string) => void {
   return (msg = 'succeeded') => {
@@ -26,14 +27,16 @@ export function succeedGenerator(tag: string, resolve: () => void, done: () => v
     resolve();
     done();
   };
-};
+}
+;
 
 export function exitGenerator(tag: string, reject: (arg1: Error) => void): (arg1: string) => void {
   return (errMsg = 'exit for error') => {
     console.log(tag, 'error', errMsg);
     reject(new Error(errMsg));
   };
-};
+}
+;
 
 
 export function exitSpecialGenerator(tag: string, reject: (arg1: Error) => void, done: () => void):
@@ -43,8 +46,10 @@ export function exitSpecialGenerator(tag: string, reject: (arg1: Error) => void,
     reject(new Error(errMsg));
     done();
   };
-};
+}
+;
 
 export async function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
-};
+}
+;
