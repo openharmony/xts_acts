@@ -34,12 +34,12 @@
 
 static tcu::TestPackage* createTestPackage (tcu::TestContext& testCtx)
 {
-	return new vkt::TestPackage(testCtx);
+    return new vkt::TestPackage(testCtx);
 }
 
 static tcu::TestPackage* createExperimentalTestPackage (tcu::TestContext& testCtx)
 {
-	return new vkt::ExperimentalTestPackage(testCtx);
+    return new vkt::ExperimentalTestPackage(testCtx);
 }
 
 // tcu::TestPackageDescriptor g_vktPackageDescriptor("dEQP-VK", createTestPackage);

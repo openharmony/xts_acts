@@ -75,37 +75,37 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC003770, "dEQP-EGL.performance.make_curre
     "ti_context.contexts_100_window_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003771, "dEQP-EGL.performance.make_current"
-    ".multi_surface.context_pbuffers_10");
+    ".multi_sur""face.context_pbuffers_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003772, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_pbuffers_10_release");
+    "ti_sur""face.context_pbuffers_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003773, "dEQP-EGL.performance.make_current"
-    ".multi_surface.context_pixmaps_10");
+    ".multi_sur""face.context_pixmaps_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003774, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_pixmaps_10_release");
+    "ti_sur""face.context_pixmaps_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003775, "dEQP-EGL.performance.make_current"
-    ".multi_surface.context_windows_10");
+    ".multi_sur""face.context_windows_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003776, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_windows_10_release");
+    "ti_sur""face.context_windows_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003777, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_pixmaps_pbuffers_10");
+    "ti_sur""face.context_pixmaps_pbuffers_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003778, "dEQP-EGL.performance.make_current.multi_s"
     "urface.context_pixmaps_pbuffers_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003779, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_windows_pbuffers_10");
+    "ti_sur""face.context_windows_pbuffers_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003780, "dEQP-EGL.performance.make_current.multi_s"
     "urface.context_windows_pbuffers_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003781, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_windows_pixmaps_10");
+    "ti_sur""face.context_windows_pixmaps_10");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003782, "dEQP-EGL.performance.make_current.multi_s"
     "urface.context_windows_pixmaps_10_release");
@@ -117,37 +117,37 @@ static SHRINK_HWTEST_F(ActsEgl0001TS, TC003784, "dEQP-EGL.performance.make_curre
     "ce.context_windows_pixmaps_pbuffers_10_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003785, "dEQP-EGL.performance.make_current."
-    "multi_surface.context_pbuffers_100");
+    "multi_sur""face.context_pbuffers_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003786, "dEQP-EGL.performance.make_current.mult"
-    "i_surface.context_pbuffers_100_release");
+    "i_sur""face.context_pbuffers_100_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003787, "dEQP-EGL.performance.make_current"
-    ".multi_surface.context_pixmaps_100");
+    ".multi_sur""face.context_pixmaps_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003788, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_pixmaps_100_release");
+    "ti_sur""face.context_pixmaps_100_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003789, "dEQP-EGL.performance.make_current"
-    ".multi_surface.context_windows_100");
+    ".multi_sur""face.context_windows_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003790, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_windows_100_release");
+    "ti_sur""face.context_windows_100_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003791, "dEQP-EGL.performance.make_current.mult"
-    "i_surface.context_pixmaps_pbuffers_100");
+    "i_sur""face.context_pixmaps_pbuffers_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003792, "dEQP-EGL.performance.make_current.multi_su"
     "rface.context_pixmaps_pbuffers_100_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003793, "dEQP-EGL.performance.make_current.mult"
-    "i_surface.context_windows_pbuffers_100");
+    "i_sur""face.context_windows_pbuffers_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003794, "dEQP-EGL.performance.make_current.multi_su"
     "rface.context_windows_pbuffers_100_release");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003795, "dEQP-EGL.performance.make_current.mul"
-    "ti_surface.context_windows_pixmaps_100");
+    "ti_sur""face.context_windows_pixmaps_100");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003796, "dEQP-EGL.performance.make_current.multi_s"
     "urface.context_windows_pixmaps_100_release");
