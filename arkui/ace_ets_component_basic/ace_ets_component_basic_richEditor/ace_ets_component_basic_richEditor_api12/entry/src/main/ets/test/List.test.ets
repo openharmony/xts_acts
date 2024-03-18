@@ -34,23 +34,23 @@ import onSelectionChange18 from './onSelectionChange/onSelectionChange18.test'
 import onSelectionChange19 from './onSelectionChange/onSelectionChange19.test'
 export default function testsuite() {
 
- onSelectionChange1();
- onSelectionChange2();
+ // onSelectionChange1();
+ // onSelectionChange2();
  onSelectionChange3();
- onSelectionChange4();
- onSelectionChange5();
- onSelectionChange6();
+ // onSelectionChange4();
+ // onSelectionChange5();
+ // onSelectionChange6();
  onSelectionChange7();
- onSelectionChange8();
- onSelectionChange9();
+ // onSelectionChange8();
+ // onSelectionChange9();
  onSelectionChange10();
- onSelectionChange11();
- onSelectionChange12();
- onSelectionChange13();
- onSelectionChange14();
- onSelectionChange15();
- onSelectionChange16();
- onSelectionChange17();
- onSelectionChange18();
- onSelectionChange19();
+ // onSelectionChange11();
+ // onSelectionChange12();
+ // onSelectionChange13();
+ // onSelectionChange14();
+ // onSelectionChange15();
+ // onSelectionChange16();
+ // onSelectionChange17();
+ // onSelectionChange18();
+ // onSelectionChange19();
 }

@@ -25,7 +25,7 @@ struct onSelectionChange10 {
     Column() {
       RichEditor(this.options)
         .onReady(() => {
-          this.controller.addTextSpan("0123456789",
+          this.controller.addTextSpan("012345123455464521437888555123123123",
             {
               style:
               {
