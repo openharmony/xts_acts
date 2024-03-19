@@ -21,7 +21,7 @@ let listPush1 = "Fa_Auxiliary_MainAbility6_";
 
 export default {
   onCreate() {
-    consrle.info(printLog1 + 'onCreate');
+    console.info(printLog1 + 'onCreate');
 
     setTimeout(() => {
       let wantNum = {
