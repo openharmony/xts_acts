@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var printLog1 = "Fa:Auxiliary:MainAbility:";
-var listPush1 = "Fa_Auxiliary_MainAbility_";
+let printLog1 = "Fa:Auxiliary:MainAbility:";
+let listPush1 = "Fa_Auxiliary_MainAbility_";
+
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
@@ -31,27 +33,31 @@ export default {
   onActive() {
     console.info(printLog1 + 'onActive');
 
-    ability_featureAbility.hasWindowFocus().then((data) => {
-      console.info(printLog1 + "hasWindowFocus data = " + data);
-      var CommonEventPublishData = {
-        parameters: {
-          hasWindowFocus: data
+    ability_featureAbility.hasWindowFocus()
+      .then((data) => {
+        console.info(printLog1 + "hasWindowFocus data = " + data);
+        let CommonEventPublishData = {
+          parameters: {
+            hasWindowFocus: data
+          }
         }
-      }
-      commonEvent.publish(listPush1 + "HasWindowFocus", CommonEventPublishData, (err) => {
-        console.info(printLog1 + listPush1 + "HasWindowFocus");
-      });
-
-      setTimeout(()=>{
-        ability_featureAbility.terminateSelf().then((data) => {
-          console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-        }).catch((err) => {
-          console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+        commonEvent.publish(listPush1 + "HasWindowFocus", CommonEventPublishData, (err) => {
+          console.info(printLog1 + listPush1 + "HasWindowFocus");
         });
-      }, 3000)
-    }).catch((err) => {
-      console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
-    });
+
+        setTimeout(() => {
+          ability_featureAbility.terminateSelf()
+            .then((data) => {
+              console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
+            })
+            .catch((err) => {
+              console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
+            });
+        }, 3000)
+      })
+      .catch((err) => {
+        console.info(printLog1 + "hasWindowFocus err = " + JSON.stringify(err));
+      });
   },
   onInactive() {
     console.info(printLog1 + 'onInactive');

@@ -17,6 +17,7 @@ import commonEvent from '@ohos.commonEvent';
 
 var printLog1 = "Fa:Auxiliary:MainAbility2:";
 var listPush1 = "Fa_Auxiliary_MainAbility2_";
+
 export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
@@ -36,11 +37,11 @@ export default {
       }).catch((err) => {
         console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
       });
-    } catch(err) {
+    } catch (err) {
       console.info(printLog1 + "requestPermissionsFromUser catch err = " + JSON.stringify(err));
     }
 
-    setTimeout(()=>{
+    setTimeout(() => {
       ability_featureAbility.terminateSelf().then((data) => {
         console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
       }).catch((err) => {
