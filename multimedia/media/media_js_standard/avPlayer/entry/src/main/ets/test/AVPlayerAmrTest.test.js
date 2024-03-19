@@ -19,9 +19,9 @@ import * as mediaTestBase from '../../../../../../MediaTestBase';
 import * as AVPlayerTestBase from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
-export default function AVPlayerStabilityTest() {
-  describe('AVPlayerStabilityTest', function () {
-    let TAG = "[AVPlayerStabilityTest] ";
+export default function AVPlayerAmr() {
+  describe('AVPlayerAmr', function () {
+    let TAG = "[AVPlayerAmr] ";
     let callBackSet = 0;
     let avPlayer = null;
     let fileDescriptor = null;
