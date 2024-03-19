@@ -124,6 +124,27 @@ common_depends_gles31 = [
   "//third_party/vk-gl-cts/framework/platform/ohos/rosen_context:rosen_context",
 ]
 
+common_depends_glesext = [
+  "//third_party/zlib:libz",
+  "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  "//third_party/vk-gl-cts/framework/delibs/decpp:libdeqp_decpp",
+  "//third_party/vk-gl-cts/framework/delibs/debase:libdeqp_debase",
+  "//third_party/vk-gl-cts/framework/delibs/deutil:libdeqp_deutil",
+  "//third_party/vk-gl-cts/framework/qphelper:libdeqp_qphelper",
+  "//third_party/vk-gl-cts/framework/delibs/dethread:libdeqp_dethread",
+  "//third_party/vk-gl-cts/framework/xexml:libdeqp_xexml",
+  "//third_party/vk-gl-cts/framework/egl:libdeqp_eglutil",
+  "//third_party/vk-gl-cts/framework/egl/wrapper:libdeqp_eglwrapper",
+  "//third_party/vk-gl-cts/framework/opengl:libdeqp_glutil",
+  "//third_party/vk-gl-cts/framework/opengl/wrapper:libdeqp_glwrapper",
+  "//third_party/vk-gl-cts/framework/opengl/simplereference:libdeqp_glutil-sglr",
+  "//third_party/vk-gl-cts/modules/egl:libdeqp-egl",
+  "//third_party/vk-gl-cts/modules/glshared:libdeqp-gl-shared",
+  "//third_party/vk-gl-cts/external/openglcts/modules:libdeqp_glcts",
+
+  "//third_party/vk-gl-cts/framework/platform/ohos/rosen_context:rosen_context",
+]
+
 common_src = [
   "//third_party/vk-gl-cts/framework/platform/ohos/context/tcuOhosNativeContext.cpp",
   "//third_party/vk-gl-cts/framework/platform/ohos/context/tcuOhosEglContextFactory.cpp",

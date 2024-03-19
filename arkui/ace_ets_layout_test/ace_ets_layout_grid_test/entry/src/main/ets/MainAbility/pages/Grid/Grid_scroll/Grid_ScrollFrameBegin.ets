@@ -16,10 +16,10 @@
 @Entry
 @Component
 struct Grid_ScrollFrameBegin {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State index : number = 0
-  @State text : string = ''
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State index: number = 0;
+  @State text: string = '';
 
   build() {
     Column({ space: 5 }) {
@@ -39,7 +39,7 @@ struct Grid_ScrollFrameBegin {
           }, (day: string) => day)
         }
         .id('Grid_ScrollFrameBegin_grid')
-        .margin({right:25})
+        .margin({ right: 25 })
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsGap(10)
         .rowsGap(10)
@@ -49,7 +49,7 @@ struct Grid_ScrollFrameBegin {
         .scrollBar(BarState.Off)
         .onScrollFrameBegin((offset: number) => {
           this.text = 'onScrollFrameBegin'
-          return {offsetRemain: offset}
+          return { offsetRemain: offset }
         })
 
         ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.On }) {
@@ -65,7 +65,7 @@ struct Grid_ScrollFrameBegin {
 
       Button('scroller scrollTo 20')
         .id('Grid_ScrollFrameBegin_scrollTo')
-        .onClick(()=>{
+        .onClick(() => {
           this.scroller.scrollTo({
             xOffset: 0,
             yOffset: 20,
@@ -82,7 +82,7 @@ struct Grid_ScrollFrameBegin {
         .id('scrollFrame_Reset_bt')
         .onClick(() => { // reset the init state
           this.scroller.scrollEdge(Edge.Top);
-          this.text = ""    
+          this.text = ""
         })
 
     }.width('100%').margin({ top: 5 })

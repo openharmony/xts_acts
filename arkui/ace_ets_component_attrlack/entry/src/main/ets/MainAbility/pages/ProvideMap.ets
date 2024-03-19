@@ -17,38 +17,38 @@ struct ConsumeMapChild {
   @Consume message: Map<number, string>
 
   build() {
-    Column(){
+    Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
         Text(`${item[0]} ${item[1]}`).fontSize(20).id("provideMap_value_" + item[1])
         Divider()
       })
       Button('Consume init map').id("consumeMap_init")
-        .onClick(() =>{
+        .onClick(() => {
           this.message = new Map([[0, "a"], [1, "b"], [3, "c"]])
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume set new one').id("consumeMap_set")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.set(4, "d")
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume clear').id("consumeMap_clear")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.clear()
-          if (Array.from(this.message.entries())){
+          if (Array.from(this.message.entries())) {
             this.message.set(0, "K")
           }
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume replace').id("consumeMap_replace")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.set(0, "aa")
-      }).margin(10)
+        }).margin(10)
 
       Button('Consume delete').id("consumeMap_delete")
-        .onClick(() =>{
+        .onClick(() => {
           this.message.delete(0)
-      })
+        })
     }
   }
 }
@@ -63,9 +63,9 @@ struct ProvideMapSample {
     Row() {
       Column() {
         Button('Provide init map').id("provideMap_add")
-          .onClick(() =>{
+          .onClick(() => {
             this.message = new Map([[0, "a"], [1, "b"], [3, "c"], [4, "d"]])
-        }).margin(10)
+          }).margin(10)
 
         ConsumeMapChild()
       }

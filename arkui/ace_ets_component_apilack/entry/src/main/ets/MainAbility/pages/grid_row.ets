@@ -14,22 +14,22 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct Grid_rowOnBreakpointChange {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear Grid_rowOnBreakpointChange start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear Grid_rowOnBreakpointChange end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("grid_row-OnBreakpointChange")
         .width(100)
@@ -46,7 +46,7 @@ struct Grid_rowOnBreakpointChange {
         .key("onBreakpointChangeText")
 
       GridContainer({ sizeType: SizeType.SM }) {
-        GridRow({gutter: 10, columns:50, direction: GridRowDirection.Row}){
+        GridRow({ gutter: 10, columns: 50, direction: GridRowDirection.Row }) {
         }
         .key("GridRow")
         .width(100)
@@ -56,7 +56,7 @@ struct Grid_rowOnBreakpointChange {
           console.info("onBreakpointChange=" + breakpoints)
         })
       }
-    
+
     }.width("100%").height("100%")
   }
 }

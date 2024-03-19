@@ -15,13 +15,13 @@
 
 @Entry
 @Component
-struct List_scrollToIndex1{
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private scroller: Scroller = new Scroller()
+struct List_scrollToIndex1 {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private scroller: Scroller = new Scroller();
 
-  build(){
+  build() {
     Column() {
-      List({ space: 10, initialIndex: 0 , scroller: this.scroller }) {
+      List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
         ForEach(this.arr, (item: number, index?: number) => {
           ListItem() {
             Text('ListItem' + item)
@@ -30,7 +30,7 @@ struct List_scrollToIndex1{
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
-          }.id('List_scrollToIndex1_ListItem'+ item)
+          }.id('List_scrollToIndex1_ListItem' + item)
         }, (item: string) => item)
       }
       .id('List_scrollToIndex1_List')
@@ -44,7 +44,7 @@ struct List_scrollToIndex1{
         .id('List_scrollToIndex1_to5')
         .fontSize(14)
         .margin(5)
-        .onClick(()=>{
+        .onClick(() => {
           this.scroller.scrollToIndex(5)
         })
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function tabsJsunit() {
-  describe('tabsTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabs beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tabs',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/tabs',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function tabsJsunit() {
         console.info("get tabs state pages:" + JSON.stringify(pages));
         if (!("tabs" == pages.name)) {
           console.info("get tabs state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push tabs page result:" + JSON.stringify(result));
         }
@@ -41,98 +40,91 @@ export default function tabsJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("tabs after each called");
     });
 
-    it('testTabs_0100', 0, async function (done) {
+    it('testTabs_0100', 0, async (done: Function) => {
       console.info('testTabs_0100 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Tabs');
-      expect(obj.$attrs.barPosition).assertEqual('BarPosition.Start');
+      console.info("testTabs_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Tabs');
+      expect(JSON.parse(strJson).$attrs.barPosition).assertEqual('BarPosition.Start');
       console.info('testTabs_0100 END');
       done();
     });
 
-    it('testTabs_0200', 0, async function (done) {
+    it('testTabs_0200', 0, async (done: Function) => {
       console.info('testTabs_0200 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.index).assertEqual('0');
+      console.info("testTabs_0200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.index).assertEqual('0');
       console.info('testTabs_0200 END');
       done();
     });
 
-    it('testTabs_0300', 0, async function (done) {
+    it('testTabs_0300', 0, async (done: Function) => {
       console.info('testTabs_0300 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.vertical).assertEqual('true');
+      console.info("testTabs_0300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.vertical).assertEqual('true');
       console.info('testTabs_0300 END');
       done();
     });
 
-    it('testTabs_0400', 0, async function (done) {
+    it('testTabs_0400', 0, async (done: Function) => {
       console.info('testTabs_0400 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0400 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.scrollable).assertEqual(true);
+      console.info("testTabs_0400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       console.info('testTabs_0400 END');
       done();
     });
 
-    it('testTabs_0500', 0, async function (done) {
+    it('testTabs_0500', 0, async (done: Function) => {
       console.info('testTabs_0500 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0500 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0500 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Fixed');
+      console.info("testTabs_0500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
       console.info('testTabs_0500 END');
       done();
     });
 
-    it('testTabs_0600', 0, async function (done) {
+    it('testTabs_0600', 0, async (done: Function) => {
       console.info('testTabs_0600 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0600 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.barWidth).assertEqual('70.000000');
+      console.info("testTabs_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual('70.000000');
       console.info('testTabs_0600 END');
       done();
     });
 
-    it('testTabs_0700', 0, async function (done) {
+    it('testTabs_0700', 0, async (done: Function) => {
       console.info('testTabs_0700 START');
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0700 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0700 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.barHeight).assertEqual('150.000000');
+      console.info("testTabs_0700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual('150.000000');
       console.info('testTabs_0700 END');
       done();
     });
 
-    it('testTabs_0800', 0, async function (done) {
+    it('testTabs_0800', 0, async (done: Function) => {
       console.info('testTabs_0800 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "vertical": "false",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 213,
           priority: events_emitter.EventPriority.LOW
         }
@@ -143,22 +135,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_0800 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.vertical).assertEqual('false');
+      console.info("testTabs_0800 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('false');
       console.info('testTabs_0800 END');
       done();
     });
 
-    it('testTabs_0900', 0, async function (done) {
+    it('testTabs_0900', 0, async (done: Function) => {
       console.info('testTabs_0900 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scrollable": "false",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 213,
           priority: events_emitter.EventPriority.LOW
         }
@@ -169,22 +160,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_0900 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scrollable).assertEqual(false);
+      console.info("testTabs_0900 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
       console.info('testTabs_0900 END');
       done();
     });
 
-    it('testTabs_1000', 0, async function (done) {
+    it('testTabs_1000', 0, async (done: Function) => {
       console.info('testTabs_1000 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scrollable": "false53",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 213,
           priority: events_emitter.EventPriority.LOW
         }
@@ -195,22 +185,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_1000 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scrollable).assertEqual(false);
+      console.info("testTabs_1000 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
       console.info('testTabs_1000 END');
       done();
     });
 
-    it('testTabs_1100', 0, async function (done) {
+    it('testTabs_1100', 0, async (done: Function) => {
       console.info('testTabs_1100 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "vertical": "39284",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 213,
           priority: events_emitter.EventPriority.LOW
         }
@@ -221,22 +210,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_1100 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scrollable).assertEqual(false);
+      console.info("testTabs_1100 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
       console.info('testTabs_1100 END');
       done();
     });
 
-    it('testTabs_1200', 0, async function (done) {
+    it('testTabs_1200', 0, async (done: Function) => {
       console.info('testTabs_1200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "vertical": "abc123",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 214,
           priority: events_emitter.EventPriority.LOW
         }
@@ -247,22 +235,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_1200 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.vertical).assertEqual('false');
+      console.info("testTabs_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('false');
       console.info('testTabs_1200 END');
       done();
     });
 
-    it('testTabs_1300', 0, async function (done) {
+    it('testTabs_1300', 0, async (done: Function) => {
       console.info('testTabs_1300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scrollable": "avc12321",
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 215,
           priority: events_emitter.EventPriority.LOW
         }
@@ -273,22 +260,21 @@ export default function tabsJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testTabs_1300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scrollable).assertEqual(false);
+      console.info("testTabs_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
       console.info('testTabs_1300 END');
       done();
     });
 
-    it('testTabs_1400', 0, async function (done) {
+    it('testTabs_1400', 0, async (done: Function) => {
       console.info('testTabs_1400 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 212,
         priority: events_emitter.EventPriority.LOW
       }

@@ -15,11 +15,11 @@
 @Entry
 @Component
 struct Grid_ReachStartAndEnd {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State index : number = 0
-  @State text2 : string = ''
-  @State pad : number = 0
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State index: number = 0;
+  @State text2: string = '';
+  @State pad: number = 0;
 
   build() {
     Column({ space: 5 }) {
@@ -40,7 +40,7 @@ struct Grid_ReachStartAndEnd {
         }
         .id('Grid_ReachStartAndEnd_grid')
         .padding(this.pad)
-        .margin({right:25})
+        .margin({ right: 25 })
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsGap(10)
         .rowsGap(10)
@@ -48,10 +48,10 @@ struct Grid_ReachStartAndEnd {
         .backgroundColor(0xFAEEE0)
         .height(300)
         .scrollBar(BarState.Off)
-        .onReachStart(()=>{
+        .onReachStart(() => {
           this.index++
         })
-        .onReachEnd(()=>{
+        .onReachEnd(() => {
           this.text2 = 'onReachEnd'
         })
 
@@ -89,13 +89,13 @@ struct Grid_ReachStartAndEnd {
       Text(this.text2).id('Grid_ReachStartAndEnd_tex2')
 
 
-       Button('grid_Reset_bt')
+      Button('grid_Reset_bt')
         .id('grid_Reset_bt')
         .onClick(() => { // reset the init state
-           this.index = 0;
-           this.text2 = ""
-           
-           
+          this.index = 0;
+          this.text2 = ""
+
+
         })
 
     }.width('100%').margin({ top: 5 })

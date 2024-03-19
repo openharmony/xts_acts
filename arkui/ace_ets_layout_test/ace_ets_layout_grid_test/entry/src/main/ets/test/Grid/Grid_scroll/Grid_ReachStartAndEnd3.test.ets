@@ -12,17 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Grid_ReachStartAndEnd3() {
-  describe('Grid_ReachStartAndEnd3', function () {
-    beforeEach(async function (done) {
+  describe('Grid_ReachStartAndEnd3', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_ReachStartAndEnd3 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_scroll/Grid_ReachStartAndEnd",
       }
       try {
@@ -31,7 +32,7 @@ export default function Grid_ReachStartAndEnd3() {
         console.info("get Grid_ReachStartAndEnd3 state pages:" + JSON.stringify(pages));
         if (!("Grid_ReachStartAndEnd" == pages.name)) {
           console.info("get Grid_ReachStartAndEnd3 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_ReachStartAndEnd3 page result:" + JSON.stringify(result));
         }
@@ -41,7 +42,7 @@ export default function Grid_ReachStartAndEnd3() {
       console.info("Grid_ReachStartAndEnd3 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       //router.back()
       // init the state
@@ -55,16 +56,15 @@ export default function Grid_ReachStartAndEnd3() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_ReachStartAndEnd3_0400
-     * @tc.name      testGrid
-     * @tc.desc      When initializing the Grid, an initialIndex of 0 will trigger an onReachStart event
+     * @tc.number SUB_ACE_Grid_ReachStartAndEnd3_0400
+     * @tc.name testGrid
+     * @tc.desc When initializing the Grid, an initialIndex of 0 will trigger an onReachStart event
      */
-    it('Grid_ReachStartAndEnd3_0400', 0, async function (done) {
+    it('Grid_ReachStartAndEnd3_0400', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd3_0400] START');
-      let strJson = getInspectorByKey('Grid_ReachStartAndEnd_tex1')
-      let obj = JSON.parse(strJson)
-      console.info("[Grid_ReachStartAndEnd3_0400] component obj is: " + JSON.stringify(obj))
-      expect(obj.$attrs.content).assertEqual('onReachStart1');
+      let strJson = getInspectorByKey('Grid_ReachStartAndEnd_tex1');
+      console.info("[Grid_ReachStartAndEnd3_0400] component obj is: " + JSON.stringify(JSON.parse(strJson)))
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onReachStart1');
 
       console.info('[Grid_ReachStartAndEnd3_0400] END');
       done();

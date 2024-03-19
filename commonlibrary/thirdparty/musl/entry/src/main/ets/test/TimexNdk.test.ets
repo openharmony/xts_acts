@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import timex from 'libtimexndk.so'
 
 export default function timexNdkTest() {
   describe('MuslTimexTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMEX_ADJTIMEX_0100
      * @tc.name       : testMuslTimexAdjtimex001

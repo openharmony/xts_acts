@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function list_SpaceChangeTest() {
-  describe('list_SpaceChangeTest', function () {
-    beforeEach(async function (done) {
+  describe('list_SpaceChangeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("list_SpaceChangeTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/List_SpaceChange/List_SpaceChange',
       }
       try {
@@ -31,7 +46,7 @@ export default function list_SpaceChangeTest() {
         console.info("get List_SpaceChange state pages:" + JSON.stringify(pages));
         if (!("List_SpaceChange" == pages.name)) {
           console.info("get List_SpaceChange pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push List_SpaceChange page result:" + JSON.stringify(result));
         }
@@ -41,27 +56,29 @@ export default function list_SpaceChangeTest() {
       console.info("list_SpaceChangeTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("list_SpaceChangeTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_LIST_SPACECHANGE_0100
-     * @tc.name      testListSpaceChangeUnfill
-     * @tc.desc      set the space of list to 20
+     * @tc.number SUB_ACE_LIST_SPACECHANGE_0100
+     * @tc.name testListSpaceChangeUnfill
+     * @tc.desc set the space of list to 20
      */
-    it('testListSpaceChangeUnfill', 0, async function (done) {
+    it('testListSpaceChangeUnfill', 0, async (done: Function) => {
       console.info('[testListSpaceChangeUnfill] START');
-      globalThis.value.message.notify({name:'Space', value:20});
+      globalThis.value.message.notify({
+        name: 'Space', value: 20
+      });
       await CommonFunc.sleep(1000);
-      let firstListItem = CommonFunc.getComponentRect('List_SpaceChange01');
-      let secondListItem = CommonFunc.getComponentRect('List_SpaceChange02');
-      let thirdListItem = CommonFunc.getComponentRect('List_SpaceChange03');
-      let fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
-      let listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
+      let firstListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange01');
+      let secondListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange02');
+      let thirdListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange03');
+      let fourthListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange04');
+      let listContainer: RectValue = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       let listContainerStrJson = getInspectorByKey('List_SpaceChange_Container01');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
+
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
       expect(firstListItem.top).assertEqual(listContainer.top);
       expect(firstListItem.left).assertEqual(listContainer.left);
@@ -85,12 +102,12 @@ export default function list_SpaceChangeTest() {
 
       expect(Math.round(listContainer.bottom - fourthListItem.bottom)).assertEqual(Math.round(vp2px(60)));
 
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(
-      Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
-      Math.round(fourthListItem.bottom),
-      Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-      Math.round(thirdListItem.bottom));
+        Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
+        Math.round(fourthListItem.bottom),
+        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(thirdListItem.bottom));
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
@@ -100,22 +117,24 @@ export default function list_SpaceChangeTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_LIST_SPACECHANGE_0200
-     * @tc.name      testListSpaceChangeFill
-     * @tc.desc      set the space of list to 40
+     * @tc.number SUB_ACE_LIST_SPACECHANGE_0200
+     * @tc.name testListSpaceChangeFill
+     * @tc.desc set the space of list to 40
      */
-    it('testListSpaceChangeFill', 0, async function (done) {
+    it('testListSpaceChangeFill', 0, async (done: Function) => {
       console.info('[testListSpaceChangeFill] START');
-      globalThis.value.message.notify({name:'Space', value:40});
+      globalThis.value.message.notify({
+        name: 'Space', value: 40
+      });
       await CommonFunc.sleep(1000);
-      let firstListItem = CommonFunc.getComponentRect('List_SpaceChange01');
-      let secondListItem = CommonFunc.getComponentRect('List_SpaceChange02');
-      let thirdListItem = CommonFunc.getComponentRect('List_SpaceChange03');
-      let fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
-      let listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
+      let firstListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange01');
+      let secondListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange02');
+      let thirdListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange03');
+      let fourthListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange04');
+      let listContainer: RectValue = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       let listContainerStrJson = getInspectorByKey('List_SpaceChange_Container01');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
+
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
       expect(firstListItem.top).assertEqual(listContainer.top);
       expect(firstListItem.left).assertEqual(listContainer.left);
@@ -139,12 +158,12 @@ export default function list_SpaceChangeTest() {
 
       expect(listContainer.bottom).assertEqual(fourthListItem.bottom);
 
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(
-      Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
-      Math.round(fourthListItem.bottom -10),
-      Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-      Math.round(thirdListItem.bottom));
+        Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
+        Math.round(fourthListItem.bottom - 10),
+        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(thirdListItem.bottom));
 
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
@@ -154,22 +173,24 @@ export default function list_SpaceChangeTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_LIST_SPACECHANGE_0300
-     * @tc.name      testListSpaceChangeOverflow
-     * @tc.desc      set the space of list to 60
+     * @tc.number SUB_ACE_LIST_SPACECHANGE_0300
+     * @tc.name testListSpaceChangeOverflow
+     * @tc.desc set the space of list to 60
      */
-    it('testListSpaceChangeOverflow', 0, async function (done) {
+    it('testListSpaceChangeOverflow', 0, async (done: Function) => {
       console.info('[testListSpaceChangeOverflow] START');
-      globalThis.value.message.notify({name:'Space', value:60});
+      globalThis.value.message.notify({
+        name: 'Space', value: 60
+      });
       await CommonFunc.sleep(1000);
-      let firstListItem = CommonFunc.getComponentRect('List_SpaceChange01');
-      let secondListItem = CommonFunc.getComponentRect('List_SpaceChange02');
-      let thirdListItem = CommonFunc.getComponentRect('List_SpaceChange03');
-      let fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
-      let listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');
+      let firstListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange01');
+      let secondListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange02');
+      let thirdListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange03');
+      let fourthListItem: RectValue = CommonFunc.getComponentRect('List_SpaceChange04');
+      let listContainer: RectValue = CommonFunc.getComponentRect('List_SpaceChange_Container01');
       let listContainerStrJson = getInspectorByKey('List_SpaceChange_Container01');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
+
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
       expect(firstListItem.top).assertEqual(listContainer.top);
       expect(firstListItem.left).assertEqual(listContainer.left);
@@ -192,12 +213,12 @@ export default function list_SpaceChangeTest() {
       expect(Math.round(fourthListItem.bottom - fourthListItem.top)).assertEqual(Math.round(vp2px(100)));
 
       expect(Math.round(fourthListItem.bottom - listContainer.bottom)).assertEqual(Math.round(vp2px(60)));
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(
-      Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
-      Math.round(thirdListItem.bottom),
-      Math.round(secondListItem.left + ((secondListItem.right - secondListItem.left) / 2)),
-      Math.round(secondListItem.bottom));
+        Math.round(thirdListItem.left + ((thirdListItem.right - thirdListItem.left) / 2)),
+        Math.round(thirdListItem.bottom),
+        Math.round(secondListItem.left + ((secondListItem.right - secondListItem.left) / 2)),
+        Math.round(secondListItem.bottom));
       await CommonFunc.sleep(1000);
       fourthListItem = CommonFunc.getComponentRect('List_SpaceChange04');
       listContainer = CommonFunc.getComponentRect('List_SpaceChange_Container01');

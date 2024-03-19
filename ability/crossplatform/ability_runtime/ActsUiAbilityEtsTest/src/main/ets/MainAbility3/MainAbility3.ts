@@ -15,52 +15,53 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 let abilityName = null;
+
 function recordLife(ownList, abilityName, lifeName) {
-    ownList.push(abilityName + ' ' + lifeName);
+  ownList.push(abilityName + ' ' + lifeName);
 }
 
 export default class MainAbility3 extends Ability {
-    onCreate(want, launchParam) {
-        console.log("[Demo] MainAbility3 onCreate")
-        abilityName = want.abilityName
-        globalThis.list3 = [];
-        recordLife(globalThis.list3, abilityName, 'onCreate');
-    }
+  onCreate(want, launchParam) {
+    console.log("[Demo] MainAbility3 onCreate")
+    abilityName = want.abilityName
+    globalThis.list3 = [];
+    recordLife(globalThis.list3, abilityName, 'onCreate');
+  }
 
-    onDestroy() {
-        console.log("[Demo] MainAbility3 onDestroy")
-        recordLife(globalThis.list3, abilityName, 'onDestroy');
-    }
+  onDestroy() {
+    console.log("[Demo] MainAbility3 onDestroy")
+    recordLife(globalThis.list3, abilityName, 'onDestroy');
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility3 onWindowStageCreate")
-        globalThis.ability3context = this.context;
-        recordLife(globalThis.list3, abilityName, 'onWindowStageCreate');
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.log("[Demo] MainAbility3 onWindowStageCreate")
+    globalThis.ability3context = this.context;
+    recordLife(globalThis.list3, abilityName, 'onWindowStageCreate');
 
-        windowStage.loadContent('TestAbility/pages/Index2', (err, data) => {
-            if (err.code) {
-                console.log('MainAbility3 loadContent error');
-                return;
-            }
-            console.log('MainAbility3 loadContent success');
-        });
-    }
+    windowStage.loadContent('TestAbility/pages/Index2', (err, data) => {
+      if (err.code) {
+        console.log('MainAbility3 loadContent error');
+        return;
+      }
+      console.log('MainAbility3 loadContent success');
+    });
+  }
 
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility3 onWindowStageDestroy")
-        recordLife(globalThis.list3, abilityName, 'onWindowStageDestroy');
-    }
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    console.log("[Demo] MainAbility3 onWindowStageDestroy")
+    recordLife(globalThis.list3, abilityName, 'onWindowStageDestroy');
+  }
 
-    onForeground() {
-        console.log("[Demo] MainAbility3 onForeground")
-        recordLife(globalThis.list3, abilityName, 'onForeground');
-    }
+  onForeground() {
+    console.log("[Demo] MainAbility3 onForeground")
+    recordLife(globalThis.list3, abilityName, 'onForeground');
+  }
 
-    onBackground() {
-        // Ability has back to background
-        console.log("[Demo] MainAbility3 onBackground")
-        recordLife(globalThis.list3, abilityName, 'onBackground');
-    }
+  onBackground() {
+    // Ability has back to background
+    console.log("[Demo] MainAbility3 onBackground")
+    recordLife(globalThis.list3, abilityName, 'onBackground');
+  }
 };

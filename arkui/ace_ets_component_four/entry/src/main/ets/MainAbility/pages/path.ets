@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +13,25 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct PathExample {
-  @State commandsOne: string = 'M0 0 L900 0'
-  @State widthOne: string = '300.00px'
-  @State heightOne: string = '10.00px'
-
+  @State commandsOne: string = 'M0 0 L900 0';
+  @State widthOne: string = '300.00px';
+  @State heightOne: string = '10.00px';
 
   onPageShow() {
     console.info('[path] page show called ');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 151,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
@@ -53,20 +51,46 @@ struct PathExample {
   build() {
     Column({ space: 5 }) {
       Text('Straight line').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Path().width(this.widthOne).height(this.heightOne).commands(this.commandsOne).stroke(Color.Black).key('path1').strokeWidth(3)
+      Path()
+        .width(this.widthOne)
+        .height(this.heightOne)
+        .commands(this.commandsOne)
+        .stroke(Color.Black)
+        .key('path1')
+        .strokeWidth(3)
 
-      Text('Straight line graph').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Text('Straight line graph')
+        .fontSize(9)
+        .fontColor(0xCCCCCC)
+        .width('90%')
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Path().width(100).height(100).commands('M150 0 L300 300 L0 300 Z')
-        Path().width(100).height(100).commands('M0 0 H300 V300 H0 Z')
-        Path().width(100).height(100).commands('M150 0 L0 150 L60 300 L240 300 L300 150 Z')
+        Path()
+          .width(100)
+          .height(100)
+          .commands('M150 0 L300 300 L0 300 Z')
+        Path()
+          .width(100)
+          .height(100)
+          .commands('M0 0 H300 V300 H0 Z')
+        Path()
+          .width(100)
+          .height(100)
+          .commands('M150 0 L0 150 L60 300 L240 300 L300 150 Z')
       }.width('100%')
 
       Text('Curve graphics').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Path().width(100).height(100).commands("M0 300 S150 0 300 300 Z")
-        Path().width(100).height(100).commands('M0 150 C0 150 150 0 300 150 L150 300 Z')
+        Path()
+          .width(100)
+          .height(100)
+          .commands("M0 300 S150 0 300 300 Z")
+        Path()
+          .width(100)
+          .height(100)
+          .commands('M0 150 C0 150 150 0 300 150 L150 300 Z')
       }
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

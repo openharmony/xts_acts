@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+import { BusinessError } from '@ohos.base';
+
 @Entry
 @Component
 struct stagePrompt {
@@ -38,12 +40,12 @@ struct stagePrompt {
                 message: 'Message Info',
                 duration: 2000,
               });
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60220,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -51,7 +53,8 @@ struct stagePrompt {
               events_emitter.emit(backEvent, backData)
             } catch (error) {
               console.error("showToast emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
 
         Text("promptAction-showDialog")
@@ -69,32 +72,33 @@ struct stagePrompt {
           .key("showDialogText")
           .onClick(() => {
             try {
-              globalThis.uiContent.getPromptAction().showDialog({
-                title: 'Title Info',
-                message: 'Message Info',
-                buttons: [
-                  {
-                    text: 'button1',
-                    color: '#000000',
-                  },
-                  {
-                    text: 'button2',
-                    color: '#000000',
-                  }
-                ],
-              })
-                .then(data => {
+              globalThis.uiContent.getPromptAction()
+                .showDialog({
+                  title: 'Title Info',
+                  message: 'Message Info',
+                  buttons: [
+                    {
+                      text: 'button1',
+                      color: '#000000',
+                    },
+                    {
+                      text: 'button2',
+                      color: '#000000',
+                    }
+                  ],
+                })
+                .then((data: ESObject) => {
                   console.info('showDialog success, click button: ' + data.index);
                 })
-                .catch(err => {
+                .catch((err: BusinessError) => {
                   console.info('showDialog error: ' + err);
                 })
-              var backData1 = {
+              let backData1: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent1 = {
+              let backEvent1: events_emitter.InnerEvent = {
                 eventId: 60221,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -102,7 +106,8 @@ struct stagePrompt {
               events_emitter.emit(backEvent1, backData1)
             } catch (error) {
               console.error("showDialog emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
 
         Text("promptAction-showActionMenu")
@@ -120,31 +125,32 @@ struct stagePrompt {
           .key("showActionMenuText")
           .onClick(() => {
             try {
-              globalThis.uiContent.getPromptAction().showActionMenu({
-                title: 'showActionMenu Title Info',
-                buttons: [
-                  {
-                    text: 'item1',
-                    color: '#666666',
-                  },
-                  {
-                    text: 'item2',
-                    color: '#000000',
-                  },
-                ]
-              })
-                .then(data => {
+              globalThis.uiContent.getPromptAction()
+                .showActionMenu({
+                  title: 'showActionMenu Title Info',
+                  buttons: [
+                    {
+                      text: 'item1',
+                      color: '#666666',
+                    },
+                    {
+                      text: 'item2',
+                      color: '#000000',
+                    },
+                  ]
+                })
+                .then((data: ESObject) => {
                   console.info('showActionMenu success, click button: ' + data.index);
                 })
-                .catch(err => {
+                .catch((err: BusinessError) => {
                   console.info('showActionMenu error: ' + err);
                 })
-              var backData2 = {
+              let backData2: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent2 = {
+              let backEvent2: events_emitter.InnerEvent = {
                 eventId: 60222,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -152,7 +158,8 @@ struct stagePrompt {
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
               console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-            };
+            }
+            ;
           })
         Text("promptAction-showDialogTwo")
           .width(100)
@@ -182,19 +189,19 @@ struct stagePrompt {
                     color: '#000000',
                   }
                 ]
-              }, (err, data) => {
+              }, (err: BusinessError, data: ESObject) => {
                 if (err) {
                   console.info('showDialog err: ' + err);
                   return;
                 }
                 console.info('showDialog success callback, click button: ' + data.index);
               });
-              var backData3 = {
+              let backData3: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent3 = {
+              let backEvent3: events_emitter.InnerEvent = {
                 eventId: 60223,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -202,7 +209,8 @@ struct stagePrompt {
               events_emitter.emit(backEvent3, backData3)
             } catch (error) {
               console.error("showDialog emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
         Text("promptAction-showActionMenuTwo")
           .width(100)
@@ -231,19 +239,19 @@ struct stagePrompt {
                     color: '#000000',
                   },
                 ]
-              }, (err, data) => {
+              }, (err: BusinessError, data: ESObject) => {
                 if (err) {
                   console.info('showActionMenu err: ' + err);
                   return;
                 }
                 console.info('showActionMenu success callback, click button: ' + data.index);
               })
-              var backData4 = {
+              let backData4: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent4 = {
+              let backEvent4: events_emitter.InnerEvent = {
                 eventId: 60224,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -251,7 +259,8 @@ struct stagePrompt {
               events_emitter.emit(backEvent4, backData4)
             } catch (error) {
               console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-            };
+            }
+            ;
           })
       }
       .height('100%')

@@ -13,14 +13,16 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct stageMediaquery {
-  @State color: string = '#000'
-  @State text: string = 'Test'
-  listener = globalThis.uiContent.getMediaQuery().matchMediaSync('(orientation: landscape)')
+  @State color: string = '#000';
+  @State text: string = 'Test';
+  listener: ESObject = globalThis.uiContent.getMediaQuery().matchMediaSync('(orientation: landscape)');
+
   aboutToAppear() {
-    this.listener.on('change', (mediaQueryResult) => {
+    this.listener.on('change', (mediaQueryResult: ESObject) => {
       if (mediaQueryResult.matches) {
         this.color = '#FFD700'
         this.text = 'Landscape'
@@ -30,8 +32,10 @@ struct stageMediaquery {
       }
     })
   }
+
   aboutToDisappear() {
   }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text("mediaQuery-Off")
@@ -48,16 +52,16 @@ struct stageMediaquery {
         .textOverflow({ overflow: TextOverflow.None })
         .key("offText")
         .onClick(() => {
-          this.listener.off('change', (mediaQueryResult) => {
+          this.listener.off('change', (mediaQueryResult: ESObject) => {
             console.log(JSON.stringify(mediaQueryResult))
-            var result=true
+            let result = true
             try {
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "STATUS": result
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60218,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -83,14 +87,14 @@ struct stageMediaquery {
         .key("matchMediaSyncText")
         .onClick(() => {
           console.log('mediaQuery-MatchMediaSync: ' + JSON.stringify(this.listener))
-          var result=(this.listener!=null)
+          let result = (this.listener != null)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "STATUS": result
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60219,
               priority: events_emitter.EventPriority.LOW
             }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsImageJsunit() {
-  describe('enumsLineCapStyle', function () {
-    beforeEach(async function (done) {
+  describe('enumsLineCapStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================enumsLineCapStyle test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsLineCapStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/enumsLineCapStyle',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsImageJsunit() {
         console.info('beforeEach get enumsLineCapStyleTest state pages:' + JSON.stringify(pages));
         if (!('enumsFlexItem' == pages.name)) {
           console.info('beforeEach get enumsLineCapStyleTest state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsLineCapStyleTest page result:' + JSON.stringify(result));
         }
@@ -40,19 +39,18 @@ export default function enumsImageJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsImageTest test after each called===================');
     });
 
-    it('enumsLineCapStyleTest_0100', 0, async function (done) {
+    it('enumsLineCapStyleTest_0100', 0, async (done: Function) => {
       console.info('enumsLineCapStyleTest_0100 START');
-      let strJson = getInspectorByKey('Butt');
+      let strJson: string = getInspectorByKey('Butt');
       console.info("enumsLineCapStyleTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsLineCapStyleTest_0100 component obj is: " + JSON.stringify(obj));
-      console.info('obj.$attrs.strokeLineCap' + obj.$attrs.strokeLineCap)
-      expect(obj.$attrs.strokeLineCap).assertEqual('LineCapStyle.Butt');
+      console.info("enumsLineCapStyleTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info('obj.$attrs.strokeLineCap' + JSON.parse(strJson).$attrs.strokeLineCap)
+      expect(JSON.parse(strJson).$attrs.strokeLineCap).assertEqual('LineCapStyle.Butt');
       console.info('enumsLineCapStyleTest_0100 END');
       done();
     });

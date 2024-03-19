@@ -33,6 +33,7 @@
 
 static napi_value NlLanginfo(napi_env env, napi_callback_info info)
 {
+    setlocale(LC_CTYPE, "UTF-8");
     char *ret = nl_langinfo(DAY_2);
     napi_value result;
     napi_create_string_utf8(env, ret, NAPI_AUTO_LENGTH, &result);
@@ -41,11 +42,10 @@ static napi_value NlLanginfo(napi_env env, napi_callback_info info)
 
 static napi_value NlLanginfoL(napi_env env, napi_callback_info info)
 {
-    std::locale ioc("");
+    locale_t c_locale = newlocale(LC_ALL_MASK, "C", NULL);
+    char *getInfo = nl_langinfo_l(CODESET, c_locale);
     napi_value result = nullptr;
-    size_t size = STRLENGTH;
-    char *getInfo = static_cast<char *>(malloc(sizeof(char) * size));
-    getInfo = nl_langinfo_l(CODESET, (locale_t)&ioc);
+    freelocale(c_locale);
     napi_create_string_utf8(env, getInfo, NAPI_AUTO_LENGTH, &result);
     return result;
 }

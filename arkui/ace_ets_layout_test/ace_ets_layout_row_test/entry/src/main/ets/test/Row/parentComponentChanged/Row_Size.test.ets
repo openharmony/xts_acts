@@ -15,17 +15,18 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_Size() {
 
-  describe('Row_Size', function () {
-    beforeEach(async function (done) {
+  describe('Row_Size', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_Size beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_Size',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_Size',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -33,7 +34,7 @@ export default function Row_Size() {
         console.info("get Row_Size state success " + JSON.stringify(pages));
         if (!("Row_Size" == pages.name)) {
           console.info("get Row_Size state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Row_Size page success " + JSON.stringify(result));
         }
@@ -45,26 +46,30 @@ export default function Row_Size() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_Size after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0100
-     * @tc.name      testRowSizeBothSatisfy
-     * @tc.desc      The height and width of the row component meet the requirements of the subcomponent
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0100
+     * @tc.name testRowSizeBothSatisfy
+     * @tc.desc The height and width of the row component meet the requirements of the subcomponent
      */
 
-    it('testRowSizeBothSatisfy', 0, async function (done) {
+    it('testRowSizeBothSatisfy', 0, async (done: Function) => {
       console.info('testRowSizeBothSatisfy START');
-      globalThis.value.message.notify({ name: 'width', value: 350 });
-      globalThis.value.message.notify({ name: 'height', value: 200 });
+      globalThis.value.message.notify({
+        name: 'width', value: 350
+      });
+      globalThis.value.message.notify({
+        name: 'height', value: 200
+      });
       await CommonFunc.sleep(3000);
-      let Row = CommonFunc.getComponentRect('Row_Size_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Size_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Size_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Size_Text3');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Size_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Size_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Size_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Size_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
 
@@ -94,21 +99,25 @@ export default function Row_Size() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0200
-     * @tc.name      testRowSizeWidthNOSatisfy
-     * @tc.desc      Set the height and width of the row component. The width of the row component does not meet the 
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0200
+     * @tc.name testRowSizeWidthNOSatisfy
+     * @tc.desc Set the height and width of the row component. The width of the row component does not meet the
      *               requirements of the subcomponent
      */
 
-    it('testRowSizeWidthNOSatisfy', 0, async function (done) {
+    it('testRowSizeWidthNOSatisfy', 0, async (done: Function) => {
       console.info('testRowSizeWidthNOSatisfy START');
-      globalThis.value.message.notify({ name: 'width', value: 200 });
-      globalThis.value.message.notify({ name: 'height', value: 200 });
+      globalThis.value.message.notify({
+        name: 'width', value: 200
+      });
+      globalThis.value.message.notify({
+        name: 'height', value: 200
+      });
       await CommonFunc.sleep(3000)
-      let Row = CommonFunc.getComponentRect('Row_Size_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Size_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Size_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Size_Text3');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Size_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Size_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Size_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Size_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
 
@@ -135,21 +144,25 @@ export default function Row_Size() {
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0300
-     * @tc.name      testRowSizeHeightNOSatisfy
-     * @tc.desc      Set the height and width of the row component. The height of the row component does not meet the 
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0300
+     * @tc.name testRowSizeHeightNOSatisfy
+     * @tc.desc Set the height and width of the row component. The height of the row component does not meet the
      *               requirements of the subcomponent
      */
 
-    it('testRowSizeHeightNOSatisfy', 0, async function (done) {
+    it('testRowSizeHeightNOSatisfy', 0, async (done: Function) => {
       console.info('testRowSizeHeightNOSatisfy START');
-      globalThis.value.message.notify({ name: 'width', value: 350 });
-      globalThis.value.message.notify({ name: 'height', value: 100 });
+      globalThis.value.message.notify({
+        name: 'width', value: 350
+      });
+      globalThis.value.message.notify({
+        name: 'height', value: 100
+      });
       await CommonFunc.sleep(3000)
-      let Row = CommonFunc.getComponentRect('Row_Size_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Size_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Size_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Size_Text3');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Size_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Size_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Size_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Size_Text3');
 
       console.log('Row rect_value is:' + JSON.stringify(Row));
 

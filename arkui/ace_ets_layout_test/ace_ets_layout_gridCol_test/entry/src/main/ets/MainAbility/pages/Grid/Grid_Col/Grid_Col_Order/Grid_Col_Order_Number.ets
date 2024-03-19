@@ -12,48 +12,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
 struct Grid_Col_Order_Number {
-  @State addOrder: number = 0
-  @State currentBp: string = 'unknown'
-  messageManager:MessageManager = new MessageManager()
+  @State addOrder: number = 0;
+  @State currentBp: string = 'unknown';
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Grid_Col_Order_Number onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addOrder') {
         this.addOrder = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
       GridRow({
         columns: 6,
         gutter: { x: 10, y: 10 },
-        breakpoints: { value: ["50vp", "100vp", "150vp","200vp","300vp"],
+        breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        GridCol({span:6,order:this.addOrder}) {
+        GridCol({ span: 6, order: this.addOrder }) {
 
         }.borderColor(Color.Red).borderWidth(2).key("Grid_Col_Order_Number_01").height(50)
 
-        GridCol({span:6}) {
+        GridCol({ span: 6 }) {
 
         }.borderColor(Color.Orange).borderWidth(2).key("Grid_Col_Order_Number_02").height(50)
 
-        GridCol({span:6}) {
+        GridCol({ span: 6 }) {
 
         }.borderColor(Color.Yellow).borderWidth(2).key("Grid_Col_Order_Number_03").height(50)
 
-        GridCol({span:6}) {
+        GridCol({ span: 6 }) {
 
         }.borderColor(Color.Green).borderWidth(2).key("Grid_Col_Order_Number_04").height(50)
       }.width("100%").height("100%")

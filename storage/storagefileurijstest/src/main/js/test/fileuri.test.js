@@ -230,7 +230,7 @@ describe('file_uri_test', function () {
   it('FileUri_Other_Function_000', 0, async function () {
     try {
       let testUri = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1#other';
-      let exceptPath = '/data/storage/el2/distributedfiles/test1.txt';
+      let exceptPath = '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test1.txt';
       let testUri2 = 'file://com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt';
       let uri = new fileUri.FileUri(testUri);
       let uri2 = new fileUri.FileUri(testUri);
@@ -246,7 +246,7 @@ describe('file_uri_test', function () {
       expect(uri.host === 'com.demo.b').assertTrue();
       expect(uri.ssp === '//com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt?query=1').assertTrue();
       expect(uri.name === 'test1.txt').assertTrue();
-      expect(uri.path === '/data/storage/el2/distributedfiles/test/../test1.txt').assertTrue();
+      expect(uri.path === '/data/storage/el2/share/r/com.demo.b/data/storage/el2/distributedfiles/test/../test1.txt').assertTrue();
       expect(testUri === uri.toString()).assertTrue();
       expect(uri.equalsTo(uri2) === true).assertTrue();
       expect(uri.equalsTo(uri3) === false).assertTrue();

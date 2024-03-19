@@ -15,9 +15,9 @@
  
 export default {
   onCreate() {
-    console.info('[FormComponent.host] Application onCreate')
+    console.info('[FormComponent.host.n] Application onCreate')
   },
   onDestroy() {
-    console.info('[FormComponent.host] Application onDestroy')
+    console.info('[FormComponent.host.n] Application onDestroy')
   },
 }

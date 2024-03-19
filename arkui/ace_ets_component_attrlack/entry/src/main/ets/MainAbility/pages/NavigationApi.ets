@@ -22,24 +22,24 @@ interface Age {
 @Component
 struct NavigationApi {
   @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @State peo: Age = { age: 18 }
 
-  @State peo: Age = {age:18}
-
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
       Column() {
         Button('replacePath')
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.replacePath(new NavPathInfo('pageTwo',this.peo))
+            this.pageInfos.replacePath(new NavPathInfo('pageTwo', this.peo))
           })
 
         Button('replacePathByName')
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.replacePathByName('pageTwo',this.peo )
+            this.pageInfos.replacePathByName('pageTwo', this.peo)
           })
 
         Button('disableAnimation')
@@ -55,12 +55,14 @@ struct NavigationApi {
       this.pageInfos.pop()
       return true
     })
+
     // .mode(NavDestinationMode.STANDARD)
   }
 
-  @Builder pageTwoTmp() {
+  @Builder
+  pageTwoTmp() {
     NavDestination() {
-      Column({space:5}) {
+      Column({ space: 5 }) {
         Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -73,12 +75,12 @@ struct NavigationApi {
       this.pageInfos.pop()
       return true
     })
-    // .mode(NavDestinationMode.DIALOG)
   }
 
-  @Builder pageThreeTmp() {
+  @Builder
+  pageThreeTmp() {
     NavDestination() {
-      Column({space:5}) {
+      Column({ space: 5 }) {
         Text('123')
       }.width('100%').height('100%')
     }.title('pageThree')
@@ -107,6 +109,9 @@ struct NavigationApi {
             this.pageInfos.pushPath({ name: 'pageOne' })
           })
       }
-    }.title('NavIndex').navDestination(this.PageMap).id('NavigationApi_Navigation')
+    }
+    .title('NavIndex')
+    .navDestination(this.PageMap)
+    .id('NavigationApi_Navigation')
   }
 }

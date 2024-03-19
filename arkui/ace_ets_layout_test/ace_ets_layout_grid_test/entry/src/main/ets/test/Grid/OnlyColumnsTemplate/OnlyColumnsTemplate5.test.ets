@@ -12,17 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function OnlyColumnsTemplate5() {
-  describe('OnlyColumnsTemplate5', function () {
-    beforeEach(async function (done) {
+  describe('OnlyColumnsTemplate5', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/OnlyColumnsTemplate/OnlyColumnsTemplate1',
       }
       try {
@@ -31,7 +32,7 @@ export default function OnlyColumnsTemplate5() {
         console.info("get OnlyColumnsTemplate5 state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get OnlyColumnsTemplate5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push OnlyColumnsTemplate5 page result:" + JSON.stringify(result));
         }
@@ -41,26 +42,34 @@ export default function OnlyColumnsTemplate5() {
       console.info("OnlyColumnsTemplate5 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       console.info("OnlyColumnsTemplate5 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_GRID_OnlyColumnsTemplate5_0400
-     * @tc.name      testGrid
-     * @tc.desc      GridItem sets columnStart to a negative number
+     * @tc.number SUB_ACE_GRID_OnlyColumnsTemplate5_0400
+     * @tc.name testGrid
+     * @tc.desc GridItem sets columnStart to a negative number
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate5_0400', 0, async function (done) {
+    it('SUB_ACE_GRID_OnlyColumnsTemplate5_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_GRID_OnlyColumnsTemplate5_0400] START');
-      globalThis.value.message.notify({name:'columnStart1', value:-1})
-      globalThis.value.message.notify({name:'columnEnd1', value:1})
-      globalThis.value.message.notify({name:'columnStart2', value:-1})
-      globalThis.value.message.notify({name:'columnEnd2', value:1})
+      globalThis.value.message.notify({
+        name: 'columnStart1', value: -1
+      })
+      globalThis.value.message.notify({
+        name: 'columnEnd1', value: 1
+      })
+      globalThis.value.message.notify({
+        name: 'columnStart2', value: -1
+      })
+      globalThis.value.message.notify({
+        name: 'columnEnd2', value: 1
+      })
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_01 = CommonFunc.getComponentRect('OnlyColumnsTemplate1_GridItem_01');
-      let GridItem_02 = CommonFunc.getComponentRect('OnlyColumnsTemplate1_GridItem_02');
+      let GridItem_01: RectValue = CommonFunc.getComponentRect('OnlyColumnsTemplate1_GridItem_01');
+      let GridItem_02: RectValue = CommonFunc.getComponentRect('OnlyColumnsTemplate1_GridItem_02');
 
       console.log('assert space')
       expect(Math.round(GridItem_02.left - GridItem_01.right)).assertEqual(Math.round(vp2px(10)));

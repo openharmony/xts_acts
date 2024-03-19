@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function list_ListInitialIndex5Test() {
-  describe('List_ListInitialIndex5Test', function () {
-    beforeEach(async function (done) {
+  describe('List_ListInitialIndex5Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("List_ListInitialIndex5Test beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/List_initialIndex/List_ListInitialIndex5',
       }
       try {
@@ -31,7 +46,7 @@ export default function list_ListInitialIndex5Test() {
         console.info("get List_ListInitialIndex5 state pages:" + JSON.stringify(pages));
         if (!("List_ListInitialIndex5" == pages.name)) {
           console.info("get List_ListInitialIndex5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push List_ListInitialIndex5 page result:" + JSON.stringify(result));
         }
@@ -41,33 +56,33 @@ export default function list_ListInitialIndex5Test() {
       console.info("List_ListInitialIndex5Test beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("List_ListInitialIndex5Test after each called");
     });
     /**
-     * @tc.number    SUB_ACE_LIST_LISTINITIALINDEX_0500
-     * @tc.name      testListInitialIndexToTwelveWithTwoLane
-     * @tc.desc      the InitialIndex of list set to 12,the lanes of list set to 2
+     * @tc.number SUB_ACE_LIST_LISTINITIALINDEX_0500
+     * @tc.name testListInitialIndexToTwelveWithTwoLane
+     * @tc.desc the InitialIndex of list set to 12,the lanes of list set to 2
      */
-    it('testListInitialIndexToTwelveWithTwoLane', 0, async function (done) {
+    it('testListInitialIndexToTwelveWithTwoLane', 0, async (done: Function) => {
       console.info('[testListInitialIndexToTwelveWithTwoLane] START');
-      let firstListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_1');
-      let secondListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_2');
-      let thirdListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_3');
-      let fourthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_4');
-      let fifthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_5');
-      let sixthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_6');
-      let seventhListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_7');
-      let eighthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_8');
-      let ninthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_9');
-      let tenthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_10');
-      let eleventhListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_11');
-      let twelfthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_12');
-      let listContainer = CommonFunc.getComponentRect('List_ListInitialIndex5_Container01');
+      let firstListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_1');
+      let secondListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_2');
+      let thirdListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_3');
+      let fourthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_4');
+      let fifthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_5');
+      let sixthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_6');
+      let seventhListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_7');
+      let eighthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_8');
+      let ninthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_9');
+      let tenthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_10');
+      let eleventhListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_11');
+      let twelfthListItem: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_12');
+      let listContainer: RectValue = CommonFunc.getComponentRect('List_ListInitialIndex5_Container01');
       let listContainerStrJson = getInspectorByKey('List_ListInitialIndex5_Container01');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('List');
+
+      expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
 
       expect(firstListItem.top).assertEqual(listContainer.top);
       expect(firstListItem.left).assertEqual(listContainer.left);
@@ -126,10 +141,10 @@ export default function list_ListInitialIndex5Test() {
       expect(Math.round(twelfthListItem.bottom - twelfthListItem.top)).assertEqual(vp2px(0));
 
 
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(Math.round(fifthListItem.left + ((fifthListItem.right - fifthListItem.left) / 2)),
-      Math.round(fifthListItem.bottom), Math.round(firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
-      Math.round(firstListItem.bottom));
+        Math.round(fifthListItem.bottom), Math.round(firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
+        Math.round(firstListItem.bottom));
 
       ninthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_9');
       tenthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_10');

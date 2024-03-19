@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,6 +15,13 @@
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import uitest from '@ohos.UiTest';
+import fs from '@ohos.file.fs';
+
+let validImageExt = ['.jpg', '.png']
+let validVideoExt = ['.mp4']
+let validAudioExt = ['.mp3']
+let validFileExt = ['.dat']
+
 const presetsCount = {
   ActsMediaLibraryAlbumTest: { albumsCount: 15, assetsCount: 27 },
   ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 14 },
@@ -27,6 +34,9 @@ const presetsCount = {
   ActsMediaLibraryMediafetchoptionsTest: { albumsCount: 3, assetsCount: 8 },
   ActsMediaLibraryTrashJsTest: { albumsCount: 6, assetsCount: 24 },
 };
+
+const context = globalThis.abilityContext;
+const pathDir = context.filesDir;
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
 const VIDEO_TYPE = mediaLibrary.MediaType.VIDEO;
@@ -190,7 +200,7 @@ const checkPresetsAssets = async function(media, hapName) {
   let assetsCount = await fetchFileResult.getCount();
   let presetsassetsCount = presetsCount[hapName].assetsCount;
   let presetsalbumsCount = presetsCount[hapName].albumsCount;
-  if (assetsCount != presetsCount[hapName].assetsCount || albumsCount != presetsCount[hapName].albumsCount) {
+  if (assetsCount !== presetsCount[hapName].assetsCount || albumsCount !== presetsCount[hapName].albumsCount) {
     console.info(`${hapName} checkPresetsAssets failed; 
       assetsCount : presetsassetsCount = ${assetsCount} : ${presetsassetsCount}
       albumsCount : presetsalbumsCount = ${albumsCount} : ${presetsalbumsCount}`);
@@ -207,7 +217,7 @@ const checkAssetsCount = async function(testNum, fetchFileResult, expectCount) {
     return false;
   }
   let count = await fetchFileResult.getCount();
-  if (count != expectCount) {
+  if (count !== expectCount) {
     console.info(`${testNum}:: count:expectCount - ${count} : ${expectCount}`);
   }
   return count === expectCount;
@@ -219,7 +229,7 @@ const checkAlbumsCount = function(testNum, albumList, expectCount) {
     return false;
   }
   let albumsCount = albumList.length;
-  if (albumsCount != expectCount) {
+  if (albumsCount !== expectCount) {
     console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
   }
   return albumsCount === expectCount;
@@ -252,7 +262,7 @@ const getPermission = async function(name, context) {
       }
       await sleep(500);
       let button = await driver.findComponent(uitest.ON.text('允许'));
-      if (button != undefined) {
+      if (button !== undefined) {
         await button.click();
       }
     }
@@ -267,6 +277,95 @@ const MODIFY_ERROR_CODE_01 = '-1000';
 const isNum = function(value) {
   return typeof value === 'number' && !isNaN(value);
 };
+
+const getFileNameArray = async function () {
+  try{
+    let listFileOption = {
+      recursion: true,
+      listNum: 0,
+      filter: {
+        suffix: []
+      }
+    }
+    listFileOption.filter.suffix = validImageExt.concat(validVideoExt).concat(validAudioExt).concat(validFileExt);
+    let nameArray = await fs.listFile(pathDir, listFileOption);
+    console.info('getFileNameArray successfully nameArray: ' + nameArray);
+    return nameArray;
+  } catch (err) {
+    console.info('getFileNameArray failed: ' + err);
+  }
+};
+
+const pushCreateAsset = async function (media, context, targetAssetNames, directoryTypes, targetDirs) {
+  console.info('pushCreateAsset start');
+  let pathDir = context.filesDir;
+  let successNum = 0;
+  try {
+    console.info('pushCreateAsset targetAssetNames: ' + targetAssetNames);
+    let mediaType;
+    let path;
+    let sourceFileNames = await getFileNameArray();
+    console.info('pushCreateAsset sourceFileNames: ' + sourceFileNames);
+    for (let i = 0; i < sourceFileNames.length; i++) {
+      let fileName = sourceFileNames[i];
+      let sourceExtension = fileName.split('.')[1];
+      let sourceFilePath = pathDir + fileName;
+      for (let j = 0; j < targetAssetNames.length; j++) {
+        path = await media.getPublicDirectory(directoryTypes[j]);
+        let targetAssetName = targetAssetNames[j];
+        let targetAssetExtension = targetAssetName.split('.')[1];
+        if (sourceExtension === targetAssetExtension) {
+          if (validImageExt.includes(('.' + targetAssetExtension))) {
+            mediaType = IMAGE_TYPE
+          } else if (validVideoExt.includes(('.' + targetAssetExtension))) {
+            mediaType = VIDEO_TYPE
+          } else if (validAudioExt.includes(('.' + targetAssetExtension))) {
+            mediaType = AUDIO_TYPE
+          } else {
+            mediaType = FILE_TYPE
+          }
+          let asset = await media.createAsset(mediaType, targetAssetName, path + targetDirs[j]);
+          await IOfunc(sourceFilePath, asset);
+          successNum++;
+        }
+      }
+    }
+    if (successNum !== targetAssetNames.length) {
+      console.info('pushCreateAsset failed fileNumber insufficient, : ' + successNum);
+      return;
+    }
+    console.info('pushCreateAsset successfully fileNumber: ' + successNum);
+  } catch (err) {
+    console.info('pushCreateAsset push resource failed: ' + err)
+    return;
+  }
+};
+
+const IOfunc = async function (filePath, targetFile) {
+  try {
+    let srcFile = fs.openSync(filePath, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
+    let destFileFd = await targetFile.open('rw');
+    let bufSize = 4096;
+    let readSize = 0;
+    let buf = new ArrayBuffer(bufSize);
+    let readOptions = {
+      offset: readSize,
+      length: bufSize
+    };
+    let readLen = fs.readSync(srcFile.fd, buf, readOptions);
+    while (readLen > 0) {
+      readSize += readLen;
+      fs.writeSync(destFileFd, buf, {length: readLen});
+      readOptions.offset = readSize;
+      readLen = fs.readSync(srcFile.fd, buf, readOptions);
+    }
+    fs.closeSync(srcFile);
+    await targetFile.close(destFileFd);
+  } catch (e) {
+    console.log('FileIO_fs_filerw_test has failed for ' + e.message + ', code: ' + e.code);
+  }
+};
+
 export {
   getPermission,
   IMAGE_TYPE,
@@ -289,4 +388,5 @@ export {
   MODIFY_ERROR_CODE_01,
   isNum,
   fileIdFetchOps,
+  pushCreateAsset,
 };

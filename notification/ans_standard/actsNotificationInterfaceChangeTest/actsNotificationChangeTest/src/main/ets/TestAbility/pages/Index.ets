@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import hilog from '@ohos.hilog';
 
 @Entry
 @Component
 struct Index {
+  @State message: string = 'Hello World';
+
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
   }
-
-  @State message: string = 'Hello World';
 
   build() {
     Row() {

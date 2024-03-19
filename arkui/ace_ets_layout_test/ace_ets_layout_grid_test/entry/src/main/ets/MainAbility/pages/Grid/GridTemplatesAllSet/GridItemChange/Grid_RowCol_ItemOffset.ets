@@ -12,42 +12,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Grid_RowCol_ItemOffset{
-  @State secondGridItemOffset: object = {x:0,y:0};
-  messageManager:MessageManager = new MessageManager();
+struct Grid_RowCol_ItemOffset {
+  @State secondGridItemOffset: Position = { x: 0, y: 0 };
+  messageManager: MessageManager<Position> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_RowCol_ItemOffset onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<Position> = (message: Message<Position>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'secondGridItemOffset') {
         this.secondGridItemOffset = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Grid(){
+
+  build() {
+    Column({ space: 30 }) {
+      Grid() {
         GridItem() {
           Text('1').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }
         .key('Grid_RowCol_ItemOffset01')
+
         GridItem() {
           Text('2').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .offset(this.secondGridItemOffset)
         .key('Grid_RowCol_ItemOffset02')
+
         GridItem() {
           Text('3').width('100%').height('100%').backgroundColor(0xD2B48C);
         }
         .key('Grid_RowCol_ItemOffset03')
+
         GridItem() {
           Text('4').width('100%').height('100%').backgroundColor(0xF5DEB3);
         }

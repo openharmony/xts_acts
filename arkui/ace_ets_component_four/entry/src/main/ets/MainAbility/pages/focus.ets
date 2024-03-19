@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct FocusableExample {
-  @State textOne: string = ''
-  @State textTwo: string = ''
-  @State textThree: string = 'The third button cannot be focused'
-  @State oneButtonColor: string = '#FF0000'
-  @State twoButtonColor: string = '#FFC0CB'
-  @State threeButtonColor: string = '#87CEFA'
-  @State focusable: boolean = false
+  @State textOne: string = '';
+  @State textTwo: string = '';
+  @State textThree: string = 'The third button cannot be focused';
+  @State oneButtonColor: string = '#FF0000';
+  @State twoButtonColor: string = '#FFC0CB';
+  @State threeButtonColor: string = '#87CEFA';
+  @State focusable1: boolean = false;
 
   build() {
-    Column({ space:20 }){
+    Column({ space: 20 }) {
       Button(this.textOne)
         .backgroundColor(this.oneButtonColor)
-        .width(300).height(70).fontColor(Color.Black)
-        .focusable(this.focusable)
+        .width(300)
+        .height(70)
+        .fontColor(Color.Black)
+        .focusable(this.focusable1)
         .onFocus(() => {
           this.textOne = 'First Button onFocus'
           this.oneButtonColor = '#AFEEEE'
@@ -42,8 +43,10 @@ struct FocusableExample {
         })
       Button(this.textTwo)
         .backgroundColor(this.twoButtonColor)
-        .width(300).height(70).fontColor(Color.Black)
-        .focusable(this.focusable)
+        .width(300)
+        .height(70)
+        .fontColor(Color.Black)
+        .focusable(this.focusable1)
         .onFocus(() => {
           this.textTwo = 'Second Button onFocus'
           this.twoButtonColor = '#AFEEEE'
@@ -54,36 +57,36 @@ struct FocusableExample {
         })
       Button(this.textThree)
         .backgroundColor(this.threeButtonColor)
-        .width(300).height(70).fontColor(Color.Black)
-        .focusable(this.focusable)
+        .width(300)
+        .height(70)
+        .fontColor(Color.Black)
+        .focusable(this.focusable1)
         .onFocus(() => {
           this.textThree = 'Third Button onFocus'
           this.threeButtonColor = '#AFEEEE'
-        })
-        .onFocusMove(()=>{
-          console.info('on FocusMove Start!')
         })
         .onBlur(() => {
           this.textThree = 'Third Button onBlur'
           this.threeButtonColor = '#FFC0CB'
         })
-    }.width('100%').margin({ top:20 })
+    }.width('100%')
+    .margin({ top: 20 })
   }
 
-  onPageShow(){
+  onPageShow() {
     console.info('focus page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 101,
-      priority:events_emitter.EventPriority.LOW
+      priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("focus page state change called:" + JSON.stringify(eventData));
       if (eventData.data.focusable != null) {
-        this.focusable = eventData.data.focusable;
+        this.focusable1 = eventData.data.focusable;
       }
     }
   }

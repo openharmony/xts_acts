@@ -17,11 +17,11 @@
 #include "napi/native_api.h"
 #include <cstdio>
 #include <cstdlib>
+#include <cuchar>
 #include <cwchar>
 #include <js_native_api.h>
 #include <node_api.h>
 #include <pthread.h>
-#include <cuchar>
 #include <utmp.h>
 
 #define PARAM_1 1

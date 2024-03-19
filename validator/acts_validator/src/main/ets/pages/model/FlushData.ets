@@ -15,14 +15,14 @@
 
 import data_preferences from '@ohos.data.preferences';
 
-export default class FlushData{
-  static ResetArkUI = async ()=>{
+export default class FlushData {
+  static ResetArkUI = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -40,13 +40,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetAudio = async ()=>{
+  static ResetAudio = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -64,13 +64,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetCamera = async ()=>{
+  static ResetCamera = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -88,13 +88,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetPlayer = async ()=>{
+  static ResetPlayer = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -112,13 +112,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetExperience = async ()=>{
+  static ResetExperience = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -136,13 +136,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetPlayerAudio = async ()=>{
+  static ResetPlayerAudio = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -160,13 +160,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetPlayerVideo = async ()=>{
+  static ResetPlayerVideo = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -184,13 +184,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  static ResetPlayNetworkVideo = async ()=>{
+  static ResetPlayNetworkVideo = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -208,14 +208,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetSensor = async ()=>{
+  static ResetSensor = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -233,14 +232,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetScreen = async ()=>{
+  static ResetScreen = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -258,14 +256,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetMultimodalInput = async ()=>{
+  static ResetMultimodalInput = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -283,14 +280,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetPower = async ()=>{
+  static ResetPower = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -308,14 +304,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetNotification = async ()=>{
+  static ResetNotification = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -333,14 +328,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-
-  static ResetWifi = async ()=>{
+  static ResetWifi = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -358,14 +352,13 @@ export default class FlushData{
       console.info("Succeeded in flushing.");
     });
   }
-  
-  static ResetBluetooth = async ()=>{
+  static ResetBluetooth = async () => {
     let Test = null;
-    let context =null;
+    let context = null;
     context = globalThis.getContext();
     let preferences;
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });

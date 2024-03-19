@@ -28,6 +28,8 @@ import { PswDialog } from './Component/PswDialog'
 import prompt from '@ohos.promptAction'
 import { WifiView } from './Component/WifiView';
 import emitter from '@ohos.events.emitter';
+import { Info } from '../ArkUI/InfoObj';
+import { BusinessError } from '@ohos.base';
 
 let innerEvent: emitter.InnerEvent = {
   eventId: 9
@@ -48,7 +50,7 @@ struct WifiScan {
   @State X: number = 0;
   @State name: string = 'WifiScan';
   @State StepTips: string = '操作步骤：\n1、请打开wifi' + '\n2、自己创建一个热点' + '\n3、应用是否扫描到自己创建的热点名称'
-  + '\n4、选择连接热点，输入账号密码进行连接' + '\n预期结果：列表能扫描到自己的热点，能成功连接则通过';
+    + '\n4、选择连接热点，输入账号密码进行连接' + '\n预期结果：列表能扫描到自己的热点，能成功连接则通过';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
   @State startTime: number = 0;
@@ -65,6 +67,7 @@ struct WifiScan {
     autoCancel: true
   });
   scroller: Scroller = new Scroller();
+
   // 扫描wifi
   async scan() {
     // 获取有关Wi-Fi连接的信息,存入linkedInfo
@@ -135,7 +138,8 @@ struct WifiScan {
         })
         router.back({
           url: 'pages/Wifi/Wifi_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
       }, 2000)
@@ -146,7 +150,7 @@ struct WifiScan {
 
     // 收到eventId为1的事件后执行回调函数
     emitter.on(innerEvent, (res) => {
-      this.Vue  = res.data.flag
+      this.Vue = res.data.flag
       console.info('emitter.on =9= ' + this.Vue);
     });
   }
@@ -189,7 +193,8 @@ struct WifiScan {
       .onClick(() => {
         router.back({
           url: 'pages/Wifi/Wifi_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -213,7 +218,8 @@ struct WifiScan {
     .onClick(() => {
       router.back({
         url: 'pages/Wifi/Wifi_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -404,12 +410,12 @@ struct WifiScan {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -441,12 +447,12 @@ struct WifiScan {
       }
     }
     try {
-      screenshot.save(screenshotOptions, (err, data: image.PixelMap) => {
+      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
         if (err) {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

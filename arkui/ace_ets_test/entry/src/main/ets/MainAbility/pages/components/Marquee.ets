@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +46,7 @@ struct MarqueeExample {
         .fontWeight(FontWeight.Bold)
         .fontFamily("sans-serif")
         .backgroundColor(Color.Black)
-        .margin({bottom:40})
+        .margin({ bottom: 40 })
         .key('marquee')
         .onStart(() => {
           console.log('Marquee animation complete onStart')
@@ -64,7 +63,7 @@ struct MarqueeExample {
         })
         .width(200)
         .height(60)
-        .margin({bottom:20})
+        .margin({ bottom: 20 })
     }
     .width('100%')
     .height('100%')

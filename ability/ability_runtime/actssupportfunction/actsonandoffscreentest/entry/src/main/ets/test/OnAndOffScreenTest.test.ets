@@ -16,8 +16,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import power from '@ohos.power';
+import {Driver, ON} from '@ohos.UiTest';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
+let driver = Driver.create();
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -58,8 +60,6 @@ export default function OnAndOffScreenTest() {
       await sleep(1500)
       console.log(TAG + "slideScreen start");
       let cmd = 'uinput -T -m 300 2700 280 200';
-      let cmdTemp = 'uinput -T -m 300 2000 280 1950';
-      await executeShellCommand(cmdTemp, TAG);
       await executeShellCommand(cmd, TAG);
       await sleep(500)
       console.log(TAG + "slideScreen end");
@@ -180,6 +180,15 @@ export default function OnAndOffScreenTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -251,6 +260,15 @@ export default function OnAndOffScreenTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -328,6 +346,15 @@ export default function OnAndOffScreenTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -430,6 +457,15 @@ export default function OnAndOffScreenTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -541,6 +577,15 @@ export default function OnAndOffScreenTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*

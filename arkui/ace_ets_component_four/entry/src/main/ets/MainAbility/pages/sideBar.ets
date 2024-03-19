@@ -14,21 +14,26 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
+
+class IconsValue {
+  shown: number;
+  hidden: number;
+  switching: number;
+}
 
 @Entry
 @Component
 struct SideBarExample {
-  normalIcon : Resource = ($rawfile("ic_health_heart.png"))
-  selectedIcon: Resource = ($rawfile("test.png"))
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State widthValue: number = 10
-  @State heightValue: number = 10
+  normalIcon: Resource = ($rawfile("ic_health_heart.png"));
+  selectedIcon: Resource = ($rawfile("test.png"));
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State widthValue: number = 10;
+  @State heightValue: number = 10;
   @State controlButton: ButtonStyle = ButtonStyle.left
-  @State iconsValue: object= { shown: string=10, hidden: string=10, switching:string=10 };
-
-  private stateChangCallBack = (eventData) => {
+  @State iconsValue: IconsValue = { shown: 10, hidden: 10, switching: 10 };
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("sideBar page state change called:" + JSON.stringify(eventData));
       if (eventData.data.widthValue != null) {
@@ -45,21 +50,24 @@ struct SideBarExample {
       }
     }
   }
+
   onPageShow() {
     console.info('sideBar page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 195,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
+
   build() {
-    SideBarContainer(SideBarContainerType.Embed)
-    {
+    SideBarContainer(SideBarContainerType.Embed) {
       Column() {
-        ForEach(this.arr, (item, index) => {
+        ForEach(this.arr, (item: number, index) => {
           Column({ space: 5 }) {
-            Image(this.current === item ? this.selectedIcon : this.normalIcon).width(64).height(64)
+            Image(this.current === item ? this.selectedIcon : this.normalIcon)
+              .width(64)
+              .height(64)
             Text("Index0" + item)
               .fontSize(25)
               .fontColor(this.current === item ? '#0A59F7' : '#999')
@@ -68,14 +76,16 @@ struct SideBarExample {
           .onClick(() => {
             this.current = item
           })
-        }, item => item)
+        }, (item: string) => item)
       }.width('100%')
       .backgroundColor('#19000000')
+
       RowSplit() {
-        Column(){
+        Column() {
           Text('Split page one').fontSize(30)
         }
-        Column(){
+
+        Column() {
           Text('Split page two').fontSize(30)
         }
       }.width('100%')

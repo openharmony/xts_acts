@@ -78,7 +78,11 @@ struct WebControllerRefreshTest {
                 this.titleReceive = ''
                 this.controller.refresh();
                 await Utils.sleep(12000);
-                Utils.emitEvent(this.titleReceive, 76602)
+                if (this.titleReceive == 'OpenHarmony - Open_Harmony - Gitee.com' || this.titleReceive == 'OpenHarmony - Gitee.com') {
+                  Utils.emitEvent(true, 76602)
+                } else {
+                  Utils.emitEvent(false, 76602)
+                }
               } catch (error) {
                 console.error(`Errorcode: ${error.code}, Message: ${error.message}`);
               }

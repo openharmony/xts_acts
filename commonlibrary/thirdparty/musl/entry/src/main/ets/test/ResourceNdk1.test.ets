@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import resource from 'libresourcendk1.so'
 
 export default function muslResourceNdk1Test() {
   describe('MuslResource1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_RESOURCE_GETPRIORITY_0100
      * @tc.name       : testMuslResourceGetPriority001

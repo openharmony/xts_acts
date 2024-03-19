@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct stageDatePickerDialog {
-  selectedDate: Date = new Date("2010-1-1")
+  selectedDate: Date = new Date("2010-1-1");
+
   build() {
     Row() {
       Column() {
@@ -50,12 +52,12 @@ struct stageDatePickerDialog {
                   console.info("DatePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData = {
+              let backData: events_emitter.EventData = {
                 data: {
                   "STATUS": true
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60220,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -63,7 +65,8 @@ struct stageDatePickerDialog {
               events_emitter.emit(backEvent, backData)
             } catch (error) {
               console.error("showToast emit action state err:" + JSON.stringify(error.message));
-            };
+            }
+            ;
           })
 
         Text("DatePickerDialog2")
@@ -96,12 +99,12 @@ struct stageDatePickerDialog {
                   console.info("DatePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData1 = {
+              let backData1: events_emitter.EventData = {
                 data: {
                   "STATUS": 10
                 }
               }
-              let backEvent1 = {
+              let backEvent1: events_emitter.InnerEvent = {
                 eventId: 60221,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -109,7 +112,8 @@ struct stageDatePickerDialog {
               events_emitter.emit(backEvent1, backData1)
             } catch (error) {
 
-            };
+            }
+            ;
           })
 
         Text("DatePickerDialog3")
@@ -142,12 +146,12 @@ struct stageDatePickerDialog {
                   console.info("DatePickerDialog:onChange()" + JSON.stringify(value))
                 }
               })
-              var backData2 = {
+              let backData2: events_emitter.EventData = {
                 data: {
                   "STATUS": "STATUS"
                 }
               }
-              let backEvent2 = {
+              let backEvent2: events_emitter.InnerEvent = {
                 eventId: 60222,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -155,7 +159,8 @@ struct stageDatePickerDialog {
               events_emitter.emit(backEvent2, backData2)
             } catch (error) {
               console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
-            };
+            }
+            ;
           })
 
       }

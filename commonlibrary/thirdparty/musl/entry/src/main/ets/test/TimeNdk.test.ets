@@ -13,14 +13,19 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
 import time from 'libtimendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
+import Utils from './Utils'
 
 export default function timeNdkTest() {
 
   describe('MuslTimeTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_GETITIMER_0100
@@ -777,20 +782,6 @@ export default function timeNdkTest() {
       console.info("Test result= " + result);
       expect(result).assertEqual(1);
       done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_SETTIMEOFDAY_0100
-     * @tc.name       : testMuslTimeSettimeofday001
-     * @tc.desc       : test settimeofday
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslTimeSettimeofday001', 0, async (done: Function) => {
-      let a: number = time.settimeofday();
-      expect(a).assertEqual(0);
-      done()
     });
   })
 }

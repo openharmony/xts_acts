@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function progressScaleCountJsunit() {
-  describe('progressScaleCountTest', function () {
-    beforeEach(async function (done) {
+  describe('progressScaleCountTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/progress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/progress',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function progressScaleCountJsunit() {
         console.info("get progress state success " + JSON.stringify(pages));
         if (!("progress" == pages.name)) {
           console.info("get progress state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push progress page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function progressScaleCountJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("progressScaleCount after each called");
     });
@@ -50,16 +50,14 @@ export default function progressScaleCountJsunit() {
      * @tc.name         testprogressScaleCount0001
      * @tc.desic         aceprogressScaleCountEtsTest0001
      */
-    it('testprogressScaleCount0001', 0, async function (done) {
+    it('testprogressScaleCount0001', 0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('progressStyleOptions');
+      let strJson: string = getInspectorByKey('progressStyleOptions');
       console.info("[testprogressScaleCount0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Progress');
-      console.info("[testprogressScaleCount0001] style.scaleCount value :" + obj.$attrs.style);
-      let jsonObject = JSON.parse(obj.$attrs.style);
-      expect(jsonObject.scaleCount).assertEqual("15");
+      expect(JSON.parse(strJson).$type).assertEqual('Progress');
+      console.info("[testprogressScaleCount0001] style.scaleCount value :" + JSON.parse(strJson).$attrs.style);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.style).scaleCount).assertEqual("15");
       done();
     });
 
@@ -68,16 +66,14 @@ export default function progressScaleCountJsunit() {
      * @tc.name         testprogressScaleCount0002
      * @tc.desic         aceprogressScaleCountEtsTest0002
      */
-    it('testprogressScaleCount0002', 0, async function (done) {
+    it('testprogressScaleCount0002', 0, async (done: Function) => {
       console.info('progressScaleCount testprogressScaleCount0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('progressStyleOptions');
+      let strJson: string = getInspectorByKey('progressStyleOptions');
       console.info("[testprogressScaleCount0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Progress');
-      console.info("[testprogressScaleCount0002] style.scaleWidth value :" + obj.$attrs.style);
-      let jsonObject = JSON.parse(obj.$attrs.style);
-      expect(jsonObject.scaleWidth).assertEqual('5.00vp');
+      expect(JSON.parse(strJson).$type).assertEqual('Progress');
+      console.info("[testprogressScaleCount0002] style.scaleWidth value :" + JSON.parse(strJson).$attrs.style);
+      expect(JSON.parse(JSON.parse(strJson).$attrs.style).scaleWidth).assertEqual('5.00vp');
       done();
     });
   })

@@ -78,15 +78,12 @@ describe("FaultlogJsTest", function () {
     }
 
     /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0200
-     * @tc.desc: 检验函数参数输入错误时程序是否会崩溃
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0200
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     * @tc.number test_0200
+     * @tc.name DFX_DFR_Faultlogger_Interface_0200
+     * @tc.desc 检验函数参数输入错误时程序是否会崩溃
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0200', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0200----------------------------------");
@@ -112,15 +109,12 @@ describe("FaultlogJsTest", function () {
     })
 
     /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0400
-     * @tc.desc: 检验promise同步方式获取faultlog CPP_CRASH日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0400
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     * @tc.number test_0400
+     * @tc.name DFX_DFR_Faultlogger_Interface_0400
+     * @tc.desc 检验promise同步方式获取faultlog CPP_CRASH日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0400', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0400----------------------------------");
@@ -145,8 +139,8 @@ describe("FaultlogJsTest", function () {
             console.info("DFX_DFR_Faultlogger_Interface_0400 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
             expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
             console.info("DFX_DFR_Faultlogger_Interface_0400 fullLog length:" + ret[0].fullLog.length);
-            console.info("DFX_DFR_Faultlogger_Interface_0400 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-            expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+            console.info("DFX_DFR_Faultlogger_Interface_0400 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+            expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
             expect(typeof(ret[0].pid) == "number").assertTrue();
             expect(typeof(ret[0].uid) == "number").assertTrue();
             expect(typeof(ret[0].type) == "number").assertTrue();
@@ -166,16 +160,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0500
-     * @tc.desc: 检验promise同步方式获取faultlog JS_CRASH日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0500
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0500
+     * @tc.name DFX_DFR_Faultlogger_Interface_0500
+     * @tc.desc 检验promise同步方式获取faultlog JS_CRASH日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
      it('DFX_DFR_Faultlogger_Interface_0500', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0500----------------------------------");
@@ -228,16 +219,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0300
-     * @tc.desc: 检验promise同步方式获取faultlog APP_FREEZE日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0300
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0300
+     * @tc.name DFX_DFR_Faultlogger_Interface_0300
+     * @tc.desc 检验promise同步方式获取faultlog APP_FREEZE日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
      it('DFX_DFR_Faultlogger_Interface_0300', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0300----------------------------------");
@@ -284,16 +272,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0100
-     * @tc.desc: 检验通过回调方式获取faultlog日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0100
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0100
+     * @tc.name DFX_DFR_Faultlogger_Interface_0100
+     * @tc.desc 检验通过回调方式获取faultlog日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0100', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0100----------------------------------");
@@ -320,8 +305,8 @@ describe("FaultlogJsTest", function () {
                     expect(ret.length).assertLarger(0);
                     console.info("DFX_DFR_Faultlogger_Interface_0100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
                     expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
-                    console.info("DFX_DFR_Faultlogger_Interface_0100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_0100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
                 }
                 done();
             }
@@ -335,15 +320,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0600
-     * @tc.desc: 检验query函数正常入参
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0600
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0600
+     * @tc.name DFX_DFR_Faultlogger_Interface_0600
+     * @tc.desc 检验query函数正常入参
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0600', 0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0600----------------------------------");
@@ -359,15 +342,13 @@ describe("FaultlogJsTest", function () {
         }
     })
 
-    /**
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0700
-     * @tc.desc: 检验query函数入参数量为2时程序是否会崩溃
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0700
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0700
+     * @tc.name DFX_DFR_Faultlogger_Interface_0700
+     * @tc.desc 检验query函数入参数量为2时程序是否会崩溃
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0700', 0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0700----------------------------------");
@@ -382,15 +363,13 @@ describe("FaultlogJsTest", function () {
         }
     })
 
-    /**
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0800
-     * @tc.desc: 检验query函数入参为空时程序是否会崩溃
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0800
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0800
+     * @tc.name DFX_DFR_Faultlogger_Interface_0800
+     * @tc.desc 检验query函数入参为空时程序是否会崩溃
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_0800', 0, function () {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0800----------------------------------");
@@ -405,15 +384,13 @@ describe("FaultlogJsTest", function () {
         }
     })
 
-    /**
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_0900
-     * @tc.desc: 检验promise同步方式获取faultlog JS_CRASH日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_0900
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_0900
+     * @tc.name DFX_DFR_Faultlogger_Interface_0900
+     * @tc.desc 检验promise同步方式获取faultlog JS_CRASH日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
      it('DFX_DFR_Faultlogger_Interface_0900', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0900----------------------------------");
@@ -465,15 +442,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_1000
-     * @tc.desc: 检验promise同步方式获取faultlog APP_FREEZE日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_1000
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_1000
+     * @tc.name DFX_DFR_Faultlogger_Interface_1000
+     * @tc.desc 检验promise同步方式获取faultlog APP_FREEZE日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
      it('DFX_DFR_Faultlogger_Interface_1000', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1000----------------------------------");
@@ -523,16 +498,13 @@ describe("FaultlogJsTest", function () {
         done();
     })
 
-    /**
-     * test
-     *
-     * @tc.name: DFX_DFR_Faultlogger_Interface_1100
-     * @tc.desc: 检验通过回调方式获取faultlog日志
-     * @tc.require: AR000GICT2
-     * @tc.number: test_1100
-     * @tc.level: Level 2
-     * @tc.size: MediumTest
-     * @tc.type: Function
+     /**
+     * @tc.number test_1100
+     * @tc.name DFX_DFR_Faultlogger_Interface_1100
+     * @tc.desc 检验通过回调方式获取faultlog日志
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level2
      */
     it('DFX_DFR_Faultlogger_Interface_1100', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_1100----------------------------------");
@@ -559,8 +531,8 @@ describe("FaultlogJsTest", function () {
                     expect(ret.length).assertLarger(0);
                     console.info("DFX_DFR_Faultlogger_Interface_1100 check reason, index:" + (ret[0].reason.indexOf("Signal:SIGABRT")));
                     expect(ret[0].reason.indexOf("Signal:SIGABRT") != -1).assertTrue();
-                    console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread Info"));
-                    expect(ret[0].fullLog.indexOf("Fault thread Info") != -1).assertTrue();
+                    console.info("DFX_DFR_Faultlogger_Interface_1100 check fullLog, index:" + ret[0].fullLog.indexOf("Fault thread info"));
+                    expect(ret[0].fullLog.indexOf("Fault thread info") != -1).assertTrue();
                 }
                 done();
             }

@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Temperature]';
@@ -33,12 +34,12 @@ struct Temperature {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Temperature';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有温度传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请改变设备周边的环境温度，查看温度值是否发生变化，否则返回上一级' + '\n-预期结果：温度值发生变化';
+    '如果有传感器，请改变设备周边的环境温度，查看温度值是否发生变化，否则返回上一级' + '\n-预期结果：温度值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
   @State sensorChange: boolean = false;
-  @State dataTemperature: string = '';;
+  @State dataTemperature: string = '';
   @State nextTemperature: string = '';
   @State intervalNum: number = 0;
 
@@ -57,7 +58,7 @@ struct Temperature {
           this.dataTemperature = data.temperature.toString()
           this.intervalNum = setInterval(() => {
             this.nextTemperature = data.temperature.toFixed(0);
-            if (this.dataTemperature !== this.nextTemperature ) {
+            if (this.dataTemperature !== this.nextTemperature) {
               this.Vue = true;
             }
           }, 500)
@@ -65,7 +66,7 @@ struct Temperature {
         setTimeout(() => {
           sensor.off(sensor.SensorId.AMBIENT_TEMPERATURE);
         }, 500);
-      }  catch (error) {
+      } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
@@ -108,7 +109,7 @@ struct Temperature {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -139,7 +140,8 @@ struct Temperature {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -163,7 +165,8 @@ struct Temperature {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -286,12 +289,12 @@ struct Temperature {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -328,7 +331,7 @@ struct Temperature {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

@@ -13,20 +13,34 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
 
-export default function windowRefactorInterfaceTest(context, windowStage, abilityStorage) {
+
+async function sleep(time: number) {
+  let timeoutId: number = 0;
+  let promise = new Promise<string>(resolve => {
+    timeoutId = setTimeout(() => {
+      resolve('sleep finished');
+    }, time);
+  })
+  await promise;
+  clearTimeout(timeoutId)
+}
+
+export default function windowRefactorInterfaceTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   console.info('windowTest context: ' + JSON.stringify(context))
   console.info('windowTest abilityStorage: ' + JSON.stringify(abilityStorage))
-  describe('windowRefactorInterface_test', function () {
+  describe('windowRefactorInterface_test', () => {
     console.info('describe window_api_test2 start!!!')
     const TRUE_FLAG = true;
-    var commonRGBColorArr = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
-    var commonNUMBERColorArr = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
-    var commonKEYColorArr = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-    var systemWindowTypeDicArr = [];
-    var systemWindowTypeDic = {
+    let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
+    let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
+    let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
+    let systemWindowTypeDicArr: Array<string> = [];
+    let systemWindowTypeDic: Record<string, number> = {
       'TYPE_INPUT_METHOD': 2,
       'TYPE_STATUS_BAR': 3,
       'TYPE_PANEL': 4,
@@ -36,79 +50,62 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       'TYPE_FLOAT': 8,
       'TYPE_FLOAT_CAMERA': 9
     }
-    var listenerStatus = {
-      ready: 'ready',
-      pending: 'pending',
-      finished: 'finished'
-    };
-    beforeAll(function () {
-      console.info('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
+    beforeAll(() => {
+      console.info('jsUnittest beforeAll ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType.TYPE_FLOAT));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
-      console.info('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
+      console.info('jsUnittest beforeAll systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
     })
-    beforeEach(function () {
+    beforeEach(() => {
     })
-    afterAll(function () {
+    afterAll(() => {
     })
 
-    async function sleep(time) {
-      let timeoutId= null;
-      let promise = new Promise(resolve => {
-        timeoutId = setTimeout(() => {
-          resolve('sleep finished');
-        }, time);
-      })
-      let result = await promise;
-      clearTimeout(timeoutId)
-    }
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
-	   * @tc.name      : testSetWindowSystemBarProperties_Callback
-	   * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2020
+     * @tc.name      : testSetWindowSystemBarProperties_Callback
+     * @tc.desc      : Verify the scene where the colors of the status bar and navigation bar are set in RGB
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarProperties_Callback', 0, async function (done) {
-      let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
-      let listenerFlag = listenerStatus.ready;
+    it('testSetWindowSystemBarProperties_Callback', 0, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarProperties_Callback';
-      let msgStr = 'jsunittest ' + caseName + ' ';
+      let msgStr = 'jsUnittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
-      await mainWsync.showWindow().catch(err => {
+      await mainWsync.showWindow().catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest1  mainWsync.showWindow() error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      await mainWsync.setWindowSystemBarEnable(['status', 'navigation']).catch((err) => {
+      await mainWsync.setWindowSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest1  mainWsync.setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(1000);
-      for(let i=0;i<commonRGBColorArr.length;i++){
-        console.info('setWindowSystemBarPropertiesTest1 begin step:'+i);
-        let tempColor = commonRGBColorArr[i];
-        let systemBarProperties = {
+      for (let i = 0; i < commonRGBColorArr.length; i++) {
+        console.info('setWindowSystemBarPropertiesTest1 begin step:' + i);
+        let tempColor: string = commonRGBColorArr[i];
+        let systemBarProperties: ohosWindow.SystemBarProperties = {
           statusBarColor: tempColor,
           isStatusBarLightIcon: true,
           statusBarContentColor: tempColor,
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
-          navigationContentColor: tempColor,
+          navigationBarContentColor: tempColor,
         };
         await mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest1 success step:'+i);
+          console.info('setWindowSystemBarPropertiesTest1 success step:' + i);
           expect(TRUE_FLAG).assertTrue();
-          if(i==commonRGBColorArr.length-1){
-            console.info('setWindowSystemBarPropertiesTest1 finished step:'+i);
+          if (i == commonRGBColorArr.length - 1) {
+            console.info('setWindowSystemBarPropertiesTest1 finished step:' + i);
             done()
           }
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info('setWindowSystemBarPropertiesTest1  error : ' + JSON.stringify(err));
-          if(err.code==801){
+          if (err.code == 801) {
             expect(TRUE_FLAG).assertTrue();
           } else {
             expect().assertFail()
@@ -119,40 +116,33 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
-	   * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
-	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2000
+     * @tc.name      : testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True', 0, async function (done) {
-      let cloneColorArr = {
-        SBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
-        SCC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
-        NBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
-        NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
-      };
+    it('testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True', 0, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarProperties_IsNavigationBarLightIcon_True';
-      let msgStr = 'jsunittest ' + caseName + ' ';
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
-      await mainWsync.showWindow().catch((err) => {
+      await mainWsync.showWindow().catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest2  mainWsync.showWindow() error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
 
-      await mainWsync.setWindowSystemBarEnable(['status', 'navigation']).catch((err) => {
+      await mainWsync.setWindowSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest2  mainWsync.setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(1000);
-      for(let i =0;i<commonNUMBERColorArr.length;i++){
-        console.info('setWindowSystemBarPropertiesTest2 begin step:'+i);
+      for (let i = 0; i < commonNUMBERColorArr.length; i++) {
+        console.info('setWindowSystemBarPropertiesTest2 begin step:' + i);
         let tempColor = commonNUMBERColorArr[i];
-        let systemBarProperties = {
+        let systemBarProperties: ohosWindow.SystemBarProperties = {
           statusBarColor: tempColor,
           isStatusBarLightIcon: true,
           statusBarContentColor: tempColor,
@@ -161,15 +151,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           navigationBarContentColor: tempColor,
         };
         await mainWsync.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest2 success step:'+i);
+          console.info('setWindowSystemBarPropertiesTest2 success step:' + i);
           expect(TRUE_FLAG).assertTrue();
-          if(i == commonNUMBERColorArr.length-1){
-            console.info('setWindowSystemBarPropertiesTest2 finished step:'+i);
+          if (i == commonNUMBERColorArr.length - 1) {
+            console.info('setWindowSystemBarPropertiesTest2 finished step:' + i);
             done();
           }
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info('setWindowSystemBarPropertiesTest2  error : ' + JSON.stringify(err));
-          if(err.code==801){
+          if (err.code == 801) {
             expect(TRUE_FLAG).assertTrue();
           } else {
             expect().assertFail()
@@ -180,51 +170,49 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-	   * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
-	   * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
-	   * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
-	   * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2010
+     * @tc.name      : testSetWindowSystemBarProperties_SetColor_By_Name
+     * @tc.desc      : Verify the scene where the status bar and navigation bar colors are set as keywords
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarProperties_SetColor_By_Name', 0, async function (done) {
-      let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
+    it('testSetWindowSystemBarProperties_SetColor_By_Name', 0, async (done: Function) => {
       let caseName = 'testSetWindowSystemBarProperties_SetColor_By_Name';
-      let msgStr = 'jsunittest ' + caseName + ' ';
       let tempWnd = windowStage.getMainWindowSync();
       expect(tempWnd != null).assertTrue();
-      await tempWnd.showWindow().catch((err) => {
+      await tempWnd.showWindow().catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest3  mainWsync.showWindow() error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      await tempWnd.setWindowSystemBarEnable(['status', 'navigation']).catch((err) => {
+      await tempWnd.setWindowSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         console.info('setWindowSystemBarPropertiesTest3  mainWsync.setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(1000);
-      for(let i=0;i<commonKEYColorArr.length;i++){
-        console.info('setWindowSystemBarPropertiesTest3 begin step:'+i);
+      for (let i = 0; i < commonKEYColorArr.length; i++) {
+        console.info('setWindowSystemBarPropertiesTest3 begin step:' + i);
         let tempColor = commonKEYColorArr[i];
-        let systemBarProperties = {
+        let systemBarProperties: ohosWindow.SystemBarProperties = {
           statusBarColor: tempColor,
           isStatusBarLightIcon: true,
           statusBarContentColor: tempColor,
           navigationBarColor: tempColor,
           isNavigationBarLightIcon: false,
-          navigationContentColor: tempColor,
+          navigationBarContentColor: tempColor,
         };
         await tempWnd.setWindowSystemBarProperties(systemBarProperties).then(() => {
-          console.info('setWindowSystemBarPropertiesTest3 success step:'+i);
+          console.info('setWindowSystemBarPropertiesTest3 success step:' + i);
           expect(TRUE_FLAG).assertTrue();
-          if(i == commonKEYColorArr.length-1){
-            console.info('setWindowSystemBarPropertiesTest3 finished step:'+i);
+          if (i == commonKEYColorArr.length - 1) {
+            console.info('setWindowSystemBarPropertiesTest3 finished step:' + i);
             done();
           }
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info('setWindowSystemBarPropertiesTest3  error : ' + JSON.stringify(err));
-          if(err.code==801){
+          if (err.code == 801) {
             expect(TRUE_FLAG).assertTrue();
           } else {
             expect().assertFail()
@@ -242,8 +230,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowSystemBarProperties_SetColor_By_RGB', 0, async function (done) {
-      let SystemBarProperties = {
+    it('testSetWindowSystemBarProperties_SetColor_By_RGB', 0, async (done: Function) => {
+      let SystemBarProperties: ohosWindow.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
         isStatusBarLightIcon: true,
@@ -254,23 +242,23 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let tempWnd = windowStage.getMainWindowSync();
       expect(tempWnd != null).assertTrue();
       try {
-        tempWnd.setWindowSystemBarProperties(SystemBarProperties, (err) => {
+        tempWnd.setWindowSystemBarProperties(SystemBarProperties, (err: BusinessError) => {
           console.info('Succeeded in setting the system bar properties.' + JSON.stringify(err));
-          if (err.code && err.code!==801) {
+          if (err.code && err.code !== 801) {
             try {
               expect(err.code).assertEqual(401);
             } catch (error) {
               console.info(`tempWnd.setWindowSystemBarProperties catch error: ${JSON.stringify(error)}`)
             }
             done()
-          } else if(err.code && err.code==801){
+          } else if (err.code && err.code == 801) {
             try {
               expect(TRUE_FLAG).assertTrue();
             } catch (error) {
               console.info(`tempWnd.setWindowSystemBarProperties catch error: ${JSON.stringify(error)}`)
             }
             done();
-          }else {
+          } else {
             console.info('Succeeded in setting the system bar properties.');
             try {
               expect(TRUE_FLAG).assertTrue();
@@ -282,7 +270,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         });
       } catch (exception) {
         console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(exception));
-        if(exception.code && exception.code==801){
+        if (exception.code && exception.code == 801) {
           expect(TRUE_FLAG).assertTrue();
           done()
         } else {
@@ -295,35 +283,35 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0710
-     * @tc.name      : testIswindowShowingTest
+     * @tc.name      : testIsWindowShowingTest
      * @tc.desc      : To verify the widow isshowing
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testIswindowShowingTest', 0, async function (done) {
-      console.info('windowTest testIswindowShowingTest begin');
-      let config = {
-        name: "alertWindowshow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
+    it('testIsWindowShowingTest', 0, async (done: Function) => {
+      console.info('windowTest testIsWindowShowingTest begin');
+      let config: ohosWindow.Configuration = {
+        name: "alertWindowShow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
-      let wnd;
-      wnd = await ohosWindow.createWindow(config).catch(err => {
-        console.error('Failed to create the Windowshow1. Cause:' + JSON.stringify(err));
+      let wnd: ohosWindow.Window | void;
+      wnd = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
+        console.error('Failed to create the WindowShow1. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
       expect(wnd != null).assertTrue();
-      let isWindowShowing = wnd.isWindowShowing();
+      let isWindowShowing = (wnd as ohosWindow.Window).isWindowShowing();
       expect(!isWindowShowing).assertTrue();
-      await wnd.showWindow().then(async () => {
-        let isWindowShowing2 = wnd.isWindowShowing();
+      await (wnd as ohosWindow.Window).showWindow().then(async () => {
+        let isWindowShowing2 = (wnd as ohosWindow.Window).isWindowShowing();
         expect(isWindowShowing2).assertTrue();
-        await wnd.destroyWindow();
+        await (wnd as ohosWindow.Window).destroyWindow();
         done();
-      }).catch(async (err) => {
+      }).catch(async (err: BusinessError) => {
         console.error('Failed to show window1. Cause:' + JSON.stringify(err));
         expect().assertFail();
-        await wnd.destroyWindow();
+        await (wnd as ohosWindow.Window).destroyWindow();
         done();
       })
     })
@@ -335,25 +323,25 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContent_Existence_page', 0, async function (done) {
-      let config = {
+    it('testSetUIContent_Existence_page', 0, async (done: Function) => {
+      let config: ohosWindow.Configuration = {
         name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
-      let win;
+      let win: ohosWindow.Window | void;
       try {
-        win = await ohosWindow.createWindow(config).catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
           console.error('Failed to create the Window1. Cause:' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
         expect(win != null);
-        await win.setUIContent('MainAbility/pages/second/second').then(async () => {
+        await (win as ohosWindow.Window).setUIContent('MainAbility/pages/second/second').then(async () => {
           console.info('setUIContent1 . Cause: success');
-          await win.destroyWindow();
+          await (win as ohosWindow.Window).destroyWindow();
           done();
-        }).catch(async (err) => {
+        }).catch(async (err: BusinessError) => {
           console.error('Failed to setUIContent . Cause:' + JSON.stringify(err));
-          await win.destroyWindow();
+          await (win as ohosWindow.Window).destroyWindow();
           expect().assertFail();
           done();
         });
@@ -373,14 +361,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContentTestCallback1', 0, async function (done) {
-      let windowClass = null;
-      let msgStr='testSetUIContentTestCallback1'
-      let config = {
+    it('testSetUIContentTestCallback1', 0, async (done: Function) => {
+      let msgStr = 'testSetUIContentTestCallback1'
+      let config: ohosWindow.Configuration = {
         name: "alertWindowcallBack", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
-      function createFirstWindow() {
-        return new Promise((resolve, reject) => {
+      let createFirstWindow: Function = () => {
+        return new Promise<ohosWindow.Window>((resolve, reject) => {
           try {
             ohosWindow.createWindow(config, (create_err, create_data) => {
               console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(create_data));
@@ -401,32 +388,34 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           ;
         })
       }
-      let winData;
+      let winData: ohosWindow.Window;
       winData = await createFirstWindow();
       expect(!!winData).assertTrue();
       try {
-        winData.setUIContent('pages/second/second', async (err) => {
-          try{
+        winData.setUIContent('pages/second/second', async (err: BusinessError) => {
+          try {
             if (err.code) {
               console.error('Failed to load the content callback. Cause:' + JSON.stringify(err));
-              expect().assertFail();
-
+              await winData.destroyWindow();
+              expect(err.code).assertEqual(401);
+              done();
             } else {
               console.info('Succeeded in loading the content.');
-              expect(TRUE_FLAG).assertTrue();
+              await winData.destroyWindow();
+              expect().assertFail();
+              done();
             }
-          }catch(err){
+          } catch (err) {
             console.log('setUIContentTestCallBack1 assert result catch' + JSON.stringify(err));
           }
-          done();
-          await winData.destroyWindow();
         });
       } catch (exception) {
         console.error('Failed callback to load the content. Cause:' + JSON.stringify(exception));
-        expect().assertFail();
+        expect(exception.code).assertEqual(401);
         await winData.destroyWindow();
         done();
-      };
+      }
+      ;
     })
 
     /**
@@ -437,35 +426,34 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContent_Invalid_Parameter', 0, async function (done) {
-      let windowClass = null;
-      let config = {
+    it('testSetUIContent_Invalid_Parameter', 0, async (done: Function) => {
+      let config: ohosWindow.Configuration = {
         name: "alertWindow2", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
-      let win;
+      let win: ohosWindow.Window | void;
       try {
-        win = await ohosWindow.createWindow(config).catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
           console.error('Failed to create the inner Window2. Cause:' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
         expect(win != null).assertTrue();
         try {
-          await win.setUIContent(null).then(async () => {
+          await (win as ohosWindow.Window).setUIContent(null).then(async () => {
             console.info('Succeeded in loading the content.');
             expect().assertFail();
-            await win.destroyWindow();
+            await (win as ohosWindow.Window).destroyWindow();
             done();
-          }).catch(async (err) => {
+          }).catch(async (err: BusinessError) => {
             console.error('Failed to load the content. Cause: ' + JSON.stringify(err));
             expect(err.code).assertEqual(401);
-            await win.destroyWindow();
+            await (win as ohosWindow.Window).destroyWindow();
             done()
           });
         } catch (exception) {
           console.error('Failed to load the content. exception: ' + JSON.stringify(exception));
           expect(exception.code).assertEqual(401);
-          await win.destroyWindow();
+          await (win as ohosWindow.Window).destroyWindow();
           done()
         }
         ;
@@ -473,7 +461,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to create the window2. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      };
+      }
+      ;
     })
 
     /**
@@ -484,28 +473,28 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetUIContent_Not_Existent_Parameter', 0, async function (done) {
-      let config = {
+    it('testSetUIContent_Not_Existent_Parameter', 0, async (done: Function) => {
+      let config: ohosWindow.Configuration = {
         name: "alertWindow3", windowType: ohosWindow.WindowType.TYPE_FLOAT, ctx: context
       };
-      let win;
+      let win: ohosWindow.Window | void;
       try {
-        win = await ohosWindow.createWindow(config).catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err: BusinessError) => {
           console.error('Failed to create the inner Window3. Cause:' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
         expect(win != null).assertTrue();
         // 设置setUIContent
-        await win.setUIContent('pages/second/he').then(async () => {
+        await (win as ohosWindow.Window).setUIContent('pages/second/he').then(async () => {
           console.info('setUIContent3 . Cause: success');
-          expect(TRUE_FLAG).assertTrue();
-          await win.destroyWindow();
-          done();
-        }).catch(async (err) => {
-          console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
           expect().assertFail();
-          await win.destroyWindow();
+          await (win as ohosWindow.Window).destroyWindow();
+          done();
+        }).catch(async (err: BusinessError) => {
+          console.error('Failed to setUIContent3 . Cause:' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
+          await (win as ohosWindow.Window).destroyWindow();
           done();
         });
       } catch (exception) {
@@ -524,11 +513,11 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowColorSpace_Multiple_Wide_Gamut', 0, async function (done) {
+    it('testSetWindowColorSpace_Multiple_Wide_Gamut', 0, async (done: Function) => {
       console.info('windowTest testSetWindowColorSpace_Multiple_Wide_Gamut begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      await wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).catch((err) => {
+      await wnd.setWindowColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT).catch((err: BusinessError) => {
         console.info('windowTest SetWindowColorSpaceTest1 wnd.setColorSpace failed, err :' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -539,7 +528,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       await wnd.isWindowSupportWideGamut().then(data => {
         expect(data).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest SetColorSpaceTest1 wnd.isWindowSupportWideGamut failed, err :' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -554,7 +543,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowColorSpace_Invalid_ParamsTwo', 0, async function (done) {
+    it('testSetWindowColorSpace_Invalid_ParamsTwo', 0, async (done: Function) => {
       console.info('windowTest testSetWindowColorSpace_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -564,7 +553,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           console.info('Succeeded in setting window2 colorspace.');
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error('Failed to set window colorspacecatch2. Cause: ' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
@@ -586,15 +575,15 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowColorSpaceTest', 0, async function (done) {
+    it('testSetWindowColorSpaceTest', 0, async (done: Function) => {
       console.info('windowTest testSetWindowColorSpaceTest begin');
       let wnd = windowStage.getMainWindowSync();
       let msgStr = 'setColorSpace_Test_003'
       expect(wnd != null).assertTrue();
-      function setColorSpaceFun() {
-        return new Promise((resolve, reject) => {
+      let setColorSpaceFun: Function = () => {
+        return new Promise<boolean>((resolve, reject) => {
           try {
-            wnd.setColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT, (err,data) => {
+            wnd.setColorSpace(ohosWindow.ColorSpace.WIDE_GAMUT, (err, data) => {
               console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
               if (err && err.code) {
                 try {
@@ -613,13 +602,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           ;
         })
       }
-      let isResultTrue;
+      let isResultTrue: void;
       isResultTrue = await setColorSpaceFun();
       expect(isResultTrue).assertTrue();
       let windowColorSpace = wnd.getWindowColorSpace();
       expect(windowColorSpace == ohosWindow.ColorSpace.WIDE_GAMUT).assertTrue();
       wnd.isWindowSupportWideGamut((err, data) => {
-        try{
+        try {
           if (err.code != 0) {
             console.log('windowTest SetWindowColorSpaceTest3 getColorSpace callback fail' + JSON.stringify(err));
             expect().assertFail();
@@ -628,21 +617,21 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
             expect(data).assertTrue();
             done();
           }
-        }catch(exception){
+        } catch (exception) {
           console.log('assertFail catch' + JSON.stringify(exception));
         }
       })
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1460
-     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsOne
-     * @tc.desc      :	Set the window background color to red and Default opacity
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1460
+     * @tc.name      :  testSetWindowBackgroundColor_Base_ParamsOne
+     * @tc.desc      :  Set the window background color to red and Default opacity
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Base_ParamsOne', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Base_ParamsOne', 0, async (done: Function) => {
       console.info('windowTest01 testSetWindowBackgroundColor_Base_ParamsOne begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -664,18 +653,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background1 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      };
+      }
+      ;
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1480
-     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsTwo
-     * @tc.desc      :	Set the window background color to red opaque
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1480
+     * @tc.name      :  testSetWindowBackgroundColor_Base_ParamsTwo
+     * @tc.desc      :  Set the window background color to red opaque
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Base_ParamsTwo', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Base_ParamsTwo', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBackgroundColor_Base_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -697,18 +687,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background2 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
-      };
+      }
+      ;
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
-     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsThree
-     * @tc.desc      :	Set the window background color to red transparent
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1500
+     * @tc.name      :  testSetWindowBackgroundColor_Base_ParamsThree
+     * @tc.desc      :  Set the window background color to red transparent
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Base_ParamsThree', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Base_ParamsThree', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBackgroundColor_Base_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -735,14 +726,14 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1510
-     * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsTwo
-     * @tc.desc      :	Set the background color input parameter as an outlier
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1510
+     * @tc.name      :  testSetWindowBackgroundColor_Invalid_ParamsTwo
+     * @tc.desc      :  Set the background color input parameter as an outlier
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Invalid_ParamsTwo', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Invalid_ParamsTwo', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsTwo begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -759,14 +750,14 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1520
-     * @tc.name      :	testSetWindowBackgroundColor_Invalid_ParamsThree
-     * @tc.desc      :	Setting window background color input exception ARGB
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1520
+     * @tc.name      :  testSetWindowBackgroundColor_Invalid_ParamsThree
+     * @tc.desc      :  Setting window background color input exception ARGB
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Invalid_ParamsThree', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Invalid_ParamsThree', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBackgroundColor_Invalid_ParamsThree begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -787,18 +778,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background5 color. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
         done()
-      };
+      }
+      ;
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1530
-     * @tc.name      :	testSetWindowBackgroundColor_Base_ParamsFour
-     * @tc.desc      :	Setting window background color input exception RGB
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1530
+     * @tc.name      :  testSetWindowBackgroundColor_Base_ParamsFour
+     * @tc.desc      :  Setting window background color input exception RGB
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBackgroundColor_Base_ParamsFour', 0, async function (done) {
+    it('testSetWindowBackgroundColor_Base_ParamsFour', 0, async (done: Function) => {
       console.log('windowTest testSetWindowBackgroundColor_Base_ParamsFour begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -810,29 +802,30 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.error('Failed to set the background6 color. Cause: ' + JSON.stringify(exception));
         expect(exception.code).assertEqual(401);
         done()
-      };
+      }
+      ;
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1580
-     * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Promise
-     * @tc.desc      :	Setting the brightness bar input parameter is normal
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1580
+     * @tc.name      :  testSetWindowBrightness_Multiple_Calls_Promise
+     * @tc.desc      :  Setting the brightness bar input parameter is normal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Multiple_Calls_Promise', 0, async function (done) {
+    it('testSetWindowBrightness_Multiple_Calls_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      await wnd.setWindowBrightness(0).catch((err) => {
+      await wnd.setWindowBrightness(0).catch((err: BusinessError) => {
         console.info('windowTest setWindowBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
       })
       let data = wnd.getWindowProperties();
       expect(data.brightness).assertEqual(0);
-      await wnd.setWindowBrightness(0.5).catch((err) => {
+      await wnd.setWindowBrightness(0.5).catch((err: BusinessError) => {
         console.log('windowTest setBrightnessTest1 setWindowBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -844,7 +837,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         let data2 = wnd.getWindowProperties();
         expect(data2.brightness).assertEqual(1);
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.log('windowTest setWindwoBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -852,14 +845,14 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Promise
-     * @tc.desc      :	Set the brightness bar input parameter to decimal
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1600
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsTwo_Promise
+     * @tc.desc      :  Set the brightness bar input parameter to decimal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsTwo_Promise', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsTwo_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -867,7 +860,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.log('windowTest setBrightnessTest2 setBrightness(0.564789) success ');
         expect(TRUE_FLAG).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.log('windowTest setWindowBrightnessTest2 setBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -876,25 +869,25 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1620
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Promise
-     * @tc.desc      :	Set the brightness bar input parameter to number max
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1620
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsThree_Promise
+     * @tc.desc      :  Set the brightness bar input parameter to number max
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsThree_Promise', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsThree_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      let brightness = Number.MAX_VALUE;
+      let brightness: number = Number.MAX_VALUE;
       try {
         let promise = wnd.setWindowBrightness(brightness);
         await promise.then(() => {
           console.info('Succeeded3 in setting the brightness.');
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error('Failed3 to set the brightness. Cause: ' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
@@ -909,22 +902,22 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1630
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFour_Promise
-     * @tc.desc      :	Set the brightness bar input parameter to number min
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1630
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsFour_Promise
+     * @tc.desc      :  Set the brightness bar input parameter to number min
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsFour_Promise', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsFour_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsFour_Promise begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowBrightness(Number.MIN_VALUE).then(() => {
         console.info('windowTest setWindowBrightnessTest3 setBrightness(Number.MAX_VALUE) success ');
         expect(TRUE_FLAG).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setWindowBrightnessTest4 setBrightness failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -932,16 +925,16 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1640
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsFive_Promise
-     * @tc.desc      :	Setting brightness bar input parameter exception
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1640
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsFive_Promise
+     * @tc.desc      :  Setting brightness bar input parameter exception
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsFive_Promise', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsFive_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsFive_Promise begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let brightness = 1.1;
       try {
@@ -950,7 +943,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           console.info('Succeeded5 in setting the brightness.');
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error('Failed5 to set the brightness. Cause: ' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
@@ -968,7 +961,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           console.info('Succeeded55 in setting the brightness.');
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error('Failed55 to set the brightness. Cause: ' + JSON.stringify(err));
           expect(err.code).assertEqual(401);
           done();
@@ -982,19 +975,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1540
-     * @tc.name      :	testSetWindowBrightness_Multiple_Calls_Callback
-     * @tc.desc      :	et the brightness bar input parameter to decimal
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1540
+     * @tc.name      :  testSetWindowBrightness_Multiple_Calls_Callback
+     * @tc.desc      :  et the brightness bar input parameter to decimal
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Multiple_Calls_Callback', 0, async function (done) {
+    it('testSetWindowBrightness_Multiple_Calls_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Multiple_Calls_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
-        wnd.setWindowBrightness(1, (err) => {
+        wnd.setWindowBrightness(1, (err: BusinessError) => {
           if (err.code) {
             console.error('Failed to set the brightnesscallback01. Cause: ' + JSON.stringify(err));
             try {
@@ -1010,7 +1003,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
               console.info(`wnd.setWindowBrightness catch error: ${JSON.stringify(error)}`)
             }
             try {
-              let properties = wnd.getWindowProperties();
+              let properties: ohosWindow.WindowProperties = wnd.getWindowProperties();
               try {
                 expect(properties.brightness).assertEqual(1);
               } catch (error) {
@@ -1038,20 +1031,20 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1550
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsOne_Callback
-     * @tc.desc      :	Set the brightness bar input parameter to number max
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1550
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsOne_Callback
+     * @tc.desc      :  Set the brightness bar input parameter to number max
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsOne_Callback', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsOne_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsOne_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      let brightness = Number.MAX_VALUE;
+      let brightness: number = Number.MAX_VALUE;
       try {
-        wnd.setWindowBrightness(brightness, (err) => {
+        wnd.setWindowBrightness(brightness, (err: BusinessError) => {
           if (err.code) {
             console.error('Failed to set the brightnesscallback3. Cause: ' + JSON.stringify(err));
             try {
@@ -1079,19 +1072,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1560
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsTwo_Callback
-     * @tc.desc      :	Set the brightness bar input parameter to number min
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1560
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsTwo_Callback
+     * @tc.desc      :  Set the brightness bar input parameter to number min
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsTwo_Callback', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsTwo_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsTwo_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
-        wnd.setWindowBrightness(Number.MIN_VALUE, (err) => {
+        wnd.setWindowBrightness(Number.MIN_VALUE, (err: BusinessError) => {
           if (err.code) {
             console.error('Failed to set the brightnesscallback4. Cause: ' + JSON.stringify(err));
             try {
@@ -1119,19 +1112,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1570
-     * @tc.name      :	testSetWindowBrightness_Invalid_ParamsThree_Callback
-     * @tc.desc      :	Setting brightness bar input parameter exception
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1570
+     * @tc.name      :  testSetWindowBrightness_Invalid_ParamsThree_Callback
+     * @tc.desc      :  Setting brightness bar input parameter exception
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowBrightness_Invalid_ParamsThree_Callback', 0, async function (done) {
+    it('testSetWindowBrightness_Invalid_ParamsThree_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowBrightness_Invalid_ParamsThree_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
-        wnd.setWindowBrightness(1.1, (err) => {
+        wnd.setWindowBrightness(1.1, (err: BusinessError) => {
           if (err.code) {
             console.error('Failed to set the brightnesscallback5. Cause: ' + JSON.stringify(err));
             try {
@@ -1159,20 +1152,20 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1690
-     * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Callback
-     * @tc.desc      :	Setting window focus acquisition and defocus
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1690
+     * @tc.name      :  testSetWindowFocusable_Multiple_Calls_Callback
+     * @tc.desc      :  Setting window focus acquisition and defocus
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowFocusable_Multiple_Calls_Callback', 0, async function (done) {
+    it('testSetWindowFocusable_Multiple_Calls_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowFocusable_Multiple_Calls_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
-      let msgStr ='testSetWindowFocusable_Multiple_Calls_Callback'
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
+      let msgStr = 'testSetWindowFocusable_Multiple_Calls_Callback'
       expect(wnd != null).assertTrue();
-      function setWindowFocusableFun(){
-        return new Promise((resolve, reject) => {
+      let setWindowFocusableFun: Function = () => {
+        return new Promise<boolean>((resolve, reject) => {
           try {
             wnd.setWindowFocusable(false, (err, data) => {
               console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
@@ -1189,10 +1182,11 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
             })
           } catch (exception) {
             console.error(msgStr + 'Failed to create the window. Cause: ' + JSON.stringify(exception));
-          };
+          }
+          ;
         })
       }
-      let isResultTrue;
+      let isResultTrue: void;
       isResultTrue = await setWindowFocusableFun()
       expect(isResultTrue).assertTrue();
       let data = wnd.getWindowProperties();
@@ -1220,13 +1214,13 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1700
-     * @tc.name      :	testSetWindowFocusable_Multiple_Calls_Promise
-     * @tc.desc      :	Setting window focus acquisition and defocus
+     * @tc.name      :  testSetWindowFocusable_Multiple_Calls_Promise
+     * @tc.desc      :  Setting window focus acquisition and defocus
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowFocusable_Multiple_Calls_Promise', 0, async function (done) {
+    it('testSetWindowFocusable_Multiple_Calls_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowFocusable_Multiple_Calls_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -1234,7 +1228,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.info('windowTest setFocusableTest1 setFocusable(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.focusable).assertTrue();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.log('windowTest setWinFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1243,7 +1237,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         console.info('windowTest setFocusableTest1 setFocusable(true) success ');
         expect(TRUE_FLAG).assertTrue();
         done();
-      }, err => {
+      }, (err: BusinessError) => {
         console.info('windowTest setFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1251,24 +1245,24 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2050
-     * @tc.name      :	testSetWindowTouchable_Invoked_Twice
-     * @tc.desc      :	Set whether the window can be touched or not
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2050
+     * @tc.name      :  testSetWindowTouchable_Invoked_Twice
+     * @tc.desc      :  Set whether the window can be touched or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowTouchable_Invoked_Twice', 0, async function (done) {
+    it('testSetWindowTouchable_Invoked_Twice', 0, async (done: Function) => {
       console.info('windowTest testSetWindowTouchable_Invoked_Twice begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       let data = wnd.getWindowProperties();
       expect(data.touchable).assertTrue();
-      await wnd.setWindowTouchable(false).then(async() => {
+      await wnd.setWindowTouchable(false).then(async () => {
         console.info('windowTest setTouchableTest1 setTouchable(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.touchable).assertTrue();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.log('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1278,7 +1272,7 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         let data3 = wnd.getWindowProperties();
         expect(data3.touchable).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1286,19 +1280,20 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2030
-     * @tc.name      :	testSetWindowTouchable_Callback_Form
-     * @tc.desc      :	Set whether the window can be touched or not
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2030
+     * @tc.name      :  testSetWindowTouchable_Callback_Form
+     * @tc.desc      :  Set whether the window can be touched or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowTouchable_Callback_Form', 0, async function (done) {
-      let msgStr ='testSetWindowTouchable_Callback_Form'
-      let wnd = windowStage.getMainWindowSync();
+    it('testSetWindowTouchable_Callback_Form', 0, async (done: Function) => {
+      let msgStr = 'testSetWindowTouchable_Callback_Form'
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-      function setWindowTouchableFun(){
-        return new Promise((resolve, reject) => {
+
+      let setWindowTouchableFun: Function = () => {
+        return new Promise<boolean>((resolve, reject) => {
           wnd.setWindowTouchable(false, (err, data) => {
             console.log(msgStr + 'ohosWindow.createWindow  data' + JSON.stringify(data));
             if (err && err.code) {
@@ -1314,10 +1309,11 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
           })
         })
       }
-      let isResultTrue;
-      isResultTrue=await setWindowTouchableFun()
+
+      let isResultTrue: void;
+      isResultTrue = await setWindowTouchableFun()
       expect(isResultTrue).assertTrue();
-      let data = wnd.getWindowProperties();
+      let data: ohosWindow.WindowProperties = wnd.getWindowProperties();
       expect(!data.touchable).assertTrue();
       wnd.setWindowTouchable(true, (err, data) => {
         if (err.code) {
@@ -1341,25 +1337,25 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1750
-     * @tc.name      :	testSetWindowKeepScreenOn_Base_True_Promise
-     * @tc.desc      :	Set whether the window screenOn
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1750
+     * @tc.name      :  testSetWindowKeepScreenOn_Base_True_Promise
+     * @tc.desc      :  Set whether the window screenOn
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowKeepScreenOn_Base_True_Promise', 0, async function (done) {
+    it('testSetWindowKeepScreenOn_Base_True_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowKeepScreenOn_Base_True_Promise begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isKeepScreenOn).assertTrue();
-     await wnd.setWindowKeepScreenOn(true).then(() => {
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isKeepScreenOn).assertTrue();
+      await wnd.setWindowKeepScreenOn(true).then(() => {
         console.info('windowTest setKeepScreenOnTest2 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(data2.isKeepScreenOn).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setKeepScreenOnTest2 setKeepScreenOn failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1367,23 +1363,23 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1730
-     * @tc.name      :	testSetWindowKeepScreenOn_Base_False_Promise
-     * @tc.desc      :	Set whether the window screenOn
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1730
+     * @tc.name      :  testSetWindowKeepScreenOn_Base_False_Promise
+     * @tc.desc      :  Set whether the window screenOn
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowKeepScreenOn_Base_False_Promise', 0, async function (done) {
+    it('testSetWindowKeepScreenOn_Base_False_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowKeepScreenOn_Base_False_Promise begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       await wnd.setWindowKeepScreenOn(false).then(() => {
         console.info('windowTest setKeepScreenOnTest1 setKeepScreenOn(false) success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.isKeepScreenOn).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setKeepScreenOnTest1 setKeepScreenOn failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1391,14 +1387,14 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1720
-     * @tc.name      :	testSetWindowKeepScreenOn_Base_Callback
-     * @tc.desc      :	Set whether setKeepScreenOn or not
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1720
+     * @tc.name      :  testSetWindowKeepScreenOn_Base_Callback
+     * @tc.desc      :  Set whether setKeepScreenOn or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowKeepScreenOn_Base_Callback', 0, async function (done) {
+    it('testSetWindowKeepScreenOn_Base_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowKeepScreenOn_Base_Callback begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
@@ -1432,18 +1428,18 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowPrivacyMode_False_Promise', 0, async function (done) {
+    it('testSetWindowPrivacyMode_False_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowPrivacyMode_False_Promise begin');
       let wnd = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isPrivacyMode).assertTrue();
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(false).then(() => {
         console.info('windowTest setWindowPrivacyMode1 success ');
         let data2 = wnd.getWindowProperties();
         expect(!data2.isPrivacyMode).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setWindowPrivacyMode failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1458,18 +1454,18 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowPrivacyMode_True_Promise', 0, async function (done) {
+    it('testSetWindowPrivacyMode_True_Promise', 0, async (done: Function) => {
       console.info('windowTest testSetWindowPrivacyMode_True_Promise begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
-//      let data = wnd.getWindowProperties();
-//      expect(!data.isPrivacyMode).assertTrue();
+      //      let data = wnd.getWindowProperties();
+      //      expect(!data.isPrivacyMode).assertTrue();
       await wnd.setWindowPrivacyMode(true).then(() => {
         console.info('windowTest setWindowPrivacyMode2 success ');
         let data2 = wnd.getWindowProperties();
         expect(data2.isPrivacyMode).assertTrue();
         done();
-      }, (err) => {
+      }, (err: BusinessError) => {
         console.info('windowTest setWindowPrivacyMode2 failed: err' + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -1477,19 +1473,19 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
     })
 
     /**
-     * @tc.number    :	SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1860
-     * @tc.name      :	testSetWindowPrivacyMode_True_Callback
-     * @tc.desc      :	Set whether setWindowPrivacyMode or not
+     * @tc.number    :  SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1860
+     * @tc.name      :  testSetWindowPrivacyMode_True_Callback
+     * @tc.desc      :  Set whether setWindowPrivacyMode or not
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testSetWindowPrivacyMode_True_Callback', 0, async function (done) {
+    it('testSetWindowPrivacyMode_True_Callback', 0, async (done: Function) => {
       console.info('windowTest testSetWindowPrivacyMode_True_Callback begin');
-      let wnd = windowStage.getMainWindowSync();
+      let wnd: ohosWindow.Window = windowStage.getMainWindowSync();
       expect(wnd != null).assertTrue();
       try {
-        wnd.setWindowPrivacyMode(true, (err) => {
+        wnd.setWindowPrivacyMode(true, (err: BusinessError) => {
           if (err.code) {
             console.error('Failed to set the window to privacy mode. Cause:' + JSON.stringify(err));
             try {

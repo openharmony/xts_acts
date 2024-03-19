@@ -12,22 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct ListItem_SizeChange {
-  @State testWidth: number = 300
-  @State testHeight: number = 100
-  private arr: number[] = [0, 1, 2, 3, 4]
-  messageManager:MessageManager = new MessageManager()
-  private content: string = "ListItem_SizeChange Page"
+  @State testWidth: number = 300;
+  @State testHeight: number = 100;
+  private arr: number[] = [0, 1, 2, 3, 4];
+  messageManager: MessageManager<number> = new MessageManager();
+  private content: string = "ListItem_SizeChange Page";
+
   onPageShow() {
     console.info('ListItem_SizeChange page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'width') {
         this.testWidth = message.value;
@@ -35,7 +37,7 @@ struct ListItem_SizeChange {
       if (message.name == 'height') {
         this.testHeight = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -51,25 +53,48 @@ struct ListItem_SizeChange {
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(this.testWidth).height(this.testHeight).key('ListItemTest1').editable(true).backgroundColor(0xF5DEB3)
+        }
+        .width(this.testWidth)
+        .height(this.testHeight)
+        .key('ListItemTest1')
+        .editable(true)
+        .backgroundColor(0xF5DEB3)
+
         ListItem() {
           Text('2')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('ListItemTest2').editable(true).backgroundColor(0xD2B48C)
+        }
+        .width(300)
+        .height(100)
+        .key('ListItemTest2')
+        .editable(true)
+        .backgroundColor(0xD2B48C)
+
         ListItem() {
           Text('3')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('ListItemTest3').editable(true).backgroundColor(0xffa500)
+        }
+        .width(300)
+        .height(100)
+        .key('ListItemTest3')
+        .editable(true)
+        .backgroundColor(0xffa500)
+
         ListItem() {
           Text('4')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('ListItemTest4').editable(true).backgroundColor(0xFFFFFF)
+        }
+        .width(300)
+        .height(100)
+        .key('ListItemTest4')
+        .editable(true)
+        .backgroundColor(0xFFFFFF)
       }
       .height(500)
       .width(350)

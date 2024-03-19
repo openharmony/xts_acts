@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function grid_RowCol_ItemOffsetTest() {
-  describe('Grid_RowCol_ItemOffsetTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_ItemOffsetTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_ItemOffsetTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemOffset',
       }
       try {
@@ -29,7 +30,7 @@ export default function grid_RowCol_ItemOffsetTest() {
         console.info("get Grid_RowCol_ItemOffset state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_ItemOffset" == pages.name)) {
           console.info("get Grid_RowCol_ItemOffset state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_ItemOffset page result:" + JSON.stringify(result));
         }
@@ -39,30 +40,34 @@ export default function grid_RowCol_ItemOffsetTest() {
       console.info("Grid_RowCol_ItemOffsetTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Grid_RowCol_ItemOffsetTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0400
-     * @tc.name      testGridRowColItemOffset
-     * @tc.desc      The second griditem set offset to {x:20,y:20}
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_0400
+     * @tc.name testGridRowColItemOffset
+     * @tc.desc The second griditem set offset to {x:20,y:20}
      */
-    it('testGridRowColItemOffset', 0, async function (done) {
+    it('testGridRowColItemOffset', 0, async (done: Function) => {
       console.info('[testGridRowColItemOffset] START');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset02');
-      let secondGridItemTop = secondGridItem.top;
-      let secondGridItemLeft = secondGridItem.left;
-      globalThis.value.message.notify({name:'secondGridItemOffset', value:{x:20,y:20}});
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset02');
+      let secondGridItemTop: number = secondGridItem.top;
+      let secondGridItemLeft: number = secondGridItem.left;
+      globalThis.value.message.notify({
+        name: 'secondGridItemOffset', value: {
+          x: 20, y: 20
+        }
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset01');
       secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset02');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset03');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset04');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset_Container01');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset03');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset04');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemOffset_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemOffset_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
 
       expect(Math.abs(secondGridItem.left - secondGridItemLeft - vp2px(20)) <= 1).assertTrue();
       expect(Math.abs(secondGridItem.top - secondGridItemTop - vp2px(20)) <= 1).assertTrue(); //offset {x:20,y:20}

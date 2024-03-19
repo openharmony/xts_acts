@@ -16,7 +16,6 @@
 const DEFAULT_PRECISION: number = 2;
 
 export default class MathUtils {
-
   /**
    * 生成指定范围内的随机整数
    * @param min

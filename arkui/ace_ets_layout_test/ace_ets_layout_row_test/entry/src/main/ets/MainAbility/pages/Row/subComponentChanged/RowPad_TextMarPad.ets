@@ -12,21 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct RowPad_TextMarPad{
+struct RowPad_TextMarPad {
   @State rowPadding: number = 0;
   @State firstTextMargin: number = 0;
   @State firstTextPadding: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('RowPad_TextMarPad onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'rowPadding') {
         this.rowPadding = message.value;
@@ -37,13 +40,17 @@ struct RowPad_TextMarPad{
       if (message.name == 'firstTextPadding') {
         this.firstTextPadding = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({space:30}){
-      Row({space:10}){
-        Text('1').width(100).height(50).backgroundColor(0xD2B48C)
+
+  build() {
+    Column({ space: 30 }) {
+      Row({ space: 10 }) {
+        Text('1')
+          .width(100)
+          .height(50)
+          .backgroundColor(0xD2B48C)
           .margin(this.firstTextMargin)
           .padding(this.firstTextPadding)
           .key('RowPad_TextMarPad1')

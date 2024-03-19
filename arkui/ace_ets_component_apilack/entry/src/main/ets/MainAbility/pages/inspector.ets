@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,12 +20,12 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct Inspector {
   @State message: string = 'test'
-  @State setColor:string = '#F9CF93'
-  @State catchStatus:string = "success"
+  @State setColor: string = '#F9CF93'
+  @State catchStatus: string = "success"
 
   onPageShow() {
     console.info('[inspector] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 60211,
       priority: events_emitter.EventPriority.LOW
     }
@@ -43,8 +42,8 @@ struct Inspector {
     }
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("inspector")
         .width(100)
@@ -65,16 +64,16 @@ struct Inspector {
             .key("inspectorApiOne")
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=> {
+            .onClick(() => {
               let getInspectorNodesObj = JSON.stringify(getInspectorNodes())
               try {
-                var backData = {
+                let backData: events_emitter.EventData = {
                   data: {
                     "getInspectorNodes": getInspectorNodesObj,
-                    "result":"success"
+                    "result": "success"
                   }
                 }
-                let backEvent = {
+                let backEvent: events_emitter.InnerEvent = {
                   eventId: 60208,
                   priority: events_emitter.EventPriority.LOW
                 }
@@ -88,17 +87,17 @@ struct Inspector {
             .key("inspectorApiTwo")
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=> {
+            .onClick(() => {
               try {
                 let i = JSON.parse(JSON.stringify(getInspectorNodes()))["inspectors"][0]["id"]
                 let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(parseInt(i)))
                 console.info("getInspectorNodeByIdObj is " + getInspectorNodeByIdObj)
-                var backData1 = {
+                let backData1: events_emitter.EventData = {
                   data: {
                     "result": "success",
                   }
                 }
-                let backEvent1 = {
+                let backEvent1: events_emitter.InnerEvent = {
                   eventId: 60209,
                   priority: events_emitter.EventPriority.LOW
                 }
@@ -113,7 +112,7 @@ struct Inspector {
             .key("inspectorApiThree")
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=> {
+            .onClick(() => {
               setAppBgColor('#F9CF93');
             })
 
@@ -121,24 +120,24 @@ struct Inspector {
             .key("inspectorApiFour")
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=> {
-              try{
+            .onClick(() => {
+              try {
                 Profiler.registerVsyncCallback((info: string) => {
                   console.info("VsyncCallback" + info)
                 });
                 Profiler.unregisterVsyncCallback();
                 this.catchStatus = "callBackSuccess"
-              }catch(err){
+              } catch (err) {
                 console.info("inspector_103 onClick err: " + JSON.stringify(err.message))
                 this.catchStatus = "callBackFail"
               }
               try {
-                var backData2 = {
+                let backData2: events_emitter.EventData = {
                   data: {
                     "catchStatus": this.catchStatus,
                   }
                 }
-                let backEvent2 = {
+                let backEvent2: events_emitter.InnerEvent = {
                   eventId: 60210,
                   priority: events_emitter.EventPriority.LOW
                 }

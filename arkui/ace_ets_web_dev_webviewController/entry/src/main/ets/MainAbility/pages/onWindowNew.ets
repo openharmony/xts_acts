@@ -19,40 +19,44 @@ import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
 import image from "@ohos.multimedia.image"
+
 @Entry
 @Component
 struct OnWindowNew {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
-  @State str:string= "emitOnWindowNew01";
-  @State testMultiWindowAccess:boolean = true;
-  @State testAllowWindowOpenMethod:boolean = true;
-  @State block:boolean = false;
-  @State ref:number = 0;
-  @State eventId:number = 0;
-  @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
-  @State javaScriptAccess:boolean=true;
-  @State fileAccess:boolean=true;
-  @State domStorageAccess:boolean=true;
-  @State imageAccess:boolean=true;
-  @State onlineImageAccess:boolean=true;
-  @State databaseAccess:boolean=true;
-  @State arr:boolean = true;
-  onPageShow(){
-    let valueChangeEvent={
-      eventId:10,
-      priority:events_emitter.EventPriority.LOW
+  @State str: string = "emitOnWindowNew01";
+  @State testMultiWindowAccess: boolean = true;
+  @State testAllowWindowOpenMethod: boolean = true;
+  @State block: boolean = false;
+  @State ref: number = 0;
+  @State eventId: number = 0;
+  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State javaScriptAccess: boolean = true;
+  @State fileAccess: boolean = true;
+  @State domStorageAccess: boolean = true;
+  @State imageAccess: boolean = true;
+  @State onlineImageAccess: boolean = true;
+  @State databaseAccess: boolean = true;
+  @State arr: boolean = true;
+
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(valueChangeEvent,this.valueChangeCallBack);
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack);
   }
-  private valueChangeCallBack=(eventData)=>{
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("OnWindowNew page valueChangeCallBack");
-    if(eventData != null){
-      console.info("valueChangeCallBack:"+ JSON.stringify(eventData));
-      if(eventData.data.ACTION != null){
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
     }
   }
+
   build() {
     Column() {
       Row() {
@@ -79,11 +83,11 @@ struct OnWindowNew {
                 this.javaScriptAccess = true;
                 this.testAllowWindowOpenMethod = false;
                 this.testMultiWindowAccess = true;
-                setTimeout(()=> {
-                    this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                setTimeout(() => {
+                  this.controller.runJavaScript("OpenNewWindow()", (res) => {
                     Utils.emitEvent(this.ref, 7102)
                   })
-                },2000)
+                }, 2000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -138,7 +142,7 @@ struct OnWindowNew {
             case "emitBlockNetWorkTrue": {
               try {
                 this.block = true;
-				await Utils.sleep(2000);
+                await Utils.sleep(2000);
                 this.controller.loadUrl('www.weibo.com');
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
@@ -148,7 +152,7 @@ struct OnWindowNew {
             case "emitBlockNetWorkFalse": {
               try {
                 this.block = false;
-				await Utils.sleep(2000);
+                await Utils.sleep(2000);
                 this.controller.loadUrl('www.weibo.com');
                 let testTitle = this.controller.getTitle();
                 console.log(`testTitle is: ${testTitle}`);
@@ -163,16 +167,16 @@ struct OnWindowNew {
               let length = -1;
               try {
                 this.controller.loadUrl($rawfile('getOrigins.html'));
-                setTimeout(()=> {
+                setTimeout(() => {
                   web_webview.WebStorage.getOrigins()
                     .then(origins => {
-                      console.log(`getOrigins call`);   
-                        length = origins.length;
-                        console.log(`length is: ${length}`);
-                        Utils.emitEventTwo(1, length, 7166);
-                        console.log(`getOrigins call end`);
-                  })
-                },2000)
+                      console.log(`getOrigins call`);
+                      length = origins.length;
+                      console.log(`length is: ${length}`);
+                      Utils.emitEventTwo(1, length, 7166);
+                      console.log(`getOrigins call end`);
+                    })
+                }, 2000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(length, 7166);
@@ -182,6 +186,7 @@ struct OnWindowNew {
           }
         })
       }
+
       Web({ src: $rawfile("onWindowNew.html"), controller: this.controller })
         .multiWindowAccess(this.testMultiWindowAccess)
         .javaScriptAccess(this.javaScriptAccess)
@@ -196,11 +201,11 @@ struct OnWindowNew {
         })
         .onPageVisible((event) => {
           if (this.arr) {
-              if (event) {
+            if (event) {
               console.log('onWindowNew onPageVisible url:' + event.url);
               Utils.emitEvent(event.url, this.eventId);
             }
-          } 
+          }
         })
         .blockNetwork(this.block)
         .onErrorReceive((event) => {

@@ -13,43 +13,44 @@
  * limitations under the License.
  */
 import web_webview from '@ohos.web.webview'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
 struct noBarrierComponents {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1]
-  @State Number: String[] = ['0', '1']
-  private arrayA: string[] = ['安']
-  private arrayB: string[] = ['卜', '白', '包', '毕', '丙']
-  private arrayC: string[] = ['曹', '成', '陈', '催']
-  private arrayL: string[] = ['刘', '李', '楼', '梁', '雷', '吕', '柳', '卢']
-  private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-  public valueArr: number[] = [10, 10]
-  @State isLunar: boolean = false
-  private selectedDate: Date = new Date('2021-08-08')
-  @State formId:number = 0;
-  @State start: boolean = false
-  private fromStart: boolean = true
-  private step: number = 50
-  private loop: number = Infinity
-  private src: string = "Running Marquee starts rolling"
-  @State passwords: Number[] = []
-  @State message: string = 'please input password!'
-  private patternLockController: PatternLockController = new PatternLockController()
-  private value1: string = 'hello world'
-  @State rating: number = 3.5
-  @State target: WindowAnimationTarget = undefined
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1];
+  @State Number: String[] = ['0', '1'];
+  private arrayA: string[] = ['安'];
+  private arrayB: string[] = ['卜', '白', '包', '毕', '丙'];
+  private arrayC: string[] = ['曹', '成', '陈', '催'];
+  private arrayL: string[] = ['刘', '李', '楼', '梁', '雷', '吕', '柳', '卢'];
+  private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  public valueArr: number[] = [10, 10];
+  @State isLunar: boolean = false;
+  private selectedDate: Date = new Date('2021-08-08');
+  @State formId: number = 0;
+  @State start: boolean = false;
+  private fromStart: boolean = true;
+  private step: number = 50;
+  private loop: number = Infinity;
+  private src: string = "Running Marquee starts rolling";
+  @State passwords: Number[] = [];
+  @State message: string = 'please input password!';
+  private patternLockController: PatternLockController = new PatternLockController();
+  private value1: string = 'hello world';
+  @State rating: number = 3.5;
+  @State target: WindowAnimationTarget = undefined;
   @State data: string = '<h1 style="text-align: center;">h1标题</h1>';
-  @State changeValue: string = ''
-  @State submitValue: string = ''
-  controller: SearchController = new SearchController()
-  @State outSetValueOne: number = 40
-  @State isMilitaryTime: boolean = false
-  private selectedTime: Date = new Date('2022-07-22T08:00:00')
-  controller1: web_webview.WebviewController = new web_webview.WebviewController()
-  private surfaceId : string =''
-  xcomponentController: XComponentController = new XComponentController()
+  @State changeValue: string = '';
+  @State submitValue: string = '';
+  controller: SearchController = new SearchController();
+  @State outSetValueOne: number = 40;
+  @State isMilitaryTime: boolean = false;
+  private selectedTime: Date = new Date('2022-07-22T08:00:00');
+  controller1: web_webview.WebviewController = new web_webview.WebviewController();
+  private surfaceId: string = '';
+  xcomponentController: XComponentController = new XComponentController();
 
   build() {
     Scroll(this.scroller) {
@@ -73,13 +74,17 @@ struct noBarrierComponents {
           .accessibilityText("我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件我是无障碍组件")
 
         List({ space: 20, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
-                .width('100%').height(100).fontSize(16)
-                .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .key("list")
         .listDirection(Axis.Vertical)
@@ -103,8 +108,8 @@ struct noBarrierComponents {
                   .height('100%')
                   .textAlign(TextAlign.Center)
               }
-            }, day => day)
-          }, day => day)
+            }, (day: string) => day)
+          }, (day: string) => day)
         }
         .key("Grid")
         .columnsTemplate('1fr 1fr ')
@@ -119,7 +124,7 @@ struct noBarrierComponents {
         Stack({ alignContent: Alignment.Start }) {
           Row() {
             List({ space: 20, initialIndex: 0 }) {
-              ForEach(this.arrayA, (item) => {
+              ForEach(this.arrayA, (item: string) => {
                 ListItem() {
                   Text(item)
                     .width('80%')
@@ -127,9 +132,9 @@ struct noBarrierComponents {
                     .fontSize(30)
                     .textAlign(TextAlign.Center)
                 }.editable(true)
-              }, item => item)
+              }, (item: string) => item)
 
-              ForEach(this.arrayB, (item) => {
+              ForEach(this.arrayB, (item: string) => {
                 ListItem() {
                   Text(item)
                     .width('80%')
@@ -137,9 +142,9 @@ struct noBarrierComponents {
                     .fontSize(30)
                     .textAlign(TextAlign.Center)
                 }.editable(true)
-              }, item => item)
+              }, (item: string) => item)
 
-              ForEach(this.arrayC, (item) => {
+              ForEach(this.arrayC, (item: string) => {
                 ListItem() {
                   Text(item)
                     .width('80%')
@@ -147,9 +152,9 @@ struct noBarrierComponents {
                     .fontSize(30)
                     .textAlign(TextAlign.Center)
                 }.editable(true)
-              }, item => item)
+              }, (item: string) => item)
 
-              ForEach(this.arrayL, (item) => {
+              ForEach(this.arrayL, (item: string) => {
                 ListItem() {
                   Text(item)
                     .width('80%')
@@ -157,7 +162,7 @@ struct noBarrierComponents {
                     .fontSize(30)
                     .textAlign(TextAlign.Center)
                 }.editable(true)
-              }, item => item)
+              }, (item: string) => item)
             }
             .width('50%')
             .height('100%')
@@ -220,11 +225,11 @@ struct noBarrierComponents {
             console.log('ButtonType.Normal')
           })
 
-        Checkbox({name: 'checkbox1',  group: 'checkboxGroup'})
+        Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
           .select(true)
           .selectedColor(0xed6f21)
           .onChange((value: boolean) => {
-            console.info('Checkbox1 change is'+ value)
+            console.info('Checkbox1 change is' + value)
           })
           .key("Checkbox")
           .accessibilityText("我是无障碍组件")
@@ -248,38 +253,41 @@ struct noBarrierComponents {
           .key("DatePicker")
           .accessibilityText("我是无障碍组件")
 
-        Divider().strokeWidth(8).color('#F1F3F5') .key("Divider").accessibilityText("我是无障碍组件")
+        Divider().strokeWidth(8).color('#F1F3F5').key("Divider").accessibilityText("我是无障碍组件")
 
         FormComponent({
-          id:this.formId,
-          name:"Form1",
-          bundle:"com.example.cardexample",
-          ability:"FormAbility",
-          module:"entry",
-          dimension:FormDimension.Dimension_2_2,
-          temporary:false
+          id: this.formId,
+          name: "Form1",
+          bundle: "com.example.cardexample",
+          ability: "FormAbility",
+          module: "entry",
+          dimension: FormDimension.Dimension_2_2,
+          temporary: false
         })
           .allowUpdate(true)
-          .size({width:360,height:360})
+          .size({ width: 360, height: 360 })
           .visibility(Visibility.Visible)
-          .onAcquired((form)=>{
+          .onAcquired((form: ESObject) => {
             console.log(`form info : ${JSON.stringify(form)}`);
             this.formId = form.id;
           })
-          .onError((err)=>{
+          .onError((err: ESObject) => {
             console.log(`fail to add form, err: ${JSON.stringify(err)}`);
           })
           .key("FormComponent")
           .accessibilityText("我是无障碍组件")
 
         Gauge({ value: 75 })
-          .width(200).height(200)
+          .width(200)
+          .height(200)
           .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
           .key("Gauge")
           .accessibilityText("我是无障碍组件")
 
         Image($r('app.media.icon'))
-          .width(110).height(110).border({ width: 1 })
+          .width(110)
+          .height(110)
+          .border({ width: 1 })
           .overlay('png', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           .key("Image")
           .accessibilityText("我是无障碍组件")
@@ -340,7 +348,9 @@ struct noBarrierComponents {
           })
 
         Progress({ value: 20, total: 150, type: ProgressType.ScaleRing })
-          .color(Color.Grey).value(50).width(100)
+          .color(Color.Grey)
+          .value(50)
+          .width(100)
           .style({ strokeWidth: 20, scaleCount: 20, scaleWidth: 5 })
           .key("Progress")
           .accessibilityText("我是无障碍组件")
@@ -351,7 +361,8 @@ struct noBarrierComponents {
           .key("QRCode")
           .accessibilityText("我是无障碍组件")
 
-        Radio({ value: 'Radio1', group: 'radioGroup' }).checked(true)
+        Radio({ value: 'Radio1', group: 'radioGroup' })
+          .checked(true)
           .height(50)
           .width(50)
           .key("Radio")
@@ -471,7 +482,7 @@ struct noBarrierComponents {
           controller: this.xcomponentController
         })
           .onLoad(() => {
-            this.xcomponentController.setXComponentSurfaceSize({surfaceWidth:1920,surfaceHeight:1080});
+            this.xcomponentController.setXComponentSurfaceSize({ surfaceWidth: 1920, surfaceHeight: 1080 });
             this.surfaceId = this.xcomponentController.getXComponentSurfaceId()
           })
           .width('640px')
@@ -482,5 +493,4 @@ struct noBarrierComponents {
       }
     }
   }
-
 }

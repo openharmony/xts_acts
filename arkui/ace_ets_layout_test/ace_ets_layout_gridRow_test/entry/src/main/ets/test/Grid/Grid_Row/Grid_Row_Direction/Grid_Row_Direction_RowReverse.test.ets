@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Direction_RowReverse() {
-  describe('Grid_Row_Direction_RowReverse', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Direction_RowReverse', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Direction_RowReverse beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Direction_RowReverse() {
         console.info("get Grid_Row_Direction_RowReverse state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Direction_RowReverse" == pages.name)) {
           console.info("get Grid_Row_Direction_RowReverse pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Direction_RowReverse page result:" + JSON.stringify(result));
         }
@@ -40,33 +41,34 @@ export default function Grid_Row_Direction_RowReverse() {
       console.info("Grid_Row_Direction_RowReverse beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Direction_RowReverse after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWDIRECTIONROWREVERSE_0100
-     * @tc.name      testDirectionRowReverse
-     * @tc.desc      Set the Direction of GridRow to RowReverse
+     * @tc.number SUB_ACE_GRIDROWDIRECTIONROWREVERSE_0100
+     * @tc.name testDirectionRowReverse
+     * @tc.desc Set the Direction of GridRow to RowReverse
      */
-    it('SUB_ACE_GridRowDirection_RowReverse_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowDirection_RowReverse_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowDirection_RowReverse_0100 START');
       await CommonFunc.sleep(2000)
 
-      let DirectionRowReverse_1 = CommonFunc.getComponentRect('DirectionRowReverse_001');
-      let firstDirectionRowReverse = CommonFunc.getComponentRect('DirectionRowReverse_0');
-      let secondDirectionRowReverse = CommonFunc.getComponentRect('DirectionRowReverse_1');
-      let thirdDirectionRowReverse = CommonFunc.getComponentRect('DirectionRowReverse_2');
+      let DirectionRowReverse_1: RectValue = CommonFunc.getComponentRect('DirectionRowReverse_001');
+      let firstDirectionRowReverse: RectValue = CommonFunc.getComponentRect('DirectionRowReverse_0');
+      let secondDirectionRowReverse: RectValue = CommonFunc.getComponentRect('DirectionRowReverse_1');
+      let thirdDirectionRowReverse: RectValue = CommonFunc.getComponentRect('DirectionRowReverse_2');
       let gridRowDirectionRowReverseJson = getInspectorByKey('DirectionRowReverse_001');
-      let gridRowDirection = JSON.parse(gridRowDirectionRowReverseJson);
-      expect(gridRowDirection.$type).assertEqual('GridRow');
+      expect(JSON.parse(gridRowDirectionRowReverseJson).$type).assertEqual('GridRow');
 
       expect(Math.abs(firstDirectionRowReverse.top - DirectionRowReverse_1.top) <= 1).assertTrue();
       expect(Math.abs(firstDirectionRowReverse.right - DirectionRowReverse_1.right) <= 1).assertTrue();
 
-      expect(Math.round(firstDirectionRowReverse.left - secondDirectionRowReverse.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(thirdDirectionRowReverse.top - firstDirectionRowReverse.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstDirectionRowReverse.left - secondDirectionRowReverse.right))
+        .assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdDirectionRowReverse.top - firstDirectionRowReverse.bottom))
+        .assertEqual(Math.round(vp2px(10)));
 
       console.info('SUB_ACE_GridRowDirection_RowReverse_0100 END');
       done();

@@ -12,21 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
 
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function onGetIrregularJsunit() {
 
-  describe('onGetIrregularJsunit', function () {
+  describe('onGetIrregularJsunit', () => {
 
 
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("onGetIrregularJsunit beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Grid/Grid_iiregular/onGetIrregular",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Grid/Grid_iiregular/onGetIrregular",
       }
       try {
         router.clear();
@@ -34,7 +48,7 @@ export default function onGetIrregularJsunit() {
         console.info("get onGetIrregularJsunit state pages: " + JSON.stringify(pages));
         if (!("onGetIrregular" == pages.name)) {
           console.info("get onGetIrregularJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onGetIrregularJsunit page result: " + JSON.stringify(result));
         }
@@ -52,22 +66,22 @@ export default function onGetIrregularJsunit() {
     * @tc.desc  : Set onGetIrregularSizeByIndex[-1,1], columns Template layout only supports rows to 1, one row and one column
     * @tc.level : Level 2
     */
-    it('onGetIrregularJsunit_0001', 0, async function (done) {
+    it('onGetIrregularJsunit_0001', 0, async (done: Function) => {
       console.info('[onGetIrregularJsunit_0000] START');
-      let Grid = CommonFunc.getComponentRect('GridGetIrregular');
+      let Grid: RectValue = CommonFunc.getComponentRect('GridGetIrregular');
       await CommonFunc.sleep(1000);
 
-      let GridItem0 = CommonFunc.getComponentRect('onGetRegular0');
-      let GridItem1 = CommonFunc.getComponentRect('onGetRegular1');
-      let GridItem2 = CommonFunc.getComponentRect('onGetRegular2');
+      let GridItem0: RectValue = CommonFunc.getComponentRect('onGetRegular0');
+      let GridItem1: RectValue = CommonFunc.getComponentRect('onGetRegular1');
+      let GridItem2: RectValue = CommonFunc.getComponentRect('onGetRegular2');
 
       await CommonFunc.sleep(1000);
-      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem0.right - GridItem0.left)) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem1.right - GridItem1.left)) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(Grid.right - Grid.left) -Math.round(GridItem2.right - GridItem2.left)) <=1 ).assertTrue();
-
-
-
+      expect(Math.abs(Math.round(Grid.right - Grid.left) - Math.round(GridItem0.right - GridItem0.left)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) - Math.round(GridItem1.right - GridItem1.left)) <= 1)
+        .assertTrue();
+      expect(Math.abs(Math.round(Grid.right - Grid.left) - Math.round(GridItem2.right - GridItem2.left)) <= 1)
+        .assertTrue();
 
 
       console.info('[onGetIrregularJsunit_0000] END');

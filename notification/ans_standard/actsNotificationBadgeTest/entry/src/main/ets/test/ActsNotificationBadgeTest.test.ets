@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
+import { BusinessError } from '@ohos.base'
 
 export default function ActsNotificationBadgeTest() {
-describe('SUB_NOTIFICATION_ANS_BADGE_TEST', function () {
+  describe('SUB_NOTIFICATION_ANS_BADGE_TEST', () => {
     let TAG = 'SUB_NOTIFICATION_ANS_MANAGER_BADGE_test ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_BADGE_test START')
     /*
@@ -24,24 +26,24 @@ describe('SUB_NOTIFICATION_ANS_BADGE_TEST', function () {
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the callback function of setBadgeNumber
      */
-    it('Sub_Notification_Ans_Corner_SetNum_0900', 0, async function (done) {
-        try {
-            notificationManager.setBadgeNumber(10, (err) => {
-                if (err) {
-                    console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, error code: ${err.code}, message: ${err.message}`)
-                    expect(false).assertTrue()
-                    done()
-                } else {
-                    console.log("Sub_Notification_Ans_Corner_SetNum_0900 success")
-                    expect(true).assertTrue()
-                    done();
-                }
-            })
-        } catch (err) {
-            console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, catch error code: ${err.code}, message: ${err.message}`)
+    it('Sub_Notification_Ans_Corner_SetNum_0900', 0, async (done: Function) => {
+      try {
+        notificationManager.setBadgeNumber(10, (err) => {
+          if (err) {
+            console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, error code: ${err.code}, message: ${err.message}`)
             expect(false).assertTrue()
             done()
-        }    
+          } else {
+            console.log("Sub_Notification_Ans_Corner_SetNum_0900 success")
+            expect(true).assertTrue()
+            done();
+          }
+        })
+      } catch (err) {
+        console.log(`Sub_Notification_Ans_Corner_SetNum_0900 failed, catch error code: ${err.code}, message: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
     })
 
     /*
@@ -49,22 +51,22 @@ describe('SUB_NOTIFICATION_ANS_BADGE_TEST', function () {
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the promise function of setBadgeNumber
      */
-    it('Sub_Notification_Ans_Corner_SetNum_1000', 0, async function (done) {
-        try {
-            await notificationManager.setBadgeNumber(10).then(() => {
-                console.log("Sub_Notification_Ans_Corner_SetNum_1000 success")
-                expect(true).assertTrue()
-                done();
-            }).catch((err) => {
-                console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, error code: ${err.code}, message: ${err.message}`)
-                expect(false).assertTrue()
-                done()
-            })
-        } catch (err) {
-            console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, catch error code: ${err.code}, message: ${err.message}`)
-            expect(false).assertTrue()
-            done()
-        }    
+    it('Sub_Notification_Ans_Corner_SetNum_1000', 0, async (done: Function) => {
+      try {
+        await notificationManager.setBadgeNumber(10).then(() => {
+          console.log("Sub_Notification_Ans_Corner_SetNum_1000 success")
+          expect(true).assertTrue()
+          done();
+        }).catch((err: BusinessError) => {
+          console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, error code: ${err.code}, message: ${err.message}`)
+          expect(false).assertTrue()
+          done()
+        })
+      } catch (err) {
+        console.log(`Sub_Notification_Ans_Corner_SetNum_1000 failed, catch error code: ${err.code}, message: ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
     })
-})
+  })
 }

@@ -31,7 +31,8 @@ struct Dormancy {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
 
-  @Builder specificNoParam() {
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
@@ -40,21 +41,21 @@ struct Dormancy {
               .fontSize(28)
               .onClick(() => {
                 console.info('power onClick');
-                setTimeout(()=>{
+                setTimeout(() => {
                   console.info('power setTimeout');
                   try {
-                    var isActive = power.isActive();
+                    let isActive = power.isActive();
                     console.info('power is active: ' + isActive);
-                    if(!isActive){
+                    if (!isActive) {
                       this.Vue = true
                     }
-                  } catch(err) {
+                  } catch (err) {
                     console.error('check active status failed, err: ' + err);
                   }
-                },5000)
+                }, 5000)
                 try {
                   power.suspend();
-                } catch(err) {
+                } catch (err) {
                   console.error('suspend failed, err: ' + err);
                 }
               })

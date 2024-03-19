@@ -14,22 +14,25 @@
  */
 
 #include "napi/native_api.h"
-#include <fcntl.h>
 #include <climits>
+#include <fcntl.h>
 #include <sys/ipc.h>
+#include <unistd.h>
 
 #define SUCCESS 1
 #define FAIL (-1)
 #define NOERROR 0
+#define PARAM_0777 0777
 
 static napi_value Ftok(napi_env env, napi_callback_info info)
 {
     int value = FAIL;
-    open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    int fp = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
     key_t ret = ftok("/data/storage/el2/base/files/Fzl.txt", SUCCESS);
     if (ret != FAIL) {
         value = SUCCESS;
     }
+    close(fp);
     napi_value result = nullptr;
     napi_create_int32(env, value, &result);
     return result;

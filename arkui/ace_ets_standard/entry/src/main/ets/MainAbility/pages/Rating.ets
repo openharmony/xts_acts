@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct rating_testcase {
@@ -25,7 +25,7 @@ struct rating_testcase {
   onBuildDone() {
     console.info('Rating page build done called');
   }
-  
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {

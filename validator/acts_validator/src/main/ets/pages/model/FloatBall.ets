@@ -19,12 +19,13 @@ tcp.on('message', value => {
   let buffer = value.message;
   let dataView = new DataView(buffer);
   let messageView = '';
-  for (var i = 0; i < dataView.byteLength; i++) {
+  for (let i = 0; i < dataView.byteLength; i++) {
     messageView += String.fromCharCode(dataView.getUint8(i));
   }
   console.log('123123123' + messageView);
   globalThis.resultNum = messageView;
 });
+
 @Entry
 @Component
 struct FloatBall {
@@ -44,16 +45,16 @@ struct FloatBall {
 
   private countDown() {
     this.title = 'count';
-    var T = setInterval(() => {
+    let T = setInterval(() => {
       if (this.sec <= 0) {
         clearTimeout(T);
         this.title = 'done';
         this.sec = 15;
         this.refreshCount();
-      } else if(this.title === 'start'){
+      } else if (this.title === 'start') {
         clearTimeout(T);
         this.sec = 15;
-      } else if (this.title === 'done'){
+      } else if (this.title === 'done') {
         clearTimeout(T);
         this.sec = 15;
         this.refreshCount();
@@ -65,7 +66,7 @@ struct FloatBall {
   }
 
   private refreshCount() {
-    var Time = setInterval(() => {
+    let Time = setInterval(() => {
       if (this.refreshSec <= 0) {
         clearTimeout(Time);
         this.title = 'start';
@@ -76,10 +77,10 @@ struct FloatBall {
     }, 1000)
   }
 
-  private TCPConnect(){
+  private TCPConnect() {
 
 
-    tcp.bind({address: '0.0.0.0', port: 8284, family: 1}, err => {
+    tcp.bind({ address: '0.0.0.0', port: 8284, family: 1 }, err => {
       if (err) {
         console.log('bind fail');
         return;
@@ -111,7 +112,7 @@ struct FloatBall {
     })
   }
 
-  private TCPClose(){
+  private TCPClose() {
     tcp.close((err) => {
       console.log('close socket.');
       console.log('ErrorError: ' + err)
@@ -138,48 +139,65 @@ struct FloatBall {
   }
 
   SetWindowPosition(offsetX: number, offsetY: number) {
-    globalThis.SetFloatingWindowPosition(offsetX, offsetY)
+    globalThis.SetFloatingWindowPosition(offsetX, offsetY);
   }
 
-  build(){
-    Stack({alignContent: Alignment.Center}) {
-      if(this.title === 'connecting'){
+  build() {
+    Stack({ alignContent: Alignment.Center }) {
+      if (this.title === 'connecting') {
         Circle()
-          .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:'#00ff00'})
+          .width('90vp')
+          .height('90vp')
+          .fill(Color.White)
+          .fillOpacity(0)
+          .opacity(0.8)
+          .border({ radius: '90vp', width: '0.5vp', color: '#00ff00' })
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [['#00ff00',1.0],['#00ff00',1.0]]
+            colors: [['#00ff00', 1.0], ['#00ff00', 1.0]]
           })
         Text('连接中')
-          .fontSize(14).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
+          .fontSize(14)
+          .textAlign(TextAlign.Center)
+          .fontColor($r('app.color.color_fff'))
+          .width('100%')
+          .height('100%')
           .gesture(
             GestureGroup(GestureMode.Exclusive,
               PanGesture({})
-                .onActionStart(() => {})
+                .onActionStart(() => {
+                })
                 .onActionUpdate((event: GestureEvent) => {
                   this.offsetX = event.offsetX;
                   this.offsetY = event.offsetY;
                 })
                 .onActionEnd(() => {
                   this.MoveWindow(this.offsetX, this.offsetY);
-                  this.SetWindowPosition(this.offsetX, this.offsetY)
+                  this.SetWindowPosition(this.offsetX, this.offsetY);
                 })
             )
           )
       }
-      if(this.title === 'connect fail'){
+      if (this.title === 'connect fail') {
         Circle()
-          .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:$r('app.color.colorPrimary')})
+          .width('90vp')
+          .height('90vp')
+          .fill(Color.White)
+          .fillOpacity(0)
+          .opacity(0.8)
+          .border({ radius: '90vp', width: '0.5vp', color: $r('app.color.colorPrimary') })
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [[$r('app.color.colorPrimary'),1.0],[$r('app.color.colorPrimary'),1.0]]
+            colors: [[$r('app.color.colorPrimary'), 1.0], [$r('app.color.colorPrimary'), 1.0]]
           })
         Text('连接失败')
-          .fontSize(14).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
+          .fontSize(14)
+          .textAlign(TextAlign.Center)
+          .fontColor($r('app.color.color_fff'))
+          .width('100%')
+          .height('100%')
           .onClick(() => {
             this.TCPClose();
             this.TCPConnect();
@@ -187,29 +205,38 @@ struct FloatBall {
           .gesture(
             GestureGroup(GestureMode.Exclusive,
               PanGesture({})
-                .onActionStart(() => {})
+                .onActionStart(() => {
+                })
                 .onActionUpdate((event: GestureEvent) => {
                   this.offsetX = event.offsetX;
                   this.offsetY = event.offsetY;
                 })
                 .onActionEnd(() => {
                   this.MoveWindow(this.offsetX, this.offsetY);
-                  this.SetWindowPosition(this.offsetX, this.offsetY)
+                  this.SetWindowPosition(this.offsetX, this.offsetY);
                 })
             )
           )
       }
-      if(this.title === 'start'){
+      if (this.title === 'start') {
         Circle()
-          .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:('#00B2C6')})
+          .width('90vp')
+          .height('90vp')
+          .fill(Color.White)
+          .fillOpacity(0)
+          .opacity(0.8)
+          .border({ radius: '90vp', width: '0.5vp', color: ('#00B2C6') })
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [[('#00B2C6'),1.0],[('#00B2C6'),1.0]]
+            colors: [[('#00B2C6'), 1.0], [('#00B2C6'), 1.0]]
           })
         Text('start')
-          .fontSize(18).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
+          .fontSize(18)
+          .textAlign(TextAlign.Center)
+          .fontColor($r('app.color.color_fff'))
+          .width('100%')
+          .height('100%')
           .onClick(() => {
             tcp.send({
               data: globalThis.SendMessage
@@ -227,7 +254,7 @@ struct FloatBall {
           })
           .gesture(
             GestureGroup(GestureMode.Exclusive,
-              LongPressGesture({fingers: 1, repeat: false, duration: 1000 })
+              LongPressGesture({ fingers: 1, repeat: false, duration: 1000 })
                 .onAction(() => {
                   this.TCPClose();
                 }),
@@ -247,17 +274,25 @@ struct FloatBall {
             )
           )
       }
-      if(this.title === 'count'){
+      if (this.title === 'count') {
         Circle()
-          .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:$r('app.color.color_666')})
+          .width('90vp')
+          .height('90vp')
+          .fill(Color.White)
+          .fillOpacity(0)
+          .opacity(0.8)
+          .border({ radius: '90vp', width: '0.5vp', color: $r('app.color.color_666') })
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [[$r('app.color.color_666'),1.0],[$r('app.color.color_666'),1.0]]
+            colors: [[$r('app.color.color_666'), 1.0], [$r('app.color.color_666'), 1.0]]
           })
         Text(`${this.sec}`)
-          .fontSize(18).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
+          .fontSize(18)
+          .textAlign(TextAlign.Center)
+          .fontColor($r('app.color.color_fff'))
+          .width('100%')
+          .height('100%')
           .gesture(
             GestureGroup(GestureMode.Exclusive,
               TapGesture({ count: 2 })
@@ -265,7 +300,7 @@ struct FloatBall {
                   this.title = 'start';
                 }),
 
-              LongPressGesture({fingers: 1, repeat: false, duration: 1000 })
+              LongPressGesture({ fingers: 1, repeat: false, duration: 1000 })
                 .onAction(() => {
                   this.title = 'done';
                 }),
@@ -285,23 +320,31 @@ struct FloatBall {
             )
           )
       }
-      if(this.title === 'done'){
+      if (this.title === 'done') {
         Circle()
-          .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:'#00ff00'})
+          .width('90vp')
+          .height('90vp')
+          .fill(Color.White)
+          .fillOpacity(0)
+          .opacity(0.8)
+          .border({ radius: '90vp', width: '0.5vp', color: '#00ff00' })
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [['#00ff00',1.0],['#00ff00',1.0]]
+            colors: [['#00ff00', 1.0], ['#00ff00', 1.0]]
           })
         Text('done')
-          .fontSize(18).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
+          .fontSize(18)
+          .textAlign(TextAlign.Center)
+          .fontColor($r('app.color.color_fff'))
+          .width('100%')
+          .height('100%')
           .onClick(async () => {
             this.title = 'start';
           })
           .gesture(
             GestureGroup(GestureMode.Exclusive,
-              LongPressGesture({fingers: 1, repeat: false, duration: 1000 })
+              LongPressGesture({ fingers: 1, repeat: false, duration: 1000 })
                 .onAction(() => {
                 }),
 
@@ -320,6 +363,8 @@ struct FloatBall {
             )
           )
       }
-    }.width('100%').height('100%')
+    }
+    .width('100%')
+    .height('100%')
   }
 }

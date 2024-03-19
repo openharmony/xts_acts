@@ -143,6 +143,25 @@ export default function i18nStageTest() {
       }
       done();
     })
+    
+    /**
+     *@tc.number   :i18n_test_getBestMatchLocale_0010
+     *@tc.name     :test the getBestMatchLocale interface
+     *@tc.desc     :resource list is empty
+     *@tc.size     :MEDIUM
+     *@tc.type     :Function
+     *@tc.level    :Level 0
+    */
+    it('i18n_test_getBestMatchLocale_0010',0,()=>{
+      console.log('i18n_test_getBestMatchLocale_0010'+'start');
+      try{
+        let matchedLocaledId:string = I18n.I18NUtil.getBestMatchLocale("en-US",[""]);
+      }catch(e){
+        console.log('i18n_test_getBestMatchLocale_0010'+e.code+e.message);
+        expect(e.code == 890001).assertTrue();
+      }
+      console.log('*************end i18nStageTest*************');
+    })
 
     console.log('*************end i18nStageTest*************');
   })

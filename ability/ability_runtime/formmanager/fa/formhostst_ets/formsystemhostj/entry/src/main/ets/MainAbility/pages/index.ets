@@ -30,6 +30,8 @@ struct Index {
   @State canCreateForm: boolean = false;
   private dimension: FormDimension = FormDimension.Dimension_1_2;
 
+  private TAG = `[FormComponent.host.j]`;
+
   private deleteForm = false;
   private deleteId = "-1";
   private temporaryId="-1";
@@ -47,37 +49,37 @@ struct Index {
 
   private publishOnErrorCallBack = () => {
     this.canCreateForm = false;
-    console.debug("====>formOnErrorEvent Publish CallBack ====>");
+    console.debug(`====>${this.TAG} formOnErrorEvent Publish CallBack ====>`);
   }
   private publishOnAcquiredCallBack = () => {
-    console.debug("====>formOnAcquiredEvent Publish CallBack ====>");
+    console.debug(`====>${this.TAG} formOnAcquiredEvent Publish CallBack ====>`);
   }
   private publishCastCallBack = () => {
-    console.debug("====>formCastEvent Publish CallBack ====>");
+    console.debug(`====>${this.TAG} formCastEvent Publish CallBack ====>`);
   }
 
   private deleteCallBack = (err, data) => {
-    console.info("!!!====>formsystemhostj deleteCallBack start:====>" + JSON.stringify(data));
+    console.info(`!!!====>${this.TAG} formsystemhostj deleteCallBack start:====>` + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostj") {
       return;
     }
     formManager.deleteForm(data.data)
       .then((data2) => {
-        console.info('[FormComponent] deleteForm result:' + data2);
+        console.info(`${this.TAG} deleteForm result:` + data2);
       });
 
     this.canCreateForm = false;
-    console.info("!!!====>formsystemhostj deleteCallBack end ====>");
+    console.info(`!!!====>${this.TAG} formsystemhostj deleteCallBack end ====>`);
   }
 
   aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
-        console.info("====>formsystemhostj Subscriber FormDelete data:====>", JSON.stringify(data)); 
+        console.info(`====>${this.TAG} formsystemhostj Subscriber FormDelete data:====>`, JSON.stringify(data)); 
         this.subscriberDel = data;     
         await commonEvent.subscribe(this.subscriberDel, this.deleteCallBack);
     })
 
-    console.error('[FormComponent] getWant');
+    console.error(`${this.TAG} getWant`);
     featureAbility.getWant()
     .then((want: any) => {
       this.formId = parseInt(want.parameters.formId);
@@ -88,11 +90,11 @@ struct Index {
       if(want.parameters.temporary) {
         this.temporary = want.parameters.temporary;
       }
-      console.log("formsystemhostj dimension1:" + this.dimension);
+      console.log(`${this.TAG} formsystemhostj dimension1:` + this.dimension);
       if(want.parameters.dimension) {
         this.dimension = want.parameters.dimension;
       }      
-      console.log("formsystemhostj dimension2:" + this.dimension);
+      console.log(`${this.TAG} formsystemhostj dimension2:` + this.dimension);
       if(want.parameters.castForm) {
         this.castForm = want.parameters.castForm;
       }
@@ -107,15 +109,15 @@ struct Index {
       }
       setTimeout(() => {
         this.canCreateForm = want.parameters.isCreate ? true : false;
-        console.error('[FormComponent] getWant canCreateForm:'+ this.canCreateForm); 
+        console.error(`${this.TAG} getWant canCreateForm:` + this.canCreateForm); 
       }, 10); 
-      console.error('[FormComponent] getWant end'+ JSON.stringify(want));
+      console.error(`${this.TAG} getWant end` + JSON.stringify(want));
 
       if(!want.parameters.isCreate && this.deleteForm) {
-        console.log("formsystemhostj deleteForm start");
+        console.log(`${this.TAG} formsystemhostj deleteForm start`);
         formManager.deleteForm(this.deleteId)
           .then((data) => {
-          console.info('formsystemhostj deleteForm result:' + data);
+          console.info(`${this.TAG} formsystemhostj deleteForm result:` + data);
           let commonEventPublishData = {
             data: data + "",
             parameters: {
@@ -125,7 +127,7 @@ struct Index {
           commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
         })
         .catch((error) => {
-          console.info('[FormComponent] deleteForm error:' + error);
+          console.info(`${this.TAG} deleteForm error:` + error);
           let commonEventPublishData = {
             data: error.code.toString(),
             parameters: {
@@ -134,13 +136,13 @@ struct Index {
           };
           commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
         });
-        console.log("formsystemhostj deleteForm end");
+        console.log(`${this.TAG} formsystemhostj deleteForm end`);
       }
       if(!want.parameters.isCreate && this.castForm) {
-        console.log("[FormComponent.host] castTempForm start");
+        console.log(`${this.TAG} castTempForm start`);
         formManager.castTempForm(this.temporaryId)
             .then((data) => {
-            console.info('[FormComponent] castTempForm result:' + data);
+            console.info(`${this.TAG} castTempForm result:` + data);
               setTimeout(() => {
               let commonEventPublishData = {
                 data: data + "",
@@ -152,7 +154,7 @@ struct Index {
             }, 5);
           })
           .catch((error) => {
-            console.info('[FormComponent] castTempForm error:' + error);
+            console.info(`${this.TAG} castTempForm error:` + error);
               setTimeout(() => {
               let commonEventPublishData = {
                 data: error.code.toString(),
@@ -163,13 +165,13 @@ struct Index {
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             }, 5);
           });               
-        console.log("[FormComponent.host] castTempForm end");
+        console.log(`${this.TAG} castTempForm end`);
       }
     })
     .catch((error: any) => {
-      console.error('[FormComponent] Operation failed. Cause: ' + JSON.stringify(error));
+      console.error(`${this.TAG} Operation failed. Cause: ` + JSON.stringify(error));
     })
-    console.log(`[FormComponent.host] aboutToAppear end`);
+    console.log(`${this.TAG} aboutToAppear end`);
   }
 
   build() {
@@ -189,13 +191,13 @@ struct Index {
             .allowUpdate(this.allowUpate)
             .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
             .onAcquired((form) => {
-              console.log("[FormComponent.host] get form, form id:" + form.id);
+              console.log(`${this.TAG} get form, form id:` + form.id);
               this.formId = form.id;
               if(this.castForm) {
-                console.log("[FormComponent.host] castTempForm start");
+                console.log(`${this.TAG} castTempForm start`);
                 formManager.castTempForm(this.temporaryId)
                     .then((data) => {
-                    console.info('[FormComponent] castTempForm result:' + data);
+                    console.info(`${this.TAG} castTempForm result:` + data);
                      setTimeout(() => {
                       let commonEventPublishData = {
                         data: data + "",
@@ -207,7 +209,7 @@ struct Index {
                     }, 5);
                   })
                   .catch((error) => {
-                    console.info('[FormComponent] castTempForm error:' + error);
+                    console.info(`${this.TAG} castTempForm error:` + error);
                       setTimeout(() => {
                       let commonEventPublishData = {
                         data: error.code.toString(),
@@ -218,16 +220,16 @@ struct Index {
                       commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
                     }, 5);
                   });               
-                console.log("[FormComponent.host] castTempForm end");
+                console.log(`${this.TAG} castTempForm end`);
               } else if(this.deleteForm) {
-                console.log("[FormComponent.host] deleteForm start");
+                console.log(`${this.TAG} deleteForm start`);
                 if(this.deleteId == "self") {
                   this.deleteId = this.formId.toString();
                 }
                 setTimeout(() => {
                   formManager.deleteForm(this.deleteId)
                     .then((data) => {
-                    console.info('[FormComponent] deleteForm result:' + data);
+                    console.info(`${this.TAG} deleteForm result:` + data);
                     let commonEventPublishData = {
                       data: data + "",
                       parameters: {
@@ -237,7 +239,7 @@ struct Index {
                     commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
                   })
                   .catch((error) => {
-                    console.info('[FormComponent] deleteForm error:' + error);
+                    console.info(`${this.TAG} deleteForm error:` + error);
                     let commonEventPublishData = {
                       data: error.code.toString(),
                       parameters: {
@@ -247,7 +249,7 @@ struct Index {
                     commonEvent.publish(this.formOnErrorEvent, commonEventPublishData, this.publishOnErrorCallBack);
                   });
                
-                  console.log("[FormComponent.host] deleteForm end");
+                  console.log(`${this.TAG} deleteForm end`);
                 }, 1000);                
               } else {
                 let commonEventPublishData = {
@@ -263,8 +265,8 @@ struct Index {
             //   console.log("[FormComponent] onUninstall:" + JSON.stringify(info));
             // })
             .onError((error) => {
-              console.log("[FormComponent.host] error code:" + error.errcode);
-              console.log("[FormComponent.host] error msg:" + error.msg);
+              console.log(`${this.TAG} error code:` + error.errcode);
+              console.log(`${this.TAG} error msg:` + error.msg);
               if(this.deleteForm && this.deleteId) {
                 let commonEventPublishData = {
                     data: error.msg,

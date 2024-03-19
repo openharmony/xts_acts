@@ -12,32 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
-struct List_divider_string{
-  @State strokeWidth:string = '1'
-  @State lanes:number = 1
+struct List_divider_string {
+  @State strokeWidth: string = '1';
+  @State lanes: number = 1;
+  messageManager: MessageManager<string> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('List_divider_string onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<string> = (message: Message<string>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'strokeWidth') {
         this.strokeWidth = message.value;
-      }else if (message.name == 'lanes') {
-        this.lanes = message.value;
+      } else if (message.name == 'lanes') {
+        this.lanes = Number.parseInt(message.value);
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
-  @Builder itemHead(text:string){
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
@@ -45,7 +47,9 @@ struct List_divider_string{
       .height(50)
       .padding(10)
   }
-  @Builder itemFoot(text:string){
+
+  @Builder
+  itemFoot(text: string) {
     Text(text)
       .fontSize(16)
       .backgroundColor(0xAABBCC)
@@ -53,11 +57,12 @@ struct List_divider_string{
       .height(50)
       .padding(5)
   }
-  build(){
-    Column(){
-      List(){
-        ListItemGroup({header:this.itemHead('001'),footer:this.itemFoot('共2个'),space:10}){
-          ListItem(){
+
+  build() {
+    Column() {
+      List() {
+        ListItemGroup({ header: this.itemHead('001'), footer: this.itemFoot('共2个'), space: 10 }) {
+          ListItem() {
             Text('1')
               .width('100%')
               .height('100%')
@@ -66,7 +71,8 @@ struct List_divider_string{
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
           }.width('100%').height(100)
-          ListItem(){
+
+          ListItem() {
             Text('2')
               .width('100%')
               .height('100%')
@@ -81,8 +87,8 @@ struct List_divider_string{
         .borderRadius(20)
         .key("List_divider_string_listItem_01")
 
-        ListItemGroup({header:this.itemHead('002'),footer:this.itemFoot('共2个'),space:10}){
-          ListItem(){
+        ListItemGroup({ header: this.itemHead('002'), footer: this.itemFoot('共2个'), space: 10 }) {
+          ListItem() {
             Text('1')
               .width('100%')
               .height('100%')
@@ -91,7 +97,8 @@ struct List_divider_string{
               .textAlign(TextAlign.Center)
               .backgroundColor(0xAFEEEE)
           }.width('100%').height(100)
-          ListItem(){
+
+          ListItem() {
             Text('2')
               .width('100%')
               .height('100%')
@@ -113,7 +120,7 @@ struct List_divider_string{
       .listDirection(Axis.Vertical)
       .scrollBar(BarState.On)
       .lanes(this.lanes)
-      .divider({strokeWidth:this.strokeWidth,color:Color.Pink})
+      .divider({ strokeWidth: this.strokeWidth, color: Color.Pink })
     }
     .width(350)
     .height('100%')

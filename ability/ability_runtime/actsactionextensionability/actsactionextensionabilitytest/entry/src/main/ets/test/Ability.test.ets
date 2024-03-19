@@ -16,6 +16,9 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import commonEvent from '@ohos.commonEventManager';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest';
+import wantConstant from '@ohos.app.ability.wantConstant';
+import fs from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
 
 function sleep(time: number): Promise<number> {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -26,6 +29,9 @@ var ACTS_CallFunction = {
 };
 var ACTS_EVENT = {
   events: ['ACTS_TEST_FOREGROUND', 'ACTS_TEST_DESTROY', 'ACTS_TEST_RELEASE', 'ACTS_TEST_START_ERR']
+};
+var ACTS_WANT_SHOW_MODE_EVENT = {
+  events:['ACTS_TEST_EMBEDDED_FULL', 'ACTS_TEST_WINDOW']
 };
 const CONTEXT_WANT = {
   bundleName: 'com.example.actsactionextensionabilitytest',
@@ -68,6 +74,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -136,6 +145,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilitytest]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [feature]");
+                expect(result[0]).assertContain("root host ability name [FeatureAbility]");
               } catch {
                 expect().assertFail();
               };
@@ -203,6 +215,9 @@ export default function abilityTest() {
                 expect(result[0]).assertContain("bundle name [com.example.actsactionextensionabilityrely]");
                 expect(result[0]).assertContain("ability type [UIEXTENSION]");
                 expect(result[0]).assertContain("app state #FOREGROUND");
+                expect(result[0]).assertContain("root host bundle name [com.example.actsactionextensionabilitytest]");
+                expect(result[0]).assertContain("root host module name [entry]");
+                expect(result[0]).assertContain("root host ability name [EntryAbility]");
               } catch {
                 expect().assertFail();
               }
@@ -1670,6 +1685,221 @@ export default function abilityTest() {
           }
         });
       });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100
+     * @tc.name: Test WantConstant ShowMode UIExtensionComponent EMBEDDED_FULL.
+     * @tc.desc: Test ShowMode value EMBEDDED_FULL pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100',0, async function (done) {
+      var subscriber;
+      commonEvent.createSubscriber(ACTS_WANT_SHOW_MODE_EVENT).then(async (data) => {
+        console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100 createSubscriber  ${data}`);
+        subscriber = data;
+        commonEvent.subscribe(data, subscribeCallBack);
+        globalThis.context.startAbility({
+          bundleName: 'com.example.actsactionextensionabilitytest',
+          abilityName: 'TestWantShowModeAbility',
+          action: 'SUB_Ability_AbilityRuntime_WantShowMode_0100'
+        }, (err) => {
+          console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100 createSubscriber  ` + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        });
+
+        async function subscribeCallBack(err, data) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100 subscribeCallBack :' + JSON.stringify(data));
+          expect(data.event === 'ACTS_TEST_EMBEDDED_FULL').assertTrue();
+          commonEvent.unsubscribe(subscriber, async (err, data) => {
+              console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0100 unSubscribeCallback`);
+              done();
+          });
+        }
+      });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200
+     * @tc.name: Test WantConstant ShowMode UIExtensionComponent WINDOW.
+     * @tc.desc: Test ShowMode value WINDOW pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200',0, async function (done) {
+      var subscriber;
+      commonEvent.createSubscriber(ACTS_WANT_SHOW_MODE_EVENT).then(async (data) => {
+        console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200 createSubscriber  ${data}`);
+        subscriber = data;
+        commonEvent.subscribe(data, subscribeCallBack);
+        globalThis.context.startAbility({
+          bundleName: 'com.example.actsactionextensionabilitytest',
+          abilityName: 'TestWantShowModeWindowAbility',
+          action: 'SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200'
+        }, (err) => {
+          console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200 createSubscriber  ` + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        });
+
+        function subscribeCallBack(err, data) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200 subscribeCallBack :' + JSON.stringify(data));
+          expect(data.event == 'ACTS_TEST_WINDOW').assertTrue();
+          commonEvent.unsubscribe(subscriber, async (err, data) => {
+              console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0200 unSubscribeCallback`);
+              done();
+          });
+        }
+      });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0300
+     * @tc.name: Test WantConstant ShowMode startAbilityByType.
+     * @tc.desc: Test ShowMode value EMBEDDED_FULL pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0300',0, async function (done) {
+      let wantParam:Record<string, Object> = { };
+      wantParam[wantConstant.Params.SHOW_MODE_KEY] = wantConstant.ShowMode.EMBEDDED_FULL;
+      let flag = false;
+      let abilityStartCallback = {
+        onError:(code: number, name: string, message: string) => {
+            flag = true;
+        }
+      }
+      globalThis.context.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+        if(err) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0300 :' + JSON.stringify(err));
+        }
+      });
+      await sleep(1000);
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0400
+     * @tc.name: Test WantConstant ShowMode startAbilityByType.
+     * @tc.desc: Test ShowMode value WINDOW pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0400',0, async function (done) {
+      let wantParam:Record<string, Object> = { };
+      wantParam[wantConstant.Params.SHOW_MODE_KEY] = wantConstant.ShowMode.WINDOW;
+      let flag = false;
+      let abilityStartCallback = {
+        onError:(code: number, name: string, message: string) => {
+            flag = true;
+        }
+      }
+      globalThis.context.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+        if(err) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0400 :' + JSON.stringify(err));
+        }
+      });
+      await sleep(1000);
+      expect(flag).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700
+     * @tc.name: Test WantConstant ShowMode UIExtensionComponent EMBEDDED_FULL.
+     * @tc.desc: Test ShowMode value EMBEDDED_FULL pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700',0, async function (done) {
+      var subscriber;
+      commonEvent.createSubscriber(ACTS_WANT_SHOW_MODE_EVENT).then(async (data) => {
+        console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700 createSubscriber  ${data}`);
+        subscriber = data;
+        commonEvent.subscribe(data, subscribeCallBack);
+        globalThis.context.startAbility({
+          bundleName: 'com.example.actsactionextensionabilitytest',
+          abilityName: 'TestWantShowModeOtherFullAbility',
+          action: 'SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700'
+        }, (err) => {
+          console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700 createSubscriber  ` + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        });
+
+        function subscribeCallBack(err, data) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700 subscribeCallBack :' + JSON.stringify(data));
+          expect(data.event == 'ACTS_TEST_EMBEDDED_FULL').assertTrue();
+          commonEvent.unsubscribe(subscriber, async (err, data) => {
+              console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0700 unSubscribeCallback`);
+              done();
+          });
+        }
+      });
+    })
+
+    /**
+     * @tc.number: SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800
+     * @tc.name: Test WantConstant ShowMode UIExtensionComponent WINDOW.
+     * @tc.desc: Test ShowMode value WINDOW pull failed
+     */
+    it('SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800',0, async function (done) {
+      var subscriber;
+      commonEvent.createSubscriber(ACTS_WANT_SHOW_MODE_EVENT).then(async (data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, subscribeCallBack);
+        globalThis.context.startAbility({
+          bundleName: 'com.example.actsactionextensionabilitytest',
+          abilityName: 'TestWantShowModeOtherWindowAbility',
+          action: 'SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800'
+        }, (err) => {
+          console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800 createSubscriber  ` + JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        });
+
+        function subscribeCallBack(err, data) {
+          console.log('====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800 subscribeCallBack :' + JSON.stringify(data));
+          expect(data.event == 'ACTS_TEST_WINDOW').assertTrue();
+          commonEvent.unsubscribe(subscriber, async (err, data) => {
+              console.info(`====>SUB_Ability_AbilityRuntime_AMS_WantShowMode_0800 unSubscribeCallback`);
+              done();
+          });
+        }
+      });
+    })
+
+    /**
+     * @tc.number    : ABILITY_TEST_NATIVE_LIBRARY_PATH_0300
+     * @tc.name      : testNativeLibraryPath003
+     * @tc.desc      : test nativeLibraryPath
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testNativeLibraryPath003', 0, async function (done) {
+      try {
+        let abilityContext: common.UIAbilityContext = globalThis.context;
+        let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;
+         if (moduleContextNativeLibraryPath != '') {
+            fs.access(moduleContextNativeLibraryPath, (err,res) => {
+            if (err == undefined) {
+              if (res) {
+                expect(true).assertTrue;
+              } else {
+                expect(false).assertTrue;
+              }
+            }
+            });
+         }
+
+        let applicationInfoNativeLibraryPath = abilityContext.applicationInfo.nativeLibraryPath;
+         if (applicationInfoNativeLibraryPath != '') {
+            fs.access(applicationInfoNativeLibraryPath, (err,res) => {
+            if (err == undefined) {
+              if (res) {
+                expect(true).assertTrue;
+              } else {
+                expect(false).assertTrue;
+              }
+            }
+            });
+         }
+         done();
+      } catch (err) {
+        console.log(`testNativeLibraryPath003 fail ` + err);
+        expect().assertFail();
+        done();
+      }
     })
   })
 }

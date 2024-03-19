@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import SelectTest from './Select.test'
+import SelectTest from './Select.test';
 
 export default function testsuite() {
-  SelectTest()
+  SelectTest();
 }
