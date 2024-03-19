@@ -18,22 +18,22 @@ import events_emitter from '@ohos.events.emitter';
 class LinearGradientValue {
   angle: number;
   direction: GradientDirection;
-  colors: Array<ESObject>;
+  colors: Array<[ResourceColor, number]>;
   repeating: boolean;
 }
 
 class SweepGradientValue {
-  center: Array<ESObject>;
+  center: [number, number];
   start: number;
-  colors: Array<ESObject>;
+  colors: Array<[ResourceColor, number]>;
   end: number;
   repeating: boolean;
 }
 
 class RadialGradientValue {
-  center: Array<ESObject>;
+  center: [number, number];
   radius: number | string;
-  colors: Array<ESObject>;
+  colors: Array<[ResourceColor, number]>;
   repeating: boolean;
 }
 
