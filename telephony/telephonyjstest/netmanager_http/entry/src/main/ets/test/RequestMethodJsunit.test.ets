@@ -78,7 +78,6 @@ let GET_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.GET,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -105,7 +104,6 @@ let GET_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.GET,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -208,7 +206,6 @@ let TRACE_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.TRACE,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -235,7 +232,6 @@ let TRACE_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.TRACE,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -266,7 +262,6 @@ let PUT_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.PUT,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -297,7 +292,6 @@ let PUT_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.PUT,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -332,7 +326,6 @@ let head_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.HEAD,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -359,7 +352,6 @@ let HEAD_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.HEAD,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -390,7 +382,6 @@ let DELETE_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.DELETE,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -417,7 +408,6 @@ let DELETE_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.DELETE,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -448,7 +438,6 @@ let CONNECT_0100 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.CONNECT,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -475,7 +464,6 @@ let CONNECT_0200 = async (done: Function) => {
   try {
     let httpRequestOptions: http.HttpRequestOptions = {
       method: http.RequestMethod.CONNECT,
-
       header: 'content-type: application/json',
       readTimeout: 60000,
       connectTimeout: 60000
@@ -511,6 +499,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_options_0100', 0, options_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_options_0200
      * @tc.name HttpRequestMethod::options
@@ -520,6 +509,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_options_0200', 0, options_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0100
      * @tc.name HttpRequestMethod::GET
@@ -529,6 +519,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_GET_0100', 0, GET_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_GET_0200
      * @tc.name HttpRequestMethod::GET
@@ -538,6 +529,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_GET_0200', 0, GET_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0100
      * @tc.name HttpRequestMethod::POST
@@ -547,6 +539,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_POST_0100', 0, POST_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_POST_0200
      * @tc.name HttpRequestMethod::POST
@@ -556,6 +549,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_POST_0200', 0, POST_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0100
      * @tc.name HttpRequestMethod::TRACE
@@ -565,6 +559,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_TRACE_0100', 0, TRACE_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_TRACE_0200
      * @tc.name HttpRequestMethod::TRACE
@@ -574,6 +569,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_TRACE_0200', 0, TRACE_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0100
      * @tc.name HttpRequestMethod::PUT
@@ -583,6 +579,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_PUT_0100', 0, PUT_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_PUT_0200
      * @tc.name HttpRequestMethod::PUT
@@ -592,6 +589,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_PUT_0200', 0, PUT_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_head_0100
      * @tc.name HttpRequestMethod::HEAD
@@ -610,6 +608,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_HEAD_0200', 0, HEAD_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0100
      * @tc.name HttpRequestMethod::DELETE
@@ -619,6 +618,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_DELETE_0100', 0, DELETE_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_DELETE_0200
      * @tc.name HttpRequestMethod::DELETE
@@ -628,6 +628,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_DELETE_0200', 0, DELETE_0200);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0100
      * @tc.name HttpRequestMethod::CONNECT
@@ -637,6 +638,7 @@ export default function requestMethodJsunit() {
      * @tc.size: SmallTest
      */
     it('SUB_Telephony_http_HttpRequestMethod_CONNECT_0100', 0, CONNECT_0100);
+
     /**
      * @tc.number SUB_Telephony_http_HttpRequestMethod_CONNECT_0200
      * @tc.name HttpRequestMethod::CONNECT
