@@ -12,36 +12,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct SideBarContainerAttribute {
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State sideBarWidth: number = 100
-  @State minSideBarWidth: number = 200
-  @State maxSideBarWidth: number = 300
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State sideBarWidth: number = 100;
+  @State minSideBarWidth: number = 200;
+  @State maxSideBarWidth: number = 300;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('SideBarContainer_Attribute page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'sideBarWidth') {
         this.sideBarWidth = message.value;
-      }else if(message.name == 'minSideBarWidth'){
+      } else if (message.name == 'minSideBarWidth') {
         this.minSideBarWidth = message.value;
-      }else if(message.name == 'maxSideBarWidth'){
+      } else if (message.name == 'maxSideBarWidth') {
         this.maxSideBarWidth = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
@@ -67,7 +67,6 @@ struct SideBarContainerAttribute {
       }
       .margin({ top: 50, left: 20, right: 30 })
 
-
     }
     .sideBarWidth(this.sideBarWidth)
     .minSideBarWidth(this.minSideBarWidth)
@@ -80,5 +79,4 @@ struct SideBarContainerAttribute {
     })
     .divider({ strokeWidth: '1vp', color: Color.Gray, startMargin: '4vp', endMargin: '4vp' })
   }
-
 }

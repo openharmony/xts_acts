@@ -12,45 +12,45 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct SideBarContainerType1 {
-  @State arr: number[] = [1, 2, 3]
-  @State current: number = 1
-  @State sideBarWidth: number = 150
-  @State minSideBarWidth: number = 100
-  @State maxSideBarWidth: number = 200
-  minContentWidth: Dimension = 400
-  @State width1: number = 700
-  @State SideBarContainerType: SideBarContainerType = SideBarContainerType.Embed
+  @State arr: number[] = [1, 2, 3];
+  @State current: number = 1;
+  @State sideBarWidth: number = 150;
+  @State minSideBarWidth: number = 100;
+  @State maxSideBarWidth: number = 200;
+  minContentWidth: Dimension = 400;
+  @State width1: number = 700;
+  @State SideBarContainerType: SideBarContainerType = SideBarContainerType.Embed;
+  messageManager: MessageManager<number> = new MessageManager();
 
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('SideBarContainerType page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'sideBarWidth') {
         this.sideBarWidth = message.value;
-      }else if(message.name == 'minSideBarWidth'){
+      } else if (message.name == 'minSideBarWidth') {
         this.minSideBarWidth = message.value;
-      }else if(message.name == 'maxSideBarWidth'){
+      } else if (message.name == 'maxSideBarWidth') {
         this.maxSideBarWidth = message.value;
-      }else if(message.name == 'minContentWidth'){
+      } else if (message.name == 'minContentWidth') {
         this.minContentWidth = message.value;
-      }else if(message.name == 'width1'){
+      } else if (message.name == 'width1') {
         this.width1 = message.value;
-      }else if(message.name == 'SideBarContainerType'){
+      } else if (message.name == 'SideBarContainerType') {
         this.SideBarContainerType = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-
 
   build() {
     SideBarContainer(this.SideBarContainerType) {
@@ -86,5 +86,4 @@ struct SideBarContainerType1 {
       console.info('status:' + value)
     })
   }
-
 }
