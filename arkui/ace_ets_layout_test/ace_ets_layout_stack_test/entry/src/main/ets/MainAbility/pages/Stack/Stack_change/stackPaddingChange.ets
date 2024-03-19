@@ -12,20 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct StackPaddingChange {
   @State testPadding: number = 0
-  @State testAlignContentValue: number = Alignment.Center
-  messageManager:MessageManager = new MessageManager()
+  @State testAlignContentValue: number = Alignment.Center;
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "StackPaddingChange Page";
+
   onPageShow() {
     console.info('StackPaddingChange onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.testPadding = message.value;
@@ -33,7 +36,7 @@ struct StackPaddingChange {
       if (message.name == 'alignContent') {
         this.testAlignContentValue = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -42,10 +45,15 @@ struct StackPaddingChange {
   }
 
   build() {
-    Column(){
-        Stack({alignContent: this.testAlignContentValue}) {
-          Text('1').width(250).height(250).backgroundColor(0xF5DEB3).key('stackPaddingKey01')
-       }.width(300).height(300).backgroundColor(0xAFEEEE).key('stackPaddingKey').padding(this.testPadding)
-     }.alignItems(HorizontalAlign.Start)
+    Column() {
+      Stack({ alignContent: this.testAlignContentValue }) {
+        Text('1').width(250).height(250).backgroundColor(0xF5DEB3).key('stackPaddingKey01')
+      }
+      .width(300)
+      .height(300)
+      .backgroundColor(0xAFEEEE)
+      .key('stackPaddingKey')
+      .padding(this.testPadding)
+    }.alignItems(HorizontalAlign.Start)
   }
 }
