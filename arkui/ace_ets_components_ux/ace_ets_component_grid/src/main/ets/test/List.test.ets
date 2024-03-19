@@ -15,5 +15,5 @@
 import GridTest from './Grid.test'
 
 export default function testsuite() {
-       GridTest()
+  GridTest()
 }
