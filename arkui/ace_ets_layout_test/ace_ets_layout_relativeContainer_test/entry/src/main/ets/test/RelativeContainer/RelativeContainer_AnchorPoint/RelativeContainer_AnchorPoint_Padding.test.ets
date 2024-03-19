@@ -12,24 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function RelativeContainer_AnchorPoint_Padding() {
-  describe('RelativeContainer_AnchorPoint_Padding', function () {
-    beforeEach(async function (done) {
+  describe('RelativeContainer_AnchorPoint_Padding', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeContainer_AnchorPoint_Padding beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/RelativeContainer/RelativeContainer_AnchorPoint/RelativeContainer_AnchorPoint_Padding",
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get RelativeContainer_AnchorPoint_Padding state pages:" + JSON.stringify(pages));
         if (!("RelativeContainer_AnchorPoint_Padding" == pages.name)) {
           console.info("get RelativeContainer_AnchorPoint_Padding pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push RelativeContainer_AnchorPoint_Padding page result:" + JSON.stringify(result));
         }
@@ -39,33 +41,37 @@ export default function RelativeContainer_AnchorPoint_Padding() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("RelativeContainer_AnchorPoint_Padding after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100
-     * @tc.name      testRelativeContainer
-     * @tc.desc      Parent component setting padding property
+     * @tc.number SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100
+     * @tc.name testRelativeContainer
+     * @tc.desc Parent component setting padding property
      */
-    it('SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100] START');
 
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
-      let RelativeContainer_AnchorPoint_Padding_bt1 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_bt1');
-      let RelativeContainer_AnchorPoint_Padding_tx2 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_tx2');
-      let RelativeContainer_AnchorPoint_Padding_r1 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_r1');
-      let RelativeContainer_AnchorPoint_Padding_row1 = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_row1');
+      let RelativeContainer_AnchorPoint_Padding_bt1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_bt1');
+      let RelativeContainer_AnchorPoint_Padding_tx2: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_tx2');
+      let RelativeContainer_AnchorPoint_Padding_r1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_r1');
+      let RelativeContainer_AnchorPoint_Padding_row1: RectValue = CommonFunc.getComponentRect('RelativeContainer_AnchorPoint_Padding_row1');
 
 
       console.log('assert position')
-      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_r1.left - (RelativeContainer_AnchorPoint_Padding_row1.left + vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_r1.left - (RelativeContainer_AnchorPoint_Padding_row1.left + vp2px(100))) <= 1)
+        .assertTrue();
 
-      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.top - RelativeContainer_AnchorPoint_Padding_bt1.bottom) <= 1).assertTrue();
-      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.bottom - RelativeContainer_AnchorPoint_Padding_r1.bottom) <= 1).assertTrue();
-      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.right - ((RelativeContainer_AnchorPoint_Padding_bt1.right - RelativeContainer_AnchorPoint_Padding_bt1.left)/2 + RelativeContainer_AnchorPoint_Padding_bt1.left)) <= 1).assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.top - RelativeContainer_AnchorPoint_Padding_bt1.bottom) <= 1)
+        .assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.bottom - RelativeContainer_AnchorPoint_Padding_r1.bottom) <= 1)
+        .assertTrue();
+      expect(Math.abs(RelativeContainer_AnchorPoint_Padding_tx2.right - ((RelativeContainer_AnchorPoint_Padding_bt1.right - RelativeContainer_AnchorPoint_Padding_bt1.left) / 2 + RelativeContainer_AnchorPoint_Padding_bt1.left)) <= 1)
+        .assertTrue();
 
 
       console.info('[SUB_ACE_RelativeContainer_AnchorPoint_Padding_TEST_0100] END');

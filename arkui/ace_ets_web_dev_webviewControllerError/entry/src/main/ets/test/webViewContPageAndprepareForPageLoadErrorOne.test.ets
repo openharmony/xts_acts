@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
 
 let emitKey = "emitPrefetchPageErr";
+
 export default function webViewContPageAndprepareForPageLoadErrorOne() {
-  describe('ActsAceWebDevWebViewContPageAndPrepareForPageLoadErrorOneTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceWebDevWebViewContPageAndPrepareForPageLoadErrorOneTest', () => {
+    beforeAll(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/webViewContPageAndprepareForPageLoadErrorOne',
       }
@@ -39,27 +40,27 @@ export default function webViewContPageAndprepareForPageLoadErrorOne() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webViewContPageAndprepareForPageLoadErrorOne beforeEach start");
       done();
     })
-    afterEach(async function (done) {
-      console.info("webViewContPageAndprepareForPageLoadErrorOne afterEach start:"+emitKey);
+    afterEach(async (done: Function) => {
+      console.info("webViewContPageAndprepareForPageLoadErrorOne afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +70,10 @@ export default function webViewContPageAndprepareForPageLoadErrorOne() {
      *tc.name testPostMessageInitErr
      *tc.desc test interface of postMessage with not been associated with specific Web Components
      */
-    it('PrefetchPageErr',0,async function(done){
-      emitKey="emitPrepareForPageLoadErr";
-      Utils.registerEvent("PrefetchPageErr","17100001",900,done);
-      sendEventByKey('webViewContPageAndprepareForPageLoadErrorOne',10,'');
+    it('PrefetchPageErr', 0, async (done: Function) => {
+      emitKey = "emitPrepareForPageLoadErr";
+      Utils.registerEvent("PrefetchPageErr", "17100001", 900, done);
+      sendEventByKey('webViewContPageAndprepareForPageLoadErrorOne', 10, '');
     })
   })
 }

@@ -20,26 +20,35 @@ struct RelativeContainer_AnchorPoint_ThreeDirection {
     console.info('RelativeContainer_AnchorPoint_ThreeDirection onPageShow');
 
   }
+
   build() {
     Row() {
       RelativeContainer() {
-        Button("Button1").width(120).height(30)
+        Button("Button1")
+          .width(120)
+          .height(30)
           .alignRules({
             top: { anchor: "__container__", align: VerticalAlign.Top },
-            middle:{anchor:"__container__",align:HorizontalAlign.Center}
+            middle: { anchor: "__container__", align: HorizontalAlign.Center }
           })
           .key("RelativeContainer_AnchorPoint_ThreeDirection_bt1")
-          .id("RelativeContainer_AnchorPoint_ThreeDirection_bt1").borderWidth(5).borderColor(Color.Black)
+          .id("RelativeContainer_AnchorPoint_ThreeDirection_bt1")
+          .borderWidth(5)
+          .borderColor(Color.Black)
 
-        Text("This is text").fontSize(20).padding(10)
+        Text("This is text")
+          .fontSize(20)
+          .padding(10)
           .alignRules({
-            right:{anchor:"RelativeContainer_AnchorPoint_ThreeDirection_bt1",align:HorizontalAlign.Center},
-            top:{anchor:"__container__",align:VerticalAlign.Top},
-            bottom:{anchor:"__container__",align:VerticalAlign.Bottom},
-            center:{anchor:"__container__",align:VerticalAlign.Center},
+            right: { anchor: "RelativeContainer_AnchorPoint_ThreeDirection_bt1", align: HorizontalAlign.Center },
+            top: { anchor: "__container__", align: VerticalAlign.Top },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
+            center: { anchor: "__container__", align: VerticalAlign.Center },
           })
           .key("RelativeContainer_AnchorPoint_ThreeDirection_tx2")
-          .id("RelativeContainer_AnchorPoint_ThreeDirection_tx2").borderWidth(2).borderColor(Color.Green)
+          .id("RelativeContainer_AnchorPoint_ThreeDirection_tx2")
+          .borderWidth(2)
+          .borderColor(Color.Green)
           .height(30)
           .width(250)
       }

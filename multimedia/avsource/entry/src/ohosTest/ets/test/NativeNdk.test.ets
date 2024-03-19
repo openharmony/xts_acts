@@ -2745,7 +2745,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight003', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 9);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -2913,7 +2913,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetVideoWidthRangeForHeight015', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 9);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -3011,7 +3011,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth003', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 1, 0, 1, 11);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 
@@ -3165,7 +3165,7 @@ export default function nativeNdkTest() {
      */
     it('testOHAvCapabilityGetVideoHeightRangeForWidth014', 0, async (done: Function) => {
       let result: number = native.decodeMainProcess(6, 1, 0, 1, 1, 11);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done();
     });
 

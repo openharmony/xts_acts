@@ -17,8 +17,8 @@ import { ConnectionState } from './BluetoothViewModel';
 
 @Observed
 export default class BluetoothDevice {
-  deviceId?: string = ''
-  deviceName?: string = ''
-  rssi?: number = -1
-  connectionState?: number = ConnectionState.STATE_DISCONNECTED
+  deviceId?: string = '';
+  deviceName?: string = '';
+  rssi?: number = -1;
+  connectionState?: number = ConnectionState.STATE_DISCONNECTED;
 }

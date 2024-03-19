@@ -349,7 +349,7 @@ export default function PublicApiEightTest() {
             permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1, metadata: map2,
             removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: "",
             iconResource: resource, labelResource: resource, descriptionResource: resource,
-            appDistributionType :"" ,appProvisionType :""
+            appDistributionType :"" ,appProvisionType :"", nativeLibraryPath: ""
           },
           uri: "", metaData: [], metadata: [], enabled: true, supportWindowMode: [],
           maxWindowRatio: 0, minWindowRatio: 0, maxWindowWidth: 0, minWindowWidth: 0, maxWindowHeight: 0, minWindowHeight: 0

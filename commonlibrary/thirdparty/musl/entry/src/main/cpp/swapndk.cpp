@@ -17,18 +17,21 @@
 #include <fcntl.h>
 #include <js_native_api_types.h>
 #include <sys/swap.h>
+#include <unistd.h>
 
 #define INIT (-1)
 #define SUCCESS 0
 #define PARAM_1 1
 #define MPARAM_1 (-1)
+#define PARAM_0777 0777
 
 static napi_value SwapOn(napi_env env, napi_callback_info info)
 {
     int flags = SWAP_FLAG_PREFER, backParam = PARAM_1;
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
-    open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     backParam = swapon(path, flags);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;
@@ -38,11 +41,12 @@ static napi_value SwapOff(napi_env env, napi_callback_info info)
 {
     int flags = SWAP_FLAG_PREFER, checkParam, backParam = PARAM_1;
     const char *path = "/data/storage/el2/base/files/Fzl.txt";
-    open(path, O_CREAT);
+    int fd = open(path, O_CREAT, PARAM_0777);
     checkParam = swapon(path, flags);
     if (checkParam != MPARAM_1) {
         backParam = swapoff(path);
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     return result;

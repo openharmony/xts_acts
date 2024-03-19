@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import timerfd from 'libtimerfdndk.so'
 
 export default function timerfdNdkTest() {
   describe('MuslTimerfdTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIMERFD_TIMERFDCREATE_0100
      * @tc.name       : testMuslTimerfdTimerfdCreate001

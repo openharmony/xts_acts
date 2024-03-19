@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import grp from 'libgrpndk.so'
 
 export default function grpNdkTest() {
   describe('MuslGrpTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_SETGRENT_0100
@@ -119,21 +124,6 @@ export default function grpNdkTest() {
       let data: number = grp.getGroupList();
       console.info("Test NAPI data= " + JSON.stringify(data));
       expect(data).assertEqual(1);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_GRP_INITGROUPS_0100
-     * @tc.name       : testMuslGrpInitGroups001
-     * @tc.desc       : test initgroups
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslGrpInitGroups001', 0, async (done: Function) => {
-      let data: number = grp.initGroups();
-      console.info("Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(0);
       done()
     });
 

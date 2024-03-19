@@ -12,21 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct Grid_Row_Direction_RowReverse {
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State currentBp: string = 'unknown'
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+
   build() {
     Column() {
       GridRow({
-        columns: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6},
-        gutter: { x: 10,y: 10 },
+        columns: {
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+          xl: 5,
+          xxl: 6
+        },
+        gutter: { x: 10, y: 10 },
         breakpoints: { value: ["50vp", "100vp", "150vp", "200vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.RowReverse
       }) {
-        ForEach(this.bgColors, (color,index) => {
+        ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('DirectionRowReverse_' + index)

@@ -17,11 +17,8 @@
 import secureElement from '@ohos.secureElement';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 
-function sleep(delay) { // delay x ms
-    let start = (new Date()).getTime();
-    while ((new Date()).getTime() - start < delay) {
-        continue;
-    }
+function sleep(delay) {
+    return new Promise(resovle => setTimeout(resovle, delay))
 }
 
 async function getSEService() {
@@ -84,10 +81,11 @@ export default function channelCallbacktest() {
             console.info('afterEach success');
         })
 
-        afterAll(function () {
+        afterAll(async function (done) {
             nfcSEService.shutdown();
             sleep(5000);
             console.info('[nfc_test] afterAll channelcallback shutdown success');
+            done();
         })
 
        /**

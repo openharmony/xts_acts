@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import malloc from 'libmalloc1ndk.so'
 
 export default function malloc1NdkTest() {
   describe('MuslMalloc1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MALLOC_MALLOC_0200
      * @tc.name       : testMuslMallocMalloc002

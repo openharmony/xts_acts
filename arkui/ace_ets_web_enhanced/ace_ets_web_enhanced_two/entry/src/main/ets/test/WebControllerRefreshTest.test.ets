@@ -73,7 +73,7 @@ export default function webControllerRefreshTest() {
     it('testRefresh003', 0, async (done: Function) => {
       Utils.emitEvent("testRefresh003", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testRefresh003", 'OpenHarmony - Gitee.com', 76602, done);
+      Utils.registerEvent("testRefresh003", true, 76602, done);
       sendEventByKey('WebControllerRefreshTestButton', 10, '');
     })
 

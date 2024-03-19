@@ -37,7 +37,6 @@ ohos_moduletest_suite("ActsGraphicGlesExtensionTest") {
   include_dirs = [
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
-    "../../../../../foundation/graphic/graphic_surface/surface/include",
     "../../../../../drivers/peripheral/display/interfaces/include",
     "//third_party/node/src",
   ]
@@ -48,6 +47,7 @@ ohos_moduletest_suite("ActsGraphicGlesExtensionTest") {
     "access_token:libtoken_setproc",
     "graphic_2d:2d_graphics",
     "graphic_2d:libgraphic_utils",
+    "graphic_surface:surface",
     "hilog:hilog_ndk",
     "hilog:libhilog",
     "ipc:ipc_core",
@@ -57,7 +57,6 @@ ohos_moduletest_suite("ActsGraphicGlesExtensionTest") {
 
   deps = [
     "$comPath:libnative_image",
-    "$comPath:libsurface",
     "$comPath/frameworks/opengl_wrapper:EGL",
     "$comPath/frameworks/opengl_wrapper:GLESv3",
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",

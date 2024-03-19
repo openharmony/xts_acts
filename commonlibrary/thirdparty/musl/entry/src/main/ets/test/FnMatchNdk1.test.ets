@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import fnmatchndk1 from 'libfnmatchndk1.so'
 
 export default function fnmatchNdk1Test() {
   describe('FnMatchNdk1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_THREADS_CND_TIMEDWAIT_TIME64_0100

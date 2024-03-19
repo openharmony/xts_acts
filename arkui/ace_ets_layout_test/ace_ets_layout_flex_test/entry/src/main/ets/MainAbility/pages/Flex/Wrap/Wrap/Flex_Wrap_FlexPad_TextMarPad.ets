@@ -12,10 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import  GlobalContext  from '../../../../common/GlobalContext';
+import { Value } from '../../../../common/Value';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct Flex_Wrap_FlexPad_TextMarPad{
+struct Flex_Wrap_FlexPad_TextMarPad {
   @State firstTextPadding: number = 0;
   @State secondTextPadding: number = 0;
   @State thirdTextPadding: number = 0;
@@ -23,14 +27,16 @@ struct Flex_Wrap_FlexPad_TextMarPad{
   @State secondTextMargin: number = 0;
   @State thirdTextMargin: number = 0;
   @State flexPadding: number = 0;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('Flex_Wrap_FlexPad_TextMarPad onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+    let value: Value<number> = {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'firstTextPadding') {
         this.firstTextPadding = message.value;
@@ -53,18 +59,34 @@ struct Flex_Wrap_FlexPad_TextMarPad{
       if (message.name == 'flexPadding') {
         this.flexPadding = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column({ space:30 }){
-      Flex({ wrap:FlexWrap.Wrap }){
-        Text('1').width(150).height(50).backgroundColor(0xF5DEB3).margin(this.firstTextMargin)
-          .padding(this.firstTextPadding).key('Wrap_FlexPad_TextMarPad1');
-        Text('2').width(150).height(100).backgroundColor(0xD2B48C).margin(this.secondTextMargin)
-          .padding(this.secondTextPadding).key('Wrap_FlexPad_TextMarPad2');
-        Text('3').width(150).height(150).backgroundColor(0xF5DEB3).margin(this.thirdTextMargin)
-          .padding(this.thirdTextPadding).key('Wrap_FlexPad_TextMarPad3');
+
+  build() {
+    Column({ space: 30 }) {
+      Flex({ wrap: FlexWrap.Wrap }) {
+        Text('1')
+          .width(150)
+          .height(50)
+          .backgroundColor(0xF5DEB3)
+          .margin(this.firstTextMargin)
+          .padding(this.firstTextPadding)
+          .key('Wrap_FlexPad_TextMarPad1');
+        Text('2')
+          .width(150)
+          .height(100)
+          .backgroundColor(0xD2B48C)
+          .margin(this.secondTextMargin)
+          .padding(this.secondTextPadding)
+          .key('Wrap_FlexPad_TextMarPad2');
+        Text('3')
+          .width(150)
+          .height(150)
+          .backgroundColor(0xF5DEB3)
+          .margin(this.thirdTextMargin)
+          .padding(this.thirdTextPadding)
+          .key('Wrap_FlexPad_TextMarPad3');
       }
       .width(500)
       .height(300)

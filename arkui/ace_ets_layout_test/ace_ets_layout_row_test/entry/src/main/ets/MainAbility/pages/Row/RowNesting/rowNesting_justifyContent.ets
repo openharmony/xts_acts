@@ -12,32 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
+
 @Entry
 @Component
 struct rowNesting_justifyContent {
-  @State addSpace: string = '10vp'
-  messageManager:MessageManager = new MessageManager()
+  @State addSpace: string = '10vp';
+  messageManager: MessageManager<string> = new MessageManager();
+
   onPageShow() {
     console.info('rowNesting_justifyContent onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<string> = (message: Message<string>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addSpace') {
         this.addSpace = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
-    Row({space:30}){
-      Row({space:this.addSpace}) {
-        Row(){Text('1')}.width(50).height(50).backgroundColor(0xF5DEB3).key('rowNesting_justifyContent_011')
-        Row(){Text('2')}.width(100).height(100).backgroundColor(0xD2B48C).key('rowNesting_justifyContent_012')
-        Row(){Text('3')}.width(150).height(150).backgroundColor(0xF5DEB3).key('rowNesting_justifyContent_013')
-      }.key('rowNesting_justifyContent_01').width(400).height(400).backgroundColor(0xAFEEEE).justifyContent(FlexAlign.Start)
-    }.width(500).height(500).backgroundColor(0xF5DEB3).key('rowNesting_justifyContent_1').justifyContent(FlexAlign.Center)
+    Row({ space: 30 }) {
+      Row({ space: this.addSpace }) {
+        Row() {
+          Text('1')
+        }.width(50).height(50).backgroundColor(0xF5DEB3).key('rowNesting_justifyContent_011')
+
+        Row() {
+          Text('2')
+        }.width(100).height(100).backgroundColor(0xD2B48C).key('rowNesting_justifyContent_012')
+
+        Row() {
+          Text('3')
+        }.width(150).height(150).backgroundColor(0xF5DEB3).key('rowNesting_justifyContent_013')
+      }
+      .key('rowNesting_justifyContent_01')
+      .width(400)
+      .height(400)
+      .backgroundColor(0xAFEEEE)
+      .justifyContent(FlexAlign.Start)
+    }
+    .width(500)
+    .height(500)
+    .backgroundColor(0xF5DEB3)
+    .key('rowNesting_justifyContent_1')
+    .justifyContent(FlexAlign.Center)
   }
 }

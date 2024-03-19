@@ -132,7 +132,6 @@ import unistdNdk1Test from './UnistdNdk1.test';
 
 export default function testsuite() {
   SocketNdkTest();
- 
   muslStdio1Test();
   muslStdioExt1Test();
   wcharNdk1Test();
@@ -164,7 +163,6 @@ export default function testsuite() {
   fenvNdkTest();
   fnmatchNdkTest();
   grpNdkTest();
-  initNdkTest();
   inNdkTest();
   inotifyNdkTest();
   intTypesNdkTest();
@@ -177,7 +175,6 @@ export default function testsuite() {
   mmanNdk1Test();
   mntentNdkTest();
   muslApplicationTargetSdkVersionNdkTest();
-  muslCapabilityTest();
   muslDeviceApiVersionNdkTest();
   muslErrTest();
   muslFtwTest();

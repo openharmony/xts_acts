@@ -26,6 +26,7 @@ import connection from '@ohos.bluetooth.connection';
 import access from '@ohos.bluetooth.access';
 import { BusinessError } from '@ohos.base';
 import emitter from '@ohos.events.emitter';
+import { Info } from '../../../ArkUI/InfoObj';
 
 let self = null;
 let innerEvent11: emitter.InnerEvent = {
@@ -44,18 +45,18 @@ struct StandardBluetooth {
   @State X: number = 0;
   @State name: string = 'StandardBluetooth';
   @State StepTips: string = '操作步骤：\n1、请打开蓝牙' + '\n2、自己创建一个蓝牙' + '\n3、应用是否扫描到自己创建的蓝牙MAC地址'
-  + '\n4、选择点击蓝牙后进行配对' + '\n预期结果：列表能扫描到自己的蓝牙，能配对成功则通过';
+    + '\n4、选择点击蓝牙后进行配对' + '\n预期结果：列表能扫描到自己的蓝牙，能配对成功则通过';
   @State Vue: boolean = false;
   @State btnState: boolean = false;
-  @State isOn: boolean = false
-  @State deviceList: Array<string> = []
-  @State discoveryList: Array<string> = []
-  private bluetoothState: boolean = false
-  private pinDialogController: CustomDialogController | null = null
-  private intervalId: number = -1
+  @State isOn: boolean = false;
+  @State deviceList: Array<string> = [];
+  @State discoveryList: Array<string> = [];
+  private bluetoothState: boolean = false;
+  private pinDialogController: CustomDialogController | null = null;
+  private intervalId: number = -1;
   handlerClickButton = () => {
-    let context = getContext(this) as any
-    context.terminateSelf()
+    let context = getContext(this) as ESObject;
+    context.terminateSelf();
   }
 
   foundDevices() {
@@ -134,19 +135,21 @@ struct StandardBluetooth {
         })
         router.back({
           url: 'pages/Bluetooth/BlueTooth_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
       }, 2000)
     }
   }
 
-  async onPageShow(){
+  async onPageShow() {
     emitter.on(innerEvent11, (res) => {
       this.Vue = res.data.flag
       console.info('emitter.on =11=this.Vue ' + this.Vue);
     });
   }
+
   async onPageHide() {
     Logger.info("enter onPageHide");
   }
@@ -202,7 +205,8 @@ struct StandardBluetooth {
       .onClick(() => {
         router.back({
           url: 'pages/Bluetooth/BlueTooth_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -226,7 +230,8 @@ struct StandardBluetooth {
     .onClick(() => {
       router.back({
         url: 'pages/Bluetooth/BlueTooth_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -330,7 +335,7 @@ struct StandardBluetooth {
                 .margin({ left: '5%' })
                 .alignSelf(ItemAlign.Start)
 
-              ForEach(this.deviceList, (item, index) => {
+              ForEach(this.deviceList, (item: string, index) => {
                 Row() {
                   Text(item)
                     .fontColor(Color.White)
@@ -355,7 +360,7 @@ struct StandardBluetooth {
                       action: () => {
                         let deleteStatus
                         try {
-                          connection.cancelPairedDevice(item, (err) => {
+                          connection.cancelPairedDevice(item, (err: BusinessError) => {
                             Logger.info(TAG, 'connection.cancelPairedDevice err: ' + JSON.stringify(err));
                             if (err === undefined) {
                               deleteStatus = true
@@ -389,7 +394,7 @@ struct StandardBluetooth {
                 .margin({ left: '5%', bottom: '2%' })
                 .alignSelf(ItemAlign.Start)
 
-              ForEach(this.discoveryList, (item) => {
+              ForEach(this.discoveryList, (item: string) => {
                 Row() {
                   Text(item)
                     .fontColor(Color.White)
@@ -470,7 +475,7 @@ struct StandardBluetooth {
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;

@@ -15,9 +15,9 @@
  
 export default {
   onCreate() {
-    console.info('[FormComponent.host] Application onCreate')
+    console.info('[FormComponent.host.noperm] Application onCreate')
   },
   onDestroy() {
-    console.info('[FormComponent.host] Application onDestroy')
+    console.info('[FormComponent.host.noperm] Application onDestroy')
   },
 }

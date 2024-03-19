@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "com.example.ActsEffectKitTest",
+        "bundleName": "com.example.myapplication",
         "vendor": "huawei",
         "versionCode": 1000000,
         "versionName": "1.0.0",

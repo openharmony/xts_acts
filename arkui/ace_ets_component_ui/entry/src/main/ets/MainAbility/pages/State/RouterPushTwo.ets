@@ -15,18 +15,18 @@
 
 import hilog from '@ohos.hilog';
 import router from '@ohos.router';
-import { Router } from '@ohos.arkui.UIContext';
+import { Router, UIContext } from '@ohos.arkui.UIContext';
 
 @Entry
 @Component
 struct RouterPushTwo {
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility index aboutToAppear');
-    // let routerUI: Router = globalThis.uiContext.getRouter();
   }
 
   onPageShow() {
-    let routerUI: Router = globalThis.uiContext.getRouter();
+    let uiContext: UIContext = this.getUIContext?.()
+    let routerUI: Router = uiContext.getRouter();
     this.routerUI = routerUI
   }
 
@@ -49,7 +49,7 @@ struct RouterPushTwo {
           .id("turn_RouterPushUrlOne_RouterMode_Standard")
           .onClick(() => {
             router.pushUrl({
-              url: 'testability/pages/RouterPushOne',
+              url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Standard)
           })
 
@@ -61,7 +61,7 @@ struct RouterPushTwo {
           .id("turn_RouterPushUrlOne_RouterMode_Single")
           .onClick(() => {
             router.pushUrl({
-              url: 'testability/pages/RouterPushOne',
+              url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Single)
           })
 
@@ -78,7 +78,7 @@ struct RouterPushTwo {
           .id("turn_UIRouterPushUrlOne_RouterMode_Standard")
           .onClick(() => {
             this.routerUI.pushUrl({
-              url: 'testability/pages/RouterPushOne',
+              url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Standard)
           })
 
@@ -90,7 +90,7 @@ struct RouterPushTwo {
           .id("turn_UIRouterPushUrlOne_RouterMode_Single")
           .onClick(() => {
             this.routerUI.pushUrl({
-              url: 'testability/pages/RouterPushOne',
+              url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Single)
           })
       }

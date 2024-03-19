@@ -12,28 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
-struct ListItem_Delete_Start_String{
-  @State arr: number[] = [0, 1, 2, 3, 4]
-  @State actionAreaDistance: string = 'abc'
-  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea"
-  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea"
+struct ListItem_Delete_Start_String {
+  @State arr: number[] = [0, 1, 2, 3, 4];
+  @State actionAreaDistance: string = 'abc';
+  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea";
+  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea";
+  messageManager: MessageManager<string> = new MessageManager();
 
-
-  messageManager:MessageManager = new MessageManager();
   onPageShow() {
     console.info('ListItem_Delete_Start_String onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<string> = (message: Message<string>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'actionAreaDistance') {
         this.actionAreaDistance = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -72,6 +73,7 @@ struct ListItem_Delete_Start_String{
           })
         }, (item: string) => item)
       }
+
       Text(this.enterEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_String_text_01")
       Text(this.exitEndDeleteAreaString).fontSize(20).key("ListItem_Delete_Start_String_text_02")
       Text('' + this.arr.length).fontSize(20).key("ListItem_Delete_Start_String_text_03")
@@ -79,7 +81,7 @@ struct ListItem_Delete_Start_String{
         .onClick(() => {
           this.arr = [0, 1, 2, 3, 4]
           this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-          this.exitEndDeleteAreaString =  "not exitEndDeleteArea"
+          this.exitEndDeleteAreaString = "not exitEndDeleteArea"
         })
         .id('ListItem_Delete_Start_String_button1')
     }

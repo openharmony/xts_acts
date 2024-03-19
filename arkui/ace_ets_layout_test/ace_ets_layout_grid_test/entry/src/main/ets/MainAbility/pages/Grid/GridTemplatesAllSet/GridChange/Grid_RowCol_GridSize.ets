@@ -12,25 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct Grid_RowCol_GridSize {
   @State changeHeight: number = 200;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "Grid_RowCol_GridSize Page";
+
   onPageShow() {
     console.info('Grid_RowCol_GridSize page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'changeHeight') {
         this.changeHeight = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -44,12 +46,15 @@ struct Grid_RowCol_GridSize {
         GridItem() {
           Text('1').fontSize(16).backgroundColor(0xF9CF93).width('100%').height('100%');
         }.key('Grid_RowCol_GridSize_011')
+
         GridItem() {
           Text('2').fontSize(16).backgroundColor(0xF5DEB3).width('100%').height('100%');
         }.key('Grid_RowCol_GridSize_012')
+
         GridItem() {
           Text('3').fontSize(16).backgroundColor(0xD2B48C).width('100%').height('100%');
         }.key('Grid_RowCol_GridSize_013')
+
         GridItem() {
           Text('4').fontSize(16).backgroundColor(0xffa500).width('100%').height('100%');
         }.key('Grid_RowCol_GridSize_014')
@@ -58,7 +63,8 @@ struct Grid_RowCol_GridSize {
       .rowsTemplate("1fr 1fr")
       .width(200)
       .height(this.changeHeight)
-      .backgroundColor(0xFAEEE0).key('Grid_RowCol_GridSize_01')
+      .backgroundColor(0xFAEEE0)
+      .key('Grid_RowCol_GridSize_01')
     }.width('100%')
   }
 }

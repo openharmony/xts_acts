@@ -13,62 +13,62 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function blankJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('BlankTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Blank',
-      }
+  describe('BlankTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Blank',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Blank state success " + JSON.stringify(pages));
         if (!("Blank" == pages.name)) {
           console.info("get Blank state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push Blank page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Blank page error " + JSON.stringify(result));
+        console.error("push Blank page error " + JSON.stringify(err));
       }
-      await sleep(2)
-      done()
+      await sleep(2);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Blank after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0630
-     * @tc.name      testBlankGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0630
+     * @tc.name testBlankGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('BlankGetInspectorByKey', 0, async function (done) {
+    it('BlankGetInspectorByKey', 0, async (done: Function) => {
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd blank component obj is: " + JSON.stringify(obj));
       console.log("cd blank type" + JSON.stringify(obj.$type));
       console.log("cd blank min" + JSON.stringify(obj.$attrs.min));
       console.log("cd blank color" + JSON.stringify(obj.$attrs.color));
-      expect(obj.$type).assertEqual('Blank')
-      expect(obj.$attrs.min).assertEqual('100.00vp')
+      expect(obj.$type).assertEqual('Blank');
+      expect(obj.$attrs.min).assertEqual('100.00vp');
       console.info('cd BlankGetInspectorByKey END');
       done();
     });

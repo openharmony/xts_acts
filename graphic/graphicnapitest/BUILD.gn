@@ -24,10 +24,12 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
+    "ConsumerSurfaceTest.cpp",
     "NativeBufferTest.cpp",
     "NativeImageTest.cpp",
     "NativeVsyncTest.cpp",
     "NativeWindowTest.cpp",
+    "ProducerSurfaceTest.cpp",
   ]
 
   cflags = [
@@ -41,7 +43,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   include_dirs = [
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
-    "../../../../../foundation/graphic/graphic_surface/surface/include",
+    "../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
     "../../../../../drivers/peripheral/display/interfaces/include",
   ]
 
@@ -50,6 +52,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "access_token:libnativetoken",
     "access_token:libtoken_setproc",
     "graphic_2d:libgraphic_utils",
+    "graphic_surface:surface",
     "hilog:libhilog",
     "ipc:ipc_core",
     "samgr:samgr_proxy",
@@ -57,12 +60,12 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
 
   deps = [
     "$comPath:libnative_image",
-    "$comPath:libsurface",
     "$comPath/frameworks/opengl_wrapper:EGL",
     "$comPath/frameworks/opengl_wrapper:GLESv3",
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
     "$comPath/rosen/modules/composer/vsync:libvsync",
     "$comPath/utils:buffer_handle",
+    "$comPath/utils/sync_fence:sync_fence",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
   ]

@@ -103,7 +103,6 @@ import showDialogTrue from './showInSubWindowTest/showDialogTrue.test.ets'
 import showToast from './showInSubWindowTest/showToast.test.ets'
 import TextPickerDialog from './showInSubWindowTest/TextPickerDialog.test.ets'
 import TimePickerDialog from './showInSubWindowTest/TimePickerDialog.test.ets'
-
 export default function testsuite() {
   extendTrackTest()
   localTrackTest()

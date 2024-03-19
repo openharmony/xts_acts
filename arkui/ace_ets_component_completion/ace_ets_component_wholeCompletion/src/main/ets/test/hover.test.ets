@@ -15,19 +15,19 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function hoverTest() {
-  describe('hoverTest', function () {
+  describe('hoverTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/hover',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/hover',
       }
       try {
         router.clear();
@@ -35,7 +35,7 @@ export default function hoverTest() {
         console.info("get hover state success " + JSON.stringify(pages));
         if (!("hover" == pages.name)) {
           console.info("get hover state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push hover page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -43,30 +43,29 @@ export default function hoverTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('ArkUX_Hover_stoppropagation_0100', 0, async function (done) {
+    it('ArkUX_Hover_stoppropagation_0100', 0, async (done: Function) => {
       console.info('ArkUX_Hover_stoppropagation_0100 START');
-      setTimeout(()=>{
-        try{
+      setTimeout(() => {
+        try {
           let strJson = getInspectorByKey('ArkUX_Hover_stoppropagation_0100');
-          console.info('ArkUX_Hover_stoppropagation_0100 START  :'+ JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          expect(obj.$type).assertEqual('Button');
+          console.info('ArkUX_Hover_stoppropagation_0100 START  :' + JSON.stringify(strJson));
+          expect(JSON.parse(strJson).$type).assertEqual('Button');
           console.info('ArkUX_Hover_stoppropagation_0100 END ');
-        } catch(err) {
+        } catch (err) {
           expect().assertFail()
-          console.info('ArkUX_Hover_stoppropagation_0100 ERR  '+ JSON.stringify(err));
+          console.info('ArkUX_Hover_stoppropagation_0100 ERR  ' + JSON.stringify(err));
         }
         done();
-      },500)
+      }, 500)
     });
   })
 }

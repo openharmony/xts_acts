@@ -20,34 +20,47 @@ struct RelativeContainer_AnchorPoint_Visibility_Hidden {
     console.info('RelativeContainer_AnchorPoint_Visibility_Hidden onPageShow');
 
   }
+
   build() {
     Row() {
       RelativeContainer() {
-        Button("Button1").width(120).height(30)
+        Button("Button1")
+          .width(120)
+          .height(30)
           .alignRules({
-            middle:{anchor:"__container__",align:HorizontalAlign.Center}
+            middle: { anchor: "__container__", align: HorizontalAlign.Center }
           })
           .visibility(Visibility.Hidden)
           .key("RelativeContainer_AnchorPoint_Visibility_Hidden_bt1")
-          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_bt1").borderWidth(5).borderColor(Color.Black)
+          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_bt1")
+          .borderWidth(5)
+          .borderColor(Color.Black)
 
-        Text("This is text").fontSize(20).padding(10)
+        Text("This is text")
+          .fontSize(20)
+          .padding(10)
           .alignRules({
-            right:{anchor:"RelativeContainer_AnchorPoint_Visibility_Hidden_bt1",align:HorizontalAlign.Center},
-            top:{anchor:"RelativeContainer_AnchorPoint_Visibility_Hidden_bt1",align:VerticalAlign.Bottom},
-            bottom:{anchor:"__container__",align:VerticalAlign.Bottom},
+            right: { anchor: "RelativeContainer_AnchorPoint_Visibility_Hidden_bt1", align: HorizontalAlign.Center },
+            top: { anchor: "RelativeContainer_AnchorPoint_Visibility_Hidden_bt1", align: VerticalAlign.Bottom },
+            bottom: { anchor: "__container__", align: VerticalAlign.Bottom },
           })
           .key("RelativeContainer_AnchorPoint_Visibility_Hidden_tx2")
-          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_tx2").borderWidth(2).borderColor(Color.Green)
+          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_tx2")
+          .borderWidth(2)
+          .borderColor(Color.Green)
           .height(30)
           .width(150)
 
-        Button("Button2").width(120).height(30)
+        Button("Button2")
+          .width(120)
+          .height(30)
           .alignRules({
-            right:{anchor:"__container__",align:HorizontalAlign.End}
+            right: { anchor: "__container__", align: HorizontalAlign.End }
           })
           .key("RelativeContainer_AnchorPoint_Visibility_Hidden_bt2")
-          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_bt2").borderWidth(5).borderColor(Color.Black)
+          .id("RelativeContainer_AnchorPoint_Visibility_Hidden_bt2")
+          .borderWidth(5)
+          .borderColor(Color.Black)
 
       }
       .key("RelativeContainer_AnchorPoint_Visibility_Hidden_r1")
@@ -56,5 +69,4 @@ struct RelativeContainer_AnchorPoint_Visibility_Hidden {
     .key("RelativeContainer_AnchorPoint_Visibility_Hidden_row1")
     .height('100%')
   }
-
 }

@@ -15,12 +15,12 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 export default function Grid_Row_GutterOption_Number() {
-  describe('Grid_Row_GutterOption_Number', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_GutterOption_Number',  ()=> {
+    beforeEach(async  (done: Function)=> {
       console.info("GutterOption_Length_Number beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_GutterOption/Grid_Row_GutterOption_Number",
       }
       try {
@@ -29,7 +29,7 @@ export default function Grid_Row_GutterOption_Number() {
         console.info("get Grid_Row_GutterOption_Number state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_GutterOption_Number" == pages.name)) {
           console.info("get Grid_Row_GutterOption_Number pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_GutterOption_Number page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function Grid_Row_GutterOption_Number() {
       console.info("Grid_Row_GutterOption_Number beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async ()=> {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_GutterOption_Number after each called")
     });
@@ -51,15 +51,15 @@ export default function Grid_Row_GutterOption_Number() {
      * @tc.desc      Set the GridRowSizeOption of GridRow to {x: -20 ,y: 10}
      *               the parent component
      */
-    it('SUB_ACE_GridRowGutterOption_NUMBER_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_NUMBER_0100', 0, async  (done: Function)=> {
       console.info('SUB_ACE_GridRowGutterOption_NUMBER_0100 START');
       globalThis.value.message.notify({ name:'length', value:-20 })
       await CommonFunc.sleep(2000)
 
-      let LengthNumber_1 = CommonFunc.getComponentRect('Length_Number001');
-      let firstLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_0');
-      let secondLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_1');
-      let thirdLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_2');
+      let LengthNumber_1:RectValue = CommonFunc.getComponentRect('Length_Number001');
+      let firstLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_0');
+      let secondLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_1');
+      let thirdLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_2');
       let gridRowGutterLengthNumJson = getInspectorByKey('Length_Number001');
       let gridRowGutter = JSON.parse(gridRowGutterLengthNumJson);
       expect(gridRowGutter.$type).assertEqual('GridRow');
@@ -77,15 +77,15 @@ export default function Grid_Row_GutterOption_Number() {
      * @tc.name      testGutterOptionNumber
      * @tc.desc      Set the GridRowSizeOption of GridRow to {x: 0 ,y: 10}
      */
-    it('SUB_ACE_GridRowGutterOption_NUMBER_0200', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_NUMBER_0200', 0, async  (done: Function)=> {
       console.info('SUB_ACE_GridRowGutterOption_NUMBER_0200 START');
       globalThis.value.message.notify({ name:'length', value:0 })
       await CommonFunc.sleep(2000)
 
-      let LengthNumber_1 = CommonFunc.getComponentRect('Length_Number001');
-      let firstLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_0');
-      let secondLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_1');
-      let thirdLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_2');
+      let LengthNumber_1:RectValue = CommonFunc.getComponentRect('Length_Number001');
+      let firstLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_0');
+      let secondLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_1');
+      let thirdLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_2');
       let gridRowGutterLengthNumJson = getInspectorByKey('Length_Number001');
       let gridRowGutter = JSON.parse(gridRowGutterLengthNumJson);
       expect(gridRowGutter.$type).assertEqual('GridRow');
@@ -102,15 +102,15 @@ export default function Grid_Row_GutterOption_Number() {
      * @tc.name      testGutterOptionNumber
      * @tc.desc      Set the GridRowSizeOption of GridRow to {x: 10 ,y: 10}
      */
-    it('SUB_ACE_GridRowGutterOption_NUMBER_0300', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_NUMBER_0300', 0, async  (done: Function)=> {
       console.info('SUB_ACE_GridRowGutterOption_NUMBER_0300 START');
       globalThis.value.message.notify({ name:'length', value:10 })
       await CommonFunc.sleep(2000)
 
-      let LengthNumber_1 = CommonFunc.getComponentRect('Length_Number001');
-      let firstLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_0');
-      let secondLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_1');
-      let thirdLengthNumber = CommonFunc.getComponentRect('Length_NumberChange_2');
+      let LengthNumber_1:RectValue = CommonFunc.getComponentRect('Length_Number001');
+      let firstLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_0');
+      let secondLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_1');
+      let thirdLengthNumber:RectValue = CommonFunc.getComponentRect('Length_NumberChange_2');
       let gridRowGutterLengthNumJson = getInspectorByKey('Length_Number001');
       let gridRowGutter = JSON.parse(gridRowGutterLengthNumJson);
       expect(gridRowGutter.$type).assertEqual('GridRow');

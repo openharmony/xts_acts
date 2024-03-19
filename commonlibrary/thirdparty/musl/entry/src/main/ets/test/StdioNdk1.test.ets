@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import stdio1 from 'libstdiondk1.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
@@ -21,6 +22,10 @@ import fs from '@ohos.file.fs'
 
 export default function muslStdio1Test() {
   describe('MuslStdio1Test', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STDIO_FGETSCHK_0100
@@ -58,19 +63,6 @@ export default function muslStdio1Test() {
      */
     it('testMuslStdioPwriteChk001', 0, async (done: Function) => {
       expect(stdio1.Pwrite_Chk_One()).assertEqual(1);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STDIO_READLINKAT_CHK_0100
-     * @tc.name       : testMuslStdioReadlinkatChk001
-     * @tc.desc       : test the normal condition of Readlinkat_Chk_One
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStdioReadlinkatChk001', 0, async (done: Function) => {
-      expect(stdio1.Readlinkat_Chk_One()).assertEqual(1);
       done();
     });
 

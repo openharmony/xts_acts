@@ -12,25 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
-struct List_Margin{
+struct List_Margin {
   @State addMargin: number = 10;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "List_Margin Page";
+
   onPageShow() {
     console.info('List_Margin page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addMargin') {
         this.addMargin = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -46,25 +48,48 @@ struct List_Margin{
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_Margin_011').editable(true).backgroundColor(0xF5DEB3)
+        }
+        .width(300)
+        .height(100)
+        .key('List_Margin_011')
+        .editable(true)
+        .backgroundColor(0xF5DEB3)
+
         ListItem() {
           Text('2')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_Margin_012').editable(true).backgroundColor(0xD2B48C)
+        }
+        .width(300)
+        .height(100)
+        .key('List_Margin_012')
+        .editable(true)
+        .backgroundColor(0xD2B48C)
+
         ListItem() {
           Text('3')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_Margin_013').editable(true).backgroundColor(0xffa500)
+        }
+        .width(300)
+        .height(100)
+        .key('List_Margin_013')
+        .editable(true)
+        .backgroundColor(0xffa500)
+
         ListItem() {
           Text('4')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_Margin_014').editable(true).backgroundColor(0xFFFFFF)
+        }
+        .width(300)
+        .height(100)
+        .key('List_Margin_014')
+        .editable(true)
+        .backgroundColor(0xFFFFFF)
       }
       .height(520)
       .width(350)

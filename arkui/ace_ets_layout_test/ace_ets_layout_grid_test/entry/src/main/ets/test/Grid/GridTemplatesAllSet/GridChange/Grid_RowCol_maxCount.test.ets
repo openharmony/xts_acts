@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_RowCol_maxCount() {
-  describe('Grid_RowCol_maxCountTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_maxCountTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_maxCountTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_maxCount",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_RowCol_maxCount() {
         console.info("get Grid_RowCol_maxCount state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_maxCount" == pages.name)) {
           console.info("get Grid_RowCol_maxCount pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_maxCount page result:" + JSON.stringify(result));
         }
@@ -40,26 +41,26 @@ export default function Grid_RowCol_maxCount() {
       console.info("Grid_RowCol_maxCountTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_RowCol_maxCount after each called")
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000
-     * @tc.name      testGridRowColGridMaxCount
-     * @tc.desc      The Grid layout maxCount property does not take effect
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDCHANGE_1000
+     * @tc.name testGridRowColGridMaxCount
+     * @tc.desc The Grid layout maxCount property does not take effect
      */
-    it('testGridRowColGridMaxCount', 0, async function (done) {
+    it('testGridRowColGridMaxCount', 0, async (done: Function) => {
       console.info('[testGridRowColGridMaxCount] START');
       await CommonFunc.sleep(3000);
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_maxCount_01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
-      let Grid_RowCol_maxCount_011 = CommonFunc.getComponentRect('Grid_RowCol_maxCount_011');
-      let Grid_RowCol_maxCount_012 = CommonFunc.getComponentRect('Grid_RowCol_maxCount_012');
-      let Grid_RowCol_maxCount_013 = CommonFunc.getComponentRect('Grid_RowCol_maxCount_013');
-      let Grid_RowCol_maxCount_014 = CommonFunc.getComponentRect('Grid_RowCol_maxCount_014');
-      let Grid_RowCol_maxCount_01 = CommonFunc.getComponentRect('Grid_RowCol_maxCount_01');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
+      let Grid_RowCol_maxCount_011: RectValue = CommonFunc.getComponentRect('Grid_RowCol_maxCount_011');
+      let Grid_RowCol_maxCount_012: RectValue = CommonFunc.getComponentRect('Grid_RowCol_maxCount_012');
+      let Grid_RowCol_maxCount_013: RectValue = CommonFunc.getComponentRect('Grid_RowCol_maxCount_013');
+      let Grid_RowCol_maxCount_014: RectValue = CommonFunc.getComponentRect('Grid_RowCol_maxCount_014');
+      let Grid_RowCol_maxCount_01: RectValue = CommonFunc.getComponentRect('Grid_RowCol_maxCount_01');
       expect(Math.abs(Grid_RowCol_maxCount_011.left - Grid_RowCol_maxCount_01.left) <= 1).assertTrue();
       expect(Math.abs(Grid_RowCol_maxCount_013.left - Grid_RowCol_maxCount_01.left) <= 1).assertTrue();
 

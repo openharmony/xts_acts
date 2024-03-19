@@ -12,25 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct scrollBy {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
-  @State distance: number = 0
-   messageManager:MessageManager = new MessageManager();
-   onPageShow() {
-     console.info('List_lanes page show called');
-     globalThis.value = {
-       name: 'messageManager', message: this.messageManager
-     }
-     let callback: Callback = (message: any) => {
-       console.log('message = ' + message.name + "--" + message.value);
-       this[message.name] = message.value;
-     }
-     this.messageManager.registerCallback(callback);
-   }
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
+  @State distance: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+
+  onPageShow() {
+    console.info('List_lanes page show called');
+    globalThis.value = {
+      name: 'messageManager',
+      message: this.messageManager
+    }
+    let callback: Callback<number> = (message: Message<number>) => {
+      console.log('message = ' + message.name + "--" + message.value);
+      if (message.name == 'distance') {
+        this.distance = message.value;
+      }
+    }
+    this.messageManager.registerCallback(callback);
+  }
 
   build() {
     Column({ space: 5 }) {
@@ -61,7 +66,7 @@ struct scrollBy {
         console.info(first.toString())
       })
       .onScrollBarUpdate((index: number, offset: number) => {
-        return {totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4}
+        return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 }
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
@@ -71,7 +76,7 @@ struct scrollBy {
         .height('5%')
         .id('scrollButton')
         .onClick(() => {
-          this.scroller.scrollBy(0,this.distance)
+          this.scroller.scrollBy(0, this.distance)
         })
     }.width('100%').margin({ top: 5 })
   }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,13 +25,17 @@ struct ListExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Column() {
         List({ space: 20, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             ListItem() {
               Text('' + item)
-                .width('100%').height(100).fontSize(16)
-                .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .key('list')
         .listDirection(Axis.Vertical) // 排列方向
@@ -50,7 +53,8 @@ struct ListExample {
           console.info(JSON.stringify(this.arr))
           this.editFlag = false
           return true
-        }).width('90%')
+        })
+        .width('90%')
       }.width('100%')
 
       Button('edit list')
@@ -60,16 +64,16 @@ struct ListExample {
     }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
   }
 
-   onPageShow() {
+  onPageShow() {
     console.info('edgeEffect page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 91,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("edgeEffect page state change called:" + JSON.stringify(eventData));
       if (eventData.data.edgeEffect != null) {

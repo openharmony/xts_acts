@@ -12,12 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
+class ParamsClass {
+  text: String;
+
+  constructor(text: String) {
+    this.text = text;
+  }
+}
+
 @Entry
 @Component
 struct navigator_testcase {
   @State active: boolean = false
-  @State params: Object = { text: 'news' }
+  @State params: ParamsClass = new ParamsClass('news')
 
   onPageShow() {
     console.info('Navigator page show called');

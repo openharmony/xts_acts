@@ -1796,5 +1796,44 @@ export default function nativeApiStringJsunit() {
       expect(napitest.makeCallbackOne(resource, obj, myMultiArgFunc, 1, 2, 3)).assertEqual(42);
       done();
     });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0121
+     * @tc.name      aceNapiTest0121
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0121', 0, async function (done) {
+    console.info('aceNapiTest0121 START');
+      value = napitest.runEventLoop(0)
+      console.info('aceNapiTest0121 testString result is: ' + value);
+      expect(value).assertEqual(0)
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0121
+     * @tc.name      aceNapiTest0122
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0122', 0, async function (done) {
+    console.info('aceNapiTest0122 START');
+      value = napitest.runEventLoop(1)
+      console.info('aceNapiTest0122 testString result is: ' + value);
+      expect(value).assertEqual(0)
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0123
+     * @tc.name      aceNapiTest0123
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest0123', 0, async function (done) {
+    console.info('aceNapiTest0123 START');
+      value = napitest.stopEventLoop()
+      console.info('aceNapiTest0123 testString result is: ' + value);
+      expect(value).assertEqual(0)
+      done();
+    });
   })
 }

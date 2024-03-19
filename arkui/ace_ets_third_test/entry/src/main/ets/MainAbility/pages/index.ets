@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-
 @Entry
 @Component
 struct MyComponent {

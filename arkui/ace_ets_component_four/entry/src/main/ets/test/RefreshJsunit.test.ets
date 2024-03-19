@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function refreshJsunit() {
-  describe('refreshTest', function () {
-    beforeEach(async function (done) {
+  describe('refreshTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("refresh beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/refresh',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/refresh',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function refreshJsunit() {
         console.info("get refresh state pages:" + JSON.stringify(pages));
         if (!("refresh" == pages.name)) {
           console.info("get refresh state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push refresh page result:" + JSON.stringify(result));
         }
@@ -40,28 +39,28 @@ export default function refreshJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("refresh after each called");
     });
 
-    it('testRefresh01', 0, async function (done) {
+    it('testRefresh01', 0, async (done: Function) => {
       console.info('[testRefresh01] START');
       await Utils.sleep(1000);
-      let strJson = getInspectorByKey('refresh');
+      let strJson: string = getInspectorByKey('refresh');
       console.info('[testRefresh01 strJson]' + strJson);
       console.info('[testRefresh01] END');
       done();
     });
 
-    it('testRefresh02', 0, async function (done) {
+    it('testRefresh02', 0, async (done: Function) => {
       console.info('[testRefresh02] START');
       expect(RefreshStatus.OverDrag).assertEqual(2);
       console.info('[testRefresh02] END');
       done();
     });
 
-    it('testRefresh03', 0, async function (done) {
+    it('testRefresh03', 0, async (done: Function) => {
       console.info('[testRefresh03] START');
       expect(RefreshStatus.Inactive).assertEqual(0);
       console.info('[testRefresh03] END');

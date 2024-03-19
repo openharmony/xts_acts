@@ -18,7 +18,7 @@ import fs from '@ohos.file.fs';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 const BUNDLE_PATH = "/data/storage/el1/bundle/abcs";
-const ABC_PATH = "/data/storage/el2/base/haps/entry/files/testAbc.abc";
+const ABC_PATH = "/data/storage/el1/bundle/testModule/resources/resfile/testAbc.abc";
 
 export default function VerifyAbcTest() {
   describe('VerifyAbcTest', function () {

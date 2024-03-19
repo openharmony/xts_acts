@@ -15,28 +15,35 @@
 
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 struct ScrollExample {
-  scroller: Scroller = new Scroller()
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) {
         Column() {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: string) => {
             Text(item.toString())
-              .width('90%').height(150).backgroundColor(0xFFFFFF)
-              .borderRadius(15).fontSize(16).textAlign(TextAlign.Center)
+              .width('90%')
+              .height(150)
+              .backgroundColor(0xFFFFFF)
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, item => item)
+          }, (item: string) => item)
         }.width('100%')
       }
-      .scrollable(ScrollDirection.Vertical).scrollBar(BarState.On)
-      .scrollBarColor(Color.Gray).scrollBarWidth(30)
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Gray)
+      .scrollBarWidth(30)
       .onScroll((xOffset: number, yOffset: number) => {
         console.info(xOffset + ' ' + yOffset)
       })
@@ -46,18 +53,19 @@ struct ScrollExample {
       .onScrollEnd(() => {
         console.info('Scroll Stop')
       })
+
       Button('back Middle')
         .key("MiddleText")
         .onClick(() => { // 点击后回到顶部
           this.scroller.scrollEdge(Edge.Middle)
-          var result=(this.scroller.scrollEdge(Edge.Middle)!=null)
+          let result = (this.scroller.scrollEdge(Edge.Middle) != null)
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "STATUS": result
               }
             }
-            let backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 60306,
               priority: events_emitter.EventPriority.LOW
             }

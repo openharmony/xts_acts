@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function swiperMaskJsunit() {
-  describe('swiperMaskTest', function () {
-    beforeEach(async function (done) {
+  describe('swiperMaskTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/swiper',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function swiperMaskJsunit() {
         console.info("get swiper state success " + JSON.stringify(pages));
         if (!("swiper" == pages.name)) {
           console.info("get swiper state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push swiper page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function swiperMaskJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("swiperMask after each called");
     });
@@ -50,15 +50,14 @@ export default function swiperMaskJsunit() {
      * @tc.name         testswiperMask001
      * @tc.desic        aceswiperMaskEtsTest001
      */
-    it('testswiperMask001', 0, async function (done) {
+    it('testswiperMask001', 0, async (done: Function) => {
       console.info('swiperMask testswiperMask001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('maskSwiper');
+      let strJson: string = getInspectorByKey('maskSwiper');
       console.info("[testswiperMask001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Swiper');
-      console.info("[testswiperMask001] indicatorStyle value :" + obj.$attrs.indicator);
-      expect(obj.$attrs.indicator).assertEqual('true');
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      console.info("[testswiperMask001] indicatorStyle value :" + JSON.parse(strJson).$attrs.indicator);
+      expect(JSON.parse(strJson).$attrs.indicator).assertEqual('true');
       done();
     });
   })

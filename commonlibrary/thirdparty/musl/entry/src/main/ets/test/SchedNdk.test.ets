@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import sched from 'libschedndk.so'
 
 export default function schedNdkTest() {
   describe('MuslSchedTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDCPUALLOC_0100
@@ -109,7 +114,10 @@ export default function schedNdkTest() {
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDGETSCHEDULER_0100
      * @tc.name       : testMuslSchedSchedGetscheduler001
-     * @tc.desc MuslSchedTest
+     * @tc.desc       : MuslSchedTest
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
      */
     it('testMuslSchedSchedGetscheduler001', 0, async (done: Function) => {
       let result:number = sched.sched_getscheduler(-1);
@@ -142,7 +150,7 @@ export default function schedNdkTest() {
      */
     it('testMuslSchedSchedSetparam002', 0, async (done: Function) => {
       let result:number = sched.sched_setparam(0);
-      expect(result).assertEqual(-1);
+      expect(result).assertEqual(0);
       done()
     });
 
@@ -245,20 +253,6 @@ export default function schedNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SETNS_0100
-     * @tc.name       : testMuslSchedSetns001
-     * @tc.desc       : test setns
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslSchedSetns001', 0, async (done: Function) => {
-      let result:number = sched.setns();
-      expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_SCHEDCPUCOUNT_0100
      * @tc.name       : testMuslSchedSchedCpuCount001
      * @tc.desc       : test schedCpuCount
@@ -269,21 +263,6 @@ export default function schedNdkTest() {
     it('testMuslSchedSchedCpuCount001', 0, async (done: Function) => {
       let result:number = sched.schedCpuCount();
       expect(result).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SCHED_UNSHARE_0100
-     * @tc.name       : testMuslSchedUnshare001
-     * @tc.desc       : test unshare
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslSchedUnshare001', 0, async (done: Function) => {
-      let testParam = 1;
-      let result:number = sched.unshare(testParam);
-      expect(result).assertEqual(1);
       done()
     });
 

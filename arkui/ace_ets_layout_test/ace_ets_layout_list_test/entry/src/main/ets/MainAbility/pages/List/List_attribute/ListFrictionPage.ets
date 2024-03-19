@@ -12,31 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
 
 @Entry
 @Component
 struct ListFrictionPage {
-  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-  @State friction:number = 1000
-  messageManager:MessageManager = new MessageManager();
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  @State friction: number = 1000;
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('List_lanes page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'friction') {
         this.friction = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: number, index: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')

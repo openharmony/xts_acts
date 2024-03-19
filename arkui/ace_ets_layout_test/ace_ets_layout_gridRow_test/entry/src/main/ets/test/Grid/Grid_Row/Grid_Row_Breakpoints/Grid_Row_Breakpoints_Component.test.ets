@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_Breakpoints_Component() {
-  describe('Grid_Row_Breakpoints_Component', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_Breakpoints_Component', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_Breakpoints_Component beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_Breakpoints/Grid_Row_Breakpoints_Component",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_Breakpoints_Component() {
         console.info("get Grid_Row_Breakpoints_Component state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_Breakpoints_Component" == pages.name)) {
           console.info("get Grid_Row_Breakpoints_Component pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_Breakpoints_Component page result:" + JSON.stringify(result));
         }
@@ -40,25 +41,25 @@ export default function Grid_Row_Breakpoints_Component() {
       console.info("Grid_Row_Breakpoints_Component beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_Breakpoints_Component after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWBREAKPOTINS_0100
-     * @tc.name      testBreakpoints
-     * @tc.desc      Set the reference to ComponentSize
+     * @tc.number SUB_ACE_GRIDROWBREAKPOTINS_0100
+     * @tc.name testBreakpoints
+     * @tc.desc Set the reference to ComponentSize
      */
-    it('SUB_ACE_GridRowBreakpoints_Component_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowBreakpoints_Component_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowBreakpoints_Component_0100 START');
       await CommonFunc.sleep(2000)
 
-      let firstBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component0');
-      let secondBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component1');
-      let thirdBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component2');
-      let fourthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component3');
-      let fifthBreakpoints = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component4');
+      let firstBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component0');
+      let secondBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component1');
+      let thirdBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component2');
+      let fourthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component3');
+      let fifthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Component4');
 
       expect(Math.round(secondBreakpoints.left - firstBreakpoints.right)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right)).assertEqual(Math.round(vp2px(20)));

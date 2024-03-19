@@ -25,16 +25,16 @@ import webViewContPageAndprepareForPageLoadErrorOne from './webViewContPageAndpr
 import webViewContPageAndprepareForPageLoadErrorTwo from './webViewContPageAndprepareForPageLoadErrorTwo.test'
 
 export default function testsuite() {
-       webViewContMessageError()
-       webViewContPageOperationsError()
-       webViewContJavaScriptError()
-       webViewContZoomAndOthersError()
-       webViewContStoreWebArchiveError()
-       webViewContGetUrlAndOthersError()
-       webViewContCookieToGeoLocationError()
-       webViewContJsMessageExtReturnError()
-       webViewContWebMessageExtReturnError()
-       //webViewContPageAndprepareForPageLoadErrorOne()
-       //webViewContPageAndprepareForPageLoadErrorTwo()
+  webViewContMessageError()
+  webViewContPageOperationsError()
+  webViewContJavaScriptError()
+  webViewContZoomAndOthersError()
+  webViewContStoreWebArchiveError()
+  webViewContGetUrlAndOthersError()
+  webViewContCookieToGeoLocationError()
+  webViewContJsMessageExtReturnError()
+  webViewContWebMessageExtReturnError()
+  //webViewContPageAndprepareForPageLoadErrorOne()
+  //webViewContPageAndprepareForPageLoadErrorTwo()
 
 }

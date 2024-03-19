@@ -18,7 +18,7 @@ import router from '@ohos.router';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import { Driver, ON, On } from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function listSwipeNoActionJsunit() {
   describe('listSwipeNoActionTest', ()=> {
@@ -39,7 +39,7 @@ export default function listSwipeNoActionJsunit() {
       done()
     });
 
-    afterEach(async function(done) {
+    afterEach(async (done: Function)=> {
       await CommonFunc.sleep(1000);
       console.info("listSwipeNoActionTest after each called");
       // reset the init state
@@ -60,12 +60,12 @@ export default function listSwipeNoActionJsunit() {
     it('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050', 0, async (done:Function)=> {
       console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050 START');
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500);
       // get the rect of listItem
       let strJson = getInspectorByKey('lSwipeActionNoAction0');
-      let obj = JSON.parse(strJson);
-      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050] current component obj is: " + JSON.stringify(obj));
+
+      console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
         Math.round(vp2px(50)), Math.round(vp2px(108)), Math.round(vp2px(53)), Math.round(vp2px(108))
@@ -73,9 +73,9 @@ export default function listSwipeNoActionJsunit() {
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
       let textSwipeState = getInspectorByKey('swipeStateNoAction');
-      let textString = JSON.parse(textSwipeState);
-      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050 json is ' + JSON.stringify(textString.$attrs));
-      expect(textString.$attrs.content).assertEqual('-1');
+
+      console.info('SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0050 json is ' + JSON.stringify(JSON.parse(textSwipeState).$attrs));
+      expect(JSON.parse(textSwipeState).$attrs.content).assertEqual('-1');
       done();
     });
 

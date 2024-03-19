@@ -12,21 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
 struct Grid_Row_Breakpoints_Change {
   @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
   @State columnsWidth: string = '300vp'
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<string> = new MessageManager();
 
   onPageShow() {
     console.info('Grid_Row_Breakpoints_Change');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<string> = (message: Message<string>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'width') {
         this.columnsWidth = message.value;
@@ -34,19 +34,41 @@ struct Grid_Row_Breakpoints_Change {
     }
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
       GridRow({
-        columns: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6},
+        columns: {
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+          xl: 5,
+          xxl: 6
+        },
         gutter: {
-          x: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30},
-          y: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30}
+          x: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          },
+          y: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          }
         },
         breakpoints: { value: ["100vp", "200vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index) => {
+        ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('Grid_Row_Breakpoints_Change' + index)

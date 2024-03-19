@@ -13,26 +13,28 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+
+import { afterEach, beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+
+
+function sleep(time: number) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time * 1000);
+  }).then(() => {
+    console.info(`sleep ${time} over...`);
+  })
+}
 
 export default function dividerJsunit() {
 
-  function sleep(time) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve()
-      }, time * 1000)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
 
-  describe('dividerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Divider',
+  describe('dividerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Divider',
       }
       try {
         router.clear();
@@ -40,29 +42,29 @@ export default function dividerJsunit() {
         console.info("get divider state success " + JSON.stringify(pages));
         if (!("Divider" == pages.name)) {
           console.info("get divider state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options);
           console.info("push divider page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push divider page error " + JSON.stringify(result));
+        console.error("push divider page error " + JSON.stringify(err));
       }
-      await sleep(1)
-      done()
+      await sleep(1);
+      done();
     });
 
-    afterEach(async function () {
-      await sleep(1)
+    afterEach(async () => {
+      await sleep(1);
       console.info("Divider after each called");
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0750
-     * @tc.name      testDividerGetInspectorByKey010
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0750
+     * @tc.name testDividerGetInspectorByKey010
+     * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey010', 0, async function (done) {
+    it('testDividerGetInspectorByKey010', 0, async (done: Function) => {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('divider');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("cd divider component obj is: " + JSON.stringify(obj));
       console.log("cd divider type" + JSON.stringify(obj.$type));
       console.log("cd divider color" + JSON.stringify(obj.$attrs.color));
@@ -80,29 +82,29 @@ export default function dividerJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0760
-     * @tc.name      testDividerGetInspectorByKey020
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0760
+     * @tc.name testDividerGetInspectorByKey020
+     * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey020', 0, async function (done) {
+    it('testDividerGetInspectorByKey020', 0, async (done: Function) => {
       let strJson = getInspectorByKey('divider1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info(" divider1 component obj is: " + JSON.stringify(obj));
       console.log("cd divider1 vertical" + JSON.stringify(obj.$attrs.vertical));
       console.log("cd divider1 lineCap" + JSON.stringify(obj.$attrs.lineCap));
-      expect(obj.$attrs.vertical).assertEqual('false')
-      expect(obj.$attrs.lineCap == LineCapStyle.Round)
+      expect(obj.$attrs.vertical).assertEqual('false');
+      expect(obj.$attrs.lineCap == LineCapStyle.Round);
       console.info('cd divider1InspectorByKey END');
       done();
     });
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0770
-     * @tc.name      testDividerGetInspectorByKey030
-     * @tc.desc      aceEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_API_0770
+     * @tc.name testDividerGetInspectorByKey030
+     * @tc.desc aceEtsTest
      */
-    it('testDividerGetInspectorByKey030', 0, async function (done) {
+    it('testDividerGetInspectorByKey030', 0, async (done: Function) => {
       let strJson = getInspectorByKey('divider2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info(" divider2 component obj is: " + JSON.stringify(obj));
       console.log("cd divider2 lineCap" + JSON.stringify(obj.$attrs.lineCap));
       expect(obj.$attrs.lineCap == LineCapStyle.Square)

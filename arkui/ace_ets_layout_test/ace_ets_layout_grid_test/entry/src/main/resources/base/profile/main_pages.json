@@ -27,6 +27,9 @@
         "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2",
         "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet",
 
+        "MainAbility/pages/GridRows/GridRows1",
+        "MainAbility/pages/GridRows/GridRows2",
+
         "MainAbility/pages/Grid/Grid_scroll/Grid_ReachStartAndEnd",
         "MainAbility/pages/Grid/Grid_scroll/Grid_ScrollStartAndStop",
         "MainAbility/pages/Grid/Grid_scroll/Grid_ScrollAndScrollIndex",

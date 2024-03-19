@@ -12,25 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
-struct List_lanes{
+struct List_lanes {
   @State addLanes: number = 1;
-  messageManager:MessageManager = new MessageManager();
-  private content: string = "List_lanes Page"
+  messageManager: MessageManager<number> = new MessageManager();
+  private content: string = "List_lanes Page";
+
   onPageShow() {
     console.info('List_lanes page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'addLanes') {
         this.addLanes = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -46,25 +48,48 @@ struct List_lanes{
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(100).height(100).key('List_lanes_011').editable(true).backgroundColor(0xF5DEB3)
+        }
+        .width(100)
+        .height(100)
+        .key('List_lanes_011')
+        .editable(true)
+        .backgroundColor(0xF5DEB3)
+
         ListItem() {
           Text('2')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(100).height(100).key('List_lanes_012').editable(true).backgroundColor(0xD2B48C)
+        }
+        .width(100)
+        .height(100)
+        .key('List_lanes_012')
+        .editable(true)
+        .backgroundColor(0xD2B48C)
+
         ListItem() {
           Text('3')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(100).height(100).key('List_lanes_013').editable(true).backgroundColor(0xffa500)
+        }
+        .width(100)
+        .height(100)
+        .key('List_lanes_013')
+        .editable(true)
+        .backgroundColor(0xffa500)
+
         ListItem() {
           Text('4')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(100).height(100).key('List_lanes_014').editable(true).backgroundColor(0xFFFFFF)
+        }
+        .width(100)
+        .height(100)
+        .key('List_lanes_014')
+        .editable(true)
+        .backgroundColor(0xFFFFFF)
       }
       .height(520)
       .width(350)
