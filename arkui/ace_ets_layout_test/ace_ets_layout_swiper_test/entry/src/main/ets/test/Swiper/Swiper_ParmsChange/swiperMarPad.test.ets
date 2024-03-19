@@ -13,16 +13,32 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../MainAbility/common/Common";
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function swiperMarPad() {
-  describe('swiperMarPadTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperMarPad',
-      }
+  describe('swiperMarPadTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperMarPad',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -30,36 +46,36 @@ export default function swiperMarPad() {
         console.info("get swiperMarPad state success " + JSON.stringify(pages));
         if (!("swiperMarPad" == pages.name)) {
           console.info("get swiperMarPad state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push swiperMarPad page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push swiperMarPad page error " + JSON.stringify(err));
       }
-        done();
+      done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperVertical after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_SWIPER_MARPAD_0300
-     * @tc.name      testSwiperSetPaddingMargin.
-     * @tc.desc      Set swiper's  padding and margin both values '20'.
+     * @tc.number SUB_ACE_SWIPER_MARPAD_0300
+     * @tc.name testSwiperSetPaddingMargin.
+     * @tc.desc Set swiper's  padding and margin both values '20'.
      */
-    it('testSwiperSetPaddingMargin', 0, async function (done) {
+    it('testSwiperSetPaddingMargin', 0, async (done: Function) => {
       console.info('new testSwiperSetPaddingMargin START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperMarPad');
-      let obj = JSON.parse(strJson);
-      let swiperMarPad = CommonFunc.getComponentRect('swiperMarPad');
-      let swiperMarPad01= CommonFunc.getComponentRect('swiperMarPad01');
-      let swiperMarPad02 = CommonFunc.getComponentRect('swiperMarPad02');
-      let swiperMarPad03= CommonFunc.getComponentRect('swiperMarPad03');
-      let swiperMarPad04 = CommonFunc.getComponentRect('swiperMarPad04');
-      let swiperMarPad05= CommonFunc.getComponentRect('swiperMarPad05');
-      let swiperMarPad06 = CommonFunc.getComponentRect('swiperMarPad06');
+
+      let swiperMarPad: RectValue = CommonFunc.getComponentRect('swiperMarPad');
+      let swiperMarPad01: RectValue = CommonFunc.getComponentRect('swiperMarPad01');
+      let swiperMarPad02: RectValue = CommonFunc.getComponentRect('swiperMarPad02');
+      let swiperMarPad03: RectValue = CommonFunc.getComponentRect('swiperMarPad03');
+      let swiperMarPad04: RectValue = CommonFunc.getComponentRect('swiperMarPad04');
+      let swiperMarPad05: RectValue = CommonFunc.getComponentRect('swiperMarPad05');
+      let swiperMarPad06: RectValue = CommonFunc.getComponentRect('swiperMarPad06');
       // Before flipping the page
       console.info("Before page turning , swiperMarPad01.left - swiperMarPad.left value is " + JSON.stringify(swiperMarPad01.left - swiperMarPad.left));
       expect(swiperMarPad01.left - swiperMarPad.left).assertEqual(Math.round(vp2px(20)));
@@ -67,7 +83,7 @@ export default function swiperMarPad() {
       expect(swiperMarPad01.top - swiperMarPad.top).assertEqual(Math.round(vp2px(20)));
       expect(swiperMarPad.bottom - swiperMarPad01.bottom).assertEqual(Math.round(vp2px(20)));
       // Page turning.
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500)
       //await driver.swipe(250, 230, 200, 230);
       await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
@@ -85,13 +101,13 @@ export default function swiperMarPad() {
       expect(swiperMarPad.right - swiperMarPad02.right).assertEqual(Math.round(vp2px(20)));
       expect(swiperMarPad02.top - swiperMarPad.top).assertEqual(Math.round(vp2px(20)));
       expect(swiperMarPad.bottom - swiperMarPad02.bottom).assertEqual(Math.round(vp2px(20)));
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The indicator value is " + JSON.stringify(obj.$attrs.indicator));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.displayCount).assertEqual(1);
+      console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
+      console.info("The indicator value is " + JSON.stringify(JSON.parse(strJson).$attrs.indicator));
+      console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
+      console.info("The displayCount value is " + JSON.stringify(JSON.parse(strJson).$attrs.displayCount));
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      expect(JSON.parse(strJson).$attrs.loop).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.displayCount).assertEqual(1);
       console.info('new testSwiperSetPaddingMargin END');
       done();
     });

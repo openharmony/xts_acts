@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperLoopTrueTest {
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('SwiperLoop onPageShow');
   }
@@ -24,12 +27,29 @@ struct SwiperLoopTrueTest {
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue01')
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue02')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue03')
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue04')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue05')
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue06')
+        Column() {
+          Text('1')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue01')
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue02')
+
+        Column() {
+          Text('3')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue03')
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue04')
+
+        Column() {
+          Text('5')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('loopTrue05')
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('loopTrue06')
       }
       .key('loopTrue')
       .height(300)

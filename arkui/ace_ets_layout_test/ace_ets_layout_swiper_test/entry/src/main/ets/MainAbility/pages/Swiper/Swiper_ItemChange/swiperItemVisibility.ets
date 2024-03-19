@@ -12,21 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperItemVisibilityTest {
-  @State testVisibility1: number = Visibility.Visible
-  @State testVisibility2: number = Visibility.Visible
-  @State testVisibility3: number = Visibility.Visible
-  @State testIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State testVisibility1: number = Visibility.Visible;
+  @State testVisibility2: number = Visibility.Visible;
+  @State testVisibility3: number = Visibility.Visible;
+  @State testIndex: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('SwiperItemVisibility onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'visibility1') {
         this.testVisibility1 = message.value;
@@ -40,19 +43,51 @@ struct SwiperItemVisibilityTest {
       if (message.name == 'index') {
         this.testIndex = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('visiblekey01').visibility(this.testVisibility1)
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey02')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('visiblekey03').visibility(this.testVisibility2)
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey04')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('visiblekey05').visibility(this.testVisibility3)
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey06')
+        Column() {
+          Text('1')
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xF5DEB3)
+        .key('visiblekey01')
+        .visibility(this.testVisibility1)
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey02')
+
+        Column() {
+          Text('3')
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xF5DEB3)
+        .key('visiblekey03')
+        .visibility(this.testVisibility2)
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey04')
+
+        Column() {
+          Text('5')
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xF5DEB3)
+        .key('visiblekey05')
+        .visibility(this.testVisibility3)
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('visiblekey06')
       }
       .index(this.testIndex)
       .key('visiblekey')
