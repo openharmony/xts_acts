@@ -12,39 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
 
 export default class TestAbility extends Ability {
-    onCreate(want, launchParam) {
-        console.log('TestAbility onCreate')
-    }
+  onCreate(want, launchParam) {
+    console.log('TestAbility onCreate');
+  }
 
-    onDestroy() {
-        console.log('TestAbility onDestroy')
-    }
+  onDestroy() {
+    console.log('TestAbility onDestroy');
+  }
 
-    onWindowStageCreate(windowStage) {
-        console.log('TestAbility onWindowStageCreate')
-        windowStage.loadContent("TestAbility/pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
-        });
+  onWindowStageCreate(windowStage) {
+    console.log('TestAbility onWindowStageCreate');
+    windowStage.loadContent("TestAbility/pages/index", (err, data) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
+    });
 
-        globalThis.abilityContext = this.context;
-    }
+    globalThis.abilityContext = this.context;
+  }
 
-    onWindowStageDestroy() {
-        console.log('TestAbility onWindowStageDestroy')
-    }
+  onWindowStageDestroy() {
+    console.log('TestAbility onWindowStageDestroy');
+  }
 
-    onForeground() {
-        console.log('TestAbility onForeground')
-    }
+  onForeground() {
+    console.log('TestAbility onForeground');
+  }
 
-    onBackground() {
-        console.log('TestAbility onBackground')
-    }
+  onBackground() {
+    console.log('TestAbility onBackground');
+  }
 };
