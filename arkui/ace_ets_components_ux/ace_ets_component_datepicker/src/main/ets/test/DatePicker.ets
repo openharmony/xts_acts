@@ -38,13 +38,13 @@ export default function datepicker() {
         }
       }
       let value2: Value = {
-        color: Color.Black, font: {
-          size: 8, weight: FontWeight.Lighter
+        color: Color.Red, font: {
+          size: '10px', weight: FontWeight.Normal
         }
       }
       let value3: Value = {
-        color: Color.Black, font: {
-          size: 8, weight: FontWeight.Lighter
+        color: Color.Blue, font: {
+          size: '20px', weight: FontWeight.Bold
         }
       }
       try {
