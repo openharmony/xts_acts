@@ -15,12 +15,14 @@
 import { describe, afterEach, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import hilog from '@ohos.hilog';
+import { Driver, ON } from '@ohos.UiTest';
 
 export default function StartAbilityForResultTest() {
   describe('StartAbilityForResultTest', function () {
 
     let delegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let abilityName = 'SecondAbility';
+    let driver = Driver.create();
 
     afterEach((done) => {
       console.log('StartAbilityForResultTest afterEach start');
@@ -378,8 +380,6 @@ export default function StartAbilityForResultTest() {
       };
       delegator.addAbilityMonitor(monitor, (async (err, result) => {
         let want = {
-          //bundleName: 'com.example.mytest1',
-          //abilityName: abilityName,
           uri: "https://www.test.com:8080/query/student"
         }
         try {
@@ -393,6 +393,9 @@ export default function StartAbilityForResultTest() {
           expect().assertFail();
           done();
         }
+        await driver.delayMs(2000);
+        let cancel = await driver.findComponent(ON.text("label"));
+        await cancel.click();
       }))
     });
 
