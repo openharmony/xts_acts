@@ -67,6 +67,7 @@ export default function relationalStoreDataGroupIdCallback() {
       try {
         relationalStore.getRdbStore(context, STORE_CONFIG, async function (err, rdbStore) {
           console.info(TAG, `Get RdbStore successfully.`);
+          done();
           if (err) {
             console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
             expect().assertFail();
@@ -98,6 +99,7 @@ export default function relationalStoreDataGroupIdCallback() {
       try {
         relationalStore.getRdbStore(context, STORE_CONFIG, async function (err, rdbStore) {
           console.info(TAG, `Get RdbStore successfully.`);
+          done();
           if (err) {
             console.info(TAG, `Get RdbStore failed.` + `  rdbStore = ${rdbStore} , err = ${err}`);
             expect().assertFail();

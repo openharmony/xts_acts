@@ -110,7 +110,7 @@ export default function relationalStoreDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_RelationalStore_DataGroupId_Promise_0300', 0, async function (done) {
+    it('SUB_DDM_RelationalStore_DataGroupId_Promise_0300', 0, async function () {
       const STORE_CONFIG = {
         name: "RdbTest.db",
         securityLevel: relationalStore.SecurityLevel.S1,
