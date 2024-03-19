@@ -5344,6 +5344,52 @@ export default function audioFramework() {
         })
 
         /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800
+         *@tc.name      : getDevices - INPUT device - Promise 
+         *@tc.desc      : getDevices - INPUT device
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 2
+         */
+         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, async function (done) {
+            let AudioRoutingManager = audioManager.getRoutingManager();
+            let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
+            console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
+            value.forEach(displayDeviceProp);
+                    if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                        cMask != null) {
+                        console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS`);
+                        expect(true).assertTrue();
+                    } else {
+                        console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL`);
+                        expect(false).assertTrue();
+                    }
+            done();
+        })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900
+         *@tc.name      : getDevices - ALL device - Promise 
+         *@tc.desc      : getDevices - ALL device
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 2
+         */
+         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, async function (done) {
+            let AudioRoutingManager = audioManager.getRoutingManager();
+            let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
+            console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
+            value.forEach(displayDeviceProp);
+            if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                cMask != null) {
+                console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  PASS`);
+                expect(true).assertTrue();
+            } else {
+                console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+        /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_DEVICEFALG_0100
          *@tc.name      : NONE_DEVICES_FLAG
          *@tc.desc      : NONE_DEVICES_FLAG
@@ -5509,7 +5555,6 @@ export default function audioFramework() {
                 done();
             }
         })
-        
         /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ON_DEVICECHANGE_0300
          *@tc.name      : on_DeviceChange - ErrorCode - String-Parameters - 401
