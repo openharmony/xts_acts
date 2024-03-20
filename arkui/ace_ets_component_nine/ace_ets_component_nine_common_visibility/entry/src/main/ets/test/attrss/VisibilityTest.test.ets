@@ -20,7 +20,7 @@ import Utils from '../../MainAbility/common/Utils';
 
 export default function visibilityTest() {
   let supportView = [
-    //'AlphabetIndexer',
+  //'AlphabetIndexer',
     'Button',
     'Blank',
     //'Checkbox',
@@ -62,74 +62,74 @@ export default function visibilityTest() {
     //'Flex',
     ////'FlowItem',
     'GridCol',
-    //'GridRow',
-    //'Grid',
-    //'GridItem',
-    //'List',
-    //'ListItem',
-    //'ListItemGroup',
-    //'Navigator',
-    //'Panel',
-    //'Refresh',
-    //'RelativeContainer',
-    //'Row',
-    //'RowSplit',
-    //'Scroll',
-    //'SideBarContainer',
-    //'Stack',
-    //'Swiper',
-    //'Tabs',
-    //'Circle',
-    //'Ellipse',
-    //'Polyline',
-    //'Polygon',
-    //'Path',
-    //'Rect',
-    //'Shape',
-    //'Line',
-    //'WaterFlow'
+  //'GridRow',
+  //'Grid',
+  //'GridItem',
+  //'List',
+  //'ListItem',
+  //'ListItemGroup',
+  //'Navigator',
+  //'Panel',
+  //'Refresh',
+  //'RelativeContainer',
+  //'Row',
+  //'RowSplit',
+  //'Scroll',
+  //'SideBarContainer',
+  //'Stack',
+  //'Swiper',
+  //'Tabs',
+  //'Circle',
+  //'Ellipse',
+  //'Polyline',
+  //'Polygon',
+  //'Path',
+  //'Rect',
+  //'Shape',
+  //'Line',
+  //'WaterFlow'
   ]
   //Custom params.
   let targetComponentWidth = 200;
   let targetComponentHeight = 200;
-  let pageConfig = {
-    testName: 'testVisibility',
-    pageName: 'VisibilityPage',
-    pageUrl: 'MainAbility/pages/common/VisibilityPage',
-    targetComponentHeight: targetComponentHeight,
-    targetComponentWidth: targetComponentWidth,
-    referenceComponentKey: 'referenceComponentKey',
-    parentComponentKey: 'parentComponentKey'
+  let pageConfig: Record<string, string | number> = {
+    'testName': 'testVisibility',
+    'pageName': 'VisibilityPage',
+    'pageUrl': 'MainAbility/pages/common/VisibilityPage',
+    'targetComponentHeight': targetComponentHeight,
+    'targetComponentWidth': targetComponentWidth,
+    'referenceComponentKey': 'referenceComponentKey',
+    'parentComponentKey': 'parentComponentKey'
   }
-  let testValues = [{
-    describe: 'SetHidden',
-    setValue: Visibility.Hidden,
-    expectValue: {
+  let testValues: Array<Record<string, ESObject>> = [{
+    'describe': 'SetHidden',
+    'setValue': Visibility.Hidden,
+    'expectValue': {
       visibility: 'Visibility.Hidden'
     }
   }, {
-    describe: 'SetVisible',
-    setValue: Visibility.Visible,
-    expectValue: {
+    'describe': 'SetVisible',
+    'setValue': Visibility.Visible,
+    'expectValue': {
       visibility: 'Visibility.Visible'
     }
   }]
-   /**
+  /**
    * @tc.number Common_Visibility_10010
-   * @tc.name   testCommonVisibilityEnumeration
-   * @tc.desc   The Visibility property of the Common component is set to enumeration
-   * @tc.size   MediumTest
-   * @tc.type   Function
-   * @tc.level  0
+   * @tc.name testCommonVisibilityEnumeration
+   * @tc.desc The Visibility property of the Common component is set to enumeration
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level 0
    */
   describe('VisibilityTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, Visibility.Visible);
       await Utils.sleep(1000);
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + ']' + 'visibility is:' + viewObj.$attrs.visibility);
       expect(viewObj.$attrs.visibility).assertEqual(data.testValue.expectValue.visibility);
     });
