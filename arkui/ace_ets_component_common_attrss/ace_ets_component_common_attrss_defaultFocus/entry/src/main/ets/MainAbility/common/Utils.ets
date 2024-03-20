@@ -25,6 +25,7 @@ export class RectValue {
 }
 
 export default class Utils {
+  public static instance: Utils;
 
   static sleep(time: number) {
     return new Promise<string>((resolve, reject) => {
@@ -34,6 +35,21 @@ export default class Utils {
     }).then(() => {
       console.info(`sleep ${time} over...`);
     });
+  }
+
+  static getStringFromFile(fileName: string): Promise<string> {
+    return globalThis.abilityContext
+      .resourceManager
+      .getRawFileContent(fileName)
+      .then((data: ESObject) => {
+        return new Promise<ESObject>((resolve, reject) => {
+          if (data) {
+            resolve(String.fromCharCode.apply(null, data))
+          } else {
+            reject('')
+          }
+        })
+      })
   }
 
   static async pushPage(obj: ESObject) {
@@ -275,5 +291,4 @@ export default class Utils {
 
     return result;
   }
-
 }
