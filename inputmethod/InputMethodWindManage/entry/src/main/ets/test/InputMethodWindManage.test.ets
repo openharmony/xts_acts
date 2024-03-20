@@ -93,7 +93,7 @@ export default function inputMethodWindManageAbility() {
         }
         await driver.delayMs(1000);
         if(deviceinfo.deviceType === '2in1'){
-          let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmange', MatchPattern.CONTAINS), 2000);
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('widmanage', MatchPattern.CONTAINS), 2000);
           await inputMethod_name.click();
           await driver.delayMs(500);
         }else{
@@ -109,13 +109,15 @@ export default function inputMethodWindManageAbility() {
         console.info('====>beforeAll inputMethodSwitch done');
         await driver.delayMs(1000);
         if(deviceinfo.deviceType === '2in1'){
-          let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodengine.test"});
+          let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodwidmanage.test"});
           console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
           await testWindow.focus();
           await driver.delayMs(1000);
         }
         textArea = await driver.findComponent(ON.type('TextArea'));
+        console.info('====>beforeAll inputMethodSwitch window textArea:' + JSON.stringify(textArea))
         rectInfo = await textArea.getBounds();
+        console.info('====>beforeAll inputMethodSwitch textArea rectInfo:' + JSON.stringify(rectInfo))
         await driver.delayMs(1000);
         await runCmd();
         await driver.delayMs(1000);
