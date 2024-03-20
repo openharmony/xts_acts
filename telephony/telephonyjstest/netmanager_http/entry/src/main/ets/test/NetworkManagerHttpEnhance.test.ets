@@ -601,77 +601,110 @@ export default function NetworkManagerHttpEnhanceTest() {
   describe('NetworkManagerHttpEnhanceTest', () => {
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0100
+     * @tc.desc http::on
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_on_dataSendProgress_0100', 0, dataSendProgress_01);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0200
+     * @tc.desc http::on
+     * @tc.level 3
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_on_dataSendProgress_0200', 0, dataSendProgress_02);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0300
+     * @tc.desc http::on
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_on_dataSendProgress_0300', 0, dataSendProgress_03);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0100
+     * @tc.desc http::off
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_off_dataSendProgress_0100', 0, dataSendProgress_0100);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0200
+     * @tc.desc http::off
+     * @tc.level 3
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_off_dataSendProgress_0200', 0, dataSendProgress_0200);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0300
+     * @tc.desc http::off
+     * @tc.level 3
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_off_dataSendProgress_0300', 0, dataSendProgress_0300);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0100
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_resumeFrom_0100', 0, resumeFrom_0100);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0300
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_resumeFrom_0300', 0, resumeFrom_0300);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0200
+     * @tc.desc http::request
+     * @tc.level 3
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_resumeFrom_0200', 0, resumeFrom_0200);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0400
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0400
+     * @tc.desc http::request
+     * @tc.level 0
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_resumeFrom_0400', 0, resumeFrom_0400);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0500
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0500
+     * @tc.desc http::request
+     * @tc.level 0
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_resumeFrom_0500', 0, resumeFrom_0500);
@@ -679,97 +712,139 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0100
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_clientCert_0100', 0, clientCert_0100);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0200
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_clientCert_0200', 0, clientCert_0200);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0300
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_clientCert_0300', 0, clientCert_0300);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0400
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0400
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_clientCert_0400', 0, clientCert_0400);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0500
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0500
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_clientCert_0500', 0, clientCert_0500);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0100', 0, dnsOverHttps_0100);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0200', 0, dnsOverHttps_0200);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0300', 0, dnsOverHttps_0300);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0400', 0, dnsOverHttps_0400);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0100
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsServers_0100', 0, dnsServers_0100);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0200
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0200
+     * @tc.desc http::request
+     * @tc.level 2
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsServers_0200', 0, dnsServers_0200);
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0300
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0300
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsServers_0300', 0, dnsServers_0300);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0400
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0400
+     * @tc.desc http::request
+     * @tc.level 1
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_dnsServers_0400', 0, dnsServers_0400);
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_performanceTiming_0100
-     * @tc.type: FUNC
+     * @tc.name SUB_NetworkManager_HTTP_request_performanceTiming_0100
+     * @tc.desc Test PerformanceTiming property
+     * @tc.level 0
+     * @tc.type: Function
      * @tc.size: SmallTest
      */
     it('SUB_NetworkManager_HTTP_request_performanceTiming_0100', 0, performanceTiming_0100);
