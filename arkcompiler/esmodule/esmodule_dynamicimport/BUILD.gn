@@ -11,16 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("esmodule") {
+ohos_app_assist_suite("demo_ndk_main") {
+  hap_name = "ActsDemoMainTest"
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "esmodule_dynamicimport:ActsHspDemoTest",
-      "esmodule_entry:ActsEsmoduleEntryTest",
-      "esmodule_ohostest:ActsEsmoduleOhostestTest",
-      "esmodule_ohostestlib:ActsEsmoduleOhostestLib",
-    ]
-  }
+  part_name = "ets_frontend"
+  subsystem_name = "arkcompiler"
+  certificate_profile = "./signature/auto_ohos_default_esmodule_dynamicimport_com.esmodule.acts.p7b"
+}
+ohos_js_app_suite("ActsHspDemoTest") {
+  hap_name = "ActsHspDemoTest"
+  testonly = true
+  test_hap = true
+  part_name = "ets_frontend"
+  subsystem_name = "arkcompiler"
+  certificate_profile = "./signature/auto_ohos_default_esmodule_dynamicimport_com.esmodule.acts.p7b"
+  deps = [ ":demo_ndk_main" ]
 }
