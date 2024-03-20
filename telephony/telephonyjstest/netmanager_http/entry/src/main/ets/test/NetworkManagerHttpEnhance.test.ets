@@ -601,7 +601,7 @@ export default function NetworkManagerHttpEnhanceTest() {
   describe('NetworkManagerHttpEnhanceTest', () => {
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0100
-     * @tc.name http::on
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0100
      * @tc.desc Test on property
      * @tc.level 1
      * @tc.type: Function
@@ -611,7 +611,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0200
-     * @tc.name http::on
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0200
      * @tc.desc Test on property
      * @tc.level 3
      * @tc.type: Function
@@ -621,7 +621,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0300
-     * @tc.name http::on
+     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0300
      * @tc.desc Test on property
      * @tc.level 1
      * @tc.type: Function
@@ -631,7 +631,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0100
-     * @tc.name http::off
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0100
      * @tc.desc Test off property
      * @tc.level 1
      * @tc.type: Function
@@ -641,7 +641,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0200
-     * @tc.name http::off
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0200
      * @tc.desc Test off property
      * @tc.level 3
      * @tc.type: Function
@@ -651,7 +651,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0300
-     * @tc.name http::off
+     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0300
      * @tc.desc Test off property
      * @tc.level 3
      * @tc.type: Function
@@ -661,7 +661,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0100
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0100
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -671,7 +671,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0300
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0300
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -681,7 +681,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0200
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0200
      * @tc.desc Test request property
      * @tc.level 3
      * @tc.type: Function
@@ -691,7 +691,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0400
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0400
      * @tc.desc Test request property
      * @tc.level 0
      * @tc.type: Function
@@ -701,7 +701,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0500
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0500
      * @tc.desc Test request property
      * @tc.level 0
      * @tc.type: Function
@@ -712,7 +712,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0100
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0100
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -722,7 +722,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0200
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0200
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -732,7 +732,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0300
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0300
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -742,7 +742,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0400
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0400
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -752,7 +752,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0500
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0500
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -762,7 +762,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -772,7 +772,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -782,7 +782,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -792,7 +792,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -802,7 +802,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0100
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0100
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -812,7 +812,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0200
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0200
      * @tc.desc Test request property
      * @tc.level 2
      * @tc.type: Function
@@ -821,7 +821,7 @@ export default function NetworkManagerHttpEnhanceTest() {
     it('SUB_NetworkManager_HTTP_request_dnsServers_0200', 0, dnsServers_0200);
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0300
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0300
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -831,7 +831,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0400
-     * @tc.name http::request
+     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0400
      * @tc.desc Test request property
      * @tc.level 1
      * @tc.type: Function
@@ -841,7 +841,7 @@ export default function NetworkManagerHttpEnhanceTest() {
 
     /**
      * @tc.number SUB_NetworkManager_HTTP_request_performanceTiming_0100
-     * @tc.name http::PerformanceTiming
+     * @tc.name SUB_NetworkManager_HTTP_request_performanceTiming_0100
      * @tc.desc Test PerformanceTiming property
      * @tc.level 0
      * @tc.type: Function
@@ -850,4 +850,3 @@ export default function NetworkManagerHttpEnhanceTest() {
     it('SUB_NetworkManager_HTTP_request_performanceTiming_0100', 0, performanceTiming_0100);
   })
 };
-
