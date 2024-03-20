@@ -200,9 +200,10 @@ export default function AccessibleAbilityList() {
                     console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700 has error: ${err.code}`);
                     expect(err.code).assertEqual(401);
                     done();
-                }
+                }else{
                 console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(false);
+                } 
                 done();
             });
         })
@@ -224,9 +225,10 @@ export default function AccessibleAbilityList() {
                     console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800 has error: ${err.code}`);
                     expect(err.code).assertEqual(401);
                     done();
-                }
+                }else{
                 console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(false);
+                }
                 done();
             });
         })
@@ -320,9 +322,10 @@ export default function AccessibleAbilityList() {
                     console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200 has error: ${err.code}`);
                     expect(err.code).assertEqual(401);
                     done();
-                }
+                }else{
                 console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(false);
+                }
                 done();
             });
         })
@@ -344,9 +347,10 @@ export default function AccessibleAbilityList() {
                     console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300 has error: ${err.code}`);
                     expect(err.code).assertEqual(401);
                     done();
-                }
+                }else{
                 console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300 result ${data.length}`);
-                expect(Array.isArray(data)).assertEqual(false);
+                expect(Array.isArray(data)).assertEqual(false); 
+                }
                 done();
             });
         })
