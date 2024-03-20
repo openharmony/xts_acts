@@ -15,19 +15,25 @@
 
 import router from '@ohos.router';
 import { AttrsManager } from './AttrsManager';
-import RectValue from './Rect';
+
+export class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
+}
 
 export default class Utils {
-  public static instance;
+  public static instance: ESObject;
 
   static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
+    return new Promise<string>((resolve, reject) => {
       setTimeout(() => {
-        resolve("ok")
-      }, time)
+        resolve("ok");
+      }, time);
     }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
+      console.info(`sleep ${time} over...`);
+    });
   }
 
   static getStringFromFile(fileName: string): Promise<string> {
@@ -35,7 +41,7 @@ export default class Utils {
       .resourceManager
       .getRawFileContent(fileName)
       .then((data: ESObject) => {
-        return new Promise((resolve: (value: string) => void, reject) => {
+        return new Promise<ESObject>((resolve: ESObject, reject: ESObject) => {
           if (data) {
             resolve(String.fromCharCode.apply(null, data))
           } else {
@@ -44,13 +50,6 @@ export default class Utils {
         })
       })
   }
-
-
-  static async backOnly() {
-    router.back()
-    await Utils.sleep(1000);
-  }
-
 
   static async pushPage(obj: ESObject) {
     try {
@@ -90,13 +89,18 @@ export default class Utils {
     router.clear();
   }
 
-  static getComponentRect(key: string): RectValue {
+  static async backOnly() {
+    router.back()
+    await Utils.sleep(1000);
+  }
+
+  static getComponentRect(key: string): ESObject {
     let strJson = getInspectorByKey(key);
     console.info('[getInspectorByKey] key is: ' + key);
     return Utils.getComponentRectByObj(JSON.parse(strJson));
   }
 
-  static getComponentRectByObj(obj: ESObject): RectValue {
+  static getComponentRectByObj(obj: ESObject): ESObject {
     console.info('[getInspectorByKey] current component is: ' + obj.$type);
     let rectInfo: ESObject = JSON.parse('[' + obj.$rect + ']');
     let rect_value: RectValue = {
@@ -143,7 +147,7 @@ export default class Utils {
     Utils.performTouch(x, y, x, y, TouchType.Up);
   }
 
-  static performTouchDownUp(id: string): boolean {
+  static performTouchDownUp(id: ESObject): boolean {
     let down = Utils.performTouchComponentCenter(id, TouchType.Down)
     if (down) {
       let up = Utils.performTouchComponentCenter(id, TouchType.Up)
@@ -235,7 +239,7 @@ export default class Utils {
     console.info('performMouseEvent button : ' + button);
     console.info('performMouseEvent action : ' + action);
 
-    let targetComponentRect = Utils.getComponentRect(id);
+    let targetComponentRect: RectValue = Utils.getComponentRect(id);
     let screenX = (targetComponentRect.right + targetComponentRect.left) * 0.5;
     let screenY = (targetComponentRect.bottom + targetComponentRect.top) * 0.5;
     let x = (targetComponentRect.right + targetComponentRect.left) * 0.5;
