@@ -13,10 +13,11 @@
  * limitations under the License.
  */
 //@ts-nocheck
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
+
 @Entry
 @Component
 struct PatternLockExample {
@@ -26,10 +27,11 @@ struct PatternLockExample {
   @State change: Number = 9
   @State bgColor: Color = Color.Transparent
   private patternLockController: PatternLockController = new PatternLockController()
-aboutToAppear(){
-    var abilityDelegator: any
+
+  aboutToAppear() {
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
@@ -37,12 +39,16 @@ aboutToAppear(){
 
   build() {
     Column() {
-      Text(this.message).textAlign(TextAlign.Center).margin(72).width(288).height(40)
+      Text(this.message)
+        .textAlign(TextAlign.Center)
+        .margin(72)
+        .width(288)
+        .height(40)
         .maxLines(2)
         .fontColor($r('sys.color.ohos_id_color_text_primary'))
         .fontSize($r('sys.float.ohos_id_text_size_body1'))
         .fontWeight(FontWeight.Medium)
-        .textOverflow({overflow: TextOverflow.Ellipsis})
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
         .backgroundColor(this.bgColor)
 
       PatternLock(this.patternLockController)
@@ -77,14 +83,18 @@ aboutToAppear(){
           }
         })
 
-      Text(this.numberMessage).textAlign(TextAlign.Center).margin(40).width(288).height(35)
+      Text(this.numberMessage)
+        .textAlign(TextAlign.Center)
+        .margin(40)
+        .width(288)
+        .height(35)
         .maxLines(2)
         .fontColor($r('sys.color.ohos_id_color_handup'))
         .fontSize($r('sys.float.ohos_id_text_size_body2'))
-        .textOverflow({overflow: TextOverflow.Ellipsis})
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
         .backgroundColor(this.bgColor)
 
-      Row(){
+      Row() {
         Button('Reset PatternLock').onClick(() => {
           // 重置密码锁
           this.patternLockController.reset()
