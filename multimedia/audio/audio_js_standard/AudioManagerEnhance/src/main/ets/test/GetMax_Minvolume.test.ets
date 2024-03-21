@@ -47,6 +47,14 @@ function sleep(ms: number) {
   return new Promise<number>(resolve => setTimeout(resolve, ms));
 }
 
+async function getPermission() {
+  console.info("getPermission IN\n")
+  let permissions = ['ohos.permission.MICROPHONE', 'ohos.permission.MODIFY_AUDIO_SETTINGS', 'ohos.permission.ACCESS_NOTIFICATION_POLICY'];
+  featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+    console.info("request success" + JSON.stringify(data));
+  })
+}
+
 export default function audioManagerTest() {
   describe('getMax_Minvolume', () => {
 
