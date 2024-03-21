@@ -36,36 +36,8 @@ let commonEventData = {
 };
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want, launchParam) {
+  async onCreate(want, launchParam) {
     console.log(`${tag} onCreate, ${JSON.stringify(want)}`);
-    commonEventData.parameters.pid = process.pid;
-    console.log(`${tag} pid: ${commonEventData.parameters.pid}`);
-    commonEvent.publish(NOTIFY_PID_EVENT, commonEventData, (err)=>{
-      console.log(`${tag} publish NOTIFY_PID_EVENT err: ${JSON.stringify(err)}`);
-    });
-  }
-
-  onDestroy() {
-    console.log(`${tag} onDestroy`);
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    console.log(`${tag} onWindowStageCreate`);
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-
-  onWindowStageDestroy() {
-  }
-
-  async onForeground() {
-    console.log(`${tag} onForeground`);
     let subscribeInfo = {
       events: [START_ABILITY_EVENT, KILL_PROCESS_EVENT],
     };
@@ -101,7 +73,36 @@ export default class EntryAbility extends UIAbility {
           break;
       }
     });
-    commonEvent.publish(FOREGROUND_EVENT, (err)=>{
+    commonEventData.parameters.pid = process.pid;
+    console.log(`${tag} pid: ${commonEventData.parameters.pid}`);
+    commonEvent.publish(NOTIFY_PID_EVENT, commonEventData, (err)=>{
+      console.log(`${tag} publish NOTIFY_PID_EVENT err: ${JSON.stringify(err)}`);
+    });
+  }
+
+  onDestroy() {
+    console.log(`${tag} onDestroy`);
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.log(`${tag} onWindowStageCreate`);
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+
+  onWindowStageDestroy() {
+  }
+
+  onForeground() {
+    console.log(`${tag} onForeground`);
+    commonEventData.parameters.pid = process.pid;
+    commonEvent.publish(FOREGROUND_EVENT, commonEventData, (err)=>{
       console.log(`${tag} publish FOREGROUND_EVENT err: ${JSON.stringify(err)}`);
     });
   }
