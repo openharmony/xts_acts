@@ -16,8 +16,6 @@ import("//build/ohos_var.gni")
 group("form") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "formmanager:formmanager",
-    ]
+    deps = [ "formmanager:formmanager" ]
   }
 }
