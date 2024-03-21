@@ -70,7 +70,6 @@ group("ability_runtime") {
       "fa:fa",
       "faapicover:faapicover",
       "featureability:featureability",
-      "formmanager:formmanager",
       "freeinstalltest:freeinstalltest",
       "newwant:newwant",
       "registerjserror:registerjserror",
