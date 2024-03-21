@@ -215,7 +215,7 @@ function expectFalse() {
 };
 
 let dataSendProgress_01 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_on_dataSendProgress_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_on_dataSendProgress_0100';
   try {
     httpRequest.on('dataSendProgress', dataSendProgress_on_callback);
     httpRequest.request(address_post, httpRequestOptions_post, (err, data) => {
@@ -231,7 +231,7 @@ let dataSendProgress_01 = async (done: Function) => {
 };
 
 let dataSendProgress_02 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_on_dataSendProgress_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_on_dataSendProgress_0200';
   try {
     httpRequest.on(undefined, dataSendProgress_on_callback);
     expectFalse();
@@ -244,7 +244,7 @@ let dataSendProgress_02 = async (done: Function) => {
 };
 
 let dataSendProgress_03 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_on_dataSendProgress_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_on_dataSendProgress_0300';
   try {
     httpRequest.on(null, dataSendProgress_on_callback);
     expectFalse();
@@ -257,7 +257,7 @@ let dataSendProgress_03 = async (done: Function) => {
 };
 
 let dataSendProgress_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_on_dataSendProgress_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_on_dataSendProgress_0100';
   try {
     httpRequest.on('dataSendProgress', dataSendProgress_on_callback);
     httpRequest.request(address_post, httpRequestOptions_post, (err, data) => {
@@ -273,7 +273,7 @@ let dataSendProgress_0100 = async (done: Function) => {
 };
 
 let dataSendProgress_0200 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_off_dataSendProgress_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_off_dataSendProgress_0200';
   try {
     httpRequest.off(undefined);
     expectFalse();
@@ -286,7 +286,7 @@ let dataSendProgress_0200 = async (done: Function) => {
 };
 
 let dataSendProgress_0300 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_off_dataSendProgress_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_off_dataSendProgress_0300';
   try {
     httpRequest.off(null);
     expectFalse();
@@ -299,7 +299,7 @@ let dataSendProgress_0300 = async (done: Function) => {
 };
 
 let resumeFrom_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_resumeFrom_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_resumeFrom_0100';
   httpRequest.request(address_baidu, httpRequestOptions_resumeFrom_1, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -314,7 +314,7 @@ let resumeFrom_0100 = async (done: Function) => {
 };
 
 let resumeFrom_0300 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_resumeFrom_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_resumeFrom_0300';
   httpRequest.request(address_baidu, httpRequestOptions_resumeFrom_err, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -329,7 +329,7 @@ let resumeFrom_0300 = async (done: Function) => {
 };
 
 let resumeFrom_0200 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_resumeFrom_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_resumeFrom_0200';
   httpRequest.request(address_baidu, httpRequestOptions_resumeFrom_2G, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -344,7 +344,7 @@ let resumeFrom_0200 = async (done: Function) => {
 };
 
 let resumeFrom_0400 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_resumeFrom_0400';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_resumeFrom_0400';
   httpRequest.request(address_baidu, httpRequestOptions_resumeFrom_undefined, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -359,7 +359,7 @@ let resumeFrom_0400 = async (done: Function) => {
 };
 
 let resumeFrom_0500 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_resumeFrom_0500';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_resumeFrom_0500';
   httpRequest.request(address_baidu, httpRequestOptions_resumeFrom_null, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -374,7 +374,7 @@ let resumeFrom_0500 = async (done: Function) => {
 };
 
 let clientCert_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_clientCert_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_clientCert_0100';
   httpRequest.request(address_baidu, httpRequestOptions_clientCert, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -389,7 +389,7 @@ let clientCert_0100 = async (done: Function) => {
 };
 
 let clientCert_0200 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_clientCert_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_clientCert_0200';
   httpRequest.request(address_baidu, httpRequestOptions_clientCert_err, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -404,7 +404,7 @@ let clientCert_0200 = async (done: Function) => {
 };
 
 let clientCert_0300 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_clientCert_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_clientCert_0300';
   httpRequest.request(address_baidu, httpRequestOptions_clientCert_emptyObj, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -419,7 +419,7 @@ let clientCert_0300 = async (done: Function) => {
 };
 
 let clientCert_0400 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_clientCert_0400';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_clientCert_0400';
   httpRequest.request(address_baidu, httpRequestOptions_clientCert_undefined, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -434,7 +434,7 @@ let clientCert_0400 = async (done: Function) => {
 };
 
 let clientCert_0500 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_clientCert_0500';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_clientCert_0500';
   httpRequest.request(address_baidu, httpRequestOptions_clientCert_null, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -449,7 +449,7 @@ let clientCert_0500 = async (done: Function) => {
 };
 
 let dnsOverHttps_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsOverHttps_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100';
   httpRequest.request(address_baidu2, httpRequestOptions_dnsOverHttps, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -464,7 +464,7 @@ let dnsOverHttps_0100 = async (done: Function) => {
 };
 
 let dnsOverHttps_0200 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsOverHttps_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200';
   httpRequest.request(address_baidu2, httpRequestOptions_dnsOverHttps_emptyStr, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -479,7 +479,7 @@ let dnsOverHttps_0200 = async (done: Function) => {
 };
 
 let dnsOverHttps_0300 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsOverHttps_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300';
   httpRequest.request(address_baidu2, httpRequestOptions_dnsOverHttps_undefined, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -494,7 +494,7 @@ let dnsOverHttps_0300 = async (done: Function) => {
 };
 
 let dnsOverHttps_0400 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsOverHttps_0400';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400';
   httpRequest.request(address_baidu2, httpRequestOptions_dnsOverHttps_null, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -509,7 +509,7 @@ let dnsOverHttps_0400 = async (done: Function) => {
 };
 
 let dnsServers_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsServers_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsServers_0100';
   httpRequest.request(address_baidu, httpRequestOptions_dnsServers, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -524,7 +524,7 @@ let dnsServers_0100 = async (done: Function) => {
 };
 
 let dnsServers_0200 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsServers_0200';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsServers_0200';
   httpRequest.request(address_baidu, httpRequestOptions_dnsServers_emptyArr, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -539,7 +539,7 @@ let dnsServers_0200 = async (done: Function) => {
 };
 
 let dnsServers_0300 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsServers_0300';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsServers_0300';
   httpRequest.request(address_baidu, httpRequestOptions_dnsServers_undefined, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -554,7 +554,7 @@ let dnsServers_0300 = async (done: Function) => {
 };
 
 let dnsServers_0400 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_dnsServers_0400';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_dnsServers_0400';
   httpRequest.request(address_baidu, httpRequestOptions_dnsServers_null, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -569,7 +569,7 @@ let dnsServers_0400 = async (done: Function) => {
 };
 
 let performanceTiming_0100 = async (done: Function) => {
-  let caseName = 'SUB_NetworkManager_HTTP_request_performanceTiming_0100';
+  let caseName = 'test SUB_NetworkManager_HTTP_request_performanceTiming_0100';
   httpRequest.request(address_post, httpRequestOptions_post, (err, data) => {
     if (err) {
       console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
@@ -600,254 +600,253 @@ export default function NetworkManagerHttpEnhanceTest() {
 
   describe('NetworkManagerHttpEnhanceTest', () => {
     /**
-     * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0100
-     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0100
+     * @tc.number test SUB_NetworkManager_HTTP_on_dataSendProgress_0100
+     * @tc.name test SUB_NetworkManager_HTTP_on_dataSendProgress_0100
      * @tc.desc http::on
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_on_dataSendProgress_0100', 0, dataSendProgress_01);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0100', 0, dataSendProgress_01);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0200
-     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0200
+     * @tc.number test SUB_NetworkManager_HTTP_on_dataSendProgress_0200
+     * @tc.name test SUB_NetworkManager_HTTP_on_dataSendProgress_0200
      * @tc.desc http::on
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_on_dataSendProgress_0200', 0, dataSendProgress_02);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0200', 0, dataSendProgress_02);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_on_dataSendProgress_0300
-     * @tc.name SUB_NetworkManager_HTTP_on_dataSendProgress_0300
+     * @tc.number test SUB_NetworkManager_HTTP_on_dataSendProgress_0300
+     * @tc.name test SUB_NetworkManager_HTTP_on_dataSendProgress_0300
      * @tc.desc http::on
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_on_dataSendProgress_0300', 0, dataSendProgress_03);
+    it('test SUB_NetworkManager_HTTP_on_dataSendProgress_0300', 0, dataSendProgress_03);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0100
-     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0100
+     * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0100
+     * @tc.name test SUB_NetworkManager_HTTP_off_dataSendProgress_0100
      * @tc.desc http::off
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_off_dataSendProgress_0100', 0, dataSendProgress_0100);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0100', 0, dataSendProgress_0100);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0200
-     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0200
+     * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0200
+     * @tc.name test SUB_NetworkManager_HTTP_off_dataSendProgress_0200
      * @tc.desc http::off
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_off_dataSendProgress_0200', 0, dataSendProgress_0200);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0200', 0, dataSendProgress_0200);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_off_dataSendProgress_0300
-     * @tc.name SUB_NetworkManager_HTTP_off_dataSendProgress_0300
+     * @tc.number test SUB_NetworkManager_HTTP_off_dataSendProgress_0300
+     * @tc.name test SUB_NetworkManager_HTTP_off_dataSendProgress_0300
      * @tc.desc http::off
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_off_dataSendProgress_0300', 0, dataSendProgress_0300);
+    it('test SUB_NetworkManager_HTTP_off_dataSendProgress_0300', 0, dataSendProgress_0300);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0100
-     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0100
+     * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0100
+     * @tc.name test SUB_NetworkManager_HTTP_request_resumeFrom_0100
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_resumeFrom_0100', 0, resumeFrom_0100);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0100', 0, resumeFrom_0100);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0300
-     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0300
+     * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0300
+     * @tc.name test SUB_NetworkManager_HTTP_request_resumeFrom_0300
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_resumeFrom_0300', 0, resumeFrom_0300);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0300', 0, resumeFrom_0300);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0200
-     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0200
+     * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0200
+     * @tc.name test SUB_NetworkManager_HTTP_request_resumeFrom_0200
      * @tc.desc http::request
      * @tc.level 3
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_resumeFrom_0200', 0, resumeFrom_0200);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0200', 0, resumeFrom_0200);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0400
-     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0400
+     * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0400
+     * @tc.name test SUB_NetworkManager_HTTP_request_resumeFrom_0400
+     * @tc.desc test http::request
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0400', 0, resumeFrom_0400);
+
+    /**
+     * @tc.number test SUB_NetworkManager_HTTP_request_resumeFrom_0500
+     * @tc.name test SUB_NetworkManager_HTTP_request_resumeFrom_0500
      * @tc.desc http::request
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_resumeFrom_0400', 0, resumeFrom_0400);
+    it('test SUB_NetworkManager_HTTP_request_resumeFrom_0500', 0, resumeFrom_0500);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_resumeFrom_0500
-     * @tc.name SUB_NetworkManager_HTTP_request_resumeFrom_0500
-     * @tc.desc http::request
-     * @tc.level 0
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it('SUB_NetworkManager_HTTP_request_resumeFrom_0500', 0, resumeFrom_0500);
-
-
-    /**
-     * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0100
-     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0100
+     * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0100
+     * @tc.name test SUB_NetworkManager_HTTP_request_clientCert_0100
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_clientCert_0100', 0, clientCert_0100);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0100', 0, clientCert_0100);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0200
-     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0200
+     * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0200
+     * @tc.name test SUB_NetworkManager_HTTP_request_clientCert_0200
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_clientCert_0200', 0, clientCert_0200);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0200', 0, clientCert_0200);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0300
-     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0300
+     * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0300
+     * @tc.name test SUB_NetworkManager_HTTP_request_clientCert_0300
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_clientCert_0300', 0, clientCert_0300);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0300', 0, clientCert_0300);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0400
-     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0400
+     * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0400
+     * @tc.name test SUB_NetworkManager_HTTP_request_clientCert_0400
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_clientCert_0400', 0, clientCert_0400);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0400', 0, clientCert_0400);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_clientCert_0500
-     * @tc.name SUB_NetworkManager_HTTP_request_clientCert_0500
+     * @tc.number test SUB_NetworkManager_HTTP_request_clientCert_0500
+     * @tc.name test SUB_NetworkManager_HTTP_request_clientCert_0500
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_clientCert_0500', 0, clientCert_0500);
+    it('test SUB_NetworkManager_HTTP_request_clientCert_0500', 0, clientCert_0500);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0100', 0, dnsOverHttps_0100);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0100', 0, dnsOverHttps_0100);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0200', 0, dnsOverHttps_0200);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0200', 0, dnsOverHttps_0200);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0300', 0, dnsOverHttps_0300);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0300', 0, dnsOverHttps_0300);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsOverHttps_0400', 0, dnsOverHttps_0400);
+    it('test SUB_NetworkManager_HTTP_request_dnsOverHttps_0400', 0, dnsOverHttps_0400);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0100
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0100
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0100
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsServers_0100
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsServers_0100', 0, dnsServers_0100);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0100', 0, dnsServers_0100);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0200
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0200
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0200
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsServers_0200
      * @tc.desc http::request
      * @tc.level 2
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsServers_0200', 0, dnsServers_0200);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0200', 0, dnsServers_0200);
+
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0300
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0300
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0300
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsServers_0300
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsServers_0300', 0, dnsServers_0300);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0300', 0, dnsServers_0300);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_dnsServers_0400
-     * @tc.name SUB_NetworkManager_HTTP_request_dnsServers_0400
+     * @tc.number test SUB_NetworkManager_HTTP_request_dnsServers_0400
+     * @tc.name test SUB_NetworkManager_HTTP_request_dnsServers_0400
      * @tc.desc http::request
      * @tc.level 1
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_dnsServers_0400', 0, dnsServers_0400);
+    it('test SUB_NetworkManager_HTTP_request_dnsServers_0400', 0, dnsServers_0400);
 
     /**
-     * @tc.number SUB_NetworkManager_HTTP_request_performanceTiming_0100
-     * @tc.name SUB_NetworkManager_HTTP_request_performanceTiming_0100
+     * @tc.number test SUB_NetworkManager_HTTP_request_performanceTiming_0100
+     * @tc.name test SUB_NetworkManager_HTTP_request_performanceTiming_0100
      * @tc.desc Test PerformanceTiming property
      * @tc.level 0
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it('SUB_NetworkManager_HTTP_request_performanceTiming_0100', 0, performanceTiming_0100);
+    it('test SUB_NetworkManager_HTTP_request_performanceTiming_0100', 0, performanceTiming_0100);
   })
 };
-
