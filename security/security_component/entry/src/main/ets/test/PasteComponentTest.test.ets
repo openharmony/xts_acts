@@ -1428,7 +1428,7 @@ export default function pasteComponentTest() {
           console.info("====>[Test_Security_Button_Paste_1500] the display objects Data" + JSON.stringify(data));
           displayClass = data;
           if(JSON.stringify(displayClass[0].width) == '2160'){
-            console.info("====>[Test_Security_Button_Paste_1400] the if + ok");
+            console.info("====>[Test_Security_Button_Paste_1500] the if + ok");
             let offsetObj = { "offsetX": -615 };
             Object.assign(eventData.data, offsetObj);
           }
@@ -1540,7 +1540,6 @@ export default function pasteComponentTest() {
           displayClass = data;
           if (JSON.stringify(displayClass[0].width) == '2160') {
             console.info("====>[Test_Security_Button_Paste_1600] the if + ok");
-            let type = "iconSize";
             let iconSizeObj = { "iconSize": 1100 };
             Object.assign(eventData.data, iconSizeObj);
           }
