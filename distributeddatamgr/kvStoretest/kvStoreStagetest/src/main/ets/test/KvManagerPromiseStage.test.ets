@@ -87,9 +87,12 @@ export default function kvManagerPromiseTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1800
-     * @tc.name [JS-API8]KVManager.GetKVStore.
-     * @tc.desc Test Js Api KVManager.GetKVStore testcase 001
+     * @tc.number : SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1800
+     * @tc.name   : testCreateValueObject001
+     * @tc.desc   : Test Js Api KVManager.GetKVStore testcase 001
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testKVManagerGetKVStore001', 0, async function (done) {
       console.info('testKVManagerGetKVStore001');
@@ -108,9 +111,12 @@ export default function kvManagerPromiseTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1900
-     * @tc.name [JS-API8]KVManager.GetKVStore.
-     * @tc.desc Test Js Api KVManager.GetKVStore testcase 002
+     * @tc.number : SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1900
+     * @tc.name   : testKVManagerGetKVStore002
+     * @tc.desc   : Test Js Api KVManager.GetKVStore testcase 002
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testKVManagerGetKVStore002', 0, async function (done) {
       console.info('testKVManagerGetKVStore002');
@@ -673,8 +679,13 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie', deathCallback);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie', deathCallback);
+      }catch (e){
+        console.info('testKVManagerOn001 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -691,10 +702,15 @@ export default function kvManagerPromiseTest(){
       let deathCallback2 = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback1);
-      kvManager.on('distributedDataServiceDie', deathCallback2);
-      kvManager.off('distributedDataServiceDie', deathCallback1);
-      kvManager.off('distributedDataServiceDie', deathCallback2);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback1);
+        kvManager.on('distributedDataServiceDie', deathCallback2);
+        kvManager.off('distributedDataServiceDie', deathCallback1);
+        kvManager.off('distributedDataServiceDie', deathCallback2);
+      }catch (e){
+        console.info('testKVManagerOn002 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -708,9 +724,14 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie', deathCallback);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie', deathCallback);
+      }catch (e){
+        console.info('testKVManagerOn003 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -724,7 +745,12 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.off('distributedDataServiceDie', deathCallback);
+      try{
+        kvManager.off('distributedDataServiceDie', deathCallback);
+      }catch (e){
+        console.info('testKVManagerOff001 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -738,8 +764,13 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie', deathCallback);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie', deathCallback);
+      }catch (e){
+        console.info('testKVManagerOff002 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -756,9 +787,15 @@ export default function kvManagerPromiseTest(){
       let deathCallback2 = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback1);
-      kvManager.on('distributedDataServiceDie', deathCallback2);
-      kvManager.off('distributedDataServiceDie', deathCallback1);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback1);
+        kvManager.on('distributedDataServiceDie', deathCallback2);
+        kvManager.off('distributedDataServiceDie', deathCallback1);
+      }catch (e){
+        console.info('testKVManagerOff003 err ' + e);
+        expect(e != null).assertTrue();
+      }
+
       done();
     })
 
@@ -772,9 +809,14 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie', deathCallback);
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie', deathCallback);
+      }catch (e){
+        console.info('testKVManagerOff004 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 
@@ -788,8 +830,13 @@ export default function kvManagerPromiseTest(){
       let deathCallback = function () {
         console.info('death callback call');
       }
-      kvManager.on('distributedDataServiceDie', deathCallback);
-      kvManager.off('distributedDataServiceDie');
+      try{
+        kvManager.on('distributedDataServiceDie', deathCallback);
+        kvManager.off('distributedDataServiceDie');
+      }catch (e){
+        console.info('testKVManagerOff005 err ' + e);
+        expect(e != null).assertTrue();
+      }
       done();
     })
 

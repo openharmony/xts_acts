@@ -18,6 +18,7 @@ import deviceKvStorePromiseTest from './DeviceKvStorePromiseStage.test';
 import kvManagerPromiseTest from './KvManagerPromiseStage.test';
 import singleKvStorePromiseTest from './SingleKvStorePromiseStage.test'
 import singleKvStoreCallbackTest from './SingleKvStoreCallbackStage.test'
+import kvStoreResultSetTest from './KvStoreResultSetStage.test'
 
 export default function testsuite() {
   deviceKvStoreCallbackTest();
@@ -25,4 +26,5 @@ export default function testsuite() {
   kvManagerPromiseTest();
   singleKvStorePromiseTest();
   singleKvStoreCallbackTest();
+  kvStoreResultSetTest()
 }
