@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-// @ts-nocheck
+
 let emitKey = "emitOnsslerroreventreceive";
+
 export default function webViewOnSslError() {
-  describe('ActsAceWebDevWebViewOnSslErrorTest', function () {
-    beforeAll(async function (done) {
+  describe('ActsAceWebDevWebViewOnSslErrorTest', () => {
+    beforeAll(async (done: Function) => {
       let options = {
         uri: 'MainAbility/pages/webViewOnSslError',
       }
@@ -39,27 +40,27 @@ export default function webViewOnSslError() {
       }
       done()
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webViewOnSslError beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webViewOnSslError afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +70,10 @@ export default function webViewOnSslError() {
      *tc.name testOnsslerroreventreceive
      *tc.desc onsslerroreventreceive after load http://http.badssl.com/
      */
-    it('testOnsslerroreventreceive',0,async function(done){
-      emitKey="emitOnsslerroreventreceive";
-      Utils.registerEvent("testOnsslerroreventreceive","1",320,done);
-      sendEventByKey('webViewOnSslError',10,'');
+    it('testOnsslerroreventreceive', 0, async (done: Function) => {
+      emitKey = "emitOnsslerroreventreceive";
+      Utils.registerEvent("testOnsslerroreventreceive", "1", 320, done);
+      sendEventByKey('webViewOnSslError', 10, '');
     })
   })
 }
