@@ -1,0 +1,7 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/text/textStyle",
+        "MainAbility/pages/marquee/marquee"
+    ]
+}
