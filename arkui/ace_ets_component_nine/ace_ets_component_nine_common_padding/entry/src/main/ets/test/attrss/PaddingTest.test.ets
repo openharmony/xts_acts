@@ -23,45 +23,45 @@ export default function paddingTest() {
   //'AlphabetIndexer',
     'Button',
     'Blank',
-  //'Checkbox',
-  //'CheckboxGroup',
-  //'DataPanel',
-  //'DatePicker',
-  'Divider',
-  //'Gauge',
-  'Image',
-  //'ImageAnimator',
-  //'LoadingProgress',
-  //'Marquee',
-  //'Menu',
-  //'MenuItem',
-  //'MenuItemGroup',
-  ////'Navigation',
-  //'NavRouter',
-  //'Progress',
-  //'QRCode',
-  //'Radio',
-  //'Rating',
-  //'ScrollBar',
-  //'Search',
-  //'Select',
-  //'Slider',
-  //'Stepper',
-  'Text',
-  'TextArea',
-  //'TextClock',
-  //'TextInput',
-  //'TextPicker',
-  //'TextTimer',
-  //'TimePicker',
-  //'Toggle',
-  //'Badge',
-  //'Column',
-  //'ColumnSplit',
-  //'Counter',
-  //'Flex',
-  ////'FlowItem',
-  'GridCol',
+    //'Checkbox',
+    //'CheckboxGroup',
+    //'DataPanel',
+    //'DatePicker',
+    'Divider',
+    //'Gauge',
+    'Image',
+    //'ImageAnimator',
+    //'LoadingProgress',
+    //'Marquee',
+    //'Menu',
+    //'MenuItem',
+    //'MenuItemGroup',
+    ////'Navigation',
+    //'NavRouter',
+    //'Progress',
+    //'QRCode',
+    //'Radio',
+    //'Rating',
+    //'ScrollBar',
+    //'Search',
+    //'Select',
+    //'Slider',
+    //'Stepper',
+    'Text',
+    'TextArea',
+    //'TextClock',
+    //'TextInput',
+    //'TextPicker',
+    //'TextTimer',
+    //'TimePicker',
+    //'Toggle',
+    //'Badge',
+    //'Column',
+    //'ColumnSplit',
+    //'Counter',
+    //'Flex',
+    ////'FlowItem',
+    'GridCol',
   //'GridRow',
   //'Grid',
   //'GridItem',
@@ -92,44 +92,46 @@ export default function paddingTest() {
   //Custom params.
   let targetComponentWidth = 200;
   let targetComponentHeight = 200;
-  let pageConfig = {
-    testName: 'testPadding',
-    pageName: 'PaddingPage',
-    pageUrl: 'MainAbility/pages/common/PaddingPage',
-    targetComponentHeight: targetComponentHeight,
-    targetComponentWidth: targetComponentWidth,
-    referenceComponentKey: 'referenceComponentKey',
-    parentComponentKey: 'parentComponentKey'
+  let pageConfig: Record<string, string | number> = {
+    'testName': 'testPadding',
+    'pageName': 'PaddingPage',
+    'pageUrl': 'MainAbility/pages/common/PaddingPage',
+    'targetComponentHeight': targetComponentHeight,
+    'targetComponentWidth': targetComponentWidth,
+    'referenceComponentKey': 'referenceComponentKey',
+    'parentComponentKey': 'parentComponentKey'
   }
-  let testValues = [{
-    describe: 'SetPadding60',
-    setValue: '60vp',
-    expectValue: {
+  let testValues: Array<Record<string, ESObject>> = [{
+    'describe': 'SetPadding60',
+    'setValue': '60vp',
+    'expectValue': {
       padding: '60.00vp'
     }
-  },{
-    describe: 'SetPaddingObject',
-    setValue: { left: 10, right: 50, top: 80, bottom:40},
-    expectValue: {
+  }, {
+    'describe': 'SetPaddingObject',
+    'setValue': {
+      left: 10, right: 50, top: 80, bottom: 40
+    },
+    'expectValue': {
       padding: '{"top":"80.00vp","right":"50.00vp","bottom":"40.00vp","left":"10.00vp"}'
     }
   }]
-   /**
+  /**
    * @tc.number Common_Padding_10010
-   * @tc.name   testCommonPaddingStringAndObject
-   * @tc.desc   The Padding property of the Common component is set to StringAndObject
-   * @tc.size   MediumTest
-   * @tc.type   Function
-   * @tc.level  0
+   * @tc.name testCommonPaddingStringAndObject
+   * @tc.desc The Padding property of the Common component is set to StringAndObject
+   * @tc.size MediumTest
+   * @tc.type Function
+   * @tc.level 0
    */
   describe('PaddingTest', () => {
-    CommonTest.initTest(pageConfig, supportView, testValues, null, async data => {
+    CommonTest.initTest(pageConfig, supportView, testValues, null, async (data: ESObject) => {
       AttrsManager.change(data.caseTag, 0);
       await Utils.sleep(1000);
       console.info('[' + data.caseTag + '] setValue : ' + JSON.stringify(data.testValue.setValue));
       AttrsManager.change(data.caseTag, data.testValue.setValue);
       await Utils.sleep(1000);
-      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      let viewObj: ESObject = Utils.getComponentByKey(data.pageConfig.componentKey);
       console.info('[' + data.caseTag + ']' + 'padding is:' + viewObj.$attrs.padding);
       expect(viewObj.$attrs.padding).assertEqual(data.testValue.expectValue.padding);
     });
