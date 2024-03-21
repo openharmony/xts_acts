@@ -472,7 +472,7 @@ export default function abilityTest() {
      */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301');
-      let abilityType = '';
+      let abilityType ;
       accessibility.getAccessibilityExtensionList(abilityType, 'install', (err, data) => {
         if (err && err.code != 0) {
           console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0301 has error: ${err.code}`);
@@ -522,7 +522,7 @@ export default function abilityTest() {
      */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303');
-      let abilityState = '';
+      let abilityState ;
       accessibility.getAccessibilityExtensionList('all', abilityState, (err, data) => {
         if (err && err.code != 0) {
           console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0303 has error: ${err.code}`);
@@ -572,7 +572,7 @@ export default function abilityTest() {
     */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305');
-      let abilityType = '';
+      let abilityType ;
       accessibility.getAccessibilityExtensionList(abilityType, 'install').then((result) => {
         console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0305 result ${result.length}`);
         expect(Array.isArray(result)).assertEqual(false);
@@ -618,7 +618,7 @@ export default function abilityTest() {
      */
     it('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307', 0, async function (done) {
       console.info('SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307');
-      let abilityState = '';
+      let abilityState ;
       accessibility.getAccessibilityExtensionList('all', abilityState).then((result) => {
         console.info(`AccessibilityErrCodeTest: SUB_BASIC_BARRIERFREE_API_AccessibilityErrCode_0307 result ${result.length}`);
         expect(Array.isArray(result)).assertEqual(false);
