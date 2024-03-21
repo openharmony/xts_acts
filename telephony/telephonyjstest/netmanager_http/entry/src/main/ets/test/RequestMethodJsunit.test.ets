@@ -24,7 +24,7 @@ let httpRequestOptions: http.HttpRequestOptions = {
     fr: 'albumslist',
     album_tab: '设计素材',
     album_id: '409',
-    rn: '30'
+    rn: "30"
   },
   header: 'content-type: application/json',
   readTimeout: 60000,
