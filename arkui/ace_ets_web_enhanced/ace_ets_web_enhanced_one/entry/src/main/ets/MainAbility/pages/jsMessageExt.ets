@@ -495,9 +495,9 @@ struct jsMessageExt {
                       try {
                         let value = result.getArray();
                         console.info(`get result :` + value)
-                        if(value[0] == 'banana' && value[1] == 'apple' && value[2] == 'peach') {
+                        if (value[0] == 'banana' && value[1] == 'apple' && value[2] == 'peach') {
                           Utils.emitEvent(true, 100018)
-                        }else {
+                        } else {
                           Utils.emitEvent(false, 100018)
                         }
                       }
