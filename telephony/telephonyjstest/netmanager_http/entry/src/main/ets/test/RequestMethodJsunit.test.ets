@@ -14,7 +14,7 @@
  */
 import { describe, it, expect } from '@ohos/hypium';
 import http from '@ohos.net.http';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let options_0100 = async (done: Function) => {
   let casename = 'SUB_Telephony_http_HttpRequestMethod_options_0100';
