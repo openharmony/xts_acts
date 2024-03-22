@@ -109,9 +109,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1560
-     * @tc.name [JS-API8]SingleKvStore.Put(String)
-     * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1560
+     * @tc.name   : testSingleKvStorePutString101
+     * @tc.desc   : Test Js Api SingleKvStore.Put(String) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutString101', 0, async function (done) {
       console.info('testSingleKvStorePutString101');
@@ -133,9 +136,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1570
-     * @tc.name [JS-API8]SingleKvStore.Put(String)
-     * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1570
+     * @tc.name   : testSingleKvStorePutString102
+     * @tc.desc   : Test Js Api SingleKvStore.Put(String) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutString102', 0, async function (done) {
       console.info('testSingleKvStorePutString102');
@@ -161,9 +167,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1330
-     * @tc.name [JS-API8]SingleKvStore.GetString()
-     * @tc.desc Test Js Api SingleKvStore.GetString() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1330
+     * @tc.name   : testSingleKvStoreGetString101
+     * @tc.desc   : Test Js Api SingleKvStore.GetString() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetString101', 0, async function (done) {
       console.info('testSingleKvStoreGetString101');
@@ -185,9 +194,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1340
-     * @tc.name [JS-API8]SingleKvStore.GetString()
-     * @tc.desc Test Js Api SingleKvStore.GetString() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1340
+     * @tc.name   : testSingleKvStoreGetString102
+     * @tc.desc   : Test Js Api SingleKvStore.GetString() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetString102', 0, async function (done) {
       console.info('testSingleKvStoreGetString102');
@@ -209,9 +221,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1520
-     * @tc.name [JS-API8]SingleKvStore.Put(Int)
-     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1520
+     * @tc.name   : testSingleKvStorePutInt101
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Int) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutInt101', 0, async function (done) {
       console.info('testSingleKvStorePutInt101');
@@ -233,9 +248,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1530
-     * @tc.name [JS-API8]SingleKvStore.Put(Int)
-     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1530
+     * @tc.name   : testSingleKvStorePutInt102
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Int) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutInt102', 0, async function (done) {
       console.info('testSingleKvStorePutInt102');
@@ -258,9 +276,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1540
-     * @tc.name [JS-API8]SingleKvStore.Put(Int)
-     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1540
+     * @tc.name   : testSingleKvStorePutInt103
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Int) testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutInt103', 0, async function (done) {
       console.info('testSingleKvStorePutInt103');
@@ -283,9 +304,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1550
-     * @tc.name [JS-API8]SingleKvStore.Put(Int)
-     * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1550
+     * @tc.name   : testSingleKvStorePutInt104
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Int) testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutInt104', 0, async function (done) {
       console.info('testSingleKvStorePutInt104');
@@ -308,9 +332,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1200
-     * @tc.name [JS-API8]SingleKvStore.GetInt()
-     * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1200
+     * @tc.name   : testSingleKvStoreGetInt101
+     * @tc.desc   : Test Js Api SingleKvStore.GetInt() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetInt101', 0, async function (done) {
       console.info('testSingleKvStoreGetInt101');
@@ -332,9 +359,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1210
-     * @tc.name [JS-API8]SingleKvStore.GetInt()
-     * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1210
+     * @tc.name   : testSingleKvStoreGetInt102
+     * @tc.desc   : Test Js Api SingleKvStore.GetInt() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetInt102', 0, async function (done) {
       console.info('testSingleKvStoreGetInt102');
@@ -356,9 +386,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1470
-     * @tc.name [JS-API8]SingleKvStore.Put(Bool)
-     * @tc.desc Test Js Api SingleKvStore.Put(Bool) testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1470
+     * @tc.name   : testSingleKvStorePutBool101
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Bool) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBool101', 0, async function (done) {
       console.info('testSingleKvStorePutBool101');
@@ -376,9 +409,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1150
-     * @tc.name [JS-API8]SingleKvStore.GetBool()
-     * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1150
+     * @tc.name   : testSingleKvStoreGetBool101
+     * @tc.desc   : Test Js Api SingleKvStore.GetBool() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetBool101', 0, async function (done) {
       console.info('testSingleKvStoreGetBool101');
@@ -400,9 +436,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1160
-     * @tc.name [JS-API8]SingleKvStore.GetBool()
-     * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1150
+     * @tc.name   : testSingleKvStoreGetBool102
+     * @tc.desc   : Test Js Api SingleKvStore.GetBool() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetBool102', 0, async function (done) {
       console.info('testSingleKvStoreGetBool102');
@@ -424,9 +463,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1480
-     * @tc.name [JS-API8]SingleKvStore.Put(Float)
-     * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1480
+     * @tc.name   : testSingleKvStorePutFloat101
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Float) testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutFloat101', 0, async function (done) {
       console.info('testSingleKvStorePutFloat101');
@@ -444,9 +486,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1490
-     * @tc.name [JS-API8]SingleKvStore.Put(Float)
-     * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1490
+     * @tc.name   : testSingleKvStorePutFloat102
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Float) testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutFloat102', 0, async function (done) {
       console.info('testSingleKvStorePutFloat102');
@@ -470,9 +515,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1500
-     * @tc.name [JS-API8]SingleKvStore.Put(Float)
-     * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1500
+     * @tc.name   : testSingleKvStorePutFloat103
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Float) testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutFloat103', 0, async function (done) {
       console.info('testSingleKvStorePutFloat103');
@@ -496,9 +544,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1510
-     * @tc.name [JS-API8]SingleKvStore.Put(Float)
-     * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1510
+     * @tc.name   : testSingleKvStorePutFloat104
+     * @tc.desc   : Test Js Api SingleKvStore.Put(Float) testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutFloat104', 0, async function (done) {
       console.info('testSingleKvStorePutFloat104');
@@ -522,9 +573,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1190
-     * @tc.name [JS-API8]SingleKvStore.GetFloat()
-     * @tc.desc Test Js Api SingleKvStore.GetFloat() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1190
+     * @tc.name   : testSingleKvStoreGetFloat101
+     * @tc.desc   : Test Js Api SingleKvStore.GetFloat() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetFloat101', 0, async function (done) {
       console.info('testSingleKvStoreGetFloat101');
@@ -546,9 +600,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1090
-     * @tc.name [JS-API8]SingleKvStore.DeleteString()
-     * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1090
+     * @tc.name   : testSingleKvStoreDeleteString101
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteString() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteString101', 0, async function (done) {
       console.info('testSingleKvStoreDeleteString101');
@@ -570,9 +627,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1100
-     * @tc.name [JS-API8]SingleKvStore.DeleteString()
-     * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1100
+     * @tc.name   : testSingleKvStoreDeleteString102
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteString() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteString102', 0, async function (done) {
       console.info('testSingleKvStoreDeleteString102');
@@ -594,9 +654,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1070
-     * @tc.name [JS-API8]SingleKvStore.DeleteInt()
-     * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1070
+     * @tc.name   : testSingleKvStoreDeleteInt101
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteInt() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteInt101', 0, async function (done) {
       console.info('testSingleKvStoreDeleteInt101');
@@ -618,9 +681,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1080
-     * @tc.name [JS-API8]SingleKvStore.DeleteInt()
-     * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1080
+     * @tc.name   : testSingleKvStoreDeleteInt102
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteInt() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteInt102', 0, async function (done) {
       console.info('testSingleKvStoreDeleteInt102');
@@ -642,9 +708,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1050
-     * @tc.name [JS-API8]SingleKvStore.DeleteFloat()
-     * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1050
+     * @tc.name   : testSingleKvStoreDeleteFloat101
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteFloat() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteFloat101', 0, async function (done) {
       console.info('testSingleKvStoreDeleteFloat101');
@@ -666,9 +735,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1060
-     * @tc.name [JS-API8]SingleKvStore.DeleteFloat()
-     * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1060
+     * @tc.name   : testSingleKvStoreDeleteFloat102
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteFloat() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteFloat102', 0, async function (done) {
       console.info('testSingleKvStoreDeleteFloat102');
@@ -690,9 +762,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1030
-     * @tc.name [JS-API8]SingleKvStore.DeleteBool()
-     * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1030
+     * @tc.name   : testSingleKvStoreDeleteBool101
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteBool() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteBool101', 0, async function (done) {
       console.info('testSingleKvStoreDeleteBool101');
@@ -714,9 +789,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1040
-     * @tc.name [JS-API8]SingleKvStore.DeleteBool()
-     * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1040
+     * @tc.name   : testSingleKvStoreDeleteBool102
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteBool() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteBool102', 0, async function (done) {
       console.info('testSingleKvStoreDeleteBool102');
@@ -738,9 +816,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1350
-     * @tc.name [JS-API8]SingleKvStore.OnChange()
-     * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1350
+     * @tc.name   : testSingleKvStoreOnChange101
+     * @tc.desc   : Test Js Api SingleKvStore.OnChange() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnChange101', 0, async function (done) {
       console.info('testSingleKvStoreOnChange101');
@@ -762,9 +843,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1360
-     * @tc.name [JS-API8]SingleKvStore.OnChange()
-     * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1360
+     * @tc.name   : testSingleKvStoreOnChange102
+     * @tc.desc   : Test Js Api SingleKvStore.OnChange() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnChange102', 0, async function (done) {
       console.info('testSingleKvStoreOnChange102');
@@ -786,9 +870,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1370
-     * @tc.name [JS-API8]SingleKvStore.OnChange()
-     * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1370
+     * @tc.name   : testSingleKvStoreOnChange103
+     * @tc.desc   : Test Js Api SingleKvStore.OnChange() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnChange103', 0, async function (done) {
       console.info('testSingleKvStoreOnChange103');
@@ -810,9 +897,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1380
-     * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
-     * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1380
+     * @tc.name   : testSingleKvStoreOnSyncComplete101
+     * @tc.desc   : Test Js Api SingleKvStore.OnSyncComplete() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnSyncComplete101', 0, async function (done) {
       try {
@@ -839,9 +929,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1390
-     * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
-     * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1390
+     * @tc.name   : testSingleKvStoreOnSyncComplete102
+     * @tc.desc   : Test Js Api SingleKvStore.OnSyncComplete() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnSyncComplete102', 0, async function (done) {
       try {
@@ -868,9 +961,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1400
-     * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
-     * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1400
+     * @tc.name   : testSingleKvStoreOnSyncComplete103
+     * @tc.desc   : Test Js Api SingleKvStore.OnSyncComplete() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreOnSyncComplete103', 0, async function (done) {
       try {
@@ -897,9 +993,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1690
-     * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1690
+     * @tc.name   : testSingleKvStoreSetSyncRange101
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncRange() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncRange101', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncRange101');
@@ -921,9 +1020,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1700
-     * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1700
+     * @tc.name   : testSingleKvStoreSetSyncRange102
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncRange() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncRange102', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncRange102');
@@ -943,9 +1045,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1710
-     * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1710
+     * @tc.name   : testSingleKvStoreSetSyncRange103
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncRange() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncRange103', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncRange103');
@@ -965,9 +1070,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1410
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1410
+     * @tc.name   : testSingleKvStorePutBatch101
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch101', 0, async function (done) {
       console.info('testSingleKvStorePutBatch101');
@@ -1005,9 +1113,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1420
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1420
+     * @tc.name   : testSingleKvStorePutBatch102
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch102', 0, async function (done) {
       console.info('testSingleKvStorePutBatch102');
@@ -1045,9 +1156,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1430
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1430
+     * @tc.name   : testSingleKvStorePutBatch103
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch103', 0, async function (done) {
       console.info('testSingleKvStorePutBatch103');
@@ -1085,9 +1199,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1440
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1440
+     * @tc.name   : testSingleKvStorePutBatch104
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch104', 0, async function (done) {
       console.info('testSingleKvStorePutBatch104');
@@ -1125,9 +1242,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1450
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 105
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1450
+     * @tc.name   : testSingleKvStorePutBatch105
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch105', 0, async function (done) {
       console.info('testSingleKvStorePutBatch105');
@@ -1166,9 +1286,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1460
-     * @tc.name [JS-API8]SingleKvStore.PutBatch()
-     * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 106
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1460
+     * @tc.name   : testSingleKvStorePutBatch106
+     * @tc.desc   : Test Js Api SingleKvStore.PutBatch() testcase 106
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorePutBatch106', 0, async function (done) {
       console.info('testSingleKvStorePutBatch106');
@@ -1207,9 +1330,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1000
-     * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
-     * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1000
+     * @tc.name   : testSingleKvStoreDeleteBatch101
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteBatch() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteBatch101', 0, async function (done) {
       console.info('testSingleKvStoreDeleteBatch101');
@@ -1246,9 +1372,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1010
-     * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
-     * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1010
+     * @tc.name   : testSingleKvStoreDeleteBatch102
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteBatch() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteBatch102', 0, async function (done) {
       console.info('testSingleKvStoreDeleteBatch102');
@@ -1267,9 +1396,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1020
-     * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
-     * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1020
+     * @tc.name   : testSingleKvStoreDeleteBatch103
+     * @tc.desc   : Test Js Api SingleKvStore.DeleteBatch() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreDeleteBatch103', 0, async function (done) {
       console.info('testSingleKvStoreDeleteBatch103');
@@ -1305,9 +1437,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1720
-     * @tc.name [JS-API8]SingleKvStore.startTransaction()
-     * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1720
+     * @tc.name   : testSingleKvStorestartTransaction101
+     * @tc.desc   : Test Js Api SingleKvStore.startTransaction() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorestartTransaction101', 0, async function (done) {
       console.info('testSingleKvStorestartTransaction101');
@@ -1347,9 +1482,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1730
-     * @tc.name [JS-API8]SingleKvStore.startTransaction()
-     * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1730
+     * @tc.name   : testSingleKvStorestartTransaction102
+     * @tc.desc   : Test Js Api SingleKvStore.startTransaction() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorestartTransaction102', 0, async function (done) {
       console.info('testSingleKvStorestartTransaction102');
@@ -1389,9 +1527,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1740
-     * @tc.name [JS-API8]SingleKvStore.startTransaction()
-     * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1740
+     * @tc.name   : testSingleKvStorestartTransaction103
+     * @tc.desc   : Test Js Api SingleKvStore.startTransaction() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorestartTransaction103', 0, async function (done) {
       console.info('testSingleKvStorestartTransaction103');
@@ -1412,9 +1553,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1750
-     * @tc.name [JS-API8]SingleKvStore.startTransaction()
-     * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1750
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.startTransaction() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorestartTransaction104', 0, async function (done) {
       console.info('testSingleKvStorestartTransaction104');
@@ -1435,9 +1579,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1760
-     * @tc.name [JS-API8]SingleKvStore.startTransaction()
-     * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 105
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1760
+     * @tc.name   : testSingleKvStorestartTransaction105
+     * @tc.desc   : Test Js Api SingleKvStore.startTransaction() testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStorestartTransaction105', 0, async function (done) {
       console.info('testSingleKvStorestartTransaction105');
@@ -1458,9 +1605,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0970
-     * @tc.name [JS-API8]SingleKvStore.Commit()
-     * @tc.desc Test Js Api SingleKvStore.Commit() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0970
+     * @tc.name   : testSingleKvStoreCommit101
+     * @tc.desc   : Test Js Api SingleKvStore.Commit() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCommit101', 0, async function (done) {
       console.info('testSingleKvStoreCommit101');
@@ -1481,9 +1631,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0980
-     * @tc.name [JS-API8]SingleKvStore.Commit()
-     * @tc.desc Test Js Api SingleKvStore.Commit() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0980
+     * @tc.name   : testSingleKvStoreCommit102
+     * @tc.desc   : Test Js Api SingleKvStore.Commit() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCommit102', 0, async function (done) {
       console.info('testSingleKvStoreCommit102');
@@ -1504,9 +1657,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0990
-     * @tc.name [JS-API8]SingleKvStore.Commit()
-     * @tc.desc Test Js Api SingleKvStore.Commit() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0990
+     * @tc.name   : testSingleKvStoreCommit103
+     * @tc.desc   : Test Js Api SingleKvStore.Commit() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCommit103', 0, async function (done) {
       console.info('testSingleKvStoreCommit103');
@@ -1527,9 +1683,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1620
-     * @tc.name [JS-API8]SingleKvStore.Rollback()
-     * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1620
+     * @tc.name   : testSingleKvStoreRollback101
+     * @tc.desc   : Test Js Api SingleKvStore.Rollback() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRollback101', 0, async function (done) {
       console.info('testSingleKvStoreRollback101');
@@ -1550,9 +1709,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1630
-     * @tc.name [JS-API8]SingleKvStore.Rollback()
-     * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1630
+     * @tc.name   : testSingleKvStoreRollback102
+     * @tc.desc   : Test Js Api SingleKvStore.Rollback() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRollback102', 0, async function (done) {
       console.info('testSingleKvStoreRollback102');
@@ -1573,9 +1735,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1640
-     * @tc.name [JS-API8]SingleKvStore.Rollback()
-     * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1640
+     * @tc.name   : testSingleKvStoreRollback103
+     * @tc.desc   : Test Js Api SingleKvStore.Rollback() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRollback103', 0, async function (done) {
       console.info('testSingleKvStoreRollback103');
@@ -1596,9 +1761,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1110
-     * @tc.name [JS-API8]SingleKvStore.EnableSync()
-     * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1110
+     * @tc.name   : testSingleKvStoreEnableSync101
+     * @tc.desc   : Test Js Api SingleKvStore.EnableSync() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreEnableSync101', 0, async function (done) {
       console.info('testSingleKvStoreEnableSync101');
@@ -1621,9 +1789,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1120
-     * @tc.name [JS-API8]SingleKvStore.EnableSync()
-     * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1120
+     * @tc.name   : testSingleKvStoreEnableSync102
+     * @tc.desc   : Test Js Api SingleKvStore.EnableSync() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreEnableSync102', 0, async function (done) {
       console.info('testSingleKvStoreEnableSync102');
@@ -1646,9 +1817,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1130
-     * @tc.name [JS-API8]SingleKvStore.EnableSync()
-     * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1130
+     * @tc.name   : testSingleKvStoreEnableSync103
+     * @tc.desc   : Test Js Api SingleKvStore.EnableSync() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreEnableSync103', 0, async function (done) {
       console.info('testSingleKvStoreEnableSync103');
@@ -1669,9 +1843,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1140
-     * @tc.name [JS-API8]SingleKvStore.EnableSync()
-     * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1140
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.EnableSync() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreEnableSync104', 0, async function (done) {
       console.info('testSingleKvStoreEnableSync104');
@@ -1692,9 +1869,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0710
-     * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
-     * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0710
+     * @tc.name   : testSingleKvStoreRemoveDeviceData101
+     * @tc.desc   : Test Js Api SingleKvStore.RemoveDeviceData() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRemoveDeviceData101', 0, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData101');
@@ -1726,9 +1906,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0720
-     * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
-     * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0720
+     * @tc.name   : testSingleKvStoreRemoveDeviceData102
+     * @tc.desc   : Test Js Api SingleKvStore.RemoveDeviceData() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRemoveDeviceData102', 0, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData102');
@@ -1749,9 +1932,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0730
-     * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
-     * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0730
+     * @tc.name   : testSingleKvStoreRemoveDeviceData103
+     * @tc.desc   : Test Js Api SingleKvStore.RemoveDeviceData() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRemoveDeviceData103', 0, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData103');
@@ -1772,9 +1958,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0740
-     * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
-     * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0740
+     * @tc.name   : testSingleKvStoreRemoveDeviceData104
+     * @tc.desc   : Test Js Api SingleKvStore.RemoveDeviceData() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreRemoveDeviceData104', 0, async function (done) {
       console.info('testSingleKvStoreRemoveDeviceData104');
@@ -1795,9 +1984,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0780
-     * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0780
+     * @tc.name   : testSingleKvStoreSetSyncParam101
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncParam() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncParam101', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncParam101');
@@ -1816,9 +2008,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0790
-     * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0790
+     * @tc.name   : testSingleKvStoreSetSyncParam102
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncParam() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncParam102', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncParam102');
@@ -1839,9 +2034,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0800
-     * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0800
+     * @tc.name   : testSingleKvStoreSetSyncParam103
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncParam() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncParam103', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncParam103');
@@ -1862,9 +2060,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0810
-     * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
-     * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0810
+     * @tc.name   : testSingleKvStoreSetSyncParam104
+     * @tc.desc   : Test Js Api SingleKvStore.SetSyncParam() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreSetSyncParam104', 0, async function (done) {
       console.info('testSingleKvStoreSetSyncParam104');
@@ -1885,29 +2086,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_1010
-     * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
-     * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 101
-     */
-    // it('testSingleKvStoreGetSecurityLevel101', 0, async function (done) {
-    //     console.info('testSingleKvStoreGetSecurityLevel101');
-    //     try {
-    //         await kvStore.getSecurityLevel(function (err,data) {
-    //             console.info('testSingleKvStoreGetSecurityLevel101 getSecurityLevel success');
-    //             expect(data == factory.SecurityLevel.S2).assertTrue();
-    //             done();
-    //         });
-    //     }catch(e) {
-    //         console.info('testSingleKvStoreGetSecurityLevel101 e ' + e);
-    //         expect(null).assertFail();
-    //         done();
-    //     }
-    // })
-
-    /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1300
-     * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
-     * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1300
+     * @tc.name   : testSingleKvStoreGetSecurityLevel102
+     * @tc.desc   : Test Js Api SingleKvStore.GetSecurityLevel() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetSecurityLevel102', 0, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel102');
@@ -1929,9 +2113,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1310
-     * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
-     * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1310
+     * @tc.name   : testSingleKvStoreGetSecurityLevel103
+     * @tc.desc   : Test Js Api SingleKvStore.GetSecurityLevel() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetSecurityLevel103', 0, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel103');
@@ -1953,9 +2140,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1320
-     * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
-     * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1320
+     * @tc.name   : testSingleKvStoreGetSecurityLevel104
+     * @tc.desc   : Test Js Api SingleKvStore.GetSecurityLevel() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetSecurityLevel104', 0, async function (done) {
       console.info('testSingleKvStoreGetSecurityLevel104');
@@ -1977,9 +2167,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1220
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1220
+     * @tc.name   : testSingleKvStoreGetResultSet101
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet101', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet101');
@@ -2019,9 +2212,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1230
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1230
+     * @tc.name   : testSingleKvStoreGetResultSet102
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet102', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet102');
@@ -2045,9 +2241,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1240
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1240
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet103', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet103');
@@ -2066,9 +2265,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1250
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1250
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet104', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet104');
@@ -2085,9 +2287,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1260
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 105
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1260
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 105
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet105', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet105');
@@ -2129,9 +2334,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1270
-     * @tc.name [JS-API8]SingleKvStore.GetResultSet()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 106
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1270
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSet() testcase 106
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSet106', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSet106');
@@ -2172,9 +2380,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0930
-     * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
-     * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0930
+     * @tc.name   : testSingleKvStorestartTransaction104
+     * @tc.desc   : Test Js Api SingleKvStore.CloseResultSet() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCloseResultSet101', 0, async function (done) {
       console.info('testSingleKvStoreCloseResultSet101');
@@ -2197,9 +2408,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0940
-     * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
-     * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0940
+     * @tc.name   : testSingleKvStoreCloseResultSet102
+     * @tc.desc   : Test Js Api SingleKvStore.CloseResultSet() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCloseResultSet102', 0, async function (done) {
       console.info('testSingleKvStoreCloseResultSet102');
@@ -2225,9 +2439,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0950
-     * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
-     * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 103
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0950
+     * @tc.name   : testSingleKvStoreCloseResultSet103
+     * @tc.desc   : Test Js Api SingleKvStore.CloseResultSet() testcase 103
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCloseResultSet103', 0, async function (done) {
       console.info('testSingleKvStoreCloseResultSet103');
@@ -2249,9 +2466,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0960
-     * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
-     * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 104
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0960
+     * @tc.name   : testSingleKvStoreCloseResultSet104
+     * @tc.desc   : Test Js Api SingleKvStore.CloseResultSet() testcase 104
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreCloseResultSet104', 0, async function (done) {
       console.info('SingleKvStoreCloseResultSetCallbackTest004');
@@ -2269,9 +2489,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1280
-     * @tc.name [JS-API8]SingleKvStore.GetResultSize()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSize() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1280
+     * @tc.name   : testSingleKvStoreGetResultSize101
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSize() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSize101', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSize101');
@@ -2306,9 +2529,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1290
-     * @tc.name [JS-API8]SingleKvStore.GetResultSize()
-     * @tc.desc Test Js Api SingleKvStore.GetResultSize() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1290
+     * @tc.name   : testSingleKvStoreGetResultSize102
+     * @tc.desc   : Test Js Api SingleKvStore.GetResultSize() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetResultSize102', 0, async function (done) {
       console.info('testSingleKvStoreGetResultSize102');
@@ -2343,9 +2569,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1170
-     * @tc.name [JS-API8]SingleKvStore.GetEntries()
-     * @tc.desc Test Js Api SingleKvStore.GetEntries() testcase 101
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1170
+     * @tc.name   : testSingleKvStoreGetEntries101
+     * @tc.desc   : Test Js Api SingleKvStore.GetEntries() testcase 101
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetEntries101', 0, async function (done) {
       console.info('testSingleKvStoreGetEntries101');
@@ -2386,9 +2615,12 @@ export default function singleKvStoreCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1180
-     * @tc.name [JS-API8]SingleKvStore.GetEntries()
-     * @tc.desc Test Js Api SingleKvStore.GetEntries() testcase 102
+     * @tc.number : SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1180
+     * @tc.name   : testSingleKvStoreGetEntries102
+     * @tc.desc   : Test Js Api SingleKvStore.GetEntries() testcase 102
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('testSingleKvStoreGetEntries102', 0, async function (done) {
       console.info('testSingleKvStoreGetEntries102');
