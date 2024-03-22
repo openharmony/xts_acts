@@ -12,20 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import BindMenuTest from './menuControlTest/BindMenu.test'
 
-import ellipseJsunit from './EllipseText/EllipseJsunit.test';
-import CanvasAPIUnitTest from './CanvasText/CanvasAPIUnit.test'
-import CanvasAPICanvasRenderTest from './CanvasText/CanvasAPICanvasRender.test'
-import CanvasAPITest from './CanvasText/CanvasAPI.test'
-import CanvasShaderTest from './CanvasText/CanvasShader.test'
-import CanvasColorTest from './CanvasText/CanvasColor.test'
-import OffScreenCanvasTest from './OffScreenCanvasTest/OffScreenCanvas.test'
 export default function testsuite() {
-  ellipseJsunit();
-  CanvasAPIUnitTest();
-  CanvasAPICanvasRenderTest();
-  CanvasAPITest();
-  CanvasShaderTest();
-  CanvasColorTest();
-  OffScreenCanvasTest();
+  BindMenuTest();
 }

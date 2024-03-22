@@ -13,5 +13,8 @@
 
 group("ArkUIEtsModuleCommonAttrsDialog") {
   testonly = true
-  deps = [ "arkui_ets_module_commonAttrsDialog_api12:ArkUIEtsModuleCommonAttrsDialogApi12" ]
+  deps = [
+    "arkui_ets_module_commonAttrsDialog_api11:ArkUIEtsModuleCommonAttrsDialogApi11",
+    "arkui_ets_module_commonAttrsDialog_api12:ArkUIEtsModuleCommonAttrsDialogApi12",
+  ]
 }

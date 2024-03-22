@@ -14,6 +14,8 @@
  */
 
 import stepperJsunit from './stepperTest/StepperJsunit.test';
+import NavigationParamTest from './NavigationTest/NavigationParam.test';
 export default function testsuite() {
   stepperJsunit();
+  NavigationParamTest()
 }

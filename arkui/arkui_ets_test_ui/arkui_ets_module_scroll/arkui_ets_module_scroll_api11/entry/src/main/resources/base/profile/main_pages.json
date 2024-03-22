@@ -2,6 +2,9 @@
     "src": [
         "MainAbility/pages/index/index",
         "MainAbility/pages/List/list",
-        "MainAbility/pages/Swiper/swiper"
+        "MainAbility/pages/Swiper/swiper",
+        "MainAbility/pages/List/ListDelete",
+        "MainAbility/pages/List/ListSwipe",
+        "MainAbility/pages/List/ListRebound"
     ]
 }
