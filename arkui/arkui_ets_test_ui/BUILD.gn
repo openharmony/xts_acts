@@ -13,5 +13,18 @@
 
 group("ArkUIEtsTestUI") {
   testonly = true
-  deps = [ "arkui_ets_module_layout:ArkUIEtsModuleLayout" ]
+  deps = [
+    "arkui_ets_module_commonAttrsDialog:ArkUIEtsModuleCommonAttrsDialog",
+    "arkui_ets_module_commonAttrsEvents:ArkUIEtsModuleCommonAttrsEvents",
+    "arkui_ets_module_commonAttrsLayout:ArkUIEtsModuleCommonAttrsLayout",
+    "arkui_ets_module_commonAttrsOther:ArkUIEtsModuleCommonAttrsOther",
+    "arkui_ets_module_commonAttrsVisual:ArkUIEtsModuleCommonAttrsVisual",
+    "arkui_ets_module_commonEvents:ArkUIEtsModuleCommonEvents",
+    "arkui_ets_module_dialog:ArkUIEtsModuleDialog",
+    "arkui_ets_module_draw:ArkUIEtsModuleDraw",
+    "arkui_ets_module_graphic:ArkUIEtsModuleGraphic",
+    "arkui_ets_module_information:ArkUIEtsModuleInformation",
+    "arkui_ets_module_navigation:ArkUIEtsModuleNavigation",
+    "arkui_ets_module_scroll:ArkUIEtsModuleScroll",
+  ]
 }
