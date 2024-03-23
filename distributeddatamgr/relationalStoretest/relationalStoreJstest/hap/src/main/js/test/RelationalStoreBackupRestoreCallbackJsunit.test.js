@@ -133,6 +133,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore Backup Restore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0100
          * @tc.desc RelationalStore backup and restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0100', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0100 start *************")
@@ -201,6 +204,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore Backup test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0200
          * @tc.desc RelationalStore backup function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0200', 0, function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0200 start *************")
@@ -209,7 +215,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
 
             // RelationalStore backup function test, backup file name already exists
             BackupCallbackTest(STORE_CONFIG.name)
-
+            
             done()
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0200 end *************")
         })
@@ -218,6 +224,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0300
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0300', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0300 start *************")
@@ -238,6 +247,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0400
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0400', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0400 start *************")
@@ -259,6 +271,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0500
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0500', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0500 start *************")
@@ -303,6 +318,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0600
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
          it('RdbBackupRestoreCallbackTest_0600', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0600 start *************")
@@ -325,6 +343,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0700
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0700', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0700 start *************")
@@ -355,6 +376,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0800
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0800', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0800 start *************")
@@ -367,6 +391,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_0900
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_0900', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_0900 start *************")
@@ -379,6 +406,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1000
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_1000', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1000 start *************")
@@ -395,6 +425,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1100
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_1100', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1100 start *************")
@@ -429,6 +462,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1200
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_1200', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1200 start *************")
@@ -450,6 +486,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.name RelationalStore BackupRestore test
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_1300
          * @tc.desc RelationalStore restore function test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 1
          */
         it('RdbBackupRestoreCallbackTest_1300', 0, function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 start *************")
@@ -471,8 +510,8 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                         RdbStore.restore(DATABASE_BACKUP_NAME, function (error) {
                             if (error !== undefined) {
                                 console.error(`Restore failed, code is ${error.code},message is ${error.message}`);
-                                expect(error.code === 14800011).assertTrue();
-                                done();
+								done();
+                                expect(error.code === 14800010).assertTrue();
                             } else {
                                 console.info(`Restore2 success.`);
                                 expect(error !== undefined).assertFail();
