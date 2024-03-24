@@ -1,7 +1,0 @@
-{
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/flex",
-        "MainAbility/pages/Ellipse/ellipse"
-    ]
-}
