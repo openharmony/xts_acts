@@ -16,8 +16,10 @@
 import touchJsunit from './onTouchTest/TouchJsunit.test';
 import appearJsunit from './onAppearTest/AppearJsunit.test';
 import areaChangeJsunit from './onAreaChangeTest/AreaChangeJsunit.test';
+import ShortcutKeyTest from './keyboardShortcutTest/ShortcutKey.test'
 export default function testsuite() {
   touchJsunit();
   appearJsunit();
   areaChangeJsunit();
+  ShortcutKeyTest();
 }

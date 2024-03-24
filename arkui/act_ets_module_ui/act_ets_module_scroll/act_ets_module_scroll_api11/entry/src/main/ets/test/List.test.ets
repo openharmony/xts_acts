@@ -18,10 +18,16 @@ import swiperJsunit from './SwiperTest/SwiperJsunit.test';
 import ListDeleteTest from './ListTest/ListDelete.test'
 import ListSwipeTest from './ListTest/ListSwipe.test'
 import ListReboundTest from './ListTest/ListRebound.test'
+import SwiperMarginTest from './SwiperTest/SwiperMargin.test'
+import ListScrollTest from './ListTest/ListScroll.test'
+import ListScrollToItemInGroup from './ListTest/ListScrollToItemInGroup.test'
 export default function testsuite() {
   listJsunit();
   swiperJsunit();
   ListDeleteTest();
   ListSwipeTest();
   ListReboundTest();
+  SwiperMarginTest()
+  ListScrollTest()
+  ListScrollToItemInGroup()
 }

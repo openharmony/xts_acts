@@ -5,6 +5,9 @@
         "MainAbility/pages/Swiper/swiper",
         "MainAbility/pages/List/ListDelete",
         "MainAbility/pages/List/ListSwipe",
-        "MainAbility/pages/List/ListRebound"
+        "MainAbility/pages/List/ListRebound",
+        "MainAbility/pages/Swiper/SwiperMargin",
+        "MainAbility/pages/List/ListScroll",
+        "MainAbility/pages/List/ListScrollToItemInGroup"
     ]
 }
