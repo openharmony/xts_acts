@@ -13,12 +13,16 @@
  * limitations under the License.
  */
 
-import btA2dpTest from './BtA2dp.test'
-import btBaseProfileTest from './BtBaseProfile.test'
-import btConnectionTest from './BtConnection.test'
+import btA2dpTest from './BtA2dp.test';
+import btBaseProfileTest from './BtBaseProfile.test';
+import btConnectionTest from './BtConnection.test';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    btBaseProfileTest()
-    btConnectionTest()
-    btA2dpTest()
+    if (info != "false") {
+        btBaseProfileTest();
+        btConnectionTest();
+        btA2dpTest();
+    }
 }
