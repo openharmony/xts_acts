@@ -14,10 +14,10 @@
  */
 let nextIdA: number = 0;
 
-@observed
+@ObservedV2
 class Arr {
   id: number = 0;
-  @track numberArr: number[] = [];
+  @Trace numberArr: number[] = [];
 
   constructor() {
     this.id = nextIdA++;
