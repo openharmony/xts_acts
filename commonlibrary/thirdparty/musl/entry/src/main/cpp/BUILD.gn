@@ -29,20 +29,6 @@ config("config") {
 config("public_config") {
 }
 
-ohos_shared_library("aeabindk") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./aeabindk.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
-
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
 ohos_shared_library("applicationTargetSdkVersionndk") {
   testonly = true
   subsystem_name = "thirdparty"
@@ -186,34 +172,7 @@ ohos_shared_library("fenvndk1") {
 
   output_extension = "so"
 }
-ohos_shared_library("fnmatchndk") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./fnmatchndk.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
-ohos_shared_library("fnmatchndk1") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./fnmatchndk1.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
-
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
 ohos_shared_library("fsuidndk") {
   testonly = true
   subsystem_name = "thirdparty"
@@ -1096,20 +1055,7 @@ ohos_shared_library("timesndk") {
 
   output_extension = "so"
 }
-ohos_shared_library("timexndk1") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./timexndk1.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
 ohos_shared_library("ucharndk") {
   testonly = true
   subsystem_name = "thirdparty"
@@ -1460,20 +1406,6 @@ ohos_shared_library("signalndk") {
 
   output_extension = "so"
 }
-ohos_shared_library("signalndk1") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./signalndk1.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
-
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
 ohos_shared_library("stdiondk") {
   testonly = true
   subsystem_name = "thirdparty"
@@ -1746,20 +1678,6 @@ ohos_shared_library("fcntl1ndk") {
   subsystem_name = "thirdparty"
   part_name = "musl"
   sources = [ "./fcntl1ndk.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
-
-  include_dirs = [ "../cpp" ]
-  configs = [ ":config" ]
-
-  external_deps = [ "napi:ace_napi" ]
-
-  output_extension = "so"
-}
-ohos_shared_library("fnmatch1ndk") {
-  testonly = true
-  subsystem_name = "thirdparty"
-  part_name = "musl"
-  sources = [ "./fnmatch1ndk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
   include_dirs = [ "../cpp" ]
