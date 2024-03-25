@@ -12,54 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
-// @ts-nocheck
+import Utils from './Utils';
+import router from '@ohos.router';
+
 let emitKey = "emitdefaultFontSizeHalfAndminFontSizeHalfWebC";
+
 export default function webDefaultFontSizeWithMinLogical() {
-  describe('ActsAceWebDevWebDefaultFontSizeWithMinLogicalTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webDefaultFontSizeWithMinLogical',
-      }
+  describe('ActsAceWebDevWebDefaultFontSizeWithMinLogicalTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webDefaultFontSizeWithMinLogical',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get webDefaultFontSizeWithMinLogical state success " + JSON.stringify(pages));
         if (!("webDefaultFontSizeWithMinLogical" == pages.name)) {
           console.info("get webDefaultFontSizeWithMinLogical state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webDefaultFontSizeWithMinLogical page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push webDefaultFontSizeWithMinLogical page error: " + err);
       }
-      done()
+      done();
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webDefaultFontSizeWithMinLogical beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webDefaultFontSizeWithMinLogical afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +70,10 @@ export default function webDefaultFontSizeWithMinLogical() {
      *tc.name testDefaultFontSizeHalfAndMinFontSizeHalfWebC
      *tc.desc test with defaultfontsize 0.5 , minfontsize 0.5 and minLogicalFontSize 0.5
      */
-    it('testDefaultFontSizeHalfAndMinFontSizeHalfWebC',0,async function(done){
-      emitKey="emitdefaultFontSizeHalfAndminFontSizeHalfWebC";
-      Utils.registerEvent("testDefaultFontSizeHalfAndMinFontSizeHalfWebC","1px",430,done);
-      sendEventByKey('webDefaultFontSizeWithMinLogical',10,'');
+    it('testDefaultFontSizeHalfAndMinFontSizeHalfWebC', 0, async (done: Function) => {
+      emitKey = "emitdefaultFontSizeHalfAndminFontSizeHalfWebC";
+      Utils.registerEvent("testDefaultFontSizeHalfAndMinFontSizeHalfWebC", "1px", 430, done);
+      sendEventByKey('webDefaultFontSizeWithMinLogical', 10, '');
     })
   })
 }

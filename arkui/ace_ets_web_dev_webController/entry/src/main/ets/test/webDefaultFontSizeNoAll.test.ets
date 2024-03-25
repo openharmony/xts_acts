@@ -12,54 +12,56 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
-// @ts-nocheck
+import Utils from './Utils';
+import router from '@ohos.router';
+
+
 let emitKey = "emitdefaultFontSizeAndminFontSizeNoAllWebC";
+
 export default function webDefaultFontSizeNoAll() {
-  describe('ActsAceWebDevWebDefaultFontSizeNoAllTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webDefaultFontSizeNoAll',
-      }
+  describe('ActsAceWebDevWebDefaultFontSizeNoAllTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webDefaultFontSizeNoAll',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get webDefaultFontSizeNoAll state success " + JSON.stringify(pages));
         if (!("webDefaultFontSizeNoAll" == pages.name)) {
           console.info("get webDefaultFontSizeNoAll state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webDefaultFontSizeNoAll page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push webDefaultFontSizeNoAll page error: " + err);
       }
-      done()
+      done();
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webDefaultFontSizeNoAll beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webDefaultFontSizeNoAll afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        }
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +71,10 @@ export default function webDefaultFontSizeNoAll() {
      *tc.name testNoDefaultFontSizeAndNoMinFontSizeWebC
      *tc.desc test with no set defaultfontsize or minfontsize
      */
-    it('testNoDefaultFontSizeAndNoMinFontSizeWebC',0,async function(done){
-      emitKey="emitdefaultFontSizeAndminFontSizeNoAllWebC";
-      Utils.registerEvent("testNoDefaultFontSizeAndNoMinFontSizeWebC","16px",440,done);
-      sendEventByKey('webDefaultFontSizeNoAll',10,'');
+    it('testNoDefaultFontSizeAndNoMinFontSizeWebC', 0, async (done: Function) => {
+      emitKey = "emitdefaultFontSizeAndminFontSizeNoAllWebC";
+      Utils.registerEvent("testNoDefaultFontSizeAndNoMinFontSizeWebC", "16px", 440, done);
+      sendEventByKey('webDefaultFontSizeNoAll', 10, '');
     })
   })
 }
