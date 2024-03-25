@@ -12,22 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import listJsunit from './ListTest/ListJsunit.test';
-import swiperJsunit from './SwiperTest/SwiperJsunit.test';
-import ListDeleteTest from './ListTest/ListDelete.test'
-import ListSwipeTest from './ListTest/ListSwipe.test'
-import ListReboundTest from './ListTest/ListRebound.test'
-import SwiperMarginTest from './SwiperTest/SwiperMargin.test'
-import ListScrollTest from './ListTest/ListScroll.test'
-import ListScrollToItemInGroup from './ListTest/ListScrollToItemInGroup.test'
+import CustomDialogMaskTest from './promptActionTest/CustomDialogMask.test'
 export default function testsuite() {
-  listJsunit();
-  swiperJsunit();
-  ListDeleteTest();
-  ListSwipeTest();
-  ListReboundTest();
-  SwiperMarginTest()
-  ListScrollTest()
-  ListScrollToItemInGroup()
+  CustomDialogMaskTest()
 }

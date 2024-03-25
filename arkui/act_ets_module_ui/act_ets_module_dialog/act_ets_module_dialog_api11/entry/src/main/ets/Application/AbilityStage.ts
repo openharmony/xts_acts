@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityStage from "@ohos.app.ability.AbilityStage"
 
-import touchJsunit from './onTouchTest/TouchJsunit.test';
-import appearJsunit from './onAppearTest/AppearJsunit.test';
-import areaChangeJsunit from './onAreaChangeTest/AreaChangeJsunit.test';
-import ShortcutKeyTest from './keyboardShortcutTest/ShortcutKey.test'
-export default function testsuite() {
-  touchJsunit();
-  appearJsunit();
-  areaChangeJsunit();
-  ShortcutKeyTest();
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("[Demo] MyAbilityStage onCreate")
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
+    }
 }

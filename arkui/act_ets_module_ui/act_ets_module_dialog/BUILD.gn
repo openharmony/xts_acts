@@ -13,5 +13,8 @@
 
 group("ActsAceEtsModuleDialogTest") {
   testonly = true
-  deps = [ "act_ets_module_dialog_api12:ActsAceEtsModuleDialogApi12Test" ]
+  deps = [
+    "act_ets_module_dialog_api11:ActsAceEtsModuleDialogApi11Test",
+    "act_ets_module_dialog_api12:ActsAceEtsModuleDialogApi12Test",
+  ]
 }

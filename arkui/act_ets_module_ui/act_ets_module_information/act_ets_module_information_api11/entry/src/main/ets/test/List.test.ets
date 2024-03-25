@@ -14,6 +14,8 @@
  */
 
 import gaugeJsunit from './gaugeTest/GaugeJsunit.test';
+import CounterEnableTest from './CounterTest/CounterEnable.test'
 export default function testsuite() {
   gaugeJsunit();
+  CounterEnableTest();
 }
