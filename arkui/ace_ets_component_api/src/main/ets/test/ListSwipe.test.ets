@@ -54,9 +54,10 @@ export default function ListSwipeTest() {
       // 3.swipe item to left
       let baseKey: string = 'MyList1_ListItem0'
       let strJson: string = getInspectorByKey(baseKey);
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
-      await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
-        0, Math.round(rectCenter[1]))
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] - rectCenter[2]) / 4), Math.round( globalThis.winTop + rectCenter[1]),
+        0, Math.round(globalThis.winTop + rectCenter[1]))
 
       await sleep(8000) // wait for ui update
       console.info('get getInspectorByKey swipe0100')
@@ -82,12 +83,13 @@ export default function ListSwipeTest() {
 
       let baseKey: string = 'MyList2_ListItem0'
       let strJson: string = getInspectorByKey(baseKey);
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
       // 2.swipe right
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
-      await driver.swipe(Math.round(rectCenter[0]),
-        Math.round(rectCenter[1]),
-        Math.round(rectCenter[0] + 150),
-        Math.round(rectCenter[1]))
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0]),
+        Math.round(globalThis.winTop + rectCenter[1]),
+        Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] -rectCenter[2]) / 4),
+        Math.round(globalThis.winTop + rectCenter[1]))
 
 
       await sleep(8000) // wait for ui update
@@ -138,8 +140,9 @@ export default function ListSwipeTest() {
       let baseKey: string = 'MyList1_ListItem1'
       let strJson: string = getInspectorByKey(baseKey);
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
-      await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
-        0, Math.round(rectCenter[1]))
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] -rectCenter[2]) / 4), Math.round(globalThis.winTop + rectCenter[1]),
+        0, Math.round(globalThis.winTop + rectCenter[1]))
       await sleep(8000) // wait for ui update
       let strJson2: string = getInspectorByKey('swipe0500')
 
@@ -169,6 +172,8 @@ function getRectCenter(rect: string) {
   return [
     Number.parseFloat(rtn[0].trim()) + (Number.parseFloat(rtn[2].trim()) - Number.parseFloat(rtn[0].trim())) / 2,
     Number.parseFloat(rtn[1].trim()) + (Number.parseFloat(rtn[3].trim()) - Number.parseFloat(rtn[1].trim())) / 2,
+    Number.parseFloat(rtn[0].trim()),
+    Number.parseFloat(rtn[2].trim()),
   ]
 }
 
