@@ -14,8 +14,9 @@
  */
 @Entry
 @Component
-struct DragPreviewDemo{
-  @Builder dragPreviewBuilder() {
+struct DragPreviewDemo {
+  @Builder
+  dragPreviewBuilder() {
     Column() {
       Text("dragPreview")
         .width(150)
@@ -28,7 +29,8 @@ struct DragPreviewDemo{
     }
   }
 
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)

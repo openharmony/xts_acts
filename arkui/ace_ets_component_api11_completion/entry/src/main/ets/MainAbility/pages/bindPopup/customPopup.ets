@@ -12,23 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
+
 @Entry
 @Component
 struct customPopupExample12 {
-  @State noHandlePopup: boolean = false
-  @State handlePopup: boolean = false
-  @State customPopup: boolean = false
-  @State enableArrow: boolean = true
-  @State placementOnTop: boolean = false
-  @State arrowWidth: Dimension = '20px'
-  @State arrowHeight: Dimension = '20px'
-  @State arrowPointPosition: ArrowPointPosition = ArrowPointPosition.START
-  @Builder popupBuilder() {
+  @State noHandlePopup: boolean = false;
+  @State handlePopup: boolean = false;
+  @State customPopup: boolean = false;
+  @State enableArrow: boolean = true;
+  @State placementOnTop: boolean = false;
+  @State arrowWidth: Dimension = '20px';
+  @State arrowHeight: Dimension = '20px';
+  @State arrowPointPosition: ArrowPointPosition = ArrowPointPosition.START;
+
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
-      Text('Custom Popup').fontSize(12).key('Custom_popup')
-    }.width(100).height(50).backgroundColor(Color.White)
+      Text('Custom Popup')
+        .fontSize(12)
+        .key('Custom_popup')
+    }
+    .width(100)
+    .height(50)
+    .backgroundColor(Color.White)
   }
+
   build() {
     Flex({ direction: FlexDirection.Column }) {
       Button('custom popup')
@@ -36,13 +45,13 @@ struct customPopupExample12 {
         .onClick(() => {
           this.customPopup = !this.customPopup
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "enableArrow": this.enableArrow,
-                "arrowPointPosition":this.arrowPointPosition,
+                "arrowPointPosition": this.arrowPointPosition,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 67,
               priority: events_emitter.EventPriority.LOW
             }
@@ -55,7 +64,7 @@ struct customPopupExample12 {
         .bindPopup(this.customPopup, {
           builder: this.popupBuilder,
           placement: Placement.Bottom,
-          arrowPointPosition:this.arrowPointPosition,
+          arrowPointPosition: this.arrowPointPosition,
           popupColor: Color.White,
           enableArrow: this.enableArrow,
           onStateChange: (e) => {
@@ -67,7 +76,8 @@ struct customPopupExample12 {
         .position({ x: 100, y: 150 })
     }.width('100%').padding({ top: 5 })
   }
-  private stateChangCallBack = (eventData) => {
+
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("customPopupOption page state change called:" + JSON.stringify(eventData));
       if (eventData.data.enableArrow != null) {

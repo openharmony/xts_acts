@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function popupArrowJsunit() {
-  describe('popupArrowJsunit', function () {
-    beforeEach(async function (done) {
+  describe('popupArrowJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("popupArrowJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/popupArrow',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/popupArrow',
       }
       try {
         router.clear();
@@ -49,7 +62,7 @@ export default function popupArrowJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('popupArrowJsunit_0100', 0, async function (done) {
+    it('popupArrowJsunit_0100', 0, async (done: Function) => {
       console.info('[popupArrowJsunit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,10 +70,9 @@ export default function popupArrowJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('popup_arrow');
-      let obj = JSON.parse(strJson);
-      console.info("[popupArrowJsunit_0100] obj is: " + JSON.stringify(obj));
-      console.info("[popupArrowJsunit_0100] obj content is: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('customPopup');
+      console.info("[popupArrowJsunit_0100] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[popupArrowJsunit_0100] obj content is: " + JSON.stringify(JSON.parse(strJson).$attrs.label));
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('customPopup');
       console.info('[popupArrowJsunit_0100] END');
       done();
     });

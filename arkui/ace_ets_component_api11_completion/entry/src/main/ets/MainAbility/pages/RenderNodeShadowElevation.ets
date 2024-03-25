@@ -38,25 +38,27 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-
 struct getshadowElevationNull {
-  @State getshadowElevationNull:number = renderNode.shadowElevation;
-  @State numl :number = 0;
+  @State getshadowElevationNull: number = renderNode.shadowElevation;
+  @State numl: number = 0;
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
-    Column(){
-       Row() {
+    Column() {
+      Row() {
         NodeContainer(this.MyNodeController)
       }
-      Row(){
+
+      Row() {
         Button('click')
           .key('getshadowElevationNull')
-          .onClick(()=>{
-          this.numl= this.getshadowElevationNull
-        })
+          .onClick(() => {
+            this.numl = this.getshadowElevationNull
+          })
       }
-      Row(){
-        Text('getshadowElevationNull:'+this.numl).key('ElevationNull')
+
+      Row() {
+        Text('getshadowElevationNull:' + this.numl).key('ElevationNull')
       }
     }
 

@@ -14,25 +14,25 @@
  */
 
 
-
 @Entry
 @Component
 struct NavigationApi2 {
   @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
 
-  @Builder pageOneTmp2() {
+  @Builder
+  pageOneTmp2() {
     NavDestination() {
-      Column({space:10}) {
+      Column({ space: 10 }) {
         Text('pageOne')
 
         Button('replacePath')
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.replacePath({name:'pageTwo' })
+            this.pageInfos.replacePath({ name: 'pageTwo' })
           })
           .id('NavigationApi2_replacePath')
-        
+
 
       }.width('100%').height('100%')
     }.title('pageOne')
@@ -42,28 +42,28 @@ struct NavigationApi2 {
     })
   }
 
-  @Builder pageTwoTmp2() {
-  NavDestination() {
-    Column({space:5}) {
+  @Builder
+  pageTwoTmp2() {
+    NavDestination() {
+      Column({ space: 5 }) {
 
-      Text('pageTwo')
+        Text('pageTwo')
 
-      Button('pop')
-        .width('80%')
-        .height(40)
-        .onClick(() => {
-          this.pageInfos.pop()
-        })
-        .id('NavigationApi2_pop')
+        Button('pop')
+          .width('80%')
+          .height(40)
+          .onClick(() => {
+            this.pageInfos.pop()
+          })
+          .id('NavigationApi2_pop')
 
-    }.width('100%').height('100%')
-  }.title('pageTwo')
-  .onBackPressed(() => {
-    this.pageInfos.pop()
-    return true
-  })
-}
-
+      }.width('100%').height('100%')
+    }.title('pageTwo')
+    .onBackPressed(() => {
+      this.pageInfos.pop()
+      return true
+    })
+  }
 
   @Builder
   PageMap(name: string) {
@@ -78,7 +78,8 @@ struct NavigationApi2 {
     Navigation(this.pageInfos) {
       Column() {
 
-        Text('Navigation').id('NavigationApi2_text_Navigation')
+        Text('Navigation')
+          .id('NavigationApi2_text_Navigation')
 
         Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -88,6 +89,9 @@ struct NavigationApi2 {
           })
           .id('NavigationApi2_pushPath')
       }
-    }.title('NavIndex').navDestination(this.PageMap).id('NavigationApi2_Navigation')
+    }
+    .title('NavIndex')
+    .navDestination(this.PageMap)
+    .id('NavigationApi2_Navigation')
   }
 }

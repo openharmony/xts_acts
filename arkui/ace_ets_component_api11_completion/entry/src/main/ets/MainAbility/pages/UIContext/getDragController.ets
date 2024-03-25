@@ -20,13 +20,17 @@ import image from '@ohos.multimedia.image';
 import curves from '@ohos.curves';
 import { BusinessError } from '@ohos.base';
 import { UIContext } from '@ohos.arkui.UIContext';
+
 let storages = LocalStorage.getShared();
+
 @Entry(storages)
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap|null = null
-  @State flag: number = 0
-  @Builder DraggingBuilder() {
+  @State pixmap: image.PixelMap | null = null;
+  @State flag: number = 0;
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -34,7 +38,9 @@ struct DragControllerPage {
     .height(100)
     .backgroundColor(Color.Blue)
   }
-  @Builder PixmapBuilder() {
+
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
     }
@@ -42,36 +48,37 @@ struct DragControllerPage {
     .height(100)
     .backgroundColor(Color.Blue)
   }
+
   build() {
     Column() {
       Text(this.flag.toString()).id('Do_id')
       Button('拖拽至此处')
-        .onClick(()=>{
+        .onClick(() => {
           this.flag = 1
         })
         .id('dragFlag')
         .onDragEnter(() => {
-        try {
-          let uiContext: UIContext = storages.get<UIContext>('uiContext') as UIContext;
-          let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-          let foregroundColor: ResourceColor = Color.Green;
+          try {
+            let uiContext: UIContext = storages.get<UIContext>('uiContext') as UIContext;
+            let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+            let foregroundColor: ResourceColor = Color.Green;
 
-          let previewAnimation: dragController.AnimationOptions = {
-            curve: curves.cubicBezierCurve(0.2,0,0,1),
+            let previewAnimation: dragController.AnimationOptions = {
+              curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
+            }
+            previewObj.animate(previewAnimation, () => {
+              previewObj.setForegroundColor(foregroundColor);
+            });
+          } catch (error) {
+            let msg = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
           }
-          previewObj.animate(previewAnimation, () => {
-            previewObj.setForegroundColor(foregroundColor);
-          });
-        } catch (error) {
-          let msg = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-        }
-      })
+        })
         .onDrop(() => {
         })
-      Button('拖起').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('拖起').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             let text = new UDC.Text()
             let unifiedData = new UDC.UnifiedData(text)
@@ -80,14 +87,16 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            class tmp{
-              event:DragEvent|undefined = undefined
-              extraParams:string = ''
+
+            class tmp {
+              event: DragEvent | undefined = undefined
+              extraParams: string = ''
             }
-            let eve:tmp = new tmp()
+
+            let eve: tmp = new tmp()
             dragController.executeDrag(() => {
               this.DraggingBuilder()
-            }, dragInfo, (err , eve) => {
+            }, dragInfo, (err, eve) => {
               hilog.info(0x0000, `ljx ${JSON.stringify(err)}`, '')
               if (eve && eve.event) {
                 if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
@@ -99,7 +108,7 @@ struct DragControllerPage {
             })
           }
         }
-      }).margin({top:100})
+      }).margin({ top: 100 })
     }
     .width('100%')
     .height('100%')

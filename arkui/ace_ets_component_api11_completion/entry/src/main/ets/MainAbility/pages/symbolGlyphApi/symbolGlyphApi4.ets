@@ -15,10 +15,11 @@
 @Entry
 @Component
 struct symbolGlyphApi4 {
-  @State text1: string = ''
+  @State text1: string = '';
+
   build() {
     Column() {
-      Column(){
+      Column() {
         Text("无动效")
         SymbolGlyph($r('sys.symbol.ohos_lungs'))
           .fontSize(100)

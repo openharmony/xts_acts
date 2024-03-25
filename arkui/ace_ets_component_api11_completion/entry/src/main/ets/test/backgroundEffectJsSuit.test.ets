@@ -12,19 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 
 import events_emitter from '@ohos.events.emitter'
 
 export default function backgroundEffectJsSuit() {
-  describe('backgroundEffectJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('backgroundEffectJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("backgroundEffectJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/backgroundEffect',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/backgroundEffect',
       }
       try {
         router.clear();
@@ -42,21 +55,21 @@ export default function backgroundEffectJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
 
     /**
-     * @tc.number	 SUB_ACE_TS_COMPONENT_dbackgroundEffect_01
-     * @tc.name 	 backgroundEffectJsSuit_0100
-     * @tc.desc 	 Confirm if there is a callback
-	 * @tc.level     Level 2
+     * @tc.number SUB_ACE_TS_COMPONENT_dbackgroundEffect_01
+     * @tc.name backgroundEffectJsSuit_0100
+     * @tc.desc Confirm if there is a callback
+     * @tc.level Level 2
      * @tc.type :
      * @tc.size :
      */
 
-    it('backgroundEffectJsSuit_0100', 0, async function (done) {
+    it('backgroundEffectJsSuit_0100', 0, async (done: Function) => {
       console.info('[backgroundEffectJsSuit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -64,9 +77,8 @@ export default function backgroundEffectJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey("texteffrct");
-      let obj = JSON.parse(strJson);
-      console.info("[backgroundEffectJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content=='content').assertTrue();
+      console.info("[backgroundEffectJsSuit_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content == 'content').assertTrue();
       console.info('[backgroundEffectJsSuit_0100] END');
       done();
     });

@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function shadowOffsetJsunit() {
-  describe('shadowOffsetJsunit', function () {
-    beforeEach(async function (done) {
+  describe('shadowOffsetJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("shadowOffsetJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/shadowOffset',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/shadowOffset',
       }
       try {
         router.clear();
@@ -50,7 +63,7 @@ export default function shadowOffsetJsunit() {
      * @tc.size :
      */
 
-    it('shadowOffsetJsunit_0100', 0, async function (done) {
+    it('shadowOffsetJsunit_0100', 0, async (done: Function) => {
       console.info('[shadowOffsetJsunit_0100] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -59,15 +72,13 @@ export default function shadowOffsetJsunit() {
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('getX');
       let strJson2 = getInspectorByKey('getY');
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      console.info("[shadowOffsetJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
-      console.info("[shadowOffsetJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
-      console.info("[shadowOffsetJsunit_0100] component content1 is: " + JSON.stringify(obj1.$attrs.content));
-      console.info("[shadowOffsetJsunit_0100] component content2 is: " + JSON.stringify(obj2.$attrs.content));
-      expect(obj1.$attrs.content).assertEqual("getOffset_X:10");
-      expect(obj2.$attrs.content).assertEqual("getOffset_Y:10");
+      console.info("[shadowOffsetJsunit_0100] component obj1 is: " + JSON.stringify(JSON.parse(strJson1)));
+      console.info("[shadowOffsetJsunit_0100] component obj2 is: " + JSON.stringify(JSON.parse(strJson2)));
+      console.info("[shadowOffsetJsunit_0100] component content1 is: " + JSON.stringify(JSON.parse(strJson1).$attrs.content));
+      console.info("[shadowOffsetJsunit_0100] component content2 is: " + JSON.stringify(JSON.parse(strJson2).$attrs.content));
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual("getOffset_X:10");
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual("getOffset_Y:10");
       console.info('[shadowOffsetJsunit_0100] END');
       await CommonFunc.sleep(1000);
       done();

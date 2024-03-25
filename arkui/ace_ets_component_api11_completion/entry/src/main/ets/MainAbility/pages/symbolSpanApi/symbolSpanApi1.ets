@@ -15,12 +15,13 @@
 @Entry
 @Component
 struct symbolSpanApi1 {
-  @State text1: string = ''
+  @State text1: string = '';
+
   build() {
     Column() {
-      Column(){
+      Column() {
         Text("渲染模式：多色")
-        Text(){
+        Text() {
           SymbolSpan($r('sys.symbol.ohos_lungs'))
             .fontWeight(FontWeight.Lighter)
             .fontSize(100)
@@ -28,7 +29,6 @@ struct symbolSpanApi1 {
             .key('symbolSpanApi1')
         }
       }
-
     }
   }
 }

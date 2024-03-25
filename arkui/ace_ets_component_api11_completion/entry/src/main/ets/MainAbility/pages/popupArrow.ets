@@ -16,13 +16,13 @@
 @Entry
 @Component
 struct PopupArrowExample {
-  @State customPopup: boolean = false
+  @State customPopup: boolean = false;
 
   build() {
     Column() {
       Button("customPopup").key('popup_arrow')
         .margin(10)
-        .onClick(()=>{
+        .onClick(() => {
           this.customPopup = !this.customPopup
         })
         .bindPopup(this.customPopup, {

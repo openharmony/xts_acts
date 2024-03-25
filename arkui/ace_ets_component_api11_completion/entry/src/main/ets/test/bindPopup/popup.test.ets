@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from "../../MainAbility/common/Common";
 import events_emitter from '@ohos.events.emitter';
-export default function popup(){
-  describe('popup', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/bindPopup/popup'
+
+export default function popup() {
+  describe('popup', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/bindPopup/popup'
       }
       try {
         router.clear();
@@ -38,29 +39,28 @@ export default function popup(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("bindPopup after each called");
     });
     /**
-     * @tc.number    SUB_ACE_popup_0100
-     * @tc.name      popup_0100
-     * @tc.desc      arrowWidth,arrowHeight,arrowPointPosition
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_popup_0100
+     * @tc.name popup_0100
+     * @tc.desc arrowWidth,arrowHeight,arrowPointPosition
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('popup_0100', 0, async function (done) {
+    it('popup_0100', 0, async (done: Function) => {
       console.info('popup_0100 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("popup_0100 get state result is: " + JSON.stringify(indexEvent));
-        console.info("zxr " + JSON.stringify(indexEvent.arrowPointPosition));
         expect(indexEvent.data.arrowWidth).assertEqual('20px');
         expect(indexEvent.data.arrowHeight).assertEqual('20px');
         expect(indexEvent.data.arrowPointPosition).assertEqual('Start');
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 65,
         priority: events_emitter.EventPriority.LOW
       }
@@ -69,7 +69,7 @@ export default function popup(){
       } catch (err) {
         console.info("popup_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("popup_0100 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
+      console.info("popup_0100 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1000);
       console.info('popup_0100 END');
       done();

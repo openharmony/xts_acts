@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import bundle from '@ohos.bundle.bundleManager';
+
 export default function blendMode1Jsunit() {
-  describe('blendMode1Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('blendMode1Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("blendMode1Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/backgroundEffect/blendMode1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/backgroundEffect/blendMode1',
       }
       try {
         router.clear();
@@ -41,14 +55,14 @@ export default function blendMode1Jsunit() {
       done();
     });
     /**
-     * @tc.number    blendMode1Jsunit_0100
-     * @tc.name  blendMode1Jsunit_0100
-     * @tc.desc      set api
-     * @tc.level:    Level 2
+     * @tc.number blendMode1Jsunit_0100
+     * @tc.name blendMode1Jsunit_0100
+     * @tc.desc set api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('blendMode1Jsunit_0100', 0, async function (done) {
+    it('blendMode1Jsunit_0100', 0, async (done: Function) => {
       // Get the information of the blendMode component
       console.info('[blendMode1Jsunit_0100] START');
       let strJson = getInspectorByKey('blendMode11_DESTINATION_IN');
@@ -58,41 +72,39 @@ export default function blendMode1Jsunit() {
       console.info('[blendMode1Jsunit_0100] END');
       done();
     });
-    
+
     /**
-     * @tc.number    blendMode1Jsunit_0200
-     * @tc.name  blendMode1Jsunit_0200
-     * @tc.desc      set api
-     * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.number blendMode1Jsunit_0200
+     * @tc.name blendMode1Jsunit_0200
+     * @tc.desc set api
+     * @tc.level: Level 2
+     * @tc.type :
      * @tc.size :
      */
-    it('blendMode1Jsunit_0200', 0, async function (done) {
+    it('blendMode1Jsunit_0200', 0, async (done: Function) => {
       // Get the information of the blendMode component
       console.info('[blendMode1Jsunit_0200] START');
       let strJson = getInspectorByKey('blendMode11_SOURCE_IN');
-      let obj = JSON.parse(strJson);
-      console.info("[blendMode1Jsunit_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.blendMode).assertEqual(2);
+      console.info("[blendMode1Jsunit_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.blendMode).assertEqual(2);
       console.info('[blendMode1Jsunit_0200] END');
       done();
     });
 
     /**
-     * @tc.number    blendMode1Jsunit_0300
-     * @tc.name  blendMode1Jsunit_0300
-     * @tc.desc      set api
-     * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.number blendMode1Jsunit_0300
+     * @tc.name blendMode1Jsunit_0300
+     * @tc.desc set api
+     * @tc.level: Level 2
+     * @tc.type :
      * @tc.size :
      */
-    it('blendMode1Jsunit_0300', 0, async function (done) {
+    it('blendMode1Jsunit_0300', 0, async (done: Function) => {
       // Get the information of the blendMode component
       console.info('[blendMode1Jsunit_0300] START');
       let strJson = getInspectorByKey('blendMode11_NORMAL');
-      let obj = JSON.parse(strJson);
-      console.info("[blendMode1Jsunit_0300] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.blendMode).assertEqual(0);
+      console.info("[blendMode1Jsunit_0300] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.blendMode).assertEqual(0);
       console.info('[blendMode1Jsunit_0300] END');
       done();
     });

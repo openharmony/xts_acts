@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function symbolGlyphApi2() {
-  describe('symbolGlyphApi2', function () {
-    beforeEach(async function (done) {
+  describe('symbolGlyphApi2', () => {
+    beforeEach(async (done: Function) => {
       console.info("symbolGlyphApi2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/symbolGlyphApi/symbolGlyphApi2',
       }
       try {
@@ -40,19 +53,19 @@ export default function symbolGlyphApi2() {
       console.info("symbolGlyphApi2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("symbolGlyphApi2 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_symbolGlyphApi2_0100
-     * @tc.name      testSymbolGlyph
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_symbolGlyphApi2_0100
+     * @tc.name testSymbolGlyph
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('symbolGlyphApi2_0100', 0, async function (done) {
+    it('symbolGlyphApi2_0100', 0, async (done: Function) => {
       console.info('[symbolGlyphApi2_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -60,11 +73,9 @@ export default function symbolGlyphApi2() {
       // await CommonFunc.sleep(300);
 
       let symbolGlyphApi2 = getInspectorByKey('symbolGlyphApi2');
-      let Obj1 = JSON.parse(symbolGlyphApi2);
-      expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_COLOR');
+      expect(JSON.parse(symbolGlyphApi2).$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.MULTIPLE_COLOR');
       console.info('[testRichEditor_0100] END');
       done();
     });
-
   })
 }

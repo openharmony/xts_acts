@@ -17,7 +17,9 @@ export interface AnimateCallback {
   start: (isPush: boolean, isExit: boolean) => void;
   timeout: number;
 }
+
 const customTransitionMap: Map<string, AnimateCallback> = new Map()
+
 export class CustomTransition {
   private constructor() {
 
@@ -30,7 +32,7 @@ export class CustomTransition {
   }
 
   registerNavParam(name: string, startCallback: (operation: boolean, isExit: boolean) => void,
-                   endCallback:(operation: boolean, isExit: boolean) => void, timeout: number): void {
+                   endCallback: (operation: boolean, isExit: boolean) => void, timeout: number): void {
 
     if (customTransitionMap.has(name)) {
       let param = customTransitionMap.get(name);
@@ -39,7 +41,7 @@ export class CustomTransition {
       param.timeout = timeout;
       return;
     }
-    let params: AnimateCallback = {timeout: timeout, start: startCallback, finish: endCallback};
+    let params: AnimateCallback = { timeout: timeout, start: startCallback, finish: endCallback };
     customTransitionMap.set(name, params);
   }
 
