@@ -20,13 +20,13 @@ describe('file_uri_test', function () {
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0100
-     * @tc.name       : FileUri_GetPath_001
+     * @tc.name       : fileuri_getpath_001
      * @tc.desc       : Function of API, get realPath with docs uri. Test normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_001', 0, function () {
+    it('fileuri_getpath_001', 0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments/test.txt";
       let uriOBJ = new fileUri.FileUri(fileuristr);
       let fpath = uriOBJ.path
@@ -41,53 +41,53 @@ describe('file_uri_test', function () {
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0200
-     * @tc.name       : FileUri_GetPath_002
+     * @tc.name       : fileuri_getpath_002
      * @tc.desc       : Function of API, get realPath with media uri. Test normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_002', 0, function () {
+    it('fileuri_getpath_002', 0, function () {
       try{
         let fileuristr = "file://media/storage/el2/base/files/test.txt";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
         expect(fpath === '/storage/el2/base/files').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_002 has failed for:' + e.message);
+        console.log('fileuri_getpath_002 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0300
-     * @tc.name       : FileUri_GetPath_003
+     * @tc.name       : fileuri_getpath_003
      * @tc.desc       : Function of API, get realPath with remote devices demo uri.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_003', 0, function () {
+    it('fileuri_getpath_003', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=***";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
         expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_003 has failed for:' + e.message);
+        console.log('fileuri_getpath_003 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0400
-     * @tc.name       : FileUri_GetPath_004
+     * @tc.name       : fileuri_getpath_004
      * @tc.desc       : Function of API, get realPath with docs dir uri.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_004', 0, function () {
+    it('fileuri_getpath_004', 0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments";
       let uriOBJ = new fileUri.FileUri(fileuristr);
       let fpath = uriOBJ.path
@@ -102,53 +102,53 @@ describe('file_uri_test', function () {
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0500
-     * @tc.name       : FileUri_GetPath_005
+     * @tc.name       : fileuri_getpath_005
      * @tc.desc       : Function of API, get realPath with media dir uri.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_005', 0, function () {
+    it('fileuri_getpath_005', 0, function () {
       try{
         let fileuristr = "file://media/storage/el2/base/files";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
         expect(fpath === '/storage/el2/base/files').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_005 has failed for:' + e.message);
+        console.log('fileuri_getpath_005 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0600
-     * @tc.name       : FileUri_GetPath_006
+     * @tc.name       : fileuri_getpath_006
      * @tc.desc       : Function of API, get realpath with remote empty networkId.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_006', 0, function () {
+    it('fileuri_getpath_006', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
         expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_006 has failed for:' + e.message);
+        console.log('fileuri_getpath_006 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0700
-     * @tc.name       : FileUri_GetPath_007
+     * @tc.name       : fileuri_getpath_007
      * @tc.desc       : Function of API, get realpath with 100 layers of folders , special characters and files.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_007', 0, function () {
+    it('fileuri_getpath_007', 0, function () {
       try{
         let diruri = 'file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@/';
         for(let i = 1;i <= 100;i++){
@@ -160,20 +160,20 @@ describe('file_uri_test', function () {
         let fpath = uriOBJ.path
         expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_007 has failed for:' + e.message);
+        console.log('fileuri_getpath_007 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0800
-     * @tc.name       : FileUri_GetPath_008
+     * @tc.name       : fileuri_getpath_008
      * @tc.desc       : Function of API, get realPath with 100 layers of folders.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_GetPath_008', 0, function () {
+    it('fileuri_getpath_008', 0, function () {
       try{
         let path = '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt/';
         for(let i = 1;i <= 100;i++){
@@ -184,82 +184,82 @@ describe('file_uri_test', function () {
         let fpath = uriOBJ.path
         expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt/test1/test2/test3/test4/test5/test6/test7/test8/test9/test10/test11/test12/test13/test14/test15/test16/test17/test18/test19/test20/test21/test22/test23/test24/test25/test26/test27/test28/test29/test30/test31/test32/test33/test34/test35/test36/test37/test38/test39/test40/test41/test42/test43/test44/test45/test46/test47/test48/test49/test50/test51/test52/test53/test54/test55/test56/test57/test58/test59/test60/test61/test62/test63/test64/test65/test66/test67/test68/test69/test70/test71/test72/test73/test74/test75/test76/test77/test78/test79/test80/test81/test82/test83/test84/test85/test86/test87/test88/test89/test90/test91/test92/test93/test94/test95/test96/test97/test98/test99/test100/').assertTrue();
       }catch(e){
-        console.log('FileUri_GetPath_008 has failed for:' + e.message+ e.co0de);
+        console.log('fileuri_getpath_008 has failed for:' + e.message+ e.co0de);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0100
-     * @tc.name       : FileUri_IsRemoteUri_001
+     * @tc.name       : fileuri_isremoteuri_001
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_001', 0, function () {
+    it('fileuri_isremoteuri_001', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=authSourc1a1a1**e=admin";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == true).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_001 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_001 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0200
-     * @tc.name       : FileUri_IsRemoteUri_002
+     * @tc.name       : fileuri_isremoteuri_002
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_002', 0, function () {
+    it('fileuri_isremoteuri_002', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=?#.123";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == true).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_002 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_002 has failed for:' + e.message);
         expect(false).assertTrue();
       };
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0300
-     * @tc.name       : FileUri_IsRemoteUri_003
+     * @tc.name       : fileuri_isremoteuri_003
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_003', 0, function () {
-      console.log("FileUri_IsRemoteUri_003 start")
+    it('fileuri_isremoteuri_003', 0, function () {
+      console.log("fileuri_isremoteuri_003 start")
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=***";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == true).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_003 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_003 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0400
-     * @tc.name       : FileUri_IsRemoteUri_004
+     * @tc.name       : fileuri_isremoteuri_004
      * @tc.desc       : Function of API, Test isRemoteUri with 100 layers of folders.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_004', 0, function () {
-      console.log("FileUri_IsRemoteUri_004 start")
+    it('fileuri_isremoteuri_004', 0, function () {
+      console.log("fileuri_isremoteuri_004 start")
       try{
         let diruri = 'file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/';
         for(let i = 1;i <= 100;i++){
@@ -271,68 +271,68 @@ describe('file_uri_test', function () {
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == true).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_004 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_004 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0500
-     * @tc.name       : FileUri_IsRemoteUri_005
+     * @tc.name       : fileuri_isremoteuri_005
      * @tc.desc       : Function of API, Test isRemoteUri with empty networkid.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_005', 0, function () {
-      console.log("FileUri_IsRemoteUri_005 start")
+    it('fileuri_isremoteuri_005', 0, function () {
+      console.log("fileuri_isremoteuri_005 start")
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == false).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_005 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_005 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0600
-     * @tc.name       : FileUri_IsRemoteUri_006
+     * @tc.name       : fileuri_isremoteuri_006
      * @tc.desc       : Function of API, Test isRemoteUri with invalid invalid.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_006', 0, function () {
+    it('fileuri_isremoteuri_006', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=****";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri(uriOBJ);
         expect(TorF == false).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_006 has failed for:' + e.message + ', code: ' + e.code);
+        console.log('fileuri_isremoteuri_006 has failed for:' + e.message + ', code: ' + e.code);
         expect(e.message == 'The input parameter is invalid' && e.code == 401).assertTrue();
       }
     });
 
     /**
      * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0700
-     * @tc.name       : FileUri_IsRemoteUri_007
+     * @tc.name       : fileuri_isremoteuri_007
      * @tc.desc       : Function of API, Test isRemoteUri with native uri.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('FileUri_IsRemoteUri_007', 0, function () {
+    it('fileuri_isremoteuri_007', 0, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let TorF = uriOBJ.isRemoteUri();
         expect(TorF == false).assertTrue();
       }catch(e){
-        console.log('FileUri_IsRemoteUri_007 has failed for:' + e.message);
+        console.log('fileuri_isremoteuri_007 has failed for:' + e.message);
         expect(false).assertTrue();
       }
     });
