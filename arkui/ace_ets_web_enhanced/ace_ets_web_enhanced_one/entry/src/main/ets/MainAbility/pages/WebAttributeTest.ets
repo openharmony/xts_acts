@@ -133,7 +133,7 @@ struct WebAttributeTest {
                 try {
                   this.initialScale = 100
                   await Utils.sleep(1000)
-                  this.initialScale = 80
+                  this.initialScale = 90
                   await Utils.sleep(1000)
                   this.controller.loadUrl("resource://rawfile/index.html");
                   await Utils.sleep(2000)
