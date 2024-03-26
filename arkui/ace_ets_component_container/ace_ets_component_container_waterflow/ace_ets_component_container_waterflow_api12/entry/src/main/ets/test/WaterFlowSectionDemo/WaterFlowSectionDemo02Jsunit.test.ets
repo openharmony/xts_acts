@@ -41,8 +41,12 @@ export default function WaterFlowSectionDemo02Jsunit() {
       }
       done();
     });
-    //  crossCount: 3, 1fr 1fr
-    // SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0010
+    /**
+     * @tc.number SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0010
+     * @tc.name   WaterFlowSectionDemo02Jsunit_0100
+     * @tc.desc   Set columnsTemplate to multiple columns and set Sections.
+     * @tc.level  3
+     */
     it('WaterFlowSectionDemo02Jsunit_0100', 0, async function (done) {
       console.info('WaterFlowSectionDemo02Jsunit_0100 START');
       await CommonFunc.sleep(1000);
