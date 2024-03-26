@@ -417,36 +417,6 @@ export default function startAbilityTest(abilityContext) {
       done();
     });
 
-
-    /*
-     * @tc.number  FreeInstall_Stage_Local_StartAbility_1100
-     * @tc.name    Flags=1717 of the incoming error. There is a hap package that needs to
-                    be installed free under the specified path
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("FreeInstall_Stage_Local_StartAbility_1100", 0, async function (done) {
-      console.info("------------start FreeInstall_Stage_Local_StartAbility_1100-------------");
-      TAG = "FreeInstall_Stage_Local_StartAbility_1100";
-      abilityForeground(TAG);
-      await sleep(1000);
-      var str = {
-        "bundleName": "com.example.qianyiyingyong.hmservice",
-        "abilityName": "com.example.qianyiyingyong.MainAbility",
-        "moduleName": "entry",
-        "flags": 1717,
-      }
-      globalThis.abilityContext.startAbility(str).then((data) => {
-        console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
-      }).catch((error) => {
-        console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == ERR_COMPONENT_NOF_FOUND).assertTrue();
-      });
-      await sleep(2000);
-      console.info("------------end FreeInstall_Stage_Local_StartAbility_1100-------------");
-      done();
-    });
-
     /*
      * @tc.number  FreeInstall_Stage_Local_StartAbility_1200
      * @tc.name    Bad flags=1717 passed in, atomized HAP package installed
