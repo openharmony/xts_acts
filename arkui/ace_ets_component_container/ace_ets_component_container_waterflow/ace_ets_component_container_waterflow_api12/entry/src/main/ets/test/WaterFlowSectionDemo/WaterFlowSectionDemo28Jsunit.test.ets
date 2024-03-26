@@ -41,8 +41,12 @@ export default function WaterFlowSectionDemo28Jsunit() {
       }
       done();
     });
-    // rowsGap: 10%
-    // SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0270
+    /**
+     * @tc.number SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0270
+     * @tc.name   WaterFlowSectionDemo28Jsunit_0100
+     * @tc.desc   rowsGap: 10%
+     * @tc.level  2
+     */
     it('WaterFlowSectionDemo28Jsunit_0100', 0, async function (done) {
       console.info('WaterFlowSectionDemo28Jsunit_0100 START');
       await CommonFunc.sleep(1000);
