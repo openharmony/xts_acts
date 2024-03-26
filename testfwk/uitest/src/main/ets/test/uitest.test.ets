@@ -137,7 +137,7 @@ export default function UiTest() {
             let inputText = await driver.findComponent(ON.type('TextInput'))
             await inputText.click()
             await driver.delayMs(waitUiReadyMs)
-            let permissionBtn = await driver.findComponent(ON.text('ͬ��'))
+            let permissionBtn = await driver.findComponent(ON.text('同意'))
             if (permissionBtn != null) {
                 await permissionBtn.click()
                 await driver.delayMs(waitUiReadyMs)
