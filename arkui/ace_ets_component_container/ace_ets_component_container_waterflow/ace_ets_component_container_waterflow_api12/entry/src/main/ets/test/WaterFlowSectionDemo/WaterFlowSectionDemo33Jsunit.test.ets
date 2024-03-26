@@ -41,8 +41,12 @@ export default function WaterFlowSectionDemo33Jsunit() {
       }
       done();
     });
-    // 设置4个 Section
-    // SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0320
+    /**
+     * @tc.number SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0320
+     * @tc.name   WaterFlowSectionDemo33Jsunit_0100
+     * @tc.desc   set four Section
+     * @tc.level  1
+     */
     it('WaterFlowSectionDemo33Jsunit_0100', 0, async function (done) {
       console.info('WaterFlowSectionDemo33Jsunit_0100 START');
       await CommonFunc.sleep(1000);
