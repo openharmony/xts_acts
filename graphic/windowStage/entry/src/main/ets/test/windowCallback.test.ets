@@ -2170,8 +2170,6 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           expect(true).assertTrue();
           done();
         });
-        expect(true).assertTrue();
-        done();
       } catch (err) {
         console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
         if (err.code == 801) {
