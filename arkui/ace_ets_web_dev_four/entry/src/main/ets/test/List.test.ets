@@ -12,10 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webJsunit from './WebJsunit.test';
-import webTwoJsunit from './WebTwoJsunit.test';
+import webJsunit from './WebJsunit.test'
+import webTwoJsunit from './WebTwoJsunit.test'
+import webDefaultTextEncodingFormat from './WebDefaultTextEncodingFormat.test';
+import webViewOnRequestStart from './webViewOnRequestStart.test';
+import webViewOnRequestStartTwo from './webViewOnRequestStartTwo.test';
+import webViewOnRequestStop from './webViewOnRequestStop.test';
+import WebSchemeHandlerResponse from './WebSchemeHandlerResponse.test';
+import WebHttpBodyStream from './WebHttpBodyStream.test';
+import setAndClearWebSchemeHandler from './setAndClearWebSchemeHandler.test';
+import setAndClearServiceWorkerWebSchemeHandler from './setAndClearServiceWorkerWebSchemeHandler.test';
+import customizeSchemes from './customizeSchemes.test';
 
 export default function testsuite() {
-  webJsunit();
-  webTwoJsunit();
+       webJsunit()
+       webTwoJsunit()
+       webViewOnRequestStart()
+       webViewOnRequestStartTwo()
+       webViewOnRequestStop()
+       WebSchemeHandlerResponse()
+       WebHttpBodyStream()
+       setAndClearWebSchemeHandler()
+       setAndClearServiceWorkerWebSchemeHandler()
+       customizeSchemes()
+       webDefaultTextEncodingFormat()
+       
+       
 }
