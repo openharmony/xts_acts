@@ -17,28 +17,47 @@ import events_emitter from '@ohos.events.emitter';
 
 class MyGridColOffsetModifier1 implements AttributeModifier<GridColAttribute> {
   isNum: number = 0
+
   applyNormalAttribute(instance: GridColAttribute): void {
     if (this.isNum === 0) {
       instance.gridColOffset(0);
     } else if (this.isNum === 1) {
       instance.gridColOffset(1);
     } else if (this.isNum === 2) {
-      instance.gridColOffset({ xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 });
+      instance.gridColOffset({
+        xs: 2,
+        sm: 2,
+        md: 2,
+        lg: 2,
+        xl: 2,
+        xxl: 2
+      });
     }
   }
 }
+
 class MyGridColSpanModifier1 implements AttributeModifier<GridColAttribute> {
   isNum: number = 0
+
   applyNormalAttribute(instance: GridColAttribute): void {
     if (this.isNum === 0) {
       instance.span(1)
     } else if (this.isNum === 1) {
-      instance.span({ xs: 2, sm: 2, md: 2, lg: 2, xl: 2, xxl: 2 });
+      instance.span({
+        xs: 2,
+        sm: 2,
+        md: 2,
+        lg: 2,
+        xl: 2,
+        xxl: 2
+      });
     }
   }
 }
+
 class MyGridColOrderModifier1 implements AttributeModifier<GridColAttribute> {
   isNum: number = 0
+
   applyNormalAttribute(instance: GridColAttribute): void {
     if (this.isNum === 0) {
       instance.order(1);
@@ -47,8 +66,10 @@ class MyGridColOrderModifier1 implements AttributeModifier<GridColAttribute> {
     }
   }
 }
+
 class MyGridColOrderModifier2 implements AttributeModifier<GridColAttribute> {
   isNum: number = 0
+
   applyNormalAttribute(instance: GridColAttribute): void {
     if (this.isNum === 0) {
       instance.order(2);
@@ -65,13 +86,11 @@ struct GridColExample {
   @State modSpan: MyGridColSpanModifier1 = new MyGridColSpanModifier1()
   @State modOrder1: MyGridColOrderModifier1 = new MyGridColOrderModifier1()
   @State modOrder2: MyGridColOrderModifier2 = new MyGridColOrderModifier2()
-
   @State redOffset: number | GridColColumnOption = 0
   @State mspan: number | GridColColumnOption = 1
   @State morder1: number | GridColColumnOption = 1
   @State morder2: number | GridColColumnOption = 2
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Gridcol page state change called:" + JSON.stringify(eventData));
       if (eventData.data.gridColOffsetNum != null) {
@@ -111,27 +130,27 @@ struct GridColExample {
 
   onPageShow() {
     console.info('gridcol page1 show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 181,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 182,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
-    var stateChangeEvent3 = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
-    var stateChangeEvent4 = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 184,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
-    var stateChangeEvent5 = {
+    let stateChangeEvent5: events_emitter.InnerEvent = {
       eventId: 185,
       priority: events_emitter.EventPriority.LOW
     }
@@ -147,16 +166,16 @@ struct GridColExample {
           reference: BreakpointsReference.WindowSize },
         direction: GridRowDirection.Row
       }) {
-        GridCol({ span: 1}) {
-          Row(){
+        GridCol({ span: 1 }) {
+          Row() {
             Text('Red')
           }.width("100%").height("20vp")
         }.borderColor(Color.Red).borderWidth(2).key('keykeyoffset')
         // .gridColOffset(this.redOffset)
         .attributeModifier(this.modOffsetRed)
 
-        GridCol({ span: 1}) {
-          Row(){
+        GridCol({ span: 1 }) {
+          Row() {
             Text('Orange')
           }.width("100%").height("20vp")
         }.borderColor(Color.Orange).borderWidth(2).key('keykeyspan')
@@ -164,7 +183,7 @@ struct GridColExample {
         .attributeModifier(this.modSpan)
 
         GridCol() {
-          Row(){
+          Row() {
             Text('Red')
           }.width("100%").height("20vp")
         }.borderColor(Color.Red).borderWidth(2).key('keykeyorder1')
@@ -172,15 +191,17 @@ struct GridColExample {
         .attributeModifier(this.modOrder1)
 
         GridCol() {
-          Row(){
+          Row() {
             Text('Orange')
           }.width("100%").height("20vp")
         }.borderColor(Color.Orange).borderWidth(2).key('keykeyorder2')
         // .order(this.morder2)
         .attributeModifier(this.modOrder2)
-      }.width("100%").height("100%")
+      }
+      .width("100%")
+      .height("100%")
       .border({ color: '#880606', width: 2 })
-      .padding({ top: 20, bottom: 20, left: 5, right:5 })
+      .padding({ top: 20, bottom: 20, left: 5, right: 5 })
       .onBreakpointChange((breakpoint) => {
         this.currentBp = breakpoint
       })
