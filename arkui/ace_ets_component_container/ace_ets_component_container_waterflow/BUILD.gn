@@ -11,12 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsComponentContainerTest") {
+group("ActsAceEtsComponentContainerWaterflowTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "ace_ets_component_container_tabs:ActsAceEtsComponentContainerTabsTest",
-      "ace_ets_component_container_waterflow:ActsAceEtsComponentContainerWaterflowTest"
-    ]
+    deps = [ "ace_ets_component_container_waterflow_api12:ActsAceEtsComponentContainerWaterflowApi12Test" ]
   }
 }
