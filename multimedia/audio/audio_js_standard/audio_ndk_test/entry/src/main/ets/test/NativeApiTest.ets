@@ -14,12 +14,12 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility';
-import { UiDriver, BY } from '@ohos.UiTest';
-import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
-import myaudioNdk from "libaudioNdkTest.so";
+import { UiDriver, BY } from '@ohos.UiTest'
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import myaudioNdk from "libaudioNdkTest.so"
 
-const Tag = 'audio_ndk_test:';
+const Tag = 'audio_ndk_test:'
 
 function sleep(ms: number) {
   return new Promise<number>(resolve => setTimeout(resolve, ms));
@@ -33,9 +33,8 @@ async function getPermission() {
 }
 
 async function driveFn() {
-  const delegator = abilityDelegatorRegistry.getAbilityDelegator();
   console.info(Tag + `come in driveFn`);
-  let driver = UiDriver.create();
+  let driver = await UiDriver.create();
   console.info(Tag + `driver is ${JSON.stringify(driver)}`);
   await sleep(100);
   console.info(Tag + `UiDriver start`);
@@ -51,7 +50,7 @@ async function driveFn() {
 
 export default function audioNDK() {
   describe('audioNDKTest', () => {
-
+    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     beforeAll(async () => {
       await getPermission();
       await sleep(100);

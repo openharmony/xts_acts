@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +17,9 @@
 @Entry
 @Component
 struct MyComponent {
+  aboutToAppear() {
+  }
+
   build() {
     Flex({
       direction: FlexDirection.Column,
