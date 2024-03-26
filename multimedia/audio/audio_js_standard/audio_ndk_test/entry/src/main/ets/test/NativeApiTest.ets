@@ -34,6 +34,7 @@ async function getPermission() {
 
 async function driveFn() {
   console.info(Tag + `come in driveFn`);
+  const delegator = abilityDelegatorRegistry.getAbilityDelegator();
   let driver = await UiDriver.create();
   console.info(Tag + `driver is ${JSON.stringify(driver)}`);
   await sleep(100);
@@ -50,7 +51,6 @@ async function driveFn() {
 
 export default function audioNDK() {
   describe('audioNDKTest', () => {
-    const delegator = abilityDelegatorRegistry.getAbilityDelegator();
     beforeAll(async () => {
       await getPermission();
       await sleep(100);
