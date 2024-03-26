@@ -16,9 +16,14 @@
 import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStage.test';
 import deviceKvStorePromiseTest from './DeviceKvStorePromiseStage.test';
 import kvManagerPromiseTest from './KvManagerPromiseStage.test';
-import singleKvStorePromiseTest from './SingleKvStorePromiseStage.test'
-import singleKvStoreCallbackTest from './SingleKvStoreCallbackStage.test'
-import kvStoreResultSetTest from './KvStoreResultSetStage.test'
+import singleKvStorePromiseTest from './SingleKvStorePromiseStage.test';
+import singleKvStoreCallbackTest from './SingleKvStoreCallbackStage.test';
+import kvStoreResultSetTest from './KvStoreResultSetStage.test';
+import queryTest from './QueryStage.test';
+import fieldNodeTest from './FieldNodeStage.test';
+import schemaTest from './SchemaStage.test';
+import singleKvStoreEnumTest from './SingleKvStoreEnumStage.test';
+import kvManagerCallbackTest from './KvManagerCallbackStage.test'
 
 export default function testsuite() {
   deviceKvStoreCallbackTest();
@@ -26,5 +31,10 @@ export default function testsuite() {
   kvManagerPromiseTest();
   singleKvStorePromiseTest();
   singleKvStoreCallbackTest();
-  kvStoreResultSetTest()
+  kvStoreResultSetTest();
+  queryTest();
+  fieldNodeTest();
+  schemaTest();
+  singleKvStoreEnumTest();
+  kvManagerCallbackTest();
 }
