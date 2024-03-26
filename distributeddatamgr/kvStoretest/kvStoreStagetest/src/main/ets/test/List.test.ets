@@ -13,10 +13,18 @@
 * limitations under the License.
 */
 
-import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStageTest';
-import deviceKvStorePromiseTest from './DeviceKvStorePromiseStageTest';
+import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStage.test';
+import deviceKvStorePromiseTest from './DeviceKvStorePromiseStage.test';
+import kvManagerPromiseTest from './KvManagerPromiseStage.test';
+import singleKvStorePromiseTest from './SingleKvStorePromiseStage.test'
+import singleKvStoreCallbackTest from './SingleKvStoreCallbackStage.test'
+import kvStoreResultSetTest from './KvStoreResultSetStage.test'
 
 export default function testsuite() {
   deviceKvStoreCallbackTest();
-  deviceKvStorePromiseTest()
+  deviceKvStorePromiseTest();
+  kvManagerPromiseTest();
+  singleKvStorePromiseTest();
+  singleKvStoreCallbackTest();
+  kvStoreResultSetTest()
 }
