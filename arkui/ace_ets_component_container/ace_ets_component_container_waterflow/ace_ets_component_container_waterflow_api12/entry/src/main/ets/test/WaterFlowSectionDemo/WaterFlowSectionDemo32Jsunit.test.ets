@@ -41,8 +41,12 @@ export default function WaterFlowSectionDemo32Jsunit() {
       }
       done();
     });
-    // 横向设置 crossCount: 3
-    // SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0310
+    /**
+     * @tc.number SUB_ACE_UI_COMPONENT_LISTANDGRID_WATERFLOW_SECTIONS_0310
+     * @tc.name   WaterFlowSectionDemo32Jsunit_0100
+     * @tc.desc   crossCount: 3
+     * @tc.level  1
+     */
     it('WaterFlowSectionDemo32Jsunit_0100', 0, async function (done) {
       console.info('WaterFlowSectionDemo32Jsunit_0100 START');
       await CommonFunc.sleep(1000);
