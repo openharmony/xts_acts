@@ -48,8 +48,8 @@ export default {
         pluginComponentManager.push(
             {
                 want: {
-                    bundleName: "com.huawei.ace.dialog",
-                    abilityName: "com.huawei.ace.dialog.MainAbility",
+                    bundleName: "com.arkui.ace.dialog",
+                    abilityName: "com.arkui.ace.dialog.MainAbility",
                     "parameters": {
                         DIMENSION_KEY: FormDimension.Dimension_1_2
                     }
@@ -73,8 +73,8 @@ export default {
         // 组件使用方主动发送事件
         pluginComponentManager.request({
             want: {
-                bundleName: "com.huawei.ace.dialog",
-                abilityName: "com.huawei.ace.dialog.MainAbility",
+                bundleName: "com.arkui.ace.dialog",
+                abilityName: "com.arkui.ace.dialog.MainAbility",
             },
             name: "plugintemplate",
             data: {

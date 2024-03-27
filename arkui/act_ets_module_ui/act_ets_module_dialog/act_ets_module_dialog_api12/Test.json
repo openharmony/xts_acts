@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.huawei.ace.dialog.api12",
+        "bundle-name": "com.arkui.ace.dialog.api12",
         "module-name": "phone",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"

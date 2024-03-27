@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "com.huawei.ace.global.api11",
+        "bundleName": "com.arkui.ace.global.api11",
         "vendor": "huawei",
         "versionCode": 1000000,
         "versionName": "1.0.0",

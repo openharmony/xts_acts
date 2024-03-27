@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "com.huawei.ace.commonAttrsDialog.api12",
+        "bundleName": "com.arkui.ace.commonAttrsDialog.api12",
         "vendor": "huawei",
         "versionCode": 1000000,
         "versionName": "1.0.0",

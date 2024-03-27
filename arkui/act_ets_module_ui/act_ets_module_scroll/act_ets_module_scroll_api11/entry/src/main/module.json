@@ -22,7 +22,7 @@
             }
         ],
         "abilities": [{
-            "name": "com.huawei.ace.scroll.MainAbility",
+            "name": "com.arkui.ace.scroll.MainAbility",
             "srcEntrance": "./ets/MainAbility/MainAbility.ts",
             "description": "$string:phone_entry_main",
             "icon": "$media:icon",

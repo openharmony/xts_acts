@@ -22,7 +22,7 @@
             }
         ],
         "abilities": [{
-            "name": "com.huawei.ace.commonAttrsLayout.api11.MainAbility",
+            "name": "com.arkui.ace.commonAttrsLayout.api11.MainAbility",
             "srcEntrance": "./ets/MainAbility/MainAbility.ts",
             "description": "$string:phone_entry_main",
             "icon": "$media:icon",

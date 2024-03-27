@@ -59,7 +59,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
             onAbilityCreate: onAbilityCreateCallback,
         };
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
-        var cmd = 'aa start -d 0 -a com.huawei.ace.commonAttrsVisual.api11.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
+        var cmd = 'aa start -d 0 -a com.arkui.ace.commonAttrsVisual.api11.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
         cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
         var debug = abilityDelegatorArguments.parameters["-D"];
         if (debug == 'true') {

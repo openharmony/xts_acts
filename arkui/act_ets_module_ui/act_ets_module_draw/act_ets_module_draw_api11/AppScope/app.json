@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "com.huawei.ace.draw",
+        "bundleName": "com.arkui.ace.draw",
         "vendor": "huawei",
         "versionCode": 1000000,
         "versionName": "1.0.0",
