@@ -132,7 +132,7 @@ export default function relationalStoreCustomDirTest() {
             console.log(TAG + "************* setCloudStrategyTest005 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
-                    expect(true).assertTrue();
+                    console.log(TAG + `setCloudStrategyTest005,setCloudStrategy success.`);
                 }).catch(err => {
                     console.error(TAG + `setCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
                     expect(null).assertFail();
@@ -157,7 +157,7 @@ export default function relationalStoreCustomDirTest() {
             console.log(TAG + "************* setCloudStrategyTest006 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.CELLULAR, cloudData.NetWorkStrategy.WIFI]).then(() => {
-                    expect(true).assertTrue();
+                    console.log(TAG + `setCloudStrategyTest006,setCloudStrategy success.`);
                 }).catch(err => {
                     console.error(TAG + `setCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
                     expect(null).assertFail();
@@ -182,7 +182,7 @@ export default function relationalStoreCustomDirTest() {
             console.log(TAG + "************* setCloudStrategyTest007 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK).then(() => {
-                    expect(true).assertTrue();
+                    console.log(TAG + `setCloudStrategyTest007,setCloudStrategy success.`);
                 }).catch(err => {
                     console.error(TAG + `setCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
                     expect(null).assertFail();
@@ -207,7 +207,7 @@ export default function relationalStoreCustomDirTest() {
             console.log(TAG + "************* setCloudStrategyTest008 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, undefined).then(() => {
-                    expect(true).assertTrue();
+                    console.log(TAG + `setCloudStrategyTest008,setCloudStrategy success.`);
                 }).catch(err => {
                     console.error(TAG + `setCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
                     expect(null).assertFail();
@@ -232,7 +232,7 @@ export default function relationalStoreCustomDirTest() {
             console.log(TAG + "************* setCloudStrategyTest009 start *************");
             try {
                 await cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, null).then(() => {
-                    expect(true).assertTrue();
+                    console.log(TAG + `setCloudStrategyTest009,setCloudStrategy success.`);
                 }).catch(err => {
                     console.error(TAG + `setCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
                     expect(null).assertFail();
