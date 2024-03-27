@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.myapplication",
+        "bundle-name": "com.huawei.ace.commonAttrsDialog.api11",
         "module-name": "phone",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
@@ -14,6 +14,13 @@
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
+    },{
+        "type": "ShellKit",
+        "run-command": [
+            "power-shell wakeup",
+            "uinput -T -m 300 2700 280 200",
+            "power-shell setmode 602"
+        ]
     }
     ]
 }
