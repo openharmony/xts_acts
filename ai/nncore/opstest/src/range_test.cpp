@@ -24,7 +24,6 @@ class RangeTest : public testing::Test {};
 
 struct RangeModel1 {
     const std::vector<int32_t> tensor_shape = {3};
-    std::vector<int64_t> dTypeValue = {37};
     std::vector<int64_t> startValue = {-1};
     std::vector<int64_t> limitValue = {10};
     std::vector<int64_t> deltaValue = {4};
@@ -34,20 +33,18 @@ struct RangeModel1 {
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, 3*sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, 3*sizeof(int32_t)};
-    OHNNOperandTest dType = {OH_NN_INT64, OH_NN_RANGE_DTYPE, {1}, &dTypeValue, sizeof(int64_t)};
     OHNNOperandTest start = {OH_NN_INT64, OH_NN_RANGE_START, {1}, &startValue, sizeof(int64_t)};
     OHNNOperandTest limit = {OH_NN_INT64, OH_NN_RANGE_LIMIT, {1}, &limitValue, sizeof(int64_t)};
     OHNNOperandTest delta = {OH_NN_INT64, OH_NN_RANGE_DELTA, {1}, &deltaValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_RANGE,
-                               .operands = {input, output, dType, start, limit, delta},
-                               .paramIndices = {2, 3, 4, 5},
+                               .operands = {input, output, start, limit, delta},
+                               .paramIndices = {2, 3, 4},
                                .inputIndices = {0},
                                .outputIndices = {1}};
 };
 
 struct RangeModel2 {
     const std::vector<int32_t> tensor_shape = {1};
-    std::vector<int64_t> dTypeValue = {37};
     std::vector<int64_t> startValue = {1};
     std::vector<int64_t> limitValue = {1};
     std::vector<int64_t> deltaValue = {4};
@@ -57,20 +54,18 @@ struct RangeModel2 {
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, sizeof(int32_t)};
-    OHNNOperandTest dType = {OH_NN_INT64, OH_NN_RANGE_DTYPE, {1}, &dTypeValue, sizeof(int64_t)};
     OHNNOperandTest start = {OH_NN_INT64, OH_NN_RANGE_START, {1}, &startValue, sizeof(int64_t)};
     OHNNOperandTest limit = {OH_NN_INT64, OH_NN_RANGE_LIMIT, {1}, &limitValue, sizeof(int64_t)};
     OHNNOperandTest delta = {OH_NN_INT64, OH_NN_RANGE_DELTA, {1}, &deltaValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_RANGE,
-                               .operands = {input, output, dType, start, limit, delta},
-                               .paramIndices = {2, 3, 4, 5},
+                               .operands = {input, output, start, limit, delta},
+                               .paramIndices = {2, 3, 4},
                                .inputIndices = {0},
                                .outputIndices = {1}};
 };
 
 struct RangeModel3 {
     const std::vector<int32_t> tensor_shape = {1};
-    std::vector<int64_t> dTypeValue = {37};
     std::vector<int64_t> startValue = {2};
     std::vector<int64_t> limitValue = {1};
     std::vector<int64_t> deltaValue = {4};
@@ -79,20 +74,18 @@ struct RangeModel3 {
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, sizeof(int32_t)};
-    OHNNOperandTest dType = {OH_NN_INT64, OH_NN_RANGE_DTYPE, {1}, &dTypeValue, sizeof(int64_t)};
     OHNNOperandTest start = {OH_NN_INT64, OH_NN_RANGE_START, {1}, &startValue, sizeof(int64_t)};
     OHNNOperandTest limit = {OH_NN_INT64, OH_NN_RANGE_LIMIT, {1}, &limitValue, sizeof(int64_t)};
     OHNNOperandTest delta = {OH_NN_INT64, OH_NN_RANGE_DELTA, {1}, &deltaValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_RANGE,
-                               .operands = {input, output, dType, start, limit, delta},
-                               .paramIndices = {2, 3, 4, 5},
+                               .operands = {input, output, start, limit, delta},
+                               .paramIndices = {2, 3, 4},
                                .inputIndices = {0},
                                .outputIndices = {1}};
 };
 
 struct RangeModel4 {
     const std::vector<int32_t> tensor_shape = {2};
-    std::vector<int64_t> dTypeValue = {45};
     std::vector<int64_t> startValue = {2.4};
     std::vector<int64_t> limitValue = {10};
     std::vector<int64_t> deltaValue = {4};
@@ -102,20 +95,18 @@ struct RangeModel4 {
 
     OHNNOperandTest input = {OH_NN_FLOAT16, OH_NN_TENSOR, tensor_shape, inputValue, 2*sizeof(float)};
     OHNNOperandTest output = {OH_NN_FLOAT16, OH_NN_TENSOR, tensor_shape, outputValue, 2*sizeof(float)};
-    OHNNOperandTest dType = {OH_NN_INT64, OH_NN_RANGE_DTYPE, {1}, &dTypeValue, sizeof(int64_t)};
     OHNNOperandTest start = {OH_NN_INT64, OH_NN_RANGE_START, {1}, &startValue, sizeof(int64_t)};
     OHNNOperandTest limit = {OH_NN_INT64, OH_NN_RANGE_LIMIT, {1}, &limitValue, sizeof(int64_t)};
     OHNNOperandTest delta = {OH_NN_INT64, OH_NN_RANGE_DELTA, {1}, &deltaValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_RANGE,
-                               .operands = {input, output, dType, start, limit, delta},
-                               .paramIndices = {2, 3, 4, 5},
+                               .operands = {input, output, start, limit, delta},
+                               .paramIndices = {2, 3, 4},
                                .inputIndices = {0},
                                .outputIndices = {1}};
 };
 
 struct RangeModel5 {
     const std::vector<int32_t> tensor_shape = {2};
-    std::vector<int64_t> dTypeValue = {37};
     std::vector<int64_t> startValue = {2.4};
     std::vector<int64_t> limitValue = {10};
     std::vector<int64_t> deltaValue = {4};
@@ -125,13 +116,12 @@ struct RangeModel5 {
 
     OHNNOperandTest input = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, inputValue, 2*sizeof(int32_t)};
     OHNNOperandTest output = {OH_NN_INT32, OH_NN_TENSOR, tensor_shape, outputValue, 2*sizeof(int32_t)};
-    OHNNOperandTest dType = {OH_NN_INT64, OH_NN_RANGE_DTYPE, {1}, &dTypeValue, sizeof(int64_t)};
     OHNNOperandTest start = {OH_NN_INT64, OH_NN_RANGE_START, {1}, &startValue, sizeof(int64_t)};
     OHNNOperandTest limit = {OH_NN_INT64, OH_NN_RANGE_LIMIT, {1}, &limitValue, sizeof(int64_t)};
     OHNNOperandTest delta = {OH_NN_INT64, OH_NN_RANGE_DELTA, {1}, &deltaValue, sizeof(int64_t)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_RANGE,
-                               .operands = {input, output, dType, start, limit, delta},
-                               .paramIndices = {2, 3, 4, 5},
+                               .operands = {input, output, start, limit, delta},
+                               .paramIndices = {2, 3, 4},
                                .inputIndices = {0},
                                .outputIndices = {1}};
 };
@@ -293,11 +283,11 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_06, Function | MediumTest
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    graphArgs.operands = {rangeModel.input, rangeModel.input, rangeModel.output, rangeModel.dType,
+    graphArgs.operands = {rangeModel.input, rangeModel.input, rangeModel.output,
                           rangeModel.start, rangeModel.limit, rangeModel.delta};
     graphArgs.inputIndices = {0, 1};
     graphArgs.outputIndices = {2};
-    graphArgs.paramIndices = {3, 4, 5, 6};
+    graphArgs.paramIndices = {3, 4, 5};
     EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
@@ -315,11 +305,11 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_07, Function | MediumTest
 
     RangeModel1 rangeModel;
     OHNNGraphArgs graphArgs = rangeModel.graphArgs;
-    graphArgs.operands = {rangeModel.input, rangeModel.output, rangeModel.output, rangeModel.dType,
+    graphArgs.operands = {rangeModel.input, rangeModel.output, rangeModel.output,
                           rangeModel.start, rangeModel.limit, rangeModel.delta};
     graphArgs.inputIndices = {0};
     graphArgs.outputIndices = {1, 2};
-    graphArgs.paramIndices = {3, 4, 5, 6};
+    graphArgs.paramIndices = {3, 4, 5};
     EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);
@@ -340,9 +330,9 @@ HWTEST_F(RangeTest, SUB_AI_NNRt_Func_North_Range_Build_08, Function | MediumTest
 
     int8_t activationValue = OH_NN_FUSED_NONE;
     OHNNOperandTest activation = {OH_NN_INT8, OH_NN_ADD_ACTIVATIONTYPE, {}, &activationValue, sizeof(int8_t)};
-    graphArgs.operands = {rangeModel.output, rangeModel.dType, rangeModel.start,
+    graphArgs.operands = {rangeModel.input, rangeModel.output, rangeModel.start,
                           rangeModel.limit, rangeModel.delta, activation};
-    graphArgs.paramIndices = {2, 3, 4, 5, 6};
+    graphArgs.paramIndices = {2, 3, 4, 5};
     EXPECT_EQ(OH_NN_INVALID_PARAMETER, BuildSingleOpGraph(model, graphArgs));
 
     Free(model, nullptr, nullptr);

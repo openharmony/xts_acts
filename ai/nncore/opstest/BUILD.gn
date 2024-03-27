@@ -26,7 +26,7 @@ config("ops_config") {
   cflags_cc = [ "-fexceptions" ]
 }
 
-ohos_moduletest_suite("ActsOpsTest") {
+ohos_moduletest_suite("ActsNnrtOpsTest") {
   module_out_path = module_output_path
   sources = [
     "src/abs_test.cpp",
