@@ -24,7 +24,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with docs uri. Test normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_001', 0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments/test.txt";
@@ -45,7 +45,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with media uri. Test normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_002', 0, function () {
       try{
@@ -65,7 +65,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with remote devices demo uri.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_003', 0, function () {
       try{
@@ -85,7 +85,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with docs dir uri.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_004', 0, function () {
       let fileuristr = "file://docs/storage/users/cuurrenUser/Docments";
@@ -106,7 +106,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with media dir uri.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_005', 0, function () {
       try{
@@ -128,7 +128,7 @@ describe('file_uri_test', function () {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('fileuri_getpath_006', 0, function () {
+    it('fileuri_getpath_006', 1, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -146,7 +146,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realpath with 100 layers of folders , special characters and files.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_007', 0, function () {
       try{
@@ -171,7 +171,7 @@ describe('file_uri_test', function () {
      * @tc.desc       : Function of API, get realPath with 100 layers of folders.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_getpath_008', 0, function () {
       try{
@@ -190,12 +190,12 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0100
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_0900
      * @tc.name       : fileuri_isremoteuri_001
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_isremoteuri_001', 0, function () {
       try{
@@ -210,12 +210,12 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0200
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1000
      * @tc.name       : fileuri_isremoteuri_002
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_isremoteuri_002', 0, function () {
       try{
@@ -230,12 +230,12 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0300
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1100
      * @tc.name       : fileuri_isremoteuri_003
      * @tc.desc       : Function of API, Test isRemoteUri normal function.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_isremoteuri_003', 0, function () {
       console.log("fileuri_isremoteuri_003 start")
@@ -251,12 +251,12 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0400
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1200
      * @tc.name       : fileuri_isremoteuri_004
      * @tc.desc       : Function of API, Test isRemoteUri with 100 layers of folders.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 0
      */
     it('fileuri_isremoteuri_004', 0, function () {
       console.log("fileuri_isremoteuri_004 start")
@@ -277,14 +277,14 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0500
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1300
      * @tc.name       : fileuri_isremoteuri_005
      * @tc.desc       : Function of API, Test isRemoteUri with empty networkid.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('fileuri_isremoteuri_005', 0, function () {
+    it('fileuri_isremoteuri_005', 1, function () {
       console.log("fileuri_isremoteuri_005 start")
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=";
@@ -298,14 +298,14 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0600
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1400
      * @tc.name       : fileuri_isremoteuri_006
      * @tc.desc       : Function of API, Test isRemoteUri with invalid invalid.
      * @tc.size       : Medium
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 3
      */
-    it('fileuri_isremoteuri_006', 0, function () {
+    it('fileuri_isremoteuri_006', 3, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@.txt/test.txt?networkid=****";
         let uriOBJ = new fileUri.FileUri(fileuristr);
@@ -318,14 +318,14 @@ describe('file_uri_test', function () {
     });
 
     /**
-     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_IsRemoteUri_0700
+     * @tc.number     : SUB_BASIC_FM_FileAPI_FileUri_GetPath_1500
      * @tc.name       : fileuri_isremoteuri_007
      * @tc.desc       : Function of API, Test isRemoteUri with native uri.
      * @tc.size       : Medium
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('fileuri_isremoteuri_007', 0, function () {
+    it('fileuri_isremoteuri_007', 1, function () {
       try{
         let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files";
         let uriOBJ = new fileUri.FileUri(fileuristr);
