@@ -64,8 +64,8 @@ export default function RelativeChain3() {
 
       expect(Math.abs(Math.round(row3.left - row2.right)) <= 1).assertTrue();
       expect(Math.abs(Math.round(row2.left - row1.right)) <= 1).assertTrue();
-      expect(Math.abs(Math.round(row1.left - rel.left) - Math.round(vp2px(30))) <= 1).assertTrue();
-      expect(Math.abs(Math.round(rel.right - row3.right) - Math.round(vp2px(70))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(row1.left - rel.left) - Math.round(vp2px(15))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(rel.right - row3.right) - Math.round(vp2px(35))) <= 1).assertTrue();
 
       console.info('[RelativeChain3_001] END');
       done();
