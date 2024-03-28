@@ -1563,6 +1563,7 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].metadata[0].value).assertEqual("MetaDataValue");
       expect(data.hapModulesInfo[0].metadata[0].resource).assertEqual("$profile:shortcuts_config");
       expect(data.hapModulesInfo[0].routerMap.length).assertEqual(0);
+      expect(data.routerMap.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
@@ -1622,7 +1623,9 @@ export default function getBundleInfoForSelf() {
       expect(data.permissionGrantStates.length).assertEqual(0);
       expect(data.signatureInfo).assertEqual(null);
       expect(data.hapModulesInfo[0].routerMap.length).assertEqual(2);
+      except(data.routerMap.length).assertEqual(2);
       checkRouterMapInfo(data.hapModulesInfo[0].routerMap);
+      checkRouterMapInfo(data.routerMap);
       done();
     })
 
