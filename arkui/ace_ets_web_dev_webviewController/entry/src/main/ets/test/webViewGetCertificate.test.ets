@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
+// @ts-nocheck
 let emitKey = "emitGetCertificateCallback";
-
 export default function webViewGetCertificate() {
-  describe('ActsAceWebDevWebViewGetCertificateTest', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebDevWebViewGetCertificateTest', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/webViewGetCertificate',
       }
@@ -40,27 +39,27 @@ export default function webViewGetCertificate() {
       }
       done()
     });
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("webViewGetCertificate beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
+    afterEach(async function (done) {
       console.info("webViewGetCertificate afterEach start:" + emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -70,20 +69,20 @@ export default function webViewGetCertificate() {
      *tc.name testGetCertificateCallback
      *tc.desc test interface of getCertificate with callback
      */
-    it('testGetCertificateCallback', 0, async (done: Function) => {
-      emitKey = "emitGetCertificatePromise";
-      Utils.registerEvent("testGetCertificateCallback", true, 403, done);
-      sendEventByKey('webViewGetCertificate', 10, '');
+    it('testGetCertificateCallback',0,async function(done){
+      emitKey="emitGetCertificatePromise";
+      Utils.registerEvent("testGetCertificateCallback",true,403,done);
+      sendEventByKey('webViewGetCertificate',10,'');
     })
     /*
      *tc.number SUB_ACE_BASIC_ETS_WEBVIEWCERTIFICATE_API_0200
      *tc.name testGetCertificatePromise
      *tc.desc test interface of getCertificate with promise
      */
-    it('testGetCertificatePromise', 0, async (done: Function) => {
-      emitKey = "emitGetCertificatePromise";
-      Utils.registerEvent("testGetCertificatePromise", true, 404, done);
-      sendEventByKey('webViewGetCertificate', 10, '');
+    it('testGetCertificatePromise',0,async function(done){
+      emitKey="emitGetCertificatePromise";
+      Utils.registerEvent("testGetCertificatePromise",true,404,done);
+      sendEventByKey('webViewGetCertificate',10,'');
     })
   })
 }

@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
+// @ts-nocheck
 let emitKey = "emitMediaOptionTrue";
-
 export default function webViewMediaOption() {
-  describe('ActsAceWebDevWebViewMediaOptionTest', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebDevWebViewMediaOptionTest', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/webViewMediaOption',
       }
@@ -40,27 +39,27 @@ export default function webViewMediaOption() {
       }
       done()
     });
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("webViewMediaOption beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
+    afterEach(async function (done) {
       console.info("webViewMediaOption afterEach start:" + emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -70,10 +69,10 @@ export default function webViewMediaOption() {
      *tc.name testMediaOption
      *tc.desc test interface of mediaoption with true
      */
-    it('testMediaOption', 0, async (done: Function) => {
-      emitKey = "emitMediaOptionTrue";
-      Utils.registerEvent("testMediaOption", false, 415, done);
-      sendEventByKey('webViewMediaOption', 10, '');
+    it('testMediaOption',0,async function(done){
+      emitKey="emitMediaOptionTrue";
+      Utils.registerEvent("testMediaOption",false,415,done);
+      sendEventByKey('webViewMediaOption',10,'');
     })
   })
 }

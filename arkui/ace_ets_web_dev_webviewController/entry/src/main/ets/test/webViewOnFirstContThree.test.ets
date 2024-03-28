@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
+// @ts-nocheck
 let emitKey = "emitLoadUrlOnfirstcontentfulpaint";
-
 export default function webViewOnFirstContThree() {
-  describe('ActsAceWebDevWebViewOnFirstContThreeTest', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebDevWebViewOnFirstContThreeTest', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/webViewOnFirstContThree',
       }
@@ -40,27 +39,27 @@ export default function webViewOnFirstContThree() {
       }
       done()
     });
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("webViewOnFirstContThree beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
+    afterEach(async function (done) {
       console.info("webViewOnFirstContThree afterEach start:" + emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -70,10 +69,10 @@ export default function webViewOnFirstContThree() {
      *tc.name testOnfirstcontentfulpaintloadurl
      *tc.desc onfirstcontentfulpaint with web load url
      */
-    it('testOnfirstcontentfulpaintloadurl', 0, async (done: Function) => {
-      emitKey = "emitLoadUrlOnfirstcontentfulpaint";
-      Utils.registerEvent("testOnfirstcontentfulpaintloadurl", true, 326, done);
-      sendEventByKey('webViewOnFirstContThree', 10, '');
+    it('testOnfirstcontentfulpaintloadurl',0,async function(done){
+      emitKey="emitLoadUrlOnfirstcontentfulpaint";
+      Utils.registerEvent("testOnfirstcontentfulpaintloadurl",true,326,done);
+      sendEventByKey('webViewOnFirstContThree',10,'');
     })
   })
 }

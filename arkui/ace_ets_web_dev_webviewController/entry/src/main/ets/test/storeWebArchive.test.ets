@@ -16,12 +16,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
-let emitKey = "emitStoreWebArchiveCallback";
-
+let emitKey = "emitStoreWebArchiveCallback";  
 export default function storeWebArchive() {
-  describe('ActsAceWebControllerTest1', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebControllerTest1', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: "MainAbility/pages/storeWebArchive"
       }
@@ -41,26 +39,26 @@ export default function storeWebArchive() {
       await Utils.sleep(2000);
       done()
     })
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       console.info("web beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
-      console.info("ActsAceWebControllerTest afterEach start:" + emitKey);
+    afterEach(async function (done) {
+      console.info("ActsAceWebControllerTest afterEach start:"+emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       console.info("ActsAceWebViewOnWindowNewJsunitTest afterEach end");
@@ -68,26 +66,26 @@ export default function storeWebArchive() {
     })
 
 
-    /*
-   *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_003
-   *tc.name testStoreWebArchiveCallback
-   *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is ture.
-   */
-    it('testStoreWebArchiveCallback', 0, async (done: Function) => {
-      emitKey = "emitStoreWebArchiveCallbackFalse";
-      Utils.registerEvent("testStoreWebArchiveCallback", "/data/storage/el2/base/index.html.mht", 130, done);
-      sendEventByKey('webcomponent02', 10, '');
+      /*
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_003
+     *tc.name testStoreWebArchiveCallback
+     *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is ture.
+     */
+    it('testStoreWebArchiveCallback',0,async function(done){
+      emitKey="emitStoreWebArchiveCallbackFalse";
+      Utils.registerEvent("testStoreWebArchiveCallback","/data/storage/el2/base/index.html.mht",130,done);
+      sendEventByKey('webcomponent02',10,'');
     })
 
-    /*
-   *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_004
-   *tc.name testStoreWebArchiveCallbackFalse
-   *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is false.
-   */
-    it('testStoreWebArchiveCallbackFalse', 0, async (done: Function) => {
-      emitKey = "emitStoreWebArchivePromise";
-      Utils.registerEvent("testStoreWebArchiveCallbackFalse", "/data/storage/el2/base/index.html.mht", 132, done);
-      sendEventByKey('webcomponent02', 10, '');
+      /*
+     *tc.number SUB_ACE_BASIC_ETS_STOREWEBARCHIVE_API_004
+     *tc.name testStoreWebArchiveCallbackFalse
+     *tc.desic test storeWebArchive interface when choose Callback mode and autoName parameter is false.
+     */
+    it('testStoreWebArchiveCallbackFalse',0,async function(done){
+      emitKey="emitStoreWebArchivePromise";
+      Utils.registerEvent("testStoreWebArchiveCallbackFalse","/data/storage/el2/base/index.html.mht",132,done);
+      sendEventByKey('webcomponent02',10,'');
     })
 
     /*
@@ -95,10 +93,10 @@ export default function storeWebArchive() {
      *tc.name testStoreWebArchivePromise
      *tc.desic test storeWebArchive interface when choose Promise mode and autoName parameter is ture.
      */
-    it('testStoreWebArchivePromise', 0, async (done: Function) => {
-      emitKey = "emitStoreWebArchivePromiseFlase";
-      Utils.registerEvent("testStoreWebArchivePromise", "/data/storage/el2/base/index.html-0.mht", 134, done);
-      sendEventByKey('webcomponent02', 10, '');
+    it('testStoreWebArchivePromise',0,async function(done){
+      emitKey="emitStoreWebArchivePromiseFlase";
+      Utils.registerEvent("testStoreWebArchivePromise","/data/storage/el2/base/index.html-0.mht",134,done);
+      sendEventByKey('webcomponent02',10,'');
     })
 
     /*
@@ -106,9 +104,9 @@ export default function storeWebArchive() {
      *tc.name testStoreWebArchivePromiseFalse
      *tc.desic test storeWebArchive interface when choose Promise mode and autoName parameter is false.
      */
-    it('testStoreWebArchivePromiseFalse', 0, async (done: Function) => {
-      Utils.registerEvent("testStoreWebArchivePromiseFalse", "/data/storage/el2/base/index.html-2.mht", 136, done);
-      sendEventByKey('webcomponent02', 10, '');
+    it('testStoreWebArchivePromiseFalse',0,async function(done){
+      Utils.registerEvent("testStoreWebArchivePromiseFalse","/data/storage/el2/base/index.html-2.mht",136,done);
+      sendEventByKey('webcomponent02',10,'');
     })
   })
 }
