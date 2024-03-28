@@ -15,8 +15,8 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
-import Utils from '../../TestAbility/common/MyUtils';
-import Rect from '../../TestAbility/common/Rect';
+import Utils from '../../MainAbility/common/MyUtils';
+import Rect from '../../MainAbility/common/Rect';
 import { BusinessError } from '@ohos.base'
 
 export default function ListScrollToItemInGroup() {

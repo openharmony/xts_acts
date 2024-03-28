@@ -48,8 +48,8 @@ export default {
         pluginComponentManager.push(
             {
                 want: {
-                    bundleName: "com.example.myapplication",
-                    abilityName: "com.example.myapplication.MainAbility",
+                    bundleName: "com.arkui.ace.commonAttrsDialog.api12",
+                    abilityName: "com.arkui.ace.commonAttrsDialog.api12.MainAbility",
                     "parameters": {
                         DIMENSION_KEY: FormDimension.Dimension_1_2
                     }
@@ -73,8 +73,8 @@ export default {
         // 组件使用方主动发送事件
         pluginComponentManager.request({
             want: {
-                bundleName: "com.example.myapplication",
-                abilityName: "com.example.myapplication.MainAbility",
+                bundleName: "com.arkui.ace.commonAttrsDialog.api12",
+                abilityName: "com.arkui.ace.commonAttrsDialog.api12.MainAbility",
             },
             name: "plugintemplate",
             data: {
