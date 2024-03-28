@@ -38,11 +38,10 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-
 struct setShadowOffset {
   @State MyNodeController: MyNodeController = new MyNodeController();
-  @State getX: number = 0 ;
-  @State getY :number = 0;
+  @State getX: number = 0;
+  @State getY: number = 0;
 
   build() {
     Row() {
@@ -53,7 +52,7 @@ struct setShadowOffset {
 
         Button('get shadowOffset').margin(10)
           .key('get_shadowOffset')
-          .onClick(()=>{
+          .onClick(() => {
             this.getX = renderNode.shadowOffset.x
             this.getY = renderNode.shadowOffset.y
           })

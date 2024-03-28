@@ -12,63 +12,62 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 export default function getHapModuleInfoJsunit() {
-  describe('getApplicationContextTest', function () {
-
+  describe('getApplicationContextTest', () => {
     let TAG1 = "SUB_AA_OpenHarmony == getApplicationContextTest: ";
     let sleepTimeOne = 1000;
-    let id = undefined;
-      beforeAll(async (done) => {
-        console.log(TAG1 + "beforeAll called");
-        let myReason = 'test FaShowOnLockTest';
-        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-            console.log(TAG1 + "Request suspension delay will time out.");
-        })
-        id = delayInfo.requestId;
-        console.log(TAG1 + "requestId is : " + id);
-        setTimeout(function () {
-            console.log(TAG1 + "beforeAll end");
-            done();
-        }, sleepTimeOne);
+    let id: number;
+    beforeAll(async (done: Function) => {
+      console.log(TAG1 + "beforeAll called");
+      let myReason = 'test FaShowOnLockTest';
+      let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+        console.log(TAG1 + "Request suspension delay will time out.");
+      })
+      id = delayInfo.requestId;
+      console.log(TAG1 + "requestId is : " + id);
+      setTimeout(() => {
+        console.log(TAG1 + "beforeAll end");
+        done();
+      }, sleepTimeOne);
     })
 
-    afterAll(async (done) => {
-        console.log(TAG1 + "afterAll called");
-        backgroundTaskManager.cancelSuspendDelay(id);
-        setTimeout(function () {
-            console.log(TAG1 + "afterAll end");
-            done();
-        }, sleepTimeOne);
+    afterAll(async (done: Function) => {
+      console.log(TAG1 + "afterAll called");
+      backgroundTaskManager.cancelSuspendDelay(id);
+      setTimeout(() => {
+        console.log(TAG1 + "afterAll end");
+        done();
+      }, sleepTimeOne)
     })
 
     /**
      * @tc.number: context_getApplicationContext_test_0100
      * @tc.name: getApplicationContext:Gets the application context information.
      * @tc.desc: Check the return value of the interface
-     * @tc.level  0
+     * @tc.level 0
      */
-    it('context_getApplicationContext_test_0100', 0, async function (done) {
+    it('context_getApplicationContext_test_0100', 0, async (done: Function) => {
       try {
         console.info('[context_getApplicationContext_test_0100] START');
         await Utils.sleep(1000);
-        var timeOldStamp = await Utils.getNowTime();
-        var context = ability_featureAbility.getContext().getApplicationContext();
-        var timeNewStamp = Utils.getNowTime();
+        let timeOldStamp = Utils.getNowTime();
+        let context = ability_featureAbility.getContext().getApplicationContext();
+        let timeNewStamp = Utils.getNowTime();
         Utils.getDurationTime('context_getApplicationContext_test_0100', timeOldStamp, timeNewStamp);
         console.info('[context_getApplicationContext_test_0100] data is:' + JSON.stringify(context));
+        expect(typeof (context)).assertEqual("object");
+        console.info('[context_getApplicationContext_test_0100] FINISH');
+        done();
       }
       catch (error) {
         console.error('[context_getApplicationContext_test_0100] failed:' + JSON.stringify(error));
       }
-      expect(typeof (context)).assertEqual("object");
-      console.info('[context_getApplicationContext_test_0100] FINISH');
-      done();
-    });
-
+    })
   })
 }

@@ -70,10 +70,10 @@ export default function onSelectionChange7() {
       expect(Obj1_0.$attrs.content).assertEqual('2');
       let text2_0 = getInspectorByKey('onSelectionChange7_text2');
       let Obj2_0 = JSON.parse(text2_0);
-      expect(Obj2_0.$attrs.content).assertEqual('23');
+      expect(Obj2_0.$attrs.content).assertEqual('83');
       let text3_0 = getInspectorByKey('onSelectionChange7_text3');
       let Obj3_0 = JSON.parse(text3_0);
-      expect(Obj3_0.$attrs.content).assertEqual('23');
+      expect(Obj3_0.$attrs.content).assertEqual('83');
 
       await driver.triggerKey(2015);
       await CommonFunc.sleep(300);
@@ -82,10 +82,10 @@ export default function onSelectionChange7() {
       expect(Obj1_1.$attrs.content).assertEqual('2');
       let text2_1 = getInspectorByKey('onSelectionChange7_text2');
       let Obj2_1 = JSON.parse(text2_1);
-      expect(Obj2_1.$attrs.content).assertEqual('23');
+      expect(Obj2_1.$attrs.content).assertEqual('83');
       let text3_1 = getInspectorByKey('onSelectionChange7_text3');
       let Obj3_1 = JSON.parse(text3_1);
-      expect(Obj3_1.$attrs.content).assertEqual('23');
+      expect(Obj3_1.$attrs.content).assertEqual('83');
 
       await driver.triggerKey(2013);
       await CommonFunc.sleep(300);
@@ -94,10 +94,10 @@ export default function onSelectionChange7() {
       expect(Obj1_2.$attrs.content).assertEqual('2');
       let text2_2 = getInspectorByKey('onSelectionChange7_text2');
       let Obj2_2 = JSON.parse(text2_2);
-      expect(Obj2_2.$attrs.content).assertEqual('23');
+      expect(Obj2_2.$attrs.content).assertEqual('83');
       let text3_2 = getInspectorByKey('onSelectionChange7_text3');
       let Obj3_2 = JSON.parse(text3_2);
-      expect(Obj3_2.$attrs.content).assertEqual('23');
+      expect(Obj3_2.$attrs.content).assertEqual('83');
 
       await driver.triggerKey(2014);
       await CommonFunc.sleep(300);
@@ -106,10 +106,10 @@ export default function onSelectionChange7() {
       expect(Obj1_3.$attrs.content).assertEqual('3');
       let text2_3 = getInspectorByKey('onSelectionChange7_text2');
       let Obj2_3 = JSON.parse(text2_3);
-      expect(Obj2_3.$attrs.content).assertEqual('22');
+      expect(Obj2_3.$attrs.content).assertEqual('82');
       let text3_3 = getInspectorByKey('onSelectionChange7_text3');
       let Obj3_3 = JSON.parse(text3_3);
-      expect(Obj3_3.$attrs.content).assertEqual('22');
+      expect(Obj3_3.$attrs.content).assertEqual('82');
 
       await driver.triggerKey(2015);
       await CommonFunc.sleep(300);
@@ -118,10 +118,10 @@ export default function onSelectionChange7() {
       expect(Obj1_4.$attrs.content).assertEqual('4');
       let text2_4 = getInspectorByKey('onSelectionChange7_text2');
       let Obj2_4 = JSON.parse(text2_4);
-      expect(Obj2_4.$attrs.content).assertEqual('23');
+      expect(Obj2_4.$attrs.content).assertEqual('83');
       let text3_4 = getInspectorByKey('onSelectionChange7_text3');
       let Obj3_4 = JSON.parse(text3_4);
-      expect(Obj3_4.$attrs.content).assertEqual('23');
+      expect(Obj3_4.$attrs.content).assertEqual('83');
 
       await driver.triggerKey(2012);
       await CommonFunc.sleep(300);

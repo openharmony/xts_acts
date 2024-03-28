@@ -16,10 +16,19 @@
 import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackEtsTest';
 import deviceKvStorePromiseTest from './DeviceKvStoreKVPromiseEtsTest';
 import KvStoreResultSetTest from './KvStoreResultSetKVEtsTest';
+import kvStoreBackupPromiseJsunittest from './KvStoreBackupPromiseEtsTest';
+import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackEtsTest';
+import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackEtsTest';
+import SingleKvStorePromiseTest from './SingleKvStoreKVPromiseEtsTest';
+import singleKvStoreEnumTest from './SingleKvStoreKVPromiseEtsTest';
 
 export default function testsuite() {
   deviceKvStoreCallbackTest()
   deviceKvStorePromiseTest()
   KvStoreResultSetTest()
-
+  kvStoreBackupPromiseJsunittest()
+  kvStoreBackupCallbackJsunittest()
+  SingleKvStoreCallbackTest()
+  SingleKvStorePromiseTest()
+    singleKvStoreEnumTest()
 }

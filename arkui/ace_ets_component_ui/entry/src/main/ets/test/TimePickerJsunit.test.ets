@@ -52,25 +52,26 @@ export default function TimePickerJsunit() {
       let switchButton = await driver.findComponent(BY.key('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let timePickerTop = CommonFunc.getComponentRect('timePicker');
+      let timePickerTop = CommonFunc.getComponentRectOnScreen('timePicker');
       let top = timePickerTop.top
-      let timePickerBottom = CommonFunc.getComponentRect('timePicker');
+      let timePickerBottom = CommonFunc.getComponentRectOnScreen('timePicker');
       let bottom = timePickerBottom.bottom
-      let timePickerRight = CommonFunc.getComponentRect('timePicker');
+      let timePickerRight = CommonFunc.getComponentRectOnScreen('timePicker');
       let right = timePickerRight.right
+      let timePickerLeft = CommonFunc.getComponentRectOnScreen('timePicker');
+      let left = timePickerLeft.left
       let middle = (top + bottom) / 2
-
       // Verify AM or PM
       let hour = await driver.findComponent(BY.key('hour'));
       let hour1 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour1: " + JSON.stringify(hour1));
       expect(hour1).assertEqual('hour:8');
-      await driver.swipe(Math.round(right / 5), Math.round(middle + 80), Math.round(right / 5), Math.round(middle - 80));
+      await driver.swipe(Math.round((right-left)/ 6 + left), Math.round(middle + 80), Math.round((right-left) / 6 + left), Math.round(middle - 80));
       await CommonFunc.sleep(6000);
       let hour2 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour2: " + JSON.stringify(hour2));
       expect(hour2).assertEqual('hour:20');
-      
+
       // Verify hour
       await driver.swipe(Math.round(right / 2), Math.round(middle + 100), Math.round(right / 2), Math.round(middle - 100));
       await CommonFunc.sleep(6000);
@@ -124,7 +125,7 @@ export default function TimePickerJsunit() {
       let switchButton = await driver.findComponent(BY.key('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let timePicker = CommonFunc.getComponentRect('timePicker');
+      let timePicker = CommonFunc.getComponentRectOnScreen('timePicker');
       let top = timePicker.top
       let bottom = timePicker.bottom
       let right = timePicker.right

@@ -25,7 +25,7 @@ struct onSelectionChange7 {
     Column() {
       RichEditor(this.options)
         .onReady(() => {
-          this.controller.addTextSpan("0123456789",
+          this.controller.addTextSpan("0123456789012345678901234567890123456789",
             {
               style:
               {
@@ -47,7 +47,7 @@ struct onSelectionChange7 {
                 fontSize: 30
               }
             })
-          this.controller.addTextSpan("0123456789",
+          this.controller.addTextSpan("0123456789012345678901234567890123456789",
             {
               style:
               {
@@ -71,8 +71,8 @@ struct onSelectionChange7 {
       Button('setCaretOffset:0').onClick(() => {
         this.controller.setCaretOffset(0)
       }).id('onSelectionChange7_btn1')
-      Button('setCaretOffset:23').onClick(() => {
-        this.controller.setCaretOffset(23)
+      Button('setCaretOffset:83').onClick(() => {
+        this.controller.setCaretOffset(83)
       }).id('onSelectionChange7_btn2')
     }
     .borderWidth(1)

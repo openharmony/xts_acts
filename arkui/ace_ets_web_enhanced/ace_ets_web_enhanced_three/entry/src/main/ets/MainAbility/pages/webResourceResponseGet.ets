@@ -25,18 +25,18 @@ struct webResourceResponseGet {
   controller: WebController = new WebController();
   heads: Header[] = new Array()
   @State webdata: string = "<!DOCTYPE html>\n" +
-  "<html>\n" +
-  "<head>\n" +
-  "<title>intercept test</title>\n" +
-  "</head>\n" +
-  "<body>\n" +
-  "<h1>intercept test</h1>\n" +
-  "<script>" +
-  "function gettitle(){ return document.write(document.title); }" +
-  "gettitle()" +
-  "</script>" +
-  "</body>\n" +
-  "</html>"
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "<script>" +
+    "function gettitle(){ return document.write(document.title); }" +
+    "gettitle()" +
+    "</script>" +
+    "</body>\n" +
+    "</html>"
   @State str: string = "emitOnHttpErrorReceiveByExampleWebc";
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
@@ -45,7 +45,7 @@ struct webResourceResponseGet {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
+    "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State title: string = "test";
   @State getRequestHeaderValue: number = 0
   @State getResponseHeaderValue: number = 0
@@ -292,14 +292,14 @@ struct webResourceResponseGet {
             console.log('GetRequest The request header result size is ' + result.length)
             for (let i of result) {
               console.log('GetRequest The request header key is : ' + i.headerKey +
-              ' , value is : ' + i.headerValue);
+                ' , value is : ' + i.headerValue);
             }
             let respHeader = event.response.getResponseHeader()
             this.getResponseHeaderValue = respHeader.length
             console.log('GetRequest The response header result size is ' + respHeader.length)
             for (let i of respHeader) {
               console.log('GetRequest The response header key is : ' + i.headerKey +
-              ' , value is : ' + i.headerValue);
+                ' , value is : ' + i.headerValue);
             }
           }
         })

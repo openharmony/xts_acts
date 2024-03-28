@@ -16,6 +16,7 @@ group("ActsAceEtsComponentContainerTest") {
   if (is_standard_system) {
     deps = [
       "ace_ets_component_container_tabs:ActsAceEtsComponentContainerTabsTest",
+      "ace_ets_component_container_waterflow:ActsAceEtsComponentContainerWaterflowTest",
     ]
   }
 }

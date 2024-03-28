@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperItemPadMarTest {
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('SwiperItemPadMar onPageShow');
   }
@@ -24,12 +27,35 @@ struct SwiperItemPadMarTest {
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('swiperItemPadMar01').padding(20).margin(20)
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar02')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('swiperItemPadMar03')
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar04')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('swiperItemPadMar05')
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar06')
+        Column() {
+          Text('1')
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xF5DEB3)
+        .key('swiperItemPadMar01')
+        .padding(20)
+        .margin(20)
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar02')
+
+        Column() {
+          Text('3')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('swiperItemPadMar03')
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar04')
+
+        Column() {
+          Text('5')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('swiperItemPadMar05')
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('swiperItemPadMar06')
       }
       .key('swiperItemPadMar')
       .height(300)

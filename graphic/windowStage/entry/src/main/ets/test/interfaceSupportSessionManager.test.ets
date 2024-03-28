@@ -263,11 +263,10 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
         // @ts-ignore
         (win as ohosWindow.Window).off('windowVisibilityChange');
         await (win as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         await (win as ohosWindow.Window).destroyWindow();
         console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -323,11 +322,10 @@ export default function interfaceSupportSessionManagerTest(context: common.UIAbi
       try {
         (win as ohosWindow.Window).off('windowVisibilityChange');
         await (win as ohosWindow.Window).destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         await (win as ohosWindow.Window).destroyWindow();
         console.error(msgStr + 'Failed to unregister callback Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**

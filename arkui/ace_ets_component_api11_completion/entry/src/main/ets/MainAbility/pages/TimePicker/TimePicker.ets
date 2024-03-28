@@ -15,8 +15,8 @@
 @Entry
 @Component
 struct TimePickerExample {
-  @State isMilitaryTime: boolean = false
-  private selectedTime: Date = new Date('2022-07-22T08:00:00')
+  @State isMilitaryTime: boolean = false;
+  private selectedTime: Date = new Date('2022-07-22T08:00:00');
 
   build() {
     Column() {

@@ -20,9 +20,9 @@ struct Demo {
   options1: TextOptions = { controller: this.controller };
   options2: TextOptions = { controller: this.controller };
   options3: TextOptions = { controller: this.controller };
-  @State text1: string = 'text1'
-  @State text2: string = 'text2'
-  @State text3: string = 'text3'
+  @State text1: string = 'text1';
+  @State text2: string = 'text2';
+  @State text3: string = 'text3';
 
   build() {
     Column() {
@@ -82,10 +82,6 @@ struct Demo {
         .width(200)
         .height(100)
 
-
-
-
-
       }
       .width('100%')
       .backgroundColor(Color.White)
@@ -93,7 +89,6 @@ struct Demo {
       .padding(25)
     }
     .height('100%')
-
 
   }
 

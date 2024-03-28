@@ -16,6 +16,7 @@
 import image from '@ohos.multimedia.image'
 import notificationManager from '@ohos.notificationManager'
 import notification from '@ohos.notification'
+
 class NotificationContentUtil {
   /**
    * init basic notification content

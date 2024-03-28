@@ -62,6 +62,8 @@ group("arkui") {
     "ace_napi_test:ActsAceNapiEtsTest",
     "ace_standard:ActsAceStandardTest",
     "ace_standard_video:ActsAceStandardVideoTest",
+    "act_ets_module_noui:ActsAceEtsModuleNoUITest",
+    "act_ets_module_ui:ActsAceEtsModuleUITest",
     "libuv:libuvTest",
   ]
 }

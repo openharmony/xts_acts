@@ -16,6 +16,7 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import commonEventManager from '@ohos.commonEventManager';
 
 export default class TestWantShowModeOtherFullAbility extends UIAbility {
     onCreate(want, launchParam) {
@@ -23,6 +24,11 @@ export default class TestWantShowModeOtherFullAbility extends UIAbility {
     }
 
     onDestroy() {
+        setTimeout(()=>{
+          commonEventManager.publish('ACTS_START_ABILITY', (err) => {
+            hilog.info(0x0000, 'testTag', '%{public}s', 'commonEventManager publish onForeground ' + JSON.stringify(err));
+          })
+        }, 500)
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     }
 
@@ -43,6 +49,9 @@ export default class TestWantShowModeOtherFullAbility extends UIAbility {
     }
 
     onForeground() {
+        setTimeout(()=>{
+          this.context.terminateSelf();
+        }, 500)
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     }
 

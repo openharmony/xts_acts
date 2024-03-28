@@ -22,7 +22,7 @@ import data_preferences from '@ohos.data.preferences';
 import FlushData from '../pages/model/FlushData';
 
 const TAG = 'ParseXML';
-let path=globalThis.dir;
+let path = globalThis.dir;
 let path1 = path + '/ArkUI';
 let path2 = path + '/Audio';
 let path3 = path + '/Camera';
@@ -83,31 +83,38 @@ let pathPower = path10 + '/PowerReport.txt';
 let pathNotification = path1_1 + '/NotificationReport.txt';
 let pathWifi = path1_2 + '/WifiReport.txt';
 let pathBluetooth = path1_3 + '/BluetoothReport.txt';
+
+class TestCase {
+  title: string;
+  uri: string;
+}
+
 @Entry
 @Component
 struct IndexPage {
-  private TestCaseList = [
-    {title:'ArkUI',uri:'pages/ArkUI/ArkUI_index'},
-    {title:'Audio',uri:'pages/Audio/Audio_index'},
-    {title:'Camera',uri:'pages/Camera/Camera_index'},
-    {title:'Player',uri:'pages/Player/Player_index'},
-    {title:'Experience',uri:'pages/Experience/Experience_index'},
-    {title:'Sensor',uri:'pages/Sensor/Sensor_index'},
-    {title:'Screen',uri:'pages/Screen/Screen_index'},
-    {title:'MultimodalInput',uri:'pages/MultimodalInput/MultimodalInput_index'},
-    {title:'Power',uri:'pages/Power/Power_index'},
-    {title:'Notification',uri:'pages/Notification/Notification_index'},
-    {title:'Wifi',uri:'pages/Wifi/Wifi_index'},
-    {title:'Bluetooth',uri:'pages/Bluetooth/BlueTooth_index'}
+  private TestCaseList: TestCase[] = [
+    { title: 'ArkUI', uri: 'pages/ArkUI/ArkUI_index' },
+    { title: 'Audio', uri: 'pages/Audio/Audio_index' },
+    { title: 'Camera', uri: 'pages/Camera/Camera_index' },
+    { title: 'Player', uri: 'pages/Player/Player_index' },
+    { title: 'Experience', uri: 'pages/Experience/Experience_index' },
+    { title: 'Sensor', uri: 'pages/Sensor/Sensor_index' },
+    { title: 'Screen', uri: 'pages/Screen/Screen_index' },
+    { title: 'MultimodalInput', uri: 'pages/MultimodalInput/MultimodalInput_index' },
+    { title: 'Power', uri: 'pages/Power/Power_index' },
+    { title: 'Notification', uri: 'pages/Notification/Notification_index' },
+    { title: 'Wifi', uri: 'pages/Wifi/Wifi_index' },
+    { title: 'Bluetooth', uri: 'pages/Bluetooth/BlueTooth_index' }
   ]
-  @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
-  async onPageShow(){
-    let Test = null;
-    let context =null;
-    context = globalThis.getContext();
-    let preferences;
+  @State ColorObject: string[] = ['#ff000000', '#ff000000', '#ff000000', '#ff000000', '#ff000000']
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+  async onPageShow() {
+    let Test = null;
+    let context = null;
+    context = globalThis.getContext();
+    let preferences: ESObject;
+
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -116,7 +123,7 @@ struct IndexPage {
       Test = data;
       console.info("Succeeded in getting value of 'index'. Data: " + data);
     });
-    if(Test != 1) {
+    if (Test != 1) {
       fs.mkdirSync(path1);
       fs.mkdirSync(path2);
       fs.mkdirSync(path3);
@@ -166,14 +173,15 @@ struct IndexPage {
     fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.openSync(pathBluetooth, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
-  build(){
-    Column(){
+
+  build() {
+    Column() {
       Row() {
         Text('ActsValidator')
           .fontColor(Color.White)
           .fontSize('22fp')
         Row() {
-          Button(){
+          Button() {
             Image($r('app.media.ic_public_delete'))
               .width('30vp')
               .height('30vp')
@@ -203,7 +211,8 @@ struct IndexPage {
               }
             )
           })
-          Button(){
+
+          Button() {
             Image($r('app.media.ic_public_save'))
               .width('30vp')
               .height('30vp')
@@ -213,9 +222,9 @@ struct IndexPage {
             this.SaveXml();
             AlertDialog.show({
               message: "报告已生成，请将设备连接pc，通过run.bat确认测试已结束，获取可视化报告",
-              confirm:{
-                value:'OK',
-                action:()=>{
+              confirm: {
+                value: 'OK',
+                action: () => {
                   promptAction.showToast({
                     message: '总报告已生成', duration: 1000
                   })
@@ -229,14 +238,19 @@ struct IndexPage {
             })
           })
         }
-      }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({top:'15vp'}).height('6%')
-      List({}){
-        ForEach(this.TestCaseList,(item,index) => {
-          ListItem(){
-            Row(){
+      }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({ top: '15vp' }).height('6%')
+
+      List({}) {
+        ForEach(this.TestCaseList, (item, index) => {
+          ListItem() {
+            Row() {
               Text(item.title).fontSize(20).fontColor(Color.White)
-            }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
-            .onClick(()=>{
+            }
+            .width('100%')
+            .height(50)
+            .alignItems(VerticalAlign.Center)
+            .backgroundColor(this.ColorObject[index])
+            .onClick(() => {
               router.push({
                 url: item.uri,
               })
@@ -245,16 +259,17 @@ struct IndexPage {
               let TimePath = path + "/Time.txt";
               let OP = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
               let buf = new ArrayBuffer(4096);
-              fs.readSync(OP.fd,buf);
+              fs.readSync(OP.fd, buf);
               let Log = (time + ";").toString();
-              fs.writeSync(OP.fd,Log);
+              fs.writeSync(OP.fd, Log);
             })
           }
-        },item  => item.title)
-      }.width('100%').height('92%').divider({strokeWidth:1,color:Color.Grey})
+        }, item => item.title)
+      }.width('100%').height('92%').divider({ strokeWidth: 1, color: Color.Grey })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  ClearText(){
+
+  ClearText() {
     fs.unlinkSync(TimePath);
     fs.unlinkSync(xmlPath);
     fs.unlinkSync(path11);
@@ -338,40 +353,41 @@ struct IndexPage {
     FlushData.ResetWifi();
     FlushData.ResetBluetooth();
   }
+
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
     let endtime = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
     let fd = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf = new ArrayBuffer(40960);
-    fs.readSync(fd.fd,buf);
+    fs.readSync(fd.fd, buf);
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
-    let starttime = StartTime.substring(0,Index);
-    if(starttime === ''){
+    let starttime = StartTime.substring(0, Index);
+    if (starttime === '') {
       starttime = '*'
     }
-    let ArkUIReport;
-    let AudioReport;
-    let CameraReport;
-    let PlayerReport;
-    let ExperienceReport;
-    let SensorReport; // 传感器
-    let ScreenReport; // 屏幕
-    let MultimodalInputReport; // 多模输入
-    let PowerReport; // 电源管理
-    let NotificationReport; // 通知
-    let WifiReport; // wifi管理
-    let BluetoothReport; // bluetooth管理
+    let ArkUIReport: string;
+    let AudioReport: string;
+    let CameraReport: string;
+    let PlayerReport: string;
+    let ExperienceReport: string;
+    let SensorReport: string; // 传感器
+    let ScreenReport: string; // 屏幕
+    let MultimodalInputReport: string; // 多模输入
+    let PowerReport: string; // 电源管理
+    let NotificationReport: string; // 通知
+    let WifiReport: string; // wifi管理
+    let BluetoothReport: string; // bluetooth管理
     /*
      * ArkUI
      */
     let OP1 = fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf1 = new ArrayBuffer(40960);
-    fs.readSync(OP1.fd,buf1);
+    fs.readSync(OP1.fd, buf1);
     ArkUIReport = String.fromCharCode.apply(null, new Uint8Array(buf1));
     let str1 = ArkUIReport.split(";");
-    let title1 = [];
-    let result1 = [];
+    let title1: string[] = [];
+    let result1: string[] = [];
     for (let i = 0; i < Math.floor(str1.length / 2); i++) {
       title1[i] = str1[i * 2];
       result1[i] = str1[i * 2 + 1];
@@ -381,11 +397,11 @@ struct IndexPage {
      */
     let OP2 = fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf2 = new ArrayBuffer(40960);
-    fs.readSync(OP2.fd,buf2);
+    fs.readSync(OP2.fd, buf2);
     AudioReport = String.fromCharCode.apply(null, new Uint8Array(buf2));
     let str2 = AudioReport.split(";");
-    let title2 = [];
-    let result2 = [];
+    let title2: string[] = [];
+    let result2: string[] = [];
     for (let i = 0; i < Math.floor(str2.length / 2); i++) {
       title2[i] = str2[i * 2];
       result2[i] = str2[i * 2 + 1];
@@ -395,11 +411,11 @@ struct IndexPage {
      */
     let OP3 = fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf3 = new ArrayBuffer(40960);
-    fs.readSync(OP3.fd,buf3);
+    fs.readSync(OP3.fd, buf3);
     CameraReport = String.fromCharCode.apply(null, new Uint8Array(buf3));
     let str3 = CameraReport.split(";");
-    let title3 = [];
-    let result3 = [];
+    let title3: string[] = [];
+    let result3: string[] = [];
     for (let i = 0; i < Math.floor(str3.length / 2); i++) {
       title3[i] = str3[i * 2];
       result3[i] = str3[i * 2 + 1];
@@ -409,11 +425,11 @@ struct IndexPage {
  */
     let OP4 = fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf4 = new ArrayBuffer(40960);
-    fs.readSync(OP4.fd,buf4);
+    fs.readSync(OP4.fd, buf4);
     PlayerReport = String.fromCharCode.apply(null, new Uint8Array(buf4));
     let str4 = PlayerReport.split(";");
-    let title4 = [];
-    let result4 = [];
+    let title4: string[] = [];
+    let result4: string[] = [];
     for (let i = 0; i < Math.floor(str4.length / 2); i++) {
       title4[i] = str4[i * 2];
       result4[i] = str4[i * 2 + 1];
@@ -423,11 +439,11 @@ struct IndexPage {
  */
     let OP5 = fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf5 = new ArrayBuffer(40960);
-    fs.readSync(OP5.fd,buf5);
+    fs.readSync(OP5.fd, buf5);
     ExperienceReport = String.fromCharCode.apply(null, new Uint8Array(buf5));
     let str5 = ExperienceReport.split(";");
-    let title5 = [];
-    let result5 = [];
+    let title5: string[] = [];
+    let result5: string[] = [];
     for (let i = 0; i < Math.floor(str5.length / 2); i++) {
       title5[i] = str5[i * 2];
       result5[i] = str5[i * 2 + 1];
@@ -438,7 +454,7 @@ struct IndexPage {
      */
     let OP6 = fs.openSync(path66, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf6 = new ArrayBuffer(40960);
-    fs.readSync(OP6.fd,buf6);
+    fs.readSync(OP6.fd, buf6);
     SensorReport = String.fromCharCode.apply(null, new Uint8Array(buf6));
     let str6 = SensorReport.split(";");
     let title6 = [];
@@ -453,11 +469,11 @@ struct IndexPage {
      */
     let OP8 = fs.openSync(path88, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf8 = new ArrayBuffer(40960);
-    fs.readSync(OP8.fd,buf8);
+    fs.readSync(OP8.fd, buf8);
     ScreenReport = String.fromCharCode.apply(null, new Uint8Array(buf8));
     let str8 = ScreenReport.split(";");
-    let title8 = [];
-    let result8 = [];
+    let title8: string[] = [];
+    let result8: string[] = [];
     for (let i = 0; i < Math.floor(str8.length / 2); i++) {
       title8[i] = str8[i * 2];
       result8[i] = str8[i * 2 + 1];
@@ -468,11 +484,11 @@ struct IndexPage {
      */
     let OP9 = fs.openSync(path99, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf9 = new ArrayBuffer(40960);
-    fs.readSync(OP9.fd,buf9);
+    fs.readSync(OP9.fd, buf9);
     MultimodalInputReport = String.fromCharCode.apply(null, new Uint8Array(buf9));
     let str9 = MultimodalInputReport.split(";");
-    let title9 = [];
-    let result9 = [];
+    let title9: string[] = [];
+    let result9: string[] = [];
     for (let i = 0; i < Math.floor(str9.length / 2); i++) {
       title9[i] = str9[i * 2];
       result9[i] = str9[i * 2 + 1];
@@ -483,11 +499,11 @@ struct IndexPage {
      */
     let OP10 = fs.openSync(pathPower, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf10 = new ArrayBuffer(40960);
-    fs.readSync(OP10.fd,buf10);
+    fs.readSync(OP10.fd, buf10);
     PowerReport = String.fromCharCode.apply(null, new Uint8Array(buf10));
     let str10 = PowerReport.split(";");
-    let title10 = [];
-    let result10 = [];
+    let title10: string[] = [];
+    let result10: string[] = [];
     for (let i = 0; i < Math.floor(str10.length / 2); i++) {
       title10[i] = str10[i * 2];
       result10[i] = str10[i * 2 + 1];
@@ -498,11 +514,11 @@ struct IndexPage {
      */
     let OP11 = fs.openSync(pathNotification, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf11 = new ArrayBuffer(40960);
-    fs.readSync(OP11.fd,buf11);
+    fs.readSync(OP11.fd, buf11);
     NotificationReport = String.fromCharCode.apply(null, new Uint8Array(buf11));
     let str11 = NotificationReport.split(";");
-    let title11 = [];
-    let result11 = [];
+    let title11: string[] = [];
+    let result11: string[] = [];
     for (let i = 0; i < Math.floor(str11.length / 2); i++) {
       title11[i] = str11[i * 2];
       result11[i] = str11[i * 2 + 1];
@@ -513,11 +529,11 @@ struct IndexPage {
      */
     let OP12 = fs.openSync(pathWifi, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf12 = new ArrayBuffer(40960);
-    fs.readSync(OP12.fd,buf12);
+    fs.readSync(OP12.fd, buf12);
     WifiReport = String.fromCharCode.apply(null, new Uint8Array(buf12));
     let str12 = WifiReport.split(";");
-    let title12 = [];
-    let result12 = [];
+    let title12: string[] = [];
+    let result12: string[] = [];
     for (let i = 0; i < Math.floor(str12.length / 2); i++) {
       title12[i] = str12[i * 2];
       result12[i] = str12[i * 2 + 1];
@@ -528,33 +544,33 @@ struct IndexPage {
      */
     let OP13 = fs.openSync(pathBluetooth, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf13 = new ArrayBuffer(40960);
-    fs.readSync(OP13.fd,buf13);
+    fs.readSync(OP13.fd, buf13);
     BluetoothReport = String.fromCharCode.apply(null, new Uint8Array(buf13));
     let str13 = BluetoothReport.split(";");
-    let title13 = [];
-    let result13 = [];
+    let title13: string[] = [];
+    let result13: string[] = [];
     for (let i = 0; i < Math.floor(str13.length / 2); i++) {
       title13[i] = str13[i * 2];
       result13[i] = str13[i * 2 + 1];
     }
 
     let report = ArkUIReport + AudioReport + CameraReport + PlayerReport +
-    ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport
-    + PowerReport + NotificationReport + BluetoothReport + WifiReport;
+      ExperienceReport + SensorReport + ScreenReport + MultimodalInputReport
+      + PowerReport + NotificationReport + BluetoothReport + WifiReport;
     let FailIndex = report.indexOf('false');
     let FailNum = 0;
-    while(FailIndex != -1) {
-      console.log(FailIndex);
+    while (FailIndex != -1) {
+      console.log(FailIndex.toString());
       FailNum++;
-      FailIndex = report.indexOf('false',FailIndex + 1);
+      FailIndex = report.indexOf('false', FailIndex + 1);
     }
     let failNum = (FailNum).toString();
     let PassIndex = report.indexOf('true ');
     let PassNum = 0;
-    while(PassIndex != -1) {
-      console.log(PassIndex);
+    while (PassIndex != -1) {
+      console.log(PassIndex.toString());
       PassNum++;
-      PassIndex = report.indexOf('true ',PassIndex + 1);
+      PassIndex = report.indexOf('true ', PassIndex + 1);
     }
     let TestNum = FailNum + PassNum;
     let testNum = (TestNum).toString();
@@ -564,17 +580,17 @@ struct IndexPage {
     let ArkUIFailIndex = ArkUIReport.indexOf('false');
     let ArkUIFailNum = 0;
     while (ArkUIFailIndex != -1) {
-      console.log(ArkUIFailIndex);
+      console.log(ArkUIFailIndex.toString());
       ArkUIFailNum++;
-      ArkUIFailIndex = ArkUIReport.indexOf('false',ArkUIFailIndex + 1);
+      ArkUIFailIndex = ArkUIReport.indexOf('false', ArkUIFailIndex + 1);
     }
     let ArkuiFailNum = (ArkUIFailNum).toString();
     let ArkUIPassIndex = ArkUIReport.indexOf('true ');
     let ArkUIPassNum = 0;
     while (ArkUIPassIndex != -1) {
-      console.log(ArkUIPassIndex);
+      console.log(ArkUIPassIndex.toString());
       ArkUIPassNum++;
-      ArkUIPassIndex = ArkUIReport.indexOf('true ',ArkUIPassIndex + 1);
+      ArkUIPassIndex = ArkUIReport.indexOf('true ', ArkUIPassIndex + 1);
     }
     let ArkUITestNum = ArkUIFailNum + ArkUIPassNum;
     let ArkuiTestNum = (ArkUITestNum).toString();
@@ -584,17 +600,17 @@ struct IndexPage {
     let AudioFailIndex = AudioReport.indexOf('false');
     let AudioFailNum = 0;
     while (AudioFailIndex != -1) {
-      console.log(AudioFailIndex);
+      console.log(AudioFailIndex.toString());
       AudioFailNum++;
-      AudioFailIndex = AudioReport.indexOf('false',AudioFailIndex + 1);
+      AudioFailIndex = AudioReport.indexOf('false', AudioFailIndex + 1);
     }
     let audioFailNum = (AudioFailNum).toString();
     let AudioPassIndex = AudioReport.indexOf('true ');
     let AudioPassNum = 0;
     while (AudioPassIndex != -1) {
-      console.log(AudioPassIndex);
+      console.log(AudioPassIndex.toString());
       AudioPassNum++;
-      AudioPassIndex = AudioReport.indexOf('true ',AudioPassIndex + 1);
+      AudioPassIndex = AudioReport.indexOf('true ', AudioPassIndex + 1);
     }
     let AudioTestNum = AudioFailNum + AudioPassNum;
     let audioTestNum = (AudioTestNum).toString();
@@ -604,17 +620,17 @@ struct IndexPage {
     let CameraFailIndex = CameraReport.indexOf('false');
     let CameraFailNum = 0;
     while (CameraFailIndex != -1) {
-      console.log(CameraFailIndex);
+      console.log(CameraFailIndex.toString());
       CameraFailNum++;
-      CameraFailIndex = CameraReport.indexOf('false',CameraFailIndex + 1);
+      CameraFailIndex = CameraReport.indexOf('false', CameraFailIndex + 1);
     }
     let cameraFailNum = (CameraFailNum).toString();
     let CameraPassIndex = CameraReport.indexOf('true ');
     let CameraPassNum = 0;
     while (CameraPassIndex != -1) {
-      console.log(CameraPassIndex);
+      console.log(CameraPassIndex.toString());
       CameraPassNum++;
-      CameraPassIndex = CameraReport.indexOf('true ',CameraPassIndex + 1);
+      CameraPassIndex = CameraReport.indexOf('true ', CameraPassIndex + 1);
     }
     let CameraTestNum = CameraFailNum + CameraPassNum;
     let cameraTestNum = (CameraTestNum).toString();
@@ -624,17 +640,17 @@ struct IndexPage {
     let PlayerFailIndex = PlayerReport.indexOf('false');
     let PlayerFailNum = 0;
     while (PlayerFailIndex != -1) {
-      console.log(PlayerFailIndex);
+      console.log(PlayerFailIndex.toString());
       PlayerFailNum++;
-      PlayerFailIndex = PlayerReport.indexOf('false',PlayerFailIndex + 1);
+      PlayerFailIndex = PlayerReport.indexOf('false', PlayerFailIndex + 1);
     }
     let playerFailNum = (PlayerFailNum).toString();
     let PlayerPassIndex = PlayerReport.indexOf('true ');
     let PlayerPassNum = 0;
     while (PlayerPassIndex != -1) {
-      console.log(PlayerPassIndex);
+      console.log(PlayerPassIndex.toString());
       PlayerPassNum++;
-      PlayerPassIndex = PlayerReport.indexOf('true ',PlayerPassIndex + 1);
+      PlayerPassIndex = PlayerReport.indexOf('true ', PlayerPassIndex + 1);
     }
     let PlayerTestNum = PlayerFailNum + PlayerPassNum;
     let playerTestNum = (PlayerTestNum).toString();
@@ -644,17 +660,17 @@ struct IndexPage {
     let ExperienceFailIndex = ExperienceReport.indexOf('false');
     let ExperienceFailNum = 0;
     while (ExperienceFailIndex != -1) {
-      console.log(ExperienceFailIndex);
+      console.log(ExperienceFailIndex.toString());
       ExperienceFailNum++;
-      ExperienceFailIndex = ExperienceReport.indexOf('false',ExperienceFailIndex + 1);
+      ExperienceFailIndex = ExperienceReport.indexOf('false', ExperienceFailIndex + 1);
     }
     let experienceFailNum = (ExperienceFailNum).toString();
     let ExperiencePassIndex = ExperienceReport.indexOf('true ');
     let ExperiencePassNum = 0;
     while (ExperiencePassIndex != -1) {
-      console.log(ExperiencePassIndex);
+      console.log(ExperiencePassIndex.toString());
       ExperiencePassNum++;
-      ExperiencePassIndex = ExperienceReport.indexOf('true ',ExperiencePassIndex + 1);
+      ExperiencePassIndex = ExperienceReport.indexOf('true ', ExperiencePassIndex + 1);
     }
     let ExperienceTestNum = ExperienceFailNum + ExperiencePassNum;
     let experienceTestNum = (ExperienceTestNum).toString();
@@ -665,17 +681,17 @@ struct IndexPage {
     let SensorFailIndex = SensorReport.indexOf('false');
     let SensorFailNum = 0;
     while (SensorFailIndex != -1) {
-      console.log(SensorFailIndex);
+      console.log(SensorFailIndex.toString());
       SensorFailNum++;
-      SensorFailIndex = SensorReport.indexOf('false',SensorFailIndex + 1);
+      SensorFailIndex = SensorReport.indexOf('false', SensorFailIndex + 1);
     }
     let sensorFailNum = (SensorFailNum).toString();
     let SensorPassIndex = SensorReport.indexOf('true ');
     let SensorPassNum = 0;
     while (SensorPassIndex != -1) {
-      console.log(SensorPassIndex);
+      console.log(SensorPassIndex.toString());
       SensorPassNum++;
-      SensorPassIndex = SensorReport.indexOf('true ',SensorPassIndex + 1);
+      SensorPassIndex = SensorReport.indexOf('true ', SensorPassIndex + 1);
     }
     let SensorTestNum = SensorFailNum + SensorPassNum;
     let sensorTestNum = (SensorTestNum).toString();
@@ -688,15 +704,15 @@ struct IndexPage {
     while (SensorFailIndex != -1) {
       console.log(SensorFailIndex);
       ScreenFailNum++;
-      ScreenFailIndex = ScreenReport.indexOf('false',ScreenFailIndex + 1);
+      ScreenFailIndex = ScreenReport.indexOf('false', ScreenFailIndex + 1);
     }
     let screenFailNum = (ScreenFailNum).toString();
     let ScreenPassIndex = ScreenReport.indexOf('true ');
     let ScreenPassNum = 0;
     while (ScreenPassIndex != -1) {
-      console.log(ScreenPassIndex);
+      console.log(ScreenPassIndex.toString());
       ScreenPassNum++;
-      ScreenPassIndex = ScreenReport.indexOf('true ',ScreenPassIndex + 1);
+      ScreenPassIndex = ScreenReport.indexOf('true ', ScreenPassIndex + 1);
     }
     let ScreenTestNum = ScreenFailNum + ScreenPassNum;
     let screenTestNum = (ScreenTestNum).toString();
@@ -707,17 +723,17 @@ struct IndexPage {
     let MultimodalInputFailIndex = MultimodalInputReport.indexOf('false');
     let MultimodalInputFailNum = 0;
     while (MultimodalInputFailIndex != -1) {
-      console.log(MultimodalInputFailIndex);
+      console.log(MultimodalInputFailIndex.toString());
       MultimodalInputFailNum++;
-      MultimodalInputFailIndex = MultimodalInputReport.indexOf('false',MultimodalInputFailIndex + 1);
+      MultimodalInputFailIndex = MultimodalInputReport.indexOf('false', MultimodalInputFailIndex + 1);
     }
     let multimodalInputFailNum = (MultimodalInputFailNum).toString();
     let MultimodalInputPassIndex = MultimodalInputReport.indexOf('true ');
     let MultimodalInputPassNum = 0;
     while (MultimodalInputPassIndex != -1) {
-      console.log(MultimodalInputPassIndex);
+      console.log(MultimodalInputPassIndex.toString());
       MultimodalInputPassNum++;
-      MultimodalInputPassIndex = MultimodalInputReport.indexOf('true ',MultimodalInputPassIndex + 1);
+      MultimodalInputPassIndex = MultimodalInputReport.indexOf('true ', MultimodalInputPassIndex + 1);
     }
     let MultimodalInputTestNum = MultimodalInputFailNum + MultimodalInputPassNum;
     let multimodalInputTestNum = (MultimodalInputTestNum).toString();
@@ -728,17 +744,17 @@ struct IndexPage {
     let PowerFailIndex = PowerReport.indexOf('false');
     let PowerFailNum = 0;
     while (PowerFailIndex != -1) {
-      console.log(PowerFailIndex);
+      console.log(PowerFailIndex.toString());
       PowerFailNum++;
-      PowerFailIndex = PowerReport.indexOf('false',PowerFailIndex + 1);
+      PowerFailIndex = PowerReport.indexOf('false', PowerFailIndex + 1);
     }
     let powerFailNum = (PowerFailNum).toString();
     let PowerPassIndex = PowerReport.indexOf('true ');
     let PowerPassNum = 0;
     while (PowerPassIndex != -1) {
-      console.log(PowerPassIndex);
+      console.log(PowerPassIndex.toString());
       PowerPassNum++;
-      PowerPassIndex = PowerReport.indexOf('true ',PowerPassIndex + 1);
+      PowerPassIndex = PowerReport.indexOf('true ', PowerPassIndex + 1);
     }
     let PowerTestNum = PowerFailNum + PowerPassNum;
     let powerTestNum = (PowerTestNum).toString();
@@ -749,17 +765,17 @@ struct IndexPage {
     let NotificationFailIndex = NotificationReport.indexOf('false');
     let NotificationFailNum = 0;
     while (NotificationFailIndex != -1) {
-      console.log(NotificationFailIndex);
+      console.log(NotificationFailIndex.toString());
       NotificationFailNum++;
-      NotificationFailIndex = NotificationReport.indexOf('false',NotificationFailIndex + 1);
+      NotificationFailIndex = NotificationReport.indexOf('false', NotificationFailIndex + 1);
     }
     let notificationFailNum = (NotificationFailNum).toString();
     let NotificationPassIndex = NotificationReport.indexOf('true ');
     let NotificationPassNum = 0;
     while (NotificationPassIndex != -1) {
-      console.log(NotificationPassIndex);
+      console.log(NotificationPassIndex.toString());
       NotificationPassNum++;
-      NotificationPassIndex = NotificationReport.indexOf('true ',NotificationPassIndex + 1);
+      NotificationPassIndex = NotificationReport.indexOf('true ', NotificationPassIndex + 1);
     }
     let NotificationTestNum = NotificationFailNum + NotificationPassNum;
     let notificationTestNum = (NotificationTestNum).toString();
@@ -770,17 +786,17 @@ struct IndexPage {
     let WifiFailIndex = WifiReport.indexOf('false');
     let WifiFailNum = 0;
     while (WifiFailIndex != -1) {
-      console.log(WifiFailIndex);
+      console.log(WifiFailIndex.toString());
       WifiFailNum++;
-      WifiFailIndex = WifiReport.indexOf('false',WifiFailIndex + 1);
+      WifiFailIndex = WifiReport.indexOf('false', WifiFailIndex + 1);
     }
     let wifiFailNum = (WifiFailNum).toString();
     let WifiPassIndex = WifiReport.indexOf('true ');
     let WifiPassNum = 0;
     while (WifiPassIndex != -1) {
-      console.log(WifiPassIndex);
+      console.log(WifiPassIndex.toString());
       WifiPassNum++;
-      WifiPassIndex = WifiReport.indexOf('true ',WifiPassIndex + 1);
+      WifiPassIndex = WifiReport.indexOf('true ', WifiPassIndex + 1);
     }
     let WifiTestNum = WifiFailNum + WifiPassNum;
     let wifiTestNum = (WifiTestNum).toString();
@@ -791,17 +807,17 @@ struct IndexPage {
     let BluetoothFailIndex = BluetoothReport.indexOf('false');
     let BluetoothFailNum = 0;
     while (BluetoothFailIndex != -1) {
-      console.log(BluetoothFailIndex);
+      console.log(BluetoothFailIndex.toString());
       BluetoothFailNum++;
-      BluetoothFailIndex = BluetoothReport.indexOf('false',BluetoothFailIndex + 1);
+      BluetoothFailIndex = BluetoothReport.indexOf('false', BluetoothFailIndex + 1);
     }
     let bluetoothFailNum = (BluetoothFailNum).toString();
     let BluetoothPassIndex = BluetoothReport.indexOf('true ');
     let BluetoothPassNum = 0;
     while (BluetoothPassIndex != -1) {
-      console.log(BluetoothPassIndex);
+      console.log(BluetoothPassIndex.toString());
       BluetoothPassNum++;
-      BluetoothPassIndex = BluetoothReport.indexOf('true ',BluetoothPassIndex + 1);
+      BluetoothPassIndex = BluetoothReport.indexOf('true ', BluetoothPassIndex + 1);
     }
     let BluetoothTestNum = BluetoothFailNum + BluetoothPassNum;
     let bluetoothTestNum = (BluetoothTestNum).toString();
@@ -1137,9 +1153,10 @@ struct IndexPage {
     let array = new Uint8Array(arrayBuffer);
     let serializerStr = that.decode(array);
     console.info(xmlPath);
+    let xmlfd: fs.File
     try {
       console.error(TAG, "write xmlPath =" + xmlPath);
-      var xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       fs.writeSync(xmlfd.fd, serializerStr);
     } catch (err) {
       console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);

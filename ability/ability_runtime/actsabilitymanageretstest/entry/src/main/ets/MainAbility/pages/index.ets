@@ -16,9 +16,6 @@
 @Entry
 @Component
 struct MyComponent {
-  aboutToAppear() {
-  }
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
@@ -28,10 +25,9 @@ struct MyComponent {
         Text('next page')
           .fontSize(25)
           .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
+      }
+      .type(ButtonType.Capsule)
+      .margin({ top: 20 })
       .backgroundColor('#0D9FFB')
     }
     .width('100%')

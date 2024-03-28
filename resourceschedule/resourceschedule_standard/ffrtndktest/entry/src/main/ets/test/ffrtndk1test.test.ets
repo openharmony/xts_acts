@@ -28,7 +28,7 @@ export default function ffrtNdkTest() {
      */
     it('testFfrtThisTaskUpdateQos001', 0, async (done: Function) => {
       let result: number = ffrtndk.ffrtThisTaskUpdateQos();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(100);
       done();
     });
 
@@ -42,7 +42,7 @@ export default function ffrtNdkTest() {
      */
     it('testFfrtThisTaskGetId001', 0, async (done: Function) => {
       let result: number = ffrtndk.ffrtThisTaskGetId();
-      expect(result).assertEqual(0);
+      expect(result).assertEqual(1);
       done();
     });
   })

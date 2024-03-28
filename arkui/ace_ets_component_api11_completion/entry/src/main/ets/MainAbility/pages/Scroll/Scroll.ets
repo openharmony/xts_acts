@@ -16,9 +16,9 @@
 @Component
 struct ScrollTest {
   scroller: Scroller = new Scroller;
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-  @State scrollText: string = ''
-  @State text: string = ''
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  @State scrollText: string = '';
+  @State text: string = '';
 
   build() {
     Scroll(this.scroller) {
@@ -35,12 +35,14 @@ struct ScrollTest {
             .fontSize(16)
             .textAlign(TextAlign.Center)
         }, (item: string) => item)
-      }.width('100%').backgroundColor(0xDCDCDC)
+      }
+      .width('100%')
+      .backgroundColor(0xDCDCDC)
     }
     .backgroundColor(Color.Yellow)
     .height('100%')
     .enablePaging(true)
-    .onScroll( ()=> {
+    .onScroll(() => {
       this.scrollText = 'true'
     })
   }

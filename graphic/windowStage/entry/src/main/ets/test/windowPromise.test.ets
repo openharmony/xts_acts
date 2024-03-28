@@ -1795,6 +1795,76 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       }
     })
-
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3910
+     * @tc.name      : testCreateSubWindowWithOptions_Function_Promise
+     * @tc.desc      : Test the function value of createSubWindowWithOptions
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testCreateSubWindowWithOptions_Function_Promise", 0, async function(done){
+      let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
+      console.log(msgStr + " begin");
+      let windowClass = undefined;
+      try {
+        console.log(msgStr + " try begin")
+        let options:ohosWindow.SubWindowOptions = {
+          title: 'title',
+          decorEnabled: true
+        };
+        let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
+        promise.then((data) => {
+          windowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          expect(true).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+          if(error.code == 1300002){
+            expect(true).assertTrue();
+            done();
+          } else {
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
+        if(error.code == 1300002){
+          expect().assertTrue();
+          done();
+        } else {
+          expect.assertFail();
+          done();
+        }        
+      }
+    })       
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3920
+     * @tc.name      : testGetWindowSystemBarProperties_Function
+     * @tc.desc      : Test the function value of getWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testGetWindowSystemBarProperties_Function", 0, async function(done){
+      let msgStr = "testGetWindowSystemBarProperties_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let systemBarProperty = wnd.getWindowSystemBarProperties();
+          console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+          expect(true).assertTrue()
+          done()
+        } catch (exception) {
+          console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    }) 
   })
 }

@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { beforeEach, describe, expect, it } from '@ohos/hypium';
+import router from '@ohos.router';
+import { Driver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+
 export default function alphabetTest() {
-  describe('alphabetTest', function () {
-    beforeEach(async function (done) {
+  describe('alphabetTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("alphabetTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/commonApi/alphabet',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/commonApi/alphabet',
       }
       try {
         router.clear();
@@ -48,18 +48,17 @@ export default function alphabetTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('alphabetTest_0100', 0, async function (done) {
+    it('alphabetTest_0100', 0, async (done: Function) => {
       console.info('alphabetTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('alphabet_1');
-      let obj = JSON.parse(strJson);
-      console.info("[alphabetTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[alphabetTest_0100] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.autoCollapse).assertEqual('false');
+      console.info("[alphabetTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[alphabetTest_0100] component obj.$attrs is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.autoCollapse).assertEqual('false');
       console.info('[alphabetTest_0100] END');
       done();
     });
   })
-  }
+}
 

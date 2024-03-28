@@ -14,15 +14,16 @@
  */
 // PageTwo.ets
 export class Pages {
-  names: string = ""
-  values: NavPathStack | null = null
+  names: string = "";
+  values: NavPathStack | null = null;
 }
 
 class resultClass {
   constructor(count: number) {
     this.count = count;
   }
-  count: number = 10
+
+  count: number = 10;
 }
 
 @Builder

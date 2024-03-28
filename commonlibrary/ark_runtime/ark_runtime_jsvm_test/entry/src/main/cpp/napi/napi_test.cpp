@@ -1476,6 +1476,59 @@ static napi_value Add1(napi_env env1, napi_callback_info info) {
     NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
+static bool output_stream(const char *data, int size, void *stream_data) {
+    return true;
+}
+static JSVM_Value theSecondOperations(JSVM_Env env, JSVM_CallbackInfo info) {
+    JSVM_VM vm;
+    OH_JSVM_CreateVM(nullptr, &vm);
+    void *data = nullptr;
+    JSVM_HeapStatistics stats;
+    OH_JSVM_GetHeapStatistics(vm, &stats);
+    OH_JSVM_TakeHeapSnapshot(vm,output_stream,data);
+    JSVM_CpuProfiler cpu_profiler;
+    OH_JSVM_StartCpuProfiler(vm, &cpu_profiler);
+    OH_JSVM_StopCpuProfiler( vm,cpu_profiler,output_stream,data);
+    return nullptr;
+}
+static napi_value testSecondOperations(napi_env env1, napi_callback_info info) {
+        JSVM_InitOptions init_options;
+        memset(&init_options, 0, sizeof(init_options));
+        init_options.externalReferences = externals;
+        if (aa == 0) {
+            OH_JSVM_Init(&init_options);
+            aa++;
+        }
+        JSVM_VM vm;
+        JSVM_CreateVMOptions options;
+        memset(&options, 0, sizeof(options));
+        OH_JSVM_CreateVM(&options, &vm);
+        JSVM_VMScope vm_scope;
+        OH_JSVM_OpenVMScope(vm, &vm_scope);
+        JSVM_Env env;
+        JSVM_CallbackStruct param[1];
+        param[0].data = nullptr;
+        param[0].callback = theSecondOperations;
+        JSVM_PropertyDescriptor descriptor[] = {
+            {"theSecondOperations", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+        };
+        OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+        OH_JSVM_OpenInspector(env, "localhost", 9229);
+        OH_JSVM_WaitForDebugger(env, false);
+        JSVM_EnvScope envScope;
+        OH_JSVM_OpenEnvScope(env, &envScope);
+        JSVM_HandleScope handlescope;
+        OH_JSVM_OpenHandleScope(env, &handlescope);
+        OH_JSVM_CloseHandleScope(env, handlescope);
+        OH_JSVM_CloseInspector(env);
+        OH_JSVM_CloseEnvScope(env, envScope);
+        OH_JSVM_DestroyEnv(env);
+        OH_JSVM_CloseVMScope(vm, vm_scope);
+        OH_JSVM_DestroyVM(vm);
+        napi_value result11;
+        NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+        return result11;
+}
 
 EXTERN_C_START
 
@@ -1506,6 +1559,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testOthers",testOthers),
         DECLARE_NAPI_FUNCTION("Add",Add),
         DECLARE_NAPI_FUNCTION("Add1",Add1),
+        DECLARE_NAPI_FUNCTION("testSecondOperations",testSecondOperations),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 let nextId:number=0
-@observed
+@ObservedV2
 class Person4{
-  @track age:number = 0
+  @Trace age:number = 0
 
   constructor(age:number) {
     this.age=age
   }
 }
-@observed
+@ObservedV2
 class Info2{
   id:number=0
-  @track personList:Person4[]=[]
+  @Trace personList:Person4[]=[]
 
   constructor() {
     this.id = nextId++

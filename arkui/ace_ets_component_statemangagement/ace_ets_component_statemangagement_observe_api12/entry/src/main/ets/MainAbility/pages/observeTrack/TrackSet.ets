@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@observed
+@ObservedV2
 class InfoB {
-  @track memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @Trace memberSet: Set<number> = new Set([0, 1, 2, 3, 4]);
 }
 
 @Entry

@@ -20,43 +20,57 @@ import Want from '@ohos.app.ability.Want';
 import contextConstant from '@ohos.app.ability.contextConstant';
 import { BusinessError } from '@ohos.base';
 import commonEvent from '@ohos.commonEventManager';
+import { Driver, MatchPattern, ON } from '@ohos.UiTest';
+
+function getCount(str: string, substring: string): number {
+  let count = 0;
+  while (str.indexOf(substring) != -1) {
+    str = str.replace(substring, '');
+    count++;
+  }
+  return count;
+}
+
+let driver = Driver.create();
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
     let functionEnable = '';
     let ON_WINDOW_STAGE_CREATE = "on_window_stage_create";
     let ON_FOREGROUND = "on_foreground";
+    let ON_DESTROY = "on_destroy";
     let START_ABILITY_IN_NEW_PROCESS_EVENT = "start_ability_in_new_process_event";
-    let UPDATE_WANT_EVENT = "update_want_event";
+    let START_ABILITY_EVENT = "start_ability_event";
     let FOREGROUND_EVENT = "foreground_event";
     let SHOW_ABILITY_EVENT = "show_ability_event";
     let HIDE_ABILITY_EVENT = "hide_ability_event";
+    let NOTIFY_PID_EVENT = "notify_pid_event";
+    let KILL_PROCESS_EVENT = "kill_process_event";
     let subscribeInfo = {
-      events: [ON_WINDOW_STAGE_CREATE, ON_FOREGROUND, START_ABILITY_IN_NEW_PROCESS_EVENT, FOREGROUND_EVENT],
+      events: [ON_WINDOW_STAGE_CREATE, ON_DESTROY, ON_FOREGROUND, START_ABILITY_IN_NEW_PROCESS_EVENT, FOREGROUND_EVENT, NOTIFY_PID_EVENT],
     };
-    let subscriber;
+    let subscriber = undefined;
     let abilityDelegator;
     let onWindowStageFlag = false;
     let onForegroundFlag = false;
+    let onDestroyFlag = false;
     let expectErrorCode = -1;
     let commonEventData = {
       parameters: {}
     };
+    let pids = [];
 
     function sleep(ms: number) {
       return new Promise<string>(resolve => setTimeout(resolve, ms));
     }
 
-    function subscribeCallBack(err, data, done, tag) {
+    async function subscribeCallBack(err, data, done, tag) {
       console.log(`${tag} subscribeCallBack err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
       switch (data.event) {
         case START_ABILITY_IN_NEW_PROCESS_EVENT: {
           expect(data.parameters.num).assertEqual(expectErrorCode);
           if (expectErrorCode !== 0) {
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }
         }
           break;
@@ -68,10 +82,20 @@ export default function abilityTest() {
           onForegroundFlag = true;
           console.log(`${tag} subscribeCallBack onForegroundFlag: ${onForegroundFlag}`);
           break;
+        case ON_DESTROY:
+          onDestroyFlag = true;
+          console.log(`${tag} subscribeCallBack onDestroyFlag: ${onDestroyFlag}`);
+          break;
         case FOREGROUND_EVENT: {
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          await sleep(500);
+          commonEventData.parameters["targetPid"] = data.parameters.pid;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
+        }
+          break;
+        case NOTIFY_PID_EVENT: {
+          pids.push(data.parameters.pid);
         }
           break;
         default:
@@ -80,7 +104,7 @@ export default function abilityTest() {
       }
     }
 
-    function startAssistAbility(tag, done) {
+    async function startAssistAbility(tag, done) {
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.startabilityinnewprocessrely',
@@ -92,23 +116,25 @@ export default function abilityTest() {
           if (err.code) {
             console.log(`${tag} startAbility failed, code is ${err.code}, message is ${err.message}`);
             expect().assertFail();
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
             return;
           }
           console.log(`${tag} startAbility succeed`);
         });
+        await sleep(2000);
+        let allowed = await driver.findComponent(ON.text('想要打开', MatchPattern.CONTAINS));
+        if (allowed) {
+          let buttons = await driver.findComponents(ON.type('Button'));
+          if (buttons && buttons.length > 0) {
+            buttons[buttons.length - 1].click();
+          }
+        }
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.log(`${tag} startAbility failed, code is ${code}, message is ${message}`);
         expect().assertFail();
-        commonEvent.unsubscribe(subscriber, (err, data) => {
-          console.info(`${tag} unsubscribe success`);
-          done();
-        })
+        done();
       }
     }
 
@@ -132,15 +158,26 @@ export default function abilityTest() {
       commonEventData ={
         parameters: {}
       };
+      pids = [];
       done();
     })
     afterEach(async function (done) {
       let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess afterEach]';
-      let forcestop = 'aa force-stop com.example.startabilityinnewprocessrely';
-      await abilityDelegator.executeShellCommand(forcestop).catch(err => {
-        console.log(`${tag} executeShellCommand failed.`);
-      })
-      await sleep(1000);
+      try {
+        if (subscriber) {
+          commonEvent.unsubscribe(subscriber, (err, data) => {
+            console.info(`${tag} unsubscribe success`);
+            subscriber = undefined;
+          })
+        }
+        let forcestop = 'aa force-stop com.example.startabilityinnewprocessrely';
+        await abilityDelegator.executeShellCommand(forcestop).catch(err => {
+          console.log(`${tag} executeShellCommand failed.`);
+        })
+        await sleep(1000);
+      } catch (err) {
+        console.info(`${tag} err: ${JSON.stringify(err)}`);
+      }
       done();
     })
     afterAll(function () {
@@ -184,10 +221,7 @@ export default function abilityTest() {
             done();
           })
           expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility2:");
-          commonEvent.unsubscribe(subscriber, (err, data) => {
-            console.info(`${tag} unsubscribe success`);
-            done();
-          })
+          done();
         }, 3000)
       } else if (functionEnable === 'false') {
         console.log(`${tag} function not enable.`);
@@ -225,10 +259,7 @@ export default function abilityTest() {
         setTimeout(async ()=>{
           let flag = onWindowStageFlag && onForegroundFlag;
           expect(flag).assertEqual(true);
-          commonEvent.unsubscribe(subscriber, (err, data) => {
-            console.info(`${tag} unsubscribe success`);
-            done();
-          })
+          done();
         }, 3000)
       } else if (functionEnable === 'false') {
         console.log(`${tag} function not enable.`);
@@ -272,10 +303,7 @@ export default function abilityTest() {
           });
           setTimeout(async ()=>{
             expect(onForegroundFlag).assertEqual(true);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000);
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -383,8 +411,9 @@ export default function abilityTest() {
           expect(flag).assertEqual(true);
           expectErrorCode = 16000068;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -469,16 +498,14 @@ export default function abilityTest() {
           onWindowStageFlag = false;
           onForegroundFlag = false;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
           setTimeout(async ()=>{
             let flag = onWindowStageFlag && !onForegroundFlag;
             expect(flag).assertEqual(true);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000)
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -604,10 +631,7 @@ export default function abilityTest() {
             console.log(`${tag} publish HIDE_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
           setTimeout(async ()=>{
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000);
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -656,8 +680,9 @@ export default function abilityTest() {
           expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility4:");
           expectErrorCode = 16000068;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -699,8 +724,9 @@ export default function abilityTest() {
           commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM;
           commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -742,8 +768,9 @@ export default function abilityTest() {
           commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM;
           commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -787,16 +814,14 @@ export default function abilityTest() {
           onWindowStageFlag = false;
           onForegroundFlag = false;
           commonEventData.parameters["isDone"] = 1;
-          commonEvent.publish(UPDATE_WANT_EVENT, commonEventData, (err)=>{
-            console.log(`${tag} publish UPDATE_WANT_EVENT err: ${JSON.stringify(err)}`);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
           setTimeout(async ()=>{
             let flag = onWindowStageFlag && onForegroundFlag;
             expect(flag).assertEqual(true);
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000)
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -840,10 +865,7 @@ export default function abilityTest() {
             console.log(`${tag} publish SHOW_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
           setTimeout(async ()=>{
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000);
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -887,10 +909,7 @@ export default function abilityTest() {
             console.log(`${tag} publish HIDE_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
           setTimeout(async ()=>{
-            commonEvent.unsubscribe(subscriber, (err, data) => {
-              console.info(`${tag} unsubscribe success`);
-              done();
-            })
+            done();
           }, 3000);
         }, 3000)
       } else if (functionEnable === 'false') {
@@ -961,7 +980,7 @@ export default function abilityTest() {
           commonEvent.publish(SHOW_ABILITY_EVENT, (err)=>{
             console.log(`${tag} publish SHOW_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
-        }, 3000)
+        }, 5000)
       } else {
         expect(true).assertTrue();
         done();
@@ -996,11 +1015,1050 @@ export default function abilityTest() {
           commonEvent.publish(HIDE_ABILITY_EVENT, (err)=>{
             console.log(`${tag} publish HIDE_ABILITY_EVENT err: ${JSON.stringify(err)}`);
           });
-        }, 3000)
+        }, 5000)
       } else {
         expect(true).assertTrue();
         done();
       }
     })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100
+     * @tc.name Normal branch.
+     * @tc.desc Child process exits with parent process.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2100]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expect(pids.length).assertEqual(2);
+          commonEventData.parameters["targetPid"] = pids[1];
+          commonEventData.parameters["isDone"] = 0;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            console.log(`${tag} pids.length: ${JSON.stringify(pids)}`);
+            expect(pids.length).assertEqual(3);
+            commonEventData.parameters["targetPid"] = pids[1];
+            commonEventData.parameters["isDone"] = 1;
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            console.log(`${tag} kill ${pids[1]}`);
+            setTimeout(async ()=>{
+              console.log(`${tag} check pid`);
+              let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+              let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+                console.log(`${tag} executeShellCommand failed.`);
+                expect().assertFail();
+                done();
+              })
+              expect(data.stdResult).assertContain(pids[0]);
+              expect(data.stdResult.indexOf(pids[1])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[2])).assertEqual(-1);
+              done();
+            }, 1000);
+          }, 3000);
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200
+     * @tc.name Normal branch.
+     * @tc.desc Child process exits with parent process.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2200]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expect(pids.length).assertEqual(2);
+          commonEventData.parameters["targetPid"] = pids[1];
+          commonEventData.parameters["isDone"] = 1;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            console.log(`${tag} pids.length: ${JSON.stringify(pids)}`);
+            expect(pids.length).assertEqual(3);
+            commonEventData.parameters["targetPid"] = pids[0];
+            commonEventData.parameters["isDone"] = 1;
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            console.log(`${tag} kill ${pids[0]}`);
+            setTimeout(async ()=>{
+              console.log(`${tag} check pid`);
+              let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+              let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+                console.log(`${tag} executeShellCommand failed.`);
+                expect().assertFail();
+                done();
+              })
+              expect(data.stdResult.indexOf(pids[0])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[1])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[2])).assertEqual(-1);
+              done();
+            }, 1000);
+          }, 3000);
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2300
+     * @tc.name Normal branch.
+     * @tc.desc Child process exits with parent process.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2300',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2300]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expect(pids.length).assertEqual(2);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            console.log(`${tag} pids.length: ${JSON.stringify(pids)}`);
+            expect(pids.length).assertEqual(3);
+            commonEventData.parameters["targetPid"] = pids[0];
+            commonEventData.parameters["isDone"] = 1;
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            console.log(`${tag} kill ${pids[0]}`);
+            setTimeout(async ()=>{
+              console.log(`${tag} check pid`);
+              let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+              let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+                console.log(`${tag} executeShellCommand failed.`);
+                expect().assertFail();
+                done();
+              })
+              expect(data.stdResult.indexOf(pids[0])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[1])).assertEqual(-1);
+              expect(data.stdResult).assertContain(pids[2]);
+              done();
+            }, 1000);
+          }, 3000);
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400
+     * @tc.name Normal branch.
+     * @tc.desc Child process exits with parent process.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2400]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expect(pids.length).assertEqual(2);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEventData.parameters["acts_processMode"] = undefined;
+          commonEventData.parameters["acts_startupVisibility"] = undefined;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            console.log(`${tag} pids.length: ${JSON.stringify(pids)}`);
+            expect(pids.length).assertEqual(3);
+            expect(pids[0]).assertEqual(pids[2]);
+            commonEventData.parameters["targetPid"] = pids[0];
+            commonEventData.parameters["isDone"] = 1;
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            console.log(`${tag} kill ${pids[0]}`);
+            setTimeout(async ()=>{
+              console.log(`${tag} check pid`);
+              let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+              let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+                console.log(`${tag} executeShellCommand failed.`);
+                expect().assertFail();
+                done();
+              })
+              expect(data.stdResult.indexOf(pids[0])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[1])).assertEqual(-1);
+              done()
+            }, 1000);
+          }, 3000);
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500
+     * @tc.name Normal branch.
+     * @tc.desc Child process exits with parent process.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2500]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expect(pids.length).assertEqual(2);
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            console.log(`${tag} pids.length: ${JSON.stringify(pids)}`);
+            expect(pids.length).assertEqual(3);
+            commonEventData.parameters["targetPid"] = pids[0];
+            commonEventData.parameters["isDone"] = 1;
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            console.log(`${tag} kill ${pids[0]}`);
+            setTimeout(async ()=>{
+              console.log(`${tag} check pid`);
+              let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+              let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+                console.log(`${tag} executeShellCommand failed.`);
+                expect().assertFail();
+                done();
+              })
+              expect(data.stdResult.indexOf(pids[0])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[1])).assertEqual(-1);
+              expect(data.stdResult.indexOf(pids[2])).assertEqual(-1);
+              done();
+            }, 1000);
+          }, 3000);
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600
+     * @tc.name Normal branch.
+     * @tc.desc Start with NEW_PROCESS_ATTACH_TO_PARENT and STARTUP_HIDE.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2600]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          })
+          expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility2:");
+          done();
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700
+     * @tc.name Normal branch.
+     * @tc.desc Start with NEW_PROCESS_ATTACH_TO_PARENT and STARTUP_SHOW.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2700]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          done();
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800
+     * @tc.name Anomalous branch.
+     * @tc.desc Repeat start ability with NEW_PROCESS_ATTACH_TO_PARENT in singleton mode.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2800]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expectErrorCode = 16000068;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900
+     * @tc.name Anomalous branch.
+     * @tc.desc Target ability is not self application.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_2900]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 16300003;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.test';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000
+     * @tc.name Normal branch.
+     * @tc.desc Repeat start ability with STARTUP_HIDE in multiton mode.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3000]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          })
+          let count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+          console.log(`${tag} count is ${count} after show start`);
+          expect(count).assertEqual(1);
+          expectErrorCode = 0;
+          onWindowStageFlag = false;
+          onForegroundFlag = false;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            let flag = onWindowStageFlag && !onForegroundFlag;
+            expect(flag).assertEqual(true);
+            let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+            let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+              console.log(`${tag} executeShellCommand failed.`);
+              expect().assertFail();
+              done();
+            })
+            let count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+            console.log(`${tag} count is ${count} after show start`);
+            expect(count).assertEqual(2);
+            done();
+          }, 3000)
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100
+     * @tc.name Anomalous branch.
+     * @tc.desc Repeat start ability in specified mode.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3100]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility4';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          })
+          expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility4:");
+          expectErrorCode = 16000068;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200
+     * @tc.name Anomalous branch.
+     * @tc.desc Start specified ability without process options, then start the ability with process options again.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3200]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility4';
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expectErrorCode = 16000068;
+          commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+          commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300
+     * @tc.name Anomalous branch.
+     * @tc.desc Start singleton ability without process options, then start the ability with process options again.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3300]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expectErrorCode = 16000068;
+          commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+          commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400
+     * @tc.name Normal branch.
+     * @tc.desc Repeat start ability with STARTUP_SHOW in multiton mode.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3400]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          })
+          let count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+          console.log(`${tag} count is ${count} after show start`);
+          expect(count).assertEqual(1);
+          expectErrorCode = 0;
+          onWindowStageFlag = false;
+          onForegroundFlag = false;
+          commonEventData.parameters["isDone"] = 1;
+          commonEventData.parameters["targetPid"] = pids[0];
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          setTimeout(async ()=>{
+            let flag = onWindowStageFlag && onForegroundFlag;
+            expect(flag).assertEqual(true);
+            let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+            let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+              console.log(`${tag} executeShellCommand failed.`);
+              expect().assertFail();
+              done();
+            })
+            let count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+            console.log(`${tag} count is ${count} after show start`);
+            expect(count).assertEqual(2);
+            done();
+          }, 3000)
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500
+     * @tc.name Anomalous branch.
+     * @tc.desc Function not enable. Start with process options.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3500]';
+      if (functionEnable !== 'true') {
+        expectErrorCode = 801;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+      } else {
+        expect(true).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600
+     * @tc.name Anomalous branch.
+     * @tc.desc Start with NEW_PROCESS_ATTACH_TO_PARENT, then call hideAbility().
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3600]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expectErrorCode = 16000067;
+          commonEvent.publish(HIDE_ABILITY_EVENT, (err)=>{
+            console.log(`${tag} publish HIDE_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000);
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700
+     * @tc.name Anomalous branch.
+     * @tc.desc Start ability without process options, then call showAbility().
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3700]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility2';
+        commonEventData.parameters["isDone"] = 1;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          expectErrorCode = 16000067;
+          commonEvent.publish(SHOW_ABILITY_EVENT, (err)=>{
+            console.log(`${tag} publish HIDE_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+        }, 3000);
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3900
+     * @tc.name Anomalous branch.
+     * @tc.desc Start and terminate with NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM and STARTUP_SHOW.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3900',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_3900]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        let pid = 0;
+        setTimeout(async ()=>{
+          pid = pids[0];
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          })
+          expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility3:");
+          let tmppid = pids[1];
+          pids = [];
+          pids.push(tmppid);
+          for (let i = 0; i < 10;i++) {
+            commonEventData.parameters["targetPid"] = pids[0];
+            commonEvent.publish(KILL_PROCESS_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish KILL_PROCESS_EVENT err: ${JSON.stringify(err)}`);
+            });
+            await sleep(1000);
+            expect(onDestroyFlag).assertEqual(true);
+            cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+            data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+              console.log(`${tag} executeShellCommand failed.`);
+              expect().assertFail();
+              done();
+            })
+            expect(data.stdResult.indexOf('com.example.startabilityinnewprocessrely:entry:MainAbility3:'))
+            .assertContain(-1);
+            pids = [];
+            onWindowStageFlag = false;
+            onForegroundFlag = false;
+            onDestroyFlag = false;
+            commonEventData.parameters["targetPid"] = pid;
+            commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err)=>{
+              console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+            });
+            await sleep(3000);
+            flag = onWindowStageFlag && onForegroundFlag;
+            expect(flag).assertEqual(true);
+            cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+            data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+              console.log(`${tag} executeShellCommand failed.`);
+              expect().assertFail();
+              done();
+            })
+            expect(data.stdResult).assertContain("com.example.startabilityinnewprocessrely:entry:MainAbility3:");
+          }
+          done();
+        }, 3000);
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_4000
+     * @tc.name Anomalous branch.
+     * @tc.desc Start with NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM and STARTUP_SHOW or STARTUP_HIDE.
+     * @tc.level Level 3
+     * @tc.size MediumTest
+     * @tc.type Function
+     */
+    it('SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_4000',0, async function (done) {
+      let tag = '[SUB_Ability_AbilityRuntime_StartAbilityInNewProcess_4000]';
+      if (functionEnable === 'true') {
+        expectErrorCode = 0;
+        commonEventData.parameters["acts_bundleName"] = 'com.example.startabilityinnewprocessrely';
+        commonEventData.parameters["acts_abilityName"] = 'MainAbility3';
+        commonEventData.parameters["acts_processMode"] = contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM;
+        commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_SHOW;
+        commonEventData.parameters["isDone"] = 0;
+
+        subscriber = await commonEvent.createSubscriber(subscribeInfo);
+        commonEvent.subscribe(subscriber, (err, data) => {
+          subscribeCallBack(err, data, done, tag);
+        });
+        startAssistAbility(tag, done);
+        setTimeout(async ()=>{
+          let flag = onWindowStageFlag && onForegroundFlag;
+          expect(flag).assertEqual(true);
+          let cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          let data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          });
+          let count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+          console.log(`${tag} count is ${count} after show start`);
+          expect(count).assertEqual(1);
+          onWindowStageFlag = false;
+          onForegroundFlag = false;
+          commonEventData.parameters["acts_startupVisibility"] = contextConstant.StartupVisibility.STARTUP_HIDE;
+          commonEvent.publish(START_ABILITY_EVENT, commonEventData, (err) => {
+            console.log(`${tag} publish START_ABILITY_EVENT err: ${JSON.stringify(err)}`);
+          });
+          await sleep(3000);
+          flag = onWindowStageFlag && !onForegroundFlag;
+          expect(flag).assertEqual(true);
+          cmd = 'ps -ef | grep com.example.startabilityinnewprocessrely';
+          data = await abilityDelegator.executeShellCommand(cmd).catch(err => {
+            console.log(`${tag} executeShellCommand failed.`);
+            expect().assertFail();
+            done();
+          });
+          count = getCount(data.stdResult, 'com.example.startabilityinnewprocessrely:entry:MainAbility3:');
+          console.log(`${tag} count is ${count} after hide start`);
+          expect(count).assertEqual(2);
+          done();
+        }, 3000)
+      } else if (functionEnable === 'false') {
+        console.log(`${tag} function not enable.`);
+        expect(true).assertTrue();
+        done();
+      } else {
+        console.log(`${tag} wrong param`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+
   })
 }

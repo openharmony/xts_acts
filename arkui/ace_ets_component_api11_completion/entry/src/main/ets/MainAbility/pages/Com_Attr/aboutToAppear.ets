@@ -15,17 +15,20 @@
 @Entry
 @Component
 struct DirectiveMenuExample {
-  private iconStr: ResourceStr = $r("app.media.icon")
-  @State bdgColor: string = 'green'
-  @State fontColor: string = 'black'
+  private iconStr: ResourceStr = $r("app.media.icon");
+  @State bdgColor: string = 'green';
+  @State fontColor: string = 'black';
+
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" }).id('close')
+      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
+        .id('close')
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
     }
   }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
@@ -40,10 +43,10 @@ struct DirectiveMenuExample {
             enableArrow: true,
             placement: Placement.Bottom,
             aboutToAppear: () => {
-              this.bdgColor = '#FFFF0000'
+              this.bdgColor = '#FFFF0000';
             },
             aboutToDisappear: () => {
-              this.fontColor = '#FF0000FF'
+              this.fontColor = '#FF0000FF';
             }
           })
           .id('aboutToAppear')

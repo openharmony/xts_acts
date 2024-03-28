@@ -25,12 +25,12 @@ struct WebViewControllerDownloadTest {
   delegate: webView.WebDownloadDelegate = new webView.WebDownloadDelegate();
   @State str: string = '';
   @State downloadUrl: string = 'https://consumer.huawei.com/content/dam/' +
-  'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
-  'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe'
+    'huawei-cbg-site/cn/mkt/mobileservices/2022/download/' +
+    'PC107f1b3947c942ffaa14334a879065d8.2107261020.exe'
   @State downloadUrlImg: string = 'https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/pdp/tablets/' +
-  'matepad-pro-11-2024/assets/imgs/pc/huawei-matepad-11-inch-Huawei-sound.png';
+    'matepad-pro-11-2024/assets/imgs/pc/huawei-matepad-11-inch-Huawei-sound.png';
   @State downloadUrlVideo: string = 'https://www-file.huawei.com/-/media/corp2020/' +
-  'videos/tech4all/stories/2/shansha-green-turtle.mp4';
+    'videos/tech4all/stories/2/shansha-green-turtle.mp4';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = false;
@@ -437,18 +437,18 @@ struct WebViewControllerDownloadTest {
                 if (this.failedDownloadSerializedData && this.failedDownload) {
                   let deserialize = webView.WebDownloadItem.deserialize(this.failedDownloadSerializedData)
                   let same = this.failedDownload.getGuid() == deserialize.getGuid() &&
-                  this.failedDownload.getGuid() == deserialize.getGuid() &&
-                  this.failedDownload.getCurrentSpeed() == deserialize.getCurrentSpeed() &&
-                  this.failedDownload.getPercentComplete() == deserialize.getPercentComplete() &&
-                  this.failedDownload.getTotalBytes() == deserialize.getTotalBytes() &&
-                  this.failedDownload.getState() == deserialize.getState() &&
-                  this.failedDownload.getLastErrorCode() == deserialize.getLastErrorCode() &&
-                  this.failedDownload.getMethod() == deserialize.getMethod() &&
-                  this.failedDownload.getMimeType() == deserialize.getMimeType() &&
-                  this.failedDownload.getUrl() == deserialize.getUrl() &&
-                  this.failedDownload.getSuggestedFileName() == deserialize.getSuggestedFileName() &&
-                  this.failedDownload.getReceivedBytes() == deserialize.getReceivedBytes() &&
-                  this.failedDownload.getFullPath() == deserialize.getFullPath()
+                    this.failedDownload.getGuid() == deserialize.getGuid() &&
+                    this.failedDownload.getCurrentSpeed() == deserialize.getCurrentSpeed() &&
+                    this.failedDownload.getPercentComplete() == deserialize.getPercentComplete() &&
+                    this.failedDownload.getTotalBytes() == deserialize.getTotalBytes() &&
+                    this.failedDownload.getState() == deserialize.getState() &&
+                    this.failedDownload.getLastErrorCode() == deserialize.getLastErrorCode() &&
+                    this.failedDownload.getMethod() == deserialize.getMethod() &&
+                    this.failedDownload.getMimeType() == deserialize.getMimeType() &&
+                    this.failedDownload.getUrl() == deserialize.getUrl() &&
+                    this.failedDownload.getSuggestedFileName() == deserialize.getSuggestedFileName() &&
+                    this.failedDownload.getReceivedBytes() == deserialize.getReceivedBytes() &&
+                    this.failedDownload.getFullPath() == deserialize.getFullPath()
                   Utils.emitEvent(same, 79680)
                 }
               } catch (error) {

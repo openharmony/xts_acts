@@ -47,7 +47,7 @@ export default function GridCallbackJsunit() {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridCallbackJsunit_1000] START');
 
-      let grid2 = CommonFunc.getComponentRect('grid2');
+      let grid2 = CommonFunc.getComponentRectOnScreen('grid2');
       let top = grid2.top
       let bottom = grid2.bottom
       let left = grid2.left

@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import router from '@system.router';
 
 @Entry
 @Component
 struct Second {
-  private content: string = "Second Page"
+  private content: string = "Second Page";
 
   build() {
-    Flex({ direction: FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(`${this.content}`)
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -28,13 +29,12 @@ struct Second {
         Text('back to index')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
+      }
+      .type(ButtonType.Capsule)
+      .margin({ top: 20 })
       .backgroundColor('#0D9FFB')
       .onClick(() => {
-        router.back()
+        router.back();
       })
     }
     .width('100%')

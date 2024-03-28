@@ -94,6 +94,7 @@ describe('btBaseProfileTest', function() {
         console.info('beforeAll called')
         await clickRequestPermission();
         await openPhone();
+        await tryToEnableBt();
         A2dpSourceProfile = a2dp.createA2dpSrcProfile();
         HandsFreeAudioGatewayProfile = hfp.createHfpAgProfile();
         HidHostProfile = hid.createHidHostProfile();

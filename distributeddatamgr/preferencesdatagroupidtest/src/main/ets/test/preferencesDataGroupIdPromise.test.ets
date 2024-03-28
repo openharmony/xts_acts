@@ -16,13 +16,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import dataPreferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common"
+import { BusinessError } from '@ohos.base';
 
 const TAG = "[ttt]"
 let context: common.UIAbilityContext
 
 export default function preferencesDataGroupIdPromise() {
-  describe('preferencesDataGroupIdPromise', function () {
-    beforeAll(async function () {
+  describe('preferencesDataGroupIdPromise', () => {
+    beforeAll(async () => {
       context = AppStorage.Get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext
 
     })
@@ -37,12 +38,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async function (done) {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async (done: Function) => {
       const Options = {
         name: "test_preferences_callback",
-        dataGroupId: null,
+        dataGroupId: null
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect(JSON.stringify(data)).assertEqual('{}');
@@ -51,15 +52,15 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `deletePreferences successfully.`);
             expect(val).assertEqual(undefined);
             done();
-          }).catch((err) => {
+          }).catch((err: BusinessError) => {
             expect().assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           expect().assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         expect().assertFail();
         done();
       }
@@ -73,12 +74,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async function (done) {
-      const Options = {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async (done: Function) => {
+      const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
-        dataGroupId: undefined,
+        dataGroupId: undefined
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect(JSON.stringify(data)).assertEqual('{}');
@@ -87,15 +88,15 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `deletePreferences successfully.`);
             expect(val).assertEqual(undefined);
             done();
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             expect().assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           expect().assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         expect().assertFail();
         done();
       }
@@ -109,12 +110,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async function (done) {
-      const Options = {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async (done: Function) => {
+      const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
-        dataGroupId: '112233',
+        dataGroupId: '112233'
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
@@ -123,17 +124,17 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `deletePreferences successfully.`);
             expect().assertFail();
             done();
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
             expect(error !== null).assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
           expect(err !== null).assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect(errInfo.code).assertEqual('15501002');
         done();
@@ -148,12 +149,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async function (done) {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async (done: Function) => {
       const Options = {
         name: "test_preferences_callback",
-        dataGroupId: null,
+        dataGroupId: null
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect(JSON.stringify(data)).assertEqual('{}');
@@ -162,15 +163,15 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect(val).assertEqual(undefined);
             done();
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             expect().assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           expect().assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         expect().assertFail();
         done();
       }
@@ -184,12 +185,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async function (done) {
-      const Options = {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async (done: Function) => {
+      const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
-        dataGroupId: undefined,
+        dataGroupId: undefined
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect(JSON.stringify(data)).assertEqual('{}');
@@ -198,15 +199,15 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect(val).assertEqual(undefined);
             done();
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             expect().assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           expect().assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         expect().assertFail();
         done();
       }
@@ -220,12 +221,12 @@ export default function preferencesDataGroupIdPromise() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async function (done) {
-      const Options = {
+    it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async (done: Function) => {
+      const Options: dataPreferences.Options = {
         name: "test_preferences_callback",
         dataGroupId: '112233',
       };
-      try{
+      try {
         dataPreferences.getPreferences(context, Options).then(async (data) => {
           console.info(TAG, `getPreferences successfully.`);
           expect().assertFail();
@@ -234,17 +235,17 @@ export default function preferencesDataGroupIdPromise() {
             console.info(TAG, `removePreferencesFromCache successfully.`);
             expect().assertFail();
             done();
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
             expect(error !== null).assertFail();
             done();
           })
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
           expect(err !== null).assertFail();
           done();
         })
-      }catch(errInfo){
+      } catch (errInfo) {
         console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
         expect(errInfo.code).assertEqual('15501002');
         done();

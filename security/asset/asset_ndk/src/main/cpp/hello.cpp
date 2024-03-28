@@ -18,7 +18,7 @@
 #include <cstring>
 
 static const int MAGIC_RET = 9999;
-static const int BUFF_MAX = 2048;
+static const int BUFF_MAX = 4096;
 static const char *DEMO_LABEL = "demo_label";
 
 static napi_value Asset_Add(napi_env env, napi_callback_info info)

@@ -428,7 +428,7 @@ describe('btLocalNameTest', function() {
         expect(set).assertFalse();
         await sleep(1000);
         let localName = bluetooth.getLocalName();
-        expect(true).assertTrue(localName==name);
+        expect(localName == name).assertTrue();
         console.info('[bluetooth_js] getLocalName1800=' + JSON.stringify(localName));
         done();
     })

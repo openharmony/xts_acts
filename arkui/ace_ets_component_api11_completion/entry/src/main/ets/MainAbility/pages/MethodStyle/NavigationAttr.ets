@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 import { CustomTransition, AnimateCallback } from './common/CustomNavigationUtils'
-import {PageTwoTemp} from './common/PageTwo'
+import { PageTwoTemp } from './common/PageTwo'
+
 @Entry
 @Component
 struct NavigationApi1 {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
-  @State finishTransitionTest:string = '111'
-  @State customNavContentTransitionTest: string = '333'
-  @State x: number = 0
-  @State scaleVal: number = 1
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @State finishTransitionTest: string = '111';
+  @State customNavContentTransitionTest: string = '333';
+  @State x: number = 0;
+  @State scaleVal: number = 1;
 
-
-
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
       Column() {
         Button('pushPathByName', { stateEffect: true, type: ButtonType.Capsule })
@@ -37,19 +37,17 @@ struct NavigationApi1 {
             this.pageInfos.pushPathByName('pageTwo', null) //将name指定的NavDestination页面信息入栈，传递的数据为param
           })
       }.width('100%').height('100%')
-    }.title('pageOne')
+    }
+    .title('pageOne')
     .mode(NavDestinationMode.STANDARD)
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop() // 弹出路由栈栈顶元素
       console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo))
       return true
     })
-    .translate({x: this.x, y: 0, z: 0})
+    .translate({ x: this.x, y: 0, z: 0 })
     .backgroundColor(Color.White)
   }
-
-
-
 
   @Builder
   PageMap(name: string) {
@@ -63,16 +61,15 @@ struct NavigationApi1 {
   aboutToAppear() {
     CustomTransition.getInstance().registerNavParam('pageOne', (isPush: boolean, isExit: boolean) => {
       this.x = isExit ? 0 : 300;
-    }, (isPush: boolean, isExit: boolean)=> {
+    }, (isPush: boolean, isExit: boolean) => {
       this.x = isExit ? -300 : 0;
     }, 200);
     if (this.pageInfos === undefined) {
       this.pageInfos = new NavPathStack();
     }
-    this.pageInfos.pushPath({name: 'pageOne'}, false)
+    this.pageInfos.pushPath({ name: 'pageOne' }, false)
 
   }
-
 
   aboutToDisappear() {
     CustomTransition.getInstance().unRegisterNavParam('pageOne')
@@ -105,12 +102,14 @@ struct NavigationApi1 {
             let toParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(to.name);
             fromParam.start(operation == NavigationOperation.PUSH, true);
             toParam.start(operation == NavigationOperation.PUSH, false);
-            animateTo({ duration: toParam.timeout, onFinish: () => {
-              transitionProxy.finishTransition();
-              this.finishTransitionTest = '444'
-              console.log('finishTransition改变:' + this.finishTransitionTest);
+            animateTo({
+              duration: toParam.timeout, onFinish: () => {
+                transitionProxy.finishTransition();
+                this.finishTransitionTest = '444'
+                console.log('finishTransition改变:' + this.finishTransitionTest);
 
-            } }, () => {
+              }
+            }, () => {
               fromParam.finish(operation === NavigationOperation.PUSH, true)
               toParam.finish(operation === NavigationOperation.PUSH, false);
             })

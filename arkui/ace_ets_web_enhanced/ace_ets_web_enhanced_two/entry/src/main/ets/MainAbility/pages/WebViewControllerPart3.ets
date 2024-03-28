@@ -137,7 +137,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -184,7 +184,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -238,7 +238,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -253,7 +253,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -270,7 +270,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -287,7 +287,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -737,7 +737,7 @@ struct WebViewControllerPart3 {
                   }
                   console.log(`The checkVIsible() again return value is: ${result}`);
                   if (this.checkEleResult[3] < JSON.parse(result)[3] && JSON.parse(result)[3] <
-                  (JSON.parse(result)[1] / 2)) {
+                    (JSON.parse(result)[1] / 2)) {
                     console.log('testPageDown001 result is :' + true);
                     Utils.emitEvent(true, 100063)
                   } else {
@@ -810,7 +810,7 @@ struct WebViewControllerPart3 {
                   }
                   console.log(`The checkVIsible() again return value is: ${result}`);
                   if (JSON.parse(result)[3] == 0 && this.checkEleResult[3] >
-                  (JSON.parse(result)[1] / 4)) {
+                    (JSON.parse(result)[1] / 4)) {
                     console.log('testPageUp001 result is :' + true);
                     Utils.emitEvent(true, 100065)
                   } else {
@@ -881,7 +881,7 @@ struct WebViewControllerPart3 {
                 await Utils.sleep(2000)
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );
@@ -927,7 +927,7 @@ struct WebViewControllerPart3 {
               try {
                 this.controller.loadData(
                   "<html><head><title>LoadData</title></head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
+                    "<body bgcolor=\"white\">Source:<pre>source</pre></body></html>",
                   "text/html",
                   "UTF-8"
                 );

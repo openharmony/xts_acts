@@ -20,7 +20,7 @@ import tabs_PadMarTest from './Tabs/Tabs_ParmsChange/Tabs_PadMar.test';
 import tabs_WidHeiTest from './Tabs/Tabs_ParmsChange/Tabs_WidHei.test';
 import Tabs_barMode from './Tabs/Tabs_ParmsChange/Tabs_barMode.test';
 import Tabs_barPosition from './Tabs/Tabs_ParmsChange/Tabs_barPosition.test';
-import Tabs_barWidHei  from './Tabs/Tabs_ParmsChange/Tabs_barWidHei.test';
+import Tabs_barWidHei from './Tabs/Tabs_ParmsChange/Tabs_barWidHei.test';
 import Tabs_scrollable from './Tabs/Tabs_ParmsChange/Tabs_scrollable.test';
 
 

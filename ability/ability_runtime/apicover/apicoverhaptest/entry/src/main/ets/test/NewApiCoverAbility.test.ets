@@ -23,7 +23,7 @@ function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
 
-export default function ApiCoverTest() {
+export default function NewApiCoverTest() {
   describe('NewApiCoverTestTest', () => {
     afterEach(async (done: Function) => {
       setTimeout(() => {

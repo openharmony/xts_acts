@@ -16,13 +16,16 @@
 @Component
 struct onGesture1 {
   @State message: string = 'hello';
+
   build() {
     Column() {
       Text(this.message)
         .key('onGesture_Text')
-        .width(100).height(40).backgroundColor(Color.Pink)
+        .width(100)
+        .height(40)
+        .backgroundColor(Color.Pink)
     }
-    .margin({top:20})
+    .margin({ top: 20 })
     .width('100%')
     .height(200)
     .gesture(
@@ -31,7 +34,7 @@ struct onGesture1 {
     )
     .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-        this.message='longPress'
+        this.message = 'longPress'
       }
       return GestureJudgeResult.CONTINUE;
     })

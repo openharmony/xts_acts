@@ -33,8 +33,8 @@ struct Gravity {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Gravity';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有重力' +
-  '传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请各方向快速移动设备，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
+    '传感器' + '\n-点击开启按钮打开传感器,' +
+    '如果有传感器，请各方向快速移动设备，否则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -125,7 +125,7 @@ struct Gravity {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -156,7 +156,8 @@ struct Gravity {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -180,7 +181,8 @@ struct Gravity {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

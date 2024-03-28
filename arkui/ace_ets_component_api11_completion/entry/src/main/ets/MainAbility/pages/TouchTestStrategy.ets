@@ -21,7 +21,7 @@ struct TouchStrategyExample {
   @State testTextStr: string = 'test'
 
   build() {
-    Column(){
+    Column() {
       Column() {
         Text(this.testTextStr).key('listText_TouchStrategy')
           .fontSize(20)
@@ -36,8 +36,7 @@ struct TouchStrategyExample {
             .fontSize(20)
             .height(80)
             .margin(20)
-            .backgroundColor(Color.Green)
-              // 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
+            .backgroundColor(Color.Green)// 通过设置ratios为[0.0, 1.0]，实现当组件完全显示或完全消失在屏幕中时触发回调
             .onVisibleAreaChange([0.0, 1.0], (isVisible: boolean, currentRatio: number) => {
               console.info('Test Text isVisible: ' + isVisible + ', currentRatio:' + currentRatio)
               if (isVisible && currentRatio >= 1.0) {
@@ -55,8 +54,12 @@ struct TouchStrategyExample {
             ForEach(this.arr, (item: number) => {
               ListItem() {
                 Text('' + item)
-                  .width('100%').height(100).fontSize(16)
-                  .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                  .width('100%')
+                  .height(100)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(0xFFFFFF)
               }
             }, (item: string) => item)
           }
@@ -71,22 +74,26 @@ struct TouchStrategyExample {
       .key('list_TouchStrategy')
       .backgroundColor(Color.Gray)
 
-      Text().key('border_TouchStrategy')
-        .width(300).height(200)
-        .borderWidth(1).margin(10)
+      Text()
+        .key('border_TouchStrategy')
+        .width(300)
+        .height(200)
+        .borderWidth(1)
+        .margin(10)
 
     }
-    .width('100%').height('100%')
+    .width('100%')
+    .height('100%')
     .key('Column_TouchStrategy')
     .backgroundColor(Color.Blue)
-    .onChildTouchTest((TouchTestInfo)=>{
-      for(let i = 0; i<TouchTestInfo.length; i++){
-        if(TouchTestInfo[i].id == 'list_TouchStrategy'){
+    .onChildTouchTest((TouchTestInfo) => {
+      for (let i = 0; i < TouchTestInfo.length; i++) {
+        if (TouchTestInfo[i].id == 'list_TouchStrategy') {
           console.log("list_TouchStrategy: FORWARD_COMPETITION")
-          return{id: TouchTestInfo[i].id, strategy: TouchTestStrategy.FORWARD_COMPETITION}
+          return { id: TouchTestInfo[i].id, strategy: TouchTestStrategy.FORWARD_COMPETITION }
         }
       }
-      return {strategy: TouchTestStrategy.FORWARD_COMPETITION}
+      return { strategy: TouchTestStrategy.FORWARD_COMPETITION }
     })
   }
 }

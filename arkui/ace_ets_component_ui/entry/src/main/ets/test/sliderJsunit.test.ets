@@ -187,7 +187,7 @@ export default function sliderJsunit() {
       // Verify the swipe function of slider component
       console.info('sliderJsunit_0800 START');
       await CommonFunc.sleep(1000);
-      let sliderT = CommonFunc.getComponentRect('sliderConstructor');
+      let sliderT = CommonFunc.getComponentRectOnScreen('sliderConstructor');
       let top = sliderT.top
       let bottom = sliderT.bottom
       let left = sliderT.left

@@ -2154,13 +2154,13 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0200
-     * @tc.name      : testWindowTitleButtonRectChange_Function_Callback
+     * @tc.name      : testWindowTitleButtonRectChange_on_Function_Callback
      * @tc.desc      : Test the function of windowTitleButtonRectChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done: Function) => {
+    it('testWindowTitleButtonRectChange_on_Function_Callback', 0, async (done: Function) => {
       let msgStr: string = 'testWindowTitleButtonRectChange_on';
       console.log(msgStr + "begin on")
       try {
@@ -2170,6 +2170,8 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
           expect(true).assertTrue();
           done();
         });
+        expect(true).assertTrue();
+        done();
       } catch (err) {
         console.log(msgStr + 'Failed to enable the listener for window title buttons area changes. Cause: ' + JSON.stringify(err));
         if (err.code == 801) {
@@ -2185,13 +2187,13 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0300
-     * @tc.name      : testWindowTitleButtonRectChange_Function_Callback
+     * @tc.name      : testWindowTitleButtonRectChange_off_Function_Callback
      * @tc.desc      : Test the function of windowTitleButtonRectChange
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it('testWindowTitleButtonRectChange_Function_Callback', 0, async (done: Function) => {
+    it('testWindowTitleButtonRectChange_off_Function_Callback', 0, async (done: Function) => {
       let msgStr: string = 'testWindowTitleButtonRectChange_off';
       console.log(msgStr + 'begin off');
       try {

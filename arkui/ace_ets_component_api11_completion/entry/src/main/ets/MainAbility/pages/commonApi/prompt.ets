@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import promptAction from '@ohos.promptAction'
-let customDialogId: number = 0
+import promptAction from '@ohos.promptAction';
+
+let customDialogId: number = 0;
+
 @Builder
 function customDialogBuilder() {
   Column() {
-    Text('Custom dialog Message:'+`${customDialogId}`)
+    Text('Custom dialog Message:' + `${customDialogId}`)
       .fontSize(30)
     Row() {
       Button("确认")
@@ -32,10 +34,12 @@ function customDialogBuilder() {
     }
   }.height(200).padding(5)
 }
+
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World'
+
   build() {
     Row() {
       Column() {
