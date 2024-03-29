@@ -84,7 +84,7 @@ export default function Grid_ScrollFrameBegin() {
      */
     it('Grid_ScrollFrameBegin_0200', 0, async (done: Function) => {
       console.info('[Grid_ScrollFrameBegin_0200] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollFrameBegin_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollFrameBegin_grid')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
@@ -110,7 +110,7 @@ export default function Grid_ScrollFrameBegin() {
      */
     it('Grid_ScrollFrameBegin_0300', 0, async (done: Function) => {
       console.info('[Grid_ScrollFrameBegin_0300] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollFrameBegin_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollFrameBegin_grid')
       let driver = Driver.create()
       await driver.fling({
         x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
