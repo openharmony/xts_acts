@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import tabs from './Tabs'
-import tabsSec from './TabsSec'
-import tabsThird from './TabsThird'
+import tabs from './Tabs';
+import tabsSec from './TabsSec';
+import tabsThird from './TabsThird';
 
 export default function testsuite() {
-       tabs()
-       tabsSec()
-       tabsThird()
+  tabs();
+  tabsSec();
+  tabsThird();
 }
