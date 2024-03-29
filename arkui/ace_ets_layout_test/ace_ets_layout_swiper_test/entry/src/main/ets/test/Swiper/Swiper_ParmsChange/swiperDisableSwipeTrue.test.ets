@@ -69,13 +69,13 @@ export default function swiperDisableSwipeTrue() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('disableTrue');
 
-      let disableTrue: RectValue = CommonFunc.getComponentRect('disableTrue');
-      let disableTrue01: RectValue = CommonFunc.getComponentRect('disableTrue01');
-      let disableTrue02: RectValue = CommonFunc.getComponentRect('disableTrue02');
-      let disableTrue03: RectValue = CommonFunc.getComponentRect('disableTrue03');
-      let disableTrue04: RectValue = CommonFunc.getComponentRect('disableTrue04');
-      let disableTrue05: RectValue = CommonFunc.getComponentRect('disableTrue05');
-      let disableTrue06: RectValue = CommonFunc.getComponentRect('disableTrue06');
+      let disableTrue = CommonFunc.getComponentRectOnScreen('disableTrue');
+      let disableTrue01 = CommonFunc.getComponentRectOnScreen('disableTrue01');
+      let disableTrue02 = CommonFunc.getComponentRectOnScreen('disableTrue02');
+      let disableTrue03 = CommonFunc.getComponentRectOnScreen('disableTrue03');
+      let disableTrue04 = CommonFunc.getComponentRectOnScreen('disableTrue04');
+      let disableTrue05 = CommonFunc.getComponentRectOnScreen('disableTrue05');
+      let disableTrue06 = CommonFunc.getComponentRectOnScreen('disableTrue06');
       // Before flipping the page.
       console.info("Before page turning , the disableTrue.left value is " + JSON.stringify(disableTrue.left));
       console.info("Before page turning , the disableTrue01.left value is " + JSON.stringify(disableTrue01.left));
@@ -88,12 +88,12 @@ export default function swiperDisableSwipeTrue() {
       await driver.swipe(Math.round(vp2px(150)), Math.round(vp2px(100)), Math.round(vp2px(100)), Math.round(vp2px(100)));
       //await driver.swipe(250, 230, 200, 230);
       await CommonFunc.sleep(1000);
-      disableTrue01 = CommonFunc.getComponentRect('disableTrue01');
-      disableTrue02 = CommonFunc.getComponentRect('disableTrue02');
-      disableTrue03 = CommonFunc.getComponentRect('disableTrue03');
-      disableTrue04 = CommonFunc.getComponentRect('disableTrue04');
-      disableTrue05 = CommonFunc.getComponentRect('disableTrue05');
-      disableTrue06 = CommonFunc.getComponentRect('disableTrue06');
+      disableTrue01 = CommonFunc.getComponentRectOnScreen('disableTrue01');
+      disableTrue02 = CommonFunc.getComponentRectOnScreen('disableTrue02');
+      disableTrue03 = CommonFunc.getComponentRectOnScreen('disableTrue03');
+      disableTrue04 = CommonFunc.getComponentRectOnScreen('disableTrue04');
+      disableTrue05 = CommonFunc.getComponentRectOnScreen('disableTrue05');
+      disableTrue06 = CommonFunc.getComponentRectOnScreen('disableTrue06');
       // After flipping the page.
       console.info("After page turning , the disableTrue.left value is " + JSON.stringify(disableTrue.left));
       console.info("After page turning , the disableTrue01.left value is " + JSON.stringify(disableTrue01.left));

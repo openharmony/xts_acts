@@ -70,10 +70,18 @@ export default function swiperLoopFalse() {
       console.info('new testSwiperSetLoopFalse START');
       await CommonFunc.sleep(2000);
       // Page turning.
-      let driver = Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      let loopFalse: RectValue = CommonFunc.getComponentRect('loopFalse');
+      // let driver = Driver.create();
+      // await driver.swipe(250, 230, 200, 230);
+      let driver = Driver.create()
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('loopFalse')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
+      let loopFalse = CommonFunc.getComponentRect('loopFalse');
       let strJson = getInspectorByKey('loopFalse');
 
       let loopFalse01: RectValue = CommonFunc.getComponentRect('loopFalse01');
