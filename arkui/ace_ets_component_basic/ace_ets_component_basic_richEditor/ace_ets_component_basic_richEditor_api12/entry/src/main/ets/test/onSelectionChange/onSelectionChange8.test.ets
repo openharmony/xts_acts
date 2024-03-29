@@ -57,11 +57,11 @@ export default function onSelectionChange8() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange8_RichEditor'));
       await richEditor.click();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let text0 = getInspectorByKey('onSelectionChange8_text1');
       let Obj0 = JSON.parse(text0);

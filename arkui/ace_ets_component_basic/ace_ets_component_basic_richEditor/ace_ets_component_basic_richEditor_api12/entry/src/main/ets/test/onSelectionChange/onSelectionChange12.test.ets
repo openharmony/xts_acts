@@ -57,10 +57,10 @@ export default function onSelectionChange12() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       await driver.triggerKey(2049);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text1_1 = getInspectorByKey('onSelectionChange12_text1');
       let Obj1_1 = JSON.parse(text1_1);
       expect(Obj1_1.$attrs.content).assertEqual('1');
@@ -72,7 +72,7 @@ export default function onSelectionChange12() {
       expect(Obj3_1.$attrs.content).assertEqual('0');
 
       await driver.triggerCombineKeys(2072,2017);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text1_2 = getInspectorByKey('onSelectionChange12_text1');
       let Obj1_2 = JSON.parse(text1_2);
       expect(Obj1_2.$attrs.content).assertEqual('2');
@@ -82,9 +82,7 @@ export default function onSelectionChange12() {
       let text3_2 = getInspectorByKey('onSelectionChange12_text3');
       let Obj3_2 = JSON.parse(text3_2);
       expect(Obj3_2.$attrs.content).assertEqual('10');
-
-      await CommonFunc.sleep(6000);
-
+      await CommonFunc.sleep(1000);
 
       console.info('[onSelectionChange12_0100] END');
       done();
