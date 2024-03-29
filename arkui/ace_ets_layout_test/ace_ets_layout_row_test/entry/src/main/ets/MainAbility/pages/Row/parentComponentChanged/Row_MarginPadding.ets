@@ -12,29 +12,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-import { MessageManager,Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct Row_MarginPadding {
   @State rowPadding: number = 10;
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Row_MarginPadding onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'padding') {
         this.rowPadding = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
     Column() {
-      Row({ space:10 }) {
+      Row({ space: 10 }) {
         Text('1').width(100).height(50).backgroundColor(0xAFEEEE).key('Row_MarginPadding_Text1')
         Text('2').width(100).height(100).backgroundColor(0x00FFFF).key('Row_MarginPadding_Text2')
         Text('3').width(100).height(150).backgroundColor(0xAFEEEE).key('Row_MarginPadding_Text3')

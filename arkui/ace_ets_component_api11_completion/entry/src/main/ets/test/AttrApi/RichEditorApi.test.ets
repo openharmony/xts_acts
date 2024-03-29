@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
-import { Driver, ON ,MouseButton} from '@ohos.UiTest';
+import { Driver, ON, MouseButton } from '@ohos.UiTest';
 
 export default function RichEditorApi() {
-  describe('RichEditorApi', function () {
-    beforeEach(async function (done) {
+  describe('RichEditorApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("RichEditorApi beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttrApi/RichEditorApi',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttrApi/RichEditorApi',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function RichEditorApi() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("RichEditorApi after each called");
     });
@@ -51,15 +51,14 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi addBuilderSpan test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_001', 0, async function (done) {
+    it('RichEditorApi_001', 0, async (done: Function) => {
       console.info('[RichEditorApi_001] START');
       await Utils.sleep(1000);
 
       let strJson = getInspectorByKey('RichEditorApi_text_hello');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[RichEditorApi_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('hello');
+      console.info("[RichEditorApi_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('hello');
 
       console.info('[RichEditorApi_001] END');
       done();
@@ -72,25 +71,23 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi getParagraphs test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_002', 0, async function (done) {
+    it('RichEditorApi_002', 0, async (done: Function) => {
       console.info('[RichEditorApi_002] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('RichEditorApi_btn_getParagraphs'));
       await btn1.click()
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[RichEditorApi_002] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[5,0]}},"range":[0,4]}]');
-
+      console.info("[RichEditorApi_002] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content)
+        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[5,0]}},"range":[0,4]}]');
       console.info('[RichEditorApi_002] END');
       done();
-
     });
 
     /*
@@ -99,11 +96,11 @@ export default function RichEditorApi() {
      * @tc.desc        RichEditorApi updateParagraphStyle test
      * @tc.level       Level 2
      */
-    it('RichEditorApi_003', 0, async function (done) {
+    it('RichEditorApi_003', 0, async (done: Function) => {
       console.info('[RichEditorApi_003] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('RichEditorApi_btn_updateParagraphStyle'));
       await btn1.click()
@@ -116,14 +113,12 @@ export default function RichEditorApi() {
       console.info('[RichEditorApi_003] btn2');
 
       let strJson = getInspectorByKey('RichEditorApi_text_spanParagraphs');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[RichEditorApi_003] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[10,0]}},"range":[0,4]}]');
-
+      console.info("[RichEditorApi_003] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content)
+        .assertEqual('[{"style":{"textAlign":0,"leadingMargin":{"size":[10,0]}},"range":[0,4]}]');
       console.info('[RichEditorApi_003] END');
       done();
-
     });
 
     /*
@@ -132,27 +127,25 @@ export default function RichEditorApi() {
     * @tc.desc        RichEditorApi RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('RichEditorApi_004', 0, async function (done) {
+    it('RichEditorApi_004', 0, async (done: Function) => {
       console.info('[RichEditorApi_004] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
-      let RichEditor3 = Utils.getComponentRect('RichEditorApi_RichEditor3')
+      let RichEditor3 = Utils.getComponentRectOnScreen('RichEditorApi_RichEditor3')
       await driver.mouseClick({
-        x:parseInt((RichEditor3.right-RichEditor3.left)*0.5+RichEditor3.left),
-        y:parseInt((RichEditor3.bottom-RichEditor3.top)*0.5+RichEditor3.top)}, MouseButton.MOUSE_BUTTON_RIGHT)
+        x: Math.round((RichEditor3.right - RichEditor3.left) * 0.5 + RichEditor3.left),
+        y: Math.round((RichEditor3.bottom - RichEditor3.top) * 0.5 + RichEditor3.top)
+      }, MouseButton.MOUSE_BUTTON_RIGHT)
       await Utils.sleep(1000);
 
       let strJson = getInspectorByKey('RichEditorApi_text1');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[RichEditorApi_004] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('CustomMenuAppear');
-
+      console.info("[RichEditorApi_004] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('CustomMenuAppear');
       console.info('[RichEditorApi_004] END');
       done();
-
     });
 
 
@@ -162,30 +155,24 @@ export default function RichEditorApi() {
     * @tc.desc        RichEditorApi RichEditorResponseType test
     * @tc.level       Level 2
     */
-    it('RichEditorApi_005', 0, async function (done) {
+    it('RichEditorApi_005', 0, async (done: Function) => {
       console.info('[RichEditorApi_005] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
-      let RichEditor4 = Utils.getComponentRect('RichEditorApi_RichEditor4')
-      await driver.longClick(parseInt((RichEditor4.right-RichEditor4.left)*0.5+RichEditor4.left),
-        parseInt((RichEditor4.bottom-RichEditor4.top)*0.5+RichEditor4.top))
+      let RichEditor4 = Utils.getComponentRectOnScreen('RichEditorApi_RichEditor4')
+      await driver.longClick(Math.round((RichEditor4.right - RichEditor4.left) * 0.5 + RichEditor4.left),
+        Math.round((RichEditor4.bottom - RichEditor4.top) * 0.5 + RichEditor4.top))
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi_text2');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[RichEditorApi_005] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('SecondMenuAppear');
-
+      console.info("[RichEditorApi_005] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('SecondMenuAppear');
       console.info('[RichEditorApi_005] END');
       done();
-
     });
-
-
-
   })
 }
 

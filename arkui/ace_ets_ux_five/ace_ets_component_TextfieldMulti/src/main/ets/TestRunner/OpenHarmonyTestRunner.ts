@@ -13,11 +13,11 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import TestRunner from '@ohos.application.testRunner';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+var abilityDelegator = undefined;
+var abilityDelegatorArguments = undefined;
 
 function translateParamsToString(parameters) {
   const keySet = new Set([

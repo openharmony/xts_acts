@@ -15,14 +15,27 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix,MouseButton} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function richEditorApi4() {
-  describe('richEditorApi4', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi4', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi4 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/richEditor/richEditorApi/richEditorApi4',
       }
       try {
@@ -31,7 +44,7 @@ export default function richEditorApi4() {
         console.info("get richEditorApi4 state pages:" + JSON.stringify(pages));
         if (!("richEditorApi4" == pages.name)) {
           console.info("get richEditorApi4 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push richEditorApi4 page result:" + JSON.stringify(result));
         }
@@ -41,27 +54,29 @@ export default function richEditorApi4() {
       console.info("richEditorApi4 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi4 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_richEditorApi4_0100
-     * @tc.name      testRichEditor
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_richEditorApi4_0100
+     * @tc.name testRichEditor
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('richEditorApi4_0100', 0, async function (done) {
+    it('richEditorApi4_0100', 0, async (done: Function) => {
       console.info('[richEditorApi4_0100] START');
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
-      await driver.mouseLongClick({x:300, y:300}, MouseButton.MOUSE_BUTTON_LEFT)
+      await driver.mouseLongClick({
+        x: 300, y: 300
+      }, MouseButton.MOUSE_BUTTON_LEFT)
       let text1 = getInspectorByKey('richEditorApi4_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('333');
 
       console.info('[testRichEditor_0100] END');

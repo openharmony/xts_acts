@@ -24,6 +24,7 @@
 #define PARAM_0 0
 #define PARAM_5 5
 #define INIT (-1)
+#define PARAM_0777 0777
 
 static const char *TEMP_FILE = "/data/storage/el2/base/files/fzl.txt";
 static const char *g_tempFileContent = "This is a test";
@@ -35,7 +36,7 @@ static napi_value FBufSize_One(napi_env env, napi_callback_info info)
     char buf[1024];
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -58,7 +59,7 @@ static napi_value FBufSize_Two(napi_env env, napi_callback_info info)
     int ret = INIT;
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -82,7 +83,7 @@ static napi_value Flbf_One(napi_env env, napi_callback_info info)
     char buf[BUFSIZ];
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -105,7 +106,7 @@ static napi_value Flbf_Two(napi_env env, napi_callback_info info)
     char buf[BUFSIZ];
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -128,7 +129,7 @@ static napi_value Flbf_Three(napi_env env, napi_callback_info info)
     char buf[BUFSIZ];
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -220,7 +221,7 @@ static napi_value Freadable_One(napi_env env, napi_callback_info info)
     int ret = INIT;
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -262,7 +263,7 @@ static napi_value Freading_One(napi_env env, napi_callback_info info)
     int ret = INIT;
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -348,7 +349,7 @@ static napi_value Fwritable_Two(napi_env env, napi_callback_info info)
     int ret = INIT;
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;
@@ -390,7 +391,7 @@ static napi_value Fwriting_Two(napi_env env, napi_callback_info info)
     int ret = INIT;
     FILE *fp = nullptr;
     do {
-        int fileDescribe = open(TEMP_FILE, O_CREAT);
+        int fileDescribe = open(TEMP_FILE, O_CREAT, PARAM_0777);
         fp = fdopen(fileDescribe, "r");
         if (fp == nullptr) {
             break;

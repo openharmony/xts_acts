@@ -16,6 +16,9 @@ import("//test/xts/tools/build/suite.gni")
 group("distributedKVStoretest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "distributedKVStorejstest/hap:distributedKvStore_js_test" ]
+    deps = [
+      "distributedKVStoreetstest:ActsDistributedKvStoreEtsTest",
+      "distributedKVStorejstest/hap:distributedKvStore_js_test",
+    ]
   }
 }

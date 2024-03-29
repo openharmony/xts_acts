@@ -225,7 +225,7 @@ static napi_value Bzero(napi_env env, napi_callback_info info)
     char dest[] = "hello";
     bzero((void *)dest, PARAM_6);
     napi_value result = nullptr;
-    if (PARAM_0 != *static_cast<char *>(dest) ){
+    if (PARAM_0 != *static_cast<char *>(dest)) {
         napi_create_int32(env, PARAM_UNNORMAL, &result);
     } else {
         napi_create_int32(env, PARAM_0, &result);

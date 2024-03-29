@@ -14,19 +14,33 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-         WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
 
 export default function listItem_Margin() {
-  
-  describe('ListItem_MarginTest', function () {
-    beforeEach(async function (done) {
+
+  describe('ListItem_MarginTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListItem_Margin beforeEach called");
-      let options = {
-        uri: 'MainAbility/pages/List/List_Space/ListItemChange/ListItem_Margin',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_Space/ListItemChange/ListItem_Margin',
       }
       try {
         router.clear();
@@ -35,7 +49,7 @@ export default function listItem_Margin() {
         console.info("get ListItem_Margin state pages:" + JSON.stringify(pages));
         if (!("ListItem_Margin" == pages.name)) {
           console.info("get ListItem_Margin state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push ListItem_Margin page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -45,32 +59,34 @@ export default function listItem_Margin() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ListItem_Margin afterEach called");
     });
 
     /**
-     * @tc.number    SUB_ACE_LIST_LISTITEM_MARGIN_TEST_0100
-     * @tc.name      testListItemMargin
-     * @tc.desc      ListItem subcomponent binding margin property
+     * @tc.number SUB_ACE_LIST_LISTITEM_MARGIN_TEST_0100
+     * @tc.name testListItemMargin
+     * @tc.desc ListItem subcomponent binding margin property
      */
-    it('testListItemMargin', 0, async function (done) {
+    it('testListItemMargin', 0, async (done: Function) => {
       console.info('new testListItemMargin START');
-      globalThis.value.message.notify({name:'margin', value:10})
+      globalThis.value.message.notify({
+        name: 'margin', value: 10
+      })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ListItemMargin1');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let locationText1 = CommonFunc.getComponentRect('ListItemTest11');
-      let locationText2 = CommonFunc.getComponentRect('ListItemTest12');
-      let locationText3 = CommonFunc.getComponentRect('ListItemTest13');
-      let locationText4 = CommonFunc.getComponentRect('ListItemTest14');
-      let locationList = CommonFunc.getComponentRect('ListItemMargin1');
-      let TextTest1 = CommonFunc.getComponentRect('MarginText1');
-      let TextTest2 = CommonFunc.getComponentRect('MarginText2');
-      let TextTest3 = CommonFunc.getComponentRect('MarginText3');
-      let TextTest4 = CommonFunc.getComponentRect('MarginText4');
+
+      expect(JSON.parse(strJson).$type).assertEqual('List');
+      let locationText1: RectValue = CommonFunc.getComponentRect('ListItemTest11');
+      let locationText2: RectValue = CommonFunc.getComponentRect('ListItemTest12');
+      let locationText3: RectValue = CommonFunc.getComponentRect('ListItemTest13');
+      let locationText4: RectValue = CommonFunc.getComponentRect('ListItemTest14');
+      let locationList: RectValue = CommonFunc.getComponentRect('ListItemMargin1');
+      let TextTest1: RectValue = CommonFunc.getComponentRect('MarginText1');
+      let TextTest2: RectValue = CommonFunc.getComponentRect('MarginText2');
+      let TextTest3: RectValue = CommonFunc.getComponentRect('MarginText3');
+      let TextTest4: RectValue = CommonFunc.getComponentRect('MarginText4');
       expect(Math.round(locationText1.left - locationList.left)).assertEqual(Math.round(vp2px(10)));
       expect(Math.abs(locationText2.left - locationText3.left) <= 1).assertTrue();
       expect(Math.abs(locationText3.left - locationText4.left) <= 1).assertTrue();
@@ -97,9 +113,9 @@ export default function listItem_Margin() {
       expect(Math.abs(locationText1.top - TextTest1.top) <= 1).assertTrue();
       expect(Math.abs(locationText1.right - TextTest1.right) <= 1).assertTrue();
       expect(Math.abs(locationText1.bottom - TextTest1.bottom) <= 1).assertTrue();
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await driver.swipe(360, 690, 360, 30);
-      let locationText4Again = CommonFunc.getComponentRect('ListItemTest14');
+      let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest14');
       expect(locationText4.top).assertEqual(locationText4Again.top);
       console.info('new testListItemMargin END');
       done();

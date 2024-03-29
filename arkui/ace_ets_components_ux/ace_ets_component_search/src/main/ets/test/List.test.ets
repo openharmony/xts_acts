@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import search from './Search'
+import search from './Search';
 
 export default function testsuite() {
-       search()
+  search();
 }

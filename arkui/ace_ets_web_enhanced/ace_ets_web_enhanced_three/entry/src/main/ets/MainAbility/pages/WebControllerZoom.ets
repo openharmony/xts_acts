@@ -15,6 +15,7 @@
 
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
+import webView from '@ohos.web.webview';
 
 @Entry
 @Component
@@ -22,7 +23,9 @@ struct WebControllerZoom {
   @State str: string = ""
   @State zoom: number = 0
   @State zoomState: string = ''
+  @State userAgentPC:string = "";
   webController: WebController = new WebController()
+  controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -86,7 +89,7 @@ struct WebControllerZoom {
           }
         })
       }
-
+      
       Web({ src: $rawfile("indexJru.html"), controller: this.webController })
         .onScaleChange((event) => {
           console.log('onScaleChange changed from ' + event.oldScale + ' to ' + event.newScale)
@@ -98,6 +101,14 @@ struct WebControllerZoom {
               break
             }
             case 'WebControllerZoomMax': {
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                let zoomCount = this.zoom * 100 > 400 ? 400 : this.zoom
+                if (zoomCount == event.newScale) {
+                  Utils.emitEvent(true, 7801)
+                }
+                break
+              }
               let zoomCount = this.zoom * 100 > 500 ? 500 : this.zoom
               if (zoomCount == event.newScale) {
                 Utils.emitEvent(true, 7801)
@@ -106,6 +117,7 @@ struct WebControllerZoom {
             }
           }
         })
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

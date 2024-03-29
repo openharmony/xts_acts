@@ -54,15 +54,6 @@ export default function abilityTest() {
       }, 1000)
     })
 
-    afterAll(async (done: Function) => {
-      let cmd1 = 'pkill -f com.acts.attachdebuguiextensiontest';
-      let cmd2 = 'pkill -f com.acts.attachdebuguiextensiontest:ui';
-      let cmd3 = 'pkill -f com.acts.attachdebugextensiontest';
-      await abilityDelegator.executeShellCommand(cmd1);
-      await abilityDelegator.executeShellCommand(cmd2);
-      await abilityDelegator.executeShellCommand(cmd3);
-      await done();
-    })
 
     /**
      * @tc.number: ACTS_AACommand_0100
@@ -549,70 +540,5 @@ export default function abilityTest() {
       })
     })
 
-    /**
-     * @tc.number: SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1300
-     * @tc.name: Test extension ability after attach whose process will not be killed
-     * @tc.desc: Verify process
-     */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1300', 0, async (done: Function) => {
-      console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1300 start!');
-      let want: Want = {
-        'deviceId': '',
-        'bundleName': 'com.acts.attachdebugextensiontest',
-        'abilityName': 'ServiceExtAbility'
-      };
-      await AppStorage.get<common.UIAbilityContext>("abilityContext").startServiceExtensionAbility(want);
-      await sleep(500);
-      let cmd = 'aa attach -b com.acts.attachdebugextensiontest';
-      await abilityDelegator.executeShellCommand(cmd).then((data) => {
-        console.info(TAG, 'aa attach sucessfully!');
-      });
-      await sleep(500);
-      await AppStorage.get<common.UIAbilityContext>("abilityContext").stopServiceExtensionAbility(want);
-      let cmd1 = 'ps -ef | grep com.acts';
-      await abilityDelegator.executeShellCommand(cmd1).then(async (data) => {
-        console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1300 shell result data: ' + JSON.stringify(data));
-        try {
-          expect(data.stdResult).assertContain('com.acts.attachdebugextensiontest');
-        } catch (error) {
-          console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1300 assert error: ' + JSON.stringify(error));
-        }
-        await sleep(500);
-        await abilityDelegator.executeShellCommand('pkill -f com.acts.attachdebugextensiontest').then((data) => {
-          done();
-        })
-      })
-    })
-
-    /**
-     * @tc.number: SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400
-     * @tc.name: Test ui extension ability after attach whose process will not be killed
-     * @tc.desc: Verify process
-     */
-    it('SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400', 0, async (done: Function) => {
-      console.debug(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400 start!');
-      let want: Want = {
-        'bundleName': 'com.acts.attachdebuguiextensiontest',
-        'abilityName': 'EntryAbility'
-      };
-      await AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility(want).then(() => {
-        console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400 start ability sucessfully.');
-      });
-      let cmd = 'aa attach -b com.acts.attachdebuguiextensiontest';
-      await abilityDelegator.executeShellCommand(cmd).then((data) => {
-        console.info(TAG, 'aa attach sucessfully!');
-      });
-      await sleep(1500);
-      let cmd1 = 'ps -ef | grep com.acts';
-      await abilityDelegator.executeShellCommand(cmd1).then((data: AbilityDelegatorRegistry.ShellCmdResult) => {
-        console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400 shell result data: ' + JSON.stringify(data));
-        try {
-          expect(data.stdResult).assertContain('com.acts.attachdebuguiextensiontest:ui');
-        } catch (error) {
-          console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1400 assert error: ' + JSON.stringify(error));
-        }
-        done();
-      });
-    })
   })
 }

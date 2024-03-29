@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function panelJsunit() {
-  describe('panelTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/panel',
+  describe('panelTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/panel',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function panelJsunit() {
         console.info("get panel state success " + JSON.stringify(pages));
         if (!("panel" == pages.name)) {
           console.info("get panel state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(4000);
           console.info("push panel page success " + JSON.stringify(result));
         }
@@ -40,21 +39,21 @@ export default function panelJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("panel after each called");
     });
 
-    it('testPanel_100', 0, async function (done) {
+    it('testPanel_100', 0, async (done: Function) => {
       console.info('testPanel_100 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "type": "PanelType.Minibar"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 147,
           priority: events_emitter.EventPriority.LOW
         }
@@ -64,25 +63,24 @@ export default function panelJsunit() {
         console.log("testPanel_100 change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_100 component obj is: " + JSON.stringify(obj));
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await Utils.sleep(2000);
-      expect(obj.$attrs.type).assertEqual("PanelType.Minibar");
+      expect(JSON.parse(strJson).$attrs.type).assertEqual("PanelType.Minibar");
       console.info('testPanel_100 END');
       done();
     });
 
-    it('testPanel_200', 0, async function (done) {
+    it('testPanel_200', 0, async (done: Function) => {
       console.info('testPanel_200 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "mode": "PanelMode.Mini"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 148,
           priority: events_emitter.EventPriority.LOW
         }
@@ -92,25 +90,24 @@ export default function panelJsunit() {
         console.log("testPanel_200 change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_200 component obj is: " + JSON.stringify(obj));
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_200 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       await Utils.sleep(2000);
-      expect(obj.$attrs.mode).assertEqual("PanelMode.Mini");
+      expect(JSON.parse(strJson).$attrs.mode).assertEqual("PanelMode.Mini");
       console.info('testPanel_200 END');
       done();
     });
 
-    it('testPanel_300', 0, async function (done) {
+    it('testPanel_300', 0, async (done: Function) => {
       console.info('testPanel_300 START');
       await Utils.sleep(1000);
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "show": "true"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 149,
           priority: events_emitter.EventPriority.LOW
         }
@@ -120,54 +117,49 @@ export default function panelJsunit() {
         console.log("testPanel_300 change component data error: " + err.message);
       }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.show).assertEqual("true");
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_300 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.show).assertEqual("true");
       console.info('testPanel_300 END');
       done();
     });
 
-    it('testPanel_400', 0, async function (done) {
+    it('testPanel_400', 0, async (done: Function) => {
       console.info('testPanel_400 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.dragBar).assertEqual("true");
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_400 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.dragBar).assertEqual("true");
       console.info('testPanel_400 END');
       done();
     });
 
-    it('testPanel_500', 0, async function (done) {
+    it('testPanel_500', 0, async (done: Function) => {
       console.info('testPanel_500 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_500 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fullHeight).assertEqual("0.000000vp");
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_500 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.fullHeight).assertEqual("0.000000vp");
       console.info('testPanel_500 END');
       done();
     });
 
-    it('testPanel_600', 0, async function (done) {
+    it('testPanel_600', 0, async (done: Function) => {
       console.info('testPanel_600 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_600 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.halfHeight).assertEqual("500.000000vp");
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.halfHeight).assertEqual("500.000000vp");
       console.info('testPanel_600 END');
       done();
     });
 
-    it('testPanel_700', 0, async function (done) {
+    it('testPanel_700', 0, async (done: Function) => {
       console.info('testPanel_700 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('Panel');
-      let obj = JSON.parse(strJson);
-      console.info("testPanel_700 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.miniHeight).assertEqual("0.000000vp");
+      let strJson: string = getInspectorByKey('Panel');
+      console.info("testPanel_700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.miniHeight).assertEqual("0.000000vp");
       console.info('testPanel_700 END');
       done();
     });

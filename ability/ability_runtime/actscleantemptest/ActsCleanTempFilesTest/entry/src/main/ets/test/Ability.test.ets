@@ -62,7 +62,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0101 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(1500);
+        await sleep(4000);
         console.info('Acts_CleanTempFiles_0100 startAbility two');
         getContext().startAbility(
           {
@@ -148,7 +148,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0201 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(1500);
+        await sleep(4000);
         console.info('Acts_CleanTempFiles_0200 startAbility two');
         getContext().startAbility(
           {
@@ -233,7 +233,7 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0301 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
-        await sleep(1500);
+        await sleep(2000);
         console.info('Acts_CleanTempFiles_0300 startAbility two');
         getContext().startAbility(
           {
@@ -311,7 +311,7 @@ export default function abilityTest() {
               key: 'Acts_CleanTempFiles_0401'
             }
           }, options)
-        await sleep(1500);
+        await sleep(2000);
         console.info('Acts_CleanTempFiles_0400 startAbility two');
         getContext().connectServiceExtensionAbility(
           {

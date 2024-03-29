@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function longPressGestureJsunit() {
-  describe('longPressGestureTest', function () {
-    beforeEach(async function (done) {
+  describe('longPressGestureTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("longPressGesture beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/longPressGesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/longPressGesture',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function longPressGestureJsunit() {
         console.info("get longPressGesture state pages:" + JSON.stringify(pages));
         if (!("longPressGesture" == pages.name)) {
           console.info("get longPressGesture state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push longPressGesture page result:" + JSON.stringify(result));
         }
@@ -41,20 +40,20 @@ export default function longPressGestureJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("longPressGesture after each called");
     });
 
-    it('testLongPressGesture01', 0, async function (done) {
+    it('testLongPressGesture01', 0, async (done: Function) => {
       console.info('[testLongPressGesture01] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture01 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual('onAction')
         done();
       }
-      let innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 125,
         priority: events_emitter.EventPriority.LOW
       }
@@ -70,15 +69,15 @@ export default function longPressGestureJsunit() {
       done();
     });
 
-    it('testLongPressGesture02', 0, async function (done) {
+    it('testLongPressGesture02', 0, async (done: Function) => {
       console.info('[testLongPressGesture02] START');
       await Utils.sleep(1000);
-      let callback = (eventData) => {
+      let callback = (eventData: events_emitter.EventData) => {
         console.info("testLongPressGesture02 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual('onActionEnd')
         done();
       }
-      let innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 126,
         priority: events_emitter.EventPriority.LOW
       }

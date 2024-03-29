@@ -18,7 +18,7 @@ const renderNode = new RenderNode();
 renderNode.size = { width: 100, height: 100 };
 renderNode.shadowOffset = { x: 10, y: 10 };
 renderNode.shadowAlpha = 0.5;
-renderNode.shadowRadius  = 10;
+renderNode.shadowRadius = 10;
 
 class MyRenderNode extends RenderNode {
   draw(context: DrawContext) {
@@ -46,6 +46,7 @@ class MyNodeController extends NodeController {
 @Component
 struct RenderNodeDraw {
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
     Column() {
       NodeContainer(this.MyNodeController).key('RenderNodeDraw')

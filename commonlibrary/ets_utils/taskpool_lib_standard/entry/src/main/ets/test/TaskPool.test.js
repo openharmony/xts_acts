@@ -91,9 +91,7 @@ describe('ActsAbilityTest', function () {
           res++
         }
         testTaskPool();
-        for (let i = 0; i < 10; i++) {
-          ss.terminate();
-        }
+        ss.terminate();
         while (!flag) {
           await promiseCase()
         }
@@ -1234,7 +1232,7 @@ describe('ActsAbilityTest', function () {
         try {
             task2.removeDependency(task3);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: executedTask cannot removeDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executedTask cannot removeDependency");
         }
         done();
     })
@@ -1762,6 +1760,67 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0113
+     * @tc.name      : TaskPoolTestClass113
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass113', 0, async function (done) {
+        function Sum(value1, value2) {
+            "use concurrent"
+            return value1 + value2;
+        }
+        let task = new taskpool.Task(Sum, 10, 20)
+        taskpool.execute(task).then((d)=>{
+            console.info("task1 success");
+        })
+        let start = new Date().getTime();
+        while (new Date().getTime() - start < 500) {
+          continue;
+        }
+        let taskpoolInfo = taskpool.getTaskPoolInfo();
+        let name = "";
+        for (let taskInfo of taskpoolInfo.taskInfos) {
+            name = taskInfo.name;
+        }
+        expect(name != "").assertTrue();
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0114
+     * @tc.name      : TaskPoolTestClass114
+     * @tc.desc      : get name from taskInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass114', 0, async function (done) {
+        function Sum(value1, value2) {
+            "use concurrent"
+            return value1 + value2;
+        }
+        let task = new taskpool.Task("taskName", Sum, 10, 20)
+        taskpool.execute(task).then((d)=>{
+            console.info("task1 success");
+        })
+        let start = new Date().getTime();
+        while (new Date().getTime() - start < 500) {
+          continue;
+        }
+        let taskpoolInfo = taskpool.getTaskPoolInfo();
+        let name = "";
+        for (let taskInfo of taskpoolInfo.taskInfos) {
+            name = taskInfo.name;
+        }
+        expect(name != "").assertTrue();
+        done();
+    })
+
+
+    /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0070
      * @tc.name      : TaskPoolTestClass067
      * @tc.desc      : add name of task for taskpool
@@ -1808,6 +1867,68 @@ describe('ActsAbilityTest', function () {
         });
         let name = taskGroup.name;
         expect(name).assertEqual("groupName");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0110
+     * @tc.name      : TaskPoolTestClass110
+     * @tc.desc      : add name of task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass110', 0, async function (done) {
+        function Sum(value1, value2) {
+            "use concurrent"
+            return value1 + value2;
+        }
+
+        let task = new taskpool.Task("taskName", Sum, 10, 20);
+        try {
+            task.name = "taskName1";
+        } catch (e) {
+            expect(e.toString()).assertEqual("TypeError: Cannot set property when setter is undefined");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0111
+     * @tc.name      : TaskPoolTestClass111
+     * @tc.desc      : add name of task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass111', 0, async function (done) {
+        function Sum(value1, value2) {
+            "use concurrent"
+            return value1 + value2;
+        }
+
+        let task = new taskpool.Task("taskName", Sum, 10, 20);
+        expect(task.name).assertEqual("taskName");
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0112
+     * @tc.name      : TaskPoolTestClass112
+     * @tc.desc      : add name of task for taskpool
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass112', 0, async function (done) {
+        function Sum(value1, value2) {
+            "use concurrent"
+            return value1 + value2;
+        }
+
+        let task = new taskpool.Task(Sum, 10, 20);
+        let name = task.name;
+        expect(name).assertEqual("Sum");
         done();
     })
 
@@ -1876,7 +1997,7 @@ describe('ActsAbilityTest', function () {
             taskpool.execute(task1);
             taskpool.cancel(task1);
         } catch(e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         expect(taskpool.Task.isCanceled() == false);
         done();
@@ -1912,7 +2033,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task1);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -1941,7 +2062,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task3);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -1977,7 +2098,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task3);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -2022,7 +2143,7 @@ describe('ActsAbilityTest', function () {
             taskpool.cancel(task2);
         }
         catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
         }
         done();
     })
@@ -2121,7 +2242,7 @@ describe('ActsAbilityTest', function () {
 
             taskpool.cancel(taskGroup);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+            expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
         }
         done();
     })
@@ -2161,7 +2282,7 @@ describe('ActsAbilityTest', function () {
           try {
             taskpool.cancel(taskGroup1);
           } catch (e) {
-              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled");
+              expect(e.toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
           }
         }, 3000);
         done();
@@ -2221,7 +2342,7 @@ describe('ActsAbilityTest', function () {
             let taskGroup2 = new taskpool.TaskGroup();
             taskGroup2.addTask(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: taskGroup cannot add groupTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: taskGroup cannot add groupTask");
         }
         done();
     })
@@ -2246,7 +2367,7 @@ describe('ActsAbilityTest', function () {
             let taskGroup = new taskpool.TaskGroup();
             taskGroup.addTask(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2271,7 +2392,7 @@ describe('ActsAbilityTest', function () {
             let taskGroup = new taskpool.TaskGroup();
             taskGroup.addTask(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2299,7 +2420,7 @@ describe('ActsAbilityTest', function () {
             let taskGroup = new taskpool.TaskGroup();
             taskGroup.addTask(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: taskGroup cannot add seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2325,7 +2446,7 @@ describe('ActsAbilityTest', function () {
             let taskGroup = new taskpool.TaskGroup();
             taskGroup.addTask(task1);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: dependent task not allowed.");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: dependent task not allowed.");
         }
         done();
     })
@@ -2357,7 +2478,7 @@ describe('ActsAbilityTest', function () {
                 expect(res[1]).assertEqual(200);
             });
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: executed taskGroup cannot addTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executed taskGroup cannot addTask");
         }
         done();
     })
@@ -2385,7 +2506,7 @@ describe('ActsAbilityTest', function () {
                 ret = ret * 2;
             });
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: SequenceRunner cannot execute groupTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: SequenceRunner cannot execute groupTask");
         }
         done();
     })
@@ -2412,7 +2533,7 @@ describe('ActsAbilityTest', function () {
                 ret = ret * 2;
             });
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2439,7 +2560,7 @@ describe('ActsAbilityTest', function () {
                 ret = ret * 2;
             });
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2497,7 +2618,7 @@ describe('ActsAbilityTest', function () {
                 ret = ret * 3;
             });
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: SequenceRunner cannot execute seqRunnerTask or executedTask");
         }
         done();
     })
@@ -2523,7 +2644,7 @@ describe('ActsAbilityTest', function () {
             let task1 = new taskpool.Task(printArgs, 200);
             task.addDependency(task1);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot addDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot addDependency");
         }
         done();
     })
@@ -2549,7 +2670,7 @@ describe('ActsAbilityTest', function () {
             let task1 = new taskpool.Task(printArgs, 200);
             task1.addDependency(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot be relied on");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot be relied on");
         }
         done();
     })
@@ -2574,7 +2695,7 @@ describe('ActsAbilityTest', function () {
             taskpool.execute(task2);
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot be relied on");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot be relied on");
         }
         done();
     })
@@ -2599,7 +2720,7 @@ describe('ActsAbilityTest', function () {
             taskpool.executeDelayed(100, task2);
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot be relied on");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot be relied on");
         }
         done();
     })
@@ -2624,7 +2745,7 @@ describe('ActsAbilityTest', function () {
             taskpool.execute(task1);
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot addDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot addDependency");
         }
         done();
     })
@@ -2649,7 +2770,7 @@ describe('ActsAbilityTest', function () {
             taskpool.executeDelayed(100,task1);
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot addDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot addDependency");
         }
         done();
     })
@@ -2677,7 +2798,7 @@ describe('ActsAbilityTest', function () {
             });
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot be relied on");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot be relied on");
         }
         done();
     })
@@ -2705,7 +2826,7 @@ describe('ActsAbilityTest', function () {
             });
             task1.addDependency(task2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask or executedTask cannot addDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot addDependency");
         }
         done();
     })
@@ -2731,7 +2852,7 @@ describe('ActsAbilityTest', function () {
             let task1 = new taskpool.Task(printArgs, 200);
             task1.addDependency(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot be relied on");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot be relied on");
         }
         done();
     })
@@ -2757,7 +2878,7 @@ describe('ActsAbilityTest', function () {
             let task1 = new taskpool.Task(printArgs, 200);
             task.addDependency(task1);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot addDependency");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot addDependency");
         }
         done();
     })
@@ -2784,7 +2905,7 @@ describe('ActsAbilityTest', function () {
             });
             taskpool.execute(task1);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask cannot execute outside");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask cannot execute outside");
         }
         done();
     })
@@ -2809,7 +2930,7 @@ describe('ActsAbilityTest', function () {
             taskGroup1.addTask(task);
             taskpool.execute(task);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot execute outside");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot execute outside");
         }
         done();
     })
@@ -2836,7 +2957,7 @@ describe('ActsAbilityTest', function () {
             });
             taskpool.executeDelayed(100, task1);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: seqRunnerTask cannot executeDelayed outside");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask cannot executeDelayed outside");
         }
         done();
     })
@@ -2861,7 +2982,7 @@ describe('ActsAbilityTest', function () {
             taskGroup1.addTask(task);
             taskpool.executeDelayed(100, task)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: groupTask cannot executeDelayed outside");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: groupTask cannot executeDelayed outside");
         }
         done();
     })
@@ -2921,7 +3042,7 @@ describe('ActsAbilityTest', function () {
         try {
             taskpool.execute(task1)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: taskpool:: executedTask with dependency cannot execute again");
+            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executedTask with dependency cannot execute again");
         }
         done();
     })

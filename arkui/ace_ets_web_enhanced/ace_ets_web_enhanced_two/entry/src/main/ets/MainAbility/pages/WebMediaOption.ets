@@ -30,7 +30,7 @@ struct WebMediaOption {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
+    "(KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State playing: boolean = false
   @State checkResult: string = "";
   @State checkResultTwo: string = "";
@@ -48,7 +48,6 @@ struct WebMediaOption {
   onPageHide() {
     events_emitter.off(10)
   }
-
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");

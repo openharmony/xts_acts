@@ -21,7 +21,7 @@ function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
 
-export default function ApiCoverTest() {
+export default function NewApiCoverTest() {
   describe('NewApiCoverTestTest', function () {
     afterEach(async (done) => {
       setTimeout(function () {

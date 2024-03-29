@@ -150,12 +150,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -171,12 +171,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -194,12 +194,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -219,12 +219,12 @@ struct webController {
                 await Utils.sleep(2000)
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -314,12 +314,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -408,13 +408,13 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}" +
-                  "</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}" +
+                    "</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -513,12 +513,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -556,14 +556,14 @@ struct webController {
                 await Utils.sleep(2000)
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>" +
-                  "function getTitle(){return document.title}" +
-                  "</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>" +
+                    "function getTitle(){return document.title}" +
+                    "</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })
@@ -617,12 +617,12 @@ struct webController {
               try {
                 this.controller.loadData({
                   data: "<html>" +
-                  "<head>" +
-                  "<title>LoadData</title>" +
-                  "</head>" +
-                  "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
-                  "<script>function getTitle(){return document.title}</script>" +
-                  "</html>",
+                    "<head>" +
+                    "<title>LoadData</title>" +
+                    "</head>" +
+                    "<body bgcolor=\"white\">Source:<pre>source</pre</body>" +
+                    "<script>function getTitle(){return document.title}</script>" +
+                    "</html>",
                   mimeType: "text/html",
                   encoding: "UTF-8"
                 })

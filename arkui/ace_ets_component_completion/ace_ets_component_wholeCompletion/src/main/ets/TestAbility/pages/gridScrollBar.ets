@@ -17,8 +17,7 @@
 @Entry
 @Component
 struct gridScrollBar {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
 
   build() {
     Column({ space: 5 }) {
@@ -34,8 +33,8 @@ struct gridScrollBar {
                 .height(80)
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .key('Grid_scrollbarUpdate_0800')
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -44,14 +43,15 @@ struct gridScrollBar {
       .onScrollIndex((first: number) => {
         console.info(first.toString())
       })
-      .onScrollBarUpdate((index:number,offset:number)=> {
-        return ({totalOffset:10, totalLength:200})
+      .onScrollBarUpdate((index: number, offset: number) => {
+        return ({ totalOffset: 10, totalLength: 200 })
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-    }.width('100%').margin({ top: 5 })
-
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
- }
+}

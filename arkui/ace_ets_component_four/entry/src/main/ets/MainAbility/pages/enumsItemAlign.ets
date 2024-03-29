@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,16 +16,25 @@
 @Entry
 @Component
 struct AlignItemsFlex {
-  @State alignItems : ItemAlign = ItemAlign.Auto
+  @State alignItems: ItemAlign = ItemAlign.Auto
 
   build() {
     Flex({ alignItems: this.alignItems }) {
-      Text('1').width('33%').height(30).backgroundColor(0xF5DEB3)
-      Text('2').width('33%').height(40).backgroundColor(0xD2B48C)
-      Text('3').width('33%').height(50).backgroundColor(0xF5DEB3)
+      Text('1')
+        .width('33%')
+        .height(30)
+        .backgroundColor(0xF5DEB3)
+      Text('2')
+        .width('33%')
+        .height(40)
+        .backgroundColor(0xD2B48C)
+      Text('3')
+        .width('33%')
+        .height(50)
+        .backgroundColor(0xF5DEB3)
     }
     .key('itemAlign')
-    .size({width: '90%', height: 80})
+    .size({ width: '90%', height: 80 })
     .padding(10)
     .backgroundColor(0xAFEEEE)
   }

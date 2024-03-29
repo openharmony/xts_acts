@@ -24,69 +24,72 @@ import web_webview from '@ohos.web.webview';
 @Entry
 @Component
 struct webViewContPageAndprepareForPageLoadErrorOne {
-    controller20: web_webview.WebviewController = new web_webview.WebviewController();
-    ports: web_webview.WebMessagePort[];
-    msgPort: web_webview.WebMessagePort[] = null;
-    @State str:string="emitPrefetchPageErr";
-    @State errorCode: string = '0';
+  controller20: web_webview.WebviewController = new web_webview.WebviewController();
+  ports: web_webview.WebMessagePort[];
+  msgPort: web_webview.WebMessagePort[] = null;
+  @State str: string = "emitPrefetchPageErr";
+  @State errorCode: string = '0';
 
-    onPageShow(){
-        let valueChangeEvent={
-            eventId:10,
-            priority:events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+  onPageShow() {
+    let valueChangeEvent: events_emitter.InnerEvent = {
+      eventId: 10,
+      priority: events_emitter.EventPriority.LOW
     }
-    private valueChangeCallBack=(eventData)=>{
-        console.info("webViewContPageAndprepareForPageLoadErrorOne page valueChangeCallBack");
-        if(eventData != null){
-             console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
-             if(eventData.data.ACTION != null){
-                 this.str = eventData.data.ACTION;
-             }
-        }
+    events_emitter.on(valueChangeEvent, this.valueChangeCallBack)
+  }
+
+  private valueChangeCallBack = (eventData: events_emitter.EventData) => {
+    console.info("webViewContPageAndprepareForPageLoadErrorOne page valueChangeCallBack");
+    if (eventData != null) {
+      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      if (eventData.data.ACTION != null) {
+        this.str = eventData.data.ACTION;
+      }
     }
-    private jsObj={
-        test:(res)=>{
-            Utils.emitEvent(res,102);
-        },
-        toString:(str)=>{
-            console.info("ets toString:"+String(str));
-        },
-        register:(res)=>{
-            Utils.emitEvent(res,86);
-            return "web222"
-        }
+  }
+  private jsObj = {
+    test: (res) => {
+      Utils.emitEvent(res, 102);
+    },
+    toString: (str) => {
+      console.info("ets toString:" + String(str));
+    },
+    register: (res) => {
+      Utils.emitEvent(res, 86);
+      return "web222"
     }
-    aboutToAppear(){
-        let abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-    }
-    build(){
-        Column(){
-            Row() {
-                Button("messageEventErrorTest").key('webViewContPageAndprepareForPageLoadErrorOne').onClick(() => {
-                    console.info("key==>" + this.str)
-                    switch (this.str) {
-                        case "emitPrefetchPageErr": {
-                            try {
-                                this.controller20.prefetchPage('百度');
-                                console.info("---666---444---8888")
-                            } catch (error) {
-                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-                                this.errorCode = error.code
-                                console.info("789+++987"+this.errorCode)
-                                Utils.emitEvent(this.errorCode, 900)
-                            }                               
-                            break;
-                        }
-                    }
-                })
+  }
+
+  aboutToAppear() {
+    let abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button("messageEventErrorTest").key('webViewContPageAndprepareForPageLoadErrorOne').onClick(() => {
+          console.info("key==>" + this.str)
+          switch (this.str) {
+            case "emitPrefetchPageErr": {
+              try {
+                this.controller20.prefetchPage('百度');
+                console.info("---666---444---8888")
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                this.errorCode = error.code
+                console.info("789+++987" + this.errorCode)
+                Utils.emitEvent(this.errorCode, 900)
+              }
+              break;
             }
-        }
+          }
+        })
+      }
     }
+  }
 }

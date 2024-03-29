@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 import { RenderNode, FrameNode, NodeController } from "@ohos.arkui.node"
+
 const renderNode = new RenderNode();
 const position = renderNode.position;
+
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -26,14 +29,16 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
 struct GetPosition {
-  @State getX:number = 100
+  @State getX: number = 100
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
-    Column({space:5}){
-      Flex(){
+    Column({ space: 5 }) {
+      Flex() {
         Text(this.getX.toString())
           .id('text_getPosition')
           .flexBasis(100)
@@ -43,8 +48,8 @@ struct GetPosition {
           .textAlign(TextAlign.Center)
 
         Button('点击')
-          .onClick(()=>{
-          this.getX =  renderNode.position.x
+          .onClick(() => {
+            this.getX = renderNode.position.x
           })
           .id('getPosition_id')
           .flexBasis('auto')
@@ -52,6 +57,6 @@ struct GetPosition {
           .height(100)
           .backgroundColor(0xD2B48C)
       }
-    }.margin({top:20,left:20})
+    }.margin({ top: 20, left: 20 })
   }
 }

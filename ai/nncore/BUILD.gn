@@ -16,6 +16,6 @@ group("ActsHdfNncoreTest") {
   deps = [
     "e2etest:ActsNnrtE2ETest",
     "nncoretest:ActsNncoreTest",
-    "opstest:ActsOpsTest",
+    "opstest:ActsNnrtOpsTest",
   ]
 }

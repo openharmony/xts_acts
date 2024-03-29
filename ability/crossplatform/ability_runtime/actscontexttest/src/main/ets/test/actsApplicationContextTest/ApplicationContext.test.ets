@@ -14,6 +14,7 @@
  */
 
 import common from '@ohos.app.ability.common';
+import fs from '@ohos.file.fs';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 
@@ -69,6 +70,74 @@ export default function ApplicationContext() {
         })
       } catch (err) {
         console.log(`testGetRunningProcessInformationPromise001 fail ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : ABILITY_TEST_NATIVE_LIBRARY_PATH_0100
+     * @tc.name      : testNativeLibraryPath001
+     * @tc.desc      : test nativeLibraryPath
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testNativeLibraryPath001', 0, async function (done) {
+      try {
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;
+        expect(moduleContextNativeLibraryPath)
+        expect(typeof (moduleContextNativeLibraryPath) == 'string').assertTrue();
+        let applicationInfoNativeLibraryPath = abilityContext.applicationInfo.nativeLibraryPath;
+        expect(typeof (applicationInfoNativeLibraryPath) == 'string').assertTrue();
+        done();
+      } catch (err) {
+        console.log(`testNativeLibraryPath001 fail ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : ABILITY_TEST_NATIVE_LIBRARY_PATH_0200
+     * @tc.name      : testNativeLibraryPath002
+     * @tc.desc      : test nativeLibraryPath
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testNativeLibraryPath002', 0, async function (done) {
+      try {
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        let moduleContextNativeLibraryPath = abilityContext.currentHapModuleInfo.nativeLibraryPath;
+         if (moduleContextNativeLibraryPath != '') {
+            fs.access(moduleContextNativeLibraryPath, (err,res) => {
+            if (err == undefined) {
+              if (res) {
+                expect(true).assertTrue;
+              } else {
+                expect(false).assertTrue;
+              }
+            }
+            });
+         }
+
+        let applicationInfoNativeLibraryPath = abilityContext.applicationInfo.nativeLibraryPath;
+         if (applicationInfoNativeLibraryPath != '') {
+            fs.access(applicationInfoNativeLibraryPath, (err,res) => {
+            if (err == undefined) {
+              if (res) {
+                expect(true).assertTrue;
+              } else {
+                expect(false).assertTrue;
+              }
+            }
+            });
+         }
+         done();
+      } catch (err) {
+        console.log(`testNativeLibraryPath002 fail ` + err);
         expect().assertFail();
         done();
       }
@@ -516,6 +585,72 @@ export default function ApplicationContext() {
       } catch (err) {
         console.log(`testGetApplicationContext001 fail: ` + err);
         expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("bundleName", "module");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0100 fail: ` + err);
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("", "module");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0200 fail: ` + err);
+        expect(err.code === 401).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300
+     * @tc.name      : SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300
+     * @tc.desc      : test createSystemHspModuleResourceManager failed
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300", 0, async (done: Function) => {
+      try {
+        console.info("SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300 begin");
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
+        expect(abilityContext != null).assertTrue();
+
+        abilityContext.createSystemHspModuleResourceManager("bundleName", "");
+      } catch (err) {
+        console.log(`SUB_Ability_AbilityRuntime_Create_CreateSystemHspModuleResourceManager_0300 fail: ` + err);
+        expect(err.code === 401).assertTrue();
         done();
       }
     });

@@ -12,19 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {CustomTransition} from './CustomNavigationUtils'
+import { CustomTransition } from './CustomNavigationUtils';
 
 @Component
 export struct PageTwoTemp {
-  @Consume('pageInfos') pageInfos: NavPathStack
-  @State x: number = 300
+  @Consume('pageInfos') pageInfos: NavPathStack;
+  @State x: number = 300;
 
   aboutToAppear() {
 
-    CustomTransition.getInstance().registerNavParam('pageTwo', (isPush: boolean, isExit: boolean)=>{
+    CustomTransition.getInstance().registerNavParam('pageTwo', (isPush: boolean, isExit: boolean) => {
       console.log("current page is pageOne")
       this.x = isExit ? 0 : 300;
-    }, (isPush: boolean, isExit: boolean)=>{
+    }, (isPush: boolean, isExit: boolean) => {
       this.x = isExit ? -300 : 0;
     }, 200)
   }
@@ -44,14 +44,15 @@ export struct PageTwoTemp {
             this.pageInfos.pushPathByName('pageOne', null) //将name指定的NavDestination页面信息入栈，传递的数据为param
           })
       }.width('100%').height('100%')
-    }.title('pageTwo')
+    }
+    .title('pageTwo')
     .backgroundColor(Color.White)
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop() // 弹出路由栈栈顶元素
       console.log('pop' + '返回值' + JSON.stringify(popDestinationInfo))
       return true
     })
-    .translate({x: this.x})
+    .translate({ x: this.x })
     .backgroundColor(Color.White)
   }
 }

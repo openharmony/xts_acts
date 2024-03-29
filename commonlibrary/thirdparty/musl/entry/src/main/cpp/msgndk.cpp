@@ -18,7 +18,6 @@
 #include <js_native_api_types.h>
 #include <sys/msg.h>
 
-
 #define PARAM_1 1
 #define NO_ERR 0
 #define SUCCESS 1

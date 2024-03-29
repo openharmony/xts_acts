@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 import { RenderNode, FrameNode, NodeController } from "@ohos.arkui.node"
+
 const renderNode = new RenderNode();
 renderNode.size = { width: 100, height: 100 };
+
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -26,28 +29,30 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 }
+
 @Entry
 @Component
-struct getColor1{
-  private MyNodeController:MyNodeController = new MyNodeController()
-  @State bgc :number =11
-  build(){
-    Column({space:10}){
+struct getColor1 {
+  private MyNodeController: MyNodeController = new MyNodeController()
+  @State bgc: number = 11
+
+  build() {
+    Column({ space: 10 }) {
       NodeContainer(this.MyNodeController)
-      Text('color:'+`${this.bgc}`).key('render_color')
+      Text('color:' + `${this.bgc}`).key('render_color')
       Button('get color')
         .key('get_color')
-        .onClick(()=>{
-        this.bgc = renderNode.backgroundColor
-      })
+        .onClick(() => {
+          this.bgc = renderNode.backgroundColor
+        })
       Button('set get color')
         .key('getSet_color')
-        .onClick(()=>{
-        renderNode.backgroundColor = 0XFF00FF00
-        this.bgc = renderNode.backgroundColor
-      })
+        .onClick(() => {
+          renderNode.backgroundColor = 0XFF00FF00
+          this.bgc = renderNode.backgroundColor
+        })
     }
-    .margin({top:100})
+    .margin({ top: 100 })
     .width('100%')
     .height('100%')
   }

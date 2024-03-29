@@ -36,6 +36,7 @@ const TAG: string = 'NotificationOperations';
 const BUNDLE_NAME: string = 'com.example.actsvalidator';
 const ABILITY_NAME: string = 'MainAbility';
 const MULTI_LINE_CONTENT: Array<string> = ['line0', 'line1', 'line2', 'line3']; // 多行文本通知的多行文本内容
+
 const enum NOTIFICATION_ID { // 定义不同类型通知的通知id
   BASIC = 1,
   LONG_TEXT = 2,

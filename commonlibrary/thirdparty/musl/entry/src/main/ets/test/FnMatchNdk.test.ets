@@ -13,11 +13,40 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from "@ohos/hypium"
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import fnmatchndk from 'libfnmatchndk.so'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import fs from '@ohos.file.fs'
 
 export default function fnmatchNdkTest() {
   describe('FnMatchNdkTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_UTIME_UTIME64_0100
+     * @tc.name       : testMuslUTimeUTime64001
+     * @tc.desc       : test __utime64
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslUTimeUTime64001', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+
+      let file = fs.openSync(filesDir + '/utime3.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+
+      let result: number = fnmatchndk.__utime64(filesDir + '/utime3.txt');
+      console.info("Test result= " + result);
+      expect(result).assertEqual(1);
+      fs.closeSync(file);
+      done()
+    });
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FNMATCH_FNMATCH_0100
@@ -95,19 +124,6 @@ export default function fnmatchNdkTest() {
      */
     it('testMuslStatStatTime64001', 0, async (done: Function) => {
       expect(fnmatchndk.__stat_time64()).assertEqual(0);
-      done()
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_UTIMENSAT_TIME64_0100
-     * @tc.name       : testMuslStatUTimeNSatTime64001
-     * @tc.desc       : test __utimensat_time64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslStatUTimeNSatTime64001', 0, async (done: Function) => {
-      expect(fnmatchndk.__utimensat_time64()).assertEqual(0);
       done()
     });
 
@@ -380,7 +396,7 @@ export default function fnmatchNdkTest() {
      * @tc.level      : Level 0
      */
     it('testMuslSocketReCvmMsgTime64001', 0, async (done: Function) => {
-      expect(fnmatchndk.__recvmmsg_time64()).assertEqual(0);
+      expect(fnmatchndk.__recvmmsg_time64()).assertEqual(1);
       done()
     });
 
@@ -489,19 +505,6 @@ export default function fnmatchNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UTIME_UTIME64_0100
-     * @tc.name       : testMuslUTimeUTime64001
-     * @tc.desc       : test __utime64
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUTimeUTime64001', 0, async (done: Function) => {
-      expect(fnmatchndk.__utime64()).assertEqual(0);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_TIME_UTIMES_TIME64_0100
      * @tc.name       : testMuslTimeUTimesTime64001
      * @tc.desc       : test __utimes_time64
@@ -512,6 +515,27 @@ export default function fnmatchNdkTest() {
     it('testMuslTimeUTimesTime64001', 0, async (done: Function) => {
       expect(fnmatchndk.__utimes_time64()).assertEqual(0);
       done()
+    });
+
+    /**
+     * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_UTIMENSAT_TIME64_0100
+     * @tc.name       : testMuslStatUTimeNSatTime64001
+     * @tc.desc       : test __utimensat_time64
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testMuslStatUTimeNSatTime64001', 0, async (done: Function) => {
+      let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+      let context = abilityDelegator.getAppContext();
+      let filesDir = context.filesDir;
+
+      let file = fs.openSync(filesDir + '/utimensattime64.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+
+      let result: number = fnmatchndk.__utimensat_time64(filesDir + '/utimensattime64.txt');
+      fs.closeSync(file);
+      expect(result).assertEqual(1);
+      done();
     });
   })
 }

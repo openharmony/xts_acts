@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Proximity]';
@@ -33,7 +34,7 @@ struct Proximity {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Proximity';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有接近光传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请用手从远到近靠近设备，观察靠近程度值，否则返回上一级' + '\n-预期结果：靠近程度值发生变化';
+    '如果有传感器，请用手从远到近靠近设备，观察靠近程度值，否则返回上一级' + '\n-预期结果：靠近程度值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -57,7 +58,7 @@ struct Proximity {
           this.dataPedometer = data.distance.toFixed(2);
           this.intervalNum = setInterval(() => {
             this.nextPedometer = data.distance.toFixed(2);
-            if (this.nextPedometer !== this.dataPedometer ) {
+            if (this.nextPedometer !== this.dataPedometer) {
               this.Vue = true;
             }
           }, 500)
@@ -108,7 +109,7 @@ struct Proximity {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -139,7 +140,8 @@ struct Proximity {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -163,7 +165,8 @@ struct Proximity {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -286,12 +289,12 @@ struct Proximity {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -328,7 +331,7 @@ struct Proximity {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

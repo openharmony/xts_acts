@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 import font from '@ohos.font';
+
 @Entry
 @Component
 struct FontExample {
-  @State adjust: number = 10
-  @State fontSetName: string = ''
-  @State fallback:string = ''
+  @State adjust: number = 10;
+  @State fontSetName: string = '';
+  @State fallback: string = '';
+
   build() {
     Column() {
       Text('' + this.adjust).id('adjust_test')
@@ -30,7 +32,7 @@ struct FontExample {
         .height('6%')
         .margin(50)
         .id('font_test')
-        .onClick(()=>{
+        .onClick(() => {
           let fontConfig = font.getUIFontConfig();
           this.adjust = fontConfig.generic[0].adjust[0].weight;
           this.fontSetName = fontConfig.fallbackGroups[0].fontSetName;

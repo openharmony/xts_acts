@@ -15,12 +15,13 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function Grid_Row_GutterOption_Default() {
-  describe('Grid_Row_GutterOption_Default', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Row_GutterOption_Default', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Row_GutterOption_Default beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Row/Grid_Row_GutterOption/Grid_Row_GutterOption_Default",
       }
       try {
@@ -29,7 +30,7 @@ export default function Grid_Row_GutterOption_Default() {
         console.info("get Grid_Row_GutterOption_Default state pages:" + JSON.stringify(pages));
         if (!("Grid_Row_GutterOption_Default" == pages.name)) {
           console.info("get Grid_Row_GutterOption_Default pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Row_GutterOption_Default page result:" + JSON.stringify(result));
         }
@@ -40,27 +41,26 @@ export default function Grid_Row_GutterOption_Default() {
       console.info("Grid_Row_GutterOption_Default beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Row_GutterOption_Default after each called")
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0100
-     * @tc.name      testGutterOption
-     * @tc.desc      Set the GridRowSizeOption of GridRow to {x: 0 ,y: 0}
+     * @tc.number SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0100
+     * @tc.name testGutterOption
+     * @tc.desc Set the GridRowSizeOption of GridRow to {x: 0 ,y: 0}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0100', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_Default_0100', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0100 START');
       await CommonFunc.sleep(2000)
 
-      let GutterOption_1 = CommonFunc.getComponentRect('GutterOptionChange_001');
-      let firstGutterOption = CommonFunc.getComponentRect('GutterOptionChange_0');
-      let secondGutterOption = CommonFunc.getComponentRect('GutterOptionChange_1');
-      let thirdGutterOption = CommonFunc.getComponentRect('GutterOptionChange_2');
+      let GutterOption_1: RectValue = CommonFunc.getComponentRect('GutterOptionChange_001');
+      let firstGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_0');
+      let secondGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_1');
+      let thirdGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_2');
       let gridRowGutterOptionJson = getInspectorByKey('GutterOptionChange_001');
-      let gridRowGutterOption = JSON.parse(gridRowGutterOptionJson);
-      expect(gridRowGutterOption.$type).assertEqual('GridRow');
+      expect(JSON.parse(gridRowGutterOptionJson).$type).assertEqual('GridRow');
 
       expect(firstGutterOption.top).assertEqual(GutterOption_1.top);
       expect(firstGutterOption.left).assertEqual(GutterOption_1.left);
@@ -74,22 +74,23 @@ export default function Grid_Row_GutterOption_Default() {
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0200
-     * @tc.name      testGutterOptionNoSetXY
-     * @tc.desc      Set the GridRowSizeOption of GridRow to {x: 10 ,y: 0}
+     * @tc.number SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0200
+     * @tc.name testGutterOptionNoSetXY
+     * @tc.desc Set the GridRowSizeOption of GridRow to {x: 10 ,y: 0}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0200', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_Default_0200', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0200 START');
-      globalThis.value.message.notify({ name:'optionX', value:10 })
+      globalThis.value.message.notify({
+        name: 'optionX', value: 10
+      })
       await CommonFunc.sleep(2000)
 
-      let GutterOption_1 = CommonFunc.getComponentRect('GutterOptionChange_001');
-      let firstGutterOption = CommonFunc.getComponentRect('GutterOptionChange_0');
-      let secondGutterOption = CommonFunc.getComponentRect('GutterOptionChange_1');
-      let thirdGutterOption = CommonFunc.getComponentRect('GutterOptionChange_2');
+      let GutterOption_1: RectValue = CommonFunc.getComponentRect('GutterOptionChange_001');
+      let firstGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_0');
+      let secondGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_1');
+      let thirdGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_2');
       let gridRowGutterOptionJson = getInspectorByKey('GutterOptionChange_001');
-      let gridRowGutterOption = JSON.parse(gridRowGutterOptionJson);
-      expect(gridRowGutterOption.$type).assertEqual('GridRow');
+      expect(JSON.parse(gridRowGutterOptionJson).$type).assertEqual('GridRow');
 
       expect(Math.abs(firstGutterOption.top - GutterOption_1.top) <= 1).assertTrue();
       expect(Math.abs(firstGutterOption.left - GutterOption_1.left) <= 1).assertTrue();
@@ -103,23 +104,26 @@ export default function Grid_Row_GutterOption_Default() {
     });
 
     /**
-     * @tc.number    SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0300
-     * @tc.name      testGutterOptionNoSetXY
-     * @tc.desc      Set the GridRowSizeOption of GridRow to {x: 0 ,y: 10}
+     * @tc.number SUB_ACE_GRIDROWGUTTEROPTION_DEFAULT_0300
+     * @tc.name testGutterOptionNoSetXY
+     * @tc.desc Set the GridRowSizeOption of GridRow to {x: 0 ,y: 10}
      */
-    it('SUB_ACE_GridRowGutterOption_Default_0300', 0, async function (done) {
+    it('SUB_ACE_GridRowGutterOption_Default_0300', 0, async (done: Function) => {
       console.info('SUB_ACE_GridRowGutterOption_Default_0300 START');
-      globalThis.value.message.notify({ name:'optionX', value: 0 })
-      globalThis.value.message.notify({ name:'optionY', value: 10 })
+      globalThis.value.message.notify({
+        name: 'optionX', value: 0
+      })
+      globalThis.value.message.notify({
+        name: 'optionY', value: 10
+      })
       await CommonFunc.sleep(2000)
 
-      let GutterOption_1 = CommonFunc.getComponentRect('GutterOptionChange_001');
-      let firstGutterOption = CommonFunc.getComponentRect('GutterOptionChange_0');
-      let secondGutterOption = CommonFunc.getComponentRect('GutterOptionChange_1');
-      let thirdGutterOption = CommonFunc.getComponentRect('GutterOptionChange_2');
+      let GutterOption_1: RectValue = CommonFunc.getComponentRect('GutterOptionChange_001');
+      let firstGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_0');
+      let secondGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_1');
+      let thirdGutterOption: RectValue = CommonFunc.getComponentRect('GutterOptionChange_2');
       let gridRowGutterOptionJson = getInspectorByKey('GutterOptionChange_001');
-      let gridRowGutterOption = JSON.parse(gridRowGutterOptionJson);
-      expect(gridRowGutterOption.$type).assertEqual('GridRow');
+      expect(JSON.parse(gridRowGutterOptionJson).$type).assertEqual('GridRow');
 
       expect(firstGutterOption.top).assertEqual(GutterOption_1.top);
       expect(firstGutterOption.left).assertEqual(GutterOption_1.left);

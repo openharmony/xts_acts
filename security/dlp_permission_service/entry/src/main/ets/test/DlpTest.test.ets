@@ -2003,6 +2003,29 @@ export default function dlpTest() {
     })
 
     /**
+     * @tc.number SUB_SECURITY_DLP_isDLPFeatureProvided_0100
+     * @tc.name testIsDLPFeatureProvided
+     * @tc.desc test isDLPFeatureProvided success promise.
+     * @tc.size LargeTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('testIsDLPFeatureProvided', 0, async function () {
+      var curTag = TAG + "SUB_SECURITY_DLP_isDLPFeatureProvided_0100";
+      console.info(curTag, "start");
+      await dlpPermission.isDLPFeatureProvided().then((res) => {
+        console.info(curTag, JSON.stringify(res));
+      }).catch((err) => {
+        console.info(curTag, 'isDLPFeatureProvided: ' + JSON.stringify(err));
+        expect(false).assertTrue();
+        return;
+      });
+      expect(true).assertTrue();
+      console.info(curTag, "end");
+      return;
+    })
+
+    /**
      * @tc.number SUB_SECURITY_DLP_startDLPManagerForResult_0100
      * @tc.name testStartDLPManagerForResult0100
      * @tc.desc test startDLPManagerForResult cannot be called by DLP sandbox application

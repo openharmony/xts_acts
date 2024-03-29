@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 @Entry
 @Component
 struct slider {
-  @State inSetValue: number= 40
-  @State outSetValue: number= 40
+  @State inSetValue: number = 40
+  @State outSetValue: number = 40
   @State Begin: number = SliderChangeMode.Begin
 
   onPageShow() {

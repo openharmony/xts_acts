@@ -16,28 +16,28 @@
 @Entry
 @Component
 struct ListItemExample41 {
-  @State message: string = 'Hello World'
-  @State arr: number[] = [0, 1, 2, 3, 4]
-  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea"
-  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea"
-  @State  swipeActionState:string = '-1'
-  @State  swipeOffSet :string = '-1'
+  @State message: string = 'Hello World';
+  @State arr: number[] = [0, 1, 2, 3, 4];
+  @State enterEndDeleteAreaString: string = "not enterEndDeleteArea";
+  @State exitEndDeleteAreaString: string = "not exitEndDeleteArea";
+  @State swipeActionState: string = '-1';
+  @State swipeOffSet: string = '-1';
 
-  @Builder itemEnd() {
+  @Builder
+  itemEnd() {
     Row() {
       Button("Delete").margin("4vp")
       Button("Set").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(40).height(50)
   }
 
-  @Builder itemStart() {
+  @Builder
+  itemStart() {
     Row() {
       Button("StartDelete").margin("4vp")
       Button("StartSet").margin("4vp")
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(40).height(50)
   }
-
-
 
   build() {
     Column() {
@@ -54,52 +54,56 @@ struct ListItemExample41 {
           }
           .transition({ type: TransitionType.Delete, opacity: 0 })
           .swipeAction({
-            start : {
-              builder: () => { this.itemStart() },
+            start: {
+              builder: () => {
+                this.itemStart();
+              },
               onAction: () => {
                 animateTo({ duration: 1000 }, () => {
-                  let index = this.arr.indexOf(item)
-                  this.arr.splice(index, 1)
+                  let index = this.arr.indexOf(item);
+                  this.arr.splice(index, 1);
                 })
               },
               actionAreaDistance: 56,
               onEnterActionArea: () => {
-                this.enterEndDeleteAreaString = "enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "not exitEndDeleteArea"
+                this.enterEndDeleteAreaString = "enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "not exitEndDeleteArea";
               },
               onExitActionArea: () => {
-                this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "exitEndDeleteArea"
+                this.enterEndDeleteAreaString = "not enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "exitEndDeleteArea";
               },
-              onStateChange:(swipeActionState => {
-                  this.swipeActionState = swipeActionState.toString();
-              })
-
-            }
-            ,edgeEffect:SwipeEdgeEffect.None,
-            end : {
-              builder: () => { this.itemEnd() },
-              onAction: () => {
-                animateTo({ duration: 1000 }, () => {
-                  let index = this.arr.indexOf(item)
-                  this.arr.splice(index, 1)
-                })
-              },
-              actionAreaDistance: 56,
-              onEnterActionArea: () => {
-                this.enterEndDeleteAreaString = "enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "not exitEndDeleteArea"
-              },
-              onExitActionArea: () => {
-                this.enterEndDeleteAreaString = "not enterEndDeleteArea"
-                this.exitEndDeleteAreaString = "exitEndDeleteArea"
-              },
-              onStateChange:(swipeActionState => {
+              onStateChange: (swipeActionState => {
                 this.swipeActionState = swipeActionState.toString();
               })
 
             }
-          ,onOffsetChange: offset => {
+          , edgeEffect: SwipeEdgeEffect.None,
+            end: {
+              builder: () => {
+                this.itemEnd();
+              },
+              onAction: () => {
+                animateTo({ duration: 1000 }, () => {
+                  let index = this.arr.indexOf(item);
+                  this.arr.splice(index, 1);
+                })
+              },
+              actionAreaDistance: 56,
+              onEnterActionArea: () => {
+                this.enterEndDeleteAreaString = "enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "not exitEndDeleteArea";
+              },
+              onExitActionArea: () => {
+                this.enterEndDeleteAreaString = "not enterEndDeleteArea";
+                this.exitEndDeleteAreaString = "exitEndDeleteArea";
+              },
+              onStateChange: (swipeActionState => {
+                this.swipeActionState = swipeActionState.toString();
+              })
+
+            }
+          , onOffsetChange: offset => {
               this.swipeOffSet = offset + "";
             }
 
@@ -108,14 +112,15 @@ struct ListItemExample41 {
           .key('lSwipe41Action' + item)
         }, (item: string) => item)
       }.listDirection(Axis.Horizontal).height('60%')
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
-      Text(this.swipeActionState).fontSize(20).margin({top:20}).key('swipe41State')
-      Text(this.swipeOffSet).fontSize(20).margin({top:20}).key('swipe41Offset')
-      Button("Delete").margin("4vp").key('btreset41').onClick(()=>{
-         this.swipeActionState = "-1";
-         this.swipeOffSet = "-1"
-         this.arr = [0, 1, 2, 3, 4];
+      Text(this.swipeActionState).fontSize(20).margin({ top: 20 }).key('swipe41State')
+      Text(this.swipeOffSet).fontSize(20).margin({ top: 20 }).key('swipe41Offset')
+      Button("Delete").margin("4vp").key('btreset41').onClick(() => {
+        this.swipeActionState = "-1";
+        this.swipeOffSet = "-1"
+        this.arr = [0, 1, 2, 3, 4];
       })
 
     }

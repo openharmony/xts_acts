@@ -3325,7 +3325,7 @@ static napi_value CoerceToNativeBindingObject(napi_env env, napi_callback_info i
     napi_value undefined = nullptr;
     napi_get_undefined(env, &undefined);
     napi_value data = nullptr;
-    napi_serialize(env, object, undefined, undefined, false, true, &data);
+    napi_serialize_inner(env, object, undefined, undefined, false, true, &data);
     NAPI_ASSERT(env, data != nullptr, " The data is nullptr");
     napi_value result = nullptr;
     napi_deserialize(env, data, &result);
@@ -3558,6 +3558,32 @@ static napi_value MakeCallbackOne(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value RunEventLoop(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+    NAPI_ASSERT(env, argc > 0, "Wrong number of arguments");
+
+    int32_t value;
+    NAPI_CALL(env, napi_get_value_int32(env, args[0], &value));
+
+    napi_status status = napi_run_event_loop(env, static_cast<napi_event_mode>(value));
+    NAPI_ASSERT(env, status != napi_ok, "stop event loop successfully");
+    napi_value _value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+}
+
+static napi_value StopEventLoop(napi_env env, napi_callback_info info)
+{
+    napi_status status = napi_stop_event_loop(env);
+    NAPI_ASSERT(env, status != napi_ok, "stop event loop successfully");
+    napi_value _value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &_value));
+    return _value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -3702,6 +3728,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("createObjectWithNamedProperties", CreateObjectWithNamedProperties),
         DECLARE_NAPI_FUNCTION("makeCallback", MakeCallback),
         DECLARE_NAPI_FUNCTION("makeCallbackOne", MakeCallbackOne),
+        DECLARE_NAPI_FUNCTION("runEventLoop", RunEventLoop),
+        DECLARE_NAPI_FUNCTION("stopEventLoop", StopEventLoop),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

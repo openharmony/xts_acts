@@ -16,19 +16,19 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function bindPopupOffsetTest() {
-  describe('bindPopupOffsetTest', function () {
+  describe('bindPopupOffsetTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/bindPopupOffset',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/bindPopupOffset',
       }
       try {
         router.clear();
@@ -36,7 +36,7 @@ export default function bindPopupOffsetTest() {
         console.info("get bindPopupOffset state success " + JSON.stringify(pages));
         if (!("bindPopupOffset" == pages.name)) {
           console.info("get bindPopupOffset state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push bindPopupOffset page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -44,26 +44,28 @@ export default function bindPopupOffsetTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
-    it('bindPopupOffsetTest_0100', 0, async function (done) {
+    it('bindPopupOffsetTest_0100', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0100 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12065,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0100 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 10, y: 10 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 10, y: 10
+          });
           done();
         }
         try {
@@ -81,16 +83,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0200', 0, async function (done) {
+    it('bindPopupOffsetTest_0200', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0200 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12066,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0200 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 10, y: 10 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 10, y: 10
+          });
           done();
         }
         try {
@@ -108,16 +112,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0300', 0, async function (done) {
+    it('bindPopupOffsetTest_0300', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0300 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12067,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0300 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 0, y: 0 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 0, y: 0
+          });
           done();
         }
         try {
@@ -135,16 +141,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0400', 0, async function (done) {
+    it('bindPopupOffsetTest_0400', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0400 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12068,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0400 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 0, y: 50 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 0, y: 50
+          });
           done();
         }
         try {
@@ -162,14 +170,14 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0500', 0, async function (done) {
+    it('bindPopupOffsetTest_0500', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0500 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12069,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0500 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.offset).assertEqual(null);
           done();
@@ -188,16 +196,18 @@ export default function bindPopupOffsetTest() {
       }
       done();
     });
-    it('bindPopupOffsetTest_0600', 0, async function (done) {
+    it('bindPopupOffsetTest_0600', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0600 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12070,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0600 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: -10, y: -10 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: -10, y: -10
+          });
           done();
         }
         try {
@@ -215,16 +225,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0700', 0, async function (done) {
+    it('bindPopupOffsetTest_0700', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0700 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12071,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0700 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: -10, y: -10 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: -10, y: -10
+          });
           done();
         }
         try {
@@ -242,16 +254,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_0800', 0, async function (done) {
+    it('bindPopupOffsetTest_0800', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0800 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12072,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0800 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 0, y: 0 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 0, y: 0
+          });
           done();
         }
         try {
@@ -269,16 +283,18 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bbindPopupOffsetTest_0900', 0, async function (done) {
+    it('bbindPopupOffsetTest_0900', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_0900 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12073,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_0900 get state result is: " + JSON.stringify(indexEvent));
-          expect(indexEvent.data.offset).assertEqual({ x: 0, y: 50 });
+          expect(indexEvent.data.offset).assertEqual({
+            x: 0, y: 50
+          });
           done();
         }
         try {
@@ -296,14 +312,14 @@ export default function bindPopupOffsetTest() {
       done();
     });
 
-    it('bindPopupOffsetTest_1000', 0, async function (done) {
+    it('bindPopupOffsetTest_1000', 0, async (done: Function) => {
       console.info('bindPopupOffsetTest_1000 START');
       try {
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 12074,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (indexEvent) => {
+        let callback = (indexEvent: events_emitter.EventData) => {
           console.info("bindPopupOffsetTest_1000 get state result is: " + JSON.stringify(indexEvent));
           expect(indexEvent.data.offset).assertEqual(null);
           done();

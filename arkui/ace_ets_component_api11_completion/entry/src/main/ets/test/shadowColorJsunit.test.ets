@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function shadowColorJsunit() {
-  describe('shadowColorJsunit', function () {
-    beforeEach(async function (done) {
+  describe('shadowColorJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("shadowColorJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/shadowColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/shadowColor',
       }
       try {
         router.clear();
@@ -49,7 +62,7 @@ export default function shadowColorJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('shadowColorJsunit_0100', 0, async function (done) {
+    it('shadowColorJsunit_0100', 0, async (done: Function) => {
       console.info('shadowColorJsunit_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,9 +70,8 @@ export default function shadowColorJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('render_shadowColor');
-      let obj = JSON.parse(strJson);
-      console.info("[shadowColorJsunit_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('shadowColor:4278255360');
+      console.info("[shadowColorJsunit_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('shadowColor:4278255360');
       console.info('[shadowColorJsunit_0100] END');
       done();
     });

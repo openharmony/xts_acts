@@ -20,7 +20,7 @@ struct OutlineExample {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
         Text('outline')
           .key('outline_text')
-          .margin({top:20})
+          .margin({ top: 20 })
           .backgroundColor(Color.Pink)
           .fontSize(50)
           .width(300)

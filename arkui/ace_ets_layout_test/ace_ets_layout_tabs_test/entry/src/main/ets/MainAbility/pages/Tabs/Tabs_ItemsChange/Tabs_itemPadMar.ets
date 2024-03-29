@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct Tabs_itemPadMar {
@@ -22,13 +24,14 @@ struct Tabs_itemPadMar {
   @State dadMargin: number = 0;
   @State currentIndex: number = 0;
   private controller: TabsController = new TabsController();
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Tabs_itemPadMar onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'dadPadding') {
         this.dadPadding = message.value;
@@ -39,10 +42,12 @@ struct Tabs_itemPadMar {
       if (message.name == 'currentIndex') {
         this.currentIndex = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  @Builder TabBuilder(index: number, name: string) {
+
+  @Builder
+  TabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
@@ -54,16 +59,18 @@ struct Tabs_itemPadMar {
 
   build() {
     Column() {
-      Tabs({ controller: this.controller, index:this.currentIndex }) {
+      Tabs({ controller: this.controller, index: this.currentIndex }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#00CB87').key("Tabs_itemPadMar_001")
         }.tabBar(this.TabBuilder(0, 'green'))
         .key("Tabs_itemPadMar_011")
         .padding(this.dadPadding)
         .margin(this.dadMargin)
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#007DFF').key("Tabs_itemPadMar_002")
         }.tabBar(this.TabBuilder(1, 'blue')).key("Tabs_itemPadMar_012")
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor('#FFBF00').key("Tabs_itemPadMar_003")
         }.tabBar(this.TabBuilder(2, 'yellow')).key("Tabs_itemPadMar_013")

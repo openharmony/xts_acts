@@ -15,19 +15,20 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
+import { BusinessError } from '@ohos.base';
 
 export default function stageRouterTest() {
-  describe('stageRouterTest', function () {
+  describe('stageRouterTest', () => {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
+    beforeAll(() => {
       // Presets an action, which is performed only once before all test cases of the test suite start.
       // This API supports only one parameter: preset action function.
     })
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'TestAbility/pages/stageRouter',
+      let options: router.RouterOptions = {
+        url: 'TestAbility/pages/stageRouter',
       }
       try {
         router.clear();
@@ -35,7 +36,7 @@ export default function stageRouterTest() {
         console.info("get stageRouter state success " + JSON.stringify(pages));
         if (!("stageRouter" == pages.name)) {
           console.info("get stageRouter state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push stageRouter page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -43,44 +44,44 @@ export default function stageRouterTest() {
       }
       done()
     });
-    afterEach(function () {
+    afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
     })
-    afterAll(function () {
+    afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
 
-    it('testrouterstage0001', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0001', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0001 START');
-        let result;
-        let options = {
-          url: '../TestAbility/pages/pushUrl.ets',
-          params: {
-            data1: 'message',
-            data2: {
-              data3: [123, 456, 789]
-            }
+      let result: ESObject;
+      let options: router.RouterOptions = {
+        url: '../TestAbility/pages/pushUrl.ets',
+        params: {
+          data1: 'message',
+          data2: {
+            data3: [123, 456, 789]
           }
         }
-        try {
-          result = router.pushUrl(options)
-          expect(typeof(result)).assertEqual('object');
-          console.info("push button page success " + JSON.stringify(result));
-        } catch (err) {
-          console.error("push button page error " + JSON.stringify(result));
-        }
+      }
+      try {
+        result = router.pushUrl(options)
+        expect(typeof (result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
       console.info('testrouterstage0001 END');
       done();
     });
 
-    it('testrouterstage0002', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0002', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0002 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -90,7 +91,7 @@ export default function stageRouterTest() {
               data3: [123, 456, 789]
             }
           }
-        }, (err) => {
+        }, (err: BusinessError) => {
           if (err) {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -99,18 +100,18 @@ export default function stageRouterTest() {
         });
         expect(result).assertUndefined();
         console.info("push button page success " + JSON.stringify(result));
-        } catch (err) {
-          console.error("push button page error " + JSON.stringify(result));
-        }
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
       console.info('testrouterstage0002 END');
       done();
     });
 
 
-    it('testrouterstage0003', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0003', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0003 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -121,11 +122,12 @@ export default function stageRouterTest() {
             }
           }
         }, router.RouterMode.Standard)
-          .then(() => {})
+          .then(() => {
+          })
           .catch(err => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -134,10 +136,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0004', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0004', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0004 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -157,10 +159,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0005', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0005', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0005 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -168,11 +170,12 @@ export default function stageRouterTest() {
             data1: 'message'
           }
         })
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -181,17 +184,17 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0006', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0006', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0006 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceUrl({
           url: '../TestAbility/pages/pushUrl.ets',
           params: {
             data1: 'message'
           }
-        }, (err) => {
+        }, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -207,10 +210,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0007', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0007', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0007 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -218,11 +221,12 @@ export default function stageRouterTest() {
             data1: 'message'
           }
         }, router.RouterMode.Standard)
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -231,10 +235,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0008', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0008', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0008 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceUrl({
           url: '../TestAbility/pages/pushUrl.ets',
@@ -257,12 +261,14 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0009', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0009', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0009 START');
-      let result;
+      let result: ESObject;
       try {
-        result = router.back({ url: '../TestAbility/pages/pushUrl.ets' })
+        result = router.back({
+          url: '../TestAbility/pages/pushUrl.ets'
+        })
         expect(result).assertUndefined();
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
@@ -272,10 +278,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0010', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0010', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0010 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.clear()
         expect(result).assertUndefined();
@@ -287,13 +293,13 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0011', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0011', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0011 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.getLength()
-        expect(typeof(result)).assertEqual('string');
+        expect(typeof (result)).assertEqual('string');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -302,13 +308,13 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0012', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0012', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0012 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.getState()
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -317,10 +323,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0013', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0013', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0013 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.showAlertBeforeBackPage({
           message: 'Message Info'
@@ -334,10 +340,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0014', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0014', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0014 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.hideAlertBeforeBackPage()
         expect(result).assertUndefined();
@@ -349,10 +355,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0015', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0015', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0015 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.getParams()
         expect(result).assertUndefined();
@@ -364,10 +370,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0016', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0016', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0016 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushNamedRoute({
           name: 'pushUrl',
@@ -378,11 +384,12 @@ export default function stageRouterTest() {
             }
           }
         })
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -391,10 +398,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0017', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0017', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0017 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushNamedRoute({
           name: 'pushUrl',
@@ -404,7 +411,7 @@ export default function stageRouterTest() {
               data3: [123, 456, 789]
             }
           }
-        }, (err) => {
+        }, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -420,10 +427,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0018', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0018', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0018 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushNamedRoute({
           name: 'pushUrl',
@@ -434,11 +441,12 @@ export default function stageRouterTest() {
             }
           }
         }, router.RouterMode.Standard)
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -447,10 +455,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0019', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0019', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0019 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.pushNamedRoute({
           name: 'pushUrl',
@@ -460,7 +468,7 @@ export default function stageRouterTest() {
               data3: [123, 456, 789]
             }
           }
-        }, router.RouterMode.Standard, (err) => {
+        }, router.RouterMode.Standard, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -476,10 +484,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0020', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0020', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0020 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceNamedRoute({
           name: 'pushUrl',
@@ -487,11 +495,12 @@ export default function stageRouterTest() {
             data1: 'message'
           }
         })
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -500,17 +509,17 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0021', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0021', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0021 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceNamedRoute({
           name: 'pushUrl',
           params: {
             data1: 'message'
           }
-        }, (err) => {
+        }, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;
@@ -526,10 +535,10 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0022', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0022', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0022 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceNamedRoute({
           name: 'pushUrl',
@@ -537,11 +546,12 @@ export default function stageRouterTest() {
             data1: 'message'
           }
         }, router.RouterMode.Standard)
-          .then(() => {})
-          .catch(err => {
+          .then(() => {
+          })
+          .catch((err: BusinessError) => {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           })
-        expect(typeof(result)).assertEqual('object');
+        expect(typeof (result)).assertEqual('object');
         console.info("push button page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push button page error " + JSON.stringify(result));
@@ -550,17 +560,17 @@ export default function stageRouterTest() {
       done();
     });
 
-    it('testrouterstage0023', 0, async function (done) {
-      let router = globalThis.uiContent.getRouter();
+    it('testrouterstage0023', 0, async (done: Function) => {
+      let router: ESObject = globalThis.uiContent.getRouter();
       console.info('testrouterstage0023 START');
-      let result;
+      let result: ESObject;
       try {
         result = router.replaceNamedRoute({
           name: 'pushUrl',
           params: {
             data1: 'message'
           }
-        }, router.RouterMode.Standard, (err) => {
+        }, router.RouterMode.Standard, (err: BusinessError) => {
           if (err) {
             console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
             return;

@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 
-import { describe, afterEach, it, expect } from '@ohos/hypium'
+import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
+import {Driver, ON} from '@ohos.UiTest'
+
+let driver = Driver.create();
 
 
 var subscriberInfoMultiInstance = {
@@ -44,6 +47,15 @@ async function startAbilityProcess(abilityContext, options, parameters) {
     }, options, (error, data) => {
       console.log('startAbilityProcess result: ' + JSON.stringify(error) + ", " + JSON.stringify(data))
     })
+    await driver.delayMs(2000);
+    let allowed = await driver.findComponent(ON.text("打开"));
+    if (allowed) {
+      console.log("find button");
+      let point = await allowed.getBoundsCenter();
+      console.log('point.x : ' + point.x +'point.y : '+ point.y);
+
+      await driver.click(point.x, point.y);
+    }
   } catch (err) {
     console.log('ACTS_getDisplayIdTest_0100 err: ' + err)
   }
@@ -53,7 +65,7 @@ async function startAbilityProcess(abilityContext, options, parameters) {
 export default function abilityTest(abilityContext) {
   describe('ActsGetDisplayIdStartAbilityTest', function () {
 
-    afterEach(async (done) => {
+    beforeEach(async (done) => {
       setTimeout(() => { done(); }, 3000)
     })
 

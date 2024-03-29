@@ -15,17 +15,18 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../MainAbility/common/Common'
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function Row_Margin() {
 
-  describe('Row_Margin', function () {
-    beforeEach(async function (done) {
+  describe('Row_Margin', () => {
+    beforeEach(async (done: Function) => {
       console.info("Row_Margin beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Row/parentComponentChanged/Row_Margin',
-      }
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/parentComponentChanged/Row_Margin',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -33,7 +34,7 @@ export default function Row_Margin() {
         console.info("get Row_Margin state success " + JSON.stringify(pages));
         if (!("Row_Margin" == pages.name)) {
           console.info("get Row_Margin state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await CommonFunc.sleep(2000);
           console.info("push Row_Margin page success " + JSON.stringify(result));
         }
@@ -45,26 +46,28 @@ export default function Row_Margin() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000)
       console.info("Row_Margin after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0600
-     * @tc.name      testParentComponentChangedRowMargin
-     * @tc.desc      Setting the Margin for the Row component
+     * @tc.number SUB_ACE_ROW_PARENTCOMPONENTCHANGED_0600
+     * @tc.name testParentComponentChangedRowMargin
+     * @tc.desc Setting the Margin for the Row component
      */
 
-    it('testParentComponentChangedRowMargin', 0, async function (done) {
+    it('testParentComponentChangedRowMargin', 0, async (done: Function) => {
       console.info('testParentComponentChangedRowMargin START');
-      globalThis.value.message.notify({ name: 'margin', value: 5 });
+      globalThis.value.message.notify({
+        name: 'margin', value: 5
+      });
       await CommonFunc.sleep(3000);
-      let Column = CommonFunc.getComponentRect('Column_Row_Margin');
-      let Row = CommonFunc.getComponentRect('Row_Margin_Row');
-      let Text1 = CommonFunc.getComponentRect('Row_Margin_Text1');
-      let Text2 = CommonFunc.getComponentRect('Row_Margin_Text2');
-      let Text3 = CommonFunc.getComponentRect('Row_Margin_Text3');
+      let Column: RectValue = CommonFunc.getComponentRect('Column_Row_Margin');
+      let Row: RectValue = CommonFunc.getComponentRect('Row_Margin_Row');
+      let Text1: RectValue = CommonFunc.getComponentRect('Row_Margin_Text1');
+      let Text2: RectValue = CommonFunc.getComponentRect('Row_Margin_Text2');
+      let Text3: RectValue = CommonFunc.getComponentRect('Row_Margin_Text3');
 
       console.log('Column rect_value is:' + JSON.stringify(Column));
       console.log('Row rect_value is:' + JSON.stringify(Row));
@@ -79,9 +82,12 @@ export default function Row_Margin() {
       expect(Math.abs((Math.round(Text2.right - Text2.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
       expect(Math.abs((Math.round(Text3.right - Text3.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
 
-      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
-      expect(Math.abs((Math.round(Math.round((Text1.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1).assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Row.top - Column.top) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
+      expect(Math.abs((Math.round(Math.round((Text1.left - Column.left) * 10) / 10)) - (Math.round(vp2px(5)))) <= 1)
+        .assertTrue();
       expect(Math.abs((Math.round(Text1.top - Column.top)) - (Math.round(vp2px(80)))) <= 1).assertTrue();
       expect(Math.abs(Text1.left - Row.left) <= 1).assertTrue();
       expect(Math.abs(Text1.top - Row.top - (Row.bottom - Text1.bottom)) <= 1).assertTrue();

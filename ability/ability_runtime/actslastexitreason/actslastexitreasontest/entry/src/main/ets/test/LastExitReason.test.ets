@@ -35,7 +35,7 @@ export default function lastExitReasonTest() {
     });
     beforeEach(async () => {
       await abilityDelegator.executeShellCommand("aa force-stop com.acts.lastexitreasonrely1");
-      await sleep(500);
+      await sleep(1500);
     });
     afterEach(() => {
     });

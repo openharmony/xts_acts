@@ -15,57 +15,60 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
+import { BusinessError } from '@ohos.base';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT UNIQUE, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: "UpdataTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
 let rdbStore = undefined;
 
+async function createTest() {
+  console.info(TAG + "createTest start");
+  {
+    let u8 = new Uint8Array([1, 2, 3]);
+    const valueBucket: ValuesBucket = {
+      name: "zhangsan",
+      age: 18,
+      salary: 100.5,
+      blobType: u8,
+    };
+    await rdbStore.insert("test", valueBucket);
+  }
+}
+
+
 export default function rdbStoreUpdateTest() {
-  describe("rdbStoreUpdateTest", function () {
-    beforeAll(async function () {
+  describe("rdbStoreUpdateTest", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await createTest();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "UpdataTest.db");
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
-
-    async function createTest() {
-      console.info(TAG + "createTest start");
-      {
-        var u8 = new Uint8Array([1, 2, 3]);
-        const valueBucket = {
-          name: "zhangsan",
-          age: 18,
-          salary: 100.5,
-          blobType: u8,
-        };
-        await rdbStore.insert("test", valueBucket);
-      }
-    }
 
     /**
      * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1240
@@ -75,10 +78,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate001", 0, async function (done) {
+    it("testRdbStoreUpdate001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate001 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -134,10 +137,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate002", 0, async function (done) {
+    it("testRdbStoreUpdate002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate002 start *************");
       try {
-        const emptyBucket = {};
+        const emptyBucket : ValuesBucket = {};
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("id", "1");
         rdbStore.update(emptyBucket, predicates, async (err, rows) => {
@@ -167,10 +170,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate003", 0, async function (done) {
+    it("testRdbStoreUpdate003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate003 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -206,10 +209,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate004", 0, async function (done) {
+    it("testRdbStoreUpdate004", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate004 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -246,10 +249,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate005", 0, async function (done) {
+    it("testRdbStoreUpdate005", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate005 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -287,10 +290,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate006", 0, async function (done) {
+    it("testRdbStoreUpdate006", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate006 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -333,10 +336,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate007", 0, async function (done) {
+    it("testRdbStoreUpdate007", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate007 start *************");
       try {
-        const emptyBucket = {};
+        const emptyBucket: ValuesBucket = {};
 
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("id", "1");
@@ -346,7 +349,7 @@ export default function rdbStoreUpdateTest() {
             console.info(`Updated row count: ${rows}`);
             expect(rows > 0).assertFalse();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
             expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong valueBucket");
@@ -368,10 +371,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate008", 0, async function (done) {
+    it("testRdbStoreUpdate008", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate008 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -386,7 +389,7 @@ export default function rdbStoreUpdateTest() {
             console.info(`Updated row count: ${rows}`);
             expect(rows > 0).assertFalse();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
             expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong condition");
@@ -408,10 +411,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate009", 0, async function (done) {
+    it("testRdbStoreUpdate009", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate009 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -427,7 +430,7 @@ export default function rdbStoreUpdateTest() {
             console.info(`Updated row count: ${rows}`);
             expect(rows > 0).assertTrue();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
             expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with null table name");
@@ -449,10 +452,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate010", 0, async function (done) {
+    it("testRdbStoreUpdate010", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate010 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 23,
           salary: 100.5,
@@ -468,7 +471,7 @@ export default function rdbStoreUpdateTest() {
             console.info(`Updated row count: ${rows}`);
             expect(rows > 0).assertTrue();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
             expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong column name");
@@ -490,10 +493,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate011", 0, async function (done) {
+    it("testRdbStoreUpdate011", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate011 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -548,10 +551,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate012", 0, async function (done) {
+    it("testRdbStoreUpdate012", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate012 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -594,10 +597,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate013", 0, async function (done) {
+    it("testRdbStoreUpdate013", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate013 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -653,10 +656,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate014", 0, async function (done) {
+    it("testRdbStoreUpdate014", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate014 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -699,10 +702,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate015", 0, async function (done) {
+    it("testRdbStoreUpdate015", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate015 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 20,
           salary: 200.5,
@@ -760,10 +763,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate016", 0, async function (done) {
+    it("testRdbStoreUpdate016", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate016 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -806,10 +809,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate017", 0, async function (done) {
+    it("testRdbStoreUpdate017", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate017 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 20,
           salary: 200.5,
@@ -867,10 +870,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate018", 0, async function (done) {
+    it("testRdbStoreUpdate018", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate018 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -913,10 +916,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate019", 0, async function (done) {
+    it("testRdbStoreUpdate019", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate019 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 20,
           salary: 200.5,
@@ -974,10 +977,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate020", 0, async function (done) {
+    it("testRdbStoreUpdate020", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate020 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,
@@ -1020,10 +1023,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate021", 0, async function (done) {
+    it("testRdbStoreUpdate021", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate021 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 20,
           salary: 200.5,
@@ -1081,10 +1084,10 @@ export default function rdbStoreUpdateTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreUpdate022", 0, async function (done) {
+    it("testRdbStoreUpdate022", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreUpdate022 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "lisi",
           age: 20,
           salary: 200.5,

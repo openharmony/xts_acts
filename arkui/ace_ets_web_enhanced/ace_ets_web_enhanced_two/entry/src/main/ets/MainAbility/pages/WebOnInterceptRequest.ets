@@ -27,14 +27,14 @@ struct WebOnInterceptRequest {
   heads: Header[] = new Array()
   responseWeb: WebResourceResponse = new WebResourceResponse()
   webData: string = "<!DOCTYPE html>\n" +
-  "<html>\n" +
-  "<head>\n" +
-  "<title>intercept test</title>\n" +
-  "</head>\n" +
-  "<body>\n" +
-  "<h1>intercept test</h1>\n" +
-  "</body>\n" +
-  "</html>"
+    "<html>\n" +
+    "<head>\n" +
+    "<title>intercept test</title>\n" +
+    "</head>\n" +
+    "<body>\n" +
+    "<h1>intercept test</h1>\n" +
+    "</body>\n" +
+    "</html>"
   @State title: string = "test";
 
   onPageShow() {
@@ -48,7 +48,6 @@ struct WebOnInterceptRequest {
   onPageHide() {
     events_emitter.off(10)
   }
-
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("web page valueChangeCallBack");

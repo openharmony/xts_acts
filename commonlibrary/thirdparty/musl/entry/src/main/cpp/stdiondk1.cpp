@@ -16,16 +16,16 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <cerrno>
+#include <cfloat>
 #include <clocale>
 #include <cmath>
 #include <cstdarg>
 #include <cstdio>
-#include <cstring>
-#include <cerrno>
-#include <fcntl.h>
-#include <cfloat>
-#include <malloc.h>
 #include <cstdlib>
+#include <cstring>
+#include <fcntl.h>
+#include <malloc.h>
 #include <unistd.h>
 
 #define PARAM_0 0
@@ -44,6 +44,7 @@
 #define PARAM_20 20
 #define PARAM_50 50
 #define PARAM_100 100
+#define PARAM_0777 0777
 #define PARAM_1024 1024
 #define PARAM_11 11
 #define PARAM_321 321
@@ -96,7 +97,7 @@ static napi_value Fread_Chk_One(napi_env env, napi_callback_info info)
 extern "C" ssize_t __pwrite_chk(int fd, const void *buf, size_t count, off_t offset, size_t buf_size);
 static napi_value Pwrite_Chk_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w+");
     NAPI_ASSERT(env, fp != nullptr, "__pwrite_chk fopen Error");
     char src[100] = "testpwritechk";
@@ -127,7 +128,6 @@ static napi_value Readlinkat_Chk_One(napi_env env, napi_callback_info info)
     size_t ret = __readlinkat_chk(fd, g_tempLinkFile, dest, strlen(src), sizeof(dest));
     NAPI_ASSERT(env, strlen(dest) > PARAM_0, "__readlinkat_chk Error");
     fclose(fp);
-    close(fd);
     unlink(g_tempLinkFile);
     unlink(g_tempFile);
     remove(g_tempFile);
@@ -213,7 +213,7 @@ static napi_value Vsnprintf_Chk_One(napi_env env, napi_callback_info info)
 extern "C" ssize_t __write_chk(int fd, const void *buf, size_t count, size_t buf_size);
 static napi_value Write_Chk_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w+");
     NAPI_ASSERT(env, fp != nullptr, "__readlinkat_chk fopen Error");
     char src[100] = "testwritechkchk";
@@ -291,7 +291,7 @@ static napi_value Clearerr_Unlocked_One(napi_env env, napi_callback_info info)
 
 static napi_value Dprintf_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w");
     NAPI_ASSERT(env, fp != nullptr, "dprintf open Error");
     int ret = dprintf(fd, "%s", "hello world");
@@ -305,7 +305,7 @@ static napi_value Dprintf_One(napi_env env, napi_callback_info info)
 
 static napi_value Fclose_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w");
     NAPI_ASSERT(env, fp != nullptr, "fclose open Error");
     fprintf(fp, "hello world");
@@ -319,7 +319,7 @@ static napi_value Fclose_One(napi_env env, napi_callback_info info)
 static napi_value Fdopen_One(napi_env env, napi_callback_info info)
 {
     errno = PARAM_0;
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w");
     NAPI_ASSERT(env, fp != nullptr, "fdopen open Error");
     fprintf(fp, "hello world");
@@ -332,7 +332,7 @@ static napi_value Fdopen_One(napi_env env, napi_callback_info info)
 
 static napi_value Feof_unlocked_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     FILE *fp = fdopen(fd, "w+");
     NAPI_ASSERT(env, fp != nullptr, "feof_unlocked fopen Error");
     char src[] = "hello";
@@ -1264,6 +1264,7 @@ static napi_value Remove_One(napi_env env, napi_callback_info info)
 {
     FILE *fp = fopen(g_tempFile, "w");
     NAPI_ASSERT(env, fp != nullptr, "Remove_One fopen Error");
+    fclose(fp);
     int ret = remove(g_tempFile);
     napi_value result = nullptr;
     napi_create_int32(env, ret == PARAM_0, &result);
@@ -1284,8 +1285,8 @@ static napi_value Rename_One(napi_env env, napi_callback_info info)
 
 static napi_value Renameat_One(napi_env env, napi_callback_info info)
 {
-    int oldfd = open(g_tempFile, O_CREAT);
-    int newfd = open(TEMP_FILE_NEW, O_CREAT);
+    int oldfd = open(g_tempFile, O_CREAT, PARAM_0777);
+    int newfd = open(TEMP_FILE_NEW, O_CREAT, PARAM_0777);
     NAPI_ASSERT(env, oldfd != EOF && newfd != EOF, "Renameat_One open Error");
     int ret = renameat(oldfd, g_tempFile, newfd, TEMP_FILE_NEW);
     close(oldfd);
@@ -1467,7 +1468,7 @@ int Vdprintf_Test(int fd, const char *format, ...)
 
 static napi_value Vdprintf_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(g_tempFile, O_CREAT | O_RDWR);
+    int fd = open(g_tempFile, O_CREAT | O_RDWR, PARAM_0777);
     NAPI_ASSERT(env, fd != EOF, "vdprintf open Error");
     char value[] = "asdf";
     char dest[20] = {0};
@@ -1478,6 +1479,7 @@ static napi_value Vdprintf_One(napi_env env, napi_callback_info info)
     rewind(fp);
     fread(dest, sizeof(char), sizeof(dest), fp);
     fclose(fp);
+    close(fd);
     remove(g_tempFile);
     napi_value result = nullptr;
     napi_create_int32(env, strcmp(dest, "asdf") == PARAM_0, &result);

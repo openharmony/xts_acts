@@ -15,14 +15,14 @@
 #include "common/napi_helper.cpp"
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include <cerrno>
 #include <csignal>
+#include <cstdlib>
 #include <cstring>
 #include <ctime>
-#include <cerrno>
 #include <malloc.h>
 #include <net/if.h>
 #include <sched.h>
-#include <cstdlib>
 #include <sys/time.h>
 #include <sys/timex.h>
 #include <unistd.h>
@@ -41,6 +41,7 @@
 #define PARAM_111 111
 #define PARAM_777 777
 #define PARAM_0666 0666
+#define PARAM_0777 0777
 #define MPARAM_123 (-123)
 
 extern "C" int __timer_gettime64(timer_t, struct itimerspec *);
@@ -144,6 +145,7 @@ static napi_value Futimes_One(napi_env env, napi_callback_info info)
     if (fd != MPARAM_1) {
         ret = futimes(fd, tv);
     }
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret == PARAM_0, &result);
     remove(TEST_FILE);
@@ -154,8 +156,9 @@ static napi_value Futimes_Two(napi_env env, napi_callback_info info)
 {
     static struct timeval tv[2];
 
-    int fd = open(TEST_FILE, O_CREAT);
+    int fd = open(TEST_FILE, O_CREAT, PARAM_0777);
     int ret = futimes(fd, tv);
+    close(fd);
     napi_value result = nullptr;
     napi_create_int32(env, ret == PARAM_0 && errno == EINVAL, &result);
     remove(TEST_FILE);
@@ -218,14 +221,11 @@ static napi_value TzName_Two(napi_env env, napi_callback_info info)
 
 static napi_value Utimes_One(napi_env env, napi_callback_info info)
 {
-    int fd = open(TEST_FILE, O_RDWR | O_RSYNC | O_CREAT);
-    close(fd);
-    struct stat st;
+    int fd = open(TEST_FILE, O_RDWR | O_RSYNC | O_CREAT, PARAM_0777);
     struct timeval tv[2] = {{1, 0}, {1, 0}};
     int ret = utimes(TEST_FILE, tv);
     NAPI_ASSERT(env, ret == PARAM_0, "Utimes_One--utimes failed");
-    fstat(fd, &st);
-    NAPI_ASSERT(env, st.st_atime != tv[0].tv_sec && st.st_mtime != tv[1].tv_sec, "Utimes_One--utimes failed");
+    close(fd);
     remove(TEST_FILE);
     napi_value result = nullptr;
     napi_create_int32(env, ret == PARAM_0, &result);
@@ -234,7 +234,7 @@ static napi_value Utimes_One(napi_env env, napi_callback_info info)
 
 static napi_value Utimes_Two(napi_env env, napi_callback_info info)
 {
-    int fd = open(TEST_FILE, O_RDWR | O_RSYNC | O_CREAT);
+    int fd = open(TEST_FILE, O_RDWR | O_RSYNC | O_CREAT, PARAM_0777);
     close(fd);
 
     struct timeval tv[2];

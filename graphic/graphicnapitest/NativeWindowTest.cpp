@@ -19,6 +19,7 @@
 #include "surface_type.h"
 #include "buffer_log.h"
 #include "external_window.h"
+#include "surface_utils.h"
 #include "iconsumer_surface.h"
 #include <native_buffer.h>
 
@@ -50,16 +51,46 @@ public:
 
 void NativeWindowTest::SetUpTestCase()
 {
+    requestConfig = {
+        .width = 0x100,  // small
+        .height = 0x100, // small
+        .strideAlignment = 0x8,
+        .format = GRAPHIC_PIXEL_FMT_RGBA_8888,
+        .usage = BUFFER_USAGE_CPU_READ | BUFFER_USAGE_CPU_WRITE | BUFFER_USAGE_MEM_DMA,
+        .timeout = 0,
+    };
+
+    cSurface = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurface->RegisterConsumerListener(listener);
+    producer = cSurface->GetProducer();
+    pSurface = Surface::CreateSurfaceAsProducer(producer);
+    int32_t fence;
+    pSurface->RequestBuffer(sBuffer, fence, requestConfig);
 }
 
 void NativeWindowTest::TearDownTestCase()
 {
+    flushConfig = { .damage = {
+        .w = 0x100,
+        .h = 0x100,
+    } };
+    pSurface->FlushBuffer(sBuffer, -1, flushConfig);
+    sBuffer = nullptr;
+    cSurface = nullptr;
+    producer = nullptr;
+    pSurface = nullptr;
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+    nativeWindow = nullptr;
+    nativeWindowBuffer = nullptr;
 }
 
 /*
  * @tc.name  CreateNativeWindow001
  * @tc.desc  test for call OH_NativeWindow_CreateNativeWindow by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CreateNativeWindow001, Function | MediumTest | Level2)
 {
@@ -67,9 +98,38 @@ HWTEST_F(NativeWindowTest, CreateNativeWindow001, Function | MediumTest | Level2
 }
 /*
  * @tc.name  CreateNativeWindow002
- * @tc.desc  test for call OH_NativeWindow_CreateNativeWindow
+ * @tc.desc  call OH_NativeWindow_CreateNativeWindow check ret
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CreateNativeWindow002, Function | MediumTest | Level2)
+{
+    nativeWindow = OH_NativeWindow_CreateNativeWindow(&pSurface);
+    ASSERT_NE(nativeWindow, nullptr);
+}
+/*
+ * @tc.name  CreateNativeWindow003
+ * @tc.desc  call OH_NativeWindow_CreateNativeWindow check ret
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, CreateNativeWindow003, Function | MediumTest | Level2)
+{
+    uint64_t surfaceId = 0;
+    int32_t ret = OH_NativeWindow_GetSurfaceId(nativeWindow, &surfaceId);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    ASSERT_EQ(surfaceId, pSurface->GetUniqueId());
+}
+/*
+ * @tc.name  CreateNativeWindow004
+ * @tc.desc  test for call OH_NativeWindow_CreateNativeWindow
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, CreateNativeWindow004, Function | MediumTest | Level2)
 {
     requestConfig = {
         .width = 0x100,  // small
@@ -92,9 +152,79 @@ HWTEST_F(NativeWindowTest, CreateNativeWindow002, Function | MediumTest | Level2
     ASSERT_NE(nativeWindow, nullptr);
 }
 /*
+ * @tc.name  CreateNativeWindowFromSurfaceId001
+ * @tc.desc  call OH_NativeWindow_CreateNativeWindowFromSurfaceId
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, CreateNativeWindowFromSurfaceId001, Function | MediumTest | Level2)
+{
+    uint64_t surfaceId = static_cast<uint64_t>(pSurface->GetUniqueId());
+    OHNativeWindow *window = nullptr;
+    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &window);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    surfaceId = 0;
+    ret = OH_NativeWindow_GetSurfaceId(window, &surfaceId);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    ASSERT_EQ(surfaceId, pSurface->GetUniqueId());
+    OH_NativeWindow_DestroyNativeWindow(window);
+}
+
+/*
+ * @tc.name  CreateNativeWindowFromSurfaceId002
+ * @tc.desc  call OH_NativeWindow_CreateNativeWindowFromSurfaceId
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, CreateNativeWindowFromSurfaceId002, Function | MediumTest | Level2)
+{
+    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(0, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+    ret = OH_NativeWindow_GetSurfaceId(nullptr, nullptr);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+}
+
+/*
+ * @tc.name  CreateNativeWindowFromSurfaceId003
+ * @tc.desc  call OH_NativeWindow_CreateNativeWindowFromSurfaceId
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, CreateNativeWindowFromSurfaceId003, Function | MediumTest | Level2)
+{
+    sptr<OHOS::IConsumerSurface> cSurfaceTmp = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurfaceTmp->RegisterConsumerListener(listener);
+    sptr<OHOS::IBufferProducer> producerTmp = cSurfaceTmp->GetProducer();
+    sptr<OHOS::Surface> pSurfaceTmp = Surface::CreateSurfaceAsProducer(producerTmp);
+
+    uint64_t surfaceId = static_cast<uint64_t>(pSurfaceTmp->GetUniqueId());
+    auto utils = SurfaceUtils::GetInstance();
+    utils->Add(surfaceId, pSurfaceTmp);
+    OHNativeWindow *nativeWindowTmp = nullptr;
+    int32_t ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(0xFFFFFFFF, &nativeWindowTmp);
+    ASSERT_EQ(ret, OHOS::GSERROR_INVALID_ARGUMENTS);
+    ret = OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindowTmp);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    surfaceId = 0;
+    ret = OH_NativeWindow_GetSurfaceId(nativeWindowTmp, &surfaceId);
+    ASSERT_EQ(ret, OHOS::GSERROR_OK);
+    ASSERT_EQ(surfaceId, pSurfaceTmp->GetUniqueId());
+
+    cSurfaceTmp = nullptr;
+    producerTmp = nullptr;
+    pSurfaceTmp = nullptr;
+    OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp);
+}
+/*
  * @tc.name  OH_NativeWindow_GetNativeObjectMagic
  * @tc.desc  test for call OH_NativeWindow_GetNativeObjectMagic and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, GetNativeObjectMagic001, Function | MediumTest | Level2)
 {
@@ -105,7 +235,9 @@ HWTEST_F(NativeWindowTest, GetNativeObjectMagic001, Function | MediumTest | Leve
 /*
  * @tc.name  HandleOpt001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowHandleOpt by different param and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, HandleOpt001, Function | MediumTest | Level2)
 {
@@ -126,7 +258,9 @@ HWTEST_F(NativeWindowTest, HandleOpt001, Function | MediumTest | Level2)
 /*
  * @tc.name  HandleOpt005
  * @tc.desc  test for call OH_NativeWindow_NativeWindowHandleOpt by different param and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, HandleOpt005, Function | MediumTest | Level2)
 {
@@ -143,7 +277,9 @@ HWTEST_F(NativeWindowTest, HandleOpt005, Function | MediumTest | Level2)
 /*
  * @tc.name  HandleOpt007
  * @tc.desc  test for call OH_NativeWindow_NativeWindowHandleOpt by different param and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, HandleOpt007, Function | MediumTest | Level2)
 {
@@ -160,7 +296,9 @@ HWTEST_F(NativeWindowTest, HandleOpt007, Function | MediumTest | Level2)
 /*
  * @tc.name  CreateNativeWindowBuffer001
  * @tc.desc  test for call OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CreateNativeWindowBuffer001, Function | MediumTest | Level2)
 {
@@ -169,7 +307,9 @@ HWTEST_F(NativeWindowTest, CreateNativeWindowBuffer001, Function | MediumTest | 
 /*
  * @tc.name  CreateNativeWindowBufferFromNativeBuffer001
  * @tc.desc  test for call OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CreateNativeWindowBufferFromNativeBuffer001, Function | MediumTest | Level2)
 {
@@ -179,7 +319,9 @@ HWTEST_F(NativeWindowTest, CreateNativeWindowBufferFromNativeBuffer001, Function
 /*
  * @tc.name  CreateNativeWindowBufferFromNativeBuffer002
  * @tc.desc  test for call OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CreateNativeWindowBufferFromNativeBuffer002, Function | MediumTest | Level2)
 {
@@ -199,7 +341,9 @@ HWTEST_F(NativeWindowTest, CreateNativeWindowBufferFromNativeBuffer002, Function
 /*
  * @tc.name  RequestBuffer001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowRequestBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, RequestBuffer001, Function | MediumTest | Level2)
 {
@@ -209,7 +353,9 @@ HWTEST_F(NativeWindowTest, RequestBuffer001, Function | MediumTest | Level2)
 /*
  * @tc.name  RequestBuffer002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowRequestBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, RequestBuffer002, Function | MediumTest | Level2)
 {
@@ -219,7 +365,9 @@ HWTEST_F(NativeWindowTest, RequestBuffer002, Function | MediumTest | Level2)
 /*
  * @tc.name  GetBufferHandle001
  * @tc.desc  test for call OH_NativeWindow_GetBufferHandleFromNative by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, GetBufferHandle001, Function | MediumTest | Level2)
 {
@@ -229,7 +377,9 @@ HWTEST_F(NativeWindowTest, GetBufferHandle001, Function | MediumTest | Level2)
 /*
  * @tc.name  FlushBuffer001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowFlushBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, FlushBuffer001, Function | MediumTest | Level2)
 {
@@ -249,7 +399,9 @@ HWTEST_F(NativeWindowTest, FlushBuffer001, Function | MediumTest | Level2)
 /*
  * @tc.name  FlushBuffer002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowFlushBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, FlushBuffer002, Function | MediumTest | Level2)
 {
@@ -268,7 +420,9 @@ HWTEST_F(NativeWindowTest, FlushBuffer002, Function | MediumTest | Level2)
 /*
  * @tc.name  GetLastFlushedBuffer001
  * @tc.desc  test for call OH_NativeWindow_GetLastFlushedBuffer
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Level2)
 {
@@ -300,7 +454,9 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Leve
 /*
  * @tc.name  GetLastFlushedBuffer002
  * @tc.desc  test for call OH_NativeWindow_GetLastFlushedBuffer
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, GetLastFlushedBuffer002, Function | MediumTest | Level2)
 {
@@ -314,7 +470,9 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer002, Function | MediumTest | Leve
 /*
  * @tc.name  GetLastFlushedBuffer003
  * @tc.desc  test for call OH_NativeWindow_GetLastFlushedBuffer
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, GetLastFlushedBuffer003, Function | MediumTest | Level2)
 {
@@ -345,7 +503,9 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer003, Function | MediumTest | Leve
 /*
  * @tc.name  CancelBuffer001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowAbortBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, CancelBuffer001, Function | MediumTest | Level2)
 {
@@ -355,7 +515,9 @@ HWTEST_F(NativeWindowTest, CancelBuffer001, Function | MediumTest | Level2)
 /*
  * @tc.name  Reference001
  * @tc.desc  test for call OH_NativeWindow_NativeObjectReference and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, Reference001, Function | MediumTest | Level2)
 {
@@ -365,7 +527,9 @@ HWTEST_F(NativeWindowTest, Reference001, Function | MediumTest | Level2)
 /*
  * @tc.name  Unreference001
  * @tc.desc  test for call OH_NativeWindow_NativeObjectUnreference and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, Unreference001, Function | MediumTest | Level2)
 {
@@ -375,7 +539,9 @@ HWTEST_F(NativeWindowTest, Unreference001, Function | MediumTest | Level2)
 /*
  * @tc.name  DestroyNativeWindow001
  * @tc.desc  test for call OH_NativeWindow_DestroyNativeWindow by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, DestroyNativeWindow001, Function | MediumTest | Level2)
 {
@@ -385,7 +551,9 @@ HWTEST_F(NativeWindowTest, DestroyNativeWindow001, Function | MediumTest | Level
 /*
  * @tc.name  OH_NativeWindow_DestroyNativeWindowBuffer001
  * @tc.desc  test for call OH_NativeWindow_DestroyNativeWindowBuffer by abnormal input and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, OH_NativeWindow_DestroyNativeWindowBuffer001, Function | MediumTest | Level2)
 {
@@ -395,7 +563,9 @@ HWTEST_F(NativeWindowTest, OH_NativeWindow_DestroyNativeWindowBuffer001, Functio
 /*
  * @tc.name  SetScalingMode001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetScalingMode with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetScalingMode001, Function | MediumTest | Level2)
 {
@@ -406,7 +576,9 @@ HWTEST_F(NativeWindowTest, SetScalingMode001, Function | MediumTest | Level2)
 /*
  * @tc.name  SetScalingMode002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetScalingMode with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetScalingMode002, Function | MediumTest | Level2)
 {
@@ -418,7 +590,9 @@ HWTEST_F(NativeWindowTest, SetScalingMode002, Function | MediumTest | Level2)
 /*
  * @tc.name  SetMetaData001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetMetaData with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetMetaData001, Function | MediumTest | Level2)
 {
@@ -428,7 +602,9 @@ HWTEST_F(NativeWindowTest, SetMetaData001, Function | MediumTest | Level2)
 /*
  * @tc.name  SetMetaData002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetMetaData with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetMetaData002, Function | MediumTest | Level2)
 {
@@ -438,7 +614,9 @@ HWTEST_F(NativeWindowTest, SetMetaData002, Function | MediumTest | Level2)
 /*
  * @tc.name  SetMetaDataSet001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetMetaDataSet with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetMetaDataSet001, Function | MediumTest | Level2)
 {
@@ -449,7 +627,9 @@ HWTEST_F(NativeWindowTest, SetMetaDataSet001, Function | MediumTest | Level2)
 /*
  * @tc.name  SetMetaDataSet002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetMetaDataSet with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetMetaDataSet002, Function | MediumTest | Level2)
 {
@@ -460,7 +640,9 @@ HWTEST_F(NativeWindowTest, SetMetaDataSet002, Function | MediumTest | Level2)
 /*
  * @tc.name  SetTunnelHandle001
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetTunnelHandle with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetTunnelHandle001, Function | MediumTest | Level2)
 {
@@ -470,7 +652,9 @@ HWTEST_F(NativeWindowTest, SetTunnelHandle001, Function | MediumTest | Level2)
 /*
  * @tc.name  SetTunnelHandle002
  * @tc.desc  test for call OH_NativeWindow_NativeWindowSetTunnelHandle with abnormal parameters and check ret
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, SetTunnelHandle002, Function | MediumTest | Level2)
 {
@@ -479,7 +663,9 @@ HWTEST_F(NativeWindowTest, SetTunnelHandle002, Function | MediumTest | Level2)
 /*
  * @tc.name  DestroyNativeWindow002
  * @tc.desc  test for call OH_NativeWindow_DestroyNativeWindow
- * @tc.type  FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
  */
 HWTEST_F(NativeWindowTest, DestroyNativeWindow002, Function | MediumTest | Level2)
 {

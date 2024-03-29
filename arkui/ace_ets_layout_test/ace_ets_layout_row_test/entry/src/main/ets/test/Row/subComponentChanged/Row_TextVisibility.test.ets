@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,23 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+
 export default function row_TextVisibilityTest() {
-  describe('Row_TextVisibilityTest', function () {
-    beforeAll(async function (done) {
+  describe('Row_TextVisibilityTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("Row_TextVisibilityTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Row/subComponentChanged/Row_TextVisibility',
-      }
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Row_TextVisibility state pages:" + JSON.stringify(pages));
         if (!("Row_TextVisibility" == pages.name)) {
           console.info("get Row_TextPosition pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Row_TextVisibility page result:" + JSON.stringify(result));
         }
@@ -39,45 +40,50 @@ export default function row_TextVisibilityTest() {
       console.info("Row_TextVisibilityTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(3000);
       console.info("Row_TextVisibilityTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_ROW_SUBCOMPONENTCHANGED_1800
-     * @tc.name      testRowTextVisibilityNone
-     * @tc.desc      The visibility of second subcomponent set to 'None'
+     * @tc.number SUB_ACE_ROW_SUBCOMPONENTCHANGED_1800
+     * @tc.name testRowTextVisibilityNone
+     * @tc.desc The visibility of second subcomponent set to 'None'
      */
-    it('testRowTextVisibilityNone', 0, async function (done) {
+    it('testRowTextVisibilityNone', 0, async (done: Function) => {
       console.info('[testRowTextVisibilityNone] START');
       try {
-        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.None });
+        globalThis.value.message.notify({
+          name: 'secondTextVisibility', value: Visibility.None
+        });
         await CommonFunc.sleep(3000);
-        let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
-        let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
-        let thirdText = CommonFunc.getComponentRect('Row_TextVisibility3');
-        let rowContainer = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
+        let firstText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility1');
+        let secondText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility2');
+        let thirdText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility3');
+        let rowContainer: RectValue = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
         let rowContainerStrJson = getInspectorByKey('Row_TextVisibility_Container01');
-        let rowContainerObj = JSON.parse(rowContainerStrJson);
-        expect(rowContainerObj.$type).assertEqual('Row');
+
+        expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
-        let secondTextObj = JSON.parse(secondTextStrJson);
-        expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.None");
+        expect(JSON.parse(secondTextStrJson).$attrs.visibility).assertEqual("Visibility.None");
 
         expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
         expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
         expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+          .assertTrue();
 
-        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
+          .assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+          .assertTrue();
 
         expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
         expect(Math.abs((Math.round(thirdText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
 
-        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(140)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(140)))) <= 1)
+          .assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityNone] failed');
         expect().assertFail();
@@ -86,38 +92,43 @@ export default function row_TextVisibilityTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_ROW_SUBCOMPONENTCHANGED_1900
-     * @tc.name      testRowTextVisibilityHidden
-     * @tc.desc      The visibility of second subcomponent set to 'Hidden'
+     * @tc.number SUB_ACE_ROW_SUBCOMPONENTCHANGED_1900
+     * @tc.name testRowTextVisibilityHidden
+     * @tc.desc The visibility of second subcomponent set to 'Hidden'
      */
-    it('testRowTextVisibilityHidden', 0, async function (done) {
+    it('testRowTextVisibilityHidden', 0, async (done: Function) => {
       console.info('[testRowTextVisibilityHidden] START');
       try {
-        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.Hidden });
+        globalThis.value.message.notify({
+          name: 'secondTextVisibility', value: Visibility.Hidden
+        });
         await CommonFunc.sleep(3000);
-        let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
-        let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
-        let thirdText = CommonFunc.getComponentRect('Row_TextVisibility3');
-        let rowContainer = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
+        let firstText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility1');
+        let secondText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility2');
+        let thirdText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility3');
+        let rowContainer: RectValue = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
         let rowContainerStrJson = getInspectorByKey('Row_TextVisibility_Container01');
-        let rowContainerObj = JSON.parse(rowContainerStrJson);
-        expect(rowContainerObj.$type).assertEqual('Row');
+
+        expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
-        let secondTextObj = JSON.parse(secondTextStrJson);
-        expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
+        expect(JSON.parse(secondTextStrJson).$attrs.visibility).assertEqual("Visibility.Hidden");
         expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
         expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
         expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+          .assertTrue();
 
-        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
+          .assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+          .assertTrue();
 
         expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
         expect(Math.abs((Math.round(thirdText.left - firstText.right)) - (Math.round(vp2px(120)))) <= 1).assertTrue();
 
-        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1)
+          .assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityHidden] failed');
         expect().assertFail();
@@ -126,45 +137,53 @@ export default function row_TextVisibilityTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_ROW_SUBCOMPONENTCHANGED_2000
-     * @tc.name      testRowTextVisibilityVisible
-     * @tc.desc      The visibility of second subcomponent set to 'visible'
+     * @tc.number SUB_ACE_ROW_SUBCOMPONENTCHANGED_2000
+     * @tc.name testRowTextVisibilityVisible
+     * @tc.desc The visibility of second subcomponent set to 'visible'
      */
-    it('testRowTextVisibilityVisible', 0, async function (done) {
+    it('testRowTextVisibilityVisible', 0, async (done: Function) => {
       console.info('[testRowTextVisibilityVisible] START');
       try {
-        globalThis.value.message.notify({ name: 'secondTextVisibility', value: Visibility.Visible });
+        globalThis.value.message.notify({
+          name: 'secondTextVisibility', value: Visibility.Visible
+        });
         await CommonFunc.sleep(3000);
-        let firstText = CommonFunc.getComponentRect('Row_TextVisibility1');
-        let secondText = CommonFunc.getComponentRect('Row_TextVisibility2');
-        let thirdText = CommonFunc.getComponentRect('Row_TextVisibility3');
-        let rowContainer = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
+        let firstText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility1');
+        let secondText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility2');
+        let thirdText: RectValue = CommonFunc.getComponentRect('Row_TextVisibility3');
+        let rowContainer: RectValue = CommonFunc.getComponentRect('Row_TextVisibility_Container01');
         let rowContainerStrJson = getInspectorByKey('Row_TextVisibility_Container01');
-        let rowContainerObj = JSON.parse(rowContainerStrJson);
-        expect(rowContainerObj.$type).assertEqual('Row');
+
+        expect(JSON.parse(rowContainerStrJson).$type).assertEqual('Row');
 
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
-        let secondTextObj = JSON.parse(secondTextStrJson);
-        expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.Visible");
+        expect(JSON.parse(secondTextStrJson).$attrs.visibility).assertEqual("Visibility.Visible");
 
         expect(Math.abs((Math.round(firstText.bottom - firstText.top)) - (Math.round(vp2px(50)))) <= 1).assertTrue();
         expect(Math.abs((Math.round(secondText.bottom - secondText.top)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
         expect(Math.abs((Math.round(thirdText.bottom - thirdText.top)) - (Math.round(vp2px(150)))) <= 1).assertTrue();
 
         expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(vp2px(100)))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.right - firstText.left)) - (Math.round(secondText.right - secondText.left))) <= 1)
+          .assertTrue();
+        expect(Math.abs((Math.round(secondText.right - secondText.left)) - (Math.round(thirdText.right - thirdText.left))) <= 1)
+          .assertTrue();
 
 
-        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(firstText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - firstText.bottom))) <= 1)
+          .assertTrue();
+        expect(Math.abs((Math.round(secondText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - secondText.bottom))) <= 1)
+          .assertTrue();
+        expect(Math.abs((Math.round(thirdText.top - rowContainer.top)) - (Math.round(rowContainer.bottom - thirdText.bottom))) <= 1)
+          .assertTrue();
 
         expect(Math.abs((firstText.left) - (rowContainer.left)) <= 1).assertTrue();
         expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(vp2px(10)))) <= 1).assertTrue();
-        expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(secondText.left - firstText.right)) - (Math.round(thirdText.left - secondText.right))) <= 1)
+          .assertTrue();
 
-        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1).assertTrue();
+        expect(Math.abs((Math.round(rowContainer.right - thirdText.right)) - (Math.round(vp2px(30)))) <= 1)
+          .assertTrue();
       } catch (err) {
         console.error('[testRowTextVisibilityVisible] failed');
         expect().assertFail();

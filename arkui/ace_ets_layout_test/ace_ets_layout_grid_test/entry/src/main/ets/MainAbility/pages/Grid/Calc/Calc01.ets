@@ -16,62 +16,74 @@
 @Component
 struct Calc01 {
   build() {
-    Column({space: 10}){
+    Column({ space: 10 }) {
       Column() {
         Button('faskfhsajkfhjkasfh').key('calc01key2')
           .fontSize(15)
           .backgroundColor(Color.Grey)
           .width('calc(45% + 45%)')
       }.width(300).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
-        Text('faskfhsajkfhjkas').key('calc01key3')
+        Text('faskfhsajkfhjkas')
+          .key('calc01key3')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-          .constraintSize({ maxHeight:'calc(15% + 15%)'})
+          .constraintSize({ maxHeight: 'calc(15% + 15%)' })
           .height('90%')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
-        Text('faskfhsajkfhjkas').key('calc01key4')
+        Text('faskfhsajkfhjkas')
+          .key('calc01key4')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-          .constraintSize({ maxWidth:'calc(15% + 15%)'})
+          .constraintSize({ maxWidth: 'calc(15% + 15%)' })
           .width('90%')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
-        Text('faskfhsajkfhjkas').key('calc01key5')
+        Text('faskfhsajkfhjkas')
+          .key('calc01key5')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-          .constraintSize({ minHeight:'calc(15% + 15%)'})
+          .constraintSize({ minHeight: 'calc(15% + 15%)' })
           .height('10%')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
-        Text('faskfhsajkfhjkas').key('calc01key6')
+        Text('faskfhsajkfhjkas')
+          .key('calc01key6')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-          .constraintSize({ minWidth:'calc(15% + 15%)'})
+          .constraintSize({ minWidth: 'calc(15% + 15%)' })
           .width('10%')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
         Text('faskfhsajkfhjkas').key('calc01key7')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-          .size({ width:'calc(45% + 45%)',height: 30})
+          .size({ width: 'calc(45% + 45%)', height: 30 })
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
         Text('faskfhsajkfhjkas').key('calc01key8')
           .fontSize(15)
           .backgroundColor(Color.Grey)
           .width('calc(calc(90%))')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
         Text('faskfhsajkfhjkas111').key('calc01key9')
           .fontSize(15)
           .backgroundColor(Color.Grey)
-        .width($r('app.string.calc'))
+          .width($r('app.string.calc'))
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
+
       Column() {
         Column().key('calc01key10').backgroundColor(Color.Grey).width(300).height('calc(45% + 45%)')
       }.width(300).height(60).alignItems(HorizontalAlign.Start).backgroundColor(Color.Pink)
-    }.margin({top:30,left:10})
+    }.margin({ top: 30, left: 10 })
   }
 }

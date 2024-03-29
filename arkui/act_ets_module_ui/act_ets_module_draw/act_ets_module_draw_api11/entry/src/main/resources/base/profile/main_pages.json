@@ -1,0 +1,13 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/flex",
+        "MainAbility/pages/Ellipse/ellipse",
+        "MainAbility/pages/Canvas/CanvasAPIUnit",
+        "MainAbility/pages/Canvas/CanvasAPICanvasRender",
+        "MainAbility/pages/Canvas/CanvasAPI",
+        "MainAbility/pages/Canvas/CanvasShader",
+        "MainAbility/pages/Canvas/CanvasColor",
+        "MainAbility/pages/OffScreenCanvas/OffScreenCanvas"
+    ]
+}

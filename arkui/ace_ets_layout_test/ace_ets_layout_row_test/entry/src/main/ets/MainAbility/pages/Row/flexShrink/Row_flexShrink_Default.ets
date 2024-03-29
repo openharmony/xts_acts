@@ -12,36 +12,73 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
+
 @Entry
 @Component
 struct Row_flexShrink_Default {
-  @State addflexShrink: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State addflexShrink: number = 0;
+  messageManager: MessageManager<number> = new MessageManager();
+
   onPageShow() {
     console.info('Row_flexShrink_Default onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager',
+      message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addflexShrink') {
         this.addflexShrink = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
+
   build() {
-    Row(){
-      Row({space:10}) {
-        Row(){Text('1')}.width(200).height(100).flexShrink(this.addflexShrink).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_011')
-        Row(){Text('2')}.width(100).height(100).flexShrink(this.addflexShrink).backgroundColor(0xD2B48C).key('Row_flexShrink_Default_012')
-        Row(){Text('3')}.width(100).height(100).flexShrink(this.addflexShrink).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_013')
+    Row() {
+      Row({ space: 10 }) {
+        Row() {
+          Text('1')
+        }
+        .width(200)
+        .height(100)
+        .flexShrink(this.addflexShrink)
+        .backgroundColor(0xF5DEB3)
+        .key('Row_flexShrink_Default_011')
+
+        Row() {
+          Text('2')
+        }
+        .width(100)
+        .height(100)
+        .flexShrink(this.addflexShrink)
+        .backgroundColor(0xD2B48C)
+        .key('Row_flexShrink_Default_012')
+
+        Row() {
+          Text('3')
+        }
+        .width(100)
+        .height(100)
+        .flexShrink(this.addflexShrink)
+        .backgroundColor(0xF5DEB3)
+        .key('Row_flexShrink_Default_013')
       }.key('Row_flexShrink_Default_01').width(450).height(450).backgroundColor(0xAFEEEE)
-      Row({space:10}) {
-        Row(){Text('1')}.width(200).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_021')
-        Row(){Text('2')}.width(100).height(100).backgroundColor(0xD2B48C).key('Row_flexShrink_Default_022')
-        Row(){Text('3')}.width(100).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_023')
+
+      Row({ space: 10 }) {
+        Row() {
+          Text('1')
+        }.width(200).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_021')
+
+        Row() {
+          Text('2')
+        }.width(100).height(100).backgroundColor(0xD2B48C).key('Row_flexShrink_Default_022')
+
+        Row() {
+          Text('3')
+        }.width(100).height(100).backgroundColor(0xF5DEB3).key('Row_flexShrink_Default_023')
       }.key('Row_flexShrink_Default_02').width(450).height(450).backgroundColor(0xAFEEEE)
     }
   }

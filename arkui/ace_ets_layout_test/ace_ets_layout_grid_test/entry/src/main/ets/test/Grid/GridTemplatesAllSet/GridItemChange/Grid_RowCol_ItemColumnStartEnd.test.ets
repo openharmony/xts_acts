@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+
 export default function grid_RowCol_ItemColumnStartEndTest() {
-  describe('Grid_RowCol_ItemColumnStartEndTest', function () {
-    beforeEach(async function (done) {
+  describe('Grid_RowCol_ItemColumnStartEndTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_RowCol_ItemColumnStartEndTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemColumnStartEnd',
       }
       try {
@@ -29,7 +30,7 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
         console.info("get Grid_RowCol_ItemColumnStartEnd state pages:" + JSON.stringify(pages));
         if (!("Grid_RowCol_ItemColumnStartEnd" == pages.name)) {
           console.info("get Grid_RowCol_ItemColumnStartEnd state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_RowCol_ItemColumnStartEnd page result:" + JSON.stringify(result));
         }
@@ -39,37 +40,41 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
       console.info("Grid_RowCol_ItemColumnStartEndTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Grid_RowCol_ItemColumnStartEndTest after each called");
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_1200
-     * @tc.name      testGridRowColItemColumnStartToZeroEndToThree
-     * @tc.desc      The first griditem set columnStart to 0,columnEnd to 3
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_1200
+     * @tc.name testGridRowColItemColumnStartToZeroEndToThree
+     * @tc.desc The first griditem set columnStart to 0,columnEnd to 3
      */
-    it('testGridRowColItemColumnStartToZeroEndToThree', 0, async function (done) {
+    it('testGridRowColItemColumnStartToZeroEndToThree', 0, async (done: Function) => {
       console.info('[testGridRowColItemColumnStartToZeroEndToThree] START');
-      globalThis.value.message.notify({name:'ColumnStart', value:0});
-      globalThis.value.message.notify({name:'ColumnEnd', value:3});
+      globalThis.value.message.notify({
+        name: 'ColumnStart', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'ColumnEnd', value: 3
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd1');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd2');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd3');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd4');
-      let fifthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd5');
-      let sixthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd6');
-      let seventhGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd7');
-      let eighthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd8');
-      let ninthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd9');
-      let tenthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd10');
-      let eleventhGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd11');
-      let twelfthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd12');
-      let thirteenthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd13');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd_Container01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd1');
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd2');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd3');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd4');
+      let fifthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd5');
+      let sixthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd6');
+      let seventhGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd7');
+      let eighthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd8');
+      let ninthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd9');
+      let tenthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd10');
+      let eleventhGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd11');
+      let twelfthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd12');
+      let thirteenthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd13');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemColumnStartEnd_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
 
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(300)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(75)) <= 1).assertTrue();
@@ -131,32 +136,36 @@ export default function grid_RowCol_ItemColumnStartEndTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_1300
-     * @tc.name      testGridRowColItemColumnStartToZeroEndToTwo
-     * @tc.desc      The first griditem set columnStart to 0,columnEnd to 2
+     * @tc.number SUB_ACE_GRID_GRIDTEMPLATESALLSET_GRIDITEMCHANGE_1300
+     * @tc.name testGridRowColItemColumnStartToZeroEndToTwo
+     * @tc.desc The first griditem set columnStart to 0,columnEnd to 2
      */
-    it('testGridRowColItemColumnStartToZeroEndToTwo', 0, async function (done) {
+    it('testGridRowColItemColumnStartToZeroEndToTwo', 0, async (done: Function) => {
       console.info('[testGridRowColItemColumnStartToZeroEndToTwo] START');
-      globalThis.value.message.notify({name:'ColumnStart', value:0});
-      globalThis.value.message.notify({name:'ColumnEnd', value:2});
+      globalThis.value.message.notify({
+        name: 'ColumnStart', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'ColumnEnd', value: 2
+      });
       await CommonFunc.sleep(3000);
-      let firstGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd1');
-      let secondGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd2');
-      let thirdGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd3');
-      let fourthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd4');
-      let fifthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd5');
-      let sixthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd6');
-      let seventhGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd7');
-      let eighthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd8');
-      let ninthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd9');
-      let tenthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd10');
-      let eleventhGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd11');
-      let twelfthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd12');
-      let thirteenthGridItem = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd13');
-      let gridContainer = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd_Container01');
+      let firstGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd1');
+      let secondGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd2');
+      let thirdGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd3');
+      let fourthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd4');
+      let fifthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd5');
+      let sixthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd6');
+      let seventhGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd7');
+      let eighthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd8');
+      let ninthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd9');
+      let tenthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd10');
+      let eleventhGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd11');
+      let twelfthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd12');
+      let thirteenthGridItem: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd13');
+      let gridContainer: RectValue = CommonFunc.getComponentRect('Grid_RowCol_ItemColumnStartEnd_Container01');
       let gridContainerStrJson = getInspectorByKey('Grid_RowCol_ItemColumnStartEnd_Container01');
-      let gridContainerObj = JSON.parse(gridContainerStrJson);
-      expect(gridContainerObj.$type).assertEqual('Grid');
+
+      expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
 
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(225)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(75)) <= 1).assertTrue();

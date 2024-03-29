@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function NavDestinationInfoStateJsunit() {
-  describe('NavDestinationInfoStateJsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavDestinationInfoStateJsunit', () =>{
+    beforeEach(async (done: Function) =>{
       console.info("NavDestinationInfoStateJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/NavDestinationInfoState',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/NavDestinationInfoState',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function NavDestinationInfoStateJsunit() {
       done();
     });
 
-    it('NavDestinationInfoStateJsunit_0100', 0, async function (done) {
+    it('NavDestinationInfoStateJsunit_0100', 0, async (done: Function) =>{
       await CommonFunc.sleep(1000);
       console.info('NavDestinationInfoStateJsunit_0100 START');
 
@@ -49,17 +49,17 @@ export default function NavDestinationInfoStateJsunit() {
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavDestinationInfoStateText01'));
       await btn1.click();
-      await CommonFunc.sleep(2000);  
+      await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('NavDestinationInfoStateText02');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('NavDestinationInfoStateJsunit_0100 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('ON_SHOWN');
+      console.info('NavDestinationInfoStateJsunit_0100 component obj is: ' + JSON.parse(strcontent).$attrs.content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('ON_SHOWN');
       console.info('NavDestinationInfoStateJsunit_0100 END')
       done();
     });
+
     
-    it('NavDestinationInfoStateJsunit_0200', 0, async function (done) {
+    it('NavDestinationInfoStateJsunit_0200', 0, async (done: Function) =>{
       await CommonFunc.sleep(1000);
       console.info('NavDestinationInfoStateJsunit_0200 START');
 
@@ -69,12 +69,10 @@ export default function NavDestinationInfoStateJsunit() {
       await btn1.click();
       await CommonFunc.sleep(3500);
       let strcontent = getInspectorByKey('NavDestinationInfoStateText02');
-      let obj = JSON.parse(strcontent);
-      console.info('NavDestinationInfoStateJsunit_0200 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('ON_HIDDEN');
+      console.info('NavDestinationInfoStateJsunit_0200 component obj is: ' + JSON.parse(strcontent).$attrs.content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('ON_HIDDEN');
       console.info('NavDestinationInfoStateJsunit_0200 END')
       done();
     });
-
   })
 }

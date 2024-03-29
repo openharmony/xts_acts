@@ -15,17 +15,17 @@
 
 export default class utils {
   static getLocaleTime(n: number): string {
-    return new Date(n).toLocaleString().replace(/:\d{1,2}$/, ' ')
+    return new Date(n).toLocaleString().replace(/:\d{1,2}$/, ' ');
   }
 
   static convertTimeToFormatString(n: number): string {
-    let totalTimeInSec = Math.floor(n / 1000)
-    let hour: number = Math.floor(totalTimeInSec / 3600)
-    let min: number = Math.floor((totalTimeInSec % 3600) / 60)
-    let sec: number = (totalTimeInSec % 3600) % 60
-    let hourString: string = hour < 10 ? '0' + hour.toString() : hour.toString()
-    let minString: string = min < 10 ? '0' + min.toString() : min.toString()
-    let secString: string = sec < 10 ? '0' + sec.toString() : sec.toString()
-    return hourString + ":" + minString + ":" + secString
+    let totalTimeInSec = Math.floor(n / 1000);
+    let hour: number = Math.floor(totalTimeInSec / 3600);
+    let min: number = Math.floor((totalTimeInSec % 3600) / 60);
+    let sec: number = (totalTimeInSec % 3600) % 60;
+    let hourString: string = hour < 10 ? '0' + hour.toString() : hour.toString();
+    let minString: string = min < 10 ? '0' + min.toString() : min.toString();
+    let secString: string = sec < 10 ? '0' + sec.toString() : sec.toString();
+    return hourString + ":" + minString + ":" + secString;
   }
 }

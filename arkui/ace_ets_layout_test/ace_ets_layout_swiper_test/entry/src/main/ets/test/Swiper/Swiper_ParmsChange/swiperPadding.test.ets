@@ -13,16 +13,32 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../MainAbility/common/Common";
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../MainAbility/common/Common";
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function swiperPadding() {
-  describe('swiperMarPadTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperPadding',
-      }
+  describe('swiperMarPadTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Swiper/Swiper_ParmsChange/swiperPadding',
+      };
       try {
         router.clear();
         await CommonFunc.sleep(1000);
@@ -30,37 +46,37 @@ export default function swiperPadding() {
         console.info("get swiperPadding state success " + JSON.stringify(pages));
         if (!("swiperPadding" == pages.name)) {
           console.info("get swiperPadding state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push swiperPadding page success " + JSON.stringify(result));
         }
 
       } catch (err) {
         console.error("push swiperPadding page error " + JSON.stringify(err));
       }
-        done();
+      done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperVertical after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_SWIPER_MARPAD_0100
-     * @tc.name      testSwiperSetPadding.
-     * @tc.desc      Set swiper's padding values '20'.
+     * @tc.number SUB_ACE_SWIPER_MARPAD_0100
+     * @tc.name testSwiperSetPadding.
+     * @tc.desc Set swiper's padding values '20'.
      */
-    it('testSwiperSetPadding', 0, async function (done) {
+    it('testSwiperSetPadding', 0, async (done: Function) => {
       console.info('new testSwiperSetPadding START');
       let strJson = getInspectorByKey('swiperPadding');
-      let obj = JSON.parse(strJson);
+
       await CommonFunc.sleep(1000);
-      let swiperPadding = CommonFunc.getComponentRect('swiperPadding');
-      let swiperPadding01= CommonFunc.getComponentRect('swiperPadding01');
-      let swiperPadding02 = CommonFunc.getComponentRect('swiperPadding02');
-      let swiperPadding03= CommonFunc.getComponentRect('swiperPadding03');
-      let swiperPadding04 = CommonFunc.getComponentRect('swiperPadding04');
-      let swiperPadding05= CommonFunc.getComponentRect('swiperPadding05');
-      let swiperPadding06 = CommonFunc.getComponentRect('swiperPadding06');
+      let swiperPadding: RectValue = CommonFunc.getComponentRect('swiperPadding');
+      let swiperPadding01: RectValue = CommonFunc.getComponentRect('swiperPadding01');
+      let swiperPadding02: RectValue = CommonFunc.getComponentRect('swiperPadding02');
+      let swiperPadding03: RectValue = CommonFunc.getComponentRect('swiperPadding03');
+      let swiperPadding04: RectValue = CommonFunc.getComponentRect('swiperPadding04');
+      let swiperPadding05: RectValue = CommonFunc.getComponentRect('swiperPadding05');
+      let swiperPadding06: RectValue = CommonFunc.getComponentRect('swiperPadding06');
       // Before flipping the page
       console.info("Before page turning , swiperPadding01.left - swiperPadding.left value is " + JSON.stringify(swiperPadding01.left - swiperPadding.left));
       expect(swiperPadding01.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)))
@@ -68,7 +84,7 @@ export default function swiperPadding() {
       expect(swiperPadding01.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)))
       expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(Math.round(vp2px(20)))
       // Page turning.
-      let driver = await Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(500);
       await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       //await driver.swipe(250, 230, 200, 230);
@@ -86,13 +102,13 @@ export default function swiperPadding() {
       expect(swiperPadding.right - swiperPadding02.right).assertEqual(Math.round(vp2px(20)));
       expect(swiperPadding02.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)));
       expect(swiperPadding.bottom - swiperPadding02.bottom).assertEqual(Math.round(vp2px(20)));
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The indicator value is " + JSON.stringify(obj.$attrs.indicator));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.displayCount).assertEqual(1);
+      console.info("The type value is " + JSON.stringify(JSON.parse(strJson).$type));
+      console.info("The indicator value is " + JSON.stringify(JSON.parse(strJson).$attrs.indicator));
+      console.info("The loop value is " + JSON.stringify(JSON.parse(strJson).$attrs.loop));
+      console.info("The displayCount value is " + JSON.stringify(JSON.parse(strJson).$attrs.displayCount));
+      expect(JSON.parse(strJson).$type).assertEqual('Swiper');
+      expect(JSON.parse(strJson).$attrs.loop).assertEqual('true');
+      expect(JSON.parse(strJson).$attrs.displayCount).assertEqual(1);
       console.info('new testSwiperSetPadding END');
       done();
     });

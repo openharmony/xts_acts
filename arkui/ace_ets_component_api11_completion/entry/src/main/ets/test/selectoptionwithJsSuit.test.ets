@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function selectoptionwithJsSuit() {
-  describe('selectoptionwithJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('selectoptionwithJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("selectoptionwithJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/selectoptionwith',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/selectoptionwith',
       }
       try {
         router.clear();
@@ -41,21 +54,21 @@ export default function selectoptionwithJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
 
     /**
-     * @tc.number	SUB_ACE_TS_COMPONENTselectoptionwith_01
-     * @tc.name		selectoptionwithJsSuit_0100
-     * @tc.desc		Confirm if there is a callback01
-	 * @tc.level     Level 2
+     * @tc.number SUB_ACE_TS_COMPONENTselectoptionwith_01
+     * @tc.name selectoptionwithJsSuit_0100
+     * @tc.desc Confirm if there is a callback01
+     * @tc.level Level 2
      * @tc.type :
      * @tc.size :
      */
 
-    it('selectoptionwithJsSuit_0100', 0, async function (done) {
+    it('selectoptionwithJsSuit_0100', 0, async (done: Function) => {
       console.info('[selectoptionwithJsSuit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -63,24 +76,25 @@ export default function selectoptionwithJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('selectoption1');
-      let obj = JSON.parse(strJson);
-      console.info("[selectoptionwithJsSuit_0100] obj is: " + JSON.stringify(obj));
-      console.info("[selectoptionwithJsSuit_0100] obj optionWidth is: " + JSON.stringify(obj.$attrs.optionWidth));
-      expect(obj.$attrs.optionWidth=='0.000000').assertTrue();
+      console.info("[selectoptionwithJsSuit_0100] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[selectoptionwithJsSuit_0100] obj optionWidth is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .optionWidth));
+      expect(JSON.parse(strJson).$attrs.optionWidth == '0.000000').assertTrue();
       console.info('[selectoptionwithJsSuit_0100] END');
       done();
     });
-	
+
     /**
-     * @tc.number    SUB_ACE_TS_COMPONENTselectoptionwith_02
-     * @tc.name      selectoptionwithJsSuit_0200
-     * @tc.desc      Confirm if there is a callback02
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_TS_COMPONENTselectoptionwith_02
+     * @tc.name selectoptionwithJsSuit_0200
+     * @tc.desc Confirm if there is a callback02
+     * @tc.level Level 2
      * @tc.type :
      * @tc.size :
      */
-	 
-    it('selectoptionwithJsSuit_0200', 0, async function (done) {
+
+    it('selectoptionwithJsSuit_0200', 0, async (done: Function) => {
       console.info('[selectoptionwithJsSuit_0200] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -88,10 +102,11 @@ export default function selectoptionwithJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('selectoption2');
-      let obj2 = JSON.parse(strJson2);
-      console.info("[selectoptionwithJsSuit_0200] obj2 is: " + JSON.stringify(obj2));
-      console.info("[selectoptionwithJsSuit_0200] obj2 optionWidth is: " + JSON.stringify(obj2.$attrs.optionWidth));
-      expect(obj2.$attrs.optionWidth=='0.000000').assertTrue();
+      console.info("[selectoptionwithJsSuit_0200] obj2 is: " + JSON.stringify(JSON.parse(strJson2)));
+      console.info("[selectoptionwithJsSuit_0200] obj2 optionWidth is: " + JSON.stringify(JSON.parse(strJson2)
+        .$attrs
+        .optionWidth));
+      expect(JSON.parse(strJson2).$attrs.optionWidth == '0.000000').assertTrue();
       console.info('[selectoptionwithJsSuit_0200] END');
       done();
     });

@@ -23,6 +23,7 @@ import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import promptAction from '@ohos.promptAction';
 import screenshot from '@ohos.screenshot';
+import { Info } from '../ArkUI/InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[AccelerometerUncalibrated]';
@@ -33,7 +34,7 @@ struct AccelerometerUncalibrated {
   @State FillColor: string = '#FF000000';
   @State name: string = 'AccelerometerUncalibrated';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有未校准加速度传感器\n-点击开启按钮打开传感器,' +
-  '在2秒内向各方向迅速移动设备,如果没有传感器则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
+    '在2秒内向各方向迅速移动设备,如果没有传感器则返回上一级' + '\n-预期结果：观察显示数值,跟随移动变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
@@ -121,7 +122,7 @@ struct AccelerometerUncalibrated {
     }
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -152,7 +153,8 @@ struct AccelerometerUncalibrated {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -176,7 +178,8 @@ struct AccelerometerUncalibrated {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);
@@ -311,12 +314,12 @@ struct AccelerometerUncalibrated {
     })
   }
 
-  async savePicture(data: image.PixelMap, context: any) {
+  async savePicture(data: image.PixelMap, context: ESObject) {
     Logger.info(TAG, `savePicture`);
     let packOpts: image.PackingOption = {
       format: "image/jpeg", quality: 100
     };
-    let info = {
+    let info: Info = {
       prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
     };
     let name = this.name;
@@ -353,7 +356,7 @@ struct AccelerometerUncalibrated {
           Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
         }
         Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as any);
+        this.savePicture(data, getContext(this) as ESObject);
       })
     } catch (err) {
       Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);

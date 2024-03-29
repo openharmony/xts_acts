@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function Navigation3() {
-  describe('Navigation3', function () {
-    beforeEach(async function (done) {
+  describe('Navigation3', () => {
+    beforeEach(async (done: Function) => {
       console.info("appendChildTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/relativeApi11/Navigation3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/relativeApi11/Navigation3',
       }
       try {
         router.clear();
@@ -43,14 +56,14 @@ export default function Navigation3() {
 
 
     /**
-     * @tc.number    Navigation3_0200
-     * @tc.name      Navigation3_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number Navigation3_0200
+     * @tc.name Navigation3_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation3_0200', 0, async function (done) {
+    it('Navigation3_0200', 0, async (done: Function) => {
       console.info('Navigation3_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -61,17 +74,12 @@ export default function Navigation3() {
       let button1 = await driver.findComponent(ON.id('pushPathButton'));
       await button1.click();
       await CommonFunc.sleep(1000);
-
-
       let strJson = getInspectorByKey('NavigationTwo');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('two');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('two');
       await CommonFunc.sleep(1000);
       console.info('[Navigation3_0200] END');
       done();
     });
-
-
   })
 }
 

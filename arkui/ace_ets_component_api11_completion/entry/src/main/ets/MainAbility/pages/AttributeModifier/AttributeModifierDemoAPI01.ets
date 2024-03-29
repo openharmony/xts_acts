@@ -14,9 +14,10 @@
  */
 class MyButtonModifier1 implements AttributeModifier<ButtonAttribute> {
   isDark: boolean = false
+
   // 禁用
   applyDisabledAttribute(instance: ButtonAttribute): void {
-    if(this.isDark){
+    if (this.isDark) {
       instance.backgroundColor("#FF209B08")
       instance.width('300px')
     } else {
@@ -36,19 +37,24 @@ struct AttributeModifierDemoAPI01 {
   build() {
     Row() {
       Column() {
-        Button("检测此button").key('AttributeModifierDemoAPI01Button')
+        Button("检测此button")
+          .key('AttributeModifierDemoAPI01Button')
           .width('90%')
           .height(80)
           .focusable(true)
           .attributeModifier(this.modifier)
           .enabled(this.enabledFlag)
 
-        Button('enabled：false').margin(20).key('AttributeModifierDemoAPI01EnabledButton')
+        Button('enabled：false')
+          .margin(20)
+          .key('AttributeModifierDemoAPI01EnabledButton')
           .onClick(() => {
             this.enabledFlag = false
           })
 
-        Button('isDark true').margin(20).key('AttributeModifierDemoAPI01isDark')
+        Button('isDark true')
+          .margin(20)
+          .key('AttributeModifierDemoAPI01isDark')
           .onClick(() => {
             this.modifier.isDark = true
           })

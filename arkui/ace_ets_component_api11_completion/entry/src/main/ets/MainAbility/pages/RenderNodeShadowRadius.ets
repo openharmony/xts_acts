@@ -18,7 +18,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
 renderNode.shadowOffset = { x: 10, y: 10 };
 renderNode.shadowAlpha = 0.7;
-renderNode.shadowRadius  = 80;
+renderNode.shadowRadius = 80;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -38,25 +38,27 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-
 struct getshadowRadiusNull {
-  @State getshadowRadiusNull:number = renderNode.shadowRadius ;
-  @State numl :number = 0;
+  @State getshadowRadiusNull: number = renderNode.shadowRadius;
+  @State numl: number = 0;
   private MyNodeController: MyNodeController = new MyNodeController();
+
   build() {
-    Column(){
+    Column() {
       Row() {
         NodeContainer(this.MyNodeController)
       }
-      Row(){
+
+      Row() {
         Button('click')
           .key('getshadowRadiusNull')
-          .onClick(()=>{
-          this.numl= this.getshadowRadiusNull
-        })
+          .onClick(() => {
+            this.numl = this.getshadowRadiusNull
+          })
       }
-      Row(){
-        Text('getshadowRadiusNull:'+this.numl).key('shadowRadiusNull')
+
+      Row() {
+        Text('getshadowRadiusNull:' + this.numl).key('shadowRadiusNull')
       }
     }
 

@@ -19,24 +19,23 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct ObserverApiTest {
-  @State text1 :string = '1'
-  @State text2 :string = '2'
-  private  context = getContext(this) as common.UIAbilityContext
+  @State text1: string = '1';
+  @State text2: string = '2';
+  private context = getContext(this) as common.UIAbilityContext;
 
-
-  testFunc(info:uiObserver.RouterPageInfo){
-    if(info) {
-      if(info.context) {
-        if (info.state == uiObserver.RouterPageState.ABOUT_TO_APPEAR){
-          AppStorage.setOrCreate('Observer_APPEAR', 'Appear')
-        } else if (info.state == uiObserver.RouterPageState.ABOUT_TO_DISAPPEAR){
-          AppStorage.setOrCreate('Observer_DISAPPEAR', 'Disappear')
-        } else if (info.state == uiObserver.RouterPageState.ON_PAGE_SHOW){
-          AppStorage.setOrCreate('Observer_SHOW', 'Show')
-        } else if (info.state == uiObserver.RouterPageState.ON_PAGE_HIDE){
-          AppStorage.setOrCreate('Observer_HIDE', 'Hide')
-        } else if (info.state == uiObserver.RouterPageState.ON_BACK_PRESS){
-          AppStorage.setOrCreate('Observer_BACK', 'Back')
+  testFunc(info: uiObserver.RouterPageInfo) {
+    if (info) {
+      if (info.context) {
+        if (info.state == uiObserver.RouterPageState.ABOUT_TO_APPEAR) {
+          AppStorage.setOrCreate('Observer_APPEAR', 'Appear');
+        } else if (info.state == uiObserver.RouterPageState.ABOUT_TO_DISAPPEAR) {
+          AppStorage.setOrCreate('Observer_DISAPPEAR', 'Disappear');
+        } else if (info.state == uiObserver.RouterPageState.ON_PAGE_SHOW) {
+          AppStorage.setOrCreate('Observer_SHOW', 'Show');
+        } else if (info.state == uiObserver.RouterPageState.ON_PAGE_HIDE) {
+          AppStorage.setOrCreate('Observer_HIDE', 'Hide');
+        } else if (info.state == uiObserver.RouterPageState.ON_BACK_PRESS) {
+          AppStorage.setOrCreate('Observer_BACK', 'Back');
         }
       }
     }
@@ -44,47 +43,45 @@ struct ObserverApiTest {
   }
 
   build() {
-    Column({ space: 5 }){
+    Column({ space: 5 }) {
 
       Text(this.text1).id('ObserverApi_text1')
       Text(this.text2).id('ObserverApi_text2')
 
       Button('getText1')
         .fontSize(14)
-        .onClick(()=>{
+        .onClick(() => {
           this.text1 = (AppStorage.get('Observer_DISAPPEAR') as string) + ''
         })
         .id('ObserverApi_getText1')
 
       Button('getText2')
         .fontSize(14)
-        .onClick(()=>{
+        .onClick(() => {
           this.text2 = (AppStorage.get('Observer_BACK') as string) + ''
         })
         .id('ObserverApi_getText2')
 
       Button('ObserverOn')
         .fontSize(14)
-        .onClick(()=>{
+        .onClick(() => {
           uiObserver.on('routerPageUpdate', this.context, this.testFunc)
         })
         .id('ObserverApi_ObserverOn')
 
       Button('ObserverOff')
         .fontSize(14)
-        .onClick(()=>{
+        .onClick(() => {
           uiObserver.off('routerPageUpdate', this.context, this.testFunc)
         })
         .id('ObserverApi_ObserverOff')
 
       Button('pushToPageTwo')
         .fontSize(14)
-        .onClick(()=>{
-         router.pushUrl({url: "MainAbility/pages/AttrApi/ObserverApi2"})
+        .onClick(() => {
+          router.pushUrl({ url: "MainAbility/pages/AttrApi/ObserverApi2" })
         })
         .id('ObserverApi_pushToPageTwo')
-
-
     }.width('100%')
   }
 }

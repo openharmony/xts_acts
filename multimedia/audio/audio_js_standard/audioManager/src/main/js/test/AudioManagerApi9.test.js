@@ -199,7 +199,50 @@ export default function audioManagerApi9() {
             }
 
         })
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0200
+         * @tc.name      : getVolumeGroupManagerSync - Null_Parameter - 401
+         * @tc.desc      : getVolumeGroupManagerSync - Null_Parameter - 401
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0200', 3, async function (done) {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            try {
+                let groupManager = audioVolumeManager.getVolumeGroupManagerSync();
+                console.info(`audioManagerApi9Test: Promise: getGroupManager  :  FAIL`);
+                expect(false).assertTrue();
+                done();   
+            } catch (error) {
+                console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message},code:${error.code}`);
+                expect(Number(error.code)).assertEqual(401);
+                done();
+            }
 
+        })
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0300
+         * @tc.name      : getVolumeGroupManagerSync - String_Parameter - 401
+         * @tc.desc      : getVolumeGroupManagerSync - String_Parameter - 401
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0300', 3, async function (done) {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            try {
+                let groupManager = audioVolumeManager.getVolumeGroupManagerSync('123');
+                console.info(`audioManagerApi9Test: Promise: getGroupManager  :  FAIL`);
+                expect(false).assertTrue();
+                done();   
+            } catch (error) {
+                console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message},code:${error.code}`);
+                expect(Number(error.code)).assertEqual(401);
+                done();
+            }
+
+        })
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0100
          * @tc.name      : getVolumeGroupManager - callback
@@ -752,14 +795,14 @@ export default function audioManagerApi9() {
         })
 
         /**
-         *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0100
          *@tc.name      : isActive - Media - Sync
          *@tc.desc      : isActive - Media - Sync - When stream is NOT playing
          *@tc.size      : MEDIUM
          *@tc.type      : Function
          *@tc.level     : Level 1
          */
-        it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300', 1, function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0100', 1, function (done) {
             console.log(`${TagFrmwk}: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
             try {
                 let data = streamManager.isActiveSync(audioMedia)
@@ -778,6 +821,67 @@ export default function audioManagerApi9() {
 
         })
 
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0200
+         *@tc.name      : isActiveSync - Null_Parameter - 401
+         *@tc.desc      : isActiveSync - Null_Parameter - 401
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0200', 1, function (done) {
+            try {
+                let data = streamManager.isActiveSync();
+                console.log(`${TagFrmwk}: isActiveSync data::${data}`);
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.error(`${TagFrmwk}: isActiveSync: failed  ${error.message},code:${error.code}`);
+                expect(Number(error.code)).assertEqual(401);
+                done();
+            }
+        })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0300
+         *@tc.name      : isActiveSync - Invaild_Number_Parameter - 6800101
+         *@tc.desc      : isActiveSync - Invaild_Number_Parameter - 6800101
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0300', 1, function (done) {
+            try {
+                let data = streamManager.isActiveSync(123);
+                console.log(`${TagFrmwk}: isActiveSync data::${data}`);
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.error(`${TagFrmwk}: isActiveSync: failed  ${error.message},code:${error.code}`);
+                expect(Number(error.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+                done();
+            }
+        })
+
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0400
+         *@tc.name      : isActiveSync - String_Parameter - 401
+         *@tc.desc      : isActiveSync - String_Parameter - 401
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_SYNC_0400', 1, function (done) {
+            try {
+                let data = streamManager.isActiveSync('123');
+                console.log(`${TagFrmwk}: isActiveSync data::${data}`);
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.error(`${TagFrmwk}: isActiveSync: failed  ${error.message},code:${error.code}`);
+                expect(Number(error.code)).assertEqual(401);
+                done();
+            }
+        })
         /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100
          *@tc.name      : isCommunicationDeviceActiveSync - SPEAKER - deactivate 
@@ -826,7 +930,75 @@ export default function audioManagerApi9() {
             }
             done();
         })
-
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0200
+         *@tc.name      : isCommunicationDeviceActiveSync - Null_Parameters - 401
+         *@tc.desc      : isCommunicationDeviceActiveSync - Null_Parameters - 401 
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0200', 1, async function (done) {
+            let AudioRoutingManager = audioManager.getRoutingManager();
+            try {
+                let value = AudioRoutingManager.isCommunicationDeviceActiveSync()
+                console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0200
+                        isCommunicationDeviceActive : Null_Parameters : PASS :${value}`);
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info(`isCommunicationDeviceActive : Null_Parameters Fail,error:${err},ErrorCode:${err.code},${typeof(err.code)}`);
+                expect(Number(err.code)).assertEqual(401);
+                expect(true).assertTrue();
+                done();
+            }
+        })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0300
+         *@tc.name      : isCommunicationDeviceActiveSync - Number_Invalid_Parameters - 6800101
+         *@tc.desc      : isCommunicationDeviceActiveSync - Number_Invalid_Parameters - 6800101
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0300', 1, async function (done) {
+            let AudioRoutingManager = audioManager.getRoutingManager();
+            try {
+                let value = AudioRoutingManager.isCommunicationDeviceActiveSync(123)
+                console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0300
+                        isCommunicationDeviceActive : Number_Invalid_Parameters : PASS :${value}`);
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info(`isCommunicationDeviceActive : Number_Invalid_Parameters Fail,error:${err},ErrorCode:${err.code},${typeof(err.code)}`);
+                expect(Number(err.code)).assertEqual(audio.AudioErrors.ERROR_INVALID_PARAM);
+                expect(true).assertTrue();
+                done();
+            }
+        })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400
+         *@tc.name      : isCommunicationDeviceActiveSync - String_Parameters - 401
+         *@tc.desc      : isCommunicationDeviceActiveSync - String_Parameters - 401
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+         it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400', 1, async function (done) {
+            let AudioRoutingManager = audioManager.getRoutingManager();
+            try {
+                let value = AudioRoutingManager.isCommunicationDeviceActiveSync('123');
+                console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0400
+                        isCommunicationDeviceActive : String_Parameters : PASS :${value}`);
+                expect(false).assertTrue();
+                done();
+            } catch (err) {
+                console.info(`isCommunicationDeviceActive : String_Parameters Fail,error:${err},ErrorCode:${err.code},${typeof(err.code)}`);
+                expect(Number(err.code)).assertEqual(401);
+                expect(true).assertTrue();
+                done();
+            }
+        })
         /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
          *@tc.name      : setCommunicationDevice - SPEAKER - deactivate - Promise

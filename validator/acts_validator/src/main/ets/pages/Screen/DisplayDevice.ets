@@ -22,7 +22,7 @@ const TAG: string = '[DisplayModel]';
 
 export class DisplayModel {
   async createVirtualScreen(id: number) {
-    let result = await screen.createVirtualScreen({
+    let result: ESObject = await screen.createVirtualScreen({
       name: `screen_${id}`,
       width: 480,
       height: 360,
@@ -30,7 +30,7 @@ export class DisplayModel {
       surfaceId: `${id}`
     })
     Logger.info(TAG, `createVirtualScreen screen.id = ${result.id}`)
-    let info = await screen.makeExpand([{ screenId: result.id, startX: 0, startY: 0 }])
+    let info: ESObject = await screen.makeExpand([{ screenId: result.id, startX: 0, startY: 0 }])
     Logger.info(TAG, `makeExpand number = ${info}`)
     return result
   }
@@ -110,7 +110,7 @@ export struct DisplayDevice {
           })
 
 
-        ForEach(this.devices, (item, index) => {
+        ForEach(this.devices, (index: number) => {
           Rect({ width: '40%', height: '23%' })
             .margin({ top: '56px', left: '5%', right: '1%' })
             .fill(Color.Green)
@@ -132,7 +132,7 @@ export struct DisplayDevice {
           .backgroundColor('#007dff')
           .type(ButtonType.Capsule)
           .onClick(async () => {
-            let result = await this.displayModel.createVirtualScreen(this.screenIds.length)
+            let result: ESObject = await this.displayModel.createVirtualScreen(this.screenIds.length)
             Logger.info(TAG, `this createVirtualScreen screen id = ${JSON.stringify(this.screenIds)}`)
             this.screenIds.push(result.id)
           })

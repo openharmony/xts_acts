@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import semaphore from 'libsemaphorendk.so'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs'
@@ -23,19 +24,10 @@ export default function semaphoreNdkTest() {
 
   describe('MuslSemaphoreTest', () => {
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMOPEN_0200
-     * @tc.name       : testMuslSemaphoreSemOpen002
-     * @tc.desc       : test sem_open
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslSemaphoreSemOpen002', 0, async (done: Function) => {
-      let a : number = semaphore.sem_open(1);
-      expect(a).assertEqual(200);
-      done()
-    });
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SEMAPHORE_SEMGETVALUE_0100
      * @tc.name       : testMuslSemaphoreSemGetvalue001

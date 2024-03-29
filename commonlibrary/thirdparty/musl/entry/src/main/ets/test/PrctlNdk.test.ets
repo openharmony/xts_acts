@@ -13,11 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import prctl from 'libprctlndk.so'
 
 export default function prctlNdkTest() {
   describe('MuslPrctlTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
+
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_PRCTL_PRCTL_0100
      * @tc.name       : testMuslPrctlPrctl001

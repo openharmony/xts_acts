@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function enumFolderTest() {
-  describe('enumFolderTest', function () {
-    beforeEach(async function (done) {
+  describe('enumFolderTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("enumFolderTest beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function enumFolderTest() {
         console.info("get enumFolderTest state pages:" + JSON.stringify(pages));
         if (!("folder_stack" == pages.name)) {
           console.info("get enumFolderTest  pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/folderStack/folder_stack"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/folderStack/folder_stack"
+          })
           await CommonFunc.sleep(2000);
           console.info("push enumFolderTest page result:" + JSON.stringify(result));
         }
@@ -37,27 +52,26 @@ export default function enumFolderTest() {
       console.info("enumFolderTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("enumFolderTest after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_relativeCTest_0100
-     * @tc.desc      test basis
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_relativeCTest_0100
+     * @tc.desc test basis
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
 
-    it('enumFolderTest_0100', 0, async function (done) {
+    it('enumFolderTest_0100', 0, async (done: Function) => {
       console.info('[enumFolderTest_0100] START');
       await CommonFunc.sleep(2000);
       // no trigger
       let json = getInspectorByKey('flod_tx3');
-      let Obj1 = JSON.parse(json);
       console.info("relativeCTest_0100 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.content).assertEqual("")
+      expect(JSON.parse(json).$attrs.content).assertEqual("")
       done();
     });
 

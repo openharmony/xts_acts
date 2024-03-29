@@ -15,19 +15,18 @@
 @Entry
 @Component
 struct SXSymbolGlyphSINGLE01 {
-  @State text: string = ''
+  @State text: string = '';
 
   build() {
-    Column({space:20}) {
+    Column({ space: 20 }) {
       Column() {
         Text("渲染模式：统一")
         SymbolGlyph($r('sys.symbol.ohos_lungs'))
           .key('SXSymbolGlyphSINGLE01Key')
           .fontSize(100)
           .renderingStrategy(SymbolRenderingStrategy.SINGLE)
-          .fontColor([Color.Blue,Color.Grey,Color.Green])
+          .fontColor([Color.Blue, Color.Grey, Color.Green])
       }
-
     }.margin(20)
   }
 }

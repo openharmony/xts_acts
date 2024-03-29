@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
-import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
@@ -23,13 +21,15 @@ export class MyDataSource implements IDataSource {
   private list: number[] = []
   private listener: DataChangeListener
 
-  constructor(list: number[]) { this.list = list }
+  constructor(list: number[]) {
+    this.list = list
+  }
 
   totalCount(): number {
     return this.list.length
-}
+  }
 
-  getData(index: number): any {
+  getData(index: number): number {
     return this.list[index]
   }
 
@@ -44,12 +44,9 @@ export class MyDataSource implements IDataSource {
 @Entry
 @Component
 struct SwiperTest {
-
-  aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+  aboutToAppear() {
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
@@ -82,7 +79,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -107,7 +104,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -132,7 +129,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -157,7 +154,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -172,6 +169,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -181,7 +179,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -196,6 +194,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -205,7 +204,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -220,6 +219,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -229,7 +229,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -244,6 +244,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -253,7 +254,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -268,6 +269,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -277,7 +279,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -292,6 +294,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -301,7 +304,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -316,6 +319,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -325,7 +329,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -340,6 +344,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -349,7 +354,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -364,6 +369,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -373,7 +379,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -388,6 +394,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -397,7 +404,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -412,6 +419,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -421,7 +429,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -436,6 +444,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -445,7 +454,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -460,6 +469,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -469,7 +479,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -484,6 +494,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -493,7 +504,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -508,6 +519,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -517,7 +529,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -532,6 +544,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -541,7 +554,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -556,6 +569,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -565,7 +579,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -580,6 +594,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -589,7 +604,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -604,6 +619,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -613,7 +629,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -628,6 +644,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -637,7 +654,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -652,6 +669,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -661,7 +679,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -676,6 +694,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -685,7 +704,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -700,6 +719,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -709,7 +729,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -724,6 +744,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -733,7 +754,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -748,6 +769,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -757,7 +779,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -772,6 +794,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -781,7 +804,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -795,8 +818,9 @@ struct SwiperTest {
             .onChange((index: number) => {
               console.info(index.toString())
             })
-          }		
-		      ListItem() {
+          }
+
+          ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
                 Text(item)
@@ -805,7 +829,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -820,6 +844,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -829,7 +854,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -844,6 +869,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -853,7 +879,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -868,6 +894,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -877,7 +904,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -892,6 +919,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -901,7 +929,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -917,6 +945,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -926,7 +955,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -942,6 +971,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -951,7 +981,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -966,6 +996,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -975,7 +1006,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -991,6 +1022,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1000,7 +1032,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1016,6 +1048,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1025,7 +1058,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1042,6 +1075,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1051,7 +1085,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1067,6 +1101,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1076,7 +1111,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1094,6 +1129,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1103,7 +1139,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1118,6 +1154,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1127,7 +1164,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1142,6 +1179,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1151,7 +1189,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1166,6 +1204,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1175,7 +1214,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1190,6 +1229,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1199,7 +1239,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1215,6 +1255,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1224,7 +1265,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1240,6 +1281,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1249,7 +1291,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1264,6 +1306,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1273,7 +1316,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1289,6 +1332,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1298,7 +1342,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1314,6 +1358,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1323,7 +1368,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1340,6 +1385,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1349,7 +1395,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1365,6 +1411,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1374,7 +1421,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1392,6 +1439,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1401,7 +1449,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1416,6 +1464,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1425,7 +1474,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1440,6 +1489,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1449,7 +1499,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1464,6 +1514,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1473,7 +1524,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1488,6 +1539,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1497,7 +1549,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1512,6 +1564,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1521,7 +1574,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1536,6 +1589,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1545,7 +1599,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1560,6 +1614,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1569,7 +1624,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1584,6 +1639,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1593,7 +1649,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1610,6 +1666,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1619,7 +1676,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1636,6 +1693,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1645,7 +1703,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1662,6 +1720,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1671,7 +1730,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1686,6 +1745,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1695,7 +1755,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1710,6 +1770,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1719,7 +1780,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1734,6 +1795,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1743,7 +1805,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1758,6 +1820,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1767,7 +1830,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1782,6 +1845,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1791,7 +1855,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1806,6 +1870,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1815,7 +1880,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1830,6 +1895,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1839,7 +1905,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1854,6 +1920,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1863,7 +1930,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1880,6 +1947,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1889,7 +1957,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1906,6 +1974,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1915,7 +1984,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .autoPlay(true)
             .interval(4000)
@@ -1932,6 +2001,7 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1941,11 +2011,12 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .key("ArkUX_Stage_Swiper_Indicator_0100")
             .indicator(Indicator.digit().top(1))
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1955,11 +2026,12 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .key("ArkUX_Stage_Swiper_Indicator_0200")
             .indicator(Indicator.digit().bottom(1))
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1969,11 +2041,12 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .key("ArkUX_Stage_Swiper_Indicator_0300")
             .indicator(Indicator.digit().left(1))
           }
+
           ListItem() {
             Swiper(this.swiperController) {
               LazyForEach(this.data, (item: string) => {
@@ -1983,7 +2056,7 @@ struct SwiperTest {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, item => item)
+              }, (item: string) => item)
             }
             .key("ArkUX_Stage_Swiper_Indicator_0400")
             .indicator(Indicator.digit().right(1))

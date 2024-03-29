@@ -25,13 +25,18 @@ const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1 = path + '/Bluetooth';
 
-let VarColor = [];
+let letColor = [];
 let ColorBackPath = path + '/BluetoothColorBack.txt';
 let txtPath = path1 + '/BluetoothReport.txt';
 let ColorTxtPath = path1 + '/ColorReport.txt';
 let xmlPath = path1 + '/BluetoothTest.xml';
 let StandardBluetoothTxtPath = path1 + '/StandardBluetoothReport.txt';
 let BleBluetoothTxtPath = path1 + '/BleBluetoothReport.txt';
+
+class TestCase {
+  title: string;
+  uri: string;
+}
 
 @Entry
 @Component
@@ -41,19 +46,19 @@ struct BlueTooth_index {
   @State count: number = 0;
   @State result: string = '';
   @State TEST: number = 0;
-  private TestCaseList = [
+  private TestCaseList: TestCase[] = [
     { title: 'StandardBluetooth', uri: 'pages/Bluetooth/StandardBluetooth/page/StandardBluetooth' },
     { title: 'BleBluetooth', uri: 'pages/Bluetooth/BleBluetooth/page/BleBluetooth' }
   ]
-  @State ColorObject: Object[] = VarColor;
-  @State ColorTrue: Object[] = [];
-  @State ColorTrue2: Object[] = [];
+  @State ColorObject: Object[] = letColor;
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
   async onPageShow() {
     let Test = null;
     let context = null;
     context = globalThis.getContext();
-    let preferences;
+    let preferences: ESObject;
 
     let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
@@ -86,18 +91,19 @@ struct BlueTooth_index {
     let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buff = new ArrayBuffer(40960);
     fs.readSync(opt.fd, buff);
-    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
-    let TestList = ColorBack.split(';');
+    let ColorBack: string = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList: string[] = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
-      VarColor[i] = TestList[i * 2+1];
+      letColor[i] = TestList[i * 2+1];
     }
     fs.closeSync(opt);
 
     if (this.count === 1) {
 
-      this.result = router.getParams()['result'];
-      let titles = router.getParams()['title'];
-      let name1 = '刚刚点进了哪个用例：' + titles;
+      let myRouter = router.getParams() as Record<string, string | number>
+      this.result = myRouter.result as string
+      let titles: string = myRouter.title as string;
+      let name1: string = '刚刚点进了哪个用例：' + titles;
       let results = this.result;
       let WriteTitle = (titles).toString();
       let number = WriteTitle.length + 7;
@@ -247,7 +253,7 @@ struct BlueTooth_index {
       .backgroundColor(Color.Black)
 
       List({}) {
-        ForEach(this.TestCaseList, (item, index) => {
+        ForEach(this.TestCaseList, (item: TestCase, index) => {
           ListItem() {
             Row() {
               Text(item.title)
@@ -257,7 +263,10 @@ struct BlueTooth_index {
             .width('100%')
             .height(50)
             .alignItems(VerticalAlign.Center)
-            .linearGradient(this.count === 0 && this.TEST === 0 ? { angle: 90, colors: [[0x000000, 0.0], [0x000000, 1.0]] } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
+            .linearGradient(this.count === 0 && this.TEST === 0 ? {
+              angle: 90,
+              colors: [[0x000000, 0.0], [0x000000, 1.0]]
+            } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
             .onClick(() => {
               this.count = 1;
               this.ClearAll = false;
@@ -267,7 +276,7 @@ struct BlueTooth_index {
               })
             })
           }
-        }, item => item.title)
+        }, (item: TestCase) => item.title)
       }
       .width('100%')
       .height('92%')
@@ -302,16 +311,12 @@ struct BlueTooth_index {
       let buf = new ArrayBuffer(40960);
       let RD = fs.readSync(OP.fd, buf);
       console.info("ddddd" + RD);
-      let report;
+      let report: string;
 
-      function ab2str(buf) {
-        return report = String.fromCharCode.apply(null, new Uint8Array(buf));
-      }
-
-      ab2str(buf);
+      report = String.fromCharCode.apply(null, new Uint8Array(buf))
       let str1 = report.split(";");
-      let title = [];
-      let result = [];
+      let title: string[] = [];
+      let result: string[] = [];
       for (let i = 0; i < Math.floor(str1.length / 2); i++) {
         title[i] = str1[i*2];
         result[i] = str1[i * 2+1];
@@ -319,7 +324,7 @@ struct BlueTooth_index {
       let FailIndex = report.indexOf('false');
       let FailNum = 0;
       while (FailIndex != -1) {
-        console.log(FailIndex);
+        console.log(FailIndex.toString());
         FailNum++;
         FailIndex = report.indexOf('false', FailIndex + 1);
       }
@@ -327,7 +332,7 @@ struct BlueTooth_index {
       let PassIndex = report.indexOf('true ');
       let PassNum = 0;
       while (PassIndex != -1) {
-        console.log(PassIndex);
+        console.log(PassIndex.toString());
         PassNum++;
         PassIndex = report.indexOf('true ', PassIndex + 1);
       }
@@ -364,9 +369,10 @@ struct BlueTooth_index {
       let array = new Uint8Array(arrayBuffer);
       let serializerStr = that.decode(array);
       console.info(xmlPath);
+      let xmlfd: fs.File;
       try {
         console.error(TAG, "write xmlPath =" + xmlPath);
-        var xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         fs.writeSync(xmlfd.fd, serializerStr);
       } catch (err) {
         console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
@@ -378,27 +384,27 @@ struct BlueTooth_index {
   }
 }
 
-function filewrite(name1, results, titles) {
+function filewrite(name1: string, results: string, titles: string) {
   let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
   let RD = fs.readSync(fd.fd, buf);
   console.info("RRRRRRRRRRd" + RD);
-  let report = String.fromCharCode.apply(null, new Uint8Array(buf));
+  let report: ESObject = String.fromCharCode.apply(null, new Uint8Array(buf));
   let WriteTitle = (titles).toString();
   let WriteResult = (results).toString();
   let number = WriteTitle.length + WriteResult.length + 2;
-  let Index = report.indexOf(WriteTitle);
+  let Index: number = report.indexOf(WriteTitle);
   let Log = (titles + ";" + results + ";").toString();
   if (Index == -1) {
     fs.writeSync(fd.fd, Log);
   }
   else if (Index != -1) {
-    let key = report.substring(Index, Index + number);
+    let key: string = report.substring(Index, Index + number);
     let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     report = report.replace(key, Log);
     let buffer = new ArrayBuffer(4096);
     let rd = fs.readSync(FD.fd, buffer);
-    let Report = report.substring(0, rd);
+    let Report: string = report.substring(0, rd);
     fs.closeSync(FD);
     let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     fs.writeSync(Fd.fd, Report);

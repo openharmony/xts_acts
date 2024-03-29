@@ -30,26 +30,29 @@ struct richEditorApi3 {
         .width('100%')
         .height(200)
       Button('addTextSpan').onClick((event: ClickEvent) => {
-        this.controller.addTextSpan('1023456789\n',{
-          style:{
-            fontColor:Color.Pink,
-            fontSize:"32"
+        this.controller.addTextSpan('1023456789\n', {
+          style: {
+            fontColor: Color.Pink,
+            fontSize: "32"
           },
-          paragraphStyle:{
-            textAlign:TextAlign.Start,
-            leadingMargin:16
+          paragraphStyle: {
+            textAlign: TextAlign.Start,
+            leadingMargin: 16
           }
         })
       }).height(100).id('richEditorApi3_btn1')
       Button('get').onClick(() => {
         this.controller.getParagraphs({ start: -1, end: -1 }).forEach((item) => {
-          this.text1  +=  JSON.stringify((item as RichEditorParagraphResult).style)
+          this.text1 += JSON.stringify((item as RichEditorParagraphResult).style)
         })
-      }).height(100).id('richEditorApi3_btn2')
+      })
+        .height(100)
+        .id('richEditorApi3_btn2')
 
-      Text('' + this.text1).key('richEditorApi3_text1')
+      Text('' + this.text1)
+        .key('richEditorApi3_text1')
     }
-    .width('100%').height('100%')
+    .width('100%')
+    .height('100%')
   }
-
 }

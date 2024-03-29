@@ -18,50 +18,110 @@ import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import subtype from '@ohos.InputMethodSubtype';
 import inputMethod from '@ohos.inputMethod';
 import display from '@ohos.display';
-import {Driver, ON, MatchPattern, Component } from '@ohos.UiTest'
+import {Driver, ON, MatchPattern, Component, UiWindow } from '@ohos.UiTest'
 import deviceinfo from '@ohos.deviceInfo';
 import { BusinessError} from '@ohos.base'
 
 export default function inputMethodEngineJSUnit() {
   describe('inputMethodEngine', function () {
+    let driver = Driver.create();
+    let textArea: Component;
+    let rectInfo;
+
     beforeAll(async (done)=>{
-      console.info('====> inputMethod_enable deviceinfo.deviceType:' + JSON.stringify(deviceinfo.deviceType));
-      try {
-        let driver: Driver = Driver.create();
-        await driver.delayMs(500);
+      console.info('====>beforeAll inputMethod_enable start!')
+      try{
+        if(deviceinfo.deviceType != 'default'){
+          let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+          let cmd = 'aa start -a com.huawei.hmos.settings.MainAbility -b com.huawei.hmos.settings';
+          abilityDelegator.executeShellCommand(cmd);
+          await sleep(2000)
+          console.info(`====>inputMethod_enable deviceinfo.deviceType: ${deviceinfo.deviceType}`);
+          let settingList = await driver.waitForComponent(ON.type('List').isBefore(ON.text('蓝牙')), 3000);
+          console.info(`====>inputMethod_enable settingList: ${settingList}`);
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1');
+            let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
+            console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
+            await systemAndUpdate.click();
+          }else{
+            console.info('====> other');
+            await driver.swipe(600, 2500, 600, 1000, 15000);
+            let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
+            console.info(`====>inputMethod_enable common_text: ${common_text}`);
+            await common_text.click();
+          }
+          await driver.delayMs(500);
+          let inputMethod_Setting: Component = await driver.waitForComponent(ON.text('输入法', MatchPattern.CONTAINS), 3000);
+          console.info(`====>inputMethod_enable inputMethod_Setting: ${inputMethod_Setting}`);
+          await inputMethod_Setting.click();
+          await driver.delayMs(500);
+          let checkList: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
+          console.info(`====>inputMethod_enable checkList: ${checkList}`);
+          for(let index=0; index<checkList.length; index++){
+            let checkStatus = await checkList[index].isChecked();
+            console.info(`====>inputMethod_enable checkStatus: ${checkStatus}`);
+            if(JSON.stringify(checkStatus) === 'false'){
+              await checkList[index].click();
+              await driver.delayMs(500);
+            }
+          }
+          if(deviceinfo.deviceType === '2in1'){
+            console.info('====> 2in1 start close settings window');
+            let window: UiWindow = await driver.findWindow({bundleName: "com.huawei.hmos.settings"});
+            console.info(`====>inputMethod_enable window: ${window}`);
+            await window.close();
+          }else{
+            console.info('====> other start close settings window and start test window');
+            abilityDelegator.executeShellCommand("aa force-stop com.huawei.hmos.settings");
+            abilityDelegator.executeShellCommand("aa start -d 0 -a com.acts.inputmethodengine.test.MainAbility -b com.acts.inputmethodengine.test");
+          }
+          await driver.delayMs(5000);
+        }
+
         let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
         let result: boolean = await inputMethodSetting.showOptionalInputMethods();
-        console.info('====>beforeAll inputMethodSwitch else result: ' + JSON.stringify(result));
-        let list = await driver.waitForComponent(ON.type('List'), 1000);
-        console.info('====>beforeAll inputMethodSwitch else list: ' + JSON.stringify(list));
-        if (JSON.stringify(list) == 'null') {
+        console.info('====>beforeAll inputMethodSwitch showOptionalInputMethods result: ' + JSON.stringify(result));
+        let inputMethodList = await driver.waitForComponent(ON.type('List'), 3000);
+        console.info('====>beforeAll inputMethodSwitch inputMethodList: ' + JSON.stringify(inputMethodList));
+        if (JSON.stringify(inputMethodList) === 'null') {
           await driver.delayMs(200);
-          list = await driver.findComponent(ON.type('List'));
-          console.info('====>beforeAll inputMethodSwitch second list: ' + JSON.stringify(list));
+          inputMethodList = await driver.findComponent(ON.type('List'));
+          console.info('====>beforeAll inputMethodSwitch inputMethodList second: ' + JSON.stringify(inputMethodList));
         }
-        await driver.delayMs(500);
-        let inputMethod_name: Component = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
-        console.info('====>beforeAll inputMethodSwitch else waitForComponent: ' + JSON.stringify(inputMethod_name));
-        if (JSON.stringify(inputMethod_name) == 'null') {
-          await driver.delayMs(200);
-          inputMethod_name = await list.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
-        }
-        await inputMethod_name.click();
-        console.info('====>beforeAll inputMethodSwitch else done' )
-        await driver.delayMs(2000);
-        let data = await inputMethod.getController().detach();
-        console.info(`====>runCmd detach`);
-        let textConfig: inputMethod.TextConfig = {
-          inputAttribute: {
-            textInputType: 0,
-            enterKeyType: 1
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let inputMethod_name: Component = await driver.waitForComponent(ON.text('engine', MatchPattern.CONTAINS), 2000);
+          await inputMethod_name.click();
+          await driver.delayMs(500);
+        }else{
+          let inputMethod_name: Component = await inputMethodList.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+          console.info('====>beforeAll inputMethodSwitch inputMethod_name: ' + JSON.stringify(inputMethod_name));
+          if (JSON.stringify(inputMethod_name) === 'null') {
+            await driver.delayMs(200);
+            inputMethod_name = await inputMethodList.scrollSearch(ON.text('engine', MatchPattern.CONTAINS));
+            console.info('====>beforeAll inputMethodSwitch inputMethod_name second: ' + JSON.stringify(inputMethod_name));
           }
-        };
-        await inputMethod.getController().attach(true, textConfig);
-        console.info(`====>runCmd attach`);
+          await inputMethod_name.click();
+        }
+        console.info('====>beforeAll inputMethodSwitch done');
+        await driver.delayMs(1000);
+        if(deviceinfo.deviceType === '2in1'){
+          let testWindow: UiWindow = await driver.findWindow({bundleName: "com.acts.inputmethodengine.test"});
+          console.info('====>beforeAll inputMethodSwitch switch window: ' + JSON.stringify(testWindow));
+          await testWindow.focus();
+          await driver.delayMs(1000);
+        }
+        textArea = await driver.findComponent(ON.type('TextArea'));
+        console.info('====>beforeAll inputMethodSwitch window textArea: ' + JSON.stringify(textArea));
+        rectInfo = await textArea.getBounds();
+        console.info('====>beforeAll inputMethodSwitch textArea rectInfo: ' + JSON.stringify(rectInfo));
+        await driver.delayMs(1000);
+        await runCmd();
+        await driver.delayMs(1000);
         done();
-      } catch(err) {
-        console.info('====>beforeAll inputMethodSwitch else err:' + JSON.stringify(err));
+      }catch(err){
+        console.info('====>beforeAll throw err:' + JSON.stringify(err.message))
         done();
       }
     })
@@ -74,12 +134,19 @@ export default function inputMethodEngineJSUnit() {
       done();
     })
 
-    let dis = display.getDefaultDisplaySync();
-    let driver = Driver.create();
-    async function runCmd() {
-      let cursor_x = 30 + Math.floor(Math.random() * dis.width * 0.8);
-      let cursor_y = 150 + Math.floor(Math.random() * Math.round(dis.height * 0.4));
-      console.info(`====>start click x:${cursor_x}  y:${cursor_y}`)
+    let sleep = function (timeout) {
+      return new Promise(resolve => {
+        const st = setTimeout(() => {
+          resolve(null);
+          clearTimeout(st);
+        }, timeout);
+      });
+    };
+
+    async function runCmd(){
+      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
+      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
       await driver.click(cursor_x, cursor_y)
     }
 

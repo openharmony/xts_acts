@@ -12,78 +12,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-// @ts-nocheck
+
 import router from '@system.router'
 
-var paramInfo = router.getParams()
+let paramInfo = router.getParams();
 console.info("cd paramInfo" + JSON.stringify(paramInfo))
 
 @Entry
 @Component
 struct text_textcase {
-  @State textAlign: TextAlign= TextAlign.End
-  @State lineHeight: string= '15fp'
+  @State textAlign: TextAlign = TextAlign.End
+  @State lineHeight: string = '15fp'
   @State overflow: TextOverflow = TextOverflow.Ellipsis
-  @State textOverflow: textOverflow<{ "overflow": TextOverflow }> = { "overflow": this.overflow }
   @State maxLines: number = 2
   @State baselineOffset: number = 0
-  @State textCase: TextCase= TextCase.Normal
-  @State decoration: decoration<{
-    type: TextDecorationType,
-    color: Color
-  }> = { type: TextDecorationType.Underline, color: Color.Red }
+  @State textCase: TextCase = TextCase.Normal
   @State color: Color = Color.Red
-  @State width: string= "200"
-  @State height: string= "100"
-  @State size: size = { width: 200, height: 100 }
+  @State myWidth: Length = "200"
+  @State myHeight: Length = "100"
   @State marginBottom: string = "10px"
   @State marginTop: string = "10px"
   @State marginLeft: string = "10px"
-  @State marginRingt: string= "10px"
-  @State paddingBottom: string= "5"
-  @State paddingTop: string= "5"
-  @State paddingLeft: string= "5"
-  @State paddingRingt: string= "5"
-  @State constraintSize: constraintSize = { minWidth: 20, maxWidth: 200, minHeight: 0, maxHeight: 50 }
-  @State layoutPriority: string= "9px"
-  @State layoutWeight: string = "10px"
-  @State align: Alignment = Alignment.Center
-  @State direction: Direction = Direction.Auto
-  @State position: position<{
-    x: string,
-    y: string
-  }> = { x: "50", y: "50" }
-  @State markAnchor: markAnchor<{
-    x: string,
-    y: string
-  }> = { x: "50", y: "50" }
-  @State offset: offset<{
-    x: string,
-    y: string
-  }> = { x: "50", y: "50" }
-  @State flexGrow: number = 5
-  @State flexShrink: number = 2
-  @State flexBasis: number = 0
-  @State alignSelf: ItemAlign = ItemAlign.Auto
-  @State borderStyle: BorderStyle = BorderStyle.Dashed
-  @State borderRadius: number = 10
-  @State borderWidth: string= "4px"
-  @State borderColor: Color= Color.Blue
-  @State backgroundColor: Color = Color.Pink
-  @State backgroundImageSize: ImageSize = ImageSize.Cover
-  @State backgroundImagePosition: Alignment= Alignment.Center
-  @State opacity: number= 1
-  @State visibility: Visibility= Visibility.Visible
-  @State enabled: boolean = false
-  @State zIndex: number = 1
+  @State marginRingt: string = "10px"
+  @State paddingBottom: string = "5"
+  @State paddingTop: string = "5"
+  @State paddingLeft: string = "5"
+  @State paddingRingt: string = "5"
+  @State layoutPriority: string = "9px"
+  @State myAlign: Alignment = Alignment.Center
+  @State myDirection: Direction = Direction.Auto
+  @State myPosition: Position = { x: "50", y: "50" }
+  @State myFlexGrow: number = 5
+  @State myFlexShrink: number = 2
+  @State myFlexBasis: number = 0
+  @State myAlignSelf: ItemAlign = ItemAlign.Auto
+  @State myBorderStyle: BorderStyle = BorderStyle.Dashed
+  @State myBorderRadius: number = 10
+  @State myBorderWidth: string = "4px"
+  @State myBorderColor: Color = Color.Blue
+  @State myBackgroundColor: Color = Color.Pink
+  @State myBackgroundImageSize: ImageSize = ImageSize.Cover
+  @State myBackgroundImagePosition: Alignment = Alignment.Center
+  @State myOpacity: number = 1
+  @State myVisibility: Visibility = Visibility.Visible
+  @State myEnabled: boolean = false
+  @State myZIndex: number = 1
   @State fontStyle: FontStyle = FontStyle.Italic
   @State fontSize: number = 15
   @State minFontSize: number = 15
   @State maxFontSize: number = 15
-  @State letterSpacing: number= 10
-  @State fontWeight: FontWeight= FontWeight.Bold
-  @State fontColor: Color= Color.Black
+  @State letterSpacing: number = 10
+  @State fontWeight: FontWeight = FontWeight.Bold
+  @State fontColor: Color = Color.Black
   @State active: boolean = false
   private content: string = "Text Page";
 
@@ -101,30 +81,30 @@ struct text_textcase {
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Text('Text Anto test,Text Anto test,Text Anto test,Text Anto test,test,Text Anto test,Text Anto test,Text Anto test,Text Anto test,Text Anto test,Text Anto test')
-        .width(this.width)
-        .height(this.height)
+        .width(this.myWidth)
+        .height(this.myHeight)
         .padding({ bottom: this.paddingBottom, top: this.paddingTop, right: this.paddingRingt, left: this.paddingLeft })
         .margin({ bottom: this.marginBottom, top: this.marginTop, right: this.marginRingt, left: this.marginLeft })
-        .constraintSize(this.constraintSize)
-        .layoutWeight(this.layoutWeight)
-        .align(this.align)
-        .direction(this.direction)
-        .position(this.position)
-        .markAnchor(this.markAnchor)
-        .offset(this.offset)
-        .flexBasis(this.flexBasis)
-        .flexGrow(this.flexGrow)
-        .flexShrink(this.flexShrink)
-        .alignSelf(this.alignSelf)
-        .borderStyle(this.borderStyle)
-        .borderRadius(this.borderRadius)
-        .borderWidth(this.borderWidth)
-        .borderColor(this.borderColor)
-        .backgroundColor(this.backgroundColor)
-        .opacity(this.opacity)
-        .visibility(this.visibility)
-        .enabled(this.enabled)
-        .zIndex(this.zIndex)
+        .constraintSize({ minWidth: 20, maxWidth: 200, minHeight: 0, maxHeight: 50 })
+        .layoutWeight("10px")
+        .align(this.myAlign)
+        .direction(this.myDirection)
+        .position(this.myPosition)
+        .markAnchor({ x: "50", y: "50" })
+        .offset({ x: "50", y: "50" })
+        .flexBasis(this.myFlexBasis)
+        .flexGrow(this.myFlexGrow)
+        .flexShrink(this.myFlexShrink)
+        .alignSelf(this.myAlignSelf)
+        .borderStyle(this.myBorderStyle)
+        .borderRadius(this.myBorderRadius)
+        .borderWidth(this.myBorderWidth)
+        .borderColor(this.myBorderColor)
+        .backgroundColor(this.myBackgroundColor)
+        .opacity(this.myOpacity)
+        .visibility(this.myVisibility)
+        .enabled(this.myEnabled)
+        .zIndex(this.myZIndex)
         .fontColor(this.fontColor)
         .fontSize(this.fontSize)
         .maxFontSize(this.maxFontSize)
@@ -132,12 +112,12 @@ struct text_textcase {
         .fontStyle(this.fontStyle)
         .fontFamily("sans-serif")
         .textAlign(this.textAlign)
-        .textOverflow(this.textOverflow)
+        .textOverflow({ overflow: this.overflow })
         .lineHeight(this.lineHeight)
         .baselineOffset(this.baselineOffset)
         .maxLines(2)
         .textCase(this.textCase)
-        .decoration(this.decoration)
+        .decoration({ type: TextDecorationType.Underline, color: Color.Red })
         .aspectRatio(1)
         .fontColor(Color.Black)
         .key('Text')
@@ -156,7 +136,7 @@ struct text_textcase {
         .enabled(true)
         .fontWeight(FontWeight.Normal)
         .textAlign(TextAlign.Start)
-        .textOverflow(TextOverflow.Clip)
+        .textOverflow({ overflow: TextOverflow.Clip })
         .maxLines(2)
         .textCase(TextCase.LowerCase)
         .decoration({ "type": TextDecorationType.LineThrough, "color": Color.Red })
@@ -174,7 +154,7 @@ struct text_textcase {
         .visibility(Visibility.None)
         .fontWeight(FontWeight.Bolder)
         .textAlign(TextAlign.Center)
-        .textOverflow(TextOverflow.None)
+        .textOverflow({ overflow: TextOverflow.None })
         .textCase(TextCase.UpperCase)
         .decoration({ "type": TextDecorationType.None, "color": Color.Red })
         .fontColor(Color.Blue)

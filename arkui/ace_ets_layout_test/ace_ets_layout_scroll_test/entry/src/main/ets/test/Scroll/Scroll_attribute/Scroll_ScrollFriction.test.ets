@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
+
 export default function scroll_ScrollFrictionTest() {
-  describe('scroll_ScrollFrictionTest', function () {
-    beforeEach(async function (done) {
+  describe('scroll_ScrollFrictionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ScrollFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Scroll/Scroll_attribute/ScrollFrictionPage',
       }
       try {
@@ -29,7 +31,7 @@ export default function scroll_ScrollFrictionTest() {
         console.info("get ScrollFrictionPage state pages:" + JSON.stringify(pages));
         if (!("ScrollFrictionPage" == pages.name)) {
           console.info("get Scroll_ScrollInitialIndex1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ScrollFrictionPage page result:" + JSON.stringify(result));
         }
@@ -39,40 +41,42 @@ export default function scroll_ScrollFrictionTest() {
       console.info("ScrollFrictionPage beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ScrollFrictionPage after each called");
     });
     /**
-     * @tc.number    SUB_ACE_SCROLL_SCROLLFRICTION_001
-     * @tc.name      testScrollFriction
-     * @tc.desc      set friction to -1
+     * @tc.number SUB_ACE_SCROLL_SCROLLFRICTION_001
+     * @tc.name testScrollFriction
+     * @tc.desc set friction to -1
      */
-    it('testScrollFriction', 0, async function (done) {
+    it('testScrollFriction', 0, async (done: Function) => {
       console.info('[testScrollFriction] START');
-      globalThis.value.message.notify({name:'friction', value:-1})
+      globalThis.value.message.notify({
+        name: 'friction', value: -1
+      })
       await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
-      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
-      expect(scrollContainerObj.$type).assertEqual('Scroll');
-      expect(scrollContainerObj.$attrs.friction).assertEqual(0.6);
+      expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('Scroll');
+      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(0.6);
       console.info('[testScrollFriction] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_SCROLL_SCROLLFRICTION_002
-     * @tc.name      testScrollFriction
-     * @tc.desc      set friction to 10
+     * @tc.number SUB_ACE_SCROLL_SCROLLFRICTION_002
+     * @tc.name testScrollFriction
+     * @tc.desc set friction to 10
      */
-    it('testScrollFriction', 0, async function (done) {
+    it('testScrollFriction', 0, async (done: Function) => {
       console.info('[testScrollFriction] START');
-      globalThis.value.message.notify({name:'friction', value:10})
+      globalThis.value.message.notify({
+        name: 'friction', value: 10
+      })
       await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
-      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
-      expect(scrollContainerObj.$type).assertEqual('Scroll');
-      expect(scrollContainerObj.$attrs.friction).assertEqual(10);
+      expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('Scroll');
+      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(10);
       console.info('[testScrollFriction] END');
       done();
     });

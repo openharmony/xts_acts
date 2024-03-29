@@ -25,6 +25,7 @@ struct WebViewMenuShowResult {
   @State str: string = ""
   @State count: number = 0
   @State menuShowState: string = ''
+  @State userAgentPC:string = "";
   controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
@@ -69,39 +70,73 @@ struct WebViewMenuShowResult {
             }
             case "emitCopy001": {
               this.menuShowState = 'SelectAll'
-              this.controller.loadUrl("resource://rawfile/MenuTestPaste.html")
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/MenuTestPastePC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/MenuTestPaste.html")
+              }
               await Utils.sleep(2000);
               let webRect = Utils.getComponentRect('WebViewMenuShowResultTestWebView');
               let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              } else {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              }
               await Utils.sleep(2000);
               this.menuShowState = 'Copy'
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              } else {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              }
               await Utils.sleep(2000);
               this.menuShowState = 'copyPaste'
               await Utils.sleep(2000);
-              await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
+              } else {
+                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              }
               await Utils.sleep(2000);
               break;
             }
             case "emitCut001": {
               this.menuShowState = 'SelectAll'
-              this.controller.loadUrl("resource://rawfile/MenuTestPaste.html")
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                this.controller.loadUrl("resource://rawfile/MenuTestPastePC.html")
+              } else {
+                this.controller.loadUrl("resource://rawfile/MenuTestPaste.html")
+              }
               await Utils.sleep(2000);
               let webRect = Utils.getComponentRect('WebViewMenuShowResultTestWebView');
               let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              } else {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              }
               await Utils.sleep(2000);
               this.menuShowState = 'Cut'
-              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              } else {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
+              }
               await Utils.sleep(2000);
               this.menuShowState = 'cutPaste'
               await Utils.sleep(2000);
-              await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              if ((this.userAgentPC).includes("PC")) {
+                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
+              } else {
+                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
+              }
               await Utils.sleep(2000);
               break;
             }

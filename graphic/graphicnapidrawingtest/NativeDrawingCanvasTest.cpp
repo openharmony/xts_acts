@@ -15,22 +15,26 @@
 
 #include "gtest/gtest.h"
 
-#include "c/drawing_bitmap.h"
-#include "c/drawing_brush.h"
-#include "c/drawing_canvas.h"
-#include "c/drawing_color.h"
-#include "c/drawing_color_filter.h"
-#include "c/drawing_filter.h"
-#include "c/drawing_font.h"
-#include "c/drawing_mask_filter.h"
-#include "c/drawing_path.h"
-#include "c/drawing_pen.h"
-#include "c/drawing_point.h"
-#include "c/drawing_rect.h"
-#include "c/drawing_round_rect.h"
-#include "c/drawing_shader_effect.h"
-#include "c/drawing_text_blob.h"
-#include "c/drawing_typeface.h"
+#include "drawing_bitmap.h"
+#include "drawing_brush.h"
+#include "drawing_canvas.h"
+#include "drawing_color.h"
+#include "drawing_color_filter.h"
+#include "drawing_filter.h"
+#include "drawing_font.h"
+#include "drawing_image.h"
+#include "drawing_mask_filter.h"
+#include "drawing_matrix.h"
+#include "drawing_path.h"
+#include "drawing_pen.h"
+#include "drawing_point.h"
+#include "drawing_rect.h"
+#include "drawing_round_rect.h"
+#include "drawing_sampling_options.h"
+#include "drawing_shader_effect.h"
+#include "drawing_text_blob.h"
+#include "drawing_typeface.h"
+#include "drawing_memory_stream.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -76,8 +80,9 @@ void NativeDrawingCanvasTest::TearDown()
 /*
  * @tc.name: NativeDrawingCanvasTest_CanvasNULLPTR
  * @tc.desc: test for OH_Drawing_CanvasBind.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR, TestSize.Level1)
 {
@@ -104,8 +109,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasNULLPTR, TestSiz
 /*
  * @tc.name: NativeDrawingCanvasTest_CanvasBind
  * @tc.desc: test for OH_Drawing_CanvasBind.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind, TestSize.Level1)
 {
@@ -118,8 +124,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_CanvasBind, TestSize.L
 /*
  * @tc.name: NativeDrawingCanvasTest_canvas002
  * @tc.desc: test for OH_Drawing_CanvasAttachPen & OH_Drawing_CanvasDetachPen.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_canvas002, TestSize.Level1)
 {
@@ -133,8 +140,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_canvas002, TestSize.Le
 /*
  * @tc.name: NativeDrawingCanvasTest_DrawLine
  * @tc.desc: test for OH_Drawing_CanvasDrawLine.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawLine, TestSize.Level1)
 {
@@ -145,8 +153,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawLine, TestSize.Lev
 /*
  * @tc.name: NativeDrawingCanvasTest_DrawPath
  * @tc.desc: test for OH_Drawing_CanvasDrawPath.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPath, TestSize.Level1)
 {
@@ -179,8 +188,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawPath, TestSize.Lev
 /*
  * @tc.name: NativeDrawingCanvasTest_SaveAndRestore
  * @tc.desc: test for OH_Drawing_CanvasSave & OH_Drawing_CanvasRestore.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveAndRestore, TestSize.Level1)
 {
@@ -206,8 +216,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveAndRestore, TestSi
 /*
  * @tc.name: NativeDrawingCanvasTest_Clear
  * @tc.desc: test for OH_Drawing_CanvasClear.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Clear, TestSize.Level1)
 {
@@ -220,8 +231,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Clear, TestSize.Level1
 /*
  * @tc.name: NativeDrawingCanvasTest_RestoreToCount
  * @tc.desc: test for OH_Drawing_CanvasRestoreToCount.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RestoreToCount, TestSize.Level1)
 {
@@ -256,8 +268,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RestoreToCount, TestSi
 /*
  * @tc.name: NativeDrawingCanvasTest_Scale
  * @tc.desc: test for OH_Drawing_CanvasScale.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Scale, TestSize.Level1)
 {
@@ -274,8 +287,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_Scale, TestSize.Level1
 /*
  * @tc.name: NativeDrawingCanvasTest_ClipRect
  * @tc.desc: test for OH_Drawing_CanvasClipRect.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRect, TestSize.Level1)
 {
@@ -303,8 +317,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipRect, TestSize.Lev
 /*
  * @tc.name: NativeDrawingCanvasTest_ClipPath
  * @tc.desc: test for OH_Drawing_CanvasClipPath.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipPath, TestSize.Level1)
 {
@@ -327,8 +342,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ClipPath, TestSize.Lev
 /*
  * @tc.name: NativeDrawingCanvasTest_LinearGradient
  * @tc.desc: test for LinearGradient
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_LinearGradient, TestSize.Level1)
 {
@@ -353,8 +369,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_LinearGradient, TestSi
 /*
  * @tc.name: NativeDrawingCanvasTest_SweepGradient
  * @tc.desc: test for sweep gradient shader effect
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient, TestSize.Level1)
 {
@@ -378,8 +395,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SweepGradient, TestSiz
 /*
  * @tc.name: NativeDrawingCanvasTest_RadialGradient
  * @tc.desc: test for Radial gradient shader effect
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, TestSize.Level1)
 {
@@ -403,8 +421,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_RadialGradient, TestSi
 /*
  * @tc.name: NativeDrawingCanvasTest_MaskFilter
  * @tc.desc: test for maskfilter
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter, TestSize.Level1)
 {
@@ -425,8 +444,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_MaskFilter, TestSize.L
 /*
  * @tc.name: NativeDrawingCanvasTest_ColorFilter
  * @tc.desc: test for colorfilter create blend mode, linear to srgb gamma, luma, matrix
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlendMode, TestSize.Level1)
 {
@@ -474,8 +494,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateBlend
 /*
  * @tc.name: NativeDrawingCanvasTest_ColorFilterCreateCompose
  * @tc.desc: test for create compose color filter
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateCompose, TestSize.Level1)
 {
@@ -502,8 +523,9 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ColorFilterCreateCompo
 /*
  * @tc.name: NativeDrawingCanvasTest_DrawBitmap
  * @tc.desc: test for DrawBitmap
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmap, TestSize.Level1)
 {
@@ -517,12 +539,223 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmap, TestSize.L
     OH_Drawing_CanvasClear(canvas_, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
     OH_Drawing_BitmapDestroy(bitmap);
 }
+/*
+ * @tc.name: NativeDrawingCanvasTest_DrawBitmapRect
+ * @tc.desc: test for DrawBitmapRect
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawBitmapRect, TestSize.Level1)
+{
+    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    OH_Drawing_Rect* src = OH_Drawing_RectCreate(0, 0, 200, 200);
+    EXPECT_NE(src, nullptr);
+    OH_Drawing_Rect* dst = OH_Drawing_RectCreate(0, 0, 200, 200);
+    EXPECT_NE(dst, nullptr);
+    OH_Drawing_SamplingOptions* options = OH_Drawing_SamplingOptionsCreate(
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST, OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    EXPECT_NE(options, nullptr);
+    OH_Drawing_CanvasDrawBitmapRect(canvas_, bitmap, src, dst, options);
+    OH_Drawing_CanvasDrawBitmapRect(canvas_, bitmap, src, dst, nullptr);
+    OH_Drawing_CanvasDrawBitmapRect(canvas_, bitmap, src, nullptr, nullptr);
+    OH_Drawing_CanvasDrawBitmapRect(canvas_, bitmap, nullptr, nullptr, nullptr);
+    OH_Drawing_CanvasDrawBitmapRect(canvas_, nullptr, nullptr, nullptr, nullptr);
+    OH_Drawing_CanvasDrawBitmapRect(nullptr, nullptr, nullptr, nullptr, nullptr);
+    OH_Drawing_BitmapDestroy(bitmap);
+}
 
+/*
+ * @tc.name: NativeDrawingCanvasTest_SetMatrix
+ * @tc.desc: test for SetMatrix
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SetMatrix, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(
+        matrix,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, 1);
+    OH_Drawing_CanvasSetMatrix(canvas_, matrix);
+    OH_Drawing_CanvasSetMatrix(canvas_, nullptr);
+    OH_Drawing_CanvasSetMatrix(nullptr, nullptr);
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_DrawImageRect
+ * @tc.desc: test for DrawImageRect
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawImageRect, TestSize.Level1)
+{
+    OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 200, 200);
+    EXPECT_NE(rect, nullptr);
+    OH_Drawing_Image* image = OH_Drawing_ImageCreate();
+    EXPECT_NE(image, nullptr);
+    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    OH_Drawing_ImageBuildFromBitmap(image, bitmap);
+    OH_Drawing_SamplingOptions* options = OH_Drawing_SamplingOptionsCreate(
+        OH_Drawing_FilterMode::FILTER_MODE_NEAREST, OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
+    EXPECT_NE(options, nullptr);
+    OH_Drawing_CanvasDrawImageRect(canvas_, image, rect, options);
+    OH_Drawing_CanvasDrawImageRect(canvas_, image, rect, nullptr);
+    OH_Drawing_CanvasDrawImageRect(canvas_, image, nullptr, nullptr);
+    OH_Drawing_CanvasDrawImageRect(canvas_, nullptr, nullptr, nullptr);
+    OH_Drawing_CanvasDrawImageRect(nullptr, nullptr, nullptr, nullptr);
+    OH_Drawing_SamplingOptionsDestroy(options);
+    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_ImageDestroy(image);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_ReadPixelsToBitmap
+ * @tc.desc: test for ReadPixelsToBitmap
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixelsToBitmap, TestSize.Level1)
+{
+    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixelsToBitmap(canvas_, bitmap, 100, 100));
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixelsToBitmap(canvas_, nullptr, 100, 100));
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixelsToBitmap(nullptr, nullptr, 100, 100));
+    OH_Drawing_BitmapDestroy(bitmap);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_ReadPixels
+ * @tc.desc: test for ReadPixels
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ReadPixels, TestSize.Level1)
+{
+    OH_Drawing_Image_Info imageInfo;
+    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
+    EXPECT_NE(bitmap, nullptr);
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    constexpr uint32_t width = 200;
+    constexpr uint32_t height = 200;
+    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+    void* pixels = OH_Drawing_BitmapGetPixels(bitmap);
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixels(canvas_, &imageInfo, pixels, 0, 0, 0));
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixels(canvas_, &imageInfo, nullptr, 0, 0, 0));
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixels(canvas_, nullptr, nullptr, 0, 0, 0));
+    EXPECT_TRUE(!OH_Drawing_CanvasReadPixels(nullptr, nullptr, nullptr, 0, 0, 0));
+    OH_Drawing_BitmapDestroy(bitmap);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_GetWidth
+ * @tc.desc: test for GetWidth
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetWidth, TestSize.Level1)
+{
+    EXPECT_TRUE(OH_Drawing_CanvasGetWidth(nullptr) == 0);
+    EXPECT_TRUE(OH_Drawing_CanvasGetWidth(canvas_) >= 0);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_GetHeight
+ * @tc.desc: test for GetHeight
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetHeight, TestSize.Level1)
+{
+    EXPECT_TRUE(OH_Drawing_CanvasGetHeight(nullptr) == 0);
+    EXPECT_TRUE(OH_Drawing_CanvasGetHeight(canvas_) >= 0);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_GetLocalClipBounds
+ * @tc.desc: test for GetLocalClipBounds
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_GetLocalClipBounds, TestSize.Level1)
+{
+    OH_Drawing_CanvasGetLocalClipBounds(nullptr, nullptr);
+    OH_Drawing_Rect* rect = OH_Drawing_RectCreate(0, 0, 1, 1);
+    EXPECT_NE(rect, nullptr);
+    OH_Drawing_CanvasGetLocalClipBounds(nullptr, rect);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas_, rect);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_ConcatMatrix
+ * @tc.desc: test for ConcatMatrix
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_ConcatMatrix, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(
+        matrix,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, 1);
+    OH_Drawing_CanvasConcatMatrix(canvas_, matrix);
+    OH_Drawing_CanvasConcatMatrix(canvas_, nullptr);
+    OH_Drawing_CanvasConcatMatrix(nullptr, nullptr);
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_DrawShadow
+ * @tc.desc: test for DrawShadow
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawShadow, TestSize.Level1)
+{
+    OH_Drawing_Point3D p1{0.0, 0.0, 0.0};
+    OH_Drawing_Point3D p2{10.0, 10.0, 10.0};
+    OH_Drawing_CanvasDrawShadow(nullptr, nullptr, p1, p2, 0, 0xFF000000,
+        0xFF000000, OH_Drawing_CanvasShadowFlags::SHADOW_FLAGS_ALL);
+
+    OH_Drawing_Path* path = OH_Drawing_PathCreate();
+    EXPECT_NE(path, nullptr);
+    OH_Drawing_CanvasDrawShadow(canvas_, path, p1, p2, 10, 0xFF000000, 0xFF000000,
+        OH_Drawing_CanvasShadowFlags::SHADOW_FLAGS_ALL);
+}
 /*
  * @tc.name: NativeDrawingCanvasTest_DrawTextBlob
  * @tc.desc: test for DrawTextBlob
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob, TestSize.Level1)
 {
@@ -577,9 +810,150 @@ HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob, TestSize
 }
 
 /*
+ * @tc.name: NativeDrawingCanvasTest_DrawTextBlob2
+ * @tc.desc: test for DrawTextBlob2
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob2, TestSize.Level1)
+{
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
+    EXPECT_NE(rect, nullptr);
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    EXPECT_NE(font, nullptr);
+    const char* str = "123456";
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromString(nullptr,
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromString(str,
+        nullptr, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    OH_Drawing_TextBlob *textBlob = OH_Drawing_TextBlobCreateFromString(str,
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_NE(textBlob, nullptr);
+    OH_Drawing_CanvasDrawTextBlob(canvas_, textBlob, 0, 0);
+    OH_Drawing_TextBlobGetBounds(textBlob, nullptr);
+    OH_Drawing_TextBlobGetBounds(textBlob, rect);
+    OH_Drawing_CanvasDrawRect(canvas_, rect);
+    OH_Drawing_TextBlobDestroy(textBlob);
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_DrawTextBlob3
+ * @tc.desc: test for DrawTextBlob3
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob3, TestSize.Level1)
+{
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 0, 0);
+    EXPECT_NE(rect, nullptr);
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    EXPECT_NE(font, nullptr);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateFromFile(nullptr, 0);
+    EXPECT_EQ(nullptr, typeface);
+    // sub test 1, OH_Drawing_FontGetTypeface
+    OH_Drawing_FontGetTypeface(nullptr);
+    EXPECT_EQ(nullptr, typeface);
+    OH_Drawing_Typeface *typeSurface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeSurface);
+    EXPECT_NE(nullptr, OH_Drawing_FontGetTypeface(font));
+    // sub test 2, OH_Drawing_FontCountText
+    const char* str = "123456";
+    int count = 0;
+    count = OH_Drawing_FontCountText(nullptr, str, strlen(str),
+        OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_EQ(0, count);
+    count = OH_Drawing_FontCountText(font, nullptr, strlen(str),
+        OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_EQ(0, count);
+    count = OH_Drawing_FontCountText(font, str, strlen(str),
+        OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_EQ(strlen(str), count);
+    // sub test 3, OH_Drawing_TextBlobCreateFromText
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromText(nullptr, strlen(str),
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromText(str, strlen(str),
+        nullptr, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    OH_Drawing_TextBlob *textBlob = OH_Drawing_TextBlobCreateFromText(str, strlen(str),
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_NE(textBlob, nullptr);
+    // draw textblob
+    OH_Drawing_CanvasDrawTextBlob(canvas_, textBlob, 0, 0);
+
+    OH_Drawing_TextBlobDestroy(textBlob);
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_TypefaceDestroy(typeSurface);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_DrawTextBlob4
+ * @tc.desc: test for DrawTextBlob4
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_DrawTextBlob4, TestSize.Level1)
+{
+    size_t length = 1;
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    EXPECT_NE(font, nullptr);
+    OH_Drawing_MemoryStream* memoryStream = OH_Drawing_MemoryStreamCreate(nullptr,
+        length, false);
+    OH_Drawing_MemoryStreamDestroy(memoryStream);
+    EXPECT_EQ(nullptr, memoryStream);
+    OH_Drawing_Typeface* typeface = OH_Drawing_TypefaceCreateFromStream(
+        memoryStream, 0);
+    EXPECT_EQ(nullptr, typeface);
+    OH_Drawing_Typeface *typeSurface = OH_Drawing_TypefaceCreateDefault();
+    OH_Drawing_FontSetTypeface(font, typeSurface);
+    EXPECT_NE(nullptr, OH_Drawing_FontGetTypeface(font));
+    const char* str = "123456";
+    int count = strlen(str);
+    OH_Drawing_Point2D pts[count];
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromPosText(nullptr, count, &pts[0],
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromPosText(str, count, nullptr,
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    EXPECT_EQ(nullptr, OH_Drawing_TextBlobCreateFromPosText(str, count, &pts[0],
+        nullptr, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8));
+    OH_Drawing_TextBlob *textBlob = OH_Drawing_TextBlobCreateFromPosText(str, count, &pts[0],
+        font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    EXPECT_NE(textBlob, nullptr);
+    OH_Drawing_CanvasDrawTextBlob(canvas_, textBlob, 0, 0);
+
+    OH_Drawing_TextBlobDestroy(textBlob);
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_TypefaceDestroy(typeSurface);
+}
+
+/*
+ * @tc.name: NativeDrawingCanvasTest_SaveLayer
+ * @tc.desc: test for SaveLayer
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingCanvasTest, NativeDrawingCanvasTest_SaveLayer, TestSize.Level1)
+{
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 500, 300, 600);
+    EXPECT_NE(rect, nullptr);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    EXPECT_NE(brush, nullptr);
+    // test exception
+    OH_Drawing_CanvasSaveLayer(nullptr, rect, brush);
+    OH_Drawing_CanvasSaveLayer(canvas_, rect, brush);
+    OH_Drawing_CanvasRestore(canvas_);
+    OH_Drawing_RectDestroy(rect);
+}
+/*
  * @tc.name: NativeDrawingTest001
  * @tc.desc: test for fontSetLinearText
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, TestSize.Level1)
 {
@@ -593,7 +967,9 @@ HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_FontSetLinearText_001, TestSize.Lev
 /*
  * @tc.name: NativeDrawingTest002
  * @tc.desc: test for penSetFilter
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, TestSize.Level1)
 {
@@ -619,7 +995,9 @@ HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetFilter_001, TestSize.Level1)
 /*
  * @tc.name: NativeDrawingTest003
  * @tc.desc: test for penSetFilter
- * @tc.type: FUNC
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingCanvasTest, OH_Drawing_PenSetshaderEffect, TestSize.Level1)
 {

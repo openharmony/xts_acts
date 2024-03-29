@@ -71,6 +71,7 @@ NN_TensorDesc* createTensorDesc(const int32_t* shape, size_t shapeNum, OH_NN_Dat
 int SingleModelBuildEndStep(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 void Free(OH_NNModel *model = nullptr, OH_NNCompilation *compilation = nullptr, OH_NNExecutor *executor = nullptr);
+void FreeTensorDescVec(std::vector<NN_TensorDesc*> tensorDescVec);
 int CompileGraphMock(OH_NNCompilation *compilation, const OHNNCompileParam &compileParam);
 OH_NN_UInt32Array GetUInt32Array(std::vector<uint32_t> indices);
 OH_NN_ReturnCode GetDeviceID(size_t *deviceId);

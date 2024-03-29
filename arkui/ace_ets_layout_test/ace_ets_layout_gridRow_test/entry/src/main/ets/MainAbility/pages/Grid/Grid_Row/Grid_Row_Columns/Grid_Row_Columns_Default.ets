@@ -15,8 +15,8 @@
 @Entry
 @Component
 struct Grid_Row_Columns_Default {
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
-  @State GridRowColumns: number = 12
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State GridRowColumns: number = 12;
 
   build() {
     Column() {
@@ -25,7 +25,7 @@ struct Grid_Row_Columns_Default {
         gutter: 5,
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index) => {
+        ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('GridRow_Columns_' + index)

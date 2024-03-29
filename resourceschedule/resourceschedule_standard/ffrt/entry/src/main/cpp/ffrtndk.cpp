@@ -1021,7 +1021,7 @@ static napi_value QueueApiTest003(napi_env env, napi_callback_info info)
 {
     int result = 0;
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", nullptr);
-    if (queue_handle != nullptr) {
+    if (queue_handle == nullptr) {
         result = 3;
     }
     napi_value flag = nullptr;

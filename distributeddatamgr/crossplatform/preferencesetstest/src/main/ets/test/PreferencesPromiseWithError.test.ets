@@ -15,27 +15,29 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import data_preferences from "@ohos.data.preferences";
 import common from "@ohos.app.ability.common";
+import { BusinessError } from '@ohos.base';
 
 const NAME = "test_preferences_promise_with_error";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 let mPreference;
 let context: common.UIAbilityContext;
+
 export default function preferencesPromiseWithErrorTest() {
-  describe("preferencesPromiseWithErrorTest", function () {
-    beforeAll(async function () {
+  describe("preferencesPromiseWithErrorTest", () => {
+    beforeAll(async () => {
       console.info("beforeAll");
       context = AppStorage.get<common.UIAbilityContext>("TestAbilityContext") as common.UIAbilityContext;
-      console.info("context=======>"+context);
+      console.info("context=======>" + context);
       mPreference = await data_preferences.getPreferences(context, NAME);
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info("afterAll");
       await data_preferences.deletePreferences(context, NAME);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info("beforeEach");
       await mPreference.clear();
       await mPreference.flush();
@@ -49,7 +51,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPromiseWithError0001", 0, async function (done) {
+    it("testPreferencesPromiseWithError0001", 0, async (done: Function) => {
       console.log("testPreferencesPromiseWithError0001 begin.");
       try {
         if (mPreference === undefined) {
@@ -77,27 +79,27 @@ export default function preferencesPromiseWithErrorTest() {
                             done();
                             console.log("testPreferencesPromiseWithError0001 end.");
                           })
-                          .catch((err) => {
+                          .catch((err: BusinessError) => {
                             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
                             expect(!err).assertTrue();
                           });
                       })
-                      .catch((err) => {
+                      .catch((err: BusinessError) => {
                         console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
                         expect(!err).assertTrue();
                       });
                   })
-                  .catch((err) => {
+                  .catch((err: BusinessError) => {
                     console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
                     expect(!err).assertTrue();
                   });
               })
-              .catch((err) => {
+              .catch((err: BusinessError) => {
                 console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
                 expect(!err).assertTrue();
               });
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -115,7 +117,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0001", 0, async function (done) {
+    it("testMpreferencesGetPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesGetPromise0001 begin.");
       try {
         mPreference
@@ -124,7 +126,7 @@ export default function preferencesPromiseWithErrorTest() {
             console.log("testMpreferencesGetPromise0001++++ get err");
             expect(mPreference !== null).assertFail();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
           });
@@ -144,7 +146,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0002", 0, async function (done) {
+    it("testMpreferencesGetPromise0002", 0, async (done: Function) => {
       console.log("testMpreferencesPromise0002 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -155,7 +157,7 @@ export default function preferencesPromiseWithErrorTest() {
             console.log("testMpreferencesGetPromise0002 end.");
             done();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
             done();
@@ -175,7 +177,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetPromise0003", 0, async function (done) {
+    it("testMpreferencesGetPromise0003", 0, async (done: Function) => {
       console.log("testMpreferencesGetPromise0003 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -186,7 +188,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesGetPromise0003 end." + JSON.stringify(ret));
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -205,7 +207,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0001", 0, async function (done) {
+    it("testMpreferencesGetSyncWithError0001", 0, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0001 begin.");
       try {
         mPreference.getSync(1233);
@@ -227,7 +229,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0002", 0, async function (done) {
+    it("testMpreferencesGetSyncWithError0002", 0, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0002 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -250,7 +252,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetSyncWithError0003", 0, async function (done) {
+    it("testMpreferencesGetSyncWithError0003", 0, async (done: Function) => {
       console.log("testMpreferencesGetSyncWithError0003 begin.");
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
@@ -273,7 +275,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesGetALLPromise0001", 0, async function (done) {
+    it("testMpreferencesGetALLPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesGetALLPromise0001 begin.");
       try {
         mPreference
@@ -283,7 +285,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesGetALLPromise0001 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("getAll err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -301,7 +303,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHasPromise0001", 0, async function (done) {
+    it("testMpreferencesHasPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesHasPromise0001 begin.");
       try {
         mPreference
@@ -310,7 +312,7 @@ export default function preferencesPromiseWithErrorTest() {
             console.log("has err");
             expect(mPreference !== null).assertFail();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
           });
@@ -330,7 +332,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesHasPromise0002", 0, async function (done) {
+    it("testMpreferencesHasPromise0002", 0, async (done: Function) => {
       console.log("testMpreferencesHasPromise0002 begin.");
       try {
         mPreference
@@ -339,7 +341,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesHasPromise0002 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -357,7 +359,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0001", 0, async function (done) {
+    it("testMpreferencesPutPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesPutPromise0001 begin.");
       try {
         mPreference
@@ -366,7 +368,7 @@ export default function preferencesPromiseWithErrorTest() {
             console.log("put err");
             expect(mPreference !== null).assertFail();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
           });
@@ -386,7 +388,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0002", 0, async function (done) {
+    it("testMpreferencesPutPromise0002", 0, async (done: Function) => {
       console.log("testMpreferencesPutPromise0002 begin.");
       try {
         mPreference
@@ -397,7 +399,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesPutPromise0002 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
             done();
@@ -417,7 +419,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0003", 0, async function (done) {
+    it("testMpreferencesPutPromise0003", 0, async (done: Function) => {
       console.log("testMpreferencesPutPromise0003 begin.");
       try {
         mPreference
@@ -429,7 +431,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesPutPromise0003 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
             done();
@@ -449,7 +451,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0004", 0, async function (done) {
+    it("testMpreferencesPutPromise0004", 0, async (done: Function) => {
       console.log("testMpreferencesPutPromise0004 begin.");
       try {
         mPreference
@@ -459,7 +461,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesPutPromise0004 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
             done();
@@ -479,7 +481,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutPromise0005", 0, async function (done) {
+    it("testMpreferencesPutPromise0005", 0, async (done: Function) => {
       console.log("testMpreferencesPutPromise0005 begin.");
       try {
         mPreference
@@ -489,7 +491,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesPutPromise0005 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
             done();
@@ -509,7 +511,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0001", 0, async function (done) {
+    it("testMpreferencesPutSyncWithError0001", 0, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0001 begin.");
       try {
         mPreference.putSync(1233);
@@ -531,7 +533,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0002", 0, async function (done) {
+    it("testMpreferencesPutSyncWithError0002", 0, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0002 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, "");
@@ -554,7 +556,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0003", 0, async function (done) {
+    it("testMpreferencesPutSyncWithError0003", 0, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0003 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, " ");
@@ -577,7 +579,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0004", 0, async function (done) {
+    it("testMpreferencesPutSyncWithError0004", 0, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0004 begin.");
       try {
         mPreference.putSync(-1, 123);
@@ -598,7 +600,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesPutSyncWithError0005", 0, async function (done) {
+    it("testMpreferencesPutSyncWithError0005", 0, async (done: Function) => {
       console.log("testMpreferencesPutSyncWithError0005 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, null);
@@ -619,7 +621,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDeletePromise0001", 0, async function (done) {
+    it("testMpreferencesDeletePromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesDeletePromise0001 begin.");
       try {
         mPreference
@@ -628,7 +630,7 @@ export default function preferencesPromiseWithErrorTest() {
             console.log("delete err");
             expect(mPreference !== null).assertFail();
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertFail();
           });
@@ -648,7 +650,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesDeletePromise0002", 0, async function (done) {
+    it("testMpreferencesDeletePromise0002", 0, async (done: Function) => {
       console.log("testMpreferencesDeletePromise0002 begin.");
       try {
         mPreference
@@ -657,7 +659,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesDeletePromise0002 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -675,7 +677,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesClearPromise0001", 0, async function (done) {
+    it("testMpreferencesClearPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesClearPromise0001 begin.");
       try {
         mPreference
@@ -684,7 +686,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesClearPromise0001 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });
@@ -703,7 +705,7 @@ export default function preferencesPromiseWithErrorTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testMpreferencesFlushPromise0001", 0, async function (done) {
+    it("testMpreferencesFlushPromise0001", 0, async (done: Function) => {
       console.log("testMpreferencesFlushPromise0001 begin.");
       try {
         mPreference
@@ -712,7 +714,7 @@ export default function preferencesPromiseWithErrorTest() {
             done();
             console.log("testMpreferencesFlushPromise0001 end.");
           })
-          .catch((err) => {
+          .catch((err: BusinessError) => {
             console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
             expect(!err).assertTrue();
           });

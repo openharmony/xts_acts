@@ -13,12 +13,16 @@
  * limitations under the License.
  */
 
-import btAccessTest from './BluetoothAccess.test'
-import btSocketTest from './BtSocket.test'
-import btConstantTest from './BluetoothConstant.test'
+import btAccessTest from './BluetoothAccess.test';
+import btSocketTest from './BtSocket.test';
+import btConstantTest from './BluetoothConstant.test';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    btAccessTest()
-    btConstantTest()
-    btSocketTest()
+    if (info != "false") {
+        btAccessTest();
+        btConstantTest();
+        btSocketTest();
+    }
 }

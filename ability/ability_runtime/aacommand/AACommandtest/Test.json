@@ -15,9 +15,7 @@
                 "AACommand08.hap->/data/AACommand08.hap",
                 "AACommandpackage.hap->/data/AACommandpackage.hap",
                 "AACommandRelyHap.hap->/data/AACommandRelyHap.hap",
-                "AttachDebugExtensionTest.hap->/data/AttachDebugExtensionTest.hap",
-                "ServiceExtensionDemo.hap->/data/ServiceExtensionDemo.hap",
-                "AttachDebugUIExtensionTest.hap->/data/AttachDebugUIExtensionTest.hap"
+                "ServiceExtensionDemo.hap->/data/ServiceExtensionDemo.hap"
             ]
         },
 		{
@@ -27,9 +25,7 @@
                 "AACommand08.hap",
                 "AACommandpackage.hap",
                 "AACommandRelyHap.hap",
-                "AttachDebugExtensionTest.hap",
-                "ServiceExtensionDemo.hap",
-                "AttachDebugUIExtensionTest.hap"
+                "ServiceExtensionDemo.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

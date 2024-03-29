@@ -21,10 +21,10 @@ import getAppVersionInfoJsunit from './getAppVersionInfoJsunit.test.ets';
 import ContextJsunit from './ContextJsunit.test.ets';
 
 export default function testsuite() {
-    ContextJsunit();
-    addContextAndAbilityJsunit();
-    getHapModuleInfoJsunit();
-    getAbilityInfoJsunit();
-    getApplicationContext();
-    getAppVersionInfoJsunit();
+  ContextJsunit();
+  addContextAndAbilityJsunit();
+  getHapModuleInfoJsunit();
+  getAbilityInfoJsunit();
+  getApplicationContext();
+  getAppVersionInfoJsunit();
 }

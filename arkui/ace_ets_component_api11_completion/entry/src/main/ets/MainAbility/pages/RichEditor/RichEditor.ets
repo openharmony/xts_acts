@@ -17,7 +17,7 @@
 struct RichEditorTest {
   controller: RichEditorController = new RichEditorController();
   private spanParagraphs: RichEditorParagraphResult[] = [];
-  @State text: string = ''
+  @State text: string = '';
 
   build() {
     Column() {
@@ -42,7 +42,8 @@ struct RichEditorTest {
 
       Column({ space: 5 }) {
         Button("段落左对齐").onClick(() => {
-          this.controller.updateParagraphStyle({ start: -1, end: -1,
+          this.controller.updateParagraphStyle({
+            start: -1, end: -1,
             style: {
               textAlign: TextAlign.Start,
             }
@@ -50,7 +51,8 @@ struct RichEditorTest {
         }).key('RichEditor_Start')
 
         Button("段落右对齐").onClick(() => {
-          this.controller.updateParagraphStyle({ start: -1, end: -1,
+          this.controller.updateParagraphStyle({
+            start: -1, end: -1,
             style: {
               textAlign: TextAlign.End,
             }
@@ -58,7 +60,8 @@ struct RichEditorTest {
         }).key('RichEditor_End')
 
         Button("段落居中").onClick(() => {
-          this.controller.updateParagraphStyle({ start: -1, end: -1,
+          this.controller.updateParagraphStyle({
+            start: -1, end: -1,
             style: {
               textAlign: TextAlign.Center,
             }
@@ -69,12 +72,9 @@ struct RichEditorTest {
           console.log("RichEditor getParagraphs:" + JSON.stringify(this.spanParagraphs))
           // this.text = JSON.stringify(this.spanParagraphs)
           // this.text = this.spanParagraphs[0].style.textAlign + ''
-          let index:number = Number(this.spanParagraphs[0].style.textAlign)
+          let index: number = Number(this.spanParagraphs[0].style.textAlign)
           this.text = TextAlign[index]
         }).key('RichEditor_get')
-
-
-
       }
     }
   }

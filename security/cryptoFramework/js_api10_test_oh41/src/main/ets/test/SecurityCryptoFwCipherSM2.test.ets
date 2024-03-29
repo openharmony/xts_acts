@@ -19,6 +19,7 @@ import cryptoFramework from '@ohos.security.cryptoFramework';
 import * as specUtil from './utils/common/keyGenSpecUtil';
 import * as cipherCallbackFunc from './utils/cipher/cipherAsyCallbackFunc';
 import * as cipherPromiseFunc from './utils/cipher/cipherAsyPromiseFunc';
+import { stringToUint8Array } from './utils/common/commonUtils';
 
 export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
   describe('SecurityCryptoFwCipherSM2TestUnit', () => {
@@ -263,6 +264,35 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
     });
 
     /**
+     * @tc.number Security_CryptoFramework_Cipher_SM2_Func_1000
+     * @tc.name Test transfer SM2CipherSpec to asn1 by C1C3C2, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level1
+     */
+    it("Security_CryptoFramework_Cipher_SM2_Func_1000", 0, async (done: Function) => {
+      let testNumber: string = "Security_CryptoFramework_Cipher_SM2_Func_1000";
+      let preCipherSpec = specUtil.genSM2CipherTextFunc();
+      let preAsn1Data = specUtil.genAsn1DataFunc();
+      try {
+        let postAsn1Data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(preCipherSpec, "C1C3C2");
+        expect(postAsn1Data.data.toString()).assertEqual(preAsn1Data.data.toString());
+        let postCipherSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(postAsn1Data, "C1C3C2");
+        expect(postCipherSpec.xCoordinate).assertEqual(preCipherSpec.xCoordinate);
+        expect(postCipherSpec.yCoordinate).assertEqual(preCipherSpec.yCoordinate);
+        expect(postCipherSpec.cipherTextData.toString()).assertEqual(preCipherSpec.cipherTextData.toString());
+        expect(postCipherSpec.hashData.toString()).assertEqual(preCipherSpec.hashData.toString());
+        console.log(testNumber + `: getCipherTextSpec succeed`);
+      } catch (err) {
+        console.error(testNumber + ` catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + `: success`);
+      done();
+    });
+
+    /**
      * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1100
      * @tc.name Test Cipher algName with SM2_256, process success
      * @tc.desc digest is SM3
@@ -280,6 +310,235 @@ export default function SecurityCryptoFwGenerateECCBrainPoolTestUnit() {
       } catch (err) {
         console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
         expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1200
+     * @tc.name Test genCipherTextBySpec with error params C1C2C2, process fail
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1200", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1200";
+      let preCipherSpec = specUtil.genSM2CipherTextFunc();
+      try {
+        cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(preCipherSpec, "C1C2C2");
+        expect(null).assertFail();
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(401).assertEqual(err.code);
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1300
+     * @tc.name Test genCipherTextBySpec with error SM2CipherTextSpec, process fail
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1300", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1300";
+      let preCipherSpec: cryptoFramework.SM2CipherTextSpec = specUtil.genSM2CipherTextFunc();
+      preCipherSpec.hashData = preCipherSpec.hashData.subarray(1);
+      try {
+        cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(preCipherSpec, "C1C3C2");
+        expect(null).assertFail();
+      } catch (err) {
+        expect(401).assertEqual(err.code);
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1400
+     * @tc.name Test transfer asn1 to SM2CipherSpec by C1C3C2, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1400", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1400";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("SM2_256").generateKeyPair();
+        let testNumber = "this is a cipher text.";
+        let encrypt = cryptoFramework.createCipher("SM2_256|SM3");
+        let decrypt = cryptoFramework.createCipher("SM2_256|SM3");
+        await encrypt.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+        let preText: cryptoFramework.DataBlob = {
+          data: stringToUint8Array(testNumber)
+        };
+        let preAsn1Data: cryptoFramework.DataBlob = await encrypt.doFinal(preText);
+        let cipherSpec: cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data, "C1C3C2");
+        let postAsn1Data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(cipherSpec, "C1C3C2");
+        expect(preAsn1Data.data.toString()).assertEqual(postAsn1Data.data.toString());
+        await decrypt.init(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
+        let postText: cryptoFramework.DataBlob = await decrypt.doFinal(postAsn1Data);
+        expect(preText.data.toString()).assertEqual(postText.data.toString());
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1500
+     * @tc.name Test getCipherTextSpec without mode param, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1500", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1500";
+      let preAsn1Data = specUtil.genAsn1DataFunc();
+      let preCipherSpec = specUtil.genSM2CipherTextFunc();
+      try {
+        let postCipherSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data);
+        expect(postCipherSpec.xCoordinate).assertEqual(preCipherSpec.xCoordinate);
+        expect(postCipherSpec.yCoordinate).assertEqual(preCipherSpec.yCoordinate);
+        expect(postCipherSpec.cipherTextData.toString()).assertEqual(preCipherSpec.cipherTextData.toString());
+        expect(postCipherSpec.hashData.toString()).assertEqual(preCipherSpec.hashData.toString());
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1600
+     * @tc.name Test getCipherTextSpec without error mode C1C2C2, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level2
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1600", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1600";
+      let preAsn1Data = specUtil.genAsn1DataFunc();
+      try {
+        cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data, "C1C2C2");
+        expect(null).assertFail();
+      } catch (err) {
+        expect(401).assertEqual(err.code);
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1700
+     * @tc.name Test getCipherTextSpec without error asn1Data, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1700", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1700";
+      let preAsn1Data = specUtil.genAsn1DataFunc();
+      preAsn1Data.data = preAsn1Data.data.subarray(1);
+      try {
+        cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data, "C1C3C2");
+        expect(null).assertFail();
+      } catch (err) {
+        expect(17630001).assertEqual(err.code);
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1800
+     * @tc.name Test genCipherTextBySpec with no mode param, process success
+     * @tc.desc digest is SM3
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1800", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1800";
+      let preCipherSpec = specUtil.genSM2CipherTextFunc();
+      let preAsn1Data = specUtil.genAsn1DataFunc();
+      try {
+        let asn1Data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(preCipherSpec);
+        expect(asn1Data.data.toString()).assertEqual(preAsn1Data.data.toString());
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(null).assertFail();
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_1900
+     * @tc.name Test transfer asn1 to SM2CipherSpec by algName RSA1024, process fail
+     * @tc.desc digest is SHA256
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_1900", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_1900";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("RSA1024").generateKeyPair();
+        let testNumber = "this is a cipher text.";
+        let encrypt = cryptoFramework.createCipher("RSA1024|PKCS1_OAEP|SHA256|MGF1_SHA256");
+        await encrypt.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+        let preText: cryptoFramework.DataBlob = {
+          data: stringToUint8Array(testNumber)
+        };
+        let preAsn1Data: cryptoFramework.DataBlob = await encrypt.doFinal(preText);
+        cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data, "C1C3C2");
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(17630001).assertEqual(err.code);
+      }
+      console.log(testNumber + ": success");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_Cipher_SM2_Func_2000
+     * @tc.name Test transfer asn1 to SM2CipherSpec by digest SHA224, process fail
+     * @tc.desc digest is SHA224
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_Cipher_SM2_Func_2000", 0, async (done: Function) => {
+      let testNumber: string = "SUB_Security_CryptoFramework_Cipher_SM2_Func_2000";
+      try {
+        let keyPair: cryptoFramework.KeyPair = await cryptoFramework.createAsyKeyGenerator("SM2_256").generateKeyPair();
+        let testNumber = "this is a cipher text.";
+        let encrypt = cryptoFramework.createCipher("SM2|SHA224");
+        await encrypt.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+        let preText: cryptoFramework.DataBlob = {
+          data: stringToUint8Array(testNumber)
+        };
+        let preAsn1Data: cryptoFramework.DataBlob = await encrypt.doFinal(preText);
+        cryptoFramework.SM2CryptoUtil.getCipherTextSpec(preAsn1Data, "C1C3C2");
+      } catch (err) {
+        console.error(testNumber + `: catch error: “${err}“, error code: ${err.code}`);
+        expect(17630001).assertEqual(err.code);
       }
       console.log(testNumber + ": success");
       done();

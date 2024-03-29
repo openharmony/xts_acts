@@ -24,33 +24,39 @@ const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1 = path + '/MultimodalInput';
 
-let VarColor = [];
+let letColor = [];
 let ColorBackPath = path + '/MultimodalInputColorBack.txt';
 let txtPath = path1 + '/MultimodalInputReport.txt';
 let xmlPath = path1 + '/MultimodalInputTest.xml';
 
+class TestCase {
+  title: string;
+  uri: string;
+}
+
 @Entry
 @Component
 struct MultimodalInputPage {
-  @State ClearAll : boolean = false;
-  private current : number = undefined;
-  @State count : number = 0;
-  @State result : string = '';
-  @State TEST : number = 0;
-  private TestCaseList = [
+  @State ClearAll: boolean = false;
+  private current: number = undefined;
+  @State count: number = 0;
+  @State result: string = '';
+  @State TEST: number = 0;
+  private TestCaseList: TestCase[] = [
     { title: 'InputMonitor', uri: 'pages/MultimodalInput/InputMonitor' },
     { title: 'KeyBoard', uri: 'pages/MultimodalInput/KeyBoard' }
   ]
-  @State ColorObject : Object[] = VarColor;
-  @State ColorTrue : Object[] = [];
-  @State ColorTrue2 : Object[] = [];
-  async onPageShow(){
-    let Test = null;
-    let context =null;
-    context = globalThis.getContext();
-    let preferences;
+  @State ColorObject: Object[] = letColor;
+  @State ColorTrue: number[] = [];
+  @State ColorTrue2: number[] = [];
 
-    let promise = data_preferences.getPreferences(context,'mystore');
+  async onPageShow() {
+    let Test = null;
+    let context = null;
+    context = globalThis.getContext();
+    let preferences: ESObject;
+
+    let promise = data_preferences.getPreferences(context, 'mystore');
     await promise.then((object) => {
       preferences = object;
     });
@@ -60,11 +66,11 @@ struct MultimodalInputPage {
       console.info("Succeeded in getting value of 'MultimodalInput'. Data: " + data);
     });
 
-    if(Test != 1) {
+    if (Test != 1) {
       let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      for(let i = 0; i < this.TestCaseList.length; i++) {
-        let log = (this.TestCaseList[i].title+';'+'none '+';').toString();
-        fs.writeSync(fd.fd,log);
+      for (let i = 0; i < this.TestCaseList.length; i++) {
+        let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
+        fs.writeSync(fd.fd, log);
       }
       fs.closeSync(fd);
     }
@@ -80,62 +86,63 @@ struct MultimodalInputPage {
 
     let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buff = new ArrayBuffer(40960);
-    fs.readSync(opt.fd,buff);
-    let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
-    let TestList = ColorBack.split(';');
+    fs.readSync(opt.fd, buff);
+    let ColorBack: string = String.fromCharCode.apply(null, new Uint8Array(buff));
+    let TestList: string[] = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
-      VarColor[i] = TestList[i*2+1];
+      letColor[i] = TestList[i * 2+1];
     }
     fs.closeSync(opt);
 
-    if (this.count === 1){
-      this.result = router.getParams()['result'];
-      let titles = router.getParams()['title'];
-      let name1 = '刚刚点进了哪个用例：'+ titles;
+    if (this.count === 1) {
+      let myRouter = router.getParams() as Record<string, string | number>
+      this.result = myRouter.result as string
+      let titles: string = myRouter.title as string;
+      let name1: string = '刚刚点进了哪个用例：' + titles;
       let results = this.result;
       let WriteTitle = (titles).toString();
       let number = WriteTitle.length + 7;
       let Index = ColorBack.indexOf(WriteTitle);
 
-      if (this.result === 'true '){
+      if (this.result === 'true ') {
         this.ColorObject[this.current] = 'true ';
-        let Log = (titles+';'+'true '+';');
-        let key = ColorBack.substring(Index,Index+number);
+        let Log = (titles + ';' + 'true ' + ';');
+        let key: string = ColorBack.substring(Index, Index + number);
         let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        ColorBack = ColorBack.replace(key,Log);
+        ColorBack = ColorBack.replace(key, Log);
         let buffer = new ArrayBuffer(4096);
-        let rd = fs.readSync(FD.fd,buffer);
-        let Report = ColorBack.substring(0,rd);
+        let rd = fs.readSync(FD.fd, buffer);
+        let Report: string = ColorBack.substring(0, rd);
         fs.closeSync(FD);
         let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fs.writeSync(Fd.fd,Report);
-        filewrite(name1,results,titles)
+        fs.writeSync(Fd.fd, Report);
+        filewrite(name1, results, titles)
       }
-      else if (this.result === 'false'){
+      else if (this.result === 'false') {
         this.ColorObject[this.current] = 'false';
-        let Log = (titles+';'+'false'+';');
-        let key = ColorBack.substring(Index,Index+number);
+        let Log = (titles + ';' + 'false' + ';');
+        let key: string = ColorBack.substring(Index, Index + number);
         let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        ColorBack = ColorBack.replace(key,Log);
+        ColorBack = ColorBack.replace(key, Log);
         let buffer = new ArrayBuffer(4096);
-        let rd = fs.readSync(FD.fd,buffer);
-        let Report = ColorBack.substring(0,rd);
+        let rd = fs.readSync(FD.fd, buffer);
+        let Report = ColorBack.substring(0, rd);
         fs.closeSync(FD);
         let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fs.writeSync(Fd.fd,Report);
-        filewrite(name1,results,titles);
+        fs.writeSync(Fd.fd, Report);
+        filewrite(name1, results, titles);
       }
       else {
         this.ColorObject[this.current] = this.ColorObject[this.current];
       }
     }
-    for (let i = 0; i < TestList.length; i++){
-      if (this.ColorObject[i] === 'true '){
+    for (let i = 0; i < TestList.length; i++) {
+      if (this.ColorObject[i] === 'true ') {
         this.ColorTrue[i] = 0x263526
         this.ColorTrue2[i] = 0x0CB60C
 
       }
-      else if (this.ColorObject[i] === 'false'){
+      else if (this.ColorObject[i] === 'false') {
         this.ColorTrue[i] = 0x380303
         this.ColorTrue2[i] = 0xd60a0a
       }
@@ -145,8 +152,9 @@ struct MultimodalInputPage {
       }
     }
   }
-  build(){
-    Column(){
+
+  build() {
+    Column() {
       Row() {
         Button() {
           Image($r('app.media.ic_public_back'))
@@ -158,15 +166,17 @@ struct MultimodalInputPage {
         .onClick(() => {
           router.back();
         })
-        Row(){
+
+        Row() {
           Text('MultimodalInput')
             .fontColor(Color.White)
             .fontSize('22fp')
         }
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor(Color.Black)
+
         Row() {
-          Button(){
+          Button() {
             Image($r('app.media.ic_public_delete'))
               .width('30vp')
               .height('30vp')
@@ -181,11 +191,11 @@ struct MultimodalInputPage {
                   action: () => {
                     this.ClearAll = true;
                     this.ColorObject.forEach((value, index) => {
-                      this.ColorObject[index] =  'none ';
+                      this.ColorObject[index] = 'none ';
                     });
                     this.ClearText();
                     router.replaceUrl({
-                      url:'pages/MultimodalInput/MultimodalInput_index',
+                      url: 'pages/MultimodalInput/MultimodalInput_index',
                     })
                     promptAction.showToast({
                       message: '结果已删除', duration: 1000
@@ -204,7 +214,8 @@ struct MultimodalInputPage {
               }
             )
           })
-          Button(){
+
+          Button() {
             Image($r('app.media.ic_public_save'))
               .width('30vp')
               .height('30vp')
@@ -214,9 +225,9 @@ struct MultimodalInputPage {
             this.ReadTextParseXml();
             AlertDialog.show({
               message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/MultimodalInput/MultimodalInputTest.xml -本地路径'",
-              confirm:{
-                value:'OK',
-                action:()=>{
+              confirm: {
+                value: 'OK',
+                action: () => {
                   promptAction.showToast({
                     message: '报告已生成', duration: 1000
                   })
@@ -233,13 +244,14 @@ struct MultimodalInputPage {
       }
       .width('100%')
       .justifyContent(FlexAlign.SpaceAround)
-      .margin({top:'15vp'})
+      .margin({ top: '15vp' })
       .height('6%')
       .backgroundColor(Color.Black)
-      List({}){
-        ForEach(this.TestCaseList,(item,index) => {
-          ListItem(){
-            Row(){
+
+      List({}) {
+        ForEach(this.TestCaseList, (item: TestCase, index) => {
+          ListItem() {
+            Row() {
               Text(item.title)
                 .fontSize(20)
                 .fontColor(Color.White)
@@ -247,70 +259,73 @@ struct MultimodalInputPage {
             .width('100%')
             .height(50)
             .alignItems(VerticalAlign.Center)
-            .linearGradient(this.count===0&&this.TEST===0?{angle: 90,colors: [[0x000000, 0.0],[0x000000, 1.0]]}:{ angle: 90,colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]]})
-            .onClick(()=>{
+            .linearGradient(this.count === 0 && this.TEST === 0 ? {
+              angle: 90,
+              colors: [[0x000000, 0.0], [0x000000, 1.0]]
+            } : { angle: 90, colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]] })
+            .onClick(() => {
               this.count = 1;
-              this.ClearAll=false;
+              this.ClearAll = false;
               this.current = index;
               router.push({
                 url: item.uri,
               })
             })
           }
-        },item  => item.title)
+        }, (item: TestCase) => item.title)
       }
       .width('100%')
       .height('92%')
-      .divider({strokeWidth:1,color:Color.Grey})
+      .divider({ strokeWidth: 1, color: Color.Grey })
     }
     .width('100%')
     .height('100%')
     .backgroundColor(Color.Black)
   }
-  ClearText(){
+
+  ClearText() {
     fs.rmdirSync(path1);
     fs.mkdirSync(path1);
     let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    for(let i = 0; i < this.TestCaseList.length; i++) {
-      let log = (this.TestCaseList[i].title+';'+'none '+';').toString();
-      fs.writeSync(fd.fd,log);
+    for (let i = 0; i < this.TestCaseList.length; i++) {
+      let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
+      fs.writeSync(fd.fd, log);
     }
   }
-  ReadTextParseXml(){
+
+  ReadTextParseXml() {
     let ReportPath = path1 + '/MultimodalInputReport.txt';
     let dir = fs.listFileSync(path1);
-    console.info("ssssss"+dir);
+    console.info("ssssss" + dir);
     while (dir) {
       let OP = fs.openSync(ReportPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let buf = new ArrayBuffer(40960);
-      let RD = fs.readSync(OP.fd,buf);
-      console.info("ddddd"+RD);
-      let report;
-      function ab2str(buf) {
-        return report = String.fromCharCode.apply(null,new Uint8Array(buf));
-      }
-      ab2str(buf);
+      let RD = fs.readSync(OP.fd, buf);
+      console.info("ddddd" + RD);
+      let report: string;
+
+      report = String.fromCharCode.apply(null, new Uint8Array(buf))
       let str1 = report.split(";");
-      let title = [];
-      let result = [];
-      for(let i=0; i<Math.floor(str1.length/2); i++){
+      let title: string[] = [];
+      let result: string[] = [];
+      for (let i = 0; i < Math.floor(str1.length / 2); i++) {
         title[i] = str1[i*2];
-        result[i] = str1[i*2+1];
+        result[i] = str1[i * 2+1];
       }
       let FailIndex = report.indexOf('false');
       let FailNum = 0;
       while (FailIndex != -1) {
-        console.log(FailIndex);
+        console.log(FailIndex.toString());
         FailNum++;
-        FailIndex = report.indexOf('false',FailIndex + 1);
+        FailIndex = report.indexOf('false', FailIndex + 1);
       }
       let failNum = (FailNum).toString();
       let PassIndex = report.indexOf('true ');
       let PassNum = 0;
       while (PassIndex != -1) {
-        console.log(PassIndex);
+        console.log(PassIndex.toString());
         PassNum++;
-        PassIndex = report.indexOf('true ',PassIndex + 1);
+        PassIndex = report.indexOf('true ', PassIndex + 1);
       }
       let TestNum = FailNum + PassNum;
       let testNum = (TestNum).toString();
@@ -345,42 +360,44 @@ struct MultimodalInputPage {
       let array = new Uint8Array(arrayBuffer);
       let serializerStr = that.decode(array);
       console.info(xmlPath);
-      try{
-        console.error(TAG,"write xmlPath =" +xmlPath);
-        var xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fs.writeSync(xmlfd.fd,serializerStr);
-      }catch(err){
-        console.error(TAG,"read xmlPath =" + xmlPath + "error:" + err);
-      }finally{
+      let xmlfd: fs.File;
+      try {
+        console.error(TAG, "write xmlPath =" + xmlPath);
+        xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(xmlfd.fd, serializerStr);
+      } catch (err) {
+        console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
+      } finally {
         fs.closeSync(xmlfd);
       }
       return;
     }
   }
 }
-function filewrite(name1,results,titles){
+
+function filewrite(name1: string, results: string, titles: string) {
   let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
-  let RD = fs.readSync(fd.fd,buf);
-  console.info("RRRRRRRRRRd"+RD);
-  let report = String.fromCharCode.apply(null,new Uint8Array(buf));
+  let RD = fs.readSync(fd.fd, buf);
+  console.info("RRRRRRRRRRd" + RD);
+  let report: ESObject = String.fromCharCode.apply(null, new Uint8Array(buf));
   let WriteTitle = (titles).toString();
   let WriteResult = (results).toString();
   let number = WriteTitle.length + WriteResult.length + 2;
-  let Index = report.indexOf(WriteTitle);
-  let Log = (titles+";"+results+";").toString();
-  if (Index == -1){
-    fs.writeSync(fd.fd,Log);
+  let Index: number = report.indexOf(WriteTitle);
+  let Log = (titles + ";" + results + ";").toString();
+  if (Index == -1) {
+    fs.writeSync(fd.fd, Log);
   }
-  else if (Index != -1){
-    let key = report.substring(Index,Index+number);
+  else if (Index != -1) {
+    let key: string = report.substring(Index, Index + number);
     let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    report = report.replace(key,Log);
+    report = report.replace(key, Log);
     let buffer = new ArrayBuffer(4096);
-    let rd = fs.readSync(FD.fd,buffer);
-    let Report = report.substring(0,rd);
+    let rd = fs.readSync(FD.fd, buffer);
+    let Report: string = report.substring(0, rd);
     fs.closeSync(FD);
     let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(Fd.fd,Report);
+    fs.writeSync(Fd.fd, Report);
   }
 }

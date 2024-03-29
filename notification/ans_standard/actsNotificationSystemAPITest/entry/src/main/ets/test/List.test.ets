@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import ActsNotificationSystemAPITest from './ActsNotificationSystemAPITest.test'
+import ActsNotificationSystemAPITest from './ActsNotificationSystemAPITest.test';
 
 export default function List() {
-  ActsNotificationSystemAPITest()
+  ActsNotificationSystemAPITest();
 }

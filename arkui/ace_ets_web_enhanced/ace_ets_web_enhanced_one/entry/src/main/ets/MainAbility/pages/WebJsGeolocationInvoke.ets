@@ -30,7 +30,7 @@ struct WebJsGeolocationInvoke {
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
   @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-  " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+    " CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State geolocationAccess: boolean = true
   @State invokeType: number = 1
   @State invokeError: string = ''
