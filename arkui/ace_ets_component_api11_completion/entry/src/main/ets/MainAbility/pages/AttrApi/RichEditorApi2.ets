@@ -47,7 +47,7 @@ struct RichEditorApi22Com {
         })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
 
       Button('getSpans')
         .id('RichEditorApi2_getSpans')
@@ -78,7 +78,7 @@ struct RichEditorApi22Com {
         })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
 
     }.width('100%')
   }
