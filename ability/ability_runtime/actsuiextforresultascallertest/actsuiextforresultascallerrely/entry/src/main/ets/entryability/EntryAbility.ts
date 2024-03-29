@@ -18,57 +18,32 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
 
+let setWantParameters = (actionInput: String, bundelNameInput: String) => {
+  AppStorage.SetOrCreate('want', {
+    bundleName: bundelNameInput,
+    abilityName: 'UIExtAbility',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'share',
+      parameter : actionInput
+    }
+  });
+}
 let setWant = (want) => {
-  if (want.action === 'StartAbilityForResultAsCaller_0100') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0100':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0100",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_0200') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0200':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0200",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_0300') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0300':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0300",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_0400') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0400':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0400",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_0600') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0600':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0600",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
+  if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0100') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0100':");
+    setWantParameters('StartAbilityForResultAsCaller_0100', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0200') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0200':");
+    setWantParameters('StartAbilityForResultAsCaller_0200', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0300') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0300':");
+    setWantParameters('StartAbilityForResultAsCaller_0300', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0400') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0400':");
+    setWantParameters('StartAbilityForResultAsCaller_0400', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0600') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0600':");
+    setWantParameters('StartAbilityForResultAsCaller_0600', 'com.example.uiextensionforresultascaller');
   } else if (want.action === 'ohos.caller.test.action') {
     console.info("====>[UIExtensionForResultAsCallerRely] want.type == '0600FromUIExtension':");
     let commonEventData = {
@@ -81,46 +56,33 @@ let setWant = (want) => {
       globalThis.terminate('0600');
     })
 
-  } else if (want.action === 'StartAbilityForResultAsCaller_0800') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0800':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0800",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_0900') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_0900':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0900",
-      bundleName: 'com.example.uiextensionforresultascallerbackground',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_1100') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_1100':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_1100",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
-  } else if (want.action === 'StartAbilityForResultAsCaller_1300') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_1300':");
-    AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_1300",
-      bundleName: 'com.example.uiextensionforresultascaller',
-      abilityName: 'UIExtAbility',
-      parameters: {
-        'ability.want.params.uiExtensionType': 'share'
-      }
-    });
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0800') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0800':");
+    setWantParameters('StartAbilityForResultAsCaller_0800', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0900') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0900':");
+    setWantParameters('StartAbilityForResultAsCaller_0900', 'com.example.uiextensionforresultascallerbackground');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1100') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1100':");
+    setWantParameters('StartAbilityForResultAsCaller_1100', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1400') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1400':");
+    setWantParameters('StartAbilityForResultAsCaller_1400', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1500') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1500':");
+    setWantParameters('StartAbilityForResultAsCaller_1500', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1600') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1600':");
+    setWantParameters('StartAbilityForResultAsCaller_1600', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1700') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1700':");
+    setWantParameters('StartAbilityForResultAsCaller_1700', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1800') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1800':");
+    setWantParameters('StartAbilityForResultAsCaller_1800', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_2000') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_2000':");
+    setWantParameters('StartAbilityForResultAsCaller_2000', 'com.example.uiextensionforresultascaller');
   }
 }
 

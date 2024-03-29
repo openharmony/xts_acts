@@ -17,9 +17,57 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 
+let setWantParameters = (actionInput: String, bundelNameInput: String) => {
+  AppStorage.SetOrCreate('want', {
+    bundleName: bundelNameInput,
+    abilityName: 'UIExtAbility',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'share',
+      parameter : actionInput
+    }
+  });
+}
+let setWant = (want) => {
+  if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1900') {
+    console.info("====>[SysPicker] want.parameters.parameter == 'StartAbilityForResultAsCaller_1900':");
+    AppStorage.SetOrCreate('want', {
+      bundleName: 'com.example.uiextensionforresultascallersyspicker',
+      abilityName: 'UIExtAbility',
+      parameters: {
+        'ability.want.params.uiExtensionType': 'share',
+        parameter: 'StartAbilityForResultAsCaller_1900'
+      }
+    });
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0400') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0400':");
+    setWantParameters('StartAbilityForResultAsCaller_0400', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1400') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1400':");
+    setWantParameters('StartAbilityForResultAsCaller_1400', 'com.example.uiextensionforresultascallersyspicker');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1500') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1500':");
+    setWantParameters('StartAbilityForResultAsCaller_1500', 'com.example.uiextensionforresultascallersyspicker');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1600') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1600':");
+    setWantParameters('StartAbilityForResultAsCaller_1600', 'com.example.uiextensionforresultascallersyspicker');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1700') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1700':");
+    setWantParameters('StartAbilityForResultAsCaller_1700', 'com.example.uiextensionforresultascallersyspicker');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1800') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1800':");
+    setWantParameters('StartAbilityForResultAsCaller_1800', 'com.example.uiextensionforresultascallersyspicker');
+  }
+}
+
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    setWant(want);
+  }
+
+  onNewWant(want, launchParam) {
+    console.info('====> [SysPicker] onNewWant.');
+    setWant(want);
   }
 
   onDestroy() {

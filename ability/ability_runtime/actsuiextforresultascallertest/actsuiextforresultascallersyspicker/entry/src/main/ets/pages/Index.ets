@@ -19,11 +19,11 @@ import Want from '@ohos.app.ability.Want';
 struct Index {
   @State message: string = 'SysPicker';
   @StorageLink('want') want: Want = {
-    action: "StartAbilityForResultAsCaller_0100",
     bundleName: 'com.example.uiextensionforresultascallersyspicker',
     abilityName: 'UIExtAbility',
     parameters: {
-      'ability.want.params.uiExtensionType': 'share'
+      'ability.want.params.uiExtensionType': 'share',
+      parameter: 'StartAbilityForResultAsCaller_0100'
     }
   }
 
@@ -33,6 +33,10 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+        UIExtensionComponent(this.want)
+          .size({ width: '100%', height: '100' })
+          .backgroundColor(Color.Blue)
+          .border({ width: 5, color: Color.Red })
       }
       .width('100%')
     }

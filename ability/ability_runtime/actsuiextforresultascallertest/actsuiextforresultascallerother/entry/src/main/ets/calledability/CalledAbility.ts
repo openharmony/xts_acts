@@ -22,7 +22,7 @@ export default class CalledAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onCreate');
 
-    if (want.action === 'StartAbilityForResultAsCaller_0800_2') {
+    if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0800_2') {
       let commonEventData = {
         code: 0
       };
@@ -34,7 +34,7 @@ export default class CalledAbility extends UIAbility {
         console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_0800_2] terminateSelf: ' +
         JSON.stringify(err));
       });
-    } else if (want.action === 'StartAbilityForResultAsCaller_0900') {
+    } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0900') {
       console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_0900] onCreate : ' +
       JSON.stringify(want));
       let wantString = JSON.stringify(want).split('"ohos.aafwk.param.callerBundleName":"');
@@ -50,10 +50,9 @@ export default class CalledAbility extends UIAbility {
         JSON.stringify(err));
       });
       this.context.terminateSelf().catch((err) => {
-        console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_0900] terminateSelf: ' +
-        JSON.stringify(err));
+        console.info('====>[StartAbilityForResultAsCaller_0900] terminateSelf: ' + JSON.stringify(err));
       });
-    } else if (want.action === 'StartAbilityForResultAsCaller_1000') {
+    } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1000') {
       console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_1000] onCreate : ' +
       JSON.stringify(want));
       let wantString = JSON.stringify(want).split('"ohos.aafwk.param.callerBundleName":"');
@@ -65,8 +64,7 @@ export default class CalledAbility extends UIAbility {
         }
       };
       commonEvent.publish('1000', commonEventData, (err) => {
-        console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_1000] onCreate publish: ' +
-        JSON.stringify(err));
+        console.info('====>[StartAbilityForResultAsCaller_1000] onCreate publish: ' + JSON.stringify(err));
       });
       this.context.terminateSelf().catch((err) => {
         console.info('====> [OtherAbilityCalledAbility] [StartAbilityForResultAsCaller_1000] terminateSelf: ' +
@@ -76,7 +74,7 @@ export default class CalledAbility extends UIAbility {
   }
 
   onNewWant(want, launchParam) {
-    if (want.action === 'StartAbilityForResultAsCaller_0800_2') {
+    if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0800_2') {
       let commonEventData = {
         code: 0
       };

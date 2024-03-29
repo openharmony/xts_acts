@@ -21,8 +21,7 @@ let storage = LocalStorage.GetShared()
 @Component
 struct Page {
   @State message: string = 'sysPicker/share'
-
-  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
+  private session: (UIExtensionContentSession | undefined) = storage.get<UIExtensionContentSession>('session');
 
   build() {
     Row() {

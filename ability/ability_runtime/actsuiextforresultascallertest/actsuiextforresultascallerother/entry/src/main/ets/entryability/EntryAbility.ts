@@ -23,41 +23,28 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     console.info('====> [OtherCalledAbility] oncCreate.');
 
-    if (want.action == 'StartAbilityForResultAsCaller_0200') {
+    if (want.parameters.parameter == 'StartAbilityForResultAsCaller_0200') {
       let commonEventData = {
         code: 0
       };
       commonEvent.publish('0200', commonEventData, (err) => {
-        console.info('====> [UIExtensionForResultAsCallerCalledAbility] [StartAbilityForResultAsCaller_0200] publish: ' +
-        JSON.stringify(err));
+        console.info('====> [UIExtensionForResultAsCallerCalledAbility] [StartAbilityForResultAsCaller_0200]' +
+        'publish: ' + JSON.stringify(err));
       });
       this.context.terminateSelf().catch((err) => {
-        console.info('====> [UIExtensionForResultAsCallerCalledAbility] [StartAbilityForResultAsCaller_0200] terminateSelf: ' +
-        JSON.stringify(err));
+        console.info('====> [UIExtensionForResultAsCallerCalledAbility] [StartAbilityForResultAsCaller_0200]' +
+        'terminateSelf: ' + JSON.stringify(err));
       });
-    } else if (want.action == 'StartAbilityForResultAsCaller_0500') {
+    } else if (want.parameters.parameter == 'StartAbilityForResultAsCaller_0500') {
       AppStorage.SetOrCreate('want', {
-        action: "StartAbilityForResultAsCaller_0500",
         bundleName: 'com.example.uiextensionforresultascallerother',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'share'
+          'ability.want.params.uiExtensionType': 'share',
+          parameter: 'StartAbilityForResultAsCaller_0500'
         }
       });
-    }
-
-    // if (want.action == 'StartAbilityForResultAsCaller_0700') {
-    //   console.info('====> [OtherAbility] [StartAbilityForResultAsCaller_0700] ');
-    //   AppStorage.SetOrCreate('want', {
-    //     action: "StartAbilityForResultAsCaller_0700",
-    //     bundleName: 'com.example.uiextensionforresultascallerother',
-    //     abilityName: 'UIExtAbility',
-    //     parameters: {
-    //       'ability.want.params.uiExtensionType': 'share'
-    //     }
-    //   });
-    // }
-    if (want.action === 'StartAbilityForResultAsCaller_0700_2') {
+    } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0700_2') {
       let commonEventData = {
         code: 0
       };
@@ -69,10 +56,21 @@ export default class EntryAbility extends UIAbility {
         console.info('====> [OtherAbliity] [StartAbilityForResultAsCaller_0700] onCreate terminateSelf: ' +
         JSON.stringify(err));
       })
+    } else {
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('====> [UIExtensionForResultAsCallerCalledAbility] [0600] terminateSelfWithResult err:' + err.code);
+      });
     }
   }
   onNewWant(want, launchParam){
-    if (want.action === 'StartAbilityForResultAsCaller_0700_2') {
+    if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0700_2') {
       let commonEventData = {
         code: 0
       };
@@ -83,6 +81,17 @@ export default class EntryAbility extends UIAbility {
       this.context.terminateSelf().catch((err) => {
         console.info('====> [OtherAbliity] [StartAbilityForResultAsCaller_0700] onNewWant terminateSelf: ' +
         JSON.stringify(err));
+      });
+    } else {
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('====> [UIExtensionForResultAsCallerCalledAbility] [0600] terminateSelfWithResult err:' + err.code);
       });
     }
   }

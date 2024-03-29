@@ -19,11 +19,11 @@ import Want from '@ohos.app.ability.Want';
 struct Index {
   @State message: string = 'Other';
   @StorageLink('want') want: Want = {
-    action: "StartAbilityForResultAsCaller_0100",
     bundleName: 'com.example.uiextensionforresultascallerother',
     abilityName: 'UIExtAbility',
     parameters: {
-      'ability.want.params.uiExtensionType': 'share'
+      'ability.want.params.uiExtensionType': 'share',
+      parameter: 'StartAbilityForResultAsCaller_0100'
     }
   }
 

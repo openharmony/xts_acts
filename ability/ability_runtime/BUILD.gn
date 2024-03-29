@@ -55,7 +55,7 @@ group("ability_runtime") {
       "actsturipermisssiontest:actsturipermisssiontest",
       "actsuiextensionforresulttest:actsuiextensionforresulttest",
       "actsuiextensiontest:actsuiextensiontest",
-      "actsuiextforresultascallertest:actsuiextensionforresulttest",
+      "actsuiextforresultascallertest:actsuiextforresultascallertest",
       "actsusers:actsusers",
       "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",

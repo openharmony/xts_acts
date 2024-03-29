@@ -23,7 +23,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
     console.info('=======>OtherUIExtAbility onCreate======>');
   }
 
-  onSessionCreate(want, session) {
+  async onSessionCreate(want, session) {
     console.log(`want: ${JSON.stringify(want)}}`);
     let storage: LocalStorage = new LocalStorage({
       'session': session
@@ -31,13 +31,15 @@ export default class UiExtAbility extends ShareExtensionAbility {
     session.loadContent('pages/Page', storage);
     console.info('=======>other UIExtAbility onSessionCreate======>');
 
-    if (want.action === 'StartAbilityForResultAsCaller_0500') {
-      console.info('====>[OtherUIAbility] onSessionCreate want.action == StartAbilityForResultAsCaller_0100');
+    if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0500') {
+      console.info('====>[OtherUIAbility] onSessionCreate want.parameters.parameter == StartAbilityForResultAsCaller_0100');
       this.context.startAbilityForResultAsCaller({
         bundleName: 'com.example.uiextensionforresultascaller',
         abilityName: 'CalledAbility',
         moduleName: 'entry',
-        action: 'StartAbilityForResultAsCaller_0500'
+        parameters: {
+          parameter: 'StartAbilityForResultAsCaller_0500'
+        }
       }).then((data) => {
         console.info('====>[OtherUIAbility] startAbilityForResultAsCaller 0500 ok: ' + JSON.stringify(data));
       }).catch((error) => {

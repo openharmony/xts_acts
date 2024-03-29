@@ -6,7 +6,8 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -31,6 +32,17 @@
             ]
           }
         ]
+      },
+      {
+        "name": "CalledAbility",
+        "srcEntry": "./ets/calledability/CalledAbility.ts",
+        "description": "$string:CalledAbility_desc",
+        "visible": true,
+        "icon": "$media:icon",
+        "label": "$string:CalledAbility_label",
+        "exported": false,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background"
       }
     ],
     "extensionAbilities": [
@@ -38,9 +50,14 @@
         "name": "UIExtAbility",
         "icon": "$media:icon",
         "description": "UIExtAbility",
-        "type": "sysPicker/share",
+        "type": "share",
         "visible": true,
         "srcEntrance": "./ets/UIExtensionAbility/UIExtAbility.ts"
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.START_INVISIBLE_ABILITY"
       }
     ]
   }

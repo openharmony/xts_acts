@@ -23,25 +23,44 @@ let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
 };
 
 let setWant = (want) => {
-
-  if (want.action === 'StartAbilityForResultAsCaller_0700') {
-    console.info("====>[backGroundAbility] Entry want.action == 'StartAbilityForResultAsCaller_0700':");
+  if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0700') {
+    console.info("====>[backGroundAbility] Entry want.parameters.parameter == 'StartAbilityForResultAsCaller_0700':");
     AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_0700",
       bundleName: 'com.example.uiextensionforresultascallerbackground',
       abilityName: 'UIExtAbility',
       parameters: {
-        'ability.want.params.uiExtensionType': 'share'
+        'ability.want.params.uiExtensionType': 'share',
+        parameter: 'StartAbilityForResultAsCaller_0700'
       }
     });
-  } else if (want.action === 'StartAbilityForResultAsCaller_1200') {
-    console.info("====>[UIExtensionForResultAsCallerRely] want.action == 'StartAbilityForResultAsCaller_1200':");
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1200') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1200':");
     AppStorage.SetOrCreate('want', {
-      action: "StartAbilityForResultAsCaller_1200",
       bundleName: 'com.example.uiextensionforresultascallerbackground',
       abilityName: 'UIExtAbility',
       parameters: {
-        'ability.want.params.uiExtensionType': 'share'
+        'ability.want.params.uiExtensionType': 'share',
+        parameter: 'StartAbilityForResultAsCaller_1200'
+      }
+    });
+  } else if (want.parameters.parameter == 'StartAbilityForResultAsCaller_2100') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_2100':");
+    AppStorage.SetOrCreate('want', {
+      bundleName: 'com.example.uiextensionforresultascallerbackground',
+      abilityName: 'UIExtAbility',
+      parameters: {
+        'ability.want.params.uiExtensionType': 'share',
+        parameter: 'StartAbilityForResultAsCaller_2100'
+      }
+    });
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1300') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1300':");
+    AppStorage.SetOrCreate('want', {
+      bundleName: 'com.example.uiextensionforresultascallerbackground',
+      abilityName: 'UIExtAbility',
+      parameters: {
+        'ability.want.params.uiExtensionType': 'share',
+        parameter: 'StartAbilityForResultAsCaller_1300'
       }
     });
   }
