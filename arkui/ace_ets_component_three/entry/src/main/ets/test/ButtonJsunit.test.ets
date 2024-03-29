@@ -312,12 +312,7 @@ export default function buttonJsunit() {
             expect(Math.abs(JSON.parse(eventData.data.event).screenY - 533) <= 1).assertTrue()
             expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
             expect(Math.trunc(JSON.parse(eventData.data.event).y)).assertEqual(50)
-          } else if(density.x == 2700) {
-            expect(Math.abs(JSON.parse(eventData.data.event).screenX - 190) <= 1).assertTrue()
-            expect(Math.abs(JSON.parse(eventData.data.event).screenY - 523) <= 1).assertTrue()
-            expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
-            expect(Math.trunc(JSON.parse(eventData.data.event).y)).assertEqual(50)
-          }else {
+          } else {
             expect(Math.abs(JSON.parse(eventData.data.event).screenX - 185) <= 1).assertTrue()
             expect(Math.abs(JSON.parse(eventData.data.event).screenY - 523) <= 1).assertTrue()
             expect(Math.trunc(JSON.parse(eventData.data.event).x)).assertEqual(100)
