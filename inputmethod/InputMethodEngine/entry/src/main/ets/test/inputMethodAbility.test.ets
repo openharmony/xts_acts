@@ -2867,7 +2867,7 @@ export default function inputMethodAbility() {
           console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement err: ' + JSON.stringify(err));
           done();
         }
-      },500);
+      },1000);
 
       var commonEventPublishData = {
         code:140
