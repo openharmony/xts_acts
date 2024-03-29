@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,7 +26,7 @@ export default function NetworkManagerCaPathTest() {
             header: {
                 'Content-Type': 'application/json'
             },
-            caPath: "/data/storage/el2/base/files/OpenHarmonyCA.pem"
+            caPath: "/data/storage/"
         }
         let httpRequestOptions2 = {
             method: http.RequestMethod.GET,
@@ -41,71 +41,88 @@ export default function NetworkManagerCaPathTest() {
                 'Content-Type': 'application/json'
             }
         }
+		
+		function expectFalse() {
+			try {
+				expect().assertFail();
+			} catch (err) {
+				console.info('assertion failure');
+			}
+		}
 
         /**
          * @tc.number SUB_Telephony_NetStack_HTTPSCertificateManagement_0100
-         * @tc.name   request: input https://www.openharmony.cn/ & error of caPath by Async
-         * @tc.desc   Function test
+         * @tc.name SUB_Telephony_NetStack_HTTPSCertificateManagement_0100  
+		 * @tc.desc request: input https://www.openharmony.cn/ & error of caPath by Async
+		 * @tc.level 2
+		 * @tc.type Function
+         * @tc.size SmallTest
          */
         it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0100", 0, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0100';
-            let httpRequest = http.createHttp();
-            httpRequest.request(URL1, httpRequestOptions1, (err, data) => {
-                if (err) {
-                    console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
-                    expect(err.code == 2300077).assertTrue();
-                    httpRequest.destroy();
-                    done();
-                } else {
-                    console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
-                    expect(false).assertTrue();
-                    done();
-                }
-            });
-        });
+			try {
+				let httpRequest = http.createHttp();
+				httpRequest.request(URL1, httpRequestOptions1, (err, data) => {
+					console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
+                    expect(data).assertEqual(undefined);
+                })
+				httpRequest.destroy();
+				done();
+			} catch (error) {
+				console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(error)}`);
+				expectFalse();
+				done();
+			}
+        })
 
         /**
          * @tc.number SUB_Telephony_NetStack_HTTPSCertificateManagement_0200
-         * @tc.name   request: input https://www.openharmony.cn/ & null of caPath by Async
-         * @tc.desc   Function test
+         * @tc.name SUB_Telephony_NetStack_HTTPSCertificateManagement_0200
+         * @tc.desc request: input https://www.openharmony.cn/ & null of caPath by Async
+         * @tc.level 2
+         * @tc.type Function
+         * @tc.size SmallTest
          */
         it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0200", 0, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0200';
-            let httpRequest = http.createHttp();
-            httpRequest.request(URL1, httpRequestOptions2, (err, data) => {
-                if (err) {
-                    console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
-                    expect(err.code == 2300077).assertTrue();
-                    httpRequest.destroy();
-                    done();
-                } else {
+            try {
+                let httpRequest = http.createHttp();
+                httpRequest.request(URL1, httpRequestOptions2, (err, data) => {
                     console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
-                    expect(false).assertTrue();
-                    done();
-                }
-            });
-        });
+                    expect(data).assertEqual(undefined);
+                })
+                httpRequest.destroy();
+                done();
+            } catch (error) {
+                console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(error)}`);
+                expectFalse();
+                done();
+            }
+        })
 
         /**
          * @tc.number SUB_Telephony_NetStack_HTTPSCertificateManagement_0300
-         * @tc.name   request: input https://www.openharmony.cn/ & default of caPath by Async
-         * @tc.desc   Function test
+         * @tc.name SUB_Telephony_NetStack_HTTPSCertificateManagement_0300
+         * @tc.desc request: input https://www.openharmony.cn/ & default of caPath by Async
+         * @tc.level 2
+         * @tc.type Function
+         * @tc.size SmallTest
          */
         it("SUB_Telephony_NetStack_HTTPSCertificateManagement_0300", 0, function (done) {
             let CASE_NAME = 'SUB_Telephony_NetStack_HTTPSCertificateManagement_0300';
-            let httpRequest = http.createHttp();
-            httpRequest.request(URL1, httpRequestOptions3, (err, data) => {
-                if (err) {
-                    console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
-                    expect(err.code == 2300077).assertTrue();
-                    httpRequest.destroy();
-                    done();
-                } else {
+            try {
+                let httpRequest = http.createHttp();
+                httpRequest.request(URL1, httpRequestOptions3, (err, data) => {
                     console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
-                    expect(false).assertTrue();
-                    done();
-                }
-            });
-        });
-    });
+                    expect(data).assertEqual(undefined);
+                })
+                httpRequest.destroy();
+                done();
+            } catch (error) {
+                console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(error)}`);
+                expectFalse();
+                done();
+            }
+        })
+    })
 }

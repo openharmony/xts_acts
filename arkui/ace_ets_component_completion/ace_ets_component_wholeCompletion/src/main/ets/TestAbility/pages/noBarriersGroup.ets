@@ -15,14 +15,12 @@
 @Entry
 @Component
 struct noBarriersGroup {
-
-  @State Number: String[] = ['0', '1']
-  scroller: Scroller = new Scroller()
-  @State arr: string[] = ["0", "1"]
-  @State alignListItem: ListItemAlign = ListItemAlign.Start
-  @State arr1: string[] = ["0", "1"]
-  @State alignListItem1: ListItemAlign = ListItemAlign.Start
-
+  @State Number: String[] = ['0', '1'];
+  scroller: Scroller = new Scroller();
+  @State arr: string[] = ["0", "1"];
+  @State alignListItem: ListItemAlign = ListItemAlign.Start;
+  @State arr1: string[] = ["0", "1"];
+  @State alignListItem1: ListItemAlign = ListItemAlign.Start;
 
   build() {
     Scroll(this.scroller) {
@@ -48,8 +46,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -64,7 +62,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -74,7 +72,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .accessibilityGroup(true)
@@ -113,8 +111,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -129,7 +127,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -142,7 +140,7 @@ struct noBarriersGroup {
               .accessibilityGroup(true)
               .accessibilityLevel("yes")
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .key("IamList")
           .height(100)
@@ -183,8 +181,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -199,7 +197,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -209,7 +207,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -249,8 +247,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -265,7 +263,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -275,7 +273,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -315,8 +313,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -331,7 +329,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -341,7 +339,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -382,8 +380,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -398,7 +396,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -408,7 +406,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -448,8 +446,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -464,7 +462,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -474,7 +472,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -515,8 +513,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -531,7 +529,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -541,7 +539,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -580,8 +578,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -596,7 +594,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -606,7 +604,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -646,8 +644,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -662,7 +660,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -672,7 +670,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -712,8 +710,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -728,7 +726,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -738,7 +736,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -778,8 +776,8 @@ struct noBarriersGroup {
                     .height('100%')
                     .textAlign(TextAlign.Center)
                 }
-              }, day => day)
-            }, day => day)
+              }, (day: string) => day)
+            }, (day: string) => day)
           }
           .columnsTemplate('1fr 1fr ')
           .rowsTemplate('1fr')
@@ -794,7 +792,7 @@ struct noBarriersGroup {
           .accessibilityText("I am Grid")
 
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: string) => {
               ListItem() {
                 Text('list' + item)
                   .width("100%")
@@ -804,7 +802,7 @@ struct noBarriersGroup {
                   .backgroundColor(0xFFFFFF)
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .height(100)
           .width("90%")
@@ -825,6 +823,4 @@ struct noBarriersGroup {
       }
     }
   }
-
-
 }

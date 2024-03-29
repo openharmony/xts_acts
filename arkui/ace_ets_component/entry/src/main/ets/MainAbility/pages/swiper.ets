@@ -48,7 +48,7 @@ struct SwiperExample {
   @State displayCount: number = 3
   @State displayMode: number = SwiperDisplayMode.AutoLinear
   @State edgeEffect: number = EdgeEffect.None
-  @State autoPlay: boolean = true
+  @State autoPlay: boolean = false
   @State interval: number = 4000
   @State indicator: boolean = true
   @State loop: boolean = false

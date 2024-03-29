@@ -14,12 +14,13 @@
  */
 
 #include <cerrno>
+#include <climits>
 #include <cstdlib>
 #include <dirent.h>
 #include <fcntl.h>
 #include <js_native_api.h>
-#include <climits>
 #include <node_api.h>
+#include <unistd.h>
 
 #define FAIL (-1)
 #define FALSE 0
@@ -66,7 +67,7 @@ static napi_value Scandir64(napi_env env, napi_callback_info info)
     size_t length = SIXFOURVAL, stresult = PARAM_0;
     char *strTemp = static_cast<char *>(malloc(sizeof(char) * length));
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
-    open(strTemp, O_RDWR);
+    int fd = open(strTemp, O_RDWR);
     int valueFirst;
     napi_get_value_int32(env, args[1], &valueFirst);
     struct dirent **namelist;
@@ -78,6 +79,7 @@ static napi_value Scandir64(napi_env env, napi_callback_info info)
         int total = scandir64(nullptr, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
     }
+    close(fd);
     return result;
 }
 
@@ -90,7 +92,7 @@ static napi_value Scandir(napi_env env, napi_callback_info info)
     size_t length = SIXFOURVAL, stresult = PARAM_0;
     char *strTemp = static_cast<char *>(malloc(sizeof(char) * length));
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
-    open(strTemp, O_RDWR);
+    int fd = open(strTemp, O_RDWR);
     int valueFirst;
     napi_get_value_int32(env, args[1], &valueFirst);
     struct dirent **namelist;
@@ -102,6 +104,7 @@ static napi_value Scandir(napi_env env, napi_callback_info info)
         int total = scandir(nullptr, &namelist, PARAM_0, alphasort);
         napi_create_int32(env, total, &result);
     }
+    close(fd);
     return result;
 }
 

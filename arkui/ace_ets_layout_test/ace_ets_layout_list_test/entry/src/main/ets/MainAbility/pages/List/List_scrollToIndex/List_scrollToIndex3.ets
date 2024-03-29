@@ -15,18 +15,17 @@
 
 @Entry
 @Component
-struct List_scrollToIndex3{
-  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private arr2: number[] = [0]
-  @State visibe: Visibility = Visibility.None
-  private scroller: Scroller = new Scroller()
+struct List_scrollToIndex3 {
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private arr2: number[] = [0];
+  @State visibe: Visibility = Visibility.None;
+  private scroller: Scroller = new Scroller();
 
+  build() {
+    Column({ space: 20 }) {
+      List({ space: 10, initialIndex: 0, scroller: this.scroller }) {
 
-  build(){
-    Column({space:20}) {
-      List({ space: 10, initialIndex: 0 , scroller: this.scroller }) {
-
-        ListItemGroup(){
+        ListItemGroup() {
           ForEach(this.arr2, (item: number, index?: number) => {
             ListItem() {
               Text('ListItemGroup' + item)
@@ -48,7 +47,7 @@ struct List_scrollToIndex3{
               .textAlign(TextAlign.Center)
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
-          }.id('List_scrollToIndex3_ListItem'+ item)
+          }.id('List_scrollToIndex3_ListItem' + item)
         }, (item: string) => item)
 
       }
@@ -59,65 +58,65 @@ struct List_scrollToIndex3{
       .edgeEffect(EdgeEffect.None)
       .scrollBar(BarState.On)
 
-      Column({space:10}){
-        Column(){
+      Column({ space: 10 }) {
+        Column() {
           Text('ScrollAlign.START')
-          Row(){
+          Row() {
             Button('scrollToIndex 0')
               .id('List_scrollToIndex3_START0')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(0,false,ScrollAlign.START)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.START)
               })
           }
         }
 
-        Column(){
+        Column() {
           Text('ScrollAlign.CENTER')
-          Row(){
+          Row() {
             Button('scrollToIndex 0')
               .id('List_scrollToIndex3_CENTER0')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(0,false,ScrollAlign.CENTER)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.CENTER)
               })
           }
         }
 
-        Column(){
+        Column() {
           Text('ScrollAlign.END')
-          Row(){
+          Row() {
             Button('scrollToIndex 0')
               .id('List_scrollToIndex3_END0')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(0,false,ScrollAlign.END)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.END)
               })
           }
         }
 
-        Column(){
+        Column() {
           Text('ScrollAlign.AUTO')
-          Row(){
+          Row() {
             Button('scrollToIndex 0')
               .id('List_scrollToIndex3_AUTO0')
               .fontSize(14)
-              .onClick(()=>{
-                this.scroller.scrollToIndex(0,false,ScrollAlign.AUTO)
+              .onClick(() => {
+                this.scroller.scrollToIndex(0, false, ScrollAlign.AUTO)
               })
           }
         }
 
-        Button('visibility='+ this.visibe)
+        Button('visibility=' + this.visibe)
           .id('List_scrollToIndex3_visibility')
-          .onClick(()=>{
+          .onClick(() => {
             this.visibe = Visibility.Visible
           })
 
         Button('scrollBy(0,200)')
           .id('List_scrollToIndex3_scrollBy')
-          .onClick(()=>{
-            this.scroller.scrollBy(0,200)
+          .onClick(() => {
+            this.scroller.scrollBy(0, 200)
           })
       }
 

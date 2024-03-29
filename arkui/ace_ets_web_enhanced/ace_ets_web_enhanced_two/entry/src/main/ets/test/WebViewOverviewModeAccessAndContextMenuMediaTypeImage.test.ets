@@ -28,13 +28,13 @@ export default function WebViewOverviewModeAccessAndContextMenuMediaTypeImage() 
         router.clear();
         let pages = router.getState();
         console.info("get WebViewOverviewModeAccessAndContextMenuMediaTypeImage state success "
-        + JSON.stringify(pages));
+          + JSON.stringify(pages));
         if (!("webTwo" == pages.name)) {
           console.info("get webTwo state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push WebViewOverviewModeAccessAndContextMenuMediaTypeImage page success "
-          + JSON.stringify(result));
+            + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push WebViewOverviewModeAccessAndContextMenuMediaTypeImage page error: " + err);

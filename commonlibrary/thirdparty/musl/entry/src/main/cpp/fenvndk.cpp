@@ -149,29 +149,29 @@ static napi_value FeClearExcept(napi_env env, napi_callback_info info)
     int backParam, list;
     napi_get_value_int32(env, args[0], &list);
     switch (list) {
-        case PARAM_0:
-            backParam = feclearexcept(list);
-            break;
-        case PARAM_1:
-            backParam = feclearexcept(list);
-            break;
-        case PARAM_2:
-            backParam = feclearexcept(list);
-            break;
-        case PARAM_4:
-            backParam = feclearexcept(list);
-            break;
-        case PARAM_8:
-            backParam = feclearexcept(list);
-            break;
-        case PARAM_16:
-            backParam = feclearexcept(list);
-            break;
-        case MPARAM_1:
-            backParam = feclearexcept(list);
-            break;
-        default:
-            backParam = feclearexcept(list);
+    case PARAM_0:
+        backParam = feclearexcept(list);
+        break;
+    case PARAM_1:
+        backParam = feclearexcept(list);
+        break;
+    case PARAM_2:
+        backParam = feclearexcept(list);
+        break;
+    case PARAM_4:
+        backParam = feclearexcept(list);
+        break;
+    case PARAM_8:
+        backParam = feclearexcept(list);
+        break;
+    case PARAM_16:
+        backParam = feclearexcept(list);
+        break;
+    case MPARAM_1:
+        backParam = feclearexcept(list);
+        break;
+    default:
+        backParam = feclearexcept(list);
     }
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);

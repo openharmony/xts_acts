@@ -79,6 +79,37 @@
           "startWindowBackground": "$color:white",
           "visible": true,
           "launchType": "singleton"
+        },
+        {
+          "name": "WindowStageOneAbility",
+          "srcEntry": "./ets/WindowStageAbility/WindowStageOneAbility.ets",
+          "description": "$string:MainAbility_desc",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "exported": true,
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white"
+        },
+        {
+          "name": "WindowStageTwoAbility",
+          "srcEntry": "./ets/WindowStageAbility/WindowStageTwoAbility.ets",
+          "description": "$string:MainAbility_desc",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "exported": true,
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white",
+          "launchType": "singleton"
+        },
+        {
+          "name": "WindowStageThreeAbility",
+          "srcEntry": "./ets/WindowStageAbility/WindowStageThreeAbility.ets",
+          "description": "$string:MainAbility_desc",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "exported": true,
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white"
         }
       ],
       "extensionAbilities": [

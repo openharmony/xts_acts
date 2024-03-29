@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gestureParallelJsunit() {
-  describe('gestureParallelTest', function () {
-    beforeEach(async function (done) {
+  describe('gestureParallelTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/gesture',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gesture',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function gestureParallelJsunit() {
         console.info("get gesture state success " + JSON.stringify(pages));
         if (!("gesture" == pages.name)) {
           console.info("get gesture state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push gesture page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function gestureParallelJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("gestureParallel after each called");
     });
@@ -50,15 +50,14 @@ export default function gestureParallelJsunit() {
      * @tc.name         testgestureParallel0001
      * @tc.desic         acegestureParallelEtsTest0001
      */
-    it('testgestureParallel0001', 0, async function (done) {
+    it('testgestureParallel0001', 0, async (done: Function) => {
       console.info('gestureParallel testgestureParallel0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ParallelText');
+      let strJson: string = getInspectorByKey('ParallelText');
       console.info("[testgestureParallel0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("320.00vp");
-      console.info("[testgestureParallel0001] width value :" + obj.$attrs.width);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("320.00vp");
+      console.info("[testgestureParallel0001] width value :" + JSON.parse(strJson).$attrs.width);
       done();
     });
   })

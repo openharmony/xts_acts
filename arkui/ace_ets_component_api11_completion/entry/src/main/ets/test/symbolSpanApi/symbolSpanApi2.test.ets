@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from "../../MainAbility/common/Common";
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function symbolSpanApi2Test() {
-  describe('symbolSpanApi2Test', function () {
-    beforeEach(async function (done) {
+  describe('symbolSpanApi2Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("symbolSpanApi2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/symbolSpanApi/symbolspan',
       }
       try {
@@ -40,52 +53,48 @@ export default function symbolSpanApi2Test() {
       console.info("symbolSpanApi2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("symbolSpanApi2 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_symbolSpanApi2Test_0100
-     * @tc.name      testSymbolSpan
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_symbolSpanApi2Test_0100
+     * @tc.name testSymbolSpan
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('symbolSpanApi2Test_0100', 0, async function (done) {
+    it('symbolSpanApi2Test_0100', 0, async (done: Function) => {
       console.info('[symbolSpanApi2Test_0100] START');
       await CommonFunc.sleep(2000);
 
       let symbolSpanApi = getInspectorByKey('singleSym');
       console.info("[symbolSpanApi2Test_0100]  " + JSON.parse(symbolSpanApi))
-      let Obj1 = JSON.parse(symbolSpanApi);
-      expect(Obj1.$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.SINGLE');
+      expect(JSON.parse(symbolSpanApi).$attrs.renderingStrategy).assertEqual('SymbolRenderingStrategy.SINGLE');
 
       console.info('[testRichEditor_0100] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_lifeCycleTest_0200
-     * @tc.name      test lifeCycleTest_0200
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_lifeCycleTest_0200
+     * @tc.name test lifeCycleTest_0200
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('lifeCycleTest_0200', 0, async function (done) {
+    it('lifeCycleTest_0200', 0, async (done: Function) => {
       console.info('[symbolSpanApi2Test_0200] START');
       await CommonFunc.sleep(2000);
 
       let obj2 = getInspectorByKey('lifecycle');
       console.info("[symbolSpanApi2Test_0200]  " + JSON.parse(obj2))
-      let Obj1 = JSON.parse(obj2);
-      expect(Obj1.$attrs.content).assertEqual('life test');
-
+      expect(JSON.parse(obj2).$attrs.content).assertEqual('life test');
       console.info('[testRichEditor_0100] END');
       done();
     });
-
   })
 }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,20 +16,20 @@ import events_emitter from '@ohos.events.emitter';
 
 class BlankModifier implements AttributeModifier<BlankAttribute> {
   _testType: number = 0
+
   applyNormalAttribute(instance: BlankAttribute): void {
     console.info(`Blank page Test Type ${this._testType}`)
-    if(this._testType === 0)
-    {
+    if (this._testType === 0) {
       console.info(`Blank init`)
       instance.visibility(Visibility.Visible)
       //instance.color(Color.Black)
-    } else if(this._testType === 1){
+    } else if (this._testType === 1) {
       console.info(`Blank.visibility=>Visibility.Hidden`)
       instance.visibility(Visibility.Hidden)
-    } else if(this._testType === 2){
+    } else if (this._testType === 2) {
       console.info(`Blank.visibility=>Visibility.None`)
       instance.visibility(Visibility.None)
-    } else if(this._testType === 3){
+    } else if (this._testType === 3) {
       console.info(`Blank.color=>Color.Red`)
       instance.color(Color.Red)
     }
@@ -39,14 +38,13 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 
 @Entry
 @Component
-struct BlankExample {  
+struct BlankExample {
   @State _visibilityBlankModifier: BlankModifier = new BlankModifier()
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Blank page state change called:" + JSON.stringify(eventData));
       if (eventData.data.typeValue != null) {
-        this._visibilityBlankModifier._testType = eventData.data.typeValue;        
+        this._visibilityBlankModifier._testType = eventData.data.typeValue;
       } else {
         this._visibilityBlankModifier._testType = 0
       }
@@ -56,7 +54,7 @@ struct BlankExample {
 
   onPageShow() {
     console.info('Blank page1 show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 69,
       priority: events_emitter.EventPriority.LOW
     }

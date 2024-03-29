@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function AttributeModifierDemoAPI01Jsunit() {
-  describe('AttributeModifierDemoAPI01Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('AttributeModifierDemoAPI01Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("AttributeModifierDemoAPI01Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/AttributeModifierDemoAPI01',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/AttributeModifierDemoAPI01',
       }
       try {
         router.clear();
@@ -40,7 +53,7 @@ export default function AttributeModifierDemoAPI01Jsunit() {
       }
       done();
     });
-    it('AttributeModifierDemoAPI01Jsunit_0100', 0, async function (done) {
+    it('AttributeModifierDemoAPI01Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('AttributeModifierDemoAPI01Jsunit_0100 START');
 
@@ -55,15 +68,13 @@ export default function AttributeModifierDemoAPI01Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strcontent = getInspectorByKey('AttributeModifierDemoAPI01Button');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj is: ' + obj.$attrs);
-      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj.backgroundColor is: ' + obj.$attrs.backgroundColor);
-      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj.width is: ' + obj.$attrs.width);
-      expect(obj.$attrs.width).assertEqual('300.00px');
+      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj is: ' + JSON.parse(strcontent).$attrs);
+      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj.backgroundColor is: ' + JSON.parse(strcontent).$attrs.backgroundColor);
+      console.info('AttributeModifierDemoAPI01Jsunit_0100 component obj.width is: ' + JSON.parse(strcontent).$attrs.width);
+      expect(JSON.parse(strcontent).$attrs.width).assertEqual('300.00px');
       console.info('AttributeModifierDemoAPI01Jsunit_0100 END')
       done();
     });
-
   })
 }

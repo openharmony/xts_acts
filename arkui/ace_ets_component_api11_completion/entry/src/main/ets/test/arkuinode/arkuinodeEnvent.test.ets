@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function arkuiNodeEventTest() {
-  describe('arkuiNodeEventTest', function () {
-    beforeEach(async function (done) {
+  describe('arkuiNodeEventTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("arkuiNodeEventTest beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function arkuiNodeEventTest() {
         console.info("get arkuiNodeEventTest state pages:" + JSON.stringify(pages));
         if (!("arkuinodeEvent" == pages.name)) {
           console.info("get arkuinodeEvent pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/arkuinode/arkuinodeEvent"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/arkuinode/arkuinodeEvent"
+          })
           await CommonFunc.sleep(2000);
           console.info("push arkuiNodeEventTest page result:" + JSON.stringify(result));
         }
@@ -37,20 +52,20 @@ export default function arkuiNodeEventTest() {
       console.info("arkuiNodeEventTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("arkuiNodeEventTest after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_arkuinodeEvent0100
-     * @tc.name      testarkuinodeevent_0100
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_arkuinodeEvent0100
+     * @tc.name testarkuinodeevent_0100
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('arkuinodeevent_0100', 0, async function (done) {
+    it('arkuinodeevent_0100', 0, async (done: Function) => {
       console.info('[arkuinodeevent_0100] START');
       await CommonFunc.sleep(2000);
       // touch
@@ -61,22 +76,20 @@ export default function arkuiNodeEventTest() {
       await CommonFunc.sleep(1000);
 
       let json = getInspectorByKey('nodeeventButton');
-      let Obj1 = JSON.parse(json);
       console.info("arkuinodeevent_0100 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.label).assertEqual('button this is a string');
-
+      expect(JSON.parse(json).$attrs.label).assertEqual('button this is a string');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_arkuinodeEvent0200
-     * @tc.name      testarkuinodeevent_0200
-     * @tc.desc      test postTouchEvent
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_arkuinodeEvent0200
+     * @tc.name testarkuinodeevent_0200
+     * @tc.desc test postTouchEvent
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('arkuinodeevent_0200', 0, async function (done) {
+    it('arkuinodeevent_0200', 0, async (done: Function) => {
       console.info('[arkuinodeevent_0200] START');
       await CommonFunc.sleep(2000);
       // touch
@@ -87,12 +100,9 @@ export default function arkuiNodeEventTest() {
       await CommonFunc.sleep(1000);
 
       let json = getInspectorByKey('nodeeventButton');
-      let Obj1 = JSON.parse(json);
       console.info("arkuinodeevent_0100 json info " + JSON.stringify(json));
-      expect(Obj1.$attrs.label).assertEqual('button this is a string');
-
+      expect(JSON.parse(json).$attrs.label).assertEqual('button this is a string');
       done();
     });
-
   })
 }

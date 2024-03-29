@@ -12,35 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../common/MessageManager';
+
 @Entry
 @Component
 struct SwiperVerticalTest {
-  @State testVertical: boolean = false
-  messageManager:MessageManager = new MessageManager()
+  @State testVertical: boolean = false;
+  messageManager: MessageManager<boolean> = new MessageManager();
+
   onPageShow() {
     console.info('swiperVertical onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<boolean> = (message: Message<boolean>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'swiperVertical') {
         this.testVertical = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
   build() {
     Column({ space: 5 }) {
       Swiper() {
-        Column(){Text ('1')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey01')
-        Column(){Text ('2')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey02')
-        Column(){Text ('3')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey03')
-        Column(){Text ('4')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey04')
-        Column(){Text ('5')}.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey05')
-        Column(){Text ('6')}.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey06')
+        Column() {
+          Text('1')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey01')
+
+        Column() {
+          Text('2')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey02')
+
+        Column() {
+          Text('3')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey03')
+
+        Column() {
+          Text('4')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey04')
+
+        Column() {
+          Text('5')
+        }.width('100%').height('100%').backgroundColor(0xF5DEB3).key('verticalkey05')
+
+        Column() {
+          Text('6')
+        }.width('100%').height('100%').backgroundColor(0xD2B48C).key('verticalkey06')
       }
       .key('verticalkey')
       .height(300)

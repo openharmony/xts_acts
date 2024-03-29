@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +19,21 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ClipAndMaskExample {
   @State isMaskRect: boolean = true;
-  @State isClipCircle:boolean = true;
-  @State maskType: CommonShapeMethod= new Rect({ width: 280, height: 280 });
-  @State clipType: CommonShapeMethod= new Circle({ width: 280, height: 280 });
-  polygonInterface:PolygonInterface = Polygon
-  circle : CircleInterface = Circle
+  @State isClipCircle: boolean = true;
+  @State maskType: CommonShapeMethod = new Rect({ width: 280, height: 280 });
+  @State clipType: CommonShapeMethod = new Circle({ width: 280, height: 280 });
+  polygonInterface: PolygonInterface = Polygon
+  circle: CircleInterface = Circle
   line: LineInterface = Line
-  ellsple :EllipseInterface = Ellipse
-  pathInterface : PathInterface = Path
-  shape:ShapeInterface = Shape
+  ellsple: EllipseInterface = Ellipse
+  pathInterface: PathInterface = Path
+  shape: ShapeInterface = Shape
   rect: RectInterface = Rect
-  polylineInterface:PolylineInterface = Polyline
-
+  polylineInterface: PolylineInterface = Polyline
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("shapeClipping page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.maskValue != null) {
+      if (eventData.data.maskValue != null) {
         this.maskType = new Circle({ width: 280, height: 280 });
       }
     }
@@ -43,7 +41,7 @@ struct ClipAndMaskExample {
   private shapeChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("shapeClipping page shape change called:" + JSON.stringify(eventData));
-      if(eventData.data.clipValue != null) {
+      if (eventData.data.clipValue != null) {
         this.clipType = new Rect({ width: 280, height: 280 });
       }
     }
@@ -51,7 +49,7 @@ struct ClipAndMaskExample {
 
   onPageShow() {
     console.info('shapeClipping page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 32,
       priority: events_emitter.EventPriority.LOW
     }
@@ -73,16 +71,16 @@ struct ClipAndMaskExample {
         .fontColor(0xCCCCCC)
 
       Image('/images/clip.png')
-      .clip(this.clipType)
-      .clip(this.shape_Type)
-      .clip(this.lengthType)
-      .clip(this.pathType)
-      .clip(this.shape_2_Type)
-      .clip(this.shape_3_Type)
-      .clip(this.shape_4_Type)
-      .width('500px')
-      .height('280px')
-      .key('image_clip')
+        .clip(this.clipType)
+        .clip(this.shape_Type)
+        .clip(this.lengthType)
+        .clip(this.pathType)
+        .clip(this.shape_2_Type)
+        .clip(this.shape_3_Type)
+        .clip(this.shape_4_Type)
+        .width('500px')
+        .height('280px')
+        .key('image_clip')
 
 
       Row() {

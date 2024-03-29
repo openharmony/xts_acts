@@ -12,15 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
-struct List_ListInitialIndex1{
+struct List_ListInitialIndex1 {
   @State arr: String[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   @State testInitialIndex: number = 2;
   @State testLanes: number = 1;
-  build(){
-    Column({space:30}){
-      List({space:20, initialIndex:this.testInitialIndex}){
+
+  build() {
+    Column({ space: 30 }) {
+      List({ space: 20, initialIndex: this.testInitialIndex }) {
         ForEach(this.arr, (item: string) => {
           ListItem() {
             Text('' + item)
@@ -28,8 +30,8 @@ struct List_ListInitialIndex1{
           }
           .width(100)
           .height(100)
-          .key('List_ListInitialIndex1_'+ item)
-        }, item => item)
+          .key('List_ListInitialIndex1_' + item)
+        }, (item: string) => item)
       }
       .cachedCount(0)
       .width(300)

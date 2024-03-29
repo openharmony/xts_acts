@@ -21,6 +21,7 @@ class BasicDataSource implements IDataSource {
   public totalCount(): number {
     return 0
   }
+
   public getData(index: number): any {
     return undefined
   }
@@ -31,6 +32,7 @@ class BasicDataSource implements IDataSource {
       this.listeners.push(listener)
     }
   }
+
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
@@ -44,21 +46,25 @@ class BasicDataSource implements IDataSource {
       listener.onDataReloaded()
     })
   }
+
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index)
     })
   }
+
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index)
     })
   }
+
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index)
     })
   }
+
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to)
@@ -72,16 +78,17 @@ class MyDataSource extends BasicDataSource {
   public totalCount(): number {
     return this.dataArray.length
   }
+
   public getData(index: number): any {
     return this.dataArray[index]
   }
 
   public addData(index: number, data: string): void {
     this.dataArray.splice(index, 0, data)
-    var datatest=this.dataArray.length
-    console.info('lenghth = '+ datatest)
-    for(var i = 0; i<datatest; i++){
-      console.info('after adding: '+ this.dataArray[i])
+    let datatest = this.dataArray.length
+    console.info('lenghth = ' + datatest)
+    for (let i = 0; i < datatest; i++) {
+      console.info('after adding: ' + this.dataArray[i])
     }
     this.notifyDataAdd(index)
     this.notifyDataChange(index)
@@ -90,55 +97,55 @@ class MyDataSource extends BasicDataSource {
   public pushData(data: string): void {
     this.dataArray.push(data)
     this.notifyDataAdd(this.dataArray.length - 1)
-    var datatest=this.dataArray.length
-    console.info('lenghth = '+ datatest)
-    for(var i = 0; i<datatest; i++){
-      console.info('after adding: '+ this.dataArray[i])
+    let datatest = this.dataArray.length
+    console.info('lenghth = ' + datatest)
+    for (let i = 0; i < datatest; i++) {
+      console.info('after adding: ' + this.dataArray[i])
     }
   }
 
-  public moveData(index1:number,index2:number):void{
-    if(index1 < index2){
-      var temp = this.dataArray[index1]
-      for(var i = index1; i  < index2 ;i++){
+  public moveData(index1: number, index2: number): void {
+    if (index1 < index2) {
+      let temp = this.dataArray[index1]
+      for (let i = index1; i < index2; i++) {
         this.dataArray[i] = this.dataArray[i+1]
       }
       this.dataArray[index2] = temp
 
-      for(var j = 0 ; j < this.dataArray.length ; j++){
+      for (let j = 0; j < this.dataArray.length; j++) {
         console.info('after moving :' + this.dataArray[j])
       }
     }
-    else if (index1 > index2){
-      var temp = this.dataArray[index1]
-      for(var i = index1 ; i > index2; i--){
+    else if (index1 > index2) {
+      let temp = this.dataArray[index1]
+      for (let i = index1; i > index2; i--) {
         this.dataArray[i] = this.dataArray[i-1]
       }
       this.dataArray[index2] = temp
 
-      for(var j = 0 ; j < this.dataArray.length ; j++){
+      for (let j = 0; j < this.dataArray.length; j++) {
         console.info('after moving :' + this.dataArray[j])
       }
     }
-    this.notifyDataMove(index1,index2)
+    this.notifyDataMove(index1, index2)
   }
 
   public popData(): void {
     this.dataArray.pop()
     this.notifyDataDelete(this.dataArray.length)
-    var datatest=this.dataArray.length
-    console.info('lenghth = '+ datatest)
-    for(var i = 0; i<datatest; i++){
-      console.info('after deleting: '+ this.dataArray[i])
+    let datatest = this.dataArray.length
+    console.info('lenghth = ' + datatest)
+    for (let i = 0; i < datatest; i++) {
+      console.info('after deleting: ' + this.dataArray[i])
     }
   }
 
   public changeData(index: number): void {
     this.dataArray[index] = 'apple'
-    var datatest=this.dataArray.length
-    console.info('lenghth = '+ datatest)
-    for(var i = 0; i<datatest; i++){
-      console.info('after changing: '+ this.dataArray[i])
+    let datatest = this.dataArray.length
+    console.info('lenghth = ' + datatest)
+    for (let i = 0; i < datatest; i++) {
+      console.info('after changing: ' + this.dataArray[i])
     }
     this.notifyDataChange(index)
   }
@@ -151,10 +158,10 @@ const TAG = 'ets_apiLack_add';
 struct LazyForEachOnDataAdd {
   private data: MyDataSource = new MyDataSource()
   private scroller: Scroller = new Scroller()
-  @State result_101:boolean = true
-  @State result_102:boolean = true
-  @State result_103:boolean = true
-  @State result_104:boolean = true
+  @State result_101: boolean = true
+  @State result_102: boolean = true
+  @State result_103: boolean = true
+  @State result_104: boolean = true
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear LazyForEachOnDataAdd start`)
@@ -199,21 +206,21 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemOne")
                 .onClick(() => {
-                  try{
+                  try {
                     this.data.pushData('/path/image' + this.data.totalCount())
                     console.info("this.data.totalCount() is :" + this.data.totalCount())
-                  }catch(err){
+                  } catch (err) {
                     this.result_101 = false
                     console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
                   }
 
                   try {
-                    var backData1 = {
+                    let backData1: events_emitter.EventData = {
                       data: {
                         "result1": this.result_101,
                       }
                     }
-                    let backEvent1 = {
+                    let backEvent1: events_emitter.InnerEvent = {
                       eventId: 60212,
                       priority: events_emitter.EventPriority.LOW
                     }
@@ -223,7 +230,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
                   }
                 })
-              }, item => item)
+              }, (item: string) => item)
             }
 
             Text("lazyForEach-OnDataMove")
@@ -239,7 +246,7 @@ struct LazyForEachOnDataAdd {
               .textAlign(TextAlign.Center)
               .textOverflow({ overflow: TextOverflow.None })
               .key("onDataMoveText")
-            
+
             List({ space: 3 }) {
               LazyForEach(this.data, (item: string) => {
                 ListItem() {
@@ -250,20 +257,20 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemTwo")
                 .onClick(() => {
-                  try{
+                  try {
                     this.data.moveData(3, 1)
-                  }catch(err){
+                  } catch (err) {
                     this.result_102 = false
                     console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
                   }
 
                   try {
-                    var backData2 = {
+                    let backData2: events_emitter.EventData = {
                       data: {
                         "result2": this.result_102,
                       }
                     }
-                    let backEvent2 = {
+                    let backEvent2: events_emitter.InnerEvent = {
                       eventId: 60213,
                       priority: events_emitter.EventPriority.LOW
                     }
@@ -273,7 +280,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
                   }
                 })
-              }, item => item)
+              }, (item: string) => item)
             }
 
             Text("lazyForEach-OnDataDelete")
@@ -300,20 +307,20 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemThree")
                 .onClick(() => {
-                  try{
+                  try {
                     this.data.popData()
-                  }catch(err){
+                  } catch (err) {
                     this.result_103 = false
                     console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify(err.message))
                   }
 
                   try {
-                    var backData3 = {
+                    let backData3: events_emitter.EventData = {
                       data: {
                         "result3": this.result_103,
                       }
                     }
-                    let backEvent3 = {
+                    let backEvent3: events_emitter.InnerEvent = {
                       eventId: 60214,
                       priority: events_emitter.EventPriority.LOW
                     }
@@ -324,7 +331,7 @@ struct LazyForEachOnDataAdd {
                   }
 
                 })
-              }, item => item)
+              }, (item: string) => item)
             }
 
             Text("lazyForEach-OnDataChange")
@@ -351,20 +358,20 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemFour")
                 .onClick(() => {
-                  try{
+                  try {
                     this.data.changeData(2)
-                  }catch(err){
+                  } catch (err) {
                     this.result_104 = false
                     console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
                   }
 
                   try {
-                    var backData4 = {
+                    let backData4: events_emitter.EventData = {
                       data: {
                         "result4": this.result_104,
                       }
                     }
-                    let backEvent4 = {
+                    let backEvent4: events_emitter.InnerEvent = {
                       eventId: 60215,
                       priority: events_emitter.EventPriority.LOW
                     }
@@ -374,7 +381,7 @@ struct LazyForEachOnDataAdd {
                     console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
                   }
                 })
-              }, item => item)
+              }, (item: string) => item)
             }
           }.width("100%").height("100%")
         }

@@ -14,16 +14,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "PushKit",
-            "pre-push": [
-                "mount -o rw,remount /",
-                "mkdir -p /data/app/el2/100/base/com.acts.theme.wallpaperauthoritytest/haps"
-            ],
-            "push": [
-                "./resource/wallpaper/wp.png ->/data/app/el2/100/base/com.acts.theme.wallpaperauthoritytest/haps/wp.png"
-            ]
         }
     ]
 }

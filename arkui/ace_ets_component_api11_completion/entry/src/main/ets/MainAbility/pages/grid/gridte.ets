@@ -17,30 +17,31 @@
 @Entry
 @Component
 struct GridExampleindex {
-  @State numbers: String[] = ['0', '1','2','3','4','5']
-
+  @State numbers: String[] = ['0', '1', '2', '3', '4', '5'];
   layoutOptions3: GridLayoutOptions = {
     regularSize: [1, 1],
     onGetRectByIndex: (index: number) => {
       if (index == 0)
         return [0, 0, 1, 1]
-      else if(index==1)
+      else if (index == 1)
         return [0, 1, 2, 2]
-      else if(index==2)
-        return [0 ,3 ,3 ,3]
-      else if(index==3)
+      else if (index == 2)
+        return [0, 3, 3, 3]
+      else if (index == 3)
         return [3, 0, 3, 3]
-      else if(index==4)
+      else if (index == 4)
         return [4, 3, 2, 2]
       else
         return [5, 5, 1, 1]
     }
   }
 
-
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('scroll')
+        .fontColor(0xCCCCCC)
+        .fontSize(9)
+        .width('90%')
 
       Grid(undefined, this.layoutOptions3) {
         ForEach(this.numbers, (day: string) => {
@@ -49,8 +50,8 @@ struct GridExampleindex {
               .fontSize(16)
               .backgroundColor(0xF9CF93)
               .width('100%')
-              .height("100%").key("index"+day)
-
+              .height("100%")
+              .key("index" + day)
               .textAlign(TextAlign.Center)
           }
           .height("100%")
@@ -65,7 +66,8 @@ struct GridExampleindex {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height(300)
-
-    }.width('100%').margin({ top: 5 })
+    }
+    .width('100%')
+    .margin({ top: 5 })
   }
 }

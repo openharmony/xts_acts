@@ -12,21 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
 
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/common/Common';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 
 export default function onGetIrregular2Jsunit() {
 
-  describe('onGetIrregular2Jsunit', function () {
+  describe('onGetIrregular2Jsunit', () => {
 
 
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("onGetIrregular2Jsunit beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Grid/Grid_iiregular/onGetIrregular2",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Grid/Grid_iiregular/onGetIrregular2",
       }
       try {
         router.clear();
@@ -34,7 +48,7 @@ export default function onGetIrregular2Jsunit() {
         console.info("get onGetIrregular2Jsunit state pages: " + JSON.stringify(pages));
         if (!("onGetIrregular2" == pages.name)) {
           console.info("get onGetIrregular2Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onGetIrregular2Jsunit page result: " + JSON.stringify(result));
         }
@@ -52,14 +66,14 @@ export default function onGetIrregular2Jsunit() {
     * @tc.desc  : Set onGetIrregularSizeByIndex[1,2], and the custom size of the obtained index setting is laid out in 1 row and 2 columns
     * @tc.level : Level 2
     */
-    it('onGetIrregular2Jsunit_0001', 0, async function (done) {
+    it('onGetIrregular2Jsunit_0001', 0, async (done: Function) => {
       console.info('[onGetIrregular2Jsunit_0000] START');
       await CommonFunc.sleep(1000);
-      let Grid = CommonFunc.getComponentRect('GridItem2');
+      let Grid: RectValue = CommonFunc.getComponentRect('GridItem2');
 
-      let GridItem0 = CommonFunc.getComponentRect('onGetText0');
-      let GridItem1 = CommonFunc.getComponentRect('onGetText1');
-      let GridItem3 = CommonFunc.getComponentRect('onGetText3');
+      let GridItem0: RectValue = CommonFunc.getComponentRect('onGetText0');
+      let GridItem1: RectValue = CommonFunc.getComponentRect('onGetText1');
+      let GridItem3: RectValue = CommonFunc.getComponentRect('onGetText3');
 
 
       await CommonFunc.sleep(1000);

@@ -17,6 +17,7 @@ group("esmodule") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "esmodule_dynamicimport:ActsHspDemoTest",
       "esmodule_entry:ActsEsmoduleEntryTest",
       "esmodule_ohostest:ActsEsmoduleOhostestTest",
       "esmodule_ohostestlib:ActsEsmoduleOhostestLib",

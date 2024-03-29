@@ -21,27 +21,28 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct ResponseType {
-
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear ResponseType start`)
+    Log.showInfo(TAG, `aboutToAppear ResponseType start`);
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear ResponseType end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear ResponseType end`);
   }
 
-  @Builder ContextMenuBuilder() {
-  Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-    Text('text3')
-      .fontSize(20)
-      .width(100)
-      .height(50)
-      .textAlign(TextAlign.Center)
-    Divider().height(10)
+  @Builder
+  ContextMenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('text3')
+        .fontSize(20)
+        .width(100)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+    }
   }
-}
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text("responseType-RightClick")
         .width(100)
         .height(70)
@@ -81,7 +82,8 @@ struct ResponseType {
       .width('100%')
       .margin({ top: 5 })
       .bindContextMenu(this.MenuBuilder, ResponseType.RightClick)
-
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }

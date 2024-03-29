@@ -18,8 +18,10 @@
 #include "cstdio"
 #include "cstdlib"
 #include "napi/native_api.h"
+#include <cerrno>
 #include <clocale>
 #include <cstdarg>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -27,11 +29,6 @@
 #include <js_native_api.h>
 #include <linux/elf-fdpic.h>
 #include <node_api.h>
-#include "napi/native_api.h"
-#include <cerrno>
-#include <clocale>
-#include <cstdio>
-#include <cwchar>
 #include <unistd.h>
 
 #define FAIL (-1)
@@ -96,6 +93,7 @@ static napi_value Vfwprintf(napi_env env, napi_callback_info info)
     } else {
         napi_create_int32(env, PARAM_0, &result);
     }
+    fclose(file);
     return result;
 }
 
@@ -1679,7 +1677,7 @@ static napi_value Fwide(napi_env env, napi_callback_info info)
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
-
+    fclose(fp);
     return result;
 }
 

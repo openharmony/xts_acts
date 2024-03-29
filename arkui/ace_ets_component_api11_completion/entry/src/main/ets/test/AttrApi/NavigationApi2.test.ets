@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function NavigationApi2() {
-  describe('NavigationApi2', function () {
-    beforeEach(async function (done) {
+  describe('NavigationApi2', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationApi2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttrApi/NavigationApi2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttrApi/NavigationApi2',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function NavigationApi2() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("NavigationApi2 after each called");
     });
@@ -51,11 +51,11 @@ export default function NavigationApi2() {
      * @tc.desc        Navigation replacePath test
      * @tc.level       Level 2
      */
-    it('NavigationApi2_001', 0, async function (done) {
+    it('NavigationApi2_001', 0, async (done: Function) => {
       console.info('[NavigationApi2_001] START');
       await Utils.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await Utils.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('NavigationApi2_pushPath'));
       await btn1.click()
@@ -73,10 +73,9 @@ export default function NavigationApi2() {
       console.info("[NavigationApi2_001] btn3")
 
       let strJson = getInspectorByKey('NavigationApi2_text_Navigation');
-      let obj = JSON.parse(strJson);
       await Utils.sleep(1000);
-      console.info("[NavigationApi2_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('Navigation');
+      console.info("[NavigationApi2_001] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('Navigation');
 
       console.info('[NavigationApi2_001] END');
       done();

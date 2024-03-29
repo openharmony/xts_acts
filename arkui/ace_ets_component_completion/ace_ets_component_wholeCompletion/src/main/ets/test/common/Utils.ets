@@ -13,55 +13,43 @@
  * limitations under the License.
  */
 import componentRect from '@ohos.arkui.componentUtils'
+import RectValue from './Rect';
 
 
 export default class Utils {
+  static rect_width: number;
+  static rect_height: number;
+  static rect_localOffsetX: number;
+  static rect_localOffsetY: number;
+  static rect_windowOffsetX: number;
+  static rect_windowOffsetY: number;
+  static rect_screenOffsetX: number;
+  static rect_screenOffsetY: number;
+  static rect_value: RectValue;
 
-  static rect_width;
-  static rect_height;
+  static getComponentRect(key: string) {
+    let strJson: componentRect.ComponentInfo = componentRect.getRectangleById(key);
+    Utils.rect_width = strJson.size.width
+    Utils.rect_height = strJson.size.height
+    Utils.rect_localOffsetX = strJson.localOffset.x
+    Utils.rect_localOffsetY = strJson.localOffset.y
 
-  static rect_localOffsetX;
-  static rect_localOffsetY;
+    Utils.rect_windowOffsetX = strJson.windowOffset.x
+    Utils.rect_windowOffsetY = strJson.windowOffset.y
 
-  static rect_windowOffsetX;
-  static rect_windowOffsetY;
+    Utils.rect_screenOffsetX = strJson.screenOffset.x
+    Utils.rect_screenOffsetY = strJson.screenOffset.y
 
-  static rect_screenOffsetX;
-  static rect_screenOffsetY;
 
-//  static rect_matrix4X;
-//  static rect_matrix4Y;
-//  static rect_matrix4Z;
-
-  static rect_value;
-
-  static getComponentRect(key) {
-    let strJson = componentRect.getRectangleById(key);
-
-    this.rect_width = strJson.size.width
-    this.rect_height = strJson.size.height
-    this.rect_localOffsetX = strJson.localOffset.x
-    this.rect_localOffsetY = strJson.localOffset.y
-
-    this.rect_windowOffsetX = strJson.windowOffset.x
-    this.rect_windowOffsetY = strJson.windowOffset.y
-
-    this.rect_screenOffsetX = strJson.screenOffset.x
-    this.rect_screenOffsetY = strJson.screenOffset.y
-
-//    this.rect_matrix4X = strJson.matrix4.x
-//    this.rect_matrix4Y = strJson.matrix4.y
-//    this.rect_matrix4Z = strJson.matrix4.z
-
-    return this.rect_value = {
-      "width": this.rect_width, "height": this.rect_height,
-      "localOffsetX": this.rect_localOffsetX, "localOffsetY": this.rect_localOffsetY,
-      "windowOffsetX": this.rect_windowOffsetX, "windowOffsetY": this.rect_windowOffsetY,
-      "screenOffsetX": this.rect_screenOffsetX, "screenOffsetY": this.rect_screenOffsetX
-//    ,
-//      "matrix4X": this.rect_matrix4X, "matrix4Y": this.rect_matrix4Y,
-//      "matrix4Z": this.rect_matrix4Z
+    return Utils.rect_value = {
+      width: Utils.rect_width,
+      height: Utils.rect_height,
+      localOffsetX: Utils.rect_localOffsetX,
+      localOffsetY: Utils.rect_localOffsetY,
+      windowOffsetX: Utils.rect_windowOffsetX,
+      windowOffsetY: Utils.rect_windowOffsetY,
+      screenOffsetX: Utils.rect_screenOffsetX,
+      screenOffsetY: Utils.rect_screenOffsetX
     }
   }
-
 }

@@ -17,26 +17,30 @@
 #include <cerrno>
 #include <err.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 #define ERRON_0 0
+#define PARAM_0777 0777
 
 static napi_value Warn(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
-    open("/data/storage/el2/Fzl.txt", O_CREAT);
+    int fd = open("/data/storage/el2/Fzl.txt", O_CREAT, PARAM_0777);
     warn("error happen");
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
+    close(fd);
     return result;
 }
 
 static napi_value Warnx(napi_env env, napi_callback_info info)
 {
     errno = ERRON_0;
-    open("/data/storage/el2/Fzl.txt", O_CREAT);
+    int fd = open("/data/storage/el2/Fzl.txt", O_CREAT, PARAM_0777);
     warnx("error happen");
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
+    close(fd);
     return result;
 }
 

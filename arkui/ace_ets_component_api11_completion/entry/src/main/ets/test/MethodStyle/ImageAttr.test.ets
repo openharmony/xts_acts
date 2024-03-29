@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import CommonFunc from "../../MainAbility/common/Common";
 
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function ImageAttr() {
-  describe('ImageAttr', function () {
-    beforeEach(async function (done) {
+  describe('ImageAttr', () => {
+    beforeEach(async (done: Function) => {
       console.info("ImageAttr beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MethodStyle/ImageAttr',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MethodStyle/ImageAttr',
       }
       try {
         router.clear();
@@ -41,18 +41,18 @@ export default function ImageAttr() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ImageAttr after each called");
     });
 
     /**
-     * @tc.number      ImageAttr_001
-     * @tc.name        ImageAttr_001
-     * @tc.desc        Image test
-     * @tc.level       Level 2
+     * @tc.number ImageAttr_001
+     * @tc.name ImageAttr_001
+     * @tc.desc Image test
+     * @tc.level Level 2
      */
-    it('ImageAttr_001', 0, async function (done) {
+    it('ImageAttr_001', 0, async (done: Function) => {
       console.info('[ImageAttr_001] START');
 
       await CommonFunc.sleep(1000);
@@ -69,16 +69,14 @@ export default function ImageAttr() {
 
       let strJson1 = getInspectorByKey('top_test');
       await CommonFunc.sleep(200);
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('30');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('30');
 
 
       let strJson2 = getInspectorByKey('bottom_test');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      expect(obj2.$attrs.content).assertEqual('0');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
 
       console.info('[ImageAttr_001] END');
@@ -86,16 +84,13 @@ export default function ImageAttr() {
     });
 
 
-
-
-
     /**
-     * @tc.number      ImageAttr_002
-     * @tc.name        ImageAttr_002
-     * @tc.desc        Image test
-     * @tc.level       Level 2
+     * @tc.number ImageAttr_002
+     * @tc.name ImageAttr_002
+     * @tc.desc Image test
+     * @tc.level Level 2
      */
-    it('ImageAttr_002', 0, async function (done) {
+    it('ImageAttr_002', 0, async (done: Function) => {
       console.info('[ImageAttr_002] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -111,26 +106,17 @@ export default function ImageAttr() {
 
       let strJson3 = getInspectorByKey('left_test');
       await CommonFunc.sleep(200);
-      let obj3 = JSON.parse(strJson3);
       await CommonFunc.sleep(1000);
-      expect(obj3.$attrs.content).assertEqual('30');
-
+      expect(JSON.parse(strJson3).$attrs.content).assertEqual('30');
 
 
       let strJson4 = getInspectorByKey('right_test');
       await CommonFunc.sleep(200);
-      let obj4 = JSON.parse(strJson4);
       await CommonFunc.sleep(1000);
-      expect(obj4.$attrs.content).assertEqual('0');
-
+      expect(JSON.parse(strJson4).$attrs.content).assertEqual('0');
       console.info('[ImageAttr_002] END');
       done();
     });
-
-
-
-
-
   })
 }
 

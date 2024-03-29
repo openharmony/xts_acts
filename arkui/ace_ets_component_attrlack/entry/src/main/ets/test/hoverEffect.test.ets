@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function hoverEffectJsunit() {
-  describe('hoverEffectTest', function () {
-    beforeEach(async function (done) {
+  describe('hoverEffectTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/hoverEffect',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/hoverEffect',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function hoverEffectJsunit() {
         console.info("get hoverEffect state success " + JSON.stringify(pages));
         if (!("hoverEffect" == pages.name)) {
           console.info("get hoverEffect state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push hoverEffect page success " + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function hoverEffectJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("hoverEffect after each called");
     });
@@ -51,15 +51,14 @@ export default function hoverEffectJsunit() {
      * @tc.name         testhoverEffect0001
      * @tc.desic         acehoverEffectEtsTest0001
      */
-    it('testhoverEffect0001', 0, async function (done) {
+    it('testhoverEffect0001', 0, async (done: Function) => {
       console.info('hoverEffect testhoverEffect0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('ScaleText');
+      let strJson: string = getInspectorByKey('ScaleText');
       console.info("[testhoverEffect0001] component hoverEffect strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
-      console.info("[testhoverEffect0001] hoverEffect value :" + obj.$attrs.hoverEffect);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
+      console.info("[testhoverEffect0001] hoverEffect value :" + JSON.parse(strJson).$attrs.hoverEffect);
       done();
     });
 
@@ -68,15 +67,14 @@ export default function hoverEffectJsunit() {
      * @tc.name         testhoverEffect0002
      * @tc.desic         acehoverEffectEtsTest0002
      */
-    it('testhoverEffect0002', 0, async function (done) {
+    it('testhoverEffect0002', 0, async (done: Function) => {
       console.info('hoverEffect testhoverEffect0002 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('HighlightText');
+      let strJson: string = getInspectorByKey('HighlightText');
       console.info("[testhoverEffect0002] component hoverEffect strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
-      console.info("[testhoverEffect0002] hoverEffect value :" + obj.$attrs.hoverEffect);
+      expect(JSON.parse(strJson).$type).assertEqual('Text');
+      expect(JSON.parse(strJson).$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
+      console.info("[testhoverEffect0002] hoverEffect value :" + JSON.parse(strJson).$attrs.hoverEffect);
       done();
     });
   })

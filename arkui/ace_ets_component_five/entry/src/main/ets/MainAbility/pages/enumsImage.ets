@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,18 +16,22 @@
 @Entry
 @Component
 struct BackgroundExample {
-
   build() {
     Column({ space: 5 }) {
-      Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Text('background image repeat along Y')
+        .fontSize(9)
+        .width('90%')
+        .fontColor(0xCCCCCC)
       Row()
-        .backgroundImage('/images/download.png',ImageRepeat.Y)
+        .backgroundImage('/images/download.png', ImageRepeat.Y)
         .backgroundImageSize(ImageSize.Auto)
         .width('90%')
         .height(500)
         .border({ width: 1 })
         .key('Image')
     }
-    .width('100%').height('100%').padding({ top: 5 })
+    .width('100%')
+    .height('100%')
+    .padding({ top: 5 })
   }
 }

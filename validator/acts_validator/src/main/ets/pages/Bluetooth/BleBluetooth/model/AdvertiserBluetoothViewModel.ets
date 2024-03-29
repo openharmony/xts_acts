@@ -164,9 +164,9 @@ export class AdvertiserBluetoothViewModel {
 
     if (this.mGattServer) {
       try {
-        let descriptors = [];
+        let descriptors: ble.BLEDescriptor[] = [];
         let arrayBuffer = ArrayBufferUtils.byteArray2ArrayBuffer([11]);
-        let descriptor = {
+        let descriptor: ble.BLEDescriptor = {
           serviceUuid: BleConstants.UUID_SERVICE_HEART_RATE,
           characteristicUuid: BleConstants.UUID_CHARACTERISTIC_HEART_RATE_MEASUREMENT,
           descriptorUuid: BleConstants.UUID_DESCRIPTOR_HEART_RATE,
@@ -174,13 +174,13 @@ export class AdvertiserBluetoothViewModel {
         };
         descriptors[0] = descriptor;
         let arrayBufferC = ArrayBufferUtils.byteArray2ArrayBuffer([0x00, heartRate]);
-        let characteristic = {
+        let characteristic: ble.BLECharacteristic = {
           serviceUuid: BleConstants.UUID_SERVICE_HEART_RATE,
           characteristicUuid: BleConstants.UUID_CHARACTERISTIC_HEART_RATE_MEASUREMENT,
           characteristicValue: arrayBufferC,
           descriptors: descriptors
         };
-        let notifyCharacteristic = {
+        let notifyCharacteristic: ble.NotifyCharacteristic = {
           serviceUuid: BleConstants.UUID_SERVICE_HEART_RATE,
           characteristicUuid: BleConstants.UUID_CHARACTERISTIC_HEART_RATE_MEASUREMENT,
           characteristicValue: characteristic.characteristicValue,

@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import inttypes from 'libinttypesndk.so'
 
 export default function inttypesNdkTest() {
   describe('MuslInttypesTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_INTTYPES_STRTOIMAX_0100
@@ -100,8 +105,8 @@ export default function inttypesNdkTest() {
      */
     it('testMuslInttypesImaxdiv001', 0, async (done: Function) => {
       let result: number = inttypes.imaxdiv(5, 2);
-      expect(result['quot']).assertEqual(3);
-      expect(result['rem']).assertEqual(20);
+      expect(result['quot']).assertEqual(2);
+      expect(result['rem']).assertEqual(1);
       done()
     });
     /**
@@ -114,8 +119,8 @@ export default function inttypesNdkTest() {
      */
     it('testMuslInttypesImaxdiv002', 0, async (done: Function) => {
       let result: number = inttypes.imaxdiv(4, 2);
-      expect(result['quot']).assertEqual(3);
-      expect(result['rem']).assertEqual(20);
+      expect(result['quot']).assertEqual(2);
+      expect(result['rem']).assertEqual(0);
       done()
     });
 

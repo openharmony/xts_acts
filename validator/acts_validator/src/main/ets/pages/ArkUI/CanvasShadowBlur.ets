@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import {CustomContainer} from '../common/CanvasCustomContainer2';
+import { CustomContainer } from '../common/CanvasCustomContainer2';
 import FirstDialog from '../model/FirstDialog';
+
 @Entry
 @Component
 struct SetCircle {
@@ -23,16 +24,19 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CanvasShadowBlur';
-  @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：阴影会随着拖动距离增大而变模糊，并显示模糊数值';
+  @State StepTips: string = '操作步骤：拖动滑块向右移动' + '\n' + '预期结果：阴影会随着拖动距离增大而变模糊，并显示模糊数值';
   @State Vue: boolean = false;
-  async aboutToAppear(){
-    await FirstDialog.ChooseDialog(this.StepTips,this.name);
+
+  async aboutToAppear() {
+    await FirstDialog.ChooseDialog(this.StepTips, this.name);
   }
-  @Builder specificNoParam() {
+
+  @Builder
+  specificNoParam() {
     Column() {
       Scroll() {
         Column() {
-          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
             Row() {
               Slider({
                 value: this.X,
@@ -52,31 +56,41 @@ struct SetCircle {
                   this.context.shadowColor = 'rgb(0,0,0)';
                   this.context.fillStyle = 'rgb(255,0,0)';
                   this.context.fillRect(150, 150, 100, 100);
-                  if ( value >= 100 ){
+                  if (value >= 100) {
                     this.Vue = true;
                   }
                 })
             }
           }.width('70%').height('25%')
+
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-            Text('阴影模糊: ' + this.X )
+            Text('阴影模糊: ' + this.X)
           }.width('100%').height('20%')
+
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
               .width('100%')
               .height('100%')
               .backgroundColor('#ffffffff')
-              .onReady(() =>{
+              .onReady(() => {
                 this.context.shadowBlur = 0;
                 this.context.shadowColor = 'rgb(0,0,0)';
                 this.context.fillStyle = 'rgb(255,0,0)';
                 this.context.fillRect(150, 150, 100, 100);
               })
-          }.width('100%').height('55%')
+          }
+          .width('100%')
+          .height('55%')
         }
-      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
-    }.width('100%').height('80%').backgroundColor(Color.White)
+      }
+      .scrollBarWidth('6vp')
+      .scrollBarColor('#cccccc')
+    }
+    .width('100%')
+    .height('80%')
+    .backgroundColor(Color.White)
   }
+
   build() {
     Column() {
       CustomContainer({
@@ -89,11 +103,15 @@ struct SetCircle {
         name: $name,
         Vue: $Vue,
       })
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/ArkUI/ArkUI_index',
+      url: 'pages/ArkUI/ArkUI_index',
     })
   }
 }

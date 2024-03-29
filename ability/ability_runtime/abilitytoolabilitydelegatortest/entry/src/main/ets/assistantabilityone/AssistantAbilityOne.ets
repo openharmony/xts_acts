@@ -32,7 +32,7 @@ export default class AssistantAbilityOne extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/AssistantOneIndex', (err, data) => {
+    windowStage.loadContent('assistantabilityone/pages/AssistantOneIndex', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
@@ -63,6 +63,10 @@ export default class AssistantAbilityOne extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    setTimeout(() => {
+      hilog.info(0x0000, 'testTag', 'assistantabilityone terminateSelf start.');
+      this.context.terminateSelf()
+    }, 500)
   }
 
   onBackground() {

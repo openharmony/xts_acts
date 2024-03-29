@@ -34,10 +34,10 @@ int do_plain_tests(int (*fn1)(void *arg), void *arg1, int (*fn2)(void *arg), voi
         return FAIL;
     }
     if (pid == PARAM_0) {
-        _exit(fn1(arg1));
+        _exit(PARAM_0);
     }
     if (fn2) {
-        ret = fn2(arg2); 
+        ret = fn2(arg2);
     }
     return ret;
 }
@@ -64,6 +64,9 @@ int wait4test(void *testarg)
     int options = PARAM_0;
     struct rusage ru;
     pid_t wait4ForPind = wait4(pid, &status, options, &ru);
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
     return wait4ForPind;
 }
 
@@ -99,6 +102,9 @@ int waitidtest(void *testarg)
     siginfo_t si = {};
     pid_t pid = fork();
     int result = waitid(P_PID, pid, &si, WEXITED);
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
     return result;
 }
 
@@ -117,6 +123,9 @@ int waitpidtest(void *testarg)
     int options = PARAM_0;
     pid_t pid = fork();
     pid_t waitpid_for_pind = waitpid(pid, &status, options);
+    if (pid == PARAM_0) {
+        _exit(PARAM_0);
+    }
     return waitpid_for_pind;
 }
 

@@ -13,28 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import Utils from './Utils';
 
-export default function AppStorageJsunit() {
-  describe('appStorage', function () {
 
-    beforeEach(async function (done) {
+export default function AppStorageJsunit() {
+  describe('appStorage', () => {
+
+    beforeEach(async (done: Function) => {
       console.info("appStorage beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/appStorage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/appStorage',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get button state pages: " + JSON.stringify(pages));
         if (!("appStorage" == pages.name)) {
           console.info("get appStorage state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push button page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push appStorage page error: " + err);
@@ -42,17 +41,17 @@ export default function AppStorageJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("appStorage after each called");
     })
 
     /**
-    * @tc.number  stateManagement_AppStorage_setOrCreate_0100
-    * @tc.name    stateManagement ContentStorage  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_AppStorage_setOrCreate_0100', 0, function (done) {
+     * @tc.number stateManagement_AppStorage_setOrCreate_0100
+     * @tc.name stateManagement ContentStorage  validation
+     * @tc.desc Function test
+     */
+    it('stateManagement_AppStorage_setOrCreate_0100', 0, (done: Function) => {
       console.info('[stateManagement_AppStorage_setOrCreate_0100] START');
       AppStorage.SetOrCreate<string>("key1", "value1");
       AppStorage.SetOrCreate<string>("key2", "value2");
@@ -60,7 +59,7 @@ export default function AppStorageJsunit() {
       let size = AppStorage.Size();
       console.info('[stateManagement_AppStorage_setOrCreate_0100] size =' + size);
       expect(size == 3)
-      .assertTrue;
+        .assertTrue;
       let key1 = AppStorage.Get<string>("key1");
       console.info('[stateManagement_AppStorage_setOrCreate_0100] key1 = ' + key1);
       console.info('[stateManagement_AppStorage_setOrCreate_0100] END');
@@ -68,22 +67,22 @@ export default function AppStorageJsunit() {
     });
 
     /**
-    * @tc.number  stateManagement_Storage_setOrCreate_0100
-    * @tc.name    stateManagement Storage  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_Storage_set_0100', 0, function (done) {
+     * @tc.number stateManagement_Storage_setOrCreate_0100
+     * @tc.name stateManagement Storage  validation
+     * @tc.desc Function test
+     */
+    it('stateManagement_Storage_set_0100', 0, (done: Function) => {
       done();
       return;
 
       console.info('[stateManagement_Storage_set_0100] START');
-      let storage = new Storage();
+      let storage: ESObject = new Storage();
       console.info('[stateManagement_Storage_set_0100] 0000');
       storage.set("key5", "value5");
       storage.set("key6", "value6");
       console.info('[stateManagement_Storage_set_0100] 1111');
-      let key5 = storage.get("key5");
-      let key6 = storage.get("key6");
+      let key5: string = storage.get("key5");
+      let key6: string = storage.get("key6");
       console.info('[stateManagement_Storage_set_0100] 2222' + key5);
       storage.delete("key5");
       key5 = storage.get("key5");
@@ -99,30 +98,27 @@ export default function AppStorageJsunit() {
 
 
     /**
-    * @tc.number  stateManagement_Environment_EnvProps_0100
-    * @tc.name    stateManagement Environment  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_Environment_EnvProps_0100', 0, function (done) {
+     * @tc.number stateManagement_Environment_EnvProps_0100
+     * @tc.name stateManagement Environment  validation
+     * @tc.desc Function test
+     */
+    it('stateManagement_Environment_EnvProps_0100', 0, (done: Function) => {
       console.info('[stateManagement_Environment_EnvProps_0100] START');
-      let props = {
-        "props": [{
-                    key: "colorMode", defaultValue: ColorMode.LIGHT
-                  }, {
-                    key: "layoutDirection", defaultValue: LayoutDirection.LTR
-                  }]
-      };
       try {
-        Environment.EnvProps(props);
-        let enable = AppStorage.Get("colorMode");
-        let enable1 = AppStorage.Get("layoutDirection");
+        Environment.EnvProps([{
+          key: "colorMode", defaultValue: ColorMode.LIGHT
+        }, {
+          key: "layoutDirection", defaultValue: LayoutDirection.LTR
+        }]);
+        let enable:number = AppStorage.Get("colorMode");
+        let enable1:number = AppStorage.Get("layoutDirection");
         expect(enable == ColorMode.LIGHT)
-        .assertTrue;
+          .assertTrue;
         expect(enable1 == LayoutDirection.RTL)
-        .assertTrue;
+          .assertTrue;
         console.info('[stateManagement_Environment_EnvProps_0100] enable = ' + enable);
         console.info('[stateManagement_Environment_EnvProps_0100] enable1 = ' + enable1);
-      } catch(err) {
+      } catch (err) {
         console.info('[stateManagement_Environment_EnvProps_0100] err = ' + err);
       }
       console.info('[stateManagement_Environment_EnvProps_0100] END');

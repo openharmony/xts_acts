@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +13,16 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function motionPathJsunit() {
-  describe('motionPathTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/motionPath',
+  describe('motionPathTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/motionPath',
       }
       try {
         router.clear();
@@ -31,7 +30,7 @@ export default function motionPathJsunit() {
         console.info("get motionPath state success " + JSON.stringify(pages));
         if (!("motionPath" == pages.name)) {
           console.info("get motionPath state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push motionPath page success " + JSON.stringify(result));
         }
@@ -41,30 +40,29 @@ export default function motionPathJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("motionPath after each called");
     });
 
-    it('motionPathTest_0100', 0, async function (done) {
+    it('motionPathTest_0100', 0, async (done: Function) => {
       console.info('motionPathTest_0100 START');
       let strJson = getInspectorByKey('motionPath');
       console.info("motionPathTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("motionPathTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Column');
+      console.info("motionPathTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Column');
       done();
     });
 
-    it('motionPathTest_0200', 0, async function (done) {
+    it('motionPathTest_0200', 0, async (done: Function) => {
       console.info('motionPathTest_0200 START');
-      let callback = (indexEventOne) => {
+      let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("motionPathTest_0200 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.fromX).assertEqual(0);
         expect(indexEventOne.data.toY).assertEqual(1);
         done();
       }
-      let indexEventOne = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 133,
         priority: events_emitter.EventPriority.LOW
       }
@@ -79,15 +77,15 @@ export default function motionPathJsunit() {
       done();
     });
 
-    it('motionPathTest_0300', 0, async function (done) {
+    it('motionPathTest_0300', 0, async (done: Function) => {
       console.info('motionPathTest_0300 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("motionPathTest_0300 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 132,
         priority: events_emitter.EventPriority.LOW
       }

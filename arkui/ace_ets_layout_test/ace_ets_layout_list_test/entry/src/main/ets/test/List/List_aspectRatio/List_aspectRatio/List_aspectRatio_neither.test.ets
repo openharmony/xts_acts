@@ -12,18 +12,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
 import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton
+} from '@ohos.UiTest';
+
 export default function List_aspectRatio_neither() {
-  describe('List_aspectRatio_neither', function () {
-    beforeEach(async function (done) {
+  describe('List_aspectRatio_neither', () => {
+    beforeEach(async (done: Function) => {
       console.info("List_aspectRatio_neither beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_neither',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_neither',
       }
       try {
         router.clear();
@@ -31,7 +47,7 @@ export default function List_aspectRatio_neither() {
         console.info("get List_aspectRatio_neither state pages:" + JSON.stringify(pages));
         if (!("List_aspectRatio_neither" == pages.name)) {
           console.info("get List_aspectRatio_neither pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push List_aspectRatio_neither page result:" + JSON.stringify(result));
         }
@@ -41,7 +57,7 @@ export default function List_aspectRatio_neither() {
       console.info("List_aspectRatio_neither beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.clear()
       console.info("List_aspectRatio_neither after each called");
@@ -49,15 +65,17 @@ export default function List_aspectRatio_neither() {
 
 
     /**
-     * @tc.number    SUB_ACE_List_aspectRatio_neither_0100
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of list to '0'
+     * @tc.number SUB_ACE_List_aspectRatio_neither_0100
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of list to '0'
      */
-    it('SUB_ACE_List_aspectRatio_neither_0100', 0, async function (done) {
+    it('SUB_ACE_List_aspectRatio_neither_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_List_aspectRatio_neither_0100] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'0'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '0'
+      });
       await CommonFunc.sleep(1000);
-      let List01 = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
 
       expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(230)));
@@ -67,15 +85,17 @@ export default function List_aspectRatio_neither() {
     });
 
     /**
-     * @tc.number    SUB_ACE_List_aspectRatio_neither_0200
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of list to '0.5'
+     * @tc.number SUB_ACE_List_aspectRatio_neither_0200
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of list to '0.5'
      */
-    it('SUB_ACE_List_aspectRatio_neither_0200', 0, async function (done) {
+    it('SUB_ACE_List_aspectRatio_neither_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_List_aspectRatio_neither_0200] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'0.5'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '0.5'
+      });
       await CommonFunc.sleep(1000);
-      let List01 = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
 
       expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(700)));
@@ -85,15 +105,17 @@ export default function List_aspectRatio_neither() {
     });
 
     /**
-     * @tc.number    SUB_ACE_List_aspectRatio_neither_0300
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of list to '2'
+     * @tc.number SUB_ACE_List_aspectRatio_neither_0300
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of list to '2'
      */
-    it('SUB_ACE_List_aspectRatio_neither_0300', 0, async function (done) {
+    it('SUB_ACE_List_aspectRatio_neither_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_List_aspectRatio_neither_0300] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'2'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '2'
+      });
       await CommonFunc.sleep(1000);
-      let List01 = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
 
       expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(175)));
@@ -103,15 +125,17 @@ export default function List_aspectRatio_neither() {
     });
 
     /**
-     * @tc.number    SUB_ACE_List_aspectRatio_neither_0400
-     * @tc.name      testListAspectRatio
-     * @tc.desc      set the aspectRatio of list to '-1'
+     * @tc.number SUB_ACE_List_aspectRatio_neither_0400
+     * @tc.name testListAspectRatio
+     * @tc.desc set the aspectRatio of list to '-1'
      */
-    it('SUB_ACE_List_aspectRatio_neither_0400', 0, async function (done) {
+    it('SUB_ACE_List_aspectRatio_neither_0400', 0, async (done: Function) => {
       console.info('[SUB_ACE_List_aspectRatio_neither_0400] START');
-      globalThis.value.message.notify({name:'aspectRatio1', value:'-1'});
+      globalThis.value.message.notify({
+        name: 'aspectRatio1', value: '-1'
+      });
       await CommonFunc.sleep(1000);
-      let List01 = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
+      let List01: RectValue = CommonFunc.getComponentRect('List_aspectRatio_neither_01');
 
       expect(Math.round(List01.right - List01.left)).assertEqual(Math.round(vp2px(350)));
       expect(Math.round(List01.bottom - List01.top)).assertEqual(Math.round(vp2px(230)));
@@ -119,7 +143,6 @@ export default function List_aspectRatio_neither() {
       console.info('[SUB_ACE_List_aspectRatio_neither_0400] END');
       done();
     });
-
 
 
   })

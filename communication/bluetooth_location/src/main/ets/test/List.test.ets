@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 
-import btScanTest from './BtScan.test'
+import btScanTest from './BtScan.test';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    btScanTest()
+    if (info != "false") {
+        btScanTest();
+    }
 }

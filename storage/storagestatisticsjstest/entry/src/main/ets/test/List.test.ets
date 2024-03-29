@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import storageStatisticsTest from './StorageStatistics.test.ets'
+import storageStatisticsTest from './StorageStatistics.test.ets';
 
 export default function testsuite() {
-  storageStatisticsTest()
+  storageStatisticsTest();
 }
 
 

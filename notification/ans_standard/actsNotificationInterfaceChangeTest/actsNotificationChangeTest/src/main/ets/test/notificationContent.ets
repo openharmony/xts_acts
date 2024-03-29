@@ -18,22 +18,23 @@ import { logGenerator, exitGenerator, sleep, exitSpecialGenerator } from '../com
 import notificationManager from '@ohos.notificationManager';
 import hilog from '@ohos.hilog';
 import image from '@ohos.multimedia.image';
+import { BusinessError } from '@ohos.base';
 
 export default function notificationContentTest() {
-  describe('ActsNotificationContentTest', function () {
+  describe('ActsNotificationContentTest', () => {
 
     const TAG = 'ActsNotificationContentTest ===>';
     let log = logGenerator(TAG);
     log('ActsNotificationContentTest START');
 
     class Utils {
-      static info(str) {
+      static info(str: string) {
         hilog.info(0, 'bms test', str)
       }
 
-      static sleep(time) {
-        return new Promise((resolve, reject) => {
-          setTimeout((data) => {
+      static sleep(time: number) {
+        return new Promise<string>((resolve, reject) => {
+          setTimeout((data: string) => {
             resolve(data)
           }, time)
         }).then(() => {
@@ -49,20 +50,19 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT.
      */
-    it('Acts_NotificationContent_0100', 0, async function (done) {
+    it('Acts_NotificationContent_0100', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0100';
 
-      function requestEnableNotificationCallback(err) {
+
+      notificationManager.requestEnableNotification((err) => {
         if (err) {
           console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
         } else {
           console.info("requestEnableNotification success");
         }
-      };
+      });
 
-      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
-
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -95,10 +95,10 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT.
      */
-    it('Acts_NotificationContent_0200', 0, async function (done) {
+    it('Acts_NotificationContent_0200', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0200';
 
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -134,18 +134,18 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE.
      */
-    it('Acts_NotificationContent_0300', 0, async function (done) {
+    it('Acts_NotificationContent_0300', 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0300';
 
       const color = new ArrayBuffer(60000);
       let bufferArr = new Uint8Array(color);
-      for (var i = 0; i < bufferArr.byteLength; i++) {
+      for (let i = 0; i < bufferArr.byteLength; i++) {
         bufferArr[i++] = 60;
         bufferArr[i++] = 20;
         bufferArr[i++] = 220;
         bufferArr[i] = 100;
       }
-      let opts = {
+      let opts: image.InitializationOptions = {
         editable: true, pixelFormat: 2, size: {
           height: 100, width: 150
         }
@@ -155,11 +155,11 @@ export default function notificationContentTest() {
         .then(async (pixelmap) => {
           await pixelmap.getImageInfo().then(imageInfo => {
             console.log("=====size: ====" + JSON.stringify(imageInfo.size));
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
             return;
           })
-          let notificationRequest = {
+          let notificationRequest: notificationManager.NotificationRequest = {
             id: 1,
             content: {
               notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
@@ -197,10 +197,10 @@ export default function notificationContentTest() {
      * @tc.desc: Set notificationContentType attribute parameters
      *           notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE.
      */
-    it(" Acts_NotificationContent_0400", 0, async function (done) {
+    it(" Acts_NotificationContent_0400", 0, async (done: Function) => {
       const TEST_CASE_NAME = 'Acts_NotificationContent_0400';
 
-      let notificationRequest = {
+      let notificationRequest: notificationManager.NotificationRequest = {
         id: 1,
         content: {
           notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,

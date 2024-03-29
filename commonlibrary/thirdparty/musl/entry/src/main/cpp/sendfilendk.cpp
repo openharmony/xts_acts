@@ -29,6 +29,7 @@
 #define ONEVAL 1
 #define MINUSONE (-1)
 #define ERRON_0 0
+#define PARAM_0777 0777
 
 static napi_value Sendfile(napi_env env, napi_callback_info info)
 {
@@ -45,6 +46,8 @@ static napi_value Sendfile(napi_env env, napi_callback_info info)
         int tofd = open("/data/storage/el2/base/files/test2.txt", O_WRONLY | O_CREAT, TEST_MODE);
         int senval = sendfile(tofd, fromfd, &off, ONEVAL);
         napi_create_int32(env, senval, &result);
+        close(fromfd);
+        close(tofd);
     } else {
         int fromfd = MINUSONE;
         int tofd = MINUSONE;
@@ -68,8 +71,8 @@ static napi_value Sendfile64(napi_env env, napi_callback_info info)
 
     size_t value;
     if (param == PARAM_0) {
-        int fromfd = open(fromFile, O_CREAT | O_RDWR);
-        int tofd = open(toFile, O_CREAT | O_RDWR);
+        int fromfd = open(fromFile, O_CREAT | O_RDWR, PARAM_0777);
+        int tofd = open(toFile, O_CREAT | O_RDWR, PARAM_0777);
         write(fromfd, text, len);
         lseek(fromfd, PARAM_0, SEEK_SET);
         value = sendfile64(tofd, fromfd, nullptr, len);

@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 // import Utils from '../../utils/Common'
 import CommonFunc from "../../MainAbility/common/Common";
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function ImageAttr() {
-  describe('NavigationAttr', function () {
-    beforeEach(async function (done) {
+  describe('NavigationAttr', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationAttr beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MethodStyle/NavigationAttr',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MethodStyle/NavigationAttr',
       }
       try {
         router.clear();
@@ -41,18 +41,18 @@ export default function ImageAttr() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("NavigationAttr after each called");
     });
 
     /**
-     * @tc.number      NavigationAttr_001
-     * @tc.name        NavigationAttr_001
-     * @tc.desc        Navigation test
-     * @tc.level       Level 2
+     * @tc.number NavigationAttr_001
+     * @tc.name NavigationAttr_001
+     * @tc.desc Navigation test
+     * @tc.level Level 2
      */
-    it('NavigationAttr_001', 0, async function (done) {
+    it('NavigationAttr_001', 0, async (done: Function) => {
       console.info('[NavigationAttr_001] START');
 
       await CommonFunc.sleep(1000);
@@ -63,25 +63,16 @@ export default function ImageAttr() {
 
       let strJson1 = getInspectorByKey('finishTransitionTest_api');
       await CommonFunc.sleep(200);
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('444');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('444');
 
       let strJson2 = getInspectorByKey('customNavContentTransitionTest_api');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
-      expect(obj2.$attrs.content).assertEqual('222');
-
-
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('222');
       console.info('[NavigationAttr_001] END');
       done();
     });
-
-
-
-
-
   })
 }
 

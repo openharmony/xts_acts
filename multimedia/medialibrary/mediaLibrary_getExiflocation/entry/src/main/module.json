@@ -44,6 +44,10 @@
             {
                 "name": "ohos.permission.READ_MEDIA",
                 "reason": "use ohos.permission.READ_MEDIA"
+            },
+            {
+                "name": "ohos.permission.WRITE_MEDIA",
+                "reason": "use ohos.permission.WRITE_MEDIA"
             }
         ]
     }

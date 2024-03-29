@@ -12,30 +12,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
+
 @Entry
 @Component
-struct ListItem_aspectRatio_all2{
-  @State aspectRatio1 : number = 1
-  messageManager:MessageManager = new MessageManager();
+struct ListItem_aspectRatio_all2 {
+  @State aspectRatio1: number = 1;
+  messageManager: MessageManager<number> = new MessageManager();
 
   onPageShow() {
     console.info('ListItem_aspectRatio_all2 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'aspectRatio1') {
         this.aspectRatio1 = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
-  build(){
-    Column(){
-      List({ space:10 }){
-        ListItem(){
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ListItem() {
           Text('1')
             .width('100%')
             .fontSize(16)
@@ -49,7 +52,7 @@ struct ListItem_aspectRatio_all2{
         .key('ListItem_aspectRatio_all2_01')
 
 
-        ListItem(){
+        ListItem() {
           Text('2')
             .width('80%')
             .height(50)
@@ -58,7 +61,8 @@ struct ListItem_aspectRatio_all2{
             .textAlign(TextAlign.Center)
             .backgroundColor(0xAFEEEE)
         }
-        ListItem(){
+
+        ListItem() {
           Text('3')
             .width('80%')
             .height(50)
@@ -67,7 +71,8 @@ struct ListItem_aspectRatio_all2{
             .textAlign(TextAlign.Center)
             .backgroundColor(0xAFEEEE)
         }
-        ListItem(){
+
+        ListItem() {
           Text('4')
             .width('80%')
             .height(50)

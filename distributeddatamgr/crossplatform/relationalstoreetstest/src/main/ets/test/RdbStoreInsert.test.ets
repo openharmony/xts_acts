@@ -15,40 +15,42 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { ValuesBucket } from '@ohos.data.ValuesBucket';
+import { BusinessError } from '@ohos.base';
 
 let context: Context;
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
-const STORE_CONFIG = {
+const STORE_CONFIG: relationalStore.StoreConfig = {
   name: "InsertTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
 let rdbStore = undefined;
-let resultSet = undefined;
+let resultSet: ESObject = undefined;
 
-function sleep(ms) {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export default function InsertTest() {
-  describe("InsertTest", function () {
-    beforeAll(async function () {
+  describe("InsertTest", () => {
+    beforeAll(async () => {
       console.info(TAG + "beforeAll");
       let ability = await delegator.getCurrentTopAbility();
       context = ability.context;
       console.info(TAG + 'Get context successful. context=' + context);
     });
 
-    beforeEach(async function () {
+    beforeEach(async () => {
       console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       console.log("InsertTestrdbStore" + rdbStore);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       console.info(TAG + "afterEach");
       await rdbStore.executeSql("DELETE FROM test");
       rdbStore = null;
@@ -57,7 +59,7 @@ export default function InsertTest() {
       });
     });
 
-    afterAll(async function () {
+    afterAll(async () => {
       console.info(TAG + "afterAll");
     });
 
@@ -71,7 +73,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("testRdbStoreVersion001", 0, async function (done) {
+    it("testRdbStoreVersion001", 0, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreVersion001 start *************");
       rdbStore.version = 3;
       expect(3).assertEqual(rdbStore.version);
@@ -87,7 +89,7 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 1
      */
-    it("testRdbStoreVersionError001", 0, async function (done) {
+    it("testRdbStoreVersionError001", 0, async (done: Function) => {
       console.log(TAG + "************* testRdbStoreVersionError001 start *************");
       try {
         rdbStore.version = -1;
@@ -109,10 +111,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert001", 0, async function (done) {
+    it("testRdbStoreInsert001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert001 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
@@ -168,9 +170,9 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0011", 0, async function (done) {
+    it("testRdbStoreInsertError0011", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0011 start *************");
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -196,9 +198,9 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0012", 0, async function (done) {
+    it("testRdbStoreInsertError0012", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0012 start *************");
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age2: 18,
         salary: 100.5,
@@ -224,10 +226,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert002", 0, async function (done) {
+    it("testRdbStoreInsert002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert002 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
@@ -269,10 +271,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0021", 0, async function (done) {
+    it("testRdbStoreInsertError0021", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0021 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -282,7 +284,7 @@ export default function InsertTest() {
       promise.then((num) => {
         expect(num).assertEqual(0);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0021:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(err.code == 14800000).assertTrue();
         done();
@@ -298,10 +300,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0022", 0, async function (done) {
+    it("testRdbStoreInsertError0022", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0022 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age1: 18,
         salary: 100.5,
@@ -311,7 +313,7 @@ export default function InsertTest() {
       promise.then((num) => {
         expect(num).assertEqual(0);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0022:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(err.code == 14800000).assertTrue();
         done();
@@ -327,10 +329,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert003", 0, async function (done) {
+    it("testRdbStoreInsert003", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert003 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
@@ -386,10 +388,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0031", 0, async function (done) {
+    it("testRdbStoreInsertError0031", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0031 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -415,10 +417,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0032", 0, async function (done) {
+    it("testRdbStoreInsertError0032", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0032 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age1: 18,
         salary: 100.5,
@@ -445,10 +447,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsert004", 0, async function (done) {
+    it("testRdbStoreInsert004", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsert004 start *************");
       try {
-        const valueBucket = {
+        const valueBucket: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
@@ -490,10 +492,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0041", 0, async function (done) {
+    it("testRdbStoreInsertError0041", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0041 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
@@ -503,7 +505,7 @@ export default function InsertTest() {
       promise.then((num) => {
         expect(num).assertEqual(0);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0041:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(err.code == 14800000).assertTrue();
         done();
@@ -520,10 +522,10 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreInsertError0042", 0, async function (done) {
+    it("testRdbStoreInsertError0042", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreInsertError0042 start *************");
 
-      const valueBucket = {
+      const valueBucket: ValuesBucket = {
         name: "zhangsan",
         age1: 18,
         salary: 100.5,
@@ -533,7 +535,7 @@ export default function InsertTest() {
       promise.then((num) => {
         expect(num).assertEqual(0);
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreInsertError0042:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(err.code == 14800000).assertTrue();
         done();
@@ -549,22 +551,22 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsert001", 0, async function (done) {
+    it("testRdbStoreBatchInsert001", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsert001 start *************");
       try {
-        const valueBucket1 = {
+        const valueBucket1: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
           blobType: new Uint8Array([1, 2, 3]),
         };
-        const valueBucket2 = {
+        const valueBucket2: ValuesBucket = {
           name: "lisi",
           age: 23,
           salary: 200,
           blobType: new Uint8Array([1, 2, 3]),
         };
-        const valueBucket3 = {
+        const valueBucket3: ValuesBucket = {
           name: "wangwu",
           age: 20,
           salary: 100.5,
@@ -620,21 +622,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0011", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0011", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0011 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age: 20,
         salary: 100.5,
@@ -668,21 +670,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0012", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0012", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0012 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age1: 20,
         salary: 100.5,
@@ -715,21 +717,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0013", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0013", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0013 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age1: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age1: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age1: 20,
         salary: 100.5,
@@ -762,21 +764,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0014", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0014", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0014 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age1: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age1: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age1: 20,
         salary: 100.5,
@@ -805,21 +807,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0015", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0015", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0015 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 'abc',
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age1: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age1: 20,
         salary: 100.5,
@@ -852,22 +854,22 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsert002", 0, async function (done) {
+    it("testRdbStoreBatchInsert002", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsert002 start *************");
       try {
-        const valueBucket1 = {
+        const valueBucket1: ValuesBucket = {
           name: "zhangsan",
           age: 18,
           salary: 100.5,
           blobType: new Uint8Array([1, 2, 3]),
         };
-        const valueBucket2 = {
+        const valueBucket2: ValuesBucket = {
           name: "lisi",
           age: 23,
           salary: 200,
           blobType: new Uint8Array([1, 2, 3]),
         };
-        const valueBucket3 = {
+        const valueBucket3: ValuesBucket = {
           name: "wangwu",
           age: 20,
           salary: 100.5,
@@ -906,21 +908,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0021", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0021", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0021 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age: 20,
         salary: 100.5,
@@ -936,7 +938,7 @@ export default function InsertTest() {
         expect(0).assertEqual(resultSet.rowCount);
         resultSet.close();
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreBatchInsertError0021:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(!err).assertFail();
         done();
@@ -953,21 +955,21 @@ export default function InsertTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRdbStoreBatchInsertError0022", 0, async function (done) {
+    it("testRdbStoreBatchInsertError0022", 0, async (done: Function) => {
       console.info(TAG + "************* testRdbStoreBatchInsertError0022 start *************");
-      const valueBucket1 = {
+      const valueBucket1: ValuesBucket = {
         name: "zhangsan",
         age: 18,
         salary: 100.5,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket2 = {
+      const valueBucket2: ValuesBucket = {
         name: "lisi",
         age: 23,
         salary: 200,
         blobType: new Uint8Array([1, 2, 3]),
       };
-      const valueBucket3 = {
+      const valueBucket3: ValuesBucket = {
         name: "wangwu",
         age1: 20,
         salary: 100.5,
@@ -983,12 +985,11 @@ export default function InsertTest() {
         expect(0).assertEqual(resultSet.rowCount);
         resultSet.close();
         done();
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.error(`testRdbStoreBatchInsertError0022:Insert is failed, code is ${err.code},message is ${err.message}`);
         expect(!err).assertFail();
         done();
       });
-
       console.info(TAG + "************* testRdbStoreBatchInsertError0022 end *************");
     });
 

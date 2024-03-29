@@ -17,6 +17,8 @@ group("netmanager_websocket") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "NetManagerWSProxy:ActsNetManagerWSProxyTest",
+      "NetManagerWSSupportCustomProtocol:ActsNetManagerWSSupportCustomProtocolTest",
       "sslcertverify:ActsNetworkManagerSSLCertVerifyTest",
       "websocketcertverify:ActsNetworkManagerWebSocketCertVerifyTest",
     ]

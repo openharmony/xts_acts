@@ -12,21 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager, Callback } from '../../../../common/MessageManager';
+
+import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
 @Entry
 @Component
-struct List_ListSize{
+struct List_ListSize {
   @State changeWidth: number = 350;
   @State changeHeight: number = 500;
-  messageManager:MessageManager = new MessageManager();
+  messageManager: MessageManager<number> = new MessageManager();
   private content: string = "List_ListSize Page";
+
   onPageShow() {
     console.info('List_ListSize page show called');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
-    }
-    let callback:Callback = (message:any) => {
+      name: 'messageManager', message: this.messageManager
+    };
+    let callback: Callback<number> = (message: Message<number>) => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'changeWidth') {
         this.changeWidth = message.value;
@@ -34,7 +36,7 @@ struct List_ListSize{
       if (message.name == 'changeHeight') {
         this.changeHeight = message.value;
       }
-    }
+    };
     this.messageManager.registerCallback(callback);
   }
 
@@ -42,7 +44,7 @@ struct List_ListSize{
     console.info('List_ListSize page build done called');
   }
 
-build() {
+  build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
         ListItem() {
@@ -50,25 +52,48 @@ build() {
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_ListSize_011').editable(true).backgroundColor(0xF5DEB3)
+        }
+        .width(300)
+        .height(100)
+        .key('List_ListSize_011')
+        .editable(true)
+        .backgroundColor(0xF5DEB3)
+
         ListItem() {
           Text('2')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_ListSize_012').editable(true).backgroundColor(0xD2B48C)
+        }
+        .width(300)
+        .height(100)
+        .key('List_ListSize_012')
+        .editable(true)
+        .backgroundColor(0xD2B48C)
+
         ListItem() {
           Text('3')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_ListSize_013').editable(true).backgroundColor(0xffa500)
+        }
+        .width(300)
+        .height(100)
+        .key('List_ListSize_013')
+        .editable(true)
+        .backgroundColor(0xffa500)
+
         ListItem() {
           Text('4')
             .width('100%')
             .height('100%')
             .fontSize(16)
-        }.width(300).height(100).key('List_ListSize_014').editable(true).backgroundColor(0xFFFFFF)
+        }
+        .width(300)
+        .height(100)
+        .key('List_ListSize_014')
+        .editable(true)
+        .backgroundColor(0xFFFFFF)
       }
       .height(this.changeHeight)
       .width(this.changeWidth)

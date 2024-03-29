@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function createDragAction() {
-  describe('createDragAction', function () {
-    beforeEach(async function (done) {
+  describe('createDragAction', () => {
+    beforeEach(async (done: Function) => {
       console.info("createDragAction beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/createDragAction',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/createDragAction',
       }
       try {
         router.clear();
@@ -42,14 +55,14 @@ export default function createDragAction() {
     });
 
     /**
-     * @tc.number    SUB_ACE_createDragAction_0100
-     * @tc.name      createDragAction_0100
-     * @tc.desc      createDragAction api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_createDragAction_0100
+     * @tc.name createDragAction_0100
+     * @tc.desc createDragAction api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('createDragAction_0100', 0, async function (done) {
+    it('createDragAction_0100', 0, async (done: Function) => {
       console.info('createDragAction_0100 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('dragParent'));
@@ -57,23 +70,22 @@ export default function createDragAction() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('createDrag_id');
-      let obj = JSON.parse(strJson);
-      console.info("[createDragAction_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[createDragAction_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('success');
+      console.info("[createDragAction_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[createDragAction_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('success');
       console.info('[createDragAction_0100] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_createDragAction_0200
-     * @tc.name      createDragAction_0200
-     * @tc.desc      STARTED api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_createDragAction_0200
+     * @tc.name createDragAction_0200
+     * @tc.desc STARTED api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('createDragAction_0200', 0, async function (done) {
+    it('createDragAction_0200', 0, async (done: Function) => {
       console.info('createDragAction_0200 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('dragParent'));
@@ -81,23 +93,22 @@ export default function createDragAction() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('start_id');
-      let obj = JSON.parse(strJson);
-      console.info("[createDragAction_0200] component obj is: " + JSON.stringify(obj));
-      console.info("[createDragAction_0200] title: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('STARTED');
+      console.info("[createDragAction_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[createDragAction_0200] title: " + JSON.stringify(JSON.parse(strJson).$attrs.label));
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('STARTED');
       console.info('[createDragAction_0200] END');
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_createDragAction_0300
-     * @tc.name      createDragAction_0300
-     * @tc.desc       ENDED  api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_createDragAction_0300
+     * @tc.name createDragAction_0300
+     * @tc.desc ENDED  api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('createDragAction_0300', 0, async function (done) {
+    it('createDragAction_0300', 0, async (done: Function) => {
       console.info('createDragAction_0300 START');
       let driver: Driver = Driver.create();
       let button: Component = await driver.findComponent(ON.id('dragParent'));
@@ -105,10 +116,9 @@ export default function createDragAction() {
       await button.dragTo(text);
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('end_id');
-      let obj = JSON.parse(strJson);
-      console.info("[createDragAction_0300] component obj is: " + JSON.stringify(obj));
-      console.info("[createDragAction_0300] title: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual('ENDED');
+      console.info("[createDragAction_0300] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[createDragAction_0300] title: " + JSON.stringify(JSON.parse(strJson).$attrs.label));
+      expect(JSON.parse(strJson).$attrs.label).assertEqual('ENDED');
       console.info('[createDragAction_0300] END');
       done();
     });

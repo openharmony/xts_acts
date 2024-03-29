@@ -21,6 +21,7 @@
 #include <cstring>
 #include <fcntl.h>
 #include <sys/inotify.h>
+#include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
 
@@ -35,6 +36,7 @@
 #define ZEROVAL 0
 #define PATH "/data/storage/el2/base/files"
 #define TEST_MODE 0666
+#define PARAM_0777 0777
 #define SBUF_SIZE 128
 #define ZEROVAL 0
 #define ONEVAL 1
@@ -172,6 +174,7 @@ static napi_value Feof(napi_env env, napi_callback_info info)
     FILE *stream = fopen(path, "r");
     napi_value result = nullptr;
     fileDescribe = feof(stream);
+    fclose(stream);
     napi_create_int32(env, fileDescribe, &result);
     return result;
 }
@@ -287,13 +290,13 @@ static napi_value WriteChk(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
 
-    int fp = open(strTemp, O_WRONLY | O_CREAT);
+    int fp = open(strTemp, O_WRONLY | O_CREAT, PARAM_0777);
     ssize_t valueResult = __write_chk(fp, valueSecond, strlen(valueSecond), strlen(valueSecond) + PARAM_1);
     int toJs = DEF_VALUE;
     if (valueResult != FAIL) {
         toJs = SUCCESS;
     }
-
+    close(fp);
     napi_value result = nullptr;
     napi_create_int32(env, toJs, &result);
     return result;
@@ -310,13 +313,13 @@ static napi_value PwriteChk(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[0], strTemp, length, &stresult);
     char *valueSecond = NapiHelper::GetString(env, args[1]);
 
-    int fp = open(strTemp, O_WRONLY | O_CREAT);
+    int fp = open(strTemp, O_WRONLY | O_CREAT, PARAM_0777);
     ssize_t valueResult = __pwrite_chk(fp, valueSecond, strlen(valueSecond), PARAM_5, strlen(valueSecond) + PARAM_1);
     int toJs = DEF_VALUE;
     if (valueResult != FAIL) {
         toJs = SUCCESS;
     }
-
+    close(fp);
     napi_value result = nullptr;
     napi_create_int32(env, toJs, &result);
     return result;
@@ -330,6 +333,7 @@ static napi_value FgetsChk(napi_env env, napi_callback_info info)
     char buf[bufferSize];
     char *char_value;
     char_value = __fgets_chk(buf, sizeof(buf), fp, ONESIX);
+    fclose(fp);
     napi_value result = nullptr;
     napi_create_string_utf8(env, char_value, NAPI_AUTO_LENGTH, &result);
     return result;
@@ -342,6 +346,7 @@ static napi_value Fread_chk(napi_env env, napi_callback_info info)
     char buffer[20];
     file = fopen(PATH, "r");
     int ret = __fread_chk(buffer, bos, bos, file, bos);
+    fclose(file);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -393,6 +398,7 @@ static napi_value Ungetc(napi_env env, napi_callback_info info)
     FILE *fp = fopen("/data/storage/el2/base/files/FZL.txt", "r");
     valueFirst = getc(fp);
     int ungetcValue = ungetc(valueFirst, fp);
+    fclose(fp);
     napi_value result = nullptr;
     napi_create_int32(env, ungetcValue, &result);
     return result;
@@ -628,6 +634,7 @@ static napi_value PutCUnlocked(napi_env env, napi_callback_info info)
     } else {
         ret = SUCCESS;
     }
+    fclose(file);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;
@@ -643,6 +650,7 @@ static napi_value Putc(napi_env env, napi_callback_info info)
     } else {
         ret = SUCCESS;
     }
+    fclose(file);
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
     return result;

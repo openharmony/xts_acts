@@ -16,12 +16,11 @@
 @Entry
 @Component
 struct stageAnimator {
-  private TAG: string = '[AnimatorTest]'
-  private backAnimator: any = undefined
-  private flag: boolean = false
-  @State wid: number = 100
-  @State hei: number = 100
-
+  private TAG: string = '[AnimatorTest]';
+  private backAnimator: ESObject = undefined;
+  private flag: boolean = false;
+  @State wid: number = 100;
+  @State hei: number = 100;
 
   create() {
     let _this = this
@@ -36,24 +35,24 @@ struct stageAnimator {
       end: 400
     })
 
-    this.backAnimator.onfinish = function () {
+    this.backAnimator.onfinish = () => {
       _this.flag = true
       console.info(_this.TAG, 'backAnimator onfinish')
     }
-    this.backAnimator.onrepeat = function () {
+    this.backAnimator.onrepeat = () => {
       console.info(_this.TAG, 'backAnimator repeat')
     }
-    this.backAnimator.oncancel = function () {
+    this.backAnimator.oncancel = () => {
       console.info(_this.TAG, 'backAnimator cancel')
     }
-    this.backAnimator.onframe = function (value) {
+    this.backAnimator.onframe = (value: number) => {
       _this.wid = value
       _this.hei = value
     }
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Button('animator-play')
         .width(100)
         .height(70)
@@ -67,4 +66,4 @@ struct stageAnimator {
         .key("animator")
     }.width("100%").height("100%")
   }
- }
+}

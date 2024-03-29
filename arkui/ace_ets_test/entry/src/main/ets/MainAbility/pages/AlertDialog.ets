@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,7 @@
 @Entry
 @Component
 struct alertdialog {
-  @State currentTest: string  = 'default'
+  @State currentTest: string = 'default'
 
   build() {
     Column() {
@@ -32,12 +31,13 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
+            alignment: DialogAlignment.Top,
             autoCancel: true,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
               backgroundColor: '#FFFFC0CB',
-              alignment: 'DialogAlignment.Top',
+
               action: () => {
                 this.currentTest = 'primaryButton'
               }
@@ -64,7 +64,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.Center',
+            alignment: DialogAlignment.Center,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -96,7 +96,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.Bottom',
+            alignment: DialogAlignment.Bottom,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -128,7 +128,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.Default',
+            alignment: DialogAlignment.Default,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -159,7 +159,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.TopStart',
+            alignment: DialogAlignment.TopStart,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -190,7 +190,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.TopEnd',
+            alignment: DialogAlignment.TopEnd,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -221,7 +221,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.CenterStart',
+            alignment: DialogAlignment.CenterStart,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -252,7 +252,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.CenterEnd',
+            alignment: DialogAlignment.CenterEnd,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -283,7 +283,7 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            alignment: 'DialogAlignment.BottomStart',
+            alignment: DialogAlignment.BottomStart,
             primaryButton: {
               value: '11111111111',
               fontColor: '#FFFF0000',
@@ -315,8 +315,8 @@ struct alertdialog {
           AlertDialog.show({
             title: 'Title',
             message: 'This is message',
-            gridCount: '1',
-            alignment: 'DialogAlignment.BottomEnd',
+            gridCount: 1,
+            alignment: DialogAlignment.BottomEnd,
             confirm: {
               value: '11111111111',
               fontColor: '#FFFF0000',

@@ -21,7 +21,7 @@ struct SXvalueResource {
   @State text2: string = '';
 
   build() {
-    Column({space:20}) {
+    Column({ space: 20 }) {
       RichEditor(this.options)
         .onReady(() => {
           this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
@@ -39,16 +39,18 @@ struct SXvalueResource {
       Button('get').key('SXvalueResourceButton')
         .onClick(() => {
           this.controller.getSpans({ start: 0, end: 6 }).forEach((item) => {
-            let a:string = (item as RichEditorTextSpanResult).valueResource?.bundleName
+            let a: string = (item as RichEditorTextSpanResult).valueResource?.bundleName
             if (a !== '') {
               this.text2 = 'DTS'
             }
           })
-        }).height(100)
+        })
+        .height(100)
 
-      Text(this.text2).key('SXvalueResourceText')
-    }.margin(20)
+      Text(this.text2)
+        .key('SXvalueResourceText')
+    }
+    .margin(20)
   }
-
 }
 

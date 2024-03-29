@@ -16,5 +16,5 @@
 import WorkerTest from './WorkerTest.test.js'
 
 export default function List() {
-  WorkerTest()
+    WorkerTest()
 }

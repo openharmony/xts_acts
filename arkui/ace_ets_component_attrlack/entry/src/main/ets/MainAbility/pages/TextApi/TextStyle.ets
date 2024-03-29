@@ -17,7 +17,6 @@
 @Entry
 @Component
 struct buttonExample {
-
   build() {
     Column() {
       Button('OK')
@@ -26,7 +25,7 @@ struct buttonExample {
         .backgroundColor(0x317aff)
         .width(90)
         .buttonStyle(ButtonStyleMode.EMPHASIZED)
-    }.width('100%')
+    }
+    .width('100%')
   }
-
 }

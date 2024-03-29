@@ -258,9 +258,9 @@ export default function NetworkManagerMulticastSSLTest() {
       let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500";
       console.info('xxxxxxx', `${JSON.stringify(networkSecurity.CertType.CERT_TYPE_DER)}`);
       try {
-        let result = networkSecurity.certVerificationSync(caCert);
+        let result = networkSecurity.certVerificationSync(certError , null);
         console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
-        expect(result == 0).assertTrue();
+        expect(result == 401).assertTrue();
         done();
       } catch (error) {
         console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);

@@ -14,12 +14,22 @@
  */
 
 // @ts-ignore
-import camera from '@ohos.multimedia.camera'
-import Logger from '../model/Logger'
-import CameraService from '../model/CameraService'
+import camera from '@ohos.multimedia.camera';
+import Logger from '../model/Logger';
+import CameraService from '../model/CameraService';
 import { CustomContainer } from '../common/CameraPreviewFormatContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
+
+class Obj {
+  format: number;
+  size: SizeObj;
+}
+
+class SizeObj {
+  width: number;
+  height: number;
+}
 
 @Entry
 @Component
@@ -27,19 +37,19 @@ struct cameraFormat {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraPreviewFormat';
   @State StepTips: string = '测试目的：用于测试相机预览分辨率能力\n测试步骤：点击下一个遍历所有预览分辨率，观察预览窗口\n预期结果：所有分辨率均可以预览成功，预览画面正常';
-  private tag: string = 'qlw CameraFormat'
-  private mXComponentController: XComponentController = new XComponentController()
+  private tag: string = 'qlw CameraFormat';
+  private mXComponentController: XComponentController = new XComponentController();
   @State surfaceId: number = 0;
-  @State cameraDeviceIndex: number = 0
-  @State Vue: boolean = false
-  @State resolution: SelectOption[] = []
-  @State testingFrequency: number = undefined
-  @State clickFrequency: number = 0
-  @State cameraListLength: number = undefined
-  @State cameraList: SelectOption[] = []
-  @State resolutionSelectVal: string = ''
-  @State nextEnabled: boolean = true
-  @State formatVal: SelectOption[] = []
+  @State cameraDeviceIndex: number = 0;
+  @State Vue: boolean = false;
+  @State resolution: SelectOption[] = [];
+  @State testingFrequency: number = undefined;
+  @State clickFrequency: number = 0;
+  @State cameraListLength: number = undefined;
+  @State cameraList: SelectOption[] = [];
+  @State resolutionSelectVal: string = '';
+  @State nextEnabled: boolean = true;
+  @State formatVal: SelectOption[] = [];
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -62,7 +72,7 @@ struct cameraFormat {
     Logger.info(this.tag, `testingFrequency ${this.testingFrequency}`)
   }
 
-  async cameraInit(obj?) {
+  async cameraInit(obj?: ESObject) {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj).then(() => {
       this.resolution = CameraService.resolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
@@ -72,7 +82,7 @@ struct cameraFormat {
 
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-	// @ts-ignore
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
       this.cameraListFn()
@@ -101,11 +111,11 @@ struct cameraFormat {
       let indexOf = item.value.indexOf("x")
       let objW = Number(item.value.slice(0, indexOf))
       let objH = Number(item.value.slice(indexOf + 1))
-      let obj = {
+      let obj: Obj = {
         format: 1003,
         size: {
-          "width": objW,
-          "height": objH
+          width: objW,
+          height: objH
         }
       }
       newResolution.push(obj)
@@ -117,8 +127,13 @@ struct cameraFormat {
     Column() {
       Row() {
         Button() {
-          Image($r('app.media.ic_public_back')).width('20vp').height('18vp').margin({ left: '20vp' })
-        }.backgroundColor(Color.Black).size({ width: '40vp', height: '30vp' })
+          Image($r('app.media.ic_public_back'))
+            .width('20vp')
+            .height('18vp')
+            .margin({ left: '20vp' })
+        }
+        .backgroundColor(Color.Black)
+        .size({ width: '40vp', height: '30vp' })
         .onClick(() => {
           router.back({
             url: 'pages/Camera/Camera_index',
@@ -126,9 +141,18 @@ struct cameraFormat {
           })
         })
 
-        Text(this.name).fontColor(Color.White).fontSize('18fp').margin({ left: '-20vp' })
-        Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
-      }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
+        Text(this.name)
+          .fontColor(Color.White)
+          .fontSize('18fp')
+          .margin({ left: '-20vp' })
+        Text('hello')
+          .fontColor(Color.White)
+          .visibility(Visibility.Hidden)
+      }
+      .backgroundColor(Color.Black)
+      .height('10%')
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround, direction: FlexDirection.Column }) {
         Scroll() {
@@ -149,6 +173,7 @@ struct cameraFormat {
                 .size({ width: '100%', height: '70%' })
               Text('预览').fontSize('20fp').fontColor(Color.White)
             }.size({ width: '80%' })
+
             Column() {
               Row() {
                 Select(this.resolution)
@@ -164,11 +189,11 @@ struct cameraFormat {
                     let indexOf = value.indexOf('x')
                     let objW = Number(value.slice(0, indexOf))
                     let objH = Number(value.slice(indexOf + 1))
-                    let obj = {
+                    let obj: Obj = {
                       format: 1003,
                       size: {
-                        "width": objW,
-                        "height": objH
+                        width: objW,
+                        height: objH
                       }
                     }
                     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
@@ -214,13 +239,18 @@ struct cameraFormat {
                   .onClick(async () => {
                     this.nextClickFn()
                   })
-              }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
-            }.size({ width: '100%', height: '20%' })
+              }
+              .size({ width: '100%', height: '50%' })
+              .justifyContent(FlexAlign.SpaceEvenly)
+            }
+            .size({ width: '100%', height: '20%' })
           }
 
         }.scrollBarColor(Color.White) // 滚动条颜色
         .scrollBarWidth(10)
-      }.height('80%').width('100%')
+      }
+      .height('80%')
+      .width('100%')
 
       CustomContainer({
         title: this.name,
@@ -229,12 +259,18 @@ struct cameraFormat {
         FillColor: $FillColor,
         name: $name,
         Vue: $Vue,
-      }).height('10%').width('100%')
-    }.width('100%').height('100%').backgroundColor(Color.Black)
+      })
+        .height('10%')
+        .width('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }

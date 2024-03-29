@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/common/Common';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 export default function OnlyRowsTemplate5() {
-  describe('OnlyRowsTemplate5', function () {
-    beforeEach(async function (done) {
+  describe('OnlyRowsTemplate5',  () =>{
+    beforeEach(async  (done:Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options:router.RouterOptions = {
         url: 'MainAbility/pages/Grid/OnlyRowsTemplate/OnlyRowsTemplate1',
       }
       try {
@@ -30,7 +30,7 @@ export default function OnlyRowsTemplate5() {
         console.info("get OnlyRowsTemplate5 state pages:" + JSON.stringify(pages));
         if (!("GridFrictionPage" == pages.name)) {
           console.info("get OnlyRowsTemplate5 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push OnlyRowsTemplate5 page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function OnlyRowsTemplate5() {
       console.info("OnlyRowsTemplate5 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async  () => {
       console.info("OnlyRowsTemplate5 after each called");
     });
 
@@ -49,7 +49,7 @@ export default function OnlyRowsTemplate5() {
      * @tc.name      testGrid
      * @tc.desc      GridItem sets rowStart to a negative number
      */
-    it('SUB_ACE_GRID_OnlyRowsTemplate5_0500', 0, async function (done) {
+    it('SUB_ACE_GRID_OnlyRowsTemplate5_0500', 0, async  (done:Function) => {
       console.info('[SUB_ACE_GRID_OnlyRowsTemplate5_0500] START');
       globalThis.value.message.notify({name:'rowStart1', value:2})
       globalThis.value.message.notify({name:'rowEnd1', value:1})
@@ -58,7 +58,7 @@ export default function OnlyRowsTemplate5() {
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
-      let GridItem_011 = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
+      let GridItem_011:RectValue = CommonFunc.getComponentRect('OnlyRowsTemplate1_GridItem_01');
 
       console.log('assert size')
       expect(Math.round(GridItem_011.right - GridItem_011.left)).assertEqual(Math.round(vp2px(100)));

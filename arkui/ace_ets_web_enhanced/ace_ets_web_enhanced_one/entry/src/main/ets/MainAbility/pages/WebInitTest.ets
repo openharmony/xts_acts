@@ -58,30 +58,30 @@ struct WebInitTest {
   heads: Header[] = new Array()
   responseWeb: WebResourceResponse = new WebResourceResponse()
   webData: string = '<!DOCTYPE html>' +
-  ' <html lang="en">' +
-  ' <head>' +
-  '     <meta charset="UTF-8">' +
-  '     <meta http-equiv="X-UA-Compatible" content="IE=edge">' +
-  '     <meta name="viewport" content="width=device-width, initial-scale=1.0">' +
-  '     <title>schemeTest</title>' +
-  ' </head>' +
-  ' <body>' +
-  '     <div id="container">schemeTest</div>' +
-  ' </body>' +
-  ' <script>' +
-  '     function fetchUrl(scheme){' +
-  '         fetch(scheme + "://www.openharmony.cn/");' +
-  '     }' +
-  '     function fetchUrlAllowCors(scheme){' +
-  '         fetch(scheme + "://www.openharmony.cn/", {' +
-  '           mode: "cors",' +
-  '           headers: {' +
-  '             "Access-Control-Allow-Origin":"*"' +
-  '           }' +
-  '         });' +
-  '     }' +
-  ' </script>' +
-  ' </html>'
+    ' <html lang="en">' +
+    ' <head>' +
+    '     <meta charset="UTF-8">' +
+    '     <meta http-equiv="X-UA-Compatible" content="IE=edge">' +
+    '     <meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+    '     <title>schemeTest</title>' +
+    ' </head>' +
+    ' <body>' +
+    '     <div id="container">schemeTest</div>' +
+    ' </body>' +
+    ' <script>' +
+    '     function fetchUrl(scheme){' +
+    '         fetch(scheme + "://www.openharmony.cn/");' +
+    '     }' +
+    '     function fetchUrlAllowCors(scheme){' +
+    '         fetch(scheme + "://www.openharmony.cn/", {' +
+    '           mode: "cors",' +
+    '           headers: {' +
+    '             "Access-Control-Allow-Origin":"*"' +
+    '           }' +
+    '         });' +
+    '     }' +
+    ' </script>' +
+    ' </html>'
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -170,7 +170,7 @@ struct WebInitTest {
                 Utils.emitEvent(
                   this.interceptUrl.indexOf('jump3') < 0 &&
                   this.consoleCorsError &&
-                  this.consoleMsg.indexOf('Failed to fetch') >= 0,
+                    this.consoleMsg.indexOf('Failed to fetch') >= 0,
                   206
                 );
                 break;
@@ -181,7 +181,7 @@ struct WebInitTest {
                 Utils.emitEvent(
                   this.interceptUrl.indexOf('jump3') < 0 &&
                   this.consoleCorsError &&
-                  this.consoleMsg.indexOf('Failed to fetch') >= 0,
+                    this.consoleMsg.indexOf('Failed to fetch') >= 0,
                   208
                 );
                 break;
@@ -191,7 +191,7 @@ struct WebInitTest {
                 await Utils.sleep(2000);
                 Utils.emitEvent(
                   this.interceptUrl.indexOf('jump2') < 0 &&
-                  this.consoleMsg.indexOf('Failed to fetch') >= 0,
+                    this.consoleMsg.indexOf('Failed to fetch') >= 0,
                   210
                 );
                 break;
@@ -201,7 +201,7 @@ struct WebInitTest {
                 await Utils.sleep(2000);
                 Utils.emitEvent(
                   this.interceptUrl.indexOf('jump4') < 0 &&
-                  this.consoleMsg.indexOf('Failed to fetch') >= 0,
+                    this.consoleMsg.indexOf('Failed to fetch') >= 0,
                   212
                 );
                 break;

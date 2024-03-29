@@ -19,22 +19,25 @@ import { BusinessError } from '@ohos.base';
 @Entry
 @Component
 struct Navigation_NavPathStackTest3 {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
 
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
-      Column({space:10}) {
-        Text('pageOne3').id('NavPathStackApi3_text_pageOne')
+      Column({ space: 10 }) {
+        Text('pageOne3')
+          .id('NavPathStackApi3_text_pageOne')
 
-      }.width('100%').height('100%')
-    }.title('pageOne')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
     .onBackPressed(() => {
       this.pageInfos.pop()
       return true
     })
   }
-
-
 
   @Builder
   PageMap(name: string) {
@@ -53,17 +56,19 @@ struct Navigation_NavPathStackTest3 {
           .width('80%')
           .height(40)
           .onClick(() => {
-            this.pageInfos.pushDestinationByName('pageOne', null, (popInfo)=>{
+            this.pageInfos.pushDestinationByName('pageOne', null, (popInfo) => {
               console.log('[pushDestinationByName]last page is: ' + popInfo.info.name + ', result: ' + JSON.stringify(popInfo.result));
-            }).catch((error: BusinessError)=>{
+            }).catch((error: BusinessError) => {
               console.error(`[pushDestinationByName]failed, error code = ${error.code}, error.message = ${error.message}.`);
-            }).then(()=>{
+            }).then(() => {
               console.error('[pushDestinationByName]success.');
             });
           })
           .id('NavPathStackApi3_pushDestinationByName')
 
       }
-    }.title('NavIndex').navDestination(this.PageMap)
+    }
+    .title('NavIndex')
+    .navDestination(this.PageMap)
   }
 }

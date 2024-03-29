@@ -23,4 +23,4 @@ export default class WorkSchedulerExtension extends WorkSchedulerExtensionAbilit
   onWorkStop(workInfo) {
     console.log('WorkSchedulerExtensionAbility onWorkStop, workInfo = ' + JSON.stringify(workInfo));
   }
-};
+}

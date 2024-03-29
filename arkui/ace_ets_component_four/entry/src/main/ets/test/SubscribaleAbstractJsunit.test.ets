@@ -16,14 +16,14 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 
 export default function SubscribaleAbstractJsunit() {
-  describe('SubscribaleAbstract', function () {
+  describe('SubscribaleAbstract', () =>{
 
     /**
     * @tc.number  stateManagement_SubscribaleAbstract_setOrCreate_0100
     * @tc.name    stateManagement SubscribaleAbstract  setOrCreate validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SubscribaleAbstract_addOwningProperty_0100', 0, function (done) {
+    it('stateManagement_SubscribaleAbstract_addOwningProperty_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_SubscribaleAbstract_addOwningProperty_0100] START');
@@ -44,7 +44,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement ISinglePropertyChangeSubscriber  hasChanged validation
     * @tc.desc    Function test
     */
-    it('stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100', 0, function (done) {
+    it('stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_ISinglePropertyChangeSubscriber_hasChanged_0100] START');
@@ -63,7 +63,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement PersistentStorage   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_PersistentStorage_0100', 0, function (done) {
+    it('stateManagement_PersistentStorage_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_PersistentStorage_0100] Start');
@@ -88,7 +88,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement IPropertySubscriber   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_IPropertySubscriber_0100', 0, function (done) {
+    it('stateManagement_IPropertySubscriber_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_IPropertySubscriber_0100] Start');
@@ -105,7 +105,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement stateManagement_SyncedPropertyOneWay_0100   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SyncedPropertyOneWay_0100', 0, function (done) {
+    it('stateManagement_SyncedPropertyOneWay_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_SyncedPropertyOneWay_0100] Start');
@@ -126,7 +126,7 @@ export default function SubscribaleAbstractJsunit() {
     * @tc.name    stateManagement SyncedPropertyTwoWay   validation
     * @tc.desc    Function test
     */
-    it('stateManagement_SyncedPropertyTwoWay_0100', 0, function (done) {
+    it('stateManagement_SyncedPropertyTwoWay_0100', 0, (done:Function) =>{
       done();
       return;
       console.info('[stateManagement_SyncedPropertyTwoWay_0100] Start');

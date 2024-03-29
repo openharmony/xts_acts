@@ -107,6 +107,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.removable).assertTrue(0);
         expect(data.appInfo.accessTokenId).assertLarger(0);
         expect(data.appInfo.uid).assertLarger(0);
+        expect(data.appInfo.nativeLibraryPath).assertEqual("");
         expect(data.appInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME);
         expect(data.appInfo.iconResource.moduleName).assertEqual("testModule");
         expect(data.appInfo.iconResource.id).assertEqual(data.appInfo.iconId);
@@ -211,6 +212,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].installationFree).assertFalse();
         expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+        expect(data.hapModulesInfo[0].nativeLibraryPath).assertEqual("");
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);

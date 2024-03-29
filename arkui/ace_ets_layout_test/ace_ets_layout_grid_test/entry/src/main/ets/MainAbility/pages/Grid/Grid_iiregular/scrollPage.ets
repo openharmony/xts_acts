@@ -16,24 +16,24 @@
 @Entry
 @Component
 struct scrollPage {
-  @State Number: String[] = ['0', '1']
-  scroller: Scroller = new Scroller()
+  @State Number: String[] = ['0', '1'];
+  scroller: Scroller = new Scroller();
 
   build() {
     Column({ space: 5 }) {
       Grid(this.scroller) {
         // ForEach(this.Number, (day: string) => {
-          ForEach(this.Number, (day: string) => {
-            GridItem() {
-              Text(day)
-                .fontSize(16)
-                .backgroundColor(0xF9CF93)
-                .width('100%')
-                .height(80)
-                .textAlign(TextAlign.Center)
-                .key('scrollPage_text' + day)
-            }
-          }, (day: string) => day)
+        ForEach(this.Number, (day: string) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+              .key('scrollPage_text' + day)
+          }
+        }, (day: string) => day)
         // }, (day: string) => day)
       }
       .key('gridPage')
@@ -47,7 +47,7 @@ struct scrollPage {
         console.info(first.toString())
       })
       .onScrollBarUpdate((index: number, offset: number) => {
-        return {totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4}
+        return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 }
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)

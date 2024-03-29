@@ -15,11 +15,11 @@
 
 #include "gtest/gtest.h"
 
-#include "c/drawing_brush.h"
-#include "c/drawing_color.h"
-#include "c/drawing_filter.h"
-#include "c/drawing_mask_filter.h"
-#include "c/drawing_rect.h"
+#include "drawing_brush.h"
+#include "drawing_color.h"
+#include "drawing_filter.h"
+#include "drawing_mask_filter.h"
+#include "drawing_rect.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -43,8 +43,9 @@ void NativeDrawingBrushTest::TearDown() {}
 /*
  * @tc.name: NativeDrawingBrushTest_brush001
  * @tc.desc: test for create brush and destroy brush.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brush001, TestSize.Level1)
 {
@@ -56,8 +57,9 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brush001, TestSize.Level
 /*
  * @tc.name: NativeDrawingBrushTest_brush002
  * @tc.desc: test for the set methods of brush.
- * @tc.type: FUNC
- * @tc.require: AR000GTO5R
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
  */
 HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brush002, TestSize.Level1)
 {
@@ -69,6 +71,21 @@ HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_brush002, TestSize.Level
     constexpr uint8_t alpha = 128;
     OH_Drawing_BrushSetAlpha(brush1, alpha);
     EXPECT_EQ(OH_Drawing_BrushGetAlpha(brush1), alpha);
+}
+
+/*
+ * @tc.name: NativeDrawingBrushTest_SetBlendMode001
+ * @tc.desc: test for SetBlendMode.
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeDrawingBrushTest, NativeDrawingBrushTest_SetBlendMode001, TestSize.Level1)
+{
+    OH_Drawing_BrushSetBlendMode(nullptr, OH_Drawing_BlendMode::BLEND_MODE_CLEAR);
+    OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
+    EXPECT_NE(brush, nullptr);
+    OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_CLEAR);
 }
 } // namespace Drawing
 } // namespace Rosen

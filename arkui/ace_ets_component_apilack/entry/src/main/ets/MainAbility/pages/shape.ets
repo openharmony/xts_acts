@@ -14,6 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
+
 let my_shape = new Shape()
 const TAG = 'ets_apiLack_add';
 
@@ -24,12 +25,12 @@ struct ShapeNe {
     Log.showInfo(TAG, `aboutToAppear ShapeNe start`)
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear ShapeNe end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("shape-Ne")
         .width(100)
@@ -49,12 +50,15 @@ struct ShapeNe {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }
       .viewPort({ x: 0, y: -5, width: 300, height: 20 })
-      .stroke(0xEE8443).strokeWidth(10).strokeDashArray([20]).strokeDashOffset(10)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
 
       Shape() {
         Path().width(300).height(10).commands('M0 0 L900 0')
       }.viewPort({ x: 0, y: -5, width: 300, height: 20 }).stroke(0xEE8443).strokeWidth(10).strokeOpacity(0.5)
-    
+
     }.width("100%").height("100%")
   }
 }

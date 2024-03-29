@@ -15,20 +15,21 @@
 @Entry
 @Component
 struct Selectoptionwith {
-  @State text: string = "TTTTT1"
-  @State index: number = 2
-  @State space: number = 8
-  @State arrowPosition: ArrowPosition = ArrowPosition.END
-  @State text2: string = "TTTTT2"
-  @State index2: number = 2
-  @State space2: number = 8
-  @State arrowPosition2: ArrowPosition = ArrowPosition.END
+  @State text: string = "TTTTT1";
+  @State index: number = 2;
+  @State space: number = 8;
+  @State arrowPosition: ArrowPosition = ArrowPosition.END;
+  @State text2: string = "TTTTT2";
+  @State index2: number = 2;
+  @State space2: number = 8;
+  @State arrowPosition2: ArrowPosition = ArrowPosition.END;
+
   build() {
     Column() {
-      Select([{ value: 'aaa'},
-        { value: 'bbb'},
-        { value: 'ccc'},
-        { value: 'ddd'}])
+      Select([{ value: 'aaa' },
+        { value: 'bbb' },
+        { value: 'ccc' },
+        { value: 'ddd' }])
         .selected(this.index)
         .width(50)
         .value(this.text)
@@ -39,19 +40,19 @@ struct Selectoptionwith {
         .optionFont({ size: 16, weight: 400 })
         .space(this.space)
         .arrowPosition(this.arrowPosition)
-        .menuAlign(MenuAlignType.START, {dx:0, dy:0})
+        .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(OptionWidthMode.FIT_CONTENT)
         .optionHeight(100)
-        .onSelect((index:number, text?: string | undefined)=>{
+        .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index)
           this.index = index;
-          if(text){
+          if (text) {
             this.text = text;
           }
         })
       Select([{ value: 'aaa' },
         { value: 'bbb' },
-        { value: 'ccc'},
+        { value: 'ccc' },
         { value: 'ddd' }])
         .width(500)
         .key('selectoption2')
@@ -63,13 +64,13 @@ struct Selectoptionwith {
         .optionFont({ size: 16, weight: 400 })
         .space(this.space2)
         .arrowPosition(this.arrowPosition2)
-        .menuAlign(MenuAlignType.START, {dx:0, dy:0})
+        .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(OptionWidthMode.FIT_TRIGGER)
         .optionHeight(100)
-        .onSelect((index2:number, text2?: string | undefined)=>{
+        .onSelect((index2: number, text2?: string | undefined) => {
           console.info('Select:' + index2)
           this.index2 = index2;
-          if(text2){
+          if (text2) {
             this.text2 = text2;
           }
         })

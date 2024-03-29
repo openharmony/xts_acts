@@ -17,16 +17,19 @@ import font from '@ohos.font';
 @Entry
 @Component
 struct APIgetUIFontConfig {
-  @State text: string = ''
+  @State text: string = '';
 
   build() {
     Column() {
-      Text(this.text).margin(70).key('APIgetUIFontConfigText')
-      Button("fontDir").key('APIgetUIFontConfigButton')
+      Text(this.text)
+        .margin(70)
+        .key('APIgetUIFontConfigText')
+      Button("fontDir")
+        .key('APIgetUIFontConfigButton')
         .width('60%')
         .height('6%')
         .margin(10)
-        .onClick(()=>{
+        .onClick(() => {
           let fontConfig = font.getUIFontConfig();
           this.text = fontConfig?.fontDir?.length + ''
         })

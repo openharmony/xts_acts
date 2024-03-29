@@ -64,6 +64,7 @@ Note:If the text contains special characters, please escape them according to th
         <filefilterlist>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile" >
                 <filteritem type="filename" name="*.jpg" desc="all jpg file have check "/>
+                <filteritem type="filename" name="*.jpeg" desc="all jpg file have check "/>
                 <filteritem type="filename" name="*.gif" desc="all gif file have check "/>
                 <filteritem type="filename" name="*.png" desc="all png file have check "/>
                 <filteritem type="filename" name="*.bin" desc="all bin file have check"/>
@@ -73,12 +74,17 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.abc" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.ogg" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.json" desc="all bin file have check"/>
+				<filteritem type="filename" name="*.amr" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
                 <filteritem type="filepath" name="global/crossplatform/resourcemanageretstest/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
                 <filteritem type="filepath" name="global/global_napi_test/entry/src/main/resources/rawfile/test/aa.xml" desc="resource files do not to be added"/>
                 <filteritem type="filepath" name="global/resmgr_standard/resmgrjs/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
+                <filteritem type="filename" name="*.mp4" desc="mp4 files do not to be added "/>
+                <filteritem type="filename" name="*.mov" desc="mov files do not to be added "/>
+                <filteritem type="filename" name="*.xml" desc="xml files do not to be added "/>
+                <filteritem type="filename" name="*.py" desc="py files do not to be added "/>
             </filefilter>
         </filefilterlist>
     </oatconfig>

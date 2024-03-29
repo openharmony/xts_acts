@@ -17,7 +17,7 @@ import attrsManager from '../../common/AttrsManager'
 import router from '@ohos.router'
 
 class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -30,7 +30,7 @@ class AlphabetIndexerModifier implements AttributeModifier<AlphabetIndexerAttrib
 }
 
 class BadgeModifier implements AttributeModifier<BadgeAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -43,7 +43,7 @@ class BadgeModifier implements AttributeModifier<BadgeAttribute> {
 }
 
 class ButtonModifier implements AttributeModifier<ButtonAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -56,7 +56,7 @@ class ButtonModifier implements AttributeModifier<ButtonAttribute> {
 }
 
 class BlankModifier implements AttributeModifier<BlankAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -69,7 +69,7 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 }
 
 class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -82,7 +82,7 @@ class CalendarPickerModifier implements AttributeModifier<CalendarPickerAttribut
 }
 
 class CanvasModifier implements AttributeModifier<CanvasAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -95,7 +95,7 @@ class CanvasModifier implements AttributeModifier<CanvasAttribute> {
 }
 
 class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -108,7 +108,7 @@ class CheckboxModifier implements AttributeModifier<CheckboxAttribute> {
 }
 
 class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -121,7 +121,7 @@ class CheckboxGroupModifier implements AttributeModifier<CheckboxGroupAttribute>
 }
 
 class CircleModifier implements AttributeModifier<CircleAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -134,7 +134,7 @@ class CircleModifier implements AttributeModifier<CircleAttribute> {
 }
 
 class ColumnModifier implements AttributeModifier<ColumnAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -147,7 +147,7 @@ class ColumnModifier implements AttributeModifier<ColumnAttribute> {
 }
 
 class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -160,7 +160,7 @@ class ColumnSplitModifier implements AttributeModifier<ColumnSplitAttribute> {
 }
 
 class CounterModifier implements AttributeModifier<CounterAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -173,7 +173,7 @@ class CounterModifier implements AttributeModifier<CounterAttribute> {
 }
 
 class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -186,7 +186,7 @@ class DataPanelModifier implements AttributeModifier<DataPanelAttribute> {
 }
 
 class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -199,7 +199,7 @@ class DatePickerModifier implements AttributeModifier<DatePickerAttribute> {
 }
 
 class DividerModifier implements AttributeModifier<DividerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -212,7 +212,7 @@ class DividerModifier implements AttributeModifier<DividerAttribute> {
 }
 
 class EllipseModifier implements AttributeModifier<EllipseAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -225,7 +225,7 @@ class EllipseModifier implements AttributeModifier<EllipseAttribute> {
 }
 
 class FlexModifier implements AttributeModifier<FlexAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -238,7 +238,7 @@ class FlexModifier implements AttributeModifier<FlexAttribute> {
 }
 
 class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -251,7 +251,7 @@ class FlowItemModifier implements AttributeModifier<FlowItemAttribute> {
 }
 
 class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -264,7 +264,7 @@ class FormLinkModifier implements AttributeModifier<FormLinkAttribute> {
 }
 
 class GaugeModifier implements AttributeModifier<GaugeAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -277,7 +277,7 @@ class GaugeModifier implements AttributeModifier<GaugeAttribute> {
 }
 
 class GridModifier implements AttributeModifier<GridAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -290,7 +290,7 @@ class GridModifier implements AttributeModifier<GridAttribute> {
 }
 
 class GridColModifier implements AttributeModifier<GridColAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -303,7 +303,7 @@ class GridColModifier implements AttributeModifier<GridColAttribute> {
 }
 
 class GridItemModifier implements AttributeModifier<GridItemAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -316,7 +316,7 @@ class GridItemModifier implements AttributeModifier<GridItemAttribute> {
 }
 
 class GridRowModifier implements AttributeModifier<GridRowAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -329,7 +329,7 @@ class GridRowModifier implements AttributeModifier<GridRowAttribute> {
 }
 
 class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -342,7 +342,7 @@ class HyperlinkModifier implements AttributeModifier<HyperlinkAttribute> {
 }
 
 class ImageModifier implements AttributeModifier<ImageAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -355,7 +355,7 @@ class ImageModifier implements AttributeModifier<ImageAttribute> {
 }
 
 class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -368,7 +368,7 @@ class ImageAnimatorModifier implements AttributeModifier<ImageAnimatorAttribute>
 }
 
 class LineModifier implements AttributeModifier<LineAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -381,7 +381,7 @@ class LineModifier implements AttributeModifier<LineAttribute> {
 }
 
 class ListModifier implements AttributeModifier<ListAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -394,7 +394,7 @@ class ListModifier implements AttributeModifier<ListAttribute> {
 }
 
 class ListItemModifier implements AttributeModifier<ListItemAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -407,7 +407,7 @@ class ListItemModifier implements AttributeModifier<ListItemAttribute> {
 }
 
 class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -420,7 +420,7 @@ class ListItemGroupModifier implements AttributeModifier<ListItemGroupAttribute>
 }
 
 class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -433,7 +433,7 @@ class LoadingProgressModifier implements AttributeModifier<LoadingProgressAttrib
 }
 
 class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -446,7 +446,7 @@ class MarqueeModifier implements AttributeModifier<MarqueeAttribute> {
 }
 
 class MenuModifier implements AttributeModifier<MenuAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -459,7 +459,7 @@ class MenuModifier implements AttributeModifier<MenuAttribute> {
 }
 
 class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -472,7 +472,7 @@ class MenuItemModifier implements AttributeModifier<MenuItemAttribute> {
 }
 
 class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -485,7 +485,7 @@ class MenuItemGroupModifier implements AttributeModifier<MenuItemGroupAttribute>
 }
 
 class NavDestinationModifier implements AttributeModifier<NavDestinationAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -498,7 +498,7 @@ class NavDestinationModifier implements AttributeModifier<NavDestinationAttribut
 }
 
 class NavigationModifier implements AttributeModifier<NavigationAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -511,7 +511,7 @@ class NavigationModifier implements AttributeModifier<NavigationAttribute> {
 }
 
 class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -524,7 +524,7 @@ class NavigatorModifier implements AttributeModifier<NavigatorAttribute> {
 }
 
 class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -537,7 +537,7 @@ class NavRouterModifier implements AttributeModifier<NavRouterAttribute> {
 }
 
 class PanelModifier implements AttributeModifier<PanelAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -550,7 +550,7 @@ class PanelModifier implements AttributeModifier<PanelAttribute> {
 }
 
 class PathModifier implements AttributeModifier<PathAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -563,7 +563,7 @@ class PathModifier implements AttributeModifier<PathAttribute> {
 }
 
 class PolygonModifier implements AttributeModifier<PolygonAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -576,7 +576,7 @@ class PolygonModifier implements AttributeModifier<PolygonAttribute> {
 }
 
 class PolylineModifier implements AttributeModifier<PolylineAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -589,7 +589,7 @@ class PolylineModifier implements AttributeModifier<PolylineAttribute> {
 }
 
 class ProgressModifier implements AttributeModifier<ProgressAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -602,7 +602,7 @@ class ProgressModifier implements AttributeModifier<ProgressAttribute> {
 }
 
 class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -615,7 +615,7 @@ class QRCodeModifier implements AttributeModifier<QRCodeAttribute> {
 }
 
 class RadioModifier implements AttributeModifier<RadioAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -628,7 +628,7 @@ class RadioModifier implements AttributeModifier<RadioAttribute> {
 }
 
 class RatingModifier implements AttributeModifier<RatingAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -641,7 +641,7 @@ class RatingModifier implements AttributeModifier<RatingAttribute> {
 }
 
 class RectModifier implements AttributeModifier<RectAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -654,7 +654,7 @@ class RectModifier implements AttributeModifier<RectAttribute> {
 }
 
 class RefreshModifier implements AttributeModifier<RefreshAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -667,7 +667,7 @@ class RefreshModifier implements AttributeModifier<RefreshAttribute> {
 }
 
 class RelativeContainerModifier implements AttributeModifier<RelativeContainerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -680,7 +680,7 @@ class RelativeContainerModifier implements AttributeModifier<RelativeContainerAt
 }
 
 class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -693,7 +693,7 @@ class RemoteWindowModifier implements AttributeModifier<RemoteWindowAttribute> {
 }
 
 class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -706,7 +706,7 @@ class RichEditorModifier implements AttributeModifier<RichEditorAttribute> {
 }
 
 class RichTextModifier implements AttributeModifier<RichTextAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -719,7 +719,7 @@ class RichTextModifier implements AttributeModifier<RichTextAttribute> {
 }
 
 class RowModifier implements AttributeModifier<RowAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -732,7 +732,7 @@ class RowModifier implements AttributeModifier<RowAttribute> {
 }
 
 class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -745,7 +745,7 @@ class RowSplitModifier implements AttributeModifier<RowSplitAttribute> {
 }
 
 class ScrollModifier implements AttributeModifier<ScrollAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -758,7 +758,7 @@ class ScrollModifier implements AttributeModifier<ScrollAttribute> {
 }
 
 class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -771,7 +771,7 @@ class ScrollBarModifier implements AttributeModifier<ScrollBarAttribute> {
 }
 
 class SearchModifier implements AttributeModifier<SearchAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -784,7 +784,7 @@ class SearchModifier implements AttributeModifier<SearchAttribute> {
 }
 
 class SelectModifier implements AttributeModifier<SelectAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -797,7 +797,7 @@ class SelectModifier implements AttributeModifier<SelectAttribute> {
 }
 
 class ShapeModifier implements AttributeModifier<ShapeAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -810,7 +810,7 @@ class ShapeModifier implements AttributeModifier<ShapeAttribute> {
 }
 
 class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -823,7 +823,7 @@ class SideBarContainerModifier implements AttributeModifier<SideBarContainerAttr
 }
 
 class SliderModifier implements AttributeModifier<SliderAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -836,7 +836,7 @@ class SliderModifier implements AttributeModifier<SliderAttribute> {
 }
 
 class SpanModifier implements AttributeModifier<SpanAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -849,7 +849,7 @@ class SpanModifier implements AttributeModifier<SpanAttribute> {
 }
 
 class StackModifier implements AttributeModifier<StackAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -862,7 +862,7 @@ class StackModifier implements AttributeModifier<StackAttribute> {
 }
 
 class StepperModifier implements AttributeModifier<StepperAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -875,7 +875,7 @@ class StepperModifier implements AttributeModifier<StepperAttribute> {
 }
 
 class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -888,7 +888,7 @@ class StepperItemModifier implements AttributeModifier<StepperItemAttribute> {
 }
 
 class SwiperModifier implements AttributeModifier<SwiperAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -901,7 +901,7 @@ class SwiperModifier implements AttributeModifier<SwiperAttribute> {
 }
 
 class TabContentModifier implements AttributeModifier<TabContentAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -914,7 +914,7 @@ class TabContentModifier implements AttributeModifier<TabContentAttribute> {
 }
 
 class TabsModifier implements AttributeModifier<TabsAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -927,7 +927,7 @@ class TabsModifier implements AttributeModifier<TabsAttribute> {
 }
 
 class TextModifier implements AttributeModifier<TextAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -940,7 +940,7 @@ class TextModifier implements AttributeModifier<TextAttribute> {
 }
 
 class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -953,7 +953,7 @@ class TextAreaModifier implements AttributeModifier<TextAreaAttribute> {
 }
 
 class TextClockModifier implements AttributeModifier<TextClockAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -966,7 +966,7 @@ class TextClockModifier implements AttributeModifier<TextClockAttribute> {
 }
 
 class TextInputModifier implements AttributeModifier<TextInputAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -979,7 +979,7 @@ class TextInputModifier implements AttributeModifier<TextInputAttribute> {
 }
 
 class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -992,7 +992,7 @@ class TextPickerModifier implements AttributeModifier<TextPickerAttribute> {
 }
 
 class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1005,7 +1005,7 @@ class TextTimerModifier implements AttributeModifier<TextTimerAttribute> {
 }
 
 class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1018,7 +1018,7 @@ class TimePickerModifier implements AttributeModifier<TimePickerAttribute> {
 }
 
 class ToggleModifier implements AttributeModifier<ToggleAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1031,7 +1031,7 @@ class ToggleModifier implements AttributeModifier<ToggleAttribute> {
 }
 
 class VideoModifier implements AttributeModifier<VideoAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1044,7 +1044,7 @@ class VideoModifier implements AttributeModifier<VideoAttribute> {
 }
 
 class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1057,7 +1057,7 @@ class WaterFlowModifier implements AttributeModifier<WaterFlowAttribute> {
 }
 
 class WebModifier implements AttributeModifier<WebAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1070,7 +1070,7 @@ class WebModifier implements AttributeModifier<WebAttribute> {
 }
 
 class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],
@@ -1083,7 +1083,7 @@ class WindowSceneModifier implements AttributeModifier<WindowSceneAttribute> {
 }
 
 class XComponentModifier implements AttributeModifier<XComponentAttribute> {
-	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<any>;	repeating?: boolean; } = {
+	mLinearGradient: {	angle?: number | string;	direction?: GradientDirection;	colors: Array<[string, number]>;	repeating?: boolean; } = {
 	direction: GradientDirection.Left,
 	repeating: true,
 	colors: [['FFFF0000', 0.0], ['#FF0000FF', 0.3], ['#FFFFFF00', 0.5]],

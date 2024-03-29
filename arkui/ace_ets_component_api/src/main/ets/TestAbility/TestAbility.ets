@@ -17,6 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import testsuite from '../test/List.test'
 import Window from '@ohos.window'
+import { BusinessError } from '@ohos.base';
 
 export default class TestAbility extends Ability {
     onCreate(want, launchParam) {
@@ -43,6 +44,27 @@ export default class TestAbility extends Ability {
             hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
             hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
                 JSON.stringify(data) ?? '');
+
+            let windowClass: Window.Window | undefined = undefined;
+           windowStage.getMainWindow((err: BusinessError, data) => {
+            let errCode: number = err.code;
+            if (errCode) {
+                console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+                return;
+            }
+            windowClass = data;
+            console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+            try {
+                let properties : Window.WindowProperties = windowClass.getWindowProperties();
+                let wRect : Window.Rect =  properties.windowRect;
+                globalThis.winLeft = wRect.left;
+                globalThis.winTop = wRect.top;
+                console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+            } catch (exception) {
+                console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+            }
+        })   
+        
         });
     }
 

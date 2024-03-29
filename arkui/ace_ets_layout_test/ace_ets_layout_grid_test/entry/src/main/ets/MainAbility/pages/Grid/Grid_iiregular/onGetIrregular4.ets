@@ -16,32 +16,33 @@
 // xxx.ets
 @Entry
 @Component
-struct  onGetIrregular4 {
-  @State Number: String[] = ['0', '1', '2', '3', '4']
-  scroller: Scroller = new Scroller()
+struct onGetIrregular4 {
+  @State Number: String[] = ['0', '1', '2', '3', '4'];
+  scroller: Scroller = new Scroller();
   layoutOptions2: GridLayoutOptions = {
     regularSize: [1, 1],
     irregularIndexes: [0, 4],
     onGetIrregularSizeByIndex: (index: number) => {
-      return [2,1]
+      return [2, 1];
     }
-  }
+  };
+
   build() {
     Column({ space: 5 }) {
       // 不使用scroll，需要undefined占位
       Grid(undefined, this.layoutOptions2) {
         // ForEach(this.Number, (day: string) => {
-          ForEach(this.Number, (day: string) => {
-            GridItem() {
-              Text(day)
-                .fontSize(16)
-                .backgroundColor(0xF9CF93)
-                .width('100%')
-                .height(80)
-                .textAlign(TextAlign.Center)
-                .key('text_Grid' + day)
-            }
-          }, (day: string) => day)
+        ForEach(this.Number, (day: string) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+              .key('text_Grid' + day)
+          }
+        }, (day: string) => day)
         // }, (day: string) => day)
       }
       .columnsTemplate('1fr')

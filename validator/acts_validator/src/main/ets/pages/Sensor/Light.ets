@@ -33,12 +33,13 @@ struct Light {
   @State FillColor: string = '#FF000000';
   @State name: string = 'Light';
   @State StepTips: string = '测试目的：用于测试本机传感器\n-确定是否有光传感器' + '\n-点击开启按钮打开传感器,' +
-  '如果有传感器，请调节设备周边的环境亮度观察光强值发生变化，否则返回上一级' + '\n-预期结果：数值发生变化';
+    '如果有传感器，请调节设备周边的环境亮度观察光强值发生变化，否则返回上一级' + '\n-预期结果：数值发生变化';
   @State Vue: boolean = false;
   @State isHave: boolean = true;
   @State isSensor: boolean = undefined;
   @State sensorChange: boolean = false;
-  @State dataIntensity: string = '';;
+  @State dataIntensity: string = '';
+  ;
   @State nextIntensity: string = '';
   @State intervalNum: number = 0;
 
@@ -65,7 +66,7 @@ struct Light {
         setTimeout(() => {
           sensor.off(sensor.SensorId.AMBIENT_LIGHT);
         }, 500);
-      }  catch (error) {
+      } catch (error) {
         let e: BusinessError.BusinessError = error as BusinessError.BusinessError;
         if (e) {
           this.isHave = false;
@@ -108,7 +109,7 @@ struct Light {
     }
   }
 
-  async aboutToDisappear(){
+  async aboutToDisappear() {
     clearInterval(this.intervalNum)
   }
 
@@ -139,7 +140,8 @@ struct Light {
       .onClick(() => {
         router.back({
           url: 'pages/Sensor/Sensor_index',
-          params: { result: 'true ', title: this.name,
+          params: {
+            result: 'true ', title: this.name,
           }
         })
         this.getScreen(isFullScreen);
@@ -163,7 +165,8 @@ struct Light {
     .onClick(() => {
       router.back({
         url: 'pages/Sensor/Sensor_index',
-        params: { result: 'false', title: this.name,
+        params: {
+          result: 'false', title: this.name,
         }
       })
       this.getScreen(isFullScreen);

@@ -32,6 +32,7 @@
 #define PARAM_2 2
 #define PARAM_UNNORMAL (-1)
 #define ERRON_0 0
+#define PARAM_0777 0777
 
 static napi_value Setutent(napi_env env, napi_callback_info info)
 {
@@ -94,8 +95,9 @@ static napi_value Utmpname(napi_env env, napi_callback_info info)
 
 static napi_value LoginTty(napi_env env, napi_callback_info info)
 {
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     int returnValue = login_tty(fileDescribe);
+    close(fileDescribe);
     napi_value result = nullptr;
     napi_create_int32(env, returnValue, &result);
     return result;

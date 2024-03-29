@@ -12,29 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-} from "@ohos/hypium";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, } from "@ohos/hypium";
 import AbilityDelegatorRegistry from "@ohos.app.ability.abilityDelegatorRegistry";
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
 
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 1000;
 
 export default function GetAbilityStateTest() {
-  describe("GetAbilityStateTest", function () {
-    beforeAll(function () {
-      let want = {
+  describe("GetAbilityStateTest", () => {
+    beforeAll(() => {
+      abilityDelegator.startAbility({
         abilityName: "MainAbility",
         bundleName: "com.example.delegatortest",
         moduleName: "entry",
-      };
-      abilityDelegator.startAbility(want);
+      });
     });
 
     /**
@@ -45,18 +38,17 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0001", 0, async function (done) {
-      let want = {
-        abilityName: "Main4Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
+    it("ACTS_GET_ABILITY_STATE_0001", 0, async (done: Function) => {
       setTimeout(() => {
-        abilityDelegator.startAbility(want, () => {
+        abilityDelegator.startAbility({
+          abilityName: "Main4Ability",
+          bundleName: "com.example.delegatortest",
+          moduleName: "entry",
+        }, () => {
           setTimeout(() => {
-            abilityDelegator.getCurrentTopAbility((err: any, ability2: any) => {
+            abilityDelegator.getCurrentTopAbility((err: BusinessError, ability2: UIAbility) => {
               try {
-                var stateNum = abilityDelegator.getAbilityState(ability2);
+                let stateNum = abilityDelegator.getAbilityState(ability2);
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0001 getAbilityState: " + stateNum
                 );
@@ -86,25 +78,24 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0002", 0, async function (done) {
-      let want = {
-        abilityName: "Main3Ability",
-        bundleName: "com.example.delegatortest",
-        moduleName: "entry",
-      };
+    it("ACTS_GET_ABILITY_STATE_0002", 0, async (done: Function) => {
       setTimeout(() => {
-        abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
+        abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
           abilityDelegator.printSync(
             "ACTS_GET_ABILITY_STATE_0002 getCurrentTopAbility start：" +
-              ability1.context.abilityInfo.name
+            ability1.context.abilityInfo.name
           );
-          abilityDelegator.startAbility(want, () => {
+          abilityDelegator.startAbility({
+            abilityName: "Main3Ability",
+            bundleName: "com.example.delegatortest",
+            moduleName: "entry",
+          }, () => {
             abilityDelegator.printSync(
               "ACTS_GET_ABILITY_STATE_0002 startAbility "
             );
             setTimeout(() => {
               try {
-                var stateNum = abilityDelegator.getAbilityState(ability1);
+                let stateNum = abilityDelegator.getAbilityState(ability1);
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0002 getAbilityState: " + stateNum
                 );
@@ -134,9 +125,9 @@ export default function GetAbilityStateTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("ACTS_GET_ABILITY_STATE_0003", 0, async function (done) {
+    it("ACTS_GET_ABILITY_STATE_0003", 0, async (done: Function) => {
       let ability1 = null;
-      var stateNum = abilityDelegator.getAbilityState(ability1);
+      let stateNum = abilityDelegator.getAbilityState(ability1);
       abilityDelegator.printSync(
         "ACTS_GET_ABILITY_STATE_0003 getAbilityState of ability1: " + stateNum
       );

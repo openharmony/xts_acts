@@ -17,12 +17,12 @@
 @Entry
 @Component
 struct IndexFold {
-  @State len_wid: number = 480
-  @State w: string = "40%"
-  @State text1:string = ""
-  @State text2:string = ""
-  @State text3:string = ""
-  @State text4:string = ""
+  @State len_wid: number = 480;
+  @State w: string = "40%";
+  @State text1: string = "";
+  @State text2: string = "";
+  @State text3: string = "";
+  @State text4: string = "";
 
   build() {
     Column() {
@@ -42,7 +42,10 @@ struct IndexFold {
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }
+        .width("100%")
+        .height("100%")
+        .justifyContent(FlexAlign.Start)
 
         Column() {
           Text("vedie bar ")
@@ -51,12 +54,14 @@ struct IndexFold {
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }
+        .width("100%")
+        .height("100%")
+        .justifyContent(FlexAlign.End)
       }
       .backgroundColor(Color.Yellow)
       .enableAnimation(true)
       .autoHalfFold(true)
-
       .onFolderStateChange((msg) => {
         if (msg.foldStatus === FoldStatus.FOLD_STATUS_EXPANDED) {
           this.text1 = "EXPANDED"
@@ -64,7 +69,7 @@ struct IndexFold {
         } else if (msg.foldStatus === FoldStatus.FOLD_STATUS_HALF_FOLDED) {
           this.text2 = "HALF_FOLDED"
           console.info("The device is currently in the half folded state")
-        } else if (msg.foldStatus == FoldStatus.FOLD_STATUS_UNKNOWN){
+        } else if (msg.foldStatus == FoldStatus.FOLD_STATUS_UNKNOWN) {
           this.text3 = "UNKNOWN"
           console.info("The device is currently in the unknown folded state")
         } else if (msg.foldStatus == FoldStatus.FOLD_STATUS_FOLDED) {

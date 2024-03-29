@@ -16,21 +16,42 @@
 @Entry
 @Component
 struct Grid_Row_Breakpoints_Negative {
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown]
+  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
 
   build() {
     Column() {
       GridRow({
-        columns: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6},
+        columns: {
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+          xl: 5,
+          xxl: 6
+        },
         gutter: {
-          x: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30},
-          y: { xs: 5, sm: 10, md: 15, lg: 20, xl: 25, xxl: 30}
+          x: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          },
+          y: {
+            xs: 5,
+            sm: 10,
+            md: 15,
+            lg: 20,
+            xl: 25,
+            xxl: 30
+          }
         },
         breakpoints: { value: ["-50vp", "100vp", "200vp", "100vp", "300vp"],
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color,index) => {
+        ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('Grid_Row_Breakpoints_Negative' + index)

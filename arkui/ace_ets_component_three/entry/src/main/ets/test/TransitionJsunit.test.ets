@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function transitionJsunit() {
-  describe('transitionTest', function () {
-    beforeEach(async function (done) {
+  describe('transitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("text beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/transition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/transition',
       }
       try {
         router.clear();
@@ -31,41 +30,41 @@ export default function transitionJsunit() {
         console.info("get transition state pages:" + JSON.stringify(pages));
         if (!("transition" == pages.name)) {
           console.info("get transition state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push transition page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push transition page error:" + JSON.stringify(result));
+        console.error("push transition page error:" + JSON.stringify(err));
       }
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("transition after each called");
     });
 
-    it('transitionTest_0100', 0, async function (done) {
+    it('transitionTest_0100', 0, async (done: Function) => {
       console.info('transitionTest_0100 START');
       let strJson = getInspectorByKey('button');
       console.info("transitionTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("transitionTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Button');
-      expect(obj.$attrs.opacity).assertEqual(1);
+
+      console.info("transitionTest_0100 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$type).assertEqual('Button');
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
       console.info('transitionTest_0100 END');
       done();
     });
 
-    it('transitionTest_0200', 0, async function (done) {
+    it('transitionTest_0200', 0, async (done: Function) => {
       console.info('transitionTest_0200 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 233,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("transitionTest_0200 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.btn1).assertEqual(false);
       }
@@ -80,15 +79,15 @@ export default function transitionJsunit() {
       done();
     });
 
-    it('transitionTest_0300', 0, async function (done) {
+    it('transitionTest_0300', 0, async (done: Function) => {
       console.info('transitionTest_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "opacity": 2,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 234,
           priority: events_emitter.EventPriority.LOW
         }
@@ -99,23 +98,22 @@ export default function transitionJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("transitionTest_0300 component objNew is: " + JSON.stringify(objNew));
+      console.info("transitionTest_0300 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       //非法入参默认初始值
-      expect(objNew.$attrs.opacity).assertEqual(1);
+      expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(1);
       console.info('transitionTest_0300 END');
       done();
     });
 
-    it('transitionTest_0400', 0, async function (done) {
+    it('transitionTest_0400', 0, async (done: Function) => {
       console.info('transitionTest_0400 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "opacity": 'a',
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 234,
           priority: events_emitter.EventPriority.LOW
         }
@@ -126,9 +124,8 @@ export default function transitionJsunit() {
       }
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('button');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("transitionTest_040 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.opacity).assertEqual(null);
+      console.info("transitionTest_040 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
+      expect(JSON.parse(strJsonNew).$attrs.opacity).assertEqual(null);
       console.info('transitionTest_0400 END');
       done();
     });

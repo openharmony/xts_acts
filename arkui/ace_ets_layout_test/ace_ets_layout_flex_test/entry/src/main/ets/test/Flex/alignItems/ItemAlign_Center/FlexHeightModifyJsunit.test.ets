@@ -14,14 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
-import CommonFunc from "../../../../MainAbility/common/Common";
-import { MessageManager,Callback } from '../../../../MainAbility/common/MessageManager';
+import router from '@ohos.router';
+import CommonFunc, { RectValue } from "../../../../MainAbility/common/Common";
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+import GlobalContext from '../../../../MainAbility/common/GlobalContext';
+
 export default function flexHeightModify_CenterJsunit() {
-  describe('flexItemAlignCenterTest6', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexHeightModify',
+  describe('flexItemAlignCenterTest6', () => {
+    beforeEach(async () => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/alignItems/ItemAlign_Center/FlexHeightModify',
       }
       try {
         router.clear();
@@ -30,38 +32,41 @@ export default function flexHeightModify_CenterJsunit() {
         console.info("get FlexHeightModify state success " + JSON.stringify(pages));
         if (!("FlexHeightModify" == pages.name)) {
           console.info("get FlexHeightModify state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push FlexHeightModify page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push FlexHeightModify page error " + JSON.stringify(err));
       }
       await CommonFunc.sleep(2000);
-      done()
+
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("FlexHeightModify after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_0800
-     * @tc.name      testFlexItemAlignCenterDefaultSize
-     * @tc.desc      Modify the first subcomponent's height.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_CENTER_0800
+     * @tc.name testFlexItemAlignCenterDefaultSize
+     * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignCenterDefaultSize', 0, async function (done) {
+    it('testFlexItemAlignCenterDefaultSize', 0, async () => {
       console.info('new testFlexItemAlignCenterDefaultSize START');
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
-      let textHeightModify01 = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
+
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
       expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify01.bottom) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify02.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify02.bottom) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify03.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify03.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify01.bottom) <= 1)
+        .assertTrue()
+      expect(Math.abs(textHeightModify02.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify02.bottom) <= 1)
+        .assertTrue()
+      expect(Math.abs(textHeightModify03.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify03.bottom) <= 1)
+        .assertTrue()
       expect(Math.abs(textHeightModify01.top - flexHeightModify.top - vp2px(75)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify01.bottom - textHeightModify01.top - vp2px(50)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.bottom - textHeightModify02.top - vp2px(100)) <= 1).assertTrue()
@@ -69,32 +74,37 @@ export default function flexHeightModify_CenterJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       console.info('new testFlexItemAlignCenterDefaultSize END');
-      done();
+
     });
 
     /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_0900
-     * @tc.name      testFlexItemAlignCenterHeightModify
-     * @tc.desc      Modify the first subcomponent's height.
+     * @tc.number SUB_ACE_FLEXALIGNITEMS_CENTER_0900
+     * @tc.name testFlexItemAlignCenterHeightModify
+     * @tc.desc Modify the first subcomponent's height.
      */
-    it('testFlexItemAlignCenterHeightModify', 0, async function (done) {
+    it('testFlexItemAlignCenterHeightModify', 0, async () => {
       console.info('new testFlexItemAlignCenterHeightModify START');
-      globalThis.value.message.notify({name:'height', value:80});
+      GlobalContext.getContext().getObject<number>('value').message.notify({
+        name: 'height', value: 80
+      });
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('flexHeightModify');
-      let obj1 = JSON.parse(strJson1);
-      let textHeightModify01 = CommonFunc.getComponentRect('textHeightModify01');
-      let textHeightModify02 = CommonFunc.getComponentRect('textHeightModify02');
-      let textHeightModify03 = CommonFunc.getComponentRect('textHeightModify03');
-      let flexHeightModify = CommonFunc.getComponentRect('flexHeightModify');
+
+      let textHeightModify01: RectValue = CommonFunc.getComponentRect('textHeightModify01');
+      let textHeightModify02: RectValue = CommonFunc.getComponentRect('textHeightModify02');
+      let textHeightModify03: RectValue = CommonFunc.getComponentRect('textHeightModify03');
+      let flexHeightModify: RectValue = CommonFunc.getComponentRect('flexHeightModify');
       expect(Math.abs(textHeightModify01.left - flexHeightModify.left) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.left - textHeightModify01.right) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify01.bottom) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify02.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify02.bottom) <= 1).assertTrue()
-      expect(Math.abs(textHeightModify03.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify03.bottom) <= 1).assertTrue()
+      expect(Math.abs(textHeightModify01.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify01.bottom) <= 1)
+        .assertTrue()
+      expect(Math.abs(textHeightModify02.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify02.bottom) <= 1)
+        .assertTrue()
+      expect(Math.abs(textHeightModify03.top - flexHeightModify.top - flexHeightModify.bottom + textHeightModify03.bottom) <= 1)
+        .assertTrue()
       expect(Math.abs(textHeightModify01.top - flexHeightModify.top - vp2px(60)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify01.bottom - textHeightModify01.top - vp2px(80)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.bottom - textHeightModify02.top - vp2px(100)) <= 1).assertTrue()
@@ -102,10 +112,10 @@ export default function flexHeightModify_CenterJsunit() {
       expect(Math.abs(textHeightModify01.right - textHeightModify01.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify02.right - textHeightModify02.left - vp2px(150)) <= 1).assertTrue()
       expect(Math.abs(textHeightModify03.right - textHeightModify03.left - vp2px(150)) <= 1).assertTrue()
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
+      expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
+      expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       console.info('new testFlexItemAlignCenterHeightModify END');
-      done();
+
     });
   })
 }

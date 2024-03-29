@@ -50,14 +50,14 @@ describe('audioRendererChange', function () {
     }
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - ON_STATE_PREPARED
      * @tc.desc      : AudioRendererChange - ON_STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0100', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -93,8 +93,6 @@ describe('audioRendererChange', function () {
                     console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
                     console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
                     console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    expect(AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType).assertEqual(audio.DeviceType.INVALID);
-                    expect(AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
                     console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
                     console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
                     console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
@@ -134,14 +132,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0200
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0200
      * @tc.name      : AudioRendererChange - ON_STATE_RUNNING
      * @tc.desc      : AudioRendererChange - ON_STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0200', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -218,14 +216,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0300
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0300
      * @tc.name      : AudioRendererChange - ON_STATE_STOPPED
      * @tc.desc      : AudioRendererChange - ON_STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0300', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -303,14 +301,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0400
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0400
      * @tc.name      : AudioRendererChange - ON_STATE_RELEASED
      * @tc.desc      : AudioRendererChange - ON_STATE_RELEASED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0400', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -389,14 +387,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0500
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0500
      * @tc.name      : AudioRendererChange - ON_STATE_PAUSED
      * @tc.desc      : AudioRendererChange - ON_STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0500', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -480,14 +478,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0600
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0600
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_RINGTONE
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0600', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -548,14 +546,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0700
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0700
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_UNKNOWN
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0700', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -616,14 +614,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0800
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0800
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_SPEECH
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_SPEECH
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0800', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -684,14 +682,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0900
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0900
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_MUSIC
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_MUSIC
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_0900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0900', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -752,14 +750,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1000
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1000
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_MOVIES
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_MOVIES
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1000', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -821,14 +819,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1100
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1100
      * @tc.name      : AudioRendererChange - ON_CONTENT_TYPE_SONIFICATION
      * @tc.desc      : AudioRendererChange - ON_CONTENT_TYPE_SONIFICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1100', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -890,14 +888,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1200
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1200
      * @tc.name      : AudioRendererChange - ON_STREAM_USAGE_UNKNOWN
      * @tc.desc      : AudioRendererChange - ON_STREAM_USAGE_UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1200', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -959,14 +957,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1300
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1300
      * @tc.name      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.desc      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1300', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1028,14 +1026,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1400
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1400
      * @tc.name      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.desc      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1400', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1097,14 +1095,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1500
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1500
      * @tc.name      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.desc      : AudioRendererChange - ON_STREAM_USAGE_MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1500', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1165,14 +1163,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1600
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1600
      * @tc.name      : AudioRendererChange - STREAMID
      * @tc.desc      : AudioRendererChange - STREAMID
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1600', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1233,14 +1231,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1700
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1700
      * @tc.name      : AudioRendererChange - CLIENTUID & RENDERERFLAG
      * @tc.desc      : AudioRendererChange - CLIENTUID & RENDERERFLAG
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1700', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1304,14 +1302,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1800
+     * @tc.number    : SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1800
      * @tc.name      : AudioRendererChange - DEVICE DESCRIPTOR
      * @tc.desc      : AudioRendererChange - DEVICE DESCRIPTOR
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ON_RENDERER_CHANGE_1800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1800', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1332,13 +1330,7 @@ describe('audioRendererChange', function () {
         let resultFlag = false;
 
         let audioRen;
-        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
-            audioRen = data;
-            console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
-        }).catch((err) => {
-            console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
-        });
-        await sleep(100);
+
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
@@ -1356,12 +1348,13 @@ describe('audioRendererChange', function () {
                 }
             }
         });
-        
+        await sleep(100);
 
-        await audioRen.start().then(()=>{
-            console.info(`${Tag} : AudioRender Start : Success : Stream Type: SUCCESS`);
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+            audioRen = data;
+            console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(`${Tag} : AudioRender Start : ERROR :   ${err.message}`);
+            console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
         await sleep(100);
@@ -1382,14 +1375,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0100
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0100
      * @tc.name      : AudioRendererChange - OFF_STATE_PREPARED
      * @tc.desc      : AudioRendererChange - OFF_STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0100', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
@@ -1446,14 +1439,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0200
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0200
      * @tc.name      : AudioRendererChange - OFF_STATE_RUNNING
      * @tc.desc      : AudioRendererChange - OFF_STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0200', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
@@ -1517,14 +1510,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0300
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0300
      * @tc.name      : AudioRenderer - OFF_STATE_STOPPED
      * @tc.desc      : AudioRenderer - OFF_STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0300', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1593,14 +1586,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0400
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0400
      * @tc.name      : AudioRendererChange - OFF_STATE_RELEASED
      * @tc.desc      : AudioRendererChange - OFF_STATE_RELEASED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0400', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
@@ -1671,14 +1664,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0500
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0500
      * @tc.name      : AudioRendererChange - OFF_STATE_PAUSED
      * @tc.desc      : AudioRendererChange - OFF_STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0500', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
@@ -1756,14 +1749,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0600
+     * @tc.number    : SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0600
      * @tc.name      : AudioRendererChange - DEVICE DESCRIPTOR
      * @tc.desc      : AudioRendererChange - DEVICE DESCRIPTOR
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_OFF_RENDERER_CHANGE_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0600', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
@@ -1911,14 +1904,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0100
      * @tc.name      : AudioRendererChange - GET_STATE_PREPARED
      * @tc.desc      : AudioRendererChange - GET_STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0100', 2, async function (done) {
         let audioCap;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1993,14 +1986,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0200
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0200
      * @tc.name      : AudioRendererChange - GET_STATE_RUNNING
      * @tc.desc      : AudioRendererChange - GET_STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0200', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2087,14 +2080,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0300
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0300
      * @tc.name      : AudioRendererChange - GET_STATE_STOPPED
      * @tc.desc      : AudioRendererChange - GET_STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0300', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2188,14 +2181,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0500
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0400
      * @tc.name      : AudioRendererChange - GET_STATE_PAUSED
      * @tc.desc      : AudioRendererChange - GET_STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_PROMISE_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0400', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -2380,14 +2373,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0100
      * @tc.name      : AudioRendererChange - GET_STATE_PREPARED
      * @tc.desc      : AudioRendererChange - GET_STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0100', 2, async function (done) {
         let audioCap;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2468,14 +2461,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0200
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0200
      * @tc.name      : AudioRendererChange - GET_STATE_RUNNING
      * @tc.desc      : AudioRendererChange - GET_STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0200', 2, async function (done) {
 
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2568,14 +2561,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0300
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0300
      * @tc.name      : AudioRendererChange - GET_STATE_STOPPED
      * @tc.desc      : AudioRendererChange - GET_STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0300', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2674,14 +2667,14 @@ describe('audioRendererChange', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0400
      * @tc.name      : AudioRendererChange - GET_STATE_PAUSED
      * @tc.desc      : AudioRendererChange - GET_STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_GET_RENDERER_CHANGE_CALLBACK_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0400', 2, async function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,

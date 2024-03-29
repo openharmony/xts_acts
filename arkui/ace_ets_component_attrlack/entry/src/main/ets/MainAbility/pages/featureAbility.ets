@@ -67,7 +67,8 @@ struct FeatureAbilityStartAbility {
         .onClick(() => {
           FeatureAbility.startAbilityForResult({
             bundleName: "com.example.testapp",
-            abilityName: "com.example.testApp.MainAbility" })
+            abilityName: "com.example.testApp.MainAbility"
+          })
         })
 
       Text("featureAbility-FinishWithResult")
@@ -277,10 +278,10 @@ struct FeatureAbilityStartAbility {
           FeatureAbility.startAbility(
             {
 
-              bundleName :"com.example.myapplication",
-              abilityName : "com.example.entry.secondAbility",
-              entities:['a','b'],
-              url:""
+              bundleName: "com.example.myapplication",
+              abilityName: "com.example.entry.secondAbility",
+              entities: ['a', 'b'],
+              url: ""
             }
           ).then((data) => {
             console.info("==========================>startAbility=======================>");
@@ -303,10 +304,10 @@ struct FeatureAbilityStartAbility {
         .onClick(() => {
           FeatureAbility.startAbilityForResult(
             {
-              bundleName :"com.example.myapplication",
-              abilityName : "com.example.entry.secondAbility",
-              entities:['a','b'],
-              url:""
+              bundleName: "com.example.myapplication",
+              abilityName: "com.example.entry.secondAbility",
+              entities: ['a', 'b'],
+              url: ""
             },
           ).then((data) => {
             console.info("==========================>startAbilityForResult=======================>");
@@ -328,8 +329,8 @@ struct FeatureAbilityStartAbility {
         .key("featureAbility-finishWithResult")
         .onClick(() => {
           FeatureAbility.finishWithResult({
-            code:20002,
-            result:{}
+            code: 20002,
+            result: {}
           }).then((data) => {
             console.info("==========================>startAbilityForResult=======================>");
           });
@@ -387,14 +388,14 @@ struct FeatureAbilityStartAbility {
         .textOverflow({ overflow: TextOverflow.None })
         .key("featureAbility-callAbility")
         .onClick(() => {
-             FeatureAbility.callAbility({
-               bundleName: "com.example.myapplication",
-               abilityName: "com.example.entry.secondAbility",
-               messageCode: 50,
-               abilityType: 12
-             }).then((data) => {
-               console.info("==========================>startAbilityForResult=======================>");
-             });
+          FeatureAbility.callAbility({
+            bundleName: "com.example.myapplication",
+            abilityName: "com.example.entry.secondAbility",
+            messageCode: 50,
+            abilityType: 12
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
         })
 
       Text("featureAbility-continueAbility")
@@ -434,8 +435,8 @@ struct FeatureAbilityStartAbility {
             abilityName: "d",
             messageCode: 50,
             abilityType: 60,
-            syncOption:20
-          },() => {
+            syncOption: 20
+          }, () => {
             console.info("hello subscribeAbilityEvent")
           }).then((data) => {
             console.info("==========================>startAbilityForResult=======================>");
@@ -466,7 +467,9 @@ struct FeatureAbilityStartAbility {
           });
         })
 
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

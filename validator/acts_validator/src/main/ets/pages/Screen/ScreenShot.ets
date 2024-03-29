@@ -25,10 +25,11 @@ import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
 import fileIo from '@ohos.file.fs';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import { BusinessError } from '@ohos.base';
 
-type ResponseData = {
-  status: string,
-  errorMessage: string,
+class ResponseData {
+  status: string;
+  errorMessage: string;
   result?: boolean
 }
 
@@ -68,7 +69,7 @@ struct ScreenShot {
   @State FillColor: string = '#FF000000';
   @State name: string = 'ScreenShot';
   @State StepTips: string = '测试目的：用于测试系统截图功能\n-点击颜色块，在滑动过程中点击截屏' +
-  '\n-截取1、2、3块颜色块图片\n-去图库查看图片是否正常。';
+    '\n-截取1、2、3块颜色块图片\n-去图库查看图片是否正常。';
   @State Vue: boolean = false;
   @State isFlush: boolean = undefined;
   @State isPass: boolean = false;
@@ -80,7 +81,7 @@ struct ScreenShot {
   private photoPath: string = '';
   private flag: boolean = false;
   private TAG: string = "[ScreenShot test]";
-  private backAnimator: any = undefined;
+  private backAnimator: ESObject = undefined;
   screenshotDialogController: CustomDialogController = new CustomDialogController({
     builder: ScreenshotDialog({ screenshotUrl: $screenshotUrl, isScroll: $isScroll }),
     autoCancel: true,
@@ -95,7 +96,7 @@ struct ScreenShot {
 
   // 判断隐私窗口
   hasPrivate(): ResponseData {
-    let currentDisplay = null
+    let currentDisplay: display.Display = null
     try {
       currentDisplay = display.getDefaultDisplaySync()
     } catch (exception) {
@@ -124,7 +125,7 @@ struct ScreenShot {
       .then(res => {
         currentWindow = res
         try {
-          currentWindow.setWindowPrivacyMode(windowPrivacyMode, (err) => {
+          currentWindow.setWindowPrivacyMode(windowPrivacyMode, (err: BusinessError) => {
             if (err.code) {
               Logger.error('set window privacy mode failed cause: ' + JSON.stringify(err))
               return
@@ -168,7 +169,7 @@ struct ScreenShot {
       begin: 25,
       end: 400
     })
-    this.backAnimator.onfinish = function () {
+    this.backAnimator.onfinish = () => {
       _this.flag = true
       _this.textNum++
       if (_this.textNum === 4) {
@@ -176,13 +177,13 @@ struct ScreenShot {
       }
       console.info(_this.TAG, 'backAnimator onfinish')
     }
-    this.backAnimator.onrepeat = function () {
+    this.backAnimator.onrepeat = () => {
       console.info(_this.TAG, 'backAnimator repeat')
     }
-    this.backAnimator.oncancel = function () {
+    this.backAnimator.oncancel = () => {
       console.info(_this.TAG, 'backAnimator cancel')
     }
-    this.backAnimator.onframe = function (value) {
+    this.backAnimator.onframe = (value: number) => {
       _this.hid = value
     }
   }
@@ -227,7 +228,7 @@ struct ScreenShot {
     imagePackerApi.packing(pm, packOpts).then((data: ArrayBuffer) => {
       // data 为打包获取到的文件流，写入文件保存即可得到一张图片
       this.saveImage(data)
-    }).catch((error) => {
+    }).catch((error: BusinessError) => {
       console.error(this.TAG, 'Failed to pack the image. And the error is: ' + error.message);
     })
   }

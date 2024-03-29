@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct pixelRound1 {
-  @State text1:string=''
+  @State text1: string = '';
 
   build() {
     Column() {

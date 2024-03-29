@@ -14,12 +14,12 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textInputOnEditChangeJsunit() {
-  describe('textInputOnEditChangeTest', function () {
-    beforeAll(async function (done) {
+  describe('textInputOnEditChangeTest', () => {
+    beforeAll(async () => {
       console.info("flex beforeEach start");
       let options = {
         uri: 'MainAbility/pages/textInput',
@@ -37,10 +37,9 @@ export default function textInputOnEditChangeJsunit() {
       } catch (err) {
         console.error("push textInput page error: " + err);
       }
-      done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputOnEditChange after each called");
     });
@@ -50,16 +49,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0001
      * @tc.desic         acetextInputOnEditChangeEtsTest0001
      */
-    it('testtextInputOnEditChange0001', 0, async function (done) {
+    it('testtextInputOnEditChange0001', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testtextInputOnEditChange0001] width value :" + obj.$attrs.width);
-      done();
+      expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00vp");
+      console.info("[testtextInputOnEditChange0001] width value :" + JSON.parse(strJson).$attrs.width);
+
     });
 
     /*
@@ -67,16 +66,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0002
      * @tc.desic         acetextInputOnEditChangeEtsTest0002
      */
-    it('testtextInputOnEditChange0002', 0, async function (done) {
+    it('testtextInputOnEditChange0002', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0002 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testtextInputOnEditChange0002] height value :" + obj.$attrs.height);
-      done();
+      expect(JSON.parse(strJson).$attrs.height).assertEqual("70.00vp");
+      console.info("[testtextInputOnEditChange0002] height value :" + JSON.parse(strJson).$attrs.height);
+
     });
 
     /*
@@ -84,16 +83,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0003
      * @tc.desic         acetextInputOnEditChangeEtsTest0003
      */
-    it('testtextInputOnEditChange0003', 0, async function (done) {
+    it('testtextInputOnEditChange0003', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0003 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.fontSize).assertEqual("20.00fp");
-      console.info("[testtextInputOnEditChange0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontSize).assertEqual("20.00fp");
+      console.info("[testtextInputOnEditChange0003] fontSize value :" + JSON.parse(strJson).$attrs.fontSize);
+
     });
 
     /*
@@ -101,16 +100,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0004
      * @tc.desic         acetextInputOnEditChangeEtsTest0004
      */
-    it('testtextInputOnEditChange0004', 0, async function (done) {
+    it('testtextInputOnEditChange0004', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0004 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testtextInputOnEditChange0004] opacity value :" + obj.$attrs.opacity);
-      done();
+      expect(JSON.parse(strJson).$attrs.opacity).assertEqual(1);
+      console.info("[testtextInputOnEditChange0004] opacity value :" + JSON.parse(strJson).$attrs.opacity);
+
     });
 
     /*
@@ -118,16 +117,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0005
      * @tc.desic         acetextInputOnEditChangeEtsTest0005
      */
-    it('testtextInputOnEditChange0005', 0, async function (done) {
+    it('testtextInputOnEditChange0005', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testtextInputOnEditChange0005] align value :" + obj.$attrs.align);
-      done();
+      expect(JSON.parse(strJson).$attrs.align).assertEqual("Alignment.TopStart");
+      console.info("[testtextInputOnEditChange0005] align value :" + JSON.parse(strJson).$attrs.align);
+
     });
 
     /*
@@ -135,16 +134,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0006
      * @tc.desic         acetextInputOnEditChangeEtsTest0006
      */
-    it('testtextInputOnEditChange0006', 0, async function (done) {
+    it('testtextInputOnEditChange0006', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0006 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testtextInputOnEditChange0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual("#FFCCCCCC");
+      console.info("[testtextInputOnEditChange0006] fontColor value :" + JSON.parse(strJson).$attrs.fontColor);
+
     });
 
     /*
@@ -152,16 +151,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0007
      * @tc.desic         acetextInputOnEditChangeEtsTest0007
      */
-    it('testtextInputOnEditChange0007', 0, async function (done) {
+    it('testtextInputOnEditChange0007', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0007 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.lineHeight).assertEqual(undefined);
-      console.info("[testtextInputOnEditChange0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual(undefined);
+      console.info("[testtextInputOnEditChange0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
+
     });
 
     /*
@@ -169,16 +168,16 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0009
      * @tc.desic         acetextInputOnEditChangeEtsTest0009
      */
-    it('testtextInputOnEditChange0009', 0, async function (done) {
+    it('testtextInputOnEditChange0009', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange009 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testtextInputOnEditChange0009] padding value :" + obj.$attrs.padding);
-      done();
+      expect(JSON.parse(strJson).$attrs.padding).assertEqual("10.00vp");
+      console.info("[testtextInputOnEditChange0009] padding value :" + JSON.parse(strJson).$attrs.padding);
+
     });
 
     /*
@@ -186,40 +185,42 @@ export default function textInputOnEditChangeJsunit() {
      * @tc.name         testtextInputOnEditChange0010
      * @tc.desic         acetextInputOnEditChangeEtsTest0010
      */
-    it('testtextInputOnEditChange0010', 0, async function (done) {
+    it('testtextInputOnEditChange0010', 0, async () => {
       console.info('textInputOnEditChange testtextInputOnEditChange0010 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('onEditChangeText');
       console.info("[testtextInputOnEditChange0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
-      console.info("[testtextInputOnEditChange0010] textAlign value :" + obj.$attrs.textAlign);
-      done();
+      expect(JSON.parse(strJson).$attrs.textAlign).assertEqual("TextAlign.Center");
+      console.info("[testtextInputOnEditChange0010] textAlign value :" + JSON.parse(strJson).$attrs.textAlign);
+
     });
 
-    it('testtextInputCopyOption0001', 0, async function (done) {
+    it('testtextInputCopyOption0001', 0, async () => {
       console.info('textInputCopyOption testtextInputCopyOption0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('textInputCopyOptionText');
       console.info("[testtextInputCopyOption0001] component copyOption strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
-      console.info("[testtextInputCopyOption0001] copyOption value :" + obj.$attrs.copyOption);
-      done();
+      expect(JSON.parse(strJson).$attrs.copyOption).assertEqual("CopyOptions.None");
+      console.info("[testtextInputCopyOption0001] copyOption value :" + JSON.parse(strJson).$attrs.copyOption);
+
     });
 
-    it('testtextInputShowPasswordIcon0001', 0, async function (done) {
+    it('testtextInputShowPasswordIcon0001', 0, async () => {
       console.info('textInputShowPasswordIcon testtextInputShowPasswordIcon0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('showPasswordIconText');
       console.info("[testtextInputShowPasswordIcon0001] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, Object> = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.showPasswordIcon).assertTrue();
-      console.info("[testtextInputShowPasswordIcon0001] showPasswordIcon value :" + obj.$attrs.showPasswordIcon);
-      done();
+      expect(JSON.parse(strJson).$attrs.showPasswordIcon).assertTrue();
+      console.info("[testtextInputShowPasswordIcon0001] showPasswordIcon value :" + JSON.parse(strJson)
+        .$attrs
+        .showPasswordIcon);
+
     });
   })
 }

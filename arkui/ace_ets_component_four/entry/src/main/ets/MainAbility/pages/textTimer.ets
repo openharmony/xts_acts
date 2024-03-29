@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +16,8 @@
 @Entry
 @Component
 struct TextTimerExample {
-  myTimerController: TextTimerController = new TextTimerController()
-  @State format: string = 'hh:mm:ss.ms'
+  myTimerController: TextTimerController = new TextTimerController();
+  @State format: string = 'hh:mm:ss.ms';
 
   build() {
     Column() {

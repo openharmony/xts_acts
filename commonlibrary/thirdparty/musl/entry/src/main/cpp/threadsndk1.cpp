@@ -105,7 +105,7 @@ static napi_value Cnd_broadcast(napi_env env, napi_callback_info info)
     mtx_unlock(&param.mutex);
     int ret = cnd_broadcast(&param.cond);
     mtx_unlock(&param.mutex);
-    
+
     for (int i = PARAM_0; i < maxThreadNum; i++) {
         thrd_join(threadIds[i], nullptr);
     }
@@ -417,7 +417,7 @@ static napi_value MtxUnlock_Two(napi_env env, napi_callback_info info)
 
 static int ThrdCreateThread(void *arg)
 {
-    int ret = *(static_cast<int*>(arg));
+    int ret = *(static_cast<int *>(arg));
     thrd_exit(ret);
 }
 
@@ -459,7 +459,7 @@ static napi_value Thrd_current(napi_env env, napi_callback_info info)
 
 static int ThrdDetachThreadA(void *arg)
 {
-    int *pret = static_cast<int*>(arg);
+    int *pret = static_cast<int *>(arg);
     *pret = thrd_detach(thrd_current());
     thrd_exit(thrd_success);
 }
@@ -531,7 +531,7 @@ static napi_value Thrd_equal_Two(napi_env env, napi_callback_info info)
 
 static int ThrdExitThread(void *arg)
 {
-    int ret = *(static_cast<int*>(arg));
+    int ret = *(static_cast<int *>(arg));
     thrd_exit(ret);
 }
 
@@ -550,7 +550,7 @@ static napi_value Thrd_exit(napi_env env, napi_callback_info info)
 
 static int ThrdJoinThread(void *arg)
 {
-    int ret = *(static_cast<int*>(arg));
+    int ret = *(static_cast<int *>(arg));
     thrd_exit(ret);
 }
 
@@ -651,7 +651,7 @@ static napi_value Tss_get(napi_env env, napi_callback_info info)
     int setValue = PARAM_1;
     tss_create(&key, nullptr);
     int ret = tss_set(key, static_cast<void *>(&setValue));
-    int value =*static_cast<int*>(tss_get(key));
+    int value = *static_cast<int *>(tss_get(key));
     tss_delete(key);
 
     ret |= value != setValue;
@@ -666,7 +666,7 @@ static napi_value Tss_set(napi_env env, napi_callback_info info)
     int setValue = PARAM_1;
     tss_create(&key, nullptr);
     int ret = tss_set(key, static_cast<void *>(&setValue));
-    int value =*static_cast<int*>(tss_get(key));
+    int value = *static_cast<int *>(tss_get(key));
     tss_delete(key);
 
     ret |= value != setValue;

@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium'
+import { beforeEach, describe, expect, it } from '@ohos/hypium'
+import Utils from './Utils'
 import iconv from 'libiconvndk.so'
 
 export default function muslIconvNdkTest() {
   describe('MuslIconvTest', () => {
+
+    beforeEach(async () => {
+      await Utils.sleep(50)
+    })
 
     /**
      * @tc.number   : SUB_THIRDPARTY_MUSL_ICONV_ICONV_0100

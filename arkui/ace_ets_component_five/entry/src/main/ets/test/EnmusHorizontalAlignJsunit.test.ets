@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function enumsVerticalAlignJsunit() {
-  describe('enumsHorizontalAlign', function () {
-    beforeEach(async function (done) {
+  describe('enumsHorizontalAlign', () => {
+    beforeEach( async (done: Function) =>{
       console.info('beforeEach ===================enumsHorizontalAlign test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/enumsHorizontalAlign',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/enumsHorizontalAlign',
       }
       try {
         router.clear();
@@ -30,7 +29,7 @@ export default function enumsVerticalAlignJsunit() {
         console.info('beforeEach get enumsHorizontalAlign state pages:' + JSON.stringify(pages));
         if (!('enumsFlexItem' == pages.name)) {
           console.info('beforeEach get enumsHorizontalAlign state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('beforeEach push enumsHorizontalAlign page result:' + JSON.stringify(result));
         }
@@ -40,19 +39,18 @@ export default function enumsVerticalAlignJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================enumsFlexItemTest test after each called===================');
     });
 
-    it('enumsHorizontalAlignTest_0100', 0, async function (done) {
+    it('enumsHorizontalAlignTest_0100', 0,  async (done: Function) =>{
       console.info('enumsHorizontalAlignTest_0100 START');
       await Utils.sleep(1500);
-      let strJson = getInspectorByKey('HorizontalAlign');
+      let strJson: string = getInspectorByKey('HorizontalAlign');
       console.info("enumsHorizontalAlignTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("enumsHorizontalAlignTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.alignItems).assertEqual('HorizontalAlign.Center');
+      console.info("enumsHorizontalAlignTest_0100 component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.alignItems).assertEqual('HorizontalAlign.Center');
       console.info('enumsHorizontalAlignTest_0100 END');
       done();
     });

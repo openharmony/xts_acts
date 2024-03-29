@@ -16,55 +16,59 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
 
-globalThis.StartServiceAbility = () => {
-  let want = {
+AppStorage.setOrCreate<Function>("StartServiceAbility", () => {
+  let want: Want = {
     'deviceId': '',
     'bundleName': 'com.acts.attachdebugextensiontest',
     'abilityName': 'ServiceExtAbility'
-  };
-  globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
+  }
+  AppStorage.get<common.UIAbilityContext>("abilityContext").startServiceExtensionAbility(want, (error: BusinessError) => {
     console.log('Start service extension ability:  ' + JSON.stringify(error));
-  });
-};
+  })
+})
 
-globalThis.StartServiceAbilityAbnormally = () => {
-  let want = {
+AppStorage.setOrCreate<Function>("StartServiceAbilityAbnormally", () => {
+  let want: Want = {
     'deviceId': '',
     'bundleName': 'com.acts.attachdebugextensiontest',
     'abilityName': 'ServiceExtAbility',
     'action': 'abnormal'
-  };
-  globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
+  }
+  AppStorage.get<common.UIAbilityContext>("abilityContext").startServiceExtensionAbility(want, (error: BusinessError) => {
     console.log('Start service extension ability abnormally:  ' + JSON.stringify(error));
-  });
-};
+  })
+})
 
-globalThis.StopServiceAbility = () => {
-  let want = {
+AppStorage.setOrCreate<Function>("StopServiceAbility", () => {
+  let want: Want = {
     'deviceId': '',
     'bundleName': 'com.acts.attachdebugextensiontest',
     'abilityName': 'ServiceExtAbility'
-  };
-  globalThis.abilityContext.stopServiceExtensionAbility(want, (error) => {
+  }
+  AppStorage.get<common.UIAbilityContext>("abilityContext").stopServiceExtensionAbility(want, (error: BusinessError) => {
     console.log('Stop service extension ability:  ' + JSON.stringify(error));
-  });
-};
+  })
+})
 
-globalThis.StartAbility = () => {
-  let want = {
+AppStorage.setOrCreate<Function>("StartAbility", () => {
+  let want: Want = {
     'deviceId': '',
     'bundleName': 'com.acts.attachdebugextensiontest',
     'abilityName': 'EntryAbility'
-  };
-  globalThis.abilityContext.startAbility(want, (error) => {
+  }
+  AppStorage.get<common.UIAbilityContext>("abilityContext").startAbility(want, (error: BusinessError) => {
     console.log('Start UIAbility: ' + JSON.stringify(error));
-  });
-};
+  })
+})
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want, launchParam) {
-    globalThis.abilityContext = this.context;
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
 

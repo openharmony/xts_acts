@@ -12,18 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function RenderNodeShadowElevationJsSuit() {
-  describe('RenderNodeShadowElevationJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('RenderNodeShadowElevationJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RenderNodeShadowElevationJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RenderNodeShadowElevation',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RenderNodeShadowElevation',
       }
       try {
         router.clear();
@@ -50,7 +63,7 @@ export default function RenderNodeShadowElevationJsSuit() {
      * @tc.size :
      */
 
-    it('RenderNodeShadowElevationJsSuit_0100', 0, async function (done) {
+    it('RenderNodeShadowElevationJsSuit_0100', 0, async (done: Function) => {
       console.info('[RenderNodeShadowElevationJsSuit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,10 +71,9 @@ export default function RenderNodeShadowElevationJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ElevationNull');
-      let obj = JSON.parse(strJson);
-      console.info("[RenderNodeShadowElevationJsSuit_0100] obj is: " + JSON.stringify(obj));
-      console.info("[RenderNodeShadowElevationJsSuit_0100] obj content is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content=='getshadowElevationNull:30').assertTrue();
+      console.info("[RenderNodeShadowElevationJsSuit_0100] obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[RenderNodeShadowElevationJsSuit_0100] obj content is: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content == 'getshadowElevationNull:30').assertTrue();
       console.info('[RenderNodeShadowElevationJsSuit_0100] END');
       done();
     });

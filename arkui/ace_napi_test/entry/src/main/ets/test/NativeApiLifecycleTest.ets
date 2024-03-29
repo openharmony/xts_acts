@@ -13,38 +13,44 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 
-// @ts-ignore
 import napitest from 'libnapitest.so'
 
 export default function napiLifecycleTest() {
 
-  describe('napiLifecycleTest', function () {
+  describe('napiLifecycleTest', () => {
     let value;
     let obj;
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
-     * @tc.name      createAsyncResource0001
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
+     * @tc.name createAsyncResource0001
+     * @tc.desc aceNapiEtsTest
      */
-    it('createAsyncResource0001', 0, async function (done) {
+    it('createAsyncResource0001', 0, async (done: Function) => {
       console.info('createAsyncResource start');
-      value = napitest.createAsyncResource({ foo: 'bar' } , false);
+      value = napitest.createAsyncResource({
+        foo: 'bar'
+      }, false);
       console.info('createAsyncResource napiLifecycleTest result is: ');
       expect(value instanceof Object).assertTrue();
       done();
-    });
+    }
+
+    )
+    ;
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0002
-     * @tc.name      destroyAsyncResource0002
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0002
+     * @tc.name destroyAsyncResource0002
+     * @tc.desc aceNapiEtsTest
      */
-    it('destroyAsyncResource0002', 0, async function (done) {
+    it('destroyAsyncResource0002', 0, async (done: Function) => {
       console.info('destroyAsyncResource start');
-      obj = napitest.createAsyncResource({ foo: 'bar' } , false);
+      obj = napitest.createAsyncResource({
+        foo: 'bar'
+      }, false);
       value = napitest.destroyAsyncResource(obj);
       console.info('destroyAsyncResource napiLifecycleTest result is: ');
       expect(value instanceof Object).assertTrue();
@@ -52,11 +58,11 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0003
-     * @tc.name      runInCallbackScope0003
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
+     * @tc.name runInCallbackScope0003
+     * @tc.desc aceNapiEtsTest
      */
-    it('runInCallbackScope0003', 0, async function (done) {
+    it('runInCallbackScope0003', 0, async (done: Function) => {
       console.info('runInCallbackScope start');
       value = napitest.runInCallbackScope({}, 'test-resource', () => 42);
       console.info('runInCallbackScope napiLifecycleTest result is: ' + value);
@@ -65,11 +71,11 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0004
-     * @tc.name      testResolveAsync0004
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0004
+     * @tc.name testResolveAsync0004
+     * @tc.desc aceNapiEtsTest
      */
-    it('testResolveAsync0004', 0, async function (done) {
+    it('testResolveAsync0004', 0, async (done: Function) => {
       console.info('testResolveAsync start');
       value = napitest.testResolveAsync();
       console.info('testResolveAsync END');
@@ -78,22 +84,22 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0005
-     * @tc.name      testSetInstanceData0005
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0005
+     * @tc.name testSetInstanceData0005
+     * @tc.desc aceNapiEtsTest
      */
-    it('testSetInstanceData0005', 0, async function (done) {
+    it('testSetInstanceData0005', 0, async (done: Function) => {
       value = napitest.napiSetInstanceData();
       expect(value).assertEqual(1);
       done();
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0006
-     * @tc.name      asyncWorkCallback0006
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0006
+     * @tc.name asyncWorkCallback0006
+     * @tc.desc aceNapiEtsTest
      */
-    it('asyncWorkCallback0006', 0, async function (done) {
+    it('asyncWorkCallback0006', 0, async (done: Function) => {
       console.info('asyncWorkCallback start');
 
       new Promise((resolve) => {
@@ -105,11 +111,11 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0007
-     * @tc.name      napiAsyncCleanUpHook0007
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0007
+     * @tc.name napiAsyncCleanUpHook0007
+     * @tc.desc aceNapiEtsTest
      */
-    it('napiAsyncCleanUpHook0007', 0, async function (done) {
+    it('napiAsyncCleanUpHook0007', 0, async (done: Function) => {
       console.info('napiAsyncCleanUpHook start');
       value = napitest.napiAsyncCleanUpHook();
       console.info('napiAsyncCleanUpHook napiLifecycleTest result is:  ' + value + "--" + JSON.stringify(value));
@@ -118,11 +124,11 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0008
-     * @tc.name      napiEnvCleanupHook0008
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0008
+     * @tc.name napiEnvCleanupHook0008
+     * @tc.desc aceNapiEtsTest
      */
-    it('napiEnvCleanupHook0008', 0, async function (done) {
+    it('napiEnvCleanupHook0008', 0, async (done: Function) => {
       console.info('napiEnvCleanUpHook start');
       value = napitest.napiEnvCleanUpHook();
       console.info('napiEnvCleanUpHook napiLifecycleTest result is: ' + value + "--" + JSON.stringify(value));
@@ -131,11 +137,11 @@ export default function napiLifecycleTest() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0009
-     * @tc.name      napiGetModuleFileName0009
-     * @tc.desc      aceNapiEtsTest
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0009
+     * @tc.name napiGetModuleFileName0009
+     * @tc.desc aceNapiEtsTest
      */
-    it('napiGetModuleFileName0009', 0, async function (done) {
+    it('napiGetModuleFileName0009', 0, async (done: Function) => {
       console.info('napiGetModuleFileName start');
       value = napitest.getModuleFileName().indexOf(".so");
       console.info('napiGetModuleFileName napiLifecycleTest result is: ' + value + "--" + JSON.stringify(value));

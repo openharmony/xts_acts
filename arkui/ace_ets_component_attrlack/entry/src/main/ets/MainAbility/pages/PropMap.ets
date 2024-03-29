@@ -17,38 +17,38 @@ struct PropMapChild {
   @Prop value: Map<number, string> = new Map([[0, "a"], [1, "b"], [3, "c"]])
 
   build() {
-    Column(){
+    Column() {
       ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
         Text(`${item[0]} ${item[1]}`).fontSize(20).id("propMap_value_" + item[1])
         Divider()
       })
       Button('child init map').id("propMap_init")
-        .onClick(() =>{
-        this.value = new Map([[0, "a"], [1, "b"], [3, "c"]])
-      }).margin(10)
+        .onClick(() => {
+          this.value = new Map([[0, "a"], [1, "b"], [3, "c"]])
+        }).margin(10)
 
       Button('child set new one').id("propMap_set")
-        .onClick(() =>{
-        this.value.set(4, "d")
-      }).margin(10)
+        .onClick(() => {
+          this.value.set(4, "d")
+        }).margin(10)
 
       Button('child clear').id("propMap_clear")
-        .onClick(() =>{
+        .onClick(() => {
           this.value.clear()
-          if (Array.from(this.value.entries())){
+          if (Array.from(this.value.entries())) {
             this.value.set(0, "K")
           }
-      }).margin(10)
+        }).margin(10)
 
       Button('child replace').id("propMap_replace")
-        .onClick(() =>{
-        this.value.set(0, "aa")
-      }).margin(10)
+        .onClick(() => {
+          this.value.set(0, "aa")
+        }).margin(10)
 
       Button('child delete').id("propMap_delete")
-        .onClick(() =>{
-        this.value.delete(0)
-      })
+        .onClick(() => {
+          this.value.delete(0)
+        })
     }
   }
 }
@@ -62,7 +62,7 @@ struct PropMapSample2 {
   build() {
     Row() {
       Column() {
-        PropMapChild({value:this.message})
+        PropMapChild({ value: this.message })
       }
       .width('100%')
     }

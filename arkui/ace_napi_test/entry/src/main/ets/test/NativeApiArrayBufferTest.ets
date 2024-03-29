@@ -13,48 +13,47 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 
-// @ts-ignore
 import napitest from 'libnapitest.so'
 
 export default function napiArrayBufferTest() {
 
-  describe('napiArrayBufferTest', function () {
+  describe('napiArrayBufferTest', () => {
 
     /**
-    * run after testcase
-    */
-    afterEach(async function () {
+     * run after testcase
+     */
+    afterEach(async () => {
       console.info('[napiArrayBufferTest] after each called')
     });
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0001
-    * @tc.name      napiArrayBufferTest001
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiArrayBufferTest001', 0, function () {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0001
+     * @tc.name napiArrayBufferTest001
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiArrayBufferTest001', 0, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
     })
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0002
-    * @tc.name      napiArrayBufferTest002
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiArrayBufferTest002', 0, function () {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0002
+     * @tc.name napiArrayBufferTest002
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiArrayBufferTest002', 0, () => {
       const buffer = new ArrayBuffer(128);
       expect(!napitest.IsDetachedTest(buffer)).assertTrue();
     })
 
     /**
-    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0003
-    * @tc.name      napiArrayBufferTest003
-    * @tc.desc      aceNapiEtsTest
-    */
-    it('napiArrayBufferTest003', 0, function () {
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0003
+     * @tc.name napiArrayBufferTest003
+     * @tc.desc aceNapiEtsTest
+     */
+    it('napiArrayBufferTest003', 0, () => {
       const buffer = napitest.External();
       expect(!napitest.IsDetachedTest(buffer.buffer)).assertTrue();
       napitest.DetachTest(buffer);

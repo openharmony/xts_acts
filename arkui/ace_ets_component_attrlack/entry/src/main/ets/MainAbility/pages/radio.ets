@@ -20,17 +20,16 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 struct RadioGroup {
-
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear RadioGroup start`)
+    Log.showInfo(TAG, `aboutToAppear RadioGroup start`);
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear RadioGroup end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear RadioGroup end`);
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
       Text("radio-Group")
         .width(100)
@@ -62,8 +61,9 @@ struct RadioGroup {
         .onChange((value: boolean) => {
           console.log('Radio2 status is ' + value)
         })
-    
-    }.width("100%").height("100%")
+    }
+    .width("100%")
+    .height("100%")
   }
 }
 

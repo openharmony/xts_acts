@@ -12,54 +12,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
+import { afterEach, beforeAll, beforeEach, describe, it, expect } from '@ohos/hypium';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils.ets';
-import router from '@system.router';
-// @ts-nocheck
+import Utils from './Utils';
+import router from '@ohos.router';
+
 let emitKey = "emitOnInterceptRequestSecondWebC";
+
 export default function webOnInterceptReqTwo() {
-  describe('ActsAceWebDevWebOnInterceptReqTwoTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/webOnInterceptReqTwo',
-      }
+  describe('ActsAceWebDevWebOnInterceptReqTwoTest', () => {
+    beforeAll(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/webOnInterceptReqTwo',
+      };
       try {
         router.clear();
         let pages = router.getState();
         console.info("get webOnInterceptReqTwo state success " + JSON.stringify(pages));
         if (!("webOnInterceptReqTwo" == pages.name)) {
           console.info("get webOnInterceptReqTwo state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push webOnInterceptReqTwo page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push webOnInterceptReqTwo page error: " + err);
       }
-      done()
+      done();
     });
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       await Utils.sleep(2000);
       console.info("webOnInterceptReqTwo beforeEach start");
       done();
     })
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("webOnInterceptReqTwo afterEach start:" + emitKey);
       try {
-            let backData = {
-                data: {
-                    "ACTION": emitKey
-                }
-            }
-            let backEvent = {
-                eventId:10,
-                priority:events_emitter.EventPriority.LOW
-            }
-            console.info("start send emitKey");
-            events_emitter.emit(backEvent, backData);
+        let backData: events_emitter.EventData = {
+          data: {
+            "ACTION": emitKey
+          }
+        };
+        let backEvent: events_emitter.InnerEvent = {
+          eventId: 10,
+          priority: events_emitter.EventPriority.LOW
+        };
+        console.info("start send emitKey");
+        events_emitter.emit(backEvent, backData);
       } catch (err) {
-            console.info("emit emitKey  err: " + JSON.stringify(err));
+        console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -69,10 +70,10 @@ export default function webOnInterceptReqTwo() {
      *tc.name testOnInterceptRequestAgainWebC
      *tc.desc onInterceptRequest with setting webresourceresponse
      */
-    it('testOnInterceptRequestAgainWebC',0,async function(done){
-      emitKey="emitOnInterceptRequestSecondWebC";
-      Utils.registerEvent("testOnInterceptRequestAgainWebC","intercept test",408,done);
-      sendEventByKey('webOnInterceptReqTwo',10,'');
+    it('testOnInterceptRequestAgainWebC', 0, async (done: Function) => {
+      emitKey = "emitOnInterceptRequestSecondWebC";
+      Utils.registerEvent("testOnInterceptRequestAgainWebC", "intercept test", 408, done);
+      sendEventByKey('webOnInterceptReqTwo', 10, '');
     })
   })
 }

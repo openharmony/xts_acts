@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function systemRouterJsunit() {
-  describe('systemRouterTest', function () {
-    it('systemRouterTest001', 0, async function (done) {
+  describe('systemRouterTest', () => {
+    it('systemRouterTest001', 0, async (done: Function) => {
       console.info('[systemRouterTest001] START');
-      let options = {
-        uri: 'MainAbility/pages/systemRouterA',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/systemRouterA',
       }
       try {
-        let result = await router.push(options);
+        let result = await router.pushUrl(options);
         await Utils.sleep(1000);
         console.info("[systemRouterTest001] push page success " + JSON.stringify(result));
         let pages = router.getState();
@@ -39,25 +38,25 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest002', 0, async function (done) {
+    it('systemRouterTest002', 0, async (done: Function) => {
       console.info('[systemRouterTest002] START');
-      let options = {
-        uri: 'MainAbility/pages/systemRouterA'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/systemRouterA'
       }
       try {
-        let result = await router.push(options);
+        let result = await router.pushUrl(options);
         console.info("[systemRouterTest002] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[systemRouterTest002] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest002] push page error " + JSON.stringify(err));
       }
       await Utils.sleep(1000);
       router.clear();
       await Utils.sleep(1500);
-      let callback = (paramsEvent) => {
+      let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[systemRouterTest002] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
       }
-      let paramsEvent = {
+      let paramsEvent: events_emitter.InnerEvent = {
         eventId: 211,
         priority: events_emitter.EventPriority.LOW
       }
@@ -67,14 +66,14 @@ export default function systemRouterJsunit() {
         console.info("[systemRouterTest002] on events_emitter err : " + JSON.stringify(err));
       }
       console.info("[systemRouterTest002] click push button result is: "
-      + JSON.stringify(sendEventByKey('pushButtonA', 10, "")));
+        + JSON.stringify(sendEventByKey('pushButtonA', 10, "")));
       await Utils.sleep(1000);
       router.back();
       await Utils.sleep(1000);
       done();
     });
 
-    it('systemRouterTest003', 0, async function (done) {
+    it('systemRouterTest003', 0, async (done: Function) => {
       console.info('[systemRouterTest003] START');
       await Utils.sleep(1000);
       router.clear();
@@ -86,28 +85,28 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest004', 0, async function (done) {
+    it('systemRouterTest004', 0, async (done: Function) => {
       console.info('[systemRouterTest004] START');
       router.clear();
       await Utils.sleep(1000);
-      let options = {
-        uri: 'MainAbility/pages/systemRouterA'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/systemRouterA'
       }
       try {
-        let result = await router.push(options);
+        let result = await router.pushUrl(options);
         console.info("[systemRouterTest004] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[systemRouterTest004] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest004] push page error " + JSON.stringify(err));
       }
       await Utils.sleep(1000);
-      let optionsB = {
-        uri: 'MainAbility/pages/systemRouterB'
+      let optionsB: router.RouterOptions = {
+        url: 'MainAbility/pages/systemRouterB'
       }
       try {
-        let result = await router.replace(optionsB);
+        let result = router.replaceUrl(optionsB);
         console.info("[systemRouterTest004] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[systemRouterTest004] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest004] push page error " + JSON.stringify(err));
       }
       await Utils.sleep(1500);
       let size = router.getLength();
@@ -116,26 +115,26 @@ export default function systemRouterJsunit() {
       done();
     });
 
-    it('systemRouterTest005', 0, async function(done) {
+    it('systemRouterTest005', 0, async (done: Function) => {
       console.info('[systemRouterTest005] START');
-      let options = {
-        uri: 'MainAbility/pages/systemRouterB'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/systemRouterB'
       }
       try {
-        let result = await router.push(options);
+        let result = await router.pushUrl(options);
         console.info("[systemRouterTest005] push page success " + JSON.stringify(result));
       } catch (err) {
-        console.error("[systemRouterTest005] push page error " + JSON.stringify(result));
+        console.error("[systemRouterTest005] push page error " + JSON.stringify(err));
       }
       await Utils.sleep(1000);
       router.clear();
       await Utils.sleep(1500);
-      let callback = (paramsEvent) => {
+      let callback = (paramsEvent: events_emitter.EventData) => {
         console.info("[systemRouterTest005] get state result is: " + JSON.stringify(paramsEvent));
         expect(paramsEvent.data.params).assertEqual('B Page');
-      
+
       }
-      let paramsEvent = {
+      let paramsEvent: events_emitter.InnerEvent = {
         eventId: 211,
         priority: events_emitter.EventPriority.LOW
       }
@@ -147,7 +146,7 @@ export default function systemRouterJsunit() {
       console.info("[systemRouterTest005] click replace button result is: "
         + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));
       await Utils.sleep(1500);
-      done();  
+      done();
     });
   });
 }

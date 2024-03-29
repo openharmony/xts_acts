@@ -53,6 +53,7 @@
 #define SIZE_20 20
 #define SIZE_32 32
 #define SIZE_64 64
+#define PARAM_0777 0777
 #define SIZE_1024 1024
 #define SUCCESS 1
 #define INIT 0
@@ -903,7 +904,7 @@ int Compare(const void *a, const void *b)
     if (*x > *y) {
         return RETURN_1;
     } else if (*x < *y) {
-         return FAILD;   
+        return FAILD;
     }
     return NO_ERR;
 }
@@ -912,7 +913,7 @@ static napi_value RealPath(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     char actualPath[PATH_MAX] = {0};
     char *ptrRet = nullptr;
-    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT);
+    int fd = open("/data/storage/el2/base/files/Fzl.txt", O_CREAT, PARAM_0777);
     close(fd);
     ptrRet = realpath("/data/storage/el2/base/files/Fzl.txt", actualPath);
     napi_value result = nullptr;
@@ -943,12 +944,13 @@ static napi_value PtsName(napi_env env, napi_callback_info info)
 {
     char *returnValue;
     napi_value result = nullptr;
-    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT);
+    int fileDescribe = open("/data/storage/el2/base/files/fzl.txt", O_CREAT, PARAM_0777);
     returnValue = ptsname(fileDescribe);
     int backInfo = PARAM_0;
     if (returnValue != nullptr) {
         backInfo = RETURN_1;
     }
+    close(fileDescribe);
     napi_create_int32(env, backInfo, &result);
     return result;
 }
@@ -966,17 +968,6 @@ static napi_value System(napi_env env, napi_callback_info info)
     int system_result = system(nullptr);
     napi_value result = nullptr;
     napi_create_int32(env, system_result, &result);
-    return result;
-}
-
-static napi_value Unlockpt(napi_env env, napi_callback_info info)
-{
-    napi_value result = nullptr;
-    int fdm = open("/data/storage/el2/base/files/Fzl.txt", O_RDWR | O_CREAT);
-    grantpt(fdm);
-    int ret = unlockpt(fdm);
-    napi_create_int32(env, ret, &result);
-    close(fdm);
     return result;
 }
 
@@ -1024,8 +1015,8 @@ static napi_value Exit(napi_env env, napi_callback_info info)
     napi_value result = nullptr;
     napi_create_int32(env, backParam, &result);
     int pid = fork();
-    if (pid == PARAM_UNNORMAL) {
-        exit(RETURN_1);
+    if (pid == PARAM_0) {
+        exit(PARAM_0);
     }
     return result;
 }
@@ -1216,7 +1207,7 @@ static napi_value Free(napi_env env, napi_callback_info info)
     errno = ERRON_0;
     int *ptr;
     size_t size = SIZE_5;
-    ptr = static_cast<int*>(malloc(size * sizeof(int)));
+    ptr = static_cast<int *>(malloc(size * sizeof(int)));
     free(ptr);
     napi_value result = nullptr;
     int resultValue = EXPECTERROR;
@@ -1232,7 +1223,7 @@ static napi_value Bsearch(napi_env env, napi_callback_info info)
     const int num = SIZE_10;
     int arr[num] = {5, 9, 10, 14, 16, 19, 21, 26, 29, 31};
     int key1 = SIZE_10;
-    int *p1 = static_cast<int*>(bsearch(&key1, arr, num, sizeof(int), Compare));
+    int *p1 = static_cast<int *>(bsearch(&key1, arr, num, sizeof(int), Compare));
     int returnValue = EXPECTERROR;
     if (p1 != nullptr) {
         returnValue = SUCCESS;
@@ -1383,7 +1374,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"setenv", nullptr, Setenv, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"getLoadAvg", nullptr, GetLoadAvg, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"system", nullptr, System, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"unlockpt", nullptr, Unlockpt, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"unsetenv", nullptr, Unsetenv, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"erand48", nullptr, ERand48, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"drand48", nullptr, DRand48, nullptr, nullptr, nullptr, napi_default, nullptr},

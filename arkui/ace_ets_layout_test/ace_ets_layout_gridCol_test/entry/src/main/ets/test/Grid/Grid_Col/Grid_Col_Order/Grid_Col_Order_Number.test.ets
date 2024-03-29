@@ -12,16 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../../../MainAbility/common/MessageManager';
+import CommonFunc, { RectValue } from '../../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
 
 export default function Grid_Col_Order_Number() {
-  describe('Grid_Col_Order_Number', function () {
-    beforeEach(async function (done) {
+  describe('Grid_Col_Order_Number', () => {
+    beforeEach(async (done: Function) => {
       console.info("Grid_Col_Order_Number beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Grid/Grid_Col/Grid_Col_Order/Grid_Col_Order_Number",
       }
       try {
@@ -30,7 +31,7 @@ export default function Grid_Col_Order_Number() {
         console.info("get Grid_Col_Order_Number state pages:" + JSON.stringify(pages));
         if (!("Grid_Col_Order_Number" == pages.name)) {
           console.info("get Grid_Col_Order_Number pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Grid_Col_Order_Number page result:" + JSON.stringify(result));
         }
@@ -40,26 +41,28 @@ export default function Grid_Col_Order_Number() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("Grid_Col_Order_Number after each called")
     });
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_Number_TEST_0100
-     * @tc.name      testGridColOrder
-     * @tc.desc      GridCol sets order to -1
+     * @tc.number SUB_ACE_Grid_Col_Order_Number_TEST_0100
+     * @tc.name testGridColOrder
+     * @tc.desc GridCol sets order to -1
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0100', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0100] START');
-      globalThis.value.message.notify({name:'addOrder', value:-1});
+      globalThis.value.message.notify({
+        name: 'addOrder', value: -1
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_Number_01 = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
-      let Grid_Col_Order_Number_02 = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
-      let Grid_Col_Order_Number_03 = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
-      let Grid_Col_Order_Number_04 = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
+      let Grid_Col_Order_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
+      let Grid_Col_Order_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
+      let Grid_Col_Order_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
+      let Grid_Col_Order_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
 
 
       console.log('assert space')
@@ -72,21 +75,23 @@ export default function Grid_Col_Order_Number() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_Number_TEST_0200
-     * @tc.name      testGridColOrder
-     * @tc.desc      GridCol sets order to 0
+     * @tc.number SUB_ACE_Grid_Col_Order_Number_TEST_0200
+     * @tc.name testGridColOrder
+     * @tc.desc GridCol sets order to 0
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0200', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0200] START');
-      globalThis.value.message.notify({name:'addOrder', value:0});
+      globalThis.value.message.notify({
+        name: 'addOrder', value: 0
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_Number_01 = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
-      let Grid_Col_Order_Number_02 = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
-      let Grid_Col_Order_Number_03 = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
-      let Grid_Col_Order_Number_04 = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
+      let Grid_Col_Order_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
+      let Grid_Col_Order_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
+      let Grid_Col_Order_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
+      let Grid_Col_Order_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
 
 
       console.log('assert space')
@@ -99,21 +104,23 @@ export default function Grid_Col_Order_Number() {
     });
 
     /**
-     * @tc.number    SUB_ACE_Grid_Col_Order_Number_TEST_0300
-     * @tc.name      testGridColOrder
-     * @tc.desc      GridCol sets order to 2
+     * @tc.number SUB_ACE_Grid_Col_Order_Number_TEST_0300
+     * @tc.name testGridColOrder
+     * @tc.desc GridCol sets order to 2
      */
-    it('SUB_ACE_Grid_Col_Order_Number_TEST_0300', 0, async function (done) {
+    it('SUB_ACE_Grid_Col_Order_Number_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_Grid_Col_Order_Number_TEST_0300] START');
-      globalThis.value.message.notify({name:'addOrder', value:2});
+      globalThis.value.message.notify({
+        name: 'addOrder', value: 2
+      });
 
       await CommonFunc.sleep(3000);
 
       console.log('get Initial value')
-      let Grid_Col_Order_Number_01 = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
-      let Grid_Col_Order_Number_02 = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
-      let Grid_Col_Order_Number_03 = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
-      let Grid_Col_Order_Number_04 = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
+      let Grid_Col_Order_Number_01: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_01');
+      let Grid_Col_Order_Number_02: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_02');
+      let Grid_Col_Order_Number_03: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_03');
+      let Grid_Col_Order_Number_04: RectValue = CommonFunc.getComponentRect('Grid_Col_Order_Number_04');
 
 
       console.log('assert space')
