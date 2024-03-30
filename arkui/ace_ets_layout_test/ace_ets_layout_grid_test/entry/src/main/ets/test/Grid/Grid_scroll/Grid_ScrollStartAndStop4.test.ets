@@ -64,7 +64,7 @@ export default function Grid_ScrollStartandStop4() {
     it('Grid_ScrollStartandStop4_0500', 0, async (done: Function) => {
 
       console.info('[Grid_ScrollStartandStop4_0500] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollStartandStop_grid')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollStartandStop_grid')
       let driver = Driver.create()
       await driver.fling({
         x: Number.parseInt(`${(gridRect.right - gridRect.left) * 0.5 + gridRect.left}`),
