@@ -31,7 +31,7 @@ let isSim1Active: Boolean = false;
 let hasCard0: Boolean = false;
 let hasCard1: Boolean = false;
 
-const ExpectTrue = (n: boolean) => {
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
     expect(n).assertTrue();
   } catch (err) {
@@ -39,7 +39,7 @@ const ExpectTrue = (n: boolean) => {
   }
 }
 
-const ExpectFail = () => {
+const ExpectFail: () => void = () => {
   try {
     expect().assertFail();
   } catch (err) {
@@ -406,7 +406,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0100
      * @tc.name  : testTelephonyRadioGetNetworkState0100
      * @tc.desc  : Get the current network status; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -460,7 +460,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0200
      * @tc.name  : testTelephonyRadioGetNetworkState0200
      * @tc.desc  : Parameter 0 is used to obtain the network status; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -513,7 +513,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0300
      * @tc.name  : testTelephonyRadioGetNetworkState0300
      * @tc.desc  : Parameter 1 is used to obtain the network status; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -566,7 +566,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0400
      * @tc.name  : testTelephonyRadioGetNetworkState0400
      * @tc.desc  : Parameter -1 is used to obtain the network status; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -600,7 +600,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0500
      * @tc.name  : testTelephonyRadioGetNetworkState0500
      * @tc.desc  : Parameter null is used to obtain the network status; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -633,7 +633,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0600
      * @tc.name  : testTelephonyRadioGetNetworkState0600
      * @tc.desc  : Parameter 0 is used to obtain the network status; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -684,7 +684,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0700
      * @tc.name  : testTelephonyRadioGetNetworkState0700
      * @tc.desc  : Parameter 1 is used to obtain the network status; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -735,7 +735,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0800
      * @tc.name  : testTelephonyRadioGetNetworkState0800
      * @tc.desc  : Parameter -1 is used to obtain the network status; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -766,7 +766,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_0900
      * @tc.name  : testTelephonyRadioGetNetworkState0900
      * @tc.desc  : Parameter null is used to obtain the network status; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -802,7 +802,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetNetworkState_1000
      * @tc.name  : testTelephonyRadioGetNetworkState1000
      * @tc.desc  : Get network status without passing parameters; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 3
      */
@@ -2570,7 +2570,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetOperatorName_1000
      * @tc.name  : testTelephonyRadioGetOperatorName1000
      * @tc.desc  : Pass the parameter null to get the carrier name; callback
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
@@ -2604,7 +2604,7 @@ export default function telephonyRadioPublicTest() {
      * @tc.number: SUB_Telephony_Radio_GetOperatorName_2000
      * @tc.name  : testTelephonyRadioGetOperatorName2000
      * @tc.desc  : Pass the parameter null to get the carrier name; promise
-     * @tc.size  : Medium
+     * @tc.size  : MediumTest
      * @tc.type  : Function
      * @tc.level : Level 2
      */
