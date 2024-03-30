@@ -84,27 +84,27 @@ export default function Tabs_barMode() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_barMode_001: RectValue = CommonFunc.getComponentRect('Tabs_barMode_001');
-      let Tabs_barMode_011: RectValue = CommonFunc.getComponentRect('Tabs_barMode_011');
+      let Tabs_barMode_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_001');
+      let Tabs_barMode_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_011');
       let driver = Driver.create();
       await driver.swipe(Math.round((Tabs_barMode_011.right - 30)),
         Math.round(Tabs_barMode_011.top + ((Tabs_barMode_011.bottom - Tabs_barMode_011.top) / 2)),
         Math.round(Tabs_barMode_011.left + 30),
         Math.round(Tabs_barMode_011.top + ((Tabs_barMode_011.bottom - Tabs_barMode_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barMode_002: RectValue = CommonFunc.getComponentRect('Tabs_barMode_002');
-      let Tabs_barMode_012: RectValue = CommonFunc.getComponentRect('Tabs_barMode_012');
+      let Tabs_barMode_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_002');
+      let Tabs_barMode_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_012');
       await driver.swipe(Math.round(Tabs_barMode_012.right - 30),
         Math.round(Tabs_barMode_012.top + ((Tabs_barMode_012.bottom - Tabs_barMode_012.top) / 2)),
         Math.round(Tabs_barMode_012.left + 30),
         Math.round(Tabs_barMode_012.top + ((Tabs_barMode_012.bottom - Tabs_barMode_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barMode_003: RectValue = CommonFunc.getComponentRect('Tabs_barMode_003');
-      let Tabs_barMode_013: RectValue = CommonFunc.getComponentRect('Tabs_barMode_013');
-      let Tabs_barMode_01: RectValue = CommonFunc.getComponentRect('Tabs_barMode_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_barMode_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_barMode_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_barMode_yellow');
+      let Tabs_barMode_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_003');
+      let Tabs_barMode_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_013');
+      let Tabs_barMode_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_yellow');
 
       console.info(`[testTabsBarModeFixed]Tabs_barMode_011.left equal Tabs_barMode_001.left
         ${Tabs_barMode_011.left} === ${Tabs_barMode_001.left}`);
@@ -176,27 +176,27 @@ export default function Tabs_barMode() {
     //      expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
     //      expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
     //      expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Scrollable');
-    //      let Tabs_barMode_001:RectValue = CommonFunc.getComponentRect('Tabs_barMode_001');
-    //      let Tabs_barMode_011:RectValue = CommonFunc.getComponentRect('Tabs_barMode_011');
-    //      let subGreen:RectValue = CommonFunc.getComponentRect('Tabs_barMode_green');
+    //      let Tabs_barMode_001:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_001');
+    //      let Tabs_barMode_011:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_011');
+    //      let subGreen:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_green');
     //      let driver = Driver.create();
     //      await driver.swipe(600,80,120,80);
     //      await CommonFunc.sleep(1000);
     //      let btn1 = await driver.findComponent(ON.text('blue'));
     //      await btn1.click()
     //      await CommonFunc.sleep(1000);
-    //      let Tabs_barMode_002:RectValue = CommonFunc.getComponentRect('Tabs_barMode_002');
-    //      let Tabs_barMode_012:RectValue = CommonFunc.getComponentRect('Tabs_barMode_012');
-    //      let subBlue:RectValue = CommonFunc.getComponentRect('Tabs_barMode_blue');
+    //      let Tabs_barMode_002:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_002');
+    //      let Tabs_barMode_012:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_012');
+    //      let subBlue:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_blue');
     //      await driver.swipe(600,80,120,80);
     //      await CommonFunc.sleep(1000);
     //      let btn2 = await driver.findComponent(ON.text('yellow'));
     //      await btn2.click()
     //      await CommonFunc.sleep(1000);
-    //      let Tabs_barMode_003:RectValue = CommonFunc.getComponentRect('Tabs_barMode_003');
-    //      let Tabs_barMode_013:RectValue = CommonFunc.getComponentRect('Tabs_barMode_013');
-    //      let Tabs_barMode_01:RectValue = CommonFunc.getComponentRect('Tabs_barMode_01');
-    //      let subYellow:RectValue = CommonFunc.getComponentRect('Tabs_barMode_yellow');
+    //      let Tabs_barMode_003:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_003');
+    //      let Tabs_barMode_013:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_013');
+    //      let Tabs_barMode_01:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_01');
+    //      let subYellow:RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barMode_yellow');
     //
     //      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.left equal Tabs_barMode_001.left
     //        ${Tabs_barMode_011.left} === ${Tabs_barMode_001.left}`);
