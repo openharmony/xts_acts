@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
-import("//build/config/ohos/config.gni")
 import("//base/sensors/miscdevice/miscdevice.gni")
+import("//build/config/ohos/config.gni")
+import("//build/ohos.gni")
 
 config("config") {
   visibility = [ ":*" ]
@@ -44,9 +44,7 @@ ohos_shared_library("vibratorndk") {
 
   configs = [ ":config" ]
 
-  deps = [
-    "$SUBSYSTEM_DIR/frameworks/capi:ohvibrator",
-   ]
+  deps = [ "$SUBSYSTEM_DIR/frameworks/capi:ohvibrator" ]
   external_deps = [
     "hilog:libhilog",
     "napi:ace_napi",
