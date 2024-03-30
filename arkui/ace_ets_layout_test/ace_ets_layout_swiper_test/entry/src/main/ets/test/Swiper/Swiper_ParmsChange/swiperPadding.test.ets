@@ -70,13 +70,13 @@ export default function swiperPadding() {
       let strJson = getInspectorByKey('swiperPadding');
 
       await CommonFunc.sleep(1000);
-      let swiperPadding: RectValue = CommonFunc.getComponentRect('swiperPadding');
-      let swiperPadding01: RectValue = CommonFunc.getComponentRect('swiperPadding01');
-      let swiperPadding02: RectValue = CommonFunc.getComponentRect('swiperPadding02');
-      let swiperPadding03: RectValue = CommonFunc.getComponentRect('swiperPadding03');
-      let swiperPadding04: RectValue = CommonFunc.getComponentRect('swiperPadding04');
-      let swiperPadding05: RectValue = CommonFunc.getComponentRect('swiperPadding05');
-      let swiperPadding06: RectValue = CommonFunc.getComponentRect('swiperPadding06');
+      let swiperPadding: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding');
+      let swiperPadding01: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding01');
+      let swiperPadding02: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding02');
+      let swiperPadding03: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding03');
+      let swiperPadding04: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding04');
+      let swiperPadding05: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding05');
+      let swiperPadding06: RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding06');
       // Before flipping the page
       console.info("Before page turning , swiperPadding01.left - swiperPadding.left value is " + JSON.stringify(swiperPadding01.left - swiperPadding.left));
       expect(swiperPadding01.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)))
@@ -85,17 +85,25 @@ export default function swiperPadding() {
       expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(Math.round(vp2px(20)))
       // Page turning.
       let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      //await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      swiperPadding = CommonFunc.getComponentRect('swiperPadding');
-      swiperPadding01 = CommonFunc.getComponentRect('swiperPadding01');
-      swiperPadding02 = CommonFunc.getComponentRect('swiperPadding02');
-      swiperPadding03 = CommonFunc.getComponentRect('swiperPadding03');
-      swiperPadding04 = CommonFunc.getComponentRect('swiperPadding04');
-      swiperPadding05 = CommonFunc.getComponentRect('swiperPadding05');
-      swiperPadding06 = CommonFunc.getComponentRect('swiperPadding06');
+      // await CommonFunc.sleep(500);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      // //await driver.swipe(250, 230, 200, 230);
+      // await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('swiperPadding')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
+      swiperPadding = CommonFunc.getComponentRectOnScreen('swiperPadding');
+      swiperPadding01 = CommonFunc.getComponentRectOnScreen('swiperPadding01');
+      swiperPadding02 = CommonFunc.getComponentRectOnScreen('swiperPadding02');
+      swiperPadding03 = CommonFunc.getComponentRectOnScreen('swiperPadding03');
+      swiperPadding04 = CommonFunc.getComponentRectOnScreen('swiperPadding04');
+      swiperPadding05 = CommonFunc.getComponentRectOnScreen('swiperPadding05');
+      swiperPadding06 = CommonFunc.getComponentRectOnScreen('swiperPadding06');
       // After flipping the page.
       console.info("After page turning, swiperPadding02.left - swiperPadding.left value is " + JSON.stringify(swiperPadding02.left - swiperPadding.left));
       expect(swiperPadding02.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)));

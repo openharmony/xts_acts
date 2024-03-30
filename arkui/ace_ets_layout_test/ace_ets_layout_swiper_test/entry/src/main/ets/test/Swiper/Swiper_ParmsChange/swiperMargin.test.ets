@@ -86,17 +86,25 @@ export default function swiperMargin() {
       expect(swiperMargin.bottom).assertEqual(swiperMargin01.bottom);
       // Page turning.
       let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      //await driver.swipe(250, 230, 200, 230);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      // await CommonFunc.sleep(500);
+      // //await driver.swipe(250, 230, 200, 230);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       await CommonFunc.sleep(1000);
-      swiperMargin = CommonFunc.getComponentRect('swiperMargin');
-      swiperMargin01 = CommonFunc.getComponentRect('swiperMargin01');
-      swiperMargin02 = CommonFunc.getComponentRect('swiperMargin02');
-      swiperMargin03 = CommonFunc.getComponentRect('swiperMargin03');
-      swiperMargin04 = CommonFunc.getComponentRect('swiperMargin04');
-      swiperMargin05 = CommonFunc.getComponentRect('swiperMargin05');
-      swiperMargin06 = CommonFunc.getComponentRect('swiperMargin06');
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('swiperMargin')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
+      swiperMargin = CommonFunc.getComponentRectOnScreen('swiperMargin');
+      swiperMargin01 = CommonFunc.getComponentRectOnScreen('swiperMargin01');
+      swiperMargin02 = CommonFunc.getComponentRectOnScreen('swiperMargin02');
+      swiperMargin03 = CommonFunc.getComponentRectOnScreen('swiperMargin03');
+      swiperMargin04 = CommonFunc.getComponentRectOnScreen('swiperMargin04');
+      swiperMargin05 = CommonFunc.getComponentRectOnScreen('swiperMargin05');
+      swiperMargin06 = CommonFunc.getComponentRectOnScreen('swiperMargin06');
       // After flipping the page.
       console.info("After page turning , the swiperMargin.left value is " + JSON.stringify(swiperMargin.left));
       console.info("After page turning , the swiperMargin02.left value is " + JSON.stringify(swiperMargin02.left));

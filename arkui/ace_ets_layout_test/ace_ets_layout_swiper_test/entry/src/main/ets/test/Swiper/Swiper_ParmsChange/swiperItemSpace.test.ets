@@ -72,13 +72,13 @@ export default function swiperItemSpace() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('itemspacekey');
 
-      let itemspacekey: RectValue = CommonFunc.getComponentRect('itemspacekey');
-      let itemspacekey01: RectValue = CommonFunc.getComponentRect('itemspacekey01');
-      let itemspacekey02: RectValue = CommonFunc.getComponentRect('itemspacekey02');
-      let itemspacekey03: RectValue = CommonFunc.getComponentRect('itemspacekey03');
-      let itemspacekey04: RectValue = CommonFunc.getComponentRect('itemspacekey04');
-      let itemspacekey05: RectValue = CommonFunc.getComponentRect('itemspacekey05');
-      let itemspacekey06: RectValue = CommonFunc.getComponentRect('itemspacekey06');
+      let itemspacekey = CommonFunc.getComponentRect('itemspacekey');
+      let itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
+      let itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
+      let itemspacekey03 = CommonFunc.getComponentRect('itemspacekey03');
+      let itemspacekey04 = CommonFunc.getComponentRect('itemspacekey04');
+      let itemspacekey05 = CommonFunc.getComponentRect('itemspacekey05');
+      let itemspacekey06 = CommonFunc.getComponentRect('itemspacekey06');
       // Before flipping the page.
       console.info("Before page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("Before page turning , the itemspacekey01.left value is " + JSON.stringify(itemspacekey01.left));
@@ -92,10 +92,17 @@ export default function swiperItemSpace() {
       expect(itemspacekey.right).assertEqual(itemspacekey02.right)
 
       let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      //await driver.swipe(250, 230, 200, 230);
+      // await CommonFunc.sleep(500);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
@@ -139,13 +146,13 @@ export default function swiperItemSpace() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('itemspacekey');
 
-      let itemspacekey: RectValue = CommonFunc.getComponentRect('itemspacekey');
-      let itemspacekey01: RectValue = CommonFunc.getComponentRect('itemspacekey01');
-      let itemspacekey02: RectValue = CommonFunc.getComponentRect('itemspacekey02');
-      let itemspacekey03: RectValue = CommonFunc.getComponentRect('itemspacekey03');
-      let itemspacekey04: RectValue = CommonFunc.getComponentRect('itemspacekey04');
-      let itemspacekey05: RectValue = CommonFunc.getComponentRect('itemspacekey05');
-      let itemspacekey06: RectValue = CommonFunc.getComponentRect('itemspacekey06');
+      let itemspacekey = CommonFunc.getComponentRect('itemspacekey');
+      let itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
+      let itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
+      let itemspacekey03 = CommonFunc.getComponentRect('itemspacekey03');
+      let itemspacekey04 = CommonFunc.getComponentRect('itemspacekey04');
+      let itemspacekey05 = CommonFunc.getComponentRect('itemspacekey05');
+      let itemspacekey06 = CommonFunc.getComponentRect('itemspacekey06');
       // Before flipping the page.
       console.info("Before page turning , the itemspacekey.left value is " + JSON.stringify(itemspacekey.left));
       console.info("Before page turning , the itemspacekey01.left value is " + JSON.stringify(itemspacekey01.left));
@@ -159,10 +166,19 @@ export default function swiperItemSpace() {
       expect(itemspacekey02.right).assertEqual(itemspacekey.right);
       // After flipping the page.
       let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      // await driver.swipe(250, 230, 200, 230);
+     //  await CommonFunc.sleep(500);
+     //  await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+     // // await driver.swipe(250, 230, 200, 230);
+     //  await CommonFunc.sleep(1000);
       await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
       itemspacekey02 = CommonFunc.getComponentRect('itemspacekey02');
