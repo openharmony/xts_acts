@@ -15,9 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 ohos_hap_assist_suite("ContinuousTaskRelyHap") {
   hap_profile = "./entry/src/main/config.json"
   hap_name = "ContinuousTaskRelyHap"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",

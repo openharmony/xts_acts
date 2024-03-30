@@ -76,8 +76,8 @@ action("tar_dllib") {
     outputs = _outputs
 
     input_path = rebase_path("$dllib_path/musl/libc-test-lib")
-    output_path =
-        rebase_path("$dllib_path/suites/acts/acts_autoCompatibility/testcases/libc-test-lib.tar")
+    output_path = rebase_path(
+            "$dllib_path/suites/acts/acts_autoCompatibility/testcases/libc-test-lib.tar")
 
     print("root_build_dir-49", root_build_dir)
     args = [
@@ -93,8 +93,8 @@ action("tar_dllib") {
     outputs = _outputs
 
     input_path = rebase_path("$dllib_path/musl/libc-test-lib")
-    output_path =
-        rebase_path("$dllib_path/suites/acts/acts_autoCompatibility/testcases/libc-test-lib.tar")
+    output_path = rebase_path(
+            "$dllib_path/suites/acts/acts_autoCompatibility/testcases/libc-test-lib.tar")
     print("root_build_dir-49", root_build_dir)
     args = [
       "--input_path",
