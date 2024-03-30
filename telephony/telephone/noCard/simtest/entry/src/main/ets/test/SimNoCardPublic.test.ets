@@ -17,7 +17,7 @@ import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
 import { describe, it, expect } from '@ohos/hypium';
 
-const ExpectFail = () => {
+const ExpectFail: () => void = () => {
   try {
     expect().assertFail();
   } catch (err) {
@@ -25,7 +25,7 @@ const ExpectFail = () => {
   }
 };
 
-const ExpectTrue = (n: boolean) => {
+const ExpectTrue: (n: boolean) => void = (n: boolean) => {
   try {
     expect(n).assertTrue();
   } catch (err) {
