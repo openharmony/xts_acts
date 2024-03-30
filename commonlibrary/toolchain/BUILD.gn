@@ -43,7 +43,8 @@ action("tar_testcases") {
   outputs = _outputs
 
   input_path = rebase_path("$test_path/musl/libc-test")
-  output_path = rebase_path("$test_path/suites/acts/testcases/libc-test.tar")
+  output_path = rebase_path(
+          "$test_path/suites/acts/acts_autoCompatibility/testcases/libc-test.tar")
 
   print("root_build_dir-49", root_build_dir)
   args = [
