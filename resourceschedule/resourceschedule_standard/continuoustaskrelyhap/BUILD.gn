@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ContinuousTaskRelyHap") {
+ohos_hap_assist_suite("ContinuousTaskRelyHap") {
   hap_profile = "./entry/src/main/config.json"
   hap_name = "ContinuousTaskRelyHap"
   subsystem_name = XTS_SUITENAME
