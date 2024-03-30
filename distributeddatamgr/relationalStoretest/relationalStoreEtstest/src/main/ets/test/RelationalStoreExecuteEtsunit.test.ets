@@ -109,10 +109,8 @@ export default function rdbStoreExcuteTest(){
     it('testExecute0003', 0, async function (done) {
       console.info(TAG + "************* testExecute0003 start *************");
       try {
-        // set user_version as 5
         rdbStore.version = 5;
         let ret = await rdbStore.execute("PRAGMA user_version");
-        // get user_version 5
         expect("5").assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -134,7 +132,6 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("SELECT * FROM test");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
         expect(14800000).assertEqual(err.code);
         console.error(`execute select sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -152,7 +149,6 @@ export default function rdbStoreExcuteTest(){
       console.info(TAG + "************* testExecute0005 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES ('tt', 28, 50000)");
-        // 1 represent that the last data is inserted in the first row
         expect(1).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -172,7 +168,6 @@ export default function rdbStoreExcuteTest(){
       console.info(TAG + "************* testExecute0006 start *************");
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?)", ['tt', 28, 50000]);
-        // 1 represent that the last data is inserted in the first row
         expect(1).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -193,7 +188,6 @@ export default function rdbStoreExcuteTest(){
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
           ['tt', 28, 50000, 'ttt', 278, 500800]);
-        // 2 represent that the last data is inserted in the second row
         expect(2).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -214,11 +208,9 @@ export default function rdbStoreExcuteTest(){
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
           ['tt', 28, 50000, 'ttt', 278, 500800]);
-        // 2 represent that the last data is inserted in the second row
         expect(2).assertEqual(ret);
 
         ret = await rdbStore.execute("UPDATE test SET name='dd' WHERE id = 1");
-        // 1 represent that effected row id
         expect(1).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -239,11 +231,8 @@ export default function rdbStoreExcuteTest(){
       try {
         let ret = await rdbStore.execute("INSERT INTO test(name, age, salary) VALUES (?, ?, ?), (?, ? ,?)",
           ['tt', 28, 50000, 'ttt', 278, 500800]);
-        // 2 represent that the last data is inserted in the second row
         expect(2).assertEqual(ret);
-
         ret = await rdbStore.execute("DELETE FROM test");
-        // 2 represent that effected row id
         expect(2).assertEqual(ret);
       } catch (err) {
         expect(null).assertFail();
@@ -267,7 +256,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("ATTACH DATABASE 'execute_attach_test.db' AS 'attach.db'");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
+
         expect(14800000).assertEqual(err.code);
         console.error(`execute attach sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -276,7 +265,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("DETACH DATABASE 'attach.db'");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
+
         expect(14800000).assertEqual(err.code);
         console.error(`execute detach sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -285,7 +274,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("BEGIN TRANSACTION");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
+
         expect(14800000).assertEqual(err.code);
         console.error(`execute begin transaction sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -294,7 +283,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("COMMIT");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
+
         expect(14800000).assertEqual(err.code);
         console.error(`execute commit sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -303,7 +292,6 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("ROLLBACK");
         expect(null).assertFail();
       } catch (err) {
-        // 14800000: inner error
         expect(14800000).assertEqual(err.code);
         console.error(`execute rollback sql failed, code:${err.code}, message: ${err.message}`);
       }
@@ -324,14 +312,14 @@ export default function rdbStoreExcuteTest(){
         expect(null).assertEqual(ret);
         let resultSet = await rdbStore.querySql(TEST_TABLE_IS_EXIST);
         resultSet.goToFirstRow();
-        // 0 represent that get count of table test2 in the first row, 1 represent that the table exists
+
         expect(1).assertEqual(resultSet.getLong(0))
         resultSet.close();
 
         await rdbStore.execute("DROP TABLE test2");
         resultSet = await rdbStore.querySql(TEST_TABLE_IS_EXIST);
         resultSet.goToFirstRow();
-        // 0 represent that get count of table test2 in the first row, and the table test2 does not exist
+
         expect(0).assertEqual(resultSet.getLong(0))
         resultSet.close();
       } catch (err) {
@@ -357,11 +345,11 @@ export default function rdbStoreExcuteTest(){
 
         let ret = await rdbStore.execute(
           "INSERT INTO test2(name, age, salary) VALUES (?, ?, ?)", ['tt', 28, 50000]);
-        // 1 represent that the last data is inserted in the first row
+
         expect(1).assertEqual(ret);
 
         let resultSet = await rdbStore.querySql("SELECT * FROM test2");
-        // 1 represent that the row count of resultSet
+
         expect(1).assertEqual(resultSet.rowCount)
         resultSet.close();
       } catch (err) {
