@@ -85,14 +85,14 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3940
      * @tc.name      : testMaximize
      * @tc.desc      : test the function of Maximize
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testRecover', 0, async (done: Function) => {
+    it('testMaximize', 0, async (done: Function) => {
       let msgStr = 'testMaximize';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
@@ -129,14 +129,14 @@ export default function windowRecoverTest(context: common.UIAbilityContext, wind
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1280
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3950
      * @tc.name      : testMaximizeToRecover
      * @tc.desc      : test the function of MaximizeToRecover
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level4
      */
-    it('testRecover', 0, async (done: Function) => {
+    it('testMaximizeToRecover', 0, async (done: Function) => {
       let msgStr = 'testMaximizeToRecover';
       console.log(msgStr + ' begin');
       ohosWindow.getLastWindow(context).then(wnd => {
