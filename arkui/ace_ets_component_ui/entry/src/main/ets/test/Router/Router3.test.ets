@@ -31,7 +31,7 @@ export default function Router3() {
         let pages = router.getState();
         console.info("get " +
         " state pages:" + JSON.stringify(pages));
-        if (!("Router3" == pages.name)) {
+        if (!("pageOne" == pages.name)) {
           console.info("get Router3 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
