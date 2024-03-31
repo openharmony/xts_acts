@@ -45,6 +45,7 @@ export default class Utils {
     }
     events_emitter.emit(event, eventData)
   }
+  
 
   //获取组件所占矩形区域坐标
   static getComponentRect(key: string): RectValue {
