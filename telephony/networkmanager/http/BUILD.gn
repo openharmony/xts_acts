@@ -11,7 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("networkmanager") {
+import("//build/ohos_var.gni")
+
+group("http") {
   testonly = true
-  deps = [ "http:http" ]
+  if (is_standard_system) {
+    deps = [
+      "httpCache:ActsNetworkManagerHttpCacheTest",
+      "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
+    ]
+  }
 }
