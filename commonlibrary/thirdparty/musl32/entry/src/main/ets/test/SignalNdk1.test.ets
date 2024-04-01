@@ -15,7 +15,7 @@
 
 import { beforeEach, describe, expect, it } from '@ohos/hypium'
 import Utils from './Utils'
-import signal from 'libsignalndk1.so'
+import signal from 'libsignalndk32.so'
 
 export default function signalNdk1Test() {
   describe('MuslSignal1Test', () => {
