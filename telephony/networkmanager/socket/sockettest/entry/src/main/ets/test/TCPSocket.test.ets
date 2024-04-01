@@ -86,6 +86,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0100
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0100
      * @tc.desc  : Bind IP address and port,Only fill in IPV4 address;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 1
      */
@@ -122,6 +123,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0300
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0300
      * @tc.desc  : Bind IP address and port,the address and protocol are both IPV6;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 1
      */
@@ -159,6 +161,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0500
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0500
      * @tc.desc  : Bind IP address and port,bad address;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -197,6 +200,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0600
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0600
      * @tc.desc  : Bind IP address and port,Port is boundary -1;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -235,6 +239,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0700
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0700
      * @tc.desc  : Bind IP address and port,port is boundary 0;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -273,6 +278,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0800
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0800
      * @tc.desc  : Bind IP address and port,Port is boundary 65535;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -311,6 +317,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_0900
      * @tc.name  : testNetworkMgrSocketTCPSocketBind0900
      * @tc.desc  : Bind IP address and port,Port is boundary 65536;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -349,6 +356,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_1000
      * @tc.name  : testNetworkMgrSocketTCPSocketBind1000
      * @tc.desc  : Bind IP address and port, bad family;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -387,6 +395,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_1100
      * @tc.name  : testNetworkMgrSocketTCPSocketBind1100
      * @tc.desc  : Bind IP address and port,Input parameter is null;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
@@ -419,6 +428,7 @@ export default function TCPSocketTest() {
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_Bind_1200
      * @tc.name  : testNetworkMgrSocketTCPSocketBind1200
      * @tc.desc  : Bind IP address and port,Input parameter is undefined;  callback
+     * @tc.size  :  MediumTest
      * @tc.type  : Function
      * @tc.level : level 2
      */
