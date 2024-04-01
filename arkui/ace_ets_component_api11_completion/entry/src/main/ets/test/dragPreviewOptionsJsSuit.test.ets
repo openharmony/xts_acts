@@ -12,19 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 
 import events_emitter from '@ohos.events.emitter'
 
 export default function dragPreviewOptionsJsSuit() {
-  describe('dragPreviewOptionsJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('dragPreviewOptionsJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("dragPreviewJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/dragPreviewOptions',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/dragPreviewOptions',
       }
       try {
         router.clear();
@@ -42,27 +55,26 @@ export default function dragPreviewOptionsJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
 
     /**
-     * @tc.number	 SUB_ACE_TS_COMPONENT_dragPreviewOptions_01
-     * @tc.name  	 dragPreviewOptionsJsSuit_0100
-     * @tc.desc  	 Confirm if there is a callback
-	 * @tc.level     Level 2
+     * @tc.number SUB_ACE_TS_COMPONENT_dragPreviewOptions_01
+     * @tc.name dragPreviewOptionsJsSuit_0100
+     * @tc.desc Confirm if there is a callback
+     * @tc.level Level 2
      * @tc.type :
      * @tc.size :
      */
 
-    it('dragPreviewOptionsJsSuit_0100', 0, async function (done) {
+    it('dragPreviewOptionsJsSuit_0100', 0, async (done: Function) => {
       console.info('[dragPreviewOptionsJsSuit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey("dragPreviewOption");
-      let obj = JSON.parse(strJson);
-      console.info("[dragPreviewOptionsJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.height));
-      expect(obj.$attrs.height=='150.00vp').assertTrue();
+      console.info("[dragPreviewOptionsJsSuit_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.height));
+      expect(JSON.parse(strJson).$attrs.height == '150.00vp').assertTrue();
       console.info('[dragPreviewOptionsJsSuit_0100] END');
       done();
     });

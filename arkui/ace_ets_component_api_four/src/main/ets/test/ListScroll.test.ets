@@ -17,6 +17,7 @@ import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import { BusinessError } from '@ohos.base'
+import Utils from '../TestAbility/common/MyUtils';
 
 export default function ListScrollTest() {
 
@@ -37,6 +38,7 @@ export default function ListScrollTest() {
           }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
+          await Utils.sleep(2500);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

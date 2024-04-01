@@ -14,7 +14,7 @@
  */
 @Entry
 @Component
-struct dragPreviewOptionsDemo{
+struct dragPreviewOptionsDemo {
   build() {
     Row() {
       Column() {

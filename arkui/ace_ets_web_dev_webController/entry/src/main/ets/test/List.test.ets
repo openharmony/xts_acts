@@ -12,48 +12,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import webOnBeforeUnload from './webOnBeforeUnload.test'
-import webOnInterceptReqOne from './webOnInterceptReqOne.test'
-import webOnInterceptReqTwo from './webOnInterceptReqTwo.test'
-import webOnInterceptReqThree from './webOnInterceptReqThree.test'
-import webOnSslError from './webOnSslError.test'
-import webOnFirstCont from './webOnFirstCont.test'
-import webOnFirstContTwo from './webOnFirstContTwo.test'
-import webOnFirstContThree from './webOnFirstContThree.test'
-import webOnFirstContFour from './webOnFirstContFour.test'
-import webDefaultFontSizeWithMinLogical from './webDefaultFontSizeWithMinLogical.test'
-import webDefaultFontSize from './webDefaultFontSize.test'
-import webDefaultFontSizeNoMinFontSize from './webDefaultFontSizeNoMinFontSize.test'
-import webDefaultFontSizeNoAll from './webDefaultFontSizeNoAll.test'
-import webOnFullScreenEnter from './webOnFullScreenEnter.test'
-import webOnFullScreenExit from './webOnFullScreenExit.test'
-import webGetCookieManager from './webGetCookieManager.test'
-import webONHttpErrorReceive from './webONHttpErrorReceive.test'
-import webONHttpErrorReceiveExample from './webONHttpErrorReceiveExample.test'
-import webONHttpErrorRecvExampleIsReady from './webONHttpErrorRecvExampleIsReady.test'
-import webONHttpErrorReceiveIframe from './webONHttpErrorReceiveIframe.test'
-import webOnAudioStateChanged from './webOnAudioStateChanged.test'
+import webOnBeforeUnload from './webOnBeforeUnload.test';
+import webOnInterceptReqOne from './webOnInterceptReqOne.test';
+import webOnInterceptReqTwo from './webOnInterceptReqTwo.test';
+import webOnInterceptReqThree from './webOnInterceptReqThree.test';
+import webOnSslError from './webOnSslError.test';
+import webOnFirstCont from './webOnFirstCont.test';
+import webOnFirstContTwo from './webOnFirstContTwo.test';
+import webOnFirstContThree from './webOnFirstContThree.test';
+import webOnFirstContFour from './webOnFirstContFour.test';
+import webDefaultFontSizeWithMinLogical from './webDefaultFontSizeWithMinLogical.test';
+import webDefaultFontSize from './webDefaultFontSize.test';
+import webDefaultFontSizeNoMinFontSize from './webDefaultFontSizeNoMinFontSize.test';
+import webDefaultFontSizeNoAll from './webDefaultFontSizeNoAll.test';
+import webOnFullScreenEnter from './webOnFullScreenEnter.test';
+import webOnFullScreenExit from './webOnFullScreenExit.test';
+import webGetCookieManager from './webGetCookieManager.test';
+import webONHttpErrorReceive from './webONHttpErrorReceive.test';
+import webONHttpErrorReceiveExample from './webONHttpErrorReceiveExample.test';
+import webONHttpErrorRecvExampleIsReady from './webONHttpErrorRecvExampleIsReady.test';
+import webONHttpErrorReceiveIframe from './webONHttpErrorReceiveIframe.test';
+import webOnAudioStateChanged from './webOnAudioStateChanged.test';
 
 export default function testsuite() {
-       //webOnBeforeUnload()
-       webOnInterceptReqOne()
-       webOnInterceptReqTwo()
-       webOnInterceptReqThree()
-       webOnSslError()
-       webOnFirstCont()
-       webOnFirstContTwo()
-       webOnFirstContThree()
-       webOnFirstContFour()
-       webDefaultFontSizeWithMinLogical()
-       webDefaultFontSize()
-       webDefaultFontSizeNoMinFontSize()
-       webDefaultFontSizeNoAll()
-       //webOnFullScreenEnter()
-       //webOnFullScreenExit()
-       webGetCookieManager()
-       webONHttpErrorReceive()
-       webONHttpErrorReceiveExample()
-       webONHttpErrorRecvExampleIsReady()
-       webONHttpErrorReceiveIframe()
-       //webOnAudioStateChanged()
+  //webOnBeforeUnload()
+  webOnInterceptReqOne();
+  webOnInterceptReqTwo();
+  webOnInterceptReqThree();
+  webOnSslError();
+  webOnFirstCont();
+  webOnFirstContTwo();
+  webOnFirstContThree();
+  webOnFirstContFour();
+  webDefaultFontSizeWithMinLogical();
+  webDefaultFontSize();
+  webDefaultFontSizeNoMinFontSize();
+  webDefaultFontSizeNoAll();
+  //webOnFullScreenEnter()
+  //webOnFullScreenExit()
+  webGetCookieManager();
+  webONHttpErrorReceive();
+  webONHttpErrorReceiveExample();
+  webONHttpErrorRecvExampleIsReady();
+  webONHttpErrorReceiveIframe();
+  //webOnAudioStateChanged()
 }

@@ -15,11 +15,12 @@
 @Entry
 @Component
 struct parentX {
-  @State parentX: number = 0
-  @State parentY: number = 0
-  @State strategy_DEFAULT: string = ''
-  @State strategy_FORWARD_COMPETITION: string = ''
-  @State strategy_FORWARD: string = ''
+  @State parentX: number = 0;
+  @State parentY: number = 0;
+  @State strategy_DEFAULT: string = '';
+  @State strategy_FORWARD_COMPETITION: string = '';
+  @State strategy_FORWARD: string = '';
+
   build() {
     Row() {
       Column() {
@@ -52,6 +53,9 @@ struct parentX {
           return { strategy: TouchTestStrategy.DEFAULT }
         })
       }.width('100%')
-    }.height('100%').width('100%').id('row')
+    }
+    .height('100%')
+    .width('100%')
+    .id('row')
   }
 }

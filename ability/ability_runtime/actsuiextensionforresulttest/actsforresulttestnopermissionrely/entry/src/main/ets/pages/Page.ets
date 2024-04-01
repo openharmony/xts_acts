@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Want from '@ohos.app.ability.Want';
+
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 
-let storage = LocalStorage.GetShared()
+let storage = LocalStorage.GetShared();
 
 @Entry(storage)
 @Component
 struct Page {
-  @State message: string = 'UIExtAbility'
+  @State message: string = 'UIExtAbility';
   private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
 
   build() {

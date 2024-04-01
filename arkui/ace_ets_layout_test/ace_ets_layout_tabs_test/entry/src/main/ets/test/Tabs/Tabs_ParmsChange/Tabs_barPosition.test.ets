@@ -96,27 +96,27 @@ export default function Tabs_barPosition() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_001');
-      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_011');
+      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_001');
+      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_011');
       let driver = Driver.create();
       await driver.swipe(Math.round((Tabs_barPosition_011.right - 30)),
         Math.round(Tabs_barPosition_011.top + ((Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) / 2)),
         Math.round(Tabs_barPosition_011.left + 30),
         Math.round(Tabs_barPosition_011.top + ((Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_002');
-      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_012');
+      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_002');
+      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_012');
       await driver.swipe(Math.round(Tabs_barPosition_012.right - 30),
         Math.round(Tabs_barPosition_012.top + ((Tabs_barPosition_012.bottom - Tabs_barPosition_012.top) / 2)),
         Math.round(Tabs_barPosition_012.left + 30),
         Math.round(Tabs_barPosition_012.top + ((Tabs_barPosition_012.bottom - Tabs_barPosition_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_003');
-      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_013');
-      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_yellow');
+      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_003');
+      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_013');
+      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_yellow');
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
@@ -204,27 +204,27 @@ export default function Tabs_barPosition() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_001');
-      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_011');
+      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_001');
+      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_011');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_barPosition_011.right - 30),
         Math.round(Tabs_barPosition_011.top + ((Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) / 2)),
         Math.round(Tabs_barPosition_011.left + 30),
         Math.round(Tabs_barPosition_011.top + ((Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_002');
-      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_012');
+      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_002');
+      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_012');
       await driver.swipe(Math.round(Tabs_barPosition_012.right - 30),
         Math.round(Tabs_barPosition_012.top + ((Tabs_barPosition_012.bottom - Tabs_barPosition_012.top) / 2)),
         Math.round(Tabs_barPosition_012.left + 30),
         Math.round(Tabs_barPosition_012.top + ((Tabs_barPosition_012.bottom - Tabs_barPosition_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_003');
-      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_013');
-      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_yellow');
+      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_003');
+      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_013');
+      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_yellow');
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
@@ -321,27 +321,27 @@ export default function Tabs_barPosition() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("true");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_001');
-      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_011');
+      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_001');
+      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_011');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_barPosition_011.left + ((Tabs_barPosition_011.right - Tabs_barPosition_011.left) / 2)),
         Math.round(Tabs_barPosition_011.bottom - 30),
         Math.round(Tabs_barPosition_011.left + ((Tabs_barPosition_011.right - Tabs_barPosition_011.left) / 2)),
         Math.round(Tabs_barPosition_011.top + 30));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_002');
-      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_012');
+      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_002');
+      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_012');
       await driver.swipe(Math.round(Tabs_barPosition_012.left + ((Tabs_barPosition_012.right - Tabs_barPosition_012.left) / 2)),
         Math.round(Tabs_barPosition_012.bottom - 30),
         Math.round(Tabs_barPosition_012.left + ((Tabs_barPosition_012.right - Tabs_barPosition_012.left) / 2)),
         Math.round(Tabs_barPosition_012.top + 30));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_003');
-      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_013');
-      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_yellow');
+      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_003');
+      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_013');
+      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_yellow');
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
@@ -438,27 +438,27 @@ export default function Tabs_barPosition() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("true");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_001');
-      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_011');
+      let Tabs_barPosition_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_001');
+      let Tabs_barPosition_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_011');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_barPosition_011.left + ((Tabs_barPosition_011.right - Tabs_barPosition_011.left) / 2)),
         Math.round(Tabs_barPosition_011.bottom - 30),
         Math.round(Tabs_barPosition_011.left + ((Tabs_barPosition_011.right - Tabs_barPosition_011.left) / 2)),
         Math.round(Tabs_barPosition_011.top + 30));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_002');
-      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_012');
+      let Tabs_barPosition_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_002');
+      let Tabs_barPosition_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_012');
       await driver.swipe(Math.round(Tabs_barPosition_012.left + ((Tabs_barPosition_012.right - Tabs_barPosition_012.left) / 2)),
         Math.round(Tabs_barPosition_012.bottom - 30),
         Math.round(Tabs_barPosition_012.left + ((Tabs_barPosition_012.right - Tabs_barPosition_012.left) / 2)),
         Math.round(Tabs_barPosition_012.top + 30));
       await CommonFunc.sleep(1000);
-      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_003');
-      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_013');
-      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_barPosition_yellow');
+      let Tabs_barPosition_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_003');
+      let Tabs_barPosition_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_013');
+      let Tabs_barPosition_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_barPosition_yellow');
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);

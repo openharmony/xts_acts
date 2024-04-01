@@ -13,22 +13,26 @@
  * limitations under the License.
  */
 
-import btManagerSwitchTest from './BtManagerSetSwitch.test.js'
-import btLocalNameTest from './BtSetLocalName.test.js'
-import btSwitchTest from './BtSetSwitch.test.js'
-import btSppTest from './BtSpp.test.js'
-import btSubscBleTest from './BtSysSubscBle.test.js'
-import btManagerSppTest from './BtManagerSpp.test.js'
-import btGattAdvertTest from './BtGattAdvertiser.test.js'
-import btScanModeTest from './BtScanMode.test.js'
+import btManagerSwitchTest from './BtManagerSetSwitch.test.js';
+import btLocalNameTest from './BtSetLocalName.test.js';
+import btSwitchTest from './BtSetSwitch.test.js';
+import btSppTest from './BtSpp.test.js';
+import btSubscBleTest from './BtSysSubscBle.test.js';
+import btManagerSppTest from './BtManagerSpp.test.js';
+import btGattAdvertTest from './BtGattAdvertiser.test.js';
+import btScanModeTest from './BtScanMode.test.js';
+import parameter from '@ohos.systemparameter';
 
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    btLocalNameTest()
-    btSwitchTest()
-    btSppTest()
-    btSubscBleTest()
-    btManagerSppTest()
-    btManagerSwitchTest()
-    btGattAdvertTest()
-    btScanModeTest()
+    if (info != "false") {
+        btLocalNameTest();
+        btSwitchTest();
+        btSppTest();
+        btSubscBleTest();
+        btManagerSppTest();
+        btManagerSwitchTest();
+        btGattAdvertTest();
+        btScanModeTest();
+    }
 }

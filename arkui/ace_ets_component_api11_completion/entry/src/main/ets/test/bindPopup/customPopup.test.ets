@@ -12,15 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from "../../MainAbility/common/Common";
 import events_emitter from '@ohos.events.emitter';
-export default function customPopup(){
-  describe('customPopup', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/bindPopup/customPopup',
+
+export default function customPopup() {
+  describe('customPopup', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/bindPopup/customPopup',
       }
       try {
         router.clear();
@@ -37,27 +38,27 @@ export default function customPopup(){
       }
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("customPopup after each called");
     });
     /**
-     * @tc.number    SUB_ACE_customPopup_0100
-     * @tc.name      customPopup_0100
-     * @tc.desc      arrowPointPosition
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_customPopup_0100
+     * @tc.name customPopup_0100
+     * @tc.desc arrowPointPosition
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('customPopup_0100', 0, async function (done) {
+    it('customPopup_0100', 0, async (done: Function) => {
       console.info('customPopup_0100 START');
       await Utils.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("customPopup_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.arrowPointPosition).assertEqual('Start');
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 67,
         priority: events_emitter.EventPriority.LOW
       }
@@ -66,9 +67,9 @@ export default function customPopup(){
       } catch (err) {
         console.info("customPopup_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("customPopup_0100 click result is: " + JSON.stringify(sendEventByKey('custom1',10,"")));
+      console.info("customPopup_0100 click result is: " + JSON.stringify(sendEventByKey('custom1', 10, "")));
       await Utils.sleep(1000);
-      console.info("customPopup_0100 click Two result is: " + JSON.stringify(sendEventByKey('image',10,"")));
+      console.info("customPopup_0100 click Two result is: " + JSON.stringify(sendEventByKey('image', 10, "")));
       await Utils.sleep(1000);
       console.info('customPopup_0100 END');
     });

@@ -79,7 +79,7 @@ export default function webAttributeTest() {
     it('testInitialScale002', 0, async (done: Function) => {
       Utils.emitEvent("emitInitialScale002", 10)
       await Utils.sleep(2000);
-      Utils.registerEvent("testInitialScale001", 'oldScale=100,newScale=80', 70003, done);
+      Utils.registerEvent("testInitialScale001", 'oldScale=100,newScale=90', 70003, done);
       sendEventByKey('WebAttributeTestButton', 10, '');
     })
 

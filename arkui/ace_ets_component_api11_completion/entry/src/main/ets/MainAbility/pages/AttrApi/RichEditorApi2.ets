@@ -16,50 +16,49 @@
 @Entry
 @Component
 struct RichEditorApi22Com {
-
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller }
-
+  options: RichEditorOptions = { controller: this.controller };
   controller2: RichEditorController = new RichEditorController();
-  options2: RichEditorOptions = { controller: this.controller2 }
-
-  @State text1: string = ''
-  @State text2: string = ''
-  @State text3: string = ''
+  options2: RichEditorOptions = { controller: this.controller2 };
+  @State text1: string = '';
+  @State text2: string = '';
+  @State text3: string = '';
 
   @Builder
   panel() {
-    Text("Select").borderWidth(1)
+    Text("Select")
+      .borderWidth(1)
   }
 
-
   build() {
-    Column({ space: 10 }){
+    Column({ space: 10 }) {
 
       Text(this.text1).id('RichEditorApi2_text1')
 
       RichEditor(this.options)
         .id('RichEditorApi2_RichEditor1')
-        .onReady(()=> {
+        .onReady(() => {
           this.controller.addTextSpan('paragraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraphparagraph')
         })
-        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.SELECT, {onAppear:()=>{
-          this.text1 = 'SelectMenuAppear'
-        }} )
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.SELECT, {
+          onAppear: () => {
+            this.text1 = 'SelectMenuAppear'
+          }
+        })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
 
       Button('getSpans')
         .id('RichEditorApi2_getSpans')
-        .onClick(()=>{
+        .onClick(() => {
           this.controller2.getSpans()
             .forEach(item => {
-              if(typeof(item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined'){
+              if (typeof (item as RichEditorTextSpanResult)['symbolSpanStyle'] != 'undefined') {
                 this.text2 += (item as RichEditorTextSpanResult).symbolSpanStyle?.renderingStrategy
                 this.text3 += (item as RichEditorTextSpanResult).symbolSpanStyle?.effectStrategy
-            }
-          })
+              }
+            })
 
         })
 
@@ -67,19 +66,19 @@ struct RichEditorApi22Com {
 
       RichEditor(this.options2)
         .id('RichEditorApi2_RichEditor2')
-        .onReady(()=> {
+        .onReady(() => {
           this.controller2.addSymbolSpan($r("sys.symbol.ohos_trash"),
             {
               style:
               {
-                renderingStrategy:SymbolRenderingStrategy.SINGLE,
-                effectStrategy:SymbolEffectStrategy.NONE
+                renderingStrategy: SymbolRenderingStrategy.SINGLE,
+                effectStrategy: SymbolEffectStrategy.NONE
               }
             })
         })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
 
     }.width('100%')
   }

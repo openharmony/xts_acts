@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
+// @ts-nocheck
 let emitKey = "emitOnBeforeUnload";
-
 export default function webViewOnBeforeUnload() {
-  describe('ActsAceWebDevWebViewOnBeforeUnloadTest', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebDevWebViewOnBeforeUnloadTest', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/webViewOnBeforeUnload',
       }
@@ -40,27 +39,27 @@ export default function webViewOnBeforeUnload() {
       }
       done()
     });
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("webViewOnBeforeUnload beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
+    afterEach(async function (done) {
       console.info("webViewOnBeforeUnload afterEach start:" + emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -70,22 +69,22 @@ export default function webViewOnBeforeUnload() {
      *tc.name testOnBeforeUnload
      *tc.desc onBeforeUnload after page refresh
      */
-    it('testOnBeforeUnload', 0, async (done: Function) => {
-      emitKey = "emitOnBeforeUnloadAgain";
-      Utils.registerEvent("testOnBeforeUnload", "Is it OK to leave/reload this page?", 302, done);
-      sendEventByKey('webViewOnBeforeUnload', 10, '');
-      sendEventByKey('TestwebViewOnBeforeUnload', 10, '');
+    it('testOnBeforeUnload',0,async function(done){
+      emitKey="emitOnBeforeUnloadAgain";
+      Utils.registerEvent("testOnBeforeUnload","Is it OK to leave/reload this page?",302,done);
+      sendEventByKey('webViewOnBeforeUnload',10,'');
+      sendEventByKey('TestwebViewOnBeforeUnload',10,'');
     })
     /*
      *tc.number SUB_ACE_BASIC_ETS_WEBVIEW_API_0200
      *tc.name testOnBeforeUnloadAgain
      *tc.desc onBeforeUnload after page loadUrl new
      */
-    it('testOnBeforeUnloadAgain', 0, async (done: Function) => {
-      sendEventByKey('TestwebViewOnBeforeUnload', 10, '');
-      emitKey = "emitOnBeforeUnloadAgain";
-      Utils.registerEvent("testOnBeforeUnloadAgain", "Is it OK to leave/reload this page?", 304, done);
-      sendEventByKey('webViewOnBeforeUnload', 10, '');
+    it('testOnBeforeUnloadAgain',0,async function(done){
+      sendEventByKey('TestwebViewOnBeforeUnload',10,'');
+      emitKey="emitOnBeforeUnloadAgain";
+      Utils.registerEvent("testOnBeforeUnloadAgain","Is it OK to leave/reload this page?",304,done);
+      sendEventByKey('webViewOnBeforeUnload',10,'');
     })
   })
 }

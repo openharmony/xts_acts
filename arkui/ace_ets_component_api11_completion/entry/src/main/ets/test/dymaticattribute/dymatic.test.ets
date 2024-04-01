@@ -15,11 +15,24 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function dymaticTest() {
-  describe('dymaticTest', function () {
-    beforeEach(async function (done) {
+  describe('dymaticTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("dymaticTest beforeEach start");
       try {
         router.clear();
@@ -27,7 +40,9 @@ export default function dymaticTest() {
         console.info("get dymaticTest state pages:" + JSON.stringify(pages));
         if (!("attribute" == pages.name)) {
           console.info("get dymaticTest  pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/dymaticattribute/attribute"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/dymaticattribute/attribute"
+          })
           await CommonFunc.sleep(2000);
           console.info("push dymaticTest  page result:" + JSON.stringify(result));
         }
@@ -37,20 +52,20 @@ export default function dymaticTest() {
       console.info("dymaticTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("dymaticTest after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_dymaticTest_0100
-     * @tc.desc      test buttonControlSize
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_dymaticTest_0100
+     * @tc.desc test buttonControlSize
+     * @tc.level Level 2
      * @tc.type
      * @tc.size
      */
 
-    it('dymaticTest_0100', 0, async function (done) {
+    it('dymaticTest_0100', 0, async (done: Function) => {
       console.info('[dymaticTest_0100] START');
       await CommonFunc.sleep(2000);
       let btTop = CommonFunc.getComponentRect('pressedBt');
@@ -61,20 +76,18 @@ export default function dymaticTest() {
       let right = btRight.right
       let btLeft = CommonFunc.getComponentRect('pressedBt');
       let left = btLeft.left
-      let xmiddle = Math.round(left + (right -left)/2)
-      let ymiddle = Math.round(top + (bottom - top)/2)
+      let xmiddle = Math.round(left + (right - left) / 2)
+      let ymiddle = Math.round(top + (bottom - top) / 2)
 
       let driver = await Driver.create()
-      driver.longClick(xmiddle,ymiddle);
+      driver.longClick(xmiddle, ymiddle);
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('pressedBt');
-      let Obj1 = JSON.parse(json);
       console.info("dymaticTest_0100 json info " + JSON.stringify(json));
-      
-      expect(Obj1.$attrs.backgroundColor).assertEqual('#FF000000');
+
+      expect(JSON.parse(json).$attrs.backgroundColor).assertEqual('#FF000000');
       console.info('[dymaticTest_0100] END');
       done();
     });
-
   })
 }

@@ -12,20 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World'
+  @State message: string = 'Hello World';
 
   build() {
     Row() {
       Column() {
-          Text("message")
-            .fontSize(15)
-            .fontWeight(FontWeight.Bold)
-        .backgroundColor('#00FFFF')
-        .width('80%')
-        .height('40vp')
+        Text("message")
+          .fontSize(15)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor('#00FFFF')
+          .width('80%')
+          .height('40vp')
       }
       .width('100%')
     }

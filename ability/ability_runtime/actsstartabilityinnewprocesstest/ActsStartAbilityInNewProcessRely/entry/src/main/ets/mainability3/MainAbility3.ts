@@ -25,6 +25,7 @@ import process from '@ohos.process';
 let tag = '[ACTS_StartAbilityInNewProcess MainAbility3]';
 let ON_WINDOW_STAGE_CREATE = "on_window_stage_create";
 let ON_FOREGROUND = "on_foreground";
+let ON_DESTROY = "on_destroy";
 let SHOW_ABILITY_EVENT = "show_ability_event";
 let HIDE_ABILITY_EVENT = "hide_ability_event";
 let NOTIFY_PID_EVENT = "notify_pid_event";
@@ -116,6 +117,9 @@ export default class MainAbility3 extends Ability {
 
   onDestroy() {
     console.log(`${tag} onDestroy`);
+    commonEvent.publish(ON_DESTROY, (err)=>{
+      console.log(`${tag} onDestroy publish err: ${JSON.stringify(err)}`);
+    });
   }
 
   onWindowStageCreate(windowStage: Window.WindowStage) {

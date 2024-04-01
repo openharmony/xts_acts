@@ -29,12 +29,12 @@ struct richEditorApi1 {
             {
               style:
               {
-              fontSize: 50
+                fontSize: 50
               }
             }
           )
         })
-        .onPaste((event:PasteEvent) => {
+        .onPaste((event: PasteEvent) => {
           event.preventDefault = () => {
             this.text1 = '222'
           }
@@ -45,9 +45,11 @@ struct richEditorApi1 {
         .width('100%')
         .height(200)
 
-      Text('' + this.text1).key('richEditorApi1_text1').height(50)
+      Text('' + this.text1)
+        .key('richEditorApi1_text1')
+        .height(50)
     }
-    .width('100%').height('100%')
+    .width('100%')
+    .height('100%')
   }
-
 }

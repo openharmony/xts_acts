@@ -49,8 +49,8 @@ export default function paddingTest() {
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
-  let parentWidth = 300;
-  let parentHeight = 300;
+  let parentWidth = 400;
+  let parentHeight = 400;
   //Called from the parent class when setting the background color.
   let parentBackGroundColor = Color.Yellow
 

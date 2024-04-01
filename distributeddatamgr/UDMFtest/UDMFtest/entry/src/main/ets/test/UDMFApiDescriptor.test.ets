@@ -3209,9 +3209,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9785 start');
       try {
-        let result = UTD.getUniformDataTypeByFilenameExtension(".hello");
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByFilenameExtension(".hello");
+        console.log("UDMF,result=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes.length).assertEqual(0);
+        expect(dynamicTypeObj.filenameExtensions[0]).assertEqual(".hello");
+        expect(dynamicTypeObj.mimeTypes.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
@@ -3232,11 +3240,11 @@ export default function UDMFApiDescriptorTest() {
       try {
         let result = UTD.getUniformDataTypeByFilenameExtension("");
         console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        expect().assertFail();
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect().assertFail();
+        expect(err.code == "401").assertEqual(true);
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9790 end");
     });
@@ -3293,9 +3301,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9805 start');
       try {
-        let result = UTD.getUniformDataTypeByFilenameExtension(".doc", UTD.UniformDataType.PPT);
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByFilenameExtension(".doc", UTD.UniformDataType.PPT);
+        console.log("result=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes[0]).assertEqual(UTD.UniformDataType.PPT);
+        expect(dynamicTypeObj.filenameExtensions[0]).assertEqual(".doc");
+        expect(dynamicTypeObj.mimeTypes.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
@@ -3356,9 +3372,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9825 start');
       try {
-        let result = UTD.getUniformDataTypeByFilenameExtension(".hello", UTD.UniformDataType.ICO);
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByFilenameExtension(".hello", UTD.UniformDataType.ICO);
+        console.log("dynamicType=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes[0]).assertEqual(UTD.UniformDataType.ICO);
+        expect(dynamicTypeObj.filenameExtensions[0]).assertEqual(".hello");
+        expect(dynamicTypeObj.mimeTypes.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
@@ -3419,9 +3443,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9840 start');
       try {
-        let result = UTD.getUniformDataTypeByMIMEType("hello");
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByMIMEType("hello");
+        console.log("dynamicType=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes.length).assertEqual(0);
+        expect(dynamicTypeObj.mimeTypes[0]).assertEqual("hello");
+        expect(dynamicTypeObj.filenameExtensions.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
@@ -3442,11 +3474,11 @@ export default function UDMFApiDescriptorTest() {
       try {
         let result = UTD.getUniformDataTypeByMIMEType("");
         console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        expect().assertFail();
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
-        expect().assertFail();
+        expect(err.code == "401").assertEqual(true);
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9845 end");
     });
@@ -3524,9 +3556,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9865 start');
       try {
-        let result = UTD.getUniformDataTypeByMIMEType("image/tiff", UTD.UniformDataType.TYPE_SCRIPT);
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByMIMEType("image/tiff", UTD.UniformDataType.TYPE_SCRIPT);
+        console.log("dynamicType=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes[0]).assertEqual(UTD.UniformDataType.TYPE_SCRIPT);
+        expect(dynamicTypeObj.mimeTypes[0]).assertEqual("image/tiff");
+        expect(dynamicTypeObj.filenameExtensions.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);
@@ -3587,9 +3627,17 @@ export default function UDMFApiDescriptorTest() {
     it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880', 0, function () {
       console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_9880 start');
       try {
-        let result = UTD.getUniformDataTypeByMIMEType("hello", UTD.UniformDataType.WINDOWS_MEDIA_WMV);
-        console.log("result=====>" + result);
-        expect(result == null).assertEqual(true);
+        let dynamicType = UTD.getUniformDataTypeByMIMEType("hello", UTD.UniformDataType.WINDOWS_MEDIA_WMV);
+        console.log("dynamicType=====>" + dynamicType);
+        let dynamicTypeObj = UTD.getTypeDescriptor(dynamicType);
+        console.log("UDMF,typeId:" + dynamicTypeObj.typeId);
+        console.log("UDMF,belongingToTypes:" + dynamicTypeObj.belongingToTypes);
+        console.log("UDMF,filenameExtension:" + dynamicTypeObj.filenameExtensions);
+        console.log("UDMF,mimeTypes:" + dynamicTypeObj.mimeTypes);
+        expect(dynamicTypeObj.typeId).assertEqual(dynamicType);
+        expect(dynamicTypeObj.belongingToTypes[0]).assertEqual(UTD.UniformDataType.WINDOWS_MEDIA_WMV);
+        expect(dynamicTypeObj.mimeTypes[0]).assertEqual("hello");
+        expect(dynamicTypeObj.filenameExtensions.length).assertEqual(0);
       }
       catch (err) {
         console.log("err message:" + err.message + ";err code:" + err.code);

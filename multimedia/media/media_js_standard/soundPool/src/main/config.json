@@ -18,7 +18,8 @@
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "phone"
+      "phone",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

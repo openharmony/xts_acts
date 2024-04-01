@@ -1232,7 +1232,7 @@ describe('ActsAbilityTest', function () {
         try {
             task2.removeDependency(task3);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executedTask cannot removeDependency");
+            expect(e.toString()).assertEqual("BusinessError: The dependency does not exist, taskpool:: executedTask cannot removeDependency");
         }
         done();
     })

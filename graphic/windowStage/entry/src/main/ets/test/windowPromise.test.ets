@@ -1840,5 +1840,31 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }        
       }
     })       
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3920
+     * @tc.name      : testGetWindowSystemBarProperties_Function
+     * @tc.desc      : Test the function value of getWindowSystemBarProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testGetWindowSystemBarProperties_Function", 0, async function(done){
+      let msgStr = "testGetWindowSystemBarProperties_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let systemBarProperty = wnd.getWindowSystemBarProperties();
+          console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+          expect(true).assertTrue()
+          done()
+        } catch (exception) {
+          console.error(msgStr + ' Failed to get system bar properties. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    }) 
   })
 }

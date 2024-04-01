@@ -1,0 +1,9 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/onTouch/touch",
+        "MainAbility/pages/onAreaChange/areaChange",
+        "MainAbility/pages/onAppear/appear",
+        "MainAbility/pages/keyboardShortcut/ShortcutKey"
+    ]
+}

@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it, expect, beforeAll } from "@ohos/hypium";
+import {describe, beforeEach, afterEach, it, expect, beforeAll} from "@ohos/hypium";
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
-
+// @ts-nocheck
 let emitKey = "emitOnscroll";
-
 export default function webViewOnScroll() {
-  describe('ActsAceWebDevWbViewOnScrollTest', () => {
-    beforeAll(async (done: Function) => {
+  describe('ActsAceWebDevWbViewOnScrollTest', function () {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/webViewOnScroll',
       }
@@ -40,27 +39,27 @@ export default function webViewOnScroll() {
       }
       done()
     });
-    beforeEach(async (done: Function) => {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("webViewOnScroll beforeEach start");
       done();
     })
-    afterEach(async (done: Function) => {
+    afterEach(async function (done) {
       console.info("webViewOnScroll afterEach start:" + emitKey);
       try {
-        let backData: events_emitter.EventData = {
-          data: {
-            "ACTION": emitKey
-          }
-        }
-        let backEvent: events_emitter.InnerEvent = {
-          eventId: 10,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("start send emitKey");
-        events_emitter.emit(backEvent, backData);
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
       } catch (err) {
-        console.info("emit emitKey  err: " + JSON.stringify(err));
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
       await Utils.sleep(2000);
       done();
@@ -70,22 +69,22 @@ export default function webViewOnScroll() {
      *tc.name testOnscroll
      *tc.desc onscroll after scrollby 100,100
      */
-    it('testOnscroll', 0, async (done: Function) => {
-      emitKey = "emitOnscrollAgain";
-      Utils.registerEvent("testOnscroll", 100, 312, done);
-      Utils.registerEvent("testOnscroll", 100, 314, done);
-      sendEventByKey('webViewOnScroll', 10, '');
+    it('testOnscroll',0,async function(done){
+      emitKey="emitOnscrollAgain";
+      Utils.registerEvent("testOnscroll",100,312,done);
+      Utils.registerEvent("testOnscroll",100,314,done);
+      sendEventByKey('webViewOnScroll',10,'');
     })
     /*
      *tc.number SUB_ACE_BASIC_ETS_WEBVIEWPATR3_API_0200
      *tc.name testOnscrollAgain
      *tc.desc onscroll after scrollby -100,-100
      */
-    it('testOnscrollAgain', 0, async (done: Function) => {
-      emitKey = "emitOnscrollAgain";
-      Utils.registerEvent("testOnscrollAgain", 50, 316, done);
-      Utils.registerEvent("testOnscrollAgain", 50, 318, done);
-      sendEventByKey('webViewOnScroll', 10, '');
+    it('testOnscrollAgain',0,async function(done){
+      emitKey="emitOnscrollAgain";
+      Utils.registerEvent("testOnscrollAgain",50,316,done);
+      Utils.registerEvent("testOnscrollAgain",50,318,done);
+      sendEventByKey('webViewOnScroll',10,'');
     })
   })
 }

@@ -15,163 +15,155 @@
 
 import events_emitter from '@ohos.events.emitter';
 import { expect } from "@ohos/hypium";
-
 export default class Utils {
-  static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
-      setTimeout(() => {
-        resolve("ok")
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  static registerEvent(testCaseName: string, expectedValue: Object, eventId: number, done: Function) {
-    console.info(`[${testCaseName}] START`);
-    try {
-      let callBack = (backData: events_emitter.EventData) => {
+    static sleep(time){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("ok")
+            },time)
+        }).then(()=>{
+            console.info(`sleep ${time} over...`)
+        })
+    }
+    static registerEvent(testCaseName,expectedValue,eventId,done){
+        console.info(`[${testCaseName}] START`);
+        try{
+            let callBack=(backData)=>{
+            try{
+                console.info(`${testCaseName} get result is:`+JSON.stringify(backData));
+                expect(backData.data.ACTION).assertEqual(expectedValue);
+                console.info(`[${testCaseName}] END`);
+            }catch(err){
+                console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+                }
+                done()
+            }
+            let innerEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            events_emitter.once(innerEvent,callBack)
+        }catch(err){
+            console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+        }
+    }
+    static emitEvent(actualValue,eventId){
         try {
-          console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertEqual(expectedValue);
-          console.info(`[${testCaseName}] END`);
-        } catch (err) {
-          console.info(`[${testCaseName}] err:` + JSON.stringify(err));
-        }
-        done()
+            let backData = {
+                data: {
+                    "ACTION": actualValue
+                }
+            }
+            let backEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("webFlag start to emit action state");
+            events_emitter.emit(backEvent, backData);
+      } catch (err) {
+            console.info("webFlag emit action state err: " + JSON.stringify(err));
       }
-      let innerEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.once(innerEvent, callBack)
-    } catch (err) {
-      console.info(`[${testCaseName}] err:` + JSON.stringify(err));
     }
-  }
-
-  static emitEvent(actualValue, eventId) {
-    try {
-      let backData: events_emitter.EventData = {
-        data: {
-          "ACTION": actualValue
+    static registerEventTwo(testCaseName,eventId,done){
+        console.info(`[${testCaseName}] START`);
+        try{
+            let callBack=(backData)=>{
+            try{
+                console.info(`${testCaseName} get result is:`+JSON.stringify(backData));
+                expect(backData.data.actualValue).assertLarger(backData.data.expectedValue-100);
+                expect(backData.data.actualValue).assertLess(backData.data.expectedValue-(-100));
+                console.info(`[${testCaseName}] END`);
+            }catch(err){
+                console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+                }
+                done()
+            }
+            let innerEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            events_emitter.on(innerEvent,callBack)
+        }catch(err){
+            console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
-      }
-      let backEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      console.info("webFlag start to emit action state");
-      events_emitter.emit(backEvent, backData);
-    } catch (err) {
-      console.info("webFlag emit action state err: " + JSON.stringify(err));
     }
-  }
-
-  static registerEventTwo(testCaseName, eventId, done) {
-    console.info(`[${testCaseName}] START`);
-    try {
-      let callBack = (backData) => {
+    static emitEventTwo(expectedValue,actualValue,eventId){
         try {
-          console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.actualValue).assertLarger(backData.data.expectedValue - 100);
-          expect(backData.data.actualValue).assertLess(backData.data.expectedValue - (-100));
-          console.info(`[${testCaseName}] END`);
-        } catch (err) {
-          console.info(`[${testCaseName}] err:` + JSON.stringify(err));
-        }
-        done()
+            let backData = {
+                data: {
+                    "expectedValue":expectedValue,
+                    "actualValue":actualValue
+                }
+            }
+            let backEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("webFlag start to emit action state");
+            events_emitter.emit(backEvent, backData);
+      } catch (err) {
+            console.info("webFlag emit action state err: " + JSON.stringify(err));
       }
-      let innerEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(innerEvent, callBack)
-    } catch (err) {
-      console.info(`[${testCaseName}] err:` + JSON.stringify(err));
     }
-  }
-
-  static emitEventTwo(expectedValue, actualValue, eventId) {
-    try {
-      let backData: events_emitter.EventData = {
-        data: {
-          "expectedValue": expectedValue,
-          "actualValue": actualValue
+    static registerContainEvent(testCaseName,expectedValue,eventId,done){
+        console.info(`[${testCaseName}] START`);
+        try{
+            let callBack=(backData)=>{
+            try{
+                console.info(`${testCaseName} get result is:`+JSON.stringify(backData));
+                expect(backData.data.ACTION).assertContain(expectedValue);
+                console.info(`[${testCaseName}] END`);
+            }catch(err){
+                console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+                }
+                done()
+            }
+            let innerEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            events_emitter.on(innerEvent,callBack)
+        }catch(err){
+            console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
-      }
-      let backEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      console.info("webFlag start to emit action state");
-      events_emitter.emit(backEvent, backData);
-    } catch (err) {
-      console.info("webFlag emit action state err: " + JSON.stringify(err));
     }
-  }
-
-  static registerContainEvent(testCaseName: string, expectedValue: Object, eventId: number, done: Function) {
-    console.info(`[${testCaseName}] START`);
-    try {
-      let callBack = (backData: events_emitter.EventData) => {
+    static commitKey(emitKey){
         try {
-          console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.ACTION).assertContain(expectedValue);
-          console.info(`[${testCaseName}] END`);
-        } catch (err) {
-          console.info(`[${testCaseName}] err:` + JSON.stringify(err));
-        }
-        done()
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
+      } catch (err) {
+            console.info("emit emitKey  err: " + JSON.stringify(err));
       }
-      let innerEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(innerEvent, callBack)
-    } catch (err) {
-      console.info(`[${testCaseName}] err:` + JSON.stringify(err));
     }
-  }
-
-  static commitKey(emitKey) {
-    try {
-      let backData: events_emitter.EventData = {
-        data: {
-          "ACTION": emitKey
+    static registerLargerEvent(testCaseName,eventId,done){
+        console.info(`[${testCaseName}] START`);
+        try{
+            let callBack=(backData)=>{
+            try{
+                console.info(`${testCaseName} get result is:`+JSON.stringify(backData));
+                expect(backData.data.actualValue).assertLarger(backData.data.expectedValue);
+                console.info(`[${testCaseName}] END`);
+            }catch(err){
+                console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+                }
+                done()
+            }
+            let innerEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            events_emitter.on(innerEvent,callBack)
+        }catch(err){
+            console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
-      }
-      let backEvent: events_emitter.InnerEvent = {
-        eventId: 10,
-        priority: events_emitter.EventPriority.LOW
-      }
-      console.info("start send emitKey");
-      events_emitter.emit(backEvent, backData);
-    } catch (err) {
-      console.info("emit emitKey  err: " + JSON.stringify(err));
     }
-  }
-
-  static registerLargerEvent(testCaseName, eventId, done) {
-    console.info(`[${testCaseName}] START`);
-    try {
-      let callBack = (backData) => {
-        try {
-          console.info(`${testCaseName} get result is:` + JSON.stringify(backData));
-          expect(backData.data.actualValue).assertLarger(backData.data.expectedValue);
-          console.info(`[${testCaseName}] END`);
-        } catch (err) {
-          console.info(`[${testCaseName}] err:` + JSON.stringify(err));
-        }
-        done()
-      }
-      let innerEvent: events_emitter.InnerEvent = {
-        eventId: eventId,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(innerEvent, callBack)
-    } catch (err) {
-      console.info(`[${testCaseName}] err:` + JSON.stringify(err));
-    }
-  }
 }

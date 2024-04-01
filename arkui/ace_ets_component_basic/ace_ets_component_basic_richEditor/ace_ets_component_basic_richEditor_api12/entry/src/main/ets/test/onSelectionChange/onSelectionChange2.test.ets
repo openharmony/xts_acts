@@ -57,14 +57,14 @@ export default function onSelectionChange2() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange2_RichEditor'));
       await richEditor.click();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       await driver.triggerKey(2017);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('onSelectionChange2_text1');
       let Obj1 = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('2');

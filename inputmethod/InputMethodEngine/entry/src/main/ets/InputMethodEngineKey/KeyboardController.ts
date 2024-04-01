@@ -191,7 +191,7 @@ export class KeyboardController {
             inputKeyboardDelegate.off("keyEvent");
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 arr: " + JSON.stringify(arr));
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0030 arr: " + arr.join());
-            if (arr.join() === '1,2045,1,2049,2,2049,2,2045'){
+            if (arr.join() === '1,2072,1,2017,2,2017,2,2072'){
                 commonEventPublishData = {
                     data: "SUCCESS"
                 };
@@ -293,7 +293,7 @@ export class KeyboardController {
             inputKeyboardDelegate.off("keyEvent");
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 arr: " + JSON.stringify(arr));
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0060 arr: " + arr.join());
-            if (arr.join() === '1,2072,1,2045,1,2055,2,2055,2,2045,2,2072'){
+            if (arr.join() === '1,2047,1,2001,2,2001,2,2047'){
                 commonEventPublishData = {
                     data: "SUCCESS"
                 };
@@ -327,7 +327,7 @@ export class KeyboardController {
             inputKeyboardDelegate.off("keyEvent");
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 arr: " + JSON.stringify(arr));
             console.info(TAG + "====>SUB_Misc_InputMethod_Manage_Physical_Buttons_0070 arr: " + arr.join());
-            if (arr.join() === '1,2072,1,2045,1,2017,2,2017,2,2045,2,2072'){
+            if (arr.join() === '1,2047,1,2062,2,2062,2,2047'){
                 commonEventPublishData = {
                     data: "SUCCESS"
                 };

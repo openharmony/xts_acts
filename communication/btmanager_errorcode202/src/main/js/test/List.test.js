@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 
-import btManagerErrorCode202Test from './BtManagerErrorCode202.test.js'
+import btManagerErrorCode202Test from './BtManagerErrorCode202.test.js';
+import parameter from '@ohos.systemparameter';
+
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-	btManagerErrorCode202Test()
+	if (info != "false") {
+		btManagerErrorCode202Test();
+	}
 }

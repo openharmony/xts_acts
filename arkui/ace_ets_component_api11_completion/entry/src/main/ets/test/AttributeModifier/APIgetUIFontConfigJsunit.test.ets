@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function APIgetUIFontConfigJsunit() {
-  describe('APIgetUIFontConfigJsunit', function () {
-    beforeEach(async function (done) {
+  describe('APIgetUIFontConfigJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIgetUIFontConfigJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/APIgetUIFontConfig',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/APIgetUIFontConfig',
       }
       try {
         router.clear();
@@ -39,7 +53,7 @@ export default function APIgetUIFontConfigJsunit() {
       }
       done();
     });
-    it('APIgetUIFontConfigJsunit_0100', 0, async function (done) {
+    it('APIgetUIFontConfigJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('APIgetUIFontConfigJsunit_0100 START');
       let driver = Driver.create();
@@ -48,11 +62,10 @@ export default function APIgetUIFontConfigJsunit() {
       await btn1.click();
       await CommonFunc.sleep(1000);
       let strcontent = getInspectorByKey('APIgetUIFontConfigText');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('APIgetUIFontConfigJsunit_0100 component obj is: ' + obj);
-      console.info('APIgetUIFontConfigJsunit_0100 component obj.$attrs.content is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('1');
+      console.info('APIgetUIFontConfigJsunit_0100 component obj is: ' + JSON.parse(strcontent));
+      console.info('APIgetUIFontConfigJsunit_0100 component obj.$attrs.content is: ' + JSON.parse(strcontent).$attrs.content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('1');
       console.info('APIgetUIFontConfigJsunit_0100 END')
       done();
     });

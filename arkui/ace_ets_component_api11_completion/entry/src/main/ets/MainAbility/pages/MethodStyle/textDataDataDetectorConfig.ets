@@ -22,34 +22,38 @@ struct TextExample7 {
   @State address: string = '河南省周口市区鹿邑县';
   @State enableDataDetector: boolean = true;
   @State types: TextDataDetectorType[] = [];
-  @State text1: string = '111'
+  @State text1: string = '111';
 
   build() {
-      Column() {
-        Text(this.text1).fontSize(20).id('dataDetectorConfigText')
-        Text(
-          '电话号码：' + this.phoneNumber + '\n' +
+    Column() {
+      Text(this.text1)
+        .fontSize(20)
+        .id('dataDetectorConfigText')
+      Text(
+        '电话号码：' + this.phoneNumber + '\n' +
           '链接：' + this.url + '\n' +
           '邮箱：' + this.email + '\n' +
           '地址：' + this.address
-        )
-          .fontSize(16)
-          .copyOption(CopyOptions.InApp)
-          .enableDataDetector(this.enableDataDetector)
-          .dataDetectorConfig({types : this.types, onDetectResultUpdate: (result: string)=>{
-            console.info('识别结果' + JSON.parse(JSON.stringify(result)) )
+      )
+        .fontSize(16)
+        .copyOption(CopyOptions.InApp)
+        .enableDataDetector(this.enableDataDetector)
+        .dataDetectorConfig({
+          types: this.types, onDetectResultUpdate: (result: string) => {
+            console.info('识别结果' + JSON.parse(JSON.stringify(result)))
             let code: number | string = JSON.parse(result).code
-            if (code === '0' || code === 0)  {
+            if (code === '0' || code === 0) {
               this.text1 = '222'
             } else if (code === '801' || code === 801) {
               this.text1 = '222'
             }
-          }})
-          .textAlign(TextAlign.Center)
-          .borderWidth(1)
-          .padding(10)
-          .width('100%')
-          .id('text_attr_test')
+          }
+        })
+        .textAlign(TextAlign.Center)
+        .borderWidth(1)
+        .padding(10)
+        .width('100%')
+        .id('text_attr_test')
 
 
       Button('电话号码').onClick(() => {
@@ -68,7 +72,7 @@ struct TextExample7 {
         this.types = [TextDataDetectorType.ADDRESS]
       }).id('button.ADDRESS')
 
-      }
-      .width('100%')
+    }
+    .width('100%')
   }
 }

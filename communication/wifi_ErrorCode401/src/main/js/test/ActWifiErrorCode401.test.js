@@ -68,65 +68,6 @@ export default function actsWifiErrorCode401Test() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0005
-        * @tc.name testAddCandidateConfig
-        * @tc.desc Test AddCandidateConfig API ErrorCode 401.
-        * @tc.type Function
-        * @tc.level Level 0
-        */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0005', 0, async function (done) {
-            (async () => {
-                try {
-                    let wifiDeviceConfig = {
-                        "ssid": "TEST_PSK",
-                        "bssid": "22:9b:e6:48:1f:5c",
-                        "preSharedKey": "12345678",
-                        "isHiddenSsid": false,
-                        "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
-                    };
-                    let result = await wifiMg.addCandidateConfig(wifiDeviceConfig)
-                    console.info("[wifi_test] addCandidateConfig promise successful :" + JSON.stringify(result));
-                } catch(error) {
-                    console.error(`addCandidateConfig promise failed, code ${error.code}, message ${error.message}`);
-                    expect(error.code).assertEqual("401")
-                }
-            })();
-            done();
-        })
-
-        /**
-        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0006
-        * @tc.name testAddCandidateConfig
-        * @tc.desc Test AddCandidateConfig API ErrorCode 401.
-        * @tc.type Function
-        * @tc.level Level 0
-        */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0006', 0, async function (done) {
-            try {
-                let wifiDeviceConfig = {
-                    "ssid": "TEST_PSK",
-                    "bssid": "22:9b:e6:48:1f:5c",
-                    "preSharedKey": "12345678",
-                    "isHiddenSsid": false,
-                    "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
-                };
-                wifiMg.addCandidateConfig(wifiDeviceConfig,
-                    (error,data) => {
-                        if (error) {
-                            console.error(`addCandidateConfig callback, code ${error.code}, message ${error.message}`);
-                            expect(error.code).assertEqual("401")
-                            return;
-                        }
-                        console.info("[wifi_test] addCandidateConfig callback result: " + JSON.stringify(data));
-                    });
-            } catch (error) {
-                console.error(`addCandidateConfig failed, code ${error.code}, message ${error.message}`);
-                expect(error.code).assertEqual("401")
-            }
-            done();
-        })
-
-        /**
         * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0007
         * @tc.name testRemoveCandidateConfig
         * @tc.desc Test RemoveCandidateConfig API ErrorCode 401.

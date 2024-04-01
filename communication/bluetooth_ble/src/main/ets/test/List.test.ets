@@ -13,13 +13,18 @@
  * limitations under the License.
  */
 
-import btBleManagerTest from './BtBleManager.test'
-import btBleServiceTest from './BtBleService.test'
-import bluetoothBleTest from './BluetoothBle.test'
-import bluetoothAdvertisingTest from './BluetoothAdvertising.test'
+import btBleManagerTest from './BtBleManager.test';
+import btBleServiceTest from './BtBleService.test';
+import bluetoothBleTest from './BluetoothBle.test';
+import bluetoothAdvertisingTest from './BluetoothAdvertising.test';
+import parameter from '@ohos.systemparameter';
+
+let info = parameter.getSync("const.SystemCapability.Communication.Bluetooth.Core", "false");
 export default function testsuite() {
-    btBleManagerTest()
-    bluetoothBleTest()
-    btBleServiceTest()
-    bluetoothAdvertisingTest()
+    if (info != "false") {
+        btBleManagerTest();
+        bluetoothBleTest();
+        btBleServiceTest();
+        bluetoothAdvertisingTest();
+    }
 }

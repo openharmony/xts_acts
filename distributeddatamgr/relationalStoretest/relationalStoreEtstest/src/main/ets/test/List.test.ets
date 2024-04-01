@@ -27,6 +27,8 @@ import relationalStoreTransactionTest from './RelationalStoreTransactionJsunit.t
 import relationalStoreResultSetTest from './RelationalStoreResultSetJsunit.test';
 import relationalStorePredicatesTest from './RelationalStorePredicatesJsunit.test';
 import cloudDataSetStrategyEtsTest from './CloudDataSetStrategyEts.test';
+import rdbStoreExcuteTest from './RelationalStoreExecuteEtsunit.test';
+
 
 export default function testsuite() {
   relationalStoreEncryptTest()
@@ -44,5 +46,6 @@ export default function testsuite() {
   relationalStoreResultSetTest()
   relationalStorePredicatesTest()
   cloudDataSetStrategyEtsTest()
+  rdbStoreExcuteTest()
 }
 

@@ -4543,11 +4543,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('windowSizeChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for window size changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4576,11 +4575,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('windowSizeChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for window size changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4624,11 +4622,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('avoidAreaChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4657,11 +4654,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('avoidAreaChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for system avoid area changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4704,11 +4700,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('keyboardHeightChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for keyboard height changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4737,11 +4732,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('keyboardHeightChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to disable the listener for keyboard height changes. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4784,11 +4778,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('touchOutside');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4817,11 +4810,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('touchOutside');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4864,11 +4856,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('screenshot');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4897,11 +4888,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('screenshot');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4944,11 +4934,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('dialogTargetTouch');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -4977,11 +4966,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('dialogTargetTouch');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -5024,11 +5012,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('windowEvent');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -5057,11 +5044,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('windowEvent');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -5104,11 +5090,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('systemAvoidAreaChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**
@@ -5137,11 +5122,10 @@ export default function windowAbnormalScenarioTest(context, windowStage, ability
       try {
         win.off('systemAvoidAreaChange');
         await win.destroyWindow();
-        expect().assertFail();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(exception));
         await win.destroyWindow();
-        expect(exception.code).assertEqual(1300002);
+        expect().assertFail();
       }
     })
     /**

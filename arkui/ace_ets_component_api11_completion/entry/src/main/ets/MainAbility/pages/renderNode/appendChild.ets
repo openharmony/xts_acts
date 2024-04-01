@@ -24,6 +24,7 @@ renderNode2.position = { x: 150, y: 150 };
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     const rootRenderNode = this.rootNode.getRenderNode();
@@ -36,62 +37,62 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct appendChild1{
-  private MyNodeController:MyNodeController = new MyNodeController()
-  @State RenderNode:RenderNode =new RenderNode()
-  @State width1 : number = 100
+struct appendChild1 {
+  private MyNodeController: MyNodeController = new MyNodeController()
+  @State RenderNode: RenderNode = new RenderNode()
+  @State width1: number = 100
 
-  build(){
-    Column({space:10}){
+  build() {
+    Column({ space: 10 }) {
       NodeContainer(this.MyNodeController)
       Text("width1: " + this.width1).key('appendChild_width1')
       Button('appendChild')
         .key('appendChild_1')
-        .onClick(()=>{
-          const child =new RenderNode()
-          child.size = {width:50,height:50}
+        .onClick(() => {
+          const child = new RenderNode()
+          child.size = { width: 50, height: 50 }
           const renderNode1 = renderNode.appendChild(child)
           this.width1 = renderNode.getChild(0).size.width
         })
       Button('在最后添加子节点')
         .key('insertChildAfter_1')
-        .onClick(()=>{
-          const child1 =new RenderNode()
-          const sibling=renderNode.getChild(0)
-          sibling.size = {width:40,height:40}
-          renderNode.insertChildAfter(child1,sibling)
+        .onClick(() => {
+          const child1 = new RenderNode()
+          const sibling = renderNode.getChild(0)
+          sibling.size = { width: 40, height: 40 }
+          renderNode.insertChildAfter(child1, sibling)
           const sibling1 = renderNode.getChild(1)
-          if(sibling1 != null) {
+          if (sibling1 != null) {
             this.width1 = sibling1.size.width
-          }else {
+          } else {
             this.width1 = 60
           }
         })
       Button('removeChild')
         .key('removeChild_1')
-        .onClick(()=>{
+        .onClick(() => {
           const sibling = renderNode.getChild(0)
           renderNode.removeChild(sibling)
-          if(sibling != null) {
+          if (sibling != null) {
             this.width1 = sibling.size.width
-          }else {
+          } else {
             this.width1 = 120
           }
         })
 
       Button('删除所有')
         .key('clearChild_1')
-        .onClick(()=>{
+        .onClick(() => {
           const sibling = renderNode.getChild(0)
           renderNode.clearChildren()
-          if(sibling != null) {
+          if (sibling != null) {
             this.width1 = sibling.size.width
-          }else {
+          } else {
             this.width1 = 130
           }
         })
     }
-    .margin({top:100})
+    .margin({ top: 100 })
     .width('100%')
     .height('100%')
   }

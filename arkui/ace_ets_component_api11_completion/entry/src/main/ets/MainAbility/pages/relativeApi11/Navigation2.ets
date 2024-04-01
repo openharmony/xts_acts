@@ -13,26 +13,33 @@
  * limitations under the License.
  */
 import { CustomTransition, AnimateCallback } from './common/CustomNavigationUtils'
-import {PageTwoTemp} from './common/PageTwo'
+import { PageTwoTemp } from './common/PageTwo'
+
 @Entry
 @Component
 struct NavigationApi3 {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
-  @State finishTransitionTest:string = '111'
-  @State customNavContentTransitionTest: string = '333'
-  @State x: number = 0
-  @State scaleVal: number = 1
-  @State indexes:Array<number> = new Array<number>()
-  @State index:string = ''
-  @State text2:string = 'none'
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @State finishTransitionTest: string = '111';
+  @State customNavContentTransitionTest: string = '333';
+  @State x: number = 0;
+  @State scaleVal: number = 1;
+  @State indexes: Array<number> = new Array<number>();
+  @State index: string = '';
+  @State text2: string = 'none';
 
-
-  @Builder pageOneTmp() {
+  @Builder
+  pageOneTmp() {
     NavDestination() {
       Column() {
-        Text(this.text2).fontColor(Color.Red).fontSize(14).id('NavigtionText2')
-      }.width('100%').height('100%')
-    }.title('pageOne')
+        Text(this.text2)
+          .fontColor(Color.Red)
+          .fontSize(14)
+          .id('NavigtionText2')
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
     .mode(NavDestinationMode.STANDARD)
     .onBackPressed(() => {
       const popDestinationInfo = this.pageInfos.pop() // 弹出路由栈栈顶元素
@@ -43,10 +50,10 @@ struct NavigationApi3 {
       try {
         //NavPathStack
         this.text2 = JSON.parse(JSON.stringify(ctx.pathStack)).type
-      } catch(e) {
+      } catch (e) {
       }
     })
-    .translate({x: this.x, y: 0, z: 0})
+    .translate({ x: this.x, y: 0, z: 0 })
     .backgroundColor(Color.White)
   }
 
@@ -62,19 +69,20 @@ struct NavigationApi3 {
   aboutToAppear() {
     CustomTransition.getInstance().registerNavParam('pageOne', (isPush: boolean, isExit: boolean) => {
       this.x = isExit ? 0 : 300;
-    }, (isPush: boolean, isExit: boolean)=> {
+    }, (isPush: boolean, isExit: boolean) => {
       this.x = isExit ? -300 : 0;
     }, 200);
     if (this.pageInfos === undefined) {
       this.pageInfos = new NavPathStack();
     }
-    this.pageInfos.pushPath({name: 'pageOne'}, false)
+    this.pageInfos.pushPath({ name: 'pageOne' }, false)
 
   }
 
   aboutToDisappear() {
     CustomTransition.getInstance().unRegisterNavParam('pageOne')
   }
+
   build() {
     Column() {
       Navigation(this.pageInfos) {

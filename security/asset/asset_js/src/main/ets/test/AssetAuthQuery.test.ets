@@ -137,7 +137,6 @@ export default function abilityTest() {
       let challenge = await aw.assetPreQuery(attr2);
       expect(await aw.assetPostQuery(challenge as Uint8Array))
         .assertEqual(0);
-
     })
 
     /**
@@ -159,6 +158,70 @@ export default function abilityTest() {
       attr2.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       expect(await aw.assetQueryAttr(attr2))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0100
+     * @tc.name 未设置密码时，A类数据增删改查
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0100', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_UNLOCKED);
+      expect(await aw.basicCRUD(attr))
+        .assertEqual(0);
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0200
+     * @tc.name 未设置密码时，C类数据增删改查
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0200', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+      expect(await aw.basicCRUD(attr))
+        .assertEqual(0);
+    })
+
+    /**
+     * @tc.number SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0300
+     * @tc.name 未设置密码时，D类数据增删改查
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('SUB_Security_DataSecurity_Asset_LevelCtrl_Func_0300', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
+      expect(await aw.basicCRUD(attr))
+        .assertEqual(0);
+    })
+
+    /**
+     * @tc.number Security_DataSecurity_Asset_Authentication_Func_1000
+     * @tc.name 未设置密码时，写入与删除二次访问控制数据
+     * @tc.desc test error cases
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it('Security_DataSecurity_Asset_Authentication_Func_1000', 0, async () => {
+      let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
+      attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
+      attr.set(asset.Tag.AUTH_TYPE, asset.AuthType.ANY);
+      expect(await aw.assetAddAttr(attr))
+        .assertEqual(0);
+      expect(await aw.assetRemove(aw.aliasNameList[0]))
+        .assertEqual(0);
     })
 
   })

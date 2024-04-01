@@ -88,9 +88,9 @@ export default function tabs_PadMarTest() {
       expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_01');
-      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_001');
-      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_011');
+      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_01');
+      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_001');
+      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_011');
       console.info(`[testTabsPad] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
       console.info(`[testTabsPad] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
       console.info(`[testTabsPad] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
@@ -103,18 +103,18 @@ export default function tabs_PadMarTest() {
         Math.round(Tabs_PadMar_011.left + 30),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_002');
-      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_012');
+      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_002');
+      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_012');
       await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)),
         Math.round(Tabs_PadMar_012.left + 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_003');
-      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Yellow');
+      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_003');
+      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Yellow');
 
       console.info(`[testTabsPad] Tabs_PadMar_011.left -
       Tabs_PadMar_01.left = ${Tabs_PadMar_011.left - Tabs_PadMar_01.left}`);
@@ -199,10 +199,10 @@ export default function tabs_PadMarTest() {
       expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_01');
-      let Tabs_PadMar_Column_01: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Column_01');
-      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_001');
-      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_011');
+      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_01');
+      let Tabs_PadMar_Column_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Column_01');
+      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_001');
+      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_011');
       console.info(`[testTabsMar] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
       console.info(`[testTabsMar] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
       console.info(`[testTabsMar] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
@@ -215,18 +215,18 @@ export default function tabs_PadMarTest() {
         Math.round(Tabs_PadMar_011.left + 30),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_002');
-      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_012');
+      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_002');
+      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_012');
       await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)),
         Math.round(Tabs_PadMar_012.left + 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_003');
-      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Yellow');
+      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_003');
+      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Yellow');
 
       console.info(`[testTabsMar] Tabs_PadMar_01.left -
         Tabs_PadMar_Column_01.left = ${Tabs_PadMar_01.left - Tabs_PadMar_Column_01.left}`);
@@ -304,10 +304,10 @@ export default function tabs_PadMarTest() {
       expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_01');
-      let Tabs_PadMar_Column_01: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Column_01');
-      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_001');
-      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_011');
+      let Tabs_PadMar_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_01');
+      let Tabs_PadMar_Column_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Column_01');
+      let Tabs_PadMar_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_001');
+      let Tabs_PadMar_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_011');
       console.info(`[testTabsPadMar] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
       console.info(`[testTabsPadMar] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
       console.info(`[testTabsPadMar] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
@@ -320,18 +320,18 @@ export default function tabs_PadMarTest() {
         Math.round(Tabs_PadMar_011.left + 30),
         Math.round(Tabs_PadMar_011.top + ((Tabs_PadMar_011.bottom - Tabs_PadMar_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_002');
-      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_012');
+      let Tabs_PadMar_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_002');
+      let Tabs_PadMar_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_012');
       await driver.swipe(Math.round(Tabs_PadMar_011.right - 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)),
         Math.round(Tabs_PadMar_012.left + 30),
         Math.round(Tabs_PadMar_012.top + ((Tabs_PadMar_012.bottom - Tabs_PadMar_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_003');
-      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_PadMar_Yellow');
+      let Tabs_PadMar_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_003');
+      let Tabs_PadMar_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_PadMar_Yellow');
 
       console.info(`[testTabsPadMar] Tabs_PadMar_01.left -
         Tabs_PadMar_Column_01.left = ${Tabs_PadMar_01.left - Tabs_PadMar_Column_01.left}`);

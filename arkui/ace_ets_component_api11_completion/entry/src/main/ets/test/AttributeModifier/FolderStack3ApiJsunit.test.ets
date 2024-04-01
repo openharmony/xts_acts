@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function FolderStack3ApiJsunit() {
-  describe('FolderStack3ApiJsunit', function () {
-    beforeEach(async function (done) {
+  describe('FolderStack3ApiJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("FolderStack3ApiJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AttributeModifier/FolderStack3Api',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AttributeModifier/FolderStack3Api',
       }
       try {
         router.clear();
@@ -40,39 +53,35 @@ export default function FolderStack3ApiJsunit() {
       }
       done();
     });
-    it('FolderStack3ApiJsunit_0100', 0, async function (done) {
-        await CommonFunc.sleep(1000);
-        console.info('FolderStack3ApiJsunit_0100 START');
-        let strcontent = getInspectorByKey('FolderStack3ApiTestFolderStack');
-        let obj = JSON.parse(strcontent);
-        await CommonFunc.sleep(1000);
-        console.info('FolderStack3ApiJsunit_0100 component obj is: ' + obj.$attrs.enableAnimation);
-        expect(obj.$attrs.enableAnimation).assertEqual('true');
-        console.info('FolderStack3ApiJsunit_0100 END')
-        done();
-      });
-    it('FolderStack3ApiJsunit_0200', 0, async function (done) {
+    it('FolderStack3ApiJsunit_0100', 0, async (done: Function) => {
+      await CommonFunc.sleep(1000);
+      console.info('FolderStack3ApiJsunit_0100 START');
+      let strcontent = getInspectorByKey('FolderStack3ApiTestFolderStack');
+      await CommonFunc.sleep(1000);
+      console.info('FolderStack3ApiJsunit_0100 component JSON.parse(strcontent) is: ' + JSON.parse(strcontent).$attrs.enableAnimation);
+      expect(JSON.parse(strcontent).$attrs.enableAnimation).assertEqual('true');
+      console.info('FolderStack3ApiJsunit_0100 END')
+      done();
+    });
+    it('FolderStack3ApiJsunit_0200', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('FolderStack3ApiJsunit_0200 START');
       let strcontent = getInspectorByKey('FolderStack3ApiTestFolderStack');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('FolderStack3ApiJsunit_0200 component obj is: ' + obj.$attrs.autoHalfFold);
-      expect(obj.$attrs.autoHalfFold).assertEqual('true');
+      console.info('FolderStack3ApiJsunit_0200 component JSON.parse(strcontent) is: ' + JSON.parse(strcontent).$attrs.autoHalfFold);
+      expect(JSON.parse(strcontent).$attrs.autoHalfFold).assertEqual('true');
       console.info('FolderStack3ApiJsunit_0200 END')
       done();
     });
-    it('FolderStack3ApiJsunit_0300', 0, async function (done) {
+    it('FolderStack3ApiJsunit_0300', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('FolderStack3ApiJsunit_0300 START');
       let strcontent = getInspectorByKey('FolderStack3ApiTestText');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('FolderStack3ApiJsunit_0300 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('start');
+      console.info('FolderStack3ApiJsunit_0300 component JSON.parse(strcontent) is: ' + JSON.parse(strcontent).$attrs.content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('start');
       console.info('FolderStack3ApiJsunit_0300 END')
       done();
     });
-
   })
 }
