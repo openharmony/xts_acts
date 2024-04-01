@@ -135,8 +135,8 @@ export default function RichEditorApi() {
       await Utils.sleep(1000);
       let RichEditor3 = Utils.getComponentRect('RichEditorApi_RichEditor3')
       await driver.mouseClick({
-        x: (RichEditor3.right - RichEditor3.left) * 0.5 + RichEditor3.left,
-        y: (RichEditor3.bottom - RichEditor3.top) * 0.5 + RichEditor3.top
+        x: parseInt((RichEditor3.right - RichEditor3.left) * 0.5 + RichEditor3.left),
+        y: parseInt((RichEditor3.bottom - RichEditor3.top) * 0.5 + RichEditor3.top)
       }, MouseButton.MOUSE_BUTTON_RIGHT)
       await Utils.sleep(1000);
 
@@ -162,8 +162,8 @@ export default function RichEditorApi() {
       let driver = Driver.create();
       await Utils.sleep(1000);
       let RichEditor4 = Utils.getComponentRect('RichEditorApi_RichEditor4')
-      await driver.longClick((RichEditor4.right - RichEditor4.left) * 0.5 + RichEditor4.left,
-        (RichEditor4.bottom - RichEditor4.top) * 0.5 + RichEditor4.top)
+      await driver.longClick(parseInt((RichEditor4.right - RichEditor4.left) * 0.5 + RichEditor4.left),
+        parseInt((RichEditor4.bottom - RichEditor4.top) * 0.5 + RichEditor4.top))
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('RichEditorApi_text2');
