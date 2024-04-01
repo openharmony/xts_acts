@@ -13,8 +13,23 @@
  * limitations under the License.
  */
 
-import smsTextPublic from './smsTextPublic.test';
+
+import TCPSocketTest from './TCPSocket.test';
+import TLSSocketServerTest from './TlsSocketServer.test';
+import UDPSocket from './UDPSocket.test';
+import TLSSocket from './TLSSocket.test';
+import MulticastSocket from './MulticastSocket.test';
+import TCPSocketServerTest from './TCPSocketServer.test';
+import tlsSocketConnectionTest from './TlsSocketConnection.test';
+import TCPSocketConnectionTest from './TCPSocketConnection.test';
 
 export default function testsuite() {
-  smsTextPublic();
+  TLSSocketServerTest();
+  UDPSocket();
+  TLSSocket();
+  TCPSocketTest();
+  TCPSocketConnectionTest();
+  MulticastSocket();
+  TCPSocketServerTest();
+  tlsSocketConnectionTest();
 }

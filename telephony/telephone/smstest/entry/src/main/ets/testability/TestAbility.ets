@@ -22,14 +22,16 @@ import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class TestAbility extends UIAbility {
-    onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onCreate');
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:'+ JSON.stringify(launchParam) ?? '');
-       let  abilityDelegator:AbilityDelegatorRegistry.AbilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-       let abilityDelegatorArguments:AbilityDelegatorRegistry.AbilityDelegatorArgs = AbilityDelegatorRegistry.getArguments()
+        let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
     }
 
     onDestroy() {
@@ -37,7 +39,6 @@ export default class TestAbility extends UIAbility {
     }
 
     onWindowStageCreate(windowStage: window.WindowStage) {
-        AppStorage.setOrCreate('context',this.context)
         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
         windowStage.loadContent('testability/pages/Index', (err, data) => {
             if (err.code) {
