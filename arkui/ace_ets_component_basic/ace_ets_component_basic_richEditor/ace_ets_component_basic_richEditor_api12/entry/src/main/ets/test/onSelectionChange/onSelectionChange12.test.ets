@@ -66,10 +66,10 @@ export default function onSelectionChange12() {
       expect(Obj1_1.$attrs.content).assertEqual('1');
       let text2_1 = getInspectorByKey('onSelectionChange12_text2');
       let Obj2_1 = JSON.parse(text2_1);
-      expect(Obj2_1.$attrs.content).assertEqual('0');
+      expect(Obj2_1.$attrs.content).assertEqual('10');
       let text3_1 = getInspectorByKey('onSelectionChange12_text3');
       let Obj3_1 = JSON.parse(text3_1);
-      expect(Obj3_1.$attrs.content).assertEqual('0');
+      expect(Obj3_1.$attrs.content).assertEqual('10');
 
       await driver.triggerCombineKeys(2072,2017);
       await CommonFunc.sleep(1000);

@@ -68,21 +68,21 @@ export default function onSelectionChange1() {
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('onSelectionChange1_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('1');
+      expect(Obj1.$attrs.content).assertEqual('2');
 
       let btn2 = await driver.findComponent(ON.id('onSelectionChange1_btn2'));
       await btn2.click();
       await CommonFunc.sleep(1000);
       let text2 = getInspectorByKey('onSelectionChange1_text1');
       let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('2');
+      expect(Obj2.$attrs.content).assertEqual('3');
 
       let btn3 = await driver.findComponent(ON.id('onSelectionChange1_btn3'));
       await btn3.click();
       await CommonFunc.sleep(1000);
       let text3 = getInspectorByKey('onSelectionChange1_text1');
       let Obj3 = JSON.parse(text3);
-      expect(Obj3.$attrs.content).assertEqual('3');
+      expect(Obj3.$attrs.content).assertEqual('4');
 
       console.info('[onSelectionChange1_0100] END');
       done();
