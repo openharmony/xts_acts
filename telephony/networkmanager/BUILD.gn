@@ -13,9 +13,5 @@
 
 group("telephony") {
   testonly = true
-  deps = [
-    "networkmanager:networkmanager",
-    "telephone:telephone",
-    "telephonyjstest:telephonyjstest",
-  ]
+  deps = [ "fetch:fetch" ]
 }
