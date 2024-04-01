@@ -43,7 +43,12 @@ export default function inputMethodDrawnControlJSUnit() {
             let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('系统和更新', MatchPattern.CONTAINS));
             console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
             await systemAndUpdate.click();
-          }else{
+          } else if(deviceinfo.deviceType === 'tablet'){
+            console.info('====> tablet');
+            let systemAndUpdate: Component = await settingList.scrollSearch(ON.text('通用', MatchPattern.CONTAINS));
+            console.info(`====>inputMethod_enable systemAndUpdate: ${systemAndUpdate}`);
+            await systemAndUpdate.click();
+          } else {
             console.info('====> other');
             await driver.swipe(600, 2500, 600, 1000, 15000);
             let common_text: Component = await driver.waitForComponent(ON.text('通用', MatchPattern.CONTAINS), 3000);
