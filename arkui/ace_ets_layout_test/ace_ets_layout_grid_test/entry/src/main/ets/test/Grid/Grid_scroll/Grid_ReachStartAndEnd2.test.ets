@@ -63,7 +63,7 @@ export default function Grid_ReachStartAndEnd2() {
      */
     it('Grid_ReachStartAndEnd2_0200', 0, async (done: Function) => {
       console.info('[Grid_ReachStartAndEnd2_0200] START');
-      let scrollBarRect: RectValue = CommonFunc.getComponentRect('Grid_ReachStartAndEnd_scrollBar')
+      let scrollBarRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ReachStartAndEnd_scrollBar')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),

@@ -63,7 +63,7 @@ export default function Grid_ScrollStartandStop3() {
     it('Grid_ScrollStartandStop3_0400', 0, async (done: Function) => {
 
       console.info('[Grid_ScrollStartandStop3_0400] START');
-      let scrollBarRect: RectValue = CommonFunc.getComponentRect('Grid_ScrollStartandStop_scrollBar')
+      let scrollBarRect: RectValue = CommonFunc.getComponentRectOnScreen('Grid_ScrollStartandStop_scrollBar')
       let driver = Driver.create()
       await driver.swipe(
         Number.parseInt(`${(scrollBarRect.right - scrollBarRect.left) * 0.5 + scrollBarRect.left}`),

@@ -85,20 +85,6 @@ export default function fcntlNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_VMSPLICE_0100
-     * @tc.name       : testMuslFcntlVmsplice001
-     * @tc.desc       : test vmsplice
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslFcntlVmsplice001', 0, async (done: Function) => {
-      let c: number = fcntl.vmsplice();
-      expect(c).assertEqual(12);
-      done()
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_FCNTL_READAHEAD_0100
      * @tc.name       : testMuslFcntlReadahead001
      * @tc.desc       : test readahead

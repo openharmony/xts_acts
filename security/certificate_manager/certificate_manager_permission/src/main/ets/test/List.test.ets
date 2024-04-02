@@ -14,7 +14,9 @@
  */
 
 import priCertJsAPINoPermissionTestUnit from './priCertNoPermission.test';
+import pubCertJsAPINoPermissionTestUnit from './pubCertNoPermission.test';
 
 export default function testsuite() {
   priCertJsAPINoPermissionTestUnit();
+  pubCertJsAPINoPermissionTestUnit();
 }

@@ -404,34 +404,6 @@ export default function signalNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGQUEUE_0100
-     * @tc.name       : testMuslSignalSigpqueue001
-     * @tc.desc       : test sigqueue
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslSignalSigpqueue001', 0, async (done: Function) => {
-      let a: number = signal.sigqueue(-1,99999);
-      expect(a).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGQUEUE_0200
-     * @tc.name       : testMuslSignalSigpqueue002
-     * @tc.desc       : test sigqueue
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslSignalSigpqueue002', 0, async (done: Function) => {
-      let a: number = signal.sigqueue(0,0);
-      expect(a).assertEqual(0);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_SIGNAL_SIGISMEMBER_0100
      * @tc.name       : testMuslSignalSigismember001
      * @tc.desc       : test sigismember

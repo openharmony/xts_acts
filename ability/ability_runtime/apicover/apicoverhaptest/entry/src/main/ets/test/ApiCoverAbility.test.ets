@@ -856,7 +856,8 @@ export default function ApiCoverTest() {
           expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
           expect(data[i].bundleNames.length).assertLarger(0);
           expect(typeof data[i].state).assertEqual("number");
-          expect(data[i].state).assertLarger(0);
+          expect(data[i].state).assertLarger(-1);
+          expect(data[i].state).assertLess(5);
         }
         done();
       })

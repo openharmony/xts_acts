@@ -85,27 +85,27 @@ export default function Tabs_scrollable() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_001');
-      let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_011');
+      let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_001');
+      let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_011');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_scrollable_011.right - 30),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)),
         Math.round(Tabs_scrollable_011.left + 30),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_002: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_002');
-      let Tabs_scrollable_012: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_012');
+      let Tabs_scrollable_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_002');
+      let Tabs_scrollable_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_012');
       await driver.swipe(Math.round(Tabs_scrollable_012.right - 30),
         Math.round(Tabs_scrollable_012.top + ((Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) / 2)),
         Math.round(Tabs_scrollable_012.left + 30),
         Math.round(Tabs_scrollable_012.top + ((Tabs_scrollable_012.bottom - Tabs_scrollable_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_003: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_003');
-      let Tabs_scrollable_013: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_013');
-      let Tabs_scrollable_01: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_01');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_yellow');
+      let Tabs_scrollable_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_003');
+      let Tabs_scrollable_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_013');
+      let Tabs_scrollable_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_01');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_yellow');
 
       console.info(`[testTabsScrollableToTrue]Tabs_scrollable_011.left equal Tabs_scrollable_001.left
         ${Tabs_scrollable_011.left} === ${Tabs_scrollable_001.left}`);
@@ -177,30 +177,30 @@ export default function Tabs_scrollable() {
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(false);
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual("false");
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_004');
-      let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_041');
+      let Tabs_scrollable_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_004');
+      let Tabs_scrollable_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_041');
       let driver = Driver.create();
       await driver.swipe(Math.round(Tabs_scrollable_011.right - 30),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)),
         Math.round(Tabs_scrollable_011.left + 30),
         Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom - Tabs_scrollable_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_0012: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_004');
-      let Tabs_scrollable_0112: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_041');
+      let Tabs_scrollable_0012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_004');
+      let Tabs_scrollable_0112: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_041');
       let btn1 = await driver.findComponent(ON.text('blueTwo'));
       await btn1.click()
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_002: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_005');
-      let Tabs_scrollable_012: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_042');
+      let Tabs_scrollable_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_005');
+      let Tabs_scrollable_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_042');
       let btn2 = await driver.findComponent(ON.text('yellowTwo'));
       await btn2.click()
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_003: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_006');
-      let Tabs_scrollable_013: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_043');
-      let Tabs_scrollable_01: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_02');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_greenTwo');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_blueTwo');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_scrollable_yellowTwo');
+      let Tabs_scrollable_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_006');
+      let Tabs_scrollable_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_043');
+      let Tabs_scrollable_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_02');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_greenTwo');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_blueTwo');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_scrollable_yellowTwo');
 
       console.info(`[testTabsScrollableToFalse]Tabs_scrollable_011.left equal Tabs_scrollable_001.left
         ${Tabs_scrollable_011.left} === ${Tabs_scrollable_001.left}`);

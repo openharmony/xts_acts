@@ -21,7 +21,6 @@ async function onShowProcess() {
     var commonEventPublishData = {
         parameters: {
             displayId: abilityWant.parameters['ohos.aafwk.param.displayId'],
-            windowMode: abilityWant.parameters['ohos.aafwk.param.windowMode'],
         }
     };
    
