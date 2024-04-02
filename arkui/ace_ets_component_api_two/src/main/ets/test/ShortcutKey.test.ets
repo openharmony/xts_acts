@@ -76,6 +76,7 @@ export default function ShortcutKeyTest() {
           }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
+          await Utils.sleep(2000);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));
