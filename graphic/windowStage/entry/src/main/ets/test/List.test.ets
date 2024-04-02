@@ -34,4 +34,5 @@ export default function testsuite() {
   interfaceSupportSessionManagerTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowAbnormalScenario(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowRecoverTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  windowAnimatorTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
 }
