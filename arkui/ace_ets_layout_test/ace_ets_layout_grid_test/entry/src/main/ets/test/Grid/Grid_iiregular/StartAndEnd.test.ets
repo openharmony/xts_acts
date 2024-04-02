@@ -51,7 +51,7 @@ export default function StartAndEnd() {
     */
     it('StartAndEnd_0001', 0, async (done: Function) => {
       console.info('[StartAndEnd_0001] START');
-      let gridRect: RectValue = CommonFunc.getComponentRect('StartAndEnd')
+      let gridRect: RectValue = CommonFunc.getComponentRectOnScreen('StartAndEnd')
       let driver = Driver.create()
       await CommonFunc.sleep(1000);
       await driver.swipe(

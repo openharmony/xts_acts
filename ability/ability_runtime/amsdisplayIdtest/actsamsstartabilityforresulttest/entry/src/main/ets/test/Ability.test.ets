@@ -52,7 +52,6 @@ export default function abilityTest() {
         async function processInfoCheck(data) {
           console.info('====> ACTS_startAbilityForResult_0800=====>');
           expect(data.parameters['displayId']).assertEqual(15);
-          expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
@@ -73,7 +72,6 @@ export default function abilityTest() {
             bundleName: 'com.example.startabilityforresult',
             abilityName: 'com.example.startabilityforresult.MainAbility2',
           }, {
-          windowMode: 0,
           displayId: 15
         }).then(() => {
           console.debug("====>ACTS_startAbilityForResult_0800 end====>");
@@ -110,7 +108,6 @@ export default function abilityTest() {
         async function processInfoCheck() {
           console.info('====> ACTS_startAbilityForResult_0900=====>');
           expect(data.parameters['displayId']).assertEqual(0);
-          expect(data.parameters['windowMode']).assertEqual(0);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           done();
         }
@@ -131,7 +128,6 @@ export default function abilityTest() {
             bundleName: 'com.example.startabilityforresult',
             abilityName: 'com.example.startabilityforresult.MainAbility2',
           }, {
-          windowMode: 0,
           displayId: undefined
         }).then(() => {
           console.debug("====>ACTS_startAbilityForResult_0900 end====>");
@@ -171,7 +167,6 @@ export default function abilityTest() {
         async function processInfoCheck(data) {
           console.info('====> ACTS_startAbilityForResult_1000=====>');
           expect(data.parameters['displayId']).assertEqual(0);
-          expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 

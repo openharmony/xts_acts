@@ -69,13 +69,13 @@ export default function swiperDisableSwipeFalse() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('disableFalse');
 
-      let disableFalse: RectValue = CommonFunc.getComponentRect('disableFalse');
-      let disableFalse01: RectValue = CommonFunc.getComponentRect('disableFalse01');
-      let disableFalse02: RectValue = CommonFunc.getComponentRect('disableFalse02');
-      let disableFalse03: RectValue = CommonFunc.getComponentRect('disableFalse03');
-      let disableFalse04: RectValue = CommonFunc.getComponentRect('disableFalse04');
-      let disableFalse05: RectValue = CommonFunc.getComponentRect('disableFalse05');
-      let disableFalse06: RectValue = CommonFunc.getComponentRect('disableFalse06');
+      let disableFalse = CommonFunc.getComponentRectOnScreen('disableFalse');
+      let disableFalse01 = CommonFunc.getComponentRectOnScreen('disableFalse01');
+      let disableFalse02 = CommonFunc.getComponentRectOnScreen('disableFalse02');
+      let disableFalse03 = CommonFunc.getComponentRectOnScreen('disableFalse03');
+      let disableFalse04 = CommonFunc.getComponentRectOnScreen('disableFalse04');
+      let disableFalse05 = CommonFunc.getComponentRectOnScreen('disableFalse05');
+      let disableFalse06 = CommonFunc.getComponentRectOnScreen('disableFalse06');
       // Before flipping the page.
       console.info("Before page turning , the disableFalse.left value is " + JSON.stringify(disableFalse.left));
       console.info("Before page turning , the disableFalse01.left value is " + JSON.stringify(disableFalse01.left));
@@ -84,18 +84,26 @@ export default function swiperDisableSwipeFalse() {
       expect(disableFalse.top).assertEqual(disableFalse01.top);
       expect(disableFalse.bottom).assertEqual(disableFalse01.bottom);
       let driver = Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
-      //await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
+      // await CommonFunc.sleep(500);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      // //await driver.swipe(250, 230, 200, 230);
+      // await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('disableFalse')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       // After flipping the page.
-      disableFalse = CommonFunc.getComponentRect('disableFalse');
-      disableFalse01 = CommonFunc.getComponentRect('disableFalse01');
-      disableFalse02 = CommonFunc.getComponentRect('disableFalse02');
-      disableFalse03 = CommonFunc.getComponentRect('disableFalse03');
-      disableFalse04 = CommonFunc.getComponentRect('disableFalse04');
-      disableFalse05 = CommonFunc.getComponentRect('disableFalse05');
-      disableFalse06 = CommonFunc.getComponentRect('disableFalse06');
+      disableFalse = CommonFunc.getComponentRectOnScreen('disableFalse');
+      disableFalse01 = CommonFunc.getComponentRectOnScreen('disableFalse01');
+      disableFalse02 = CommonFunc.getComponentRectOnScreen('disableFalse02');
+      disableFalse03 = CommonFunc.getComponentRectOnScreen('disableFalse03');
+      disableFalse04 = CommonFunc.getComponentRectOnScreen('disableFalse04');
+      disableFalse05 = CommonFunc.getComponentRectOnScreen('disableFalse05');
+      disableFalse06 = CommonFunc.getComponentRectOnScreen('disableFalse06');
       console.info("After page turning , the disableFalse.left value is " + JSON.stringify(disableFalse.left));
       console.info("After page turning , the disableFalse02.left value is " + JSON.stringify(disableFalse02.left));
       expect(disableFalse.left).assertEqual(disableFalse02.left);

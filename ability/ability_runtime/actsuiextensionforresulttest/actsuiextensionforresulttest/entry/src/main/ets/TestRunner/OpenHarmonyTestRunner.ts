@@ -12,18 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import hilog from '@ohos.hilog';
 import TestRunner from '@ohos.application.testRunner';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { BusinessError } from '@ohos.base';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
+let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
 
 async function onAbilityCreateCallback() {
   hilog.info(0x0000, 'testTag', '%{public}s', 'onAbilityCreateCallback');
 }
 
-async function addAbilityMonitorCallback(err: any) {
+async function addAbilityMonitorCallback(err: BusinessError) {
   hilog.info(0x0000, 'testTag', 'addAbilityMonitorCallback : %{public}s', JSON.stringify(err) ?? '');
 }
 
@@ -37,14 +39,14 @@ export default class OpenHarmonyTestRunner implements TestRunner {
 
   async onRun() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility';
     let lMonitor = {
       abilityName: testAbilityName,
       onAbilityCreate: onAbilityCreateCallback,
     };
-    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
+    abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
     let cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
     let debug = abilityDelegatorArguments.parameters['-D'];
     if (debug == 'true') {
@@ -52,7 +54,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     }
     hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
     abilityDelegator.executeShellCommand(cmd,
-      (err: any, d: any) => {
+      (err: BusinessError, d: AbilityDelegatorRegistry.ShellCmdResult) => {
         hilog.info(0x0000, 'testTag', 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
         hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', d.stdResult ?? '');
         hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', d.exitCode ?? '');

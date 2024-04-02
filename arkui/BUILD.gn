@@ -43,6 +43,8 @@ group("arkui") {
     "ace_ets_components_ux:componentUxTest",
     "ace_ets_dev:ActsAceDevTest",
     "ace_ets_layout_test:ActsAceEtsLayoutTest",
+    "ace_ets_module_noui:ActsAceEtsModuleNoUITest",
+    "ace_ets_module_ui:ActsAceEtsModuleUITest",
     "ace_ets_standard:ActsAceEtsStTest",
     "ace_ets_test:ActsAceEtsTest",
     "ace_ets_third_test:ActsAceEtsThirdTest",
@@ -62,8 +64,6 @@ group("arkui") {
     "ace_napi_test:ActsAceNapiEtsTest",
     "ace_standard:ActsAceStandardTest",
     "ace_standard_video:ActsAceStandardVideoTest",
-    "act_ets_module_noui:ActsAceEtsModuleNoUITest",
-    "act_ets_module_ui:ActsAceEtsModuleUITest",
     "libuv:libuvTest",
   ]
 }

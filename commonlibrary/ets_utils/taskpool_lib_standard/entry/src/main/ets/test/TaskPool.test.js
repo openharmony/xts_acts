@@ -1232,7 +1232,7 @@ describe('ActsAbilityTest', function () {
         try {
             task2.removeDependency(task3);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executedTask cannot removeDependency");
+            expect(e.toString()).assertEqual("BusinessError: The dependency does not exist, taskpool:: executedTask cannot removeDependency");
         }
         done();
     })
@@ -1573,7 +1573,7 @@ describe('ActsAbilityTest', function () {
         let tid = 0;
         let taskIds = [];
         let priority = 0;
-        let taskId = BigInt(0);
+        let taskId = 0;
         let state = 0;
         let duration = 0;
 
@@ -1592,7 +1592,7 @@ describe('ActsAbilityTest', function () {
         expect(tid != 0).assertTrue();
         expect(taskIds.length != -1).assertTrue();
         expect(priority != -1).assertTrue();
-        expect(taskId != BigInt(0)).assertTrue();
+        expect(taskId != 0).assertTrue();
         expect(state != 0).assertTrue();
         done();
     })
@@ -1649,7 +1649,7 @@ describe('ActsAbilityTest', function () {
         let tid = 0;
         let taskIds = [];
         let priority = 0;
-        let taskId = BigInt(0);
+        let taskId = 0;
         let state = 0;
         let duration = 0;
 
@@ -1668,7 +1668,7 @@ describe('ActsAbilityTest', function () {
         expect(tid != 0).assertTrue();
         expect(taskIds.length != 0).assertTrue();
         expect(priority != -1).assertTrue();
-        expect(taskId != BigInt(0)).assertTrue();
+        expect(taskId != 0).assertTrue();
         expect(state != 0).assertTrue();
         done();
     })

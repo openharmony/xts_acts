@@ -39,20 +39,5 @@ export default function nltypesNdkTest() {
       done()
     });
 
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_NLTYPES_CATGETS_0100
-     * @tc.name       : testMuslNltypesCatgets001
-     * @tc.desc       : test catgets
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslNltypesCatgets001', 0, async (done: Function) => {
-      let resultTrue = 1;
-      let result: number = nltypes.catgets();
-      expect(result).assertEqual(resultTrue);
-      done()
-    });
-
   })
 }

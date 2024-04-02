@@ -85,9 +85,9 @@ export default function tabs_WidHeiTest() {
       expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_WidHei_01: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_01');
-      let Tabs_WidHei_001: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_001');
-      let Tabs_WidHei_011: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_011');
+      let Tabs_WidHei_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_01');
+      let Tabs_WidHei_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_001');
+      let Tabs_WidHei_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_011');
       console.info(`[testTabsWidHei01] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
       console.info(`[testTabsWidHei01] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
       console.info(`[testTabsWidHei01] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
@@ -100,18 +100,18 @@ export default function tabs_WidHeiTest() {
         Math.round(Tabs_WidHei_011.left + 30),
         Math.round(Tabs_WidHei_011.top + ((Tabs_WidHei_011.bottom - Tabs_WidHei_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_WidHei_002: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_002');
-      let Tabs_WidHei_012: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_012');
+      let Tabs_WidHei_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_002');
+      let Tabs_WidHei_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_012');
       await driver.swipe(Math.round(Tabs_WidHei_011.right - 30),
         Math.round(Tabs_WidHei_012.top + ((Tabs_WidHei_012.bottom - Tabs_WidHei_012.top) / 2)),
         Math.round(Tabs_WidHei_012.left + 30),
         Math.round(Tabs_WidHei_012.top + ((Tabs_WidHei_012.bottom - Tabs_WidHei_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_WidHei_003: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_003');
-      let Tabs_WidHei_013: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Yellow');
+      let Tabs_WidHei_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_003');
+      let Tabs_WidHei_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Yellow');
 
       console.info(`[testTabsWidHei01] Tabs_WidHei_01.right -
        Tabs_WidHei_01.left = ${Tabs_WidHei_01.right - Tabs_WidHei_01.left}`);
@@ -185,9 +185,9 @@ export default function tabs_WidHeiTest() {
       expect(JSON.parse(strJson).$attrs.index).assertEqual("0");
       expect(JSON.parse(strJson).$attrs.scrollable).assertEqual(true);
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed');
-      let Tabs_WidHei_01: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_01');
-      let Tabs_WidHei_001: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_001');
-      let Tabs_WidHei_011: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_011');
+      let Tabs_WidHei_01: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_01');
+      let Tabs_WidHei_001: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_001');
+      let Tabs_WidHei_011: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_011');
       console.info(`[testTabsWidHei02] type: ${JSON.stringify(JSON.parse(strJson).$type)}`);
       console.info(`[testTabsWidHei02] barPosition: ${JSON.stringify(JSON.parse(strJson).$attrs.barPosition)}`);
       console.info(`[testTabsWidHei02] index: ${JSON.stringify(JSON.parse(strJson).$attrs.index)}`);
@@ -200,18 +200,18 @@ export default function tabs_WidHeiTest() {
         Math.round(Tabs_WidHei_011.left + 30),
         Math.round(Tabs_WidHei_011.top + ((Tabs_WidHei_011.bottom - Tabs_WidHei_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_WidHei_002: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_002');
-      let Tabs_WidHei_012: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_012');
+      let Tabs_WidHei_002: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_002');
+      let Tabs_WidHei_012: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_012');
       await driver.swipe(Math.round(Tabs_WidHei_011.right - 30),
         Math.round(Tabs_WidHei_012.top + ((Tabs_WidHei_012.bottom - Tabs_WidHei_012.top) / 2)),
         Math.round(Tabs_WidHei_012.left + 30),
         Math.round(Tabs_WidHei_012.top + ((Tabs_WidHei_012.bottom - Tabs_WidHei_012.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_WidHei_003: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_003');
-      let Tabs_WidHei_013: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_013');
-      let subGreen: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Green');
-      let subBlue: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Blue');
-      let subYellow: RectValue = CommonFunc.getComponentRect('Tabs_WidHei_Yellow');
+      let Tabs_WidHei_003: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_003');
+      let Tabs_WidHei_013: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_013');
+      let subGreen: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Green');
+      let subBlue: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Blue');
+      let subYellow: RectValue = CommonFunc.getComponentRectOnScreen('Tabs_WidHei_Yellow');
 
       console.info(`[testTabsWidHei02] Tabs_WidHei_01.right -
       Tabs_WidHei_01.left = ${Tabs_WidHei_01.right - Tabs_WidHei_01.left}`);

@@ -67,11 +67,11 @@ export default function swiperItemSize() {
     it('testSwiperItemSize', 0, async (done: Function) => {
       console.info('new testSwiperItemSize START');
       let strJson = getInspectorByKey('itemSizekey');
-
-      let itemSizekey: RectValue = CommonFunc.getComponentRect('itemSizekey');
-      let itemSizekey01: RectValue = CommonFunc.getComponentRect('itemSizekey01');
-      let itemSizekey02: RectValue = CommonFunc.getComponentRect('itemSizekey02');
-      let itemSizekey03: RectValue = CommonFunc.getComponentRect('itemSizekey03');
+      
+      let itemSizekey = CommonFunc.getComponentRectOnScreen('itemSizekey');
+      let itemSizekey01 = CommonFunc.getComponentRectOnScreen('itemSizekey01');
+      let itemSizekey02 = CommonFunc.getComponentRectOnScreen('itemSizekey02');
+      let itemSizekey03 = CommonFunc.getComponentRectOnScreen('itemSizekey03');
       // Before flipping the page.
       console.info("Before page turning , the itemSizekey.left value is " + JSON.stringify(itemSizekey.left));
       console.info("Before page turning , the itemSizekey01.left value is " + JSON.stringify(itemSizekey01.left));
@@ -82,14 +82,23 @@ export default function swiperItemSize() {
       // Flipping.
       let driver = Driver.create();
       //await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      await CommonFunc.sleep(2500);
+      // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
+      // await CommonFunc.sleep(1000);
       await CommonFunc.sleep(1000);
+      let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemSizekey')
+      await driver.swipe(
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
+        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
+        1000);
+      await CommonFunc.sleep(3000);
       // After flipping the page.
-      itemSizekey = CommonFunc.getComponentRect('itemSizekey');
-      itemSizekey01 = CommonFunc.getComponentRect('itemSizekey01');
-      itemSizekey02 = CommonFunc.getComponentRect('itemSizekey02');
-      itemSizekey03 = CommonFunc.getComponentRect('itemSizekey03');
+      itemSizekey = CommonFunc.getComponentRectOnScreen('itemSizekey');
+      itemSizekey01 = CommonFunc.getComponentRectOnScreen('itemSizekey01');
+      itemSizekey02 = CommonFunc.getComponentRectOnScreen('itemSizekey02');
+      itemSizekey03 = CommonFunc.getComponentRectOnScreen('itemSizekey03');
       console.info("After page turning , the itemSizekey.left value is " + JSON.stringify(itemSizekey.left));
       console.info("After page turning , the itemSizekey02.left value is " + JSON.stringify(itemSizekey02.left));
       expect(itemSizekey.left).assertEqual(itemSizekey02.left);

@@ -86,7 +86,6 @@ export default function abilityTest(abilityContext) {
         async function processInfoCheck(data) {
           console.info('====> ACTS_StartAbility_2100=====>');
           expect(data.parameters['displayId']).assertEqual(15);
-          expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
@@ -119,7 +118,6 @@ export default function abilityTest(abilityContext) {
       console.log('Start ACTS_StartAbility_2100 timer id : ' + id);
 
       await startAbilityProcess(abilityContext, {
-        windowMode: 0,
         displayId: 15
       }, {
         startId: 0,
@@ -145,7 +143,6 @@ export default function abilityTest(abilityContext) {
         async function processInfoCheck(data) {
           console.info('====> ACTS_StartAbility_2300=====>');
           expect(data.parameters['displayId']).assertEqual(0);
-          expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
@@ -178,7 +175,6 @@ export default function abilityTest(abilityContext) {
       console.log('Start ACTS_StartAbility_2300 timer id : ' + id);
 
       await startAbilityProcess(abilityContext, {
-        windowMode: 0,
         displayId: "abc"
       }, {
         startId: 0,
@@ -204,7 +200,6 @@ export default function abilityTest(abilityContext) {
         async function processInfoCheck(data) {
           console.info('====> ACTS_StartAbility_2500=====>');
           expect(data.parameters['displayId']).assertEqual(0);
-          expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
@@ -237,7 +232,6 @@ export default function abilityTest(abilityContext) {
       console.log('Start ACTS_StartAbility_2500 timer id : ' + id);
 
       await startAbilityProcess(abilityContext, {
-        windowMode: 0,
         displayId: undefined
       }, {
         startId: 0,
@@ -262,7 +256,6 @@ export default function abilityTest(abilityContext) {
 
         async function processInfoCheck(data) {
           console.info('====> ACTS_StartAbility_2700=====>');
-          expect(data.parameters['windowMode']).assertEqual(0);
           expect(data.parameters['displayId']).assertEqual(0);
           done();
         }

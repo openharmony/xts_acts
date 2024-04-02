@@ -57,7 +57,7 @@ struct RichEditorApi {
       RichEditor(this.options)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
         .onReady(() => {
           this.controller.addBuilderSpan(() => this.placeholderBuilder(), { offset: 0 })
         })
@@ -66,7 +66,7 @@ struct RichEditorApi {
       RichEditor(this.options2)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
         .onReady(() => {
           this.controller2.addTextSpan('Text', { paragraphStyle: { leadingMargin: '5vp' } })
         })
@@ -105,7 +105,7 @@ struct RichEditorApi {
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.panel, RichEditorResponseType.SELECT)
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
         .height('70vp')
 
 
@@ -123,7 +123,7 @@ struct RichEditorApi {
         })
         .borderWidth(1)
         .borderColor(Color.Green)
-        .width('60%')
+        .width('300vp')
     }.width('100%')
   }
 }
