@@ -20,6 +20,7 @@ import certFrameworkCRLMatchJsAPIFunctionTestUnit from './crlMatch.test';
 import certFrameworkCertChainExtJsAPIFunctionTestUnit from './certChainExt.test'
 import certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit from './createTrustAnchor.test'
 import certFrameworkCertChainOfflineValidateJsAPIFunctionTestUnit from './certChainOfflineValidate.test';
+import certFrameworkCertChainPolicyJsAPIFunctionTestUnit from './certChainPolicy.test';
 
 
 export default function testsuite() {
@@ -30,4 +31,5 @@ export default function testsuite() {
   certFrameworkCertChainExtJsAPIFunctionTestUnit();
   certFrameworkCreateTrustAnchorJsAPIFunctionTestUnit();
   certFrameworkCertChainOfflineValidateJsAPIFunctionTestUnit();
+  certFrameworkCertChainPolicyJsAPIFunctionTestUnit();
 }
