@@ -19,7 +19,7 @@ import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import { Context } from '@ohos.abilityAccessCtrl';
 import common from '@ohos.app.ability.common';
-
+import deviceInfo from '@ohos.deviceInfo';
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -79,7 +79,11 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
       'TYPE_FLOAT': 8,
     }
 
+    let currentDeviceIsRk = false; 
     beforeAll(() => {
+      let deviceTypeInfo = deviceInfo.deviceType
+      currentDeviceIsRk = deviceTypeInfo === 'default' ? true : false;
+      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
       let wndTypeArray: Array<number> = [ohosWindow.WindowType.TYPE_FLOAT, ohosWindow.WindowType.TYPE_APP, ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ohosWindow.WindowType.TYPE_DIALOG]
@@ -2354,6 +2358,71 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         done()
       }
     })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3980
+    * @tc.name      : testNoInteractionDetected_on_Function_Callback
+    * @tc.desc      : window type noInteractionDetected
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */ 
+    it("testNoInteractionDetected_on_Function_Callback", 0, async function(done){
+      let msgStr = "testNoInteractionDetected_on_Function_Callback";
+      console.log(msgStr + "begin");
+      try{
+        console.log(msgStr + "try begin")
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        windowClass.on('noInteractionDetected', 60, () => {
+          console.log(msgStr + 'no interaction in 60s');
+        });
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
+        if(!currentDeviceIsRk){
+          console.log(msgStr + 'Failed to register callback. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          expect(true).assertTrue();
+          done();
+        }
+      }
+    })
+
+    /**
+    * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3990
+    * @tc.name      : tetestNoInteractionDetected_off_Function_Callback
+    * @tc.desc      : window type noInteractionDetected
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level3
+    */ 
+    it("testNoInteractionDetected_off_Function_Callback", 0, async function(done){
+      let msgStr = "tetestNoInteractionDetected_off_Function_Callback";
+      console.log(msgStr + "begin");
+      try{
+        console.log(msgStr + "try begin");
+        let windowClass: ohosWindow.Window = await ohosWindow.getLastWindow(context);
+        windowClass.off('noInteractionDetected');
+        console.log(msgStr + "noInteractionDetected");
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
+        if(!currentDeviceIsRk){
+          console.log(msgStr + 'Failed to unregister callback. Cause: ' + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        } else {
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager');
+          expect(true).assertTrue();
+          done();
+        }
+      }
+    }) 
 
   })
 }

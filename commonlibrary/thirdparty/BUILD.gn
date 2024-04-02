@@ -16,5 +16,8 @@ group("thirdparty") {
   testonly = true
   if (is_standard_system) {
     deps = [ "musl:ActsThirdPartyMuslTest" ]
+    if (target_cpu == "arm") {
+      deps += [ "musl32:ActsThirdPartyMusl32Test" ]
+    }
   }
 }
