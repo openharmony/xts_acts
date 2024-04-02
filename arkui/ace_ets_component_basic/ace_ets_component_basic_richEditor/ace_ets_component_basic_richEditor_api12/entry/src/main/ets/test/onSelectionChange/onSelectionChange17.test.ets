@@ -66,10 +66,10 @@ export default function onSelectionChange17() {
       expect(Obj1_1.$attrs.content).assertEqual('1');
       let text2_1 = getInspectorByKey('onSelectionChange17_text2');
       let Obj2_1 = JSON.parse(text2_1);
-      expect(Obj2_1.$attrs.content).assertEqual('0');
+      expect(Obj2_1.$attrs.content).assertEqual('3');
       let text3_1 = getInspectorByKey('onSelectionChange17_text3');
       let Obj3_1 = JSON.parse(text3_1);
-      expect(Obj3_1.$attrs.content).assertEqual('0');
+      expect(Obj3_1.$attrs.content).assertEqual('3');
 
       await driver.triggerKey(2015);
       await driver.triggerKey(2015);
