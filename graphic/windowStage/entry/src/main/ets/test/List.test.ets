@@ -22,6 +22,7 @@ import pipWindowTest from './pipwindow.test'
 import interfaceSupportSessionManagerTest from './interfaceSupportSessionManager.test'
 import windowAbnormalScenario from './windowAbnormalScenario.test'
 import windowRecoverTest from './windowRecover.test'
+import windowAnimatorTest from './windowAnimator.test'
 
 export default function testsuite() {
   parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
