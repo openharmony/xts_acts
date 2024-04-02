@@ -13,5 +13,8 @@
 
 group("networkmanager") {
   testonly = true
-  deps = [ "http:http","socket:sockettest" ]
+  deps = [
+    "http:http",
+    "socket:sockettest",
+  ]
 }
