@@ -13,7 +13,17 @@
  * limitations under the License.
  */
 import BindMenuTest from './menuControlTest/BindMenu.test'
+import customPopup from './popupControlTest/customPopup.test';
+import popup from './popupControlTest/popup.test';
+import menuBlurStyleJsunit from './menuTest/menuBlurStyleJsunit.test';
+import ModalBlurStyle from './menuTest/ModalBlurStyle.test';
+import popupArrowJsunit from './popupControlTest/popupArrowJsunit.test';
 
 export default function testsuite() {
   BindMenuTest();
+  customPopup()
+  popup()
+  menuBlurStyleJsunit()
+  ModalBlurStyle()
+  popupArrowJsunit()
 }

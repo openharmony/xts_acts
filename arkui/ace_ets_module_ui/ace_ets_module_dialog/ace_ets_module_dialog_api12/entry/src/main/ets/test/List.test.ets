@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import TextPickerDialog from './TextPickerDialogTest/TextPickerDialog.test.ets'
-import DatePickerDialog from './DatePickerDialogTest/DatePickerDialog.test.ets'
-import TimePickerDialog from './TimePickerDialogTest/TimePickerDialog.test.ets'
-import CalendarPickerDialog from './CalendarPickerDialogTest/CalendarPickerDialog.test.ets'
+import TextPickerDialog from './TextPickerDialogTest/TextPickerDialog.test'
+import DatePickerDialog from './DatePickerDialogTest/DatePickerDialog.test'
+import TimePickerDialog from './TimePickerDialogTest/TimePickerDialog.test'
+import CalendarPickerDialog from './CalendarPickerDialogTest/CalendarPickerDialog.test'
 export default function testsuite() {
   TextPickerDialog()
   DatePickerDialog()

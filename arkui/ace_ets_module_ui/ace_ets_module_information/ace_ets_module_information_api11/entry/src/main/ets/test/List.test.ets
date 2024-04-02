@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import gaugeJsunit from './gaugeTest/GaugeJsunit.test';
 import CounterEnableTest from './CounterTest/CounterEnable.test'
+
 export default function testsuite() {
   gaugeJsunit();
   CounterEnableTest();
