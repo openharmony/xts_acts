@@ -88,7 +88,7 @@ export default function swiperItemVisibility() {
       expect(visiblekey.top).assertEqual(visiblekey01.top);
       expect(visiblekey.bottom).assertEqual(visiblekey01.bottom);
       let driver = Driver.create();
-      // await CommonFunc.sleep(500);
+      await CommonFunc.sleep(2500);
       // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       // //await driver.swipe(250, 230, 200, 230);
       // await CommonFunc.sleep(1000);
