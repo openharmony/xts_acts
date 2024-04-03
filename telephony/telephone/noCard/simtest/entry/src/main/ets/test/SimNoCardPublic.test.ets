@@ -312,7 +312,7 @@ export default function SimNoCardPublic() {
     /**
      * @tc.number : SUB_Telephony_Sim_GetSimSpn_0300
      * @tc.name   : testTelephonySimGetSimSpn0300
-     * @tc.desc   : Get the SIM card from the service provider. Use callback for asynchronous callback
+     * @tc.desc   : Service provider to get SIM card. Use callback for asynchronous callback
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 3
@@ -350,7 +350,7 @@ export default function SimNoCardPublic() {
     /**
      * @tc.number : SUB_Telephony_Sim_GetSimSpn_0400
      * @tc.name   : testTelephonySimGetSimSpn0400
-     * @tc.desc   : Get the SIM card from the service provider. Use callback for asynchronous callback
+     * @tc.desc   : Service provider to get SIM card. Use callback for asynchronous callback
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 3
@@ -388,7 +388,7 @@ export default function SimNoCardPublic() {
     /**
      * @tc.number : SUB_Telephony_Sim_GetSimSpn_1000
      * @tc.name   : testTelephonySimGetSimSpn1000
-     * @tc.desc   : Get the SIM card from the service provider. Use Promise asynchronous callbacks
+     * @tc.desc   : Service provider to get SIM card. Use Promise asynchronous callbacks
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 3
@@ -430,7 +430,7 @@ export default function SimNoCardPublic() {
     /**
      * @tc.number : SUB_Telephony_Sim_GetSimSpn_1100
      * @tc.name   : testTelephonySimGetSimSpn1100
-     * @tc.desc   : Get the SIM card from the service provider. Use Promise asynchronous callbacks
+     * @tc.desc   : Service provider to get SIM card. Use Promise asynchronous callbacks
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 3
