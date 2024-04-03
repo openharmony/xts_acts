@@ -57,16 +57,27 @@ struct DetectionPostProcessModel1 {
     OHNNOperandTest confidences = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, confidencesValue, 16*sizeof(float)};
     OHNNOperandTest numDetections = {OH_NN_FLOAT32, OH_NN_TENSOR, output_shape, numDetectionsValue, 16*sizeof(float)};
 
-    OHNNOperandTest inputSize = {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_INPUT_SIZE, {1}, inputSizeValue, sizeof(int64_t)};
+    OHNNOperandTest inputSize =
+        {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_INPUT_SIZE, {1}, inputSizeValue, sizeof(int64_t)};
     OHNNOperandTest scale = {OH_NN_FLOAT32, OH_NN_DETECTION_POST_PROCESS_SCALE, {4}, &scaleValue, 4*sizeof(float)};
-    OHNNOperandTest nmsIoUThreshold = {OH_NN_FLOAT32, OH_NN_DETECTION_POST_PROCESS_NMS_IOU_THRESHOLD, {1}, nmsIoUThresholdValue, sizeof(float)};
-    OHNNOperandTest nmsScoreThreshold = {OH_NN_FLOAT32, OH_NN_DETECTION_POST_PROCESS_NMS_SCORE_THRESHOLD, {1}, nmsScoreThresholdValue, sizeof(float)};
-    OHNNOperandTest maxDetections = {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_MAX_DETECTIONS, {1}, maxDetectionsValue, sizeof(int64_t)};
-    OHNNOperandTest detectionsPerClass = {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_DETECTIONS_PER_CLASS, {1}, detectionsPerClassValue, sizeof(int64_t)};
-    OHNNOperandTest maxClassesPerDetection = {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_MAX_CLASSES_PER_DETECTION, {1}, maxClassesPerDetectionValue, sizeof(int64_t)};
-    OHNNOperandTest numClasses = {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_NUM_CLASSES, {1}, numClassesValue, sizeof(int64_t)};
-    OHNNOperandTest useRegularNms = {OH_NN_BOOL, OH_NN_DETECTION_POST_PROCESS_USE_REGULAR_NMS, {1}, useRegularNmsValue, sizeof(bool)};
-    OHNNOperandTest outQuantized = {OH_NN_BOOL, OH_NN_DETECTION_POST_PROCESS_OUT_QUANTIZED, {1}, outQuantizedValue, sizeof(bool)};
+    OHNNOperandTest nmsIoUThreshold =
+        {OH_NN_FLOAT32, OH_NN_DETECTION_POST_PROCESS_NMS_IOU_THRESHOLD, {1}, nmsIoUThresholdValue, sizeof(float)};
+    OHNNOperandTest nmsScoreThreshold =
+        {OH_NN_FLOAT32, OH_NN_DETECTION_POST_PROCESS_NMS_SCORE_THRESHOLD, {1}, nmsScoreThresholdValue, sizeof(float)};
+    OHNNOperandTest maxDetections =
+        {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_MAX_DETECTIONS, {1}, maxDetectionsValue, sizeof(int64_t)};
+    OHNNOperandTest detectionsPerClass =
+        {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_DETECTIONS_PER_CLASS, {1},
+         detectionsPerClassValue, sizeof(int64_t)};
+    OHNNOperandTest maxClassesPerDetection =
+        {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_MAX_CLASSES_PER_DETECTION, {1},
+         maxClassesPerDetectionValue, sizeof(int64_t)};
+    OHNNOperandTest numClasses =
+        {OH_NN_INT64, OH_NN_DETECTION_POST_PROCESS_NUM_CLASSES, {1}, numClassesValue, sizeof(int64_t)};
+    OHNNOperandTest useRegularNms =
+        {OH_NN_BOOL, OH_NN_DETECTION_POST_PROCESS_USE_REGULAR_NMS, {1}, useRegularNmsValue, sizeof(bool)};
+    OHNNOperandTest outQuantized =
+        {OH_NN_BOOL, OH_NN_DETECTION_POST_PROCESS_OUT_QUANTIZED, {1}, outQuantizedValue, sizeof(bool)};
     OHNNGraphArgs graphArgs = {.operationType = OH_NN_OPS_DETECTION_POST_PROCESS,
                                .operands = {bbox, scores, anchors, bboxes, classes, confidences, numDetections,
                                             inputSize, scale, nmsIoUThreshold, nmsScoreThreshold, maxDetections,
@@ -82,7 +93,8 @@ struct DetectionPostProcessModel1 {
  * @tc.desc: DetectionPostProcessModel1模型build测试
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_01, Function | MediumTest | Level1)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_01,
+         Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -111,7 +123,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_B
  * @tc.desc: DetectionPostProcessModel1模型输入Tensor+1进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_02, Function | MediumTest | Level2)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_02,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -136,7 +149,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_B
  * @tc.desc: DetectionPostProcessModel1模型输出Tensor+1进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_03, Function | MediumTest | Level2)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_03,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -161,7 +175,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_B
  * @tc.desc: DetectionPostProcessModel1模型传入非法参数进行build测试
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_04, Function | MediumTest | Level2)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Build_04,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -187,7 +202,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_B
  * @tc.desc: 模型构图，未添加操作数
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_01, Function | MediumTest | Level2)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_01,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -203,7 +219,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_M
  * @tc.desc: 模型构图，未设置输入输出
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_02, Function | MediumTest | Level2)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_02,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -221,7 +238,8 @@ HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_M
  * @tc.desc: 模型构图，设置输入输出，构图成功
  * @tc.type: FUNC
  */
-HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_03, Function | MediumTest | Level1)
+HWTEST_F(DetectionPostProcessTest, SUB_AI_NNRt_Func_North_DetectionPostProcess_Model_Finish_03,
+         Function | MediumTest | Level1)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);

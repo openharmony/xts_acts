@@ -514,7 +514,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SetOperandValue_0
  * @tc.desc: 设置输入输出，inputIndices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_01, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_01,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -537,7 +538,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_02, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_02,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -561,7 +563,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_03, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_03,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -585,7 +588,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，inputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_04, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_04,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -609,7 +613,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_05, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_05,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -632,7 +637,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中data为nullptr
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_06, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_06,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -657,7 +663,8 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中data对应序号不存在
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_07, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_07,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
     EXPECT_NE(nullptr, model);
@@ -681,10 +688,10 @@ HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndO
  * @tc.desc: 设置输入输出，outputindices中size为0
  * @tc.type: FUNC
  */
-HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
+HWTEST_F(ReduceSumTest, SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_08,
+         Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_ReduceSum_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     ReduceSumModel1 reduceSumModel;

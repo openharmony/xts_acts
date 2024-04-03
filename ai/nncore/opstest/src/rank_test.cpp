@@ -507,7 +507,6 @@ HWTEST_F(RankTest, SUB_AI_NNRt_Func_North_Rank_Model_SpecifyInputsAndOutputs_07,
 HWTEST_F(RankTest, SUB_AI_NNRt_Func_North_Rank_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_Rank_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     RankModel1 rankModel;

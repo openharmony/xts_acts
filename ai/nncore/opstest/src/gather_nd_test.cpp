@@ -516,7 +516,6 @@ HWTEST_F(GatherNDTest, SUB_AI_NNRt_Func_North_GatherND_Model_SpecifyInputsAndOut
 HWTEST_F(GatherNDTest, SUB_AI_NNRt_Func_North_GatherND_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_GatherND_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     GatherNDModel1 gatherNDModel;

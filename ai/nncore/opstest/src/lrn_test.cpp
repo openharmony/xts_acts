@@ -479,7 +479,6 @@ HWTEST_F(LrnTest, SUB_AI_NNRt_Func_North_Lrn_Model_SpecifyInputsAndOutputs_07, F
 HWTEST_F(LrnTest, SUB_AI_NNRt_Func_North_Lrn_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_Lrn_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     LrnModel1 lrnModel;

@@ -556,7 +556,6 @@ HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SpecifyInputsAndOutpu
 HWTEST_F(MinimumTest, SUB_AI_NNRt_Func_North_Minimum_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_Minimum_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     MinimumModel1 minimumModel;

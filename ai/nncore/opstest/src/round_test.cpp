@@ -508,7 +508,6 @@ HWTEST_F(RoundTest, SUB_AI_NNRt_Func_North_Round_Model_SpecifyInputsAndOutputs_0
 HWTEST_F(RoundTest, SUB_AI_NNRt_Func_North_Round_Model_SpecifyInputsAndOutputs_08, Function | MediumTest | Level2)
 {
     OH_NNModel *model = OH_NNModel_Construct();
-    LOGI("SUB_AI_NNRt_Func_North_Round_Model_SpecifyInputsAndOutputs_08 start");
     EXPECT_NE(nullptr, model);
 
     RoundModel1 roundModel;
