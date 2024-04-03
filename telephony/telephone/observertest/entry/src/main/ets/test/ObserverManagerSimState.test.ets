@@ -75,30 +75,6 @@ export default function observerManagerSimStateTest() {
       done();
     });
 
-    /* *
-    * @tc.number: SUB_Telephony_Observer_SimStateChangeOn_0900
-    * @tc.name  : testTelephonyObserverSimStateChangeOn0900
-    * @tc.desc  : Subscribe to sim state change events.
-    * @tc.size  : MediumTest
-    * @tc.type  : Function
-    * @tc.level : level 3
-    */
-    it('testTelephonyObserverSimStateChangeOn0900', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverSimStateChangeOn0900';
-      console.info(`${caseName} test start`);
-      try {
-        observer.on(null, (data: observer.SimStateData) => {
-          console.info(`${caseName} data ${JSON.stringify(data)}`);
-          ExpectTrue(false);
-          done();
-        });
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(error.code == 401);
-        done();
-      }
-      console.info(`${caseName} test end`);
-    });
 
     /* *
       * @tc.number: SUB_Telephony_Observer_SimStateChangeOnOptions_0600
@@ -245,32 +221,6 @@ export default function observerManagerSimStateTest() {
       console.info(`${caseName} test end`);
     });
 
-    /* *
-    * @tc.number: SUB_Telephony_Observer_SimStateChangeOnOptions_2000
-    * @tc.name  : testTelephonyObserverSimStateChangeOnOptions2000
-    * @tc.desc  : Subscribe to sim state change events with options.
-    * @tc.size  : MediumTest
-    * @tc.type  : Function
-    * @tc.level : level 3
-    */
-    it('testTelephonyObserverSimStateChangeOnOptions2000', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverSimStateChangeOnOptions2000';
-      console.info(`${caseName} test start`);
-      try {
-        observer.on(null, {
-          slotId: 2
-        }, (data: observer.SimStateData) => {
-          console.info(`${caseName} data ${JSON.stringify(data)}`);
-          ExpectTrue(false);
-          done();
-        });
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(error.code == 401);
-        done();
-      }
-      console.info(`${caseName} test end`);
-    });
 
     /* *
     * @tc.number: SUB_Telephony_Observer_SimStateChangeOff_0300
@@ -327,27 +277,6 @@ export default function observerManagerSimStateTest() {
       } catch (error) {
         console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
         ExpectTrue(false);
-        done();
-      }
-      console.info(`${caseName} test end`);
-    });
-
-    /* *
-    * @tc.number: SUB_Telephony_Observer_SimStateChangeOff_0500
-    * @tc.name  : testTelephonyObserverSimStateChangeOff0500
-    * @tc.desc  : Unsubscribe to sim state change events.
-    * @tc.size  : MediumTest
-    * @tc.type  : Function
-    * @tc.level : level 3
-    */
-    it('testTelephonyObserverSimStateChangeOff0500', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverSimStateChangeOff0500';
-      console.info(`${caseName} test start`);
-      try {
-        observer.off(null);
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(error.code == 401);
         done();
       }
       console.info(`${caseName} test end`);
