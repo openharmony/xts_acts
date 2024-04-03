@@ -21,9 +21,9 @@ describe('etsIntlFunTest', function () {
     var vehicles = ['Motorcycle', 'Bus', 'Car'];
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_001
-     * @tc.name      : 时间日期格式化001
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_001
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -34,9 +34,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_002
-     * @tc.name      : 时间日期格式化002
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_002
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -47,9 +47,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_003
-     * @tc.name      : 时间日期格式化003
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_003
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -65,9 +65,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_004
-     * @tc.name      : 时间日期格式化004
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_004
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -82,9 +82,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_005
-     * @tc.name      : 时间日期格式化005
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_005
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -100,9 +100,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_006
-     * @tc.name      : 时间日期格式化006
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_006
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -119,9 +119,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_007
-     * @tc.name      : 时间日期格式化007
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_007
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -135,9 +135,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_008
-     * @tc.name      : 时间日期格式化008
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_008
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -150,9 +150,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_009
-     * @tc.name      : 时间日期格式化009
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_009
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -166,9 +166,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_010
-     * @tc.name      : 时间日期格式化010
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_010
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -182,9 +182,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_011
-     * @tc.name      : 时间日期格式化011
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_011
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -197,9 +197,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_012
-     * @tc.name      : 时间日期格式化012
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_012
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -212,9 +212,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
-     * @tc.name      : 时间日期格式化013
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -227,9 +227,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_014
-     * @tc.name      : 时间日期格式化014
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_014
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -242,9 +242,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_015
-     * @tc.name      : 时间日期格式化015
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_015
      * @tc.desc      : The current function handles Intl DateTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -260,9 +260,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_016
-     * @tc.name      : 时间日期格式化016
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_016
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -282,9 +282,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_017
-     * @tc.name      : 时间日期格式化017
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_017
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -304,9 +304,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_018
-     * @tc.name      : 时间日期格式化018
+     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_018
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -324,9 +324,9 @@ describe('etsIntlFunTest', function () {
     console.log('*************IntlNumber*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_001
-     * @tc.name      : 数字格式化001
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_001
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -338,9 +338,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_002
-     * @tc.name      : 数字格式化002
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_002
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -351,9 +351,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_003
-     * @tc.name      : 数字格式化003
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_003
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -365,9 +365,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_004
-     * @tc.name      : 数字格式化004
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_004
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -379,9 +379,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_005
-     * @tc.name      : 数字格式化005
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_005
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -393,9 +393,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_006
-     * @tc.name      : 数字格式化006
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_006
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -407,9 +407,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_007
-     * @tc.name      : 数字格式化007
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_007
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -421,9 +421,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_008
-     * @tc.name      : 数字格式化008
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_008
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -435,9 +435,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_009
-     * @tc.name      : 数字格式化009
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_009
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -449,9 +449,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_010
-     * @tc.name      : 数字格式化010
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_010
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -463,9 +463,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_011
-     * @tc.name      : 数字格式化011
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_011
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -477,9 +477,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_012
-     * @tc.name      : 数字格式化012
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_012
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -491,9 +491,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_013
-     * @tc.name      : 数字格式化013
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_013
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -505,9 +505,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_014
-     * @tc.name      : 数字格式化014
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_014
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -519,9 +519,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_015
-     * @tc.name      : 数字格式化015
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_015
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -536,9 +536,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_016
-     * @tc.name      : 数字格式化016
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_016
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -558,9 +558,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_017
-     * @tc.name      : 数字格式化017
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_017
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -576,9 +576,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_018
-     * @tc.name      : 数字格式化018
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_018
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -592,9 +592,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_019
-     * @tc.name      : 数字格式化019
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_019
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -609,9 +609,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_020
-     * @tc.name      : 数字格式化020
+     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_020
      * @tc.desc      : The current function handles Intl NumberFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -629,9 +629,9 @@ describe('etsIntlFunTest', function () {
     console.log('*************Collator*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_001
-     * @tc.name      : 排序测试001
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_001
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -644,9 +644,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_002
-     * @tc.name      : 排序测试002
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_002
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -659,9 +659,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_003
-     * @tc.name      : 排序测试003
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_003
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -674,9 +674,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_004
-     * @tc.name      : 排序测试004
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_004
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -689,9 +689,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_005
-     * @tc.name      : 排序测试005
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_005
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -705,9 +705,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_006
-     * @tc.name      : 排序测试006
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_006
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -721,9 +721,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_007
-     * @tc.name      : 排序测试007
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_007
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -737,9 +737,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_008
-     * @tc.name      : 排序测试008
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_008
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -753,9 +753,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_009
-     * @tc.name      : 排序测试009
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_009
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -769,9 +769,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_010
-     * @tc.name      : 排序测试010
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_010
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -785,9 +785,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_011
-     * @tc.name      : 排序测试011
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_011
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -802,9 +802,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_012
-     * @tc.name      : 排序测试012
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_012
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -819,9 +819,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_013
-     * @tc.name      : 排序测试013
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_013
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -838,9 +838,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_014
-     * @tc.name      : 排序测试014
+     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_014
      * @tc.desc      : The current function handles Intl Collator
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -859,9 +859,9 @@ describe('etsIntlFunTest', function () {
     console.log('*************PluralRules*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_001
-     * @tc.name      : 单复数测试001
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_001
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -874,9 +874,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_002
-     * @tc.name      : 单复数测试002
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_002
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -889,9 +889,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_003
-     * @tc.name      : 单复数测试003
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_003
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -904,9 +904,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_004
-     * @tc.name      : 单复数测试004
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_004
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -919,9 +919,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_005
-     * @tc.name      : 单复数测试005
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_005
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -934,9 +934,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_006
-     * @tc.name      : 单复数测试006
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_006
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -949,9 +949,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_007
-     * @tc.name      : 单复数测试007
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_007
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -964,9 +964,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_008
-     * @tc.name      : 单复数测试008
+     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_008
      * @tc.desc      : The current function handles Intl PluralRules
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -981,9 +981,9 @@ describe('etsIntlFunTest', function () {
     console.log('*************RelativeTimeFormat*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_001
-     * @tc.name      : 相对时间格式化001
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_001
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -996,9 +996,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_002
-     * @tc.name      : 相对时间格式化002
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_002
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1011,9 +1011,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_003
-     * @tc.name      : 相对时间格式化003
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_003
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1026,9 +1026,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_004
-     * @tc.name      : 相对时间格式化004
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_004
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1041,9 +1041,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_005
-     * @tc.name      : 相对时间格式化005
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_005
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1056,9 +1056,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_006
-     * @tc.name      : 相对时间格式化006
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_006
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1071,9 +1071,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_007
-     * @tc.name      : 相对时间格式化007
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_007
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1086,9 +1086,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_008
-     * @tc.name      : 相对时间格式化008
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_008
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1101,9 +1101,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_009
-     * @tc.name      : 相对时间格式化009
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_009
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1116,9 +1116,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_010
-     * @tc.name      : 相对时间格式化010
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_010
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1131,9 +1131,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_011
-     * @tc.name      : 相对时间格式化011
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_011
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1146,9 +1146,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_012
-     * @tc.name      : 相对时间格式化012
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_012
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1161,9 +1161,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_013
-     * @tc.name      : 相对时间格式化013
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_013
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1176,9 +1176,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_014
-     * @tc.name      : 相对时间格式化014
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_014
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1191,9 +1191,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_015
-     * @tc.name      : 相对时间格式化015
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_015
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1206,9 +1206,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_016
-     * @tc.name      : 相对时间格式化016
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_016
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1225,9 +1225,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_017
-     * @tc.name      : 相对时间格式化017
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_017
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1240,9 +1240,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_018
-     * @tc.name      : 相对时间格式化018
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_018
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1257,9 +1257,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_019
-     * @tc.name      : 相对时间格式化019
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_019
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1274,9 +1274,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_020
-     * @tc.name      : 相对时间格式化020
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_020
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1291,9 +1291,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_021
-     * @tc.name      : 相对时间格式化021
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_021
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1308,9 +1308,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_022
-     * @tc.name      : 相对时间格式化022
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_022
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1325,9 +1325,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_023
-     * @tc.name      : 相对时间格式化023
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_023
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1342,9 +1342,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_024
-     * @tc.name      : 相对时间格式化024
+     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_024
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1360,9 +1360,9 @@ describe('etsIntlFunTest', function () {
     console.log('*************ListFormat*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_001
-     * @tc.name      : 数组格式化001
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_001
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1375,9 +1375,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_002
-     * @tc.name      : 数组格式化002
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_002
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1390,9 +1390,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_003
-     * @tc.name      : 数组格式化003
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_003
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1405,9 +1405,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_004
-     * @tc.name      : 数组格式化004
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_004
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1420,9 +1420,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_005
-     * @tc.name      : 数组格式化005
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_005
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1435,9 +1435,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_006
-     * @tc.name      : 数组格式化006
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_006
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1450,9 +1450,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_007
-     * @tc.name      : 数组格式化007
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_007
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1465,9 +1465,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_008
-     * @tc.name      : 数组格式化008
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_008
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1480,9 +1480,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_009
-     * @tc.name      : 数组格式化009
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_009
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1495,9 +1495,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_010
-     * @tc.name      : 数组格式化010
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_010
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1510,9 +1510,9 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_011
-     * @tc.name      : 数组格式化011
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_011
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1525,9 +1525,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_012
-     * @tc.name      : 数组格式化012
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_012
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1540,9 +1540,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_013
-     * @tc.name      : 数组格式化013
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_013
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1555,9 +1555,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_014
-     * @tc.name      : 数组格式化014
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_014
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1570,9 +1570,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_015
-     * @tc.name      : 数组格式化015
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_015
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1585,9 +1585,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_016
-     * @tc.name      : 数组格式化016
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_016
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1602,9 +1602,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_017
-     * @tc.name      : 数组格式化017
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_017
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
@@ -1619,9 +1619,9 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_018
-     * @tc.name      : 数组格式化018
+     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_018
      * @tc.desc      : The current function handles Intl ListFormat
-     * @tc.size      : 中型测试
+     * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
