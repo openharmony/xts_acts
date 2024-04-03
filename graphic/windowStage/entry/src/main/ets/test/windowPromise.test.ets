@@ -1865,6 +1865,70 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           done()
         }
       })
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4000
+     * @tc.name      : testEnableLandscapeMultiWindow_Function
+     * @tc.desc      : Test the function value of EnableLandscapeMultiWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testEnableLandscapeMultiWindow_Function", 0, async function(done){
+      let msgStr = "testEnableLandscapeMultiWindow_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let promise = wnd.enableLandscapeMultiWindow() 
+          promise.then(() => {
+              console.info(msgStr + ' Succeeded in making multi-window become landscape.');
+              expect(true).assertTrue()
+              done()
+          }).catch((err: BusinessError) => {
+              console.error(msgStr + ' Failed to make multi-window become landscape. Cause: ' + JSON.stringify(err));
+              expect().assertFail()
+              done()
+          });
+        } catch (exception) {
+          console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
+    }) 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4010
+     * @tc.name      : testDisableLandscapeMultiWindow_Function
+     * @tc.desc      : Test the function value of DisableLandscapeMultiWindow
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */ 
+    it("testDisableLandscapeMultiWindow_Function", 0, async function(done){
+      let msgStr = "testDisableLandscapeMultiWindow_Function";
+      console.log(msgStr + " begin");
+      ohosWindow.getLastWindow(context).then(wnd => {
+        console.log(msgStr + ' window.getTopWindow wnd: ' + wnd);
+        expect(wnd != null).assertTrue();
+        try {
+          let promise = wnd.enableLandscapeMultiWindow() 
+          promise.then(() => {
+              console.info(msgStr + ' Succeeded in making multi-window become not landscape.');
+              expect(true).assertTrue()
+              done()
+          }).catch((err: BusinessError) => {
+              console.error(msgStr + ' Failed to make multi-window become not landscape. Cause: ' + JSON.stringify(err));
+              expect().assertFail()
+              done()
+          });
+        } catch (exception) {
+          console.error(msgStr + ' Failed to call enableLandscapeMultiWindow. Cause: ' + JSON.stringify(exception));
+          expect().assertFail()
+          done()
+        }
+      })
     }) 
   })
 }
