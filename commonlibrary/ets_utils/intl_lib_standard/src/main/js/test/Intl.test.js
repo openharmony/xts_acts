@@ -212,7 +212,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
+     * @tc.name        SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
