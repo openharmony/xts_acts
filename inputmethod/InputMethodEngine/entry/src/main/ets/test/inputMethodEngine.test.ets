@@ -1619,10 +1619,7 @@ export default function inputMethodEngineJSUnit() {
         if (err) {
           console.info("====>inputMethodEngine_test_074 publishCallback failed:" + JSON.stringify(err));
         }  else {
-          let t = setTimeout(()=>{
-            runCmd();
-            clearTimeout(t)
-          }, 100)
+          runCmd();
         }
       }
 
