@@ -142,9 +142,9 @@ export default function list_ListInitialIndex5Test() {
 
 
       let driver = Driver.create();
-      await driver.swipe(Math.round(fifthListItem.left + ((fifthListItem.right - fifthListItem.left) / 2)),
-        Math.round(fifthListItem.bottom), Math.round(firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
-        Math.round(firstListItem.bottom));
+      await driver.swipe(Math.round(globalThis.winLeft + fifthListItem.left + ((fifthListItem.right - fifthListItem.left) / 2)),
+        Math.round(globalThis.winTop + fifthListItem.bottom), Math.round(globalThis.winLeft + firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
+        Math.round(globalThis.winTop + firstListItem.bottom));
 
       ninthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_9');
       tenthListItem = CommonFunc.getComponentRect('List_ListInitialIndex5_10');
