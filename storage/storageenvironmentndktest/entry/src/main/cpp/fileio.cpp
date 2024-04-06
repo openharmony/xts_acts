@@ -21,7 +21,7 @@
 #include <js_native_api_types.h>
 #include <tuple>
 #include <unistd.h>
-#include <string.h>
+#include <cstring.h>
 
 static napi_value GetFileLocation(napi_env env, napi_callback_info info)
 {
