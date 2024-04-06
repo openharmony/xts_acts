@@ -23,10 +23,10 @@
 
 static napi_value GetUserDownloadDir(napi_env env, napi_callback_info info)
 {
-    char *downloadPath = NULL;
+    char *downloadPath = nullptr;
     int ret = OH_Environment_GetUserDownloadDir(&downloadPath);
-    if (ret == 0){     
-      free(downloadPath);
+    if (ret == 0) {
+        free(downloadPath);
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -36,9 +36,9 @@ static napi_value GetUserDownloadDir(napi_env env, napi_callback_info info)
 static napi_value GetUserDesktopDir(napi_env env, napi_callback_info info)
 {
     char *desktopPath = NULL;
-    int ret = OH_Environment_GetUserDesktopDir(&desktopPath );
-    if (ret == 0){      
-      free(desktopPath);
+    int ret = OH_Environment_GetUserDesktopDir(&desktopPath);
+    if (ret == 0) {
+        free(desktopPath);
     }
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
@@ -47,10 +47,10 @@ static napi_value GetUserDesktopDir(napi_env env, napi_callback_info info)
 
 static napi_value GetUserDocumentDir(napi_env env, napi_callback_info info)
 {
-    char *documentPath = NULL;
+    char *documentPath = nullptr;
     int ret = OH_Environment_GetUserDocumentDir(&documentPath);
-    if (ret == 0){     
-      free(documentPath);
+    if (ret == 0) {
+        free(documentPath);
     } 
     napi_value result = nullptr;
     napi_create_int32(env, ret, &result);
