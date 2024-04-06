@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ static napi_value GetUserDownloadDir(napi_env env, napi_callback_info info)
 
 static napi_value GetUserDesktopDir(napi_env env, napi_callback_info info)
 {
-    char *desktopPath = NULL;
+    char *desktopPath = nullptr;
     int ret = OH_Environment_GetUserDesktopDir(&desktopPath);
     if (ret == 0) {
         free(desktopPath);
@@ -61,9 +61,9 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        {"getUserDownloadDir", nullptr, GetUserDownloadDir, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"getUserDesktopDir", nullptr, GetUserDesktopDir, nullptr, nullptr, nullptr, napi_default, nullptr},        
-        {"getUserDocumentDir", nullptr, GetUserDocumentDir, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"getUserDownloadDir", nullptr, GetUserDownloadDir, nullptr, nullptr, nullptr, napi_default, nullptr}, 
+        {"getUserDesktopDir", nullptr, GetUserDesktopDir, nullptr, nullptr, nullptr, napi_default, nullptr},      
+        {"getUserDocumentDir", nullptr, GetUserDocumentDir, nullptr, nullptr, nullptr, napi_default, nullptr}, 
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
