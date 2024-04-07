@@ -13,5 +13,8 @@
 
 group("telephone") {
   testonly = true
-  deps = [ "noCard:noCard" ]
+  deps = [
+    "noCard:noCard",
+    "simtest:ActsTelephonySimHasCardTest",
+  ]
 }
