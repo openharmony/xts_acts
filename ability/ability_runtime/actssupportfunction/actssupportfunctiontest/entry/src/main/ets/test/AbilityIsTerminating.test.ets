@@ -15,10 +15,16 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import {Driver, ON} from '@ohos.UiTest';
+
+let driver = Driver.create();
 
 export default function AbilityIsTerminatingTest() {
 
   describe('AbilityIsTerminatingTest', function () {
+    beforeEach(async (done) => {
+      setTimeout(() => { done(); }, 3000)
+    })
 
     let TAG = "";
     let sleepTimeOne = 1000;
@@ -85,6 +91,14 @@ export default function AbilityIsTerminatingTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -149,6 +163,14 @@ export default function AbilityIsTerminatingTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
     })
 
     /*
@@ -222,6 +244,14 @@ export default function AbilityIsTerminatingTest() {
         expect().assertFail();
         done();
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
     })
   })
 }
