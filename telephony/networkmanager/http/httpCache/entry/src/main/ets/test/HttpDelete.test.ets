@@ -46,38 +46,38 @@ export default function HttpDeleteTest() {
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    // it('testNetworkMgrHttpHttpResponseCacheDelete0100', 0, async (done: Function) => {
-    //   const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0100';
-    //   console.info(`${caseName}---Start`);
-    //   try {
-    //     connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
-    //       if (data.netId == 0) {
-    //         console.info(`${caseName} Please connect to the network`);
-    //         ExpectFail();
-    //         done();
-    //       } else {
-    //         console.info(`${caseName} Network connected`);
-    //         let httpResponseCache: http.HttpResponseCache = http.createHttpResponseCache();
-    //         httpResponseCache.delete((err: BusinessError) => {
-    //           if (err) {
-    //             console.info(`${caseName} delete fail err:${JSON.stringify(err)}`);
-    //             ExpectFail();
-    //             done();
-    //           } else {
-    //             console.info(`${caseName} delete success httpResponseCache:${JSON.stringify(httpResponseCache)}`);
-    //             ExpectTrue(true);
-    //             done();
-    //           }
-    //         });
-    //       }
-    //     });
-    //   } catch (err) {
-    //     console.info(`${caseName} try...catch err: ${JSON.stringify(err)}`);
-    //     ExpectFail();
-    //     done();
-    //   }
-    //   console.info(`${caseName}---End `);
-    // });
+     it('testNetworkMgrHttpHttpResponseCacheDelete0100', 0, async (done: Function) => {
+       const caseName: string = 'testNetworkMgrHttpHttpResponseCacheDelete0100';
+       console.info(`${caseName}---Start`);
+       try {
+         connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
+           if (data.netId == 0) {
+             console.info(`${caseName} Please connect to the network`);
+             ExpectFail();
+             done();
+           } else {
+             console.info(`${caseName} Network connected`);
+             let httpResponseCache: http.HttpResponseCache = http.createHttpResponseCache();
+             httpResponseCache.delete((err: BusinessError) => {
+               if (err) {
+                 console.info(`${caseName} delete fail err:${JSON.stringify(err)}`);
+                 ExpectFail();
+                 done();
+               } else {
+                 console.info(`${caseName} delete success httpResponseCache:${JSON.stringify(httpResponseCache)}`);
+                 ExpectTrue(true);
+                 done();
+               }
+             });
+           }
+         });
+       } catch (err) {
+         console.info(`${caseName} try...catch err: ${JSON.stringify(err)}`);
+         ExpectFail();
+         done();
+       }
+       console.info(`${caseName}---End `);
+     });
 
     /**
      * @tc.number : SUB_NetworkMgr_Http_HttpResponseCache_Delete_0200

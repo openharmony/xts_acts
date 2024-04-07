@@ -17,6 +17,7 @@ group("http") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "HttpResponse:ActsNetworkManagerHttpResponseTest",
       "httpCache:ActsNetworkManagerHttpCacheTest",
       "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
     ]
