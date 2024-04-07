@@ -21,7 +21,7 @@ describe('etsIntlFunTest', function () {
     var vehicles = ['Motorcycle', 'Bus', 'Car'];
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_001
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_001
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -34,7 +34,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_002
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_002
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -47,7 +47,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_003
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_003
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -65,7 +65,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_004
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_004
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -82,7 +82,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_005
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_005
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -100,7 +100,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_006
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_006
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -119,7 +119,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_007
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_007
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -135,7 +135,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_008
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_008
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -150,7 +150,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_009
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_009
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -166,7 +166,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_010
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_010
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -182,7 +182,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_011
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_011
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -197,7 +197,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_012
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_012
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -212,7 +212,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
-     * @tc.name        SUB_ARK_ETS_INTL_DATETIMEFORMAT_013
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -227,7 +227,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_014
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_014
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -242,7 +242,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_015
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_015
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -260,7 +260,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_016
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_016
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -282,7 +282,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_017
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_017
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -304,7 +304,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_DATETIMEFORMAT_018
-     * @tc.name      : SUB_ARK_ETS_INTL_DATETIMEFORMAT_018
+     * @tc.name      : testIntlDateTimeFormat
      * @tc.desc      : The current function handles Intl DateTimeFormatToParts
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -324,7 +324,7 @@ describe('etsIntlFunTest', function () {
     console.log('*************IntlNumber*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_001
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_001
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -338,7 +338,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_002
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_002
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -351,7 +351,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_003
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_003
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -365,7 +365,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_004
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_004
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -379,7 +379,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_005
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_005
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -393,7 +393,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_006
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_006
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -407,7 +407,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_007
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_007
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -421,7 +421,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_008
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_008
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -435,7 +435,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_009
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_009
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -449,7 +449,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_010
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_010
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -463,7 +463,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_011
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_011
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -477,7 +477,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_012
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_012
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -491,7 +491,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_013
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_013
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -505,7 +505,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_014
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_014
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -519,7 +519,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_015
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_015
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -536,7 +536,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_016
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_016
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -558,7 +558,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_017
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_017
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -576,7 +576,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_018
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_018
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -592,7 +592,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_019
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_019
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -609,7 +609,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_NUMBERFORMAT_020
-     * @tc.name      : SUB_ARK_ETS_INTL_NUMBERFORMAT_020
+     * @tc.name      : testIntlNumberFormat
      * @tc.desc      : The current function handles Intl NumberFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -629,7 +629,7 @@ describe('etsIntlFunTest', function () {
     console.log('*************Collator*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_001
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_001
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -644,7 +644,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_002
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_002
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -659,7 +659,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_003
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_003
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -674,7 +674,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_004
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_004
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -689,7 +689,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_005
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_005
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -705,7 +705,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_006
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_006
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -721,7 +721,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_007
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_007
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -737,7 +737,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_008
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_008
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -753,7 +753,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_009
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_009
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -769,7 +769,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_010
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_010
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -785,7 +785,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_011
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_011
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -802,7 +802,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_012
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_012
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -819,7 +819,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_013
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_013
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -838,7 +838,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_COLLATOR_014
-     * @tc.name      : SUB_ARK_ETS_INTL_COLLATOR_014
+     * @tc.name      : testIntlCollator
      * @tc.desc      : The current function handles Intl Collator
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -859,7 +859,7 @@ describe('etsIntlFunTest', function () {
     console.log('*************PluralRules*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_001
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_001
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -874,7 +874,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_002
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_002
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -889,7 +889,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_003
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_003
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -904,7 +904,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_004
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_004
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -919,7 +919,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_005
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_005
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -934,7 +934,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_006
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_006
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -949,7 +949,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_007
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_007
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -964,7 +964,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_PLURALRULES_008
-     * @tc.name      : SUB_ARK_ETS_INTL_PLURALRULES_008
+     * @tc.name      : testIntlPluralRules
      * @tc.desc      : The current function handles Intl PluralRules
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -981,7 +981,7 @@ describe('etsIntlFunTest', function () {
     console.log('*************RelativeTimeFormat*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_001
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_001
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -996,7 +996,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_002
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_002
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1011,7 +1011,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_003
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_003
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1026,7 +1026,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_004
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_004
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1041,7 +1041,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_005
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_005
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1056,7 +1056,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_006
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_006
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1071,7 +1071,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_007
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_007
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1086,7 +1086,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_008
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_008
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1101,7 +1101,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_009
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_009
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1116,7 +1116,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_010
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_010
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1131,7 +1131,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_011
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_011
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1146,7 +1146,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_012
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_012
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1161,7 +1161,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_013
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_013
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1176,7 +1176,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_014
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_014
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1191,7 +1191,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_015
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_015
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1206,7 +1206,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_016
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_016
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1225,7 +1225,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_017
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_017
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1240,7 +1240,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_018
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_018
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1257,7 +1257,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_019
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_019
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1274,7 +1274,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_020
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_020
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1291,7 +1291,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_021
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_021
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1308,7 +1308,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_022
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_022
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1325,7 +1325,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_023
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_023
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1342,7 +1342,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_024
-     * @tc.name      : SUB_ARK_ETS_INTL_RELATIVETIMEFORMAT_024
+     * @tc.name      : testIntlRelativeTimeFormat
      * @tc.desc      : The current function handles Intl RelativeTimeFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1360,7 +1360,7 @@ describe('etsIntlFunTest', function () {
     console.log('*************ListFormat*************');
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_001
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_001
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1375,7 +1375,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_002
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_002
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1390,7 +1390,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_003
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_003
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1405,7 +1405,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_004
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_004
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1420,7 +1420,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_005
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_005
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1435,7 +1435,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_006
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_006
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1450,7 +1450,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_007
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_007
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1465,7 +1465,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_008
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_008
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1480,7 +1480,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_009
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_009
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1495,7 +1495,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_010
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_010
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1510,7 +1510,7 @@ describe('etsIntlFunTest', function () {
     
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_011
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_011
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1525,7 +1525,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_012
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_012
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1540,7 +1540,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_013
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_013
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1555,7 +1555,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_014
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_014
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1570,7 +1570,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_015
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_015
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1585,7 +1585,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_016
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_016
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1602,7 +1602,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_017
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_017
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -1619,7 +1619,7 @@ describe('etsIntlFunTest', function () {
 
     /**
      * @tc.number    : SUB_ARK_ETS_INTL_LISTFORMAT_018
-     * @tc.name      : SUB_ARK_ETS_INTL_LISTFORMAT_018
+     * @tc.name      : testIntlListFormat
      * @tc.desc      : The current function handles Intl ListFormat
      * @tc.size      : MediumTest
      * @tc.type      : Function
