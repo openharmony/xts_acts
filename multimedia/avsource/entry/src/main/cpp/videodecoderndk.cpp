@@ -41,7 +41,7 @@ constexpr uint32_t DEFAULT_WIDTH = 320;
 
 constexpr uint32_t DEFAULT_HEIGHT = 240;
 
-constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_YUVI420;
+constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 
 static napi_value OHVideoDecoderCreateByMime(napi_env env, napi_callback_info info)
 {
