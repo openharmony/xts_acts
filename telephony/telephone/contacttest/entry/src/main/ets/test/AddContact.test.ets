@@ -77,7 +77,7 @@ export default function AddContactTest() {
             contactList.forEach(async (item: contact.Contact) => {
               if (item.key) {
                 await contact.deleteContact(context, item.key);
-								console.info(`afterEach deleteContact success`);
+                console.info(`afterEach deleteContact success`);
               }
             })
           }
@@ -1676,7 +1676,7 @@ export default function AddContactTest() {
       }
       console.info(`${caseName} test end `);
     })
-    
+
     /**
      * @tc.number     : SUB_Telephony_Contact_DeleteContact_0600
      * @tc.name       : testTelephonyContactDeleteContact0600
@@ -1751,7 +1751,7 @@ export default function AddContactTest() {
       }
       console.info(`${caseName} test end `);
     });
-    
+
 
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryKey_0100
@@ -7140,7 +7140,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
       if (contactData.organization !== undefined) {
-        contactData.organization.name = "Google";
+        contactData.organization.name = "organization_name";
       }
       contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
         if (addErr) {
@@ -7167,7 +7167,7 @@ export default function AddContactTest() {
                   let resDate: contact.Contact = queryData;
                   if (resDate.organization !== undefined) {
                     let organization: contact.Organization = resDate.organization;
-                    ExpectTrue(organization.name === "Google");
+                    ExpectTrue(organization.name === "organization_name");
                     done();
                   } else {
                     ExpectFail();
@@ -7194,7 +7194,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
       if (contactData.organization !== undefined) {
-        contactData.organization.name = "Google, Research & Development";
+        contactData.organization.name = "organization Development";
       }
       contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
         if (addErr) {
@@ -7221,7 +7221,7 @@ export default function AddContactTest() {
                   let resDate: contact.Contact = queryData;
                   if (resDate.organization !== undefined) {
                     let organization: contact.Organization = resDate.organization;
-                    ExpectTrue(organization.name === "Google, Research & Development");
+                    ExpectTrue(organization.name === "organization Development");
                     done();
                   } else {
                     ExpectFail();
@@ -7248,7 +7248,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
       if (contactData.organization !== undefined) {
-        contactData.organization.name = "Google, Senior Engineer";
+        contactData.organization.name = "organizationName";
       }
       contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
         if (addErr) {
@@ -7275,7 +7275,7 @@ export default function AddContactTest() {
                   let resDate: contact.Contact = queryData;
                   if (resDate.organization !== undefined) {
                     let organization: contact.Organization = resDate.organization;
-                    ExpectTrue(organization.name === "Google, Senior Engineer");
+                    ExpectTrue(organization.name === "organizationName");
                     done();
                   } else {
                     ExpectFail();
@@ -7302,7 +7302,7 @@ export default function AddContactTest() {
       console.info(`${caseName} test start `);
       let context: Context = AppStorage.get('context') as Context;
       if (contactData.organization !== undefined) {
-        contactData.organization.name = "Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer Google, Senior Engineer";
+        contactData.organization.name = "organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName organizationName";
       }
       contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
         if (addErr) {
