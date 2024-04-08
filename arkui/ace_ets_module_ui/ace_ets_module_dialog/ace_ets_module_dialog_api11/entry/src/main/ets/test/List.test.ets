@@ -13,6 +13,13 @@
  * limitations under the License.
  */
 import CustomDialogMaskTest from './promptActionTest/CustomDialogMask.test'
+import menu from './MenuTest/menu.test'
+import ToastShowMode from './promptActionTest/ToastShowMode.test';
+import promptTest from './promptActionTest/promptTest.test';
+
 export default function testsuite() {
   CustomDialogMaskTest()
+  menu()
+  ToastShowMode()
+  promptTest()
 }
