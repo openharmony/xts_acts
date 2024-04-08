@@ -77,27 +77,27 @@ export default function Sim2Public() {
       sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
         if (data === true) {
           console.info(`${caseName}:success hasSimCard,data->${JSON.stringify(data)}`);
-					sim.setDefaultVoiceSlotId(0, (error: BusinessError) => {
-						if (error) {
-							ExpectFail();
-							console.info(`${caseName} test end `);
-							done();
-						} else {
-							console.info(`${caseName}: setDefaultVoiceSlotId success`);
-							sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
-								if (data === 0) {
-									console.info(`${caseName} success: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-									ExpectTrue(true);
-									console.info(`${caseName} test end `);
-									done();
-								} else {
-									ExpectFail();
-									console.info(`${caseName} test end `);
-									done();
-								}
-							});
-						}
-					});
+          sim.setDefaultVoiceSlotId(0, (error: BusinessError) => {
+            if (error) {
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            } else {
+              console.info(`${caseName}: setDefaultVoiceSlotId success`);
+              sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
+                if (data === 0) {
+                  console.info(`${caseName} success: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+                  ExpectTrue(true);
+                  console.info(`${caseName} test end `);
+                  done();
+                } else {
+                  ExpectFail();
+                  console.info(`${caseName} test end `);
+                  done();
+                }
+              });
+            }
+          });
         } else {
           console.info(`${caseName} failed Dont have card1: err->${JSON.stringify(err)}`);
           ExpectFail();
@@ -121,27 +121,27 @@ export default function Sim2Public() {
       sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
         if (data === true) {
           console.info(`${caseName} :success hasSimCard,data->${JSON.stringify(data)}`);
-					sim.setDefaultVoiceSlotId(1, (error: BusinessError) => {
-						if (error) {
-							ExpectFail();
-							console.info(`${caseName} test end `);
-							done();
-						} else {
-							console.info(`${caseName}: setDefaultVoiceSlotId success`);
-							sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
-								if (data === 1) {
-									console.info(`${caseName}  success: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-									ExpectTrue(true);
-									console.info(`${caseName} test end `);
-									done();
-								} else {
-									ExpectFail();
-									console.info(`${caseName} test end `);
-									done();
-								}
-							});
-						}
-					});
+          sim.setDefaultVoiceSlotId(1, (error: BusinessError) => {
+            if (error) {
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            } else {
+              console.info(`${caseName}: setDefaultVoiceSlotId success`);
+              sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
+                if (data === 1) {
+                  console.info(`${caseName}  success: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+                  ExpectTrue(true);
+                  console.info(`${caseName} test end `);
+                  done();
+                } else {
+                  ExpectFail();
+                  console.info(`${caseName} test end `);
+                  done();
+                }
+              });
+            }
+          });
         } else {
           console.info(`${caseName}  failed Dont have card1: err->${JSON.stringify(err)}`);
           ExpectFail();
@@ -165,25 +165,25 @@ export default function Sim2Public() {
       sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
         if (data === true) {
           console.info(`${caseName}:success hasSimCard,data->${JSON.stringify(data)}`);
-					sim.setDefaultVoiceSlotId(0).then(() => {
-						console.info(`${caseName}: setDefaultVoiceSlotId success`);
-						sim.getDefaultVoiceSlotId().then((data: number) => {
-							if (data === 0) {
-								console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-								ExpectTrue(true);
-								console.info(`${caseName} test end `);
-								done();
-							} else {
-								ExpectFail();
-								console.info(`${caseName} test end `);
-								done();
-							}
-						}).catch((err: BusinessError) => {
-							console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-							ExpectFail();
-							console.info(`${caseName} test end `);
-							done();
-						});
+          sim.setDefaultVoiceSlotId(0).then(() => {
+            console.info(`${caseName}: setDefaultVoiceSlotId success`);
+            sim.getDefaultVoiceSlotId().then((data: number) => {
+              if (data === 0) {
+                console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+                ExpectTrue(true);
+                console.info(`${caseName} test end `);
+                done();
+              } else {
+                ExpectFail();
+                console.info(`${caseName} test end `);
+                done();
+              }
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            });
           }).catch((err: BusinessError) => {
             console.info(`${caseName} failed, setDefaultVoiceSlotId promise: err->${JSON.stringify(err)}`);
             ExpectFail();
@@ -213,26 +213,26 @@ export default function Sim2Public() {
       sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
         if (data === true) {
           console.info(`${caseName}:success hasSimCard,data->${JSON.stringify(data)}`);
-					sim.setDefaultVoiceSlotId(1).then(() => {
-						console.info(`${caseName} setDefaultVoiceSlotId success`);
-						sim.getDefaultVoiceSlotId().then((data: number) => {
-							if (data === 1) {
-								console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-								ExpectTrue(true);
-								console.info(`${caseName} test end `);
-								done();
-							} else {
-								ExpectFail();
-								console.info(`${caseName} test end `);
-								done();
-							}
-						}).catch((err: BusinessError) => {
-							console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-							ExpectFail();
-							console.info(`${caseName} test end `);
-							done();
-						});
-					}).catch((err: BusinessError) => {
+          sim.setDefaultVoiceSlotId(1).then(() => {
+            console.info(`${caseName} setDefaultVoiceSlotId success`);
+            sim.getDefaultVoiceSlotId().then((data: number) => {
+              if (data === 1) {
+                console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
+                ExpectTrue(true);
+                console.info(`${caseName} test end `);
+                done();
+              } else {
+                ExpectFail();
+                console.info(`${caseName} test end `);
+                done();
+              }
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
+              ExpectFail();
+              console.info(`${caseName} test end `);
+              done();
+            });
+          }).catch((err: BusinessError) => {
             console.info(`${caseName} failed, setDefaultVoiceSlotId promise: err->${JSON.stringify(err)}`);
             ExpectFail();
             console.info(`${caseName} test end `);
@@ -1331,7 +1331,15 @@ export default function Sim2Public() {
           sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
             if (!err) {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(data === sim.SimState.SIM_STATE_UNKNOWN || data === sim.SimState.SIM_STATE_LOCKED || data === sim.SimState.SIM_STATE_NOT_PRESENT || data === sim.SimState.SIM_STATE_NOT_READY || data === sim.SimState.SIM_STATE_LOADED || data === sim.SimState.SIM_STATE_READY);
+              const cardValue: number[] = [
+              sim.SimState.SIM_STATE_UNKNOWN,
+              sim.SimState.SIM_STATE_LOCKED,
+              sim.SimState.SIM_STATE_NOT_PRESENT,
+              sim.SimState.SIM_STATE_NOT_READY,
+              sim.SimState.SIM_STATE_LOADED,
+              sim.SimState.SIM_STATE_READY
+              ]
+              ExpectTrue(cardValue.includes(data));
               console.info(`${caseName} test end `);
               done();
             } else {
@@ -1365,8 +1373,15 @@ export default function Sim2Public() {
           sim.getSimState(1, (err: BusinessError, data: sim.SimState) => {
             if (!err) {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(data === sim.SimState.SIM_STATE_UNKNOWN || data === sim.SimState.SIM_STATE_LOCKED || data === sim.SimState.SIM_STATE_NOT_PRESENT || data === sim.SimState.SIM_STATE_NOT_READY || data === sim.SimState.SIM_STATE_LOADED || data === sim.SimState.SIM_STATE_READY);
-              console.info(`${caseName} test end `);
+              const cardValue: number[] = [
+              sim.SimState.SIM_STATE_UNKNOWN,
+              sim.SimState.SIM_STATE_LOCKED,
+              sim.SimState.SIM_STATE_NOT_PRESENT,
+              sim.SimState.SIM_STATE_NOT_READY,
+              sim.SimState.SIM_STATE_LOADED,
+              sim.SimState.SIM_STATE_READY
+              ]
+              ExpectTrue(cardValue.includes(data));
               done();
             } else {
               ExpectFail();
@@ -1479,7 +1494,15 @@ export default function Sim2Public() {
           console.info(`${caseName} success has card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimState(0).then((data: sim.SimState) => {
             console.info(`${caseName}getSimState success, promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(data === sim.SimState.SIM_STATE_UNKNOWN || data === sim.SimState.SIM_STATE_LOCKED || data === sim.SimState.SIM_STATE_NOT_PRESENT || data === sim.SimState.SIM_STATE_NOT_READY || data === sim.SimState.SIM_STATE_LOADED || data === sim.SimState.SIM_STATE_READY);
+            const cardValue: number[] = [
+            sim.SimState.SIM_STATE_UNKNOWN,
+            sim.SimState.SIM_STATE_LOCKED,
+            sim.SimState.SIM_STATE_NOT_PRESENT,
+            sim.SimState.SIM_STATE_NOT_READY,
+            sim.SimState.SIM_STATE_LOADED,
+            sim.SimState.SIM_STATE_READY
+            ]
+            ExpectTrue(cardValue.includes(data));
             console.info(`${caseName} test end `);
             done();
           }).catch((err: BusinessError) => {
@@ -1512,7 +1535,15 @@ export default function Sim2Public() {
           console.info(`${caseName} success has card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimState(1).then((data: sim.SimState) => {
             console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
-            ExpectTrue(data === sim.SimState.SIM_STATE_UNKNOWN || data === sim.SimState.SIM_STATE_LOCKED || data === sim.SimState.SIM_STATE_NOT_PRESENT || data === sim.SimState.SIM_STATE_NOT_READY || data === sim.SimState.SIM_STATE_LOADED || data === sim.SimState.SIM_STATE_READY);
+            const cardValue: number[] = [
+            sim.SimState.SIM_STATE_UNKNOWN,
+            sim.SimState.SIM_STATE_LOCKED,
+            sim.SimState.SIM_STATE_NOT_PRESENT,
+            sim.SimState.SIM_STATE_NOT_READY,
+            sim.SimState.SIM_STATE_LOADED,
+            sim.SimState.SIM_STATE_READY
+            ]
+            ExpectTrue(cardValue.includes(data));
             console.info(`${caseName} test end `);
             done();
           }).catch((err: BusinessError) => {
@@ -1637,9 +1668,19 @@ export default function Sim2Public() {
           sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
             if (!err) {
               console.info(`${caseName}  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(data === sim.CardType.UNKNOWN_CARD || data === sim.CardType.SINGLE_MODE_SIM_CARD || data === sim.CardType.SINGLE_MODE_USIM_CARD || data === sim.CardType.SINGLE_MODE_RUIM_CARD
-                || data === sim.CardType.DUAL_MODE_CG_CARD || data === sim.CardType.CT_NATIONAL_ROAMING_CARD || data === sim.CardType.CU_DUAL_MODE_CARD || data === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD
-                || data === sim.CardType.DUAL_MODE_UG_CARD || data === sim.CardType.SINGLE_MODE_ISIM_CARD);
+              const cardValue: number[] = [
+              sim.CardType.UNKNOWN_CARD,
+              sim.CardType.SINGLE_MODE_SIM_CARD,
+              sim.CardType.SINGLE_MODE_USIM_CARD,
+              sim.CardType.SINGLE_MODE_RUIM_CARD,
+              sim.CardType.DUAL_MODE_CG_CARD,
+              sim.CardType.CT_NATIONAL_ROAMING_CARD,
+              sim.CardType.CU_DUAL_MODE_CARD,
+              sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+              sim.CardType.DUAL_MODE_UG_CARD,
+              sim.CardType.SINGLE_MODE_ISIM_CARD
+              ]
+              ExpectTrue(cardValue.includes(data));
               console.info(`${caseName} test end `);
               done();
             } else {
@@ -1673,10 +1714,19 @@ export default function Sim2Public() {
           sim.getCardType(1, (err: BusinessError, data: sim.CardType) => {
             if (!err) {
               console.info(`${caseName}  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(data === sim.CardType.UNKNOWN_CARD || data === sim.CardType.SINGLE_MODE_SIM_CARD || data === sim.CardType.SINGLE_MODE_USIM_CARD || data === sim.CardType.SINGLE_MODE_RUIM_CARD
-                || data === sim.CardType.DUAL_MODE_CG_CARD || data === sim.CardType.CT_NATIONAL_ROAMING_CARD || data === sim.CardType.CU_DUAL_MODE_CARD || data === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD
-                || data === sim.CardType.DUAL_MODE_UG_CARD || data === sim.CardType.SINGLE_MODE_ISIM_CARD
-              );
+              const cardValue: number[] = [
+              sim.CardType.UNKNOWN_CARD,
+              sim.CardType.SINGLE_MODE_SIM_CARD,
+              sim.CardType.SINGLE_MODE_USIM_CARD,
+              sim.CardType.SINGLE_MODE_RUIM_CARD,
+              sim.CardType.DUAL_MODE_CG_CARD,
+              sim.CardType.CT_NATIONAL_ROAMING_CARD,
+              sim.CardType.CU_DUAL_MODE_CARD,
+              sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+              sim.CardType.DUAL_MODE_UG_CARD,
+              sim.CardType.SINGLE_MODE_ISIM_CARD
+              ]
+              ExpectTrue(cardValue.includes(data));
               console.info(`${caseName} test end `);
               done();
             } else {
@@ -1789,7 +1839,20 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getCardType(0).then((data: sim.CardType) => {
-            if (data === sim.CardType.UNKNOWN_CARD || data === sim.CardType.SINGLE_MODE_SIM_CARD || data === sim.CardType.SINGLE_MODE_USIM_CARD || data === sim.CardType.SINGLE_MODE_RUIM_CARD || data === sim.CardType.DUAL_MODE_CG_CARD || data === sim.CardType.CT_NATIONAL_ROAMING_CARD || data === sim.CardType.CU_DUAL_MODE_CARD || data === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD || data === sim.CardType.DUAL_MODE_UG_CARD || data === sim.CardType.SINGLE_MODE_ISIM_CARD) {
+            const cardValue: number[] = [
+            sim.CardType.UNKNOWN_CARD,
+            sim.CardType.SINGLE_MODE_SIM_CARD,
+            sim.CardType.SINGLE_MODE_USIM_CARD,
+            sim.CardType.SINGLE_MODE_RUIM_CARD,
+            sim.CardType.DUAL_MODE_CG_CARD,
+            sim.CardType.CT_NATIONAL_ROAMING_CARD,
+            sim.CardType.CU_DUAL_MODE_CARD,
+            sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+            sim.CardType.DUAL_MODE_UG_CARD,
+            sim.CardType.SINGLE_MODE_ISIM_CARD
+            ]
+            const isCard: boolean = cardValue.includes(data)
+            if (isCard) {
               console.info(`${caseName} getCardType success, promise: data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -1828,7 +1891,20 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getCardType(1).then((data: sim.CardType) => {
-            if (data === sim.CardType.UNKNOWN_CARD || data === sim.CardType.SINGLE_MODE_SIM_CARD || data === sim.CardType.SINGLE_MODE_USIM_CARD || data === sim.CardType.SINGLE_MODE_RUIM_CARD || data === sim.CardType.DUAL_MODE_CG_CARD || data === sim.CardType.CT_NATIONAL_ROAMING_CARD || data === sim.CardType.CU_DUAL_MODE_CARD || data === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD || data === sim.CardType.DUAL_MODE_UG_CARD || data === sim.CardType.SINGLE_MODE_ISIM_CARD) {
+            const cardValue: number[] = [
+            sim.CardType.UNKNOWN_CARD,
+            sim.CardType.SINGLE_MODE_SIM_CARD,
+            sim.CardType.SINGLE_MODE_USIM_CARD,
+            sim.CardType.SINGLE_MODE_RUIM_CARD,
+            sim.CardType.DUAL_MODE_CG_CARD,
+            sim.CardType.CT_NATIONAL_ROAMING_CARD,
+            sim.CardType.CU_DUAL_MODE_CARD,
+            sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+            sim.CardType.DUAL_MODE_UG_CARD,
+            sim.CardType.SINGLE_MODE_ISIM_CARD
+            ]
+            const isCard: boolean = cardValue.includes(data)
+            if (isCard) {
               console.info(`${caseName} getCardType success, promise: data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -1958,9 +2034,19 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           let cardType: sim.CardType = sim.getCardTypeSync(0);
-          ExpectTrue(cardType === sim.CardType.UNKNOWN_CARD || cardType === sim.CardType.SINGLE_MODE_SIM_CARD || cardType === sim.CardType.SINGLE_MODE_USIM_CARD || cardType === sim.CardType.SINGLE_MODE_RUIM_CARD
-            || cardType === sim.CardType.DUAL_MODE_CG_CARD || cardType === sim.CardType.CT_NATIONAL_ROAMING_CARD || cardType === sim.CardType.CU_DUAL_MODE_CARD || cardType === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD
-            || cardType === sim.CardType.DUAL_MODE_UG_CARD || cardType === sim.CardType.SINGLE_MODE_ISIM_CARD);
+          const cardValue: number[] = [
+          sim.CardType.UNKNOWN_CARD,
+          sim.CardType.SINGLE_MODE_SIM_CARD,
+          sim.CardType.SINGLE_MODE_USIM_CARD,
+          sim.CardType.SINGLE_MODE_RUIM_CARD,
+          sim.CardType.DUAL_MODE_CG_CARD,
+          sim.CardType.CT_NATIONAL_ROAMING_CARD,
+          sim.CardType.CU_DUAL_MODE_CARD,
+          sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+          sim.CardType.DUAL_MODE_UG_CARD,
+          sim.CardType.SINGLE_MODE_ISIM_CARD
+          ]
+          ExpectTrue(cardValue.includes(cardType));
           console.info(`${caseName} the card type is:` + cardType);
           done();
         } else {
@@ -1986,9 +2072,19 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           let cardType: sim.CardType = sim.getCardTypeSync(1);
-          ExpectTrue(cardType === sim.CardType.UNKNOWN_CARD || cardType === sim.CardType.SINGLE_MODE_SIM_CARD || cardType === sim.CardType.SINGLE_MODE_USIM_CARD || cardType === sim.CardType.SINGLE_MODE_RUIM_CARD
-            || cardType === sim.CardType.DUAL_MODE_CG_CARD || cardType === sim.CardType.CT_NATIONAL_ROAMING_CARD || cardType === sim.CardType.CU_DUAL_MODE_CARD || cardType === sim.CardType.DUAL_MODE_TELECOM_LTE_CARD
-            || cardType === sim.CardType.DUAL_MODE_UG_CARD || cardType === sim.CardType.SINGLE_MODE_ISIM_CARD);
+          const cardValue: number[] = [
+          sim.CardType.UNKNOWN_CARD,
+          sim.CardType.SINGLE_MODE_SIM_CARD,
+          sim.CardType.SINGLE_MODE_USIM_CARD,
+          sim.CardType.SINGLE_MODE_RUIM_CARD,
+          sim.CardType.DUAL_MODE_CG_CARD,
+          sim.CardType.CT_NATIONAL_ROAMING_CARD,
+          sim.CardType.CU_DUAL_MODE_CARD,
+          sim.CardType.DUAL_MODE_TELECOM_LTE_CARD,
+          sim.CardType.DUAL_MODE_UG_CARD,
+          sim.CardType.SINGLE_MODE_ISIM_CARD
+          ]
+          ExpectTrue(cardValue.includes(cardType));
           console.info(`${caseName} the card type is:` + cardType);
           done();
         } else {
@@ -2362,8 +2458,13 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has  card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimAccountInfo(0, (err: BusinessError, data: sim.IccAccountInfo) => {
-            if (data.simId > 0 && data.slotIndex >= 0 && data.isEsim !== undefined && data.isActive !== undefined && data.iccId.length > 0 && data.showName !== undefined && data.showNumber.length !== undefined) {
-              console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+            if (data.simId > 0 &&
+              data.slotIndex >= 0 &&
+              data.isEsim !== undefined &&
+              data.isActive !== undefined &&
+              data.iccId.length > 0 &&
+              data.showName !== undefined &&
+              data.showNumber.length !== undefined) {
               console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -2397,7 +2498,13 @@ export default function Sim2Public() {
         if (data === true) {
           console.info(`${caseName} success has  card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimAccountInfo(1, (err: BusinessError, data: sim.IccAccountInfo) => {
-            if (data.simId > 0 && data.slotIndex >= 0 && data.isEsim !== undefined && data.isActive !== undefined && data.iccId.length > 0 && data.showName !== undefined && data.showNumber.length > 0) {
+            if (data.simId > 0 &&
+              data.slotIndex >= 0 &&
+              data.isEsim !== undefined &&
+              data.isActive !== undefined &&
+              data.iccId.length > 0 &&
+              data.showName !== undefined &&
+              data.showNumber.length > 0) {
               console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -2513,7 +2620,13 @@ export default function Sim2Public() {
           console.info(`${caseName} success has card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
             console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            if (data.simId > 0 && data.slotIndex >= 0 && data.isEsim !== undefined && data.isActive !== undefined && data.iccId.length > 0 && data.showName !== undefined && data.showNumber.length !== undefined) {
+            if (data.simId > 0 &&
+              data.slotIndex >= 0 &&
+              data.isEsim !== undefined &&
+              data.isActive !== undefined &&
+              data.iccId.length > 0 &&
+              data.showName !== undefined &&
+              data.showNumber.length !== undefined) {
               console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -2553,7 +2666,13 @@ export default function Sim2Public() {
           console.info(`${caseName} success has card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           sim.getSimAccountInfo(1).then((data: sim.IccAccountInfo) => {
             console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            if (data.simId > 0 && data.slotIndex >= 0 && data.isEsim !== undefined && data.isActive !== undefined && data.iccId.length > 0 && data.showName !== undefined && data.showNumber.length > 0) {
+            if (data.simId > 0 &&
+              data.slotIndex >= 0 &&
+              data.isEsim !== undefined &&
+              data.isActive !== undefined &&
+              data.iccId.length > 0 &&
+              data.showName !== undefined &&
+              data.showNumber.length > 0) {
               console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
@@ -2853,8 +2972,8 @@ export default function Sim2Public() {
         }
       });
     });
-		
-		/**
+
+    /**
      * @tc.number : SUB_Telephony_Sim_IsSimActive_0100
      * @tc.name   : testTelephonySimIsSimActive0100
      * @tc.desc   : SIMCard required Obtain whether the specified SIM card slot is activated. Use callback for asynchronous callback.
