@@ -51,7 +51,7 @@ struct openCustomDialog1 {
             promptAction.openCustomDialog({
               isModal: true,
               builder: customDialogBuilder1.bind(this),
-              onWillDismiss:(dismissDialog: DismissDialog)=> {
+              onWillDismiss:(dismissDialog: DismissDialogAction)=> {
                 console.info("reason=" + JSON.stringify(dismissDialog.reason))
                 this.text = "reason=" + JSON.stringify(dismissDialog.reason)
                 console.log("dialog onWillDismiss")

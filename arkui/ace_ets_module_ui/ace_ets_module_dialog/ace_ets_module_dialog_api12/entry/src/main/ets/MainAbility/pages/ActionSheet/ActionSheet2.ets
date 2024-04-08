@@ -45,7 +45,7 @@ struct ActionSheet2Example {
             cancel: () => {
               console.log('actionSheet canceled')
             },
-            onWillDismiss:(dismissDialog: DismissDialog)=> {
+            onWillDismiss:(dismissDialog: DismissDialogAction)=> {
               console.info("reason=" + JSON.stringify(dismissDialog.reason))
               this.text = "reason=" + JSON.stringify(dismissDialog.reason)
               console.log("dialog onWillDismiss")

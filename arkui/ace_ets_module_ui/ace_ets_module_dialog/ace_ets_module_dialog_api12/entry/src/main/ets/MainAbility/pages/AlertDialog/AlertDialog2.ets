@@ -50,7 +50,7 @@ struct AlertDialog2Example {
               cancel: () => {
                 console.info('Closed callbacks')
               },
-              onWillDismiss:(dismissDialog: DismissDialog)=> {
+              onWillDismiss:(dismissDialog: DismissDialogAction)=> {
                 console.info("reason=" + JSON.stringify(dismissDialog.reason))
                 this.text = "reason=" + JSON.stringify(dismissDialog.reason)
                 console.log("dialog onWillDismiss")
