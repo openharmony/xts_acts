@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import ImageReceiverNDKTest from './receiverNDK.test.ets';
+import ImageReceiverTest from './receiver.test.ets';
 export default function testsuite() {
     ImageReceiverNDKTest()
+    ImageReceiverTest()
 }

@@ -14,6 +14,9 @@
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
 import("//foundation/arkui/napi/napi.gni")
+import("//foundation/multimedia/image_framework/ide/image_decode_config.gni")
+
+drivers_path = "//drivers"
 
 config("config") {
   visibility = [ ":*" ]
@@ -37,6 +40,37 @@ ohos_shared_library("ImageReceiverNDKTest") {
     "hilog:libhilog",
     "image_framework:image_ndk",
     "image_framework:image_receiver_ndk",
+    "napi:ace_napi",
+  ]
+
+  output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "image_framework"
+}
+
+ohos_shared_library("ImageReceiverTest") {
+  sources = [ "./napi/image_receiver_test.cpp" ]
+
+  include_dirs = [
+    "../cpp",
+    "$image_subsystem/frameworks/innerkitsimpl/utils/include",
+    "$image_subsystem/interfaces/innerkits/include",
+    "$image_subsystem/interfaces/kits/native/include",
+    "$graphic_subsystem/rosen/modules/2d_graphics/include/effect",
+    "$graphic_subsystem/rosen/modules/2d_graphics/src",
+    "$graphic_subsystem/rosen/modules/2d_graphics/include",
+    "$drivers_path/peripheral/display/interfaces/include",
+  ]
+  configs = [ ":config" ]
+
+  deps = [
+    "$image_subsystem/frameworks/kits/native/common/ndk:image_receiver",
+    "$image_subsystem/frameworks/kits/native/common/ndk:ohimage",
+  ]
+
+  external_deps = [
+    "graphic_surface:surface",
+    "hilog:libhilog",
     "napi:ace_napi",
   ]
 
