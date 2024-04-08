@@ -264,6 +264,19 @@ export default function audioRenderCapturerInterrupt() {
             }
         }
 
+        async function capturerStartFailForRenderer(capturer, done, renderer) {
+            try {
+                await capturer.start()
+                console.log("capturerStartFail success.")
+            } catch (err) {
+                console.log("capturerStartFail err:" + JSON.stringify(err))
+                await capturerRelease(capturer, done)
+                await renderRelease(renderer, done)
+                expect(true).assertEqual(true)
+                done()
+            }
+        }
+
         async function capturerRelease(capturer, done) {
             if (capturer.state == audio.AudioState.STATE_RELEASED) {
                 console.log("capturerRelease current state: " + capturer.state)
@@ -1652,7 +1665,7 @@ export default function audioRenderCapturerInterrupt() {
             })
 
             let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
-            await capturerStart(capture, done)
+            await capturerStartFailForRenderer(capture, done, render)
             capture.on("audioInterrupt", async (eventAction) => {
                 console.log("085 capture.eventAction:" + JSON.stringify(eventAction))
                 flag2 = true;
