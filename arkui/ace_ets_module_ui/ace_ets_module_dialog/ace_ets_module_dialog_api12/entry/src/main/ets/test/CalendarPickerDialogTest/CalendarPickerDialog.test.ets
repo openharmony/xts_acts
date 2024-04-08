@@ -62,7 +62,7 @@ export default function CalendarPickerDialog() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(point.x, point.y - 100)
       await CommonFunc.sleep(2000);
       let text = getInspectorByKey('AppearText');
       expect(JSON.parse(text).$attrs.content).assertEqual('onWillAppear_onDidAppear_onWillDisappear_onDidDisappear');
