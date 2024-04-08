@@ -719,7 +719,7 @@ static napi_value Asset_UpdateError(napi_env env, napi_callback_info info)
 
     napi_get_value_string_utf8(env, args[1], secretBuffer, bufferSize, &copied);
 
-    Asset_Blob alias = {(uint32_t)(strlen(aliasBuffer)), (uint8_t *)aliasBuffer};
+    Asset_Blob alias = {static_cast<uint32_t>(strlen(aliasBuffer)), reinterpret_cast<uint8_t *>(aliasBuffer)};
 
     int32_t result;
 
