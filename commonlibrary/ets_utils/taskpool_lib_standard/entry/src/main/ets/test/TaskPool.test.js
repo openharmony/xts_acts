@@ -3047,4 +3047,34 @@ describe('ActsAbilityTest', function () {
         done();
     })
 })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0115
+     * @tc.name      : TaskPoolTestClass115
+     * @tc.desc      : Supports judging whether it is concurrent function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass0115', 0,  async function (done) {
+        function test1() {
+            "use concurrent"
+        }
+        function test2() {}
+        async function test3() {
+            "use concurrent"
+        }
+        async function test4() {}
+        let res = taskpool.isConcurrent(test1)
+        expect(res).assertEqual(true);
+        res = taskpool.isConcurrent(test2)
+        expect(res).assertEqual(false)
+        res = taskpool.isConcurrent(test3)
+        expect(res).assertEqual(true)
+        res = taskpool.isConcurrent(test4)
+        expect(res).assertEqual(false)
+        res = taskpool.isConcurrent(() => {})
+        expect(res).assertEqual(false)
+        done();
+    })
 }
