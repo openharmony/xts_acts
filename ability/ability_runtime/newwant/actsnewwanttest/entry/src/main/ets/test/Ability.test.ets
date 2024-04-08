@@ -16,6 +16,9 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import {Driver, ON} from '@ohos.UiTest';
+
+let driver = Driver.create();
 
 let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
@@ -38,7 +41,9 @@ let flagNewWant = false;
 
 export default function abilityTest() {
   describe('ActsNewWantTest', function () {
-
+    beforeEach(async (done) => {
+      setTimeout(() => { done(); }, 3000)
+    })
     let TAG1 = 'ACTS_NewWant_Test : '
     let id = undefined;
     beforeAll(async (done) => {
@@ -83,13 +88,21 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility"
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0100 - startAbility start standard: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
      
       function SubscribeCallBack(err, data) {
@@ -153,13 +166,21 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility"
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0200 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -222,7 +243,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
         action: "startStandard0300"
@@ -230,6 +251,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0300 - startAbility start standard: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -292,7 +321,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSingleton0400"
@@ -300,6 +329,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0400 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -364,7 +401,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapb.MainAbility",
         action: "startHapB"
@@ -372,6 +409,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0500 - startAbility start HapB: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -436,7 +481,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthapa",
         abilityName: "com.example.newwanthapc.MainAbility",
         action: "startHapC"
@@ -444,6 +489,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0600 - startAbility start HapC: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -508,7 +561,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSecondAbility0700"
@@ -516,6 +569,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0700 - startAbility start SecondAbility: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
       function SubscribeCallBack(err, data) {
 
@@ -579,7 +640,7 @@ export default function abilityTest() {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      globalThis.abilityContext.startAbility({
+      await globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
         action: "startMainAbility0800"
@@ -587,6 +648,14 @@ export default function abilityTest() {
         console.log('ACTS_NewWant_Test_0800 - startAbility start SecondAbility: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
+      await driver.delayMs(2000);
+      let allowed = await driver.findComponent(ON.text("打开"));
+      if (allowed) {
+        console.log("find button");
+        let point = await allowed.getBoundsCenter();
+        console.log('point.x : ' + point.x +'point.y : '+ point.y);
+        await driver.click(point.x, point.y);
+      }
 
 
       function SubscribeCallBack(err, data) {
