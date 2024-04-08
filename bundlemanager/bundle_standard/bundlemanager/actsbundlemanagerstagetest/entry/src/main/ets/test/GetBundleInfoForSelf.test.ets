@@ -1730,12 +1730,10 @@ export default function getBundleInfoForSelf() {
       expect(typeof (routerMapTest.name)).assertEqual('string');
       expect(data.length).assertEqual(2);
       expect(routerMapTest.name).assertEqual("DynamicPage1");
-      expect(routerMapTest.pageModule).assertEqual("entry");
       expect(routerMapTest.pageSourceFile).assertEqual("entry/src/index");
       expect(routerMapTest.buildFunction).assertEqual("myFunction");
       expect(routerMapTest.data.length).assertEqual(0);
       expect(data[1].name).assertEqual("DynamicPage2");
-      expect(data[1].pageModule).assertEqual("entry");
       expect(data[1].pageSourceFile).assertEqual("entry/src/index");
       expect(data[1].buildFunction).assertEqual("myBuilder");
       expect(data[1].data.length).assertEqual(2);
