@@ -34,7 +34,7 @@ describe('permission_Ndk_test',async function(){
       let filepath = getContext().filesDir + '/test1.txt';
       fs.openSync(filepath,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_PersistPermission_001();
+      let ret = fileshare.FileShare_001();
       console.info("FileShare_PersistPermission_001 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
@@ -62,7 +62,7 @@ describe('permission_Ndk_test',async function(){
       let filepath1 = getContext().filesDir + '/test201.txt';
       fs.openSync(filepath1,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_PersistPermission_002();
+      let ret = fileshare.FileShare_002();
       console.info("FileShare_PersistPermission_002 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
@@ -87,7 +87,7 @@ describe('permission_Ndk_test',async function(){
       let filepath = getContext().filesDir + '/test3.txt';
       fs.openSync(filepath,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_ActivatePermission_001();
+      let ret = fileshare.FileShare_003();
       console.info("FileShare_ActivatePermission_001 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
@@ -112,7 +112,7 @@ describe('permission_Ndk_test',async function(){
       let filepath = getContext().filesDir + '/test4.txt';
       fs.openSync(filepath,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_DeactivatePermission_001();
+      let ret = fileshare.FileShare_004();
       console.info("FileShare_DeactivatePermission_001 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
@@ -137,7 +137,7 @@ describe('permission_Ndk_test',async function(){
       let filepath = getContext().filesDir + '/test5.txt';
       fs.openSync(filepath,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_RevokePermission_001();
+      let ret = fileshare.FileShare_005();
       console.info("FileShare_RevokePermission_001 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
@@ -162,7 +162,7 @@ describe('permission_Ndk_test',async function(){
       let filepath = getContext().filesDir + '/test6.txt';
       fs.openSync(filepath,0o102);
       new fileuri.FileUri(filepath);
-      let ret = fileshare.FileShare_CheckPersistentPermission_001();
+      let ret = fileshare.FileShare_006();
       console.info("FileShare_CheckPersistentPermission_001 Test NAPI ret= " + JSON.stringify(ret));
       if (ret == 801) {
          expect(true).assertTrue();
