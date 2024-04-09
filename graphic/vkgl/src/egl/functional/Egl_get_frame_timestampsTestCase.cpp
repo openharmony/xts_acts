@@ -24,63 +24,64 @@ using namespace testing::ext;
 using namespace OHOS;
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003634, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgb565_no_depth_no_stencil");
+    ,"estamps.rgb565_no_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003635, "dEQP-EGL.functional.get_frame_ti"
-    "mestamps.rgb565_no_depth_stencil");
+    ,"mestamps.rgb565_no_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003636, "dEQP-EGL.functional.get_frame_ti"
-    "mestamps.rgb565_depth_no_stencil");
+    ,"mestamps.rgb565_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003637, "dEQP-EGL.functional.get_frame_"
-    "timestamps.rgb565_depth_stencil");
+    ,"timestamps.rgb565_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003638, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgb888_no_depth_no_stencil");
+    ,"estamps.rgb888_no_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003639, "dEQP-EGL.functional.get_frame_ti"
-    "mestamps.rgb888_no_depth_stencil");
+    ,"mestamps.rgb888_no_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003640, "dEQP-EGL.functional.get_frame_ti"
-    "mestamps.rgb888_depth_no_stencil");
+    ,"mestamps.rgb888_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003641, "dEQP-EGL.functional.get_frame_"
-    "timestamps.rgb888_depth_stencil");
+    ,"timestamps.rgb888_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003642, "dEQP-EGL.functional.get_frame_time"
-    "stamps.rgba4444_no_depth_no_stencil");
+    ,"stamps.rgba4444_no_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003643, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba4444_no_depth_stencil");
+    ,"estamps.rgba4444_no_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003644, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba4444_depth_no_stencil");
+    ,"estamps.rgba4444_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003645, "dEQP-EGL.functional.get_frame_t"
-    "imestamps.rgba4444_depth_stencil");
+    ,"imestamps.rgba4444_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003646, "dEQP-EGL.functional.get_frame_time"
-    "stamps.rgba5551_no_depth_no_stencil");
+    ,"stamps.rgba5551_no_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003647, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba5551_no_depth_stencil");
+    ,"estamps.rgba5551_no_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003648, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba5551_depth_no_stencil");
+    ,"estamps.rgba5551_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003649, "dEQP-EGL.functional.get_frame_t"
-    "imestamps.rgba5551_depth_stencil");
+    ,"imestamps.rgba5551_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003650, "dEQP-EGL.functional.get_frame_time"
-    "stamps.rgba8888_no_depth_no_stencil");
+    ,"stamps.rgba8888_no_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003651, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba8888_no_depth_stencil");
+    ,"estamps.rgba8888_no_depth_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003652, "dEQP-EGL.functional.get_frame_tim"
-    "estamps.rgba8888_depth_no_stencil");
+    ,"estamps.rgba8888_depth_no_stencil");
 
 static SHRINK_HWTEST_F(ActsEgl0001TS, TC003653, "dEQP-EGL.functional.get_frame_t"
-    "imestamps.rgba8888_depth_stencil");
+    ,"imestamps.rgba8888_depth_stencil");
 
-static SHRINK_HWTEST_F(ActsEgl0001TS, TC003654, "dEQP-EGL.functional.get_frame_timestamps.other");
+static SHRINK_HWTEST_F(ActsEgl0001TS, TC003654, "dEQP-EGL.functional.get_frame_time"
+    ,"stamps.other");
