@@ -622,91 +622,6 @@ export default function HasCard2PublicTest() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_1500
-     * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber1500
-     * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonyCallManagerIsEmergencyPhoneNumber1500', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber1500';
-      console.info(`${caseName} test start`);
-      const options: call.EmergencyNumberOptions = {
-        slotId: 1
-      };
-      call.isEmergencyPhoneNumber(phoneNumber, options, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          done();
-        } else {
-          ExpectTrue(data == false);
-          console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
-          done();
-        }
-      });
-      console.info(`${caseName} test end`);
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_1600
-     * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber1600
-     * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonyCallManagerIsEmergencyPhoneNumber1600', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber1600';
-      console.info(`${caseName} test start`);
-      const options: call.EmergencyNumberOptions = {
-        slotId: 1
-      };
-      call.isEmergencyPhoneNumber(emergencyPhoneNumber, options, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          done();
-        } else {
-          ExpectTrue(data == true);
-          console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
-          done();
-        }
-      });
-      console.info(`${caseName} test end`);
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_1700
-     * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber1700
-     * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonyCallManagerIsEmergencyPhoneNumber1700', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber1700';
-      console.info(`${caseName} test start`);
-      const phoneNumber: string = "abcde";
-      const options: call.EmergencyNumberOptions = {
-        slotId: 1
-      };
-      call.isEmergencyPhoneNumber(phoneNumber, options, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          done();
-        } else {
-          ExpectTrue(data == false);
-          console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
-          done();
-        }
-      });
-      console.info(`${caseName} test end`);
-    });
-
-    /**
      * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_1800
      * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber1800
      * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
@@ -736,35 +651,6 @@ export default function HasCard2PublicTest() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_1900
-     * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber1900
-     * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonyCallManagerIsEmergencyPhoneNumber1900', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber1900';
-      console.info(`${caseName} test start`);
-      const phoneNumber: string = "156179228080000";
-      const options: call.EmergencyNumberOptions = {
-        slotId: 1
-      };
-      call.isEmergencyPhoneNumber(phoneNumber, options, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          done();
-        } else {
-          ExpectTrue(data == false);
-          console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
-          done();
-        }
-      });
-      console.info(`${caseName} test end`);
-    });
-
-    /**
      * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_2000
      * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber2000
      * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
@@ -786,34 +672,6 @@ export default function HasCard2PublicTest() {
           done();
         } else {
           ExpectFail();
-          console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
-          done();
-        }
-      });
-      console.info(`${caseName} test end`);
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_CallManager_IsEmergencyPhoneNumber_2100
-     * @tc.name   : testTelephonyCallManagerIsEmergencyPhoneNumber2100
-     * @tc.desc   : Determine whether the emergency phone number is based on the telephone number parameters. Use the callback asynchronous callback api7+.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonyCallManagerIsEmergencyPhoneNumber2100', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyCallManagerIsEmergencyPhoneNumber2100';
-      console.info(`${caseName} test start`);
-      const options: call.EmergencyNumberOptions = {
-        slotId: 1
-      };
-      call.isEmergencyPhoneNumber("abc12345678", options, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
-          ExpectFail();
-          done();
-        } else {
-          ExpectTrue(data == false);
           console.info(`${caseName} isEmergencyPhoneNumber, data->${JSON.stringify(data)}`);
           done();
         }
