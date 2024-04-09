@@ -39,3 +39,4 @@ ohos_resources("simtest_demo_ets_test_resources") {
   deps = [ ":simtest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
+

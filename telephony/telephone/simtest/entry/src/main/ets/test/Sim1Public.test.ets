@@ -78,72 +78,6 @@ export default function Sim1Public() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetOpKey_0100
-     * @tc.name   : testTelephonySimGetOpKey0100
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use callback for asynchronous callback. Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpKey0100', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpKey0100';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 0`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.getOpKey(0, (err: BusinessError, data: string) => {
-        if (!err && data.length > 0) {
-          console.info(`${caseName} successfully, data: ${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetOpKey_0200
-     * @tc.name   : testTelephonySimGetOpKey0200
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use callback for asynchronous callback. Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpKey0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpKey0200';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.getOpKey(1, (err: BusinessError, data: string) => {
-        if (!err) {
-          console.info(`${caseName} successfully, data: ${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetOpKey_0300
      * @tc.name   : testTelephonySimGetOpKey0300
      * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use Promise asynchronous callbacks. Need to insert  SIM card
@@ -161,36 +95,6 @@ export default function Sim1Public() {
         done();
       }
       sim.getOpKey(0).then((data: string) => {
-        console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      }).catch((err: BusinessError) => {
-        console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetOpKey_0400
-     * @tc.name   : testTelephonySimGetOpKey0400
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use Promise asynchronous callbacks. Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it('testTelephonySimGetOpKey0400', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpKey0400';
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.getOpKey(1).then((data: string) => {
         console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
         ExpectTrue(true);
         console.info(`${caseName} test end`);
@@ -374,70 +278,6 @@ export default function Sim1Public() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetOpKeySync_0100
-     * @tc.name   : testTelephonySimGetOpKeySync0100
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpKeySync0100', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpKeySync0100';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 0`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      let data: string = sim.getOpKeySync(0);
-      if (data.length > 0) {
-        console.info(`${caseName} success  ${data}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      } else {
-        console.info(`${caseName} err: Return an empty string`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetOpKeySync_0200
-     * @tc.name   : testTelephonySimGetOpKeySync0200
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpKeySync0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpKeySync0200';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      let data: string = sim.getOpKeySync(1);
-      if (data.length > 0) {
-        console.info(`${caseName} success  ${data}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      } else {
-        console.info(`${caseName} err: Return an empty string`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetOpKeySync_0300
      * @tc.name   : testTelephonySimGetOpKeySync0300
      * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
@@ -503,39 +343,6 @@ export default function Sim1Public() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetOpName_0200
-     * @tc.name   : testTelephonySimGetOpName0200
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use callback for asynchronous callback. Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpName0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpName0200';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.getOpName(1, (err: BusinessError, data: string) => {
-        if (!err) {
-          console.info(`${caseName} successfully, data: ${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} failed, err: ${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetOpName_0300
      * @tc.name   : testTelephonySimGetOpName0300
      * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use Promise asynchronous callbacks. Need to insert  SIM card
@@ -553,36 +360,6 @@ export default function Sim1Public() {
         done();
       }
       sim.getOpName(0).then((data: string) => {
-        console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      }).catch((err: BusinessError) => {
-        console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetOpName_0400
-     * @tc.name   : testTelephonySimGetOpName0400
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot. Use Promise asynchronous callbacks. Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it('testTelephonySimGetOpName0400', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpName0400';
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.getOpName(1).then((data: string) => {
         console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
         ExpectTrue(true);
         console.info(`${caseName} test end`);
@@ -728,70 +505,6 @@ export default function Sim1Public() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetOpNameSync_0100
-     * @tc.name   : testTelephonySimGetOpNameSync0100
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpNameSync0100', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpNameSync0100';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(0);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 0`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      let data: string = sim.getOpNameSync(0);
-      if (data.length > 0) {
-        console.info(`${caseName} success  ${data}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      } else {
-        console.info(`${caseName} err: Return an empty string`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetOpNameSync_0200
-     * @tc.name   : testTelephonySimGetOpNameSync0200
-     * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetOpNameSync0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetOpNameSync0200';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      let data: string = sim.getOpNameSync(1);
-      if (data.length > 0) {
-        console.info(`${caseName} success  ${data}`);
-        ExpectTrue(true);
-        console.info(`${caseName} test end`);
-        done();
-      } else {
-        console.info(`${caseName} err: Return an empty string`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetOpNameSync_0300
      * @tc.name   : testTelephonySimGetOpNameSync0300
      * @tc.desc   : Obtain the opkey of the SIM card in the specified slot.Need to insert  SIM card
@@ -874,48 +587,6 @@ export default function Sim1Public() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetDefaultVoiceSimId_0200
-     * @tc.name   : testTelephonySimGetDefaultVoiceSimId0200
-     * @tc.desc   : Obtain the SIM card ID of the default voice service. Use callback asynchronous callbacks.Need to insert SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetDefaultVoiceSimId0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetDefaultVoiceSimId0200';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.setDefaultVoiceSlotId(1, (err: BusinessError) => {
-        if (!err) {
-          sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
-            if (!err && data > 0) {
-              console.info(`${caseName} case success,data: ${data}}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} error, case failed,errCode:${err.code}}`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName} failed, Set the card slot ID of the default voice service`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetDefaultVoiceSimId_0300
      * @tc.name   : testTelephonySimGetDefaultVoiceSimId0300
      * @tc.desc   : Obtain the SIM card ID of the default voice service. Use Promise for asynchronous callback. Need to insert SIM card
@@ -955,53 +626,6 @@ export default function Sim1Public() {
           });
         } else {
           console.info(`${caseName} failed, Set the card slot ID of the default voice service`);
-          ExpectFail();
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetDefaultVoiceSimId_0400
-     * @tc.name   : testTelephonySimGetDefaultVoiceSimId0400
-     * @tc.desc   : Obtain the SIM card ID of the default voice service. Use Promise asynchronous callbacks.Need to insert SIM card
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it('testTelephonySimGetDefaultVoiceSimId0400', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetDefaultVoiceSimId0400';
-      console.info(`${caseName} test start`);
-      let hasSimCard: Boolean = await sim.hasSimCardSync(1);
-      if (!hasSimCard) {
-        console.info(`${caseName} failed, No SIM exists in slot 1`);
-        ExpectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-      sim.setDefaultVoiceSlotId(1, (err: BusinessError) => {
-        if (!err) {
-          sim.getDefaultVoiceSimId().then((data: number) => {
-            if (data > 0) {
-              console.info(`${caseName} case success,data:${data}}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end`);
-              done();
-            } else {
-              console.info(`${caseName} error, Not expected`);
-              ExpectFail();
-              console.info(`${caseName} test end`);
-              done();
-            }
-          }).catch((err: BusinessError) => {
-            console.info(`${caseName} error, case failed,errCode: ${err.code}`);
-            ExpectFail();
-            console.info(`${caseName} test end`);
-            done();
-          });
-        } else {
-          console.info(`${caseName} failed, errCode: ${err.code}`);
           ExpectFail();
           console.info(`${caseName} test end`);
           done();
