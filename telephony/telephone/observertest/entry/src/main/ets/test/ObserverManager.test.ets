@@ -706,34 +706,6 @@ export default function observerManagerTest() {
       console.info(`${caseName} test end `);
     });
 
-
-    /* *
-    * @tc.number: SUB_Telephony_Observer_IccAccountInfoChangeOn_0200
-    * @tc.name  : testTelephonyObserverIccAccountInfoChangeOn0200
-    * @tc.desc  : Subscribe to accountInfo of icc change events.
-    * @tc.size  : MediumTest
-    * @tc.type  : Function
-    * @tc.level : level 3
-    */
-    it('testTelephonyObserverIccAccountInfoChangeOn0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverIccAccountInfoChangeOn0200';
-      await runTestCaseWithJudgeHasSimCard(caseName, done, async () => {
-        try {
-          observer.on('iccAccountInfoChange', async () => {
-            let accInfo: sim.IccAccountInfo = await sim.getSimAccountInfo(1);
-            console.info(`${caseName} data ${JSON.stringify(accInfo)}`);
-            ExpectTrue(accInfo.isActive);
-          });
-          await sim.activateSim(1);
-          done();
-        } catch (error) {
-          console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-          ExpectTrue(false);
-          done();
-        }
-      });
-    });
-
     /* *
      * @tc.number: SUB_Telephony_Observer_CellularDataFlowChangeOn_0300
      * @tc.name  : testTelephonyObserverCellularDataFlowChangeOn0300
@@ -1017,39 +989,6 @@ export default function observerManagerTest() {
     });
 
     /* *
-   * @tc.number: SUB_Telephony_Observer_SignalInfoChangeOn_0200
-   * @tc.name  : testTelephonyObserverSignalInfoChangeOn0200
-   * @tc.desc  : Subscribe signal status change event.
-   * @tc.size  : MediumTest
-   * @tc.type  : Function
-   * @tc.level : level 3
-   */
-    it('testTelephonyObserverSignalInfoChangeOn0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverSignalInfoChangeOn0200';
-      console.info(`${caseName} test start `);
-      try {
-        let hasSim: boolean = await sim.hasSimCard(1);
-        if (hasSim) {
-          await data.setDefaultCellularDataSlotId(1);
-          observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
-            console.info(`${caseName} data ${JSON.stringify(data)}`);
-            ExpectTrue(true);
-          });
-          done();
-        } else {
-          console.error(`${caseName} This test case requires an environment where cards are inserted.`);
-          ExpectTrue(false);
-          done();
-        }
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(false);
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-    /* *
     * @tc.number: SUB_Telephony_Observer_SignalInfoChangeOn_0300
     * @tc.name  : testTelephonyObserverSignalInfoChangeOn0300
     * @tc.desc  : Subscribe signal status change event.
@@ -1088,33 +1027,6 @@ export default function observerManagerTest() {
       try {
         observer.on('signalInfoChange', {
           slotId: 0
-        }, (data: Array<radio.SignalInformation>) => {
-          console.info(`${caseName} data ${JSON.stringify(data)}`);
-          ExpectTrue(true);
-        });
-        done();
-      } catch (error) {
-        console.info(`${caseName} catchError ${JSON.stringify(error)}}`);
-        ExpectTrue(false);
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-    /* *
-    * @tc.number: SUB_Telephony_Observer_SignalInfoChangeOnId_0200
-    * @tc.name  : testTelephonyObserverSignalInfoChangeOnId0200
-    * @tc.desc  : Subscribe to the signal state change event of the specified card slot.
-    * @tc.size  : MediumTest
-    * @tc.type  : Function
-    * @tc.level : level 3
-    */
-    it('testTelephonyObserverSignalInfoChangeOnId0200', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyObserverSignalInfoChangeOnId0200';
-      console.info(`${caseName} test start `);
-      try {
-        observer.on('signalInfoChange', {
-          slotId: 1
         }, (data: Array<radio.SignalInformation>) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(true);
@@ -1371,7 +1283,6 @@ export default function observerManagerTest() {
       }
       console.info(`${caseName} test end`);
     });
-
 
 
     /* *

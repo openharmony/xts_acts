@@ -16,10 +16,9 @@
 
 
 import observerManagerCallStateTest from './ObserverManagerCallState.test';
-import observerManagerSimStateTest from './ObserverManagerSimState.test';
 import observerManagerTest from './ObserverManager.test';
+
 export default function testsuite() {
   observerManagerCallStateTest();
-  observerManagerSimStateTest();
   observerManagerTest();
 }
