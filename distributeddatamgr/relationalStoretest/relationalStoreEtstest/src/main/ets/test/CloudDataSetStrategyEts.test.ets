@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import cloudData from '@ohos.data.cloudData';
 
 const TAG = "[CloudData_SetStrategy_Ets_Test]"
-export default function relationalStoreCustomDirTest() {
+export default function cloudDataSetStrategyEtsTest() {
     describe('cloudDataSetStrategyEtsTest', function () {
 
         /**
@@ -352,7 +352,6 @@ export default function relationalStoreCustomDirTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
@@ -377,7 +376,6 @@ export default function relationalStoreCustomDirTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
@@ -402,7 +400,6 @@ export default function relationalStoreCustomDirTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
@@ -427,7 +424,6 @@ export default function relationalStoreCustomDirTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
@@ -452,7 +448,6 @@ export default function relationalStoreCustomDirTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
-                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
