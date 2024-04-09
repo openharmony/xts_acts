@@ -49,7 +49,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketConstructUDPSocketInstance0100';
       console.info(`${caseName} test start`);
       try {
@@ -74,7 +74,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0100', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0100';
       console.info(`${caseName} test start`);
       try {
@@ -105,7 +105,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0200', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0200';
       console.info(`${caseName} test start`);
       try {
@@ -141,7 +141,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0300', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0300';
       console.info(`${caseName} test start`);
       try {
@@ -175,7 +175,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0400', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0400';
       console.info(`${caseName} test start`);
       try {
@@ -211,7 +211,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0500', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0500';
       console.info(`${caseName} test start`);
       try {
@@ -247,7 +247,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0600', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0600';
       console.info(`${caseName} test start`);
       try {
@@ -283,7 +283,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0700', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0700';
       console.info(`${caseName} test start`);
       try {
@@ -319,7 +319,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind0900', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind0900', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind0900';
       console.info(`${caseName} test start`);
       try {
@@ -350,7 +350,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1000', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1000', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1000';
       console.info(`${caseName} test start`);
       try {
@@ -381,7 +381,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1100', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1100';
       console.info(`${caseName} test start`);
       try {
@@ -411,7 +411,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1200', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1200';
       console.info(`${caseName} test start`);
       try {
@@ -447,7 +447,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1300', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1300';
       console.info(`${caseName} test start`);
       try {
@@ -481,7 +481,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1400', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1400';
       console.info(`${caseName} test start`);
       try {
@@ -517,7 +517,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1500', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1500';
       console.info(`${caseName} test start`);
       try {
@@ -553,7 +553,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1600', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1600';
       console.info(`${caseName} test start`);
       try {
@@ -589,7 +589,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1700', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1700';
       console.info(`${caseName} test start`);
       try {
@@ -625,7 +625,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1800', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1800', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1800';
       console.info(`${caseName} test start`);
       try {
@@ -661,7 +661,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind1900', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind1900', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind1900';
       console.info(`${caseName} test start`);
       try {
@@ -692,7 +692,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 2
      */
-    it('testNetworkMgrSocketUDPSocketBind2000', 2, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketBind2000', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketBind2000';
       console.info(`${caseName} test start`);
       try {
@@ -723,7 +723,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0100';
       console.info(`${caseName} test start`);
       try {
@@ -759,7 +759,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0200';
       console.info(`${caseName} test start`);
       try {
@@ -795,7 +795,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0500', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0500';
       console.info(`${caseName} test start`);
       try {
@@ -835,7 +835,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0700', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0700';
       console.info(`${caseName} test start`);
       try {
@@ -875,7 +875,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0800', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0800', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0800';
       console.info(`${caseName} test start`);
       try {
@@ -915,7 +915,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend0900', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend0900', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend0900';
       console.info(`${caseName} test start`);
       try {
@@ -955,7 +955,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1200';
       console.info(`${caseName} test start`);
       try {
@@ -987,7 +987,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1300';
       console.info(`${caseName} test start`);
       try {
@@ -1019,7 +1019,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1500', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1500';
       console.info(`${caseName} test start`);
       try {
@@ -1055,7 +1055,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1600', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1600';
       console.info(`${caseName} test start`);
       try {
@@ -1091,7 +1091,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1700', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1700';
       console.info(`${caseName} test start`);
       try {
@@ -1127,7 +1127,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1800', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1800', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1800';
       console.info(`${caseName} test start`);
       try {
@@ -1163,7 +1163,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend1900', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend1900', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend1900';
       console.info(`${caseName} test start`);
       try {
@@ -1203,7 +1203,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2100';
       console.info(`${caseName} test start`);
       try {
@@ -1243,7 +1243,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2200';
       console.info(`${caseName} test start`);
       try {
@@ -1283,7 +1283,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2300';
       console.info(`${caseName} test start`);
       try {
@@ -1323,7 +1323,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2500', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2500';
       console.info(`${caseName} test start`);
       try {
@@ -1363,7 +1363,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2600', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2600';
       console.info(`${caseName} test start`);
       try {
@@ -1395,7 +1395,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSend2700', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSend2700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSend2700';
       console.info(`${caseName} test start`);
       try {
@@ -1427,7 +1427,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketClose0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketClose0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketClose0100';
       console.info(`${caseName} test start`);
       try {
@@ -1459,7 +1459,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketClose0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketClose0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketClose0200';
       console.info(`${caseName} test start`);
       try {
@@ -1490,7 +1490,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketClose0300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketClose0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketClose0300';
       console.info(`${caseName} test start`);
       try {
@@ -1522,7 +1522,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketClose0400', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketClose0400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketClose0400';
       console.info(`${caseName} test start`);
       try {
@@ -1553,7 +1553,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0100';
       console.info(`${caseName} test start`);
       try {
@@ -1589,7 +1589,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0200';
       console.info(`${caseName} test start`);
       try {
@@ -1626,7 +1626,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0300';
       console.info(`${caseName} test start`);
       try {
@@ -1661,7 +1661,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0400', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0400';
       console.info(`${caseName} test start`);
       try {
@@ -1697,7 +1697,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0500', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0500';
       console.info(`${caseName} test start`);
       try {
@@ -1734,7 +1734,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketGetState0600', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketGetState0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketGetState0600';
       console.info(`${caseName} test start`);
       try {
@@ -1769,7 +1769,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0100';
       console.info(`${caseName} test start`);
       try {
@@ -1808,7 +1808,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0200';
       console.info(`${caseName} test start`);
       try {
@@ -1843,7 +1843,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0300';
       console.info(`${caseName} test start`);
       try {
@@ -1882,7 +1882,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0400', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0400';
       console.info(`${caseName} test start`);
       try {
@@ -1921,7 +1921,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0500', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0500', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0500';
       console.info(`${caseName} test start`);
       try {
@@ -1960,7 +1960,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0600', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0600', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0600';
       console.info(`${caseName} test start`);
       try {
@@ -1992,7 +1992,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0700', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0700', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0700';
       console.info(`${caseName} test start`);
       try {
@@ -2024,7 +2024,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0800', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0800', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0800';
       console.info(`${caseName} test start`);
       try {
@@ -2062,7 +2062,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions0900', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions0900', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions0900';
       console.info(`${caseName} test start`);
       try {
@@ -2097,7 +2097,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions1000', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1000', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1000';
       console.info(`${caseName} test start`);
       try {
@@ -2136,7 +2136,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions1100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1100';
       console.info(`${caseName} test start`);
       try {
@@ -2175,7 +2175,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions1200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1200';
       console.info(`${caseName} test start`);
       try {
@@ -2214,7 +2214,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions1300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1300';
       console.info(`${caseName} test start`);
       try {
@@ -2246,7 +2246,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketSetExtraOptions1400', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketSetExtraOptions1400', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketSetExtraOptions1400';
       console.info(`${caseName} test start`);
       try {
@@ -2278,7 +2278,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOnMessage0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOnMessage0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOnMessage0100';
       console.info(`${caseName} test start`);
       try {
@@ -2315,7 +2315,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOffMessage0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOffMessage0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0100';
       console.info(`${caseName} test start`);
       try {
@@ -2357,7 +2357,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOffMessage0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOffMessage0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0200';
       console.info(`${caseName} test start`);
       try {
@@ -2408,7 +2408,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOffMessage0300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOffMessage0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOffMessage0300';
       console.info(`${caseName} test start`);
       try {
@@ -2459,7 +2459,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOnClose0100', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOnClose0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOnClose0100';
       console.info(`${caseName} test start`);
       try {
@@ -2489,7 +2489,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOffClose0200', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOffClose0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOffClose0200';
       console.info(`${caseName} test start`);
       try {
@@ -2530,7 +2530,7 @@ export default function UDPSocketTest() {
      * @tc.type  :  Function
      * @tc.level :  Level 3
      */
-    it('testNetworkMgrSocketUDPSocketOffClose0300', 3, async (done: Function) => {
+    it('testNetworkMgrSocketUDPSocketOffClose0300', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketUDPSocketOffClose0300';
       console.info(`${caseName} test start`);
       try {
