@@ -37,6 +37,9 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "OH_Drawing_FontCollectionTest.cpp",
     "OH_Drawing_TypographyTest.cpp",
     "drawing_register_font_test.cpp",
+    "NativeDrawingColorSpaceTest.cpp",
+    "NativeDrawingRectTest.cpp",
+    "NativeDrawingRegionTest.cpp",
   ]
 
   cflags = [
