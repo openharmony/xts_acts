@@ -111,14 +111,14 @@ export default function abilityTest() {
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
     });
     /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_1300
+     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1300
      * @tc.name 申请权限后，增删改查卸载后不删除的数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_1300', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1300', 0, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
@@ -126,14 +126,14 @@ export default function abilityTest() {
         .assertEqual(0);
     });
     /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_1400
+     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1400
      * @tc.name 批量查询卸载后不删除的数据
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_1400', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1400', 0, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
@@ -150,14 +150,14 @@ export default function abilityTest() {
       expect(await aw.assetQueryNum(attr2)).assertEqual(1);
     });
     /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_1500
+     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1500
      * @tc.name 通过更新接口修改卸载后不删除的参数
      * @tc.desc test error cases
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
-    it('Security_DataSecurity_Asset_Remove_Func_1500', 0, async () => {
+    it('SUB_Security_DataSecurity_Asset_Remove_Func_1500', 0, async () => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.IS_PERSISTENT, true);
       await aw.assetAddAll(attr);
