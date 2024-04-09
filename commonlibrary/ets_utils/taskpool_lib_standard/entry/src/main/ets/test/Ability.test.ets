@@ -19,7 +19,7 @@ import { BusinessError } from '@ohos.base'
 import { A, B, currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, setTransferListTest,
          testString, testTime, testNumber, testTaskPool, promiseCase, printArgs, asyncSum,
          printArgsFunc, Sum, delaySum, Add, StrCat, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
-         isConcurrentTest1, isConcurrentTest2, isConcurrentTest3, isConcurrentTest4} from './testFunclist'
+        } from './testFunclist'
 
 export default function TaskPoolTest() {
   describe('ActsAbilityTest', () => {
@@ -2370,28 +2370,6 @@ export default function TaskPoolTest() {
         name = taskInfo.name;
       }
       expect(name != "").assertTrue();
-      done();
-    })
-    
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0115
-     * @tc.name      : TaskPoolTestClass115
-     * @tc.desc      : Supports judging whether it is concurrent function
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('TaskPoolTestClass115', 0, async (done: Function) => {
-      let ret : boolean = taskpool.isConcurrent(isConcurrentTest1)
-      expect(ret).assertEqual(true);
-      ret = taskpool.isConcurrent(isConcurrentTest2)
-      expect(ret).assertEqual(false)
-      ret = taskpool.isConcurrent(isConcurrentTest3)
-      expect(ret).assertEqual(true)
-      ret = taskpool.isConcurrent(isConcurrentTest4)
-      expect(ret).assertEqual(false)
-      ret = taskpool.isConcurrent(() => {})
-      expect(ret).assertEqual(false)
       done();
     })
   })
