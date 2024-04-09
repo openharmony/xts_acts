@@ -16,7 +16,7 @@
   "module": {
     "requestPermissions": [
       {
-        "name": 'ohos.permission.MICROPHONE',
+        "name": "ohos.permission.MICROPHONE"
       }
     ],
     "name": "entry_test",
