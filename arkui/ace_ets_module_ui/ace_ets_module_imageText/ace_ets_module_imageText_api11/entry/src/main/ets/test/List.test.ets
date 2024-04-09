@@ -115,7 +115,10 @@ import TextSelectionMenu from './textTest/TextApi/TextSelectionMenu.test';
 import textInputApi1 from './TextInputTest/textInputApi/textInputApi1.test'
 import textInputApiTest from './TextInputTest/textInputApi/textinputkeyNewLine.test'
 import UIfont from './fontTest/UIfont/UIfont.test';
-import ImageAttr from './imageTest/ImageAttr.test'
+import ImageAttr from './imageTest/ImageAttr.test';
+import TextfieldMultiTest from './textTest/TextfieldMulti.test';
+import TextfieldOtherTest from './textTest/TextfieldOther.test';
+import TextfieldSingleTest from './textTest/TextfieldSingle.test';
 
 
 export default function testsuite() {
@@ -217,4 +220,7 @@ export default function testsuite() {
   drawContextGetSizeTest()
   keyframeTest()
   pixelRoundTest()
+  TextfieldOtherTest()
+  TextfieldSingleTest()
+  TextfieldMultiTest()
 }

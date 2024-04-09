@@ -99,6 +99,9 @@
         "MainAbility/pages/TextInput/textInputApi/input_keytype",
         "MainAbility/pages/font/UIfont/UIfont",
         "MainAbility/pages/font/font",
-        "MainAbility/pages/image/ImageAttr"
+        "MainAbility/pages/image/ImageAttr",
+        "MainAbility/pages/text/TextfieldMulti",
+        "MainAbility/pages/text/TextfieldOther",
+        "MainAbility/pages/text/TextfieldSingle"
     ]
 }
