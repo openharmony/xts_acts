@@ -214,15 +214,3 @@ export function WaitforRunner(finalString: string): string {
   "use concurrent"
   return finalString;
 }
-
-export function isConcurrentTest1() {
-    "use concurrent"
-}
-
-export function isConcurrentTest2() {}
-
-export async function isConcurrentTest3() {
-    "use concurrent"
-}
-
-export async function isConcurrentTest4() {}
