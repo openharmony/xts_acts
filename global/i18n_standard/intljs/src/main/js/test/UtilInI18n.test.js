@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import I18n from '@ohos.i18n'
+import deviceInfo from '@ohos.deviceInfo'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function UtilInI18nTest() {
@@ -87,7 +88,12 @@ describe('UtilInI18nTest', function () {
                                 'en-US',
                                 undefined);
         console.log('i18n_util_test_0200 ' + value);
-        expect(value).assertEqual('236.588 L');
+        let devType = deviceInfo.devicType;
+        if (devType == '2in1'){
+            expect(value).assertEqual('236.588 liters');
+        }else if (devType == 'phone'){
+            expect(value).assertEqual('236.588 L');
+        }
     })
 
     /**
@@ -104,7 +110,12 @@ describe('UtilInI18nTest', function () {
                                 'en-US',
                                 null);
         console.log('i18n_util_test_0300 ' + value);
-        expect(value).assertEqual('236.588 L');
+        let devType = deviceInfo.devicType;
+        if (devType == '2in1'){
+            expect(value).assertEqual('236.588 liters');
+        }else if (devType == 'phone'){
+            expect(value).assertEqual('236.588 L');
+        }
     })
 
     /**
@@ -121,7 +132,12 @@ describe('UtilInI18nTest', function () {
                                 'en-US',
                                 'medium');
         console.log('i18n_util_test_0400 ' + value);
-        expect(value).assertEqual('236.588 L');
+        let devType = deviceInfo.devicType;
+        if (devType == '2in1'){
+            expect(value).assertEqual('236.588 liters');
+        }else if (devType == 'phone'){
+            expect(value).assertEqual('236.588 L');
+        }
     })
 
     /**
@@ -189,7 +205,12 @@ describe('UtilInI18nTest', function () {
                                 'zh-CN',
                                 'medium');
         console.log('i18n_util_test_0800 ' + value);
-        expect(value).assertEqual('36,000秒');
+        let devType = deviceInfo.devicType;
+        if (devType == '2in1'){
+            expect(value).assertEqual('36,000秒钟');
+        }else if (devType == 'phone'){
+            expect(value).assertEqual('36,000秒');
+        }
     })
 
     /**
