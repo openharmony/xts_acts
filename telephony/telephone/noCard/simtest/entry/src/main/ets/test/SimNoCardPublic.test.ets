@@ -74,43 +74,6 @@ export default function SimNoCardPublic() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetISOCountryCodeForSim_0700
-     * @tc.name   : testTelephonySimGetISOCountryCodeForSim0700
-     * @tc.desc   : SIMCard required Obtain the ISO country code for the specified SIM card slot. Using callback for asynchronous callback
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testTelephonySimGetISOCountryCodeForSim0700", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetISOCountryCodeForSim0700';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName}:success have card,data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getISOCountryCodeForSim(1, (err: BusinessError, data: string) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName}: Do not have sim card2. success  data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName}: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName} failed  have card: err->${JSON.stringify(err)}`);
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetISOCountryCodeForSim_1300
      * @tc.name   : testTelephonySimGetISOCountryCodeForSim1300
      * @tc.desc   : SIMCard required Obtain the ISO country code for the specified SIM card slot. Using promise for asynchronous callback
@@ -133,45 +96,6 @@ export default function SimNoCardPublic() {
           }).catch((err: BusinessError) => {
             if (err.code === 8300004) {
               console.info(`${caseName} success Do not have sim card.1, promise: err->${JSON.stringify(err)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName} false , promise: err->${JSON.stringify(err)}`);
-            }
-          });
-        } else {
-          console.info(`${caseName}:failed Do not have card>${JSON.stringify(data)}`);
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetISOCountryCodeForSim_1400
-     * @tc.name   : testTelephonySimGetISOCountryCodeForSim1400
-     * @tc.desc   : SIMCard required Obtain the ISO country code for the specified SIM card slot. Using promise for asynchronous callback
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testTelephonySimGetISOCountryCodeForSim1400", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetISOCountryCodeForSim1400';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName}:success  have sim card,data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getISOCountryCodeForSim(1).then((data: string) => {
-            console.info(`${caseName} false, promise: data->${JSON.stringify(data)}`);
-            ExpectFail();
-            console.info(`${caseName} test end `);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} success Do not have sim card2, promise: err->${JSON.stringify(err)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
               done();
@@ -268,48 +192,6 @@ export default function SimNoCardPublic() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetSimOperatorNumeric_1400
-     * @tc.name   : testTelephonySimGetSimOperatorNumeric1400
-     * @tc.desc   : Obtain the Public Land Mobile Network (PLMN) number of the designated SIM card slot. Use promise for asynchronous callback.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetSimOperatorNumeric1400", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetSimOperatorNumeric1400';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName}:success hasSimCard,data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getSimOperatorNumeric(1).then((data: string) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectFail();
-            console.info(`${caseName} test end `);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} success Do not have sim card., promise: err->${JSON.stringify(err)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName}:failed hasSimCard,data->${JSON.stringify(data)}`);
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetSimSpn_0300
      * @tc.name   : testTelephonySimGetSimSpn0300
      * @tc.desc   : Obtains the SPN of the SIM card in the specified slot. This API uses a callback to return the result
@@ -340,86 +222,6 @@ export default function SimNoCardPublic() {
           });
         } else {
           console.info(`${caseName}:success has SimCard1,data->${JSON.stringify(data)}`);
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetSimSpn_0400
-     * @tc.name   : testTelephonySimGetSimSpn0400
-     * @tc.desc   : Obtains the SPN of the SIM card in the specified slot. This API uses a callback to return the result
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetSimSpn0400", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetSimSpn0400';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName}:success Do not have sim card2 err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getSimSpn(1, (err: BusinessError, data: string) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName}:success Do not have sim card2 err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName}:fail,data->${JSON.stringify(data)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-            console.info(`${caseName}: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          });
-        } else {
-          console.info(`${caseName}:success has SimCard1,data->${JSON.stringify(data)}`);
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetSimSpn_1000
-     * @tc.name   : testTelephonySimGetSimSpn1000
-     * @tc.desc   : Obtains the SPN of the SIM card in the specified slot. This API uses a promise to return the result
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetSimSpn1000", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetSimSpn1000';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName}:success Do not have sim card2 err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getSimSpn(1).then((data: string) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectFail();
-            console.info(`${caseName} test end `);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} 	Do not have sim card., promise: err->${JSON.stringify(err)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          console.info(`${caseName}:fail has not SimCard2,data->${JSON.stringify(data)}`);
           ExpectFail();
           console.info(`${caseName} test end `);
           done();
@@ -505,82 +307,6 @@ export default function SimNoCardPublic() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Sim_GetSimAccountInfo_0700
-     * @tc.name   : testTelephonySimGetSimAccountInfo0700
-     * @tc.desc   : SIMCard required Get SIM card account information. Use callback for asynchronous callback.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetSimAccountInfo0700", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetSimAccountInfo0700';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName} success has not card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getSimAccountInfo(1, (err: BusinessError, data: sim.IccAccountInfo) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} 	Do not have sim card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetSimAccountInfo_1300
-     * @tc.name   : testTelephonySimGetSimAccountInfo1300
-     * @tc.desc   : SIMCard required Get SIM card account information. Use promise for asynchronous callback.
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetSimAccountInfo1300", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetSimAccountInfo1300';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName} success has not card1: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
-            console.info(`${caseName} success, promise: data->${JSON.stringify(data)}`);
-            ExpectFail();
-            console.info(`${caseName} test end `);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} Success Do not have sim card1, promise: err->${JSON.stringify(err)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName} failed, promise: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Sim_GetActiveSimAccountInfoList_0300
      * @tc.name   : testTelephonySimGetActiveSimAccountInfoList0300
      * @tc.desc   : SIMCard required Get a list of activated SIM card account information. Use callback for asynchronous callback.
@@ -598,41 +324,6 @@ export default function SimNoCardPublic() {
           sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
             if (err.code === 8300004) {
               console.info(`${caseName}  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetActiveSimAccountInfoList_0400
-     * @tc.name   : testTelephonySimGetActiveSimAccountInfoList0400
-     * @tc.desc   : SIMCard required Get a list of activated SIM card account information. Use callback for asynchronous callback..
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetActiveSimAccountInfoList0400", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetActiveSimAccountInfoList0400';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName} success has not card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo>) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} has not card2  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
               done();
@@ -673,47 +364,6 @@ export default function SimNoCardPublic() {
           }).catch((err: BusinessError) => {
             if (err.code === 8300004) {
               console.info(`${caseName} has not card1  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-              ExpectTrue(true);
-              console.info(`${caseName} test end `);
-              done();
-            } else {
-              console.info(`${caseName} getActiveSimAccountInfoList failed, promise: err->${JSON.stringify(err)}`);
-              ExpectFail();
-              console.info(`${caseName} test end `);
-              done();
-            }
-          });
-        } else {
-          ExpectFail();
-          console.info(`${caseName} test end `);
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_Telephony_Sim_GetActiveSimAccountInfoList_0800
-     * @tc.name   : testTelephonySimGetActiveSimAccountInfoList0800
-     * @tc.desc   : SIMCard required Get a list of activated SIM card account information. Use promise for asynchronous callback..
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it("testTelephonySimGetActiveSimAccountInfoList0800", 0, async (done: Function) => {
-      let caseName: string = 'testTelephonySimGetActiveSimAccountInfoList0800';
-      console.info(`${caseName} test start `);
-      sim.hasSimCard(1, (err: BusinessError, data: boolean) => {
-        if (data === false) {
-          console.info(`${caseName} success has not card2: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          ExpectTrue(data === false);
-          sim.getActiveSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
-            console.info(`${caseName} getActiveSimAccountInfoList success, promise: data->${JSON.stringify(data)}`);
-            ExpectFail();
-            console.info(`${caseName} test end `);
-            done();
-          }).catch((err: BusinessError) => {
-            if (err.code === 8300004) {
-              console.info(`${caseName} has not card2  callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
               ExpectTrue(true);
               console.info(`${caseName} test end `);
               done();
