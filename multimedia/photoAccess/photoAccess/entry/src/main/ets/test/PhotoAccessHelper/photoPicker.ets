@@ -514,7 +514,110 @@ export default function photoPickerTest() {
       let expectSelectNum = 1;
       await selectWithOptionPromise(testNum, done, option, expectSelectNum);
     });
-    
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_0700
+     * @tc.name      : smart_photopicker_select_promise_007
+     * @tc.desc      : select with recommendationType = PASSPORT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_007", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_007";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.PASSPORT;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_0800
+     * @tc.name      : smart_photopicker_select_promise_008
+     * @tc.desc      : select with recommendationType = BANK_CARD
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_008", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_008";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.BANK_CARD;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_0900
+     * @tc.name      : smart_photopicker_select_promise_009
+     * @tc.desc      : select with recommendationType = DRIVER_LICENSE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_009", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_009";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.DRIVER_LICENSE;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_1000
+     * @tc.name      : smart_photopicker_select_promise_010
+     * @tc.desc      : select with recommendationType = DRIVING_LICENSE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_010", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_010";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.DRIVING_LICENSE;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_PROMISE_1100
+     * @tc.name      : smart_photopicker_select_promise_011
+     * @tc.desc      : select with recommendationType = PROFILE_PICTURE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_promise_011", 1, async function (done) {
+      let testNum = "smart_photopicker_select_promise_011";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      let textContextInfo: photoAccessHelper.TextContextInfo = {
+      text: '上海野生动物园的大熊猫'
+      }
+      recommendationOptions.textContextInfo = textContextInfo;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionPromise(testNum, done, option, expectSelectNum);
+    });
+
     //callback
     /**
      * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_0000
@@ -651,6 +754,109 @@ export default function photoPickerTest() {
       option.maxSelectNumber = 1;
       let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
       recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.PROFILE_PICTURE;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_0700
+     * @tc.name      : smart_photopicker_select_callback_007
+     * @tc.desc      : select with recommendationType = PASSPORT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_007", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_007";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.PASSPORT;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_0800
+     * @tc.name      : smart_photopicker_select_callback_008
+     * @tc.desc      : select with recommendationType = BANK_CARD
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_008", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_008";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.BANK_CARD;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_0900
+     * @tc.name      : smart_photopicker_select_callback_009
+     * @tc.desc      : select with recommendationType = DRIVER_LICENSE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_009", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_009";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.DRIVER_LICENSE;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_1000
+     * @tc.name      : smart_photopicker_select_callback_010
+     * @tc.desc      : select with recommendationType = DRIVING_LICENSE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_010", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_010";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      recommendationOptions.recommendationType = photoAccessHelper.RecommendationType.DRIVING_LICENSE;
+      option.recommendationOptions = recommendationOptions;
+      let expectSelectNum = 1;
+      await selectWithOptionCallback(testNum, done, option, expectSelectNum);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_SMART_PHOTOPICKER_SELECT_CALLBACK_1100
+     * @tc.name      : smart_photopicker_select_callback_011
+     * @tc.desc      : select with textContextInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it("smart_photopicker_select_callback_011", 1, async function (done) {
+      let testNum = "smart_photopicker_select_callback_011";
+      let option = new photoAccessHelper.PhotoSelectOptions();
+      option.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      option.maxSelectNumber = 1;
+      let recommendationOptions: photoAccessHelper.RecommendationOptions = new photoAccessHelper.RecommendationOptions();
+      let textContextInfo: photoAccessHelper.TextContextInfo = {
+        text: '上海野生动物园的大熊猫'
+      }
+      recommendationOptions.textContextInfo = textContextInfo;
       option.recommendationOptions = recommendationOptions;
       let expectSelectNum = 1;
       await selectWithOptionCallback(testNum, done, option, expectSelectNum);
