@@ -16,16 +16,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
-import {Driver, ON} from '@ohos.UiTest';
-
-let driver = Driver.create();
 
 export default function FaSetDisplayOrientationTest() {
 
   describe('FaSetDisplayOrientationTest', function () {
-    beforeEach(async (done) => {
-      setTimeout(() => { done(); }, 3000)
-    })
 
     let TAG = "";
     let TAG1 = "SUB_AA_OpenHarmony == FaSetDisplayOrientationTest : ";
@@ -144,14 +138,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -219,14 +205,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -294,14 +272,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -386,14 +356,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -478,14 +440,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -570,14 +524,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -662,14 +608,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -754,14 +692,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -850,14 +780,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -922,14 +844,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -994,14 +908,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -1066,14 +972,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -1138,14 +1036,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -1210,14 +1100,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
 
     /*
@@ -1282,14 +1164,6 @@ export default function FaSetDisplayOrientationTest() {
         expect().assertFail();
         done();
       })
-      await driver.delayMs(2000);
-      let allowed = await driver.findComponent(ON.text("打开"));
-      if (allowed) {
-        console.log("find button");
-        let point = await allowed.getBoundsCenter();
-        console.log('point.x : ' + point.x +'point.y : '+ point.y);
-        await driver.click(point.x, point.y);
-      }
     })
   })
 }
