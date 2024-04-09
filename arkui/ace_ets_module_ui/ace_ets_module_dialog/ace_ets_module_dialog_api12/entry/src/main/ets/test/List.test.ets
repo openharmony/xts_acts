@@ -28,6 +28,10 @@ import CustomDialog3 from './CustomDialogTest/CustomDialog3.test.ets'
 import openCustomDialog1 from './openCustomDialogTest/openCustomDialog1.test.ets'
 import openCustomDialog2 from './openCustomDialogTest/openCustomDialog2.test.ets'
 import openCustomDialog3 from './openCustomDialogTest/openCustomDialog3.test.ets'
+import CalendarDialogCallback from './CalendarPickerDialogTest/CalendarDialogCallback.test.ets'
+import DatePickerDialogCallback from './DatePickerDialogTest/DatePickerDialogCallback.test.ets'
+import TextPickerDialogCallback from './TextPickerDialogTest/TextPickerDialogCallback.test.ets'
+import TimePickerDialogCallback from './TimePickerDialogTest/TimePickerDialogCallback.test.ets'
 
 export default function testsuite() {
   TextPickerDialog()
@@ -46,4 +50,8 @@ export default function testsuite() {
   openCustomDialog1();
   openCustomDialog2();
   openCustomDialog3();
+  CalendarDialogCallback();
+  DatePickerDialogCallback();
+  TextPickerDialogCallback();
+  TimePickerDialogCallback();
 }
