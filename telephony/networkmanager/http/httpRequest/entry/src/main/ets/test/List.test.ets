@@ -15,8 +15,10 @@
 
 import HttpRequestAndDestroyTest from './HttpRequestAndDestory.test';
 import HttpRequestInStreamTest from './HttpRequestInStream.test';
+import HttpRequestOptionsTest from './HttpRequestOptions.test';
 
 export default function testsuite() {
   HttpRequestAndDestroyTest();
   HttpRequestInStreamTest();
+  HttpRequestOptionsTest();
 }
