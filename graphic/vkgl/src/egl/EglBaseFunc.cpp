@@ -62,7 +62,7 @@ FuncRunResult RunTestKHRGLES(int argc, const char** argv)
         de::UniquePtr<tcu::Platform> platform(createOhosPlatform());
         de::UniquePtr<tcu::App> app(new tcu::App(*platform, archive, OHOS::Logdefine::tcutestlog, cmdLine));
 
-        for (isExist) {
+        for (;isExist;) {
             if (!app->iterate()) {
                 isExist = false;
             };
