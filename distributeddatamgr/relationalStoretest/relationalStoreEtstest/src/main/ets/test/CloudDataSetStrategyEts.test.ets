@@ -356,7 +356,7 @@ export default function cloudDataSetStrategyEtsTest() {
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
-                expect(err != null).assertEqual();
+                expect(err != null).assertFail();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest005 end *************");
@@ -381,7 +381,7 @@ export default function cloudDataSetStrategyEtsTest() {
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
-                expect(err != null).assertEqual();
+                expect(err != null).assertFail();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest006 end *************");
@@ -406,7 +406,7 @@ export default function cloudDataSetStrategyEtsTest() {
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
-                expect(err != null).assertEqual();
+                expect(err != null).assertFail();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest007 end *************");
@@ -431,7 +431,7 @@ export default function cloudDataSetStrategyEtsTest() {
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
-                expect(err != null).assertEqual();
+                expect(err != null).assertFail();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest008 end *************");
@@ -456,7 +456,7 @@ export default function cloudDataSetStrategyEtsTest() {
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
-                expect(err != null).assertEqual();
+                expect(err != null).assertFail();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest009 end *************");
