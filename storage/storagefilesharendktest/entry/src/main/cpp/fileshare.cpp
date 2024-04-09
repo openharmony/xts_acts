@@ -19,18 +19,16 @@
 #include <iostream>
 #include "native_common.h"
 #include "hilog/log.h"
-#include <errno.h>
 #include <malloc.h>
-#include <stdio.h>
-#include <string.h>
 #include <js_native_api_types.h>
 
-static napi_value FileShare_PersistPermission_001(napi_env env, napi_callback_info info)
-{   
+static napi_value FileShare_001(napi_env env, napi_callback_info info)
+{
     static const uint32_t POLICY_NUM = 1;
-    char path[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test1.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = { 
-    {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
+    char path[] = 
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test1.txt";
+    FileShare_PolicyInfo policy[POLICY_NUM] = {
+        {path, sizeof(path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     auto ret = OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
@@ -42,14 +40,16 @@ static napi_value FileShare_PersistPermission_001(napi_env env, napi_callback_in
     return result_1;
 }
 
-static napi_value FileShare_PersistPermission_002(napi_env env, napi_callback_info info)
+static napi_value FileShare_002(napi_env env, napi_callback_info info)
 {
     static const uint32_t POLICY_NUM = 2;
-    char Path1[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test2.txt";
-    char Path2[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test201.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = { 
-    {Path1, sizeof(Path1) - 1, FileShare_OperationMode::READ_MODE},
-    {Path2, sizeof(Path2) - 1, FileShare_OperationMode::WRITE_MODE}};
+    char Path1[] = 
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test2.txt";
+    char Path2[] = 
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test201.txt";
+    FileShare_PolicyInfo policy[POLICY_NUM] = {
+        {Path1, sizeof(Path1) - 1, FileShare_OperationMode::READ_MODE},
+        {Path2, sizeof(Path2) - 1, FileShare_OperationMode::WRITE_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
     auto ret = OH_FileShare_PersistPermission(policy, POLICY_NUM, &result, &resultNum);
@@ -61,11 +61,12 @@ static napi_value FileShare_PersistPermission_002(napi_env env, napi_callback_in
     return result_1;
 }
 
-static napi_value FileShare_ActivatePermission_001(napi_env env, napi_callback_info info)
-{   
+static napi_value FileShare_003(napi_env env, napi_callback_info info)
+{
     static const uint32_t POLICY_NUM = 1;
-    char Path[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test3.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = { 
+    char Path[] = 
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test3.txt";
+    FileShare_PolicyInfo policy[POLICY_NUM] = {
         {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
@@ -80,11 +81,12 @@ static napi_value FileShare_ActivatePermission_001(napi_env env, napi_callback_i
     return result_1;
 }
 
-static napi_value FileShare_DeactivatePermission_001(napi_env env, napi_callback_info info)
-{   
+static napi_value FileShare_004(napi_env env, napi_callback_info info)
+{
     static const uint32_t POLICY_NUM = 1;
-    char Path[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test4.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = { 
+    char Path[] =
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test4.txt";
+    FileShare_PolicyInfo policy[POLICY_NUM] = {
         {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
@@ -101,11 +103,12 @@ static napi_value FileShare_DeactivatePermission_001(napi_env env, napi_callback
     return result_1;
 }
 
-static napi_value FileShare_RevokePermission_001(napi_env env, napi_callback_info info)
-{   
+static napi_value FileShare_005(napi_env env, napi_callback_info info)
+{
     static const uint32_t POLICY_NUM = 1;
-    char Path[] = "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test5.txt";
-    FileShare_PolicyInfo policy[POLICY_NUM] = { 
+    char Path[] =
+    "file://com.acts.storage.filesharendk/data/storage/el2/base/haps/com.acts.storage.filesharendk/files/test5.txt";
+    FileShare_PolicyInfo policy[POLICY_NUM] = {
         {Path, sizeof(Path) - 1, FileShare_OperationMode::READ_MODE}};
     FileShare_PolicyErrorResult* result = nullptr;
     uint32_t resultNum = 0;
@@ -120,9 +123,10 @@ static napi_value FileShare_RevokePermission_001(napi_env env, napi_callback_inf
     return result_1;
 }
 
-static napi_value FileShare_CheckPersistentPermission_001(napi_env env, napi_callback_info info)
-{   
-    char policyUriCharA[] = "file://com.example.filesharea/data/storage/el2/base/CheckPersistentPermission.txt";
+static napi_value FileShare_006(napi_env env, napi_callback_info info)
+{
+    char policyUriCharA[] = 
+    "file://com.example.filesharea/data/storage/el2/base/CheckPersistentPermission.txt";
     FileShare_PolicyInfo policyA = {.uri = policyUriCharA,
                                     .length = sizeof(policyUriCharA) - 1,
                                     .operationMode =
@@ -145,12 +149,12 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "FileShare_PersistPermission_001", nullptr, FileShare_PersistPermission_001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "FileShare_PersistPermission_002", nullptr, FileShare_PersistPermission_002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "FileShare_ActivatePermission_001", nullptr, FileShare_ActivatePermission_001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "FileShare_DeactivatePermission_001", nullptr, FileShare_DeactivatePermission_001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "FileShare_RevokePermission_001", nullptr, FileShare_RevokePermission_001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "FileShare_CheckPersistentPermission_001", nullptr, FileShare_CheckPersistentPermission_001, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_001", nullptr, FileShare_001, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_002", nullptr, FileShare_002, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_003", nullptr, FileShare_003, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_004", nullptr, FileShare_004, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_005", nullptr, FileShare_005, nullptr, nullptr, nullptr, napi_default, nullptr },
+      { "FileShare_006", nullptr, FileShare_006, nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
