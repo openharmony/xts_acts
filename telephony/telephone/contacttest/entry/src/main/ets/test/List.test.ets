@@ -13,7 +13,20 @@
  * limitations under the License.
  */
 import AddContactTest from './AddContact.test';
+import QueryByEmailTest from './QueryByEmail.test';
+import QueryKeyTest from './QueryKey.test';
+import QueryByEmailPhoneNumTest from './QueryByPhoneNum.test';
+import QueryContactTest from './QueryContact.test';
+import UpdateContactTest from './UpdateContact.test';
+
+
+
 
 export default function testsuite() {
   AddContactTest();
+  QueryKeyTest();
+  QueryByEmailTest();
+  QueryByEmailPhoneNumTest();
+  QueryContactTest();
+  UpdateContactTest();
 }
