@@ -135,7 +135,7 @@ vk-gl-cts --> spirv-tools
        ./glcts --deqp-case=dEQP-GLES2.*
        ```
        
-       --deqp-case=参数目前支持：dEQP-GLES2，dEQP-GLES3, dEQP-GLES31, KHR-GLES2, KHR-GLES3, KHR-GLES31,*号意思就是后面的全部，所以如果指定具体case就写完整路径
+       --deqp-case=参数目前支持：dEQP-GLES2，dEQP-GLES3, dEQP-GLES31, KHR-GLES2, KHR-GLES3, KHR-GLES31, *号意思就是后面的全部，所以如果指定具体case就写完整路径
        
        --deqp-caselist-file=参数支持直接传txt文件进行测试
 
