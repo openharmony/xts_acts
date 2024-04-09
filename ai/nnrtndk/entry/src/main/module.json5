@@ -21,6 +21,7 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
+      "2in1",
       "tablet"
     ],
     "deliveryWithInstall": true,

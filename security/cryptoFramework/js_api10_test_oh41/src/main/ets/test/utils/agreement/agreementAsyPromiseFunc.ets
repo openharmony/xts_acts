@@ -18,7 +18,7 @@ import cpFw from '@ohos.security.cryptoFramework';
 import * as keyGenPromiseFunc from '../keyGenerate/asyKeyGenPromiseFunc';
 
 
-async function normalProcess(cipherAlgName: string, spec: cpFw.AsyKeySpec | string): Promise<boolean> {
+export async function normalProcess(cipherAlgName: string, spec: cpFw.AsyKeySpec | string): Promise<boolean> {
   let agreementKeyPair: cpFw.KeyPair;
   let agreement: cpFw.KeyAgreement = cpFw.createKeyAgreement(cipherAlgName);
   try {
@@ -33,6 +33,14 @@ async function normalProcess(cipherAlgName: string, spec: cpFw.AsyKeySpec | stri
   }
 }
 
-export {
-  normalProcess
+export async function keyPairProcess(cipherAlgName: string, agreementPriKey: cpFw.PriKey, agreementPubKey: cpFw.PubKey): Promise<boolean> {
+  let agreement: cpFw.KeyAgreement = cpFw.createKeyAgreement(cipherAlgName);
+  try {
+    await agreement.generateSecret(agreementPriKey, agreementPubKey);
+    console.log("[Promise] agreementPromiseNormalProcess agreement success.");
+    return true;
+  } catch (err) {
+    console.log("[Promise] agreementPromiseNormalProcess agreement fail.");
+    throw err as Error;
+  }
 }

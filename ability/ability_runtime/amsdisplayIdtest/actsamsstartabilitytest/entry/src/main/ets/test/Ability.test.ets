@@ -14,9 +14,11 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import commonEvent from '@ohos.commonEvent'
-import {Driver, ON} from '@ohos.UiTest'
+import commonEvent from '@ohos.commonEvent';
+import {Driver, ON} from '@ohos.UiTest';
+import display from '@ohos.display';
 
+let displayClassId = display.getDefaultDisplaySync().id;
 let driver = Driver.create();
 
 
@@ -85,7 +87,7 @@ export default function abilityTest(abilityContext) {
 
         async function processInfoCheck(data) {
           console.info('====> ACTS_StartAbility_2100=====>');
-          expect(data.parameters['displayId']).assertEqual(15);
+          expect(data.parameters['displayId']).assertEqual(displayClassId);
           done();
         }
 
@@ -118,7 +120,7 @@ export default function abilityTest(abilityContext) {
       console.log('Start ACTS_StartAbility_2100 timer id : ' + id);
 
       await startAbilityProcess(abilityContext, {
-        displayId: 15
+        displayId: displayClassId
       }, {
         startId: 0,
         stepNum: 1,

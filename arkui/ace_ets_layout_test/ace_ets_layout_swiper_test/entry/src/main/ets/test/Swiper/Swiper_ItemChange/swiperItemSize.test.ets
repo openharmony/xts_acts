@@ -82,7 +82,7 @@ export default function swiperItemSize() {
       // Flipping.
       let driver = Driver.create();
       //await driver.swipe(250, 230, 200, 230);
-      // await CommonFunc.sleep(500);
+      await CommonFunc.sleep(2500);
       // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       // await CommonFunc.sleep(1000);
       await CommonFunc.sleep(1000);
