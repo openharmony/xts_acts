@@ -384,8 +384,6 @@ export default function rdbStoreAttachEtsunitTest() {
                 console.log("testRdbStoreAttach00010: failed, err: code=" + e.code + " message=" + e.message);
                 expect().assertFail();
             }
-            // let number = await store.attach(context, STORE_CONFIG1, 'attachDB', 300);
-            // expect(1).assertEqual(number);
             try {
                 await store.attach(context, STORE_CONFIG1, 'attachDB', 301);
                 expect().assertFail();
@@ -409,15 +407,13 @@ export default function rdbStoreAttachEtsunitTest() {
             await store.executeSql(CREATE_TABLE_TEST);
             await attachBatchInsert(store, "test");
             try {
-                let number = await store.attach(context, STORE_CONFIG1, 'attachDB', 300);
+                let number = await store.attach(context, STORE_CONFIG1, 'attachDB', 1);
                 console.log("testRdbStoreAttach00011: number= " + number);
                 expect(1).assertEqual(number);
             } catch(e) {
                 console.log("testRdbStoreAttach00010: failed, err: code=" + e.code + " message=" + e.message);
                 expect().assertFail();
             }
-            // let number = await store.attach(context, STORE_CONFIG1, 'attachDB', 1);
-            // expect(1).assertEqual(number);
             try {
                 await store.attach(context, STORE_CONFIG1, 'attachDB', -1);
                 expect().assertFail();

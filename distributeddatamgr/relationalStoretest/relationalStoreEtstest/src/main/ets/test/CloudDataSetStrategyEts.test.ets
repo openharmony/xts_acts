@@ -351,11 +351,12 @@ export default function cloudDataSetStrategyEtsTest() {
                 await cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
                     expect(null).assertFail();
                 }).catch(err => {
-                    console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
+                    console.error(TAG + `setGlobalCloudStrategyTest005, setGlobalCloudStrategy errcode:${JSON.stringify(err)}.`);
+                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest005, errcode:${JSON.stringify(err)}.`);
-                expect(err.code == 201).assertTrue();
+                expect(err != null).assertEqual();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest005 end *************");
@@ -376,10 +377,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
+                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest006, errcode:${JSON.stringify(err)}.`);
-                expect(err.code == 201).assertTrue();
+                expect(err != null).assertEqual();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest006 end *************");
@@ -400,10 +402,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
+                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest007, errcode:${JSON.stringify(err)}.`);
-                expect(err.code == 201).assertTrue();
+                expect(err != null).assertEqual();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest007 end *************");
@@ -424,10 +427,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
+                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest008, errcode:${JSON.stringify(err)}.`);
-                expect(err.code == 201).assertTrue();
+                expect(err != null).assertEqual();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest008 end *************");
@@ -448,10 +452,11 @@ export default function cloudDataSetStrategyEtsTest() {
                     expect(null).assertFail();
                 }).catch(err => {
                     console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
+                    expect(err.code == 201).assertTrue();
                 });
             } catch (err) {
                 console.error(TAG + `setGlobalCloudStrategyTest009, errcode:${JSON.stringify(err)}.`);
-                expect(err.code == 201).assertTrue();
+                expect(err != null).assertEqual();
             }
             done()
             console.log(TAG + "************* setGlobalCloudStrategyTest009 end *************");
