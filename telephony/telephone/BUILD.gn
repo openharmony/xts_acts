@@ -17,5 +17,6 @@ group("telephone") {
     "contacttest:ActsTelephonyContactTest",
     "noCard:noCard",
     "noPermission:noPermission",
+    "radiotest:ActsTelephonyRadioWithCardTest",
   ]
 }
