@@ -19,7 +19,9 @@ group("telephone") {
     "datatest:ActsTelephonyDataHasCardTest",
     "noCard:noCard",
     "noPermission:noPermission",
+    "observertest:ActsTelephonyObserverWithCardTest",
     "radiotest:ActsTelephonyRadioWithCardTest",
     "simtest:ActsTelephonySimHasCardTest",
+    "smstest:ActsTelephonySmsWithCardTest",
   ]
 }
