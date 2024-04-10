@@ -13,5 +13,8 @@
 
 group("noPermission") {
   testonly = true
-  deps = [ "contacttest:ActsTelephonyContactNoPermissionTest","radiotest:ActsTelephonyRadioNoPermissionTest" ]
+  deps = [
+    "contacttest:ActsTelephonyContactNoPermissionTest",
+    "radiotest:ActsTelephonyRadioNoPermissionTest",
+  ]
 }
