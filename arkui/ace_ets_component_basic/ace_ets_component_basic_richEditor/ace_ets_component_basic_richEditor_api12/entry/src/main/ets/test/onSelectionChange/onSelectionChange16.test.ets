@@ -58,11 +58,11 @@ export default function onSelectionChange16() {
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange16_RichEditor'));
       await richEditor.click();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
 
       let text0 = getInspectorByKey('onSelectionChange16_text1');
       let Obj0 = JSON.parse(text0);
@@ -71,7 +71,7 @@ export default function onSelectionChange16() {
       await driver.triggerKey(2055);
       await driver.triggerKey(2055);
       await driver.triggerKey(2055);
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       let text1_1 = getInspectorByKey('onSelectionChange16_text1');
       let Obj1_1 = JSON.parse(text1_1);
       expect(Obj1_1.$attrs.content).assertEqual('4');

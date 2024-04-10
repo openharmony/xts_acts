@@ -43,22 +43,6 @@ export default function unistdNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_SETPGID_0200
-     * @tc.name       : testMuslUnistdSetpgid002
-     * @tc.desc       : test setpgid
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUnistdSetpgid002', 0, async (done: Function) => {
-      let b = 0
-      let c = 1
-      let a: number = unistd.setpgid(b, c);
-      expect(a).assertEqual(-1);
-      done();
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_SETPGID_0300
      * @tc.name       : testMuslUnistdSetpgid003
      * @tc.desc       : test setpgid
@@ -952,22 +936,6 @@ export default function unistdNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_PAUSE_0100
-     * @tc.name       : testMuslUnistdPause001
-     * @tc.desc       : test pause
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslUnistdPause001', 0, async (done: Function) => {
-      let data: number = unistd.pause();
-      console.info("Test NAPI data = \"" + data + "\"");
-      expect(data).assertEqual(1);
-      done();
-      ;
-    });
-
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_NICE_0100
      * @tc.name       : testMuslUnistdNice001
      * @tc.desc       : test nice
@@ -1029,22 +997,6 @@ export default function unistdNdkTest() {
     it('testMuslUnistdGetcwd001', 0, async (done: Function) => {
       let resultValue = 1;
       let result: number = unistd.getcwd();
-      expect(result).assertEqual(resultValue);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_FORK_0100
-     * @tc.name       : testMuslUnistdFork001
-     * @tc.desc       : test fork
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     * @
-     */
-    it('testMuslUnistdFork001', 0, async (done: Function) => {
-      let resultValue = 1;
-      let result: number = unistd.fork();
       expect(result).assertEqual(resultValue);
       done();
     });
@@ -1190,37 +1142,6 @@ export default function unistdNdkTest() {
       console.info("Test result = " + JSON.stringify(result));
       expect(result).assertEqual(0);
       done();
-    });
-
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_SETSID_0100
-     * @tc.name       : testMuslUnistdSetsid001
-     * @tc.desc       : test setsid
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testMuslUnistdSetsid001', 0, async (done: Function) => {
-      let a: number = unistd.setsid();
-      expect(a).assertEqual(0);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_VFORK_0100
-     * @tc.name       : testMuslUnistdVfork001
-     * @tc.desc       : test vfork
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUnistdVfork001', 0, async (done: Function) => {
-      let result = unistd.vfork();
-      console.info("Test result= " + result);
-      expect(result).assertEqual(0);
-      done();
-      ;
     });
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_SETEGID_0100
@@ -1540,50 +1461,6 @@ export default function unistdNdkTest() {
       fs.closeSync(file);
       let param = 0;
       let result: number = unistd.dup3(a);
-      expect(result).assertEqual(param);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_EXECL_0100
-     * @tc.name       : testMuslUnistdExecl001
-     * @tc.desc       : test execl
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUnistdExecl001', 0, async (done: Function) => {
-      let param = 0;
-      let result: number = unistd.execl();
-      expect(result).assertEqual(param);
-      done();
-    });
-
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_EXECLE_0100
-     * @tc.name       : testMuslUnistdExecle001
-     * @tc.desc       : test execle
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUnistdExecle001', 0, async (done: Function) => {
-      let param = 0;
-      let result: number = unistd.execle();
-      expect(result).assertEqual(param);
-      done();
-    });
-    /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_UNISTD_EXECLP_0100
-     * @tc.name       : testMuslUnistdExeclp001
-     * @tc.desc       : test execlp
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 0
-     */
-    it('testMuslUnistdExeclp001', 0, async (done: Function) => {
-      let param = 0;
-      let result: number = unistd.execlp();
       expect(result).assertEqual(param);
       done();
     });

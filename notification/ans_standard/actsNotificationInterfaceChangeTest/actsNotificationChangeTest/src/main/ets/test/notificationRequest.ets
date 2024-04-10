@@ -256,5 +256,55 @@ export default function notificationRequestTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number: Acts_NotificationRequest_0600
+     * @tc.name: Test the notificationRequest property.
+     * @tc.desc: Construct the notificationRequest.
+     */
+    it(" Acts_NotificationRequest_0600", 0, async (done: Function) => {
+      const TEST_CASE_NAME = 'Acts_NotificationRequest_0600';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch((err: BusinessError) => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest: notificationManager.NotificationRequest = {
+            id: 1,
+            appMessageId: "appMessageId",
+            sound: "sound",
+            content: {
+              notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+              normal: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: '',
+                lockscreenPicture: pixelmap
+              }
+            },
+            notificationSlotType: notificationManager.SlotType.OTHER_TYPES
+          }
+        })
+      hilog.info(0x000, `${TAG}`, `${TEST_CASE_NAME} test case start`);
+      done();
+    })
   })
 }

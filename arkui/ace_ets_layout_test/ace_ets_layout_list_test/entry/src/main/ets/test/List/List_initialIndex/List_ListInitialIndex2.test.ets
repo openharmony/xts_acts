@@ -131,9 +131,9 @@ export default function list_ListInitialIndex2Test() {
       expect(Math.round(twelfthListItem.bottom - twelfthListItem.top)).assertEqual(vp2px(0));
 
       let driver = Driver.create();
-      await driver.swipe(Math.round(fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
-        Math.round(fourthListItem.bottom), Math.round(firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
-        Math.round(firstListItem.bottom));
+      await driver.swipe(Math.round(globalThis.winLeft + fourthListItem.left + ((fourthListItem.right - fourthListItem.left) / 2)),
+         Math.round(globalThis.winTop +fourthListItem.bottom), Math.round(globalThis.winLeft + firstListItem.left + (firstListItem.right - firstListItem.left) / 2),
+        Math.round(globalThis.winTop + firstListItem.bottom));
       await CommonFunc.sleep(2000);
       fifthListItem = CommonFunc.getComponentRect('List_ListInitialIndex2_5');
       sixthListItem = CommonFunc.getComponentRect('List_ListInitialIndex2_6');

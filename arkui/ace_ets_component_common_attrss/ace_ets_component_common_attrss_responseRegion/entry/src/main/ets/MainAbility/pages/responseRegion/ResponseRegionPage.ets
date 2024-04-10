@@ -150,6 +150,7 @@ struct ResponseRegionPage {
                 Text('Page One')
               }
             }
+			.nextLabel('')
           }.commonStyle()
         } else if (this.targetView == 'TextArea') {
           TextArea({

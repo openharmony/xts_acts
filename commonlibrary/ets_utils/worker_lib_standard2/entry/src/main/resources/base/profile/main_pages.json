@@ -1,0 +1,6 @@
+{
+  "src": [
+    "pages/Index",
+    "TestAbility/pages/Index"
+  ]
+}
